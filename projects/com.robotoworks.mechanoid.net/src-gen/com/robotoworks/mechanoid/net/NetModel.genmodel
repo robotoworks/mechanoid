@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.robotoworks.mechanoid.net/src-gen" editDirectory="/com.robotoworks.mechanoid.net.edit/src"
+    editorDirectory="/com.robotoworks.mechanoid.net.editor/src" modelPluginID="com.robotoworks.mechanoid.net"
+    forceOverwrite="true" modelName="NetModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.net.edit"
+    editorPluginID="com.robotoworks.mechanoid.net.editor" runtimeVersion="2.8">
+  <genPackages prefix="NetModel" basePackage="com.robotoworks.mechanoid.net" disposableProviderFactory="true"
+      ecorePackage="NetModel.ecore#/">
+    <genClasses ecoreClass="NetModel.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Model/packageName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Model/declarations"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//Declaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Declaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//Client">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Client/baseUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/methods"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//HttpMethod">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/path"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/response"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//HttpPost">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpPost/body"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//HttpPut">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpPut/body"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//HttpGet"/>
+    <genClasses ecoreClass="NetModel.ecore#//HttpDelete"/>
+    <genClasses ecoreClass="NetModel.ecore#//ParamsBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ParamsBlock/params"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//BodyBlock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//BodyBlock/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//BodyBlock/type"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//ResponseBlock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//ResponseBlock/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NetModel.ecore#//ResponseBlock/superType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ResponseBlock/type"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//BlockType"/>
+    <genClasses ecoreClass="NetModel.ecore#//Member">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Member/name"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//TypedMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//TypedMember/type"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//IDNamedMember"/>
+    <genClasses ecoreClass="NetModel.ecore#//StringNamedMember"/>
+    <genClasses ecoreClass="NetModel.ecore#//WrapWithMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//WrapWithMember/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//SimpleMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//SimpleMember/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SimpleMember/type"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//IDNamedSimpleMember"/>
+    <genClasses ecoreClass="NetModel.ecore#//StringNamedSimpleMember"/>
+    <genClasses ecoreClass="NetModel.ecore#//Type"/>
+    <genClasses ecoreClass="NetModel.ecore#//GenericListType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//GenericListType/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//GenericListType/genericType"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//ArrayType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ArrayType/elementType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//ArrayType/id"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//UserType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NetModel.ecore#//UserType/declaration"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//UserTypeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//UserTypeDeclaration/keyword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//UserTypeDeclaration/gen"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//ComplexTypeDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ComplexTypeDeclaration/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//EnumTypeDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//EnumTypeDeclaration/superType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//EnumTypeDeclaration/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//EnumTypeLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//EnumTypeLiteral/members"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//EnumMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//EnumMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//EnumMember/assignment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//EnumMember/value"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//ComplexTypeLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ComplexTypeLiteral/members"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//IntrinsicType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//IntrinsicType/id"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//StringType"/>
+    <genClasses ecoreClass="NetModel.ecore#//BooleanType"/>
+    <genClasses ecoreClass="NetModel.ecore#//DateType"/>
+    <genClasses ecoreClass="NetModel.ecore#//NumericType"/>
+    <genClasses ecoreClass="NetModel.ecore#//IntegerType"/>
+    <genClasses ecoreClass="NetModel.ecore#//LongType"/>
+    <genClasses ecoreClass="NetModel.ecore#//FloatType"/>
+    <genClasses ecoreClass="NetModel.ecore#//DoubleType"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.robotoworks.com/mechanoid/net/NetModel" 
+       class = "com.robotoworks.mechanoid.net.netModel.NetModelPackage"
+       genModel = "com/robotoworks/mechanoid/net/NetModel.genmodel" /> 
+	
+  </extension>
+
+
+
+
+</plugin>
