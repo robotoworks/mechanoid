@@ -28,26 +28,26 @@ class InputTransformerGenerator {
 	}
 	
 	def generate(ComplexTypeDeclaration decl, Model module) '''
-		package «module.packageName»;
+		package Çmodule.packageNameÈ;
 		
-		«var body = generateInputTransformerGeneratorClass(decl, module)»
-		«registerImports»
+		Çvar body = generateInputTransformerGeneratorClass(decl, module)È
+		ÇregisterImportsÈ
 		import com.robotoworks.mechanoid.net.Transformer;
 		import com.robotoworks.mechanoid.net.TransformException;
-		«context.printImports»
-		«context.clearImports»
+		Çcontext.printImportsÈ
+		Çcontext.clearImportsÈ
 		
-		«body»
+		ÇbodyÈ
 	'''	
 	
 	def generateInputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("org.json.JSONException")»
-		public class «decl.name»InputTransformer extends Transformer<JSONObject, «decl.name»> {
-			public void transform(JSONObject source, «decl.name» target) throws TransformException {
+		Çcontext.registerImport("org.json.JSONException")È
+		public class Çdecl.nameÈInputTransformer extends Transformer<JSONObject, Çdecl.nameÈ> {
+			public void transform(JSONObject source, Çdecl.nameÈ target) throws TransformException {
 				try {
-					«FOR member:decl.literal.members»
-					«deserializationStatementGenerator.generate(member, "provider", "source", "target", false)»
-					«ENDFOR»
+					ÇFOR member:decl.literal.membersÈ
+					ÇdeserializationStatementGenerator.generate(member, "provider", "source", "target", false)È
+					ÇENDFORÈ
 				} catch (JSONException x) {
 					throw new TransformException(x);
 				}

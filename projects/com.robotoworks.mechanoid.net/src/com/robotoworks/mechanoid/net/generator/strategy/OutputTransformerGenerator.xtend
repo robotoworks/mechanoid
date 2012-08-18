@@ -28,26 +28,26 @@ class OutputTransformerGenerator {
 	}
 	
 	def generate(ComplexTypeDeclaration decl, Model module) '''
-	package «module.packageName»;
+	package Çmodule.packageNameÈ;
 	
-	«var body = generateOutputTransformerGeneratorClass(decl, module)»
-	«registerImports»
+	Çvar body = generateOutputTransformerGeneratorClass(decl, module)È
+	ÇregisterImportsÈ
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
-	«context.printImports»
-	«context.clearImports»
+	Çcontext.printImportsÈ
+	Çcontext.clearImportsÈ
 	
-	«body»
+	ÇbodyÈ
 	'''	
 	
 	def generateOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("java.lang.Exception")»
-		public class «decl.name»OutputTransformer extends Transformer<«decl.name», JSONObject> {
-			public void transform(«decl.name» source, JSONObject target) throws TransformException {
+		Çcontext.registerImport("java.lang.Exception")È
+		public class Çdecl.nameÈOutputTransformer extends Transformer<Çdecl.nameÈ, JSONObject> {
+			public void transform(Çdecl.nameÈ source, JSONObject target) throws TransformException {
 				try {
-					«FOR member:decl.literal.members»
-					«serializationStatementGenerator.generate(member, "provider", "source", "target", false)»
-					«ENDFOR»
+					ÇFOR member:decl.literal.membersÈ
+					ÇserializationStatementGenerator.generate(member, "provider", "source", "target", false)È
+					ÇENDFORÈ
 				} catch (Exception x) {
 					throw new TransformException(x);
 				}

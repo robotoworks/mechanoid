@@ -1,8 +1,11 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.Model;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -21,13 +24,17 @@ public class ClientGenerator {
   
   public CharSequence generate(final Client client, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package \u00B4module.packageName\u00AA;");
+    _builder.append("package ");
+    String _packageName = module.getPackageName();
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("\u00B4var body = generateClientClass(client, module)\u00AA");
-    _builder.newLine();
-    _builder.append("\u00B4registerImports\u00AA");
-    _builder.newLine();
+    CharSequence body = this.generateClientClass(client, module);
+    _builder.newLineIfNotEmpty();
+    CharSequence _registerImports = this.registerImports();
+    _builder.append(_registerImports, "");
+    _builder.newLineIfNotEmpty();
     _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.HttpRequestHelper;");
@@ -39,25 +46,32 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("import org.apache.http.client.ClientProtocolException;");
     _builder.newLine();
-    _builder.append("\u00B4context.printImports\u00AA");
+    StringConcatenation _printImports = this.context.printImports();
+    _builder.append(_printImports, "");
+    _builder.newLineIfNotEmpty();
+    this.context.clearImports();
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("\u00B4context.clearImports\u00AA");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\u00B4body\u00AA");
-    _builder.newLine();
+    _builder.append(body, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence generateClientClass(final Client client, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class \u00B4client.name\u00AA {");
-    _builder.newLine();
+    _builder.append("public class ");
+    String _name = client.getName();
+    _builder.append(_name, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private static final String DEFAULT_BASE_URL = \"\u00B4client.baseUrl\u00AA\";");
-    _builder.newLine();
+    _builder.append("private static final String DEFAULT_BASE_URL = \"");
+    String _baseUrl = client.getBaseUrl();
+    _builder.append(_baseUrl, "	");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -71,8 +85,11 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public \u00B4client.name\u00AA(HttpRequestHelper requestHelper){");
-    _builder.newLine();
+    _builder.append("public ");
+    String _name_1 = client.getName();
+    _builder.append(_name_1, "	");
+    _builder.append("(HttpRequestHelper requestHelper){");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("this(requestHelper, new TransformerProvider(), DEFAULT_BASE_URL);");
     _builder.newLine();
@@ -81,8 +98,11 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public \u00B4client.name\u00AA(HttpRequestHelper requestHelper, TransformerProvider transformerProvider){");
-    _builder.newLine();
+    _builder.append("public ");
+    String _name_2 = client.getName();
+    _builder.append(_name_2, "	");
+    _builder.append("(HttpRequestHelper requestHelper, TransformerProvider transformerProvider){");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("this(requestHelper, transformerProvider, DEFAULT_BASE_URL);");
     _builder.newLine();
@@ -91,8 +111,11 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public \u00B4client.name\u00AA(HttpRequestHelper requestHelper, TransformerProvider transformerProvider, String baseUrl){");
-    _builder.newLine();
+    _builder.append("public ");
+    String _name_3 = client.getName();
+    _builder.append(_name_3, "	");
+    _builder.append("(HttpRequestHelper requestHelper, TransformerProvider transformerProvider, String baseUrl){");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("this.requestHelper = requestHelper;");
     _builder.newLine();
@@ -108,8 +131,9 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\u00B4generateClientMethods(client, module)\u00AA");
-    _builder.newLine();
+    CharSequence _generateClientMethods = this.generateClientMethods(client, module);
+    _builder.append(_generateClientMethods, "	");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -117,20 +141,33 @@ public class ClientGenerator {
   
   public CharSequence generateClientMethods(final Client client, final Model model) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\u00B4FOR method:client.methods\u00AA");
-    _builder.newLine();
-    _builder.append("public WebResponse<\u00B4method.name.pascalize\u00AAResponse> \u00B4method.name.camelize\u00AA(\u00B4method.name.pascalize\u00AARequest request)");
-    _builder.newLine();
-    _builder.append("  ");
-    _builder.append("throws ClientProtocolException, IOException {\t\t\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("return request.execute(baseUrl, requestHelper, transformerProvider);");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\u00B4ENDFOR\u00AA");
-    _builder.newLine();
+    {
+      EList<HttpMethod> _methods = client.getMethods();
+      for(final HttpMethod method : _methods) {
+        _builder.append("public WebResponse<");
+        String _name = method.getName();
+        String _pascalize = ModelExtensions.pascalize(_name);
+        _builder.append(_pascalize, "");
+        _builder.append("Response> ");
+        String _name_1 = method.getName();
+        String _camelize = ModelExtensions.camelize(_name_1);
+        _builder.append(_camelize, "");
+        _builder.append("(");
+        String _name_2 = method.getName();
+        String _pascalize_1 = ModelExtensions.pascalize(_name_2);
+        _builder.append(_pascalize_1, "");
+        _builder.append("Request request)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("  ");
+        _builder.append("throws ClientProtocolException, IOException {\t\t\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("return request.execute(baseUrl, requestHelper, transformerProvider);");
+        _builder.newLine();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
     return _builder;
   }
 }

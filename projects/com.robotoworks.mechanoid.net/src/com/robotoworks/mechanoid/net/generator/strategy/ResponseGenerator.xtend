@@ -40,130 +40,130 @@ class ResponseGenerator {
 	}
 	
 	def generate(HttpMethod method, Model module, Client client) '''
-	package «module.packageName»;
+	package Çmodule.packageNameÈ;
 
-	«var body = generateResponseClass(method, module, client)»
-	«registerImports»
-	«context.printImports»
-	«context.clearImports»
+	Çvar body = generateResponseClass(method, module, client)È
+	ÇregisterImportsÈ
+	Çcontext.printImportsÈ
+	Çcontext.clearImportsÈ
 	
-	«body»
+	ÇbodyÈ
 	'''	
 	
 	def generateResponseClass(HttpMethod method, Model module, Client client) '''
-	public class «method.name.pascalize»Response «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
-		«IF (method.response != null)»
-			«generateFieldForType(method.response.type)»	
-			«generateGetterForType(method.response.type)»	
-		«ENDIF»
+	public class Çmethod.name.pascalizeÈResponse ÇIF(method.response != null && method.response.superType != null)Èextends Çmethod.response.superType.nameÈÇENDIFÈ {
+		ÇIF (method.response != null)È
+			ÇgenerateFieldForType(method.response.type)È	
+			ÇgenerateGetterForType(method.response.type)È	
+		ÇENDIFÈ
 		
-		public «method.name.pascalize»Response(TransformerProvider transformerProvider, WebResponse<«method.name.pascalize»Response> webResponse) throws TransformException {
-			«IF (method.response != null)»
-				«IF(method.response.type != null)»
-					«generateDeserializationStatementForType(method.response, method.response.type)»
-				«ELSE»
-					«IF(method.response.superType != null)»
-						«generateDeserializationStatementForSuperTypeOnly(method.response, method.response.superType)»
-					«ENDIF»
-				«ENDIF»
-			«ENDIF»
+		public Çmethod.name.pascalizeÈResponse(TransformerProvider transformerProvider, WebResponse<Çmethod.name.pascalizeÈResponse> webResponse) throws TransformException {
+			ÇIF (method.response != null)È
+				ÇIF(method.response.type != null)È
+					ÇgenerateDeserializationStatementForType(method.response, method.response.type)È
+				ÇELSEÈ
+					ÇIF(method.response.superType != null)È
+						ÇgenerateDeserializationStatementForSuperTypeOnly(method.response, method.response.superType)È
+					ÇENDIFÈ
+				ÇENDIFÈ
+			ÇENDIFÈ
 		}
 	}
 	'''
 		
 	def dispatch generateFieldForType(ComplexTypeLiteral type) '''
-		«FOR member:type.members»
-		«generateFieldForMember(member)»
-		«ENDFOR»	
+		ÇFOR member:type.membersÈ
+		ÇgenerateFieldForMember(member)È
+		ÇENDFORÈ	
 	'''
 	
 	def dispatch generateFieldForType(IntrinsicType type) '''
-		private «type.signature» value;	
+		private Çtype.signatureÈ value;	
 	'''
 	
 	def dispatch generateFieldForType(ArrayType type) '''
-		«IF(type.elementType instanceof IntrinsicType)»
-			private «type.signature» values;
-		«ELSE»
-			private «type.signature» «type.innerSignature.camelize.pluralize»;
-		«ENDIF»
+		ÇIF(type.elementType instanceof IntrinsicType)È
+			private Çtype.signatureÈ values;
+		ÇELSEÈ
+			private Çtype.signatureÈ Çtype.innerSignature.camelize.pluralizeÈ;
+		ÇENDIFÈ
 	'''
 	
 	def dispatch generateFieldForType(GenericListType type) '''
-		«IF(type.genericType instanceof IntrinsicType)»
-			private «type.signature» values;
-		«ELSE»
-			private «type.signature» «type.innerSignature.camelize.pluralize»;
-		«ENDIF»
+		ÇIF(type.genericType instanceof IntrinsicType)È
+			private Çtype.signatureÈ values;
+		ÇELSEÈ
+			private Çtype.signatureÈ Çtype.innerSignature.camelize.pluralizeÈ;
+		ÇENDIFÈ
 	'''
 	
 	def dispatch generateFieldForType(UserType type) '''
-		private «type.signature» «type.signature.camelize.escapeReserved»;
+		private Çtype.signatureÈ Çtype.signature.camelize.escapeReservedÈ;
 	'''
 	
 	def dispatch generateFieldForMember(TypedMember member) '''
-	private «member.type.signature» «member.toIdentifier»;
+	private Çmember.type.signatureÈ Çmember.toIdentifierÈ;
 	'''
 	
 	def dispatch generateFieldForMember(WrapWithMember member) '''
-		«generateFieldForType(member.literal)»
+		ÇgenerateFieldForType(member.literal)È
 	'''
 		
 	def dispatch generateGetterForType(ComplexTypeLiteral type) '''
-		«FOR member:type.members»
-		«generateGetter(member)»
-		«ENDFOR»	
+		ÇFOR member:type.membersÈ
+		ÇgenerateGetter(member)È
+		ÇENDFORÈ	
 	'''
 	def dispatch generateGetterForType(IntrinsicType type) '''
-		public «type.signature» getValue(){
+		public Çtype.signatureÈ getValue(){
 			return this.value;
 		}
 	'''
 	
 	def dispatch generateGetterForType(ArrayType type) '''
-	«IF(type.elementType instanceof IntrinsicType)»
-		public «type.signature» getValues(){
+	ÇIF(type.elementType instanceof IntrinsicType)È
+		public Çtype.signatureÈ getValues(){
 			return this.values;
 		}
-	«ELSE»
-		public «type.signature» get«type.innerSignature.pascalize.pluralize»(){
-			return this.«type.innerSignature.camelize.pluralize»;
+	ÇELSEÈ
+		public Çtype.signatureÈ getÇtype.innerSignature.pascalize.pluralizeÈ(){
+			return this.Çtype.innerSignature.camelize.pluralizeÈ;
 		}	
-	«ENDIF»
+	ÇENDIFÈ
 	'''
 	
 	def dispatch generateGetterForType(GenericListType type) '''
-	«IF(type.genericType instanceof IntrinsicType)»
-		public «type.signature» getValues(){
+	ÇIF(type.genericType instanceof IntrinsicType)È
+		public Çtype.signatureÈ getValues(){
 			return this.values;
 		}
-	«ELSE»
-		public «type.signature» get«type.innerSignature.pascalize.pluralize»(){
-			return this.«type.innerSignature.camelize.pluralize»;
+	ÇELSEÈ
+		public Çtype.signatureÈ getÇtype.innerSignature.pascalize.pluralizeÈ(){
+			return this.Çtype.innerSignature.camelize.pluralizeÈ;
 		}
-	«ENDIF»
+	ÇENDIFÈ
 	'''
 	
 	def dispatch generateGetterForType(UserType type) '''
-	public «type.signature» get«type.signature.pascalize»(){
-		return this.«type.signature.camelize.escapeReserved»;
+	public Çtype.signatureÈ getÇtype.signature.pascalizeÈ(){
+		return this.Çtype.signature.camelize.escapeReservedÈ;
 	}
 	'''
 	
 	def dispatch generateGetter(TypedMember member) '''
-	public «member.type.signature» «member.toGetMethodName»(){
-		return this.«member.toIdentifier»;
+	public Çmember.type.signatureÈ Çmember.toGetMethodNameÈ(){
+		return this.Çmember.toIdentifierÈ;
 	}
 	'''
 	
 	def dispatch generateGetter(WrapWithMember member) '''
-		«generateGetterForType(member.literal)»
+		ÇgenerateGetterForType(member.literal)È
 	'''
 	
 	
 	def generateDeserializationStatementHeader()'''
-		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
-		«context.registerImport("java.io.InputStream")»
+		Çcontext.registerImport("com.robotoworks.mechanoid.util.Streams")È
+		Çcontext.registerImport("java.io.InputStream")È
 		InputStream stream = webResponse.getContentStream();
 		try {
 			if(stream != null){
@@ -171,7 +171,7 @@ class ResponseGenerator {
 	'''
 	
 	def generateDeserializationStatementFooter()'''
-		«context.registerImport("java.io.IOException")»
+		Çcontext.registerImport("java.io.IOException")È
 			}
 		} catch(Exception x) {
 			throw new TransformException(x);
@@ -188,31 +188,31 @@ class ResponseGenerator {
 	'''
 	
 	def generateDeserializationStatementForSuperTypeOnly(ResponseBlock response, ComplexTypeDeclaration superType) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONObject")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONObject source = new JSONObject(content);
-				transformerProvider.get(«superType.name»InputTransformer.class).transform(source, this);
-		«generateDeserializationStatementFooter()»
+				transformerProvider.get(ÇsuperType.nameÈInputTransformer.class).transform(source, this);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, ComplexTypeLiteral type) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONObject")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONObject source = new JSONObject(content);
-				«FOR member:type.members»
-				«deserializationStatementGenerator.generate(member, "transformerProvider", "source", "this", true)»
-				«ENDFOR»
-				«IF(response.superType != null)»
+				ÇFOR member:type.membersÈ
+				ÇdeserializationStatementGenerator.generate(member, "transformerProvider", "source", "this", true)È
+				ÇENDFORÈ
+				ÇIF(response.superType != null)È
 							
-				transformerProvider.get(«response.superType.name»InputTransformer.class).transform(source, this);
-				«ENDIF»
-		«generateDeserializationStatementFooter()»
+				transformerProvider.get(Çresponse.superType.nameÈInputTransformer.class).transform(source, this);
+				ÇENDIFÈ
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, IntrinsicType type) '''
-		«generateDeserializationStatementHeader()»
-				this.value = «type.signature».valueOf(content);
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementHeader()È
+				this.value = Çtype.signatureÈ.valueOf(content);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, UserType type) {
@@ -220,18 +220,18 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, ComplexTypeDeclaration declaration) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONObject")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONObject source = new JSONObject(content);
-				this.«type.signature.camelize» = new «type.signature»();
-				transformerProvider.get(«type.signature»InputTransformer.class).transform(source, this.«type.signature.camelize»);
-		«generateDeserializationStatementFooter()»
+				this.Çtype.signature.camelizeÈ = new Çtype.signatureÈ();
+				transformerProvider.get(Çtype.signatureÈInputTransformer.class).transform(source, this.Çtype.signature.camelizeÈ);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, EnumTypeDeclaration declaration) '''
-		«generateDeserializationStatementHeader()»
-				this.«type.signature.camelize» = «type.signature».fromValue(content);
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementHeader()È
+				this.Çtype.signature.camelizeÈ = Çtype.signatureÈ.fromValue(content);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, ArrayType type) {
@@ -239,14 +239,14 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForArrayType(ResponseBlock response, ArrayType type, IntrinsicType elementType) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.values = new «type.innerSignature»[source.length()];
+				this.values = new Çtype.innerSignatureÈ[source.length()];
 				for(int i=0; i < source.length(); i++) {
-					this.values[i] = source.«elementType.toJSONPropertyGetMethod»(i);
+					this.values[i] = source.ÇelementType.toJSONPropertyGetMethodÈ(i);
 				}
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForArrayType(ResponseBlock response, ArrayType type, UserType elementType) {
@@ -259,12 +259,12 @@ class ResponseGenerator {
 		UserType elementType, 
 		ComplexTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new «type.innerSignature»[source.length()];
-				transformerProvider.get(«type.innerSignature»ArrayInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
-		«generateDeserializationStatementFooter()»
+				this.Çtype.innerSignature.camelize.pluralizeÈ = new Çtype.innerSignatureÈ[source.length()];
+				transformerProvider.get(Çtype.innerSignatureÈArrayInputTransformer.class).transform(source, this.Çtype.innerSignature.camelize.pluralizeÈ);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForUserTypeArray(
@@ -273,15 +273,15 @@ class ResponseGenerator {
 		UserType elementType, 
 		EnumTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new «type.innerSignature»[source.length()];
+				this.Çtype.innerSignature.camelize.pluralizeÈ = new Çtype.innerSignatureÈ[source.length()];
 				for(int i=0; i < source.length(); i++) {
-					«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveGetJSONValueMethodName»(i));
-					this.«type.innerSignature.camelize.pluralize»[i] = element;
+					Çtype.innerSignatureÈ element = Çtype.innerSignatureÈ.fromValue(source.Çdeclaration.resolveGetJSONValueMethodNameÈ(i));
+					this.Çtype.innerSignature.camelize.pluralizeÈ[i] = element;
 				}
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, GenericListType type) {
@@ -289,16 +289,16 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, IntrinsicType genericType) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.values = new Array«type.signature»(source.length());
+				this.values = new ArrayÇtype.signatureÈ(source.length());
 				for(int i=0; i < source.length(); i++) {
-					this.values.add(source.«genericType.toJSONPropertyGetMethod»(i));
+					this.values.add(source.ÇgenericType.toJSONPropertyGetMethodÈ(i));
 				}
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, UserType genericType) {
@@ -311,14 +311,14 @@ class ResponseGenerator {
 		UserType genericType,
 		ComplexTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»(source.length());
-				transformerProvider.get(«type.innerSignature»ListInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
-		«generateDeserializationStatementFooter()»
+				this.Çtype.innerSignature.camelize.pluralizeÈ = new ArrayÇtype.signatureÈ(source.length());
+				transformerProvider.get(Çtype.innerSignatureÈListInputTransformer.class).transform(source, this.Çtype.innerSignature.camelize.pluralizeÈ);
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 	
 	def dispatch generateDeserializationStatementForUserTypeGenericList(
@@ -327,16 +327,16 @@ class ResponseGenerator {
 		UserType genericType,
 		EnumTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		ÇgenerateDeserializationStatementHeader()È
 				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»(source.length());
+				this.Çtype.innerSignature.camelize.pluralizeÈ = new ArrayÇtype.signatureÈ(source.length());
 				for(int i=0; i < source.length(); i++) {
-					«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveGetJSONValueMethodName»(i));
-					this.«type.innerSignature.camelize.pluralize».add(element);
+					Çtype.innerSignatureÈ element = Çtype.innerSignatureÈ.fromValue(source.Çdeclaration.resolveGetJSONValueMethodNameÈ(i));
+					this.Çtype.innerSignature.camelize.pluralizeÈ.add(element);
 				}
-		«generateDeserializationStatementFooter()»
+		ÇgenerateDeserializationStatementFooter()È
 	'''
 }

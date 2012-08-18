@@ -55,12 +55,12 @@ class MemberSerializationStatementGenerator {
 		String fromPrefix, 
 		String toPrefix, 
 		boolean membersAreInternal) '''
-		«context.registerImport("org.json.JSONObject")»
-		JSONObject «member.name.camelize» = new JSONObject();
-		«toPrefix».putOpt("«member.name»", «member.name.camelize»);
-		«FOR litMember:member.literal.members»
-			«generateStatementForType(litMember, serializerMemberName, fromPrefix, member.name.camelize, membersAreInternal)»
-		«ENDFOR»
+		Çcontext.registerImport("org.json.JSONObject")È
+		JSONObject Çmember.name.camelizeÈ = new JSONObject();
+		ÇtoPrefixÈ.putOpt("Çmember.nameÈ", Çmember.name.camelizeÈ);
+		ÇFOR litMember:member.literal.membersÈ
+			ÇgenerateStatementForType(litMember, serializerMemberName, fromPrefix, member.name.camelize, membersAreInternal)È
+		ÇENDFORÈ
 	'''
 	
 	def dispatch generateStatementForType(
@@ -71,8 +71,8 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-	«context.registerImport("org.json.JSONObject")»
-	«toPrefix».putOpt("«member.name»", «formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»);
+	Çcontext.registerImport("org.json.JSONObject")È
+	ÇtoPrefixÈ.putOpt("Çmember.nameÈ", ÇformatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È);
 	'''
 
 	def dispatch generateStatementForType(
@@ -141,12 +141,12 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONObject targetMember = new JSONObject();
-			«serializerMemberName».get(«type.innerSignature»OutputTransformer.class).transform(«memberRef», targetMember);
-			«toPrefix».put("«member.name»", targetMember);
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈOutputTransformer.class).transform(ÇmemberRefÈ, targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 	
@@ -159,10 +159,10 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
-			«toPrefix».put("«member.name»", «memberRef».getValue());
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
+			ÇtoPrefixÈ.put("Çmember.nameÈ", ÇmemberRefÈ.getValue());
 		}
 	'''
 	
@@ -175,14 +175,14 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONArray targetMember = new JSONArray();
-			for(«element.signature» element:«memberRef») {
+			for(Çelement.signatureÈ element:ÇmemberRefÈ) {
 				targetMember.put(element);
 			}
-			«toPrefix».put("«member.name»", targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 	
@@ -217,12 +217,12 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONArray targetMember = new JSONArray();
-			«serializerMemberName».get(«type.innerSignature»ArrayOutputTransformer.class).transform(«memberRef», targetMember);
-			«toPrefix».put("«member.name»", targetMember);
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈArrayOutputTransformer.class).transform(ÇmemberRefÈ, targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 
@@ -236,14 +236,14 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONArray targetMember = new JSONArray();
-			for(«type.innerSignature» element:«memberRef») {
+			for(Çtype.innerSignatureÈ element:ÇmemberRefÈ) {
 				targetMember.put(element.getValue());
 			}
-			«toPrefix».put("«member.name»", targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 				
@@ -256,12 +256,12 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	)'''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
-			JSONArray targetMember = new JSONArray(«memberRef»);
-			«toPrefix».put("«member.name»", targetMember);	
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
+			JSONArray targetMember = new JSONArray(ÇmemberRefÈ);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);	
 		}
 	'''
 				
@@ -296,13 +296,13 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONArray targetMember = new JSONArray();
-			«serializerMemberName».get(«type.innerSignature»ListOutputTransformer.class).transform(«memberRef», targetMember);
-			«toPrefix».put("«member.name»", targetMember);
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈListOutputTransformer.class).transform(ÇmemberRefÈ, targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 
@@ -316,15 +316,15 @@ class MemberSerializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çvar memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)È
+		if(ÇmemberRefÈ != null) {
 			JSONArray targetMember = new JSONArray();
-			for(«member.type.innerSignature» element:«memberRef») {
+			for(Çmember.type.innerSignatureÈ element:ÇmemberRefÈ) {
 				targetMember.put(element.getValue());
 			}
-			«toPrefix».put("«member.name»", targetMember);
+			ÇtoPrefixÈ.put("Çmember.nameÈ", targetMember);
 		}
 	'''
 }

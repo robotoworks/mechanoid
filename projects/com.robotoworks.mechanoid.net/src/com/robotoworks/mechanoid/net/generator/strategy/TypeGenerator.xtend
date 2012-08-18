@@ -16,29 +16,29 @@ class TypeGenerator {
 	}
 		
 	def generate(ComplexTypeDeclaration type, Model module) '''
-	package «module.packageName»;
+	package Çmodule.packageNameÈ;
 	
-	«var body = generateType(type, module)»
-	«context.printImports»
-	«context.clearImports»	
-	«body»
+	Çvar body = generateType(type, module)È
+	Çcontext.printImportsÈ
+	Çcontext.clearImportsÈ	
+	ÇbodyÈ
 	'''
 	
 	def generateType(ComplexTypeDeclaration type, Model module) '''
-	public class «type.name» {
-		«FOR member:type.literal.members»
-		«generateField(member)»
-		«ENDFOR»
+	public class Çtype.nameÈ {
+		ÇFOR member:type.literal.membersÈ
+		ÇgenerateField(member)È
+		ÇENDFORÈ
 		
-		«FOR member:type.literal.members»
-		«generateGetterAndSetter(member)»
-		«ENDFOR»
+		ÇFOR member:type.literal.membersÈ
+		ÇgenerateGetterAndSetter(member)È
+		ÇENDFORÈ
 	}
 	'''
 	
 	def dispatch generateField(TypedMember member) '''
-		private «member.type.signature» «member.toIdentifier»;
-		«IF(member.type instanceof GenericListType)»«context.registerImport("java.util.List")»«ENDIF»	
+		private Çmember.type.signatureÈ Çmember.toIdentifierÈ;
+		ÇIF(member.type instanceof GenericListType)ÈÇcontext.registerImport("java.util.List")ÈÇENDIFÈ	
 	'''
 	
 	def dispatch generateField(WrapWithMember member) '''
@@ -46,11 +46,11 @@ class TypeGenerator {
 	'''
 	
 	def dispatch generateGetterAndSetter(TypedMember member) '''
-		public «member.type.signature» «member.toGetMethodName»(){
-			return «member.toIdentifier»;
+		public Çmember.type.signatureÈ Çmember.toGetMethodNameÈ(){
+			return Çmember.toIdentifierÈ;
 		}
-		public void «member.toSetMethodName»(«member.type.signature» value){
-			this.«member.toIdentifier» = value;
+		public void Çmember.toSetMethodNameÈ(Çmember.type.signatureÈ value){
+			this.Çmember.toIdentifierÈ = value;
 		}
 	'''
 	

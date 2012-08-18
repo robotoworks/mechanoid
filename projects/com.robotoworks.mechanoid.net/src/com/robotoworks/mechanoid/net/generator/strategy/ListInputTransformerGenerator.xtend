@@ -14,28 +14,28 @@ class ListInputTransformerGenerator {
 	def registerImports()''''''
 	
 	def generate(ComplexTypeDeclaration decl, Model module) '''
-	package «module.packageName»;
+	package Çmodule.packageNameÈ;
 
-	«var body = generateListInputTranformerGeneratorClass(decl, module)»
-	«registerImports»
+	Çvar body = generateListInputTranformerGeneratorClass(decl, module)È
+	ÇregisterImportsÈ
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
-	«context.printImports»
-	«context.clearImports»
+	Çcontext.printImportsÈ
+	Çcontext.clearImportsÈ
 	
-	«body»
+	ÇbodyÈ
 	'''
 	
 	def generateListInputTranformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("org.json.JSONException")»
-		«context.registerImport("java.util.List")»
-		public class «decl.name»ListInputTransformer extends Transformer<JSONArray, List<«decl.name»>> {
-			public void transform(JSONArray source, List<«decl.name»> target) throws TransformException {
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("org.json.JSONException")È
+		Çcontext.registerImport("java.util.List")È
+		public class Çdecl.nameÈListInputTransformer extends Transformer<JSONArray, List<Çdecl.nameÈ>> {
+			public void transform(JSONArray source, List<Çdecl.nameÈ> target) throws TransformException {
 				try {
-					«decl.name»InputTransformer itemTransformer = provider.get(«decl.name»InputTransformer.class);
+					Çdecl.nameÈInputTransformer itemTransformer = provider.get(Çdecl.nameÈInputTransformer.class);
 					for(int i=0; i < source.length(); i++) {
-						«decl.name» targetItem = new «decl.name»();
+						Çdecl.nameÈ targetItem = new Çdecl.nameÈ();
 						target.add(targetItem);
 						itemTransformer.transform(source.getJSONObject(i), targetItem);
 					}

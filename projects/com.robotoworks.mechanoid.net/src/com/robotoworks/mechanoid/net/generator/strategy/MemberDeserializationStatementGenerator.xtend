@@ -38,11 +38,11 @@ class MemberDeserializationStatementGenerator {
 		String fromPrefix, 
 		String toPrefix, 
 		boolean membersAreInternal) '''
-			if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-				JSONObject «member.name.camelize» = «fromPrefix».getJSONObject("«member.name»");
-				«FOR litMember:member.literal.members»
-				«generateStatementForType(litMember, serializerMemberName, member.name.camelize, toPrefix, membersAreInternal)»
-				«ENDFOR»
+			if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+				JSONObject Çmember.name.camelizeÈ = ÇfromPrefixÈ.getJSONObject("Çmember.nameÈ");
+				ÇFOR litMember:member.literal.membersÈ
+				ÇgenerateStatementForType(litMember, serializerMemberName, member.name.camelize, toPrefix, membersAreInternal)È
+				ÇENDFORÈ
 			}
 		'''
 			
@@ -54,13 +54,13 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = «fromPrefix».«type.toJSONPropertyGetMethod»("«member.name»");
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(«fromPrefix».«type.toJSONPropertyGetMethod»("«member.name»"));
-			«ENDIF»
+		Çcontext.registerImport("org.json.JSONObject")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = ÇfromPrefixÈ.Çtype.toJSONPropertyGetMethodÈ("Çmember.nameÈ");
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(ÇfromPrefixÈ.Çtype.toJSONPropertyGetMethodÈ("Çmember.nameÈ"));
+			ÇENDIFÈ
 		}
 	'''
 
@@ -130,15 +130,15 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			«type.signature» targetMember = new «type.signature»();
-			«serializerMemberName».get(«type.innerSignature»InputTransformer.class).transform(«fromPrefix».getJSONObject("«member.name»"), targetMember);
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
+		Çcontext.registerImport("org.json.JSONObject")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			Çtype.signatureÈ targetMember = new Çtype.signatureÈ();
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈInputTransformer.class).transform(ÇfromPrefixÈ.getJSONObject("Çmember.nameÈ"), targetMember);
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ	
 		}
 	'''
 	
@@ -151,14 +151,14 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			«type.signature» targetMember = «type.signature».fromValue(«fromPrefix».«declaration.resolveGetJSONValueMethodName»("«member.name»"));
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
+		Çcontext.registerImport("org.json.JSONObject")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			Çtype.signatureÈ targetMember = Çtype.signatureÈ.fromValue(ÇfromPrefixÈ.Çdeclaration.resolveGetJSONValueMethodNameÈ("Çmember.nameÈ"));
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ	
 		}
 	'''
 		
@@ -171,21 +171,21 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çtype.signatureÈ targetMember = new Çtype.innerSignatureÈ[sourceMember.length()];
 			
 			for(int i=0; i < sourceMember.length(); i++) {
-				targetMember[i] = sourceMember.«element.toJSONPropertyGetMethod»(i);
+				targetMember[i] = sourceMember.Çelement.toJSONPropertyGetMethodÈ(i);
 			}
 			
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ
 		}
 	'''
 	
@@ -220,19 +220,19 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çtype.signatureÈ targetMember = new Çtype.innerSignatureÈ[sourceMember.length()];
 			
-			«serializerMemberName».get(«type.innerSignature»ArrayInputTransformer.class).transform(sourceMember, targetMember);
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈArrayInputTransformer.class).transform(sourceMember, targetMember);
 			
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ	
 		}
 	'''
 
@@ -246,21 +246,21 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çtype.signatureÈ targetMember = new Çtype.innerSignatureÈ[sourceMember.length()];
 			
 			for(int i=0; i < sourceMember.length(); i++) {
-				«type.innerSignature» element = «type.innerSignature».fromValue(sourceMember.«elementDeclaration.resolveGetJSONValueMethodName»(i));
+				Çtype.innerSignatureÈ element = Çtype.innerSignatureÈ.fromValue(sourceMember.ÇelementDeclaration.resolveGetJSONValueMethodNameÈ(i));
 				targetMember[i] = element;
 			}
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ	
 		}
 	'''
 				
@@ -273,23 +273,23 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	)'''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«member.type.signature» targetMember = new Array«member.type.signature»(sourceMember.length());
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çmember.type.signatureÈ targetMember = new ArrayÇmember.type.signatureÈ(sourceMember.length());
 			
 			for(int i=0; i < sourceMember.length(); i++) {
-				targetMember.add(sourceMember.«genericType.toJSONPropertyGetMethod»(i));
+				targetMember.add(sourceMember.ÇgenericType.toJSONPropertyGetMethodÈ(i));
 			}
 			
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ
 		}
 	'''
 				
@@ -324,20 +324,20 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new Array«type.signature»(sourceMember.length());
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çtype.signatureÈ targetMember = new ArrayÇtype.signatureÈ(sourceMember.length());
 			
-			«serializerMemberName».get(«type.innerSignature»ListInputTransformer.class).transform(sourceMember, targetMember);
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»
+			ÇserializerMemberNameÈ.get(Çtype.innerSignatureÈListInputTransformer.class).transform(sourceMember, targetMember);
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ
 		}
 	'''
 
@@ -351,23 +351,23 @@ class MemberDeserializationStatementGenerator {
 		String toPrefix, 
 		boolean membersAreInternal
 	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new Array«type.signature»(sourceMember.length());
+		Çcontext.registerImport("org.json.JSONObject")È
+		Çcontext.registerImport("org.json.JSONArray")È
+		Çcontext.registerImport("java.util.List")È
+		Çcontext.registerImport("java.util.ArrayList")È
+		if(ÇfromPrefixÈ.has("Çmember.nameÈ") && !ÇfromPrefixÈ.isNull("Çmember.nameÈ")) {
+			JSONArray sourceMember = ÇfromPrefixÈ.getJSONArray("Çmember.nameÈ");
+			Çtype.signatureÈ targetMember = new ArrayÇtype.signatureÈ(sourceMember.length());
 			
 			for(int i=0; i < sourceMember.length(); i++) {
-				«type.innerSignature» element = «type.innerSignature».fromValue(sourceMember.«genericTypeDeclartion.resolveGetJSONValueMethodName»(i));
+				Çtype.innerSignatureÈ element = Çtype.innerSignatureÈ.fromValue(sourceMember.ÇgenericTypeDeclartion.resolveGetJSONValueMethodNameÈ(i));
 				targetMember.add(element);
 			}
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»
+			ÇIF(membersAreInternal)È
+			Çmember.toIdentifier.memberize(toPrefix)È = targetMember;
+			ÇELSEÈ
+			Çmember.toSetMethodName.memberize(toPrefix)È(targetMember);
+			ÇENDIFÈ
 		}
 	'''	
 }

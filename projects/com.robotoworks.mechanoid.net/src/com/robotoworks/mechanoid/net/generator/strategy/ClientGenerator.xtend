@@ -15,55 +15,55 @@ class ClientGenerator {
 	def registerImports()''''''
 	
 	def generate(Client client, Model module) '''
-	package «module.packageName»;
+	package Çmodule.packageNameÈ;
 
-	«var body = generateClientClass(client, module)»
-	«registerImports»
+	Çvar body = generateClientClass(client, module)È
+	ÇregisterImportsÈ
 	import com.robotoworks.mechanoid.net.TransformerProvider;
 	import com.robotoworks.mechanoid.net.HttpRequestHelper;
 	import com.robotoworks.mechanoid.net.WebResponse;
 
 	import java.io.IOException;
 	import org.apache.http.client.ClientProtocolException;
-	«context.printImports»
-	«context.clearImports»
+	Çcontext.printImportsÈ
+	Çcontext.clearImportsÈ
 	
-	«body»
+	ÇbodyÈ
 	'''
 	
 	def generateClientClass(Client client, Model module) '''
-		public class «client.name» {
+		public class Çclient.nameÈ {
 			
-			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
+			private static final String DEFAULT_BASE_URL = "Çclient.baseUrlÈ";
 			
 			protected final HttpRequestHelper requestHelper;
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
 
-			public «client.name»(HttpRequestHelper requestHelper){
+			public Çclient.nameÈ(HttpRequestHelper requestHelper){
 				this(requestHelper, new TransformerProvider(), DEFAULT_BASE_URL);
 			}
 
-			public «client.name»(HttpRequestHelper requestHelper, TransformerProvider transformerProvider){
+			public Çclient.nameÈ(HttpRequestHelper requestHelper, TransformerProvider transformerProvider){
 				this(requestHelper, transformerProvider, DEFAULT_BASE_URL);
 			}
 
-			public «client.name»(HttpRequestHelper requestHelper, TransformerProvider transformerProvider, String baseUrl){
+			public Çclient.nameÈ(HttpRequestHelper requestHelper, TransformerProvider transformerProvider, String baseUrl){
 				this.requestHelper = requestHelper;
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
 			}
 			
-			«generateClientMethods(client, module)»
+			ÇgenerateClientMethods(client, module)È
 		}
 	'''
 	
 	def generateClientMethods(Client client, Model model) '''
-		«FOR method:client.methods»
-		public WebResponse<«method.name.pascalize»Response> «method.name.camelize»(«method.name.pascalize»Request request)
+		ÇFOR method:client.methodsÈ
+		public WebResponse<Çmethod.name.pascalizeÈResponse> Çmethod.name.camelizeÈ(Çmethod.name.pascalizeÈRequest request)
 		  throws ClientProtocolException, IOException {			
 			return request.execute(baseUrl, requestHelper, transformerProvider);
 		}
-		«ENDFOR»
+		ÇENDFORÈ
 	'''
 }

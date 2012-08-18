@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -16,15 +17,23 @@ public class IntegerEnumTypeGenerator {
   
   public CharSequence generate(final EnumTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package \u00B4module.packageName\u00AA;");
-    _builder.newLine();
+    _builder.append("package ");
+    String _packageName = module.getPackageName();
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("public enum \u00B4type.name\u00AA {");
-    _builder.newLine();
+    _builder.append("public enum ");
+    String _name = type.getName();
+    _builder.append(_name, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("\u00B4type.generateEnumMembers()\u00AA;");
-    _builder.newLine();
+    String _generateEnumMembers = ModelExtensions.generateEnumMembers(type);
+    _builder.append(_generateEnumMembers, "	");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -44,8 +53,10 @@ public class IntegerEnumTypeGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\u00B4type.name\u00AA(int value){");
-    _builder.newLine();
+    String _name_1 = type.getName();
+    _builder.append(_name_1, "	");
+    _builder.append("(int value){");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("this.value = value;");
     _builder.newLine();
@@ -55,13 +66,22 @@ public class IntegerEnumTypeGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static \u00B4type.name\u00AA fromValue(int value) {");
-    _builder.newLine();
+    _builder.append("public static ");
+    String _name_2 = type.getName();
+    _builder.append(_name_2, "	");
+    _builder.append(" fromValue(int value) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("for (\u00B4type.name\u00AA member : \u00B4type.name\u00AA.values()) {");
-    _builder.newLine();
+    _builder.append("for (");
+    String _name_3 = type.getName();
+    _builder.append(_name_3, "		");
+    _builder.append(" member : ");
+    String _name_4 = type.getName();
+    _builder.append(_name_4, "		");
+    _builder.append(".values()) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("if (value == member.value) {");
     _builder.newLine();

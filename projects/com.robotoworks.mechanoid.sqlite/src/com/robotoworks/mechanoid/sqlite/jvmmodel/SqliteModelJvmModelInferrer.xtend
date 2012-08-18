@@ -53,7 +53,7 @@ class SqliteModelJvmModelInferrer extends AbstractModelInferrer {
 //   				for (greeting : element.greetings) {
 //   					members += greeting.toMethod("hello" + greeting.name, greeting.newTypeRef(typeof(String))) [
 //   						body = [
-//   							append('''return "Hello «greeting.name»";''')
+//   							append('''return "Hello Çgreeting.nameÈ";''')
 //   						]
 //   					]
 //   				}
