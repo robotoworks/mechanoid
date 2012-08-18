@@ -94,8 +94,8 @@ public abstract class Operation {
 		return false;
 	}
 
-	public static Bundle getRequestFromResult(Bundle bundle) {
-		Bundle request = bundle.getParcelable(KEY_REQUEST);
+	public static Intent getRequestFromResult(Bundle bundle) {
+		Intent request = bundle.getParcelable(KEY_REQUEST);
 		
 		return request;
 	}
