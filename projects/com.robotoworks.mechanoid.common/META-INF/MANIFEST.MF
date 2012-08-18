@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Common
+Bundle-SymbolicName: com.robotoworks.mechanoid.common
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.robotoworks.mechanoid.common.Activator
+Bundle-Vendor: Robotoworks Limited
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext;bundle-version="2.3.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.robotoworks.mechanoid.common,
+ com.robotoworks.mechanoid.common.internal.util,
+ com.robotoworks.mechanoid.common.util,
+ com.robotoworks.mechanoid.common.xtext.generator

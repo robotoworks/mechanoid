@@ -1,17 +1,12 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
-import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.Model;
-import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.WrapWithMember;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -25,54 +20,44 @@ public class TypeGenerator {
   
   public CharSequence generate(final ComplexTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
-    String _packageName = module.getPackageName();
-    _builder.append(_packageName, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
+    _builder.append("package \u00B4module.packageName\u00AA;");
     _builder.newLine();
-    CharSequence body = this.generateType(type, module);
-    _builder.newLineIfNotEmpty();
-    StringConcatenation _printImports = this.context.printImports();
-    _builder.append(_printImports, "");
-    _builder.newLineIfNotEmpty();
-    this.context.clearImports();
-    _builder.append("\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append(body, "");
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\u00B4var body = generateType(type, module)\u00AA");
+    _builder.newLine();
+    _builder.append("\u00B4context.printImports\u00AA");
+    _builder.newLine();
+    _builder.append("\u00B4context.clearImports\u00AA\t");
+    _builder.newLine();
+    _builder.append("\u00B4body\u00AA");
+    _builder.newLine();
     return _builder;
   }
   
   public CharSequence generateType(final ComplexTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class ");
-    String _name = type.getName();
-    _builder.append(_name, "");
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
-    {
-      ComplexTypeLiteral _literal = type.getLiteral();
-      EList<Member> _members = _literal.getMembers();
-      for(final Member member : _members) {
-        _builder.append("\t");
-        CharSequence _generateField = this.generateField(member);
-        _builder.append(_generateField, "	");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("public class \u00B4type.name\u00AA {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00B4FOR member:type.literal.members\u00AA");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00B4generateField(member)\u00AA");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00B4ENDFOR\u00AA");
+    _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    {
-      ComplexTypeLiteral _literal_1 = type.getLiteral();
-      EList<Member> _members_1 = _literal_1.getMembers();
-      for(final Member member_1 : _members_1) {
-        _builder.append("\t");
-        CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member_1);
-        _builder.append(_generateGetterAndSetter, "	");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("\t");
+    _builder.append("\u00B4FOR member:type.literal.members\u00AA");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00B4generateGetterAndSetter(member)\u00AA");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00B4ENDFOR\u00AA");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -80,23 +65,10 @@ public class TypeGenerator {
   
   protected CharSequence _generateField(final TypedMember member) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("private ");
-    Type _type = member.getType();
-    String _signature = ModelExtensions.signature(_type);
-    _builder.append(_signature, "");
-    _builder.append(" ");
-    String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    {
-      Type _type_1 = member.getType();
-      if ((_type_1 instanceof GenericListType)) {
-        this.context.registerImport("java.util.List");
-      }
-    }
-    _builder.append("\t");
-    _builder.newLineIfNotEmpty();
+    _builder.append("private \u00B4member.type.signature\u00AA \u00B4member.toIdentifier\u00AA;");
+    _builder.newLine();
+    _builder.append("\u00B4IF(member.type instanceof GenericListType)\u00AA\u00B4context.registerImport(\"java.util.List\")\u00AA\u00B4ENDIF\u00AA\t");
+    _builder.newLine();
     return _builder;
   }
   
@@ -109,38 +81,18 @@ public class TypeGenerator {
   
   protected CharSequence _generateGetterAndSetter(final TypedMember member) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public ");
-    Type _type = member.getType();
-    String _signature = ModelExtensions.signature(_type);
-    _builder.append(_signature, "");
-    _builder.append(" ");
-    String _getMethodName = ModelExtensions.toGetMethodName(member);
-    _builder.append(_getMethodName, "");
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
+    _builder.append("public \u00B4member.type.signature\u00AA \u00B4member.toGetMethodName\u00AA(){");
+    _builder.newLine();
     _builder.append("\t");
-    _builder.append("return ");
-    String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "	");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
+    _builder.append("return \u00B4member.toIdentifier\u00AA;");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    _builder.append("public void ");
-    String _setMethodName = ModelExtensions.toSetMethodName(member);
-    _builder.append(_setMethodName, "");
-    _builder.append("(");
-    Type _type_1 = member.getType();
-    String _signature_1 = ModelExtensions.signature(_type_1);
-    _builder.append(_signature_1, "");
-    _builder.append(" value){");
-    _builder.newLineIfNotEmpty();
+    _builder.append("public void \u00B4member.toSetMethodName\u00AA(\u00B4member.type.signature\u00AA value){");
+    _builder.newLine();
     _builder.append("\t");
-    _builder.append("this.");
-    String _identifier_1 = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier_1, "	");
-    _builder.append(" = value;");
-    _builder.newLineIfNotEmpty();
+    _builder.append("this.\u00B4member.toIdentifier\u00AA = value;");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;

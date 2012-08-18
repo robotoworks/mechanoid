@@ -3,10 +3,7 @@ package com.robotoworks.mechanoid.net.generator.strategy;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.strategy.MemberSerializationStatementGenerator;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.Model;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -35,63 +32,48 @@ public class OutputTransformerGenerator {
   
   public CharSequence generate(final ComplexTypeDeclaration decl, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
-    String _packageName = module.getPackageName();
-    _builder.append(_packageName, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
+    _builder.append("package \u00B4module.packageName\u00AA;");
     _builder.newLine();
-    CharSequence body = this.generateOutputTransformerGeneratorClass(decl, module);
-    _builder.newLineIfNotEmpty();
-    Object _registerImports = this.registerImports();
-    _builder.append(_registerImports, "");
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\u00B4var body = generateOutputTransformerGeneratorClass(decl, module)\u00AA");
+    _builder.newLine();
+    _builder.append("\u00B4registerImports\u00AA");
+    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.Transformer;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
     _builder.newLine();
-    StringConcatenation _printImports = this.context.printImports();
-    _builder.append(_printImports, "");
-    _builder.newLineIfNotEmpty();
-    this.context.clearImports();
-    _builder.newLineIfNotEmpty();
+    _builder.append("\u00B4context.printImports\u00AA");
     _builder.newLine();
-    _builder.append(body, "");
-    _builder.newLineIfNotEmpty();
+    _builder.append("\u00B4context.clearImports\u00AA");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\u00B4body\u00AA");
+    _builder.newLine();
     return _builder;
   }
   
   public CharSequence generateOutputTransformerGeneratorClass(final ComplexTypeDeclaration decl, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.lang.Exception");
-    _builder.newLineIfNotEmpty();
-    _builder.append("public class ");
-    String _name = decl.getName();
-    _builder.append(_name, "");
-    _builder.append("OutputTransformer extends Transformer<");
-    String _name_1 = decl.getName();
-    _builder.append(_name_1, "");
-    _builder.append(", JSONObject> {");
-    _builder.newLineIfNotEmpty();
+    _builder.append("\u00B4context.registerImport(\"java.lang.Exception\")\u00AA");
+    _builder.newLine();
+    _builder.append("public class \u00B4decl.name\u00AAOutputTransformer extends Transformer<\u00B4decl.name\u00AA, JSONObject> {");
+    _builder.newLine();
     _builder.append("\t");
-    _builder.append("public void transform(");
-    String _name_2 = decl.getName();
-    _builder.append(_name_2, "	");
-    _builder.append(" source, JSONObject target) throws TransformException {");
-    _builder.newLineIfNotEmpty();
+    _builder.append("public void transform(\u00B4decl.name\u00AA source, JSONObject target) throws TransformException {");
+    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("try {");
     _builder.newLine();
-    {
-      ComplexTypeLiteral _literal = decl.getLiteral();
-      EList<Member> _members = _literal.getMembers();
-      for(final Member member : _members) {
-        _builder.append("\t\t\t");
-        CharSequence _generate = this.serializationStatementGenerator.generate(member, "provider", "source", "target", false);
-        _builder.append(_generate, "			");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("\t\t\t");
+    _builder.append("\u00B4FOR member:decl.literal.members\u00AA");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("\u00B4serializationStatementGenerator.generate(member, \"provider\", \"source\", \"target\", false)\u00AA");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("\u00B4ENDFOR\u00AA");
+    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("} catch (Exception x) {");
     _builder.newLine();
