@@ -36,7 +36,8 @@ class ResponseGenerator {
 	def registerImports(){
 		context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")
 		context.registerImport("com.robotoworks.mechanoid.net.TransformException")
-		context.registerImport("com.robotoworks.mechanoid.net.WebResponse")
+		context.registerImport("java.io.InputStream")
+		context.registerImport("com.dataclarity.dashinsight.util.Closeables")
 	}
 	
 	def generate(HttpMethod method, Model module, Client client) '''
@@ -57,7 +58,7 @@ class ResponseGenerator {
 			«generateGetterForType(method.response.type)»	
 		«ENDIF»
 		
-		public «method.name.pascalize»Response(TransformerProvider transformerProvider, WebResponse<«method.name.pascalize»Response> webResponse) throws TransformException {
+		public «method.name.pascalize»Response(TransformerProvider transformerProvider, InputStream inStream) throws TransformException {
 			«IF (method.response != null)»
 				«IF(method.response.type != null)»
 					«generateDeserializationStatementForType(method.response, method.response.type)»
@@ -66,6 +67,8 @@ class ResponseGenerator {
 						«generateDeserializationStatementForSuperTypeOnly(method.response, method.response.superType)»
 					«ENDIF»
 				«ENDIF»
+			«ELSE»
+			Closeables.closeSilently(inStream);
 			«ENDIF»
 		}
 	}
@@ -163,11 +166,10 @@ class ResponseGenerator {
 	
 	def generateDeserializationStatementHeader()'''
 		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
-		«context.registerImport("java.io.InputStream")»
-		InputStream stream = webResponse.getContentStream();
+
 		try {
-			if(stream != null){
-				String content = Streams.readAllText(stream);
+			if(inStream != null){
+				String content = Streams.readAllText(inStream);
 	'''
 	
 	def generateDeserializationStatementFooter()'''
@@ -176,14 +178,7 @@ class ResponseGenerator {
 		} catch(Exception x) {
 			throw new TransformException(x);
 		} finally {
-			if(stream != null) {
-				try {
-					stream.close();
-				}
-				catch (IOException x) {
-					throw new TransformException(x);
-				}
-			}
+			Closeables.closeSilently(inStream);
 		}
 	'''
 	

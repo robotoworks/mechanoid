@@ -74,11 +74,15 @@ public abstract class OperationService extends Service {
 			int startId = request.getIntExtra(EXTRA_START_ID, 0);
 			
 			if(stopSelfResult(startId)) {
-				mStopped = true;
-				
-				processor.quit();				
+				mStopped = true;				
 			}
 		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		processor.quit();				
 	}
 
 	protected boolean shouldStopOnAllOperationsComplete() {

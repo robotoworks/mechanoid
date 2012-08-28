@@ -48,13 +48,15 @@ class RequestGenerator {
 
 	«var body = generateRequestClass(method, module, client)»
 	«registerImports»
-	import com.robotoworks.mechanoid.net.TransformerProvider;
-	import com.robotoworks.mechanoid.net.TransformException;
-	import com.robotoworks.mechanoid.net.HttpRequestHelper;
-	import com.robotoworks.mechanoid.net.WebResponse;
-	import com.robotoworks.mechanoid.net.WebResponseParser;
-	import java.io.IOException;
-	import org.apache.http.client.ClientProtocolException;
+	
+	import com.robotoworks.mechanoid.net.Parser;
+import com.robotoworks.mechanoid.net.TransformerProvider;
+import com.robotoworks.mechanoid.net.TransformException;
+import com.robotoworks.mechanoid.net.HttpRequestHelper;
+import com.robotoworks.mechanoid.net.WebResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import org.apache.http.client.ClientProtocolException;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -142,23 +144,23 @@ class RequestGenerator {
 			
 			final TransformerProvider tp = transformerProvider;
 			
-			WebResponseParser<«method.name.pascalize»Response> responseParser = new WebResponseParser<«method.name.pascalize»Response>() {
-				public «method.name.pascalize»Response parse(WebResponse<«method.name.pascalize»Response> response) throws TransformException {
-					return new «method.name.pascalize»Response(tp, response);
+			Parser<«method.name.pascalize»Response> parser = new Parser<«method.name.pascalize»Response>() {
+				public «method.name.pascalize»Response parse(InputStream inStream) throws TransformException {
+					return new «method.name.pascalize»Response(tp, inStream);
 				}
 	
 			};
 			
 			«IF (method instanceof HttpPut)»
 			String body = «IF(method.hasBody)»createBody(transformerProvider)«ELSE»null«ENDIF»;
-			return requestHelper.putJson(url, body, responseParser);
+			return requestHelper.putJson(url, body, parser);
 			«ELSEIF (method instanceof HttpPost)»
 			String body = «IF(method.hasBody)»createBody(transformerProvider)«ELSE»null«ENDIF»;
-			return requestHelper.postJson(url, body, responseParser);
+			return requestHelper.postJson(url, body, parser);
 			«ELSEIF (method instanceof HttpGet)»
-			return requestHelper.getJson(url, responseParser);
+			return requestHelper.getJson(url, parser);
 			«ELSEIF (method instanceof HttpDelete)»
-			return requestHelper.deleteJson(url, responseParser);
+			return requestHelper.deleteJson(url, parser);
 			«ENDIF»
 		}
 	}	

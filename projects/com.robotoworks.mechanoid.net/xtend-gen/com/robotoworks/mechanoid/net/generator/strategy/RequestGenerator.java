@@ -63,17 +63,25 @@ public class RequestGenerator {
   
   public CharSequence generate(final HttpMethod method, final Model module, final Client client) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
     _builder.append("package ");
     String _packageName = module.getPackageName();
-    _builder.append(_packageName, "");
+    _builder.append(_packageName, "	");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
+    _builder.append("\t");
     CharSequence body = this.generateRequestClass(method, module, client);
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     CharSequence _registerImports = this.registerImports();
-    _builder.append(_registerImports, "");
+    _builder.append(_registerImports, "	");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("import com.robotoworks.mechanoid.net.Parser;");
+    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
@@ -82,19 +90,23 @@ public class RequestGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.WebResponse;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.WebResponseParser;");
-    _builder.newLine();
     _builder.append("import java.io.IOException;");
+    _builder.newLine();
+    _builder.append("import java.io.InputStream;");
     _builder.newLine();
     _builder.append("import org.apache.http.client.ClientProtocolException;");
     _builder.newLine();
+    _builder.append("\t");
     StringConcatenation _printImports = this.context.printImports();
-    _builder.append(_printImports, "");
+    _builder.append(_printImports, "	");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     this.context.clearImports();
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.newLine();
-    _builder.append(body, "");
+    _builder.append("\t");
+    _builder.append(body, "	");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -406,11 +418,11 @@ public class RequestGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("WebResponseParser<");
+    _builder.append("Parser<");
     String _name_9 = method.getName();
     String _pascalize_4 = ModelExtensions.pascalize(_name_9);
     _builder.append(_pascalize_4, "		");
-    _builder.append("Response> responseParser = new WebResponseParser<");
+    _builder.append("Response> parser = new Parser<");
     String _name_10 = method.getName();
     String _pascalize_5 = ModelExtensions.pascalize(_name_10);
     _builder.append(_pascalize_5, "		");
@@ -421,18 +433,14 @@ public class RequestGenerator {
     String _name_11 = method.getName();
     String _pascalize_6 = ModelExtensions.pascalize(_name_11);
     _builder.append(_pascalize_6, "			");
-    _builder.append("Response parse(WebResponse<");
-    String _name_12 = method.getName();
-    String _pascalize_7 = ModelExtensions.pascalize(_name_12);
-    _builder.append(_pascalize_7, "			");
-    _builder.append("Response> response) throws TransformException {");
+    _builder.append("Response parse(InputStream inStream) throws TransformException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("return new ");
-    String _name_13 = method.getName();
-    String _pascalize_8 = ModelExtensions.pascalize(_name_13);
-    _builder.append(_pascalize_8, "				");
-    _builder.append("Response(tp, response);");
+    String _name_12 = method.getName();
+    String _pascalize_7 = ModelExtensions.pascalize(_name_12);
+    _builder.append(_pascalize_7, "				");
+    _builder.append("Response(tp, inStream);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
     _builder.append("}");
@@ -458,7 +466,7 @@ public class RequestGenerator {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
-        _builder.append("return requestHelper.putJson(url, body, responseParser);");
+        _builder.append("return requestHelper.putJson(url, body, parser);");
         _builder.newLine();
       } else {
         if ((method instanceof HttpPost)) {
@@ -475,17 +483,17 @@ public class RequestGenerator {
           _builder.append(";");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t");
-          _builder.append("return requestHelper.postJson(url, body, responseParser);");
+          _builder.append("return requestHelper.postJson(url, body, parser);");
           _builder.newLine();
         } else {
           if ((method instanceof HttpGet)) {
             _builder.append("\t\t");
-            _builder.append("return requestHelper.getJson(url, responseParser);");
+            _builder.append("return requestHelper.getJson(url, parser);");
             _builder.newLine();
           } else {
             if ((method instanceof HttpDelete)) {
               _builder.append("\t\t");
-              _builder.append("return requestHelper.deleteJson(url, responseParser);");
+              _builder.append("return requestHelper.deleteJson(url, parser);");
               _builder.newLine();
             }
           }

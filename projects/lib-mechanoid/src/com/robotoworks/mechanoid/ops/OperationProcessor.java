@@ -139,6 +139,13 @@ public abstract class OperationProcessor {
 	}
 
 	public void quit() {
+		Intent request = null;
+		
+		while((request = requestQueue.poll()) != null) {
+			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
+			service.onDataProcessorOperationComplete(request, result);
+		}
+		
 		worker.quit();
 	}
 	
@@ -154,37 +161,51 @@ public abstract class OperationProcessor {
 			throw new RuntimeException(request.getAction() + " Not Implemented");
 		}
 		
-		worker.post(new Runnable() {		
-			public void run() {
-
-				Message messageStarting = OperationProcessor.this.handler.obtainMessage(MSG_OPERATION_STARTING);
-				OperationProcessor.this.handler.sendMessage(messageStarting);
-
-				Bundle result = null;
-
-				try {
-					result = currentOperation.execute();
-				} catch(Exception x) {
-					result = Operation.createErrorResult(x);
-				}
-				
-				Message m = null;
-				if(currentOperation.isAborted()) {
-					m = OperationProcessor.this.handler.obtainMessage(MSG_OPERATION_ABORTED);
-					m.arg1 = currentOperation.getAbortReason();
-				} else {			
-					m = OperationProcessor.this.handler.obtainMessage(MSG_OPERATION_COMPLETE);
-				}
-				
-				m.setData(result);
-				OperationProcessor.this.handler.sendMessage(m);
-			}
-		});
+		worker.post(new OperationRunnable(handler, currentOperation));
 	}
 
 	protected abstract Operation createOperation(String action);
 
-	private class Worker extends HandlerThread {
+	static class OperationRunnable implements Runnable {
+		
+		private Operation mOperation;
+		private Handler mCallbackHandler;
+
+		public OperationRunnable(Handler callbackHandler, Operation operation) {
+			mCallbackHandler = callbackHandler;
+			mOperation = operation;
+			
+		}
+		
+		@Override
+		public void run() {
+			Message messageStarting = mCallbackHandler.obtainMessage(MSG_OPERATION_STARTING);
+			mCallbackHandler.sendMessage(messageStarting);
+
+			Bundle result = null;
+
+			try {
+				result = mOperation.execute();
+			} catch(Exception x) {
+				result = Operation.createErrorResult(x);
+			}
+			
+			Message m = null;
+			
+			if(mOperation.isAborted()) {
+				m = mCallbackHandler.obtainMessage(MSG_OPERATION_ABORTED);
+				m.arg1 = mOperation.getAbortReason();
+			} else {			
+				m = mCallbackHandler.obtainMessage(MSG_OPERATION_COMPLETE);
+			}
+			
+			m.setData(result);
+			mCallbackHandler.sendMessage(m);
+		}
+		
+	}
+	
+	static class Worker extends HandlerThread {
 		public Handler handler;
 		
 		private List<Runnable> pendingRunnables = new ArrayList<Runnable>();

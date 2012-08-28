@@ -189,7 +189,7 @@ public abstract class OperationServiceBridge {
 			if(data == null) {
 				data = new Bundle();
 			}
- 			data.putParcelable(Operation.KEY_REQUEST, intent);
+ 			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
 			notifyOperationStarting(requestId, data);
 		}
 	}
@@ -203,7 +203,7 @@ public abstract class OperationServiceBridge {
 				data = new Bundle();
 			}
 
-			data.putParcelable(Operation.KEY_REQUEST, intent);
+			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
 
 			notifyOperationComplete(requestId, data);
 		}
@@ -219,7 +219,7 @@ public abstract class OperationServiceBridge {
 				data = new Bundle();
 			}
 
- 			data.putParcelable(Operation.KEY_REQUEST, intent);
+ 			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
 
 			notifyOperationProgress(requestId, progress, data);
 		}
@@ -235,7 +235,7 @@ public abstract class OperationServiceBridge {
 				data = new Bundle();
 			}
 
-			data.putParcelable(Operation.KEY_REQUEST, intent);
+			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
 
 			notifyOperationAborted(requestId, reason, data);
 		}

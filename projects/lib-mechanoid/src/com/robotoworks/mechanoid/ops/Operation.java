@@ -17,12 +17,13 @@ import android.os.Message;
 public abstract class Operation {	
 	protected static final int MSG_ABORT = 1;
 	
-	public static final String KEY_CODE = "com.robotoworks.mechanoid.ops.KEY_CODE";
-	public static final String KEY_ERROR = "com.robotoworks.mechanoid.ops.KEY_ERROR";
-	public static final String KEY_REQUEST = "com.robotoworks.mechanoid.ops.KEY_REQUEST";
+	public static final String KEY_RESULT_CODE = "com.robotoworks.mechanoid.ops.KEY_RESULT_CODE";
+	public static final String KEY_RESULT_ERROR = "com.robotoworks.mechanoid.ops.KEY_RESULT_ERROR";
+	public static final String KEY_RESULT_REQUEST = "com.robotoworks.mechanoid.ops.KEY_RESULT_REQUEST";
 
-	public static final int OK = 0;
-	public static final int ERROR = 1;
+	public static final int RESULT_OK = 0;
+	public static final int RESULT_ERROR = 1;
+	
 	private Context mContext;
 	private OperationProcessor mProcessor;
 	private Intent mIntent;
@@ -62,32 +63,32 @@ public abstract class Operation {
 	
 	public static Bundle createResult(int code, Throwable error) {
 		Bundle b = new Bundle();
-		b.putInt(KEY_CODE, code);
-		b.putSerializable(KEY_ERROR, error);
+		b.putInt(KEY_RESULT_CODE, code);
+		b.putSerializable(KEY_RESULT_ERROR, error);
 		return b;
 	}
 	
 	public static Bundle createErrorResult(Throwable error) {
 		Bundle b = new Bundle();
-		b.putInt(KEY_CODE, ERROR);
-		b.putSerializable(KEY_ERROR, error);
+		b.putInt(KEY_RESULT_CODE, RESULT_ERROR);
+		b.putSerializable(KEY_RESULT_ERROR, error);
 		return b;
 	}
 
 	public static Bundle createOkResult() {
 		Bundle b = new Bundle();
-		b.putInt(KEY_CODE, OK);
+		b.putInt(KEY_RESULT_CODE, RESULT_OK);
 		return b;
 	}
 
 	public static Bundle createOkResult(Bundle bundle) {
-		bundle.putInt(KEY_CODE, OK);
+		bundle.putInt(KEY_RESULT_CODE, RESULT_OK);
 		return bundle;
 	}
 	
 	public static boolean isResultOk(Bundle bundle) {
-		int code = bundle.getInt(KEY_CODE, 0);
-		if(code == OK) {
+		int code = bundle.getInt(KEY_RESULT_CODE, 0);
+		if(code == RESULT_OK) {
 			return true;
 		}
 		
@@ -95,13 +96,13 @@ public abstract class Operation {
 	}
 
 	public static Intent getRequestFromResult(Bundle bundle) {
-		Intent request = bundle.getParcelable(KEY_REQUEST);
+		Intent request = bundle.getParcelable(KEY_RESULT_REQUEST);
 		
 		return request;
 	}
 	
 	public static Throwable getResultError(Bundle bundle) {
-		Throwable t = (Throwable) bundle.getSerializable(KEY_ERROR);
+		Throwable t = (Throwable) bundle.getSerializable(KEY_RESULT_ERROR);
 		return t;
 	}
 		

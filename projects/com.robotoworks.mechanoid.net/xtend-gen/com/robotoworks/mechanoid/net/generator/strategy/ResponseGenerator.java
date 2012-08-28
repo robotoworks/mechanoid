@@ -48,7 +48,8 @@ public class ResponseGenerator {
   public void registerImports() {
     this.context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider");
     this.context.registerImport("com.robotoworks.mechanoid.net.TransformException");
-    this.context.registerImport("com.robotoworks.mechanoid.net.WebResponse");
+    this.context.registerImport("java.io.InputStream");
+    this.context.registerImport("com.dataclarity.dashinsight.util.Closeables");
   }
   
   public CharSequence generate(final HttpMethod method, final Model module, final Client client) {
@@ -130,11 +131,7 @@ public class ResponseGenerator {
     String _name_2 = method.getName();
     String _pascalize_1 = ModelExtensions.pascalize(_name_2);
     _builder.append(_pascalize_1, "	");
-    _builder.append("Response(TransformerProvider transformerProvider, WebResponse<");
-    String _name_3 = method.getName();
-    String _pascalize_2 = ModelExtensions.pascalize(_name_3);
-    _builder.append(_pascalize_2, "	");
-    _builder.append("Response> webResponse) throws TransformException {");
+    _builder.append("Response(TransformerProvider transformerProvider, InputStream inStream) throws TransformException {");
     _builder.newLineIfNotEmpty();
     {
       ResponseBlock _response_6 = method.getResponse();
@@ -169,6 +166,10 @@ public class ResponseGenerator {
             }
           }
         }
+      } else {
+        _builder.append("\t\t");
+        _builder.append("Closeables.closeSilently(inStream);");
+        _builder.newLine();
       }
     }
     _builder.append("\t");
@@ -461,17 +462,14 @@ public class ResponseGenerator {
     StringConcatenation _builder = new StringConcatenation();
     this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.io.InputStream");
-    _builder.newLineIfNotEmpty();
-    _builder.append("InputStream stream = webResponse.getContentStream();");
     _builder.newLine();
     _builder.append("try {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("if(stream != null){");
+    _builder.append("if(inStream != null){");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("String content = Streams.readAllText(stream);");
+    _builder.append("String content = Streams.readAllText(inStream);");
     _builder.newLine();
     return _builder;
   }
@@ -491,28 +489,7 @@ public class ResponseGenerator {
     _builder.append("} finally {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("if(stream != null) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("try {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("stream.close();");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("catch (IOException x) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new TransformException(x);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
+    _builder.append("Closeables.closeSilently(inStream);");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
