@@ -51,11 +51,10 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("import android.net.Uri;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;");
-    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;");
     _builder.newLine();
-    _builder.append("import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;");
+    _builder.append("import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;");
+    _builder.newLine();
     _builder.newLine();
     {
       EList<Statment> _statements = snapshot.getStatements();
@@ -98,49 +97,97 @@ public class ContentProviderGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("import ");
-    String _packageName_3 = model.getPackageName();
-    _builder.append(_packageName_3, "");
-    _builder.append(".Abstract");
-    DatabaseBlock _database_2 = model.getDatabase();
-    String _name_4 = _database_2.getName();
-    String _pascalize_4 = Strings.pascalize(_name_4);
-    _builder.append(_pascalize_4, "");
-    _builder.append("OpenHelper.Tables;");
-    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("public abstract class Abstract");
-    DatabaseBlock _database_3 = model.getDatabase();
-    String _name_5 = _database_3.getName();
-    String _pascalize_5 = Strings.pascalize(_name_5);
-    _builder.append(_pascalize_5, "");
-    _builder.append("ContentProvider extends MechanoidContentProvider {");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("private static final UriMatcher sUriMatcher = buildUriMatcher();");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("private Abstract");
-    DatabaseBlock _database_4 = model.getDatabase();
-    String _name_6 = _database_4.getName();
-    String _pascalize_6 = Strings.pascalize(_name_6);
-    _builder.append(_pascalize_6, "    ");
-    _builder.append("OpenHelper mOpenHelper;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("\t");
-    int counter = 0;
-    _builder.newLineIfNotEmpty();
     {
       EList<Statment> _statements_2 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
       for(final CreateTableStatement tbl_1 : _filter_2) {
+        _builder.append("import ");
+        String _packageName_3 = model.getPackageName();
+        _builder.append(_packageName_3, "");
+        _builder.append(".actions.");
+        String _name_4 = tbl_1.getName();
+        String _pascalize_4 = Strings.pascalize(_name_4);
+        _builder.append(_pascalize_4, "");
+        _builder.append("Actions;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl_1);
+          if (_hasAndroidPrimaryKey) {
+            _builder.append("import ");
+            String _packageName_4 = model.getPackageName();
+            _builder.append(_packageName_4, "");
+            _builder.append(".actions.");
+            String _name_5 = tbl_1.getName();
+            String _pascalize_5 = Strings.pascalize(_name_5);
+            _builder.append(_pascalize_5, "");
+            _builder.append("ByIdActions;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      EList<Statment> _statements_3 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_3 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
+      for(final CreateViewStatement vw_1 : _filter_3) {
+        _builder.append("import ");
+        String _packageName_5 = model.getPackageName();
+        _builder.append(_packageName_5, "");
+        _builder.append(".actions.");
+        String _name_6 = vw_1.getName();
+        String _pascalize_6 = Strings.pascalize(_name_6);
+        _builder.append(_pascalize_6, "");
+        _builder.append("Actions;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(vw_1);
+          if (_hasAndroidPrimaryKey_1) {
+            _builder.append("import ");
+            String _packageName_6 = model.getPackageName();
+            _builder.append(_packageName_6, "");
+            _builder.append(".actions.");
+            String _name_7 = vw_1.getName();
+            String _pascalize_7 = Strings.pascalize(_name_7);
+            _builder.append(_pascalize_7, "");
+            _builder.append("ByIdActions;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("public abstract class Abstract");
+    DatabaseBlock _database_2 = model.getDatabase();
+    String _name_8 = _database_2.getName();
+    String _pascalize_8 = Strings.pascalize(_name_8);
+    _builder.append(_pascalize_8, "");
+    _builder.append("ContentProvider extends MechanoidContentProvider {");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("private static final UriMatcher sUriMatcher;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private static final String[] sContentTypes;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private static final Class<?>[] sActions;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("\t");
+    int counter = (-1);
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statment> _statements_4 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_4 = Iterables.<CreateTableStatement>filter(_statements_4, CreateTableStatement.class);
+      for(final CreateTableStatement tbl_2 : _filter_4) {
         _builder.append("\t");
         _builder.append("private static final int ");
-        String _name_7 = tbl_1.getName();
-        String _underscore = Strings.underscore(_name_7);
+        String _name_9 = tbl_2.getName();
+        String _underscore = Strings.underscore(_name_9);
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "	");
         _builder.append(" = ");
@@ -150,12 +197,12 @@ public class ContentProviderGenerator {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl_1);
-          if (_hasAndroidPrimaryKey) {
+          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(tbl_2);
+          if (_hasAndroidPrimaryKey_2) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_8 = tbl_1.getName();
-            String _underscore_1 = Strings.underscore(_name_8);
+            String _name_10 = tbl_2.getName();
+            String _underscore_1 = Strings.underscore(_name_10);
             String _upperCase_1 = _underscore_1.toUpperCase();
             _builder.append(_upperCase_1, "	");
             _builder.append("_ID = ");
@@ -170,13 +217,13 @@ public class ContentProviderGenerator {
     }
     _builder.newLine();
     {
-      EList<Statment> _statements_3 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_3 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
-      for(final CreateViewStatement vw_1 : _filter_3) {
+      EList<Statment> _statements_5 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_5 = Iterables.<CreateViewStatement>filter(_statements_5, CreateViewStatement.class);
+      for(final CreateViewStatement vw_2 : _filter_5) {
         _builder.append("\t");
         _builder.append("private static final int ");
-        String _name_9 = vw_1.getName();
-        String _underscore_2 = Strings.underscore(_name_9);
+        String _name_11 = vw_2.getName();
+        String _underscore_2 = Strings.underscore(_name_11);
         String _upperCase_2 = _underscore_2.toUpperCase();
         _builder.append(_upperCase_2, "	");
         _builder.append(" = ");
@@ -186,12 +233,12 @@ public class ContentProviderGenerator {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(vw_1);
-          if (_hasAndroidPrimaryKey_1) {
+          boolean _hasAndroidPrimaryKey_3 = Extensions.hasAndroidPrimaryKey(vw_2);
+          if (_hasAndroidPrimaryKey_3) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_10 = vw_1.getName();
-            String _underscore_3 = Strings.underscore(_name_10);
+            String _name_12 = vw_2.getName();
+            String _underscore_3 = Strings.underscore(_name_12);
             String _upperCase_3 = _underscore_3.toUpperCase();
             _builder.append(_upperCase_3, "	");
             _builder.append("_ID = ");
@@ -207,10 +254,177 @@ public class ContentProviderGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static final int URI_MATCHER_MAX = ");
-    _builder.append(counter, "	");
+    _builder.append("public static final int NUM_URI_MATCHERS = ");
+    int _plus_4 = (counter + 1);
+    _builder.append(_plus_4, "	");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sUriMatcher = buildUriMatcher();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sContentTypes = new String[NUM_URI_MATCHERS];");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      EList<Statment> _statements_6 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_6 = Iterables.<CreateTableStatement>filter(_statements_6, CreateTableStatement.class);
+      for(final CreateTableStatement tbl_3 : _filter_6) {
+        _builder.append("\t\t");
+        _builder.append("sContentTypes[");
+        String _name_13 = tbl_3.getName();
+        String _underscore_4 = Strings.underscore(_name_13);
+        String _upperCase_4 = _underscore_4.toUpperCase();
+        _builder.append(_upperCase_4, "		");
+        _builder.append("] = ");
+        String _name_14 = tbl_3.getName();
+        String _pascalize_9 = Strings.pascalize(_name_14);
+        _builder.append(_pascalize_9, "		");
+        _builder.append(".CONTENT_TYPE;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_4 = Extensions.hasAndroidPrimaryKey(tbl_3);
+          if (_hasAndroidPrimaryKey_4) {
+            _builder.append("\t\t");
+            _builder.append("sContentTypes[");
+            String _name_15 = tbl_3.getName();
+            String _underscore_5 = Strings.underscore(_name_15);
+            String _upperCase_5 = _underscore_5.toUpperCase();
+            _builder.append(_upperCase_5, "		");
+            _builder.append("_ID] = ");
+            String _name_16 = tbl_3.getName();
+            String _pascalize_10 = Strings.pascalize(_name_16);
+            _builder.append(_pascalize_10, "		");
+            _builder.append(".ITEM_CONTENT_TYPE;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      EList<Statment> _statements_7 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_7 = Iterables.<CreateViewStatement>filter(_statements_7, CreateViewStatement.class);
+      for(final CreateViewStatement vw_3 : _filter_7) {
+        _builder.append("\t\t");
+        _builder.append("sContentTypes[");
+        String _name_17 = vw_3.getName();
+        String _underscore_6 = Strings.underscore(_name_17);
+        String _upperCase_6 = _underscore_6.toUpperCase();
+        _builder.append(_upperCase_6, "		");
+        _builder.append("] = ");
+        String _name_18 = vw_3.getName();
+        String _pascalize_11 = Strings.pascalize(_name_18);
+        _builder.append(_pascalize_11, "		");
+        _builder.append(".CONTENT_TYPE;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_5 = Extensions.hasAndroidPrimaryKey(vw_3);
+          if (_hasAndroidPrimaryKey_5) {
+            _builder.append("\t\t");
+            _builder.append("sContentTypes[");
+            String _name_19 = vw_3.getName();
+            String _underscore_7 = Strings.underscore(_name_19);
+            String _upperCase_7 = _underscore_7.toUpperCase();
+            _builder.append(_upperCase_7, "		");
+            _builder.append("_ID] = ");
+            String _name_20 = vw_3.getName();
+            String _pascalize_12 = Strings.pascalize(_name_20);
+            _builder.append(_pascalize_12, "		");
+            _builder.append(".ITEM_CONTENT_TYPE;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sActions = new Class<?>[NUM_URI_MATCHERS];");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      EList<Statment> _statements_8 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_8, CreateTableStatement.class);
+      for(final CreateTableStatement tbl_4 : _filter_8) {
+        _builder.append("\t\t");
+        _builder.append("sActions[");
+        String _name_21 = tbl_4.getName();
+        String _underscore_8 = Strings.underscore(_name_21);
+        String _upperCase_8 = _underscore_8.toUpperCase();
+        _builder.append(_upperCase_8, "		");
+        _builder.append("] = ");
+        String _name_22 = tbl_4.getName();
+        String _pascalize_13 = Strings.pascalize(_name_22);
+        _builder.append(_pascalize_13, "		");
+        _builder.append("Actions.class;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_6 = Extensions.hasAndroidPrimaryKey(tbl_4);
+          if (_hasAndroidPrimaryKey_6) {
+            _builder.append("\t\t");
+            _builder.append("sActions[");
+            String _name_23 = tbl_4.getName();
+            String _underscore_9 = Strings.underscore(_name_23);
+            String _upperCase_9 = _underscore_9.toUpperCase();
+            _builder.append(_upperCase_9, "		");
+            _builder.append("_ID] = ");
+            String _name_24 = tbl_4.getName();
+            String _pascalize_14 = Strings.pascalize(_name_24);
+            _builder.append(_pascalize_14, "		");
+            _builder.append("ByIdActions.class;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      EList<Statment> _statements_9 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_9 = Iterables.<CreateViewStatement>filter(_statements_9, CreateViewStatement.class);
+      for(final CreateViewStatement vw_4 : _filter_9) {
+        _builder.append("\t\t");
+        _builder.append("sActions[");
+        String _name_25 = vw_4.getName();
+        String _underscore_10 = Strings.underscore(_name_25);
+        String _upperCase_10 = _underscore_10.toUpperCase();
+        _builder.append(_upperCase_10, "		");
+        _builder.append("] = ");
+        String _name_26 = vw_4.getName();
+        String _pascalize_15 = Strings.pascalize(_name_26);
+        _builder.append(_pascalize_15, "		");
+        _builder.append("Actions.class;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_7 = Extensions.hasAndroidPrimaryKey(vw_4);
+          if (_hasAndroidPrimaryKey_7) {
+            _builder.append("\t\t");
+            _builder.append("sActions[");
+            String _name_27 = vw_4.getName();
+            String _underscore_11 = Strings.underscore(_name_27);
+            String _upperCase_11 = _underscore_11.toUpperCase();
+            _builder.append(_upperCase_11, "		");
+            _builder.append("_ID] = ");
+            String _name_28 = vw_4.getName();
+            String _pascalize_16 = Strings.pascalize(_name_28);
+            _builder.append(_pascalize_16, "		");
+            _builder.append("ByIdActions.class;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("private static UriMatcher buildUriMatcher() {");
@@ -220,10 +434,10 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("final String authority = ");
-    DatabaseBlock _database_5 = model.getDatabase();
-    String _name_11 = _database_5.getName();
-    String _pascalize_7 = Strings.pascalize(_name_11);
-    _builder.append(_pascalize_7, "        ");
+    DatabaseBlock _database_3 = model.getDatabase();
+    String _name_29 = _database_3.getName();
+    String _pascalize_17 = Strings.pascalize(_name_29);
+    _builder.append(_pascalize_17, "        ");
     _builder.append("Contract.CONTENT_AUTHORITY;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -231,32 +445,32 @@ public class ContentProviderGenerator {
     _builder.append("// Tables");
     _builder.newLine();
     {
-      EList<Statment> _statements_4 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_4 = Iterables.<CreateTableStatement>filter(_statements_4, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_2 : _filter_4) {
+      EList<Statment> _statements_10 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_10 = Iterables.<CreateTableStatement>filter(_statements_10, CreateTableStatement.class);
+      for(final CreateTableStatement tbl_5 : _filter_10) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_12 = tbl_2.getName();
-        _builder.append(_name_12, "		");
+        String _name_30 = tbl_5.getName();
+        _builder.append(_name_30, "		");
         _builder.append("\", ");
-        String _name_13 = tbl_2.getName();
-        String _underscore_4 = Strings.underscore(_name_13);
-        String _upperCase_4 = _underscore_4.toUpperCase();
-        _builder.append(_upperCase_4, "		");
+        String _name_31 = tbl_5.getName();
+        String _underscore_12 = Strings.underscore(_name_31);
+        String _upperCase_12 = _underscore_12.toUpperCase();
+        _builder.append(_upperCase_12, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(tbl_2);
-          if (_hasAndroidPrimaryKey_2) {
+          boolean _hasAndroidPrimaryKey_8 = Extensions.hasAndroidPrimaryKey(tbl_5);
+          if (_hasAndroidPrimaryKey_8) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_14 = tbl_2.getName();
-            _builder.append(_name_14, "		");
-            _builder.append("/*\", ");
-            String _name_15 = tbl_2.getName();
-            String _underscore_5 = Strings.underscore(_name_15);
-            String _upperCase_5 = _underscore_5.toUpperCase();
-            _builder.append(_upperCase_5, "		");
+            String _name_32 = tbl_5.getName();
+            _builder.append(_name_32, "		");
+            _builder.append("/#\", ");
+            String _name_33 = tbl_5.getName();
+            String _underscore_13 = Strings.underscore(_name_33);
+            String _upperCase_13 = _underscore_13.toUpperCase();
+            _builder.append(_upperCase_13, "		");
             _builder.append("_ID);");
             _builder.newLineIfNotEmpty();
           }
@@ -268,32 +482,32 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      EList<Statment> _statements_5 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_5 = Iterables.<CreateViewStatement>filter(_statements_5, CreateViewStatement.class);
-      for(final CreateViewStatement vw_2 : _filter_5) {
+      EList<Statment> _statements_11 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_11 = Iterables.<CreateViewStatement>filter(_statements_11, CreateViewStatement.class);
+      for(final CreateViewStatement vw_5 : _filter_11) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_16 = vw_2.getName();
-        _builder.append(_name_16, "		");
+        String _name_34 = vw_5.getName();
+        _builder.append(_name_34, "		");
         _builder.append("\", ");
-        String _name_17 = vw_2.getName();
-        String _underscore_6 = Strings.underscore(_name_17);
-        String _upperCase_6 = _underscore_6.toUpperCase();
-        _builder.append(_upperCase_6, "		");
+        String _name_35 = vw_5.getName();
+        String _underscore_14 = Strings.underscore(_name_35);
+        String _upperCase_14 = _underscore_14.toUpperCase();
+        _builder.append(_upperCase_14, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_3 = Extensions.hasAndroidPrimaryKey(vw_2);
-          if (_hasAndroidPrimaryKey_3) {
+          boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(vw_5);
+          if (_hasAndroidPrimaryKey_9) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_18 = vw_2.getName();
-            _builder.append(_name_18, "		");
-            _builder.append("/*\", ");
-            String _name_19 = vw_2.getName();
-            String _underscore_7 = Strings.underscore(_name_19);
-            String _upperCase_7 = _underscore_7.toUpperCase();
-            _builder.append(_upperCase_7, "		");
+            String _name_36 = vw_5.getName();
+            _builder.append(_name_36, "		");
+            _builder.append("/#\", ");
+            String _name_37 = vw_5.getName();
+            String _underscore_15 = Strings.underscore(_name_37);
+            String _upperCase_15 = _underscore_15.toUpperCase();
+            _builder.append(_upperCase_15, "		");
             _builder.append("_ID);");
             _builder.newLineIfNotEmpty();
           }
@@ -319,102 +533,18 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("switch (match) {");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_6 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_6 = Iterables.<CreateTableStatement>filter(_statements_6, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_3 : _filter_6) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_20 = tbl_3.getName();
-        String _underscore_8 = Strings.underscore(_name_20);
-        String _upperCase_8 = _underscore_8.toUpperCase();
-        _builder.append(_upperCase_8, "		");
-        _builder.append(":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("    ");
-        _builder.append("return ");
-        String _name_21 = tbl_3.getName();
-        String _pascalize_8 = Strings.pascalize(_name_21);
-        _builder.append(_pascalize_8, "		    ");
-        _builder.append(".CONTENT_TYPE;");
-        _builder.newLineIfNotEmpty();
-        {
-          boolean _hasAndroidPrimaryKey_4 = Extensions.hasAndroidPrimaryKey(tbl_3);
-          if (_hasAndroidPrimaryKey_4) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_22 = tbl_3.getName();
-            String _underscore_9 = Strings.underscore(_name_22);
-            String _upperCase_9 = _underscore_9.toUpperCase();
-            _builder.append(_upperCase_9, "		");
-            _builder.append("_ID:");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("    ");
-            _builder.append("return ");
-            String _name_23 = tbl_3.getName();
-            String _pascalize_9 = Strings.pascalize(_name_23);
-            _builder.append(_pascalize_9, "		    ");
-            _builder.append(".ITEM_CONTENT_TYPE;");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    {
-      EList<Statment> _statements_7 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_7 = Iterables.<CreateViewStatement>filter(_statements_7, CreateViewStatement.class);
-      for(final CreateViewStatement vw_3 : _filter_7) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_24 = vw_3.getName();
-        String _underscore_10 = Strings.underscore(_name_24);
-        String _upperCase_10 = _underscore_10.toUpperCase();
-        _builder.append(_upperCase_10, "		");
-        _builder.append(":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("    ");
-        _builder.append("return ");
-        String _name_25 = vw_3.getName();
-        String _pascalize_10 = Strings.pascalize(_name_25);
-        _builder.append(_pascalize_10, "		    ");
-        _builder.append(".CONTENT_TYPE;");
-        _builder.newLineIfNotEmpty();
-        {
-          boolean _hasAndroidPrimaryKey_5 = Extensions.hasAndroidPrimaryKey(vw_3);
-          if (_hasAndroidPrimaryKey_5) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_26 = vw_3.getName();
-            String _underscore_11 = Strings.underscore(_name_26);
-            String _upperCase_11 = _underscore_11.toUpperCase();
-            _builder.append(_upperCase_11, "		");
-            _builder.append("_ID:");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("    ");
-            _builder.append("return ");
-            String _name_27 = vw_3.getName();
-            String _pascalize_11 = Strings.pascalize(_name_27);
-            _builder.append(_pascalize_11, "		    ");
-            _builder.append(".ITEM_CONTENT_TYPE;");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    _builder.append("\t\t");
-    _builder.append("default:");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return sContentTypes[match];");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -429,115 +559,20 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.append("final int match = sUriMatcher.match(uri);");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final SQLiteDatabase db = mOpenHelper.getWritableDatabase();");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
     _builder.newLine();
-    _builder.append("        ");
-    _builder.append("switch (match) {");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_8 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_8, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_4 : _filter_8) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_28 = tbl_4.getName();
-        String _underscore_12 = Strings.underscore(_name_28);
-        String _upperCase_12 = _underscore_12.toUpperCase();
-        _builder.append(_upperCase_12, "		");
-        _builder.append(": {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("int affected = db.delete(Tables.");
-        String _name_29 = tbl_4.getName();
-        String _underscore_13 = Strings.underscore(_name_29);
-        String _upperCase_13 = _underscore_13.toUpperCase();
-        _builder.append(_upperCase_13, "			");
-        _builder.append(", selection, selectionArgs);");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("getContext().getContentResolver().notifyChange(uri, null);");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("return affected;");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
-    {
-      EList<Statment> _statements_9 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_9 = Iterables.<CreateTableStatement>filter(_statements_9, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_5 : _filter_9) {
-        {
-          boolean _hasAndroidPrimaryKey_6 = Extensions.hasAndroidPrimaryKey(tbl_5);
-          if (_hasAndroidPrimaryKey_6) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_30 = tbl_5.getName();
-            String _underscore_14 = Strings.underscore(_name_30);
-            String _upperCase_14 = _underscore_14.toUpperCase();
-            _builder.append(_upperCase_14, "		");
-            _builder.append("_ID: {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("int affected = new SelectionQueryBuilder()");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".expr(");
-            String _name_31 = tbl_5.getName();
-            String _pascalize_12 = Strings.pascalize(_name_31);
-            _builder.append(_pascalize_12, "			");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".append(selection, selectionArgs)");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".delete(db, Tables.");
-            String _name_32 = tbl_5.getName();
-            String _underscore_15 = Strings.underscore(_name_32);
-            String _upperCase_15 = _underscore_15.toUpperCase();
-            _builder.append(_upperCase_15, "			");
-            _builder.append(");");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("getContext().getContentResolver().notifyChange(uri, null);");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("return affected;");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
-          }
-        }
-      }
-    }
-    _builder.append("\t\t");
-    _builder.append("default:");
-    _builder.newLine();
-    _builder.append("\t\t    ");
+    _builder.append("\t\t\t");
     _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return createActions(sActions[match]).delete(this, uri, selection, selectionArgs);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -553,59 +588,20 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.append("final int match = sUriMatcher.match(uri);");
     _builder.newLine();
+    _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("final SQLiteDatabase db = mOpenHelper.getWritableDatabase();");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("switch (match) {");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_10 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_10 = Iterables.<CreateTableStatement>filter(_statements_10, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_6 : _filter_10) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_33 = tbl_6.getName();
-        String _underscore_16 = Strings.underscore(_name_33);
-        String _upperCase_16 = _underscore_16.toUpperCase();
-        _builder.append(_upperCase_16, "		");
-        _builder.append(": {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("    ");
-        _builder.append("long id = db.insertOrThrow(Tables.");
-        String _name_34 = tbl_6.getName();
-        String _underscore_17 = Strings.underscore(_name_34);
-        String _upperCase_17 = _underscore_17.toUpperCase();
-        _builder.append(_upperCase_17, "		    ");
-        _builder.append(", null, values);");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("    ");
-        _builder.append("getContext().getContentResolver().notifyChange(uri, null);");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("    ");
-        _builder.append("return ");
-        String _name_35 = tbl_6.getName();
-        String _pascalize_13 = Strings.pascalize(_name_35);
-        _builder.append(_pascalize_13, "		    ");
-        _builder.append(".buildGetByIdUri(String.valueOf(id));");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
-    _builder.append("\t\t");
-    _builder.append("default:");
-    _builder.newLine();
-    _builder.append("\t\t    ");
+    _builder.append("\t\t\t");
     _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return createActions(sActions[match]).insert(this, uri, values);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -615,22 +611,16 @@ public class ContentProviderGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public boolean onCreate() {");
+    _builder.append("protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("final Context context = getContext();");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("mOpenHelper = new ");
-    DatabaseBlock _database_6 = model.getDatabase();
-    String _name_36 = _database_6.getName();
-    String _pascalize_14 = Strings.pascalize(_name_36);
-    _builder.append(_pascalize_14, "        ");
+    _builder.append("return new ");
+    DatabaseBlock _database_4 = model.getDatabase();
+    String _name_38 = _database_4.getName();
+    String _pascalize_18 = Strings.pascalize(_name_38);
+    _builder.append(_pascalize_18, "        ");
     _builder.append("OpenHelper(context);");
     _builder.newLineIfNotEmpty();
-    _builder.append("        ");
-    _builder.append("return true;");
-    _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -644,199 +634,32 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.append("final int match = sUriMatcher.match(uri);");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final SQLiteDatabase db = mOpenHelper.getWritableDatabase();");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("Cursor cursor = null;");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("switch (match) {");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_11 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_11 = Iterables.<CreateTableStatement>filter(_statements_11, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_7 : _filter_11) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_37 = tbl_7.getName();
-        String _underscore_18 = Strings.underscore(_name_37);
-        String _upperCase_18 = _underscore_18.toUpperCase();
-        _builder.append(_upperCase_18, "		");
-        _builder.append(": {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("cursor = db.query(Tables.");
-        String _name_38 = tbl_7.getName();
-        String _underscore_19 = Strings.underscore(_name_38);
-        String _upperCase_19 = _underscore_19.toUpperCase();
-        _builder.append(_upperCase_19, "			");
-        _builder.append(", projection, selection, selectionArgs, null, null, sortOrder);");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("break;");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
-    _builder.append("\t\t");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_12 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_12 = Iterables.<CreateTableStatement>filter(_statements_12, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_8 : _filter_12) {
-        {
-          boolean _hasAndroidPrimaryKey_7 = Extensions.hasAndroidPrimaryKey(tbl_8);
-          if (_hasAndroidPrimaryKey_7) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_39 = tbl_8.getName();
-            String _underscore_20 = Strings.underscore(_name_39);
-            String _upperCase_20 = _underscore_20.toUpperCase();
-            _builder.append(_upperCase_20, "		");
-            _builder.append("_ID: {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("cursor = new SelectionQueryBuilder()");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".expr(");
-            String _name_40 = tbl_8.getName();
-            String _pascalize_15 = Strings.pascalize(_name_40);
-            _builder.append(_pascalize_15, "			");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".append(selection, selectionArgs)");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".query(db, Tables.");
-            String _name_41 = tbl_8.getName();
-            String _underscore_21 = Strings.underscore(_name_41);
-            String _upperCase_21 = _underscore_21.toUpperCase();
-            _builder.append(_upperCase_21, "			");
-            _builder.append(", projection, sortOrder);");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("break;");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
-          }
-        }
-      }
-    }
-    {
-      EList<Statment> _statements_13 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_13 = Iterables.<CreateViewStatement>filter(_statements_13, CreateViewStatement.class);
-      for(final CreateViewStatement vw_4 : _filter_13) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_42 = vw_4.getName();
-        String _underscore_22 = Strings.underscore(_name_42);
-        String _upperCase_22 = _underscore_22.toUpperCase();
-        _builder.append(_upperCase_22, "		");
-        _builder.append(": {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("cursor = db.query(Tables.");
-        String _name_43 = vw_4.getName();
-        String _underscore_23 = Strings.underscore(_name_43);
-        String _upperCase_23 = _underscore_23.toUpperCase();
-        _builder.append(_upperCase_23, "			");
-        _builder.append(", projection, selection, selectionArgs, null, null, sortOrder);");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("break;");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
-    _builder.append("\t\t");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_14 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_14 = Iterables.<CreateViewStatement>filter(_statements_14, CreateViewStatement.class);
-      for(final CreateViewStatement vw_5 : _filter_14) {
-        {
-          boolean _hasAndroidPrimaryKey_8 = Extensions.hasAndroidPrimaryKey(vw_5);
-          if (_hasAndroidPrimaryKey_8) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_44 = vw_5.getName();
-            String _underscore_24 = Strings.underscore(_name_44);
-            String _upperCase_24 = _underscore_24.toUpperCase();
-            _builder.append(_upperCase_24, "		");
-            _builder.append("_ID: {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("cursor = new SelectionQueryBuilder()");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".expr(");
-            String _name_45 = vw_5.getName();
-            String _pascalize_16 = Strings.pascalize(_name_45);
-            _builder.append(_pascalize_16, "			");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".append(selection, selectionArgs)");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".query(db, Tables.");
-            String _name_46 = vw_5.getName();
-            String _underscore_25 = Strings.underscore(_name_46);
-            String _upperCase_25 = _underscore_25.toUpperCase();
-            _builder.append(_upperCase_25, "			");
-            _builder.append(", projection, sortOrder);");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("break;");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
-          }
-        }
-      }
-    }
-    _builder.append("\t        ");
-    _builder.append("default:");
-    _builder.newLine();
-    _builder.append("\t            ");
+    _builder.append("\t\t\t");
     _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Cursor cursor = createActions(sActions[match]).query(this, uri, projection, selection, selectionArgs, sortOrder);");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("if(cursor != null) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("cursor.setNotificationUri(getContext().getContentResolver(), uri);");
     _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("return cursor;");
@@ -854,115 +677,20 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.append("final int match = sUriMatcher.match(uri);");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final SQLiteDatabase db = mOpenHelper.getWritableDatabase();");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
     _builder.newLine();
-    _builder.append("        ");
-    _builder.append("switch (match) {");
-    _builder.newLine();
-    {
-      EList<Statment> _statements_15 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_15 = Iterables.<CreateTableStatement>filter(_statements_15, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_9 : _filter_15) {
-        _builder.append("\t\t");
-        _builder.append("case ");
-        String _name_47 = tbl_9.getName();
-        String _underscore_26 = Strings.underscore(_name_47);
-        String _upperCase_26 = _underscore_26.toUpperCase();
-        _builder.append(_upperCase_26, "		");
-        _builder.append(": {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("int affected = db.update(Tables.");
-        String _name_48 = tbl_9.getName();
-        String _underscore_27 = Strings.underscore(_name_48);
-        String _upperCase_27 = _underscore_27.toUpperCase();
-        _builder.append(_upperCase_27, "			");
-        _builder.append(", values, selection, selectionArgs);");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("getContext().getContentResolver().notifyChange(uri, null);");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("\t");
-        _builder.append("return affected;");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
-    {
-      EList<Statment> _statements_16 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_16 = Iterables.<CreateTableStatement>filter(_statements_16, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_10 : _filter_16) {
-        {
-          boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(tbl_10);
-          if (_hasAndroidPrimaryKey_9) {
-            _builder.append("\t\t");
-            _builder.append("case ");
-            String _name_49 = tbl_10.getName();
-            String _underscore_28 = Strings.underscore(_name_49);
-            String _upperCase_28 = _underscore_28.toUpperCase();
-            _builder.append(_upperCase_28, "		");
-            _builder.append("_ID: {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("int affected = new SelectionQueryBuilder()");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".expr(");
-            String _name_50 = tbl_10.getName();
-            String _pascalize_17 = Strings.pascalize(_name_50);
-            _builder.append(_pascalize_17, "			");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".append(selection, selectionArgs)");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append(".update(db, Tables.");
-            String _name_51 = tbl_10.getName();
-            String _underscore_29 = Strings.underscore(_name_51);
-            String _upperCase_29 = _underscore_29.toUpperCase();
-            _builder.append(_upperCase_29, "			");
-            _builder.append(", values);");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("getContext().getContentResolver().notifyChange(uri, null);");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("return affected;");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
-          }
-        }
-      }
-    }
-    _builder.append("\t        ");
-    _builder.append("default:");
-    _builder.newLine();
-    _builder.append("\t            ");
+    _builder.append("\t\t\t");
     _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("\t\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -978,7 +706,7 @@ public class ContentProviderGenerator {
     _builder.append("throws OperationApplicationException {");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("final SQLiteDatabase db = mOpenHelper.getWritableDatabase();");
+    _builder.append("final SQLiteDatabase db = getOpenHelper().getWritableDatabase();");
     _builder.newLine();
     _builder.append("        ");
     _builder.append("db.beginTransaction();");

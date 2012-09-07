@@ -4,7 +4,9 @@ import java.io.Closeable;
 import java.io.IOException;
 
 public final class Closeables {
-	public void closeSilently(Closeable closeable) {
+	private Closeables(){}
+	
+	public static void closeSilently(Closeable closeable) {
 		if(closeable == null) {
 			return;
 		}

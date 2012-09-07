@@ -15,6 +15,8 @@ import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator
 
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -22,6 +24,7 @@ class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteDatabaseSnapshotBuilder mDbSnapshotBuilder
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject SqliteMigrationGenerator mMigrationGenerator
+	@Inject ContentProviderActionGenerator mActionGenerator;
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
@@ -42,6 +45,7 @@ class SqliteModelGenerator implements IGenerator {
 			model.packageName.resolveFileName(model.database.name.concat("Contract")), 
 			mContentProviderContractGenerator.generate(model, snapshot)
 		);
+		
 		fsa.generateFile(
 			model.packageName.resolveFileName("Abstract".concat(model.database.name).concat("ContentProvider")), 
 			mContentProviderGenerator.generate(model, snapshot)
@@ -53,18 +57,82 @@ class SqliteModelGenerator implements IGenerator {
 			mContentProviderGenerator.generateStub(model, snapshot)
 		);
 		
+		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
+			item|
+			generateAction(resource, fsa, item, false)
+			if(item.hasAndroidPrimaryKey) {
+				generateAction(resource, fsa, item, true)
+			}
+		];
+
+		snapshot.statements.filter(typeof(CreateViewStatement)).forEach[
+			item|
+			generateAction(resource, fsa, item, false)
+			if(item.hasAndroidPrimaryKey) {
+				generateAction(resource, fsa, item, true)
+			}
+		];
+			
 		model.database.migrations.forEach[
 			item,index|
 			if(index> 0) generateMigration(resource, fsa, item, index + 1)
 		];		
 	}
 	
+	def dispatch void generateAction(Resource resource, IFileSystemAccess fsa, CreateTableStatement stmt, boolean forId) { 
+		val model = resource.contents.head as Model
+		
+		var genFileName = "";
+		var genStubFileName = "";
+		if(forId) {
+			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("ByIdActions"))
+			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("ByIdActions"))			
+		} else {			
+			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("Actions"))
+			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("Actions"))
+		}
+		
+		fsa.generateFile(genFileName, 
+			mActionGenerator.generate(model, stmt, forId)
+		)
+		
+		fsa.generateFile(genStubFileName, 
+			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
+			mActionGenerator.generateStub(model, stmt, forId)
+		)
+		
+	}
+
+	def dispatch void generateAction(Resource resource, IFileSystemAccess fsa, CreateViewStatement stmt, boolean forId) { 
+		var model = resource.contents.head as Model
+		
+		var genFileName = "";
+		var genStubFileName = "";
+		if(forId) {
+			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("ByIdActions"))
+			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("ByIdActions"))			
+		} else {			
+			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("Actions"))
+			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("Actions"))
+		}
+		
+		fsa.generateFile(genFileName, 
+			mActionGenerator.generate(model, stmt, forId)
+		)
+		
+		fsa.generateFile(genStubFileName, 
+			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
+			mActionGenerator.generateStub(model, stmt, forId)
+		)
+	}
+
+	
 	def void generateMigration(Resource resource, IFileSystemAccess fsa, MigrationBlock migration, int version) { 
 		
 		var model = resource.contents.head as Model;
 		
-		var genFileName = model.packageName.resolveFileName("Abstract".concat(model.database.name).concat("MigrationV").concat(String::valueOf(version)))
-		var genStubFileName = model.packageName.resolveFileName(model.database.name.concat("MigrationV").concat(String::valueOf(version)))
+		var genFileName = model.packageName.concat(".migrations").resolveFileName("Abstract".concat(model.database.name).concat("MigrationV").concat(String::valueOf(version)))
+		var genStubFileName = model.packageName.concat(".migrations").resolveFileName(model.database.name.concat("MigrationV").concat(String::valueOf(version)))
 			
 		fsa.generateFile(genFileName, 
 			mMigrationGenerator.generate(model, migration, version)

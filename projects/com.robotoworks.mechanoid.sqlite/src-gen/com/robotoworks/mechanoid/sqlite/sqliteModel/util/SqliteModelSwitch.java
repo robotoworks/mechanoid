@@ -86,6 +86,20 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.ACTION_BLOCK:
+      {
+        ActionBlock actionBlock = (ActionBlock)theEObject;
+        T result = caseActionBlock(actionBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ACTION_STATEMENT:
+      {
+        ActionStatement actionStatement = (ActionStatement)theEObject;
+        T result = caseActionStatement(actionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.MIGRATION_BLOCK:
       {
         MigrationBlock migrationBlock = (MigrationBlock)theEObject;
@@ -249,6 +263,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
         SecondaryComparisonExpr secondaryComparisonExpr = (SecondaryComparisonExpr)theEObject;
         T result = caseSecondaryComparisonExpr(secondaryComparisonExpr);
         if (result == null) result = caseExpression(secondaryComparisonExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DIVISION_EXPR:
+      {
+        DivisionExpr divisionExpr = (DivisionExpr)theEObject;
+        T result = caseDivisionExpr(divisionExpr);
+        if (result == null) result = caseExpression(divisionExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.MULTIPLICATION_EXPR:
+      {
+        MultiplicationExpr multiplicationExpr = (MultiplicationExpr)theEObject;
+        T result = caseMultiplicationExpr(multiplicationExpr);
+        if (result == null) result = caseExpression(multiplicationExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ADDITION_EXPR:
+      {
+        AdditionExpr additionExpr = (AdditionExpr)theEObject;
+        T result = caseAdditionExpr(additionExpr);
+        if (result == null) result = caseExpression(additionExpr);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SUBTRACTION_EXPR:
+      {
+        SubtractionExpr subtractionExpr = (SubtractionExpr)theEObject;
+        T result = caseSubtractionExpr(subtractionExpr);
+        if (result == null) result = caseExpression(subtractionExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -476,6 +522,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDatabaseBlock(DatabaseBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionBlock(ActionBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionStatement(ActionStatement object)
   {
     return null;
   }
@@ -844,6 +922,70 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSecondaryComparisonExpr(SecondaryComparisonExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Division Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Division Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDivisionExpr(DivisionExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multiplication Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multiplication Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiplicationExpr(MultiplicationExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Addition Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Addition Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdditionExpr(AdditionExpr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Subtraction Expr</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subtraction Expr</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubtractionExpr(SubtractionExpr object)
   {
     return null;
   }

@@ -49,7 +49,7 @@ public class ResponseGenerator {
     this.context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider");
     this.context.registerImport("com.robotoworks.mechanoid.net.TransformException");
     this.context.registerImport("java.io.InputStream");
-    this.context.registerImport("com.dataclarity.dashinsight.util.Closeables");
+    this.context.registerImport("com.robotoworks.mechanoid.util.Closeables");
   }
   
   public CharSequence generate(final HttpMethod method, final Model module, final Client client) {

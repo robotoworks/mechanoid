@@ -67,6 +67,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
     {
       case SqliteModelPackage.MODEL: return createModel();
       case SqliteModelPackage.DATABASE_BLOCK: return createDatabaseBlock();
+      case SqliteModelPackage.ACTION_BLOCK: return createActionBlock();
+      case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.STATMENT: return createStatment();
@@ -90,6 +92,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.AND_EXPR: return createAndExpr();
       case SqliteModelPackage.PRIMARY_COMPARISON_EXPR: return createPrimaryComparisonExpr();
       case SqliteModelPackage.SECONDARY_COMPARISON_EXPR: return createSecondaryComparisonExpr();
+      case SqliteModelPackage.DIVISION_EXPR: return createDivisionExpr();
+      case SqliteModelPackage.MULTIPLICATION_EXPR: return createMultiplicationExpr();
+      case SqliteModelPackage.ADDITION_EXPR: return createAdditionExpr();
+      case SqliteModelPackage.SUBTRACTION_EXPR: return createSubtractionExpr();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
@@ -177,6 +183,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     DatabaseBlockImpl databaseBlock = new DatabaseBlockImpl();
     return databaseBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionBlock createActionBlock()
+  {
+    ActionBlockImpl actionBlock = new ActionBlockImpl();
+    return actionBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionStatement createActionStatement()
+  {
+    ActionStatementImpl actionStatement = new ActionStatementImpl();
+    return actionStatement;
   }
 
   /**
@@ -430,6 +458,50 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     SecondaryComparisonExprImpl secondaryComparisonExpr = new SecondaryComparisonExprImpl();
     return secondaryComparisonExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DivisionExpr createDivisionExpr()
+  {
+    DivisionExprImpl divisionExpr = new DivisionExprImpl();
+    return divisionExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicationExpr createMultiplicationExpr()
+  {
+    MultiplicationExprImpl multiplicationExpr = new MultiplicationExprImpl();
+    return multiplicationExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditionExpr createAdditionExpr()
+  {
+    AdditionExprImpl additionExpr = new AdditionExprImpl();
+    return additionExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SubtractionExpr createSubtractionExpr()
+  {
+    SubtractionExprImpl subtractionExpr = new SubtractionExprImpl();
+    return subtractionExpr;
   }
 
   /**

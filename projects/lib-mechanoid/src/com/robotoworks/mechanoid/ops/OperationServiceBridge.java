@@ -96,6 +96,12 @@ public abstract class OperationServiceBridge {
 		pendingRequests.put(requestId, intent);
 	}
 	
+	/**
+	 * Find a pending request with the given action
+	 * @param action The action
+	 * @return An intent that represents the found request, or null if no matching
+	 * request was found
+	 */
 	public Intent findPendingRequestByAction(String action) {
 		for (int i = 0; i < pendingRequests.size(); i++) {
 			Intent request = pendingRequests.valueAt(i);
@@ -107,6 +113,13 @@ public abstract class OperationServiceBridge {
 		return null;
 	}
 	
+	/**
+	 * Find a pending request matching the given action and extras
+	 * @param action The action
+	 * @param extras The extras
+	 * @return An intent that represents the matching request with extras or null
+	 * if no matching request was found
+	 */
 	public Intent findPendingRequestByActionWithExtras(String action, Bundle extras) {
 		for (int i = 0; i < pendingRequests.size(); i++) {
 			Intent request = pendingRequests.valueAt(i);
@@ -129,7 +142,15 @@ public abstract class OperationServiceBridge {
 		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 	}
 	
+	/**
+	 * Check if a request with the given id is pending
+	 * 
+	 * @param requestId
+	 * @return true if the request is pending, false if the request was not found
+	 */
 	public boolean isRequestPending(int requestId) {
+		if(requestId <= 0) return false;
+		
 		return (pendingRequests.get(requestId) != null);
 	}
 	
@@ -173,10 +194,20 @@ public abstract class OperationServiceBridge {
 		return requestId;
 	}
 	
+	/**
+	 * Register a listener with this service bridge
+	 * 
+	 * @param listener The listener to register
+	 */
 	public void bindListener(OperationServiceListener listener) {
 		this.listeners.add(listener);
 	}
 	
+	/**
+	 * Unregister a previously registered listener
+	 * 
+	 * @param listener The listener to unregister
+	 */
 	public void unbindListener(OperationServiceListener listener) {
 		this.listeners.remove(listener);
 	}
@@ -194,7 +225,7 @@ public abstract class OperationServiceBridge {
 		}
 	}
 
-	private void onOperationComplete(int requestId, Bundle data) {
+	protected void onOperationComplete(int requestId, Bundle data) {
 		Intent intent = removePendingRequestById(requestId);
 
 		if(intent != null) {
@@ -228,7 +259,6 @@ public abstract class OperationServiceBridge {
 	protected void onOperationAborted(int requestId, int reason, Bundle data) {
 		Intent intent = removePendingRequestById(requestId);
 		
-
 		if(intent != null) {
 
 			if(data == null) {
@@ -274,18 +304,19 @@ public abstract class OperationServiceBridge {
 	}
 
 	protected boolean intentContainsExtras(Intent intent, Bundle extras) {
-		Bundle bundle = intent.getExtras();
+		Bundle intentExtras = intent.getExtras();
 		
 		for(String key : extras.keySet()) {
-			Object extra = extras.get(key);
-			if(extra == null) {
-				if(extra != bundle.get(key)) {
-					return false;
-				}
-			}
-			else if(!extra.equals(bundle.get(key))) {
+			Object a = extras.get(key);
+			Object b = intentExtras.get(key);
+			
+			if(b == null) {
 				return false;
 			}
+			
+			if(!b.equals(a)) {
+				return false;
+			}			
 		}
 		
 		return true;

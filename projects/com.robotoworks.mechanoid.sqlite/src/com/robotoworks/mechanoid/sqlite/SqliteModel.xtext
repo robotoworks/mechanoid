@@ -8,7 +8,16 @@ Model:
 	database=DatabaseBlock;
 
 DatabaseBlock:
-	'database' name=ID '{' (migrations+=MigrationBlock)* '}';
+	'database' name=ID '{' (actions=ActionBlock)? (migrations+=MigrationBlock)* '}';
+
+ActionBlock:
+	{ActionBlock}
+	'actions' '{' (actions+=ActionStatement)* '}'
+;
+
+ActionStatement:
+	name=ID path=STRING
+;
 
 MigrationBlock:
 	{MigrationBlock}
@@ -31,7 +40,23 @@ PrimaryComparison returns Expression:
 ;
 
 SecondaryComparison returns Expression:
-	PrimaryExpression ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=PrimaryExpression)*
+	Division ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*
+;
+
+Division returns Expression:
+	Multiplication ({DivisionExpr.left=current} '/' right=Multiplication)*
+;
+
+Multiplication returns Expression:
+	Addition ({MultiplicationExpr.left=current} '*' right=Addition)*
+;
+
+Addition returns Expression:
+	Subtraction ({AdditionExpr.left=current} '+' right=Subtraction)*
+;
+
+Subtraction returns Expression:
+	PrimaryExpression ({SubtractionExpr.left=current} '-' right=PrimaryExpression)*
 ;
 
 PrimaryExpression returns Expression:

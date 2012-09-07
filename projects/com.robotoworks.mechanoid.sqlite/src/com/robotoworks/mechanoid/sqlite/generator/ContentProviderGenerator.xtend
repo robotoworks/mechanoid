@@ -26,9 +26,9 @@ class ContentProviderGenerator {
 			import android.database.Cursor;
 			import android.database.sqlite.SQLiteDatabase;
 			import android.net.Uri;
-			import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
 			import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;
-			import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
+			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
+
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
 			«ENDFOR»
@@ -36,15 +36,27 @@ class ContentProviderGenerator {
 			import «model.packageName».«model.database.name.pascalize»Contract.«vw.name.pascalize»;
 			
 			«ENDFOR»
-			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 			
+			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
+			import «model.packageName».actions.«tbl.name.pascalize»Actions;
+			«IF tbl.hasAndroidPrimaryKey»
+			import «model.packageName».actions.«tbl.name.pascalize»ByIdActions;
+			«ENDIF»
+			«ENDFOR»
+			«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
+			import «model.packageName».actions.«vw.name.pascalize»Actions;
+			«IF vw.hasAndroidPrimaryKey»
+			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
+			«ENDIF»
+			«ENDFOR»
+					
 			public abstract class Abstract«model.database.name.pascalize»ContentProvider extends MechanoidContentProvider {
 			
-			    private static final UriMatcher sUriMatcher = buildUriMatcher();
-			
-			    private Abstract«model.database.name.pascalize»OpenHelper mOpenHelper;
-
-				«var counter=0»
+			    private static final UriMatcher sUriMatcher;
+				private static final String[] sContentTypes;
+				private static final Class<?>[] sActions;
+			    
+				«var counter=-1»
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 				private static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF tbl.hasAndroidPrimaryKey»
@@ -59,8 +71,44 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
-				public static final int URI_MATCHER_MAX = «counter»;
+				public static final int NUM_URI_MATCHERS = «counter + 1»;
 			
+				static {
+					sUriMatcher = buildUriMatcher();
+				
+					sContentTypes = new String[NUM_URI_MATCHERS];
+
+					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
+					sContentTypes[«tbl.name.underscore.toUpperCase»] = «tbl.name.pascalize».CONTENT_TYPE;
+					«IF tbl.hasAndroidPrimaryKey»
+					sContentTypes[«tbl.name.underscore.toUpperCase»_ID] = «tbl.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»
+					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
+					sContentTypes[«vw.name.underscore.toUpperCase»] = «vw.name.pascalize».CONTENT_TYPE;
+					«IF vw.hasAndroidPrimaryKey»
+					sContentTypes[«vw.name.underscore.toUpperCase»_ID] = «vw.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»
+					
+					sActions = new Class<?>[NUM_URI_MATCHERS];
+
+					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
+					sActions[«tbl.name.underscore.toUpperCase»] = «tbl.name.pascalize»Actions.class;
+					«IF tbl.hasAndroidPrimaryKey»
+					sActions[«tbl.name.underscore.toUpperCase»_ID] = «tbl.name.pascalize»ByIdActions.class;
+					«ENDIF»
+					«ENDFOR»
+					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
+					sActions[«vw.name.underscore.toUpperCase»] = «vw.name.pascalize»Actions.class;
+					«IF vw.hasAndroidPrimaryKey»
+					sActions[«vw.name.underscore.toUpperCase»_ID] = «vw.name.pascalize»ByIdActions.class;
+					«ENDIF»
+					«ENDFOR»
+
+					
+				}
+				
 			    private static UriMatcher buildUriMatcher() {
 			        final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
 			        final String authority = «model.database.name.pascalize»Contract.CONTENT_AUTHORITY;
@@ -69,7 +117,7 @@ class ContentProviderGenerator {
 					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 					matcher.addURI(authority, "«tbl.name»", «tbl.name.underscore.toUpperCase»);
 					«IF tbl.hasAndroidPrimaryKey»
-					matcher.addURI(authority, "«tbl.name»/*", «tbl.name.underscore.toUpperCase»_ID);
+					matcher.addURI(authority, "«tbl.name»/#", «tbl.name.underscore.toUpperCase»_ID);
 					«ENDIF»
 					«ENDFOR»
 			
@@ -77,7 +125,7 @@ class ContentProviderGenerator {
 					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
 					matcher.addURI(authority, "«vw.name»", «vw.name.underscore.toUpperCase»);
 					«IF vw.hasAndroidPrimaryKey»
-					matcher.addURI(authority, "«vw.name»/*", «vw.name.underscore.toUpperCase»_ID);
+					matcher.addURI(authority, "«vw.name»/#", «vw.name.underscore.toUpperCase»_ID);
 					«ENDIF»
 					«ENDFOR»
 			
@@ -88,176 +136,73 @@ class ContentProviderGenerator {
 				public String getType(Uri uri) {
 			        final int match = sUriMatcher.match(uri);
 			
-					switch (match) {
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					case «tbl.name.underscore.toUpperCase»:
-					    return «tbl.name.pascalize».CONTENT_TYPE;
-					«IF tbl.hasAndroidPrimaryKey»
-					case «tbl.name.underscore.toUpperCase»_ID:
-					    return «tbl.name.pascalize».ITEM_CONTENT_TYPE;
-					«ENDIF»
-					«ENDFOR»
-					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-					case «vw.name.underscore.toUpperCase»:
-					    return «vw.name.pascalize».CONTENT_TYPE;
-					«IF vw.hasAndroidPrimaryKey»
-					case «vw.name.underscore.toUpperCase»_ID:
-					    return «vw.name.pascalize».ITEM_CONTENT_TYPE;
-					«ENDIF»
-					«ENDFOR»
-					default:
+					if(match == UriMatcher.NO_MATCH) {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
+					}
+					
+					return sContentTypes[match];
 				}
 			
 				@Override
 				public int delete(Uri uri, String selection, String[] selectionArgs) {
 					final int match = sUriMatcher.match(uri);
-					final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-					
-			        switch (match) {
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					case «tbl.name.underscore.toUpperCase»: {
-						int affected = db.delete(Tables.«tbl.name.underscore.toUpperCase», selection, selectionArgs);
-						getContext().getContentResolver().notifyChange(uri, null);
-						return affected;
+
+					if(match == UriMatcher.NO_MATCH) {
+						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
-					«ENDFOR»
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					«IF tbl.hasAndroidPrimaryKey»
-					case «tbl.name.underscore.toUpperCase»_ID: {
-						int affected = new SelectionQueryBuilder()
-						.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
-						.append(selection, selectionArgs)
-						.delete(db, Tables.«tbl.name.underscore.toUpperCase»);
 					
-						getContext().getContentResolver().notifyChange(uri, null);
-					
-						return affected;
-					}
-					«ENDIF»
-					«ENDFOR»
-					default:
-					    throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
+					return createActions(sActions[match]).delete(this, uri, selection, selectionArgs);
 				}
 			
 				@Override
 				public Uri insert(Uri uri, ContentValues values) {
 			
 					final int match = sUriMatcher.match(uri);
-					final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-			
-			        switch (match) {
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					case «tbl.name.underscore.toUpperCase»: {
-					    long id = db.insertOrThrow(Tables.«tbl.name.underscore.toUpperCase», null, values);
-					    getContext().getContentResolver().notifyChange(uri, null);
-					    return «tbl.name.pascalize».buildGetByIdUri(String.valueOf(id));
+
+					if(match == UriMatcher.NO_MATCH) {
+						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
-					«ENDFOR»
-					default:
-					    throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
+					
+					return createActions(sActions[match]).insert(this, uri, values);
 				}
 			
 				@Override
-				public boolean onCreate() {
-			        final Context context = getContext();
-			        mOpenHelper = new «model.database.name.pascalize»OpenHelper(context);
-			        return true;
+				protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {
+			        return new «model.database.name.pascalize»OpenHelper(context);
 				}
 			
 				@Override
 				public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 					final int match = sUriMatcher.match(uri);
-					final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-					Cursor cursor = null;
+
+					if(match == UriMatcher.NO_MATCH) {
+						throw new UnsupportedOperationException("Unknown uri: " + uri);
+					}
+					
+					Cursor cursor = createActions(sActions[match]).query(this, uri, projection, selection, selectionArgs, sortOrder);
 			
-			        switch (match) {
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					case «tbl.name.underscore.toUpperCase»: {
-						cursor = db.query(Tables.«tbl.name.underscore.toUpperCase», projection, selection, selectionArgs, null, null, sortOrder);
-						break;
+					if(cursor != null) {
+						cursor.setNotificationUri(getContext().getContentResolver(), uri);
 					}
-					«ENDFOR»
 					
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					«IF tbl.hasAndroidPrimaryKey»
-					case «tbl.name.underscore.toUpperCase»_ID: {
-						cursor = new SelectionQueryBuilder()
-						.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
-						.append(selection, selectionArgs)
-						.query(db, Tables.«tbl.name.underscore.toUpperCase», projection, sortOrder);
-					
-						break;
-					}
-					«ENDIF»
-					«ENDFOR»
-					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-					case «vw.name.underscore.toUpperCase»: {
-						cursor = db.query(Tables.«vw.name.underscore.toUpperCase», projection, selection, selectionArgs, null, null, sortOrder);
-						break;
-					}
-					«ENDFOR»
-					
-					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-					«IF vw.hasAndroidPrimaryKey»
-					case «vw.name.underscore.toUpperCase»_ID: {
-						cursor = new SelectionQueryBuilder()
-						.expr(«vw.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
-						.append(selection, selectionArgs)
-						.query(db, Tables.«vw.name.underscore.toUpperCase», projection, sortOrder);
-					
-						break;
-					}
-					«ENDIF»
-					«ENDFOR»
-				        default:
-				            throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
-			
-					cursor.setNotificationUri(getContext().getContentResolver(), uri);
-			
 					return cursor;
 				}
 			
 				@Override
 				public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 					final int match = sUriMatcher.match(uri);
-					final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-					
-			        switch (match) {
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					case «tbl.name.underscore.toUpperCase»: {
-						int affected = db.update(Tables.«tbl.name.underscore.toUpperCase», values, selection, selectionArgs);
-						getContext().getContentResolver().notifyChange(uri, null);
-						return affected;
+
+					if(match == UriMatcher.NO_MATCH) {
+						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
-					«ENDFOR»
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					«IF(tbl.hasAndroidPrimaryKey)»
-					case «tbl.name.underscore.toUpperCase»_ID: {
-						int affected = new SelectionQueryBuilder()
-						.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
-						.append(selection, selectionArgs)
-						.update(db, Tables.«tbl.name.underscore.toUpperCase», values);
 					
-						getContext().getContentResolver().notifyChange(uri, null);
-					
-						return affected;
-					}
-					«ENDIF»
-					«ENDFOR»
-				        default:
-				            throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
+					return createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
 				}
 			
 			    @Override
 			    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
 			            throws OperationApplicationException {
-			        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+			        final SQLiteDatabase db = getOpenHelper().getWritableDatabase();
 			        db.beginTransaction();
 			        try {
 			            final int numOperations = operations.size();

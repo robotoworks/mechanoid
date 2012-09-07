@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DatabaseBlockImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DatabaseBlockImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DatabaseBlockImpl#getMigrations <em>Migrations</em>}</li>
  * </ul>
  * </p>
@@ -57,6 +59,16 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getActions()
+   * @generated
+   * @ordered
+   */
+  protected ActionBlock actions;
 
   /**
    * The cached value of the '{@link #getMigrations() <em>Migrations</em>}' containment reference list.
@@ -117,6 +129,54 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
+  public ActionBlock getActions()
+  {
+    return actions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetActions(ActionBlock newActions, NotificationChain msgs)
+  {
+    ActionBlock oldActions = actions;
+    actions = newActions;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DATABASE_BLOCK__ACTIONS, oldActions, newActions);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setActions(ActionBlock newActions)
+  {
+    if (newActions != actions)
+    {
+      NotificationChain msgs = null;
+      if (actions != null)
+        msgs = ((InternalEObject)actions).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DATABASE_BLOCK__ACTIONS, null, msgs);
+      if (newActions != null)
+        msgs = ((InternalEObject)newActions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DATABASE_BLOCK__ACTIONS, null, msgs);
+      msgs = basicSetActions(newActions, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DATABASE_BLOCK__ACTIONS, newActions, newActions));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<MigrationBlock> getMigrations()
   {
     if (migrations == null)
@@ -136,6 +196,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
   {
     switch (featureID)
     {
+      case SqliteModelPackage.DATABASE_BLOCK__ACTIONS:
+        return basicSetActions(null, msgs);
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return ((InternalEList<?>)getMigrations()).basicRemove(otherEnd, msgs);
     }
@@ -154,6 +216,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
     {
       case SqliteModelPackage.DATABASE_BLOCK__NAME:
         return getName();
+      case SqliteModelPackage.DATABASE_BLOCK__ACTIONS:
+        return getActions();
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return getMigrations();
     }
@@ -173,6 +237,9 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
     {
       case SqliteModelPackage.DATABASE_BLOCK__NAME:
         setName((String)newValue);
+        return;
+      case SqliteModelPackage.DATABASE_BLOCK__ACTIONS:
+        setActions((ActionBlock)newValue);
         return;
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         getMigrations().clear();
@@ -195,6 +262,9 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
       case SqliteModelPackage.DATABASE_BLOCK__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case SqliteModelPackage.DATABASE_BLOCK__ACTIONS:
+        setActions((ActionBlock)null);
+        return;
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         getMigrations().clear();
         return;
@@ -214,6 +284,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
     {
       case SqliteModelPackage.DATABASE_BLOCK__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SqliteModelPackage.DATABASE_BLOCK__ACTIONS:
+        return actions != null;
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return migrations != null && !migrations.isEmpty();
     }

@@ -28,7 +28,7 @@ public class SqliteMigrationGenerator {
     _builder.append("package ");
     String _packageName = model.getPackageName();
     _builder.append(_packageName, "");
-    _builder.append(";");
+    _builder.append(".migrations;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import android.database.sqlite.SQLiteDatabase;");
@@ -103,13 +103,13 @@ public class SqliteMigrationGenerator {
     _builder.append("package ");
     String _packageName = model.getPackageName();
     _builder.append(_packageName, "");
-    _builder.append(";");
+    _builder.append(".migrations;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import ");
     String _packageName_1 = model.getPackageName();
     _builder.append(_packageName_1, "");
-    _builder.append(".Abstract");
+    _builder.append(".migrations.Abstract");
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);

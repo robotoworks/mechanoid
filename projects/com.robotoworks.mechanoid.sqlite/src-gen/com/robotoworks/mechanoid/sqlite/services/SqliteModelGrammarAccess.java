@@ -29,7 +29,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDatabaseDatabaseBlockParserRuleCall_2_0 = (RuleCall)cDatabaseAssignment_2.eContents().get(0);
 		
 		//Model:
-		//
 		//	"package" packageName=FQN database=DatabaseBlock;
 		public ParserRule getRule() { return rule; }
 
@@ -59,16 +58,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cMigrationsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cMigrationsMigrationBlockParserRuleCall_3_0 = (RuleCall)cMigrationsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cActionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cActionsActionBlockParserRuleCall_3_0 = (RuleCall)cActionsAssignment_3.eContents().get(0);
+		private final Assignment cMigrationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cMigrationsMigrationBlockParserRuleCall_4_0 = (RuleCall)cMigrationsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//DatabaseBlock:
-		//
-		//	"database" name=ID "{" migrations+=MigrationBlock* "}";
+		//	"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"database" name=ID "{" migrations+=MigrationBlock* "}"
+		//"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"database"
@@ -83,14 +83,84 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
+		//actions=ActionBlock?
+		public Assignment getActionsAssignment_3() { return cActionsAssignment_3; }
+
+		//ActionBlock
+		public RuleCall getActionsActionBlockParserRuleCall_3_0() { return cActionsActionBlockParserRuleCall_3_0; }
+
 		//migrations+=MigrationBlock*
-		public Assignment getMigrationsAssignment_3() { return cMigrationsAssignment_3; }
+		public Assignment getMigrationsAssignment_4() { return cMigrationsAssignment_4; }
 
 		//MigrationBlock
-		public RuleCall getMigrationsMigrationBlockParserRuleCall_3_0() { return cMigrationsMigrationBlockParserRuleCall_3_0; }
+		public RuleCall getMigrationsMigrationBlockParserRuleCall_4_0() { return cMigrationsMigrationBlockParserRuleCall_4_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class ActionBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ActionBlock");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionBlockAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cActionsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cActionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cActionsActionStatementParserRuleCall_3_0 = (RuleCall)cActionsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//ActionBlock:
+		//	{ActionBlock} "actions" "{" actions+=ActionStatement* "}";
+		public ParserRule getRule() { return rule; }
+
+		//{ActionBlock} "actions" "{" actions+=ActionStatement* "}"
+		public Group getGroup() { return cGroup; }
+
+		//{ActionBlock}
+		public Action getActionBlockAction_0() { return cActionBlockAction_0; }
+
+		//"actions"
+		public Keyword getActionsKeyword_1() { return cActionsKeyword_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//actions+=ActionStatement*
+		public Assignment getActionsAssignment_3() { return cActionsAssignment_3; }
+
+		//ActionStatement
+		public RuleCall getActionsActionStatementParserRuleCall_3_0() { return cActionsActionStatementParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class ActionStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ActionStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cPathAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPathSTRINGTerminalRuleCall_1_0 = (RuleCall)cPathAssignment_1.eContents().get(0);
+		
+		//ActionStatement:
+		//	name=ID path=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//name=ID path=STRING
+		public Group getGroup() { return cGroup; }
+
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+
+		//path=STRING
+		public Assignment getPathAssignment_1() { return cPathAssignment_1; }
+
+		//STRING
+		public RuleCall getPathSTRINGTerminalRuleCall_1_0() { return cPathSTRINGTerminalRuleCall_1_0; }
 	}
 
 	public class MigrationBlockElements extends AbstractParserRuleElementFinder {
@@ -110,7 +180,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MigrationBlock:
-		//
 		//	{MigrationBlock} "migration" "{" (statements+=Statment ";" (statements+=Statment ";")*)? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -169,7 +238,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// * Expressions
 		//
 		// * / Or returns Expression:
-		//
 		//	And ({OrExpr.left=current} "or" right=And)*;
 		public ParserRule getRule() { return rule; }
 
@@ -206,7 +274,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightPrimaryComparisonParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//And returns Expression:
-		//
 		//	PrimaryComparison ({AndExpr.left=current} "and" right=PrimaryComparison)*;
 		public ParserRule getRule() { return rule; }
 
@@ -244,7 +311,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightSecondaryComparisonParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//PrimaryComparison returns Expression:
-		//
 		//	SecondaryComparison ({PrimaryComparisonExpr.left=current} op=SecondaryComparisonOp right=SecondaryComparison)*;
 		public ParserRule getRule() { return rule; }
 
@@ -276,26 +342,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class SecondaryComparisonElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SecondaryComparison");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cDivisionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cSecondaryComparisonExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cOpPrimaryComparisonOpParserRuleCall_1_1_0 = (RuleCall)cOpAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightDivisionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//SecondaryComparison returns Expression:
-		//
-		//	PrimaryExpression ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=PrimaryExpression)*;
+		//	Division ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*;
 		public ParserRule getRule() { return rule; }
 
-		//PrimaryExpression ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=PrimaryExpression)*
+		//Division ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*
 		public Group getGroup() { return cGroup; }
 
-		//PrimaryExpression
-		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
+		//Division
+		public RuleCall getDivisionParserRuleCall_0() { return cDivisionParserRuleCall_0; }
 
-		//({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=PrimaryExpression)*
+		//({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{SecondaryComparisonExpr.left=current}
@@ -306,6 +371,150 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//PrimaryComparisonOp
 		public RuleCall getOpPrimaryComparisonOpParserRuleCall_1_1_0() { return cOpPrimaryComparisonOpParserRuleCall_1_1_0; }
+
+		//right=Division
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+
+		//Division
+		public RuleCall getRightDivisionParserRuleCall_1_2_0() { return cRightDivisionParserRuleCall_1_2_0; }
+	}
+
+	public class DivisionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Division");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cMultiplicationParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cDivisionExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cSolidusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightMultiplicationParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Division returns Expression:
+		//	Multiplication ({DivisionExpr.left=current} "/" right=Multiplication)*;
+		public ParserRule getRule() { return rule; }
+
+		//Multiplication ({DivisionExpr.left=current} "/" right=Multiplication)*
+		public Group getGroup() { return cGroup; }
+
+		//Multiplication
+		public RuleCall getMultiplicationParserRuleCall_0() { return cMultiplicationParserRuleCall_0; }
+
+		//({DivisionExpr.left=current} "/" right=Multiplication)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{DivisionExpr.left=current}
+		public Action getDivisionExprLeftAction_1_0() { return cDivisionExprLeftAction_1_0; }
+
+		//"/"
+		public Keyword getSolidusKeyword_1_1() { return cSolidusKeyword_1_1; }
+
+		//right=Multiplication
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+
+		//Multiplication
+		public RuleCall getRightMultiplicationParserRuleCall_1_2_0() { return cRightMultiplicationParserRuleCall_1_2_0; }
+	}
+
+	public class MultiplicationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Multiplication");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cAdditionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cMultiplicationExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightAdditionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Multiplication returns Expression:
+		//	Addition ({MultiplicationExpr.left=current} "*" right=Addition)*;
+		public ParserRule getRule() { return rule; }
+
+		//Addition ({MultiplicationExpr.left=current} "*" right=Addition)*
+		public Group getGroup() { return cGroup; }
+
+		//Addition
+		public RuleCall getAdditionParserRuleCall_0() { return cAdditionParserRuleCall_0; }
+
+		//({MultiplicationExpr.left=current} "*" right=Addition)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{MultiplicationExpr.left=current}
+		public Action getMultiplicationExprLeftAction_1_0() { return cMultiplicationExprLeftAction_1_0; }
+
+		//"*"
+		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
+
+		//right=Addition
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+
+		//Addition
+		public RuleCall getRightAdditionParserRuleCall_1_2_0() { return cRightAdditionParserRuleCall_1_2_0; }
+	}
+
+	public class AdditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Addition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cSubtractionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cAdditionExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cPlusSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightSubtractionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Addition returns Expression:
+		//	Subtraction ({AdditionExpr.left=current} "+" right=Subtraction)*;
+		public ParserRule getRule() { return rule; }
+
+		//Subtraction ({AdditionExpr.left=current} "+" right=Subtraction)*
+		public Group getGroup() { return cGroup; }
+
+		//Subtraction
+		public RuleCall getSubtractionParserRuleCall_0() { return cSubtractionParserRuleCall_0; }
+
+		//({AdditionExpr.left=current} "+" right=Subtraction)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{AdditionExpr.left=current}
+		public Action getAdditionExprLeftAction_1_0() { return cAdditionExprLeftAction_1_0; }
+
+		//"+"
+		public Keyword getPlusSignKeyword_1_1() { return cPlusSignKeyword_1_1; }
+
+		//right=Subtraction
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+
+		//Subtraction
+		public RuleCall getRightSubtractionParserRuleCall_1_2_0() { return cRightSubtractionParserRuleCall_1_2_0; }
+	}
+
+	public class SubtractionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Subtraction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cSubtractionExprLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Subtraction returns Expression:
+		//	PrimaryExpression ({SubtractionExpr.left=current} "-" right=PrimaryExpression)*;
+		public ParserRule getRule() { return rule; }
+
+		//PrimaryExpression ({SubtractionExpr.left=current} "-" right=PrimaryExpression)*
+		public Group getGroup() { return cGroup; }
+
+		//PrimaryExpression
+		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
+
+		//({SubtractionExpr.left=current} "-" right=PrimaryExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{SubtractionExpr.left=current}
+		public Action getSubtractionExprLeftAction_1_0() { return cSubtractionExprLeftAction_1_0; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_1_1() { return cHyphenMinusKeyword_1_1; }
 
 		//right=PrimaryExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -331,7 +540,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//PrimaryExpression returns Expression:
-		//
 		//	{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" Or ")";
 		public ParserRule getRule() { return rule; }
 
@@ -391,7 +599,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRegexpKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
 		
 		//PrimaryComparisonOp:
-		//
 		//	"=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" | "regexp";
 		public ParserRule getRule() { return rule; }
 
@@ -441,7 +648,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGreaterThanSignEqualsSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
 		//SecondaryComparisonOp:
-		//
 		//	"<" | "<=" | ">" | ">=";
 		public ParserRule getRule() { return rule; }
 
@@ -505,23 +711,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// * Statements
 		//
 		// * / Statment:
-		//
 		//	{CreateTableStatement} "create" "table" name=ID "(" columnDefs+=ColumnDef ("," columnDefs+=ColumnDef)* (","
-		//
 		//	constraints+=TableConstraint)* ")" | {AlterTableStatement} "alter" "table" name=ID clause=AlterTableClause |
-		//
 		//	{CreateViewStatement} "create" "view" name=ID "as" selectStatement=SelectStatement;
 		public ParserRule getRule() { return rule; }
 
 		//{CreateTableStatement} "create" "table" name=ID "(" columnDefs+=ColumnDef ("," columnDefs+=ColumnDef)* (","
-		//
 		//constraints+=TableConstraint)* ")" | {AlterTableStatement} "alter" "table" name=ID clause=AlterTableClause |
-		//
 		//{CreateViewStatement} "create" "view" name=ID "as" selectStatement=SelectStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{CreateTableStatement} "create" "table" name=ID "(" columnDefs+=ColumnDef ("," columnDefs+=ColumnDef)* (","
-		//
 		//constraints+=TableConstraint)* ")"
 		public Group getGroup_0() { return cGroup_0; }
 
@@ -634,7 +834,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
 		//TableDecl:
-		//
 		//	name=ID;
 		public ParserRule getRule() { return rule; }
 
@@ -660,7 +859,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cColumnDefColumnDefParserRuleCall_1_2_0 = (RuleCall)cColumnDefAssignment_1_2.eContents().get(0);
 		
 		//AlterTableClause:
-		//
 		//	{AlterTableRenameClause} "rename to" name=ID | {AlterTableAddColumnClause} "add column" columnDef=ColumnDef;
 		public ParserRule getRule() { return rule; }
 
@@ -709,7 +907,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstraintsColumnConstraintParserRuleCall_2_0 = (RuleCall)cConstraintsAssignment_2.eContents().get(0);
 		
 		//ColumnDef:
-		//
 		//	name=ID type=ColumnType constraints+=ColumnConstraint*;
 		public ParserRule getRule() { return rule; }
 
@@ -762,18 +959,13 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueDefaultValueParserRuleCall_2_2_0 = (RuleCall)cDefaultValueAssignment_2_2.eContents().get(0);
 		
 		//ColumnConstraint:
-		//
 		//	{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-		//
 		//	{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
-		//
 		//	defaultValue=DefaultValue;
 		public ParserRule getRule() { return rule; }
 
 		//{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-		//
 		//{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
-		//
 		//defaultValue=DefaultValue
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -859,7 +1051,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		
 		//DefaultValue:
-		//
 		//	{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=Or ")";
 		public ParserRule getRule() { return rule; }
 
@@ -902,7 +1093,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUniqueTableContraintParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		/// * | PrimaryKeyTableConstraint* / TableConstraint:
-		//
 		//	UniqueTableContraint;
 		public ParserRule getRule() { return rule; }
 
@@ -926,7 +1116,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConflictClauseConflictClauseParserRuleCall_5_0 = (RuleCall)cConflictClauseAssignment_5.eContents().get(0);
 		
 		//UniqueTableContraint:
-		//
 		//	"unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")" conflictClause=ConflictClause;
 		public ParserRule getRule() { return rule; }
 
@@ -984,7 +1173,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		////;
 		//
 		//IndexedColumn:
-		//
 		//	name=[ColumnDef] (asc?="asc" | desc?="desc")?;
 		public ParserRule getRule() { return rule; }
 
@@ -1022,7 +1210,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCoreSelectCoreParserRuleCall_0 = (RuleCall)cCoreAssignment.eContents().get(0);
 		
 		//SelectStatement:
-		//
 		//	core=SelectCore;
 		public ParserRule getRule() { return rule; }
 
@@ -1054,14 +1241,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSourceJoinSourceParserRuleCall_4_1_0 = (RuleCall)cSourceAssignment_4_1.eContents().get(0);
 		
 		//SelectCore:
-		//
 		//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-		//
 		//	source=JoinSource)?;
 		public ParserRule getRule() { return rule; }
 
 		//"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-		//
 		//source=JoinSource)?
 		public Group getGroup() { return cGroup; }
 
@@ -1123,7 +1307,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cJoinStatementsJoinStatementParserRuleCall_1_0 = (RuleCall)cJoinStatementsAssignment_1.eContents().get(0);
 		
 		//JoinSource:
-		//
 		//	source=SingleSource joinStatements+=JoinStatement*;
 		public ParserRule getRule() { return rule; }
 
@@ -1168,14 +1351,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		
 		//SingleSource:
-		//
 		//	{SingleSourceTable} tableName=ID ("as" name=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement
-		//
 		//	")" | {SingleSourceJoin} "(" joinSource=JoinSource ")";
 		public ParserRule getRule() { return rule; }
 
 		//{SingleSourceTable} tableName=ID ("as" name=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")"
-		//
 		//| {SingleSourceJoin} "(" joinSource=JoinSource ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -1264,14 +1444,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionOrParserRuleCall_6_0 = (RuleCall)cExpressionAssignment_6.eContents().get(0);
 		
 		//JoinStatement:
-		//
 		//	{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
-		//
 		//	singleSource=SingleSource "on" expression=Or;
 		public ParserRule getRule() { return rule; }
 
 		//{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
-		//
 		//singleSource=SingleSource "on" expression=Or
 		public Group getGroup() { return cGroup; }
 
@@ -1355,14 +1532,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_2_2_1_0 = (RuleCall)cNameAssignment_2_2_1.eContents().get(0);
 		
 		//ResultColumn:
-		//
 		//	{ResultColumnAll} "*" | {ResultColumnAllWithTableRef} tableRef=ID "." "*" | {ResultColumnExpression} expression=Or
-		//
 		//	("as" name=ID)?;
 		public ParserRule getRule() { return rule; }
 
 		//{ResultColumnAll} "*" | {ResultColumnAllWithTableRef} tableRef=ID "." "*" | {ResultColumnExpression} expression=Or ("as"
-		//
 		//name=ID)?
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -1427,7 +1601,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cResolutionConflictResolutionEnumRuleCall_2_0 = (RuleCall)cResolutionAssignment_2.eContents().get(0);
 		
 		//ConflictClause:
-		//
 		//	"on" "conflict" resolution=ConflictResolution;
 		public ParserRule getRule() { return rule; }
 
@@ -1476,18 +1649,13 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLiteralCurrent_time_stampKeyword_5_1_0 = (Keyword)cLiteralAssignment_5_1.eContents().get(0);
 		
 		//LiteralValue:
-		//
 		//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
-		//
 		//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-		//
 		//	literal="current_time_stamp";
 		public ParserRule getRule() { return rule; }
 
 		//{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
-		//
 		//{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-		//
 		//literal="current_time_stamp"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -1571,7 +1739,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNUMBERTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
 		//SignedNumber returns ecore::EBigDecimal:
-		//
 		//	"-"? NUMBER;
 		public ParserRule getRule() { return rule; }
 
@@ -1593,136 +1760,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		////LiteralValue:
-		//
-		////	NumericLiteral | StringLiteral | NullLiteral | CurrentTimeLiteral | CurrentDateLiteral | CurrentTimestampLiteral;
-		//
-		////
-		//
-		////NumericLiteral:
-		//
-		////	wholePart=INT ('.' fraction=INT)?;
-		//
-		////
-		//
-		////StringLiteral:
-		//
-		////	literal=STRING;
-		//
-		////
-		//
-		////NullLiteral:
-		//
-		////	literal='null';
-		//
-		////
-		//
-		////CurrentTimeLiteral:
-		//
-		////	literal='current_time';
-		//
-		////
-		//
-		////CurrentDateLiteral:
-		//
-		////	literal='current_date';
-		//
-		////
-		//
-		////CurrentTimestampLiteral:
-		//
-		////	literal='current_timestamp';
-		//
 		//FQN:
-		//
 		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)* //LiteralValue:
-		//
-		////	NumericLiteral | StringLiteral | NullLiteral | CurrentTimeLiteral | CurrentDateLiteral | CurrentTimestampLiteral;
-		//
-		////
-		//
-		////NumericLiteral:
-		//
-		////	wholePart=INT ('.' fraction=INT)?;
-		//
-		////
-		//
-		////StringLiteral:
-		//
-		////	literal=STRING;
-		//
-		////
-		//
-		////NullLiteral:
-		//
-		////	literal='null';
-		//
-		////
-		//
-		////CurrentTimeLiteral:
-		//
-		////	literal='current_time';
-		//
-		////
-		//
-		////CurrentDateLiteral:
-		//
-		////	literal='current_date';
-		//
-		////
-		//
-		////CurrentTimestampLiteral:
-		//
-		////	literal='current_timestamp';
+		//ID ("." ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID //LiteralValue:
-		//
-		////	NumericLiteral | StringLiteral | NullLiteral | CurrentTimeLiteral | CurrentDateLiteral | CurrentTimestampLiteral;
-		//
-		////
-		//
-		////NumericLiteral:
-		//
-		////	wholePart=INT ('.' fraction=INT)?;
-		//
-		////
-		//
-		////StringLiteral:
-		//
-		////	literal=STRING;
-		//
-		////
-		//
-		////NullLiteral:
-		//
-		////	literal='null';
-		//
-		////
-		//
-		////CurrentTimeLiteral:
-		//
-		////	literal='current_time';
-		//
-		////
-		//
-		////CurrentDateLiteral:
-		//
-		////	literal='current_date';
-		//
-		////
-		//
-		////CurrentTimestampLiteral:
-		//
-		////	literal='current_timestamp';
-		//
-		//)*
+		//("." ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//"."
@@ -1746,7 +1794,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBlobBlobKeyword_3_0 = (Keyword)cBlobEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum ColumnType:
-		//
 		//	text | integer | real | blob;
 		public EnumRule getRule() { return rule; }
 
@@ -1793,7 +1840,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cReplaceReplaceKeyword_4_0 = (Keyword)cReplaceEnumLiteralDeclaration_4.eContents().get(0);
 		
 		//enum ConflictResolution:
-		//
 		//	rollback | abort | fail | ignore | replace;
 		public EnumRule getRule() { return rule; }
 
@@ -1833,11 +1879,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private ModelElements pModel;
 	private DatabaseBlockElements pDatabaseBlock;
+	private ActionBlockElements pActionBlock;
+	private ActionStatementElements pActionStatement;
 	private MigrationBlockElements pMigrationBlock;
 	private OrElements pOr;
 	private AndElements pAnd;
 	private PrimaryComparisonElements pPrimaryComparison;
 	private SecondaryComparisonElements pSecondaryComparison;
+	private DivisionElements pDivision;
+	private MultiplicationElements pMultiplication;
+	private AdditionElements pAddition;
+	private SubtractionElements pSubtraction;
 	private PrimaryExpressionElements pPrimaryExpression;
 	private PrimaryComparisonOpElements pPrimaryComparisonOp;
 	private SecondaryComparisonOpElements pSecondaryComparisonOp;
@@ -1905,7 +1957,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//
 	//	"package" packageName=FQN database=DatabaseBlock;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
@@ -1916,8 +1967,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DatabaseBlock:
-	//
-	//	"database" name=ID "{" migrations+=MigrationBlock* "}";
+	//	"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}";
 	public DatabaseBlockElements getDatabaseBlockAccess() {
 		return (pDatabaseBlock != null) ? pDatabaseBlock : (pDatabaseBlock = new DatabaseBlockElements());
 	}
@@ -1926,8 +1976,27 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDatabaseBlockAccess().getRule();
 	}
 
+	//ActionBlock:
+	//	{ActionBlock} "actions" "{" actions+=ActionStatement* "}";
+	public ActionBlockElements getActionBlockAccess() {
+		return (pActionBlock != null) ? pActionBlock : (pActionBlock = new ActionBlockElements());
+	}
+	
+	public ParserRule getActionBlockRule() {
+		return getActionBlockAccess().getRule();
+	}
+
+	//ActionStatement:
+	//	name=ID path=STRING;
+	public ActionStatementElements getActionStatementAccess() {
+		return (pActionStatement != null) ? pActionStatement : (pActionStatement = new ActionStatementElements());
+	}
+	
+	public ParserRule getActionStatementRule() {
+		return getActionStatementAccess().getRule();
+	}
+
 	//MigrationBlock:
-	//
 	//	{MigrationBlock} "migration" "{" (statements+=Statment ";" (statements+=Statment ";")*)? "}";
 	public MigrationBlockElements getMigrationBlockAccess() {
 		return (pMigrationBlock != null) ? pMigrationBlock : (pMigrationBlock = new MigrationBlockElements());
@@ -1942,7 +2011,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// * Expressions
 	//
 	// * / Or returns Expression:
-	//
 	//	And ({OrExpr.left=current} "or" right=And)*;
 	public OrElements getOrAccess() {
 		return (pOr != null) ? pOr : (pOr = new OrElements());
@@ -1953,7 +2021,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//And returns Expression:
-	//
 	//	PrimaryComparison ({AndExpr.left=current} "and" right=PrimaryComparison)*;
 	public AndElements getAndAccess() {
 		return (pAnd != null) ? pAnd : (pAnd = new AndElements());
@@ -1964,7 +2031,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PrimaryComparison returns Expression:
-	//
 	//	SecondaryComparison ({PrimaryComparisonExpr.left=current} op=SecondaryComparisonOp right=SecondaryComparison)*;
 	public PrimaryComparisonElements getPrimaryComparisonAccess() {
 		return (pPrimaryComparison != null) ? pPrimaryComparison : (pPrimaryComparison = new PrimaryComparisonElements());
@@ -1975,8 +2041,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SecondaryComparison returns Expression:
-	//
-	//	PrimaryExpression ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=PrimaryExpression)*;
+	//	Division ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*;
 	public SecondaryComparisonElements getSecondaryComparisonAccess() {
 		return (pSecondaryComparison != null) ? pSecondaryComparison : (pSecondaryComparison = new SecondaryComparisonElements());
 	}
@@ -1985,8 +2050,47 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSecondaryComparisonAccess().getRule();
 	}
 
+	//Division returns Expression:
+	//	Multiplication ({DivisionExpr.left=current} "/" right=Multiplication)*;
+	public DivisionElements getDivisionAccess() {
+		return (pDivision != null) ? pDivision : (pDivision = new DivisionElements());
+	}
+	
+	public ParserRule getDivisionRule() {
+		return getDivisionAccess().getRule();
+	}
+
+	//Multiplication returns Expression:
+	//	Addition ({MultiplicationExpr.left=current} "*" right=Addition)*;
+	public MultiplicationElements getMultiplicationAccess() {
+		return (pMultiplication != null) ? pMultiplication : (pMultiplication = new MultiplicationElements());
+	}
+	
+	public ParserRule getMultiplicationRule() {
+		return getMultiplicationAccess().getRule();
+	}
+
+	//Addition returns Expression:
+	//	Subtraction ({AdditionExpr.left=current} "+" right=Subtraction)*;
+	public AdditionElements getAdditionAccess() {
+		return (pAddition != null) ? pAddition : (pAddition = new AdditionElements());
+	}
+	
+	public ParserRule getAdditionRule() {
+		return getAdditionAccess().getRule();
+	}
+
+	//Subtraction returns Expression:
+	//	PrimaryExpression ({SubtractionExpr.left=current} "-" right=PrimaryExpression)*;
+	public SubtractionElements getSubtractionAccess() {
+		return (pSubtraction != null) ? pSubtraction : (pSubtraction = new SubtractionElements());
+	}
+	
+	public ParserRule getSubtractionRule() {
+		return getSubtractionAccess().getRule();
+	}
+
 	//PrimaryExpression returns Expression:
-	//
 	//	{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" Or ")";
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
@@ -1997,7 +2101,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PrimaryComparisonOp:
-	//
 	//	"=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" | "regexp";
 	public PrimaryComparisonOpElements getPrimaryComparisonOpAccess() {
 		return (pPrimaryComparisonOp != null) ? pPrimaryComparisonOp : (pPrimaryComparisonOp = new PrimaryComparisonOpElements());
@@ -2008,7 +2111,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SecondaryComparisonOp:
-	//
 	//	"<" | "<=" | ">" | ">=";
 	public SecondaryComparisonOpElements getSecondaryComparisonOpAccess() {
 		return (pSecondaryComparisonOp != null) ? pSecondaryComparisonOp : (pSecondaryComparisonOp = new SecondaryComparisonOpElements());
@@ -2023,11 +2125,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// * Statements
 	//
 	// * / Statment:
-	//
 	//	{CreateTableStatement} "create" "table" name=ID "(" columnDefs+=ColumnDef ("," columnDefs+=ColumnDef)* (","
-	//
 	//	constraints+=TableConstraint)* ")" | {AlterTableStatement} "alter" "table" name=ID clause=AlterTableClause |
-	//
 	//	{CreateViewStatement} "create" "view" name=ID "as" selectStatement=SelectStatement;
 	public StatmentElements getStatmentAccess() {
 		return (pStatment != null) ? pStatment : (pStatment = new StatmentElements());
@@ -2038,7 +2137,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TableDecl:
-	//
 	//	name=ID;
 	public TableDeclElements getTableDeclAccess() {
 		return (pTableDecl != null) ? pTableDecl : (pTableDecl = new TableDeclElements());
@@ -2049,7 +2147,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AlterTableClause:
-	//
 	//	{AlterTableRenameClause} "rename to" name=ID | {AlterTableAddColumnClause} "add column" columnDef=ColumnDef;
 	public AlterTableClauseElements getAlterTableClauseAccess() {
 		return (pAlterTableClause != null) ? pAlterTableClause : (pAlterTableClause = new AlterTableClauseElements());
@@ -2060,7 +2157,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ColumnDef:
-	//
 	//	name=ID type=ColumnType constraints+=ColumnConstraint*;
 	public ColumnDefElements getColumnDefAccess() {
 		return (pColumnDef != null) ? pColumnDef : (pColumnDef = new ColumnDefElements());
@@ -2071,11 +2167,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ColumnConstraint:
-	//
 	//	{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-	//
 	//	{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
-	//
 	//	defaultValue=DefaultValue;
 	public ColumnConstraintElements getColumnConstraintAccess() {
 		return (pColumnConstraint != null) ? pColumnConstraint : (pColumnConstraint = new ColumnConstraintElements());
@@ -2086,7 +2179,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DefaultValue:
-	//
 	//	{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=Or ")";
 	public DefaultValueElements getDefaultValueAccess() {
 		return (pDefaultValue != null) ? pDefaultValue : (pDefaultValue = new DefaultValueElements());
@@ -2097,7 +2189,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	/// * | PrimaryKeyTableConstraint* / TableConstraint:
-	//
 	//	UniqueTableContraint;
 	public TableConstraintElements getTableConstraintAccess() {
 		return (pTableConstraint != null) ? pTableConstraint : (pTableConstraint = new TableConstraintElements());
@@ -2108,7 +2199,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UniqueTableContraint:
-	//
 	//	"unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")" conflictClause=ConflictClause;
 	public UniqueTableContraintElements getUniqueTableContraintAccess() {
 		return (pUniqueTableContraint != null) ? pUniqueTableContraint : (pUniqueTableContraint = new UniqueTableContraintElements());
@@ -2123,7 +2213,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	////;
 	//
 	//IndexedColumn:
-	//
 	//	name=[ColumnDef] (asc?="asc" | desc?="desc")?;
 	public IndexedColumnElements getIndexedColumnAccess() {
 		return (pIndexedColumn != null) ? pIndexedColumn : (pIndexedColumn = new IndexedColumnElements());
@@ -2134,7 +2223,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum ColumnType:
-	//
 	//	text | integer | real | blob;
 	public ColumnTypeElements getColumnTypeAccess() {
 		return (unknownRuleColumnType != null) ? unknownRuleColumnType : (unknownRuleColumnType = new ColumnTypeElements());
@@ -2145,7 +2233,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum ConflictResolution:
-	//
 	//	rollback | abort | fail | ignore | replace;
 	public ConflictResolutionElements getConflictResolutionAccess() {
 		return (unknownRuleConflictResolution != null) ? unknownRuleConflictResolution : (unknownRuleConflictResolution = new ConflictResolutionElements());
@@ -2156,7 +2243,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SelectStatement:
-	//
 	//	core=SelectCore;
 	public SelectStatementElements getSelectStatementAccess() {
 		return (pSelectStatement != null) ? pSelectStatement : (pSelectStatement = new SelectStatementElements());
@@ -2167,9 +2253,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SelectCore:
-	//
 	//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-	//
 	//	source=JoinSource)?;
 	public SelectCoreElements getSelectCoreAccess() {
 		return (pSelectCore != null) ? pSelectCore : (pSelectCore = new SelectCoreElements());
@@ -2180,7 +2264,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JoinSource:
-	//
 	//	source=SingleSource joinStatements+=JoinStatement*;
 	public JoinSourceElements getJoinSourceAccess() {
 		return (pJoinSource != null) ? pJoinSource : (pJoinSource = new JoinSourceElements());
@@ -2191,9 +2274,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SingleSource:
-	//
 	//	{SingleSourceTable} tableName=ID ("as" name=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement
-	//
 	//	")" | {SingleSourceJoin} "(" joinSource=JoinSource ")";
 	public SingleSourceElements getSingleSourceAccess() {
 		return (pSingleSource != null) ? pSingleSource : (pSingleSource = new SingleSourceElements());
@@ -2204,9 +2285,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JoinStatement:
-	//
 	//	{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
-	//
 	//	singleSource=SingleSource "on" expression=Or;
 	public JoinStatementElements getJoinStatementAccess() {
 		return (pJoinStatement != null) ? pJoinStatement : (pJoinStatement = new JoinStatementElements());
@@ -2217,9 +2296,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ResultColumn:
-	//
 	//	{ResultColumnAll} "*" | {ResultColumnAllWithTableRef} tableRef=ID "." "*" | {ResultColumnExpression} expression=Or
-	//
 	//	("as" name=ID)?;
 	public ResultColumnElements getResultColumnAccess() {
 		return (pResultColumn != null) ? pResultColumn : (pResultColumn = new ResultColumnElements());
@@ -2230,7 +2307,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConflictClause:
-	//
 	//	"on" "conflict" resolution=ConflictResolution;
 	public ConflictClauseElements getConflictClauseAccess() {
 		return (pConflictClause != null) ? pConflictClause : (pConflictClause = new ConflictClauseElements());
@@ -2241,11 +2317,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LiteralValue:
-	//
 	//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
-	//
 	//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-	//
 	//	literal="current_time_stamp";
 	public LiteralValueElements getLiteralValueAccess() {
 		return (pLiteralValue != null) ? pLiteralValue : (pLiteralValue = new LiteralValueElements());
@@ -2256,7 +2329,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SignedNumber returns ecore::EBigDecimal:
-	//
 	//	"-"? NUMBER;
 	public SignedNumberElements getSignedNumberAccess() {
 		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
@@ -2267,68 +2339,24 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal NUMBER returns ecore::EBigDecimal:
-	//
 	//	"0".."9"* ("." "0".."9"+)?;
 	public TerminalRule getNUMBERRule() {
 		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//
 	//	"$$$don\'t use this anymore$$$";
 	public TerminalRule getINTRule() {
 		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
 	} 
 
 	//terminal STRING:
-	//
 	//	"\'" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
 	} 
 
-	////LiteralValue:
-	//
-	////	NumericLiteral | StringLiteral | NullLiteral | CurrentTimeLiteral | CurrentDateLiteral | CurrentTimestampLiteral;
-	//
-	////
-	//
-	////NumericLiteral:
-	//
-	////	wholePart=INT ('.' fraction=INT)?;
-	//
-	////
-	//
-	////StringLiteral:
-	//
-	////	literal=STRING;
-	//
-	////
-	//
-	////NullLiteral:
-	//
-	////	literal='null';
-	//
-	////
-	//
-	////CurrentTimeLiteral:
-	//
-	////	literal='current_time';
-	//
-	////
-	//
-	////CurrentDateLiteral:
-	//
-	////	literal='current_date';
-	//
-	////
-	//
-	////CurrentTimestampLiteral:
-	//
-	////	literal='current_timestamp';
-	//
 	//FQN:
-	//
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
 		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
@@ -2339,35 +2367,30 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//
 	//	"/ *"->"* /";
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
-	//
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
 		return gaTerminals.getANY_OTHERRule();

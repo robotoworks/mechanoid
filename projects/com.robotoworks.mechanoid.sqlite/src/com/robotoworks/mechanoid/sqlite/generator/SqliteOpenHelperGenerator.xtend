@@ -24,6 +24,12 @@ class SqliteOpenHelperGenerator {
 				import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 				import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
 				
+				«IF model.database.migrations.size > 1»
+				«var version = 1»
+				«FOR migration : model.database.migrations.drop(1)»
+				import «model.packageName».migrations.«model.database.name.pascalize»MigrationV«version=version+1»;
+				«ENDFOR»
+				«ENDIF»
 				
 				public abstract class Abstract«model.database.name.pascalize()»OpenHelper extends MechanoidSQLiteOpenHelper {
 					public static final String DATABASE_NAME = "«model.database.name».db";
@@ -68,7 +74,7 @@ class SqliteOpenHelperGenerator {
 						«var version = 1»
 						switch(version) {
 							«FOR migration : model.database.migrations.drop(1)»
-							case «version = version + 1»:
+							case «version=version+1»:
 								return new «model.database.name.pascalize»MigrationV«version»();
 							«ENDFOR»
 							default:

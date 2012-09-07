@@ -41,6 +41,24 @@ public interface SqliteModelFactory extends EFactory
   DatabaseBlock createDatabaseBlock();
 
   /**
+   * Returns a new object of class '<em>Action Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Block</em>'.
+   * @generated
+   */
+  ActionBlock createActionBlock();
+
+  /**
+   * Returns a new object of class '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Statement</em>'.
+   * @generated
+   */
+  ActionStatement createActionStatement();
+
+  /**
    * Returns a new object of class '<em>Migration Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -246,6 +264,42 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   SecondaryComparisonExpr createSecondaryComparisonExpr();
+
+  /**
+   * Returns a new object of class '<em>Division Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Division Expr</em>'.
+   * @generated
+   */
+  DivisionExpr createDivisionExpr();
+
+  /**
+   * Returns a new object of class '<em>Multiplication Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplication Expr</em>'.
+   * @generated
+   */
+  MultiplicationExpr createMultiplicationExpr();
+
+  /**
+   * Returns a new object of class '<em>Addition Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Addition Expr</em>'.
+   * @generated
+   */
+  AdditionExpr createAdditionExpr();
+
+  /**
+   * Returns a new object of class '<em>Subtraction Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subtraction Expr</em>'.
+   * @generated
+   */
+  SubtractionExpr createSubtractionExpr();
 
   /**
    * Returns a new object of class '<em>Column Literal</em>'.

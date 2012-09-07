@@ -37,7 +37,7 @@ class ResponseGenerator {
 		context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")
 		context.registerImport("com.robotoworks.mechanoid.net.TransformException")
 		context.registerImport("java.io.InputStream")
-		context.registerImport("com.dataclarity.dashinsight.util.Closeables")
+		context.registerImport("com.robotoworks.mechanoid.util.Closeables")
 	}
 	
 	def generate(HttpMethod method, Model module, Client client) '''

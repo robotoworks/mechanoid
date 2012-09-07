@@ -55,6 +55,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConflictResolutionAccess().getAlternatives(), "rule__ConflictResolution__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getDatabaseBlockAccess().getGroup(), "rule__DatabaseBlock__Group__0");
+					put(grammarAccess.getActionBlockAccess().getGroup(), "rule__ActionBlock__Group__0");
+					put(grammarAccess.getActionStatementAccess().getGroup(), "rule__ActionStatement__Group__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup(), "rule__MigrationBlock__Group__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup_3(), "rule__MigrationBlock__Group_3__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup_3_2(), "rule__MigrationBlock__Group_3_2__0");
@@ -66,6 +68,14 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryComparisonAccess().getGroup_1(), "rule__PrimaryComparison__Group_1__0");
 					put(grammarAccess.getSecondaryComparisonAccess().getGroup(), "rule__SecondaryComparison__Group__0");
 					put(grammarAccess.getSecondaryComparisonAccess().getGroup_1(), "rule__SecondaryComparison__Group_1__0");
+					put(grammarAccess.getDivisionAccess().getGroup(), "rule__Division__Group__0");
+					put(grammarAccess.getDivisionAccess().getGroup_1(), "rule__Division__Group_1__0");
+					put(grammarAccess.getMultiplicationAccess().getGroup(), "rule__Multiplication__Group__0");
+					put(grammarAccess.getMultiplicationAccess().getGroup_1(), "rule__Multiplication__Group_1__0");
+					put(grammarAccess.getAdditionAccess().getGroup(), "rule__Addition__Group__0");
+					put(grammarAccess.getAdditionAccess().getGroup_1(), "rule__Addition__Group_1__0");
+					put(grammarAccess.getSubtractionAccess().getGroup(), "rule__Subtraction__Group__0");
+					put(grammarAccess.getSubtractionAccess().getGroup_1(), "rule__Subtraction__Group_1__0");
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_0(), "rule__PrimaryExpression__Group_0__0");
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_1(), "rule__PrimaryExpression__Group_1__0");
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_2(), "rule__PrimaryExpression__Group_2__0");
@@ -112,7 +122,11 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getDatabaseAssignment_2(), "rule__Model__DatabaseAssignment_2");
 					put(grammarAccess.getDatabaseBlockAccess().getNameAssignment_1(), "rule__DatabaseBlock__NameAssignment_1");
-					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_3(), "rule__DatabaseBlock__MigrationsAssignment_3");
+					put(grammarAccess.getDatabaseBlockAccess().getActionsAssignment_3(), "rule__DatabaseBlock__ActionsAssignment_3");
+					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4(), "rule__DatabaseBlock__MigrationsAssignment_4");
+					put(grammarAccess.getActionBlockAccess().getActionsAssignment_3(), "rule__ActionBlock__ActionsAssignment_3");
+					put(grammarAccess.getActionStatementAccess().getNameAssignment_0(), "rule__ActionStatement__NameAssignment_0");
+					put(grammarAccess.getActionStatementAccess().getPathAssignment_1(), "rule__ActionStatement__PathAssignment_1");
 					put(grammarAccess.getMigrationBlockAccess().getStatementsAssignment_3_0(), "rule__MigrationBlock__StatementsAssignment_3_0");
 					put(grammarAccess.getMigrationBlockAccess().getStatementsAssignment_3_2_0(), "rule__MigrationBlock__StatementsAssignment_3_2_0");
 					put(grammarAccess.getOrAccess().getRightAssignment_1_2(), "rule__Or__RightAssignment_1_2");
@@ -121,6 +135,10 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryComparisonAccess().getRightAssignment_1_2(), "rule__PrimaryComparison__RightAssignment_1_2");
 					put(grammarAccess.getSecondaryComparisonAccess().getOpAssignment_1_1(), "rule__SecondaryComparison__OpAssignment_1_1");
 					put(grammarAccess.getSecondaryComparisonAccess().getRightAssignment_1_2(), "rule__SecondaryComparison__RightAssignment_1_2");
+					put(grammarAccess.getDivisionAccess().getRightAssignment_1_2(), "rule__Division__RightAssignment_1_2");
+					put(grammarAccess.getMultiplicationAccess().getRightAssignment_1_2(), "rule__Multiplication__RightAssignment_1_2");
+					put(grammarAccess.getAdditionAccess().getRightAssignment_1_2(), "rule__Addition__RightAssignment_1_2");
+					put(grammarAccess.getSubtractionAccess().getRightAssignment_1_2(), "rule__Subtraction__RightAssignment_1_2");
 					put(grammarAccess.getPrimaryExpressionAccess().getNameAssignment_0_1(), "rule__PrimaryExpression__NameAssignment_0_1");
 					put(grammarAccess.getPrimaryExpressionAccess().getLiteralValueAssignment_1_1(), "rule__PrimaryExpression__LiteralValueAssignment_1_1");
 					put(grammarAccess.getStatmentAccess().getNameAssignment_0_3(), "rule__Statment__NameAssignment_0_3");

@@ -17,16 +17,16 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class SelectionQueryBuilder {
 	public interface Op {
-		public String EQ = " = ";
-		public String NEQ = " != ";
-		public String GT = " > ";
-		public String LT = " < ";
-		public String GTEQ = " >= ";
-		public String LTEQ = " <= ";
-		public String LIKE = " LIKE ";
-		public String IS = " IS ";
-		public String ISNOT = " IS NOT ";
-		public String REGEXP = " REGEXP ";
+		String EQ = " = ";
+		String NEQ = " != ";
+		String GT = " > ";
+		String LT = " < ";
+		String GTEQ = " >= ";
+		String LTEQ = " <= ";
+		String LIKE = " LIKE ";
+		String IS = " IS ";
+		String ISNOT = " IS NOT ";
+		String REGEXP = " REGEXP ";
 	}
 	
 	private static final String AND = " AND ";
@@ -42,7 +42,7 @@ public class SelectionQueryBuilder {
 	}
 	
 	public String[] getArgsArray() {
-		return mArgs.toArray(new String[0]);
+		return mArgs.toArray(new String[mArgs.size()]);
 	}
 	
 	public SelectionQueryBuilder() {
