@@ -49,6 +49,10 @@ class ContentProviderGenerator {
 			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
+			
+			«FOR a : model.database.actions.actions»
+			import «model.packageName».actions.«a.name.pascalize»Actions;
+			«ENDFOR»
 					
 			public abstract class Abstract«model.database.name.pascalize»ContentProvider extends MechanoidContentProvider {
 			
@@ -69,6 +73,10 @@ class ContentProviderGenerator {
 				«IF vw.hasAndroidPrimaryKey»
 				private static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»				
+				«ENDFOR»
+				
+				«FOR a : model.database.actions.actions»
+				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
@@ -105,6 +113,10 @@ class ContentProviderGenerator {
 					sActions[«vw.name.underscore.toUpperCase»_ID] = «vw.name.pascalize»ByIdActions.class;
 					«ENDIF»
 					«ENDFOR»
+					
+					«FOR a : model.database.actions.actions»
+					sActions[«a.name.underscore.toUpperCase»] = «a.name.pascalize»Actions.class;
+					«ENDFOR»
 
 					
 				}
@@ -128,7 +140,12 @@ class ContentProviderGenerator {
 					matcher.addURI(authority, "«vw.name»/#", «vw.name.underscore.toUpperCase»_ID);
 					«ENDIF»
 					«ENDFOR»
-			
+
+					// User Actions
+					«FOR a : model.database.actions.actions»
+					matcher.addURI(authority, "«a.path»", «a.name.underscore.toUpperCase»); 
+					«ENDFOR»
+								
 			        return matcher;
 			    }
 			

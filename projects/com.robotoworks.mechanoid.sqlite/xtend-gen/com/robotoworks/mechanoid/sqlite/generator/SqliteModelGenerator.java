@@ -11,6 +11,8 @@ import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshotBuilder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteOpenHelperGenerator;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
@@ -119,8 +121,17 @@ public class SqliteModelGenerator implements IGenerator {
       };
     IterableExtensions.<CreateViewStatement>forEach(_filter_1, _function_1);
     DatabaseBlock _database_6 = model.getDatabase();
-    EList<MigrationBlock> _migrations_1 = _database_6.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_2 = new Procedure2<MigrationBlock,Integer>() {
+    ActionBlock _actions = _database_6.getActions();
+    EList<ActionStatement> _actions_1 = _actions.getActions();
+    final Procedure1<ActionStatement> _function_2 = new Procedure1<ActionStatement>() {
+        public void apply(final ActionStatement item) {
+          SqliteModelGenerator.this.generateAction(resource, fsa, item);
+        }
+      };
+    IterableExtensions.<ActionStatement>forEach(_actions_1, _function_2);
+    DatabaseBlock _database_7 = model.getDatabase();
+    EList<MigrationBlock> _migrations_1 = _database_7.getMigrations();
+    final Procedure2<MigrationBlock,Integer> _function_3 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -129,7 +140,31 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_2);
+    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_3);
+  }
+  
+  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final ActionStatement action) {
+    EList<EObject> _contents = resource.getContents();
+    EObject _head = IterableExtensions.<EObject>head(_contents);
+    final Model model = ((Model) _head);
+    String _packageName = model.getPackageName();
+    String _concat = _packageName.concat(".actions");
+    String _name = action.getName();
+    String _pascalize = Strings.pascalize(_name);
+    String _concat_1 = "Abstract".concat(_pascalize);
+    String _concat_2 = _concat_1.concat("Actions");
+    String genFileName = Strings.resolveFileName(_concat, _concat_2);
+    String _packageName_1 = model.getPackageName();
+    String _concat_3 = _packageName_1.concat(".actions");
+    String _name_1 = action.getName();
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    String _concat_4 = _pascalize_1.concat("Actions");
+    String genStubFileName = Strings.resolveFileName(_concat_3, _concat_4);
+    CharSequence _generate = this.mActionGenerator.generate(model, action);
+    fsa.generateFile(genFileName, _generate);
+    CharSequence _generateStub = this.mActionGenerator.generateStub(model, action);
+    fsa.generateFile(genStubFileName, 
+      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   protected void _generateAction(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement stmt, final boolean forId) {
