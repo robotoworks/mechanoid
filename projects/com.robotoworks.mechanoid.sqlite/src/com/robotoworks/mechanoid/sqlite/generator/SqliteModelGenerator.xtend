@@ -74,10 +74,11 @@ class SqliteModelGenerator implements IGenerator {
 			}
 		];
 		
-		model.database.actions.actions.forEach[
-			item|generateAction(resource, fsa, item)
-		];
-			
+		if(model.database.actions != null) {
+			model.database.actions.actions.forEach[
+				item|generateAction(resource, fsa, item)
+			];
+		}
 		model.database.migrations.forEach[
 			item,index|
 			if(index> 0) generateMigration(resource, fsa, item, index + 1)

@@ -2,7 +2,14 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard
+        	id="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard"
+        	name="Shared Preferences"
+        	category="com.robotoworks.mechanoid.NewWizardsCategory"
+        	class="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard">
+		</wizard>
+	</extension>
     <extension
             point="org.eclipse.ui.editors">
         <editor

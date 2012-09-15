@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
@@ -122,15 +123,20 @@ public class SqliteModelGenerator implements IGenerator {
     IterableExtensions.<CreateViewStatement>forEach(_filter_1, _function_1);
     DatabaseBlock _database_6 = model.getDatabase();
     ActionBlock _actions = _database_6.getActions();
-    EList<ActionStatement> _actions_1 = _actions.getActions();
-    final Procedure1<ActionStatement> _function_2 = new Procedure1<ActionStatement>() {
-        public void apply(final ActionStatement item) {
-          SqliteModelGenerator.this.generateAction(resource, fsa, item);
-        }
-      };
-    IterableExtensions.<ActionStatement>forEach(_actions_1, _function_2);
-    DatabaseBlock _database_7 = model.getDatabase();
-    EList<MigrationBlock> _migrations_1 = _database_7.getMigrations();
+    boolean _notEquals = (!Objects.equal(_actions, null));
+    if (_notEquals) {
+      DatabaseBlock _database_7 = model.getDatabase();
+      ActionBlock _actions_1 = _database_7.getActions();
+      EList<ActionStatement> _actions_2 = _actions_1.getActions();
+      final Procedure1<ActionStatement> _function_2 = new Procedure1<ActionStatement>() {
+          public void apply(final ActionStatement item) {
+            SqliteModelGenerator.this.generateAction(resource, fsa, item);
+          }
+        };
+      IterableExtensions.<ActionStatement>forEach(_actions_2, _function_2);
+    }
+    DatabaseBlock _database_8 = model.getDatabase();
+    EList<MigrationBlock> _migrations_1 = _database_8.getMigrations();
     final Procedure2<MigrationBlock,Integer> _function_3 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);

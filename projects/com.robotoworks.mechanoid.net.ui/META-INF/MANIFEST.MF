@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid.net.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: Robotoworks Mechanoid
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.net.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -15,7 +15,8 @@ Require-Bundle: com.robotoworks.mechanoid.net;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare
+ org.eclipse.compare,
+ com.robotoworks.mechanoid.common;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.net.ui.contentassist,

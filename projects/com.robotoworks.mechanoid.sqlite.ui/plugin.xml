@@ -3,6 +3,14 @@
 
 <plugin>
 
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard
+        	id="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard"
+        	name="Database"
+        	category="com.robotoworks.mechanoid.NewWizardsCategory"
+        	class="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard">
+		</wizard>
+	</extension>
     <extension
             point="org.eclipse.ui.editors">
         <editor

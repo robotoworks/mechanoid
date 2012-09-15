@@ -2,7 +2,14 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard
+        	id="com.robotoworks.mechanoid.ops.ui.wizards.NewMechOpsFileWizard"
+        	name="Operation Service"
+        	category="com.robotoworks.mechanoid.NewWizardsCategory"
+        	class="com.robotoworks.mechanoid.ops.ui.wizards.NewMechOpsFileWizard">
+		</wizard>
+	</extension>
     <extension
             point="org.eclipse.ui.editors">
         <editor

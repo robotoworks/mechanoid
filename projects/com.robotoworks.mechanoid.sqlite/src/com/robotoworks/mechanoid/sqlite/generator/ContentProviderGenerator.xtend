@@ -49,11 +49,13 @@ class ContentProviderGenerator {
 			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
+			«IF model.database.actions !=null»
 			
 			«FOR a : model.database.actions.actions»
 			import «model.packageName».actions.«a.name.pascalize»Actions;
 			«ENDFOR»
-					
+			
+			«ENDIF»
 			public abstract class Abstract«model.database.name.pascalize»ContentProvider extends MechanoidContentProvider {
 			
 			    private static final UriMatcher sUriMatcher;
@@ -75,10 +77,11 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
+				«IF model.database.actions !=null»
 				«FOR a : model.database.actions.actions»
 				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
-				
+				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
 			
 				static {
@@ -114,10 +117,11 @@ class ContentProviderGenerator {
 					«ENDIF»
 					«ENDFOR»
 					
+					«IF model.database.actions !=null»
 					«FOR a : model.database.actions.actions»
 					sActions[«a.name.underscore.toUpperCase»] = «a.name.pascalize»Actions.class;
 					«ENDFOR»
-
+					«ENDIF»
 					
 				}
 				
@@ -142,10 +146,11 @@ class ContentProviderGenerator {
 					«ENDFOR»
 
 					// User Actions
+					«IF model.database.actions !=null»
 					«FOR a : model.database.actions.actions»
 					matcher.addURI(authority, "«a.path»", «a.name.underscore.toUpperCase»); 
 					«ENDFOR»
-								
+					«ENDIF»
 			        return matcher;
 			    }
 			

@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
@@ -158,28 +159,34 @@ public class ContentProviderGenerator {
         }
       }
     }
-    _builder.newLine();
     {
       DatabaseBlock _database_2 = model.getDatabase();
       ActionBlock _actions = _database_2.getActions();
-      EList<ActionStatement> _actions_1 = _actions.getActions();
-      for(final ActionStatement a : _actions_1) {
-        _builder.append("import ");
-        String _packageName_7 = model.getPackageName();
-        _builder.append(_packageName_7, "");
-        _builder.append(".actions.");
-        String _name_8 = a.getName();
-        String _pascalize_8 = Strings.pascalize(_name_8);
-        _builder.append(_pascalize_8, "");
-        _builder.append("Actions;");
-        _builder.newLineIfNotEmpty();
+      boolean _notEquals = (!Objects.equal(_actions, null));
+      if (_notEquals) {
+        _builder.newLine();
+        {
+          DatabaseBlock _database_3 = model.getDatabase();
+          ActionBlock _actions_1 = _database_3.getActions();
+          EList<ActionStatement> _actions_2 = _actions_1.getActions();
+          for(final ActionStatement a : _actions_2) {
+            _builder.append("import ");
+            String _packageName_7 = model.getPackageName();
+            _builder.append(_packageName_7, "");
+            _builder.append(".actions.");
+            String _name_8 = a.getName();
+            String _pascalize_8 = Strings.pascalize(_name_8);
+            _builder.append(_pascalize_8, "");
+            _builder.append("Actions;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.newLine();
       }
     }
-    _builder.append("\t\t");
-    _builder.newLine();
     _builder.append("public abstract class Abstract");
-    DatabaseBlock _database_3 = model.getDatabase();
-    String _name_9 = _database_3.getName();
+    DatabaseBlock _database_4 = model.getDatabase();
+    String _name_9 = _database_4.getName();
     String _pascalize_9 = Strings.pascalize(_name_9);
     _builder.append(_pascalize_9, "");
     _builder.append("ContentProvider extends MechanoidContentProvider {");
@@ -273,26 +280,31 @@ public class ContentProviderGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      DatabaseBlock _database_4 = model.getDatabase();
-      ActionBlock _actions_2 = _database_4.getActions();
-      EList<ActionStatement> _actions_3 = _actions_2.getActions();
-      for(final ActionStatement a_1 : _actions_3) {
-        _builder.append("\t");
-        _builder.append("private static final int ");
-        String _name_14 = a_1.getName();
-        String _underscore_4 = Strings.underscore(_name_14);
-        String _upperCase_4 = _underscore_4.toUpperCase();
-        _builder.append(_upperCase_4, "	");
-        _builder.append(" = ");
-        int _plus_4 = (counter + 1);
-        int _counter_4 = counter = _plus_4;
-        _builder.append(_counter_4, "	");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+      DatabaseBlock _database_5 = model.getDatabase();
+      ActionBlock _actions_3 = _database_5.getActions();
+      boolean _notEquals_1 = (!Objects.equal(_actions_3, null));
+      if (_notEquals_1) {
+        {
+          DatabaseBlock _database_6 = model.getDatabase();
+          ActionBlock _actions_4 = _database_6.getActions();
+          EList<ActionStatement> _actions_5 = _actions_4.getActions();
+          for(final ActionStatement a_1 : _actions_5) {
+            _builder.append("\t");
+            _builder.append("private static final int ");
+            String _name_14 = a_1.getName();
+            String _underscore_4 = Strings.underscore(_name_14);
+            String _upperCase_4 = _underscore_4.toUpperCase();
+            _builder.append(_upperCase_4, "	");
+            _builder.append(" = ");
+            int _plus_4 = (counter + 1);
+            int _counter_4 = counter = _plus_4;
+            _builder.append(_counter_4, "	");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
     _builder.append("\t");
     _builder.append("public static final int NUM_URI_MATCHERS = ");
     int _plus_5 = (counter + 1);
@@ -461,25 +473,31 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     {
-      DatabaseBlock _database_5 = model.getDatabase();
-      ActionBlock _actions_4 = _database_5.getActions();
-      EList<ActionStatement> _actions_5 = _actions_4.getActions();
-      for(final ActionStatement a_2 : _actions_5) {
-        _builder.append("\t\t");
-        _builder.append("sActions[");
-        String _name_31 = a_2.getName();
-        String _underscore_13 = Strings.underscore(_name_31);
-        String _upperCase_13 = _underscore_13.toUpperCase();
-        _builder.append(_upperCase_13, "		");
-        _builder.append("] = ");
-        String _name_32 = a_2.getName();
-        String _pascalize_18 = Strings.pascalize(_name_32);
-        _builder.append(_pascalize_18, "		");
-        _builder.append("Actions.class;");
-        _builder.newLineIfNotEmpty();
+      DatabaseBlock _database_7 = model.getDatabase();
+      ActionBlock _actions_6 = _database_7.getActions();
+      boolean _notEquals_2 = (!Objects.equal(_actions_6, null));
+      if (_notEquals_2) {
+        {
+          DatabaseBlock _database_8 = model.getDatabase();
+          ActionBlock _actions_7 = _database_8.getActions();
+          EList<ActionStatement> _actions_8 = _actions_7.getActions();
+          for(final ActionStatement a_2 : _actions_8) {
+            _builder.append("\t\t");
+            _builder.append("sActions[");
+            String _name_31 = a_2.getName();
+            String _underscore_13 = Strings.underscore(_name_31);
+            String _upperCase_13 = _underscore_13.toUpperCase();
+            _builder.append(_upperCase_13, "		");
+            _builder.append("] = ");
+            String _name_32 = a_2.getName();
+            String _pascalize_18 = Strings.pascalize(_name_32);
+            _builder.append(_pascalize_18, "		");
+            _builder.append("Actions.class;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t");
@@ -495,8 +513,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("final String authority = ");
-    DatabaseBlock _database_6 = model.getDatabase();
-    String _name_33 = _database_6.getName();
+    DatabaseBlock _database_9 = model.getDatabase();
+    String _name_33 = _database_9.getName();
     String _pascalize_19 = Strings.pascalize(_name_33);
     _builder.append(_pascalize_19, "        ");
     _builder.append("Contract.CONTENT_AUTHORITY;");
@@ -580,25 +598,30 @@ public class ContentProviderGenerator {
     _builder.append("// User Actions");
     _builder.newLine();
     {
-      DatabaseBlock _database_7 = model.getDatabase();
-      ActionBlock _actions_6 = _database_7.getActions();
-      EList<ActionStatement> _actions_7 = _actions_6.getActions();
-      for(final ActionStatement a_3 : _actions_7) {
-        _builder.append("\t\t");
-        _builder.append("matcher.addURI(authority, \"");
-        String _path = a_3.getPath();
-        _builder.append(_path, "		");
-        _builder.append("\", ");
-        String _name_42 = a_3.getName();
-        String _underscore_18 = Strings.underscore(_name_42);
-        String _upperCase_18 = _underscore_18.toUpperCase();
-        _builder.append(_upperCase_18, "		");
-        _builder.append("); ");
-        _builder.newLineIfNotEmpty();
+      DatabaseBlock _database_10 = model.getDatabase();
+      ActionBlock _actions_9 = _database_10.getActions();
+      boolean _notEquals_3 = (!Objects.equal(_actions_9, null));
+      if (_notEquals_3) {
+        {
+          DatabaseBlock _database_11 = model.getDatabase();
+          ActionBlock _actions_10 = _database_11.getActions();
+          EList<ActionStatement> _actions_11 = _actions_10.getActions();
+          for(final ActionStatement a_3 : _actions_11) {
+            _builder.append("\t\t");
+            _builder.append("matcher.addURI(authority, \"");
+            String _path = a_3.getPath();
+            _builder.append(_path, "		");
+            _builder.append("\", ");
+            String _name_42 = a_3.getName();
+            String _underscore_18 = Strings.underscore(_name_42);
+            String _upperCase_18 = _underscore_18.toUpperCase();
+            _builder.append(_upperCase_18, "		");
+            _builder.append("); ");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
-    _builder.append("\t\t\t\t\t");
-    _builder.newLine();
     _builder.append("        ");
     _builder.append("return matcher;");
     _builder.newLine();
@@ -699,8 +722,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("return new ");
-    DatabaseBlock _database_8 = model.getDatabase();
-    String _name_43 = _database_8.getName();
+    DatabaseBlock _database_12 = model.getDatabase();
+    String _name_43 = _database_12.getName();
     String _pascalize_20 = Strings.pascalize(_name_43);
     _builder.append(_pascalize_20, "        ");
     _builder.append("OpenHelper(context);");
