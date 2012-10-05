@@ -14,7 +14,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *  
+ *  CHANGES:
  *  Copied from http://www.java2s.com/Open-Source/Android/android-core/platform-libcore/java/util/Collections.java.htm
+ *	Changed package
  */
 
 package com.robotoworks.mechanoid.internal.util;

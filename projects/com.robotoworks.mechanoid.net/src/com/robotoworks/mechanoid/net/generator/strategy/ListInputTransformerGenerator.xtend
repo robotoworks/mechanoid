@@ -20,6 +20,7 @@ class ListInputTransformerGenerator {
 	«registerImports»
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
+	import java.util.ArrayList;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -31,17 +32,27 @@ class ListInputTransformerGenerator {
 		«context.registerImport("org.json.JSONException")»
 		«context.registerImport("java.util.List")»
 		public class «decl.name»ListInputTransformer extends Transformer<JSONArray, List<«decl.name»>> {
+			public List<«decl.name»> transform(JSONArray source) throws TransformException {
+				List<«decl.name»> target = new ArrayList<«decl.name»>(source.length());
+			
+				transform(source, target);
+			
+				return target;
+			}
+
 			public void transform(JSONArray source, List<«decl.name»> target) throws TransformException {
+				
 				try {
 					«decl.name»InputTransformer itemTransformer = provider.get(«decl.name»InputTransformer.class);
 					for(int i=0; i < source.length(); i++) {
-						«decl.name» targetItem = new «decl.name»();
+						«decl.name» targetItem = itemTransformer.transform(source.getJSONObject(i));
 						target.add(targetItem);
-						itemTransformer.transform(source.getJSONObject(i), targetItem);
+						
 					}
 				} catch (JSONException x) {
 					throw new TransformException(x);
 				}
+				
 			}
 		}
 	'''

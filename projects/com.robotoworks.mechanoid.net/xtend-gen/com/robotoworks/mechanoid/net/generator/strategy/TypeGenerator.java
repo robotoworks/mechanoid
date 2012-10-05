@@ -7,9 +7,9 @@ import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.Model;
+import com.robotoworks.mechanoid.net.netModel.SkipMember;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -100,7 +100,7 @@ public class TypeGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateField(final WrapWithMember member) {
+  protected CharSequence _generateField(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\t");
     _builder.newLine();
@@ -146,7 +146,7 @@ public class TypeGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateGetterAndSetter(final WrapWithMember member) {
+  protected CharSequence _generateGetterAndSetter(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\t");
     _builder.newLine();
@@ -154,10 +154,10 @@ public class TypeGenerator {
   }
   
   public CharSequence generateField(final Member member) {
-    if (member instanceof TypedMember) {
+    if (member instanceof SkipMember) {
+      return _generateField((SkipMember)member);
+    } else if (member instanceof TypedMember) {
       return _generateField((TypedMember)member);
-    } else if (member instanceof WrapWithMember) {
-      return _generateField((WrapWithMember)member);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(member).toString());
@@ -165,10 +165,10 @@ public class TypeGenerator {
   }
   
   public CharSequence generateGetterAndSetter(final Member member) {
-    if (member instanceof TypedMember) {
+    if (member instanceof SkipMember) {
+      return _generateGetterAndSetter((SkipMember)member);
+    } else if (member instanceof TypedMember) {
       return _generateGetterAndSetter((TypedMember)member);
-    } else if (member instanceof WrapWithMember) {
-      return _generateGetterAndSetter((WrapWithMember)member);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(member).toString());

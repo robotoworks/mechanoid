@@ -16,6 +16,7 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//Client">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Client/baseUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/methods"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//HttpMethod">
@@ -36,11 +37,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ParamsBlock/params"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//BodyBlock">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//BodyBlock/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//BodyBlock/type"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//ResponseBlock">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//ResponseBlock/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NetModel.ecore#//ResponseBlock/superType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ResponseBlock/type"/>
     </genClasses>
@@ -53,8 +52,8 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//IDNamedMember"/>
     <genClasses ecoreClass="NetModel.ecore#//StringNamedMember"/>
-    <genClasses ecoreClass="NetModel.ecore#//WrapWithMember">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//WrapWithMember/literal"/>
+    <genClasses ecoreClass="NetModel.ecore#//SkipMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SkipMember/literal"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//SimpleMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//SimpleMember/name"/>
@@ -64,12 +63,8 @@
     <genClasses ecoreClass="NetModel.ecore#//StringNamedSimpleMember"/>
     <genClasses ecoreClass="NetModel.ecore#//Type"/>
     <genClasses ecoreClass="NetModel.ecore#//GenericListType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//GenericListType/elementType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//GenericListType/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//GenericListType/genericType"/>
-    </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//ArrayType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ArrayType/elementType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//ArrayType/id"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//UserType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference NetModel.ecore#//UserType/declaration"/>
@@ -101,11 +96,9 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//StringType"/>
     <genClasses ecoreClass="NetModel.ecore#//BooleanType"/>
-    <genClasses ecoreClass="NetModel.ecore#//DateType"/>
     <genClasses ecoreClass="NetModel.ecore#//NumericType"/>
     <genClasses ecoreClass="NetModel.ecore#//IntegerType"/>
     <genClasses ecoreClass="NetModel.ecore#//LongType"/>
-    <genClasses ecoreClass="NetModel.ecore#//FloatType"/>
     <genClasses ecoreClass="NetModel.ecore#//DoubleType"/>
   </genPackages>
 </genmodel:GenModel>

@@ -10,9 +10,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.common.internal.util.Inflector;
-import com.robotoworks.mechanoid.net.netModel.ArrayType;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
+import com.robotoworks.mechanoid.net.netModel.DoubleType;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
@@ -21,10 +21,13 @@ import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpPost;
 import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
 import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
+import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
@@ -89,26 +92,35 @@ public class ModelExtensions {
 	
 	public static String resolveFileName(String packageName, String name) {
 		return packageName.replace(".", "/") + "/" + pascalize(name) + ".java";
-	}  
+	}
+	
+	public static String getBoxedTypeSignature(IntrinsicType type) {
+		if(type instanceof StringType) {
+			return "String";
+		} else if (type instanceof BooleanType) {
+			return "Boolean";
+		} else if (type instanceof IntegerType) {
+			return "Integer";
+		} else if (type instanceof LongType) {
+			return "Long";
+		} else if (type instanceof DoubleType) {
+			return "Double";
+		}
+		
+		return "[unsupported]";
+	}
 	
 	public static String signature(Type type){
 		if(type instanceof IntrinsicType){
 			return ((IntrinsicType) type).getId();
 		} else if(type instanceof UserType) {
 			return ((UserType) type).getDeclaration().getName();
-		} else if(type instanceof ArrayType){
-			ArrayType arrayType = (ArrayType) type;
-			if(arrayType.getElementType() instanceof UserType){
-				return ((UserType) arrayType.getElementType()).getDeclaration().getName() + "[]";
-			} else {
-				return ((IntrinsicType) arrayType.getElementType()).getId() + "[]";				
-			}
 		} else if(type instanceof GenericListType){
 			GenericListType genType = (GenericListType) type;
-			if(genType.getGenericType() instanceof UserType){
-				return "List<" + ((UserType)genType.getGenericType()).getDeclaration().getName() + ">";				
+			if(genType.getElementType() instanceof UserType){
+				return "List<" + ((UserType)genType.getElementType()).getDeclaration().getName() + ">";				
 			} else {
-				return "List<" + ((IntrinsicType)genType.getGenericType()).getId() + ">";							
+				return "List<" + getBoxedTypeSignature((IntrinsicType)genType.getElementType()) + ">";							
 			}
 		}
 		
@@ -120,19 +132,12 @@ public class ModelExtensions {
 			return ((IntrinsicType) type).getId();
 		} else if(type instanceof UserType) {
 			return ((UserType) type).getDeclaration().getName();
-		} else if(type instanceof ArrayType){
-			ArrayType arrayType = (ArrayType) type;
-			if(arrayType.getElementType() instanceof UserType){
-				return ((UserType) arrayType.getElementType()).getDeclaration().getName();
-			} else {
-				return ((IntrinsicType) arrayType.getElementType()).getId();				
-			}
 		} else if(type instanceof GenericListType){
 			GenericListType genType = (GenericListType) type;
-			if(genType.getGenericType() instanceof UserType){
-				return ((UserType)genType.getGenericType()).getDeclaration().getName();				
+			if(genType.getElementType() instanceof UserType){
+				return ((UserType)genType.getElementType()).getDeclaration().getName();				
 			} else {
-				return ((IntrinsicType)genType.getGenericType()).getId();							
+				return ((IntrinsicType)genType.getElementType()).getId();							
 			}
 		}
 		
@@ -140,7 +145,7 @@ public class ModelExtensions {
 	}
 	
 	public static String toJSONPropertyGetMethod(IntrinsicType type){
-			return "get" + pascalize(type.getId());
+		return "get" + pascalize(type.getId());
 	}
 	
 	public static String toJSONOptPropertyGetMethod(IntrinsicType type){
@@ -398,5 +403,21 @@ public class ModelExtensions {
 		return IterableExtensions.filter(Lists.newArrayList(path.split("/")), new Function1<String, Boolean>(){public Boolean apply(String p) {
 			return p.startsWith(":");
 		}});
+	}
+	
+	public static String getDefaultValueLiteral(IntrinsicType type) {
+		if(type instanceof StringType) {
+			return "null";
+		} else if (type instanceof BooleanType) {
+			return "false";
+		} else if (type instanceof IntegerType) {
+			return "0";
+		} else if (type instanceof LongType) {
+			return "0L";
+		} else if (type instanceof DoubleType) {
+			return "0.0d";
+		}
+		
+		return "INVALID_TYPE";
 	}
 }

@@ -6,7 +6,7 @@ import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.TypedMember
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember
+import com.robotoworks.mechanoid.net.netModel.SkipMember
 
 class TypeGenerator {
 	CodeGenerationContext context
@@ -41,7 +41,7 @@ class TypeGenerator {
 		ÇIF(member.type instanceof GenericListType)ÈÇcontext.registerImport("java.util.List")ÈÇENDIFÈ	
 	'''
 	
-	def dispatch generateField(WrapWithMember member) '''
+	def dispatch generateField(SkipMember member) '''
 	
 	'''
 	
@@ -54,7 +54,7 @@ class TypeGenerator {
 		}
 	'''
 	
-	def dispatch generateGetterAndSetter(WrapWithMember member) '''
+	def dispatch generateGetterAndSetter(SkipMember member) '''
 	
 	'''
 }

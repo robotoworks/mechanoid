@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.GenericListTypeImpl#getElementType <em>Element Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.GenericListTypeImpl#getId <em>Id</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.GenericListTypeImpl#getGenericType <em>Generic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,6 +30,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class GenericListTypeImpl extends TypeImpl implements GenericListType
 {
+  /**
+   * The cached value of the '{@link #getElementType() <em>Element Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElementType()
+   * @generated
+   * @ordered
+   */
+  protected Type elementType;
+
   /**
    * The default value of the '{@link #getId() <em>Id</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -51,16 +61,6 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   protected String id = ID_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getGenericType() <em>Generic Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGenericType()
-   * @generated
-   * @ordered
-   */
-  protected Type genericType;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -79,6 +79,54 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   protected EClass eStaticClass()
   {
     return NetModelPackage.Literals.GENERIC_LIST_TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type getElementType()
+  {
+    return elementType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetElementType(Type newElementType, NotificationChain msgs)
+  {
+    Type oldElementType = elementType;
+    elementType = newElementType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE, oldElementType, newElementType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setElementType(Type newElementType)
+  {
+    if (newElementType != elementType)
+    {
+      NotificationChain msgs = null;
+      if (elementType != null)
+        msgs = ((InternalEObject)elementType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE, null, msgs);
+      if (newElementType != null)
+        msgs = ((InternalEObject)newElementType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE, null, msgs);
+      msgs = basicSetElementType(newElementType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE, newElementType, newElementType));
   }
 
   /**
@@ -109,61 +157,13 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getGenericType()
-  {
-    return genericType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetGenericType(Type newGenericType, NotificationChain msgs)
-  {
-    Type oldGenericType = genericType;
-    genericType = newGenericType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE, oldGenericType, newGenericType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGenericType(Type newGenericType)
-  {
-    if (newGenericType != genericType)
-    {
-      NotificationChain msgs = null;
-      if (genericType != null)
-        msgs = ((InternalEObject)genericType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE, null, msgs);
-      if (newGenericType != null)
-        msgs = ((InternalEObject)newGenericType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE, null, msgs);
-      msgs = basicSetGenericType(newGenericType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE, newGenericType, newGenericType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE:
-        return basicSetGenericType(null, msgs);
+      case NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE:
+        return basicSetElementType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -178,10 +178,10 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   {
     switch (featureID)
     {
+      case NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE:
+        return getElementType();
       case NetModelPackage.GENERIC_LIST_TYPE__ID:
         return getId();
-      case NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE:
-        return getGenericType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -196,11 +196,11 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   {
     switch (featureID)
     {
+      case NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE:
+        setElementType((Type)newValue);
+        return;
       case NetModelPackage.GENERIC_LIST_TYPE__ID:
         setId((String)newValue);
-        return;
-      case NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE:
-        setGenericType((Type)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -216,11 +216,11 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   {
     switch (featureID)
     {
+      case NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE:
+        setElementType((Type)null);
+        return;
       case NetModelPackage.GENERIC_LIST_TYPE__ID:
         setId(ID_EDEFAULT);
-        return;
-      case NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE:
-        setGenericType((Type)null);
         return;
     }
     super.eUnset(featureID);
@@ -236,10 +236,10 @@ public class GenericListTypeImpl extends TypeImpl implements GenericListType
   {
     switch (featureID)
     {
+      case NetModelPackage.GENERIC_LIST_TYPE__ELEMENT_TYPE:
+        return elementType != null;
       case NetModelPackage.GENERIC_LIST_TYPE__ID:
         return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-      case NetModelPackage.GENERIC_LIST_TYPE__GENERIC_TYPE:
-        return genericType != null;
     }
     return super.eIsSet(featureID);
   }

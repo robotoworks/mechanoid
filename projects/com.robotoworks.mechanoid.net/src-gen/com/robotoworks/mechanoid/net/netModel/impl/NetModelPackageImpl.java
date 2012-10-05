@@ -2,20 +2,17 @@
  */
 package com.robotoworks.mechanoid.net.netModel.impl;
 
-import com.robotoworks.mechanoid.net.netModel.ArrayType;
 import com.robotoworks.mechanoid.net.netModel.BlockType;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.DateType;
 import com.robotoworks.mechanoid.net.netModel.Declaration;
 import com.robotoworks.mechanoid.net.netModel.DoubleType;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.FloatType;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.HttpDelete;
 import com.robotoworks.mechanoid.net.netModel.HttpGet;
@@ -35,6 +32,7 @@ import com.robotoworks.mechanoid.net.netModel.NumericType;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SkipMember;
 import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
 import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
@@ -42,7 +40,6 @@ import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -176,7 +173,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass wrapWithMemberEClass = null;
+  private EClass skipMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -212,13 +209,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass genericListTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass arrayTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -295,13 +285,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass dateTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass numericTypeEClass = null;
 
   /**
@@ -317,13 +300,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass longTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass floatTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -470,9 +446,19 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClient_Methods()
+  public EReference getClient_Params()
   {
     return (EReference)clientEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClient_Methods()
+  {
+    return (EReference)clientEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -620,19 +606,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBodyBlock_Name()
-  {
-    return (EAttribute)bodyBlockEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getBodyBlock_Type()
   {
-    return (EReference)bodyBlockEClass.getEStructuralFeatures().get(1);
+    return (EReference)bodyBlockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -650,19 +626,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getResponseBlock_Name()
-  {
-    return (EAttribute)responseBlockEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getResponseBlock_SuperType()
   {
-    return (EReference)responseBlockEClass.getEStructuralFeatures().get(1);
+    return (EReference)responseBlockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -672,7 +638,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    */
   public EReference getResponseBlock_Type()
   {
-    return (EReference)responseBlockEClass.getEStructuralFeatures().get(2);
+    return (EReference)responseBlockEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -750,9 +716,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWrapWithMember()
+  public EClass getSkipMember()
   {
-    return wrapWithMemberEClass;
+    return skipMemberEClass;
   }
 
   /**
@@ -760,9 +726,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWrapWithMember_Literal()
+  public EReference getSkipMember_Literal()
   {
-    return (EReference)wrapWithMemberEClass.getEStructuralFeatures().get(0);
+    return (EReference)skipMemberEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -840,49 +806,19 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getGenericListType_ElementType()
+  {
+    return (EReference)genericListTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getGenericListType_Id()
   {
-    return (EAttribute)genericListTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getGenericListType_GenericType()
-  {
-    return (EReference)genericListTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getArrayType()
-  {
-    return arrayTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getArrayType_ElementType()
-  {
-    return (EReference)arrayTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getArrayType_Id()
-  {
-    return (EAttribute)arrayTypeEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)genericListTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1110,16 +1046,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDateType()
-  {
-    return dateTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getNumericType()
   {
     return numericTypeEClass;
@@ -1143,16 +1069,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
   public EClass getLongType()
   {
     return longTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFloatType()
-  {
-    return floatTypeEClass;
   }
 
   /**
@@ -1204,6 +1120,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     clientEClass = createEClass(CLIENT);
     createEAttribute(clientEClass, CLIENT__BASE_URL);
+    createEReference(clientEClass, CLIENT__PARAMS);
     createEReference(clientEClass, CLIENT__METHODS);
 
     httpMethodEClass = createEClass(HTTP_METHOD);
@@ -1226,11 +1143,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     createEReference(paramsBlockEClass, PARAMS_BLOCK__PARAMS);
 
     bodyBlockEClass = createEClass(BODY_BLOCK);
-    createEAttribute(bodyBlockEClass, BODY_BLOCK__NAME);
     createEReference(bodyBlockEClass, BODY_BLOCK__TYPE);
 
     responseBlockEClass = createEClass(RESPONSE_BLOCK);
-    createEAttribute(responseBlockEClass, RESPONSE_BLOCK__NAME);
     createEReference(responseBlockEClass, RESPONSE_BLOCK__SUPER_TYPE);
     createEReference(responseBlockEClass, RESPONSE_BLOCK__TYPE);
 
@@ -1246,8 +1161,8 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     stringNamedMemberEClass = createEClass(STRING_NAMED_MEMBER);
 
-    wrapWithMemberEClass = createEClass(WRAP_WITH_MEMBER);
-    createEReference(wrapWithMemberEClass, WRAP_WITH_MEMBER__LITERAL);
+    skipMemberEClass = createEClass(SKIP_MEMBER);
+    createEReference(skipMemberEClass, SKIP_MEMBER__LITERAL);
 
     simpleMemberEClass = createEClass(SIMPLE_MEMBER);
     createEAttribute(simpleMemberEClass, SIMPLE_MEMBER__NAME);
@@ -1260,12 +1175,8 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     typeEClass = createEClass(TYPE);
 
     genericListTypeEClass = createEClass(GENERIC_LIST_TYPE);
+    createEReference(genericListTypeEClass, GENERIC_LIST_TYPE__ELEMENT_TYPE);
     createEAttribute(genericListTypeEClass, GENERIC_LIST_TYPE__ID);
-    createEReference(genericListTypeEClass, GENERIC_LIST_TYPE__GENERIC_TYPE);
-
-    arrayTypeEClass = createEClass(ARRAY_TYPE);
-    createEReference(arrayTypeEClass, ARRAY_TYPE__ELEMENT_TYPE);
-    createEAttribute(arrayTypeEClass, ARRAY_TYPE__ID);
 
     userTypeEClass = createEClass(USER_TYPE);
     createEReference(userTypeEClass, USER_TYPE__DECLARATION);
@@ -1299,15 +1210,11 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     booleanTypeEClass = createEClass(BOOLEAN_TYPE);
 
-    dateTypeEClass = createEClass(DATE_TYPE);
-
     numericTypeEClass = createEClass(NUMERIC_TYPE);
 
     integerTypeEClass = createEClass(INTEGER_TYPE);
 
     longTypeEClass = createEClass(LONG_TYPE);
-
-    floatTypeEClass = createEClass(FLOAT_TYPE);
 
     doubleTypeEClass = createEClass(DOUBLE_TYPE);
   }
@@ -1349,12 +1256,11 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     typedMemberEClass.getESuperTypes().add(this.getMember());
     idNamedMemberEClass.getESuperTypes().add(this.getTypedMember());
     stringNamedMemberEClass.getESuperTypes().add(this.getTypedMember());
-    wrapWithMemberEClass.getESuperTypes().add(this.getMember());
+    skipMemberEClass.getESuperTypes().add(this.getMember());
     idNamedSimpleMemberEClass.getESuperTypes().add(this.getSimpleMember());
     stringNamedSimpleMemberEClass.getESuperTypes().add(this.getSimpleMember());
     typeEClass.getESuperTypes().add(this.getBlockType());
     genericListTypeEClass.getESuperTypes().add(this.getType());
-    arrayTypeEClass.getESuperTypes().add(this.getType());
     userTypeEClass.getESuperTypes().add(this.getType());
     userTypeDeclarationEClass.getESuperTypes().add(this.getDeclaration());
     complexTypeDeclarationEClass.getESuperTypes().add(this.getUserTypeDeclaration());
@@ -1363,11 +1269,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     intrinsicTypeEClass.getESuperTypes().add(this.getType());
     stringTypeEClass.getESuperTypes().add(this.getIntrinsicType());
     booleanTypeEClass.getESuperTypes().add(this.getIntrinsicType());
-    dateTypeEClass.getESuperTypes().add(this.getIntrinsicType());
     numericTypeEClass.getESuperTypes().add(this.getIntrinsicType());
     integerTypeEClass.getESuperTypes().add(this.getNumericType());
     longTypeEClass.getESuperTypes().add(this.getNumericType());
-    floatTypeEClass.getESuperTypes().add(this.getNumericType());
     doubleTypeEClass.getESuperTypes().add(this.getNumericType());
 
     // Initialize classes and features; add operations and parameters
@@ -1380,6 +1284,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClient_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClient_Params(), this.getParamsBlock(), null, "params", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClient_Methods(), this.getHttpMethod(), null, "methods", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(httpMethodEClass, HttpMethod.class, "HttpMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1402,11 +1307,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEReference(getParamsBlock_Params(), this.getSimpleMember(), null, "params", null, 0, -1, ParamsBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bodyBlockEClass, BodyBlock.class, "BodyBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBodyBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, BodyBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBodyBlock_Type(), this.getBlockType(), null, "type", null, 0, 1, BodyBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(responseBlockEClass, ResponseBlock.class, "ResponseBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getResponseBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResponseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResponseBlock_SuperType(), this.getComplexTypeDeclaration(), null, "superType", null, 0, 1, ResponseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getResponseBlock_Type(), this.getBlockType(), null, "type", null, 0, 1, ResponseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1422,8 +1325,8 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(stringNamedMemberEClass, StringNamedMember.class, "StringNamedMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(wrapWithMemberEClass, WrapWithMember.class, "WrapWithMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWrapWithMember_Literal(), this.getComplexTypeLiteral(), null, "literal", null, 0, 1, WrapWithMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(skipMemberEClass, SkipMember.class, "SkipMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSkipMember_Literal(), this.getComplexTypeLiteral(), null, "literal", null, 0, 1, SkipMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleMemberEClass, SimpleMember.class, "SimpleMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSimpleMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimpleMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1436,12 +1339,8 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(genericListTypeEClass, GenericListType.class, "GenericListType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGenericListType_ElementType(), this.getType(), null, "elementType", null, 0, 1, GenericListType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGenericListType_Id(), ecorePackage.getEString(), "id", null, 0, 1, GenericListType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGenericListType_GenericType(), this.getType(), null, "genericType", null, 0, 1, GenericListType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(arrayTypeEClass, ArrayType.class, "ArrayType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getArrayType_ElementType(), this.getType(), null, "elementType", null, 0, 1, ArrayType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getArrayType_Id(), ecorePackage.getEString(), "id", null, 0, 1, ArrayType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(userTypeEClass, UserType.class, "UserType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUserType_Declaration(), this.getUserTypeDeclaration(), null, "declaration", null, 0, 1, UserType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1475,15 +1374,11 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(booleanTypeEClass, BooleanType.class, "BooleanType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(dateTypeEClass, DateType.class, "DateType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(numericTypeEClass, NumericType.class, "NumericType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(integerTypeEClass, IntegerType.class, "IntegerType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(longTypeEClass, LongType.class, "LongType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(floatTypeEClass, FloatType.class, "FloatType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(doubleTypeEClass, DoubleType.class, "DoubleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

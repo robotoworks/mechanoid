@@ -3,14 +3,13 @@ package com.robotoworks.mechanoid.net.generator.strategy
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import com.robotoworks.mechanoid.net.netModel.Member
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
-import com.robotoworks.mechanoid.net.netModel.ArrayType
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.UserType
 import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.TypedMember
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember
+import com.robotoworks.mechanoid.net.netModel.SkipMember
 
 class MemberDeserializationStatementGenerator {
 	CodeGenerationContext context
@@ -33,7 +32,7 @@ class MemberDeserializationStatementGenerator {
 		}
 
 	def dispatch generateStatementForType(
-		WrapWithMember member, 
+		SkipMember member, 
 		String serializerMemberName, 
 		String fromPrefix, 
 		String toPrefix, 
@@ -85,25 +84,6 @@ class MemberDeserializationStatementGenerator {
 	
 	def dispatch generateStatementForType(
 		TypedMember member, 
-		ArrayType type, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) {
-		generateStatementForArrayType(
-			member, 
-			type, 
-			type.elementType, 
-			serializerMemberName, 
-			fromPrefix, 
-			toPrefix, 
-			membersAreInternal
-		)
-	}
-	
-	def dispatch generateStatementForType(
-		TypedMember member, 
 		GenericListType type, 
 		String serializerMemberName, 
 		String fromPrefix, 
@@ -113,7 +93,7 @@ class MemberDeserializationStatementGenerator {
 		generateStatementForGenericListType(
 			member,
 			type,
-			type.genericType,
+			type.elementType,
 			serializerMemberName,
 			fromPrefix,
 			toPrefix,
@@ -132,8 +112,7 @@ class MemberDeserializationStatementGenerator {
 	) '''
 		«context.registerImport("org.json.JSONObject")»
 		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			«type.signature» targetMember = new «type.signature»();
-			«serializerMemberName».get(«type.innerSignature»InputTransformer.class).transform(«fromPrefix».getJSONObject("«member.name»"), targetMember);
+			«type.signature» targetMember = «serializerMemberName».get(«type.innerSignature»InputTransformer.class).transform(«fromPrefix».getJSONObject("«member.name»"));
 			«IF(membersAreInternal)»
 			«member.toIdentifier.memberize(toPrefix)» = targetMember;
 			«ELSE»
@@ -154,108 +133,6 @@ class MemberDeserializationStatementGenerator {
 		«context.registerImport("org.json.JSONObject")»
 		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
 			«type.signature» targetMember = «type.signature».fromValue(«fromPrefix».«declaration.resolveGetJSONValueMethodName»("«member.name»"));
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
-		}
-	'''
-		
-	def dispatch generateStatementForArrayType(
-		TypedMember member, 
-		ArrayType type, 
-		IntrinsicType element, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
-			
-			for(int i=0; i < sourceMember.length(); i++) {
-				targetMember[i] = sourceMember.«element.toJSONPropertyGetMethod»(i);
-			}
-			
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»
-		}
-	'''
-	
-	def dispatch generateStatementForArrayType(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) {
-		generateStatementForUserTypeArray(
-			member,
-			type, 
-			element, 
-			element.declaration, 
-			serializerMemberName,
-			fromPrefix,
-			toPrefix,
-			membersAreInternal
-		)
-	}
-	
-	def dispatch generateStatementForUserTypeArray(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		ComplexTypeDeclaration elementDeclaration, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
-			
-			«serializerMemberName».get(«type.innerSignature»ArrayInputTransformer.class).transform(sourceMember, targetMember);
-			
-			«IF(membersAreInternal)»
-			«member.toIdentifier.memberize(toPrefix)» = targetMember;
-			«ELSE»
-			«member.toSetMethodName.memberize(toPrefix)»(targetMember);
-			«ENDIF»	
-		}
-	'''
-
-	def dispatch generateStatementForUserTypeArray(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		EnumTypeDeclaration elementDeclaration, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONObject")»
-		«context.registerImport("org.json.JSONArray")»
-		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
-			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new «type.innerSignature»[sourceMember.length()];
-			
-			for(int i=0; i < sourceMember.length(); i++) {
-				«type.innerSignature» element = «type.innerSignature».fromValue(sourceMember.«elementDeclaration.resolveGetJSONValueMethodName»(i));
-				targetMember[i] = element;
-			}
 			«IF(membersAreInternal)»
 			«member.toIdentifier.memberize(toPrefix)» = targetMember;
 			«ELSE»
@@ -330,9 +207,7 @@ class MemberDeserializationStatementGenerator {
 		«context.registerImport("java.util.ArrayList")»
 		if(«fromPrefix».has("«member.name»") && !«fromPrefix».isNull("«member.name»")) {
 			JSONArray sourceMember = «fromPrefix».getJSONArray("«member.name»");
-			«type.signature» targetMember = new Array«type.signature»(sourceMember.length());
-			
-			«serializerMemberName».get(«type.innerSignature»ListInputTransformer.class).transform(sourceMember, targetMember);
+			«type.signature» targetMember = «serializerMemberName».get(«type.innerSignature»ListInputTransformer.class).transform(sourceMember);
 			«IF(membersAreInternal)»
 			«member.toIdentifier.memberize(toPrefix)» = targetMember;
 			«ELSE»

@@ -5,7 +5,7 @@
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
         	id="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard"
-        	name="New Net Service (*.mechnet) File"
+        	name="Net Service"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
         	class="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard">
 		</wizard>

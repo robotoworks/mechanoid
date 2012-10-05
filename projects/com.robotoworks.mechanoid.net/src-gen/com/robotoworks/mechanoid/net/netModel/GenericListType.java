@@ -11,8 +11,8 @@ package com.robotoworks.mechanoid.net.netModel;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getElementType <em>Element Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getId <em>Id</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getGenericType <em>Generic Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,6 +22,32 @@ package com.robotoworks.mechanoid.net.netModel;
  */
 public interface GenericListType extends Type
 {
+  /**
+   * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Element Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Element Type</em>' containment reference.
+   * @see #setElementType(Type)
+   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getGenericListType_ElementType()
+   * @model containment="true"
+   * @generated
+   */
+  Type getElementType();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getElementType <em>Element Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Element Type</em>' containment reference.
+   * @see #getElementType()
+   * @generated
+   */
+  void setElementType(Type value);
+
   /**
    * Returns the value of the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -47,31 +73,5 @@ public interface GenericListType extends Type
    * @generated
    */
   void setId(String value);
-
-  /**
-   * Returns the value of the '<em><b>Generic Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Generic Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Generic Type</em>' containment reference.
-   * @see #setGenericType(Type)
-   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getGenericListType_GenericType()
-   * @model containment="true"
-   * @generated
-   */
-  Type getGenericType();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getGenericType <em>Generic Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Generic Type</em>' containment reference.
-   * @see #getGenericType()
-   * @generated
-   */
-  void setGenericType(Type value);
 
 } // GenericListType

@@ -150,13 +150,22 @@ public interface NetModelPackage extends EPackage
   int CLIENT__BASE_URL = DECLARATION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLIENT__PARAMS = DECLARATION_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Methods</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLIENT__METHODS = DECLARATION_FEATURE_COUNT + 1;
+  int CLIENT__METHODS = DECLARATION_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Client</em>' class.
@@ -165,7 +174,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLIENT_FEATURE_COUNT = DECLARATION_FEATURE_COUNT + 2;
+  int CLIENT_FEATURE_COUNT = DECLARATION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl <em>Http Method</em>}' class.
@@ -499,22 +508,13 @@ public interface NetModelPackage extends EPackage
   int BODY_BLOCK = 9;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BODY_BLOCK__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BODY_BLOCK__TYPE = 1;
+  int BODY_BLOCK__TYPE = 0;
 
   /**
    * The number of structural features of the '<em>Body Block</em>' class.
@@ -523,7 +523,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BODY_BLOCK_FEATURE_COUNT = 2;
+  int BODY_BLOCK_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.ResponseBlockImpl <em>Response Block</em>}' class.
@@ -536,22 +536,13 @@ public interface NetModelPackage extends EPackage
   int RESPONSE_BLOCK = 10;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESPONSE_BLOCK__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESPONSE_BLOCK__SUPER_TYPE = 1;
+  int RESPONSE_BLOCK__SUPER_TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -560,7 +551,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESPONSE_BLOCK__TYPE = 2;
+  int RESPONSE_BLOCK__TYPE = 1;
 
   /**
    * The number of structural features of the '<em>Response Block</em>' class.
@@ -569,7 +560,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESPONSE_BLOCK_FEATURE_COUNT = 3;
+  int RESPONSE_BLOCK_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.BlockTypeImpl <em>Block Type</em>}' class.
@@ -730,14 +721,14 @@ public interface NetModelPackage extends EPackage
   int STRING_NAMED_MEMBER_FEATURE_COUNT = TYPED_MEMBER_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.WrapWithMemberImpl <em>Wrap With Member</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl <em>Skip Member</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.WrapWithMemberImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getWrapWithMember()
+   * @see com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSkipMember()
    * @generated
    */
-  int WRAP_WITH_MEMBER = 16;
+  int SKIP_MEMBER = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -746,7 +737,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WRAP_WITH_MEMBER__NAME = MEMBER__NAME;
+  int SKIP_MEMBER__NAME = MEMBER__NAME;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' containment reference.
@@ -755,16 +746,16 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WRAP_WITH_MEMBER__LITERAL = MEMBER_FEATURE_COUNT + 0;
+  int SKIP_MEMBER__LITERAL = MEMBER_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Wrap With Member</em>' class.
+   * The number of structural features of the '<em>Skip Member</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRAP_WITH_MEMBER_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 1;
+  int SKIP_MEMBER_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberImpl <em>Simple Member</em>}' class.
@@ -907,22 +898,22 @@ public interface NetModelPackage extends EPackage
   int GENERIC_LIST_TYPE = 21;
 
   /**
+   * The feature id for the '<em><b>Element Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_LIST_TYPE__ELEMENT_TYPE = TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERIC_LIST_TYPE__ID = TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Generic Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_LIST_TYPE__GENERIC_TYPE = TYPE_FEATURE_COUNT + 1;
+  int GENERIC_LIST_TYPE__ID = TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Generic List Type</em>' class.
@@ -934,43 +925,6 @@ public interface NetModelPackage extends EPackage
   int GENERIC_LIST_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.ArrayTypeImpl <em>Array Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.ArrayTypeImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getArrayType()
-   * @generated
-   */
-  int ARRAY_TYPE = 22;
-
-  /**
-   * The feature id for the '<em><b>Element Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_TYPE__ELEMENT_TYPE = TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_TYPE__ID = TYPE_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Array Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.UserTypeImpl <em>User Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -978,7 +932,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserType()
    * @generated
    */
-  int USER_TYPE = 23;
+  int USER_TYPE = 22;
 
   /**
    * The feature id for the '<em><b>Declaration</b></em>' reference.
@@ -1006,7 +960,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserTypeDeclaration()
    * @generated
    */
-  int USER_TYPE_DECLARATION = 24;
+  int USER_TYPE_DECLARATION = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1052,7 +1006,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeDeclaration()
    * @generated
    */
-  int COMPLEX_TYPE_DECLARATION = 25;
+  int COMPLEX_TYPE_DECLARATION = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1107,7 +1061,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeDeclaration()
    * @generated
    */
-  int ENUM_TYPE_DECLARATION = 26;
+  int ENUM_TYPE_DECLARATION = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1171,7 +1125,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeLiteral()
    * @generated
    */
-  int ENUM_TYPE_LITERAL = 27;
+  int ENUM_TYPE_LITERAL = 26;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1199,7 +1153,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumMember()
    * @generated
    */
-  int ENUM_MEMBER = 28;
+  int ENUM_MEMBER = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1245,7 +1199,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeLiteral()
    * @generated
    */
-  int COMPLEX_TYPE_LITERAL = 29;
+  int COMPLEX_TYPE_LITERAL = 28;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1273,7 +1227,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntrinsicType()
    * @generated
    */
-  int INTRINSIC_TYPE = 30;
+  int INTRINSIC_TYPE = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1301,7 +1255,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 31;
+  int STRING_TYPE = 30;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1329,7 +1283,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 32;
+  int BOOLEAN_TYPE = 31;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1350,34 +1304,6 @@ public interface NetModelPackage extends EPackage
   int BOOLEAN_TYPE_FEATURE_COUNT = INTRINSIC_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.DateTypeImpl <em>Date Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.DateTypeImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getDateType()
-   * @generated
-   */
-  int DATE_TYPE = 33;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_TYPE__ID = INTRINSIC_TYPE__ID;
-
-  /**
-   * The number of structural features of the '<em>Date Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_TYPE_FEATURE_COUNT = INTRINSIC_TYPE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.NumericTypeImpl <em>Numeric Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1385,7 +1311,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getNumericType()
    * @generated
    */
-  int NUMERIC_TYPE = 34;
+  int NUMERIC_TYPE = 32;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1413,7 +1339,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntegerType()
    * @generated
    */
-  int INTEGER_TYPE = 35;
+  int INTEGER_TYPE = 33;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1441,7 +1367,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 36;
+  int LONG_TYPE = 34;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1462,34 +1388,6 @@ public interface NetModelPackage extends EPackage
   int LONG_TYPE_FEATURE_COUNT = NUMERIC_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.FloatTypeImpl <em>Float Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.FloatTypeImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getFloatType()
-   * @generated
-   */
-  int FLOAT_TYPE = 37;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FLOAT_TYPE__ID = NUMERIC_TYPE__ID;
-
-  /**
-   * The number of structural features of the '<em>Float Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FLOAT_TYPE_FEATURE_COUNT = NUMERIC_TYPE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.DoubleTypeImpl <em>Double Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1497,7 +1395,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 38;
+  int DOUBLE_TYPE = 35;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1591,6 +1489,17 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EAttribute getClient_BaseUrl();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.Client#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Params</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.Client#getParams()
+   * @see #getClient()
+   * @generated
+   */
+  EReference getClient_Params();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.net.netModel.Client#getMethods <em>Methods</em>}'.
@@ -1751,17 +1660,6 @@ public interface NetModelPackage extends EPackage
   EClass getBodyBlock();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.BodyBlock#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.BodyBlock#getName()
-   * @see #getBodyBlock()
-   * @generated
-   */
-  EAttribute getBodyBlock_Name();
-
-  /**
    * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.BodyBlock#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1781,17 +1679,6 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EClass getResponseBlock();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.ResponseBlock#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.ResponseBlock#getName()
-   * @see #getResponseBlock()
-   * @generated
-   */
-  EAttribute getResponseBlock_Name();
 
   /**
    * Returns the meta object for the reference '{@link com.robotoworks.mechanoid.net.netModel.ResponseBlock#getSuperType <em>Super Type</em>}'.
@@ -1888,25 +1775,25 @@ public interface NetModelPackage extends EPackage
   EClass getStringNamedMember();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.WrapWithMember <em>Wrap With Member</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.SkipMember <em>Skip Member</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Wrap With Member</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.WrapWithMember
+   * @return the meta object for class '<em>Skip Member</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.SkipMember
    * @generated
    */
-  EClass getWrapWithMember();
+  EClass getSkipMember();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.WrapWithMember#getLiteral <em>Literal</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.SkipMember#getLiteral <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Literal</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.WrapWithMember#getLiteral()
-   * @see #getWrapWithMember()
+   * @see com.robotoworks.mechanoid.net.netModel.SkipMember#getLiteral()
+   * @see #getSkipMember()
    * @generated
    */
-  EReference getWrapWithMember_Literal();
+  EReference getSkipMember_Literal();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.SimpleMember <em>Simple Member</em>}'.
@@ -1981,6 +1868,17 @@ public interface NetModelPackage extends EPackage
   EClass getGenericListType();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getElementType <em>Element Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Element Type</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.GenericListType#getElementType()
+   * @see #getGenericListType()
+   * @generated
+   */
+  EReference getGenericListType_ElementType();
+
+  /**
    * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1990,49 +1888,6 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EAttribute getGenericListType_Id();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.GenericListType#getGenericType <em>Generic Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Generic Type</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.GenericListType#getGenericType()
-   * @see #getGenericListType()
-   * @generated
-   */
-  EReference getGenericListType_GenericType();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.ArrayType <em>Array Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Array Type</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.ArrayType
-   * @generated
-   */
-  EClass getArrayType();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.ArrayType#getElementType <em>Element Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Element Type</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.ArrayType#getElementType()
-   * @see #getArrayType()
-   * @generated
-   */
-  EReference getArrayType_ElementType();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.ArrayType#getId <em>Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.ArrayType#getId()
-   * @see #getArrayType()
-   * @generated
-   */
-  EAttribute getArrayType_Id();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.UserType <em>User Type</em>}'.
@@ -2267,16 +2122,6 @@ public interface NetModelPackage extends EPackage
   EClass getBooleanType();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.DateType <em>Date Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Date Type</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.DateType
-   * @generated
-   */
-  EClass getDateType();
-
-  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.NumericType <em>Numeric Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2305,16 +2150,6 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EClass getLongType();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.FloatType <em>Float Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Float Type</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.FloatType
-   * @generated
-   */
-  EClass getFloatType();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.DoubleType <em>Double Type</em>}'.
@@ -2410,6 +2245,14 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EAttribute CLIENT__BASE_URL = eINSTANCE.getClient_BaseUrl();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLIENT__PARAMS = eINSTANCE.getClient_Params();
 
     /**
      * The meta object literal for the '<em><b>Methods</b></em>' containment reference list feature.
@@ -2546,14 +2389,6 @@ public interface NetModelPackage extends EPackage
     EClass BODY_BLOCK = eINSTANCE.getBodyBlock();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BODY_BLOCK__NAME = eINSTANCE.getBodyBlock_Name();
-
-    /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2570,14 +2405,6 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EClass RESPONSE_BLOCK = eINSTANCE.getResponseBlock();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RESPONSE_BLOCK__NAME = eINSTANCE.getResponseBlock_Name();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
@@ -2662,14 +2489,14 @@ public interface NetModelPackage extends EPackage
     EClass STRING_NAMED_MEMBER = eINSTANCE.getStringNamedMember();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.WrapWithMemberImpl <em>Wrap With Member</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl <em>Skip Member</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.WrapWithMemberImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getWrapWithMember()
+     * @see com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSkipMember()
      * @generated
      */
-    EClass WRAP_WITH_MEMBER = eINSTANCE.getWrapWithMember();
+    EClass SKIP_MEMBER = eINSTANCE.getSkipMember();
 
     /**
      * The meta object literal for the '<em><b>Literal</b></em>' containment reference feature.
@@ -2677,7 +2504,7 @@ public interface NetModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WRAP_WITH_MEMBER__LITERAL = eINSTANCE.getWrapWithMember_Literal();
+    EReference SKIP_MEMBER__LITERAL = eINSTANCE.getSkipMember_Literal();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberImpl <em>Simple Member</em>}' class.
@@ -2746,46 +2573,20 @@ public interface NetModelPackage extends EPackage
     EClass GENERIC_LIST_TYPE = eINSTANCE.getGenericListType();
 
     /**
+     * The meta object literal for the '<em><b>Element Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GENERIC_LIST_TYPE__ELEMENT_TYPE = eINSTANCE.getGenericListType_ElementType();
+
+    /**
      * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute GENERIC_LIST_TYPE__ID = eINSTANCE.getGenericListType_Id();
-
-    /**
-     * The meta object literal for the '<em><b>Generic Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GENERIC_LIST_TYPE__GENERIC_TYPE = eINSTANCE.getGenericListType_GenericType();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.ArrayTypeImpl <em>Array Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.ArrayTypeImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getArrayType()
-     * @generated
-     */
-    EClass ARRAY_TYPE = eINSTANCE.getArrayType();
-
-    /**
-     * The meta object literal for the '<em><b>Element Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ARRAY_TYPE__ELEMENT_TYPE = eINSTANCE.getArrayType_ElementType();
-
-    /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ARRAY_TYPE__ID = eINSTANCE.getArrayType_Id();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.UserTypeImpl <em>User Type</em>}' class.
@@ -2984,16 +2785,6 @@ public interface NetModelPackage extends EPackage
     EClass BOOLEAN_TYPE = eINSTANCE.getBooleanType();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.DateTypeImpl <em>Date Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.DateTypeImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getDateType()
-     * @generated
-     */
-    EClass DATE_TYPE = eINSTANCE.getDateType();
-
-    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.NumericTypeImpl <em>Numeric Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3022,16 +2813,6 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EClass LONG_TYPE = eINSTANCE.getLongType();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.FloatTypeImpl <em>Float Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.FloatTypeImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getFloatType()
-     * @generated
-     */
-    EClass FLOAT_TYPE = eINSTANCE.getFloatType();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.DoubleTypeImpl <em>Double Type</em>}' class.

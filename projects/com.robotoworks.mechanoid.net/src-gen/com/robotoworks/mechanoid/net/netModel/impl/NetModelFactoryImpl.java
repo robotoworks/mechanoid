@@ -80,13 +80,12 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.TYPED_MEMBER: return createTypedMember();
       case NetModelPackage.ID_NAMED_MEMBER: return createIDNamedMember();
       case NetModelPackage.STRING_NAMED_MEMBER: return createStringNamedMember();
-      case NetModelPackage.WRAP_WITH_MEMBER: return createWrapWithMember();
+      case NetModelPackage.SKIP_MEMBER: return createSkipMember();
       case NetModelPackage.SIMPLE_MEMBER: return createSimpleMember();
       case NetModelPackage.ID_NAMED_SIMPLE_MEMBER: return createIDNamedSimpleMember();
       case NetModelPackage.STRING_NAMED_SIMPLE_MEMBER: return createStringNamedSimpleMember();
       case NetModelPackage.TYPE: return createType();
       case NetModelPackage.GENERIC_LIST_TYPE: return createGenericListType();
-      case NetModelPackage.ARRAY_TYPE: return createArrayType();
       case NetModelPackage.USER_TYPE: return createUserType();
       case NetModelPackage.USER_TYPE_DECLARATION: return createUserTypeDeclaration();
       case NetModelPackage.COMPLEX_TYPE_DECLARATION: return createComplexTypeDeclaration();
@@ -97,11 +96,9 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.INTRINSIC_TYPE: return createIntrinsicType();
       case NetModelPackage.STRING_TYPE: return createStringType();
       case NetModelPackage.BOOLEAN_TYPE: return createBooleanType();
-      case NetModelPackage.DATE_TYPE: return createDateType();
       case NetModelPackage.NUMERIC_TYPE: return createNumericType();
       case NetModelPackage.INTEGER_TYPE: return createIntegerType();
       case NetModelPackage.LONG_TYPE: return createLongType();
-      case NetModelPackage.FLOAT_TYPE: return createFloatType();
       case NetModelPackage.DOUBLE_TYPE: return createDoubleType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -289,10 +286,10 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WrapWithMember createWrapWithMember()
+  public SkipMember createSkipMember()
   {
-    WrapWithMemberImpl wrapWithMember = new WrapWithMemberImpl();
-    return wrapWithMember;
+    SkipMemberImpl skipMember = new SkipMemberImpl();
+    return skipMember;
   }
 
   /**
@@ -348,17 +345,6 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     GenericListTypeImpl genericListType = new GenericListTypeImpl();
     return genericListType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ArrayType createArrayType()
-  {
-    ArrayTypeImpl arrayType = new ArrayTypeImpl();
-    return arrayType;
   }
 
   /**
@@ -476,17 +462,6 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DateType createDateType()
-  {
-    DateTypeImpl dateType = new DateTypeImpl();
-    return dateType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NumericType createNumericType()
   {
     NumericTypeImpl numericType = new NumericTypeImpl();
@@ -513,17 +488,6 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     LongTypeImpl longType = new LongTypeImpl();
     return longType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FloatType createFloatType()
-  {
-    FloatTypeImpl floatType = new FloatTypeImpl();
-    return floatType;
   }
 
   /**

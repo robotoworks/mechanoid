@@ -29,7 +29,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclarationsDeclarationParserRuleCall_2_0 = (RuleCall)cDeclarationsAssignment_2.eContents().get(0);
 		
 		//Model:
-		//
 		//	"package" packageName=FQN declarations+=Declaration*;
 		public ParserRule getRule() { return rule; }
 
@@ -59,7 +58,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClientParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Declaration:
-		//
 		//	UserTypeDeclaration | Client;
 		public ParserRule getRule() { return rule; }
 
@@ -82,16 +80,17 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBaseUrlAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cBaseUrlSTRINGTerminalRuleCall_2_0 = (RuleCall)cBaseUrlAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMethodsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMethodsHttpMethodParserRuleCall_4_0 = (RuleCall)cMethodsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
+		private final Assignment cMethodsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cMethodsHttpMethodParserRuleCall_5_0 = (RuleCall)cMethodsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Client:
-		//
-		//	"client" name=ID baseUrl=STRING "{" methods+=HttpMethod* "}";
+		//	"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"client" name=ID baseUrl=STRING "{" methods+=HttpMethod* "}"
+		//"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"client"
@@ -112,14 +111,20 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//params=ParamsBlock?
+		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+
+		//ParamsBlock
+		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+
 		//methods+=HttpMethod*
-		public Assignment getMethodsAssignment_4() { return cMethodsAssignment_4; }
+		public Assignment getMethodsAssignment_5() { return cMethodsAssignment_5; }
 
 		//HttpMethod
-		public RuleCall getMethodsHttpMethodParserRuleCall_4_0() { return cMethodsHttpMethodParserRuleCall_4_0; }
+		public RuleCall getMethodsHttpMethodParserRuleCall_5_0() { return cMethodsHttpMethodParserRuleCall_5_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class HttpMethodElements extends AbstractParserRuleElementFinder {
@@ -131,7 +136,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cHttpDeleteParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//HttpMethod:
-		//
 		//	HttpPost | HttpGet | HttpPut | HttpDelete;
 		public ParserRule getRule() { return rule; }
 
@@ -169,7 +173,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//HttpPost:
-		//
 		//	"post" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -234,7 +237,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//HttpPut:
-		//
 		//	"put" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -297,7 +299,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//HttpGet:
-		//
 		//	"get" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -354,7 +355,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//HttpDelete:
-		//
 		//	"delete" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -398,65 +398,63 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class ParamsBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamsBlock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cParamsKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cParamsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_1_0 = (RuleCall)cParamsAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cAmpersandKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cParamsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Action cParamsBlockAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cParamsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cParamsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cParamsSimpleMemberParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cParamsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cParamsSimpleMemberParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
 		
 		//ParamsBlock:
-		//
-		//	"params" params+=SimpleMember ("&" params+=SimpleMember)*;
+		//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
 		public ParserRule getRule() { return rule; }
 
-		//"params" params+=SimpleMember ("&" params+=SimpleMember)*
+		//{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*
 		public Group getGroup() { return cGroup; }
 
+		//{ParamsBlock}
+		public Action getParamsBlockAction_0() { return cParamsBlockAction_0; }
+
 		//"params"
-		public Keyword getParamsKeyword_0() { return cParamsKeyword_0; }
+		public Keyword getParamsKeyword_1() { return cParamsKeyword_1; }
 
-		//params+=SimpleMember
-		public Assignment getParamsAssignment_1() { return cParamsAssignment_1; }
-
-		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_1_0() { return cParamsSimpleMemberParserRuleCall_1_0; }
-
-		//("&" params+=SimpleMember)*
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"&"
-		public Keyword getAmpersandKeyword_2_0() { return cAmpersandKeyword_2_0; }
-
-		//params+=SimpleMember
-		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
+		//params+=SimpleMember*
+		public Assignment getParamsAssignment_2() { return cParamsAssignment_2; }
 
 		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_2_1_0() { return cParamsSimpleMemberParserRuleCall_2_1_0; }
+		public RuleCall getParamsSimpleMemberParserRuleCall_2_0() { return cParamsSimpleMemberParserRuleCall_2_0; }
+
+		//("," params+=SimpleMember)*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//params+=SimpleMember
+		public Assignment getParamsAssignment_3_1() { return cParamsAssignment_3_1; }
+
+		//SimpleMember
+		public RuleCall getParamsSimpleMemberParserRuleCall_3_1_0() { return cParamsSimpleMemberParserRuleCall_3_1_0; }
 	}
 
 	public class BodyBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BodyBlock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameBodyKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Keyword cBodyKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypeBlockTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
 		
 		//BodyBlock:
-		//
-		//	name="body" type=BlockType;
+		//	"body" type=BlockType;
 		public ParserRule getRule() { return rule; }
 
-		//name="body" type=BlockType
+		//"body" type=BlockType
 		public Group getGroup() { return cGroup; }
 
-		//name="body"
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-
 		//"body"
-		public Keyword getNameBodyKeyword_0_0() { return cNameBodyKeyword_0_0; }
+		public Keyword getBodyKeyword_0() { return cBodyKeyword_0; }
 
 		//type=BlockType
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
@@ -468,50 +466,49 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class ResponseBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ResponseBlock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameResponseKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cExtendsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cSuperTypeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final CrossReference cSuperTypeComplexTypeDeclarationCrossReference_1_1_0 = (CrossReference)cSuperTypeAssignment_1_1.eContents().get(0);
-		private final RuleCall cSuperTypeComplexTypeDeclarationIDTerminalRuleCall_1_1_0_1 = (RuleCall)cSuperTypeComplexTypeDeclarationCrossReference_1_1_0.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeBlockTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Action cResponseBlockAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cResponseKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cExtendsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cSuperTypeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cSuperTypeComplexTypeDeclarationCrossReference_2_1_0 = (CrossReference)cSuperTypeAssignment_2_1.eContents().get(0);
+		private final RuleCall cSuperTypeComplexTypeDeclarationIDTerminalRuleCall_2_1_0_1 = (RuleCall)cSuperTypeComplexTypeDeclarationCrossReference_2_1_0.eContents().get(1);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeBlockTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		
 		//ResponseBlock:
-		//
-		//	name="response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?;
+		//	{ResponseBlock} "response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?;
 		public ParserRule getRule() { return rule; }
 
-		//name="response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?
+		//{ResponseBlock} "response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?
 		public Group getGroup() { return cGroup; }
 
-		//name="response"
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{ResponseBlock}
+		public Action getResponseBlockAction_0() { return cResponseBlockAction_0; }
 
 		//"response"
-		public Keyword getNameResponseKeyword_0_0() { return cNameResponseKeyword_0_0; }
+		public Keyword getResponseKeyword_1() { return cResponseKeyword_1; }
 
 		//("extends" superType=[ComplexTypeDeclaration])?
-		public Group getGroup_1() { return cGroup_1; }
+		public Group getGroup_2() { return cGroup_2; }
 
 		//"extends"
-		public Keyword getExtendsKeyword_1_0() { return cExtendsKeyword_1_0; }
+		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 
 		//superType=[ComplexTypeDeclaration]
-		public Assignment getSuperTypeAssignment_1_1() { return cSuperTypeAssignment_1_1; }
+		public Assignment getSuperTypeAssignment_2_1() { return cSuperTypeAssignment_2_1; }
 
 		//[ComplexTypeDeclaration]
-		public CrossReference getSuperTypeComplexTypeDeclarationCrossReference_1_1_0() { return cSuperTypeComplexTypeDeclarationCrossReference_1_1_0; }
+		public CrossReference getSuperTypeComplexTypeDeclarationCrossReference_2_1_0() { return cSuperTypeComplexTypeDeclarationCrossReference_2_1_0; }
 
 		//ID
-		public RuleCall getSuperTypeComplexTypeDeclarationIDTerminalRuleCall_1_1_0_1() { return cSuperTypeComplexTypeDeclarationIDTerminalRuleCall_1_1_0_1; }
+		public RuleCall getSuperTypeComplexTypeDeclarationIDTerminalRuleCall_2_1_0_1() { return cSuperTypeComplexTypeDeclarationIDTerminalRuleCall_2_1_0_1; }
 
 		//type=BlockType?
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//BlockType
-		public RuleCall getTypeBlockTypeParserRuleCall_2_0() { return cTypeBlockTypeParserRuleCall_2_0; }
+		public RuleCall getTypeBlockTypeParserRuleCall_3_0() { return cTypeBlockTypeParserRuleCall_3_0; }
 	}
 
 	public class BlockTypeElements extends AbstractParserRuleElementFinder {
@@ -521,7 +518,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cComplexTypeLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//BlockType:
-		//
 		//	Type | ComplexTypeLiteral;
 		public ParserRule getRule() { return rule; }
 
@@ -539,21 +535,20 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Member");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cTypedMemberParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cWrapWithMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSkipMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Member:
-		//
-		//	TypedMember / *('=' defaultValue=Value)?  * / | WrapWithMember;
+		//	TypedMember / *('=' defaultValue=Value)?  * / | SkipMember;
 		public ParserRule getRule() { return rule; }
 
-		//TypedMember / *('=' defaultValue=Value)?  * / | WrapWithMember
+		//TypedMember / *('=' defaultValue=Value)?  * / | SkipMember
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//TypedMember
 		public RuleCall getTypedMemberParserRuleCall_0() { return cTypedMemberParserRuleCall_0; }
 
-		//WrapWithMember
-		public RuleCall getWrapWithMemberParserRuleCall_1() { return cWrapWithMemberParserRuleCall_1; }
+		//SkipMember
+		public RuleCall getSkipMemberParserRuleCall_1() { return cSkipMemberParserRuleCall_1; }
 	}
 
 	public class TypedMemberElements extends AbstractParserRuleElementFinder {
@@ -563,7 +558,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStringNamedMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//TypedMember:
-		//
 		//	IDNamedMember | StringNamedMember;
 		public ParserRule getRule() { return rule; }
 
@@ -587,7 +581,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//IDNamedMember:
-		//
 		//	name=ID ":" type=Type;
 		public ParserRule getRule() { return rule; }
 
@@ -620,7 +613,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//StringNamedMember:
-		//
 		//	name=STRING ":" type=Type;
 		public ParserRule getRule() { return rule; }
 
@@ -643,25 +635,24 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
 	}
 
-	public class WrapWithMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WrapWithMember");
+	public class SkipMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SkipMember");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cWrapWithKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cSkipKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cLiteralAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cLiteralComplexTypeLiteralParserRuleCall_2_0 = (RuleCall)cLiteralAssignment_2.eContents().get(0);
 		
-		//WrapWithMember:
-		//
-		//	"wrap-with" name=STRING literal=ComplexTypeLiteral;
+		//SkipMember:
+		//	"skip" name=STRING literal=ComplexTypeLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//"wrap-with" name=STRING literal=ComplexTypeLiteral
+		//"skip" name=STRING literal=ComplexTypeLiteral
 		public Group getGroup() { return cGroup; }
 
-		//"wrap-with"
-		public Keyword getWrapWithKeyword_0() { return cWrapWithKeyword_0; }
+		//"skip"
+		public Keyword getSkipKeyword_0() { return cSkipKeyword_0; }
 
 		//name=STRING
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -683,7 +674,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStringNamedSimpleMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//SimpleMember:
-		//
 		//	IDNamedSimpleMember | StringNamedSimpleMember;
 		public ParserRule getRule() { return rule; }
 
@@ -707,7 +697,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeIntrinsicTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//IDNamedSimpleMember:
-		//
 		//	name=ID ":" type=IntrinsicType;
 		public ParserRule getRule() { return rule; }
 
@@ -740,7 +729,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeIntrinsicTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//StringNamedSimpleMember:
-		//
 		//	name=STRING ":" type=IntrinsicType;
 		public ParserRule getRule() { return rule; }
 
@@ -769,14 +757,12 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUserTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntrinsicTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cGenericListTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cArrayTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Type:
-		//
-		//	UserType | IntrinsicType | GenericListType | ArrayType;
+		//	UserType | IntrinsicType | GenericListType;
 		public ParserRule getRule() { return rule; }
 
-		//UserType | IntrinsicType | GenericListType | ArrayType
+		//UserType | IntrinsicType | GenericListType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//UserType
@@ -787,58 +773,10 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//GenericListType
 		public RuleCall getGenericListTypeParserRuleCall_2() { return cGenericListTypeParserRuleCall_2; }
-
-		//ArrayType
-		public RuleCall getArrayTypeParserRuleCall_3() { return cArrayTypeParserRuleCall_3; }
 	}
 
 	public class GenericListTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GenericListType");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cIdAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cIdListKeyword_0_0 = (Keyword)cIdAssignment_0.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cGenericTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Alternatives cGenericTypeAlternatives_2_0 = (Alternatives)cGenericTypeAssignment_2.eContents().get(0);
-		private final RuleCall cGenericTypeUserTypeParserRuleCall_2_0_0 = (RuleCall)cGenericTypeAlternatives_2_0.eContents().get(0);
-		private final RuleCall cGenericTypeIntrinsicTypeParserRuleCall_2_0_1 = (RuleCall)cGenericTypeAlternatives_2_0.eContents().get(1);
-		private final Keyword cGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//GenericListType:
-		//
-		//	id="List" "<" genericType=(UserType | IntrinsicType) ">";
-		public ParserRule getRule() { return rule; }
-
-		//id="List" "<" genericType=(UserType | IntrinsicType) ">"
-		public Group getGroup() { return cGroup; }
-
-		//id="List"
-		public Assignment getIdAssignment_0() { return cIdAssignment_0; }
-
-		//"List"
-		public Keyword getIdListKeyword_0_0() { return cIdListKeyword_0_0; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_1() { return cLessThanSignKeyword_1; }
-
-		//genericType=(UserType | IntrinsicType)
-		public Assignment getGenericTypeAssignment_2() { return cGenericTypeAssignment_2; }
-
-		//UserType | IntrinsicType
-		public Alternatives getGenericTypeAlternatives_2_0() { return cGenericTypeAlternatives_2_0; }
-
-		//UserType
-		public RuleCall getGenericTypeUserTypeParserRuleCall_2_0_0() { return cGenericTypeUserTypeParserRuleCall_2_0_0; }
-
-		//IntrinsicType
-		public RuleCall getGenericTypeIntrinsicTypeParserRuleCall_2_0_1() { return cGenericTypeIntrinsicTypeParserRuleCall_2_0_1; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_3() { return cGreaterThanSignKeyword_3; }
-	}
-
-	public class ArrayTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ArrayType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cElementTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Alternatives cElementTypeAlternatives_0_0 = (Alternatives)cElementTypeAssignment_0.eContents().get(0);
@@ -847,8 +785,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Keyword cIdLeftSquareBracketRightSquareBracketKeyword_1_0 = (Keyword)cIdAssignment_1.eContents().get(0);
 		
-		//ArrayType:
-		//
+		//GenericListType:
 		//	elementType=(UserType | IntrinsicType) id="[]";
 		public ParserRule getRule() { return rule; }
 
@@ -881,7 +818,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDeclarationUserTypeDeclarationIDTerminalRuleCall_0_1 = (RuleCall)cDeclarationUserTypeDeclarationCrossReference_0.eContents().get(1);
 		
 		//UserType:
-		//
 		//	declaration=[UserTypeDeclaration];
 		public ParserRule getRule() { return rule; }
 
@@ -902,7 +838,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnumTypeDeclarationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//UserTypeDeclaration:
-		//
 		//	ComplexTypeDeclaration | EnumTypeDeclaration;
 		public ParserRule getRule() { return rule; }
 
@@ -920,7 +855,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ComplexTypeDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cKeywordAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cKeywordTypeKeyword_0_0 = (Keyword)cKeywordAssignment_0.eContents().get(0);
+		private final Keyword cKeywordEntityKeyword_0_0 = (Keyword)cKeywordAssignment_0.eContents().get(0);
 		private final Assignment cGenAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Keyword cGenGenerateKeyword_1_0 = (Keyword)cGenAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -929,18 +864,17 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralComplexTypeLiteralParserRuleCall_3_0 = (RuleCall)cLiteralAssignment_3.eContents().get(0);
 		
 		//ComplexTypeDeclaration:
-		//
-		//	keyword="type" gen?="generate"? name=ID literal=ComplexTypeLiteral?;
+		//	keyword="entity" gen?="generate"? name=ID literal=ComplexTypeLiteral?;
 		public ParserRule getRule() { return rule; }
 
-		//keyword="type" gen?="generate"? name=ID literal=ComplexTypeLiteral?
+		//keyword="entity" gen?="generate"? name=ID literal=ComplexTypeLiteral?
 		public Group getGroup() { return cGroup; }
 
-		//keyword="type"
+		//keyword="entity"
 		public Assignment getKeywordAssignment_0() { return cKeywordAssignment_0; }
 
-		//"type"
-		public Keyword getKeywordTypeKeyword_0_0() { return cKeywordTypeKeyword_0_0; }
+		//"entity"
+		public Keyword getKeywordEntityKeyword_0_0() { return cKeywordEntityKeyword_0_0; }
 
 		//gen?="generate"?
 		public Assignment getGenAssignment_1() { return cGenAssignment_1; }
@@ -978,7 +912,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralEnumTypeLiteralParserRuleCall_4_0 = (RuleCall)cLiteralAssignment_4.eContents().get(0);
 		
 		//EnumTypeDeclaration:
-		//
 		//	keyword="enum" gen?="generate"? name=ID ("extends" superType=IntegerType)? literal=EnumTypeLiteral?;
 		public ParserRule getRule() { return rule; }
 
@@ -1035,7 +968,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//EnumTypeLiteral:
-		//
 		//	"{" members+=EnumMember ("," members+=EnumMember)* "}";
 		public ParserRule getRule() { return rule; }
 
@@ -1079,7 +1011,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueINTTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
 		
 		//EnumMember:
-		//
 		//	name=ID (assignment?="=" value=INT)?;
 		public ParserRule getRule() { return rule; }
 
@@ -1121,7 +1052,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ComplexTypeLiteral:
-		//
 		//	"{" members+=Member ("," members+=Member)* "}";
 		public ParserRule getRule() { return rule; }
 
@@ -1158,15 +1088,13 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cStringTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cBooleanTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cDateTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cNumericTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cNumericTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//IntrinsicType:
-		//
-		//	StringType | BooleanType | DateType | NumericType;
+		//	StringType | BooleanType | NumericType;
 		public ParserRule getRule() { return rule; }
 
-		//StringType | BooleanType | DateType | NumericType
+		//StringType | BooleanType | NumericType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StringType
@@ -1175,11 +1103,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//BooleanType
 		public RuleCall getBooleanTypeParserRuleCall_1() { return cBooleanTypeParserRuleCall_1; }
 
-		//DateType
-		public RuleCall getDateTypeParserRuleCall_2() { return cDateTypeParserRuleCall_2; }
-
 		//NumericType
-		public RuleCall getNumericTypeParserRuleCall_3() { return cNumericTypeParserRuleCall_3; }
+		public RuleCall getNumericTypeParserRuleCall_2() { return cNumericTypeParserRuleCall_2; }
 	}
 
 	public class StringTypeElements extends AbstractParserRuleElementFinder {
@@ -1188,7 +1113,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdStringKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
 		
 		//StringType:
-		//
 		//	id="String";
 		public ParserRule getRule() { return rule; }
 
@@ -1205,7 +1129,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdBooleanKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
 		
 		//BooleanType:
-		//
 		//	id="boolean";
 		public ParserRule getRule() { return rule; }
 
@@ -1216,37 +1139,18 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getIdBooleanKeyword_0() { return cIdBooleanKeyword_0; }
 	}
 
-	public class DateTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DateType");
-		private final Assignment cIdAssignment = (Assignment)rule.eContents().get(1);
-		private final Keyword cIdDateKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
-		
-		//DateType:
-		//
-		//	id="Date";
-		public ParserRule getRule() { return rule; }
-
-		//id="Date"
-		public Assignment getIdAssignment() { return cIdAssignment; }
-
-		//"Date"
-		public Keyword getIdDateKeyword_0() { return cIdDateKeyword_0; }
-	}
-
 	public class NumericTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NumericType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIntegerTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cLongTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cFloatTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cDoubleTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cDoubleTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//NumericType:
-		//
-		//	IntegerType | LongType | FloatType | DoubleType;
+		//	IntegerType | LongType | DoubleType;
 		public ParserRule getRule() { return rule; }
 
-		//IntegerType | LongType | FloatType | DoubleType
+		//IntegerType | LongType | DoubleType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//IntegerType
@@ -1255,11 +1159,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//LongType
 		public RuleCall getLongTypeParserRuleCall_1() { return cLongTypeParserRuleCall_1; }
 
-		//FloatType
-		public RuleCall getFloatTypeParserRuleCall_2() { return cFloatTypeParserRuleCall_2; }
-
 		//DoubleType
-		public RuleCall getDoubleTypeParserRuleCall_3() { return cDoubleTypeParserRuleCall_3; }
+		public RuleCall getDoubleTypeParserRuleCall_2() { return cDoubleTypeParserRuleCall_2; }
 	}
 
 	public class IntegerTypeElements extends AbstractParserRuleElementFinder {
@@ -1268,7 +1169,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdIntKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
 		
 		//IntegerType:
-		//
 		//	id="int";
 		public ParserRule getRule() { return rule; }
 
@@ -1285,7 +1185,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdLongKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
 		
 		//LongType:
-		//
 		//	id="long";
 		public ParserRule getRule() { return rule; }
 
@@ -1296,30 +1195,12 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getIdLongKeyword_0() { return cIdLongKeyword_0; }
 	}
 
-	public class FloatTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatType");
-		private final Assignment cIdAssignment = (Assignment)rule.eContents().get(1);
-		private final Keyword cIdFloatKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
-		
-		//FloatType:
-		//
-		//	id="float";
-		public ParserRule getRule() { return rule; }
-
-		//id="float"
-		public Assignment getIdAssignment() { return cIdAssignment; }
-
-		//"float"
-		public Keyword getIdFloatKeyword_0() { return cIdFloatKeyword_0; }
-	}
-
 	public class DoubleTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DoubleType");
 		private final Assignment cIdAssignment = (Assignment)rule.eContents().get(1);
 		private final Keyword cIdDoubleKeyword_0 = (Keyword)cIdAssignment.eContents().get(0);
 		
 		//DoubleType:
-		//
 		//	id="double";
 		public ParserRule getRule() { return rule; }
 
@@ -1339,7 +1220,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
 		//FQN:
-		//
 		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1376,13 +1256,12 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private TypedMemberElements pTypedMember;
 	private IDNamedMemberElements pIDNamedMember;
 	private StringNamedMemberElements pStringNamedMember;
-	private WrapWithMemberElements pWrapWithMember;
+	private SkipMemberElements pSkipMember;
 	private SimpleMemberElements pSimpleMember;
 	private IDNamedSimpleMemberElements pIDNamedSimpleMember;
 	private StringNamedSimpleMemberElements pStringNamedSimpleMember;
 	private TypeElements pType;
 	private GenericListTypeElements pGenericListType;
-	private ArrayTypeElements pArrayType;
 	private UserTypeElements pUserType;
 	private UserTypeDeclarationElements pUserTypeDeclaration;
 	private ComplexTypeDeclarationElements pComplexTypeDeclaration;
@@ -1393,11 +1272,9 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private IntrinsicTypeElements pIntrinsicType;
 	private StringTypeElements pStringType;
 	private BooleanTypeElements pBooleanType;
-	private DateTypeElements pDateType;
 	private NumericTypeElements pNumericType;
 	private IntegerTypeElements pIntegerType;
 	private LongTypeElements pLongType;
-	private FloatTypeElements pFloatType;
 	private DoubleTypeElements pDoubleType;
 	private FQNElements pFQN;
 	
@@ -1440,7 +1317,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//
 	//	"package" packageName=FQN declarations+=Declaration*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
@@ -1451,7 +1327,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Declaration:
-	//
 	//	UserTypeDeclaration | Client;
 	public DeclarationElements getDeclarationAccess() {
 		return (pDeclaration != null) ? pDeclaration : (pDeclaration = new DeclarationElements());
@@ -1462,8 +1337,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Client:
-	//
-	//	"client" name=ID baseUrl=STRING "{" methods+=HttpMethod* "}";
+	//	"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}";
 	public ClientElements getClientAccess() {
 		return (pClient != null) ? pClient : (pClient = new ClientElements());
 	}
@@ -1473,7 +1347,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpMethod:
-	//
 	//	HttpPost | HttpGet | HttpPut | HttpDelete;
 	public HttpMethodElements getHttpMethodAccess() {
 		return (pHttpMethod != null) ? pHttpMethod : (pHttpMethod = new HttpMethodElements());
@@ -1484,7 +1357,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpPost:
-	//
 	//	"post" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 	public HttpPostElements getHttpPostAccess() {
 		return (pHttpPost != null) ? pHttpPost : (pHttpPost = new HttpPostElements());
@@ -1495,7 +1367,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpPut:
-	//
 	//	"put" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 	public HttpPutElements getHttpPutAccess() {
 		return (pHttpPut != null) ? pHttpPut : (pHttpPut = new HttpPutElements());
@@ -1506,7 +1377,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpGet:
-	//
 	//	"get" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
 	public HttpGetElements getHttpGetAccess() {
 		return (pHttpGet != null) ? pHttpGet : (pHttpGet = new HttpGetElements());
@@ -1517,7 +1387,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpDelete:
-	//
 	//	"delete" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
 	public HttpDeleteElements getHttpDeleteAccess() {
 		return (pHttpDelete != null) ? pHttpDelete : (pHttpDelete = new HttpDeleteElements());
@@ -1528,8 +1397,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParamsBlock:
-	//
-	//	"params" params+=SimpleMember ("&" params+=SimpleMember)*;
+	//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
 	public ParamsBlockElements getParamsBlockAccess() {
 		return (pParamsBlock != null) ? pParamsBlock : (pParamsBlock = new ParamsBlockElements());
 	}
@@ -1539,8 +1407,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BodyBlock:
-	//
-	//	name="body" type=BlockType;
+	//	"body" type=BlockType;
 	public BodyBlockElements getBodyBlockAccess() {
 		return (pBodyBlock != null) ? pBodyBlock : (pBodyBlock = new BodyBlockElements());
 	}
@@ -1550,8 +1417,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ResponseBlock:
-	//
-	//	name="response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?;
+	//	{ResponseBlock} "response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?;
 	public ResponseBlockElements getResponseBlockAccess() {
 		return (pResponseBlock != null) ? pResponseBlock : (pResponseBlock = new ResponseBlockElements());
 	}
@@ -1561,7 +1427,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BlockType:
-	//
 	//	Type | ComplexTypeLiteral;
 	public BlockTypeElements getBlockTypeAccess() {
 		return (pBlockType != null) ? pBlockType : (pBlockType = new BlockTypeElements());
@@ -1572,8 +1437,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Member:
-	//
-	//	TypedMember / *('=' defaultValue=Value)?  * / | WrapWithMember;
+	//	TypedMember / *('=' defaultValue=Value)?  * / | SkipMember;
 	public MemberElements getMemberAccess() {
 		return (pMember != null) ? pMember : (pMember = new MemberElements());
 	}
@@ -1583,7 +1447,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypedMember:
-	//
 	//	IDNamedMember | StringNamedMember;
 	public TypedMemberElements getTypedMemberAccess() {
 		return (pTypedMember != null) ? pTypedMember : (pTypedMember = new TypedMemberElements());
@@ -1594,7 +1457,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IDNamedMember:
-	//
 	//	name=ID ":" type=Type;
 	public IDNamedMemberElements getIDNamedMemberAccess() {
 		return (pIDNamedMember != null) ? pIDNamedMember : (pIDNamedMember = new IDNamedMemberElements());
@@ -1605,7 +1467,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringNamedMember:
-	//
 	//	name=STRING ":" type=Type;
 	public StringNamedMemberElements getStringNamedMemberAccess() {
 		return (pStringNamedMember != null) ? pStringNamedMember : (pStringNamedMember = new StringNamedMemberElements());
@@ -1615,19 +1476,17 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getStringNamedMemberAccess().getRule();
 	}
 
-	//WrapWithMember:
-	//
-	//	"wrap-with" name=STRING literal=ComplexTypeLiteral;
-	public WrapWithMemberElements getWrapWithMemberAccess() {
-		return (pWrapWithMember != null) ? pWrapWithMember : (pWrapWithMember = new WrapWithMemberElements());
+	//SkipMember:
+	//	"skip" name=STRING literal=ComplexTypeLiteral;
+	public SkipMemberElements getSkipMemberAccess() {
+		return (pSkipMember != null) ? pSkipMember : (pSkipMember = new SkipMemberElements());
 	}
 	
-	public ParserRule getWrapWithMemberRule() {
-		return getWrapWithMemberAccess().getRule();
+	public ParserRule getSkipMemberRule() {
+		return getSkipMemberAccess().getRule();
 	}
 
 	//SimpleMember:
-	//
 	//	IDNamedSimpleMember | StringNamedSimpleMember;
 	public SimpleMemberElements getSimpleMemberAccess() {
 		return (pSimpleMember != null) ? pSimpleMember : (pSimpleMember = new SimpleMemberElements());
@@ -1638,7 +1497,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IDNamedSimpleMember:
-	//
 	//	name=ID ":" type=IntrinsicType;
 	public IDNamedSimpleMemberElements getIDNamedSimpleMemberAccess() {
 		return (pIDNamedSimpleMember != null) ? pIDNamedSimpleMember : (pIDNamedSimpleMember = new IDNamedSimpleMemberElements());
@@ -1649,7 +1507,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringNamedSimpleMember:
-	//
 	//	name=STRING ":" type=IntrinsicType;
 	public StringNamedSimpleMemberElements getStringNamedSimpleMemberAccess() {
 		return (pStringNamedSimpleMember != null) ? pStringNamedSimpleMember : (pStringNamedSimpleMember = new StringNamedSimpleMemberElements());
@@ -1660,8 +1517,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type:
-	//
-	//	UserType | IntrinsicType | GenericListType | ArrayType;
+	//	UserType | IntrinsicType | GenericListType;
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -1671,8 +1527,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GenericListType:
-	//
-	//	id="List" "<" genericType=(UserType | IntrinsicType) ">";
+	//	elementType=(UserType | IntrinsicType) id="[]";
 	public GenericListTypeElements getGenericListTypeAccess() {
 		return (pGenericListType != null) ? pGenericListType : (pGenericListType = new GenericListTypeElements());
 	}
@@ -1681,19 +1536,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getGenericListTypeAccess().getRule();
 	}
 
-	//ArrayType:
-	//
-	//	elementType=(UserType | IntrinsicType) id="[]";
-	public ArrayTypeElements getArrayTypeAccess() {
-		return (pArrayType != null) ? pArrayType : (pArrayType = new ArrayTypeElements());
-	}
-	
-	public ParserRule getArrayTypeRule() {
-		return getArrayTypeAccess().getRule();
-	}
-
 	//UserType:
-	//
 	//	declaration=[UserTypeDeclaration];
 	public UserTypeElements getUserTypeAccess() {
 		return (pUserType != null) ? pUserType : (pUserType = new UserTypeElements());
@@ -1704,7 +1547,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UserTypeDeclaration:
-	//
 	//	ComplexTypeDeclaration | EnumTypeDeclaration;
 	public UserTypeDeclarationElements getUserTypeDeclarationAccess() {
 		return (pUserTypeDeclaration != null) ? pUserTypeDeclaration : (pUserTypeDeclaration = new UserTypeDeclarationElements());
@@ -1715,8 +1557,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ComplexTypeDeclaration:
-	//
-	//	keyword="type" gen?="generate"? name=ID literal=ComplexTypeLiteral?;
+	//	keyword="entity" gen?="generate"? name=ID literal=ComplexTypeLiteral?;
 	public ComplexTypeDeclarationElements getComplexTypeDeclarationAccess() {
 		return (pComplexTypeDeclaration != null) ? pComplexTypeDeclaration : (pComplexTypeDeclaration = new ComplexTypeDeclarationElements());
 	}
@@ -1726,7 +1567,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumTypeDeclaration:
-	//
 	//	keyword="enum" gen?="generate"? name=ID ("extends" superType=IntegerType)? literal=EnumTypeLiteral?;
 	public EnumTypeDeclarationElements getEnumTypeDeclarationAccess() {
 		return (pEnumTypeDeclaration != null) ? pEnumTypeDeclaration : (pEnumTypeDeclaration = new EnumTypeDeclarationElements());
@@ -1737,7 +1577,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumTypeLiteral:
-	//
 	//	"{" members+=EnumMember ("," members+=EnumMember)* "}";
 	public EnumTypeLiteralElements getEnumTypeLiteralAccess() {
 		return (pEnumTypeLiteral != null) ? pEnumTypeLiteral : (pEnumTypeLiteral = new EnumTypeLiteralElements());
@@ -1748,7 +1587,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumMember:
-	//
 	//	name=ID (assignment?="=" value=INT)?;
 	public EnumMemberElements getEnumMemberAccess() {
 		return (pEnumMember != null) ? pEnumMember : (pEnumMember = new EnumMemberElements());
@@ -1759,7 +1597,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ComplexTypeLiteral:
-	//
 	//	"{" members+=Member ("," members+=Member)* "}";
 	public ComplexTypeLiteralElements getComplexTypeLiteralAccess() {
 		return (pComplexTypeLiteral != null) ? pComplexTypeLiteral : (pComplexTypeLiteral = new ComplexTypeLiteralElements());
@@ -1770,8 +1607,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntrinsicType:
-	//
-	//	StringType | BooleanType | DateType | NumericType;
+	//	StringType | BooleanType | NumericType;
 	public IntrinsicTypeElements getIntrinsicTypeAccess() {
 		return (pIntrinsicType != null) ? pIntrinsicType : (pIntrinsicType = new IntrinsicTypeElements());
 	}
@@ -1781,7 +1617,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringType:
-	//
 	//	id="String";
 	public StringTypeElements getStringTypeAccess() {
 		return (pStringType != null) ? pStringType : (pStringType = new StringTypeElements());
@@ -1792,7 +1627,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanType:
-	//
 	//	id="boolean";
 	public BooleanTypeElements getBooleanTypeAccess() {
 		return (pBooleanType != null) ? pBooleanType : (pBooleanType = new BooleanTypeElements());
@@ -1802,20 +1636,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanTypeAccess().getRule();
 	}
 
-	//DateType:
-	//
-	//	id="Date";
-	public DateTypeElements getDateTypeAccess() {
-		return (pDateType != null) ? pDateType : (pDateType = new DateTypeElements());
-	}
-	
-	public ParserRule getDateTypeRule() {
-		return getDateTypeAccess().getRule();
-	}
-
 	//NumericType:
-	//
-	//	IntegerType | LongType | FloatType | DoubleType;
+	//	IntegerType | LongType | DoubleType;
 	public NumericTypeElements getNumericTypeAccess() {
 		return (pNumericType != null) ? pNumericType : (pNumericType = new NumericTypeElements());
 	}
@@ -1825,7 +1647,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerType:
-	//
 	//	id="int";
 	public IntegerTypeElements getIntegerTypeAccess() {
 		return (pIntegerType != null) ? pIntegerType : (pIntegerType = new IntegerTypeElements());
@@ -1836,7 +1657,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LongType:
-	//
 	//	id="long";
 	public LongTypeElements getLongTypeAccess() {
 		return (pLongType != null) ? pLongType : (pLongType = new LongTypeElements());
@@ -1846,19 +1666,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getLongTypeAccess().getRule();
 	}
 
-	//FloatType:
-	//
-	//	id="float";
-	public FloatTypeElements getFloatTypeAccess() {
-		return (pFloatType != null) ? pFloatType : (pFloatType = new FloatTypeElements());
-	}
-	
-	public ParserRule getFloatTypeRule() {
-		return getFloatTypeAccess().getRule();
-	}
-
 	//DoubleType:
-	//
 	//	id="double";
 	public DoubleTypeElements getDoubleTypeAccess() {
 		return (pDoubleType != null) ? pDoubleType : (pDoubleType = new DoubleTypeElements());
@@ -1869,7 +1677,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FQN:
-	//
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
 		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
@@ -1880,51 +1687,43 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//
 	//	"0".."9"+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//
 	//	"/ *"->"* /";
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
-	//
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
 		return gaTerminals.getANY_OTHERRule();

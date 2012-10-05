@@ -3,13 +3,12 @@ package com.robotoworks.mechanoid.net.generator.strategy
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import com.robotoworks.mechanoid.net.netModel.Member
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
-import com.robotoworks.mechanoid.net.netModel.ArrayType
 import com.robotoworks.mechanoid.net.netModel.UserType
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember
+import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 
 class MemberSerializationStatementGenerator {
@@ -50,7 +49,7 @@ class MemberSerializationStatementGenerator {
 		}
 		
 	def dispatch generateStatementForType(
-		WrapWithMember member, 
+		SkipMember member, 
 		String serializerMemberName, 
 		String fromPrefix, 
 		String toPrefix, 
@@ -96,25 +95,6 @@ class MemberSerializationStatementGenerator {
 	
 	def dispatch generateStatementForType(
 		TypedMember member, 
-		ArrayType type, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) {
-		generateStatementForArrayType(
-			member, 
-			type, 
-			type.elementType, 
-			serializerMemberName, 
-			fromPrefix, 
-			toPrefix, 
-			membersAreInternal
-		)
-	}
-	
-	def dispatch generateStatementForType(
-		TypedMember member, 
 		GenericListType type, 
 		String serializerMemberName, 
 		String fromPrefix, 
@@ -124,7 +104,7 @@ class MemberSerializationStatementGenerator {
 		generateStatementForGenericListType(
 			member,
 			type,
-			type.genericType,
+			type.elementType,
 			serializerMemberName,
 			fromPrefix,
 			toPrefix,
@@ -144,8 +124,7 @@ class MemberSerializationStatementGenerator {
 		«context.registerImport("org.json.JSONObject")»
 		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
 		if(«memberRef» != null) {
-			JSONObject targetMember = new JSONObject();
-			«serializerMemberName».get(«type.innerSignature»OutputTransformer.class).transform(«memberRef», targetMember);
+			JSONObject targetMember = «serializerMemberName».get(«type.innerSignature»OutputTransformer.class).transform(«memberRef»);
 			«toPrefix».put("«member.name»", targetMember);
 		}
 	'''
@@ -165,88 +144,7 @@ class MemberSerializationStatementGenerator {
 			«toPrefix».put("«member.name»", «memberRef».getValue());
 		}
 	'''
-	
-	def dispatch generateStatementForArrayType(
-		TypedMember member, 
-		ArrayType type, 
-		IntrinsicType element, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
-			JSONArray targetMember = new JSONArray();
-			for(«element.signature» element:«memberRef») {
-				targetMember.put(element);
-			}
-			«toPrefix».put("«member.name»", targetMember);
-		}
-	'''
-	
-	def dispatch generateStatementForArrayType(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) {
-		generateStatementForUserTypeArray(
-			member,
-			type, 
-			element, 
-			element.declaration, 
-			serializerMemberName,
-			fromPrefix,
-			toPrefix,
-			membersAreInternal
-		)
-	}
-	
-	def dispatch generateStatementForUserTypeArray(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		ComplexTypeDeclaration elementDeclaration, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
-			JSONArray targetMember = new JSONArray();
-			«serializerMemberName».get(«type.innerSignature»ArrayOutputTransformer.class).transform(«memberRef», targetMember);
-			«toPrefix».put("«member.name»", targetMember);
-		}
-	'''
-
-	def dispatch generateStatementForUserTypeArray(
-		TypedMember member, 
-		ArrayType type, 
-		UserType element, 
-		EnumTypeDeclaration elementDeclaration, 
-		String serializerMemberName, 
-		String fromPrefix, 
-		String toPrefix, 
-		boolean membersAreInternal
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
-		if(«memberRef» != null) {
-			JSONArray targetMember = new JSONArray();
-			for(«type.innerSignature» element:«memberRef») {
-				targetMember.put(element.getValue());
-			}
-			«toPrefix».put("«member.name»", targetMember);
-		}
-	'''
-				
+					
 	def dispatch generateStatementForGenericListType(
 		TypedMember member, 
 		GenericListType type, 
@@ -300,8 +198,7 @@ class MemberSerializationStatementGenerator {
 		«context.registerImport("java.util.List")»
 		«var memberRef = formatFromMemberIdentifier(member, serializerMemberName, fromPrefix, membersAreInternal)»
 		if(«memberRef» != null) {
-			JSONArray targetMember = new JSONArray();
-			«serializerMemberName».get(«type.innerSignature»ListOutputTransformer.class).transform(«memberRef», targetMember);
+			JSONArray targetMember = «serializerMemberName».get(«type.innerSignature»ListOutputTransformer.class).transform(«memberRef»);
 			«toPrefix».put("«member.name»", targetMember);
 		}
 	'''

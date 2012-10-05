@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.BodyBlockImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.BodyBlockImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
@@ -31,26 +30,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyBlock
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -80,29 +59,6 @@ public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyB
   protected EClass eStaticClass()
   {
     return NetModelPackage.Literals.BODY_BLOCK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.BODY_BLOCK__NAME, oldName, name));
   }
 
   /**
@@ -179,8 +135,6 @@ public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyB
   {
     switch (featureID)
     {
-      case NetModelPackage.BODY_BLOCK__NAME:
-        return getName();
       case NetModelPackage.BODY_BLOCK__TYPE:
         return getType();
     }
@@ -197,9 +151,6 @@ public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyB
   {
     switch (featureID)
     {
-      case NetModelPackage.BODY_BLOCK__NAME:
-        setName((String)newValue);
-        return;
       case NetModelPackage.BODY_BLOCK__TYPE:
         setType((BlockType)newValue);
         return;
@@ -217,9 +168,6 @@ public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyB
   {
     switch (featureID)
     {
-      case NetModelPackage.BODY_BLOCK__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case NetModelPackage.BODY_BLOCK__TYPE:
         setType((BlockType)null);
         return;
@@ -237,29 +185,10 @@ public class BodyBlockImpl extends MinimalEObjectImpl.Container implements BodyB
   {
     switch (featureID)
     {
-      case NetModelPackage.BODY_BLOCK__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NetModelPackage.BODY_BLOCK__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //BodyBlockImpl

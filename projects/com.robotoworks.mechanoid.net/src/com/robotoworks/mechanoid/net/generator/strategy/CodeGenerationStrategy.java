@@ -11,8 +11,6 @@ import com.robotoworks.mechanoid.net.netModel.Model;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 
 public class CodeGenerationStrategy {
-	private ArrayInputTransformerGenerator arrayInputTransformerGenerator;
-	private ArrayOutputTransformerGenerator arrayOutputTransformerGenerator;
 	private ClientGenerator clientGenerator;
 	private InputTransformerGenerator inputTransformerGenerator;
 	private IntegerEnumTypeGenerator integerEnumTypeGenerator;
@@ -52,8 +50,6 @@ public class CodeGenerationStrategy {
 				// Generate transformers
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "OutputTransformer"), getOutputTransformerGenerator().generate(lit, module));
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "InputTransformer"), getInputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ArrayOutputTransformer"), getArrayOutputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ArrayInputTransformer"), getArrayInputTransformerGenerator().generate(lit, module));
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListOutputTransformer"), getListOutputTransformerGenerator().generate(lit, module));
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListInputTransformer"), getListInputTransformerGenerator().generate(lit, module));
 				
@@ -74,22 +70,6 @@ public class CodeGenerationStrategy {
 				}		
 			}
 		}
-	}
-	
-	public ArrayInputTransformerGenerator getArrayInputTransformerGenerator() {
-		if(arrayInputTransformerGenerator == null){
-			arrayInputTransformerGenerator = new ArrayInputTransformerGenerator();
-			arrayInputTransformerGenerator.setContext(context);
-		}
-		return arrayInputTransformerGenerator;
-	}
-	
-	public ArrayOutputTransformerGenerator getArrayOutputTransformerGenerator() {
-		if(arrayOutputTransformerGenerator == null){
-			arrayOutputTransformerGenerator = new ArrayOutputTransformerGenerator();
-			arrayOutputTransformerGenerator.setContext(context);
-		}
-		return arrayOutputTransformerGenerator;
 	}
 	
 	public ClientGenerator getClientGenerator() {

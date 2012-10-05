@@ -6,7 +6,6 @@ import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.Client
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
-import com.robotoworks.mechanoid.net.netModel.ArrayType
 import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.netModel.UserType
 import com.robotoworks.mechanoid.net.netModel.HttpPut
@@ -16,13 +15,12 @@ import com.robotoworks.mechanoid.net.netModel.HttpDelete
 import com.robotoworks.mechanoid.net.netModel.BodyBlock
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
-import com.robotoworks.mechanoid.net.netModel.Type
-import com.google.inject.Inject
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.TypedMember
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember
+import com.robotoworks.mechanoid.net.netModel.SkipMember
 import java.util.ArrayList
 import java.util.List
+import com.robotoworks.mechanoid.net.netModel.StringType
 
 class RequestGenerator {
 	CodeGenerationContext context
@@ -50,13 +48,14 @@ class RequestGenerator {
 	«registerImports»
 	
 	import com.robotoworks.mechanoid.net.Parser;
-import com.robotoworks.mechanoid.net.TransformerProvider;
-import com.robotoworks.mechanoid.net.TransformException;
-import com.robotoworks.mechanoid.net.HttpRequestHelper;
-import com.robotoworks.mechanoid.net.WebResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import org.apache.http.client.ClientProtocolException;
+	import com.robotoworks.mechanoid.net.TransformerProvider;
+	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.net.ServiceClient;
+	import com.robotoworks.mechanoid.net.Response;
+	import java.io.IOException;
+	import java.io.InputStream;
+	import org.apache.http.client.ClientProtocolException;
+	import android.net.Uri;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -70,15 +69,23 @@ import org.apache.http.client.ClientProtocolException;
 		
 		«var pathArgs = method.getArgsFromPath»
 		«IF(pathArgs.size > 0)»
-			«FOR segment:pathArgs»
-			private final String «segment.substring(1).camelize.escapeReserved»;
-			«ENDFOR»
+		«FOR segment:pathArgs»
+		private final String «segment.substring(1).camelize.escapeReserved»;
+		«ENDFOR»
+		
 		«ENDIF»
 		«IF(method.params != null)»
-			«context.registerImport("android.net.Uri")»
-			«FOR param:method.params.params»
-			private «param.type.signature» «param.name.camelize»Param;
-			«ENDFOR»
+		«FOR param:method.params.params»
+		private «param.type.signature» «param.name.camelize»Param;
+		private boolean «param.name.camelize»ParamSet;
+		«ENDFOR»
+			
+		«ENDIF»
+		«IF(client.params != null)»
+		«FOR param:client.params.params»
+		private «param.type.signature» «param.name.camelize»Param;
+		private boolean «param.name.camelize»ParamSet;
+		«ENDFOR»
 			
 		«ENDIF»
 		«IF(method.hasBody)»
@@ -86,12 +93,30 @@ import org.apache.http.client.ClientProtocolException;
 			
 		«ENDIF»
 		«IF(method.params != null)»
-			«FOR param:method.params.params»
-			public void set«param.name.pascalize»Param(«param.type.signature» value) {
-				this.«param.name.camelize»Param = value;
-			}
-			«ENDFOR»
+		«FOR param:method.params.params»
+		public void set«param.name.pascalize»Param(«param.type.signature» value) {
+			this.«param.name.camelize»Param = value;
+			this.«param.name.camelize»ParamSet = true;
+		}
+		
+		public boolean is«param.name.pascalize»ParamSet() {
+			return «param.name.camelize»ParamSet;
+		}
+		«ENDFOR»
 			
+		«ENDIF»
+		«IF(client.params != null)»
+		«FOR param:client.params.params»
+		public void set«param.name.pascalize»Param(«param.type.signature» value) {
+			this.«param.name.camelize»Param = value;
+			this.«param.name.camelize»ParamSet = true;
+		}
+		
+		public boolean is«param.name.pascalize»ParamSet() {
+			return «param.name.camelize»ParamSet;
+		}
+		«ENDFOR»
+				
 		«ENDIF»
 		public «method.name.pascalize»Request(«generateRequestConstructorArgs(method.path, method.body)»){
 			«IF(pathArgs.size > 0)»
@@ -115,30 +140,41 @@ import org.apache.http.client.ClientProtocolException;
 		
 		«ENDIF»
 		public String createUrl(String baseUrl){
+			«IF(method.path.hasArgs)»
+				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH«method.path.pathToStringFormatArgs»)).buildUpon();
+			«ELSE»
+				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
+			«ENDIF»		
+				
 			«IF(method.params != null)»
-				«IF(method.path.hasArgs)»
-					Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH«method.path.pathToStringFormatArgs»)).buildUpon();
-				«ELSE»
-					Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
-				«ENDIF»			
 				«FOR param:method.params.params»
-					if(«param.name.camelize»Param != null){
-						uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param.toString());
+					if(«param.name.camelize»ParamSet){
+						«IF param.type instanceof StringType»
+						uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+						«ELSE»
+						uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+						«ENDIF»
 					}
 				«ENDFOR»
-
-				return uriBuilder.toString();
-			«ELSE»
-				«IF(method.path.hasArgs)»
-					return String.format(baseUrl + PATH«method.path.pathToStringFormatArgs»);
-				«ELSE»
-					return baseUrl + PATH;
-				«ENDIF»			
+				
 			«ENDIF»
+			«IF(client.params != null)»
+			«FOR param:client.params.params»
+				if(«param.name.camelize»ParamSet){
+					«IF param.type instanceof StringType»
+					uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+					«ELSE»
+					uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+					«ENDIF»
+				}
+			«ENDFOR»
+			
+			«ENDIF»
+			return uriBuilder.toString();			
 		}
 		
-		protected WebResponse<«method.name.pascalize»Response> execute(String baseUrl, HttpRequestHelper requestHelper, TransformerProvider transformerProvider)
-			throws ClientProtocolException, IOException {
+		protected Response<«method.name.pascalize»Response> execute(String baseUrl, ServiceClient client, TransformerProvider transformerProvider)
+			throws ClientProtocolException, IOException«IF method.hasBody», TransformException«ENDIF» {
 				
 			String url = createUrl(baseUrl);
 			
@@ -153,14 +189,14 @@ import org.apache.http.client.ClientProtocolException;
 			
 			«IF (method instanceof HttpPut)»
 			String body = «IF(method.hasBody)»createBody(transformerProvider)«ELSE»null«ENDIF»;
-			return requestHelper.putJson(url, body, parser);
+			return new Response<«method.name.pascalize»Response>(client.putJson(url, body), parser);
 			«ELSEIF (method instanceof HttpPost)»
 			String body = «IF(method.hasBody)»createBody(transformerProvider)«ELSE»null«ENDIF»;
-			return requestHelper.postJson(url, body, parser);
+			return new Response<«method.name.pascalize»Response>(client.postJson(url, body), parser);
 			«ELSEIF (method instanceof HttpGet)»
-			return requestHelper.getJson(url, parser);
+			return new Response<«method.name.pascalize»Response>(client.getJson(url), parser);
 			«ELSEIF (method instanceof HttpDelete)»
-			return requestHelper.deleteJson(url, parser);
+			return new Response<«method.name.pascalize»Response>(client.deleteJson(url), parser);
 			«ENDIF»
 		}
 	}	
@@ -175,16 +211,8 @@ import org.apache.http.client.ClientProtocolException;
 		private final «type.signature» value;
 	'''
 	
-	def dispatch generateFieldForType(ArrayType type) '''
-		«IF(type.elementType instanceof IntrinsicType)»
-			private final «type.signature» values;
-		«ELSE»
-			private final «type.signature» «type.innerSignature.camelize.pluralize»;
-		«ENDIF»
-	'''
-	
 	def dispatch generateFieldForType(GenericListType type) '''
-		«IF(type.genericType instanceof IntrinsicType)»
+		«IF(type.elementType instanceof IntrinsicType)»
 			private final «type.signature» values;
 		«ELSE»
 			private final «type.signature» «type.innerSignature.camelize.pluralize»;
@@ -199,7 +227,7 @@ import org.apache.http.client.ClientProtocolException;
 		private final «member.type.signature» «member.toIdentifier»;
 	'''
 	
-	def dispatch generateFieldForMember(WrapWithMember member) '''
+	def dispatch generateFieldForMember(SkipMember member) '''
 		«generateFieldForType(member.literal)»
 	'''
 	
@@ -211,16 +239,9 @@ import org.apache.http.client.ClientProtocolException;
 	def dispatch generateConstructorAssignmentForType(IntrinsicType type) '''
 		this.value = value;
 	'''
-	def dispatch generateConstructorAssignmentForType(ArrayType type) '''
-		«IF(type.elementType instanceof IntrinsicType)»
-			this.values = values;
-		«ELSE»
-			this.«type.innerSignature.camelize.pluralize» = «type.innerSignature.camelize.pluralize»;
-		«ENDIF»
-	'''
 
 	def dispatch generateConstructorAssignmentForType(GenericListType type) '''
-		«IF(type.genericType instanceof IntrinsicType)»
+		«IF(type.elementType instanceof IntrinsicType)»
 			this.values = values;
 		«ELSE»
 			this.«type.innerSignature.camelize.pluralize» = «type.innerSignature.camelize.pluralize»;
@@ -234,7 +255,7 @@ import org.apache.http.client.ClientProtocolException;
 		this.«member.toIdentifier» = «member.toIdentifier»;
 	'''
 	
-	def dispatch generateConstructorAssignmentForMember(WrapWithMember member) '''
+	def dispatch generateConstructorAssignmentForMember(SkipMember member) '''
 		«generateConstructorAssignmentForType(member.literal)»
 	'''
 	
@@ -260,8 +281,7 @@ import org.apache.http.client.ClientProtocolException;
 		UserType type,
 		ComplexTypeDeclaration declaration) '''
 			«context.registerImport("org.json.JSONObject")»
-			JSONObject target = new JSONObject();
-			transformerProvider.get(«type.signature»OutputTransformer.class).transform(«type.signature.camelize», target);
+			JSONObject target = transformerProvider.get(«type.signature»OutputTransformer.class).transform(«type.signature.camelize»);
 			return target.toString();
 		'''
 	
@@ -271,60 +291,9 @@ import org.apache.http.client.ClientProtocolException;
 		EnumTypeDeclaration declaration) '''
 			return «type.signature.camelize».getValue();
 		'''
-		
-	def dispatch generateSerializationStatementForType(BodyBlock body, ArrayType type) {
-		generateSerializationStatementForArrayType(body, type, type.elementType);
-	}
-	
-	def dispatch generateSerializationStatementForArrayType(
-		BodyBlock body, 
-		ArrayType type,
-		IntrinsicType elementType
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		JSONArray target = new JSONArray();
-		for(«type.innerSignature» element:values) {
-			target.put(element);
-		}
-		return target.toString();
-	'''
-			
-	def dispatch generateSerializationStatementForArrayType(
-		BodyBlock body, 
-		ArrayType type,
-		UserType elementType
-	) {
-		generateSerializationStatementForUserTypeArray(body, type, elementType, elementType.declaration);
-	}
-
-	def dispatch generateSerializationStatementForUserTypeArray(
-		BodyBlock body, 
-		ArrayType type,
-		UserType elementType,
-		ComplexTypeDeclaration declaration
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		JSONArray target = new JSONArray();
-		transformerProvider.get(«type.innerSignature»ArrayOutputTransformer.class).transform(«type.innerSignature.camelize.pluralize», target);
-		return target.toString();
-	'''
-
-	def dispatch generateSerializationStatementForUserTypeArray(
-		BodyBlock body, 
-		ArrayType type,
-		UserType elementType,
-		EnumTypeDeclaration declaration
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		JSONArray target = new JSONArray();
-		for(«type.innerSignature» element:«type.innerSignature.camelize.pluralize») {
-			target.put(element.getValue());
-		}
-		return target.toString();
-	'''
 	
 	def dispatch generateSerializationStatementForType(BodyBlock body, GenericListType type) {
-		generateSerializationStatementForGenericListType(body, type, type.genericType);
+		generateSerializationStatementForGenericListType(body, type, type.elementType);
 	}
 	
 	def dispatch generateSerializationStatementForGenericListType(
@@ -354,8 +323,7 @@ import org.apache.http.client.ClientProtocolException;
 	) '''
 		«context.registerImport("org.json.JSONArray")»
 		«context.registerImport("java.util.List")»
-		JSONArray target = new JSONArray();
-		transformerProvider.get(«type.innerSignature»ListOutputTransformer.class).transform(«type.innerSignature.camelize.pluralize», target);
+		JSONArray target = transformerProvider.get(«type.innerSignature»ListOutputTransformer.class).transform(«type.innerSignature.camelize.pluralize»);
 		return target.toString();
 	'''
 
@@ -395,8 +363,8 @@ import org.apache.http.client.ClientProtocolException;
 		for(member:type.members) {
 			if(member instanceof TypedMember) {
 				args.add((member as TypedMember).type.signature + " " + member.toIdentifier)
-			} else if(member instanceof WrapWithMember) {
-				buildConstructorArgsForType((member as WrapWithMember).literal, args)
+			} else if(member instanceof SkipMember) {
+				buildConstructorArgsForType((member as SkipMember).literal, args)
 			}
 		}		
 	}
@@ -405,16 +373,8 @@ import org.apache.http.client.ClientProtocolException;
 		args.add(type.signature + " value");
 	}
 	
-	def dispatch void buildConstructorArgsForType(ArrayType type, List<String> args) {
-		if(type.elementType instanceof IntrinsicType){
-			args.add(type.signature + " values")
-		} else {
-			args.add(type.signature + " " + type.innerSignature.camelize.pluralize)
-		}
-	}
-	
 	def dispatch void buildConstructorArgsForType(GenericListType type, List<String> args) {
-		if(type.genericType instanceof IntrinsicType){
+		if(type.elementType instanceof IntrinsicType){
 			args.add(type.signature + " values")
 		} else {
 			args.add(type.signature + " " + type.innerSignature.camelize.pluralize)

@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ResponseBlockImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ResponseBlockImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ResponseBlockImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -33,26 +32,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements ResponseBlock
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
    * <!-- begin-user-doc -->
@@ -92,29 +71,6 @@ public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements R
   protected EClass eStaticClass()
   {
     return NetModelPackage.Literals.RESPONSE_BLOCK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.RESPONSE_BLOCK__NAME, oldName, name));
   }
 
   /**
@@ -234,8 +190,6 @@ public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements R
   {
     switch (featureID)
     {
-      case NetModelPackage.RESPONSE_BLOCK__NAME:
-        return getName();
       case NetModelPackage.RESPONSE_BLOCK__SUPER_TYPE:
         if (resolve) return getSuperType();
         return basicGetSuperType();
@@ -255,9 +209,6 @@ public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements R
   {
     switch (featureID)
     {
-      case NetModelPackage.RESPONSE_BLOCK__NAME:
-        setName((String)newValue);
-        return;
       case NetModelPackage.RESPONSE_BLOCK__SUPER_TYPE:
         setSuperType((ComplexTypeDeclaration)newValue);
         return;
@@ -278,9 +229,6 @@ public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements R
   {
     switch (featureID)
     {
-      case NetModelPackage.RESPONSE_BLOCK__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case NetModelPackage.RESPONSE_BLOCK__SUPER_TYPE:
         setSuperType((ComplexTypeDeclaration)null);
         return;
@@ -301,31 +249,12 @@ public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements R
   {
     switch (featureID)
     {
-      case NetModelPackage.RESPONSE_BLOCK__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NetModelPackage.RESPONSE_BLOCK__SUPER_TYPE:
         return superType != null;
       case NetModelPackage.RESPONSE_BLOCK__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ResponseBlockImpl

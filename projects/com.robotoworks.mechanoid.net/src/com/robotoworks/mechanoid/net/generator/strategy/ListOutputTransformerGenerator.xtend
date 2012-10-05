@@ -31,11 +31,19 @@ class ListOutputTransformerGenerator {
 		«context.registerImport("org.json.JSONObject")»
 		«context.registerImport("java.util.List")»
 		public class «decl.name»ListOutputTransformer extends Transformer<List<«decl.name»>, JSONArray> {
+			public JSONArray transform(List<«decl.name»> source) throws TransformException {
+				JSONArray target = new JSONArray();
+				
+				transform(source, target);
+				
+				return target;
+			}
+			
 			public void transform(List<«decl.name»> source, JSONArray target) throws TransformException {
+				
 				«decl.name»OutputTransformer itemTransformer = provider.get(«decl.name»OutputTransformer.class);
 				for(«decl.name» sourceItem:source) {
-					JSONObject targetItem = new JSONObject();
-					itemTransformer.transform(sourceItem, targetItem);
+					JSONObject targetItem = itemTransformer.transform(sourceItem);
 					target.put(targetItem); 
 				}
 			}

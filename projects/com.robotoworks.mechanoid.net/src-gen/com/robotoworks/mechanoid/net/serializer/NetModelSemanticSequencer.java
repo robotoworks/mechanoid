@@ -2,18 +2,15 @@ package com.robotoworks.mechanoid.net.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import com.robotoworks.mechanoid.net.netModel.ArrayType;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.DateType;
 import com.robotoworks.mechanoid.net.netModel.DoubleType;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
-import com.robotoworks.mechanoid.net.netModel.FloatType;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.HttpDelete;
 import com.robotoworks.mechanoid.net.netModel.HttpGet;
@@ -27,11 +24,11 @@ import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.SkipMember;
 import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
 import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.UserType;
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember;
 import com.robotoworks.mechanoid.net.services.NetModelGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -53,14 +50,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == NetModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case NetModelPackage.ARRAY_TYPE:
-				if(context == grammarAccess.getArrayTypeRule() ||
-				   context == grammarAccess.getBlockTypeRule() ||
-				   context == grammarAccess.getTypeRule()) {
-					sequence_ArrayType(context, (ArrayType) semanticObject); 
-					return; 
-				}
-				else break;
 			case NetModelPackage.BODY_BLOCK:
 				if(context == grammarAccess.getBodyBlockRule()) {
 					sequence_BodyBlock(context, (BodyBlock) semanticObject); 
@@ -98,15 +87,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
-			case NetModelPackage.DATE_TYPE:
-				if(context == grammarAccess.getBlockTypeRule() ||
-				   context == grammarAccess.getDateTypeRule() ||
-				   context == grammarAccess.getIntrinsicTypeRule() ||
-				   context == grammarAccess.getTypeRule()) {
-					sequence_DateType(context, (DateType) semanticObject); 
-					return; 
-				}
-				else break;
 			case NetModelPackage.DOUBLE_TYPE:
 				if(context == grammarAccess.getBlockTypeRule() ||
 				   context == grammarAccess.getDoubleTypeRule() ||
@@ -134,16 +114,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case NetModelPackage.ENUM_TYPE_LITERAL:
 				if(context == grammarAccess.getEnumTypeLiteralRule()) {
 					sequence_EnumTypeLiteral(context, (EnumTypeLiteral) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.FLOAT_TYPE:
-				if(context == grammarAccess.getBlockTypeRule() ||
-				   context == grammarAccess.getFloatTypeRule() ||
-				   context == grammarAccess.getIntrinsicTypeRule() ||
-				   context == grammarAccess.getNumericTypeRule() ||
-				   context == grammarAccess.getTypeRule()) {
-					sequence_FloatType(context, (FloatType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -236,6 +206,13 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.SKIP_MEMBER:
+				if(context == grammarAccess.getMemberRule() ||
+				   context == grammarAccess.getSkipMemberRule()) {
+					sequence_SkipMember(context, (SkipMember) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.STRING_NAMED_MEMBER:
 				if(context == grammarAccess.getMemberRule() ||
 				   context == grammarAccess.getStringNamedMemberRule() ||
@@ -268,40 +245,21 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
-			case NetModelPackage.WRAP_WITH_MEMBER:
-				if(context == grammarAccess.getMemberRule() ||
-				   context == grammarAccess.getWrapWithMemberRule()) {
-					sequence_WrapWithMember(context, (WrapWithMember) semanticObject); 
-					return; 
-				}
-				else break;
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
 	
 	/**
 	 * Constraint:
-	 *     ((elementType=UserType | elementType=IntrinsicType) id='[]')
-	 */
-	protected void sequence_ArrayType(EObject context, ArrayType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name='body' type=BlockType)
+	 *     type=BlockType
 	 */
 	protected void sequence_BodyBlock(EObject context, BodyBlock semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.BODY_BLOCK__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.BODY_BLOCK__NAME));
 			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.BODY_BLOCK__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.BODY_BLOCK__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBodyBlockAccess().getNameBodyKeyword_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getBodyBlockAccess().getTypeBlockTypeParserRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -325,7 +283,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID baseUrl=STRING methods+=HttpMethod*)
+	 *     (name=ID baseUrl=STRING params=ParamsBlock? methods+=HttpMethod*)
 	 */
 	protected void sequence_Client(EObject context, Client semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -334,7 +292,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (keyword='type' gen?='generate'? name=ID literal=ComplexTypeLiteral?)
+	 *     (keyword='entity' gen?='generate'? name=ID literal=ComplexTypeLiteral?)
 	 */
 	protected void sequence_ComplexTypeDeclaration(EObject context, ComplexTypeDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -347,22 +305,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_ComplexTypeLiteral(EObject context, ComplexTypeLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     id='Date'
-	 */
-	protected void sequence_DateType(EObject context, DateType semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.INTRINSIC_TYPE__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.INTRINSIC_TYPE__ID));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDateTypeAccess().getIdDateKeyword_0(), semanticObject.getId());
-		feeder.finish();
 	}
 	
 	
@@ -411,23 +353,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     id='float'
-	 */
-	protected void sequence_FloatType(EObject context, FloatType semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.INTRINSIC_TYPE__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.INTRINSIC_TYPE__ID));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFloatTypeAccess().getIdFloatKeyword_0(), semanticObject.getId());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (id='List' (genericType=UserType | genericType=IntrinsicType))
+	 *     ((elementType=UserType | elementType=IntrinsicType) id='[]')
 	 */
 	protected void sequence_GenericListType(EObject context, GenericListType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -551,7 +477,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (params+=SimpleMember params+=SimpleMember*)
+	 *     (params+=SimpleMember* params+=SimpleMember*)
 	 */
 	protected void sequence_ParamsBlock(EObject context, ParamsBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -560,10 +486,29 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name='response' superType=[ComplexTypeDeclaration|ID]? type=BlockType?)
+	 *     (superType=[ComplexTypeDeclaration|ID]? type=BlockType?)
 	 */
 	protected void sequence_ResponseBlock(EObject context, ResponseBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=STRING literal=ComplexTypeLiteral)
+	 */
+	protected void sequence_SkipMember(EObject context, SkipMember semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.MEMBER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.MEMBER__NAME));
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SKIP_MEMBER__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SKIP_MEMBER__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_2_0(), semanticObject.getLiteral());
+		feeder.finish();
 	}
 	
 	
@@ -633,25 +578,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getUserTypeAccess().getDeclarationUserTypeDeclarationIDTerminalRuleCall_0_1(), semanticObject.getDeclaration());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=STRING literal=ComplexTypeLiteral)
-	 */
-	protected void sequence_WrapWithMember(EObject context, WrapWithMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.WRAP_WITH_MEMBER__LITERAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.WRAP_WITH_MEMBER__LITERAL));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getWrapWithMemberAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getWrapWithMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_2_0(), semanticObject.getLiteral());
 		feeder.finish();
 	}
 }

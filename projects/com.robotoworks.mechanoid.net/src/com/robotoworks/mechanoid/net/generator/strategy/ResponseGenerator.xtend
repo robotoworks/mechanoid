@@ -1,7 +1,6 @@
 package com.robotoworks.mechanoid.net.generator.strategy
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
-import com.robotoworks.mechanoid.net.netModel.ArrayType
 import com.robotoworks.mechanoid.net.netModel.Client
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
@@ -10,7 +9,7 @@ import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.netModel.HttpMethod
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
 import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.netModel.WrapWithMember
+import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
@@ -84,16 +83,8 @@ class ResponseGenerator {
 		private «type.signature» value;	
 	'''
 	
-	def dispatch generateFieldForType(ArrayType type) '''
-		«IF(type.elementType instanceof IntrinsicType)»
-			private «type.signature» values;
-		«ELSE»
-			private «type.signature» «type.innerSignature.camelize.pluralize»;
-		«ENDIF»
-	'''
-	
 	def dispatch generateFieldForType(GenericListType type) '''
-		«IF(type.genericType instanceof IntrinsicType)»
+		«IF(type.elementType instanceof IntrinsicType)»
 			private «type.signature» values;
 		«ELSE»
 			private «type.signature» «type.innerSignature.camelize.pluralize»;
@@ -108,7 +99,7 @@ class ResponseGenerator {
 	private «member.type.signature» «member.toIdentifier»;
 	'''
 	
-	def dispatch generateFieldForMember(WrapWithMember member) '''
+	def dispatch generateFieldForMember(SkipMember member) '''
 		«generateFieldForType(member.literal)»
 	'''
 		
@@ -123,20 +114,8 @@ class ResponseGenerator {
 		}
 	'''
 	
-	def dispatch generateGetterForType(ArrayType type) '''
-	«IF(type.elementType instanceof IntrinsicType)»
-		public «type.signature» getValues(){
-			return this.values;
-		}
-	«ELSE»
-		public «type.signature» get«type.innerSignature.pascalize.pluralize»(){
-			return this.«type.innerSignature.camelize.pluralize»;
-		}	
-	«ENDIF»
-	'''
-	
 	def dispatch generateGetterForType(GenericListType type) '''
-	«IF(type.genericType instanceof IntrinsicType)»
+	«IF(type.elementType instanceof IntrinsicType)»
 		public «type.signature» getValues(){
 			return this.values;
 		}
@@ -159,7 +138,7 @@ class ResponseGenerator {
 	}
 	'''
 	
-	def dispatch generateGetter(WrapWithMember member) '''
+	def dispatch generateGetter(SkipMember member) '''
 		«generateGetterForType(member.literal)»
 	'''
 	
@@ -218,8 +197,7 @@ class ResponseGenerator {
 		«context.registerImport("org.json.JSONObject")»
 		«generateDeserializationStatementHeader()»
 				JSONObject source = new JSONObject(content);
-				this.«type.signature.camelize» = new «type.signature»();
-				transformerProvider.get(«type.signature»InputTransformer.class).transform(source, this.«type.signature.camelize»);
+				this.«type.signature.camelize» = transformerProvider.get(«type.signature»InputTransformer.class).transform(source);
 		«generateDeserializationStatementFooter()»
 	'''
 	
@@ -228,59 +206,9 @@ class ResponseGenerator {
 				this.«type.signature.camelize» = «type.signature».fromValue(content);
 		«generateDeserializationStatementFooter()»
 	'''
-	
-	def dispatch generateDeserializationStatementForType(ResponseBlock response, ArrayType type) {
-		generateDeserializationStatementForArrayType(response, type, type.elementType);
-	}
-	
-	def dispatch generateDeserializationStatementForArrayType(ResponseBlock response, ArrayType type, IntrinsicType elementType) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.values = new «type.innerSignature»[source.length()];
-				for(int i=0; i < source.length(); i++) {
-					this.values[i] = source.«elementType.toJSONPropertyGetMethod»(i);
-				}
-		«generateDeserializationStatementFooter()»
-	'''
-	
-	def dispatch generateDeserializationStatementForArrayType(ResponseBlock response, ArrayType type, UserType elementType) {
-		generateDeserializationStatementForUserTypeArray(response, type, elementType, elementType.declaration);
-	}
-	
-	def dispatch generateDeserializationStatementForUserTypeArray(
-		ResponseBlock response, 
-		ArrayType type, 
-		UserType elementType, 
-		ComplexTypeDeclaration declaration
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new «type.innerSignature»[source.length()];
-				transformerProvider.get(«type.innerSignature»ArrayInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
-		«generateDeserializationStatementFooter()»
-	'''
-	
-	def dispatch generateDeserializationStatementForUserTypeArray(
-		ResponseBlock response, 
-		ArrayType type, 
-		UserType elementType, 
-		EnumTypeDeclaration declaration
-	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new «type.innerSignature»[source.length()];
-				for(int i=0; i < source.length(); i++) {
-					«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveGetJSONValueMethodName»(i));
-					this.«type.innerSignature.camelize.pluralize»[i] = element;
-				}
-		«generateDeserializationStatementFooter()»
-	'''
 
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, GenericListType type) {
-		generateDeserializationStatementForGenericListType(response, type, type.genericType);
+		generateDeserializationStatementForGenericListType(response, type, type.elementType);
 	}
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, IntrinsicType genericType) '''
@@ -311,8 +239,7 @@ class ResponseGenerator {
 		«context.registerImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader()»
 				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»(source.length());
-				transformerProvider.get(«type.innerSignature»ListInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
+				this.«type.innerSignature.camelize.pluralize» = transformerProvider.get(«type.innerSignature»ListInputTransformer.class).transform(source);
 		«generateDeserializationStatementFooter()»
 	'''
 	

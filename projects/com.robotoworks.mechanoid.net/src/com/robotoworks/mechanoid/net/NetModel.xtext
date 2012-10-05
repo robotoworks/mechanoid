@@ -12,7 +12,10 @@ Declaration:
 ;
 
 Client:
-	'client' name=ID baseUrl=STRING '{' (methods +=HttpMethod)* '}'
+	'client' name=ID baseUrl=STRING '{' 
+	(params = ParamsBlock)?
+	(methods +=HttpMethod)* 
+	'}'
 ;
 
 HttpMethod:
@@ -36,15 +39,17 @@ HttpDelete:
 ;
 
 ParamsBlock:
-	'params' params+=SimpleMember ('&' params+=SimpleMember)*
+	{ParamsBlock}
+	'params' params+=SimpleMember* (',' params+=SimpleMember)*
 ;
 
 BodyBlock:
-	name='body' type=BlockType
+	'body' type=BlockType
 ;
 
 ResponseBlock:
-	name='response' ('extends' superType=[ComplexTypeDeclaration])? (type=BlockType)?
+	{ResponseBlock}
+	'response' ('extends' superType=[ComplexTypeDeclaration])? (type=BlockType)?
 ;
 
 BlockType:
@@ -52,7 +57,7 @@ BlockType:
 ;
 
 Member:
-	(TypedMember | WrapWithMember) /*('=' defaultValue=Value)?  */
+	(TypedMember | SkipMember) /*('=' defaultValue=Value)?  */
 ;
 
 TypedMember:
@@ -67,8 +72,8 @@ StringNamedMember :
 	name=STRING ':' type=Type
 ;
 
-WrapWithMember :
-	"wrap-with" name=STRING literal=ComplexTypeLiteral
+SkipMember :
+	'skip' name=STRING literal=ComplexTypeLiteral
 ;
 
 SimpleMember:
@@ -84,14 +89,10 @@ StringNamedSimpleMember:
 ;
 
 Type:
-	UserType | IntrinsicType | GenericListType | ArrayType
+	UserType | IntrinsicType | GenericListType
 ;
 
 GenericListType:
-	id='List' '<' genericType=(UserType|IntrinsicType) '>'
-;
-
-ArrayType:
 	elementType=(UserType|IntrinsicType) id='[]'
 ;
 
@@ -104,7 +105,7 @@ UserTypeDeclaration:
 ;
 
 ComplexTypeDeclaration:
-	keyword='type' (gen?='generate')? name=ID (literal=ComplexTypeLiteral)?
+	keyword='entity' (gen?='generate')? name=ID (literal=ComplexTypeLiteral)?
 ;
 
 EnumTypeDeclaration:
@@ -124,7 +125,7 @@ ComplexTypeLiteral:
 ;
 
 IntrinsicType:
-	StringType | BooleanType | DateType | NumericType
+	StringType | BooleanType | NumericType
 ;
 
 StringType:
@@ -135,12 +136,8 @@ BooleanType:
 	id="boolean"
 ;
 
-DateType:
-	id="Date"
-;
-
 NumericType:
-	IntegerType | LongType | FloatType | DoubleType
+	IntegerType | LongType | DoubleType
 ;
 	
 IntegerType:
@@ -149,10 +146,6 @@ IntegerType:
 
 LongType:
 	id="long"
-;
-
-FloatType:
-	id="float"
 ;
 
 DoubleType:

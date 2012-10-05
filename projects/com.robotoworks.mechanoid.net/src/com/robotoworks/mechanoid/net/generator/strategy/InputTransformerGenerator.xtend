@@ -1,12 +1,8 @@
 package com.robotoworks.mechanoid.net.generator.strategy
 
-import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.netModel.ArrayType
-import com.robotoworks.mechanoid.net.netModel.GenericListType
-import com.google.inject.Inject
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 
 class InputTransformerGenerator {
 	CodeGenerationContext context
@@ -43,6 +39,13 @@ class InputTransformerGenerator {
 	def generateInputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
 		«context.registerImport("org.json.JSONException")»
 		public class «decl.name»InputTransformer extends Transformer<JSONObject, «decl.name»> {
+			public «decl.name» transform(JSONObject source) throws TransformException {
+				«decl.name» target = new «decl.name»();
+
+				transform(source, target);
+				
+				return target;
+			}
 			public void transform(JSONObject source, «decl.name» target) throws TransformException {
 				try {
 					«FOR member:decl.literal.members»
@@ -51,6 +54,7 @@ class InputTransformerGenerator {
 				} catch (JSONException x) {
 					throw new TransformException(x);
 				}
+				
 			}
 		}
 	'''

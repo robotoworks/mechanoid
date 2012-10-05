@@ -194,11 +194,11 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NetModelPackage.WRAP_WITH_MEMBER:
+      case NetModelPackage.SKIP_MEMBER:
       {
-        WrapWithMember wrapWithMember = (WrapWithMember)theEObject;
-        T result = caseWrapWithMember(wrapWithMember);
-        if (result == null) result = caseMember(wrapWithMember);
+        SkipMember skipMember = (SkipMember)theEObject;
+        T result = caseSkipMember(skipMember);
+        if (result == null) result = caseMember(skipMember);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -239,15 +239,6 @@ public class NetModelSwitch<T> extends Switch<T>
         T result = caseGenericListType(genericListType);
         if (result == null) result = caseType(genericListType);
         if (result == null) result = caseBlockType(genericListType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.ARRAY_TYPE:
-      {
-        ArrayType arrayType = (ArrayType)theEObject;
-        T result = caseArrayType(arrayType);
-        if (result == null) result = caseType(arrayType);
-        if (result == null) result = caseBlockType(arrayType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -337,16 +328,6 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NetModelPackage.DATE_TYPE:
-      {
-        DateType dateType = (DateType)theEObject;
-        T result = caseDateType(dateType);
-        if (result == null) result = caseIntrinsicType(dateType);
-        if (result == null) result = caseType(dateType);
-        if (result == null) result = caseBlockType(dateType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case NetModelPackage.NUMERIC_TYPE:
       {
         NumericType numericType = (NumericType)theEObject;
@@ -376,17 +357,6 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = caseIntrinsicType(longType);
         if (result == null) result = caseType(longType);
         if (result == null) result = caseBlockType(longType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.FLOAT_TYPE:
-      {
-        FloatType floatType = (FloatType)theEObject;
-        T result = caseFloatType(floatType);
-        if (result == null) result = caseNumericType(floatType);
-        if (result == null) result = caseIntrinsicType(floatType);
-        if (result == null) result = caseType(floatType);
-        if (result == null) result = caseBlockType(floatType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -662,17 +632,17 @@ public class NetModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Wrap With Member</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Skip Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Wrap With Member</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Skip Member</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWrapWithMember(WrapWithMember object)
+  public T caseSkipMember(SkipMember object)
   {
     return null;
   }
@@ -753,22 +723,6 @@ public class NetModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGenericListType(GenericListType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Array Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Array Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseArrayType(ArrayType object)
   {
     return null;
   }
@@ -934,22 +888,6 @@ public class NetModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Date Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Date Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDateType(DateType object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Numeric Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -993,22 +931,6 @@ public class NetModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLongType(LongType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Float Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Float Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFloatType(FloatType object)
   {
     return null;
   }

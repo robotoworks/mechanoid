@@ -167,13 +167,13 @@ public interface NetModelFactory extends EFactory
   StringNamedMember createStringNamedMember();
 
   /**
-   * Returns a new object of class '<em>Wrap With Member</em>'.
+   * Returns a new object of class '<em>Skip Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Wrap With Member</em>'.
+   * @return a new object of class '<em>Skip Member</em>'.
    * @generated
    */
-  WrapWithMember createWrapWithMember();
+  SkipMember createSkipMember();
 
   /**
    * Returns a new object of class '<em>Simple Member</em>'.
@@ -219,15 +219,6 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   GenericListType createGenericListType();
-
-  /**
-   * Returns a new object of class '<em>Array Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Array Type</em>'.
-   * @generated
-   */
-  ArrayType createArrayType();
 
   /**
    * Returns a new object of class '<em>User Type</em>'.
@@ -320,15 +311,6 @@ public interface NetModelFactory extends EFactory
   BooleanType createBooleanType();
 
   /**
-   * Returns a new object of class '<em>Date Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Date Type</em>'.
-   * @generated
-   */
-  DateType createDateType();
-
-  /**
    * Returns a new object of class '<em>Numeric Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -354,15 +336,6 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   LongType createLongType();
-
-  /**
-   * Returns a new object of class '<em>Float Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Float Type</em>'.
-   * @generated
-   */
-  FloatType createFloatType();
 
   /**
    * Returns a new object of class '<em>Double Type</em>'.

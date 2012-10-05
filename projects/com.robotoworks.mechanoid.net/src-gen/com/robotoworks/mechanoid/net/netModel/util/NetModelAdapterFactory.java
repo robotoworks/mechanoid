@@ -155,9 +155,9 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createStringNamedMemberAdapter();
       }
       @Override
-      public Adapter caseWrapWithMember(WrapWithMember object)
+      public Adapter caseSkipMember(SkipMember object)
       {
-        return createWrapWithMemberAdapter();
+        return createSkipMemberAdapter();
       }
       @Override
       public Adapter caseSimpleMember(SimpleMember object)
@@ -183,11 +183,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseGenericListType(GenericListType object)
       {
         return createGenericListTypeAdapter();
-      }
-      @Override
-      public Adapter caseArrayType(ArrayType object)
-      {
-        return createArrayTypeAdapter();
       }
       @Override
       public Adapter caseUserType(UserType object)
@@ -240,11 +235,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createBooleanTypeAdapter();
       }
       @Override
-      public Adapter caseDateType(DateType object)
-      {
-        return createDateTypeAdapter();
-      }
-      @Override
       public Adapter caseNumericType(NumericType object)
       {
         return createNumericTypeAdapter();
@@ -258,11 +248,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLongType(LongType object)
       {
         return createLongTypeAdapter();
-      }
-      @Override
-      public Adapter caseFloatType(FloatType object)
-      {
-        return createFloatTypeAdapter();
       }
       @Override
       public Adapter caseDoubleType(DoubleType object)
@@ -532,16 +517,16 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.WrapWithMember <em>Wrap With Member</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.SkipMember <em>Skip Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.WrapWithMember
+   * @see com.robotoworks.mechanoid.net.netModel.SkipMember
    * @generated
    */
-  public Adapter createWrapWithMemberAdapter()
+  public Adapter createSkipMemberAdapter()
   {
     return null;
   }
@@ -617,21 +602,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGenericListTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.ArrayType <em>Array Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.ArrayType
-   * @generated
-   */
-  public Adapter createArrayTypeAdapter()
   {
     return null;
   }
@@ -787,21 +757,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.DateType <em>Date Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.DateType
-   * @generated
-   */
-  public Adapter createDateTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.NumericType <em>Numeric Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -842,21 +797,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLongTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.FloatType <em>Float Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.FloatType
-   * @generated
-   */
-  public Adapter createFloatTypeAdapter()
   {
     return null;
   }
