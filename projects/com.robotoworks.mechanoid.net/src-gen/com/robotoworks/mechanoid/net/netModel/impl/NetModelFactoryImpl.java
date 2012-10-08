@@ -78,12 +78,8 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.BLOCK_TYPE: return createBlockType();
       case NetModelPackage.MEMBER: return createMember();
       case NetModelPackage.TYPED_MEMBER: return createTypedMember();
-      case NetModelPackage.ID_NAMED_MEMBER: return createIDNamedMember();
-      case NetModelPackage.STRING_NAMED_MEMBER: return createStringNamedMember();
       case NetModelPackage.SKIP_MEMBER: return createSkipMember();
       case NetModelPackage.SIMPLE_MEMBER: return createSimpleMember();
-      case NetModelPackage.ID_NAMED_SIMPLE_MEMBER: return createIDNamedSimpleMember();
-      case NetModelPackage.STRING_NAMED_SIMPLE_MEMBER: return createStringNamedSimpleMember();
       case NetModelPackage.TYPE: return createType();
       case NetModelPackage.GENERIC_LIST_TYPE: return createGenericListType();
       case NetModelPackage.USER_TYPE: return createUserType();
@@ -264,28 +260,6 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public IDNamedMember createIDNamedMember()
-  {
-    IDNamedMemberImpl idNamedMember = new IDNamedMemberImpl();
-    return idNamedMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringNamedMember createStringNamedMember()
-  {
-    StringNamedMemberImpl stringNamedMember = new StringNamedMemberImpl();
-    return stringNamedMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public SkipMember createSkipMember()
   {
     SkipMemberImpl skipMember = new SkipMemberImpl();
@@ -301,28 +275,6 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     SimpleMemberImpl simpleMember = new SimpleMemberImpl();
     return simpleMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IDNamedSimpleMember createIDNamedSimpleMember()
-  {
-    IDNamedSimpleMemberImpl idNamedSimpleMember = new IDNamedSimpleMemberImpl();
-    return idNamedSimpleMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringNamedSimpleMember createStringNamedSimpleMember()
-  {
-    StringNamedSimpleMemberImpl stringNamedSimpleMember = new StringNamedSimpleMemberImpl();
-    return stringNamedSimpleMember;
   }
 
   /**

@@ -1,9 +1,10 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
-import com.robotoworks.mechanoid.net.generator.strategy.MemberDeserializationStatementGenerator;
+import com.robotoworks.mechanoid.net.generator.strategy.JsonReaderGenerator;
 import com.robotoworks.mechanoid.net.netModel.BlockType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -21,6 +22,7 @@ import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
 import java.util.Arrays;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
@@ -33,15 +35,11 @@ public class ResponseGenerator {
     return _context;
   }
   
-  private MemberDeserializationStatementGenerator deserializationStatementGenerator;
+  private JsonReaderGenerator jsonReaderGenerator;
   
-  public MemberDeserializationStatementGenerator setMemberDeserializationStatementGenerator(final MemberDeserializationStatementGenerator deserializationStatementGenerator) {
-    MemberDeserializationStatementGenerator _deserializationStatementGenerator = this.deserializationStatementGenerator = deserializationStatementGenerator;
-    return _deserializationStatementGenerator;
-  }
-  
-  public MemberDeserializationStatementGenerator getMemberDeserializationStatementGenerator() {
-    return this.deserializationStatementGenerator;
+  public JsonReaderGenerator setJsonReaderGenerator(final JsonReaderGenerator jsonReaderGenerator) {
+    JsonReaderGenerator _jsonReaderGenerator = this.jsonReaderGenerator = jsonReaderGenerator;
+    return _jsonReaderGenerator;
   }
   
   public void registerImports() {
@@ -63,6 +61,12 @@ public class ResponseGenerator {
     _builder.newLineIfNotEmpty();
     this.registerImports();
     _builder.newLineIfNotEmpty();
+    _builder.append("import java.io.InputStreamReader;");
+    _builder.newLine();
+    _builder.append("import java.nio.charset.Charset;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.internal.util.JsonReader;");
+    _builder.newLine();
     StringConcatenation _printImports = this.context.printImports();
     _builder.append(_printImports, "");
     _builder.newLineIfNotEmpty();
@@ -71,111 +75,6 @@ public class ResponseGenerator {
     _builder.newLine();
     _builder.append(body, "");
     _builder.newLineIfNotEmpty();
-    return _builder;
-  }
-  
-  public CharSequence generateResponseClass(final HttpMethod method, final Model module, final Client client) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class ");
-    String _name = method.getName();
-    String _pascalize = ModelExtensions.pascalize(_name);
-    _builder.append(_pascalize, "");
-    _builder.append("Response ");
-    {
-      boolean _and = false;
-      ResponseBlock _response = method.getResponse();
-      boolean _notEquals = (!Objects.equal(_response, null));
-      if (!_notEquals) {
-        _and = false;
-      } else {
-        ResponseBlock _response_1 = method.getResponse();
-        ComplexTypeDeclaration _superType = _response_1.getSuperType();
-        boolean _notEquals_1 = (!Objects.equal(_superType, null));
-        _and = (_notEquals && _notEquals_1);
-      }
-      if (_and) {
-        _builder.append("extends ");
-        ResponseBlock _response_2 = method.getResponse();
-        ComplexTypeDeclaration _superType_1 = _response_2.getSuperType();
-        String _name_1 = _superType_1.getName();
-        _builder.append(_name_1, "");
-      }
-    }
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
-    {
-      ResponseBlock _response_3 = method.getResponse();
-      boolean _notEquals_2 = (!Objects.equal(_response_3, null));
-      if (_notEquals_2) {
-        _builder.append("\t");
-        ResponseBlock _response_4 = method.getResponse();
-        BlockType _type = _response_4.getType();
-        CharSequence _generateFieldForType = this.generateFieldForType(_type);
-        _builder.append(_generateFieldForType, "	");
-        _builder.append("\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        ResponseBlock _response_5 = method.getResponse();
-        BlockType _type_1 = _response_5.getType();
-        CharSequence _generateGetterForType = this.generateGetterForType(_type_1);
-        _builder.append(_generateGetterForType, "	");
-        _builder.append("\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_2 = method.getName();
-    String _pascalize_1 = ModelExtensions.pascalize(_name_2);
-    _builder.append(_pascalize_1, "	");
-    _builder.append("Response(TransformerProvider transformerProvider, InputStream inStream) throws TransformException {");
-    _builder.newLineIfNotEmpty();
-    {
-      ResponseBlock _response_6 = method.getResponse();
-      boolean _notEquals_3 = (!Objects.equal(_response_6, null));
-      if (_notEquals_3) {
-        {
-          ResponseBlock _response_7 = method.getResponse();
-          BlockType _type_2 = _response_7.getType();
-          boolean _notEquals_4 = (!Objects.equal(_type_2, null));
-          if (_notEquals_4) {
-            _builder.append("\t\t");
-            ResponseBlock _response_8 = method.getResponse();
-            ResponseBlock _response_9 = method.getResponse();
-            BlockType _type_3 = _response_9.getType();
-            CharSequence _generateDeserializationStatementForType = this.generateDeserializationStatementForType(_response_8, _type_3);
-            _builder.append(_generateDeserializationStatementForType, "		");
-            _builder.newLineIfNotEmpty();
-          } else {
-            {
-              ResponseBlock _response_10 = method.getResponse();
-              ComplexTypeDeclaration _superType_2 = _response_10.getSuperType();
-              boolean _notEquals_5 = (!Objects.equal(_superType_2, null));
-              if (_notEquals_5) {
-                _builder.append("\t\t");
-                ResponseBlock _response_11 = method.getResponse();
-                ResponseBlock _response_12 = method.getResponse();
-                ComplexTypeDeclaration _superType_3 = _response_12.getSuperType();
-                CharSequence _generateDeserializationStatementForSuperTypeOnly = this.generateDeserializationStatementForSuperTypeOnly(_response_11, _superType_3);
-                _builder.append(_generateDeserializationStatementForSuperTypeOnly, "		");
-                _builder.newLineIfNotEmpty();
-              }
-            }
-          }
-        }
-      } else {
-        _builder.append("\t\t");
-        _builder.append("Closeables.closeSilently(inStream);");
-        _builder.newLine();
-      }
-    }
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
     return _builder;
   }
   
@@ -378,6 +277,23 @@ public class ResponseGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
+    _builder.append("public void ");
+    String _setMethodName = ModelExtensions.toSetMethodName(member);
+    _builder.append(_setMethodName, "");
+    _builder.append("(");
+    Type _type_1 = member.getType();
+    String _signature_1 = ModelExtensions.signature(_type_1);
+    _builder.append(_signature_1, "");
+    _builder.append(" value){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("this.");
+    String _identifier_1 = ModelExtensions.toIdentifier(member);
+    _builder.append(_identifier_1, "	");
+    _builder.append(" = value;");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
     return _builder;
   }
   
@@ -390,23 +306,162 @@ public class ResponseGenerator {
     return _builder;
   }
   
-  public CharSequence generateDeserializationStatementHeader() {
+  public CharSequence generateResponseClass(final HttpMethod method, final Model module, final Client client) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
+    _builder.append("public class ");
+    String _name = method.getName();
+    String _pascalize = ModelExtensions.pascalize(_name);
+    _builder.append(_pascalize, "");
+    _builder.append("Response ");
+    {
+      boolean _and = false;
+      ResponseBlock _response = method.getResponse();
+      boolean _notEquals = (!Objects.equal(_response, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        ResponseBlock _response_1 = method.getResponse();
+        ComplexTypeDeclaration _superType = _response_1.getSuperType();
+        boolean _notEquals_1 = (!Objects.equal(_superType, null));
+        _and = (_notEquals && _notEquals_1);
+      }
+      if (_and) {
+        _builder.append("extends ");
+        ResponseBlock _response_2 = method.getResponse();
+        ComplexTypeDeclaration _superType_1 = _response_2.getSuperType();
+        String _name_1 = _superType_1.getName();
+        _builder.append(_name_1, "");
+      }
+    }
+    _builder.append(" {");
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("try {");
+    {
+      ResponseBlock _response_3 = method.getResponse();
+      BlockType _type = _response_3==null?(BlockType)null:_response_3.getType();
+      boolean _notEquals_2 = (!Objects.equal(_type, null));
+      if (_notEquals_2) {
+        _builder.append("\t");
+        ResponseBlock _response_4 = method.getResponse();
+        BlockType _type_1 = _response_4.getType();
+        CharSequence _generateFieldForType = this.generateFieldForType(_type_1);
+        _builder.append(_generateFieldForType, "	");
+        _builder.append("\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        ResponseBlock _response_5 = method.getResponse();
+        BlockType _type_2 = _response_5.getType();
+        CharSequence _generateGetterForType = this.generateGetterForType(_type_2);
+        _builder.append(_generateGetterForType, "	");
+        _builder.append("\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("if(inStream != null){");
+    _builder.append("public ");
+    String _name_2 = method.getName();
+    String _pascalize_1 = ModelExtensions.pascalize(_name_2);
+    _builder.append(_pascalize_1, "	");
+    _builder.append("Response(TransformerProvider provider, InputStream inStream) throws TransformException {");
+    _builder.newLineIfNotEmpty();
+    {
+      ResponseBlock _response_6 = method.getResponse();
+      boolean _notEquals_3 = (!Objects.equal(_response_6, null));
+      if (_notEquals_3) {
+        {
+          boolean _or = false;
+          ResponseBlock _response_7 = method.getResponse();
+          BlockType _type_3 = _response_7.getType();
+          if ((_type_3 instanceof ComplexTypeLiteral)) {
+            _or = true;
+          } else {
+            ResponseBlock _response_8 = method.getResponse();
+            ComplexTypeDeclaration _superType_2 = _response_8.getSuperType();
+            boolean _notEquals_4 = (!Objects.equal(_superType_2, null));
+            _or = ((_type_3 instanceof ComplexTypeLiteral) || _notEquals_4);
+          }
+          if (_or) {
+            _builder.append("\t\t");
+            CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
+            _builder.append(_generateDeserializationStatementHeader, "		");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t");
+            _builder.newLine();
+            _builder.append("\t\t\t");
+            String _name_3 = method.getName();
+            String _pascalize_2 = ModelExtensions.pascalize(_name_3);
+            _builder.append(_pascalize_2, "			");
+            _builder.append("Response target = this;");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t");
+            _builder.newLine();
+            _builder.append("\t\t\t");
+            ResponseBlock _response_9 = method.getResponse();
+            BlockType _type_4 = _response_9.getType();
+            ResponseBlock _response_10 = method.getResponse();
+            ComplexTypeDeclaration _superType_3 = _response_10.getSuperType();
+            EList<Member> members = this.mergeMembers(((ComplexTypeLiteral) _type_4), _superType_3);
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t");
+            _builder.newLine();
+            _builder.append("\t\t\t");
+            CharSequence _genReadComplexTypeLiteralForMembers = this.jsonReaderGenerator.genReadComplexTypeLiteralForMembers(members);
+            _builder.append(_genReadComplexTypeLiteralForMembers, "			");
+            _builder.newLineIfNotEmpty();
+            _builder.newLine();
+            _builder.append("\t\t");
+            CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
+            _builder.append(_generateDeserializationStatementFooter, "		");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t");
+            ResponseBlock _response_11 = method.getResponse();
+            ResponseBlock _response_12 = method.getResponse();
+            BlockType _type_5 = _response_12.getType();
+            CharSequence _generateDeserializationStatementForType = this.generateDeserializationStatementForType(_response_11, ((Type) _type_5));
+            _builder.append(_generateDeserializationStatementForType, "	");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      } else {
+        _builder.append("\t");
+        _builder.append("Closeables.closeSilently(inStream);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("}");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("String content = Streams.readAllText(inStream);");
+    _builder.append("}");
     _builder.newLine();
     return _builder;
   }
   
-  public CharSequence generateDeserializationStatementFooter() {
+  public CharSequence generateDeserializationStatementHeader(final boolean withReader) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if (withReader) {
+        _builder.append("JsonReader source = null;");
+        _builder.newLine();
+      }
+    }
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if(inStream != null) {");
+    _builder.newLine();
+    {
+      if (withReader) {
+        _builder.append("\t\t");
+        _builder.append("source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence generateDeserializationStatementFooter(final boolean withReader) {
     StringConcatenation _builder = new StringConcatenation();
     this.context.registerImport("java.io.IOException");
     _builder.newLineIfNotEmpty();
@@ -420,89 +475,58 @@ public class ResponseGenerator {
     _builder.newLine();
     _builder.append("} finally {");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("Closeables.closeSilently(inStream);");
-    _builder.newLine();
+    {
+      if (withReader) {
+        _builder.append("\t");
+        _builder.append("Closeables.closeSilently(source);");
+        _builder.newLine();
+      } else {
+        _builder.append("\t");
+        _builder.append("Closeables.closeSilently(inStream);");
+        _builder.newLine();
+      }
+    }
     _builder.append("}");
     _builder.newLine();
     return _builder;
   }
   
-  public CharSequence generateDeserializationStatementForSuperTypeOnly(final ResponseBlock response, final ComplexTypeDeclaration superType) {
-    StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONObject");
-    _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
-    _builder.append(_generateDeserializationStatementHeader, "");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("JSONObject source = new JSONObject(content);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("transformerProvider.get(");
-    String _name = superType.getName();
-    _builder.append(_name, "		");
-    _builder.append("InputTransformer.class).transform(source, this);");
-    _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
-    _builder.append(_generateDeserializationStatementFooter, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
-  }
-  
-  protected CharSequence _generateDeserializationStatementForType(final ResponseBlock response, final ComplexTypeLiteral type) {
-    StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONObject");
-    _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
-    _builder.append(_generateDeserializationStatementHeader, "");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("JSONObject source = new JSONObject(content);");
-    _builder.newLine();
-    {
+  public EList<Member> mergeMembers(final ComplexTypeLiteral type, final ComplexTypeDeclaration superType) {
+    BasicEList<Member> _basicEList = new BasicEList<Member>();
+    BasicEList<Member> members = _basicEList;
+    boolean _notEquals = (!Objects.equal(type, null));
+    if (_notEquals) {
       EList<Member> _members = type.getMembers();
-      for(final Member member : _members) {
-        _builder.append("\t\t");
-        CharSequence _generate = this.deserializationStatementGenerator.generate(member, "transformerProvider", "source", "this", true);
-        _builder.append(_generate, "		");
-        _builder.newLineIfNotEmpty();
-      }
+      Iterables.<Member>addAll(members, _members);
     }
-    {
-      ComplexTypeDeclaration _superType = response.getSuperType();
-      boolean _notEquals = (!Objects.equal(_superType, null));
-      if (_notEquals) {
-        _builder.append("\t\t");
-        _builder.append("\t\t\t");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("transformerProvider.get(");
-        ComplexTypeDeclaration _superType_1 = response.getSuperType();
-        String _name = _superType_1.getName();
-        _builder.append(_name, "		");
-        _builder.append("InputTransformer.class).transform(source, this);");
-        _builder.newLineIfNotEmpty();
-      }
+    boolean _notEquals_1 = (!Objects.equal(superType, null));
+    if (_notEquals_1) {
+      ComplexTypeLiteral _literal = superType.getLiteral();
+      EList<Member> _members_1 = _literal.getMembers();
+      Iterables.<Member>addAll(members, _members_1);
     }
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
-    _builder.append(_generateDeserializationStatementFooter, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return members;
   }
   
   protected CharSequence _generateDeserializationStatementForType(final ResponseBlock response, final IntrinsicType type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(false);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
+    _builder.append("String source = Streams.readAllText(inStream);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("this.value = ");
-    String _signature = ModelExtensions.signature(type);
-    _builder.append(_signature, "		");
-    _builder.append(".valueOf(content);");
+    String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(type);
+    _builder.append(_boxedTypeSignature, "		");
+    _builder.append(".valueOf(source);");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(false);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -516,25 +540,20 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForUserType(final ResponseBlock response, final UserType type, final ComplexTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONObject");
-    _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("JSONObject source = new JSONObject(content);");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("this.");
     String _signature = ModelExtensions.signature(type);
     String _camelize = ModelExtensions.camelize(_signature);
     _builder.append(_camelize, "		");
-    _builder.append(" = transformerProvider.get(");
+    _builder.append(" = provider.get(");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "		");
     _builder.append("InputTransformer.class).transform(source);");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -542,9 +561,14 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForUserType(final ResponseBlock response, final UserType type, final EnumTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(false);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("String source = Streams.readAllText(inStream);");
+    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("this.");
     String _signature = ModelExtensions.signature(type);
@@ -553,9 +577,9 @@ public class ResponseGenerator {
     _builder.append(" = ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "		");
-    _builder.append(".fromValue(content);");
+    _builder.append(".fromValue(source);");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(false);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -569,37 +593,22 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForGenericListType(final ResponseBlock response, final GenericListType type, final IntrinsicType genericType) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONArray");
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("JSONArray source = new JSONArray(content);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("this.values = new Array");
-    String _signature = ModelExtensions.signature(type);
-    _builder.append(_signature, "		");
-    _builder.append("(source.length());");
+    _builder.append("this.values = JsonUtil.read");
+    String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(genericType);
+    _builder.append(_boxedTypeSignature, "		");
+    _builder.append("List(source);");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("for(int i=0; i < source.length(); i++) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("this.values.add(source.");
-    String _jSONPropertyGetMethod = ModelExtensions.toJSONPropertyGetMethod(genericType);
-    _builder.append(_jSONPropertyGetMethod, "			");
-    _builder.append("(i));");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -613,30 +622,27 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForUserTypeGenericList(final ResponseBlock response, final GenericListType type, final UserType genericType, final ComplexTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONArray");
-    _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.List");
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("JSONArray source = new JSONArray(content);");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("this.");
     String _innerSignature = ModelExtensions.innerSignature(type);
     String _camelize = ModelExtensions.camelize(_innerSignature);
     String _pluralize = ModelExtensions.pluralize(_camelize);
     _builder.append(_pluralize, "		");
-    _builder.append(" = transformerProvider.get(");
+    _builder.append(" = provider.get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "		");
     _builder.append("ListInputTransformer.class).transform(source);");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -644,18 +650,17 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForUserTypeGenericList(final ResponseBlock response, final GenericListType type, final UserType genericType, final EnumTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONArray");
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.List");
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
-    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader();
+    this.context.registerImport("java.util.List");
+    _builder.newLineIfNotEmpty();
+    CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("JSONArray source = new JSONArray(content);");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("this.");
     String _innerSignature = ModelExtensions.innerSignature(type);
@@ -665,34 +670,54 @@ public class ResponseGenerator {
     _builder.append(" = new Array");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "		");
-    _builder.append("(source.length());");
+    _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("for(int i=0; i < source.length(); i++) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("if(source.peek() != JsonToken.NULL) {");
     _builder.newLine();
     _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("source.beginArray();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("while(source.hasNext()) {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_1, "			");
+    _builder.append(_innerSignature_1, "				");
     _builder.append(" element = ");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_2, "			");
+    _builder.append(_innerSignature_2, "				");
     _builder.append(".fromValue(source.");
-    String _resolveGetJSONValueMethodName = ModelExtensions.resolveGetJSONValueMethodName(declaration);
-    _builder.append(_resolveGetJSONValueMethodName, "			");
-    _builder.append("(i));");
+    String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(declaration);
+    _builder.append(_resolveJsonReaderMethodName, "				");
+    _builder.append("());");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
+    _builder.append("\t\t\t\t");
     _builder.append("this.");
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = ModelExtensions.camelize(_innerSignature_3);
     String _pluralize_1 = ModelExtensions.pluralize(_camelize_1);
-    _builder.append(_pluralize_1, "			");
+    _builder.append(_pluralize_1, "				");
     _builder.append(".add(element);");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("source.endArray();");
+    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
     _builder.newLine();
-    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter();
+    CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -750,15 +775,13 @@ public class ResponseGenerator {
     }
   }
   
-  public CharSequence generateDeserializationStatementForType(final ResponseBlock response, final BlockType type) {
+  public CharSequence generateDeserializationStatementForType(final ResponseBlock response, final Type type) {
     if (type instanceof GenericListType) {
       return _generateDeserializationStatementForType(response, (GenericListType)type);
     } else if (type instanceof IntrinsicType) {
       return _generateDeserializationStatementForType(response, (IntrinsicType)type);
     } else if (type instanceof UserType) {
       return _generateDeserializationStatementForType(response, (UserType)type);
-    } else if (type instanceof ComplexTypeLiteral) {
-      return _generateDeserializationStatementForType(response, (ComplexTypeLiteral)type);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(response, type).toString());

@@ -100,10 +100,17 @@ public class TypeGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateField(final SkipMember member) {
+  protected CharSequence _generateField(final SkipMember skipper) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\t");
-    _builder.newLine();
+    {
+      ComplexTypeLiteral _literal = skipper.getLiteral();
+      EList<Member> _members = _literal.getMembers();
+      for(final Member member : _members) {
+        CharSequence _generateField = this.generateField(member);
+        _builder.append(_generateField, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder;
   }
   
@@ -146,32 +153,39 @@ public class TypeGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateGetterAndSetter(final SkipMember member) {
+  protected CharSequence _generateGetterAndSetter(final SkipMember skipper) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\t");
-    _builder.newLine();
+    {
+      ComplexTypeLiteral _literal = skipper.getLiteral();
+      EList<Member> _members = _literal.getMembers();
+      for(final Member member : _members) {
+        CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member);
+        _builder.append(_generateGetterAndSetter, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder;
   }
   
-  public CharSequence generateField(final Member member) {
-    if (member instanceof SkipMember) {
-      return _generateField((SkipMember)member);
-    } else if (member instanceof TypedMember) {
-      return _generateField((TypedMember)member);
+  public CharSequence generateField(final Member skipper) {
+    if (skipper instanceof SkipMember) {
+      return _generateField((SkipMember)skipper);
+    } else if (skipper instanceof TypedMember) {
+      return _generateField((TypedMember)skipper);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(member).toString());
+        Arrays.<Object>asList(skipper).toString());
     }
   }
   
-  public CharSequence generateGetterAndSetter(final Member member) {
-    if (member instanceof SkipMember) {
-      return _generateGetterAndSetter((SkipMember)member);
-    } else if (member instanceof TypedMember) {
-      return _generateGetterAndSetter((TypedMember)member);
+  public CharSequence generateGetterAndSetter(final Member skipper) {
+    if (skipper instanceof SkipMember) {
+      return _generateGetterAndSetter((SkipMember)skipper);
+    } else if (skipper instanceof TypedMember) {
+      return _generateGetterAndSetter((TypedMember)skipper);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(member).toString());
+        Arrays.<Object>asList(skipper).toString());
     }
   }
 }

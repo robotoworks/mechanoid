@@ -6,30 +6,27 @@ import com.robotoworks.mechanoid.internal.util.JsonReader;
 import com.robotoworks.mechanoid.internal.util.JsonUtil;
 import com.robotoworks.mechanoid.internal.util.JsonToken;
 
-public class BookInputTransformer extends Transformer<JsonReader, Book> {
-	public Book transform(JsonReader source) throws TransformException {
-		Book target = new Book();
+public class BookResponseBaseInputTransformer extends Transformer<JsonReader, BookResponseBase> {
+	public BookResponseBase transform(JsonReader source) throws TransformException {
+		BookResponseBase target = new BookResponseBase();
 
 		transform(source, target);
 		
 		return target;
 	}
 	
-	public void transform(JsonReader source, Book target) throws TransformException {
+	public void transform(JsonReader source, BookResponseBase target) throws TransformException {
 		try {
 			source.beginObject();
 			
 			while(source.hasNext()) {
 				String name = source.nextName();
 				
-				if(name.equals("id")) {
-					target.setId(source.nextInt());
+				if(name.equals("success")) {
+					target.setSuccess(source.nextBoolean());
 				}
-				else if(name.equals("title")) {
-					target.setTitle(source.nextString());
-				}
-				else if(name.equals("author")) {
-					target.setAuthor(source.nextString());
+				else if(name.equals("status_message")) {
+					target.setStatusMessage(source.nextString());
 				}
 			}
 			

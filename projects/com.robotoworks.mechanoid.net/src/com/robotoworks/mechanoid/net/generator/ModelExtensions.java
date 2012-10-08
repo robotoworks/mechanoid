@@ -25,8 +25,6 @@ import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Member;
-import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
-import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
@@ -250,6 +248,14 @@ public class ModelExtensions {
 		}
 	}
 	
+	public static String resolveJsonReaderMethodName(EnumTypeDeclaration decl){
+		if(decl.getSuperType() != null){
+			return "nextInt";
+		} else {
+			return "nextString";
+		}
+	}
+	
 	public static String pascalize(String value){
 		return Inflector.getInstance().camelize(value, false);
 	}
@@ -352,7 +358,18 @@ public class ModelExtensions {
 	
 	public static String toIdentifier(Member member, String prefix){
 		String name = member.getName();
-		if(member instanceof StringNamedMember || member instanceof StringNamedSimpleMember) {
+
+		name = spacesToUnderscores(name);
+		
+		if(prefix != null){
+			return prefix + pascalize(name);
+		} else {
+			return escapeReserved(camelize(name));				
+		}
+	}
+
+	private static String spacesToUnderscores(String name) {
+		if(name.contains(" ")) {
 			StringBuffer result = new StringBuffer(name.length());
 			for(int i=0; i < name.length(); i++){
 				char ch = name.charAt(i);
@@ -365,14 +382,9 @@ public class ModelExtensions {
 			}
 			
 			name = result.toString();
-
 		}
 		
-		if(prefix != null){
-			return prefix + pascalize(name);
-		} else {
-			return escapeReserved(camelize(name));				
-		}
+		return name;
 	}
 	
 	public static String toReference(String name, boolean getter, String prefix){

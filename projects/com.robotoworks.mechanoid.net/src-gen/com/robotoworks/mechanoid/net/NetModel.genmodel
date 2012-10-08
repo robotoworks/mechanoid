@@ -50,8 +50,6 @@
     <genClasses ecoreClass="NetModel.ecore#//TypedMember">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//TypedMember/type"/>
     </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//IDNamedMember"/>
-    <genClasses ecoreClass="NetModel.ecore#//StringNamedMember"/>
     <genClasses ecoreClass="NetModel.ecore#//SkipMember">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SkipMember/literal"/>
     </genClasses>
@@ -59,8 +57,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//SimpleMember/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SimpleMember/type"/>
     </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//IDNamedSimpleMember"/>
-    <genClasses ecoreClass="NetModel.ecore#//StringNamedSimpleMember"/>
     <genClasses ecoreClass="NetModel.ecore#//Type"/>
     <genClasses ecoreClass="NetModel.ecore#//GenericListType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//GenericListType/elementType"/>

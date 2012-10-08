@@ -55,8 +55,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="TypedMember" eSuperTypes="#//Member">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IDNamedMember" eSuperTypes="#//TypedMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringNamedMember" eSuperTypes="#//TypedMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="SkipMember" eSuperTypes="#//Member">
     <eStructuralFeatures xsi:type="ecore:EReference" name="literal" eType="#//ComplexTypeLiteral"
         containment="true"/>
@@ -66,8 +64,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//IntrinsicType"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IDNamedSimpleMember" eSuperTypes="#//SimpleMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringNamedSimpleMember" eSuperTypes="#//SimpleMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//BlockType"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenericListType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//Type"

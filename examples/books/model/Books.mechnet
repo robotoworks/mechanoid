@@ -6,42 +6,19 @@ entity generate Book {
 	author:String
 }
 
-entity generate X {
-	a:String,
-	b:String[],
-	c:int,
-	d:int[],
-	e:boolean,
-	f:boolean[],
-	g:long,
-	h:long[],
-	i:Y,
-	j:Y[]	
+enum generate Day {
+	monday,
+	tuesday,
+	wednesday
 }
 
-entity generate Y {
-	a:double,
-	b:double[]
+entity generate BookResponseBase {
+    success:boolean,
+    status_message:String
 }
 
 client BookService "http://books.example.com" {
-	post a "/a" {
-		params a:String, b:String, c:int
-		body {
-			skip "meh" {
-			a:X,
-			b:Y[]
-			}
-		}
-		response {
-			skip "foo" {
-				skip "bar" {
-			a:X
-			}},
-			b:Y[]
-		}	
-	}
-	
+		
     get getBooks "/books" {
         response Book[]
     }
@@ -50,27 +27,19 @@ client BookService "http://books.example.com" {
         response Book
     }
 
-    put updateBook "/books" {
+    put updateBook "/books/:id" {
         body Book
-        response {
-            success:boolean,
-            status_message:String
-        }
+        response extends BookResponseBase
     }
 
     post createBook "/books" {
         body Book
-        response {
-            success:boolean,
-            status_message:String,
+        response extends BookResponseBase {
             book_id:int
         }
     }
 
     delete deleteBook "/books/:id" {
-        response {
-            success:boolean,
-            status_message:String
-        }
+        response extends BookResponseBase
     }
 }

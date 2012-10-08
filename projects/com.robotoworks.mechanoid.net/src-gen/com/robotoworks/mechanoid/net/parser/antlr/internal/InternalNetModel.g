@@ -218,7 +218,7 @@ ruleClient returns [EObject current=null]
 	    }
 
 )
-)	otherlv_3='{' 
+)?	otherlv_3='{' 
     {
     	newLeafNode(otherlv_3, grammarAccess.getClientAccess().getLeftCurlyBracketKeyword_3());
     }
@@ -1059,137 +1059,54 @@ ruleTypedMember returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getTypedMemberAccess().getIDNamedMemberParserRuleCall_0()); 
-    }
-    this_IDNamedMember_0=ruleIDNamedMember
-    { 
-        $current = $this_IDNamedMember_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getTypedMemberAccess().getStringNamedMemberParserRuleCall_1()); 
-    }
-    this_StringNamedMember_1=ruleStringNamedMember
-    { 
-        $current = $this_StringNamedMember_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleIDNamedMember
-entryRuleIDNamedMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getIDNamedMemberRule()); }
-	 iv_ruleIDNamedMember=ruleIDNamedMember 
-	 { $current=$iv_ruleIDNamedMember.current; } 
-	 EOF 
-;
-
-// Rule IDNamedMember
-ruleIDNamedMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
 ((
 (
-		lv_name_0_0=RULE_ID
+(
+		lv_name_0_1=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getIDNamedMemberAccess().getNameIDTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_1, grammarAccess.getTypedMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getIDNamedMemberRule());
+	            $current = createModelElement(grammarAccess.getTypedMemberRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_0_1, 
         		"ID");
 	    }
 
-)
-)	otherlv_1=':' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getIDNamedMemberAccess().getColonKeyword_1());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getIDNamedMemberAccess().getTypeTypeParserRuleCall_2_0()); 
-	    }
-		lv_type_2_0=ruleType		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getIDNamedMemberRule());
-	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_2_0, 
-        		"Type");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-;
-
-
-
-
-
-// Entry rule entryRuleStringNamedMember
-entryRuleStringNamedMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getStringNamedMemberRule()); }
-	 iv_ruleStringNamedMember=ruleStringNamedMember 
-	 { $current=$iv_ruleStringNamedMember.current; } 
-	 EOF 
-;
-
-// Rule StringNamedMember
-ruleStringNamedMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		lv_name_0_0=RULE_STRING
+    |		lv_name_0_2=RULE_STRING
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getStringNamedMemberAccess().getNameSTRINGTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_2, grammarAccess.getTypedMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStringNamedMemberRule());
+	            $current = createModelElement(grammarAccess.getTypedMemberRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_0_2, 
         		"STRING");
 	    }
 
 )
+
+)
 )	otherlv_1=':' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getStringNamedMemberAccess().getColonKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getTypedMemberAccess().getColonKeyword_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStringNamedMemberAccess().getTypeTypeParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getTypedMemberAccess().getTypeTypeParserRuleCall_2_0()); 
 	    }
 		lv_type_2_0=ruleType		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getStringNamedMemberRule());
+	            $current = createModelElementForParent(grammarAccess.getTypedMemberRule());
 	        }
        		set(
        			$current, 
@@ -1221,15 +1138,12 @@ ruleSkipMember returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='skip' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getSkipMemberAccess().getSkipKeyword_0());
-    }
+((
 (
 (
-		lv_name_1_0=RULE_STRING
+		lv_name_0_1=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_0_1, grammarAccess.getSkipMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1238,24 +1152,41 @@ ruleSkipMember returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_0_1, 
+        		"ID");
+	    }
+
+    |		lv_name_0_2=RULE_STRING
+		{
+			newLeafNode(lv_name_0_2, grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSkipMemberRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_2, 
         		"STRING");
 	    }
+
+)
 
 )
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_1_0()); 
 	    }
-		lv_literal_2_0=ruleComplexTypeLiteral		{
+		lv_literal_1_0=ruleComplexTypeLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSkipMemberRule());
 	        }
        		set(
        			$current, 
        			"literal",
-        		lv_literal_2_0, 
+        		lv_literal_1_0, 
         		"ComplexTypeLiteral");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1282,137 +1213,54 @@ ruleSimpleMember returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getSimpleMemberAccess().getIDNamedSimpleMemberParserRuleCall_0()); 
-    }
-    this_IDNamedSimpleMember_0=ruleIDNamedSimpleMember
-    { 
-        $current = $this_IDNamedSimpleMember_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getSimpleMemberAccess().getStringNamedSimpleMemberParserRuleCall_1()); 
-    }
-    this_StringNamedSimpleMember_1=ruleStringNamedSimpleMember
-    { 
-        $current = $this_StringNamedSimpleMember_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleIDNamedSimpleMember
-entryRuleIDNamedSimpleMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getIDNamedSimpleMemberRule()); }
-	 iv_ruleIDNamedSimpleMember=ruleIDNamedSimpleMember 
-	 { $current=$iv_ruleIDNamedSimpleMember.current; } 
-	 EOF 
-;
-
-// Rule IDNamedSimpleMember
-ruleIDNamedSimpleMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
 ((
 (
-		lv_name_0_0=RULE_ID
+(
+		lv_name_0_1=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getIDNamedSimpleMemberAccess().getNameIDTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_1, grammarAccess.getSimpleMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getIDNamedSimpleMemberRule());
+	            $current = createModelElement(grammarAccess.getSimpleMemberRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_0_1, 
         		"ID");
 	    }
 
-)
-)	otherlv_1=':' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getIDNamedSimpleMemberAccess().getColonKeyword_1());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getIDNamedSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0()); 
-	    }
-		lv_type_2_0=ruleIntrinsicType		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getIDNamedSimpleMemberRule());
-	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_2_0, 
-        		"IntrinsicType");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-;
-
-
-
-
-
-// Entry rule entryRuleStringNamedSimpleMember
-entryRuleStringNamedSimpleMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getStringNamedSimpleMemberRule()); }
-	 iv_ruleStringNamedSimpleMember=ruleStringNamedSimpleMember 
-	 { $current=$iv_ruleStringNamedSimpleMember.current; } 
-	 EOF 
-;
-
-// Rule StringNamedSimpleMember
-ruleStringNamedSimpleMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		lv_name_0_0=RULE_STRING
+    |		lv_name_0_2=RULE_STRING
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getStringNamedSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_0_2, grammarAccess.getSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStringNamedSimpleMemberRule());
+	            $current = createModelElement(grammarAccess.getSimpleMemberRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_0_2, 
         		"STRING");
 	    }
 
 )
+
+)
 )	otherlv_1=':' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getStringNamedSimpleMemberAccess().getColonKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getSimpleMemberAccess().getColonKeyword_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStringNamedSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0()); 
 	    }
 		lv_type_2_0=ruleIntrinsicType		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getStringNamedSimpleMemberRule());
+	            $current = createModelElementForParent(grammarAccess.getSimpleMemberRule());
 	        }
        		set(
        			$current, 

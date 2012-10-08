@@ -23,6 +23,7 @@ public class CodeGenerationStrategy {
 	private TypeGenerator typeGenerator;
 	private MemberDeserializationStatementGenerator memberDeserializationStatementGenerator;
 	private MemberSerializationStatementGenerator memberSerializationStatementGenerator;
+	private JsonReaderGenerator jsonReaderGenerator;
 	protected CodeGenerationContext context;
 	
 	public void setContext(CodeGenerationContext context) {
@@ -84,7 +85,7 @@ public class CodeGenerationStrategy {
 		if(inputTransformerGenerator == null){
 			inputTransformerGenerator = new InputTransformerGenerator();
 			inputTransformerGenerator.setContext(context);
-			inputTransformerGenerator.setMemberDeserializationStatementGenerator(getMemberDeserializationStatementGenerator());
+			inputTransformerGenerator.setJsonReaderGenerator(getJsonReaderGenerator());
 		}
 		return inputTransformerGenerator;
 	}
@@ -137,7 +138,7 @@ public class CodeGenerationStrategy {
 		if(responseGenerator == null){
 			responseGenerator = createResponseGenerator();
 			responseGenerator.setContext(context);
-			responseGenerator.setMemberDeserializationStatementGenerator(getMemberDeserializationStatementGenerator());
+			responseGenerator.setJsonReaderGenerator(getJsonReaderGenerator());
 		}
 		return responseGenerator;
 	}
@@ -154,6 +155,13 @@ public class CodeGenerationStrategy {
 		return typeGenerator;
 	}
 	
+	public JsonReaderGenerator getJsonReaderGenerator() {
+		if(jsonReaderGenerator == null){
+			jsonReaderGenerator = new JsonReaderGenerator();
+			jsonReaderGenerator.setContext(context);
+		}
+		return jsonReaderGenerator;
+	}
 	public MemberDeserializationStatementGenerator getMemberDeserializationStatementGenerator() {
 		if(memberDeserializationStatementGenerator == null){
 			memberDeserializationStatementGenerator = new MemberDeserializationStatementGenerator();

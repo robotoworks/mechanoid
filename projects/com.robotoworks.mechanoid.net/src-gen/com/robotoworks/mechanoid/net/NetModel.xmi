@@ -11,7 +11,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="package"/>
         <elements xsi:type="xtext:Assignment" feature="packageName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="declarations" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
@@ -23,7 +23,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//Declaration"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
       </alternatives>
     </rules>
@@ -36,7 +36,7 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="baseUrl" operator="=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="baseUrl" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -166,12 +166,12 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="params"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="params" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
           </elements>
         </elements>
       </alternatives>
@@ -219,8 +219,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//BlockType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Member">
@@ -229,43 +229,23 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="TypedMember">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//TypedMember"/>
       </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="IDNamedMember">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//IDNamedMember"/>
-      </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+          </terminal>
         </elements>
         <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="StringNamedMember">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//StringNamedMember"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=":"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
         </elements>
       </alternatives>
     </rules>
@@ -274,12 +254,14 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//SkipMember"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="skip"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+          </terminal>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </elements>
       </alternatives>
     </rules>
@@ -287,36 +269,16 @@
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//SimpleMember"/>
       </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="IDNamedSimpleMember">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//IDNamedSimpleMember"/>
-      </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+          </terminal>
         </elements>
         <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="StringNamedSimpleMember">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//StringNamedSimpleMember"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=":"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         </elements>
       </alternatives>
     </rules>
@@ -325,9 +287,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//Type"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="GenericListType">
@@ -337,8 +299,8 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="elementType" operator="=">
           <terminal xsi:type="xtext:Alternatives">
-            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
           </terminal>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="id" operator="=">
@@ -364,8 +326,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//UserTypeDeclaration"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ComplexTypeDeclaration">
@@ -383,7 +345,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="literal" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </elements>
       </alternatives>
     </rules>
@@ -404,11 +366,11 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="extends"/>
           <elements xsi:type="xtext:Assignment" feature="superType" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="literal" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
       </alternatives>
     </rules>
@@ -419,12 +381,12 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Assignment" feature="members" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="members" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="}"/>
@@ -471,9 +433,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//IntrinsicType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringType">
@@ -497,9 +459,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/net/NetModel#//NumericType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="IntegerType">

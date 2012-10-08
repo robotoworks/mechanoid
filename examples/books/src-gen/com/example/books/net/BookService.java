@@ -18,7 +18,6 @@ public class BookService {
 	private final String baseUrl;
 	
 	
-
 	public BookService(){
 		this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);
 	}
@@ -45,10 +44,6 @@ public class BookService {
 		this.transformerProvider = transformerProvider;
 	}
 	
-	public Response<AResponse> a(ARequest request)
-	  throws ClientProtocolException, IOException, TransformException {
-		return request.execute(baseUrl, client, transformerProvider);
-	}
 	public Response<GetBooksResponse> getBooks(GetBooksRequest request)
 	  throws ClientProtocolException, IOException {
 		return request.execute(baseUrl, client, transformerProvider);

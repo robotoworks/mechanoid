@@ -2,30 +2,35 @@ package com.example.books.net;
 
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
-import java.util.ArrayList;
+import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.util.ArrayList;
 
-public class BookListInputTransformer extends Transformer<JSONArray, List<Book>> {
-	public List<Book> transform(JSONArray source) throws TransformException {
-		List<Book> target = new ArrayList<Book>(source.length());
+public class BookListInputTransformer extends Transformer<JsonReader, List<Book>> {
+	public List<Book> transform(JsonReader source) throws TransformException {
+		List<Book> target = new ArrayList<Book>();
 	
 		transform(source, target);
 	
 		return target;
 	}
 
-	public void transform(JSONArray source, List<Book> target) throws TransformException {
+	public void transform(JsonReader source, List<Book> target) throws TransformException {
 		
 		try {
 			BookInputTransformer itemTransformer = provider.get(BookInputTransformer.class);
-			for(int i=0; i < source.length(); i++) {
-				Book targetItem = itemTransformer.transform(source.getJSONObject(i));
+			
+			source.beginArray();
+			
+			while(source.hasNext()) {
+				Book targetItem = itemTransformer.transform(source);
 				target.add(targetItem);
 				
 			}
-		} catch (JSONException x) {
+			
+			source.endArray();
+			
+		} catch (Exception x) {
 			throw new TransformException(x);
 		}
 		

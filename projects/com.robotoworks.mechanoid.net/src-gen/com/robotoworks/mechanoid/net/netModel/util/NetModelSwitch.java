@@ -176,24 +176,6 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NetModelPackage.ID_NAMED_MEMBER:
-      {
-        IDNamedMember idNamedMember = (IDNamedMember)theEObject;
-        T result = caseIDNamedMember(idNamedMember);
-        if (result == null) result = caseTypedMember(idNamedMember);
-        if (result == null) result = caseMember(idNamedMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.STRING_NAMED_MEMBER:
-      {
-        StringNamedMember stringNamedMember = (StringNamedMember)theEObject;
-        T result = caseStringNamedMember(stringNamedMember);
-        if (result == null) result = caseTypedMember(stringNamedMember);
-        if (result == null) result = caseMember(stringNamedMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case NetModelPackage.SKIP_MEMBER:
       {
         SkipMember skipMember = (SkipMember)theEObject;
@@ -206,22 +188,6 @@ public class NetModelSwitch<T> extends Switch<T>
       {
         SimpleMember simpleMember = (SimpleMember)theEObject;
         T result = caseSimpleMember(simpleMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.ID_NAMED_SIMPLE_MEMBER:
-      {
-        IDNamedSimpleMember idNamedSimpleMember = (IDNamedSimpleMember)theEObject;
-        T result = caseIDNamedSimpleMember(idNamedSimpleMember);
-        if (result == null) result = caseSimpleMember(idNamedSimpleMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.STRING_NAMED_SIMPLE_MEMBER:
-      {
-        StringNamedSimpleMember stringNamedSimpleMember = (StringNamedSimpleMember)theEObject;
-        T result = caseStringNamedSimpleMember(stringNamedSimpleMember);
-        if (result == null) result = caseSimpleMember(stringNamedSimpleMember);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -600,38 +566,6 @@ public class NetModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>ID Named Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>ID Named Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIDNamedMember(IDNamedMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Named Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Named Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringNamedMember(StringNamedMember object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Skip Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -659,38 +593,6 @@ public class NetModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSimpleMember(SimpleMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>ID Named Simple Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>ID Named Simple Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIDNamedSimpleMember(IDNamedSimpleMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Named Simple Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Named Simple Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringNamedSimpleMember(StringNamedSimpleMember object)
   {
     return null;
   }

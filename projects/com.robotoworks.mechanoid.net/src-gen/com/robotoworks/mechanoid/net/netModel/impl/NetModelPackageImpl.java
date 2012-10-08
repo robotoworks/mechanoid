@@ -19,8 +19,6 @@ import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpPost;
 import com.robotoworks.mechanoid.net.netModel.HttpPut;
-import com.robotoworks.mechanoid.net.netModel.IDNamedMember;
-import com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
@@ -33,8 +31,6 @@ import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
-import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
-import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
@@ -159,20 +155,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass idNamedMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringNamedMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass skipMemberEClass = null;
 
   /**
@@ -181,20 +163,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass simpleMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass idNamedSimpleMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringNamedSimpleMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -696,26 +664,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getIDNamedMember()
-  {
-    return idNamedMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getStringNamedMember()
-  {
-    return stringNamedMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSkipMember()
   {
     return skipMemberEClass;
@@ -759,26 +707,6 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
   public EReference getSimpleMember_Type()
   {
     return (EReference)simpleMemberEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIDNamedSimpleMember()
-  {
-    return idNamedSimpleMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getStringNamedSimpleMember()
-  {
-    return stringNamedSimpleMemberEClass;
   }
 
   /**
@@ -1157,20 +1085,12 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     typedMemberEClass = createEClass(TYPED_MEMBER);
     createEReference(typedMemberEClass, TYPED_MEMBER__TYPE);
 
-    idNamedMemberEClass = createEClass(ID_NAMED_MEMBER);
-
-    stringNamedMemberEClass = createEClass(STRING_NAMED_MEMBER);
-
     skipMemberEClass = createEClass(SKIP_MEMBER);
     createEReference(skipMemberEClass, SKIP_MEMBER__LITERAL);
 
     simpleMemberEClass = createEClass(SIMPLE_MEMBER);
     createEAttribute(simpleMemberEClass, SIMPLE_MEMBER__NAME);
     createEReference(simpleMemberEClass, SIMPLE_MEMBER__TYPE);
-
-    idNamedSimpleMemberEClass = createEClass(ID_NAMED_SIMPLE_MEMBER);
-
-    stringNamedSimpleMemberEClass = createEClass(STRING_NAMED_SIMPLE_MEMBER);
 
     typeEClass = createEClass(TYPE);
 
@@ -1254,11 +1174,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     httpGetEClass.getESuperTypes().add(this.getHttpMethod());
     httpDeleteEClass.getESuperTypes().add(this.getHttpMethod());
     typedMemberEClass.getESuperTypes().add(this.getMember());
-    idNamedMemberEClass.getESuperTypes().add(this.getTypedMember());
-    stringNamedMemberEClass.getESuperTypes().add(this.getTypedMember());
     skipMemberEClass.getESuperTypes().add(this.getMember());
-    idNamedSimpleMemberEClass.getESuperTypes().add(this.getSimpleMember());
-    stringNamedSimpleMemberEClass.getESuperTypes().add(this.getSimpleMember());
     typeEClass.getESuperTypes().add(this.getBlockType());
     genericListTypeEClass.getESuperTypes().add(this.getType());
     userTypeEClass.getESuperTypes().add(this.getType());
@@ -1321,20 +1237,12 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEClass(typedMemberEClass, TypedMember.class, "TypedMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypedMember_Type(), this.getType(), null, "type", null, 0, 1, TypedMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(idNamedMemberEClass, IDNamedMember.class, "IDNamedMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(stringNamedMemberEClass, StringNamedMember.class, "StringNamedMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(skipMemberEClass, SkipMember.class, "SkipMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSkipMember_Literal(), this.getComplexTypeLiteral(), null, "literal", null, 0, 1, SkipMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleMemberEClass, SimpleMember.class, "SimpleMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSimpleMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimpleMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSimpleMember_Type(), this.getIntrinsicType(), null, "type", null, 0, 1, SimpleMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(idNamedSimpleMemberEClass, IDNamedSimpleMember.class, "IDNamedSimpleMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(stringNamedSimpleMemberEClass, StringNamedSimpleMember.class, "StringNamedSimpleMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -14,11 +14,15 @@ import org.json.JSONObject;
 
 public class UpdateBookRequest {
 	
-	private static final String PATH="/books";
+	private static final String PATH="/books/%s";
+	
+	private final String id;
 	
 	private final Book book;
 	
-	public UpdateBookRequest(Book book){
+	public UpdateBookRequest(	String id,
+	Book book){
+		this.id = id;
 		this.book = book;
 	}
 	
@@ -32,7 +36,7 @@ public class UpdateBookRequest {
 	}
 	
 	public String createUrl(String baseUrl){
-		Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
+		Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, id)).buildUpon();
 			
 		return uriBuilder.toString();			
 	}

@@ -87,10 +87,10 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Client:
-		//	"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}";
+		//	"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}"
+		//"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"client"
@@ -102,7 +102,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//baseUrl=STRING
+		//baseUrl=STRING?
 		public Assignment getBaseUrlAssignment_2() { return cBaseUrlAssignment_2; }
 
 		//STRING
@@ -553,77 +553,33 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class TypedMemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TypedMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIDNamedMemberParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cStringNamedMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cNameAlternatives_0_0 = (Alternatives)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0_0 = (RuleCall)cNameAlternatives_0_0.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cNameAlternatives_0_0.eContents().get(1);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//TypedMember:
-		//	IDNamedMember | StringNamedMember;
+		//	name=(ID | STRING) ":" type=Type;
 		public ParserRule getRule() { return rule; }
 
-		//IDNamedMember | StringNamedMember
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//IDNamedMember
-		public RuleCall getIDNamedMemberParserRuleCall_0() { return cIDNamedMemberParserRuleCall_0; }
-
-		//StringNamedMember
-		public RuleCall getStringNamedMemberParserRuleCall_1() { return cStringNamedMemberParserRuleCall_1; }
-	}
-
-	public class IDNamedMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IDNamedMember");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		
-		//IDNamedMember:
-		//	name=ID ":" type=Type;
-		public ParserRule getRule() { return rule; }
-
-		//name=ID ":" type=Type
+		//name=(ID | STRING) ":" type=Type
 		public Group getGroup() { return cGroup; }
 
-		//name=ID
+		//name=(ID | STRING)
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ID | STRING
+		public Alternatives getNameAlternatives_0_0() { return cNameAlternatives_0_0; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-
-		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-
-		//type=Type
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
-
-		//Type
-		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
-	}
-
-	public class StringNamedMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringNamedMember");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		
-		//StringNamedMember:
-		//	name=STRING ":" type=Type;
-		public ParserRule getRule() { return rule; }
-
-		//name=STRING ":" type=Type
-		public Group getGroup() { return cGroup; }
-
-		//name=STRING
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_0_0() { return cNameIDTerminalRuleCall_0_0_0; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0_1() { return cNameSTRINGTerminalRuleCall_0_0_1; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -638,108 +594,68 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class SkipMemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SkipMember");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSkipKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cLiteralAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cLiteralComplexTypeLiteralParserRuleCall_2_0 = (RuleCall)cLiteralAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cNameAlternatives_0_0 = (Alternatives)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0_0 = (RuleCall)cNameAlternatives_0_0.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cNameAlternatives_0_0.eContents().get(1);
+		private final Assignment cLiteralAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cLiteralComplexTypeLiteralParserRuleCall_1_0 = (RuleCall)cLiteralAssignment_1.eContents().get(0);
 		
 		//SkipMember:
-		//	"skip" name=STRING literal=ComplexTypeLiteral;
+		//	name=(ID | STRING) literal=ComplexTypeLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//"skip" name=STRING literal=ComplexTypeLiteral
+		//name=(ID | STRING) literal=ComplexTypeLiteral
 		public Group getGroup() { return cGroup; }
 
-		//"skip"
-		public Keyword getSkipKeyword_0() { return cSkipKeyword_0; }
+		//name=(ID | STRING)
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//ID | STRING
+		public Alternatives getNameAlternatives_0_0() { return cNameAlternatives_0_0; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0_0() { return cNameIDTerminalRuleCall_0_0_0; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0_1() { return cNameSTRINGTerminalRuleCall_0_0_1; }
 
 		//literal=ComplexTypeLiteral
-		public Assignment getLiteralAssignment_2() { return cLiteralAssignment_2; }
+		public Assignment getLiteralAssignment_1() { return cLiteralAssignment_1; }
 
 		//ComplexTypeLiteral
-		public RuleCall getLiteralComplexTypeLiteralParserRuleCall_2_0() { return cLiteralComplexTypeLiteralParserRuleCall_2_0; }
+		public RuleCall getLiteralComplexTypeLiteralParserRuleCall_1_0() { return cLiteralComplexTypeLiteralParserRuleCall_1_0; }
 	}
 
 	public class SimpleMemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIDNamedSimpleMemberParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cStringNamedSimpleMemberParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cNameAlternatives_0_0 = (Alternatives)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0_0 = (RuleCall)cNameAlternatives_0_0.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cNameAlternatives_0_0.eContents().get(1);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeIntrinsicTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//SimpleMember:
-		//	IDNamedSimpleMember | StringNamedSimpleMember;
+		//	name=(ID | STRING) ":" type=IntrinsicType;
 		public ParserRule getRule() { return rule; }
 
-		//IDNamedSimpleMember | StringNamedSimpleMember
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//IDNamedSimpleMember
-		public RuleCall getIDNamedSimpleMemberParserRuleCall_0() { return cIDNamedSimpleMemberParserRuleCall_0; }
-
-		//StringNamedSimpleMember
-		public RuleCall getStringNamedSimpleMemberParserRuleCall_1() { return cStringNamedSimpleMemberParserRuleCall_1; }
-	}
-
-	public class IDNamedSimpleMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IDNamedSimpleMember");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeIntrinsicTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		
-		//IDNamedSimpleMember:
-		//	name=ID ":" type=IntrinsicType;
-		public ParserRule getRule() { return rule; }
-
-		//name=ID ":" type=IntrinsicType
+		//name=(ID | STRING) ":" type=IntrinsicType
 		public Group getGroup() { return cGroup; }
 
-		//name=ID
+		//name=(ID | STRING)
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ID | STRING
+		public Alternatives getNameAlternatives_0_0() { return cNameAlternatives_0_0; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-
-		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-
-		//type=IntrinsicType
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
-
-		//IntrinsicType
-		public RuleCall getTypeIntrinsicTypeParserRuleCall_2_0() { return cTypeIntrinsicTypeParserRuleCall_2_0; }
-	}
-
-	public class StringNamedSimpleMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringNamedSimpleMember");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeIntrinsicTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		
-		//StringNamedSimpleMember:
-		//	name=STRING ":" type=IntrinsicType;
-		public ParserRule getRule() { return rule; }
-
-		//name=STRING ":" type=IntrinsicType
-		public Group getGroup() { return cGroup; }
-
-		//name=STRING
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_0_0() { return cNameIDTerminalRuleCall_0_0_0; }
 
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0_1() { return cNameSTRINGTerminalRuleCall_0_0_1; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -1254,12 +1170,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private BlockTypeElements pBlockType;
 	private MemberElements pMember;
 	private TypedMemberElements pTypedMember;
-	private IDNamedMemberElements pIDNamedMember;
-	private StringNamedMemberElements pStringNamedMember;
 	private SkipMemberElements pSkipMember;
 	private SimpleMemberElements pSimpleMember;
-	private IDNamedSimpleMemberElements pIDNamedSimpleMember;
-	private StringNamedSimpleMemberElements pStringNamedSimpleMember;
 	private TypeElements pType;
 	private GenericListTypeElements pGenericListType;
 	private UserTypeElements pUserType;
@@ -1337,7 +1249,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Client:
-	//	"client" name=ID baseUrl=STRING "{" params=ParamsBlock? methods+=HttpMethod* "}";
+	//	"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}";
 	public ClientElements getClientAccess() {
 		return (pClient != null) ? pClient : (pClient = new ClientElements());
 	}
@@ -1447,7 +1359,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypedMember:
-	//	IDNamedMember | StringNamedMember;
+	//	name=(ID | STRING) ":" type=Type;
 	public TypedMemberElements getTypedMemberAccess() {
 		return (pTypedMember != null) ? pTypedMember : (pTypedMember = new TypedMemberElements());
 	}
@@ -1456,28 +1368,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypedMemberAccess().getRule();
 	}
 
-	//IDNamedMember:
-	//	name=ID ":" type=Type;
-	public IDNamedMemberElements getIDNamedMemberAccess() {
-		return (pIDNamedMember != null) ? pIDNamedMember : (pIDNamedMember = new IDNamedMemberElements());
-	}
-	
-	public ParserRule getIDNamedMemberRule() {
-		return getIDNamedMemberAccess().getRule();
-	}
-
-	//StringNamedMember:
-	//	name=STRING ":" type=Type;
-	public StringNamedMemberElements getStringNamedMemberAccess() {
-		return (pStringNamedMember != null) ? pStringNamedMember : (pStringNamedMember = new StringNamedMemberElements());
-	}
-	
-	public ParserRule getStringNamedMemberRule() {
-		return getStringNamedMemberAccess().getRule();
-	}
-
 	//SkipMember:
-	//	"skip" name=STRING literal=ComplexTypeLiteral;
+	//	name=(ID | STRING) literal=ComplexTypeLiteral;
 	public SkipMemberElements getSkipMemberAccess() {
 		return (pSkipMember != null) ? pSkipMember : (pSkipMember = new SkipMemberElements());
 	}
@@ -1487,33 +1379,13 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SimpleMember:
-	//	IDNamedSimpleMember | StringNamedSimpleMember;
+	//	name=(ID | STRING) ":" type=IntrinsicType;
 	public SimpleMemberElements getSimpleMemberAccess() {
 		return (pSimpleMember != null) ? pSimpleMember : (pSimpleMember = new SimpleMemberElements());
 	}
 	
 	public ParserRule getSimpleMemberRule() {
 		return getSimpleMemberAccess().getRule();
-	}
-
-	//IDNamedSimpleMember:
-	//	name=ID ":" type=IntrinsicType;
-	public IDNamedSimpleMemberElements getIDNamedSimpleMemberAccess() {
-		return (pIDNamedSimpleMember != null) ? pIDNamedSimpleMember : (pIDNamedSimpleMember = new IDNamedSimpleMemberElements());
-	}
-	
-	public ParserRule getIDNamedSimpleMemberRule() {
-		return getIDNamedSimpleMemberAccess().getRule();
-	}
-
-	//StringNamedSimpleMember:
-	//	name=STRING ":" type=IntrinsicType;
-	public StringNamedSimpleMemberElements getStringNamedSimpleMemberAccess() {
-		return (pStringNamedSimpleMember != null) ? pStringNamedSimpleMember : (pStringNamedSimpleMember = new StringNamedSimpleMemberElements());
-	}
-	
-	public ParserRule getStringNamedSimpleMemberRule() {
-		return getStringNamedSimpleMemberAccess().getRule();
 	}
 
 	//Type:

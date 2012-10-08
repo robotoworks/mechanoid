@@ -27,7 +27,7 @@ public class ListInputTransformerGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    CharSequence body = this.generateListInputTranformerGeneratorClass(decl, module);
+    CharSequence body = this.generateClass(decl, module);
     _builder.newLineIfNotEmpty();
     CharSequence _registerImports = this.registerImports();
     _builder.append(_registerImports, "");
@@ -35,6 +35,10 @@ public class ListInputTransformerGenerator {
     _builder.append("import com.robotoworks.mechanoid.net.Transformer;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.internal.util.JsonReader;");
+    _builder.newLine();
+    _builder.append("import java.util.List;");
     _builder.newLine();
     _builder.append("import java.util.ArrayList;");
     _builder.newLine();
@@ -49,18 +53,12 @@ public class ListInputTransformerGenerator {
     return _builder;
   }
   
-  public CharSequence generateListInputTranformerGeneratorClass(final ComplexTypeDeclaration decl, final Model module) {
+  public CharSequence generateClass(final ComplexTypeDeclaration decl, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("org.json.JSONArray");
-    _builder.newLineIfNotEmpty();
-    this.context.registerImport("org.json.JSONException");
-    _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.List");
-    _builder.newLineIfNotEmpty();
     _builder.append("public class ");
     String _name = decl.getName();
     _builder.append(_name, "");
-    _builder.append("ListInputTransformer extends Transformer<JSONArray, List<");
+    _builder.append("ListInputTransformer extends Transformer<JsonReader, List<");
     String _name_1 = decl.getName();
     _builder.append(_name_1, "");
     _builder.append(">> {");
@@ -69,7 +67,7 @@ public class ListInputTransformerGenerator {
     _builder.append("public List<");
     String _name_2 = decl.getName();
     _builder.append(_name_2, "	");
-    _builder.append("> transform(JSONArray source) throws TransformException {");
+    _builder.append("> transform(JsonReader source) throws TransformException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("List<");
@@ -78,7 +76,7 @@ public class ListInputTransformerGenerator {
     _builder.append("> target = new ArrayList<");
     String _name_4 = decl.getName();
     _builder.append(_name_4, "		");
-    _builder.append(">(source.length());");
+    _builder.append(">();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -95,7 +93,7 @@ public class ListInputTransformerGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public void transform(JSONArray source, List<");
+    _builder.append("public void transform(JsonReader source, List<");
     String _name_5 = decl.getName();
     _builder.append(_name_5, "	");
     _builder.append("> target) throws TransformException {");
@@ -114,12 +112,19 @@ public class ListInputTransformerGenerator {
     _builder.append("InputTransformer.class);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
-    _builder.append("for(int i=0; i < source.length(); i++) {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("source.beginArray();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("while(source.hasNext()) {");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     String _name_8 = decl.getName();
     _builder.append(_name_8, "				");
-    _builder.append(" targetItem = itemTransformer.transform(source.getJSONObject(i));");
+    _builder.append(" targetItem = itemTransformer.transform(source);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
     _builder.append("target.add(targetItem);");
@@ -129,8 +134,15 @@ public class ListInputTransformerGenerator {
     _builder.append("\t\t\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("source.endArray();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("} catch (JSONException x) {");
+    _builder.append("} catch (Exception x) {");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("throw new TransformException(x);");

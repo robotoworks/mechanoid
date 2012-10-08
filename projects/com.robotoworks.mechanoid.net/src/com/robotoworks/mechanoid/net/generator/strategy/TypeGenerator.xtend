@@ -41,8 +41,10 @@ class TypeGenerator {
 		«IF(member.type instanceof GenericListType)»«context.registerImport("java.util.List")»«ENDIF»	
 	'''
 	
-	def dispatch generateField(SkipMember member) '''
-	
+	def dispatch generateField(SkipMember skipper) '''
+		«FOR member:skipper.literal.members»
+		«generateField(member)»
+		«ENDFOR»
 	'''
 	
 	def dispatch generateGetterAndSetter(TypedMember member) '''
@@ -54,7 +56,9 @@ class TypeGenerator {
 		}
 	'''
 	
-	def dispatch generateGetterAndSetter(SkipMember member) '''
-	
+	def dispatch generateGetterAndSetter(SkipMember skipper) '''
+		«FOR member:skipper.literal.members»
+		«generateGetterAndSetter(member)»
+		«ENDFOR»
 	'''
 }

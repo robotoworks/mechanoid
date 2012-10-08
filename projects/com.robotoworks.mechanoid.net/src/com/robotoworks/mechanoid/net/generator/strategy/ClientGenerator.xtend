@@ -35,8 +35,10 @@ class ClientGenerator {
 	def generateClientClass(Client client, Model module) '''
 		public class «client.name» {
 			
+			«IF client.baseUrl != null»
 			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
 			
+			«ENDIF»
 			protected final ServiceClient client;
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
@@ -58,7 +60,7 @@ class ClientGenerator {
 			«ENDFOR»
 				
 			«ENDIF»
-		
+			«IF client.baseUrl != null»
 			public «client.name»(){
 				this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);
 			}
@@ -71,6 +73,7 @@ class ClientGenerator {
 				this(client, transformerProvider, DEFAULT_BASE_URL);
 			}
 			
+			«ENDIF»
 			public «client.name»(String baseUrl){
 				this(new DefaultServiceClient(), new TransformerProvider(), baseUrl);
 			}

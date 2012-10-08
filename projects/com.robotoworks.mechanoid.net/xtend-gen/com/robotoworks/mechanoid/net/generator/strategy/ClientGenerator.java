@@ -72,14 +72,20 @@ public class ClientGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("private static final String DEFAULT_BASE_URL = \"");
-    String _baseUrl = client.getBaseUrl();
-    _builder.append(_baseUrl, "	");
-    _builder.append("\";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
+    {
+      String _baseUrl = client.getBaseUrl();
+      boolean _notEquals = (!Objects.equal(_baseUrl, null));
+      if (_notEquals) {
+        _builder.append("\t");
+        _builder.append("private static final String DEFAULT_BASE_URL = \"");
+        String _baseUrl_1 = client.getBaseUrl();
+        _builder.append(_baseUrl_1, "	");
+        _builder.append("\";");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.newLine();
+      }
+    }
     _builder.append("\t");
     _builder.append("protected final ServiceClient client;");
     _builder.newLine();
@@ -93,8 +99,8 @@ public class ClientGenerator {
     _builder.newLine();
     {
       ParamsBlock _params = client.getParams();
-      boolean _notEquals = (!Objects.equal(_params, null));
-      if (_notEquals) {
+      boolean _notEquals_1 = (!Objects.equal(_params, null));
+      if (_notEquals_1) {
         {
           ParamsBlock _params_1 = client.getParams();
           EList<SimpleMember> _params_2 = _params_1.getParams();
@@ -128,8 +134,8 @@ public class ClientGenerator {
     _builder.newLine();
     {
       ParamsBlock _params_3 = client.getParams();
-      boolean _notEquals_1 = (!Objects.equal(_params_3, null));
-      if (_notEquals_1) {
+      boolean _notEquals_2 = (!Objects.equal(_params_3, null));
+      if (_notEquals_2) {
         {
           ParamsBlock _params_4 = client.getParams();
           EList<SimpleMember> _params_5 = _params_4.getParams();
@@ -171,48 +177,56 @@ public class ClientGenerator {
         _builder.newLine();
       }
     }
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_6 = client.getName();
-    _builder.append(_name_6, "	");
-    _builder.append("(){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_7 = client.getName();
-    _builder.append(_name_7, "	");
-    _builder.append("(ServiceClient client){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(client, new TransformerProvider(), DEFAULT_BASE_URL);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_8 = client.getName();
-    _builder.append(_name_8, "	");
-    _builder.append("(ServiceClient client, TransformerProvider transformerProvider){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(client, transformerProvider, DEFAULT_BASE_URL);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
+    {
+      String _baseUrl_2 = client.getBaseUrl();
+      boolean _notEquals_3 = (!Objects.equal(_baseUrl_2, null));
+      if (_notEquals_3) {
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_6 = client.getName();
+        _builder.append(_name_6, "	");
+        _builder.append("(){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_7 = client.getName();
+        _builder.append(_name_7, "	");
+        _builder.append("(ServiceClient client){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("this(client, new TransformerProvider(), DEFAULT_BASE_URL);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_8 = client.getName();
+        _builder.append(_name_8, "	");
+        _builder.append("(ServiceClient client, TransformerProvider transformerProvider){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("this(client, transformerProvider, DEFAULT_BASE_URL);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+      }
+    }
     _builder.append("\t");
     _builder.append("public ");
     String _name_9 = client.getName();

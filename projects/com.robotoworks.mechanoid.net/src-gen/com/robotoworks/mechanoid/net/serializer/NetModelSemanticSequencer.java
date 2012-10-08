@@ -16,18 +16,16 @@ import com.robotoworks.mechanoid.net.netModel.HttpDelete;
 import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpPost;
 import com.robotoworks.mechanoid.net.netModel.HttpPut;
-import com.robotoworks.mechanoid.net.netModel.IDNamedMember;
-import com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
-import com.robotoworks.mechanoid.net.netModel.StringNamedMember;
-import com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
+import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.services.NetModelGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -153,21 +151,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
-			case NetModelPackage.ID_NAMED_MEMBER:
-				if(context == grammarAccess.getIDNamedMemberRule() ||
-				   context == grammarAccess.getMemberRule() ||
-				   context == grammarAccess.getTypedMemberRule()) {
-					sequence_IDNamedMember(context, (IDNamedMember) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.ID_NAMED_SIMPLE_MEMBER:
-				if(context == grammarAccess.getIDNamedSimpleMemberRule() ||
-				   context == grammarAccess.getSimpleMemberRule()) {
-					sequence_IDNamedSimpleMember(context, (IDNamedSimpleMember) semanticObject); 
-					return; 
-				}
-				else break;
 			case NetModelPackage.INTEGER_TYPE:
 				if(context == grammarAccess.getBlockTypeRule() ||
 				   context == grammarAccess.getIntegerTypeRule() ||
@@ -206,25 +189,16 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.SIMPLE_MEMBER:
+				if(context == grammarAccess.getSimpleMemberRule()) {
+					sequence_SimpleMember(context, (SimpleMember) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.SKIP_MEMBER:
 				if(context == grammarAccess.getMemberRule() ||
 				   context == grammarAccess.getSkipMemberRule()) {
 					sequence_SkipMember(context, (SkipMember) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.STRING_NAMED_MEMBER:
-				if(context == grammarAccess.getMemberRule() ||
-				   context == grammarAccess.getStringNamedMemberRule() ||
-				   context == grammarAccess.getTypedMemberRule()) {
-					sequence_StringNamedMember(context, (StringNamedMember) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.STRING_NAMED_SIMPLE_MEMBER:
-				if(context == grammarAccess.getSimpleMemberRule() ||
-				   context == grammarAccess.getStringNamedSimpleMemberRule()) {
-					sequence_StringNamedSimpleMember(context, (StringNamedSimpleMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -234,6 +208,13 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				   context == grammarAccess.getStringTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_StringType(context, (StringType) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.TYPED_MEMBER:
+				if(context == grammarAccess.getMemberRule() ||
+				   context == grammarAccess.getTypedMemberRule()) {
+					sequence_TypedMember(context, (TypedMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -283,7 +264,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID baseUrl=STRING params=ParamsBlock? methods+=HttpMethod*)
+	 *     (name=ID baseUrl=STRING? params=ParamsBlock? methods+=HttpMethod*)
 	 */
 	protected void sequence_Client(EObject context, Client semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -398,44 +379,6 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID type=Type)
-	 */
-	protected void sequence_IDNamedMember(EObject context, IDNamedMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.TYPED_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.TYPED_MEMBER__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIDNamedMemberAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getIDNamedMemberAccess().getTypeTypeParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID type=IntrinsicType)
-	 */
-	protected void sequence_IDNamedSimpleMember(EObject context, IDNamedSimpleMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIDNamedSimpleMemberAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getIDNamedSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     id='int'
 	 */
 	protected void sequence_IntegerType(EObject context, IntegerType semanticObject) {
@@ -495,58 +438,19 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=STRING literal=ComplexTypeLiteral)
+	 *     ((name=ID | name=STRING) type=IntrinsicType)
+	 */
+	protected void sequence_SimpleMember(EObject context, SimpleMember semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((name=ID | name=STRING) literal=ComplexTypeLiteral)
 	 */
 	protected void sequence_SkipMember(EObject context, SkipMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SKIP_MEMBER__LITERAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SKIP_MEMBER__LITERAL));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_2_0(), semanticObject.getLiteral());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=STRING type=Type)
-	 */
-	protected void sequence_StringNamedMember(EObject context, StringNamedMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.TYPED_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.TYPED_MEMBER__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStringNamedMemberAccess().getNameSTRINGTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getStringNamedMemberAccess().getTypeTypeParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=STRING type=IntrinsicType)
-	 */
-	protected void sequence_StringNamedSimpleMember(EObject context, StringNamedSimpleMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.SIMPLE_MEMBER__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStringNamedSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getStringNamedSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -563,6 +467,15 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStringTypeAccess().getIdStringKeyword_0(), semanticObject.getId());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((name=ID | name=STRING) type=Type)
+	 */
+	protected void sequence_TypedMember(EObject context, TypedMember semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

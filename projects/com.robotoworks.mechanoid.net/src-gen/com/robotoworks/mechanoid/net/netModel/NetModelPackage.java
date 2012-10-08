@@ -647,80 +647,6 @@ public interface NetModelPackage extends EPackage
   int TYPED_MEMBER_FEATURE_COUNT = MEMBER_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.IDNamedMemberImpl <em>ID Named Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.IDNamedMemberImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIDNamedMember()
-   * @generated
-   */
-  int ID_NAMED_MEMBER = 14;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_MEMBER__NAME = TYPED_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_MEMBER__TYPE = TYPED_MEMBER__TYPE;
-
-  /**
-   * The number of structural features of the '<em>ID Named Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_MEMBER_FEATURE_COUNT = TYPED_MEMBER_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringNamedMemberImpl <em>String Named Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.StringNamedMemberImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringNamedMember()
-   * @generated
-   */
-  int STRING_NAMED_MEMBER = 15;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_MEMBER__NAME = TYPED_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_MEMBER__TYPE = TYPED_MEMBER__TYPE;
-
-  /**
-   * The number of structural features of the '<em>String Named Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_MEMBER_FEATURE_COUNT = TYPED_MEMBER_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl <em>Skip Member</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -728,7 +654,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSkipMember()
    * @generated
    */
-  int SKIP_MEMBER = 16;
+  int SKIP_MEMBER = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -765,7 +691,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSimpleMember()
    * @generated
    */
-  int SIMPLE_MEMBER = 17;
+  int SIMPLE_MEMBER = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -795,80 +721,6 @@ public interface NetModelPackage extends EPackage
   int SIMPLE_MEMBER_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.IDNamedSimpleMemberImpl <em>ID Named Simple Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.IDNamedSimpleMemberImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIDNamedSimpleMember()
-   * @generated
-   */
-  int ID_NAMED_SIMPLE_MEMBER = 18;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_SIMPLE_MEMBER__NAME = SIMPLE_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_SIMPLE_MEMBER__TYPE = SIMPLE_MEMBER__TYPE;
-
-  /**
-   * The number of structural features of the '<em>ID Named Simple Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_NAMED_SIMPLE_MEMBER_FEATURE_COUNT = SIMPLE_MEMBER_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringNamedSimpleMemberImpl <em>String Named Simple Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.net.netModel.impl.StringNamedSimpleMemberImpl
-   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringNamedSimpleMember()
-   * @generated
-   */
-  int STRING_NAMED_SIMPLE_MEMBER = 19;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_SIMPLE_MEMBER__NAME = SIMPLE_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_SIMPLE_MEMBER__TYPE = SIMPLE_MEMBER__TYPE;
-
-  /**
-   * The number of structural features of the '<em>String Named Simple Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_NAMED_SIMPLE_MEMBER_FEATURE_COUNT = SIMPLE_MEMBER_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.TypeImpl <em>Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -876,7 +728,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getType()
    * @generated
    */
-  int TYPE = 20;
+  int TYPE = 16;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -895,7 +747,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getGenericListType()
    * @generated
    */
-  int GENERIC_LIST_TYPE = 21;
+  int GENERIC_LIST_TYPE = 17;
 
   /**
    * The feature id for the '<em><b>Element Type</b></em>' containment reference.
@@ -932,7 +784,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserType()
    * @generated
    */
-  int USER_TYPE = 22;
+  int USER_TYPE = 18;
 
   /**
    * The feature id for the '<em><b>Declaration</b></em>' reference.
@@ -960,7 +812,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserTypeDeclaration()
    * @generated
    */
-  int USER_TYPE_DECLARATION = 23;
+  int USER_TYPE_DECLARATION = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1006,7 +858,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeDeclaration()
    * @generated
    */
-  int COMPLEX_TYPE_DECLARATION = 24;
+  int COMPLEX_TYPE_DECLARATION = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1061,7 +913,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeDeclaration()
    * @generated
    */
-  int ENUM_TYPE_DECLARATION = 25;
+  int ENUM_TYPE_DECLARATION = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1125,7 +977,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeLiteral()
    * @generated
    */
-  int ENUM_TYPE_LITERAL = 26;
+  int ENUM_TYPE_LITERAL = 22;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1153,7 +1005,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumMember()
    * @generated
    */
-  int ENUM_MEMBER = 27;
+  int ENUM_MEMBER = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1199,7 +1051,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeLiteral()
    * @generated
    */
-  int COMPLEX_TYPE_LITERAL = 28;
+  int COMPLEX_TYPE_LITERAL = 24;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1227,7 +1079,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntrinsicType()
    * @generated
    */
-  int INTRINSIC_TYPE = 29;
+  int INTRINSIC_TYPE = 25;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1255,7 +1107,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 30;
+  int STRING_TYPE = 26;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1283,7 +1135,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 31;
+  int BOOLEAN_TYPE = 27;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1311,7 +1163,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getNumericType()
    * @generated
    */
-  int NUMERIC_TYPE = 32;
+  int NUMERIC_TYPE = 28;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1339,7 +1191,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntegerType()
    * @generated
    */
-  int INTEGER_TYPE = 33;
+  int INTEGER_TYPE = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1367,7 +1219,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 34;
+  int LONG_TYPE = 30;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1395,7 +1247,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 35;
+  int DOUBLE_TYPE = 31;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1755,26 +1607,6 @@ public interface NetModelPackage extends EPackage
   EReference getTypedMember_Type();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.IDNamedMember <em>ID Named Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>ID Named Member</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.IDNamedMember
-   * @generated
-   */
-  EClass getIDNamedMember();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.StringNamedMember <em>String Named Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Named Member</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.StringNamedMember
-   * @generated
-   */
-  EClass getStringNamedMember();
-
-  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.SkipMember <em>Skip Member</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1826,26 +1658,6 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EReference getSimpleMember_Type();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember <em>ID Named Simple Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>ID Named Simple Member</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember
-   * @generated
-   */
-  EClass getIDNamedSimpleMember();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember <em>String Named Simple Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Named Simple Member</em>'.
-   * @see com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember
-   * @generated
-   */
-  EClass getStringNamedSimpleMember();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.Type <em>Type</em>}'.
@@ -2469,26 +2281,6 @@ public interface NetModelPackage extends EPackage
     EReference TYPED_MEMBER__TYPE = eINSTANCE.getTypedMember_Type();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.IDNamedMemberImpl <em>ID Named Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.IDNamedMemberImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIDNamedMember()
-     * @generated
-     */
-    EClass ID_NAMED_MEMBER = eINSTANCE.getIDNamedMember();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringNamedMemberImpl <em>String Named Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.StringNamedMemberImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringNamedMember()
-     * @generated
-     */
-    EClass STRING_NAMED_MEMBER = eINSTANCE.getStringNamedMember();
-
-    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SkipMemberImpl <em>Skip Member</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2531,26 +2323,6 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EReference SIMPLE_MEMBER__TYPE = eINSTANCE.getSimpleMember_Type();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.IDNamedSimpleMemberImpl <em>ID Named Simple Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.IDNamedSimpleMemberImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIDNamedSimpleMember()
-     * @generated
-     */
-    EClass ID_NAMED_SIMPLE_MEMBER = eINSTANCE.getIDNamedSimpleMember();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringNamedSimpleMemberImpl <em>String Named Simple Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.net.netModel.impl.StringNamedSimpleMemberImpl
-     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringNamedSimpleMember()
-     * @generated
-     */
-    EClass STRING_NAMED_SIMPLE_MEMBER = eINSTANCE.getStringNamedSimpleMember();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.TypeImpl <em>Type</em>}' class.

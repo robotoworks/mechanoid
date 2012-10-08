@@ -8,11 +8,15 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.netModel.HttpMethod
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
+import com.robotoworks.mechanoid.net.netModel.Member
 import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock
+import com.robotoworks.mechanoid.net.netModel.SkipMember
+import com.robotoworks.mechanoid.net.netModel.Type
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
+import org.eclipse.emf.common.util.BasicEList
+import org.eclipse.emf.common.util.EList
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 
@@ -23,15 +27,12 @@ class ResponseGenerator {
 		this.context = context;
 	}
 	
-	MemberDeserializationStatementGenerator deserializationStatementGenerator
+	JsonReaderGenerator jsonReaderGenerator
 	
-	def setMemberDeserializationStatementGenerator(MemberDeserializationStatementGenerator deserializationStatementGenerator){
-		this.deserializationStatementGenerator = deserializationStatementGenerator;
+	def setJsonReaderGenerator(JsonReaderGenerator jsonReaderGenerator){
+		this.jsonReaderGenerator = jsonReaderGenerator;
 	}
-	def getMemberDeserializationStatementGenerator (){
-		return deserializationStatementGenerator;
-	}
-	
+
 	def registerImports(){
 		context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")
 		context.registerImport("com.robotoworks.mechanoid.net.TransformException")
@@ -44,35 +45,15 @@ class ResponseGenerator {
 
 	«var body = generateResponseClass(method, module, client)»
 	«registerImports»
+	import java.io.InputStreamReader;
+	import java.nio.charset.Charset;
+	import com.robotoworks.mechanoid.internal.util.JsonReader;
 	«context.printImports»
 	«context.clearImports»
 	
 	«body»
 	'''	
-	
-	def generateResponseClass(HttpMethod method, Model module, Client client) '''
-	public class «method.name.pascalize»Response «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
-		«IF (method.response != null)»
-			«generateFieldForType(method.response.type)»	
-			«generateGetterForType(method.response.type)»	
-		«ENDIF»
-		
-		public «method.name.pascalize»Response(TransformerProvider transformerProvider, InputStream inStream) throws TransformException {
-			«IF (method.response != null)»
-				«IF(method.response.type != null)»
-					«generateDeserializationStatementForType(method.response, method.response.type)»
-				«ELSE»
-					«IF(method.response.superType != null)»
-						«generateDeserializationStatementForSuperTypeOnly(method.response, method.response.superType)»
-					«ENDIF»
-				«ENDIF»
-			«ELSE»
-			Closeables.closeSilently(inStream);
-			«ENDIF»
-		}
-	}
-	'''
-		
+			
 	def dispatch generateFieldForType(ComplexTypeLiteral type) '''
 		«FOR member:type.members»
 		«generateFieldForMember(member)»
@@ -136,6 +117,9 @@ class ResponseGenerator {
 	public «member.type.signature» «member.toGetMethodName»(){
 		return this.«member.toIdentifier»;
 	}
+	public void «member.toSetMethodName»(«member.type.signature» value){
+		this.«member.toIdentifier» = value;
+	}
 	'''
 	
 	def dispatch generateGetter(SkipMember member) '''
@@ -143,50 +127,81 @@ class ResponseGenerator {
 	'''
 	
 	
-	def generateDeserializationStatementHeader()'''
-		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
-
-		try {
-			if(inStream != null){
-				String content = Streams.readAllText(inStream);
+	def generateResponseClass(HttpMethod method, Model module, Client client) '''
+	public class «method.name.pascalize»Response «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
+		«IF (method.response?.type != null)»
+			«generateFieldForType(method.response.type)»	
+			«generateGetterForType(method.response.type)»	
+		«ENDIF»
+		
+		public «method.name.pascalize»Response(TransformerProvider provider, InputStream inStream) throws TransformException {
+		«IF (method.response != null)»
+			«IF(method.response.type instanceof ComplexTypeLiteral || method.response.superType != null)»
+				«generateDeserializationStatementHeader(true)»
+				
+					«method.name.pascalize»Response target = this;
+					
+					«var members = mergeMembers(method.response.type as ComplexTypeLiteral, method.response.superType)»
+				
+					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers(members)»
+		
+				«generateDeserializationStatementFooter(true)»
+			«ELSE»
+				«generateDeserializationStatementForType(method.response, method.response.type as Type)»
+			«ENDIF»
+		«ELSE»
+		Closeables.closeSilently(inStream);
+		«ENDIF»
+		}
+	}
 	'''
 	
-	def generateDeserializationStatementFooter()'''
+	def generateDeserializationStatementHeader(boolean withReader)'''
+		«IF withReader»
+		JsonReader source = null;
+		«ENDIF»
+		try {
+			if(inStream != null) {
+				«IF withReader»
+				source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
+				«ENDIF»
+	'''
+	
+	def generateDeserializationStatementFooter(boolean withReader)'''
 		«context.registerImport("java.io.IOException")»
 			}
 		} catch(Exception x) {
 			throw new TransformException(x);
 		} finally {
+			«IF withReader»
+			Closeables.closeSilently(source);
+			«ELSE»
 			Closeables.closeSilently(inStream);
+			«ENDIF»
 		}
 	'''
 	
-	def generateDeserializationStatementForSuperTypeOnly(ResponseBlock response, ComplexTypeDeclaration superType) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
-				JSONObject source = new JSONObject(content);
-				transformerProvider.get(«superType.name»InputTransformer.class).transform(source, this);
-		«generateDeserializationStatementFooter()»
-	'''
-	
-	def dispatch generateDeserializationStatementForType(ResponseBlock response, ComplexTypeLiteral type) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
-				JSONObject source = new JSONObject(content);
-				«FOR member:type.members»
-				«deserializationStatementGenerator.generate(member, "transformerProvider", "source", "this", true)»
-				«ENDFOR»
-				«IF(response.superType != null)»
-							
-				transformerProvider.get(«response.superType.name»InputTransformer.class).transform(source, this);
-				«ENDIF»
-		«generateDeserializationStatementFooter()»
-	'''
+	def EList<Member> mergeMembers(ComplexTypeLiteral type, ComplexTypeDeclaration superType) { 
+		var members = new BasicEList<Member>()
+		
+		if(type != null) {
+			members.addAll(type.members)
+		}
+		
+		if(superType != null) {
+			members.addAll(superType.literal.members)
+		}
+
+		return members;
+	}
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, IntrinsicType type) '''
-		«generateDeserializationStatementHeader()»
-				this.value = «type.signature».valueOf(content);
-		«generateDeserializationStatementFooter()»
+		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+		«generateDeserializationStatementHeader(false)»
+				String source = Streams.readAllText(inStream);
+				
+				this.value = «type.boxedTypeSignature».valueOf(source);
+		«generateDeserializationStatementFooter(false)»
 	'''
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, UserType type) {
@@ -194,17 +209,17 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, ComplexTypeDeclaration declaration) '''
-		«context.registerImport("org.json.JSONObject")»
-		«generateDeserializationStatementHeader()»
-				JSONObject source = new JSONObject(content);
-				this.«type.signature.camelize» = transformerProvider.get(«type.signature»InputTransformer.class).transform(source);
-		«generateDeserializationStatementFooter()»
+		«generateDeserializationStatementHeader(true)»
+				this.«type.signature.camelize» = provider.get(«type.signature»InputTransformer.class).transform(source);
+		«generateDeserializationStatementFooter(true)»
 	'''
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, EnumTypeDeclaration declaration) '''
-		«generateDeserializationStatementHeader()»
-				this.«type.signature.camelize» = «type.signature».fromValue(content);
-		«generateDeserializationStatementFooter()»
+		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+		«generateDeserializationStatementHeader(false)»
+				String source = Streams.readAllText(inStream);
+				this.«type.signature.camelize» = «type.signature».fromValue(source);
+		«generateDeserializationStatementFooter(false)»
 	'''
 
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, GenericListType type) {
@@ -212,16 +227,12 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, IntrinsicType genericType) '''
-		«context.registerImport("org.json.JSONArray")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.values = new Array«type.signature»(source.length());
-				for(int i=0; i < source.length(); i++) {
-					this.values.add(source.«genericType.toJSONPropertyGetMethod»(i));
-				}
-		«generateDeserializationStatementFooter()»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
+		«generateDeserializationStatementHeader(true)»
+				this.values = JsonUtil.read«genericType.boxedTypeSignature»List(source);
+		«generateDeserializationStatementFooter(true)»
 	'''
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, UserType genericType) {
@@ -234,13 +245,12 @@ class ResponseGenerator {
 		UserType genericType,
 		ComplexTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
 		«context.registerImport("java.util.List")»
 		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = transformerProvider.get(«type.innerSignature»ListInputTransformer.class).transform(source);
-		«generateDeserializationStatementFooter()»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
+		«generateDeserializationStatementHeader(true)»
+				this.«type.innerSignature.camelize.pluralize» = provider.get(«type.innerSignature»ListInputTransformer.class).transform(source);
+		«generateDeserializationStatementFooter(true)»
 	'''
 	
 	def dispatch generateDeserializationStatementForUserTypeGenericList(
@@ -249,16 +259,24 @@ class ResponseGenerator {
 		UserType genericType,
 		EnumTypeDeclaration declaration
 	) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("java.util.List")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		«context.registerImport("java.util.ArrayList")»
-		«generateDeserializationStatementHeader()»
-				JSONArray source = new JSONArray(content);
-				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»(source.length());
-				for(int i=0; i < source.length(); i++) {
-					«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveGetJSONValueMethodName»(i));
-					this.«type.innerSignature.camelize.pluralize».add(element);
+		«context.registerImport("java.util.List")»
+		«generateDeserializationStatementHeader(true)»
+				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»();
+				
+				if(source.peek() != JsonToken.NULL) {
+					
+					source.beginArray();
+					
+					while(source.hasNext()) {
+						«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveJsonReaderMethodName»());
+						this.«type.innerSignature.camelize.pluralize».add(element);
+					}
+					
+					source.endArray();
 				}
-		«generateDeserializationStatementFooter()»
+		«generateDeserializationStatementFooter(true)»
 	'''
 }

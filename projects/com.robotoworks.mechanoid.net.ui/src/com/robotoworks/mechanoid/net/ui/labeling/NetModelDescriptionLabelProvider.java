@@ -3,6 +3,7 @@
 */
 package com.robotoworks.mechanoid.net.ui.labeling;
 
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
 /**
@@ -23,5 +24,10 @@ public class NetModelDescriptionLabelProvider extends DefaultDescriptionLabelPro
       return ele.getEClass().getName() + ".gif";
     }	 
 */
-
+	
+	@Override
+	protected Object doGetText(Object element) {
+		Object qux = super.doGetText(element);
+		return qux;
+	}
 }

@@ -12,7 +12,7 @@ Declaration:
 ;
 
 Client:
-	'client' name=ID baseUrl=STRING '{' 
+	'client' name=ID baseUrl=STRING? '{' 
 	(params = ParamsBlock)?
 	(methods +=HttpMethod)* 
 	'}'
@@ -61,31 +61,15 @@ Member:
 ;
 
 TypedMember:
-	IDNamedMember | StringNamedMember
-;
-
-IDNamedMember:
-	name=ID ':' type=Type
-;
-
-StringNamedMember : 
-	name=STRING ':' type=Type
+	name=(ID|STRING) ':' type=Type
 ;
 
 SkipMember :
-	'skip' name=STRING literal=ComplexTypeLiteral
+	name=(ID|STRING) literal=ComplexTypeLiteral
 ;
 
 SimpleMember:
-	IDNamedSimpleMember | StringNamedSimpleMember
-;
-
-IDNamedSimpleMember:
-	name=ID ':' type=IntrinsicType
-;
-
-StringNamedSimpleMember:
-	name=STRING ':' type=IntrinsicType
+	name=(ID|STRING) ':' type=IntrinsicType
 ;
 
 Type:

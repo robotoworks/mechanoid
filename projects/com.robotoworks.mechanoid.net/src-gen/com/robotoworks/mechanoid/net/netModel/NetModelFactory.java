@@ -149,24 +149,6 @@ public interface NetModelFactory extends EFactory
   TypedMember createTypedMember();
 
   /**
-   * Returns a new object of class '<em>ID Named Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>ID Named Member</em>'.
-   * @generated
-   */
-  IDNamedMember createIDNamedMember();
-
-  /**
-   * Returns a new object of class '<em>String Named Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Named Member</em>'.
-   * @generated
-   */
-  StringNamedMember createStringNamedMember();
-
-  /**
    * Returns a new object of class '<em>Skip Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -183,24 +165,6 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   SimpleMember createSimpleMember();
-
-  /**
-   * Returns a new object of class '<em>ID Named Simple Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>ID Named Simple Member</em>'.
-   * @generated
-   */
-  IDNamedSimpleMember createIDNamedSimpleMember();
-
-  /**
-   * Returns a new object of class '<em>String Named Simple Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Named Simple Member</em>'.
-   * @generated
-   */
-  StringNamedSimpleMember createStringNamedSimpleMember();
 
   /**
    * Returns a new object of class '<em>Type</em>'.

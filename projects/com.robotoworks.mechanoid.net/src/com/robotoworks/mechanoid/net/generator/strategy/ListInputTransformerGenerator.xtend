@@ -16,10 +16,12 @@ class ListInputTransformerGenerator {
 	def generate(ComplexTypeDeclaration decl, Model module) '''
 	package «module.packageName»;
 
-	«var body = generateListInputTranformerGeneratorClass(decl, module)»
+	«var body = generateClass(decl, module)»
 	«registerImports»
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.internal.util.JsonReader;
+	import java.util.List;
 	import java.util.ArrayList;
 	«context.printImports»
 	«context.clearImports»
@@ -27,29 +29,32 @@ class ListInputTransformerGenerator {
 	«body»
 	'''
 	
-	def generateListInputTranformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("org.json.JSONException")»
-		«context.registerImport("java.util.List")»
-		public class «decl.name»ListInputTransformer extends Transformer<JSONArray, List<«decl.name»>> {
-			public List<«decl.name»> transform(JSONArray source) throws TransformException {
-				List<«decl.name»> target = new ArrayList<«decl.name»>(source.length());
+	def generateClass(ComplexTypeDeclaration decl, Model module) '''
+		public class «decl.name»ListInputTransformer extends Transformer<JsonReader, List<«decl.name»>> {
+			public List<«decl.name»> transform(JsonReader source) throws TransformException {
+				List<«decl.name»> target = new ArrayList<«decl.name»>();
 			
 				transform(source, target);
 			
 				return target;
 			}
 
-			public void transform(JSONArray source, List<«decl.name»> target) throws TransformException {
+			public void transform(JsonReader source, List<«decl.name»> target) throws TransformException {
 				
 				try {
 					«decl.name»InputTransformer itemTransformer = provider.get(«decl.name»InputTransformer.class);
-					for(int i=0; i < source.length(); i++) {
-						«decl.name» targetItem = itemTransformer.transform(source.getJSONObject(i));
+					
+					source.beginArray();
+					
+					while(source.hasNext()) {
+						«decl.name» targetItem = itemTransformer.transform(source);
 						target.add(targetItem);
 						
 					}
-				} catch (JSONException x) {
+					
+					source.endArray();
+					
+				} catch (Exception x) {
 					throw new TransformException(x);
 				}
 				

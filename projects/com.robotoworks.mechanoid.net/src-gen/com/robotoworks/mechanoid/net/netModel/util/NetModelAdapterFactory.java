@@ -145,16 +145,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createTypedMemberAdapter();
       }
       @Override
-      public Adapter caseIDNamedMember(IDNamedMember object)
-      {
-        return createIDNamedMemberAdapter();
-      }
-      @Override
-      public Adapter caseStringNamedMember(StringNamedMember object)
-      {
-        return createStringNamedMemberAdapter();
-      }
-      @Override
       public Adapter caseSkipMember(SkipMember object)
       {
         return createSkipMemberAdapter();
@@ -163,16 +153,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSimpleMember(SimpleMember object)
       {
         return createSimpleMemberAdapter();
-      }
-      @Override
-      public Adapter caseIDNamedSimpleMember(IDNamedSimpleMember object)
-      {
-        return createIDNamedSimpleMemberAdapter();
-      }
-      @Override
-      public Adapter caseStringNamedSimpleMember(StringNamedSimpleMember object)
-      {
-        return createStringNamedSimpleMemberAdapter();
       }
       @Override
       public Adapter caseType(Type object)
@@ -487,36 +467,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.IDNamedMember <em>ID Named Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.IDNamedMember
-   * @generated
-   */
-  public Adapter createIDNamedMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.StringNamedMember <em>String Named Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.StringNamedMember
-   * @generated
-   */
-  public Adapter createStringNamedMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.SkipMember <em>Skip Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -542,36 +492,6 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSimpleMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember <em>ID Named Simple Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.IDNamedSimpleMember
-   * @generated
-   */
-  public Adapter createIDNamedSimpleMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember <em>String Named Simple Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.StringNamedSimpleMember
-   * @generated
-   */
-  public Adapter createStringNamedSimpleMemberAdapter()
   {
     return null;
   }

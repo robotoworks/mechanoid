@@ -31,4 +31,10 @@ public class NetModelLabelProvider extends DefaultEObjectLabelProvider {
       return "MyModel.gif";
     }
 */
+	@Override
+	protected Object doGetText(Object element) {
+		Object qux = super.doGetText(element);
+		
+		return qux;
+	}
 }
