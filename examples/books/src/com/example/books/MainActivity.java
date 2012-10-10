@@ -27,39 +27,6 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		try {
-			doRequest();
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private void doRequest() throws Exception {
-
-		BookService service = new BookService();
-
-		Book book = new Book();
-		book.setAuthor("Eiji Yoshikawa");
-		book.setTitle("Musashi");
-
-		Response<CreateBookResponse> response = service
-				.createBook(new CreateBookRequest(book));
-
-		if (response.getStatus() != 200) {
-			throw new Exception("Invalid response!");
-		}
-
-		CreateBookResponse content = response.parse();
-
-		int newBookId = content.getBookId();
-
 	}
 
 	@Override

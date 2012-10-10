@@ -2,7 +2,7 @@
 <feature
       id="com.robotoworks.mechanoid.feature"
       label="Robotoworks Mechanoid"
-      version="1.0.0.alpha2"
+      version="1.0.0.alpha3"
       provider-name="Robotoworks Limited">
 
    <description url="http://www.robotoworks.com/mechanoid-plugin">
@@ -94,6 +94,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>

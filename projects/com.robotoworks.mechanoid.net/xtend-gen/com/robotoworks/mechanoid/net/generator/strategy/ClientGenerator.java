@@ -11,6 +11,7 @@ import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ClientGenerator {
@@ -288,33 +289,82 @@ public class ClientGenerator {
     {
       EList<HttpMethod> _methods = client.getMethods();
       for(final HttpMethod method : _methods) {
+        {
+          boolean _and = false;
+          boolean _hasBody = ModelExtensions.hasBody(method);
+          boolean _not = (!_hasBody);
+          if (!_not) {
+            _and = false;
+          } else {
+            Iterable<String> _argsFromPath = ModelExtensions.getArgsFromPath(method);
+            int _size = IterableExtensions.size(_argsFromPath);
+            boolean _equals = (_size == 0);
+            _and = (_not && _equals);
+          }
+          if (_and) {
+            _builder.append("public Response<");
+            String _name = method.getName();
+            String _pascalize = ModelExtensions.pascalize(_name);
+            _builder.append(_pascalize, "");
+            _builder.append("Response> ");
+            String _name_1 = method.getName();
+            String _camelize = ModelExtensions.camelize(_name_1);
+            _builder.append(_camelize, "");
+            _builder.append("()");
+            _builder.newLineIfNotEmpty();
+            _builder.append("  ");
+            _builder.append("throws ClientProtocolException, IOException");
+            {
+              boolean _hasBody_1 = ModelExtensions.hasBody(method);
+              if (_hasBody_1) {
+                _builder.append(", TransformException");
+              }
+            }
+            _builder.append(" {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("  \t");
+            _builder.append("return ");
+            String _name_2 = method.getName();
+            String _camelize_1 = ModelExtensions.camelize(_name_2);
+            _builder.append(_camelize_1, "  	");
+            _builder.append("(new ");
+            String _name_3 = method.getName();
+            String _pascalize_1 = ModelExtensions.pascalize(_name_3);
+            _builder.append(_pascalize_1, "  	");
+            _builder.append("Request());");
+            _builder.newLineIfNotEmpty();
+            _builder.append("}");
+            _builder.newLine();
+            _builder.newLine();
+          }
+        }
         _builder.append("public Response<");
-        String _name = method.getName();
-        String _pascalize = ModelExtensions.pascalize(_name);
-        _builder.append(_pascalize, "");
+        String _name_4 = method.getName();
+        String _pascalize_2 = ModelExtensions.pascalize(_name_4);
+        _builder.append(_pascalize_2, "");
         _builder.append("Response> ");
-        String _name_1 = method.getName();
-        String _camelize = ModelExtensions.camelize(_name_1);
-        _builder.append(_camelize, "");
+        String _name_5 = method.getName();
+        String _camelize_2 = ModelExtensions.camelize(_name_5);
+        _builder.append(_camelize_2, "");
         _builder.append("(");
-        String _name_2 = method.getName();
-        String _pascalize_1 = ModelExtensions.pascalize(_name_2);
-        _builder.append(_pascalize_1, "");
+        String _name_6 = method.getName();
+        String _pascalize_3 = ModelExtensions.pascalize(_name_6);
+        _builder.append(_pascalize_3, "");
         _builder.append("Request request)");
         _builder.newLineIfNotEmpty();
         _builder.append("  ");
         _builder.append("throws ClientProtocolException, IOException");
         {
-          boolean _hasBody = ModelExtensions.hasBody(method);
-          if (_hasBody) {
+          boolean _hasBody_2 = ModelExtensions.hasBody(method);
+          if (_hasBody_2) {
             _builder.append(", TransformException");
           }
         }
         _builder.append(" {");
         _builder.newLineIfNotEmpty();
         _builder.append("  \t");
-        boolean _hasBody_1 = ModelExtensions.hasBody(method);
-        if (_hasBody_1) {
+        boolean _hasBody_3 = ModelExtensions.hasBody(method);
+        if (_hasBody_3) {
           this.context.registerImport("com.robotoworks.mechanoid.net.TransformException");
         }
         _builder.newLineIfNotEmpty();
@@ -328,25 +378,25 @@ public class ClientGenerator {
               for(final SimpleMember param : _params_2) {
                 _builder.append("\t");
                 _builder.append("if(this.");
-                String _name_3 = param.getName();
-                String _camelize_1 = ModelExtensions.camelize(_name_3);
-                _builder.append(_camelize_1, "	");
+                String _name_7 = param.getName();
+                String _camelize_3 = ModelExtensions.camelize(_name_7);
+                _builder.append(_camelize_3, "	");
                 _builder.append("ParamSet && !request.is");
-                String _name_4 = param.getName();
-                String _pascalize_2 = ModelExtensions.pascalize(_name_4);
-                _builder.append(_pascalize_2, "	");
+                String _name_8 = param.getName();
+                String _pascalize_4 = ModelExtensions.pascalize(_name_8);
+                _builder.append(_pascalize_4, "	");
                 _builder.append("ParamSet()){");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
                 _builder.append("\t");
                 _builder.append("request.set");
-                String _name_5 = param.getName();
-                String _pascalize_3 = ModelExtensions.pascalize(_name_5);
-                _builder.append(_pascalize_3, "		");
+                String _name_9 = param.getName();
+                String _pascalize_5 = ModelExtensions.pascalize(_name_9);
+                _builder.append(_pascalize_5, "		");
                 _builder.append("Param(this.");
-                String _name_6 = param.getName();
-                String _camelize_2 = ModelExtensions.camelize(_name_6);
-                _builder.append(_camelize_2, "		");
+                String _name_10 = param.getName();
+                String _camelize_4 = ModelExtensions.camelize(_name_10);
+                _builder.append(_camelize_4, "		");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");

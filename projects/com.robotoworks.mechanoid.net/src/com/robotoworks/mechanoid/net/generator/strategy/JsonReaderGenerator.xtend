@@ -35,6 +35,11 @@ class JsonReaderGenerator {
 			ÇFOR member : literal.membersÈ
 			ÇgenBlock(member, COUNTER = COUNTER + 1)È
 			ÇENDFORÈ
+			ÇIF COUNTER > 0È
+			else {
+				source.skipValue();
+			}
+			ÇENDIFÈ
 		}
 		
 		source.endObject();
@@ -50,6 +55,11 @@ class JsonReaderGenerator {
 			ÇFOR member : membersÈ
 			ÇgenBlock(member, COUNTER = COUNTER + 1)È
 			ÇENDFORÈ
+			ÇIF COUNTER > 0È
+			else {
+				source.skipValue();
+			}
+			ÇENDIFÈ
 		}
 		
 		source.endObject();
@@ -79,6 +89,11 @@ class JsonReaderGenerator {
 				ÇFOR member : skipMember.literal.membersÈ
 				ÇgenBlock(member, COUNTER = COUNTER + 1)È
 				ÇENDFORÈ
+				ÇIF COUNTER > 0È
+				else {
+					source.skipValue();
+				}
+				ÇENDIFÈ
 			}
 			
 			source.endObject();

@@ -94,6 +94,13 @@ class ClientGenerator {
 	
 	def generateClientMethods(Client client, Model model) '''
 		«FOR method:client.methods»
+		«IF !method.hasBody && method.argsFromPath.size == 0»
+		public Response<«method.name.pascalize»Response> «method.name.camelize»()
+		  throws ClientProtocolException, IOException«IF method.hasBody», TransformException«ENDIF» {
+		  	return «method.name.camelize»(new «method.name.pascalize»Request());
+		}
+		
+		«ENDIF»
 		public Response<«method.name.pascalize»Response> «method.name.camelize»(«method.name.pascalize»Request request)
 		  throws ClientProtocolException, IOException«IF method.hasBody», TransformException«ENDIF» {
 		  	«if(method.hasBody) context.registerImport("com.robotoworks.mechanoid.net.TransformException")»

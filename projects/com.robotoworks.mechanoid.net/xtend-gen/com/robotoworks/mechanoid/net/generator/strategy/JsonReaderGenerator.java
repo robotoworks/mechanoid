@@ -58,6 +58,21 @@ public class JsonReaderGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    {
+      boolean _greaterThan = (COUNTER > 0);
+      if (_greaterThan) {
+        _builder.append("\t");
+        _builder.append("else {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("source.skipValue();");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
@@ -89,6 +104,21 @@ public class JsonReaderGenerator {
         CharSequence _genBlock = this.genBlock(member, _COUNTER);
         _builder.append(_genBlock, "	");
         _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      boolean _greaterThan = (COUNTER > 0);
+      if (_greaterThan) {
+        _builder.append("\t");
+        _builder.append("else {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("source.skipValue();");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
       }
     }
     _builder.append("}");
@@ -159,6 +189,21 @@ public class JsonReaderGenerator {
         CharSequence _genBlock = this.genBlock(member, _COUNTER);
         _builder.append(_genBlock, "		");
         _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      boolean _greaterThan = (COUNTER > 0);
+      if (_greaterThan) {
+        _builder.append("\t\t");
+        _builder.append("else {");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("\t");
+        _builder.append("source.skipValue();");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("}");
+        _builder.newLine();
       }
     }
     _builder.append("\t");
