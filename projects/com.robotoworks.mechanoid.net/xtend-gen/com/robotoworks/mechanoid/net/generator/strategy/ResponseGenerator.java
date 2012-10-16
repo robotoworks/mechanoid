@@ -61,12 +61,6 @@ public class ResponseGenerator {
     _builder.newLineIfNotEmpty();
     this.registerImports();
     _builder.newLineIfNotEmpty();
-    _builder.append("import java.io.InputStreamReader;");
-    _builder.newLine();
-    _builder.append("import java.nio.charset.Charset;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.internal.util.JsonReader;");
-    _builder.newLine();
     StringConcatenation _printImports = this.context.printImports();
     _builder.append(_printImports, "");
     _builder.newLineIfNotEmpty();
@@ -442,6 +436,12 @@ public class ResponseGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       if (withReader) {
+        this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
+        _builder.newLineIfNotEmpty();
+        this.context.registerImport("java.io.InputStreamReader");
+        _builder.newLineIfNotEmpty();
+        this.context.registerImport("java.nio.charset.Charset");
+        _builder.newLineIfNotEmpty();
         _builder.append("JsonReader source = null;");
         _builder.newLine();
       }
@@ -463,8 +463,6 @@ public class ResponseGenerator {
   
   public CharSequence generateDeserializationStatementFooter(final boolean withReader) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.io.IOException");
-    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -548,10 +546,20 @@ public class ResponseGenerator {
     String _signature = ModelExtensions.signature(type);
     String _camelize = ModelExtensions.camelize(_signature);
     _builder.append(_camelize, "		");
-    _builder.append(" = provider.get(");
+    _builder.append(" = new ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "		");
-    _builder.append("InputTransformer.class).transform(source);");
+    _builder.append("();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("provider.get(");
+    String _signature_2 = ModelExtensions.signature(type);
+    _builder.append(_signature_2, "		");
+    _builder.append("InputTransformer.class).transform(source, this.");
+    String _signature_3 = ModelExtensions.signature(type);
+    String _camelize_1 = ModelExtensions.camelize(_signature_3);
+    _builder.append(_camelize_1, "		");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
@@ -597,8 +605,6 @@ public class ResponseGenerator {
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
-    _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
@@ -626,8 +632,6 @@ public class ResponseGenerator {
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
-    _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
     _builder.append(_generateDeserializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
@@ -637,10 +641,21 @@ public class ResponseGenerator {
     String _camelize = ModelExtensions.camelize(_innerSignature);
     String _pluralize = ModelExtensions.pluralize(_camelize);
     _builder.append(_pluralize, "		");
-    _builder.append(" = provider.get(");
+    _builder.append(" = new ArrayList<");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "		");
-    _builder.append("ListInputTransformer.class).transform(source);");
+    _builder.append(">();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("provider.get(");
+    String _innerSignature_2 = ModelExtensions.innerSignature(type);
+    _builder.append(_innerSignature_2, "		");
+    _builder.append("ListInputTransformer.class).transform(source, this.");
+    String _innerSignature_3 = ModelExtensions.innerSignature(type);
+    String _camelize_1 = ModelExtensions.camelize(_innerSignature_3);
+    String _pluralize_1 = ModelExtensions.pluralize(_camelize_1);
+    _builder.append(_pluralize_1, "		");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
@@ -650,8 +665,6 @@ public class ResponseGenerator {
   
   protected CharSequence _generateDeserializationStatementForUserTypeGenericList(final ResponseBlock response, final GenericListType type, final UserType genericType, final EnumTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader");
-    _builder.newLineIfNotEmpty();
     this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     this.context.registerImport("java.util.ArrayList");

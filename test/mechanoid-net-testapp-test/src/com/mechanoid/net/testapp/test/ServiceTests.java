@@ -22,14 +22,17 @@ import com.mechanoid.net.GetNodesResponse;
 import com.mechanoid.net.GetStringArrayResponse;
 import com.mechanoid.net.Item;
 import com.mechanoid.net.Node;
+import com.mechanoid.net.SkippingPostRequest;
+import com.mechanoid.net.SkippingPostResponse;
 import com.mechanoid.net.SkippingResponse;
 import com.mechanoid.net.SkippingWithItemResponse;
 import com.mechanoid.net.TestService;
 import com.robotoworks.mechanoid.net.Response;
+import com.robotoworks.mechanoid.net.ServiceException;
 import com.robotoworks.mechanoid.net.TransformException;
 
 public class ServiceTests extends InstrumentationTestCase {
-	public void testGetStringArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetStringArray() throws ServiceException {
 		TestService service = new TestService();
 		Response<GetStringArrayResponse> response = service.getStringArray();
 		
@@ -42,7 +45,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals("dolor", actual.get(2));
 	}
 	
-	public void testGetIntArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetIntArray() throws ServiceException {
 		TestService service = new TestService();
 		Response<GetIntArrayResponse> response = service.getIntArray();
 		
@@ -55,7 +58,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(Integer.valueOf(5), actual.get(2));
 	}
 	
-	public void testGetLongArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetLongArray() throws ServiceException {
 		TestService service = new TestService();
 		Response<GetLongArrayResponse> response = service.getLongArray();
 		
@@ -68,7 +71,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(Long.valueOf(5), actual.get(2));
 	}
 	
-	public void testGetDoubleArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetDoubleArray() throws ServiceException {
 		TestService service = new TestService();
 		Response<GetDoubleArrayResponse> response = service.getDoubleArray();
 		
@@ -81,7 +84,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(Double.valueOf(3.5), actual.get(2));
 	}
 	
-	public void testGetBooleanArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetBooleanArray() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<GetBooleanArrayResponse> response = service.getBooleanArray();
@@ -95,7 +98,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(Boolean.valueOf(true), actual.get(2));
 	}
 	
-	public void testGetEnumArray() throws ClientProtocolException, IOException, TransformException {
+	public void testGetEnumArray() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<GetEnumArrayResponse> response = service.getEnumArray();
@@ -111,7 +114,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(Day.FRIDAY, actual.get(4));
 	}
 	
-	public void testGetItem() throws ClientProtocolException, IOException, TransformException {
+	public void testGetItem() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<GetItemResponse> response = service.getItem();
@@ -127,7 +130,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(true, actual.isE());
 	}
 	
-	public void testGetNodes() throws ClientProtocolException, IOException, TransformException {
+	public void testGetNodes() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<GetNodesResponse> response = service.getNodes();
@@ -143,7 +146,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(0, nodes.get(1).getChildren().size());
 	}
 	
-	public void testEchoParams() throws ClientProtocolException, IOException, TransformException {
+	public void testEchoParams() throws ServiceException {
 		TestService service = new TestService();
 		
 		EchoParamsRequest request = new EchoParamsRequest();
@@ -166,7 +169,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals("42", params.get(4));
 	}
 	
-	public void testSkipping() throws ClientProtocolException, IOException, TransformException {
+	public void testSkipping() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<SkippingResponse> response = service.skipping();
@@ -178,7 +181,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(42, content.getC());
 	}
 	
-	public void testSkippingWithItem() throws ClientProtocolException, IOException, TransformException {
+	public void testSkippingWithItem() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<SkippingWithItemResponse> response = service.skippingWithItem();
@@ -190,7 +193,7 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals(42, content.getInner().getC());
 	}
 	
-	public void testAB() throws ClientProtocolException, IOException, TransformException {
+	public void testAB() throws ServiceException {
 		TestService service = new TestService();
 		
 		Response<GetABResponse> response = service.getAB();
@@ -201,5 +204,19 @@ public class ServiceTests extends InstrumentationTestCase {
 		assertEquals("I am B", content.getA().getB().getName());
 		assertEquals("I am another A", content.getA().getB().getA().getName());
 		assertNull(content.getA().getB().getA().getB());
+	}
+	
+	public void testSkippingPost() throws ServiceException {
+		TestService service = new TestService();
+		
+		SkippingPostRequest request = new SkippingPostRequest("ipsum", 12, 45);
+		
+		Response<SkippingPostResponse> response = service.skippingPost(request);
+		
+		SkippingPostResponse content = response.parse();
+		
+		assertEquals(request.getA(), content.getA());
+		assertEquals(request.getB(), content.getB());
+		assertEquals(request.getC(), content.getC());
 	}
 }

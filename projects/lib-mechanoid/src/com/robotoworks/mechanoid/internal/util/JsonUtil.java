@@ -74,4 +74,59 @@ public class JsonUtil {
 		
 		return list;
 	}
+	
+	public static void writeStringList(JsonWriter writer, List<String> values) throws IOException {
+		
+		writer.beginArray();
+		
+		for(String value : values) {
+			writer.value(value);
+		}
+		
+		writer.endArray();
+	}
+	
+	public static void writeIntegerList(JsonWriter writer, List<Integer> values) throws IOException {
+		
+		writer.beginArray();
+		
+		for(Integer value : values) {
+			writer.value(value);
+		}
+		
+		writer.endArray();
+	}
+	
+	public static void writeLongList(JsonWriter writer, List<Long> values) throws IOException {
+		
+		writer.beginArray();
+		
+		for(Long value : values) {
+			writer.value(value);
+		}
+		
+		writer.endArray();
+	}
+	
+	public static void writeDoubleList(JsonWriter writer, List<Double> values) throws IOException {
+		
+		writer.beginArray();
+		
+		for(Double value : values) {
+			writer.value(value);
+		}
+		
+		writer.endArray();
+	}
+	
+	public static void writeBooleanList(JsonWriter writer, List<Boolean> values) throws IOException {
+		
+		writer.beginArray();
+		
+		for(Boolean value : values) {
+			writer.value(value);
+		}
+		
+		writer.endArray();
+	}
 }

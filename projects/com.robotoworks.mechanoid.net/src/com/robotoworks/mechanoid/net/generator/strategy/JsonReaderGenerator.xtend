@@ -111,7 +111,8 @@ class JsonReaderGenerator {
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			«type.signature» targetMember = provider.get(«type.innerSignature»InputTransformer.class).transform(source);
+			«type.signature» targetMember = new «type.signature»();
+			provider.get(«type.innerSignature»InputTransformer.class).transform(source, targetMember);
 			«member.toSetMethodName.memberize("target")»(targetMember);
 		}
 	'''
@@ -143,9 +144,11 @@ class JsonReaderGenerator {
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
 		«context.registerImport("java.util.List")»
+		«context.registerImport("java.util.ArrayList")»
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			«type.signature» targetMember = provider.get(«type.innerSignature»ListInputTransformer.class).transform(source);
+			«type.signature» targetMember = new ArrayList<«type.innerSignature»>();
+			provider.get(«type.innerSignature»ListInputTransformer.class).transform(source, targetMember);
 			«member.toSetMethodName.memberize("target")»(targetMember);
 		}
 	'''

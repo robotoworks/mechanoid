@@ -3,19 +3,9 @@ package com.mechanoid.net;
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import com.robotoworks.mechanoid.internal.util.JsonUtil;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
 import com.robotoworks.mechanoid.internal.util.JsonToken;
 
-public class AInputTransformer extends Transformer<JsonReader, A> {
-	public A transform(JsonReader source) throws TransformException {
-		A target = new A();
-
-		transform(source, target);
-		
-		return target;
-	}
-	
+public class AInputTransformer extends Transformer<JsonReader, A> {			
 	public void transform(JsonReader source, A target) throws TransformException {
 		try {
 			source.beginObject();
@@ -28,7 +18,8 @@ public class AInputTransformer extends Transformer<JsonReader, A> {
 				}
 				else if(name.equals("b")) {
 					if(source.peek() != JsonToken.NULL) {
-						B targetMember = provider.get(BInputTransformer.class).transform(source);
+						B targetMember = new B();
+						provider.get(BInputTransformer.class).transform(source, targetMember);
 						target.setB(targetMember);
 					}
 				}

@@ -92,4 +92,30 @@ client TestService "http://10.0.2.2:8080/mechanoid-net-service/test" {
 	get getAB "/ab" {
 		response A
 	}
+	
+	post skippingPost "/echoJson" {
+		body {
+			"outer" {
+				"inner" {
+					a:String,
+					b:int,
+					c:long
+				}	
+			}
+		}
+		response {
+			"outer" {
+				"inner" {
+					a:String,
+					b:int,
+					c:long
+				}	
+			}
+		}
+	}
+	
+	post postInt "/echo" {
+		body int
+		response int
+	}
 }

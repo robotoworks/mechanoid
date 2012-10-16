@@ -1,16 +1,14 @@
 package com.mechanoid.net;
 
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.net.TransformException;
 import java.util.ArrayList;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.util.List;
 import com.robotoworks.mechanoid.net.TransformerProvider;
+import java.io.InputStreamReader;
 import com.robotoworks.mechanoid.util.Closeables;
-import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class GetNodesResponse  {
 	private List<Node> nodes;
@@ -23,7 +21,8 @@ public class GetNodesResponse  {
 	try {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
-			this.nodes = provider.get(NodeListInputTransformer.class).transform(source);
+			this.nodes = new ArrayList<Node>();
+			provider.get(NodeListInputTransformer.class).transform(source, this.nodes);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);

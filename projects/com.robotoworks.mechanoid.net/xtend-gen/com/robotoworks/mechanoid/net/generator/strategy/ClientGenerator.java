@@ -4,11 +4,16 @@ import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.HttpDelete;
+import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
+import com.robotoworks.mechanoid.net.netModel.HttpPost;
+import com.robotoworks.mechanoid.net.netModel.HttpPut;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -40,18 +45,21 @@ public class ClientGenerator {
     CharSequence _registerImports = this.registerImports();
     _builder.append(_registerImports, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
+    _builder.append("import com.robotoworks.mechanoid.net.Parser;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.ServiceClient;");
+    _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.Response;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.DefaultServiceClient;");
+    _builder.append("import com.robotoworks.mechanoid.net.ServiceException;");
     _builder.newLine();
+    _builder.append("import java.io.InputStream;");
     _builder.newLine();
-    _builder.append("import java.io.IOException;");
+    _builder.append("import java.net.HttpURLConnection;");
     _builder.newLine();
-    _builder.append("import org.apache.http.client.ClientProtocolException;");
+    _builder.append("import java.net.URL;");
     _builder.newLine();
     StringConcatenation _printImports = this.context.printImports();
     _builder.append(_printImports, "");
@@ -87,9 +95,6 @@ public class ClientGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("\t");
-    _builder.append("protected final ServiceClient client;");
-    _builder.newLine();
     _builder.append("\t");
     _builder.append("private final TransformerProvider transformerProvider;");
     _builder.newLine();
@@ -190,36 +195,21 @@ public class ClientGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);");
+        _builder.append("this(DEFAULT_BASE_URL, new TransformerProvider());");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
-        _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("public ");
         String _name_7 = client.getName();
         _builder.append(_name_7, "	");
-        _builder.append("(ServiceClient client){");
+        _builder.append("(TransformerProvider transformerProvider){");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("this(client, new TransformerProvider(), DEFAULT_BASE_URL);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("public ");
-        String _name_8 = client.getName();
-        _builder.append(_name_8, "	");
-        _builder.append("(ServiceClient client, TransformerProvider transformerProvider){");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("this(client, transformerProvider, DEFAULT_BASE_URL);");
+        _builder.append("this(DEFAULT_BASE_URL, transformerProvider);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");
@@ -230,26 +220,12 @@ public class ClientGenerator {
     }
     _builder.append("\t");
     _builder.append("public ");
-    String _name_9 = client.getName();
-    _builder.append(_name_9, "	");
+    String _name_8 = client.getName();
+    _builder.append(_name_8, "	");
     _builder.append("(String baseUrl){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("this(new DefaultServiceClient(), new TransformerProvider(), baseUrl);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_10 = client.getName();
-    _builder.append(_name_10, "	");
-    _builder.append("(ServiceClient client, String baseUrl){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(client, new TransformerProvider(), baseUrl);");
+    _builder.append("this(baseUrl, new TransformerProvider());");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -257,13 +233,10 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
-    String _name_11 = client.getName();
-    _builder.append(_name_11, "	");
-    _builder.append("(ServiceClient client, TransformerProvider transformerProvider, String baseUrl){");
+    String _name_9 = client.getName();
+    _builder.append(_name_9, "	");
+    _builder.append("(String baseUrl, TransformerProvider transformerProvider){");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this.client = client;");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("this.baseUrl = baseUrl;");
     _builder.newLine();
@@ -313,15 +286,8 @@ public class ClientGenerator {
             _builder.append("()");
             _builder.newLineIfNotEmpty();
             _builder.append("  ");
-            _builder.append("throws ClientProtocolException, IOException");
-            {
-              boolean _hasBody_1 = ModelExtensions.hasBody(method);
-              if (_hasBody_1) {
-                _builder.append(", TransformException");
-              }
-            }
-            _builder.append(" {");
-            _builder.newLineIfNotEmpty();
+            _builder.append("throws ServiceException {");
+            _builder.newLine();
             _builder.append("  \t");
             _builder.append("return ");
             String _name_2 = method.getName();
@@ -353,21 +319,8 @@ public class ClientGenerator {
         _builder.append("Request request)");
         _builder.newLineIfNotEmpty();
         _builder.append("  ");
-        _builder.append("throws ClientProtocolException, IOException");
-        {
-          boolean _hasBody_2 = ModelExtensions.hasBody(method);
-          if (_hasBody_2) {
-            _builder.append(", TransformException");
-          }
-        }
-        _builder.append(" {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("  \t");
-        boolean _hasBody_3 = ModelExtensions.hasBody(method);
-        if (_hasBody_3) {
-          this.context.registerImport("com.robotoworks.mechanoid.net.TransformException");
-        }
-        _builder.newLineIfNotEmpty();
+        _builder.append("throws ServiceException {");
+        _builder.newLine();
         {
           ParamsBlock _params = client.getParams();
           boolean _notEquals = (!Objects.equal(_params, null));
@@ -409,12 +362,254 @@ public class ClientGenerator {
           }
         }
         _builder.append("\t");
-        _builder.append("return request.execute(baseUrl, client, transformerProvider);");
         _builder.newLine();
+        _builder.append("\t");
+        _builder.append("Parser<");
+        String _name_11 = method.getName();
+        String _pascalize_6 = ModelExtensions.pascalize(_name_11);
+        _builder.append(_pascalize_6, "	");
+        _builder.append("Response> parser = new Parser<");
+        String _name_12 = method.getName();
+        String _pascalize_7 = ModelExtensions.pascalize(_name_12);
+        _builder.append(_pascalize_7, "	");
+        _builder.append("Response>() {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("public ");
+        String _name_13 = method.getName();
+        String _pascalize_8 = ModelExtensions.pascalize(_name_13);
+        _builder.append(_pascalize_8, "		");
+        _builder.append("Response parse(InputStream inStream) throws TransformException {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
+        _builder.append("return new ");
+        String _name_14 = method.getName();
+        String _pascalize_9 = ModelExtensions.pascalize(_name_14);
+        _builder.append(_pascalize_9, "			");
+        _builder.append("Response(transformerProvider, inStream);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
         _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("};");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        CharSequence _generateServiceMethod = this.generateServiceMethod(method);
+        _builder.append(_generateServiceMethod, "	");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
         _builder.newLine();
       }
     }
     return _builder;
+  }
+  
+  protected CharSequence _generateServiceMethod(final HttpGet method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("URL url = new URL(request.createUrl(baseUrl));");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestMethod(\"GET\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.connect();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return new Response<");
+    String _name = method.getName();
+    String _pascalize = ModelExtensions.pascalize(_name);
+    _builder.append(_pascalize, "	");
+    _builder.append("Response>(conn, parser);");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    _builder.append("catch(Exception e) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("throw new ServiceException(e);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateServiceMethod(final HttpPut method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("URL url = new URL(request.createUrl(baseUrl));");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestMethod(\"PUT\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.connect();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return new Response<");
+    String _name = method.getName();
+    String _pascalize = ModelExtensions.pascalize(_name);
+    _builder.append(_pascalize, "	");
+    _builder.append("Response>(conn, parser);");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    _builder.append("catch(Exception e) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("throw new ServiceException(e);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateServiceMethod(final HttpPost method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("URL url = new URL(request.createUrl(baseUrl));");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestMethod(\"POST\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.connect();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return new Response<");
+    String _name = method.getName();
+    String _pascalize = ModelExtensions.pascalize(_name);
+    _builder.append(_pascalize, "	");
+    _builder.append("Response>(conn, parser);");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    _builder.append("catch(Exception e) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("throw new ServiceException(e);");
+    _builder.newLine();
+    _builder.append("}\t");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateServiceMethod(final HttpDelete method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("URL url = new URL(request.createUrl(baseUrl));");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestMethod(\"GET\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.connect();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return new Response<");
+    String _name = method.getName();
+    String _pascalize = ModelExtensions.pascalize(_name);
+    _builder.append(_pascalize, "	");
+    _builder.append("Response>(conn, parser);");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("} ");
+    _builder.newLine();
+    _builder.append("catch(Exception e) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("throw new ServiceException(e);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateServiceMethod(final HttpMethod method) {
+    if (method instanceof HttpDelete) {
+      return _generateServiceMethod((HttpDelete)method);
+    } else if (method instanceof HttpGet) {
+      return _generateServiceMethod((HttpGet)method);
+    } else if (method instanceof HttpPost) {
+      return _generateServiceMethod((HttpPost)method);
+    } else if (method instanceof HttpPut) {
+      return _generateServiceMethod((HttpPut)method);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(method).toString());
+    }
   }
 }

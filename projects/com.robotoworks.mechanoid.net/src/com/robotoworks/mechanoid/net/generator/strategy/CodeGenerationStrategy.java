@@ -21,9 +21,8 @@ public class CodeGenerationStrategy {
 	private RequestGenerator requestGenerator;
 	private ResponseGenerator responseGenerator;
 	private TypeGenerator typeGenerator;
-	private MemberDeserializationStatementGenerator memberDeserializationStatementGenerator;
-	private MemberSerializationStatementGenerator memberSerializationStatementGenerator;
 	private JsonReaderGenerator jsonReaderGenerator;
+	private JsonWriterGenerator jsonWriterGenerator;
 	protected CodeGenerationContext context;
 	
 	public void setContext(CodeGenerationContext context) {
@@ -122,15 +121,16 @@ public class CodeGenerationStrategy {
 		if(outputTransformerGenerator == null){
 			outputTransformerGenerator = new OutputTransformerGenerator();
 			outputTransformerGenerator.setContext(context);
-			outputTransformerGenerator.setMemberSerializationStatementGenerator(getMemberSerializationStatementGenerator());
+			outputTransformerGenerator.setJsonWriterGenerator(getJsonWriterGenerator());
 		}
 		return outputTransformerGenerator;
 	}
+	
 	public RequestGenerator getRequestGenerator() {
 		if(requestGenerator == null){
 			requestGenerator = new RequestGenerator();
 			requestGenerator.setContext(context);
-			requestGenerator.setMemberSerializationStatementGenerator(getMemberSerializationStatementGenerator());
+			requestGenerator.setJsonWriterGenerator(getJsonWriterGenerator());
 		}
 		return requestGenerator;
 	}
@@ -162,19 +162,12 @@ public class CodeGenerationStrategy {
 		}
 		return jsonReaderGenerator;
 	}
-	public MemberDeserializationStatementGenerator getMemberDeserializationStatementGenerator() {
-		if(memberDeserializationStatementGenerator == null){
-			memberDeserializationStatementGenerator = new MemberDeserializationStatementGenerator();
-			memberDeserializationStatementGenerator.setContext(context);
-		}
-		return memberDeserializationStatementGenerator;
-	}
 	
-	public MemberSerializationStatementGenerator getMemberSerializationStatementGenerator() {
-		if(memberSerializationStatementGenerator == null){
-			memberSerializationStatementGenerator = new MemberSerializationStatementGenerator();
-			memberSerializationStatementGenerator.setContext(context);
+	public JsonWriterGenerator getJsonWriterGenerator() {
+		if(jsonWriterGenerator == null){
+			jsonWriterGenerator = new JsonWriterGenerator();
+			jsonWriterGenerator.setContext(context);
 		}
-		return memberSerializationStatementGenerator;
+		return jsonWriterGenerator;
 	}
 }

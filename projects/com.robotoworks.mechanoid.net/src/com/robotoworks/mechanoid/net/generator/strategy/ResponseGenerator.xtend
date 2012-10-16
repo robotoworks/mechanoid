@@ -45,9 +45,6 @@ class ResponseGenerator {
 
 	«var body = generateResponseClass(method, module, client)»
 	«registerImports»
-	import java.io.InputStreamReader;
-	import java.nio.charset.Charset;
-	import com.robotoworks.mechanoid.internal.util.JsonReader;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -158,6 +155,9 @@ class ResponseGenerator {
 	
 	def generateDeserializationStatementHeader(boolean withReader)'''
 		«IF withReader»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
+		«context.registerImport("java.io.InputStreamReader")»
+		«context.registerImport("java.nio.charset.Charset")»
 		JsonReader source = null;
 		«ENDIF»
 		try {
@@ -168,7 +168,6 @@ class ResponseGenerator {
 	'''
 	
 	def generateDeserializationStatementFooter(boolean withReader)'''
-		«context.registerImport("java.io.IOException")»
 			}
 		} catch(Exception x) {
 			throw new TransformException(x);
@@ -210,7 +209,8 @@ class ResponseGenerator {
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, ComplexTypeDeclaration declaration) '''
 		«generateDeserializationStatementHeader(true)»
-				this.«type.signature.camelize» = provider.get(«type.signature»InputTransformer.class).transform(source);
+				this.«type.signature.camelize» = new «type.signature»();
+				provider.get(«type.signature»InputTransformer.class).transform(source, this.«type.signature.camelize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -229,7 +229,6 @@ class ResponseGenerator {
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, IntrinsicType genericType) '''
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		«context.registerImport("java.util.List")»
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
 		«generateDeserializationStatementHeader(true)»
 				this.values = JsonUtil.read«genericType.boxedTypeSignature»List(source);
 		«generateDeserializationStatementFooter(true)»
@@ -247,9 +246,9 @@ class ResponseGenerator {
 	) '''
 		«context.registerImport("java.util.List")»
 		«context.registerImport("java.util.ArrayList")»
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
 		«generateDeserializationStatementHeader(true)»
-				this.«type.innerSignature.camelize.pluralize» = provider.get(«type.innerSignature»ListInputTransformer.class).transform(source);
+				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
+				provider.get(«type.innerSignature»ListInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -259,7 +258,6 @@ class ResponseGenerator {
 		UserType genericType,
 		EnumTypeDeclaration declaration
 	) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		«context.registerImport("java.util.ArrayList")»
 		«context.registerImport("java.util.List")»

@@ -13,14 +13,10 @@ class OutputTransformerGenerator {
 	
 	def registerImports(){}
 	
-	MemberSerializationStatementGenerator serializationStatementGenerator
+	JsonWriterGenerator jsonWriterGenerator
 	
-	def setMemberSerializationStatementGenerator(MemberSerializationStatementGenerator serializationStatementGenerator){
-		this.serializationStatementGenerator = serializationStatementGenerator;
-	}
-	
-	def getMemberSerializationStatementGenerator(){
-		this.serializationStatementGenerator;
+	def setJsonWriterGenerator(JsonWriterGenerator jsonWriterGenerator){
+		this.jsonWriterGenerator = jsonWriterGenerator;
 	}
 	
 	def generate(ComplexTypeDeclaration decl, Model module) '''
@@ -30,6 +26,7 @@ class OutputTransformerGenerator {
 	«registerImports»
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.internal.util.JsonWriter;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -38,20 +35,12 @@ class OutputTransformerGenerator {
 	
 	def generateOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
 		«context.registerImport("java.lang.Exception")»
-		public class «decl.name»OutputTransformer extends Transformer<«decl.name», JSONObject> {
-			public JSONObject transform(«decl.name» source) throws TransformException {
-				JSONObject target = new JSONObject();
-
-				transform(source, target);
-				
-				return target;
-			}
-			
-			public void transform(«decl.name» source, JSONObject target) throws TransformException {
+		public class «decl.name»OutputTransformer extends Transformer<«decl.name», JsonWriter> {			
+			public void transform(«decl.name» source, JsonWriter target) throws TransformException {
 				try {
-					«FOR member:decl.literal.members»
-					«serializationStatementGenerator.generate(member, "provider", "source", "target", false)»
-					«ENDFOR»
+
+					«jsonWriterGenerator.genWriteComplexType(decl)»
+
 				} catch (Exception x) {
 					throw new TransformException(x);
 				}

@@ -87,4 +87,12 @@ class TestController {
 		}
 		"""
 	}
+	
+	def echoJson() {
+		render request.JSON
+	}
+	
+	def echo() {
+		render request.getReader().readLine()
+	}
 }

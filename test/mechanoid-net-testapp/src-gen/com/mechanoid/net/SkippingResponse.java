@@ -1,14 +1,13 @@
 package com.mechanoid.net;
 
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonToken;
+import com.robotoworks.mechanoid.internal.util.JsonReader;
 import com.robotoworks.mechanoid.net.TransformerProvider;
+import java.io.InputStreamReader;
 import com.robotoworks.mechanoid.util.Closeables;
-import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class SkippingResponse  {
 	private String a;

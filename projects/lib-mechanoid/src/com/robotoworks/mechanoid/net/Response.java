@@ -1,35 +1,45 @@
 package com.robotoworks.mechanoid.net;
 
-import org.apache.http.Header;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.util.List;
+import java.util.Map;
 
 public class Response<T> {
 
 	private T mContent;
-	private ServiceResponse mResponse;
+	private HttpURLConnection mConn;
 	private Parser<T> mParser;
+	private int mResponseCode;
+	private Map<String, List<String>> mHeaders;
 
-	public int getStatus() {
-		return mResponse.getStatus();
+	public int getResponseCode() {
+		return mResponseCode;
 	}
 
-	public Header[] getHeaders() {
-		return mResponse.getHeaders();
+	public Map<String, List<String>> getHeaders() {
+		return mHeaders;
 	}
 
-	public Response(ServiceResponse response, Parser<T> parser) {
-		mResponse = response;
+	public Response(HttpURLConnection conn, Parser<T> parser) throws ServiceException {
+		mConn = conn;
 		mParser = parser;
+		try {
+		mResponseCode = conn.getResponseCode();
+		mHeaders = conn.getHeaderFields();
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
 	}
 
-	public T parse() throws TransformException {
+	public T parse() throws ServiceException {
 		if(mContent != null) {
 			return mContent;
 		}
-		
 		try {
-			mContent = mParser.parse(mResponse.getContent());
+			mContent = mParser.parse(mConn.getInputStream());
 		} catch (Exception e) {
-			throw new TransformException(e);
+			throw new ServiceException(e);
 		}
 		
 		return mContent;

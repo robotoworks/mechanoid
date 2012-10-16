@@ -22,7 +22,6 @@ class ListInputTransformerGenerator {
 	import com.robotoworks.mechanoid.net.TransformException;
 	import com.robotoworks.mechanoid.internal.util.JsonReader;
 	import java.util.List;
-	import java.util.ArrayList;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -31,14 +30,6 @@ class ListInputTransformerGenerator {
 	
 	def generateClass(ComplexTypeDeclaration decl, Model module) '''
 		public class «decl.name»ListInputTransformer extends Transformer<JsonReader, List<«decl.name»>> {
-			public List<«decl.name»> transform(JsonReader source) throws TransformException {
-				List<«decl.name»> target = new ArrayList<«decl.name»>();
-			
-				transform(source, target);
-			
-				return target;
-			}
-
 			public void transform(JsonReader source, List<«decl.name»> target) throws TransformException {
 				
 				try {
@@ -47,7 +38,8 @@ class ListInputTransformerGenerator {
 					source.beginArray();
 					
 					while(source.hasNext()) {
-						«decl.name» targetItem = itemTransformer.transform(source);
+						«decl.name» targetItem = new «decl.name»();
+						itemTransformer.transform(source, targetItem);
 						target.add(targetItem);
 						
 					}

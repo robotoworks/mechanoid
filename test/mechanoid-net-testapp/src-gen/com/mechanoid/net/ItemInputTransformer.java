@@ -3,18 +3,8 @@ package com.mechanoid.net;
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import com.robotoworks.mechanoid.internal.util.JsonUtil;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
 
-public class ItemInputTransformer extends Transformer<JsonReader, Item> {
-	public Item transform(JsonReader source) throws TransformException {
-		Item target = new Item();
-
-		transform(source, target);
-		
-		return target;
-	}
-	
+public class ItemInputTransformer extends Transformer<JsonReader, Item> {			
 	public void transform(JsonReader source, Item target) throws TransformException {
 		try {
 			source.beginObject();

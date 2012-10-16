@@ -4,6 +4,10 @@ import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.
 import com.robotoworks.mechanoid.net.netModel.Client
 import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
+import com.robotoworks.mechanoid.net.netModel.HttpGet
+import com.robotoworks.mechanoid.net.netModel.HttpPut
+import com.robotoworks.mechanoid.net.netModel.HttpPost
+import com.robotoworks.mechanoid.net.netModel.HttpDelete
 
 class ClientGenerator {
 	CodeGenerationContext context
@@ -19,13 +23,14 @@ class ClientGenerator {
 
 	«var body = generateClientClass(client, module)»
 	«registerImports»
+	import com.robotoworks.mechanoid.net.Parser;
+	import com.robotoworks.mechanoid.net.TransformException;
 	import com.robotoworks.mechanoid.net.TransformerProvider;
-	import com.robotoworks.mechanoid.net.ServiceClient;
 	import com.robotoworks.mechanoid.net.Response;
-	import com.robotoworks.mechanoid.net.DefaultServiceClient;
-
-	import java.io.IOException;
-	import org.apache.http.client.ClientProtocolException;
+	import com.robotoworks.mechanoid.net.ServiceException;
+	import java.io.InputStream;
+	import java.net.HttpURLConnection;
+	import java.net.URL;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -39,7 +44,6 @@ class ClientGenerator {
 			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
 			
 			«ENDIF»
-			protected final ServiceClient client;
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
 			
@@ -62,28 +66,19 @@ class ClientGenerator {
 			«ENDIF»
 			«IF client.baseUrl != null»
 			public «client.name»(){
-				this(new DefaultServiceClient(), new TransformerProvider(), DEFAULT_BASE_URL);
-			}
-			
-			public «client.name»(ServiceClient client){
-				this(client, new TransformerProvider(), DEFAULT_BASE_URL);
+				this(DEFAULT_BASE_URL, new TransformerProvider());
 			}
 
-			public «client.name»(ServiceClient client, TransformerProvider transformerProvider){
-				this(client, transformerProvider, DEFAULT_BASE_URL);
+			public «client.name»(TransformerProvider transformerProvider){
+				this(DEFAULT_BASE_URL, transformerProvider);
 			}
 			
 			«ENDIF»
 			public «client.name»(String baseUrl){
-				this(new DefaultServiceClient(), new TransformerProvider(), baseUrl);
-			}
-			
-			public «client.name»(ServiceClient client, String baseUrl){
-				this(client, new TransformerProvider(), baseUrl);
+				this(baseUrl, new TransformerProvider());
 			}
 
-			public «client.name»(ServiceClient client, TransformerProvider transformerProvider, String baseUrl){
-				this.client = client;
+			public «client.name»(String baseUrl, TransformerProvider transformerProvider){
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
 			}
@@ -96,14 +91,13 @@ class ClientGenerator {
 		«FOR method:client.methods»
 		«IF !method.hasBody && method.argsFromPath.size == 0»
 		public Response<«method.name.pascalize»Response> «method.name.camelize»()
-		  throws ClientProtocolException, IOException«IF method.hasBody», TransformException«ENDIF» {
+		  throws ServiceException {
 		  	return «method.name.camelize»(new «method.name.pascalize»Request());
 		}
 		
 		«ENDIF»
 		public Response<«method.name.pascalize»Response> «method.name.camelize»(«method.name.pascalize»Request request)
-		  throws ClientProtocolException, IOException«IF method.hasBody», TransformException«ENDIF» {
-		  	«if(method.hasBody) context.registerImport("com.robotoworks.mechanoid.net.TransformException")»
+		  throws ServiceException {
 			«IF(client.params != null)»
 			«FOR param:client.params.params»
 			if(this.«param.name.camelize»ParamSet && !request.is«param.name.pascalize»ParamSet()){
@@ -111,9 +105,90 @@ class ClientGenerator {
 			}
 			«ENDFOR»
 			
-			«ENDIF»		  	
-			return request.execute(baseUrl, client, transformerProvider);
+			«ENDIF»	
+			
+			Parser<«method.name.pascalize»Response> parser = new Parser<«method.name.pascalize»Response>() {
+				public «method.name.pascalize»Response parse(InputStream inStream) throws TransformException {
+					return new «method.name.pascalize»Response(transformerProvider, inStream);
+				}
+			};
+			
+			«generateServiceMethod(method)»
 		}
+		
 		«ENDFOR»
 	'''
+	def dispatch generateServiceMethod(HttpGet method) '''
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.connect();
+			
+			return new Response<«method.name.pascalize»Response>(conn, parser);
+
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	'''
+	def dispatch generateServiceMethod(HttpPut method) '''
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("PUT");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.connect();
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			return new Response<«method.name.pascalize»Response>(conn, parser);
+
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	'''
+	def dispatch generateServiceMethod(HttpPost method) '''
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.connect();
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			return new Response<«method.name.pascalize»Response>(conn, parser);
+
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}	
+	'''
+	def dispatch generateServiceMethod(HttpDelete method) '''
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.connect();
+			
+			return new Response<«method.name.pascalize»Response>(conn, parser);
+
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	'''
+
 }

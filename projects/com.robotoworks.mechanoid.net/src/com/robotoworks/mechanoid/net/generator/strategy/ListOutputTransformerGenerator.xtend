@@ -20,6 +20,7 @@ class ListOutputTransformerGenerator {
 	«registerImports»
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.internal.util.JsonWriter;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -27,24 +28,22 @@ class ListOutputTransformerGenerator {
 	'''
 	
 	def generateListOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("org.json.JSONArray")»
-		«context.registerImport("org.json.JSONObject")»
 		«context.registerImport("java.util.List")»
-		public class «decl.name»ListOutputTransformer extends Transformer<List<«decl.name»>, JSONArray> {
-			public JSONArray transform(List<«decl.name»> source) throws TransformException {
-				JSONArray target = new JSONArray();
-				
-				transform(source, target);
-				
-				return target;
-			}
-			
-			public void transform(List<«decl.name»> source, JSONArray target) throws TransformException {
+		public class «decl.name»ListOutputTransformer extends Transformer<List<«decl.name»>, JsonWriter> {			
+			public void transform(List<«decl.name»> source, JsonWriter target) throws TransformException {
 				
 				«decl.name»OutputTransformer itemTransformer = provider.get(«decl.name»OutputTransformer.class);
-				for(«decl.name» sourceItem:source) {
-					JSONObject targetItem = itemTransformer.transform(sourceItem);
-					target.put(targetItem); 
+				
+				try {
+					target.beginArray();
+					
+					for(«decl.name» sourceItem:source) {
+						itemTransformer.transform(sourceItem, target);
+					}
+					
+					target.endArray();
+				} catch (Exception x) {
+					throw new TransformException(x);
 				}
 			}
 		}

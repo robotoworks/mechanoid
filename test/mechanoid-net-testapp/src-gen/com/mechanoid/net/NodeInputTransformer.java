@@ -3,20 +3,11 @@ package com.mechanoid.net;
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import com.robotoworks.mechanoid.internal.util.JsonUtil;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
+import java.util.ArrayList;
 import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.util.List;
 
-public class NodeInputTransformer extends Transformer<JsonReader, Node> {
-	public Node transform(JsonReader source) throws TransformException {
-		Node target = new Node();
-
-		transform(source, target);
-		
-		return target;
-	}
-	
+public class NodeInputTransformer extends Transformer<JsonReader, Node> {			
 	public void transform(JsonReader source, Node target) throws TransformException {
 		try {
 			source.beginObject();
@@ -29,7 +20,8 @@ public class NodeInputTransformer extends Transformer<JsonReader, Node> {
 				}
 				else if(name.equals("children")) {
 					if(source.peek() != JsonToken.NULL) {
-						List<Node> targetMember = provider.get(NodeListInputTransformer.class).transform(source);
+						List<Node> targetMember = new ArrayList<Node>();
+						provider.get(NodeListInputTransformer.class).transform(source, targetMember);
 						target.setChildren(targetMember);
 					}
 				}

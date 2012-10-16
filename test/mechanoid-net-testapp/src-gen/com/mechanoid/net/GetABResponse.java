@@ -1,13 +1,12 @@
 package com.mechanoid.net;
 
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.net.TransformException;
+import com.robotoworks.mechanoid.internal.util.JsonReader;
 import com.robotoworks.mechanoid.net.TransformerProvider;
+import java.io.InputStreamReader;
 import com.robotoworks.mechanoid.util.Closeables;
-import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class GetABResponse  {
 	private A a;
@@ -20,7 +19,8 @@ public class GetABResponse  {
 	try {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
-			this.a = provider.get(AInputTransformer.class).transform(source);
+			this.a = new A();
+			provider.get(AInputTransformer.class).transform(source, this.a);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);

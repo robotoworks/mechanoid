@@ -27,8 +27,6 @@ class InputTransformerGenerator {
 		import com.robotoworks.mechanoid.net.Transformer;
 		import com.robotoworks.mechanoid.net.TransformException;
 		import com.robotoworks.mechanoid.internal.util.JsonReader;
-		import com.robotoworks.mechanoid.internal.util.JsonUtil;
-		import com.robotoworks.mechanoid.internal.util.JsonToken;
 		«context.printImports»
 		«context.clearImports»
 		
@@ -36,15 +34,7 @@ class InputTransformerGenerator {
 	'''	
 	
 	def generateClass(ComplexTypeDeclaration decl, Model module) '''
-		public class «decl.name»InputTransformer extends Transformer<JsonReader, «decl.name»> {
-			public «decl.name» transform(JsonReader source) throws TransformException {
-				«decl.name» target = new «decl.name»();
-
-				transform(source, target);
-				
-				return target;
-			}
-			
+		public class «decl.name»InputTransformer extends Transformer<JsonReader, «decl.name»> {			
 			public void transform(JsonReader source, «decl.name» target) throws TransformException {
 				try {
 					«jsonReaderGenerator.genReadComplexType(decl)»
