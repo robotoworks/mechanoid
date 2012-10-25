@@ -2,8 +2,10 @@ package com.mechanoid.net;
 
 
 import android.net.Uri;
-import com.robotoworks.mechanoid.util.Streams;
+import java.util.LinkedHashMap;
+import java.util.Set;
 import com.robotoworks.mechanoid.net.TransformException;
+import java.io.PrintStream;
 import java.io.OutputStream;
 import com.robotoworks.mechanoid.net.TransformerProvider;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -12,6 +14,20 @@ public class PostIntRequest {
 	
 	private static final String PATH="/echo";
 	
+	private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
+	
+	public void setHeader(String field, String value) {
+		headers.put(field, value);
+	}
+	
+	public Set<String> getHeaderKeys() {
+		return headers.keySet();
+	}
+	
+	public String getHeaderValue(String key) {
+		return headers.get(key);
+	}
+
 	private final int value;
 	public int getValue() {
 		return value;
@@ -24,7 +40,8 @@ public class PostIntRequest {
 		try {
 			if(stream != null) {
 				
-			Streams.writeText(stream, Integer.toString(value));
+			PrintStream ps = new PrintStream(stream);
+			ps.print(value);
 				
 			}
 		} catch(Exception x) {

@@ -1,42 +1,47 @@
 package com.mechanoid.net.testapp.test;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.http.client.ClientProtocolException;
 
 import android.test.InstrumentationTestCase;
 
 import com.mechanoid.net.Day;
+import com.mechanoid.net.EchoHeadersRequest;
+import com.mechanoid.net.EchoHeadersResult;
 import com.mechanoid.net.EchoParamsRequest;
-import com.mechanoid.net.EchoParamsResponse;
-import com.mechanoid.net.GetABResponse;
-import com.mechanoid.net.GetBooleanArrayResponse;
-import com.mechanoid.net.GetDoubleArrayResponse;
-import com.mechanoid.net.GetEnumArrayResponse;
-import com.mechanoid.net.GetIntArrayResponse;
-import com.mechanoid.net.GetItemRequest;
-import com.mechanoid.net.GetItemResponse;
-import com.mechanoid.net.GetLongArrayResponse;
-import com.mechanoid.net.GetNodesResponse;
-import com.mechanoid.net.GetStringArrayResponse;
+import com.mechanoid.net.EchoParamsResult;
+import com.mechanoid.net.GetABResult;
+import com.mechanoid.net.GetBooleanArrayResult;
+import com.mechanoid.net.GetDoubleArrayResult;
+import com.mechanoid.net.GetEnumArrayResult;
+import com.mechanoid.net.GetIntArrayResult;
+import com.mechanoid.net.GetItemResult;
+import com.mechanoid.net.GetLongArrayResult;
+import com.mechanoid.net.GetNodesResult;
+import com.mechanoid.net.GetStringArrayResult;
+import com.mechanoid.net.HeaderItem;
 import com.mechanoid.net.Item;
 import com.mechanoid.net.Node;
+import com.mechanoid.net.PostIntRequest;
+import com.mechanoid.net.PostIntResult;
+import com.mechanoid.net.PostStringArrayRequest;
+import com.mechanoid.net.PostStringArrayResult;
+import com.mechanoid.net.PostStringRequest;
+import com.mechanoid.net.PostStringResult;
 import com.mechanoid.net.SkippingPostRequest;
-import com.mechanoid.net.SkippingPostResponse;
-import com.mechanoid.net.SkippingResponse;
-import com.mechanoid.net.SkippingWithItemResponse;
+import com.mechanoid.net.SkippingPostResult;
+import com.mechanoid.net.SkippingResult;
+import com.mechanoid.net.SkippingWithItemResult;
 import com.mechanoid.net.TestService;
 import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.net.ServiceException;
-import com.robotoworks.mechanoid.net.TransformException;
 
 public class ServiceTests extends InstrumentationTestCase {
 	public void testGetStringArray() throws ServiceException {
 		TestService service = new TestService();
-		Response<GetStringArrayResponse> response = service.getStringArray();
+		Response<GetStringArrayResult> response = service.getStringArray();
 		
-		GetStringArrayResponse content = response.parse();
+		GetStringArrayResult content = response.parse();
 		
 		List<String> actual = content.getValues();
 		
@@ -47,9 +52,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	
 	public void testGetIntArray() throws ServiceException {
 		TestService service = new TestService();
-		Response<GetIntArrayResponse> response = service.getIntArray();
+		Response<GetIntArrayResult> response = service.getIntArray();
 		
-		GetIntArrayResponse content = response.parse();
+		GetIntArrayResult content = response.parse();
 		
 		List<Integer> actual = content.getValues();
 		
@@ -60,9 +65,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	
 	public void testGetLongArray() throws ServiceException {
 		TestService service = new TestService();
-		Response<GetLongArrayResponse> response = service.getLongArray();
+		Response<GetLongArrayResult> response = service.getLongArray();
 		
-		GetLongArrayResponse content = response.parse();
+		GetLongArrayResult content = response.parse();
 		
 		List<Long> actual = content.getValues();
 		
@@ -73,9 +78,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	
 	public void testGetDoubleArray() throws ServiceException {
 		TestService service = new TestService();
-		Response<GetDoubleArrayResponse> response = service.getDoubleArray();
+		Response<GetDoubleArrayResult> response = service.getDoubleArray();
 		
-		GetDoubleArrayResponse content = response.parse();
+		GetDoubleArrayResult content = response.parse();
 		
 		List<Double> actual = content.getValues();
 		
@@ -87,9 +92,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testGetBooleanArray() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<GetBooleanArrayResponse> response = service.getBooleanArray();
+		Response<GetBooleanArrayResult> response = service.getBooleanArray();
 		
-		GetBooleanArrayResponse content = response.parse();
+		GetBooleanArrayResult content = response.parse();
 		
 		List<Boolean> actual = content.getValues();
 		
@@ -101,9 +106,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testGetEnumArray() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<GetEnumArrayResponse> response = service.getEnumArray();
+		Response<GetEnumArrayResult> response = service.getEnumArray();
 		
-		GetEnumArrayResponse content = response.parse();
+		GetEnumArrayResult content = response.parse();
 		
 		List<Day> actual = content.getDays();
 		
@@ -117,9 +122,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testGetItem() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<GetItemResponse> response = service.getItem();
+		Response<GetItemResult> response = service.getItem();
 		
-		GetItemResponse content = response.parse();
+		GetItemResult content = response.parse();
 		
 		Item actual = content.getItem();
 		
@@ -133,9 +138,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testGetNodes() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<GetNodesResponse> response = service.getNodes();
+		Response<GetNodesResult> response = service.getNodes();
 		
-		GetNodesResponse content = response.parse();
+		GetNodesResult content = response.parse();
 		
 		List<Node> nodes = content.getNodes();
 		
@@ -149,16 +154,16 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testEchoParams() throws ServiceException {
 		TestService service = new TestService();
 		
-		EchoParamsRequest request = new EchoParamsRequest();
-		request.setAParam("lorem");
-		request.setBParam(true);
-		request.setCParam(1.3d);
-		request.setDParam(3);
-		request.setEParam(42);
+		EchoParamsRequest request = new EchoParamsRequest()
+									.setAParam("lorem")
+									.setBParam(true)
+									.setCParam(1.3d)
+									.setDParam(3)
+									.setEParam(42);
 		
-		Response<EchoParamsResponse> response = service.echoParams(request);
+		Response<EchoParamsResult> response = service.echoParams(request);
 		
-		EchoParamsResponse content = response.parse();
+		EchoParamsResult content = response.parse();
 		
 		List<String> params = content.getValues();
 		
@@ -172,9 +177,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testSkipping() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<SkippingResponse> response = service.skipping();
+		Response<SkippingResult> response = service.skipping();
 		
-		SkippingResponse content = response.parse();
+		SkippingResult content = response.parse();
 		
 		assertEquals("lorem", content.getA());
 		assertEquals(3, content.getB());
@@ -184,9 +189,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testSkippingWithItem() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<SkippingWithItemResponse> response = service.skippingWithItem();
+		Response<SkippingWithItemResult> response = service.skippingWithItem();
 		
-		SkippingWithItemResponse content = response.parse();
+		SkippingWithItemResult content = response.parse();
 		
 		assertEquals("lorem", content.getInner().getA());
 		assertEquals(3, content.getInner().getB());
@@ -196,9 +201,9 @@ public class ServiceTests extends InstrumentationTestCase {
 	public void testAB() throws ServiceException {
 		TestService service = new TestService();
 		
-		Response<GetABResponse> response = service.getAB();
+		Response<GetABResult> response = service.getAB();
 		
-		GetABResponse content = response.parse();
+		GetABResult content = response.parse();
 		
 		assertEquals("I am A", content.getA().getName());
 		assertEquals("I am B", content.getA().getB().getName());
@@ -211,12 +216,123 @@ public class ServiceTests extends InstrumentationTestCase {
 		
 		SkippingPostRequest request = new SkippingPostRequest("ipsum", 12, 45);
 		
-		Response<SkippingPostResponse> response = service.skippingPost(request);
+		Response<SkippingPostResult> response = service.skippingPost(request);
 		
-		SkippingPostResponse content = response.parse();
+		SkippingPostResult content = response.parse();
 		
 		assertEquals(request.getA(), content.getA());
 		assertEquals(request.getB(), content.getB());
 		assertEquals(request.getC(), content.getC());
+	}
+	
+	public void testPostInt() throws ServiceException {
+		TestService service = new TestService();
+		
+		PostIntRequest request = new PostIntRequest(42);
+		
+		Response<PostIntResult> response = service.postInt(request);
+		
+		PostIntResult result = response.parse();
+		
+		assertEquals(request.getValue(), result.getValue());
+	}
+	
+	public void testPostString() throws ServiceException {
+		TestService service = new TestService();
+		
+		PostStringRequest request = new PostStringRequest("Hello, world!");
+		
+		Response<PostStringResult> response = service.postString(request);
+		
+		PostStringResult result = response.parse();
+		
+		assertEquals(request.getValue(), result.getValue());
+	}
+	
+	public void testPostStringArray() throws ServiceException {
+		TestService service = new TestService();
+		
+		List<String> values = new ArrayList<String>();
+		values.add("Hello");
+		values.add("World");
+
+		PostStringArrayRequest request = new PostStringArrayRequest(values);
+		
+		Response<PostStringArrayResult> response = service.postStringArray(request);
+		
+		PostStringArrayResult result = response.parse();
+		
+		assertEquals(request.getValues().get(0), result.getValues().get(0));
+		assertEquals(request.getValues().get(1), result.getValues().get(1));
+	}
+	
+	public void testHeadersDeclaredInDSL() throws ServiceException {
+		TestService service = new TestService();
+		
+		HeaderItem itemA = new HeaderItem("x-a", "A");
+		HeaderItem itemB = new HeaderItem("x-b", "B");
+		HeaderItem itemC = new HeaderItem("x-c", "C");
+		
+		Response<EchoHeadersResult> response = service.echoHeaders();
+		
+		EchoHeadersResult result = response.parse();
+		
+		List<HeaderItem> items = result.getHeaderItems();
+		
+		// Client Level
+		assertTrue(items.contains(itemA));
+		assertTrue(items.contains(itemB));
+		
+		// Method Level
+		assertTrue(items.contains(itemC));
+	}
+	
+	public void testHeadersAddedProgrammatically() throws ServiceException {
+		TestService service = new TestService();
+		
+		HeaderItem itemY = new HeaderItem("x-y", "Y");
+		HeaderItem itemZ = new HeaderItem("x-z", "Z");
+		
+		service.setHeader("x-y", "Y");
+		
+		EchoHeadersRequest request = new EchoHeadersRequest();
+		request.setHeader("x-z", "Z");
+		
+		Response<EchoHeadersResult> response = service.echoHeaders(request);
+		
+		EchoHeadersResult result = response.parse();
+		
+		List<HeaderItem> items = result.getHeaderItems();
+		
+		// Client Level
+		assertTrue(items.contains(itemY));
+		
+		// Method Level
+		assertTrue(items.contains(itemZ));
+	}
+	
+	public void testHeadersOverriding() throws ServiceException {
+		TestService service = new TestService();
+		
+		// Override headers x-a and x-b declared in model
+		HeaderItem itemA = new HeaderItem("x-a", "Hello");
+		HeaderItem itemB = new HeaderItem("x-b", "World");
+		
+		service.setHeader("x-a", "Hello");
+		
+		EchoHeadersRequest request = new EchoHeadersRequest();
+		request.setHeader("x-b", "World");
+		
+		Response<EchoHeadersResult> response = service.echoHeaders(request);
+		
+		EchoHeadersResult result = response.parse();
+		
+		List<HeaderItem> items = result.getHeaderItems();
+		
+		// Client Level
+		assertTrue(items.contains(itemA));
+		
+		// Method Level
+		assertTrue(items.contains(itemB));
 	}
 }

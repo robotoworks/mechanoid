@@ -31,6 +31,7 @@ class ClientGenerator {
 	import java.io.InputStream;
 	import java.net.HttpURLConnection;
 	import java.net.URL;
+	import java.util.LinkedHashMap;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -46,6 +47,12 @@ class ClientGenerator {
 			«ENDIF»
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
+			
+			private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
+			
+			public void setHeader(String field, String value) {
+				headers.put(field, value);
+			}
 			
 			«IF(client.params != null)»
 			«FOR param:client.params.params»
@@ -81,6 +88,12 @@ class ClientGenerator {
 			public «client.name»(String baseUrl, TransformerProvider transformerProvider){
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
+				
+				«IF client.headers != null»
+				«FOR header : client.headers.headers»
+				headers.put("«header.name»","«header.value»");
+				«ENDFOR»
+				«ENDIF»
 			}
 			
 			«generateClientMethods(client, module)»
@@ -90,13 +103,13 @@ class ClientGenerator {
 	def generateClientMethods(Client client, Model model) '''
 		«FOR method:client.methods»
 		«IF !method.hasBody && method.argsFromPath.size == 0»
-		public Response<«method.name.pascalize»Response> «method.name.camelize»()
+		public Response<«method.name.pascalize»Result> «method.name.camelize»()
 		  throws ServiceException {
 		  	return «method.name.camelize»(new «method.name.pascalize»Request());
 		}
 		
 		«ENDIF»
-		public Response<«method.name.pascalize»Response> «method.name.camelize»(«method.name.pascalize»Request request)
+		public Response<«method.name.pascalize»Result> «method.name.camelize»(«method.name.pascalize»Request request)
 		  throws ServiceException {
 			«IF(client.params != null)»
 			«FOR param:client.params.params»
@@ -107,9 +120,9 @@ class ClientGenerator {
 			
 			«ENDIF»	
 			
-			Parser<«method.name.pascalize»Response> parser = new Parser<«method.name.pascalize»Response>() {
-				public «method.name.pascalize»Response parse(InputStream inStream) throws TransformException {
-					return new «method.name.pascalize»Response(transformerProvider, inStream);
+			Parser<«method.name.pascalize»Result> parser = new Parser<«method.name.pascalize»Result>() {
+				public «method.name.pascalize»Result parse(InputStream inStream) throws TransformException {
+					return new «method.name.pascalize»Result(transformerProvider, inStream);
 				}
 			};
 			
@@ -126,15 +139,27 @@ class ClientGenerator {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			«printSetHeadersStatements()»
+			
 			conn.connect();
 			
-			return new Response<«method.name.pascalize»Response>(conn, parser);
+			return new Response<«method.name.pascalize»Result>(conn, parser);
 
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
 		}
 	'''
+	def printSetHeadersStatements() '''
+		for(String key : headers.keySet()) {
+			conn.setRequestProperty(key, headers.get(key));
+		}
+		
+		for(String key : request.getHeaderKeys()) {
+			conn.setRequestProperty(key, request.getHeaderValue(key));
+		}
+	'''
+
 	def dispatch generateServiceMethod(HttpPut method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
@@ -143,11 +168,13 @@ class ClientGenerator {
 			conn.setRequestMethod("PUT");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			«printSetHeadersStatements()»
+			
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<«method.name.pascalize»Response>(conn, parser);
+			return new Response<«method.name.pascalize»Result>(conn, parser);
 
 		} 
 		catch(Exception e) {
@@ -162,11 +189,13 @@ class ClientGenerator {
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			«printSetHeadersStatements()»
+			
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<«method.name.pascalize»Response>(conn, parser);
+			return new Response<«method.name.pascalize»Result>(conn, parser);
 
 		} 
 		catch(Exception e) {
@@ -181,9 +210,11 @@ class ClientGenerator {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			«printSetHeadersStatements()»
+			
 			conn.connect();
 			
-			return new Response<«method.name.pascalize»Response>(conn, parser);
+			return new Response<«method.name.pascalize»Result>(conn, parser);
 
 		} 
 		catch(Exception e) {

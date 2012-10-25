@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getPath <em>Path</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getHeaders <em>Headers</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getParams <em>Params</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getResponse <em>Response</em>}</li>
  * </ul>
@@ -76,6 +77,32 @@ public interface HttpMethod extends EObject
    * @generated
    */
   void setPath(String value);
+
+  /**
+   * Returns the value of the '<em><b>Headers</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Headers</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Headers</em>' containment reference.
+   * @see #setHeaders(HeaderBlock)
+   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Headers()
+   * @model containment="true"
+   * @generated
+   */
+  HeaderBlock getHeaders();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getHeaders <em>Headers</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Headers</em>' containment reference.
+   * @see #getHeaders()
+   * @generated
+   */
+  void setHeaders(HeaderBlock value);
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference.

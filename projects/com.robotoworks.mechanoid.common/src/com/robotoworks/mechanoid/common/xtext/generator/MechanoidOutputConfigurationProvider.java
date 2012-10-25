@@ -18,8 +18,8 @@ public class MechanoidOutputConfigurationProvider extends OutputConfigurationPro
 		defaultOutput.setOverrideExistingResources(false);
 		defaultOutput.setCreateOutputDirectory(false);
 		defaultOutput.setCleanUpDerivedResources(false);
-		defaultOutput.setSetDerivedProperty(true);
-		
+		defaultOutput.setSetDerivedProperty(false);
+		defaultOutput.setCanClearOutputDirectory(false);
 		outputConfigurations.add(defaultOutput);
 
 		return outputConfigurations;

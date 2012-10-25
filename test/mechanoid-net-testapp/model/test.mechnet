@@ -21,6 +21,11 @@ entity generate Node {
 	children:Node[]
 }
 
+entity HeaderItem {
+	key:String,
+	value:String
+}
+
 entity generate A {
 	name:String,
 	b:B
@@ -32,6 +37,10 @@ entity generate B {
 }
 
 client TestService "http://10.0.2.2:8080/mechanoid-net-service/test" {
+	headers 
+		"X-A":"A",
+		"X-B":"B"
+		
 	get getStringArray "/stringArray" {
 		response String[]
 	}
@@ -117,5 +126,25 @@ client TestService "http://10.0.2.2:8080/mechanoid-net-service/test" {
 	post postInt "/echo" {
 		body int
 		response int
+	}
+	
+	post postString "/echo" {
+		body String
+		response String
+	}
+	
+	post postStringArray "/echo" {
+		body String[]
+		response String[]
+	}
+	
+	get echoSegments "/echoUrl/:a/:b/:c" {
+		response String
+	}
+	
+	get echoHeaders '/echoHeaders' {
+		headers
+			"X-C":"C"
+		response HeaderItem[]
 	}
 }

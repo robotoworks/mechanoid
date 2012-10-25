@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.nio.charset.Charset;
 
 public class Streams {
@@ -14,10 +15,5 @@ public class Streams {
 		stream.append(new String(b, 0, n));
 		}
 		return stream.toString();
-	}
-	
-	public static void writeText(OutputStream stream, String text) throws IOException {
-		OutputStreamWriter write = new OutputStreamWriter(stream, Charset.defaultCharset());
-		write.write(text);
-	}
+	}	
 }

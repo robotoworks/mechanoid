@@ -4,6 +4,8 @@ import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.Header;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpDelete;
 import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
@@ -61,6 +63,8 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("import java.net.URL;");
     _builder.newLine();
+    _builder.append("import java.util.LinkedHashMap;");
+    _builder.newLine();
     StringConcatenation _printImports = this.context.printImports();
     _builder.append(_printImports, "");
     _builder.newLineIfNotEmpty();
@@ -100,6 +104,22 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private final String baseUrl;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void setHeader(String field, String value) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("headers.put(field, value);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -243,6 +263,29 @@ public class ClientGenerator {
     _builder.append("\t\t");
     _builder.append("this.transformerProvider = transformerProvider;");
     _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    {
+      HeaderBlock _headers = client.getHeaders();
+      boolean _notEquals_4 = (!Objects.equal(_headers, null));
+      if (_notEquals_4) {
+        {
+          HeaderBlock _headers_1 = client.getHeaders();
+          EList<Header> _headers_2 = _headers_1.getHeaders();
+          for(final Header header : _headers_2) {
+            _builder.append("\t\t");
+            _builder.append("headers.put(\"");
+            String _name_10 = header.getName();
+            _builder.append(_name_10, "		");
+            _builder.append("\",\"");
+            String _value = header.getValue();
+            _builder.append(_value, "		");
+            _builder.append("\");");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -279,7 +322,7 @@ public class ClientGenerator {
             String _name = method.getName();
             String _pascalize = ModelExtensions.pascalize(_name);
             _builder.append(_pascalize, "");
-            _builder.append("Response> ");
+            _builder.append("Result> ");
             String _name_1 = method.getName();
             String _camelize = ModelExtensions.camelize(_name_1);
             _builder.append(_camelize, "");
@@ -308,7 +351,7 @@ public class ClientGenerator {
         String _name_4 = method.getName();
         String _pascalize_2 = ModelExtensions.pascalize(_name_4);
         _builder.append(_pascalize_2, "");
-        _builder.append("Response> ");
+        _builder.append("Result> ");
         String _name_5 = method.getName();
         String _camelize_2 = ModelExtensions.camelize(_name_5);
         _builder.append(_camelize_2, "");
@@ -368,25 +411,25 @@ public class ClientGenerator {
         String _name_11 = method.getName();
         String _pascalize_6 = ModelExtensions.pascalize(_name_11);
         _builder.append(_pascalize_6, "	");
-        _builder.append("Response> parser = new Parser<");
+        _builder.append("Result> parser = new Parser<");
         String _name_12 = method.getName();
         String _pascalize_7 = ModelExtensions.pascalize(_name_12);
         _builder.append(_pascalize_7, "	");
-        _builder.append("Response>() {");
+        _builder.append("Result>() {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("public ");
         String _name_13 = method.getName();
         String _pascalize_8 = ModelExtensions.pascalize(_name_13);
         _builder.append(_pascalize_8, "		");
-        _builder.append("Response parse(InputStream inStream) throws TransformException {");
+        _builder.append("Result parse(InputStream inStream) throws TransformException {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t\t");
         _builder.append("return new ");
         String _name_14 = method.getName();
         String _pascalize_9 = ModelExtensions.pascalize(_name_14);
         _builder.append(_pascalize_9, "			");
-        _builder.append("Response(transformerProvider, inStream);");
+        _builder.append("Result(transformerProvider, inStream);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("}");
@@ -429,6 +472,12 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _printSetHeadersStatements = this.printSetHeadersStatements();
+    _builder.append(_printSetHeadersStatements, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("conn.connect();");
     _builder.newLine();
     _builder.append("\t");
@@ -438,7 +487,7 @@ public class ClientGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "	");
-    _builder.append("Response>(conn, parser);");
+    _builder.append("Result>(conn, parser);");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("} ");
@@ -447,6 +496,26 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("throw new ServiceException(e);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence printSetHeadersStatements() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("for(String key : headers.keySet()) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(key, headers.get(key));");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("for(String key : request.getHeaderKeys()) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(key, request.getHeaderValue(key));");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -474,6 +543,12 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _printSetHeadersStatements = this.printSetHeadersStatements();
+    _builder.append(_printSetHeadersStatements, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("conn.connect();");
     _builder.newLine();
     _builder.append("\t");
@@ -488,7 +563,7 @@ public class ClientGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "	");
-    _builder.append("Response>(conn, parser);");
+    _builder.append("Result>(conn, parser);");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("} ");
@@ -524,6 +599,12 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _printSetHeadersStatements = this.printSetHeadersStatements();
+    _builder.append(_printSetHeadersStatements, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("conn.connect();");
     _builder.newLine();
     _builder.append("\t");
@@ -538,7 +619,7 @@ public class ClientGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "	");
-    _builder.append("Response>(conn, parser);");
+    _builder.append("Result>(conn, parser);");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("} ");
@@ -574,6 +655,12 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    CharSequence _printSetHeadersStatements = this.printSetHeadersStatements();
+    _builder.append(_printSetHeadersStatements, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("conn.connect();");
     _builder.newLine();
     _builder.append("\t");
@@ -583,7 +670,7 @@ public class ClientGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "	");
-    _builder.append("Response>(conn, parser);");
+    _builder.append("Result>(conn, parser);");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("} ");

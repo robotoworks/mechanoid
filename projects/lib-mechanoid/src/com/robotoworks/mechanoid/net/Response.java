@@ -1,6 +1,5 @@
 package com.robotoworks.mechanoid.net;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
@@ -13,10 +12,16 @@ public class Response<T> {
 	private int mResponseCode;
 	private Map<String, List<String>> mHeaders;
 
+	/**
+	 * @return The HTTP Response Code, i.e.:- 200
+	 */
 	public int getResponseCode() {
 		return mResponseCode;
 	}
 
+	/**
+	 * @return A Map of header fields
+	 */
 	public Map<String, List<String>> getHeaders() {
 		return mHeaders;
 	}
@@ -32,10 +37,16 @@ public class Response<T> {
 		}
 	}
 
+	/**
+	 * Parses the response stream into <T>
+	 * @return The parsed response <T>
+	 * @throws ServiceException
+	 */
 	public T parse() throws ServiceException {
 		if(mContent != null) {
 			return mContent;
 		}
+		
 		try {
 			mContent = mParser.parse(mConn.getInputStream());
 		} catch (Exception e) {

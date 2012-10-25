@@ -50,6 +50,24 @@ public interface NetModelFactory extends EFactory
   Client createClient();
 
   /**
+   * Returns a new object of class '<em>Header Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Header Block</em>'.
+   * @generated
+   */
+  HeaderBlock createHeaderBlock();
+
+  /**
+   * Returns a new object of class '<em>Header</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Header</em>'.
+   * @generated
+   */
+  Header createHeader();
+
+  /**
    * Returns a new object of class '<em>Http Method</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -12,10 +12,19 @@ Declaration:
 ;
 
 Client:
-	'client' name=ID baseUrl=STRING? '{' 
+	'client' name=ID baseUrl=STRING? '{'
+	(headers = HeaderBlock)?
 	(params = ParamsBlock)?
 	(methods +=HttpMethod)* 
 	'}'
+;
+
+HeaderBlock:
+	'headers' headers+=Header (',' headers+=Header)*
+;
+
+Header:
+	name=STRING ':' value=STRING
 ;
 
 HttpMethod:
@@ -23,19 +32,19 @@ HttpMethod:
 ;
 
 HttpPost:
-	'post' name=ID path=STRING? '{' (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
+	'post' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
 ;
 
 HttpPut:
-	'put' name=ID path=STRING? '{' (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
+	'put' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
 ;
 
 HttpGet:
-	'get' name=ID path=STRING? '{' (params=ParamsBlock)? (response=ResponseBlock)? '}'
+	'get' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (response=ResponseBlock)? '}'
 ;
 
 HttpDelete:
-	'delete' name=ID path=STRING? '{' (params=ParamsBlock)? (response=ResponseBlock)? '}'
+	'delete' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (response=ResponseBlock)? '}'
 ;
 
 ParamsBlock:

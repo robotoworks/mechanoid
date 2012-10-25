@@ -14,6 +14,8 @@ import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
+import com.robotoworks.mechanoid.net.netModel.Header;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpDelete;
 import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
@@ -72,6 +74,20 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass clientEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass headerBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass headerEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -414,7 +430,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClient_Params()
+  public EReference getClient_Headers()
   {
     return (EReference)clientEClass.getEStructuralFeatures().get(1);
   }
@@ -424,9 +440,69 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClient_Methods()
+  public EReference getClient_Params()
   {
     return (EReference)clientEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClient_Methods()
+  {
+    return (EReference)clientEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getHeaderBlock()
+  {
+    return headerBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getHeaderBlock_Headers()
+  {
+    return (EReference)headerBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getHeader()
+  {
+    return headerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getHeader_Name()
+  {
+    return (EAttribute)headerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getHeader_Value()
+  {
+    return (EAttribute)headerEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -464,7 +540,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpMethod_Params()
+  public EReference getHttpMethod_Headers()
   {
     return (EReference)httpMethodEClass.getEStructuralFeatures().get(2);
   }
@@ -474,9 +550,19 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpMethod_Response()
+  public EReference getHttpMethod_Params()
   {
     return (EReference)httpMethodEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getHttpMethod_Response()
+  {
+    return (EReference)httpMethodEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1048,12 +1134,21 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     clientEClass = createEClass(CLIENT);
     createEAttribute(clientEClass, CLIENT__BASE_URL);
+    createEReference(clientEClass, CLIENT__HEADERS);
     createEReference(clientEClass, CLIENT__PARAMS);
     createEReference(clientEClass, CLIENT__METHODS);
+
+    headerBlockEClass = createEClass(HEADER_BLOCK);
+    createEReference(headerBlockEClass, HEADER_BLOCK__HEADERS);
+
+    headerEClass = createEClass(HEADER);
+    createEAttribute(headerEClass, HEADER__NAME);
+    createEAttribute(headerEClass, HEADER__VALUE);
 
     httpMethodEClass = createEClass(HTTP_METHOD);
     createEAttribute(httpMethodEClass, HTTP_METHOD__NAME);
     createEAttribute(httpMethodEClass, HTTP_METHOD__PATH);
+    createEReference(httpMethodEClass, HTTP_METHOD__HEADERS);
     createEReference(httpMethodEClass, HTTP_METHOD__PARAMS);
     createEReference(httpMethodEClass, HTTP_METHOD__RESPONSE);
 
@@ -1200,12 +1295,21 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClient_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClient_Headers(), this.getHeaderBlock(), null, "headers", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClient_Params(), this.getParamsBlock(), null, "params", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClient_Methods(), this.getHttpMethod(), null, "methods", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(headerBlockEClass, HeaderBlock.class, "HeaderBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getHeaderBlock_Headers(), this.getHeader(), null, "headers", null, 0, -1, HeaderBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(headerEClass, Header.class, "Header", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHeader_Value(), ecorePackage.getEString(), "value", null, 0, 1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(httpMethodEClass, HttpMethod.class, "HttpMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getHttpMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHttpMethod_Path(), ecorePackage.getEString(), "path", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHttpMethod_Headers(), this.getHeaderBlock(), null, "headers", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getHttpMethod_Params(), this.getParamsBlock(), null, "params", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getHttpMethod_Response(), this.getResponseBlock(), null, "response", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

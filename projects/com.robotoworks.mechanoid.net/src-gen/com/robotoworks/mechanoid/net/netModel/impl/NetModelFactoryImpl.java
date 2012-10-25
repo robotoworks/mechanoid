@@ -67,6 +67,8 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.MODEL: return createModel();
       case NetModelPackage.DECLARATION: return createDeclaration();
       case NetModelPackage.CLIENT: return createClient();
+      case NetModelPackage.HEADER_BLOCK: return createHeaderBlock();
+      case NetModelPackage.HEADER: return createHeader();
       case NetModelPackage.HTTP_METHOD: return createHttpMethod();
       case NetModelPackage.HTTP_POST: return createHttpPost();
       case NetModelPackage.HTTP_PUT: return createHttpPut();
@@ -132,6 +134,28 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     ClientImpl client = new ClientImpl();
     return client;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HeaderBlock createHeaderBlock()
+  {
+    HeaderBlockImpl headerBlock = new HeaderBlockImpl();
+    return headerBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Header createHeader()
+  {
+    HeaderImpl header = new HeaderImpl();
+    return header;
   }
 
   /**

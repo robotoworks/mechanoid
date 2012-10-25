@@ -125,18 +125,18 @@ class ResponseGenerator {
 	
 	
 	def generateResponseClass(HttpMethod method, Model module, Client client) '''
-	public class «method.name.pascalize»Response «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
+	public class «method.name.pascalize»Result «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
 		«IF (method.response?.type != null)»
 			«generateFieldForType(method.response.type)»	
 			«generateGetterForType(method.response.type)»	
 		«ENDIF»
 		
-		public «method.name.pascalize»Response(TransformerProvider provider, InputStream inStream) throws TransformException {
+		public «method.name.pascalize»Result(TransformerProvider provider, InputStream inStream) throws TransformException {
 		«IF (method.response != null)»
 			«IF(method.response.type instanceof ComplexTypeLiteral || method.response.superType != null)»
 				«generateDeserializationStatementHeader(true)»
 				
-					«method.name.pascalize»Response target = this;
+					«method.name.pascalize»Result target = this;
 					
 					«var members = mergeMembers(method.response.type as ComplexTypeLiteral, method.response.superType)»
 				

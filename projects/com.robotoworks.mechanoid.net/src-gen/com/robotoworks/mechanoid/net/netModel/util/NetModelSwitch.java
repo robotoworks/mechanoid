@@ -94,6 +94,20 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NetModelPackage.HEADER_BLOCK:
+      {
+        HeaderBlock headerBlock = (HeaderBlock)theEObject;
+        T result = caseHeaderBlock(headerBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case NetModelPackage.HEADER:
+      {
+        Header header = (Header)theEObject;
+        T result = caseHeader(header);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NetModelPackage.HTTP_METHOD:
       {
         HttpMethod httpMethod = (HttpMethod)theEObject;
@@ -385,6 +399,38 @@ public class NetModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseClient(Client object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Header Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Header Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHeaderBlock(HeaderBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Header</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Header</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHeader(Header object)
   {
     return null;
   }

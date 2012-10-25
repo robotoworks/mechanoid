@@ -40,7 +40,7 @@ public class CodeGenerationStrategy {
 				// Generate client methods for each client
 				for(HttpMethod method:client.getMethods()){
 					String requestFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Request");
-					String responseFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Response");
+					String responseFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Result");
 					fsa.generateFile(requestFileName, getRequestGenerator().generate(method, module, client));
 					fsa.generateFile(responseFileName, getResponseGenerator().generate(method, module, client));
 				}

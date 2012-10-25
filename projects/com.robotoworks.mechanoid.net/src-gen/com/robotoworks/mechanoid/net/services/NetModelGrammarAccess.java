@@ -80,17 +80,19 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBaseUrlAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cBaseUrlSTRINGTerminalRuleCall_2_0 = (RuleCall)cBaseUrlAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
-		private final Assignment cMethodsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cMethodsHttpMethodParserRuleCall_5_0 = (RuleCall)cMethodsAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
+		private final Assignment cMethodsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cMethodsHttpMethodParserRuleCall_6_0 = (RuleCall)cMethodsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Client:
-		//	"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}";
+		//	"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}"
+		//"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"client"
@@ -111,20 +113,98 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//headers=HeaderBlock?
+		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+
+		//HeaderBlock
+		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
+
 		//params=ParamsBlock?
-		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
 
 		//methods+=HttpMethod*
-		public Assignment getMethodsAssignment_5() { return cMethodsAssignment_5; }
+		public Assignment getMethodsAssignment_6() { return cMethodsAssignment_6; }
 
 		//HttpMethod
-		public RuleCall getMethodsHttpMethodParserRuleCall_5_0() { return cMethodsHttpMethodParserRuleCall_5_0; }
+		public RuleCall getMethodsHttpMethodParserRuleCall_6_0() { return cMethodsHttpMethodParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+	}
+
+	public class HeaderBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HeaderBlock");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHeadersKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cHeadersAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cHeadersHeaderParserRuleCall_1_0 = (RuleCall)cHeadersAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cHeadersAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cHeadersHeaderParserRuleCall_2_1_0 = (RuleCall)cHeadersAssignment_2_1.eContents().get(0);
+		
+		//HeaderBlock:
+		//	"headers" headers+=Header ("," headers+=Header)*;
+		public ParserRule getRule() { return rule; }
+
+		//"headers" headers+=Header ("," headers+=Header)*
+		public Group getGroup() { return cGroup; }
+
+		//"headers"
+		public Keyword getHeadersKeyword_0() { return cHeadersKeyword_0; }
+
+		//headers+=Header
+		public Assignment getHeadersAssignment_1() { return cHeadersAssignment_1; }
+
+		//Header
+		public RuleCall getHeadersHeaderParserRuleCall_1_0() { return cHeadersHeaderParserRuleCall_1_0; }
+
+		//("," headers+=Header)*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//","
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+
+		//headers+=Header
+		public Assignment getHeadersAssignment_2_1() { return cHeadersAssignment_2_1; }
+
+		//Header
+		public RuleCall getHeadersHeaderParserRuleCall_2_1_0() { return cHeadersHeaderParserRuleCall_2_1_0; }
+	}
+
+	public class HeaderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Header");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//Header:
+		//	name=STRING ":" value=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//name=STRING ":" value=STRING
+		public Group getGroup() { return cGroup; }
+
+		//name=STRING
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class HttpMethodElements extends AbstractParserRuleElementFinder {
@@ -164,19 +244,21 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
-		private final Assignment cBodyAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBodyBodyBlockParserRuleCall_5_0 = (RuleCall)cBodyAssignment_5.eContents().get(0);
-		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
+		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cBodyBodyBlockParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
+		private final Assignment cResponseAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cResponseResponseBlockParserRuleCall_7_0 = (RuleCall)cResponseAssignment_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//HttpPost:
-		//	"post" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
+		//	"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
-		//"post" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
+		//"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"post"
@@ -197,26 +279,32 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//headers=HeaderBlock?
+		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+
+		//HeaderBlock
+		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
+
 		//params=ParamsBlock?
-		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
 
 		//body=BodyBlock?
-		public Assignment getBodyAssignment_5() { return cBodyAssignment_5; }
+		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
 
 		//BodyBlock
-		public RuleCall getBodyBodyBlockParserRuleCall_5_0() { return cBodyBodyBlockParserRuleCall_5_0; }
+		public RuleCall getBodyBodyBlockParserRuleCall_6_0() { return cBodyBodyBlockParserRuleCall_6_0; }
 
 		//response=ResponseBlock?
-		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
+		public Assignment getResponseAssignment_7() { return cResponseAssignment_7; }
 
 		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
+		public RuleCall getResponseResponseBlockParserRuleCall_7_0() { return cResponseResponseBlockParserRuleCall_7_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
 	}
 
 	public class HttpPutElements extends AbstractParserRuleElementFinder {
@@ -228,19 +316,21 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
-		private final Assignment cBodyAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cBodyBodyBlockParserRuleCall_5_0 = (RuleCall)cBodyAssignment_5.eContents().get(0);
-		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
+		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cBodyBodyBlockParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
+		private final Assignment cResponseAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cResponseResponseBlockParserRuleCall_7_0 = (RuleCall)cResponseAssignment_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//HttpPut:
-		//	"put" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
+		//	"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
-		//"put" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
+		//"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"put"
@@ -261,26 +351,32 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//headers=HeaderBlock?
+		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+
+		//HeaderBlock
+		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
+
 		//params=ParamsBlock?
-		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
 
 		//body=BodyBlock?
-		public Assignment getBodyAssignment_5() { return cBodyAssignment_5; }
+		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
 
 		//BodyBlock
-		public RuleCall getBodyBodyBlockParserRuleCall_5_0() { return cBodyBodyBlockParserRuleCall_5_0; }
+		public RuleCall getBodyBodyBlockParserRuleCall_6_0() { return cBodyBodyBlockParserRuleCall_6_0; }
 
 		//response=ResponseBlock?
-		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
+		public Assignment getResponseAssignment_7() { return cResponseAssignment_7; }
 
 		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
+		public RuleCall getResponseResponseBlockParserRuleCall_7_0() { return cResponseResponseBlockParserRuleCall_7_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
 	}
 
 	public class HttpGetElements extends AbstractParserRuleElementFinder {
@@ -292,17 +388,19 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
-		private final Assignment cResponseAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cResponseResponseBlockParserRuleCall_5_0 = (RuleCall)cResponseAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
+		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//HttpGet:
-		//	"get" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
+		//	"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
-		//"get" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}"
+		//"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"get"
@@ -323,20 +421,26 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//headers=HeaderBlock?
+		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+
+		//HeaderBlock
+		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
+
 		//params=ParamsBlock?
-		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
 
 		//response=ResponseBlock?
-		public Assignment getResponseAssignment_5() { return cResponseAssignment_5; }
+		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
 
 		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_5_0() { return cResponseResponseBlockParserRuleCall_5_0; }
+		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class HttpDeleteElements extends AbstractParserRuleElementFinder {
@@ -348,17 +452,19 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cParamsParamsBlockParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
-		private final Assignment cResponseAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cResponseResponseBlockParserRuleCall_5_0 = (RuleCall)cResponseAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
+		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//HttpDelete:
-		//	"delete" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
+		//	"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
 		public ParserRule getRule() { return rule; }
 
-		//"delete" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}"
+		//"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"delete"
@@ -379,20 +485,26 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
+		//headers=HeaderBlock?
+		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+
+		//HeaderBlock
+		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
+
 		//params=ParamsBlock?
-		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
+		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_4_0() { return cParamsParamsBlockParserRuleCall_4_0; }
+		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
 
 		//response=ResponseBlock?
-		public Assignment getResponseAssignment_5() { return cResponseAssignment_5; }
+		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
 
 		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_5_0() { return cResponseResponseBlockParserRuleCall_5_0; }
+		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class ParamsBlockElements extends AbstractParserRuleElementFinder {
@@ -1159,6 +1271,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private ModelElements pModel;
 	private DeclarationElements pDeclaration;
 	private ClientElements pClient;
+	private HeaderBlockElements pHeaderBlock;
+	private HeaderElements pHeader;
 	private HttpMethodElements pHttpMethod;
 	private HttpPostElements pHttpPost;
 	private HttpPutElements pHttpPut;
@@ -1249,13 +1363,33 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Client:
-	//	"client" name=ID baseUrl=STRING? "{" params=ParamsBlock? methods+=HttpMethod* "}";
+	//	"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}";
 	public ClientElements getClientAccess() {
 		return (pClient != null) ? pClient : (pClient = new ClientElements());
 	}
 	
 	public ParserRule getClientRule() {
 		return getClientAccess().getRule();
+	}
+
+	//HeaderBlock:
+	//	"headers" headers+=Header ("," headers+=Header)*;
+	public HeaderBlockElements getHeaderBlockAccess() {
+		return (pHeaderBlock != null) ? pHeaderBlock : (pHeaderBlock = new HeaderBlockElements());
+	}
+	
+	public ParserRule getHeaderBlockRule() {
+		return getHeaderBlockAccess().getRule();
+	}
+
+	//Header:
+	//	name=STRING ":" value=STRING;
+	public HeaderElements getHeaderAccess() {
+		return (pHeader != null) ? pHeader : (pHeader = new HeaderElements());
+	}
+	
+	public ParserRule getHeaderRule() {
+		return getHeaderAccess().getRule();
 	}
 
 	//HttpMethod:
@@ -1269,7 +1403,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpPost:
-	//	"post" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
+	//	"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 	public HttpPostElements getHttpPostAccess() {
 		return (pHttpPost != null) ? pHttpPost : (pHttpPost = new HttpPostElements());
 	}
@@ -1279,7 +1413,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpPut:
-	//	"put" name=ID path=STRING? "{" params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
+	//	"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
 	public HttpPutElements getHttpPutAccess() {
 		return (pHttpPut != null) ? pHttpPut : (pHttpPut = new HttpPutElements());
 	}
@@ -1289,7 +1423,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpGet:
-	//	"get" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
+	//	"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
 	public HttpGetElements getHttpGetAccess() {
 		return (pHttpGet != null) ? pHttpGet : (pHttpGet = new HttpGetElements());
 	}
@@ -1299,7 +1433,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpDelete:
-	//	"delete" name=ID path=STRING? "{" params=ParamsBlock? response=ResponseBlock? "}";
+	//	"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
 	public HttpDeleteElements getHttpDeleteAccess() {
 		return (pHttpDelete != null) ? pHttpDelete : (pHttpDelete = new HttpDeleteElements());
 	}

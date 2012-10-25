@@ -11,6 +11,8 @@ import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
+import com.robotoworks.mechanoid.net.netModel.Header;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Member;
@@ -69,6 +71,10 @@ public class RequestGenerator {
     _builder.newLine();
     _builder.append("import android.net.Uri;");
     _builder.newLine();
+    _builder.append("import java.util.LinkedHashMap;");
+    _builder.newLine();
+    _builder.append("import java.util.Set;");
+    _builder.newLine();
     StringConcatenation _printImports = this.context.printImports();
     _builder.append(_printImports, "");
     _builder.newLineIfNotEmpty();
@@ -99,6 +105,43 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void setHeader(String field, String value) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("headers.put(field, value);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Set<String> getHeaderKeys() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return headers.keySet();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public String getHeaderValue(String key) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return headers.get(key);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
     Iterable<String> pathArgs = ModelExtensions.getArgsFromPath(method);
     _builder.newLineIfNotEmpty();
     {
@@ -111,9 +154,8 @@ public class RequestGenerator {
             _builder.append("private final String ");
             String _substring = segment.substring(1);
             String _camelize = ModelExtensions.camelize(_substring);
-            String _escapeReserved = ModelExtensions.escapeReserved(_camelize);
-            _builder.append(_escapeReserved, "	");
-            _builder.append(";");
+            _builder.append(_camelize, "	");
+            _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -213,10 +255,14 @@ public class RequestGenerator {
           EList<SimpleMember> _params_8 = _params_7.getParams();
           for(final SimpleMember param_2 : _params_8) {
             _builder.append("\t");
-            _builder.append("public void set");
-            String _name_5 = param_2.getName();
+            _builder.append("public ");
+            String _name_5 = method.getName();
             String _pascalize_1 = ModelExtensions.pascalize(_name_5);
             _builder.append(_pascalize_1, "	");
+            _builder.append("Request set");
+            String _name_6 = param_2.getName();
+            String _pascalize_2 = ModelExtensions.pascalize(_name_6);
+            _builder.append(_pascalize_2, "	");
             _builder.append("Param(");
             IntrinsicType _type_4 = param_2.getType();
             String _signature_2 = ModelExtensions.signature(_type_4);
@@ -226,19 +272,23 @@ public class RequestGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_6 = param_2.getName();
-            String _camelize_5 = ModelExtensions.camelize(_name_6);
+            String _name_7 = param_2.getName();
+            String _camelize_5 = ModelExtensions.camelize(_name_7);
             _builder.append(_camelize_5, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_7 = param_2.getName();
-            String _camelize_6 = ModelExtensions.camelize(_name_7);
+            String _name_8 = param_2.getName();
+            String _camelize_6 = ModelExtensions.camelize(_name_8);
             _builder.append(_camelize_6, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("return this;");
+            _builder.newLine();
             _builder.append("\t");
             _builder.append("}");
             _builder.newLine();
@@ -246,16 +296,16 @@ public class RequestGenerator {
             _builder.newLine();
             _builder.append("\t");
             _builder.append("public boolean is");
-            String _name_8 = param_2.getName();
-            String _pascalize_2 = ModelExtensions.pascalize(_name_8);
-            _builder.append(_pascalize_2, "	");
+            String _name_9 = param_2.getName();
+            String _pascalize_3 = ModelExtensions.pascalize(_name_9);
+            _builder.append(_pascalize_3, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return ");
-            String _name_9 = param_2.getName();
-            String _camelize_7 = ModelExtensions.camelize(_name_9);
+            String _name_10 = param_2.getName();
+            String _camelize_7 = ModelExtensions.camelize(_name_10);
             _builder.append(_camelize_7, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -278,10 +328,14 @@ public class RequestGenerator {
           EList<SimpleMember> _params_11 = _params_10.getParams();
           for(final SimpleMember param_3 : _params_11) {
             _builder.append("\t");
-            _builder.append("public void set");
-            String _name_10 = param_3.getName();
-            String _pascalize_3 = ModelExtensions.pascalize(_name_10);
-            _builder.append(_pascalize_3, "	");
+            _builder.append("public ");
+            String _name_11 = method.getName();
+            String _pascalize_4 = ModelExtensions.pascalize(_name_11);
+            _builder.append(_pascalize_4, "	");
+            _builder.append("Request set");
+            String _name_12 = param_3.getName();
+            String _pascalize_5 = ModelExtensions.pascalize(_name_12);
+            _builder.append(_pascalize_5, "	");
             _builder.append("Param(");
             IntrinsicType _type_5 = param_3.getType();
             String _signature_3 = ModelExtensions.signature(_type_5);
@@ -291,19 +345,23 @@ public class RequestGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_11 = param_3.getName();
-            String _camelize_8 = ModelExtensions.camelize(_name_11);
+            String _name_13 = param_3.getName();
+            String _camelize_8 = ModelExtensions.camelize(_name_13);
             _builder.append(_camelize_8, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_12 = param_3.getName();
-            String _camelize_9 = ModelExtensions.camelize(_name_12);
+            String _name_14 = param_3.getName();
+            String _camelize_9 = ModelExtensions.camelize(_name_14);
             _builder.append(_camelize_9, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("return this;");
+            _builder.newLine();
             _builder.append("\t");
             _builder.append("}");
             _builder.newLine();
@@ -311,16 +369,16 @@ public class RequestGenerator {
             _builder.newLine();
             _builder.append("\t");
             _builder.append("public boolean is");
-            String _name_13 = param_3.getName();
-            String _pascalize_4 = ModelExtensions.pascalize(_name_13);
-            _builder.append(_pascalize_4, "	");
+            String _name_15 = param_3.getName();
+            String _pascalize_6 = ModelExtensions.pascalize(_name_15);
+            _builder.append(_pascalize_6, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return ");
-            String _name_14 = param_3.getName();
-            String _camelize_10 = ModelExtensions.camelize(_name_14);
+            String _name_16 = param_3.getName();
+            String _camelize_10 = ModelExtensions.camelize(_name_16);
             _builder.append(_camelize_10, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -336,9 +394,9 @@ public class RequestGenerator {
     }
     _builder.append("\t");
     _builder.append("public ");
-    String _name_15 = method.getName();
-    String _pascalize_5 = ModelExtensions.pascalize(_name_15);
-    _builder.append(_pascalize_5, "	");
+    String _name_17 = method.getName();
+    String _pascalize_7 = ModelExtensions.pascalize(_name_17);
+    _builder.append(_pascalize_7, "	");
     _builder.append("Request(");
     String _path = method.getPath();
     BodyBlock _body_2 = ModelExtensions.getBody(method);
@@ -346,6 +404,29 @@ public class RequestGenerator {
     _builder.append(_generateRequestConstructorArgs, "	");
     _builder.append("){");
     _builder.newLineIfNotEmpty();
+    {
+      HeaderBlock _headers = method.getHeaders();
+      boolean _notEquals_4 = (!Objects.equal(_headers, null));
+      if (_notEquals_4) {
+        {
+          HeaderBlock _headers_1 = method.getHeaders();
+          EList<Header> _headers_2 = _headers_1.getHeaders();
+          for(final Header header : _headers_2) {
+            _builder.append("\t\t");
+            _builder.append("headers.put(\"");
+            String _name_18 = header.getName();
+            _builder.append(_name_18, "		");
+            _builder.append("\",\"");
+            String _value = header.getValue();
+            _builder.append(_value, "		");
+            _builder.append("\");");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.newLine();
+      }
+    }
     {
       int _size_1 = IterableExtensions.size(pathArgs);
       boolean _greaterThan_1 = (_size_1 > 0);
@@ -356,14 +437,12 @@ public class RequestGenerator {
             _builder.append("this.");
             String _substring_1 = segment_1.substring(1);
             String _camelize_11 = ModelExtensions.camelize(_substring_1);
-            String _escapeReserved_1 = ModelExtensions.escapeReserved(_camelize_11);
-            _builder.append(_escapeReserved_1, "		");
-            _builder.append(" = ");
+            _builder.append(_camelize_11, "		");
+            _builder.append("Segment = ");
             String _substring_2 = segment_1.substring(1);
             String _camelize_12 = ModelExtensions.camelize(_substring_2);
-            String _escapeReserved_2 = ModelExtensions.escapeReserved(_camelize_12);
-            _builder.append(_escapeReserved_2, "		");
-            _builder.append(";");
+            _builder.append(_camelize_12, "		");
+            _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -441,16 +520,16 @@ public class RequestGenerator {
     _builder.newLine();
     {
       ParamsBlock _params_12 = method.getParams();
-      boolean _notEquals_4 = (!Objects.equal(_params_12, null));
-      if (_notEquals_4) {
+      boolean _notEquals_5 = (!Objects.equal(_params_12, null));
+      if (_notEquals_5) {
         {
           ParamsBlock _params_13 = method.getParams();
           EList<SimpleMember> _params_14 = _params_13.getParams();
           for(final SimpleMember param_4 : _params_14) {
             _builder.append("\t\t");
             _builder.append("if(");
-            String _name_16 = param_4.getName();
-            String _camelize_13 = ModelExtensions.camelize(_name_16);
+            String _name_19 = param_4.getName();
+            String _camelize_13 = ModelExtensions.camelize(_name_19);
             _builder.append(_camelize_13, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
@@ -460,11 +539,11 @@ public class RequestGenerator {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_17 = param_4.getName();
-                _builder.append(_name_17, "			");
+                String _name_20 = param_4.getName();
+                _builder.append(_name_20, "			");
                 _builder.append("\", ");
-                String _name_18 = param_4.getName();
-                String _camelize_14 = ModelExtensions.camelize(_name_18);
+                String _name_21 = param_4.getName();
+                String _camelize_14 = ModelExtensions.camelize(_name_21);
                 _builder.append(_camelize_14, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
@@ -472,11 +551,11 @@ public class RequestGenerator {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_19 = param_4.getName();
-                _builder.append(_name_19, "			");
+                String _name_22 = param_4.getName();
+                _builder.append(_name_22, "			");
                 _builder.append("\", String.valueOf(");
-                String _name_20 = param_4.getName();
-                String _camelize_15 = ModelExtensions.camelize(_name_20);
+                String _name_23 = param_4.getName();
+                String _camelize_15 = ModelExtensions.camelize(_name_23);
                 _builder.append(_camelize_15, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
@@ -493,16 +572,16 @@ public class RequestGenerator {
     }
     {
       ParamsBlock _params_15 = client.getParams();
-      boolean _notEquals_5 = (!Objects.equal(_params_15, null));
-      if (_notEquals_5) {
+      boolean _notEquals_6 = (!Objects.equal(_params_15, null));
+      if (_notEquals_6) {
         {
           ParamsBlock _params_16 = client.getParams();
           EList<SimpleMember> _params_17 = _params_16.getParams();
           for(final SimpleMember param_5 : _params_17) {
             _builder.append("\t\t");
             _builder.append("if(");
-            String _name_21 = param_5.getName();
-            String _camelize_16 = ModelExtensions.camelize(_name_21);
+            String _name_24 = param_5.getName();
+            String _camelize_16 = ModelExtensions.camelize(_name_24);
             _builder.append(_camelize_16, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
@@ -512,11 +591,11 @@ public class RequestGenerator {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_22 = param_5.getName();
-                _builder.append(_name_22, "			");
+                String _name_25 = param_5.getName();
+                _builder.append(_name_25, "			");
                 _builder.append("\", ");
-                String _name_23 = param_5.getName();
-                String _camelize_17 = ModelExtensions.camelize(_name_23);
+                String _name_26 = param_5.getName();
+                String _camelize_17 = ModelExtensions.camelize(_name_26);
                 _builder.append(_camelize_17, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
@@ -524,11 +603,11 @@ public class RequestGenerator {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_24 = param_5.getName();
-                _builder.append(_name_24, "			");
+                String _name_27 = param_5.getName();
+                _builder.append(_name_27, "			");
                 _builder.append("\", String.valueOf(");
-                String _name_25 = param_5.getName();
-                String _camelize_18 = ModelExtensions.camelize(_name_25);
+                String _name_28 = param_5.getName();
+                String _camelize_18 = ModelExtensions.camelize(_name_28);
                 _builder.append(_camelize_18, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
@@ -908,25 +987,17 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForType(final HttpMethod method, final BodyBlock body, final IntrinsicType type) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
+    this.context.registerImport("java.io.PrintStream");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementHeader = this.generateSerializationStatementHeader(false);
     _builder.append(_generateSerializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
-    {
-      if ((type instanceof StringType)) {
-        _builder.append("\t");
-        _builder.append("Streams.writeText(stream, value);");
-        _builder.newLine();
-      } else {
-        _builder.append("\t");
-        _builder.append("Streams.writeText(stream, ");
-        String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(type);
-        _builder.append(_boxedTypeSignature, "	");
-        _builder.append(".toString(value));");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("\t");
+    _builder.append("PrintStream ps = new PrintStream(stream);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ps.print(value);");
+    _builder.newLine();
     CharSequence _generateSerializationStatementFooter = this.generateSerializationStatementFooter(false);
     _builder.append(_generateSerializationStatementFooter, "");
     _builder.newLineIfNotEmpty();
@@ -986,13 +1057,16 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForUserType(final BodyBlock body, final UserType type, final EnumTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.util.Streams");
+    this.context.registerImport("java.io.PrintStream");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementHeader = this.generateSerializationStatementHeader(false);
     _builder.append(_generateSerializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("Streams.writeText(stream, ");
+    _builder.append("PrintStream ps = new PrintStream(stream);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ps.print(");
     String _signature = ModelExtensions.signature(type);
     String _camelize = ModelExtensions.camelize(_signature);
     _builder.append(_camelize, "	");
@@ -1004,7 +1078,7 @@ public class RequestGenerator {
     return _builder;
   }
   
-  public CharSequence generateSerializationStatementForType(final BodyBlock body, final GenericListType type) {
+  protected CharSequence _generateSerializationStatementForType(final HttpMethod method, final BodyBlock body, final GenericListType type) {
     Type _elementType = type.getElementType();
     CharSequence _generateSerializationStatementForGenericListType = this.generateSerializationStatementForGenericListType(body, type, _elementType);
     return _generateSerializationStatementForGenericListType;
@@ -1013,6 +1087,8 @@ public class RequestGenerator {
   protected CharSequence _generateSerializationStatementForGenericListType(final BodyBlock body, final GenericListType type, final IntrinsicType elementType) {
     StringConcatenation _builder = new StringConcatenation();
     this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    _builder.newLineIfNotEmpty();
+    this.context.registerImport("java.util.List");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementHeader = this.generateSerializationStatementHeader(true);
     _builder.append(_generateSerializationStatementHeader, "");
@@ -1108,9 +1184,9 @@ public class RequestGenerator {
     for (final String pathArg : _argsFromPath) {
       String _substring = pathArg.substring(1);
       String _camelize = ModelExtensions.camelize(_substring);
-      String _escapeReserved = ModelExtensions.escapeReserved(_camelize);
-      String _plus = ("\tString " + _escapeReserved);
-      args.add(_plus);
+      String _plus = ("\tString " + _camelize);
+      String _plus_1 = (_plus + "Segment");
+      args.add(_plus_1);
     }
     boolean _notEquals = (!Objects.equal(body, null));
     if (_notEquals) {
@@ -1184,8 +1260,8 @@ public class RequestGenerator {
         public String apply(final String arg) {
           String _substring = arg.substring(1);
           String _camelize = ModelExtensions.camelize(_substring);
-          String _escapeReserved = ModelExtensions.escapeReserved(_camelize);
-          return _escapeReserved;
+          String _plus = (_camelize + "Segment");
+          return _plus;
         }
       };
     String _join = IterableExtensions.<String>join(_filter, ", ", _function_1);
@@ -1284,7 +1360,9 @@ public class RequestGenerator {
   }
   
   public CharSequence generateSerializationStatementForType(final HttpMethod method, final BodyBlock body, final BlockType type) {
-    if (type instanceof IntrinsicType) {
+    if (type instanceof GenericListType) {
+      return _generateSerializationStatementForType(method, body, (GenericListType)type);
+    } else if (type instanceof IntrinsicType) {
       return _generateSerializationStatementForType(method, body, (IntrinsicType)type);
     } else if (type instanceof UserType) {
       return _generateSerializationStatementForType(method, body, (UserType)type);

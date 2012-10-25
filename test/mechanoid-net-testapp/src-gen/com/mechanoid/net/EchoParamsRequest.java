@@ -2,11 +2,27 @@ package com.mechanoid.net;
 
 
 import android.net.Uri;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class EchoParamsRequest {
 	
 	private static final String PATH="/echoParams";
 	
+	private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
+	
+	public void setHeader(String field, String value) {
+		headers.put(field, value);
+	}
+	
+	public Set<String> getHeaderKeys() {
+		return headers.keySet();
+	}
+	
+	public String getHeaderValue(String key) {
+		return headers.get(key);
+	}
+
 	private String aParam;
 	private boolean aParamSet;
 	private boolean bParam;
@@ -18,41 +34,46 @@ public class EchoParamsRequest {
 	private long eParam;
 	private boolean eParamSet;
 		
-	public void setAParam(String value) {
+	public EchoParamsRequest setAParam(String value) {
 		this.aParam = value;
 		this.aParamSet = true;
+		return this;
 	}
 	
 	public boolean isAParamSet() {
 		return aParamSet;
 	}
-	public void setBParam(boolean value) {
+	public EchoParamsRequest setBParam(boolean value) {
 		this.bParam = value;
 		this.bParamSet = true;
+		return this;
 	}
 	
 	public boolean isBParamSet() {
 		return bParamSet;
 	}
-	public void setCParam(double value) {
+	public EchoParamsRequest setCParam(double value) {
 		this.cParam = value;
 		this.cParamSet = true;
+		return this;
 	}
 	
 	public boolean isCParamSet() {
 		return cParamSet;
 	}
-	public void setDParam(int value) {
+	public EchoParamsRequest setDParam(int value) {
 		this.dParam = value;
 		this.dParamSet = true;
+		return this;
 	}
 	
 	public boolean isDParamSet() {
 		return dParamSet;
 	}
-	public void setEParam(long value) {
+	public EchoParamsRequest setEParam(long value) {
 		this.eParam = value;
 		this.eParamSet = true;
+		return this;
 	}
 	
 	public boolean isEParamSet() {

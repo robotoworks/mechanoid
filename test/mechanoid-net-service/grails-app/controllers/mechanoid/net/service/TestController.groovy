@@ -95,4 +95,15 @@ class TestController {
 	def echo() {
 		render request.getReader().readLine()
 	}
+	
+	def echoHeaders(){
+		ArrayList<HeaderItem> items = new ArrayList<HeaderItem>()
+		request.getHeaderNames().collect().each { 
+			items.add(new HeaderItem(key:it, value:request.getHeader(it))) 
+		} 
+		
+		render items as JSON
+		
+		
+	}
 }

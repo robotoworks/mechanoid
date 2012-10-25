@@ -16,12 +16,21 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//Client">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Client/baseUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/headers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/methods"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//HeaderBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HeaderBlock/headers"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//Header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Header/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Header/value"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//HttpMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/path"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/headers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/response"/>
     </genClasses>

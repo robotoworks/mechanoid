@@ -306,7 +306,7 @@ public class ResponseGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "");
-    _builder.append("Response ");
+    _builder.append("Result ");
     {
       boolean _and = false;
       ResponseBlock _response = method.getResponse();
@@ -357,7 +357,7 @@ public class ResponseGenerator {
     String _name_2 = method.getName();
     String _pascalize_1 = ModelExtensions.pascalize(_name_2);
     _builder.append(_pascalize_1, "	");
-    _builder.append("Response(TransformerProvider provider, InputStream inStream) throws TransformException {");
+    _builder.append("Result(TransformerProvider provider, InputStream inStream) throws TransformException {");
     _builder.newLineIfNotEmpty();
     {
       ResponseBlock _response_6 = method.getResponse();
@@ -386,7 +386,7 @@ public class ResponseGenerator {
             String _name_3 = method.getName();
             String _pascalize_2 = ModelExtensions.pascalize(_name_3);
             _builder.append(_pascalize_2, "			");
-            _builder.append("Response target = this;");
+            _builder.append("Result target = this;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t\t");
             _builder.newLine();

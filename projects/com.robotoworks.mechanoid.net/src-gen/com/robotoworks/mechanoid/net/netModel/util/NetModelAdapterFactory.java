@@ -90,6 +90,16 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createClientAdapter();
       }
       @Override
+      public Adapter caseHeaderBlock(HeaderBlock object)
+      {
+        return createHeaderBlockAdapter();
+      }
+      @Override
+      public Adapter caseHeader(Header object)
+      {
+        return createHeaderAdapter();
+      }
+      @Override
       public Adapter caseHttpMethod(HttpMethod object)
       {
         return createHttpMethodAdapter();
@@ -297,6 +307,36 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createClientAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HeaderBlock <em>Header Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.HeaderBlock
+   * @generated
+   */
+  public Adapter createHeaderBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.Header <em>Header</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.Header
+   * @generated
+   */
+  public Adapter createHeaderAdapter()
   {
     return null;
   }

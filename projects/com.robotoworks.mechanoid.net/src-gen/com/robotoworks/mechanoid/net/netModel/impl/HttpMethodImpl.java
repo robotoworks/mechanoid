@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.net.netModel.impl;
 
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl#getHeaders <em>Headers</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl#getParams <em>Params</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.HttpMethodImpl#getResponse <em>Response</em>}</li>
  * </ul>
@@ -73,6 +75,16 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
    * @ordered
    */
   protected String path = PATH_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getHeaders() <em>Headers</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHeaders()
+   * @generated
+   * @ordered
+   */
+  protected HeaderBlock headers;
 
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
@@ -159,6 +171,54 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
     path = newPath;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__PATH, oldPath, path));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HeaderBlock getHeaders()
+  {
+    return headers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHeaders(HeaderBlock newHeaders, NotificationChain msgs)
+  {
+    HeaderBlock oldHeaders = headers;
+    headers = newHeaders;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__HEADERS, oldHeaders, newHeaders);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHeaders(HeaderBlock newHeaders)
+  {
+    if (newHeaders != headers)
+    {
+      NotificationChain msgs = null;
+      if (headers != null)
+        msgs = ((InternalEObject)headers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.HTTP_METHOD__HEADERS, null, msgs);
+      if (newHeaders != null)
+        msgs = ((InternalEObject)newHeaders).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.HTTP_METHOD__HEADERS, null, msgs);
+      msgs = basicSetHeaders(newHeaders, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__HEADERS, newHeaders, newHeaders));
   }
 
   /**
@@ -267,6 +327,8 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
   {
     switch (featureID)
     {
+      case NetModelPackage.HTTP_METHOD__HEADERS:
+        return basicSetHeaders(null, msgs);
       case NetModelPackage.HTTP_METHOD__PARAMS:
         return basicSetParams(null, msgs);
       case NetModelPackage.HTTP_METHOD__RESPONSE:
@@ -289,6 +351,8 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
         return getName();
       case NetModelPackage.HTTP_METHOD__PATH:
         return getPath();
+      case NetModelPackage.HTTP_METHOD__HEADERS:
+        return getHeaders();
       case NetModelPackage.HTTP_METHOD__PARAMS:
         return getParams();
       case NetModelPackage.HTTP_METHOD__RESPONSE:
@@ -312,6 +376,9 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
         return;
       case NetModelPackage.HTTP_METHOD__PATH:
         setPath((String)newValue);
+        return;
+      case NetModelPackage.HTTP_METHOD__HEADERS:
+        setHeaders((HeaderBlock)newValue);
         return;
       case NetModelPackage.HTTP_METHOD__PARAMS:
         setParams((ParamsBlock)newValue);
@@ -339,6 +406,9 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
       case NetModelPackage.HTTP_METHOD__PATH:
         setPath(PATH_EDEFAULT);
         return;
+      case NetModelPackage.HTTP_METHOD__HEADERS:
+        setHeaders((HeaderBlock)null);
+        return;
       case NetModelPackage.HTTP_METHOD__PARAMS:
         setParams((ParamsBlock)null);
         return;
@@ -363,6 +433,8 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NetModelPackage.HTTP_METHOD__PATH:
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+      case NetModelPackage.HTTP_METHOD__HEADERS:
+        return headers != null;
       case NetModelPackage.HTTP_METHOD__PARAMS:
         return params != null;
       case NetModelPackage.HTTP_METHOD__RESPONSE:

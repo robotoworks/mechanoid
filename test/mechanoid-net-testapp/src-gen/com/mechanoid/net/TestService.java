@@ -8,6 +8,7 @@ import com.robotoworks.mechanoid.net.ServiceException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.LinkedHashMap;
 
 public class TestService {
 	
@@ -15,6 +16,12 @@ public class TestService {
 	
 	private final TransformerProvider transformerProvider;
 	private final String baseUrl;
+	
+	private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
+	
+	public void setHeader(String field, String value) {
+		headers.put(field, value);
+	}
 	
 	
 	public TestService(){
@@ -32,19 +39,22 @@ public class TestService {
 	public TestService(String baseUrl, TransformerProvider transformerProvider){
 		this.baseUrl = baseUrl;
 		this.transformerProvider = transformerProvider;
+		
+		headers.put("X-A","A");
+		headers.put("X-B","B");
 	}
 	
-	public Response<GetStringArrayResponse> getStringArray()
+	public Response<GetStringArrayResult> getStringArray()
 	  throws ServiceException {
 	  	return getStringArray(new GetStringArrayRequest());
 	}
 	
-	public Response<GetStringArrayResponse> getStringArray(GetStringArrayRequest request)
+	public Response<GetStringArrayResult> getStringArray(GetStringArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetStringArrayResponse> parser = new Parser<GetStringArrayResponse>() {
-			public GetStringArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetStringArrayResponse(transformerProvider, inStream);
+		Parser<GetStringArrayResult> parser = new Parser<GetStringArrayResult>() {
+			public GetStringArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetStringArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -55,9 +65,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetStringArrayResponse>(conn, parser);
+			return new Response<GetStringArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -65,17 +83,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetIntArrayResponse> getIntArray()
+	public Response<GetIntArrayResult> getIntArray()
 	  throws ServiceException {
 	  	return getIntArray(new GetIntArrayRequest());
 	}
 	
-	public Response<GetIntArrayResponse> getIntArray(GetIntArrayRequest request)
+	public Response<GetIntArrayResult> getIntArray(GetIntArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetIntArrayResponse> parser = new Parser<GetIntArrayResponse>() {
-			public GetIntArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetIntArrayResponse(transformerProvider, inStream);
+		Parser<GetIntArrayResult> parser = new Parser<GetIntArrayResult>() {
+			public GetIntArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetIntArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -86,9 +104,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetIntArrayResponse>(conn, parser);
+			return new Response<GetIntArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -96,17 +122,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetLongArrayResponse> getLongArray()
+	public Response<GetLongArrayResult> getLongArray()
 	  throws ServiceException {
 	  	return getLongArray(new GetLongArrayRequest());
 	}
 	
-	public Response<GetLongArrayResponse> getLongArray(GetLongArrayRequest request)
+	public Response<GetLongArrayResult> getLongArray(GetLongArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetLongArrayResponse> parser = new Parser<GetLongArrayResponse>() {
-			public GetLongArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetLongArrayResponse(transformerProvider, inStream);
+		Parser<GetLongArrayResult> parser = new Parser<GetLongArrayResult>() {
+			public GetLongArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetLongArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -117,9 +143,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetLongArrayResponse>(conn, parser);
+			return new Response<GetLongArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -127,17 +161,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetDoubleArrayResponse> getDoubleArray()
+	public Response<GetDoubleArrayResult> getDoubleArray()
 	  throws ServiceException {
 	  	return getDoubleArray(new GetDoubleArrayRequest());
 	}
 	
-	public Response<GetDoubleArrayResponse> getDoubleArray(GetDoubleArrayRequest request)
+	public Response<GetDoubleArrayResult> getDoubleArray(GetDoubleArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetDoubleArrayResponse> parser = new Parser<GetDoubleArrayResponse>() {
-			public GetDoubleArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetDoubleArrayResponse(transformerProvider, inStream);
+		Parser<GetDoubleArrayResult> parser = new Parser<GetDoubleArrayResult>() {
+			public GetDoubleArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetDoubleArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -148,9 +182,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetDoubleArrayResponse>(conn, parser);
+			return new Response<GetDoubleArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -158,17 +200,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetBooleanArrayResponse> getBooleanArray()
+	public Response<GetBooleanArrayResult> getBooleanArray()
 	  throws ServiceException {
 	  	return getBooleanArray(new GetBooleanArrayRequest());
 	}
 	
-	public Response<GetBooleanArrayResponse> getBooleanArray(GetBooleanArrayRequest request)
+	public Response<GetBooleanArrayResult> getBooleanArray(GetBooleanArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetBooleanArrayResponse> parser = new Parser<GetBooleanArrayResponse>() {
-			public GetBooleanArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetBooleanArrayResponse(transformerProvider, inStream);
+		Parser<GetBooleanArrayResult> parser = new Parser<GetBooleanArrayResult>() {
+			public GetBooleanArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetBooleanArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -179,9 +221,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetBooleanArrayResponse>(conn, parser);
+			return new Response<GetBooleanArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -189,17 +239,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetEnumArrayResponse> getEnumArray()
+	public Response<GetEnumArrayResult> getEnumArray()
 	  throws ServiceException {
 	  	return getEnumArray(new GetEnumArrayRequest());
 	}
 	
-	public Response<GetEnumArrayResponse> getEnumArray(GetEnumArrayRequest request)
+	public Response<GetEnumArrayResult> getEnumArray(GetEnumArrayRequest request)
 	  throws ServiceException {
 		
-		Parser<GetEnumArrayResponse> parser = new Parser<GetEnumArrayResponse>() {
-			public GetEnumArrayResponse parse(InputStream inStream) throws TransformException {
-				return new GetEnumArrayResponse(transformerProvider, inStream);
+		Parser<GetEnumArrayResult> parser = new Parser<GetEnumArrayResult>() {
+			public GetEnumArrayResult parse(InputStream inStream) throws TransformException {
+				return new GetEnumArrayResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -210,9 +260,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetEnumArrayResponse>(conn, parser);
+			return new Response<GetEnumArrayResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -220,17 +278,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetItemResponse> getItem()
+	public Response<GetItemResult> getItem()
 	  throws ServiceException {
 	  	return getItem(new GetItemRequest());
 	}
 	
-	public Response<GetItemResponse> getItem(GetItemRequest request)
+	public Response<GetItemResult> getItem(GetItemRequest request)
 	  throws ServiceException {
 		
-		Parser<GetItemResponse> parser = new Parser<GetItemResponse>() {
-			public GetItemResponse parse(InputStream inStream) throws TransformException {
-				return new GetItemResponse(transformerProvider, inStream);
+		Parser<GetItemResult> parser = new Parser<GetItemResult>() {
+			public GetItemResult parse(InputStream inStream) throws TransformException {
+				return new GetItemResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -241,9 +299,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetItemResponse>(conn, parser);
+			return new Response<GetItemResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -251,17 +317,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetNodesResponse> getNodes()
+	public Response<GetNodesResult> getNodes()
 	  throws ServiceException {
 	  	return getNodes(new GetNodesRequest());
 	}
 	
-	public Response<GetNodesResponse> getNodes(GetNodesRequest request)
+	public Response<GetNodesResult> getNodes(GetNodesRequest request)
 	  throws ServiceException {
 		
-		Parser<GetNodesResponse> parser = new Parser<GetNodesResponse>() {
-			public GetNodesResponse parse(InputStream inStream) throws TransformException {
-				return new GetNodesResponse(transformerProvider, inStream);
+		Parser<GetNodesResult> parser = new Parser<GetNodesResult>() {
+			public GetNodesResult parse(InputStream inStream) throws TransformException {
+				return new GetNodesResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -272,9 +338,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetNodesResponse>(conn, parser);
+			return new Response<GetNodesResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -282,17 +356,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<EchoParamsResponse> echoParams()
+	public Response<EchoParamsResult> echoParams()
 	  throws ServiceException {
 	  	return echoParams(new EchoParamsRequest());
 	}
 	
-	public Response<EchoParamsResponse> echoParams(EchoParamsRequest request)
+	public Response<EchoParamsResult> echoParams(EchoParamsRequest request)
 	  throws ServiceException {
 		
-		Parser<EchoParamsResponse> parser = new Parser<EchoParamsResponse>() {
-			public EchoParamsResponse parse(InputStream inStream) throws TransformException {
-				return new EchoParamsResponse(transformerProvider, inStream);
+		Parser<EchoParamsResult> parser = new Parser<EchoParamsResult>() {
+			public EchoParamsResult parse(InputStream inStream) throws TransformException {
+				return new EchoParamsResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -303,9 +377,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<EchoParamsResponse>(conn, parser);
+			return new Response<EchoParamsResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -313,17 +395,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<SkippingResponse> skipping()
+	public Response<SkippingResult> skipping()
 	  throws ServiceException {
 	  	return skipping(new SkippingRequest());
 	}
 	
-	public Response<SkippingResponse> skipping(SkippingRequest request)
+	public Response<SkippingResult> skipping(SkippingRequest request)
 	  throws ServiceException {
 		
-		Parser<SkippingResponse> parser = new Parser<SkippingResponse>() {
-			public SkippingResponse parse(InputStream inStream) throws TransformException {
-				return new SkippingResponse(transformerProvider, inStream);
+		Parser<SkippingResult> parser = new Parser<SkippingResult>() {
+			public SkippingResult parse(InputStream inStream) throws TransformException {
+				return new SkippingResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -334,9 +416,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<SkippingResponse>(conn, parser);
+			return new Response<SkippingResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -344,17 +434,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<SkippingWithItemResponse> skippingWithItem()
+	public Response<SkippingWithItemResult> skippingWithItem()
 	  throws ServiceException {
 	  	return skippingWithItem(new SkippingWithItemRequest());
 	}
 	
-	public Response<SkippingWithItemResponse> skippingWithItem(SkippingWithItemRequest request)
+	public Response<SkippingWithItemResult> skippingWithItem(SkippingWithItemRequest request)
 	  throws ServiceException {
 		
-		Parser<SkippingWithItemResponse> parser = new Parser<SkippingWithItemResponse>() {
-			public SkippingWithItemResponse parse(InputStream inStream) throws TransformException {
-				return new SkippingWithItemResponse(transformerProvider, inStream);
+		Parser<SkippingWithItemResult> parser = new Parser<SkippingWithItemResult>() {
+			public SkippingWithItemResult parse(InputStream inStream) throws TransformException {
+				return new SkippingWithItemResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -365,9 +455,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<SkippingWithItemResponse>(conn, parser);
+			return new Response<SkippingWithItemResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -375,17 +473,17 @@ public class TestService {
 		}
 	}
 	
-	public Response<GetABResponse> getAB()
+	public Response<GetABResult> getAB()
 	  throws ServiceException {
 	  	return getAB(new GetABRequest());
 	}
 	
-	public Response<GetABResponse> getAB(GetABRequest request)
+	public Response<GetABResult> getAB(GetABRequest request)
 	  throws ServiceException {
 		
-		Parser<GetABResponse> parser = new Parser<GetABResponse>() {
-			public GetABResponse parse(InputStream inStream) throws TransformException {
-				return new GetABResponse(transformerProvider, inStream);
+		Parser<GetABResult> parser = new Parser<GetABResult>() {
+			public GetABResult parse(InputStream inStream) throws TransformException {
+				return new GetABResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -396,9 +494,17 @@ public class TestService {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
-			return new Response<GetABResponse>(conn, parser);
+			return new Response<GetABResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -406,12 +512,12 @@ public class TestService {
 		}
 	}
 	
-	public Response<SkippingPostResponse> skippingPost(SkippingPostRequest request)
+	public Response<SkippingPostResult> skippingPost(SkippingPostRequest request)
 	  throws ServiceException {
 		
-		Parser<SkippingPostResponse> parser = new Parser<SkippingPostResponse>() {
-			public SkippingPostResponse parse(InputStream inStream) throws TransformException {
-				return new SkippingPostResponse(transformerProvider, inStream);
+		Parser<SkippingPostResult> parser = new Parser<SkippingPostResult>() {
+			public SkippingPostResult parse(InputStream inStream) throws TransformException {
+				return new SkippingPostResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -422,11 +528,19 @@ public class TestService {
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<SkippingPostResponse>(conn, parser);
+			return new Response<SkippingPostResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
@@ -434,12 +548,12 @@ public class TestService {
 		}	
 	}
 	
-	public Response<PostIntResponse> postInt(PostIntRequest request)
+	public Response<PostIntResult> postInt(PostIntRequest request)
 	  throws ServiceException {
 		
-		Parser<PostIntResponse> parser = new Parser<PostIntResponse>() {
-			public PostIntResponse parse(InputStream inStream) throws TransformException {
-				return new PostIntResponse(transformerProvider, inStream);
+		Parser<PostIntResult> parser = new Parser<PostIntResult>() {
+			public PostIntResult parse(InputStream inStream) throws TransformException {
+				return new PostIntResult(transformerProvider, inStream);
 			}
 		};
 		
@@ -450,16 +564,169 @@ public class TestService {
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");
 			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<PostIntResponse>(conn, parser);
+			return new Response<PostIntResult>(conn, parser);
 		
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
 		}	
+	}
+	
+	public Response<PostStringResult> postString(PostStringRequest request)
+	  throws ServiceException {
+		
+		Parser<PostStringResult> parser = new Parser<PostStringResult>() {
+			public PostStringResult parse(InputStream inStream) throws TransformException {
+				return new PostStringResult(transformerProvider, inStream);
+			}
+		};
+		
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
+			conn.connect();
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			return new Response<PostStringResult>(conn, parser);
+		
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}	
+	}
+	
+	public Response<PostStringArrayResult> postStringArray(PostStringArrayRequest request)
+	  throws ServiceException {
+		
+		Parser<PostStringArrayResult> parser = new Parser<PostStringArrayResult>() {
+			public PostStringArrayResult parse(InputStream inStream) throws TransformException {
+				return new PostStringArrayResult(transformerProvider, inStream);
+			}
+		};
+		
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
+			conn.connect();
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			return new Response<PostStringArrayResult>(conn, parser);
+		
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}	
+	}
+	
+	public Response<EchoSegmentsResult> echoSegments(EchoSegmentsRequest request)
+	  throws ServiceException {
+		
+		Parser<EchoSegmentsResult> parser = new Parser<EchoSegmentsResult>() {
+			public EchoSegmentsResult parse(InputStream inStream) throws TransformException {
+				return new EchoSegmentsResult(transformerProvider, inStream);
+			}
+		};
+		
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
+			conn.connect();
+			
+			return new Response<EchoSegmentsResult>(conn, parser);
+		
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	public Response<EchoHeadersResult> echoHeaders()
+	  throws ServiceException {
+	  	return echoHeaders(new EchoHeadersRequest());
+	}
+	
+	public Response<EchoHeadersResult> echoHeaders(EchoHeadersRequest request)
+	  throws ServiceException {
+		
+		Parser<EchoHeadersResult> parser = new Parser<EchoHeadersResult>() {
+			public EchoHeadersResult parse(InputStream inStream) throws TransformException {
+				return new EchoHeadersResult(transformerProvider, inStream);
+			}
+		};
+		
+		try {
+			URL url = new URL(request.createUrl(baseUrl));
+			
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			for(String key : headers.keySet()) {
+				conn.setRequestProperty(key, headers.get(key));
+			}
+			
+			for(String key : request.getHeaderKeys()) {
+				conn.setRequestProperty(key, request.getHeaderValue(key));
+			}
+			
+			conn.connect();
+			
+			return new Response<EchoHeadersResult>(conn, parser);
+		
+		} 
+		catch(Exception e) {
+			throw new ServiceException(e);
+		}
 	}
 	
 }

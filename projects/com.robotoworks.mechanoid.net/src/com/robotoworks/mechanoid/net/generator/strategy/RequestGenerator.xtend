@@ -45,6 +45,8 @@ class RequestGenerator {
 	«registerImports»
 	
 	import android.net.Uri;
+	import java.util.LinkedHashMap;
+	import java.util.Set;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -56,10 +58,24 @@ class RequestGenerator {
 		
 		private static final String PATH="«method.pathAsFormatString»";
 		
+		private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
+		
+		public void setHeader(String field, String value) {
+			headers.put(field, value);
+		}
+		
+		public Set<String> getHeaderKeys() {
+			return headers.keySet();
+		}
+		
+		public String getHeaderValue(String key) {
+			return headers.get(key);
+		}
+	
 		«var pathArgs = method.getArgsFromPath»
 		«IF(pathArgs.size > 0)»
 		«FOR segment:pathArgs»
-		private final String «segment.substring(1).camelize.escapeReserved»;
+		private final String «segment.substring(1).camelize»Segment;
 		«ENDFOR»
 		
 		«ENDIF»
@@ -83,9 +99,10 @@ class RequestGenerator {
 		«ENDIF»
 		«IF(method.params != null)»
 		«FOR param:method.params.params»
-		public void set«param.name.pascalize»Param(«param.type.signature» value) {
+		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
 			this.«param.name.camelize»Param = value;
 			this.«param.name.camelize»ParamSet = true;
+			return this;
 		}
 		
 		public boolean is«param.name.pascalize»ParamSet() {
@@ -96,9 +113,10 @@ class RequestGenerator {
 		«ENDIF»
 		«IF(client.params != null)»
 		«FOR param:client.params.params»
-		public void set«param.name.pascalize»Param(«param.type.signature» value) {
+		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
 			this.«param.name.camelize»Param = value;
 			this.«param.name.camelize»ParamSet = true;
+			return this;
 		}
 		
 		public boolean is«param.name.pascalize»ParamSet() {
@@ -108,9 +126,15 @@ class RequestGenerator {
 				
 		«ENDIF»
 		public «method.name.pascalize»Request(«generateRequestConstructorArgs(method.path, method.body)»){
+			«IF method.headers != null»
+			«FOR header : method.headers.headers»
+			headers.put("«header.name»","«header.value»");
+			«ENDFOR»
+			
+			«ENDIF»
 			«IF(pathArgs.size > 0)»
 				«FOR segment:pathArgs»
-				this.«segment.substring(1).camelize.escapeReserved» = «segment.substring(1).camelize.escapeReserved»;
+				this.«segment.substring(1).camelize»Segment = «segment.substring(1).camelize»Segment;
 				«ENDFOR»	
 			«ENDIF»
 			«IF(method.hasBody)»
@@ -290,13 +314,15 @@ class RequestGenerator {
 	'''
 	
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, IntrinsicType type) '''
-		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+		«context.registerImport("java.io.PrintStream")»
 		«generateSerializationStatementHeader(false)»
-			«IF type instanceof StringType»
-			Streams.writeText(stream, value);
-			«ELSE»
-			Streams.writeText(stream, «type.boxedTypeSignature».toString(value));
-			«ENDIF»
+			PrintStream ps = new PrintStream(stream);
+			ps.print(value);
+«««			«IF type instanceof StringType»
+«««			Streams.writeText(stream, value);
+«««			«ELSE»
+«««			Streams.writeText(stream, «type.boxedTypeSignature».toString(value));
+«««			«ENDIF»
 		«generateSerializationStatementFooter(false)»
 	'''
 	
@@ -327,13 +353,15 @@ class RequestGenerator {
 		BodyBlock body,
 		UserType type,
 		EnumTypeDeclaration declaration) '''
-			«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+			«context.registerImport("java.io.PrintStream")»
 			«generateSerializationStatementHeader(false)»
-				Streams.writeText(stream, «type.signature.camelize».getValue());
+				PrintStream ps = new PrintStream(stream);
+				ps.print(«type.signature.camelize».getValue());
+«««				Streams.writeText(stream, «type.signature.camelize».getValue());
 			«generateSerializationStatementFooter(false)»
 		'''
 	
-	def generateSerializationStatementForType(BodyBlock body, GenericListType type) {
+	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, GenericListType type) {
 		generateSerializationStatementForGenericListType(body, type, type.elementType);
 	}
 	
@@ -343,6 +371,7 @@ class RequestGenerator {
 		IntrinsicType elementType
 	) '''
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«context.registerImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
 			JsonUtil.write«elementType.boxedTypeSignature»List(target, values);
 		«generateSerializationStatementFooter(true)»
@@ -393,7 +422,7 @@ class RequestGenerator {
 	def generateRequestConstructorArgs(String path, BodyBlock body){
 		var args = new ArrayList<String>()
 		for(pathArg:path.getArgsFromPath){
-			args.add("	String " + pathArg.substring(1).camelize.escapeReserved)
+			args.add("	String " + pathArg.substring(1).camelize + "Segment")
 		}
 		
 		if(body != null) {
@@ -432,7 +461,7 @@ class RequestGenerator {
 	def pathToStringFormatArgs(String path){		
 		", " + path.split("/")
 		.filter(seg|seg.startsWith(":"))
-		.join(", ", [String arg|arg.substring(1).camelize.escapeReserved])	
+		.join(", ", [String arg|arg.substring(1).camelize + "Segment"])	
 	}
 	
 	def hasArgs(String path){
