@@ -121,6 +121,33 @@ class ContentProviderActionGenerator {
 					return db.query(Tables.«tbl.name.underscore.toUpperCase», projection, selection, selectionArgs, null, null, sortOrder);
 					«ENDIF»
 				}
+				
+				@Override
+			    public int bulkInsert(MechanoidContentProvider provider, Uri uri, ContentValues[] values) {
+			
+			    	final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+			    	
+			    	int numValues = values.length;
+
+			    	try {
+			    	
+				    	db.beginTransaction();
+				    	
+				        for (int i = 0; i < numValues; i++) {
+				        	db.insertOrThrow(Tables.«tbl.name.underscore.toUpperCase», null, values[i]);
+				        }
+						
+						db.setTransactionSuccessful();
+
+						
+			    	} finally {
+			    		db.endTransaction();
+			    	}
+			    	
+					provider.getContext().getContentResolver().notifyChange(uri, null);
+			    	
+			    	return numValues;
+			    }
 			}
 			'''
 

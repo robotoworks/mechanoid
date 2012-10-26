@@ -1248,7 +1248,7 @@ public class RequestGenerator {
   }
   
   public String pathToStringFormatArgs(final String path) {
-    String[] _split = path.split("/");
+    String[] _split = path.split("/|\\.");
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
         public Boolean apply(final String seg) {
           boolean _startsWith = seg.startsWith(":");

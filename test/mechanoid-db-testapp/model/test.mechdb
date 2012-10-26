@@ -1,0 +1,9 @@
+package com.mechanoid.db
+
+database TestDB {
+	migration {
+		create table table_a (
+			_id integer primary key autoincrement
+		);
+	}
+}

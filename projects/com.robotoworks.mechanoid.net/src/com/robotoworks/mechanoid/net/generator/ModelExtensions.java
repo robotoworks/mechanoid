@@ -400,7 +400,7 @@ public class ModelExtensions {
 			return "";
 		}
 		
-		return method.getPath().replaceAll(":[^/]+", "%s");
+		return method.getPath().replaceAll(":[^/\\.]+", "%s");
 	}	
 	
 	public static Iterable<String> getArgsFromPath(HttpMethod method) {
@@ -412,7 +412,7 @@ public class ModelExtensions {
 			return new ArrayList<String>();
 		}
 
-		return IterableExtensions.filter(Lists.newArrayList(path.split("/")), new Function1<String, Boolean>(){public Boolean apply(String p) {
+		return IterableExtensions.filter(Lists.newArrayList(path.split("/|\\.")), new Function1<String, Boolean>(){public Boolean apply(String p) {
 			return p.startsWith(":");
 		}});
 	}

@@ -137,7 +137,8 @@ class ClientGenerator {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			«printSetHeadersStatements()»
 			
@@ -166,13 +167,16 @@ class ClientGenerator {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("PUT");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			«printSetHeadersStatements()»
 			
 			conn.connect();
 			
+			«IF method.body != null»
 			request.writeBody(transformerProvider, conn.getOutputStream());
+			«ENDIF»
 			
 			return new Response<«method.name.pascalize»Result>(conn, parser);
 
@@ -187,13 +191,16 @@ class ClientGenerator {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			«printSetHeadersStatements()»
 			
 			conn.connect();
 			
+			«IF method.body != null»
 			request.writeBody(transformerProvider, conn.getOutputStream());
+			«ENDIF»
 			
 			return new Response<«method.name.pascalize»Result>(conn, parser);
 
@@ -207,8 +214,7 @@ class ClientGenerator {
 			URL url = new URL(request.createUrl(baseUrl));
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			conn.setRequestMethod("DELETE");
 			
 			«printSetHeadersStatements()»
 			

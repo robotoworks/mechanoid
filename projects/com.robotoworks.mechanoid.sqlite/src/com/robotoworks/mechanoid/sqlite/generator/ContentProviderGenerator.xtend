@@ -187,6 +187,18 @@ class ContentProviderGenerator {
 					
 					return createActions(sActions[match]).insert(this, uri, values);
 				}
+				
+				@Override
+			    public int bulkInsert(Uri uri, ContentValues[] values) {
+			    	
+					final int match = sUriMatcher.match(uri);
+
+					if(match == UriMatcher.NO_MATCH) {
+						throw new UnsupportedOperationException("Unknown uri: " + uri);
+					}
+					
+					return createActions(sActions[match]).bulkInsert(this, uri, values);
+			    }
 			
 				@Override
 				protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {

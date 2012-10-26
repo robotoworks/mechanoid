@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.net.generator.strategy;
 import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
+import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
@@ -467,7 +468,9 @@ public class ClientGenerator {
     _builder.append("conn.setRequestMethod(\"GET\");");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Accept\", \"application/json, text/json\");");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -538,7 +541,9 @@ public class ClientGenerator {
     _builder.append("conn.setRequestMethod(\"PUT\");");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json, text/json\");");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -553,9 +558,15 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
-    _builder.newLine();
+    {
+      BodyBlock _body = method.getBody();
+      boolean _notEquals = (!Objects.equal(_body, null));
+      if (_notEquals) {
+        _builder.append("\t");
+        _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+        _builder.newLine();
+      }
+    }
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -594,7 +605,9 @@ public class ClientGenerator {
     _builder.append("conn.setRequestMethod(\"POST\");");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json, text/json\");");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -609,9 +622,15 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
-    _builder.newLine();
+    {
+      BodyBlock _body = method.getBody();
+      boolean _notEquals = (!Objects.equal(_body, null));
+      if (_notEquals) {
+        _builder.append("\t");
+        _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+        _builder.newLine();
+      }
+    }
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -647,10 +666,7 @@ public class ClientGenerator {
     _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("conn.setRequestMethod(\"GET\");");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("conn.setRequestProperty(\"Content-Type\", \"application/json\");");
+    _builder.append("conn.setRequestMethod(\"DELETE\");");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();

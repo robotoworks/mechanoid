@@ -459,7 +459,7 @@ class RequestGenerator {
 	}
 	
 	def pathToStringFormatArgs(String path){		
-		", " + path.split("/")
+		", " + path.split("/|\\.")
 		.filter(seg|seg.startsWith(":"))
 		.join(", ", [String arg|arg.substring(1).camelize + "Segment"])	
 	}

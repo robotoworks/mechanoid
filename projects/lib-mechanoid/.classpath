@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-16/android.jar"/>
+	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-16/android.jar" sourcepath="/ANDROID_HOME/sources/android-16"/>
 	<classpathentry kind="var" path="ANDROID_HOME/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry kind="var" path="ANDROID_HOME"/>
 	<classpathentry kind="output" path="bin"/>

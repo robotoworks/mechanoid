@@ -20,4 +20,12 @@ public abstract class ContentProviderActions {
 	public int update(MechanoidContentProvider provider, Uri uri, ContentValues values, String selection, String[] selectionArgs){
 		return -1;
 	}
+	
+    public int bulkInsert(MechanoidContentProvider provider, Uri uri, ContentValues[] values) {		
+        int numValues = values.length;
+        for (int i = 0; i < numValues; i++) {
+            insert(provider, uri, values[i]);
+        }
+        return numValues;
+    }
 }
