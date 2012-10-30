@@ -66,16 +66,17 @@ public abstract class AbstractTableAByIdActions extends ContentProviderActions {
 	
 	@Override
     public int bulkInsert(MechanoidContentProvider provider, Uri uri, ContentValues[] values) {
-    	int numValues = values.length;
 
     	final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
     	
+    	int numValues = values.length;
+
     	try {
     	
 	    	db.beginTransaction();
 	    	
 	        for (int i = 0; i < numValues; i++) {
-	        	long id = db.insertOrThrow(Tables.TABLE_A, null, values[i]);
+	        	db.insertOrThrow(Tables.TABLE_A, null, values[i]);
 	        }
 			
 			db.setTransactionSuccessful();

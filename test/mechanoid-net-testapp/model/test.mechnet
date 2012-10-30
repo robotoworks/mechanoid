@@ -37,7 +37,7 @@ entity generate B {
 }
 
 client TestService "http://10.0.2.2:8080/mechanoid-net-service/test" {
-	headers 
+	headers
 		"X-A":"A",
 		"X-B":"B"
 		

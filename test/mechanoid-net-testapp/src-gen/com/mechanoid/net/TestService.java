@@ -63,7 +63,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -102,7 +103,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -141,7 +143,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -180,7 +183,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -219,7 +223,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -258,7 +263,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -297,7 +303,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -336,7 +343,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -375,7 +383,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -414,7 +423,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -453,7 +463,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -492,7 +503,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -526,7 +538,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -562,7 +575,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -598,7 +612,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -634,7 +649,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -670,7 +686,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
@@ -709,7 +726,8 @@ public class TestService {
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Type", "application/json");
+			
+			conn.setRequestProperty("Accept", "application/json, text/json");
 			
 			for(String key : headers.keySet()) {
 				conn.setRequestProperty(key, headers.get(key));
