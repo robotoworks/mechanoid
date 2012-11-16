@@ -63,12 +63,16 @@ Subtraction returns Expression:
 ;
 
 PrimaryExpression returns Expression:
-	{ColumnLiteral} name=FQN |
-	{Literal} literalValue=LiteralValue |
-	'(' SqlExpression ')' |
-	{CaseExpression} 'case' caseExpression=SqlExpression? 
-			cases+=Case cases+=Case*
-			('else' elseExpression=SqlExpression)? 'end'
+	(
+		{ColumnLiteral} name=FQN |
+		{Literal} literalValue=LiteralValue |
+		'(' SqlExpression ')' |
+		{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')'|
+		{CaseExpression} 'case' caseExpression=SqlExpression? 
+				cases+=Case cases+=Case*
+				('else' elseExpression=SqlExpression)? 'end' |
+		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')'
+	) isnull?=('is null'|'not null' | 'notnull')?
 ;
 
 Case:

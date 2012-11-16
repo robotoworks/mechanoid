@@ -17,6 +17,7 @@ public class TestDBContract  {
 	
 
 	interface QuxColumns {
+		String Y = "y";
 	}
 	
 			

@@ -336,11 +336,27 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION:
+      {
+        SelectStatementExpression selectStatementExpression = (SelectStatementExpression)theEObject;
+        T result = caseSelectStatementExpression(selectStatementExpression);
+        if (result == null) result = caseExpression(selectStatementExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.CASE_EXPRESSION:
       {
         CaseExpression caseExpression = (CaseExpression)theEObject;
         T result = caseCaseExpression(caseExpression);
         if (result == null) result = caseExpression(caseExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.FUNCTION:
+      {
+        Function function = (Function)theEObject;
+        T result = caseFunction(function);
+        if (result == null) result = caseExpression(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1101,6 +1117,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Statement Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Statement Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectStatementExpression(SelectStatementExpression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Case Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1112,6 +1144,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCaseExpression(CaseExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunction(Function object)
   {
     return null;
   }
