@@ -7,7 +7,9 @@ database TestDB {
 		);
 		
 		create view qux as 
-			select *, (case when x=a then b end) from table_a as a
+			select *, 
+			count(_id, a, c) as y,
+			(case when a is null then b else null end) from table_a as a
 			left join c on a=b or a=c and (b=c)
 			group by a,b,c=0
 			order by x desc;

@@ -347,6 +347,15 @@ public interface SqliteModelFactory extends EFactory
   Literal createLiteral();
 
   /**
+   * Returns a new object of class '<em>Select Statement Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Statement Expression</em>'.
+   * @generated
+   */
+  SelectStatementExpression createSelectStatementExpression();
+
+  /**
    * Returns a new object of class '<em>Case Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -354,6 +363,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   CaseExpression createCaseExpression();
+
+  /**
+   * Returns a new object of class '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function</em>'.
+   * @generated
+   */
+  Function createFunction();
 
   /**
    * Returns a new object of class '<em>Create Table Statement</em>'.
