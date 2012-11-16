@@ -68,6 +68,15 @@ public interface SqliteModelFactory extends EFactory
   MigrationBlock createMigrationBlock();
 
   /**
+   * Returns a new object of class '<em>Sql Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sql Expression</em>'.
+   * @generated
+   */
+  SqlExpression createSqlExpression();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,6 +84,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Case</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Case</em>'.
+   * @generated
+   */
+  Case createCase();
 
   /**
    * Returns a new object of class '<em>Statment</em>'.
@@ -167,6 +185,15 @@ public interface SqliteModelFactory extends EFactory
   SelectStatement createSelectStatement();
 
   /**
+   * Returns a new object of class '<em>Ordering Term</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ordering Term</em>'.
+   * @generated
+   */
+  OrderingTerm createOrderingTerm();
+
+  /**
    * Returns a new object of class '<em>Select Core</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -230,76 +257,76 @@ public interface SqliteModelFactory extends EFactory
   LiteralValue createLiteralValue();
 
   /**
-   * Returns a new object of class '<em>Or Expr</em>'.
+   * Returns a new object of class '<em>Or</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Or Expr</em>'.
+   * @return a new object of class '<em>Or</em>'.
    * @generated
    */
-  OrExpr createOrExpr();
+  Or createOr();
 
   /**
-   * Returns a new object of class '<em>And Expr</em>'.
+   * Returns a new object of class '<em>And</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>And Expr</em>'.
+   * @return a new object of class '<em>And</em>'.
    * @generated
    */
-  AndExpr createAndExpr();
+  And createAnd();
 
   /**
-   * Returns a new object of class '<em>Primary Comparison Expr</em>'.
+   * Returns a new object of class '<em>Primary Comparison</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary Comparison Expr</em>'.
+   * @return a new object of class '<em>Primary Comparison</em>'.
    * @generated
    */
-  PrimaryComparisonExpr createPrimaryComparisonExpr();
+  PrimaryComparison createPrimaryComparison();
 
   /**
-   * Returns a new object of class '<em>Secondary Comparison Expr</em>'.
+   * Returns a new object of class '<em>Secondary Comparison</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Secondary Comparison Expr</em>'.
+   * @return a new object of class '<em>Secondary Comparison</em>'.
    * @generated
    */
-  SecondaryComparisonExpr createSecondaryComparisonExpr();
+  SecondaryComparison createSecondaryComparison();
 
   /**
-   * Returns a new object of class '<em>Division Expr</em>'.
+   * Returns a new object of class '<em>Division</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Division Expr</em>'.
+   * @return a new object of class '<em>Division</em>'.
    * @generated
    */
-  DivisionExpr createDivisionExpr();
+  Division createDivision();
 
   /**
-   * Returns a new object of class '<em>Multiplication Expr</em>'.
+   * Returns a new object of class '<em>Multiplication</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Multiplication Expr</em>'.
+   * @return a new object of class '<em>Multiplication</em>'.
    * @generated
    */
-  MultiplicationExpr createMultiplicationExpr();
+  Multiplication createMultiplication();
 
   /**
-   * Returns a new object of class '<em>Addition Expr</em>'.
+   * Returns a new object of class '<em>Addition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Addition Expr</em>'.
+   * @return a new object of class '<em>Addition</em>'.
    * @generated
    */
-  AdditionExpr createAdditionExpr();
+  Addition createAddition();
 
   /**
-   * Returns a new object of class '<em>Subtraction Expr</em>'.
+   * Returns a new object of class '<em>Subtraction</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Subtraction Expr</em>'.
+   * @return a new object of class '<em>Subtraction</em>'.
    * @generated
    */
-  SubtractionExpr createSubtractionExpr();
+  Subtraction createSubtraction();
 
   /**
    * Returns a new object of class '<em>Column Literal</em>'.
@@ -318,6 +345,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   Literal createLiteral();
+
+  /**
+   * Returns a new object of class '<em>Case Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Case Expression</em>'.
+   * @generated
+   */
+  CaseExpression createCaseExpression();
 
   /**
    * Returns a new object of class '<em>Create Table Statement</em>'.

@@ -2,6 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCore <em>Core</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getOrderingTerms <em>Ordering Terms</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,5 +50,21 @@ public interface SelectStatement extends EObject
    * @generated
    */
   void setCore(SelectCore value);
+
+  /**
+   * Returns the value of the '<em><b>Ordering Terms</b></em>' containment reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ordering Terms</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ordering Terms</em>' containment reference list.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectStatement_OrderingTerms()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OrderingTerm> getOrderingTerms();
 
 } // SelectStatement

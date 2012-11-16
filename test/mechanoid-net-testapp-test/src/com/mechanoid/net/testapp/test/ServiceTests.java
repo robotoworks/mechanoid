@@ -37,6 +37,7 @@ import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.net.ServiceException;
 
 public class ServiceTests extends InstrumentationTestCase {
+	
 	public void testGetStringArray() throws ServiceException {
 		TestService service = new TestService();
 		Response<GetStringArrayResult> response = service.getStringArray();

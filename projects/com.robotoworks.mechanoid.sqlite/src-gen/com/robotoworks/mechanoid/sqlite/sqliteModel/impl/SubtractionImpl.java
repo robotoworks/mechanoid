@@ -3,8 +3,8 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -16,20 +16,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primary Comparison Expr</b></em>'.
+ * An implementation of the model object '<em><b>Subtraction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonExprImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonExprImpl#getOp <em>Op</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonExprImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PrimaryComparisonExprImpl extends ExpressionImpl implements PrimaryComparisonExpr
+public class SubtractionImpl extends ExpressionImpl implements Subtraction
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -40,26 +39,6 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
    * @ordered
    */
   protected Expression left;
-
-  /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected static final String OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -76,7 +55,7 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PrimaryComparisonExprImpl()
+  protected SubtractionImpl()
   {
     super();
   }
@@ -89,7 +68,7 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR;
+    return SqliteModelPackage.Literals.SUBTRACTION;
   }
 
   /**
@@ -113,7 +92,7 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SUBTRACTION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -130,37 +109,14 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SUBTRACTION__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SUBTRACTION__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getOp()
-  {
-    return op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOp(String newOp)
-  {
-    String oldOp = op;
-    op = newOp;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.PRIMARY_COMPARISON_EXPR__OP, oldOp, op));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SUBTRACTION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -184,7 +140,7 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SUBTRACTION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -201,14 +157,14 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SUBTRACTION__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SUBTRACTION__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SUBTRACTION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -221,9 +177,9 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.SUBTRACTION__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.SUBTRACTION__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -239,11 +195,9 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.SUBTRACTION__LEFT:
         return getLeft();
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__OP:
-        return getOp();
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.SUBTRACTION__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -259,13 +213,10 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.SUBTRACTION__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__OP:
-        setOp((String)newValue);
-        return;
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.SUBTRACTION__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -282,13 +233,10 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.SUBTRACTION__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__OP:
-        setOp(OP_EDEFAULT);
-        return;
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.SUBTRACTION__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -305,31 +253,12 @@ public class PrimaryComparisonExprImpl extends ExpressionImpl implements Primary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.SUBTRACTION__LEFT:
         return left != null;
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.SUBTRACTION__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (op: ");
-    result.append(op);
-    result.append(')');
-    return result.toString();
-  }
-
-} //PrimaryComparisonExprImpl
+} //SubtractionImpl

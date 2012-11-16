@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getResultColumns <em>Result Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getGroupByExpressions <em>Group By Expressions</em>}</li>
  * </ul>
  * </p>
  *
@@ -120,5 +121,21 @@ public interface SelectCore extends EObject
    * @generated
    */
   void setSource(JoinSource value);
+
+  /**
+   * Returns the value of the '<em><b>Group By Expressions</b></em>' containment reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Group By Expressions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Group By Expressions</em>' containment reference list.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectCore_GroupByExpressions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<SqlExpression> getGroupByExpressions();
 
 } // SelectCore

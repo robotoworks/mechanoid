@@ -5,11 +5,13 @@ import com.google.inject.Provider;
 import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AdditionExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Addition;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.And;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
@@ -20,7 +22,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentTimeLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentTimeStampLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DefaultConstraint;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DivisionExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Division;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ExpressionDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
@@ -29,25 +31,27 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Literal;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.MultiplicationExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.OrExpr;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Or;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparisonExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.StringLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SubtractionExpr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDecl;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint;
 import org.eclipse.emf.ecore.EObject;
@@ -82,25 +86,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.ADDITION_EXPR:
+			case SqliteModelPackage.ADDITION:
 				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
 				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_Addition(context, (AdditionExpr) semanticObject); 
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0()) {
+					sequence_Addition(context, (Addition) semanticObject); 
 					return; 
 				}
 				else break;
@@ -122,25 +123,40 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.AND_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
-				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
-				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+			case SqliteModelPackage.AND:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0()) {
+					sequence_And(context, (And) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CASE:
+				if(context == grammarAccess.getCaseRule()) {
+					sequence_Case(context, (Case) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CASE_EXPRESSION:
+				if(context == grammarAccess.getAdditionRule() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
+				   context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionRule() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationRule() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
+				   context == grammarAccess.getOrRule() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_And(context, (AndExpr) semanticObject); 
+				   context == grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0()) {
+					sequence_PrimaryExpression(context, (CaseExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -152,22 +168,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				else break;
 			case SqliteModelPackage.COLUMN_LITERAL:
 				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
 				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
+				   context == grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0()) {
 					sequence_PrimaryExpression(context, (ColumnLiteral) semanticObject); 
 					return; 
 				}
@@ -220,25 +236,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.DIVISION_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+			case SqliteModelPackage.DIVISION:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
-				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_Division(context, (DivisionExpr) semanticObject); 
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0()) {
+					sequence_Division(context, (Division) semanticObject); 
 					return; 
 				}
 				else break;
@@ -268,22 +277,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				else break;
 			case SqliteModelPackage.LITERAL:
 				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
 				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
+				   context == grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0()) {
 					sequence_PrimaryExpression(context, (Literal) semanticObject); 
 					return; 
 				}
@@ -306,25 +315,20 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.MULTIPLICATION_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+			case SqliteModelPackage.MULTIPLICATION:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_Multiplication(context, (MultiplicationExpr) semanticObject); 
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0()) {
+					sequence_Multiplication(context, (Multiplication) semanticObject); 
 					return; 
 				}
 				else break;
@@ -346,47 +350,27 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.OR_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
-				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
-				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
-				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
-				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_Or(context, (OrExpr) semanticObject); 
+			case SqliteModelPackage.OR:
+				if(context == grammarAccess.getOrRule() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0()) {
+					sequence_Or(context, (Or) semanticObject); 
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.PRIMARY_COMPARISON_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
-				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
-				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+			case SqliteModelPackage.ORDERING_TERM:
+				if(context == grammarAccess.getOrderingTermRule()) {
+					sequence_OrderingTerm(context, (OrderingTerm) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.PRIMARY_COMPARISON:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
-				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_PrimaryComparison(context, (PrimaryComparisonExpr) semanticObject); 
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0()) {
+					sequence_PrimaryComparison(context, (PrimaryComparison) semanticObject); 
 					return; 
 				}
 				else break;
@@ -414,25 +398,16 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.SECONDARY_COMPARISON_EXPR:
-				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
-				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
-				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
-				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+			case SqliteModelPackage.SECONDARY_COMPARISON:
+				if(context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_SecondaryComparison(context, (SecondaryComparisonExpr) semanticObject); 
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0()) {
+					sequence_SecondaryComparison(context, (SecondaryComparison) semanticObject); 
 					return; 
 				}
 				else break;
@@ -466,31 +441,53 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
+			case SqliteModelPackage.SQL_EXPRESSION:
+				if(context == grammarAccess.getAdditionRule() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
+				   context == grammarAccess.getAndRule() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionRule() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationRule() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
+				   context == grammarAccess.getOrRule() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
+				   context == grammarAccess.getPrimaryComparisonRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
+				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getSecondaryComparisonRule() ||
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0() ||
+				   context == grammarAccess.getSqlExpressionRule() ||
+				   context == grammarAccess.getSubtractionRule() ||
+				   context == grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0()) {
+					sequence_SqlExpression(context, (SqlExpression) semanticObject); 
+					return; 
+				}
+				else break;
 			case SqliteModelPackage.STRING_LITERAL:
 				if(context == grammarAccess.getLiteralValueRule()) {
 					sequence_LiteralValue(context, (StringLiteral) semanticObject); 
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.SUBTRACTION_EXPR:
+			case SqliteModelPackage.SUBTRACTION:
 				if(context == grammarAccess.getAdditionRule() ||
-				   context == grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0() ||
+				   context == grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0() ||
 				   context == grammarAccess.getAndRule() ||
-				   context == grammarAccess.getAndAccess().getAndExprLeftAction_1_0() ||
+				   context == grammarAccess.getAndAccess().getAndLeftAction_1_0() ||
 				   context == grammarAccess.getDivisionRule() ||
-				   context == grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0() ||
+				   context == grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0() ||
 				   context == grammarAccess.getMultiplicationRule() ||
-				   context == grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0() ||
+				   context == grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0() ||
 				   context == grammarAccess.getOrRule() ||
-				   context == grammarAccess.getOrAccess().getOrExprLeftAction_1_0() ||
+				   context == grammarAccess.getOrAccess().getOrLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryComparisonRule() ||
-				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSecondaryComparisonRule() ||
-				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0() ||
+				   context == grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0() ||
 				   context == grammarAccess.getSubtractionRule() ||
-				   context == grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0()) {
-					sequence_Subtraction(context, (SubtractionExpr) semanticObject); 
+				   context == grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0()) {
+					sequence_Subtraction(context, (Subtraction) semanticObject); 
 					return; 
 				}
 				else break;
@@ -541,18 +538,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=Addition_AdditionExpr_1_0 right=Subtraction)
+	 *     (left=Addition_Addition_1_0 right=Subtraction)
 	 */
-	protected void sequence_Addition(EObject context, AdditionExpr semanticObject) {
+	protected void sequence_Addition(EObject context, Addition semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ADDITION_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ADDITION_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ADDITION_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ADDITION_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ADDITION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ADDITION__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ADDITION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ADDITION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAdditionAccess().getAdditionExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditionAccess().getAdditionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getAdditionAccess().getRightSubtractionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
@@ -592,19 +589,38 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=And_AndExpr_1_0 right=PrimaryComparison)
+	 *     (left=And_And_1_0 right=PrimaryComparison)
 	 */
-	protected void sequence_And(EObject context, AndExpr semanticObject) {
+	protected void sequence_And(EObject context, And semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.AND_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.AND_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.AND_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.AND_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.AND__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.AND__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.AND__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.AND__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAndAccess().getAndExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAndAccess().getAndLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getAndAccess().getRightPrimaryComparisonParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (whenExpression=SqlExpression thenExpression=SqlExpression)
+	 */
+	protected void sequence_Case(EObject context, Case semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CASE__WHEN_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CASE__WHEN_EXPRESSION));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CASE__THEN_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CASE__THEN_EXPRESSION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCaseAccess().getWhenExpressionSqlExpressionParserRuleCall_1_0(), semanticObject.getWhenExpression());
+		feeder.accept(grammarAccess.getCaseAccess().getThenExpressionSqlExpressionParserRuleCall_3_0(), semanticObject.getThenExpression());
 		feeder.finish();
 	}
 	
@@ -679,7 +695,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     expression=Or
+	 *     expression=SqlExpression
 	 */
 	protected void sequence_DefaultValue(EObject context, ExpressionDefaultValue semanticObject) {
 		if(errorAcceptor != null) {
@@ -688,7 +704,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDefaultValueAccess().getExpressionOrParserRuleCall_1_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getDefaultValueAccess().getExpressionSqlExpressionParserRuleCall_1_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -711,18 +727,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=Division_DivisionExpr_1_0 right=Multiplication)
+	 *     (left=Division_Division_1_0 right=Multiplication)
 	 */
-	protected void sequence_Division(EObject context, DivisionExpr semanticObject) {
+	protected void sequence_Division(EObject context, Division semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.DIVISION_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.DIVISION_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.DIVISION_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.DIVISION_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.DIVISION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.DIVISION__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.DIVISION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.DIVISION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDivisionAccess().getDivisionExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getDivisionAccess().getDivisionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getDivisionAccess().getRightMultiplicationParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
@@ -748,7 +764,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? singleSource=SingleSource expression=Or)
+	 *     (natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? singleSource=SingleSource expression=SqlExpression)
 	 */
 	protected void sequence_JoinStatement(EObject context, JoinStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -881,18 +897,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=Multiplication_MultiplicationExpr_1_0 right=Addition)
+	 *     (left=Multiplication_Multiplication_1_0 right=Addition)
 	 */
-	protected void sequence_Multiplication(EObject context, MultiplicationExpr semanticObject) {
+	protected void sequence_Multiplication(EObject context, Multiplication semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.MULTIPLICATION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMultiplicationAccess().getMultiplicationExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMultiplicationAccess().getMultiplicationLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getMultiplicationAccess().getRightAdditionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
@@ -900,18 +916,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=Or_OrExpr_1_0 right=And)
+	 *     (left=Or_Or_1_0 right=And)
 	 */
-	protected void sequence_Or(EObject context, OrExpr semanticObject) {
+	protected void sequence_Or(EObject context, Or semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OR_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OR_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OR_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OR_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OR__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OR__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getOrAccess().getOrExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getOrAccess().getOrLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getOrAccess().getRightAndParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
@@ -919,23 +935,41 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=PrimaryComparison_PrimaryComparisonExpr_1_0 op=SecondaryComparisonOp right=SecondaryComparison)
+	 *     (expression=SqlExpression (asc?='asc' | desc?='desc')?)
 	 */
-	protected void sequence_PrimaryComparison(EObject context, PrimaryComparisonExpr semanticObject) {
+	protected void sequence_OrderingTerm(EObject context, OrderingTerm semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=PrimaryComparison_PrimaryComparison_1_0 op=SecondaryComparisonOp right=SecondaryComparison)
+	 */
+	protected void sequence_PrimaryComparison(EObject context, PrimaryComparison semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__OP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__OP));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__OP));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.PRIMARY_COMPARISON__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getPrimaryComparisonAccess().getPrimaryComparisonLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getPrimaryComparisonAccess().getOpSecondaryComparisonOpParserRuleCall_1_1_0(), semanticObject.getOp());
 		feeder.accept(grammarAccess.getPrimaryComparisonAccess().getRightSecondaryComparisonParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (caseExpression=SqlExpression? cases+=Case cases+=Case* elseExpression=SqlExpression?)
+	 */
+	protected void sequence_PrimaryExpression(EObject context, CaseExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -998,7 +1032,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (expression=Or name=ID?)
+	 *     (expression=SqlExpression name=ID?)
 	 */
 	protected void sequence_ResultColumn(EObject context, ResultColumnExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1007,20 +1041,20 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=SecondaryComparison_SecondaryComparisonExpr_1_0 op=PrimaryComparisonOp right=Division)
+	 *     (left=SecondaryComparison_SecondaryComparison_1_0 op=PrimaryComparisonOp right=Division)
 	 */
-	protected void sequence_SecondaryComparison(EObject context, SecondaryComparisonExpr semanticObject) {
+	protected void sequence_SecondaryComparison(EObject context, SecondaryComparison semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__OP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__OP));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__OP));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SECONDARY_COMPARISON__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getSecondaryComparisonAccess().getSecondaryComparisonLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getSecondaryComparisonAccess().getOpPrimaryComparisonOpParserRuleCall_1_1_0(), semanticObject.getOp());
 		feeder.accept(grammarAccess.getSecondaryComparisonAccess().getRightDivisionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
@@ -1029,7 +1063,13 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     ((distinct?='distinct' | all?='all')? resultColumns+=ResultColumn resultColumns+=ResultColumn* source=JoinSource?)
+	 *     (
+	 *         (distinct?='distinct' | all?='all')? 
+	 *         resultColumns+=ResultColumn 
+	 *         resultColumns+=ResultColumn* 
+	 *         source=JoinSource? 
+	 *         (groupByExpressions+=SqlExpression groupByExpressions+=SqlExpression*)?
+	 *     )
 	 */
 	protected void sequence_SelectCore(EObject context, SelectCore semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1038,17 +1078,10 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     core=SelectCore
+	 *     (core=SelectCore (orderingTerms+=OrderingTerm orderingTerms+=OrderingTerm*)?)
 	 */
 	protected void sequence_SelectStatement(EObject context, SelectStatement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT_STATEMENT__CORE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT_STATEMENT__CORE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSelectStatementAccess().getCoreSelectCoreParserRuleCall_0(), semanticObject.getCore());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1090,6 +1123,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 */
 	protected void sequence_SingleSource(EObject context, SingleSourceTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     root=Or
+	 */
+	protected void sequence_SqlExpression(EObject context, SqlExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SQL_EXPRESSION__ROOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SQL_EXPRESSION__ROOT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSqlExpressionAccess().getRootOrParserRuleCall_0(), semanticObject.getRoot());
+		feeder.finish();
 	}
 	
 	
@@ -1142,18 +1191,18 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=Subtraction_SubtractionExpr_1_0 right=PrimaryExpression)
+	 *     (left=Subtraction_Subtraction_1_0 right=PrimaryExpression)
 	 */
-	protected void sequence_Subtraction(EObject context, SubtractionExpr semanticObject) {
+	protected void sequence_Subtraction(EObject context, Subtraction semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SUBTRACTION_EXPR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SUBTRACTION_EXPR__LEFT));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SUBTRACTION_EXPR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SUBTRACTION_EXPR__RIGHT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SUBTRACTION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SUBTRACTION__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SUBTRACTION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SUBTRACTION__RIGHT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSubtractionAccess().getSubtractionExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getSubtractionAccess().getSubtractionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getSubtractionAccess().getRightPrimaryExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}

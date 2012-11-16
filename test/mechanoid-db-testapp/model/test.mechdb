@@ -2,8 +2,14 @@ package com.mechanoid.db
 
 database TestDB {
 	migration {
-		create table table_a (
+		create table table_a ( 
 			_id integer primary key autoincrement
 		);
+		
+		create view qux as 
+			select *, (case when x=a then b end) from table_a as a
+			left join c on a=b or a=c and (b=c)
+			group by a,b,c=0
+			order by x desc;
 	}
 }

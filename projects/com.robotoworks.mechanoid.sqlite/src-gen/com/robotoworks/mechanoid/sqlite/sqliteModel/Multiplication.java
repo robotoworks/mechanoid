@@ -5,22 +5,22 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>And Expr</b></em>'.
+ * A representation of the model object '<em><b>Multiplication</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getAndExpr()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getMultiplication()
  * @model
  * @generated
  */
-public interface AndExpr extends Expression
+public interface Multiplication extends Expression
 {
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -32,14 +32,14 @@ public interface AndExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getAndExpr_Left()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getMultiplication_Left()
    * @model containment="true"
    * @generated
    */
   Expression getLeft();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -58,14 +58,14 @@ public interface AndExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getAndExpr_Right()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getMultiplication_Right()
    * @model containment="true"
    * @generated
    */
   Expression getRight();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.
@@ -74,4 +74,4 @@ public interface AndExpr extends Expression
    */
   void setRight(Expression value);
 
-} // AndExpr
+} // Multiplication

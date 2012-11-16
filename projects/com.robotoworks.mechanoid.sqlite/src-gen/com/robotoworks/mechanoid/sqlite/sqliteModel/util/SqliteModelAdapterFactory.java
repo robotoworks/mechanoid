@@ -100,9 +100,19 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createMigrationBlockAdapter();
       }
       @Override
+      public Adapter caseSqlExpression(SqlExpression object)
+      {
+        return createSqlExpressionAdapter();
+      }
+      @Override
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseCase(Case object)
+      {
+        return createCaseAdapter();
       }
       @Override
       public Adapter caseStatment(Statment object)
@@ -155,6 +165,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createSelectStatementAdapter();
       }
       @Override
+      public Adapter caseOrderingTerm(OrderingTerm object)
+      {
+        return createOrderingTermAdapter();
+      }
+      @Override
       public Adapter caseSelectCore(SelectCore object)
       {
         return createSelectCoreAdapter();
@@ -190,44 +205,44 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createLiteralValueAdapter();
       }
       @Override
-      public Adapter caseOrExpr(OrExpr object)
+      public Adapter caseOr(Or object)
       {
-        return createOrExprAdapter();
+        return createOrAdapter();
       }
       @Override
-      public Adapter caseAndExpr(AndExpr object)
+      public Adapter caseAnd(And object)
       {
-        return createAndExprAdapter();
+        return createAndAdapter();
       }
       @Override
-      public Adapter casePrimaryComparisonExpr(PrimaryComparisonExpr object)
+      public Adapter casePrimaryComparison(PrimaryComparison object)
       {
-        return createPrimaryComparisonExprAdapter();
+        return createPrimaryComparisonAdapter();
       }
       @Override
-      public Adapter caseSecondaryComparisonExpr(SecondaryComparisonExpr object)
+      public Adapter caseSecondaryComparison(SecondaryComparison object)
       {
-        return createSecondaryComparisonExprAdapter();
+        return createSecondaryComparisonAdapter();
       }
       @Override
-      public Adapter caseDivisionExpr(DivisionExpr object)
+      public Adapter caseDivision(Division object)
       {
-        return createDivisionExprAdapter();
+        return createDivisionAdapter();
       }
       @Override
-      public Adapter caseMultiplicationExpr(MultiplicationExpr object)
+      public Adapter caseMultiplication(Multiplication object)
       {
-        return createMultiplicationExprAdapter();
+        return createMultiplicationAdapter();
       }
       @Override
-      public Adapter caseAdditionExpr(AdditionExpr object)
+      public Adapter caseAddition(Addition object)
       {
-        return createAdditionExprAdapter();
+        return createAdditionAdapter();
       }
       @Override
-      public Adapter caseSubtractionExpr(SubtractionExpr object)
+      public Adapter caseSubtraction(Subtraction object)
       {
-        return createSubtractionExprAdapter();
+        return createSubtractionAdapter();
       }
       @Override
       public Adapter caseColumnLiteral(ColumnLiteral object)
@@ -238,6 +253,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLiteral(Literal object)
       {
         return createLiteralAdapter();
+      }
+      @Override
+      public Adapter caseCaseExpression(CaseExpression object)
+      {
+        return createCaseExpressionAdapter();
       }
       @Override
       public Adapter caseCreateTableStatement(CreateTableStatement object)
@@ -447,6 +467,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression <em>Sql Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression
+   * @generated
+   */
+  public Adapter createSqlExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -457,6 +492,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Case <em>Case</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Case
+   * @generated
+   */
+  public Adapter createCaseAdapter()
   {
     return null;
   }
@@ -612,6 +662,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm <em>Ordering Term</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm
+   * @generated
+   */
+  public Adapter createOrderingTermAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore <em>Select Core</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -717,121 +782,121 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OrExpr <em>Or Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Or <em>Or</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.OrExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Or
    * @generated
    */
-  public Adapter createOrExprAdapter()
+  public Adapter createOrAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr <em>And Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.And <em>And</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.AndExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.And
    * @generated
    */
-  public Adapter createAndExprAdapter()
+  public Adapter createAndAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr <em>Primary Comparison Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison <em>Primary Comparison</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison
    * @generated
    */
-  public Adapter createPrimaryComparisonExprAdapter()
+  public Adapter createPrimaryComparisonAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparisonExpr <em>Secondary Comparison Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison <em>Secondary Comparison</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparisonExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison
    * @generated
    */
-  public Adapter createSecondaryComparisonExprAdapter()
+  public Adapter createSecondaryComparisonAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DivisionExpr <em>Division Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Division <em>Division</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DivisionExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Division
    * @generated
    */
-  public Adapter createDivisionExprAdapter()
+  public Adapter createDivisionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.MultiplicationExpr <em>Multiplication Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication <em>Multiplication</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.MultiplicationExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication
    * @generated
    */
-  public Adapter createMultiplicationExprAdapter()
+  public Adapter createMultiplicationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AdditionExpr <em>Addition Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Addition <em>Addition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.AdditionExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Addition
    * @generated
    */
-  public Adapter createAdditionExprAdapter()
+  public Adapter createAdditionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SubtractionExpr <em>Subtraction Expr</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction <em>Subtraction</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SubtractionExpr
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction
    * @generated
    */
-  public Adapter createSubtractionExprAdapter()
+  public Adapter createSubtractionAdapter()
   {
     return null;
   }
@@ -862,6 +927,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression <em>Case Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression
+   * @generated
+   */
+  public Adapter createCaseExpressionAdapter()
   {
     return null;
   }

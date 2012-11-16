@@ -4,7 +4,7 @@ SyntaxHighlighter.brushes.MechNet = function()
 {
 	var keywords = 'package client post put get delete params ' +
 				   'body response extends skip entity generate enum ' +
-				   'String boolean Date int long float double';
+				   'String boolean Date int long float double headers';
 
 	this.regexList = [
 			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,    		css: 'comments' },

@@ -70,7 +70,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.ACTION_BLOCK: return createActionBlock();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
+      case SqliteModelPackage.SQL_EXPRESSION: return createSqlExpression();
       case SqliteModelPackage.EXPRESSION: return createExpression();
+      case SqliteModelPackage.CASE: return createCase();
       case SqliteModelPackage.STATMENT: return createStatment();
       case SqliteModelPackage.TABLE_DECL: return createTableDecl();
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
@@ -81,6 +83,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
+      case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
       case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
@@ -88,16 +91,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
-      case SqliteModelPackage.OR_EXPR: return createOrExpr();
-      case SqliteModelPackage.AND_EXPR: return createAndExpr();
-      case SqliteModelPackage.PRIMARY_COMPARISON_EXPR: return createPrimaryComparisonExpr();
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR: return createSecondaryComparisonExpr();
-      case SqliteModelPackage.DIVISION_EXPR: return createDivisionExpr();
-      case SqliteModelPackage.MULTIPLICATION_EXPR: return createMultiplicationExpr();
-      case SqliteModelPackage.ADDITION_EXPR: return createAdditionExpr();
-      case SqliteModelPackage.SUBTRACTION_EXPR: return createSubtractionExpr();
+      case SqliteModelPackage.OR: return createOr();
+      case SqliteModelPackage.AND: return createAnd();
+      case SqliteModelPackage.PRIMARY_COMPARISON: return createPrimaryComparison();
+      case SqliteModelPackage.SECONDARY_COMPARISON: return createSecondaryComparison();
+      case SqliteModelPackage.DIVISION: return createDivision();
+      case SqliteModelPackage.MULTIPLICATION: return createMultiplication();
+      case SqliteModelPackage.ADDITION: return createAddition();
+      case SqliteModelPackage.SUBTRACTION: return createSubtraction();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
+      case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
@@ -223,10 +227,32 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SqlExpression createSqlExpression()
+  {
+    SqlExpressionImpl sqlExpression = new SqlExpressionImpl();
+    return sqlExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Case createCase()
+  {
+    CaseImpl case_ = new CaseImpl();
+    return case_;
   }
 
   /**
@@ -344,6 +370,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public OrderingTerm createOrderingTerm()
+  {
+    OrderingTermImpl orderingTerm = new OrderingTermImpl();
+    return orderingTerm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SelectCore createSelectCore()
   {
     SelectCoreImpl selectCore = new SelectCoreImpl();
@@ -421,10 +458,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public OrExpr createOrExpr()
+  public Or createOr()
   {
-    OrExprImpl orExpr = new OrExprImpl();
-    return orExpr;
+    OrImpl or = new OrImpl();
+    return or;
   }
 
   /**
@@ -432,10 +469,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AndExpr createAndExpr()
+  public And createAnd()
   {
-    AndExprImpl andExpr = new AndExprImpl();
-    return andExpr;
+    AndImpl and = new AndImpl();
+    return and;
   }
 
   /**
@@ -443,10 +480,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PrimaryComparisonExpr createPrimaryComparisonExpr()
+  public PrimaryComparison createPrimaryComparison()
   {
-    PrimaryComparisonExprImpl primaryComparisonExpr = new PrimaryComparisonExprImpl();
-    return primaryComparisonExpr;
+    PrimaryComparisonImpl primaryComparison = new PrimaryComparisonImpl();
+    return primaryComparison;
   }
 
   /**
@@ -454,10 +491,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public SecondaryComparisonExpr createSecondaryComparisonExpr()
+  public SecondaryComparison createSecondaryComparison()
   {
-    SecondaryComparisonExprImpl secondaryComparisonExpr = new SecondaryComparisonExprImpl();
-    return secondaryComparisonExpr;
+    SecondaryComparisonImpl secondaryComparison = new SecondaryComparisonImpl();
+    return secondaryComparison;
   }
 
   /**
@@ -465,10 +502,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public DivisionExpr createDivisionExpr()
+  public Division createDivision()
   {
-    DivisionExprImpl divisionExpr = new DivisionExprImpl();
-    return divisionExpr;
+    DivisionImpl division = new DivisionImpl();
+    return division;
   }
 
   /**
@@ -476,10 +513,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public MultiplicationExpr createMultiplicationExpr()
+  public Multiplication createMultiplication()
   {
-    MultiplicationExprImpl multiplicationExpr = new MultiplicationExprImpl();
-    return multiplicationExpr;
+    MultiplicationImpl multiplication = new MultiplicationImpl();
+    return multiplication;
   }
 
   /**
@@ -487,10 +524,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AdditionExpr createAdditionExpr()
+  public Addition createAddition()
   {
-    AdditionExprImpl additionExpr = new AdditionExprImpl();
-    return additionExpr;
+    AdditionImpl addition = new AdditionImpl();
+    return addition;
   }
 
   /**
@@ -498,10 +535,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public SubtractionExpr createSubtractionExpr()
+  public Subtraction createSubtraction()
   {
-    SubtractionExprImpl subtractionExpr = new SubtractionExprImpl();
-    return subtractionExpr;
+    SubtractionImpl subtraction = new SubtractionImpl();
+    return subtraction;
   }
 
   /**
@@ -524,6 +561,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     LiteralImpl literal = new LiteralImpl();
     return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CaseExpression createCaseExpression()
+  {
+    CaseExpressionImpl caseExpression = new CaseExpressionImpl();
+    return caseExpression;
   }
 
   /**

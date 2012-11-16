@@ -39,7 +39,14 @@
     <genClasses ecoreClass="SqliteModel.ecore#//MigrationBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//MigrationBlock/statements"/>
     </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//SqlExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SqlExpression/root"/>
+    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//Expression"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Case">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Case/whenExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Case/thenExpression"/>
+    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//Statment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//Statment/name"/>
     </genClasses>
@@ -66,12 +73,19 @@
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SelectStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/core"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/orderingTerms"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//OrderingTerm">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//OrderingTerm/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//OrderingTerm/asc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//OrderingTerm/desc"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SelectCore">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SelectCore/distinct"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SelectCore/all"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/resultColumns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/groupByExpressions"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//JoinSource">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//JoinSource/source"/>
@@ -92,45 +106,50 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ConflictClause/resolution"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//LiteralValue"/>
-    <genClasses ecoreClass="SqliteModel.ecore#//OrExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//OrExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//OrExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Or">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Or/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Or/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//AndExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AndExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AndExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//And">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//And/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//And/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//PrimaryComparisonExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//PrimaryComparisonExpr/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//PrimaryComparisonExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//PrimaryComparisonExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//PrimaryComparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//PrimaryComparison/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//PrimaryComparison/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//PrimaryComparison/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//SecondaryComparisonExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SecondaryComparisonExpr/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SecondaryComparisonExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SecondaryComparisonExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//SecondaryComparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SecondaryComparison/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SecondaryComparison/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SecondaryComparison/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//DivisionExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DivisionExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DivisionExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Division">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Division/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Division/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//MultiplicationExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//MultiplicationExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//MultiplicationExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Multiplication">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Multiplication/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Multiplication/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//AdditionExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AdditionExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AdditionExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Addition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Addition/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Addition/right"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//SubtractionExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SubtractionExpr/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SubtractionExpr/right"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Subtraction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Subtraction/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Subtraction/right"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ColumnLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ColumnLiteral/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//Literal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Literal/literalValue"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//CaseExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CaseExpression/caseExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CaseExpression/cases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CaseExpression/elseExpression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//CreateTableStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateTableStatement/columnDefs"/>

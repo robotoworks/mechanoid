@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ExpressionDefaultValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +37,7 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
    * @generated
    * @ordered
    */
-  protected Expression expression;
+  protected SqlExpression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getExpression()
+  public SqlExpression getExpression()
   {
     return expression;
   }
@@ -75,9 +75,9 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
   {
-    Expression oldExpression = expression;
+    SqlExpression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -92,7 +92,7 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(Expression newExpression)
+  public void setExpression(SqlExpression newExpression)
   {
     if (newExpression != expression)
     {
@@ -151,7 +151,7 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
     switch (featureID)
     {
       case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE__EXPRESSION:
-        setExpression((Expression)newValue);
+        setExpression((SqlExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,7 +168,7 @@ public class ExpressionDefaultValueImpl extends DefaultValueImpl implements Expr
     switch (featureID)
     {
       case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE__EXPRESSION:
-        setExpression((Expression)null);
+        setExpression((SqlExpression)null);
         return;
     }
     super.eUnset(featureID);

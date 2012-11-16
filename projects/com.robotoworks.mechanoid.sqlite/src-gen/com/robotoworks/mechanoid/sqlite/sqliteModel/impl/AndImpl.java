@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.And;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.OrExpr;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,19 +16,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Or Expr</b></em>'.
+ * An implementation of the model object '<em><b>And</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrExprImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrExprImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OrExprImpl extends ExpressionImpl implements OrExpr
+public class AndImpl extends ExpressionImpl implements And
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -55,7 +55,7 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OrExprImpl()
+  protected AndImpl()
   {
     super();
   }
@@ -68,7 +68,7 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.OR_EXPR;
+    return SqliteModelPackage.Literals.AND;
   }
 
   /**
@@ -92,7 +92,7 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OR_EXPR__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -109,14 +109,14 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.OR_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.OR_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OR_EXPR__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -140,7 +140,7 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OR_EXPR__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,14 +157,14 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.OR_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.OR_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OR_EXPR__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__RIGHT, newRight, newRight));
   }
 
   /**
@@ -177,9 +177,9 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OR_EXPR__LEFT:
+      case SqliteModelPackage.AND__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.OR_EXPR__RIGHT:
+      case SqliteModelPackage.AND__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -195,9 +195,9 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OR_EXPR__LEFT:
+      case SqliteModelPackage.AND__LEFT:
         return getLeft();
-      case SqliteModelPackage.OR_EXPR__RIGHT:
+      case SqliteModelPackage.AND__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -213,10 +213,10 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OR_EXPR__LEFT:
+      case SqliteModelPackage.AND__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.OR_EXPR__RIGHT:
+      case SqliteModelPackage.AND__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -233,10 +233,10 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OR_EXPR__LEFT:
+      case SqliteModelPackage.AND__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.OR_EXPR__RIGHT:
+      case SqliteModelPackage.AND__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -253,12 +253,12 @@ public class OrExprImpl extends ExpressionImpl implements OrExpr
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OR_EXPR__LEFT:
+      case SqliteModelPackage.AND__LEFT:
         return left != null;
-      case SqliteModelPackage.OR_EXPR__RIGHT:
+      case SqliteModelPackage.AND__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //OrExprImpl
+} //AndImpl

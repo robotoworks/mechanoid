@@ -26,43 +26,53 @@ MigrationBlock:
 /*
  * Expressions
  */
- 
+
+SqlExpression:
+	root=Or
+;
 Or returns Expression:
-	And ({OrExpr.left=current} 'or' right=And)*
+	And ({Or.left=current} 'or' right=And)*
 ;
 
 And returns Expression:
-	PrimaryComparison ({AndExpr.left=current} 'and' right=PrimaryComparison)*
+	PrimaryComparison ({And.left=current} 'and' right=PrimaryComparison)*
 ;
 
 PrimaryComparison returns Expression:
-	SecondaryComparison ({PrimaryComparisonExpr.left=current} op=SecondaryComparisonOp right=SecondaryComparison)*
+	SecondaryComparison ({PrimaryComparison.left=current} op=SecondaryComparisonOp right=SecondaryComparison)*
 ;
 
 SecondaryComparison returns Expression:
-	Division ({SecondaryComparisonExpr.left=current} op=PrimaryComparisonOp right=Division)*
+	Division ({SecondaryComparison.left=current} op=PrimaryComparisonOp right=Division)*
 ;
 
 Division returns Expression:
-	Multiplication ({DivisionExpr.left=current} '/' right=Multiplication)*
+	Multiplication ({Division.left=current} '/' right=Multiplication)*
 ;
 
 Multiplication returns Expression:
-	Addition ({MultiplicationExpr.left=current} '*' right=Addition)*
+	Addition ({Multiplication.left=current} '*' right=Addition)*
 ;
 
 Addition returns Expression:
-	Subtraction ({AdditionExpr.left=current} '+' right=Subtraction)*
+	Subtraction ({Addition.left=current} '+' right=Subtraction)*
 ;
 
 Subtraction returns Expression:
-	PrimaryExpression ({SubtractionExpr.left=current} '-' right=PrimaryExpression)*
+	PrimaryExpression ({Subtraction.left=current} '-' right=PrimaryExpression)*
 ;
 
 PrimaryExpression returns Expression:
 	{ColumnLiteral} name=FQN |
 	{Literal} literalValue=LiteralValue |
-	'(' Or ')'
+	'(' SqlExpression ')' |
+	{CaseExpression} 'case' caseExpression=SqlExpression? 
+			cases+=Case cases+=Case*
+			('else' elseExpression=SqlExpression)? 'end'
+;
+
+Case:
+'when' whenExpression=SqlExpression 'then' thenExpression=SqlExpression
 ;
 
 PrimaryComparisonOp:
@@ -114,7 +124,7 @@ ColumnConstraint:
 
 DefaultValue:
 	{LiteralDefaultValue} literal=LiteralValue |
-	{ExpressionDefaultValue} '(' expression=Or ')'
+	{ExpressionDefaultValue} '(' expression=SqlExpression ')'
 ;
 TableConstraint:
 	UniqueTableContraint /* | PrimaryKeyTableConstraint*/;
@@ -135,11 +145,17 @@ enum ConflictResolution:
 
 SelectStatement:
 	core=SelectCore
+	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+;
+
+OrderingTerm:
+	expression=SqlExpression (asc?='asc'|desc?='desc')?
 ;
 
 SelectCore:
 	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
 	('from' source=JoinSource)?
+	('group' 'by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
 ;
 
 JoinSource:
@@ -154,12 +170,12 @@ SingleSource:
 
 JoinStatement:
 	{JoinStatement}
-	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=Or;
+	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 ResultColumn:
 	{ResultColumnAll} '*' |
 	{ResultColumnAllWithTableRef} tableRef=ID'.' '*' |
-	{ResultColumnExpression} expression=Or ('as' name=ID)?
+	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
 ;
 
 ConflictClause:

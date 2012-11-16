@@ -5,23 +5,23 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Primary Comparison Expr</b></em>'.
+ * A representation of the model object '<em><b>Primary Comparison</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getOp <em>Op</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getOp <em>Op</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparisonExpr()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparison()
  * @model
  * @generated
  */
-public interface PrimaryComparisonExpr extends Expression
+public interface PrimaryComparison extends Expression
 {
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -33,14 +33,14 @@ public interface PrimaryComparisonExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparisonExpr_Left()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparison_Left()
    * @model containment="true"
    * @generated
    */
   Expression getLeft();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -59,14 +59,14 @@ public interface PrimaryComparisonExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Op</em>' attribute.
    * @see #setOp(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparisonExpr_Op()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparison_Op()
    * @model
    * @generated
    */
   String getOp();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getOp <em>Op</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getOp <em>Op</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Op</em>' attribute.
@@ -85,14 +85,14 @@ public interface PrimaryComparisonExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparisonExpr_Right()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryComparison_Right()
    * @model containment="true"
    * @generated
    */
   Expression getRight();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparisonExpr#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.
@@ -101,4 +101,4 @@ public interface PrimaryComparisonExpr extends Expression
    */
   void setRight(Expression value);
 
-} // PrimaryComparisonExpr
+} // PrimaryComparison

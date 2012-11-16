@@ -5,6 +5,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getResultColumns <em>Result Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,6 +102,16 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * @ordered
    */
   protected JoinSource source;
+
+  /**
+   * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGroupByExpressions()
+   * @generated
+   * @ordered
+   */
+  protected EList<SqlExpression> groupByExpressions;
 
   /**
    * <!-- begin-user-doc -->
@@ -235,6 +247,20 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<SqlExpression> getGroupByExpressions()
+  {
+    if (groupByExpressions == null)
+    {
+      groupByExpressions = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS);
+    }
+    return groupByExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -244,6 +270,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return basicSetSource(null, msgs);
+      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
+        return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -266,6 +294,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return getResultColumns();
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return getSource();
+      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
+        return getGroupByExpressions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -294,6 +324,10 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         setSource((JoinSource)newValue);
         return;
+      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
+        getGroupByExpressions().clear();
+        getGroupByExpressions().addAll((Collection<? extends SqlExpression>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -320,6 +354,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         setSource((JoinSource)null);
         return;
+      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
+        getGroupByExpressions().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -342,6 +379,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return resultColumns != null && !resultColumns.isEmpty();
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return source != null;
+      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
+        return groupByExpressions != null && !groupByExpressions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

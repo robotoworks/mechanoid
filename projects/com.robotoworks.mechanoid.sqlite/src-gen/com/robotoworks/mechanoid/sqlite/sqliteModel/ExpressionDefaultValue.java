@@ -30,12 +30,12 @@ public interface ExpressionDefaultValue extends DefaultValue
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(Expression)
+   * @see #setExpression(SqlExpression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getExpressionDefaultValue_Expression()
    * @model containment="true"
    * @generated
    */
-  Expression getExpression();
+  SqlExpression getExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExpressionDefaultValue#getExpression <em>Expression</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface ExpressionDefaultValue extends DefaultValue
    * @see #getExpression()
    * @generated
    */
-  void setExpression(Expression value);
+  void setExpression(SqlExpression value);
 
 } // ExpressionDefaultValue

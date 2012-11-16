@@ -16,6 +16,7 @@ public abstract class AbstractTestDBOpenHelper extends MechanoidSQLiteOpenHelper
 
 	public interface Tables {
 		String TABLE_A = "table_a";
+		String QUX = "qux";
 	}
 
 	public AbstractTestDBOpenHelper(Context context) {
@@ -29,6 +30,14 @@ public abstract class AbstractTestDBOpenHelper extends MechanoidSQLiteOpenHelper
 			"_id integer primary key autoincrement " +
 			") "
 		);
+		db.execSQL(
+			"create view qux as " +
+			"select *, (case when x=a then b end) from table_a as a " +
+			"left join c on a=b or a=c and (b=c) " +
+			"group by a,b,c=0 " +
+			"order by x desc "
+		);
+		
 	}
 
 	@Override

@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Addition;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparisonExpr;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,20 +16,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Secondary Comparison Expr</b></em>'.
+ * An implementation of the model object '<em><b>Addition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonExprImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonExprImpl#getOp <em>Op</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonExprImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SecondaryComparisonExprImpl extends ExpressionImpl implements SecondaryComparisonExpr
+public class AdditionImpl extends ExpressionImpl implements Addition
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -40,26 +39,6 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
    * @ordered
    */
   protected Expression left;
-
-  /**
-   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected static final String OP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOp()
-   * @generated
-   * @ordered
-   */
-  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -76,7 +55,7 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SecondaryComparisonExprImpl()
+  protected AdditionImpl()
   {
     super();
   }
@@ -89,7 +68,7 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.SECONDARY_COMPARISON_EXPR;
+    return SqliteModelPackage.Literals.ADDITION;
   }
 
   /**
@@ -113,7 +92,7 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ADDITION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -130,37 +109,14 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ADDITION__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ADDITION__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getOp()
-  {
-    return op;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOp(String newOp)
-  {
-    String oldOp = op;
-    op = newOp;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON_EXPR__OP, oldOp, op));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ADDITION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -184,7 +140,7 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ADDITION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -201,14 +157,14 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ADDITION__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ADDITION__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ADDITION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -221,9 +177,9 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.ADDITION__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.ADDITION__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -239,11 +195,9 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.ADDITION__LEFT:
         return getLeft();
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__OP:
-        return getOp();
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.ADDITION__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -259,13 +213,10 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.ADDITION__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__OP:
-        setOp((String)newValue);
-        return;
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.ADDITION__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -282,13 +233,10 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.ADDITION__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__OP:
-        setOp(OP_EDEFAULT);
-        return;
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.ADDITION__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -305,31 +253,12 @@ public class SecondaryComparisonExprImpl extends ExpressionImpl implements Secon
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__LEFT:
+      case SqliteModelPackage.ADDITION__LEFT:
         return left != null;
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__OP:
-        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
-      case SqliteModelPackage.SECONDARY_COMPARISON_EXPR__RIGHT:
+      case SqliteModelPackage.ADDITION__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (op: ");
-    result.append(op);
-    result.append(')');
-    return result.toString();
-  }
-
-} //SecondaryComparisonExprImpl
+} //AdditionImpl
