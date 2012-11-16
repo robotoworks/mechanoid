@@ -101,7 +101,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SUBTRACTION: return createSubtraction();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
+      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
       case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
+      case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
@@ -568,10 +570,32 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SelectStatementExpression createSelectStatementExpression()
+  {
+    SelectStatementExpressionImpl selectStatementExpression = new SelectStatementExpressionImpl();
+    return selectStatementExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CaseExpression createCaseExpression()
   {
     CaseExpressionImpl caseExpression = new CaseExpressionImpl();
     return caseExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Function createFunction()
+  {
+    FunctionImpl function = new FunctionImpl();
+    return function;
   }
 
   /**
