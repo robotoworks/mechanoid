@@ -9,7 +9,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -30,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getCore <em>Core</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getCoreStatements <em>Core Statements</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getOrderingTerms <em>Ordering Terms</em>}</li>
  * </ul>
  * </p>
@@ -40,14 +38,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class SelectStatementImpl extends MinimalEObjectImpl.Container implements SelectStatement
 {
   /**
-   * The cached value of the '{@link #getCore() <em>Core</em>}' containment reference.
+   * The cached value of the '{@link #getCoreStatements() <em>Core Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCore()
+   * @see #getCoreStatements()
    * @generated
    * @ordered
    */
-  protected SelectCore core;
+  protected EList<SelectCore> coreStatements;
 
   /**
    * The cached value of the '{@link #getOrderingTerms() <em>Ordering Terms</em>}' containment reference list.
@@ -85,47 +83,13 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectCore getCore()
+  public EList<SelectCore> getCoreStatements()
   {
-    return core;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCore(SelectCore newCore, NotificationChain msgs)
-  {
-    SelectCore oldCore = core;
-    core = newCore;
-    if (eNotificationRequired())
+    if (coreStatements == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__CORE, oldCore, newCore);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      coreStatements = new EObjectContainmentEList<SelectCore>(SelectCore.class, this, SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCore(SelectCore newCore)
-  {
-    if (newCore != core)
-    {
-      NotificationChain msgs = null;
-      if (core != null)
-        msgs = ((InternalEObject)core).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__CORE, null, msgs);
-      if (newCore != null)
-        msgs = ((InternalEObject)newCore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__CORE, null, msgs);
-      msgs = basicSetCore(newCore, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__CORE, newCore, newCore));
+    return coreStatements;
   }
 
   /**
@@ -152,8 +116,8 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_STATEMENT__CORE:
-        return basicSetCore(null, msgs);
+      case SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS:
+        return ((InternalEList<?>)getCoreStatements()).basicRemove(otherEnd, msgs);
       case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
         return ((InternalEList<?>)getOrderingTerms()).basicRemove(otherEnd, msgs);
     }
@@ -170,8 +134,8 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_STATEMENT__CORE:
-        return getCore();
+      case SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS:
+        return getCoreStatements();
       case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
         return getOrderingTerms();
     }
@@ -189,8 +153,9 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_STATEMENT__CORE:
-        setCore((SelectCore)newValue);
+      case SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS:
+        getCoreStatements().clear();
+        getCoreStatements().addAll((Collection<? extends SelectCore>)newValue);
         return;
       case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
         getOrderingTerms().clear();
@@ -210,8 +175,8 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_STATEMENT__CORE:
-        setCore((SelectCore)null);
+      case SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS:
+        getCoreStatements().clear();
         return;
       case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
         getOrderingTerms().clear();
@@ -230,8 +195,8 @@ public class SelectStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_STATEMENT__CORE:
-        return core != null;
+      case SqliteModelPackage.SELECT_STATEMENT__CORE_STATEMENTS:
+        return coreStatements != null && !coreStatements.isEmpty();
       case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
         return orderingTerms != null && !orderingTerms.isEmpty();
     }

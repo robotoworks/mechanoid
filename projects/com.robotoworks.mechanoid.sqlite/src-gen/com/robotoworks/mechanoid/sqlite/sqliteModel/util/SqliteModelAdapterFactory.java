@@ -165,6 +165,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createSelectStatementAdapter();
       }
       @Override
+      public Adapter caseSelect(Select object)
+      {
+        return createSelectAdapter();
+      }
+      @Override
       public Adapter caseOrderingTerm(OrderingTerm object)
       {
         return createOrderingTermAdapter();
@@ -667,6 +672,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSelectStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Select <em>Select</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Select
+   * @generated
+   */
+  public Adapter createSelectAdapter()
   {
     return null;
   }

@@ -39,7 +39,7 @@ class ContentProviderContractGenerator {
 
 				«FOR vw :  snapshot.statements.filter(typeof(CreateViewStatement))»
 				interface «vw.name.pascalize»Columns {
-					«FOR col : vw.selectStatement.core.resultColumns»
+					«FOR col : vw.selectStatement.coreStatements.get(0).resultColumns»
 					«generateInterfaceMemberForResultColumn(col)»
 					«ENDFOR»
 				}

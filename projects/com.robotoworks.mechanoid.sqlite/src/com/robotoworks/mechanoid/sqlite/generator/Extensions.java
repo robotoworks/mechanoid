@@ -27,7 +27,7 @@ public class Extensions {
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateViewStatement stmt) {
-		EList<ResultColumn> resultColumns = stmt.getSelectStatement().getCore().getResultColumns();
+		EList<ResultColumn> resultColumns = stmt.getSelectStatement().getCoreStatements().get(0).getResultColumns();
 		for(ResultColumn col : resultColumns) {
 			if(col instanceof ResultColumnExpression) {
 				ResultColumnExpression expr = (ResultColumnExpression) col;

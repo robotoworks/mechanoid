@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -35,13 +34,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getResultColumns <em>Result Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getWhereExpression <em>Where Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SelectCoreImpl extends MinimalEObjectImpl.Container implements SelectCore
+public class SelectCoreImpl extends SelectImpl implements SelectCore
 {
   /**
    * The default value of the '{@link #isDistinct() <em>Distinct</em>}' attribute.
@@ -102,6 +102,16 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * @ordered
    */
   protected JoinSource source;
+
+  /**
+   * The cached value of the '{@link #getWhereExpression() <em>Where Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWhereExpression()
+   * @generated
+   * @ordered
+   */
+  protected SqlExpression whereExpression;
 
   /**
    * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
@@ -247,6 +257,54 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
+  public SqlExpression getWhereExpression()
+  {
+    return whereExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetWhereExpression(SqlExpression newWhereExpression, NotificationChain msgs)
+  {
+    SqlExpression oldWhereExpression = whereExpression;
+    whereExpression = newWhereExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, oldWhereExpression, newWhereExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWhereExpression(SqlExpression newWhereExpression)
+  {
+    if (newWhereExpression != whereExpression)
+    {
+      NotificationChain msgs = null;
+      if (whereExpression != null)
+        msgs = ((InternalEObject)whereExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, null, msgs);
+      if (newWhereExpression != null)
+        msgs = ((InternalEObject)newWhereExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, null, msgs);
+      msgs = basicSetWhereExpression(newWhereExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, newWhereExpression, newWhereExpression));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<SqlExpression> getGroupByExpressions()
   {
     if (groupByExpressions == null)
@@ -270,6 +328,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return basicSetSource(null, msgs);
+      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
+        return basicSetWhereExpression(null, msgs);
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
     }
@@ -294,6 +354,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return getResultColumns();
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return getSource();
+      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
+        return getWhereExpression();
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return getGroupByExpressions();
     }
@@ -323,6 +385,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return;
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         setSource((JoinSource)newValue);
+        return;
+      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
+        setWhereExpression((SqlExpression)newValue);
         return;
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         getGroupByExpressions().clear();
@@ -354,6 +419,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         setSource((JoinSource)null);
         return;
+      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
+        setWhereExpression((SqlExpression)null);
+        return;
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         getGroupByExpressions().clear();
         return;
@@ -379,6 +447,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return resultColumns != null && !resultColumns.isEmpty();
       case SqliteModelPackage.SELECT_CORE__SOURCE:
         return source != null;
+      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
+        return whereExpression != null;
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return groupByExpressions != null && !groupByExpressions.isEmpty();
     }

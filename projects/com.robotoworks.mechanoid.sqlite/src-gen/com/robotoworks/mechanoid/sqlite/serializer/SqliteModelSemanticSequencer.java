@@ -44,6 +44,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Select;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
@@ -435,8 +436,17 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
+			case SqliteModelPackage.SELECT:
+				if(context == grammarAccess.getSelectRule() ||
+				   context == grammarAccess.getSelectAccess().getSelectLeftAction_1_0()) {
+					sequence_Select(context, (Select) semanticObject); 
+					return; 
+				}
+				else break;
 			case SqliteModelPackage.SELECT_CORE:
-				if(context == grammarAccess.getSelectCoreRule()) {
+				if(context == grammarAccess.getSelectRule() ||
+				   context == grammarAccess.getSelectCoreRule() ||
+				   context == grammarAccess.getSelectAccess().getSelectLeftAction_1_0()) {
 					sequence_SelectCore(context, (SelectCore) semanticObject); 
 					return; 
 				}
@@ -1136,6 +1146,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *         resultColumns+=ResultColumn 
 	 *         resultColumns+=ResultColumn* 
 	 *         source=JoinSource? 
+	 *         whereExpression=SqlExpression? 
 	 *         (groupByExpressions+=SqlExpression groupByExpressions+=SqlExpression*)?
 	 *     )
 	 */
@@ -1146,10 +1157,32 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (core=SelectCore (orderingTerms+=OrderingTerm orderingTerms+=OrderingTerm*)?)
+	 *     (coreStatements+=SelectCore coreStatements+=SelectCore* (orderingTerms+=OrderingTerm orderingTerms+=OrderingTerm*)?)
 	 */
 	protected void sequence_SelectStatement(EObject context, SelectStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (left=Select_Select_1_0 compoundOperator=CompoundOperator right=SelectCore)
+	 */
+	protected void sequence_Select(EObject context, Select semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT__COMPOUND_OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT__COMPOUND_OPERATOR));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT__RIGHT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSelectAccess().getSelectLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getSelectAccess().getCompoundOperatorCompoundOperatorParserRuleCall_1_1_0(), semanticObject.getCompoundOperator());
+		feeder.accept(grammarAccess.getSelectAccess().getRightSelectCoreParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	

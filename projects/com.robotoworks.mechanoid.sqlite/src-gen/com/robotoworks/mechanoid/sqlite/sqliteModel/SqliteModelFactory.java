@@ -185,6 +185,15 @@ public interface SqliteModelFactory extends EFactory
   SelectStatement createSelectStatement();
 
   /**
+   * Returns a new object of class '<em>Select</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select</em>'.
+   * @generated
+   */
+  Select createSelect();
+
+  /**
    * Returns a new object of class '<em>Ordering Term</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
