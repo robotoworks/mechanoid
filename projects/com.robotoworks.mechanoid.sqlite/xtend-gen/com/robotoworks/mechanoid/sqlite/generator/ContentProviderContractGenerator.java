@@ -130,8 +130,9 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         {
           SelectStatement _selectStatement = vw.getSelectStatement();
-          SelectCore _core = _selectStatement.getCore();
-          EList<ResultColumn> _resultColumns = _core.getResultColumns();
+          EList<SelectCore> _coreStatements = _selectStatement.getCoreStatements();
+          SelectCore _get = _coreStatements.get(0);
+          EList<ResultColumn> _resultColumns = _get.getResultColumns();
           for(final ResultColumn col_1 : _resultColumns) {
             _builder.append("\t");
             _builder.append("\t");

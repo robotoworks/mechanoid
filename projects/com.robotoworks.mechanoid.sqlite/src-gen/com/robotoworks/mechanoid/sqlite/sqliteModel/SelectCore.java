@@ -4,8 +4,6 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Select Core</b></em>'.
@@ -18,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getResultColumns <em>Result Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getWhereExpression <em>Where Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getGroupByExpressions <em>Group By Expressions</em>}</li>
  * </ul>
  * </p>
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface SelectCore extends EObject
+public interface SelectCore extends Select
 {
   /**
    * Returns the value of the '<em><b>Distinct</b></em>' attribute.
@@ -121,6 +120,32 @@ public interface SelectCore extends EObject
    * @generated
    */
   void setSource(JoinSource value);
+
+  /**
+   * Returns the value of the '<em><b>Where Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Where Expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Where Expression</em>' containment reference.
+   * @see #setWhereExpression(SqlExpression)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectCore_WhereExpression()
+   * @model containment="true"
+   * @generated
+   */
+  SqlExpression getWhereExpression();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getWhereExpression <em>Where Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Where Expression</em>' containment reference.
+   * @see #getWhereExpression()
+   * @generated
+   */
+  void setWhereExpression(SqlExpression value);
 
   /**
    * Returns the value of the '<em><b>Group By Expressions</b></em>' containment reference list.

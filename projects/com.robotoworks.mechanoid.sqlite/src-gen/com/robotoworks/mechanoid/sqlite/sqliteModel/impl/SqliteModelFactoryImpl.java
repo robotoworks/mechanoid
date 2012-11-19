@@ -83,6 +83,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
+      case SqliteModelPackage.SELECT: return createSelect();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
@@ -365,6 +366,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     SelectStatementImpl selectStatement = new SelectStatementImpl();
     return selectStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Select createSelect()
+  {
+    SelectImpl select = new SelectImpl();
+    return select;
   }
 
   /**

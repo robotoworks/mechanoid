@@ -51,6 +51,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Select;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
@@ -209,6 +210,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass selectStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass selectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1003,7 +1011,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectStatement_Core()
+  public EReference getSelectStatement_CoreStatements()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -1016,6 +1024,46 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EReference getSelectStatement_OrderingTerms()
   {
     return (EReference)selectStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSelect()
+  {
+    return selectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelect_Left()
+  {
+    return (EReference)selectEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSelect_CompoundOperator()
+  {
+    return (EAttribute)selectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelect_Right()
+  {
+    return (EReference)selectEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1113,9 +1161,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSelectCore_GroupByExpressions()
+  public EReference getSelectCore_WhereExpression()
   {
     return (EReference)selectCoreEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCore_GroupByExpressions()
+  {
+    return (EReference)selectCoreEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -2346,8 +2404,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(indexedColumnEClass, INDEXED_COLUMN__DESC);
 
     selectStatementEClass = createEClass(SELECT_STATEMENT);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__CORE);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__CORE_STATEMENTS);
     createEReference(selectStatementEClass, SELECT_STATEMENT__ORDERING_TERMS);
+
+    selectEClass = createEClass(SELECT);
+    createEReference(selectEClass, SELECT__LEFT);
+    createEAttribute(selectEClass, SELECT__COMPOUND_OPERATOR);
+    createEReference(selectEClass, SELECT__RIGHT);
 
     orderingTermEClass = createEClass(ORDERING_TERM);
     createEReference(orderingTermEClass, ORDERING_TERM__EXPRESSION);
@@ -2359,6 +2422,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(selectCoreEClass, SELECT_CORE__ALL);
     createEReference(selectCoreEClass, SELECT_CORE__RESULT_COLUMNS);
     createEReference(selectCoreEClass, SELECT_CORE__SOURCE);
+    createEReference(selectCoreEClass, SELECT_CORE__WHERE_EXPRESSION);
     createEReference(selectCoreEClass, SELECT_CORE__GROUP_BY_EXPRESSIONS);
 
     joinSourceEClass = createEClass(JOIN_SOURCE);
@@ -2550,6 +2614,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     // Add supertypes to classes
     sqlExpressionEClass.getESuperTypes().add(this.getExpression());
     uniqueTableContraintEClass.getESuperTypes().add(this.getTableConstraint());
+    selectCoreEClass.getESuperTypes().add(this.getSelect());
     orEClass.getESuperTypes().add(this.getExpression());
     andEClass.getESuperTypes().add(this.getExpression());
     primaryComparisonEClass.getESuperTypes().add(this.getExpression());
@@ -2645,8 +2710,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getIndexedColumn_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectStatementEClass, SelectStatement.class, "SelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSelectStatement_Core(), this.getSelectCore(), null, "core", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_CoreStatements(), this.getSelectCore(), null, "coreStatements", null, 0, -1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectStatement_OrderingTerms(), this.getOrderingTerm(), null, "orderingTerms", null, 0, -1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(selectEClass, Select.class, "Select", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSelect_Left(), this.getSelectCore(), null, "left", null, 0, 1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSelect_CompoundOperator(), ecorePackage.getEString(), "compoundOperator", null, 0, 1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelect_Right(), this.getSelectCore(), null, "right", null, 0, 1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orderingTermEClass, OrderingTerm.class, "OrderingTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOrderingTerm_Expression(), this.getSqlExpression(), null, "expression", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2658,6 +2728,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getSelectCore_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_ResultColumns(), this.getResultColumn(), null, "resultColumns", null, 0, -1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_Source(), this.getJoinSource(), null, "source", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCore_WhereExpression(), this.getSqlExpression(), null, "whereExpression", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_GroupByExpressions(), this.getSqlExpression(), null, "groupByExpressions", null, 0, -1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(joinSourceEClass, JoinSource.class, "JoinSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

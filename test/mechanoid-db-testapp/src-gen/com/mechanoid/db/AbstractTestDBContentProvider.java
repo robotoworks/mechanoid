@@ -20,10 +20,14 @@ import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 import com.mechanoid.db.TestDBContract.TableA;
 import com.mechanoid.db.TestDBContract.Qux;
 
+import com.mechanoid.db.TestDBContract.Meh;
+
 
 import com.mechanoid.db.actions.TableAActions;
 import com.mechanoid.db.actions.TableAByIdActions;
 import com.mechanoid.db.actions.QuxActions;
+import com.mechanoid.db.actions.MehActions;
+import com.mechanoid.db.actions.MehByIdActions;
 public abstract class AbstractTestDBContentProvider extends MechanoidContentProvider {
 
     private static final UriMatcher sUriMatcher;
@@ -34,8 +38,10 @@ public abstract class AbstractTestDBContentProvider extends MechanoidContentProv
 	private static final int TABLE_A_ID = 1;
 
 	private static final int QUX = 2;
+	private static final int MEH = 3;
+	private static final int MEH_ID = 4;
 	
-	public static final int NUM_URI_MATCHERS = 3;
+	public static final int NUM_URI_MATCHERS = 5;
 
 	static {
 		sUriMatcher = buildUriMatcher();
@@ -45,12 +51,16 @@ public abstract class AbstractTestDBContentProvider extends MechanoidContentProv
 		sContentTypes[TABLE_A] = TableA.CONTENT_TYPE;
 		sContentTypes[TABLE_A_ID] = TableA.ITEM_CONTENT_TYPE;
 		sContentTypes[QUX] = Qux.CONTENT_TYPE;
+		sContentTypes[MEH] = Meh.CONTENT_TYPE;
+		sContentTypes[MEH_ID] = Meh.ITEM_CONTENT_TYPE;
 		
 		sActions = new Class<?>[NUM_URI_MATCHERS];
 
 		sActions[TABLE_A] = TableAActions.class;
 		sActions[TABLE_A_ID] = TableAByIdActions.class;
 		sActions[QUX] = QuxActions.class;
+		sActions[MEH] = MehActions.class;
+		sActions[MEH_ID] = MehByIdActions.class;
 		
 		
 	}
@@ -65,6 +75,8 @@ public abstract class AbstractTestDBContentProvider extends MechanoidContentProv
 
 		// Views
 		matcher.addURI(authority, "qux", QUX);
+		matcher.addURI(authority, "meh", MEH);
+		matcher.addURI(authority, "meh/#", MEH_ID);
 
 		// User Actions
         return matcher;

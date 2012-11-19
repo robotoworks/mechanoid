@@ -23,9 +23,21 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if(ruleCall.getRule() == grammarAccess.getCompoundOperatorRule())
+			return getCompoundOperatorToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * CompoundOperator:
+	 * 	'union all' | 'union' | 'intersect' | 'except'
+	 * ;
+	 */
+	protected String getCompoundOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "union all";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

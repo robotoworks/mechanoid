@@ -200,6 +200,13 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.SELECT:
+      {
+        Select select = (Select)theEObject;
+        T result = caseSelect(select);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.ORDERING_TERM:
       {
         OrderingTerm orderingTerm = (OrderingTerm)theEObject;
@@ -211,6 +218,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         SelectCore selectCore = (SelectCore)theEObject;
         T result = caseSelectCore(selectCore);
+        if (result == null) result = caseSelect(selectCore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -824,6 +832,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectStatement(SelectStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelect(Select object)
   {
     return null;
   }
