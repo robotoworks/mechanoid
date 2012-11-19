@@ -148,8 +148,16 @@ enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;
 
 SelectStatement:
-	core=SelectCore
+	coreStatements+=SelectCore (CompoundOperator coreStatements+=SelectCore)*
 	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+;
+
+Select:
+	SelectCore ({Select.left=current} compoundOperator=CompoundOperator right=SelectCore)*
+;
+
+CompoundOperator:
+	'union all' | 'union' | 'intersect' | 'except'
 ;
 
 OrderingTerm:
@@ -159,6 +167,7 @@ OrderingTerm:
 SelectCore:
 	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
 	('from' source=JoinSource)?
+	('where' whereExpression=SqlExpression)?
 	('group' 'by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
 ;
 
