@@ -107,11 +107,9 @@ SecondaryComparisonOp:
 Statment:
 	{CreateTableStatement} 'create' 'table' name=ID '(' columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* (',' constraints+=TableConstraint)* ')' |
 	{AlterTableStatement} 'alter' 'table' name=ID clause=AlterTableClause |
-	{CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement;
-
-TableDecl:
-	name=ID
-;
+	{CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement |
+	{DropTableStatement} 'drop' 'table' ('if' 'exists')? name=ID |
+	{DropViewStatement} 'drop' 'view' ('if' 'exists')? name=ID;
 
 AlterTableClause:
 	{AlterTableRenameClause} 'rename to' name=ID |
@@ -131,13 +129,10 @@ DefaultValue:
 	{ExpressionDefaultValue} '(' expression=SqlExpression ')'
 ;
 TableConstraint:
-	UniqueTableContraint /* | PrimaryKeyTableConstraint*/;
-
-UniqueTableContraint:
-	'unique' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause;
-
-	//	'primary key' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause
-//;
+	{UniqueTableContraint} ('constraint' name=ID)? 'unique' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause |
+	{PrimaryContraint} ('constraint' name=ID)? 'primary' 'key' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause |
+	{CheckTableConstraint} ('constraint' name=ID)? 'check' '(' expression=SqlExpression ')'
+;
 IndexedColumn:
 	name=[ColumnDef] (asc?='asc'|desc?='desc')?;
 
@@ -150,10 +145,6 @@ enum ConflictResolution:
 SelectStatement:
 	coreStatements+=SelectCore (CompoundOperator coreStatements+=SelectCore)*
 	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
-;
-
-Select:
-	SelectCore ({Select.left=current} compoundOperator=CompoundOperator right=SelectCore)*
 ;
 
 CompoundOperator:
