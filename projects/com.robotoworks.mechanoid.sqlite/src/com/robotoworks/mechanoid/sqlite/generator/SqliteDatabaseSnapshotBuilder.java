@@ -17,6 +17,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
@@ -53,7 +55,6 @@ public class SqliteDatabaseSnapshotBuilder {
 					CreateTableStatement copy = EcoreUtil.copy(createTableStmt);
 					mImage.tables.put(createTableStmt.getName(), copy);
 					
-					
 				} else if (statement instanceof CreateViewStatement) {
 					
 					CreateViewStatement createViewStmt = (CreateViewStatement) statement;
@@ -78,7 +79,13 @@ public class SqliteDatabaseSnapshotBuilder {
 						
 						AlterTableAddColumnClause addColumnClause = (AlterTableAddColumnClause) alter.getClause();
 						tableToAlter.getColumnDefs().add(EcoreUtil.copy(addColumnClause.getColumnDef()));				
-					}
+					} 
+				} else if (statement instanceof DropTableStatement) {
+					DropTableStatement dropTableStmt = (DropTableStatement) statement;
+					mImage.tables.remove(dropTableStmt.getName());
+				} else if (statement instanceof DropViewStatement) {
+					DropViewStatement dropViewStmt = (DropViewStatement) statement;
+					mImage.views.remove(dropViewStmt.getName());
 				}
 			}
 		}

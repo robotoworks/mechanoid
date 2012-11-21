@@ -1745,10 +1745,90 @@ ruleStatment returns [EObject current=null]
 	    }
 
 )
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStatmentAccess().getDropTableStatementAction_3_0(),
+            $current);
+    }
+)	otherlv_23='drop' 
+    {
+    	newLeafNode(otherlv_23, grammarAccess.getStatmentAccess().getDropKeyword_3_1());
+    }
+	otherlv_24='table' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getStatmentAccess().getTableKeyword_3_2());
+    }
+(	otherlv_25='if' 
+    {
+    	newLeafNode(otherlv_25, grammarAccess.getStatmentAccess().getIfKeyword_3_3_0());
+    }
+	otherlv_26='exists' 
+    {
+    	newLeafNode(otherlv_26, grammarAccess.getStatmentAccess().getExistsKeyword_3_3_1());
+    }
+)?(
+(
+		lv_name_27_0=RULE_ID
+		{
+			newLeafNode(lv_name_27_0, grammarAccess.getStatmentAccess().getNameIDTerminalRuleCall_3_4_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStatmentRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_27_0, 
+        		"ID");
+	    }
+
+)
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getStatmentAccess().getDropViewStatementAction_4_0(),
+            $current);
+    }
+)	otherlv_29='drop' 
+    {
+    	newLeafNode(otherlv_29, grammarAccess.getStatmentAccess().getDropKeyword_4_1());
+    }
+	otherlv_30='view' 
+    {
+    	newLeafNode(otherlv_30, grammarAccess.getStatmentAccess().getViewKeyword_4_2());
+    }
+(	otherlv_31='if' 
+    {
+    	newLeafNode(otherlv_31, grammarAccess.getStatmentAccess().getIfKeyword_4_3_0());
+    }
+	otherlv_32='exists' 
+    {
+    	newLeafNode(otherlv_32, grammarAccess.getStatmentAccess().getExistsKeyword_4_3_1());
+    }
+)?(
+(
+		lv_name_33_0=RULE_ID
+		{
+			newLeafNode(lv_name_33_0, grammarAccess.getStatmentAccess().getNameIDTerminalRuleCall_4_4_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStatmentRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_33_0, 
+        		"ID");
+	    }
+
+)
 )))
 ;
-
-
 
 
 
@@ -2142,106 +2222,266 @@ ruleTableConstraint returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-
-    { 
-        newCompositeNode(grammarAccess.getTableConstraintAccess().getUniqueTableContraintParserRuleCall()); 
-    }
-    this_UniqueTableContraint_0=ruleUniqueTableContraint
-    { 
-        $current = $this_UniqueTableContraint_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-;
-
-
-
-
-
-// Entry rule entryRuleUniqueTableContraint
-entryRuleUniqueTableContraint returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getUniqueTableContraintRule()); }
-	 iv_ruleUniqueTableContraint=ruleUniqueTableContraint 
-	 { $current=$iv_ruleUniqueTableContraint.current; } 
-	 EOF 
-;
-
-// Rule UniqueTableContraint
-ruleUniqueTableContraint returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='unique' 
+(((
     {
-    	newLeafNode(otherlv_0, grammarAccess.getUniqueTableContraintAccess().getUniqueKeyword_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getTableConstraintAccess().getUniqueTableContraintAction_0_0(),
+            $current);
     }
-	otherlv_1='(' 
+)(	otherlv_1='constraint' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getUniqueTableContraintAccess().getLeftParenthesisKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getTableConstraintAccess().getConstraintKeyword_0_1_0());
+    }
+(
+(
+		lv_name_2_0=RULE_ID
+		{
+			newLeafNode(lv_name_2_0, grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_0_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTableConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_2_0, 
+        		"ID");
+	    }
+
+)
+))?	otherlv_3='unique' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getTableConstraintAccess().getUniqueKeyword_0_2());
+    }
+	otherlv_4='(' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getTableConstraintAccess().getLeftParenthesisKeyword_0_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUniqueTableContraintAccess().getColumnsIndexedColumnParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_0_4_0()); 
 	    }
-		lv_columns_2_0=ruleIndexedColumn		{
+		lv_columns_5_0=ruleIndexedColumn		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getUniqueTableContraintRule());
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
 	        }
        		add(
        			$current, 
        			"columns",
-        		lv_columns_2_0, 
+        		lv_columns_5_0, 
         		"IndexedColumn");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_3=',' 
+)(	otherlv_6=',' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getUniqueTableContraintAccess().getCommaKeyword_3_0());
+    	newLeafNode(otherlv_6, grammarAccess.getTableConstraintAccess().getCommaKeyword_0_5_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUniqueTableContraintAccess().getColumnsIndexedColumnParserRuleCall_3_1_0()); 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_0_5_1_0()); 
 	    }
-		lv_columns_4_0=ruleIndexedColumn		{
+		lv_columns_7_0=ruleIndexedColumn		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getUniqueTableContraintRule());
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
 	        }
        		add(
        			$current, 
        			"columns",
-        		lv_columns_4_0, 
+        		lv_columns_7_0, 
         		"IndexedColumn");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_5=')' 
+))*	otherlv_8=')' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getUniqueTableContraintAccess().getRightParenthesisKeyword_4());
+    	newLeafNode(otherlv_8, grammarAccess.getTableConstraintAccess().getRightParenthesisKeyword_0_6());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUniqueTableContraintAccess().getConflictClauseConflictClauseParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getConflictClauseConflictClauseParserRuleCall_0_7_0()); 
 	    }
-		lv_conflictClause_6_0=ruleConflictClause		{
+		lv_conflictClause_9_0=ruleConflictClause		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getUniqueTableContraintRule());
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
 	        }
        		set(
        			$current, 
        			"conflictClause",
-        		lv_conflictClause_6_0, 
+        		lv_conflictClause_9_0, 
         		"ConflictClause");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getTableConstraintAccess().getPrimaryContraintAction_1_0(),
+            $current);
+    }
+)(	otherlv_11='constraint' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getTableConstraintAccess().getConstraintKeyword_1_1_0());
+    }
+(
+(
+		lv_name_12_0=RULE_ID
+		{
+			newLeafNode(lv_name_12_0, grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_1_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTableConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_12_0, 
+        		"ID");
+	    }
+
+)
+))?	otherlv_13='primary' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getTableConstraintAccess().getPrimaryKeyword_1_2());
+    }
+	otherlv_14='key' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getTableConstraintAccess().getKeyKeyword_1_3());
+    }
+	otherlv_15='(' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getTableConstraintAccess().getLeftParenthesisKeyword_1_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_1_5_0()); 
+	    }
+		lv_columns_16_0=ruleIndexedColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
+	        }
+       		add(
+       			$current, 
+       			"columns",
+        		lv_columns_16_0, 
+        		"IndexedColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_17=',' 
+    {
+    	newLeafNode(otherlv_17, grammarAccess.getTableConstraintAccess().getCommaKeyword_1_6_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_1_6_1_0()); 
+	    }
+		lv_columns_18_0=ruleIndexedColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
+	        }
+       		add(
+       			$current, 
+       			"columns",
+        		lv_columns_18_0, 
+        		"IndexedColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_19=')' 
+    {
+    	newLeafNode(otherlv_19, grammarAccess.getTableConstraintAccess().getRightParenthesisKeyword_1_7());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getConflictClauseConflictClauseParserRuleCall_1_8_0()); 
+	    }
+		lv_conflictClause_20_0=ruleConflictClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"conflictClause",
+        		lv_conflictClause_20_0, 
+        		"ConflictClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getTableConstraintAccess().getCheckTableConstraintAction_2_0(),
+            $current);
+    }
+)(	otherlv_22='constraint' 
+    {
+    	newLeafNode(otherlv_22, grammarAccess.getTableConstraintAccess().getConstraintKeyword_2_1_0());
+    }
+(
+(
+		lv_name_23_0=RULE_ID
+		{
+			newLeafNode(lv_name_23_0, grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_2_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTableConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_23_0, 
+        		"ID");
+	    }
+
+)
+))?	otherlv_24='check' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getTableConstraintAccess().getCheckKeyword_2_2());
+    }
+	otherlv_25='(' 
+    {
+    	newLeafNode(otherlv_25, grammarAccess.getTableConstraintAccess().getLeftParenthesisKeyword_2_3());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getTableConstraintAccess().getExpressionSqlExpressionParserRuleCall_2_4_0()); 
+	    }
+		lv_expression_26_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getTableConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_26_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_27=')' 
+    {
+    	newLeafNode(otherlv_27, grammarAccess.getTableConstraintAccess().getRightParenthesisKeyword_2_5());
+    }
 ))
 ;
 
@@ -2422,8 +2662,6 @@ ruleCompoundOperator
 )
 ))*)?)
 ;
-
-
 
 
 

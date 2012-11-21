@@ -74,16 +74,13 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
       case SqliteModelPackage.STATMENT: return createStatment();
-      case SqliteModelPackage.TABLE_DECL: return createTableDecl();
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
       case SqliteModelPackage.DEFAULT_VALUE: return createDefaultValue();
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
-      case SqliteModelPackage.SELECT: return createSelect();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
@@ -108,6 +105,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
+      case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
+      case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
       case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
       case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
@@ -115,6 +114,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.DEFAULT_CONSTRAINT: return createDefaultConstraint();
       case SqliteModelPackage.LITERAL_DEFAULT_VALUE: return createLiteralDefaultValue();
       case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE: return createExpressionDefaultValue();
+      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
+      case SqliteModelPackage.PRIMARY_CONTRAINT: return createPrimaryContraint();
+      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT: return createCheckTableConstraint();
       case SqliteModelPackage.SINGLE_SOURCE_TABLE: return createSingleSourceTable();
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
       case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
@@ -274,17 +276,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public TableDecl createTableDecl()
-  {
-    TableDeclImpl tableDecl = new TableDeclImpl();
-    return tableDecl;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public AlterTableClause createAlterTableClause()
   {
     AlterTableClauseImpl alterTableClause = new AlterTableClauseImpl();
@@ -340,17 +331,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public UniqueTableContraint createUniqueTableContraint()
-  {
-    UniqueTableContraintImpl uniqueTableContraint = new UniqueTableContraintImpl();
-    return uniqueTableContraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public IndexedColumn createIndexedColumn()
   {
     IndexedColumnImpl indexedColumn = new IndexedColumnImpl();
@@ -366,17 +346,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     SelectStatementImpl selectStatement = new SelectStatementImpl();
     return selectStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Select createSelect()
-  {
-    SelectImpl select = new SelectImpl();
-    return select;
   }
 
   /**
@@ -648,6 +617,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public DropTableStatement createDropTableStatement()
+  {
+    DropTableStatementImpl dropTableStatement = new DropTableStatementImpl();
+    return dropTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropViewStatement createDropViewStatement()
+  {
+    DropViewStatementImpl dropViewStatement = new DropViewStatementImpl();
+    return dropViewStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AlterTableRenameClause createAlterTableRenameClause()
   {
     AlterTableRenameClauseImpl alterTableRenameClause = new AlterTableRenameClauseImpl();
@@ -718,6 +709,39 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ExpressionDefaultValueImpl expressionDefaultValue = new ExpressionDefaultValueImpl();
     return expressionDefaultValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniqueTableContraint createUniqueTableContraint()
+  {
+    UniqueTableContraintImpl uniqueTableContraint = new UniqueTableContraintImpl();
+    return uniqueTableContraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrimaryContraint createPrimaryContraint()
+  {
+    PrimaryContraintImpl primaryContraint = new PrimaryContraintImpl();
+    return primaryContraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CheckTableConstraint createCheckTableConstraint()
+  {
+    CheckTableConstraintImpl checkTableConstraint = new CheckTableConstraintImpl();
+    return checkTableConstraint;
   }
 
   /**

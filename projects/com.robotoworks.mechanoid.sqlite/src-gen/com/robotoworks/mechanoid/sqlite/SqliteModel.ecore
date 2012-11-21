@@ -41,9 +41,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Statment">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TableDecl">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -53,12 +50,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="DefaultValue"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TableConstraint"/>
-  <eClassifiers xsi:type="ecore:EClass" name="UniqueTableContraint" eSuperTypes="#//TableConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
-        eType="#//IndexedColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TableConstraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IndexedColumn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//ColumnDef"/>
@@ -84,20 +77,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderingTerms" upperBound="-1"
         eType="#//OrderingTerm" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Select">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//SelectCore"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="compoundOperator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectCore"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderingTerm">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="asc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectCore" eSuperTypes="#//Select">
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCore">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
@@ -230,6 +216,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//Statment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//Statment"/>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableRenameClause" eSuperTypes="#//AlterTableClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -255,6 +243,22 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionDefaultValue" eSuperTypes="#//DefaultValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueTableContraint" eSuperTypes="#//TableConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//IndexedColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimaryContraint" eSuperTypes="#//TableConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//IndexedColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckTableConstraint" eSuperTypes="#//TableConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"
         containment="true"/>
   </eClassifiers>

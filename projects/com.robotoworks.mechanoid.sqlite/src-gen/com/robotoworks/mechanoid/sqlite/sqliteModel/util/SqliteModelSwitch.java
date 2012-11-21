@@ -136,13 +136,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.TABLE_DECL:
-      {
-        TableDecl tableDecl = (TableDecl)theEObject;
-        T result = caseTableDecl(tableDecl);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.ALTER_TABLE_CLAUSE:
       {
         AlterTableClause alterTableClause = (AlterTableClause)theEObject;
@@ -178,14 +171,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
-      {
-        UniqueTableContraint uniqueTableContraint = (UniqueTableContraint)theEObject;
-        T result = caseUniqueTableContraint(uniqueTableContraint);
-        if (result == null) result = caseTableConstraint(uniqueTableContraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.INDEXED_COLUMN:
       {
         IndexedColumn indexedColumn = (IndexedColumn)theEObject;
@@ -200,13 +185,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.SELECT:
-      {
-        Select select = (Select)theEObject;
-        T result = caseSelect(select);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.ORDERING_TERM:
       {
         OrderingTerm orderingTerm = (OrderingTerm)theEObject;
@@ -218,7 +196,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         SelectCore selectCore = (SelectCore)theEObject;
         T result = caseSelectCore(selectCore);
-        if (result == null) result = caseSelect(selectCore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -392,6 +369,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.DROP_TABLE_STATEMENT:
+      {
+        DropTableStatement dropTableStatement = (DropTableStatement)theEObject;
+        T result = caseDropTableStatement(dropTableStatement);
+        if (result == null) result = caseStatment(dropTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_VIEW_STATEMENT:
+      {
+        DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
+        T result = caseDropViewStatement(dropViewStatement);
+        if (result == null) result = caseStatment(dropViewStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE:
       {
         AlterTableRenameClause alterTableRenameClause = (AlterTableRenameClause)theEObject;
@@ -445,6 +438,30 @@ public class SqliteModelSwitch<T> extends Switch<T>
         ExpressionDefaultValue expressionDefaultValue = (ExpressionDefaultValue)theEObject;
         T result = caseExpressionDefaultValue(expressionDefaultValue);
         if (result == null) result = caseDefaultValue(expressionDefaultValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
+      {
+        UniqueTableContraint uniqueTableContraint = (UniqueTableContraint)theEObject;
+        T result = caseUniqueTableContraint(uniqueTableContraint);
+        if (result == null) result = caseTableConstraint(uniqueTableContraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.PRIMARY_CONTRAINT:
+      {
+        PrimaryContraint primaryContraint = (PrimaryContraint)theEObject;
+        T result = casePrimaryContraint(primaryContraint);
+        if (result == null) result = caseTableConstraint(primaryContraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT:
+      {
+        CheckTableConstraint checkTableConstraint = (CheckTableConstraint)theEObject;
+        T result = caseCheckTableConstraint(checkTableConstraint);
+        if (result == null) result = caseTableConstraint(checkTableConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -693,22 +710,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Table Decl</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Table Decl</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTableDecl(TableDecl object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -789,22 +790,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseUniqueTableContraint(UniqueTableContraint object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Indexed Column</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -832,22 +817,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectStatement(SelectStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelect(Select object)
   {
     return null;
   }
@@ -1237,6 +1206,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropTableStatement(DropTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropViewStatement(DropViewStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1344,6 +1345,54 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpressionDefaultValue(ExpressionDefaultValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUniqueTableContraint(UniqueTableContraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrimaryContraint(PrimaryContraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckTableConstraint(CheckTableConstraint object)
   {
     return null;
   }
