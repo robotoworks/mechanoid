@@ -104,15 +104,6 @@ public interface SqliteModelFactory extends EFactory
   Statment createStatment();
 
   /**
-   * Returns a new object of class '<em>Table Decl</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Table Decl</em>'.
-   * @generated
-   */
-  TableDecl createTableDecl();
-
-  /**
    * Returns a new object of class '<em>Alter Table Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -158,15 +149,6 @@ public interface SqliteModelFactory extends EFactory
   TableConstraint createTableConstraint();
 
   /**
-   * Returns a new object of class '<em>Unique Table Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Unique Table Contraint</em>'.
-   * @generated
-   */
-  UniqueTableContraint createUniqueTableContraint();
-
-  /**
    * Returns a new object of class '<em>Indexed Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -183,15 +165,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   SelectStatement createSelectStatement();
-
-  /**
-   * Returns a new object of class '<em>Select</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select</em>'.
-   * @generated
-   */
-  Select createSelect();
 
   /**
    * Returns a new object of class '<em>Ordering Term</em>'.
@@ -410,6 +383,24 @@ public interface SqliteModelFactory extends EFactory
   CreateViewStatement createCreateViewStatement();
 
   /**
+   * Returns a new object of class '<em>Drop Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop Table Statement</em>'.
+   * @generated
+   */
+  DropTableStatement createDropTableStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop View Statement</em>'.
+   * @generated
+   */
+  DropViewStatement createDropViewStatement();
+
+  /**
    * Returns a new object of class '<em>Alter Table Rename Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -471,6 +462,33 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   ExpressionDefaultValue createExpressionDefaultValue();
+
+  /**
+   * Returns a new object of class '<em>Unique Table Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unique Table Contraint</em>'.
+   * @generated
+   */
+  UniqueTableContraint createUniqueTableContraint();
+
+  /**
+   * Returns a new object of class '<em>Primary Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primary Contraint</em>'.
+   * @generated
+   */
+  PrimaryContraint createPrimaryContraint();
+
+  /**
+   * Returns a new object of class '<em>Check Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Check Table Constraint</em>'.
+   * @generated
+   */
+  CheckTableConstraint createCheckTableConstraint();
 
   /**
    * Returns a new object of class '<em>Single Source Table</em>'.

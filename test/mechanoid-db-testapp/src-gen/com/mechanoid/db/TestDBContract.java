@@ -16,20 +16,6 @@ public class TestDBContract  {
 	}
 	
 
-	interface QuxColumns {
-		String A = "a";
-		String B = "b";
-		String C = "c";
-		String D = "d";
-		String Y = "y";
-	}
-	
-	interface MehColumns {
-		String PRODUCT_ID = "product_id";
-		String TITLE = "title";
-		String QUANTITY = "quantity";
-	}
-	
 			
 	public static class TableA implements TableAColumns, BaseColumns {
 	    public static final Uri CONTENT_URI = 
@@ -50,24 +36,6 @@ public class TestDBContract  {
 		}
 	}
 	
-
-	public static class Qux implements QuxColumns {
-	    public static final Uri CONTENT_URI = 
-				BASE_CONTENT_URI.buildUpon().appendPath("qux").build();
-	
-	    public static final String CONTENT_TYPE =
-	            "vnd.android.cursor.dir/vnd.testdb.qux";
-	}
-
-	public static class Meh implements MehColumns, BaseColumns {
-	    public static final Uri CONTENT_URI = 
-				BASE_CONTENT_URI.buildUpon().appendPath("meh").build();
-	
-	    public static final String CONTENT_TYPE =
-	            "vnd.android.cursor.dir/vnd.testdb.meh";
-		public static final String ITEM_CONTENT_TYPE =
-			"vnd.android.cursor.item/vnd.testdb.meh";
-	}
 
 
 	private TestDBContract(){}
