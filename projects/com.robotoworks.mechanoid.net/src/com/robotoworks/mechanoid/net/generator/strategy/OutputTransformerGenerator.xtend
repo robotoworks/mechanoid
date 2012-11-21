@@ -34,13 +34,27 @@ class OutputTransformerGenerator {
 	'''	
 	
 	def generateOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("java.lang.Exception")»
+		«context.registerImport("java.util.List")»
+
 		public class «decl.name»OutputTransformer extends Transformer<«decl.name», JsonWriter> {			
 			public void transform(«decl.name» source, JsonWriter target) throws TransformException {
 				try {
 
 					«jsonWriterGenerator.genWriteComplexType(decl)»
 
+				} catch (Exception x) {
+					throw new TransformException(x);
+				}
+			}
+			public void transform(List<«decl.name»> source, JsonWriter target) throws TransformException {
+				try {
+					target.beginArray();
+					
+					for(«decl.name» sourceItem:source) {
+						transform(sourceItem, target);
+					}
+					
+					target.endArray();
 				} catch (Exception x) {
 					throw new TransformException(x);
 				}

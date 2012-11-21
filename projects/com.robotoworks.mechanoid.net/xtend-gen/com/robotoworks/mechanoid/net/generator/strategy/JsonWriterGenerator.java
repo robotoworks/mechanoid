@@ -221,7 +221,7 @@ public class JsonWriterGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("ListOutputTransformer.class).transform(");
+    _builder.append("OutputTransformer.class).transform(");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
     String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
     _builder.append(_memberize_1, "	");
@@ -262,8 +262,9 @@ public class JsonWriterGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("for(");
-    String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "	");
+    Type _type = member.getType();
+    String _innerSignature = ModelExtensions.innerSignature(_type);
+    _builder.append(_innerSignature, "	");
     _builder.append(" element : ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
     String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
@@ -283,11 +284,6 @@ public class JsonWriterGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize_2 = ModelExtensions.memberize(_setMethodName, "target");
-    _builder.append(_memberize_2, "");
-    _builder.append("(targetMember);");
-    _builder.newLineIfNotEmpty();
     return _builder;
   }
   

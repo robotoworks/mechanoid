@@ -44,6 +44,8 @@ public class SkippingWithItemResult  {
 									Item targetMember = new Item();
 									provider.get(ItemInputTransformer.class).transform(source, targetMember);
 									target.setInner(targetMember);
+								} else {
+									source.skipValue();
 								}
 							}
 							else {

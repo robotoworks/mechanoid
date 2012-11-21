@@ -22,7 +22,7 @@ public class EchoHeadersResult  {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.headerItems = new ArrayList<HeaderItem>();
-			provider.get(HeaderItemListInputTransformer.class).transform(source, this.headerItems);
+			provider.get(HeaderItemInputTransformer.class).transform(source, this.headerItems);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);

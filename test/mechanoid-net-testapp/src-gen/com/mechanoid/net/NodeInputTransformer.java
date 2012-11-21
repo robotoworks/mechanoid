@@ -21,8 +21,10 @@ public class NodeInputTransformer extends Transformer<JsonReader, Node> {
 				else if(name.equals("children")) {
 					if(source.peek() != JsonToken.NULL) {
 						List<Node> targetMember = new ArrayList<Node>();
-						provider.get(NodeListInputTransformer.class).transform(source, targetMember);
+						provider.get(NodeInputTransformer.class).transform(source, targetMember);
 						target.setChildren(targetMember);
+					} else {
+						source.skipValue();
 					}
 				}
 				else {
@@ -37,4 +39,25 @@ public class NodeInputTransformer extends Transformer<JsonReader, Node> {
 		}
 		
 	}
+	
+	public void transform(JsonReader source, List<Node> target) throws TransformException {
+		
+		try {
+			source.beginArray();
+			
+			while(source.hasNext()) {
+				Node targetItem = new Node();
+				transform(source, targetItem);
+				target.add(targetItem);
+				
+			}
+			
+			source.endArray();
+			
+		} catch (Exception x) {
+			throw new TransformException(x);
+		}
+		
+	}
 }
+

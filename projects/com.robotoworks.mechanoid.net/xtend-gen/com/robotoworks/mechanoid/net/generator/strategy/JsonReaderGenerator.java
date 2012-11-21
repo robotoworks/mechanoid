@@ -265,6 +265,11 @@ public class JsonReaderGenerator {
     _builder.append(_memberize, "	");
     _builder.append("(targetMember);");
     _builder.newLineIfNotEmpty();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("source.skipValue();");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -293,6 +298,11 @@ public class JsonReaderGenerator {
     _builder.append(_memberize, "	");
     _builder.append("(targetMember);");
     _builder.newLineIfNotEmpty();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("source.skipValue();");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -327,6 +337,11 @@ public class JsonReaderGenerator {
     _builder.append(_memberize, "	");
     _builder.append("(targetMember);");
     _builder.newLineIfNotEmpty();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("source.skipValue();");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -360,7 +375,7 @@ public class JsonReaderGenerator {
     _builder.append("provider.get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "	");
-    _builder.append("ListInputTransformer.class).transform(source, targetMember);");
+    _builder.append("InputTransformer.class).transform(source, targetMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _setMethodName = ModelExtensions.toSetMethodName(member);
@@ -368,6 +383,11 @@ public class JsonReaderGenerator {
     _builder.append(_memberize, "	");
     _builder.append("(targetMember);");
     _builder.newLineIfNotEmpty();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("source.skipValue();");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -383,7 +403,7 @@ public class JsonReaderGenerator {
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" targetMember = new Array");
+    _builder.append(" targetMember = new ArrayList");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "");
     _builder.append("();");
@@ -422,6 +442,11 @@ public class JsonReaderGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("source.endArray();");
+    _builder.newLine();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("source.skipValue();");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

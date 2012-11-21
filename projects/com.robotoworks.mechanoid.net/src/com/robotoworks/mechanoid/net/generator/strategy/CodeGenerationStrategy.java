@@ -15,8 +15,6 @@ public class CodeGenerationStrategy {
 	private InputTransformerGenerator inputTransformerGenerator;
 	private IntegerEnumTypeGenerator integerEnumTypeGenerator;
 	private StringEnumTypeGenerator stringEnumTypeGenerator;
-	private ListInputTransformerGenerator listInputTransformerGenerator;
-	private ListOutputTransformerGenerator listOutputTransformerGenerator;
 	private OutputTransformerGenerator outputTransformerGenerator;
 	private RequestGenerator requestGenerator;
 	private ResponseGenerator responseGenerator;
@@ -50,8 +48,6 @@ public class CodeGenerationStrategy {
 				// Generate transformers
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "OutputTransformer"), getOutputTransformerGenerator().generate(lit, module));
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "InputTransformer"), getInputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListOutputTransformer"), getListOutputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListInputTransformer"), getListInputTransformerGenerator().generate(lit, module));
 				
 				// Generate types
 				if(lit.isGen()){
@@ -101,20 +97,6 @@ public class CodeGenerationStrategy {
 			stringEnumTypeGenerator.setContext(context);
 		}
 		return stringEnumTypeGenerator;
-	}
-	public ListInputTransformerGenerator getListInputTransformerGenerator() {
-		if(listInputTransformerGenerator == null){
-			listInputTransformerGenerator = new ListInputTransformerGenerator();
-			listInputTransformerGenerator.setContext(context);
-		}
-		return listInputTransformerGenerator;
-	}
-	public ListOutputTransformerGenerator getListOutputTransformerGenerator() {
-		if(listOutputTransformerGenerator == null){
-			listOutputTransformerGenerator = new ListOutputTransformerGenerator();
-			listOutputTransformerGenerator.setContext(context);
-		}
-		return listOutputTransformerGenerator;
 	}
 
 	public OutputTransformerGenerator getOutputTransformerGenerator() {

@@ -3,7 +3,8 @@ package com.mechanoid.net;
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonWriter;
-import java.lang.Exception;
+import java.util.List;
+
 
 public class ItemOutputTransformer extends Transformer<Item, JsonWriter> {			
 	public void transform(Item source, JsonWriter target) throws TransformException {
@@ -24,6 +25,19 @@ public class ItemOutputTransformer extends Transformer<Item, JsonWriter> {
 			
 			target.endObject();
 
+		} catch (Exception x) {
+			throw new TransformException(x);
+		}
+	}
+	public void transform(List<Item> source, JsonWriter target) throws TransformException {
+		try {
+			target.beginArray();
+			
+			for(Item sourceItem:source) {
+				transform(sourceItem, target);
+			}
+			
+			target.endArray();
 		} catch (Exception x) {
 			throw new TransformException(x);
 		}

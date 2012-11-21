@@ -92,7 +92,7 @@ class JsonWriterGenerator {
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
 		if(«member.toGetMethodName.memberize("source")»() != null) {
 			target.name("«member.name»");
-			provider.get(«type.innerSignature»ListOutputTransformer.class).transform(«member.toGetMethodName.memberize("source")»(), target);
+			provider.get(«type.innerSignature»OutputTransformer.class).transform(«member.toGetMethodName.memberize("source")»(), target);
 		}
 	'''
 	
@@ -106,12 +106,11 @@ class JsonWriterGenerator {
 			
 			target.beginArray();
 			
-			for(«member.toIdentifier» element : «member.toGetMethodName.memberize("source")»()) {
+			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize("source")»()) {
 				target.value(element.toString());
 			}
 			
 			target.endArray();
 		}
-		«member.toSetMethodName.memberize("target")»(targetMember);
 	'''
 }

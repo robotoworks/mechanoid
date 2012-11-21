@@ -34,6 +34,7 @@ class InputTransformerGenerator {
 	'''	
 	
 	def generateClass(ComplexTypeDeclaration decl, Model module) '''
+		«context.registerImport("java.util.List")»
 		public class «decl.name»InputTransformer extends Transformer<JsonReader, «decl.name»> {			
 			public void transform(JsonReader source, «decl.name» target) throws TransformException {
 				try {
@@ -44,6 +45,27 @@ class InputTransformerGenerator {
 				}
 				
 			}
+			
+			public void transform(JsonReader source, List<«decl.name»> target) throws TransformException {
+				
+				try {
+					source.beginArray();
+					
+					while(source.hasNext()) {
+						«decl.name» targetItem = new «decl.name»();
+						transform(source, targetItem);
+						target.add(targetItem);
+						
+					}
+					
+					source.endArray();
+					
+				} catch (Exception x) {
+					throw new TransformException(x);
+				}
+				
+			}
 		}
+		
 	'''
 }

@@ -248,7 +248,7 @@ class ResponseGenerator {
 		«context.registerImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
-				provider.get(«type.innerSignature»ListInputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
+				provider.get(«type.innerSignature»InputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	

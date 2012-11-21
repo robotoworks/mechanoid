@@ -3,6 +3,7 @@ package com.mechanoid.net;
 import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
+import java.util.List;
 
 public class ItemInputTransformer extends Transformer<JsonReader, Item> {			
 	public void transform(JsonReader source, Item target) throws TransformException {
@@ -39,4 +40,25 @@ public class ItemInputTransformer extends Transformer<JsonReader, Item> {
 		}
 		
 	}
+	
+	public void transform(JsonReader source, List<Item> target) throws TransformException {
+		
+		try {
+			source.beginArray();
+			
+			while(source.hasNext()) {
+				Item targetItem = new Item();
+				transform(source, targetItem);
+				target.add(targetItem);
+				
+			}
+			
+			source.endArray();
+			
+		} catch (Exception x) {
+			throw new TransformException(x);
+		}
+		
+	}
 }
+
