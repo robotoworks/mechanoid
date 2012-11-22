@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.And;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
@@ -16,19 +16,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>And</b></em>'.
+ * An implementation of the model object '<em><b>Expr Mult</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AndImpl extends ExpressionImpl implements And
+public class ExprMultImpl extends ExpressionImpl implements ExprMult
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -39,6 +40,26 @@ public class AndImpl extends ExpressionImpl implements And
    * @ordered
    */
   protected Expression left;
+
+  /**
+   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected static final String OP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -55,7 +76,7 @@ public class AndImpl extends ExpressionImpl implements And
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AndImpl()
+  protected ExprMultImpl()
   {
     super();
   }
@@ -68,7 +89,7 @@ public class AndImpl extends ExpressionImpl implements And
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.AND;
+    return SqliteModelPackage.Literals.EXPR_MULT;
   }
 
   /**
@@ -92,7 +113,7 @@ public class AndImpl extends ExpressionImpl implements And
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_MULT__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -109,14 +130,37 @@ public class AndImpl extends ExpressionImpl implements And
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_MULT__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_MULT__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_MULT__LEFT, newLeft, newLeft));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(String newOp)
+  {
+    String oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_MULT__OP, oldOp, op));
   }
 
   /**
@@ -140,7 +184,7 @@ public class AndImpl extends ExpressionImpl implements And
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_MULT__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,14 +201,14 @@ public class AndImpl extends ExpressionImpl implements And
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_MULT__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.AND__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_MULT__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.AND__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_MULT__RIGHT, newRight, newRight));
   }
 
   /**
@@ -177,9 +221,9 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case SqliteModelPackage.AND__LEFT:
+      case SqliteModelPackage.EXPR_MULT__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.AND__RIGHT:
+      case SqliteModelPackage.EXPR_MULT__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -195,9 +239,11 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case SqliteModelPackage.AND__LEFT:
+      case SqliteModelPackage.EXPR_MULT__LEFT:
         return getLeft();
-      case SqliteModelPackage.AND__RIGHT:
+      case SqliteModelPackage.EXPR_MULT__OP:
+        return getOp();
+      case SqliteModelPackage.EXPR_MULT__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -213,10 +259,13 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case SqliteModelPackage.AND__LEFT:
+      case SqliteModelPackage.EXPR_MULT__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.AND__RIGHT:
+      case SqliteModelPackage.EXPR_MULT__OP:
+        setOp((String)newValue);
+        return;
+      case SqliteModelPackage.EXPR_MULT__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -233,10 +282,13 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case SqliteModelPackage.AND__LEFT:
+      case SqliteModelPackage.EXPR_MULT__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.AND__RIGHT:
+      case SqliteModelPackage.EXPR_MULT__OP:
+        setOp(OP_EDEFAULT);
+        return;
+      case SqliteModelPackage.EXPR_MULT__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -253,12 +305,31 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case SqliteModelPackage.AND__LEFT:
+      case SqliteModelPackage.EXPR_MULT__LEFT:
         return left != null;
-      case SqliteModelPackage.AND__RIGHT:
+      case SqliteModelPackage.EXPR_MULT__OP:
+        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
+      case SqliteModelPackage.EXPR_MULT__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //AndImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (op: ");
+    result.append(op);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ExprMultImpl

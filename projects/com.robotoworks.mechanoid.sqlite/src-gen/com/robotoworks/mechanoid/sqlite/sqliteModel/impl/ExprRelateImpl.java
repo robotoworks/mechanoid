@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Division;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
@@ -16,19 +16,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Division</b></em>'.
+ * An implementation of the model object '<em><b>Expr Relate</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DivisionImpl extends ExpressionImpl implements Division
+public class ExprRelateImpl extends ExpressionImpl implements ExprRelate
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -39,6 +40,26 @@ public class DivisionImpl extends ExpressionImpl implements Division
    * @ordered
    */
   protected Expression left;
+
+  /**
+   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected static final String OP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -55,7 +76,7 @@ public class DivisionImpl extends ExpressionImpl implements Division
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DivisionImpl()
+  protected ExprRelateImpl()
   {
     super();
   }
@@ -68,7 +89,7 @@ public class DivisionImpl extends ExpressionImpl implements Division
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.DIVISION;
+    return SqliteModelPackage.Literals.EXPR_RELATE;
   }
 
   /**
@@ -92,7 +113,7 @@ public class DivisionImpl extends ExpressionImpl implements Division
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DIVISION__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_RELATE__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -109,14 +130,37 @@ public class DivisionImpl extends ExpressionImpl implements Division
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DIVISION__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_RELATE__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DIVISION__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_RELATE__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DIVISION__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_RELATE__LEFT, newLeft, newLeft));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(String newOp)
+  {
+    String oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_RELATE__OP, oldOp, op));
   }
 
   /**
@@ -140,7 +184,7 @@ public class DivisionImpl extends ExpressionImpl implements Division
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DIVISION__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_RELATE__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,14 +201,14 @@ public class DivisionImpl extends ExpressionImpl implements Division
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DIVISION__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_RELATE__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DIVISION__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_RELATE__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DIVISION__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_RELATE__RIGHT, newRight, newRight));
   }
 
   /**
@@ -177,9 +221,9 @@ public class DivisionImpl extends ExpressionImpl implements Division
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DIVISION__LEFT:
+      case SqliteModelPackage.EXPR_RELATE__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.DIVISION__RIGHT:
+      case SqliteModelPackage.EXPR_RELATE__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -195,9 +239,11 @@ public class DivisionImpl extends ExpressionImpl implements Division
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DIVISION__LEFT:
+      case SqliteModelPackage.EXPR_RELATE__LEFT:
         return getLeft();
-      case SqliteModelPackage.DIVISION__RIGHT:
+      case SqliteModelPackage.EXPR_RELATE__OP:
+        return getOp();
+      case SqliteModelPackage.EXPR_RELATE__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -213,10 +259,13 @@ public class DivisionImpl extends ExpressionImpl implements Division
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DIVISION__LEFT:
+      case SqliteModelPackage.EXPR_RELATE__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.DIVISION__RIGHT:
+      case SqliteModelPackage.EXPR_RELATE__OP:
+        setOp((String)newValue);
+        return;
+      case SqliteModelPackage.EXPR_RELATE__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -233,10 +282,13 @@ public class DivisionImpl extends ExpressionImpl implements Division
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DIVISION__LEFT:
+      case SqliteModelPackage.EXPR_RELATE__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.DIVISION__RIGHT:
+      case SqliteModelPackage.EXPR_RELATE__OP:
+        setOp(OP_EDEFAULT);
+        return;
+      case SqliteModelPackage.EXPR_RELATE__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -253,12 +305,31 @@ public class DivisionImpl extends ExpressionImpl implements Division
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DIVISION__LEFT:
+      case SqliteModelPackage.EXPR_RELATE__LEFT:
         return left != null;
-      case SqliteModelPackage.DIVISION__RIGHT:
+      case SqliteModelPackage.EXPR_RELATE__OP:
+        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
+      case SqliteModelPackage.EXPR_RELATE__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //DivisionImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (op: ");
+    result.append(op);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ExprRelateImpl

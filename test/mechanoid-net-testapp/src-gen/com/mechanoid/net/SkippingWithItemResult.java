@@ -24,7 +24,7 @@ public class SkippingWithItemResult  {
 			if(inStream != null) {
 				source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 		
-			SkippingWithItemResult target = this;
+			SkippingWithItemResult subject = this;
 			
 		
 			source.beginObject();
@@ -41,9 +41,9 @@ public class SkippingWithItemResult  {
 							
 							if(name.equals("inner")) {
 								if(source.peek() != JsonToken.NULL) {
-									Item targetMember = new Item();
-									provider.get(ItemInputTransformer.class).transform(source, targetMember);
-									target.setInner(targetMember);
+									Item subjectMember = new Item();
+									provider.get(ItemTransformer.class).transformIn(source, subjectMember);
+									subject.setInner(subjectMember);
 								} else {
 									source.skipValue();
 								}

@@ -57,7 +57,7 @@ public class SkippingPostRequest {
 				target = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));
 				
 		
-			SkippingPostRequest source = this;
+			SkippingPostRequest subject = this;
 		
 			target.beginObject();
 			
@@ -72,11 +72,11 @@ public class SkippingPostRequest {
 					target.beginObject();
 					
 					target.name("a");
-					target.value(source.getA());
+					target.value(subject.getA());
 					target.name("b");
-					target.value(source.getB());
+					target.value(subject.getB());
 					target.name("c");
-					target.value(source.getC());
+					target.value(subject.getC());
 					
 					target.endObject();
 				

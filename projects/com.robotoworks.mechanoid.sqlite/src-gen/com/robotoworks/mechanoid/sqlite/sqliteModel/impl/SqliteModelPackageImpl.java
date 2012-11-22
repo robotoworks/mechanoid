@@ -4,12 +4,10 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Addition;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.And;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
@@ -27,9 +25,16 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentTimeStampLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DefaultConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DefaultValue;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Division;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ExpressionDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Function;
@@ -41,20 +46,16 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Or;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
@@ -67,7 +68,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.StringLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint;
 
@@ -260,56 +260,56 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass orEClass = null;
+  private EClass exprConcatEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass andEClass = null;
+  private EClass exprMultEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass primaryComparisonEClass = null;
+  private EClass exprAddEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass secondaryComparisonEClass = null;
+  private EClass exprBitEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass divisionEClass = null;
+  private EClass exprRelateEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass multiplicationEClass = null;
+  private EClass exprEqualEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass additionEClass = null;
+  private EClass exprAndEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass subtractionEClass = null;
+  private EClass exprOrEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1277,9 +1277,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOr()
+  public EClass getExprConcat()
   {
-    return orEClass;
+    return exprConcatEClass;
   }
 
   /**
@@ -1287,9 +1287,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOr_Left()
+  public EReference getExprConcat_Left()
   {
-    return (EReference)orEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprConcatEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1297,9 +1297,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOr_Right()
+  public EAttribute getExprConcat_Op()
   {
-    return (EReference)orEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)exprConcatEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1307,9 +1307,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAnd()
+  public EReference getExprConcat_Right()
   {
-    return andEClass;
+    return (EReference)exprConcatEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1317,9 +1317,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAnd_Left()
+  public EClass getExprMult()
   {
-    return (EReference)andEClass.getEStructuralFeatures().get(0);
+    return exprMultEClass;
   }
 
   /**
@@ -1327,9 +1327,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAnd_Right()
+  public EReference getExprMult_Left()
   {
-    return (EReference)andEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprMultEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1337,9 +1337,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPrimaryComparison()
+  public EAttribute getExprMult_Op()
   {
-    return primaryComparisonEClass;
+    return (EAttribute)exprMultEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1347,9 +1347,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPrimaryComparison_Left()
+  public EReference getExprMult_Right()
   {
-    return (EReference)primaryComparisonEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprMultEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1357,9 +1357,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPrimaryComparison_Op()
+  public EClass getExprAdd()
   {
-    return (EAttribute)primaryComparisonEClass.getEStructuralFeatures().get(1);
+    return exprAddEClass;
   }
 
   /**
@@ -1367,9 +1367,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPrimaryComparison_Right()
+  public EReference getExprAdd_Left()
   {
-    return (EReference)primaryComparisonEClass.getEStructuralFeatures().get(2);
+    return (EReference)exprAddEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1377,9 +1377,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSecondaryComparison()
+  public EAttribute getExprAdd_Op()
   {
-    return secondaryComparisonEClass;
+    return (EAttribute)exprAddEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1387,9 +1387,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSecondaryComparison_Left()
+  public EReference getExprAdd_Right()
   {
-    return (EReference)secondaryComparisonEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprAddEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1397,9 +1397,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSecondaryComparison_Op()
+  public EClass getExprBit()
   {
-    return (EAttribute)secondaryComparisonEClass.getEStructuralFeatures().get(1);
+    return exprBitEClass;
   }
 
   /**
@@ -1407,9 +1407,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSecondaryComparison_Right()
+  public EReference getExprBit_Left()
   {
-    return (EReference)secondaryComparisonEClass.getEStructuralFeatures().get(2);
+    return (EReference)exprBitEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1417,9 +1417,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDivision()
+  public EAttribute getExprBit_Op()
   {
-    return divisionEClass;
+    return (EAttribute)exprBitEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1427,9 +1427,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDivision_Left()
+  public EReference getExprBit_Right()
   {
-    return (EReference)divisionEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprBitEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1437,9 +1437,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDivision_Right()
+  public EClass getExprRelate()
   {
-    return (EReference)divisionEClass.getEStructuralFeatures().get(1);
+    return exprRelateEClass;
   }
 
   /**
@@ -1447,9 +1447,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMultiplication()
+  public EReference getExprRelate_Left()
   {
-    return multiplicationEClass;
+    return (EReference)exprRelateEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1457,9 +1457,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMultiplication_Left()
+  public EAttribute getExprRelate_Op()
   {
-    return (EReference)multiplicationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)exprRelateEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1467,9 +1467,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMultiplication_Right()
+  public EReference getExprRelate_Right()
   {
-    return (EReference)multiplicationEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprRelateEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1477,9 +1477,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAddition()
+  public EClass getExprEqual()
   {
-    return additionEClass;
+    return exprEqualEClass;
   }
 
   /**
@@ -1487,9 +1487,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAddition_Left()
+  public EReference getExprEqual_Left()
   {
-    return (EReference)additionEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprEqualEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1497,9 +1497,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAddition_Right()
+  public EAttribute getExprEqual_Op()
   {
-    return (EReference)additionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)exprEqualEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1507,9 +1507,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSubtraction()
+  public EReference getExprEqual_Right()
   {
-    return subtractionEClass;
+    return (EReference)exprEqualEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1517,9 +1517,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSubtraction_Left()
+  public EClass getExprAnd()
   {
-    return (EReference)subtractionEClass.getEStructuralFeatures().get(0);
+    return exprAndEClass;
   }
 
   /**
@@ -1527,9 +1527,69 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSubtraction_Right()
+  public EReference getExprAnd_Left()
   {
-    return (EReference)subtractionEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprAndEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExprAnd_Op()
+  {
+    return (EAttribute)exprAndEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExprAnd_Right()
+  {
+    return (EReference)exprAndEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExprOr()
+  {
+    return exprOrEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExprOr_Left()
+  {
+    return (EReference)exprOrEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExprOr_Op()
+  {
+    return (EAttribute)exprOrEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExprOr_Right()
+  {
+    return (EReference)exprOrEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2472,39 +2532,45 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     literalValueEClass = createEClass(LITERAL_VALUE);
 
-    orEClass = createEClass(OR);
-    createEReference(orEClass, OR__LEFT);
-    createEReference(orEClass, OR__RIGHT);
+    exprConcatEClass = createEClass(EXPR_CONCAT);
+    createEReference(exprConcatEClass, EXPR_CONCAT__LEFT);
+    createEAttribute(exprConcatEClass, EXPR_CONCAT__OP);
+    createEReference(exprConcatEClass, EXPR_CONCAT__RIGHT);
 
-    andEClass = createEClass(AND);
-    createEReference(andEClass, AND__LEFT);
-    createEReference(andEClass, AND__RIGHT);
+    exprMultEClass = createEClass(EXPR_MULT);
+    createEReference(exprMultEClass, EXPR_MULT__LEFT);
+    createEAttribute(exprMultEClass, EXPR_MULT__OP);
+    createEReference(exprMultEClass, EXPR_MULT__RIGHT);
 
-    primaryComparisonEClass = createEClass(PRIMARY_COMPARISON);
-    createEReference(primaryComparisonEClass, PRIMARY_COMPARISON__LEFT);
-    createEAttribute(primaryComparisonEClass, PRIMARY_COMPARISON__OP);
-    createEReference(primaryComparisonEClass, PRIMARY_COMPARISON__RIGHT);
+    exprAddEClass = createEClass(EXPR_ADD);
+    createEReference(exprAddEClass, EXPR_ADD__LEFT);
+    createEAttribute(exprAddEClass, EXPR_ADD__OP);
+    createEReference(exprAddEClass, EXPR_ADD__RIGHT);
 
-    secondaryComparisonEClass = createEClass(SECONDARY_COMPARISON);
-    createEReference(secondaryComparisonEClass, SECONDARY_COMPARISON__LEFT);
-    createEAttribute(secondaryComparisonEClass, SECONDARY_COMPARISON__OP);
-    createEReference(secondaryComparisonEClass, SECONDARY_COMPARISON__RIGHT);
+    exprBitEClass = createEClass(EXPR_BIT);
+    createEReference(exprBitEClass, EXPR_BIT__LEFT);
+    createEAttribute(exprBitEClass, EXPR_BIT__OP);
+    createEReference(exprBitEClass, EXPR_BIT__RIGHT);
 
-    divisionEClass = createEClass(DIVISION);
-    createEReference(divisionEClass, DIVISION__LEFT);
-    createEReference(divisionEClass, DIVISION__RIGHT);
+    exprRelateEClass = createEClass(EXPR_RELATE);
+    createEReference(exprRelateEClass, EXPR_RELATE__LEFT);
+    createEAttribute(exprRelateEClass, EXPR_RELATE__OP);
+    createEReference(exprRelateEClass, EXPR_RELATE__RIGHT);
 
-    multiplicationEClass = createEClass(MULTIPLICATION);
-    createEReference(multiplicationEClass, MULTIPLICATION__LEFT);
-    createEReference(multiplicationEClass, MULTIPLICATION__RIGHT);
+    exprEqualEClass = createEClass(EXPR_EQUAL);
+    createEReference(exprEqualEClass, EXPR_EQUAL__LEFT);
+    createEAttribute(exprEqualEClass, EXPR_EQUAL__OP);
+    createEReference(exprEqualEClass, EXPR_EQUAL__RIGHT);
 
-    additionEClass = createEClass(ADDITION);
-    createEReference(additionEClass, ADDITION__LEFT);
-    createEReference(additionEClass, ADDITION__RIGHT);
+    exprAndEClass = createEClass(EXPR_AND);
+    createEReference(exprAndEClass, EXPR_AND__LEFT);
+    createEAttribute(exprAndEClass, EXPR_AND__OP);
+    createEReference(exprAndEClass, EXPR_AND__RIGHT);
 
-    subtractionEClass = createEClass(SUBTRACTION);
-    createEReference(subtractionEClass, SUBTRACTION__LEFT);
-    createEReference(subtractionEClass, SUBTRACTION__RIGHT);
+    exprOrEClass = createEClass(EXPR_OR);
+    createEReference(exprOrEClass, EXPR_OR__LEFT);
+    createEAttribute(exprOrEClass, EXPR_OR__OP);
+    createEReference(exprOrEClass, EXPR_OR__RIGHT);
 
     columnLiteralEClass = createEClass(COLUMN_LITERAL);
     createEAttribute(columnLiteralEClass, COLUMN_LITERAL__NAME);
@@ -2653,14 +2719,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     // Add supertypes to classes
     sqlExpressionEClass.getESuperTypes().add(this.getExpression());
-    orEClass.getESuperTypes().add(this.getExpression());
-    andEClass.getESuperTypes().add(this.getExpression());
-    primaryComparisonEClass.getESuperTypes().add(this.getExpression());
-    secondaryComparisonEClass.getESuperTypes().add(this.getExpression());
-    divisionEClass.getESuperTypes().add(this.getExpression());
-    multiplicationEClass.getESuperTypes().add(this.getExpression());
-    additionEClass.getESuperTypes().add(this.getExpression());
-    subtractionEClass.getESuperTypes().add(this.getExpression());
+    exprConcatEClass.getESuperTypes().add(this.getExpression());
+    exprMultEClass.getESuperTypes().add(this.getExpression());
+    exprAddEClass.getESuperTypes().add(this.getExpression());
+    exprBitEClass.getESuperTypes().add(this.getExpression());
+    exprRelateEClass.getESuperTypes().add(this.getExpression());
+    exprEqualEClass.getESuperTypes().add(this.getExpression());
+    exprAndEClass.getESuperTypes().add(this.getExpression());
+    exprOrEClass.getESuperTypes().add(this.getExpression());
     columnLiteralEClass.getESuperTypes().add(this.getExpression());
     literalEClass.getESuperTypes().add(this.getExpression());
     selectStatementExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -2785,39 +2851,45 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOr_Left(), this.getExpression(), null, "left", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOr_Right(), this.getExpression(), null, "right", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprConcatEClass, ExprConcat.class, "ExprConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprConcat_Left(), this.getExpression(), null, "left", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprConcat_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprConcat_Right(), this.getExpression(), null, "right", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAnd_Left(), this.getExpression(), null, "left", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAnd_Right(), this.getExpression(), null, "right", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprMultEClass, ExprMult.class, "ExprMult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprMult_Left(), this.getExpression(), null, "left", null, 0, 1, ExprMult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprMult_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprMult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprMult_Right(), this.getExpression(), null, "right", null, 0, 1, ExprMult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(primaryComparisonEClass, PrimaryComparison.class, "PrimaryComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPrimaryComparison_Left(), this.getExpression(), null, "left", null, 0, 1, PrimaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPrimaryComparison_Op(), ecorePackage.getEString(), "op", null, 0, 1, PrimaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPrimaryComparison_Right(), this.getExpression(), null, "right", null, 0, 1, PrimaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprAddEClass, ExprAdd.class, "ExprAdd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprAdd_Left(), this.getExpression(), null, "left", null, 0, 1, ExprAdd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprAdd_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprAdd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprAdd_Right(), this.getExpression(), null, "right", null, 0, 1, ExprAdd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(secondaryComparisonEClass, SecondaryComparison.class, "SecondaryComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSecondaryComparison_Left(), this.getExpression(), null, "left", null, 0, 1, SecondaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSecondaryComparison_Op(), ecorePackage.getEString(), "op", null, 0, 1, SecondaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSecondaryComparison_Right(), this.getExpression(), null, "right", null, 0, 1, SecondaryComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprBitEClass, ExprBit.class, "ExprBit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprBit_Left(), this.getExpression(), null, "left", null, 0, 1, ExprBit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprBit_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprBit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprBit_Right(), this.getExpression(), null, "right", null, 0, 1, ExprBit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(divisionEClass, Division.class, "Division", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDivision_Left(), this.getExpression(), null, "left", null, 0, 1, Division.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDivision_Right(), this.getExpression(), null, "right", null, 0, 1, Division.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprRelateEClass, ExprRelate.class, "ExprRelate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprRelate_Left(), this.getExpression(), null, "left", null, 0, 1, ExprRelate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprRelate_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprRelate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprRelate_Right(), this.getExpression(), null, "right", null, 0, 1, ExprRelate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(multiplicationEClass, Multiplication.class, "Multiplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMultiplication_Left(), this.getExpression(), null, "left", null, 0, 1, Multiplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMultiplication_Right(), this.getExpression(), null, "right", null, 0, 1, Multiplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprEqualEClass, ExprEqual.class, "ExprEqual", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprEqual_Left(), this.getExpression(), null, "left", null, 0, 1, ExprEqual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprEqual_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprEqual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprEqual_Right(), this.getExpression(), null, "right", null, 0, 1, ExprEqual.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAddition_Left(), this.getExpression(), null, "left", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAddition_Right(), this.getExpression(), null, "right", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprAndEClass, ExprAnd.class, "ExprAnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprAnd_Left(), this.getExpression(), null, "left", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprAnd_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprAnd_Right(), this.getExpression(), null, "right", null, 0, 1, ExprAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(subtractionEClass, Subtraction.class, "Subtraction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSubtraction_Left(), this.getExpression(), null, "left", null, 0, 1, Subtraction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSubtraction_Right(), this.getExpression(), null, "right", null, 0, 1, Subtraction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprOrEClass, ExprOr.class, "ExprOr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExprOr_Left(), this.getExpression(), null, "left", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprOr_Op(), ecorePackage.getEString(), "op", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprOr_Right(), this.getExpression(), null, "right", null, 0, 1, ExprOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(columnLiteralEClass, ColumnLiteral.class, "ColumnLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getColumnLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, ColumnLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

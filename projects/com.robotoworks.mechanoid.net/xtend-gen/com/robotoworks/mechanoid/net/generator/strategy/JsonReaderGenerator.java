@@ -222,7 +222,7 @@ public class JsonReaderGenerator {
   protected CharSequence _genStatementForType(final TypedMember member, final IntrinsicType type) {
     StringConcatenation _builder = new StringConcatenation();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("(source.next");
     String _signature = ModelExtensions.signature(type);
@@ -248,7 +248,7 @@ public class JsonReaderGenerator {
     _builder.append("\t");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
-    _builder.append(" targetMember = new ");
+    _builder.append(" subjectMember = new ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "	");
     _builder.append("();");
@@ -257,13 +257,13 @@ public class JsonReaderGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("InputTransformer.class).transform(source, targetMember);");
+    _builder.append("Transformer.class).transformIn(source, subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "	");
-    _builder.append("(targetMember);");
+    _builder.append("(subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("} else {");
     _builder.newLine();
@@ -284,7 +284,7 @@ public class JsonReaderGenerator {
     _builder.append("\t");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
-    _builder.append(" targetMember = ");
+    _builder.append(" subjectMember = ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "	");
     _builder.append(".fromValue(source.");
@@ -294,9 +294,9 @@ public class JsonReaderGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "	");
-    _builder.append("(targetMember);");
+    _builder.append("(subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("} else {");
     _builder.newLine();
@@ -326,16 +326,16 @@ public class JsonReaderGenerator {
     _builder.append("List<");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature, "	");
-    _builder.append("> targetMember = JsonUtil.read");
+    _builder.append("> subjectMember = JsonUtil.read");
     String _boxedTypeSignature_1 = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature_1, "	");
     _builder.append("List(source);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "	");
-    _builder.append("(targetMember);");
+    _builder.append("(subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("} else {");
     _builder.newLine();
@@ -366,7 +366,7 @@ public class JsonReaderGenerator {
     _builder.append("\t");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
-    _builder.append(" targetMember = new ArrayList<");
+    _builder.append(" subjectMember = new ArrayList<");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
     _builder.append(">();");
@@ -375,13 +375,13 @@ public class JsonReaderGenerator {
     _builder.append("provider.get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "	");
-    _builder.append("InputTransformer.class).transform(source, targetMember);");
+    _builder.append("Transformer.class).transformIn(source, subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "	");
-    _builder.append("(targetMember);");
+    _builder.append("(subjectMember);");
     _builder.newLineIfNotEmpty();
     _builder.append("} else {");
     _builder.newLine();
@@ -403,7 +403,7 @@ public class JsonReaderGenerator {
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" targetMember = new ArrayList");
+    _builder.append(" subjectMember = new ArrayList");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "");
     _builder.append("();");
@@ -451,9 +451,9 @@ public class JsonReaderGenerator {
     _builder.append("}");
     _builder.newLine();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "target");
+    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
     _builder.append(_memberize, "");
-    _builder.append("(targetMember);");
+    _builder.append("(subjectMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }

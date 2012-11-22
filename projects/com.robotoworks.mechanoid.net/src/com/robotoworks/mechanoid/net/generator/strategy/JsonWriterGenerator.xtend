@@ -53,7 +53,7 @@ class JsonWriterGenerator {
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
 		target.name("«member.name»");
-		target.value(«member.toGetMethodName.memberize("source")»());
+		target.value(«member.toGetMethodName.memberize("subject")»());
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {
@@ -61,16 +61,16 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
-		if(«member.toGetMethodName.memberize("source")»() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
-			provider.get(«type.innerSignature»OutputTransformer.class).transform(«member.toGetMethodName.memberize("source")»(), target);
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
 		}
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
-		if(«member.toGetMethodName.memberize("source")»() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
-			target.value(«member.toGetMethodName.memberize("source")»().toString());
+			target.value(«member.toGetMethodName.memberize("subject")»().toString());
 		}
 	'''
 	
@@ -79,9 +79,9 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
-		if(«member.toGetMethodName.memberize("source")»() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
-			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("source")»());
+			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("subject")»());
 		}
 	'''
 	
@@ -90,9 +90,9 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
-		if(«member.toGetMethodName.memberize("source")»() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
-			provider.get(«type.innerSignature»OutputTransformer.class).transform(«member.toGetMethodName.memberize("source")»(), target);
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
 		}
 	'''
 	
@@ -100,13 +100,13 @@ class JsonWriterGenerator {
 		«context.registerImport("java.util.List")»
 		«context.registerImport("java.util.ArrayList")»
 		
-		if(«member.toGetMethodName.memberize("source")»() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			
 			target.name("«member.name»");
 			
 			target.beginArray();
 			
-			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize("source")»()) {
+			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize("subject")»()) {
 				target.value(element.toString());
 			}
 			

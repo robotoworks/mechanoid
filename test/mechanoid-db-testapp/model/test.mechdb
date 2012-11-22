@@ -5,6 +5,9 @@ database TestDB {
 		create table table_a ( 
 			_id integer primary key autoincrement
 		);
+		
+		create view hehehe as
+		select a || b as b from b where a and b and c=5 || 5 >> 2;
 	}
 	
 	migration {

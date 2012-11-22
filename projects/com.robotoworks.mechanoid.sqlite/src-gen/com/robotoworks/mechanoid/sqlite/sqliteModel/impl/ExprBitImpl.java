@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,20 +16,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Secondary Comparison</b></em>'.
+ * An implementation of the model object '<em><b>Expr Bit</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl#getOp <em>Op</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SecondaryComparisonImpl extends ExpressionImpl implements SecondaryComparison
+public class ExprBitImpl extends ExpressionImpl implements ExprBit
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -76,7 +76,7 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SecondaryComparisonImpl()
+  protected ExprBitImpl()
   {
     super();
   }
@@ -89,7 +89,7 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.SECONDARY_COMPARISON;
+    return SqliteModelPackage.Literals.EXPR_BIT;
   }
 
   /**
@@ -113,7 +113,7 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_BIT__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -130,14 +130,14 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_BIT__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_BIT__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_BIT__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -160,7 +160,7 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     String oldOp = op;
     op = newOp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON__OP, oldOp, op));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_BIT__OP, oldOp, op));
   }
 
   /**
@@ -184,7 +184,7 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_BIT__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -201,14 +201,14 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_BIT__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SECONDARY_COMPARISON__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.EXPR_BIT__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SECONDARY_COMPARISON__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.EXPR_BIT__RIGHT, newRight, newRight));
   }
 
   /**
@@ -221,9 +221,9 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON__LEFT:
+      case SqliteModelPackage.EXPR_BIT__LEFT:
         return basicSetLeft(null, msgs);
-      case SqliteModelPackage.SECONDARY_COMPARISON__RIGHT:
+      case SqliteModelPackage.EXPR_BIT__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -239,11 +239,11 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON__LEFT:
+      case SqliteModelPackage.EXPR_BIT__LEFT:
         return getLeft();
-      case SqliteModelPackage.SECONDARY_COMPARISON__OP:
+      case SqliteModelPackage.EXPR_BIT__OP:
         return getOp();
-      case SqliteModelPackage.SECONDARY_COMPARISON__RIGHT:
+      case SqliteModelPackage.EXPR_BIT__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -259,13 +259,13 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON__LEFT:
+      case SqliteModelPackage.EXPR_BIT__LEFT:
         setLeft((Expression)newValue);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON__OP:
+      case SqliteModelPackage.EXPR_BIT__OP:
         setOp((String)newValue);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON__RIGHT:
+      case SqliteModelPackage.EXPR_BIT__RIGHT:
         setRight((Expression)newValue);
         return;
     }
@@ -282,13 +282,13 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON__LEFT:
+      case SqliteModelPackage.EXPR_BIT__LEFT:
         setLeft((Expression)null);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON__OP:
+      case SqliteModelPackage.EXPR_BIT__OP:
         setOp(OP_EDEFAULT);
         return;
-      case SqliteModelPackage.SECONDARY_COMPARISON__RIGHT:
+      case SqliteModelPackage.EXPR_BIT__RIGHT:
         setRight((Expression)null);
         return;
     }
@@ -305,11 +305,11 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SECONDARY_COMPARISON__LEFT:
+      case SqliteModelPackage.EXPR_BIT__LEFT:
         return left != null;
-      case SqliteModelPackage.SECONDARY_COMPARISON__OP:
+      case SqliteModelPackage.EXPR_BIT__OP:
         return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
-      case SqliteModelPackage.SECONDARY_COMPARISON__RIGHT:
+      case SqliteModelPackage.EXPR_BIT__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
@@ -332,4 +332,4 @@ public class SecondaryComparisonImpl extends ExpressionImpl implements Secondary
     return result.toString();
   }
 
-} //SecondaryComparisonImpl
+} //ExprBitImpl

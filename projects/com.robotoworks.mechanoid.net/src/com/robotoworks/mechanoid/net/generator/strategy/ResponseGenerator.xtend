@@ -136,7 +136,7 @@ class ResponseGenerator {
 			«IF(method.response.type instanceof ComplexTypeLiteral || method.response.superType != null)»
 				«generateDeserializationStatementHeader(true)»
 				
-					«method.name.pascalize»Result target = this;
+					«method.name.pascalize»Result subject = this;
 					
 					«var members = mergeMembers(method.response.type as ComplexTypeLiteral, method.response.superType)»
 				
@@ -210,7 +210,7 @@ class ResponseGenerator {
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, ComplexTypeDeclaration declaration) '''
 		«generateDeserializationStatementHeader(true)»
 				this.«type.signature.camelize» = new «type.signature»();
-				provider.get(«type.signature»InputTransformer.class).transform(source, this.«type.signature.camelize»);
+				provider.get(«type.signature»Transformer.class).transformIn(source, this.«type.signature.camelize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -248,7 +248,7 @@ class ResponseGenerator {
 		«context.registerImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
-				provider.get(«type.innerSignature»InputTransformer.class).transform(source, this.«type.innerSignature.camelize.pluralize»);
+				provider.get(«type.innerSignature»Transformer.class).transformIn(source, this.«type.innerSignature.camelize.pluralize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	

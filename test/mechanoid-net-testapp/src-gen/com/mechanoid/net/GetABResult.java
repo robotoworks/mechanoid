@@ -20,7 +20,7 @@ public class GetABResult  {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.a = new A();
-			provider.get(AInputTransformer.class).transform(source, this.a);
+			provider.get(ATransformer.class).transformIn(source, this.a);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);

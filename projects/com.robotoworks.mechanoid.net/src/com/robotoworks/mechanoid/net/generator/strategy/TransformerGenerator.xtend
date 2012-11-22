@@ -4,7 +4,7 @@ import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.Model
 
-class OutputTransformerGenerator {
+class TransformerGenerator {
 	CodeGenerationContext context
 	
 	def setContext(CodeGenerationContext context){
@@ -14,9 +14,13 @@ class OutputTransformerGenerator {
 	def registerImports(){}
 	
 	JsonWriterGenerator jsonWriterGenerator
+	JsonReaderGenerator jsonReaderGenerator
 	
 	def setJsonWriterGenerator(JsonWriterGenerator jsonWriterGenerator){
 		this.jsonWriterGenerator = jsonWriterGenerator;
+	}
+	def setJsonReaderGenerator(JsonReaderGenerator jsonReaderGenerator){
+		this.jsonReaderGenerator = jsonReaderGenerator;
 	}
 	
 	def generate(ComplexTypeDeclaration decl, Model module) '''
@@ -27,6 +31,7 @@ class OutputTransformerGenerator {
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
 	import com.robotoworks.mechanoid.internal.util.JsonWriter;
+	import com.robotoworks.mechanoid.internal.util.JsonReader;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -36,8 +41,8 @@ class OutputTransformerGenerator {
 	def generateOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
 		«context.registerImport("java.util.List")»
 
-		public class «decl.name»OutputTransformer extends Transformer<«decl.name», JsonWriter> {			
-			public void transform(«decl.name» source, JsonWriter target) throws TransformException {
+		public class «decl.name»Transformer extends Transformer<«decl.name», JsonReader, JsonWriter> {			
+			public void transformOut(«decl.name» subject, JsonWriter target) throws TransformException {
 				try {
 
 					«jsonWriterGenerator.genWriteComplexType(decl)»
@@ -46,18 +51,48 @@ class OutputTransformerGenerator {
 					throw new TransformException(x);
 				}
 			}
-			public void transform(List<«decl.name»> source, JsonWriter target) throws TransformException {
+			public void transformOut(List<«decl.name»> subject, JsonWriter target) throws TransformException {
 				try {
 					target.beginArray();
 					
-					for(«decl.name» sourceItem:source) {
-						transform(sourceItem, target);
+					for(«decl.name» item:subject) {
+						transformOut(item, target);
 					}
 					
 					target.endArray();
 				} catch (Exception x) {
 					throw new TransformException(x);
 				}
+			}
+			
+			public void transformIn(JsonReader source, «decl.name» subject) throws TransformException {
+				try {
+					«jsonReaderGenerator.genReadComplexType(decl)»
+					
+				} catch (Exception x) {
+					throw new TransformException(x);
+				}
+				
+			}
+			
+			public void transformIn(JsonReader source, List<«decl.name»> subject) throws TransformException {
+				
+				try {
+					source.beginArray();
+					
+					while(source.hasNext()) {
+						«decl.name» item = new «decl.name»();
+						transformIn(source, item);
+						subject.add(item);
+						
+					}
+					
+					source.endArray();
+					
+				} catch (Exception x) {
+					throw new TransformException(x);
+				}
+				
 			}
 		}
 	'''
