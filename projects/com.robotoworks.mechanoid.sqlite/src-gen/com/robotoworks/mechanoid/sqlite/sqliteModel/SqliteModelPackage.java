@@ -892,14 +892,14 @@ public interface SqliteModelPackage extends EPackage
   int LITERAL_VALUE_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrImpl <em>Or</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprConcatImpl <em>Expr Concat</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getOr()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprConcatImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprConcat()
    * @generated
    */
-  int OR = 24;
+  int EXPR_CONCAT = 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -908,81 +908,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Or</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl <em>And</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAnd()
-   * @generated
-   */
-  int AND = 25;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>And</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonImpl <em>Primary Comparison</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryComparison()
-   * @generated
-   */
-  int PRIMARY_COMPARISON = 26;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_COMPARISON__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_CONCAT__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -991,7 +917,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_COMPARISON__OP = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_CONCAT__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1000,26 +926,26 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_COMPARISON__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_CONCAT__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Primary Comparison</em>' class.
+   * The number of structural features of the '<em>Expr Concat</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMARY_COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+  int EXPR_CONCAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl <em>Secondary Comparison</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl <em>Expr Mult</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSecondaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprMult()
    * @generated
    */
-  int SECONDARY_COMPARISON = 27;
+  int EXPR_MULT = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1028,7 +954,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SECONDARY_COMPARISON__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_MULT__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -1037,7 +963,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SECONDARY_COMPARISON__OP = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_MULT__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1046,26 +972,26 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SECONDARY_COMPARISON__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_MULT__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Secondary Comparison</em>' class.
+   * The number of structural features of the '<em>Expr Mult</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SECONDARY_COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+  int EXPR_MULT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl <em>Division</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAddImpl <em>Expr Add</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDivision()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAddImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAdd()
    * @generated
    */
-  int DIVISION = 28;
+  int EXPR_ADD = 26;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1074,7 +1000,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIVISION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_ADD__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_ADD__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1083,26 +1018,26 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIVISION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_ADD__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Division</em>' class.
+   * The number of structural features of the '<em>Expr Add</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DIVISION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_ADD_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.MultiplicationImpl <em>Multiplication</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl <em>Expr Bit</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.MultiplicationImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getMultiplication()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprBit()
    * @generated
    */
-  int MULTIPLICATION = 29;
+  int EXPR_BIT = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1111,7 +1046,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MULTIPLICATION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_BIT__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_BIT__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1120,26 +1064,26 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MULTIPLICATION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_BIT__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Multiplication</em>' class.
+   * The number of structural features of the '<em>Expr Bit</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MULTIPLICATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_BIT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl <em>Addition</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl <em>Expr Relate</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAddition()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprRelate()
    * @generated
    */
-  int ADDITION = 30;
+  int EXPR_RELATE = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1148,7 +1092,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADDITION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_RELATE__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_RELATE__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1157,26 +1110,26 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADDITION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_RELATE__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Addition</em>' class.
+   * The number of structural features of the '<em>Expr Relate</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADDITION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_RELATE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl <em>Subtraction</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprEqualImpl <em>Expr Equal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSubtraction()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprEqualImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprEqual()
    * @generated
    */
-  int SUBTRACTION = 31;
+  int EXPR_EQUAL = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1185,7 +1138,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUBTRACTION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+  int EXPR_EQUAL__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_EQUAL__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1194,16 +1156,108 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUBTRACTION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+  int EXPR_EQUAL__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Subtraction</em>' class.
+   * The number of structural features of the '<em>Expr Equal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBTRACTION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int EXPR_EQUAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAndImpl <em>Expr And</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAndImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAnd()
+   * @generated
+   */
+  int EXPR_AND = 30;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_AND__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_AND__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_AND__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Expr And</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_AND_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprOrImpl <em>Expr Or</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprOrImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprOr()
+   * @generated
+   */
+  int EXPR_OR = 31;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_OR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_OR__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_OR__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Expr Or</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_OR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl <em>Column Literal</em>}' class.
@@ -3041,282 +3095,348 @@ public interface SqliteModelPackage extends EPackage
   EClass getLiteralValue();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Or <em>Or</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat <em>Expr Concat</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Or</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Or
+   * @return the meta object for class '<em>Expr Concat</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat
    * @generated
    */
-  EClass getOr();
+  EClass getExprConcat();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Or#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Or#getLeft()
-   * @see #getOr()
-   * @generated
-   */
-  EReference getOr_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Or#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Or#getRight()
-   * @see #getOr()
-   * @generated
-   */
-  EReference getOr_Right();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.And <em>And</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>And</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.And
-   * @generated
-   */
-  EClass getAnd();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.And#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.And#getLeft()
-   * @see #getAnd()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getLeft()
+   * @see #getExprConcat()
    * @generated
    */
-  EReference getAnd_Left();
+  EReference getExprConcat_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.And#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.And#getRight()
-   * @see #getAnd()
-   * @generated
-   */
-  EReference getAnd_Right();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison <em>Primary Comparison</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Primary Comparison</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison
-   * @generated
-   */
-  EClass getPrimaryComparison();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getLeft()
-   * @see #getPrimaryComparison()
-   * @generated
-   */
-  EReference getPrimaryComparison_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getOp <em>Op</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Op</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getOp()
-   * @see #getPrimaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getOp()
+   * @see #getExprConcat()
    * @generated
    */
-  EAttribute getPrimaryComparison_Op();
+  EAttribute getExprConcat_Op();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryComparison#getRight()
-   * @see #getPrimaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat#getRight()
+   * @see #getExprConcat()
    * @generated
    */
-  EReference getPrimaryComparison_Right();
+  EReference getExprConcat_Right();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison <em>Secondary Comparison</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult <em>Expr Mult</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Secondary Comparison</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison
+   * @return the meta object for class '<em>Expr Mult</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult
    * @generated
    */
-  EClass getSecondaryComparison();
+  EClass getExprMult();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getLeft()
-   * @see #getSecondaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getLeft()
+   * @see #getExprMult()
    * @generated
    */
-  EReference getSecondaryComparison_Left();
+  EReference getExprMult_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getOp <em>Op</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Op</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getOp()
-   * @see #getSecondaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getOp()
+   * @see #getExprMult()
    * @generated
    */
-  EAttribute getSecondaryComparison_Op();
+  EAttribute getExprMult_Op();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SecondaryComparison#getRight()
-   * @see #getSecondaryComparison()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult#getRight()
+   * @see #getExprMult()
    * @generated
    */
-  EReference getSecondaryComparison_Right();
+  EReference getExprMult_Right();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Division <em>Division</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd <em>Expr Add</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Division</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Division
+   * @return the meta object for class '<em>Expr Add</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd
    * @generated
    */
-  EClass getDivision();
+  EClass getExprAdd();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Division#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Division#getLeft()
-   * @see #getDivision()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getLeft()
+   * @see #getExprAdd()
    * @generated
    */
-  EReference getDivision_Left();
+  EReference getExprAdd_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Division#getRight <em>Right</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getOp()
+   * @see #getExprAdd()
+   * @generated
+   */
+  EAttribute getExprAdd_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Division#getRight()
-   * @see #getDivision()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd#getRight()
+   * @see #getExprAdd()
    * @generated
    */
-  EReference getDivision_Right();
+  EReference getExprAdd_Right();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication <em>Multiplication</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit <em>Expr Bit</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Multiplication</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication
+   * @return the meta object for class '<em>Expr Bit</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit
    * @generated
    */
-  EClass getMultiplication();
+  EClass getExprBit();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getLeft()
-   * @see #getMultiplication()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getLeft()
+   * @see #getExprBit()
    * @generated
    */
-  EReference getMultiplication_Left();
+  EReference getExprBit_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getRight <em>Right</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getOp()
+   * @see #getExprBit()
+   * @generated
+   */
+  EAttribute getExprBit_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Multiplication#getRight()
-   * @see #getMultiplication()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit#getRight()
+   * @see #getExprBit()
    * @generated
    */
-  EReference getMultiplication_Right();
+  EReference getExprBit_Right();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Addition <em>Addition</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate <em>Expr Relate</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Addition</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Addition
+   * @return the meta object for class '<em>Expr Relate</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate
    * @generated
    */
-  EClass getAddition();
+  EClass getExprRelate();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Addition#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Addition#getLeft()
-   * @see #getAddition()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getLeft()
+   * @see #getExprRelate()
    * @generated
    */
-  EReference getAddition_Left();
+  EReference getExprRelate_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Addition#getRight <em>Right</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getOp()
+   * @see #getExprRelate()
+   * @generated
+   */
+  EAttribute getExprRelate_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Addition#getRight()
-   * @see #getAddition()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate#getRight()
+   * @see #getExprRelate()
    * @generated
    */
-  EReference getAddition_Right();
+  EReference getExprRelate_Right();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction <em>Subtraction</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual <em>Expr Equal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Subtraction</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction
+   * @return the meta object for class '<em>Expr Equal</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual
    * @generated
    */
-  EClass getSubtraction();
+  EClass getExprEqual();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction#getLeft()
-   * @see #getSubtraction()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getLeft()
+   * @see #getExprEqual()
    * @generated
    */
-  EReference getSubtraction_Left();
+  EReference getExprEqual_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction#getRight <em>Right</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getOp()
+   * @see #getExprEqual()
+   * @generated
+   */
+  EAttribute getExprEqual_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Subtraction#getRight()
-   * @see #getSubtraction()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual#getRight()
+   * @see #getExprEqual()
    * @generated
    */
-  EReference getSubtraction_Right();
+  EReference getExprEqual_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd <em>Expr And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr And</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd
+   * @generated
+   */
+  EClass getExprAnd();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getLeft()
+   * @see #getExprAnd()
+   * @generated
+   */
+  EReference getExprAnd_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getOp()
+   * @see #getExprAnd()
+   * @generated
+   */
+  EAttribute getExprAnd_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd#getRight()
+   * @see #getExprAnd()
+   * @generated
+   */
+  EReference getExprAnd_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr <em>Expr Or</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr Or</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr
+   * @generated
+   */
+  EClass getExprOr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getLeft()
+   * @see #getExprOr()
+   * @generated
+   */
+  EReference getExprOr_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getOp()
+   * @see #getExprOr()
+   * @generated
+   */
+  EAttribute getExprOr_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr#getRight()
+   * @see #getExprOr()
+   * @generated
+   */
+  EReference getExprOr_Right();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral <em>Column Literal</em>}'.
@@ -4786,14 +4906,14 @@ public interface SqliteModelPackage extends EPackage
     EClass LITERAL_VALUE = eINSTANCE.getLiteralValue();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrImpl <em>Or</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprConcatImpl <em>Expr Concat</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getOr()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprConcatImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprConcat()
      * @generated
      */
-    EClass OR = eINSTANCE.getOr();
+    EClass EXPR_CONCAT = eINSTANCE.getExprConcat();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4801,59 +4921,7 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OR__LEFT = eINSTANCE.getOr_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OR__RIGHT = eINSTANCE.getOr_Right();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl <em>And</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AndImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAnd()
-     * @generated
-     */
-    EClass AND = eINSTANCE.getAnd();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference AND__LEFT = eINSTANCE.getAnd_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference AND__RIGHT = eINSTANCE.getAnd_Right();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonImpl <em>Primary Comparison</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.PrimaryComparisonImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryComparison()
-     * @generated
-     */
-    EClass PRIMARY_COMPARISON = eINSTANCE.getPrimaryComparison();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY_COMPARISON__LEFT = eINSTANCE.getPrimaryComparison_Left();
+    EReference EXPR_CONCAT__LEFT = eINSTANCE.getExprConcat_Left();
 
     /**
      * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
@@ -4861,7 +4929,7 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PRIMARY_COMPARISON__OP = eINSTANCE.getPrimaryComparison_Op();
+    EAttribute EXPR_CONCAT__OP = eINSTANCE.getExprConcat_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4869,17 +4937,17 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PRIMARY_COMPARISON__RIGHT = eINSTANCE.getPrimaryComparison_Right();
+    EReference EXPR_CONCAT__RIGHT = eINSTANCE.getExprConcat_Right();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl <em>Secondary Comparison</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl <em>Expr Mult</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SecondaryComparisonImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSecondaryComparison()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprMultImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprMult()
      * @generated
      */
-    EClass SECONDARY_COMPARISON = eINSTANCE.getSecondaryComparison();
+    EClass EXPR_MULT = eINSTANCE.getExprMult();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4887,7 +4955,7 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SECONDARY_COMPARISON__LEFT = eINSTANCE.getSecondaryComparison_Left();
+    EReference EXPR_MULT__LEFT = eINSTANCE.getExprMult_Left();
 
     /**
      * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
@@ -4895,7 +4963,7 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SECONDARY_COMPARISON__OP = eINSTANCE.getSecondaryComparison_Op();
+    EAttribute EXPR_MULT__OP = eINSTANCE.getExprMult_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4903,17 +4971,17 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SECONDARY_COMPARISON__RIGHT = eINSTANCE.getSecondaryComparison_Right();
+    EReference EXPR_MULT__RIGHT = eINSTANCE.getExprMult_Right();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl <em>Division</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAddImpl <em>Expr Add</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DivisionImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDivision()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAddImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAdd()
      * @generated
      */
-    EClass DIVISION = eINSTANCE.getDivision();
+    EClass EXPR_ADD = eINSTANCE.getExprAdd();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4921,7 +4989,15 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DIVISION__LEFT = eINSTANCE.getDivision_Left();
+    EReference EXPR_ADD__LEFT = eINSTANCE.getExprAdd_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_ADD__OP = eINSTANCE.getExprAdd_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4929,17 +5005,17 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DIVISION__RIGHT = eINSTANCE.getDivision_Right();
+    EReference EXPR_ADD__RIGHT = eINSTANCE.getExprAdd_Right();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.MultiplicationImpl <em>Multiplication</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl <em>Expr Bit</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.MultiplicationImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getMultiplication()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprBitImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprBit()
      * @generated
      */
-    EClass MULTIPLICATION = eINSTANCE.getMultiplication();
+    EClass EXPR_BIT = eINSTANCE.getExprBit();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4947,7 +5023,15 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MULTIPLICATION__LEFT = eINSTANCE.getMultiplication_Left();
+    EReference EXPR_BIT__LEFT = eINSTANCE.getExprBit_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_BIT__OP = eINSTANCE.getExprBit_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4955,17 +5039,17 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MULTIPLICATION__RIGHT = eINSTANCE.getMultiplication_Right();
+    EReference EXPR_BIT__RIGHT = eINSTANCE.getExprBit_Right();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl <em>Addition</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl <em>Expr Relate</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AdditionImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAddition()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprRelateImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprRelate()
      * @generated
      */
-    EClass ADDITION = eINSTANCE.getAddition();
+    EClass EXPR_RELATE = eINSTANCE.getExprRelate();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4973,7 +5057,15 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADDITION__LEFT = eINSTANCE.getAddition_Left();
+    EReference EXPR_RELATE__LEFT = eINSTANCE.getExprRelate_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_RELATE__OP = eINSTANCE.getExprRelate_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4981,17 +5073,17 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADDITION__RIGHT = eINSTANCE.getAddition_Right();
+    EReference EXPR_RELATE__RIGHT = eINSTANCE.getExprRelate_Right();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl <em>Subtraction</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprEqualImpl <em>Expr Equal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SubtractionImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSubtraction()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprEqualImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprEqual()
      * @generated
      */
-    EClass SUBTRACTION = eINSTANCE.getSubtraction();
+    EClass EXPR_EQUAL = eINSTANCE.getExprEqual();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -4999,7 +5091,15 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUBTRACTION__LEFT = eINSTANCE.getSubtraction_Left();
+    EReference EXPR_EQUAL__LEFT = eINSTANCE.getExprEqual_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_EQUAL__OP = eINSTANCE.getExprEqual_Op();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -5007,7 +5107,75 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUBTRACTION__RIGHT = eINSTANCE.getSubtraction_Right();
+    EReference EXPR_EQUAL__RIGHT = eINSTANCE.getExprEqual_Right();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAndImpl <em>Expr And</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprAndImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAnd()
+     * @generated
+     */
+    EClass EXPR_AND = eINSTANCE.getExprAnd();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_AND__LEFT = eINSTANCE.getExprAnd_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_AND__OP = eINSTANCE.getExprAnd_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_AND__RIGHT = eINSTANCE.getExprAnd_Right();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprOrImpl <em>Expr Or</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExprOrImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprOr()
+     * @generated
+     */
+    EClass EXPR_OR = eINSTANCE.getExprOr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_OR__LEFT = eINSTANCE.getExprOr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_OR__OP = eINSTANCE.getExprOr_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_OR__RIGHT = eINSTANCE.getExprOr_Right();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl <em>Column Literal</em>}' class.

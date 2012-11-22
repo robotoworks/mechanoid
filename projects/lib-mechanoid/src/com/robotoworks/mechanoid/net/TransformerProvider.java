@@ -1,9 +1,9 @@
 package com.robotoworks.mechanoid.net;
 
 public class TransformerProvider {
-	public <S extends Transformer<?, ?>> S get(Class<S> type){
+	public <T extends Transformer<?, ?, ?>> T get(Class<T> type){
 		try {
-			S instance = type.newInstance();
+			T instance = type.newInstance();
 			instance.provider = this;
 			return instance;
 		} catch (InstantiationException e) {

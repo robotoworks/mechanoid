@@ -12,12 +12,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 
 public class CodeGenerationStrategy {
 	private ClientGenerator clientGenerator;
-	private InputTransformerGenerator inputTransformerGenerator;
 	private IntegerEnumTypeGenerator integerEnumTypeGenerator;
 	private StringEnumTypeGenerator stringEnumTypeGenerator;
-	private ListInputTransformerGenerator listInputTransformerGenerator;
-	private ListOutputTransformerGenerator listOutputTransformerGenerator;
-	private OutputTransformerGenerator outputTransformerGenerator;
+	private TransformerGenerator transformerGenerator;
 	private RequestGenerator requestGenerator;
 	private ResponseGenerator responseGenerator;
 	private TypeGenerator typeGenerator;
@@ -48,10 +45,7 @@ public class CodeGenerationStrategy {
 				ComplexTypeDeclaration lit = (ComplexTypeDeclaration)decl;
 
 				// Generate transformers
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "OutputTransformer"), getOutputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "InputTransformer"), getInputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListOutputTransformer"), getListOutputTransformerGenerator().generate(lit, module));
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "ListInputTransformer"), getListInputTransformerGenerator().generate(lit, module));
+				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "Transformer"), getTransformerGenerator().generate(lit, module));
 				
 				// Generate types
 				if(lit.isGen()){
@@ -80,14 +74,6 @@ public class CodeGenerationStrategy {
 		return clientGenerator;
 	}
 	
-	public InputTransformerGenerator getInputTransformerGenerator() {
-		if(inputTransformerGenerator == null){
-			inputTransformerGenerator = new InputTransformerGenerator();
-			inputTransformerGenerator.setContext(context);
-			inputTransformerGenerator.setJsonReaderGenerator(getJsonReaderGenerator());
-		}
-		return inputTransformerGenerator;
-	}
 	public IntegerEnumTypeGenerator getIntegerEnumTypeGenerator() {
 		if(integerEnumTypeGenerator == null){
 			integerEnumTypeGenerator = new IntegerEnumTypeGenerator();
@@ -102,28 +88,15 @@ public class CodeGenerationStrategy {
 		}
 		return stringEnumTypeGenerator;
 	}
-	public ListInputTransformerGenerator getListInputTransformerGenerator() {
-		if(listInputTransformerGenerator == null){
-			listInputTransformerGenerator = new ListInputTransformerGenerator();
-			listInputTransformerGenerator.setContext(context);
-		}
-		return listInputTransformerGenerator;
-	}
-	public ListOutputTransformerGenerator getListOutputTransformerGenerator() {
-		if(listOutputTransformerGenerator == null){
-			listOutputTransformerGenerator = new ListOutputTransformerGenerator();
-			listOutputTransformerGenerator.setContext(context);
-		}
-		return listOutputTransformerGenerator;
-	}
 
-	public OutputTransformerGenerator getOutputTransformerGenerator() {
-		if(outputTransformerGenerator == null){
-			outputTransformerGenerator = new OutputTransformerGenerator();
-			outputTransformerGenerator.setContext(context);
-			outputTransformerGenerator.setJsonWriterGenerator(getJsonWriterGenerator());
+	public TransformerGenerator getTransformerGenerator() {
+		if(transformerGenerator == null){
+			transformerGenerator = new TransformerGenerator();
+			transformerGenerator.setContext(context);
+			transformerGenerator.setJsonReaderGenerator(getJsonReaderGenerator());
+			transformerGenerator.setJsonWriterGenerator(getJsonWriterGenerator());
 		}
-		return outputTransformerGenerator;
+		return transformerGenerator;
 	}
 	
 	public RequestGenerator getRequestGenerator() {

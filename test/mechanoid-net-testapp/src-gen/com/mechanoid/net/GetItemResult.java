@@ -20,7 +20,7 @@ public class GetItemResult  {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.item = new Item();
-			provider.get(ItemInputTransformer.class).transform(source, this.item);
+			provider.get(ItemTransformer.class).transformIn(source, this.item);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);

@@ -18,6 +18,7 @@ public abstract class AbstractTestDBOpenHelper extends MechanoidSQLiteOpenHelper
 
 	public interface Tables {
 		String TABLE_A = "table_a";
+		String HEHEHE = "hehehe";
 	}
 
 	public AbstractTestDBOpenHelper(Context context) {
@@ -31,6 +32,11 @@ public abstract class AbstractTestDBOpenHelper extends MechanoidSQLiteOpenHelper
 			"_id integer primary key autoincrement " +
 			") "
 		);
+		db.execSQL(
+			"create view hehehe as " +
+			"select a || b as b from b where a and b and c=5 || 5 >> 2 "
+		);
+		
 	}
 
 	@Override

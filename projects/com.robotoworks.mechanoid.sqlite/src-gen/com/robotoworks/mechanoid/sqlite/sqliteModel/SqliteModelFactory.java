@@ -239,76 +239,76 @@ public interface SqliteModelFactory extends EFactory
   LiteralValue createLiteralValue();
 
   /**
-   * Returns a new object of class '<em>Or</em>'.
+   * Returns a new object of class '<em>Expr Concat</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Or</em>'.
+   * @return a new object of class '<em>Expr Concat</em>'.
    * @generated
    */
-  Or createOr();
+  ExprConcat createExprConcat();
 
   /**
-   * Returns a new object of class '<em>And</em>'.
+   * Returns a new object of class '<em>Expr Mult</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>And</em>'.
+   * @return a new object of class '<em>Expr Mult</em>'.
    * @generated
    */
-  And createAnd();
+  ExprMult createExprMult();
 
   /**
-   * Returns a new object of class '<em>Primary Comparison</em>'.
+   * Returns a new object of class '<em>Expr Add</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary Comparison</em>'.
+   * @return a new object of class '<em>Expr Add</em>'.
    * @generated
    */
-  PrimaryComparison createPrimaryComparison();
+  ExprAdd createExprAdd();
 
   /**
-   * Returns a new object of class '<em>Secondary Comparison</em>'.
+   * Returns a new object of class '<em>Expr Bit</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Secondary Comparison</em>'.
+   * @return a new object of class '<em>Expr Bit</em>'.
    * @generated
    */
-  SecondaryComparison createSecondaryComparison();
+  ExprBit createExprBit();
 
   /**
-   * Returns a new object of class '<em>Division</em>'.
+   * Returns a new object of class '<em>Expr Relate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Division</em>'.
+   * @return a new object of class '<em>Expr Relate</em>'.
    * @generated
    */
-  Division createDivision();
+  ExprRelate createExprRelate();
 
   /**
-   * Returns a new object of class '<em>Multiplication</em>'.
+   * Returns a new object of class '<em>Expr Equal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Multiplication</em>'.
+   * @return a new object of class '<em>Expr Equal</em>'.
    * @generated
    */
-  Multiplication createMultiplication();
+  ExprEqual createExprEqual();
 
   /**
-   * Returns a new object of class '<em>Addition</em>'.
+   * Returns a new object of class '<em>Expr And</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Addition</em>'.
+   * @return a new object of class '<em>Expr And</em>'.
    * @generated
    */
-  Addition createAddition();
+  ExprAnd createExprAnd();
 
   /**
-   * Returns a new object of class '<em>Subtraction</em>'.
+   * Returns a new object of class '<em>Expr Or</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Subtraction</em>'.
+   * @return a new object of class '<em>Expr Or</em>'.
    * @generated
    */
-  Subtraction createSubtraction();
+  ExprOr createExprOr();
 
   /**
    * Returns a new object of class '<em>Column Literal</em>'.

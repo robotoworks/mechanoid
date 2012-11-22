@@ -94,7 +94,7 @@ public class JsonWriterGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("target.value(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
@@ -111,7 +111,7 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
@@ -125,9 +125,9 @@ public class JsonWriterGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("OutputTransformer.class).transform(");
+    _builder.append("Transformer.class).transformOut(");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
     _builder.append(_memberize_1, "	");
     _builder.append("(), target);");
     _builder.newLineIfNotEmpty();
@@ -140,7 +140,7 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
@@ -153,7 +153,7 @@ public class JsonWriterGenerator {
     _builder.append("\t");
     _builder.append("target.value(");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
     _builder.append(_memberize_1, "	");
     _builder.append("().toString());");
     _builder.newLineIfNotEmpty();
@@ -172,7 +172,7 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
@@ -188,7 +188,7 @@ public class JsonWriterGenerator {
     _builder.append(_boxedTypeSignature, "	");
     _builder.append("List(target, ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
     _builder.append(_memberize_1, "	");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
@@ -207,7 +207,7 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
@@ -221,9 +221,9 @@ public class JsonWriterGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("ListOutputTransformer.class).transform(");
+    _builder.append("Transformer.class).transformOut(");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
     _builder.append(_memberize_1, "	");
     _builder.append("(), target);");
     _builder.newLineIfNotEmpty();
@@ -241,7 +241,7 @@ public class JsonWriterGenerator {
     _builder.newLine();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "source");
+    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
@@ -262,11 +262,12 @@ public class JsonWriterGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("for(");
-    String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "	");
+    Type _type = member.getType();
+    String _innerSignature = ModelExtensions.innerSignature(_type);
+    _builder.append(_innerSignature, "	");
     _builder.append(" element : ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "source");
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
     _builder.append(_memberize_1, "	");
     _builder.append("()) {");
     _builder.newLineIfNotEmpty();
@@ -283,11 +284,6 @@ public class JsonWriterGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize_2 = ModelExtensions.memberize(_setMethodName, "target");
-    _builder.append(_memberize_2, "");
-    _builder.append("(targetMember);");
-    _builder.newLineIfNotEmpty();
     return _builder;
   }
   

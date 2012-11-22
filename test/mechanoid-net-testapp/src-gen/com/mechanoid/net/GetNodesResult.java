@@ -22,7 +22,7 @@ public class GetNodesResult  {
 		if(inStream != null) {
 			source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.nodes = new ArrayList<Node>();
-			provider.get(NodeListInputTransformer.class).transform(source, this.nodes);
+			provider.get(NodeTransformer.class).transformIn(source, this.nodes);
 		}
 	} catch(Exception x) {
 		throw new TransformException(x);
