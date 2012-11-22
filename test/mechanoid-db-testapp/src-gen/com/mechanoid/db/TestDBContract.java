@@ -16,6 +16,10 @@ public class TestDBContract  {
 	}
 	
 
+	interface HeheheColumns {
+		String B = "b";
+	}
+	
 			
 	public static class TableA implements TableAColumns, BaseColumns {
 	    public static final Uri CONTENT_URI = 
@@ -36,6 +40,14 @@ public class TestDBContract  {
 		}
 	}
 	
+
+	public static class Hehehe implements HeheheColumns {
+	    public static final Uri CONTENT_URI = 
+				BASE_CONTENT_URI.buildUpon().appendPath("hehehe").build();
+	
+	    public static final String CONTENT_TYPE =
+	            "vnd.android.cursor.dir/vnd.testdb.hehehe";
+	}
 
 
 	private TestDBContract(){}

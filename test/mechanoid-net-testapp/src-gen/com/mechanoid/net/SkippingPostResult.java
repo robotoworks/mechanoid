@@ -38,7 +38,7 @@ public class SkippingPostResult  {
 			if(inStream != null) {
 				source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 		
-			SkippingPostResult target = this;
+			SkippingPostResult subject = this;
 			
 		
 			source.beginObject();
@@ -61,13 +61,13 @@ public class SkippingPostResult  {
 										name = source.nextName();
 										
 										if(name.equals("a")) {
-											target.setA(source.nextString());
+											subject.setA(source.nextString());
 										}
 										else if(name.equals("b")) {
-											target.setB(source.nextInt());
+											subject.setB(source.nextInt());
 										}
 										else if(name.equals("c")) {
-											target.setC(source.nextLong());
+											subject.setC(source.nextLong());
 										}
 										else {
 											source.skipValue();

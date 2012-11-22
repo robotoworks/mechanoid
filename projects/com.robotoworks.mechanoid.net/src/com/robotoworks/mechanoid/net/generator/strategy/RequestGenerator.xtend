@@ -329,7 +329,7 @@ class RequestGenerator {
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, ComplexTypeLiteral type) '''
 		«generateSerializationStatementHeader(true)»
 		
-			«method.name.pascalize»Request source = this;
+			«method.name.pascalize»Request subject = this;
 		
 			«jsonWriterGenerator.genWriteComplexTypeLiteral(type)»
 		
@@ -345,7 +345,7 @@ class RequestGenerator {
 		UserType type,
 		ComplexTypeDeclaration declaration) '''
 			«generateSerializationStatementHeader(true)»
-				transformerProvider.get(«type.signature»OutputTransformer.class).transform(«type.signature.camelize», target);
+				transformerProvider.get(«type.signature»Transformer.class).transformOut(«type.signature.camelize», target);
 			«generateSerializationStatementFooter(true)»
 		'''
 	
@@ -392,7 +392,7 @@ class RequestGenerator {
 		ComplexTypeDeclaration declaration
 	) '''
 		«generateSerializationStatementHeader(true)»
-			transformerProvider.get(«type.innerSignature»ListOutputTransformer.class).transform(«type.innerSignature.camelize.pluralize», target);
+			transformerProvider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
 		«generateSerializationStatementFooter(true)»
 	'''
 

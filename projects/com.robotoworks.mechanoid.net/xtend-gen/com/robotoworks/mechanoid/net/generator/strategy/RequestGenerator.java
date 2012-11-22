@@ -1014,7 +1014,7 @@ public class RequestGenerator {
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
     _builder.append(_pascalize, "	");
-    _builder.append("Request source = this;");
+    _builder.append("Request subject = this;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
@@ -1043,7 +1043,7 @@ public class RequestGenerator {
     _builder.append("transformerProvider.get(");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
-    _builder.append("OutputTransformer.class).transform(");
+    _builder.append("Transformer.class).transformOut(");
     String _signature_1 = ModelExtensions.signature(type);
     String _camelize = ModelExtensions.camelize(_signature_1);
     _builder.append(_camelize, "	");
@@ -1120,7 +1120,7 @@ public class RequestGenerator {
     _builder.append("transformerProvider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("ListOutputTransformer.class).transform(");
+    _builder.append("Transformer.class).transformOut(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     String _camelize = ModelExtensions.camelize(_innerSignature_1);
     String _pluralize = ModelExtensions.pluralize(_camelize);

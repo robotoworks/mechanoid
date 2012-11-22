@@ -28,38 +28,42 @@ MigrationBlock:
  */
 
 SqlExpression:
-	root=Or
-;
-Or returns Expression:
-	And ({Or.left=current} 'or' right=And)*
+	root=ExprConcat
 ;
 
-And returns Expression:
-	PrimaryComparison ({And.left=current} 'and' right=PrimaryComparison)*
+ExprConcat returns Expression:
+	ExprMult ({ExprConcat.left=current} op='||' right=ExprMult)*
 ;
 
-PrimaryComparison returns Expression:
-	SecondaryComparison ({PrimaryComparison.left=current} op=SecondaryComparisonOp right=SecondaryComparison)*
+ExprMult returns Expression:
+	ExprAdd ({ExprMult.left=current} op=('*'|'/'|'%') right=ExprAdd)*
 ;
 
-SecondaryComparison returns Expression:
-	Division ({SecondaryComparison.left=current} op=PrimaryComparisonOp right=Division)*
+ExprAdd returns Expression:
+	ExprBit ({ExprAdd.left=current} op=('+'|'-') right=ExprBit)*
 ;
 
-Division returns Expression:
-	Multiplication ({Division.left=current} '/' right=Multiplication)*
+ExprBit returns Expression:
+	ExprRelate ({ExprBit.left=current} op=('<<'|'>>'|'&'|'|') right=ExprRelate)*
 ;
 
-Multiplication returns Expression:
-	Addition ({Multiplication.left=current} '*' right=Addition)*
+ExprRelate returns Expression:
+	ExprEqual ({ExprRelate.left=current} op=('<'|'<='|'>'|'>=') right=ExprEqual)*
 ;
 
-Addition returns Expression:
-	Subtraction ({Addition.left=current} '+' right=Subtraction)*
+ExprEqual returns Expression:
+	ExprAnd ({ExprEqual.left=current} 
+		op=('='|'=='|'!='|'<>'|'is'|'is not'|'in'|'like'|'glob'|'match'|'regexp') 
+		right=ExprAnd
+	)*
 ;
 
-Subtraction returns Expression:
-	PrimaryExpression ({Subtraction.left=current} '-' right=PrimaryExpression)*
+ExprAnd returns Expression:
+	ExprOr ({ExprAnd.left=current} op='and' right=ExprOr)*
+;
+
+ExprOr returns Expression:
+	PrimaryExpression ({ExprOr.left=current} op='or' right=PrimaryExpression)*
 ;
 
 PrimaryExpression returns Expression:

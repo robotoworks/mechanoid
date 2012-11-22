@@ -386,7 +386,7 @@ public class ResponseGenerator {
             String _name_3 = method.getName();
             String _pascalize_2 = ModelExtensions.pascalize(_name_3);
             _builder.append(_pascalize_2, "			");
-            _builder.append("Result target = this;");
+            _builder.append("Result subject = this;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t\t");
             _builder.newLine();
@@ -555,7 +555,7 @@ public class ResponseGenerator {
     _builder.append("provider.get(");
     String _signature_2 = ModelExtensions.signature(type);
     _builder.append(_signature_2, "		");
-    _builder.append("InputTransformer.class).transform(source, this.");
+    _builder.append("Transformer.class).transformIn(source, this.");
     String _signature_3 = ModelExtensions.signature(type);
     String _camelize_1 = ModelExtensions.camelize(_signature_3);
     _builder.append(_camelize_1, "		");
@@ -650,7 +650,7 @@ public class ResponseGenerator {
     _builder.append("provider.get(");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_2, "		");
-    _builder.append("ListInputTransformer.class).transform(source, this.");
+    _builder.append("Transformer.class).transformIn(source, this.");
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = ModelExtensions.camelize(_innerSignature_3);
     String _pluralize_1 = ModelExtensions.pluralize(_camelize_1);

@@ -101,7 +101,7 @@ class JsonReaderGenerator {
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
-		«member.toSetMethodName.memberize("target")»(source.next«type.signature.pascalize»());
+		«member.toSetMethodName.memberize("subject")»(source.next«type.signature.pascalize»());
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {
@@ -111,17 +111,21 @@ class JsonReaderGenerator {
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			«type.signature» targetMember = new «type.signature»();
-			provider.get(«type.innerSignature»InputTransformer.class).transform(source, targetMember);
-			«member.toSetMethodName.memberize("target")»(targetMember);
+			«type.signature» subjectMember = new «type.signature»();
+			provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
+			«member.toSetMethodName.memberize("subject")»(subjectMember);
+		} else {
+			source.skipValue();
 		}
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			«type.signature» targetMember = «type.signature».fromValue(source.«decl.resolveJsonReaderMethodName»());
-			«member.toSetMethodName.memberize("target")»(targetMember);
+			«type.signature» subjectMember = «type.signature».fromValue(source.«decl.resolveJsonReaderMethodName»());
+			«member.toSetMethodName.memberize("subject")»(subjectMember);
+		} else {
+			source.skipValue();
 		}
 	'''
 	
@@ -133,8 +137,10 @@ class JsonReaderGenerator {
 		«context.registerImport("java.util.List")»
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			List<«itemType.boxedTypeSignature»> targetMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
-			«member.toSetMethodName.memberize("target")»(targetMember);
+			List<«itemType.boxedTypeSignature»> subjectMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
+			«member.toSetMethodName.memberize("subject")»(subjectMember);
+		} else {
+			source.skipValue();
 		}
 	'''
 	
@@ -147,9 +153,11 @@ class JsonReaderGenerator {
 		«context.registerImport("java.util.ArrayList")»
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		if(source.peek() != JsonToken.NULL) {
-			«type.signature» targetMember = new ArrayList<«type.innerSignature»>();
-			provider.get(«type.innerSignature»ListInputTransformer.class).transform(source, targetMember);
-			«member.toSetMethodName.memberize("target")»(targetMember);
+			«type.signature» subjectMember = new ArrayList<«type.innerSignature»>();
+			provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
+			«member.toSetMethodName.memberize("subject")»(subjectMember);
+		} else {
+			source.skipValue();
 		}
 	'''
 	
@@ -157,7 +165,7 @@ class JsonReaderGenerator {
 		«context.registerImport("java.util.List")»
 		«context.registerImport("java.util.ArrayList")»
 		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		«type.signature» targetMember = new Array«type.signature»();
+		«type.signature» subjectMember = new ArrayList«type.signature»();
 		
 		if(source.peek() != JsonToken.NULL) {
 			
@@ -169,7 +177,9 @@ class JsonReaderGenerator {
 			}
 			
 			source.endArray();
+		} else {
+			source.skipValue();
 		}
-		«member.toSetMethodName.memberize("target")»(targetMember);
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 }

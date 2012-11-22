@@ -23,6 +23,7 @@ class ClientGenerator {
 
 	«var body = generateClientClass(client, module)»
 	«registerImports»
+	import android.util.Log;
 	import com.robotoworks.mechanoid.net.Parser;
 	import com.robotoworks.mechanoid.net.TransformException;
 	import com.robotoworks.mechanoid.net.TransformerProvider;
@@ -40,6 +41,7 @@ class ClientGenerator {
 	
 	def generateClientClass(Client client, Model module) '''
 		public class «client.name» {
+			private static final String LOG_TAG = "«client.name»";
 			
 			«IF client.baseUrl != null»
 			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
@@ -47,6 +49,7 @@ class ClientGenerator {
 			«ENDIF»
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
+			private final boolean debug;
 			
 			private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 			
@@ -73,21 +76,30 @@ class ClientGenerator {
 			«ENDIF»
 			«IF client.baseUrl != null»
 			public «client.name»(){
-				this(DEFAULT_BASE_URL, new TransformerProvider());
+				this(DEFAULT_BASE_URL, new TransformerProvider(), false);
 			}
 
 			public «client.name»(TransformerProvider transformerProvider){
-				this(DEFAULT_BASE_URL, transformerProvider);
+				this(DEFAULT_BASE_URL, transformerProvider, false);
 			}
 			
 			«ENDIF»
+			
 			public «client.name»(String baseUrl){
-				this(baseUrl, new TransformerProvider());
+				this(baseUrl, new TransformerProvider(), false);
 			}
-
-			public «client.name»(String baseUrl, TransformerProvider transformerProvider){
+			
+			public «client.name»(boolean debug){
+				this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
+			}
+			public «client.name»(String baseUrl, boolean debug){
+				this(baseUrl, new TransformerProvider(), debug);
+			}
+			
+			public «client.name»(String baseUrl, TransformerProvider transformerProvider, boolean debug){
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
+				this.debug = debug;
 				
 				«IF client.headers != null»
 				«FOR header : client.headers.headers»
@@ -135,6 +147,10 @@ class ClientGenerator {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -165,6 +181,10 @@ class ClientGenerator {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "PUT " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("PUT");
 			
@@ -189,6 +209,10 @@ class ClientGenerator {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "POST " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
 			
@@ -212,6 +236,10 @@ class ClientGenerator {
 	def dispatch generateServiceMethod(HttpDelete method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "DELETE " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("DELETE");

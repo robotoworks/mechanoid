@@ -1,5 +1,6 @@
 package com.mechanoid.net;
 
+import android.util.Log;
 import com.robotoworks.mechanoid.net.Parser;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.net.TransformerProvider;
@@ -11,11 +12,13 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 
 public class TestService {
+	private static final String LOG_TAG = "TestService";
 	
 	private static final String DEFAULT_BASE_URL = "http://10.0.2.2:8080/mechanoid-net-service/test";
 	
 	private final TransformerProvider transformerProvider;
 	private final String baseUrl;
+	private final boolean debug;
 	
 	private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 	
@@ -25,20 +28,29 @@ public class TestService {
 	
 	
 	public TestService(){
-		this(DEFAULT_BASE_URL, new TransformerProvider());
+		this(DEFAULT_BASE_URL, new TransformerProvider(), false);
 	}
 
 	public TestService(TransformerProvider transformerProvider){
-		this(DEFAULT_BASE_URL, transformerProvider);
+		this(DEFAULT_BASE_URL, transformerProvider, false);
 	}
 	
+	
 	public TestService(String baseUrl){
-		this(baseUrl, new TransformerProvider());
+		this(baseUrl, new TransformerProvider(), false);
 	}
-
-	public TestService(String baseUrl, TransformerProvider transformerProvider){
+	
+	public TestService(boolean debug){
+		this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
+	}
+	public TestService(String baseUrl, boolean debug){
+		this(baseUrl, new TransformerProvider(), debug);
+	}
+	
+	public TestService(String baseUrl, TransformerProvider transformerProvider, boolean debug){
 		this.baseUrl = baseUrl;
 		this.transformerProvider = transformerProvider;
+		this.debug = debug;
 		
 		headers.put("X-A","A");
 		headers.put("X-B","B");
@@ -60,6 +72,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -101,6 +117,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -140,6 +160,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -181,6 +205,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -220,6 +248,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -261,6 +293,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -300,6 +336,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -341,6 +381,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -380,6 +424,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -421,6 +469,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -460,6 +512,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -501,6 +557,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
@@ -535,6 +595,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "POST " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
@@ -573,6 +637,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "POST " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
 			
@@ -609,6 +677,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "POST " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
@@ -647,6 +719,10 @@ public class TestService {
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
+			if(debug) {
+				Log.d(LOG_TAG, "POST " + url.toString());
+			}
+			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
 			
@@ -683,6 +759,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -723,6 +803,10 @@ public class TestService {
 		
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
+			
+			if(debug) {
+				Log.d(LOG_TAG, "GET " + url.toString());
+			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
