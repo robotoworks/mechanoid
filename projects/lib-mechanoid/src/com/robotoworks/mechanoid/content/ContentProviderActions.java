@@ -1,4 +1,4 @@
-package com.robotoworks.mechanoid.sqlite;
+package com.robotoworks.mechanoid.content;
 
 import android.content.ContentValues;
 import android.database.Cursor;
