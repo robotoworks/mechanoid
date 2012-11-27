@@ -638,7 +638,7 @@ public class ContentProviderActionGenerator {
     _builder.append(".actions;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.ContentProviderActions;");
+    _builder.append("import com.robotoworks.mechanoid.content.ContentProviderActions;");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.newLine();

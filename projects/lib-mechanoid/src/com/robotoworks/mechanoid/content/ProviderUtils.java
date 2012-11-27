@@ -15,6 +15,11 @@ public final class ProviderUtils {
         return resolver.delete(uri, null, null);
     }
     
+    public static int delete(Context context, Uri uri, String where, String[] selectionArgs) {
+    	ContentResolver resolver = context.getContentResolver();
+    	return resolver.delete(uri, where, selectionArgs);
+    }
+    
     public static boolean isEmpty(Context context, Uri uri) {
     	return getCount(context, uri) == 0;
     }
@@ -115,6 +120,27 @@ public final class ProviderUtils {
     		
     		if (c.moveToFirst()) {
     			value = c.getLong(0);
+    		}
+    		
+    		return value;
+    		
+    	} finally {
+    		Closeables.closeSilently(c);
+    	}
+    }
+    
+    public static int getInt(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
+    	ContentResolver resolver = context.getContentResolver();
+    	
+    	Cursor c = null;
+    	
+    	try {
+    		c = resolver.query(uri, new String[] { column }, selection, selectionArgs, null);
+    		
+    		int value = -1;
+    		
+    		if (c.moveToFirst()) {
+    			value = c.getInt(0);
     		}
     		
     		return value;

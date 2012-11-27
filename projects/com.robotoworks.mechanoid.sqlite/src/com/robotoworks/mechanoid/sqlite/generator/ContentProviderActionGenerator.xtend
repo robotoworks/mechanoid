@@ -214,7 +214,7 @@ class ContentProviderActionGenerator {
 		 */
 		package «model.packageName».actions;
 
-		import com.robotoworks.mechanoid.sqlite.ContentProviderActions;
+		import com.robotoworks.mechanoid.content.ContentProviderActions;
 					
 		public abstract class Abstract«action.name.pascalize»Actions extends ContentProviderActions {
 
