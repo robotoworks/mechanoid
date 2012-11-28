@@ -85,6 +85,17 @@ class ContentProviderContractGenerator {
 				}
 
 				«ENDFOR»
+				
+				«FOR action : model.database.actions.actions»
+				public static class «action.name.pascalize» {
+				    public static final Uri CONTENT_URI = 
+							BASE_CONTENT_URI.buildUpon().appendPath("«action.path»").build();
+				
+				    public static final String CONTENT_TYPE =
+				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«action.name»";
+				}
+
+				«ENDFOR»
 			
 				private «model.database.name.pascalize»Contract(){}
 			}
