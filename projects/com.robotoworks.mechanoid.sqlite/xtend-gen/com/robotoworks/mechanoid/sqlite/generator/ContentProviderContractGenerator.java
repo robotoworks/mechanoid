@@ -4,6 +4,8 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -370,13 +372,62 @@ public class ContentProviderContractGenerator {
         _builder.newLine();
       }
     }
+    _builder.append("\t");
+    _builder.newLine();
+    {
+      DatabaseBlock _database_6 = model.getDatabase();
+      ActionBlock _actions = _database_6.getActions();
+      EList<ActionStatement> _actions_1 = _actions.getActions();
+      for(final ActionStatement action : _actions_1) {
+        _builder.append("\t");
+        _builder.append("public static class ");
+        String _name_23 = action.getName();
+        String _pascalize_8 = Strings.pascalize(_name_23);
+        _builder.append(_pascalize_8, "	");
+        _builder.append(" {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("public static final Uri CONTENT_URI = ");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
+        String _path = action.getPath();
+        _builder.append(_path, "				");
+        _builder.append("\").build();");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("public static final String CONTENT_TYPE =");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("            ");
+        _builder.append("\"vnd.android.cursor.dir/vnd.");
+        DatabaseBlock _database_7 = model.getDatabase();
+        String _name_24 = _database_7.getName();
+        String _lowerCase_5 = _name_24.toLowerCase();
+        _builder.append(_lowerCase_5, "	            ");
+        _builder.append(".");
+        String _name_25 = action.getName();
+        _builder.append(_name_25, "	            ");
+        _builder.append("\";");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+      }
+    }
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private ");
-    DatabaseBlock _database_6 = model.getDatabase();
-    String _name_23 = _database_6.getName();
-    String _pascalize_8 = Strings.pascalize(_name_23);
-    _builder.append(_pascalize_8, "	");
+    DatabaseBlock _database_8 = model.getDatabase();
+    String _name_26 = _database_8.getName();
+    String _pascalize_9 = Strings.pascalize(_name_26);
+    _builder.append(_pascalize_9, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
