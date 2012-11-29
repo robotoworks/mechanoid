@@ -21,8 +21,8 @@ class ContentProviderActionGenerator {
 			import android.database.sqlite.SQLiteDatabase;
 			import android.database.Cursor;
 			import android.net.Uri;
-			import com.robotoworks.mechanoid.sqlite.ContentProviderActions;
-			import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;
+			import com.robotoworks.mechanoid.content.ContentProviderActions;
+			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
 			import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
 			
@@ -162,9 +162,9 @@ class ContentProviderActionGenerator {
 		import android.database.Cursor;
 		import android.database.sqlite.SQLiteDatabase;
 		import android.net.Uri;
-		import com.robotoworks.mechanoid.sqlite.ContentProviderActions;
+		import com.robotoworks.mechanoid.content.ContentProviderActions;
 		import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
-		import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;
+		import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 		import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
 		
 		import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
@@ -214,7 +214,7 @@ class ContentProviderActionGenerator {
 		 */
 		package «model.packageName».actions;
 
-		import com.robotoworks.mechanoid.sqlite.ContentProviderActions;
+		import com.robotoworks.mechanoid.content.ContentProviderActions;
 					
 		public abstract class Abstract«action.name.pascalize»Actions extends ContentProviderActions {
 

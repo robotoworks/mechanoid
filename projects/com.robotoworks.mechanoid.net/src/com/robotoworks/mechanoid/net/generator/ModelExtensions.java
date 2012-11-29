@@ -317,8 +317,11 @@ public class ModelExtensions {
 		
 		TypedMember typedMember = (TypedMember) member;
 		if(typedMember.getType() instanceof BooleanType){	
-			if(member.getName().toLowerCase().startsWith("is")){
-				return toIdentifier(member, "get");
+			String name = member.getName().toLowerCase();
+			if(name.startsWith("is") || 
+					name.startsWith("has") ||
+					name.startsWith("contains")){
+				return toIdentifier(member, null);
 			} else {
 				return toIdentifier(member, "is");
 			}

@@ -1,4 +1,6 @@
-package com.robotoworks.mechanoid.sqlite;
+package com.robotoworks.mechanoid.content;
+
+import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 
 import android.content.ContentProvider;
 import android.content.Context;
