@@ -292,7 +292,7 @@ public class ContentProviderContractGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("public static int insert(ContentResolver contentResolver, ");
+        _builder.append("public static Uri insert(ContentResolver contentResolver, ");
         CharSequence _createMethodArgsFromColumns_1 = this.createMethodArgsFromColumns(tbl_1);
         _builder.append(_createMethodArgsFromColumns_1, "		");
         _builder.append(") {");

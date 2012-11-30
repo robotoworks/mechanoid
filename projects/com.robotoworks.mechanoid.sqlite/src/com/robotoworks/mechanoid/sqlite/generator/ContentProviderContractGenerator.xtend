@@ -69,7 +69,7 @@ class ContentProviderContractGenerator {
 						return values;
 					}
 					
-					public static int insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
+					public static Uri insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
 						ContentValues values = new ContentValues();
 						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
 						values.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», «col.name.camelize»);
