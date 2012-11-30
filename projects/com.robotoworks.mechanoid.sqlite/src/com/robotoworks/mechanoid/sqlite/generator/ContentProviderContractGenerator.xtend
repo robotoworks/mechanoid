@@ -22,6 +22,7 @@ class ContentProviderContractGenerator {
 			import android.content.ContentValues;
 			import android.net.Uri;
 			import android.provider.BaseColumns;
+			import android.content.ContentResolver;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -67,6 +68,14 @@ class ContentProviderContractGenerator {
 						«ENDFOR»
 						return values;
 					}
+					
+					public static Uri insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
+						ContentValues values = new ContentValues();
+						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
+						values.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», «col.name.camelize»);
+						«ENDFOR»
+						return contentResolver.insert(CONTENT_URI, values);
+					}
 				}
 				
 				«ENDFOR»
@@ -86,6 +95,7 @@ class ContentProviderContractGenerator {
 
 				«ENDFOR»
 				
+				«IF model.database.actions != null»
 				«FOR action : model.database.actions.actions»
 				public static class «action.name.pascalize» {
 				    public static final Uri CONTENT_URI = 
@@ -96,6 +106,7 @@ class ContentProviderContractGenerator {
 				}
 
 				«ENDFOR»
+				«ENDIF»
 			
 				private «model.database.name.pascalize»Contract(){}
 			}
