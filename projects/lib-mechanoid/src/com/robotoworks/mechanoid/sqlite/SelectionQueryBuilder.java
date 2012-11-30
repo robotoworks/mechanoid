@@ -11,9 +11,11 @@ package com.robotoworks.mechanoid.sqlite;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 public class SelectionQueryBuilder {
 	public interface Op {
@@ -198,5 +200,17 @@ public class SelectionQueryBuilder {
 	
 	public int delete(SQLiteDatabase db, String table) {
 		return db.delete(table, mBuilder.toString(), getArgsArray());
+	}	
+	
+	public Cursor query(ContentResolver resolver, Uri uri, String[] projection, String sortOrder) {
+		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
+	public int update(ContentResolver resolver, Uri uri, ContentValues values) {
+		return resolver.update(uri, values, toString(), getArgsArray());
+	}
+	
+	public int delete(ContentResolver resolver, Uri uri) {
+		return resolver.delete(uri, toString(), getArgsArray());
 	}	
 }
