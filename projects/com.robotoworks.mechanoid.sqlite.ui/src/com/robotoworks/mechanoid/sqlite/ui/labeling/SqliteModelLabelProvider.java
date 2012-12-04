@@ -4,9 +4,19 @@
 package com.robotoworks.mechanoid.sqlite.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
  
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 
 /**
  * Provides labels for a EObjects.
@@ -14,7 +24,9 @@ import com.google.inject.Inject;
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
 public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
-
+	@Inject ISerializer serializer;
+	
+	
 	@Inject
 	public SqliteModelLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
@@ -31,4 +43,43 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
       return "MyModel.gif";
     }
 */
+	
+//	public String text(TableConstraint e) {
+//		e.
+//	}
+//	
+	public String image(DatabaseBlock e) {
+		return "database.gif";
+	}
+	
+	public String image(MigrationBlock e) {
+		return "migration.gif";
+	}
+	public String image(Model e) {
+		return "package.gif";
+	}
+	
+	public String image(ColumnDef e) {
+		return "column.gif";
+	}
+	
+	public String image(ResultColumn e) {
+		return "column.gif";
+	}
+	
+	public String image(CreateTableStatement e) {
+		return "table.gif";
+	}
+	
+	public String image(CreateViewStatement e) {
+		return "table.gif";
+	}
+	
+	public String image(TableConstraint e) {
+		return "constraint.gif";
+	}
+	
+	public String image(ColumnConstraint e) {
+		return "constraint.gif";
+	}
 }
