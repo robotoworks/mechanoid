@@ -55,7 +55,14 @@ public class Response<T> {
 		}
 		
 		try {
-			mContent = mParser.parse(resolveInputStream());
+			InputStream stream = null;
+			if(mInputBytes == null) {
+				stream = mConn.getInputStream();
+			} else {
+				stream = new ByteArrayInputStream(mInputBytes);
+			}
+			
+			mContent = mParser.parse(stream);
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -78,13 +85,5 @@ public class Response<T> {
 		}
 		
 		return Streams.readAllText(new ByteArrayInputStream(mInputBytes));
-	}
-	
-	private InputStream resolveInputStream() throws IOException {
-		if(mInputBytes != null) {
-			return mConn.getInputStream();
-		} else {
-			return new ByteArrayInputStream(mInputBytes);
-		}
 	}
 }
