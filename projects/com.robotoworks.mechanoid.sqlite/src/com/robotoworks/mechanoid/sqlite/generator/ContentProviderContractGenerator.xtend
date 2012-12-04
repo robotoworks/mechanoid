@@ -70,11 +70,20 @@ class ContentProviderContractGenerator {
 					}
 					
 					public static Uri insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
-						ContentValues values = new ContentValues();
-						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
-						values.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», «col.name.camelize»);
+						ContentValues values = createContentValues(
+						«FOR col : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»
+							«col.name.camelize»
 						«ENDFOR»
+						);
 						return contentResolver.insert(CONTENT_URI, values);
+					}
+					
+					public static int delete(ContentResolver contentResolver) {
+						return contentResolver.delete(CONTENT_URI, null, null);
+					}
+					
+					public static int delete(ContentResolver contentResolver, String where, String[] selectionArgs) {
+						return contentResolver.delete(CONTENT_URI, where, selectionArgs);
 					}
 				}
 				

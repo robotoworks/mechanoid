@@ -1,27 +1,23 @@
 package com.robotoworks.mechanoid.net.generator.strategy
 
-import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import com.robotoworks.mechanoid.net.netModel.HttpMethod
-import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.netModel.Client
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
-import com.robotoworks.mechanoid.net.netModel.IntrinsicType
-import com.robotoworks.mechanoid.net.netModel.GenericListType
-import com.robotoworks.mechanoid.net.netModel.UserType
-import com.robotoworks.mechanoid.net.netModel.HttpPut
-import com.robotoworks.mechanoid.net.netModel.HttpPost
-import com.robotoworks.mechanoid.net.netModel.HttpGet
-import com.robotoworks.mechanoid.net.netModel.HttpDelete
-import com.robotoworks.mechanoid.net.netModel.BodyBlock
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
-import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
-import com.robotoworks.mechanoid.net.netModel.TypedMember
+import com.robotoworks.mechanoid.net.netModel.BodyBlock
+import com.robotoworks.mechanoid.net.netModel.Client
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
+import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
+import com.robotoworks.mechanoid.net.netModel.GenericListType
+import com.robotoworks.mechanoid.net.netModel.HttpMethod
+import com.robotoworks.mechanoid.net.netModel.IntrinsicType
+import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.SkipMember
+import com.robotoworks.mechanoid.net.netModel.StringType
+import com.robotoworks.mechanoid.net.netModel.TypedMember
+import com.robotoworks.mechanoid.net.netModel.UserType
 import java.util.ArrayList
 import java.util.List
-import com.robotoworks.mechanoid.net.netModel.StringType
-import com.robotoworks.mechanoid.net.netModel.StringType
+
+import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 
 class RequestGenerator {
 	CodeGenerationContext context

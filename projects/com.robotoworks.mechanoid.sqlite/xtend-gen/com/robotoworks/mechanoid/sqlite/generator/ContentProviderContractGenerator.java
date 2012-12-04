@@ -299,7 +299,7 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t\t");
-        _builder.append("ContentValues values = new ContentValues();");
+        _builder.append("ContentValues values = createContentValues(");
         _builder.newLine();
         {
           EList<ColumnDef> _columnDefs_2 = tbl_1.getColumnDefs();
@@ -312,29 +312,58 @@ public class ContentProviderContractGenerator {
               }
             };
           Iterable<ColumnDef> _filter_5 = IterableExtensions.<ColumnDef>filter(_columnDefs_2, _function_2);
+          boolean _hasElements = false;
           for(final ColumnDef col_3 : _filter_5) {
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder.appendImmediate(", ", "			");
+            }
             _builder.append("\t");
             _builder.append("\t\t");
-            _builder.append("values.put(");
-            String _name_16 = tbl_1.getName();
-            String _pascalize_6 = Strings.pascalize(_name_16);
-            _builder.append(_pascalize_6, "			");
-            _builder.append(".");
-            String _name_17 = col_3.getName();
-            String _underscore_2 = Strings.underscore(_name_17);
-            String _upperCase_2 = _underscore_2.toUpperCase();
-            _builder.append(_upperCase_2, "			");
-            _builder.append(", ");
-            String _name_18 = col_3.getName();
-            String _camelize_1 = Strings.camelize(_name_18);
+            String _name_16 = col_3.getName();
+            String _camelize_1 = Strings.camelize(_name_16);
             _builder.append(_camelize_1, "			");
-            _builder.append(");");
             _builder.newLineIfNotEmpty();
           }
         }
         _builder.append("\t");
         _builder.append("\t\t");
+        _builder.append(");");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
         _builder.append("return contentResolver.insert(CONTENT_URI, values);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("public static int delete(ContentResolver contentResolver) {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("return contentResolver.delete(CONTENT_URI, null, null);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("public static int delete(ContentResolver contentResolver, String where, String[] selectionArgs) {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("return contentResolver.delete(CONTENT_URI, where, selectionArgs);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
@@ -354,13 +383,13 @@ public class ContentProviderContractGenerator {
       for(final CreateViewStatement vw_1 : _filter_6) {
         _builder.append("\t");
         _builder.append("public static class ");
-        String _name_19 = vw_1.getName();
-        String _pascalize_7 = Strings.pascalize(_name_19);
-        _builder.append(_pascalize_7, "	");
+        String _name_17 = vw_1.getName();
+        String _pascalize_6 = Strings.pascalize(_name_17);
+        _builder.append(_pascalize_6, "	");
         _builder.append(" implements ");
-        String _name_20 = vw_1.getName();
-        String _pascalize_8 = Strings.pascalize(_name_20);
-        _builder.append(_pascalize_8, "	");
+        String _name_18 = vw_1.getName();
+        String _pascalize_7 = Strings.pascalize(_name_18);
+        _builder.append(_pascalize_7, "	");
         _builder.append("Columns");
         {
           boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(vw_1);
@@ -377,8 +406,8 @@ public class ContentProviderContractGenerator {
         _builder.append("\t");
         _builder.append("\t\t\t");
         _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-        String _name_21 = vw_1.getName();
-        _builder.append(_name_21, "				");
+        String _name_19 = vw_1.getName();
+        _builder.append(_name_19, "				");
         _builder.append("\").build();");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -391,12 +420,12 @@ public class ContentProviderContractGenerator {
         _builder.append("            ");
         _builder.append("\"vnd.android.cursor.dir/vnd.");
         DatabaseBlock _database_4 = model.getDatabase();
-        String _name_22 = _database_4.getName();
-        String _lowerCase_3 = _name_22.toLowerCase();
+        String _name_20 = _database_4.getName();
+        String _lowerCase_3 = _name_20.toLowerCase();
         _builder.append(_lowerCase_3, "	            ");
         _builder.append(".");
-        String _name_23 = vw_1.getName();
-        _builder.append(_name_23, "	            ");
+        String _name_21 = vw_1.getName();
+        _builder.append(_name_21, "	            ");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
         {
@@ -411,12 +440,12 @@ public class ContentProviderContractGenerator {
             _builder.append("\t");
             _builder.append("\"vnd.android.cursor.item/vnd.");
             DatabaseBlock _database_5 = model.getDatabase();
-            String _name_24 = _database_5.getName();
-            String _lowerCase_4 = _name_24.toLowerCase();
+            String _name_22 = _database_5.getName();
+            String _lowerCase_4 = _name_22.toLowerCase();
             _builder.append(_lowerCase_4, "			");
             _builder.append(".");
-            String _name_25 = vw_1.getName();
-            _builder.append(_name_25, "			");
+            String _name_23 = vw_1.getName();
+            _builder.append(_name_23, "			");
             _builder.append("\";");
             _builder.newLineIfNotEmpty();
           }
@@ -441,9 +470,9 @@ public class ContentProviderContractGenerator {
           for(final ActionStatement action : _actions_2) {
             _builder.append("\t");
             _builder.append("public static class ");
-            String _name_26 = action.getName();
-            String _pascalize_9 = Strings.pascalize(_name_26);
-            _builder.append(_pascalize_9, "	");
+            String _name_24 = action.getName();
+            String _pascalize_8 = Strings.pascalize(_name_24);
+            _builder.append(_pascalize_8, "	");
             _builder.append(" {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -467,12 +496,12 @@ public class ContentProviderContractGenerator {
             _builder.append("            ");
             _builder.append("\"vnd.android.cursor.dir/vnd.");
             DatabaseBlock _database_8 = model.getDatabase();
-            String _name_27 = _database_8.getName();
-            String _lowerCase_5 = _name_27.toLowerCase();
+            String _name_25 = _database_8.getName();
+            String _lowerCase_5 = _name_25.toLowerCase();
             _builder.append(_lowerCase_5, "	            ");
             _builder.append(".");
-            String _name_28 = action.getName();
-            _builder.append(_name_28, "	            ");
+            String _name_26 = action.getName();
+            _builder.append(_name_26, "	            ");
             _builder.append("\";");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -487,9 +516,9 @@ public class ContentProviderContractGenerator {
     _builder.append("\t");
     _builder.append("private ");
     DatabaseBlock _database_9 = model.getDatabase();
-    String _name_29 = _database_9.getName();
-    String _pascalize_10 = Strings.pascalize(_name_29);
-    _builder.append(_pascalize_10, "	");
+    String _name_27 = _database_9.getName();
+    String _pascalize_9 = Strings.pascalize(_name_27);
+    _builder.append(_pascalize_9, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
