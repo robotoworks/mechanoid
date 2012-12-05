@@ -49,8 +49,8 @@ class ContentProviderContractGenerator {
 				«ENDFOR»
 						
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-				/*
-				 * <p>Columns definitions and helper methods to work with «tbl.name.pascalize»</p>
+				/**
+				 * <p>Column definitions and helper methods to work with «tbl.name.pascalize»</p>
 				 */
 				public static class «tbl.name.pascalize» implements «tbl.name.pascalize»Columns«IF tbl.hasAndroidPrimaryKey», BaseColumns«ENDIF» {
 				    public static final Uri CONTENT_URI = 
@@ -90,7 +90,7 @@ class ContentProviderContractGenerator {
 						return contentResolver.delete(CONTENT_URI, where, selectionArgs);
 					}
 					
-					/*
+					/**
 					 * <p>Build and execute an insert or update statements for «tbl.name.pascalize».</p>
 					 */
 					public static class Builder {
@@ -103,16 +103,22 @@ class ContentProviderContractGenerator {
 						}
 						«ENDFOR»
 						
+						/**
+						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
+						 */								
 						public Uri insert(ContentResolver contentResolver) {
 							return contentResolver.insert(CONTENT_URI, mValues);
 						}
 						
+						/**
+						 * <p>Update «tbl.name.pascalize» with the given query</p>
+						 */						
 						public int update(ContentResolver contentResolver, SelectionQueryBuilder query) {
 							return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
 						}
 						
 						«IF tbl.hasAndroidPrimaryKey»
-						/*
+						/**
 						 * <p>Update «tbl.name.pascalize» with the given id</p>
 						 */
 						public int update(ContentResolver contentResolver, long id) {
@@ -120,7 +126,7 @@ class ContentProviderContractGenerator {
 						}
 						
 						«ENDIF»
-						/*
+						/**
 						 * <p>Get ContentValues built so far by this builder for «tbl.name.pascalize».</p>
 						 */						
 						public ContentValues getValues() {
