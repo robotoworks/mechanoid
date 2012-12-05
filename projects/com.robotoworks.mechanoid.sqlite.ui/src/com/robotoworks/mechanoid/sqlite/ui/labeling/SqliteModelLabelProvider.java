@@ -3,11 +3,17 @@
 */
 package com.robotoworks.mechanoid.sqlite.ui.labeling;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
  
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -15,6 +21,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 
@@ -44,10 +51,24 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
     }
 */
 	
-//	public String text(TableConstraint e) {
-//		e.
-//	}
-//	
+	public String text(ActionBlock e) {
+		return "Actions";
+	}
+
+	
+	public String text(MigrationBlock e) {
+		int version = e.eContainer().eContents().indexOf(e);
+		return "Migration (v" + version + ")";
+	}
+	
+	public String image(ActionBlock e) {
+		return "actions.gif";
+	}
+	
+	public String image(ActionStatement e) {
+		return "action.gif";
+	}
+
 	public String image(DatabaseBlock e) {
 		return "database.gif";
 	}
@@ -59,8 +80,20 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "package.gif";
 	}
 	
-	public String image(ColumnDef e) {
+	public String image(ColumnDef e) {	
+		if(e.getConstraints() != null) {
+			for(ColumnConstraint c : e.getConstraints()) {
+				if(c instanceof PrimaryKeyColumnConstraint) {
+					return "key.gif";
+				}
+			}
+		}
+
 		return "column.gif";
+	}
+	
+	public String image(PrimaryKeyColumnConstraint e) {
+		return "key.gif";
 	}
 	
 	public String image(ResultColumn e) {
@@ -82,4 +115,6 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	public String image(ColumnConstraint e) {
 		return "constraint.gif";
 	}
+	
+	
 }

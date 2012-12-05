@@ -17,20 +17,20 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
  * 
  */
 public class SqliteModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
-		@Inject
-		private StylerFactory stylerFactory;
-	
-		@Override
-		protected void createNode(IOutlineNode parent, EObject modelElement) {
-			super.createNode(parent, modelElement);
-		}
-		
-		@Override
-		protected Object _text(Object modelElement) {
-			if(modelElement instanceof MigrationBlock) {
-				return new StyledString("Migration");
-			} else {
-				return super._text(modelElement);
-			}
-		}
+//		@Inject
+//		private StylerFactory stylerFactory;
+//	
+//		@Override
+//		protected void createNode(IOutlineNode parent, EObject modelElement) {
+//			super.createNode(parent, modelElement);
+//		}
+//		
+//		@Override
+//		protected Object _text(Object modelElement) {
+//			if(modelElement instanceof MigrationBlock) {
+//				return new StyledString("Migration");
+//			} else {
+//				return super._text(modelElement);
+//			}
+//		}
 }

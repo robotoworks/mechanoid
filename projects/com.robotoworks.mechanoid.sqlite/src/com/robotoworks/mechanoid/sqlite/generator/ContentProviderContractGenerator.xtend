@@ -23,6 +23,7 @@ class ContentProviderContractGenerator {
 			import android.net.Uri;
 			import android.provider.BaseColumns;
 			import android.content.ContentResolver;
+			import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -48,6 +49,9 @@ class ContentProviderContractGenerator {
 				«ENDFOR»
 						
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
+				/*
+				 * <p>Columns definitions and helper methods to work with «tbl.name.pascalize»</p>
+				 */
 				public static class «tbl.name.pascalize» implements «tbl.name.pascalize»Columns«IF tbl.hasAndroidPrimaryKey», BaseColumns«ENDIF» {
 				    public static final Uri CONTENT_URI = 
 							BASE_CONTENT_URI.buildUpon().appendPath("«tbl.name»").build();
@@ -84,6 +88,44 @@ class ContentProviderContractGenerator {
 					
 					public static int delete(ContentResolver contentResolver, String where, String[] selectionArgs) {
 						return contentResolver.delete(CONTENT_URI, where, selectionArgs);
+					}
+					
+					/*
+					 * <p>Build and execute an insert or update statements for «tbl.name.pascalize».</p>
+					 */
+					public static class Builder {
+						private ContentValues mValues = new ContentValues();
+						
+						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
+						public Builder set«col.name.pascalize»(«col.type.toJavaTypeName» value) {
+							mValues.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», value);
+							return this;
+						}
+						«ENDFOR»
+						
+						public Uri insert(ContentResolver contentResolver) {
+							return contentResolver.insert(CONTENT_URI, mValues);
+						}
+						
+						public int update(ContentResolver contentResolver, SelectionQueryBuilder query) {
+							return mResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+						}
+						
+						«IF tbl.hasAndroidPrimaryKey»
+						/*
+						 * <p>Update «tbl.name.pascalize» with the given id</p>
+						 */
+						public int update(ContentResolver contentResolver, long id) {
+							return mResolver.update(CONTENT_URI.buildUpon().appendPath(id).build(), mValues, null, null);
+						}
+						
+						«ENDIF»
+						/*
+						 * <p>Get ContentValues built so far by this builder for «tbl.name.pascalize».</p>
+						 */						
+						public ContentValues getValues() {
+							return mValues;
+						}
 					}
 				}
 				

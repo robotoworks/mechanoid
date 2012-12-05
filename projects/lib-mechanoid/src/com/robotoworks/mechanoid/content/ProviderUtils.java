@@ -25,66 +25,15 @@ public final class ProviderUtils {
     }
     
     public static int getCount(Context context, Uri uri) {
-    	ContentResolver resolver = context.getContentResolver();
-    	
-    	Cursor c = null;
-    	
-    	try {
-    		c = resolver.query(uri, new String[]{"count(*)"}, null, null, null);
-    		
-    		int count = 0;
-    		
-    		if (c.moveToFirst()) {
-    			count = c.getInt(0);
-    		}
-    		
-    		return count;
-    		
-    	} finally {
-    		Closeables.closeSilently(c);
-    	}
+    	return getInt(context, uri, "count(*)", null, null);
     }
     
     public static int getCount(Context context, Uri uri, String selection, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
-    	
-    	Cursor c = null;
-    	
-    	try {
-    		c = resolver.query(uri, new String[]{"count(*)"}, selection, selectionArgs, null);
-    		
-    		int count = 0;
-    		
-    		if (c.moveToFirst()) {
-    			count = c.getInt(0);
-    		}
-    		
-    		return count;
-    		
-    	} finally {
-    		Closeables.closeSilently(c);
-    	}
+    	return getInt(context, uri, "count(*)", selection, selectionArgs);
     }
     
     public static int getCount(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
-    	
-    	Cursor c = null;
-    	
-    	try {
-    		c = resolver.query(uri, new String[]{"count(" + column + ")"}, selection, selectionArgs, null);
-    		
-    		int count = 0;
-    		
-    		if (c.moveToFirst()) {
-    			count = c.getInt(0);
-    		}
-    		
-    		return count;
-    		
-    	} finally {
-    		Closeables.closeSilently(c);
-    	}
+    	return getInt(context, uri, "count(" + column + ")", selection, selectionArgs);
     }
     
     public static String getString(Context context, Uri uri, String column, String selection, String[] selectionArgs) {

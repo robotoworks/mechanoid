@@ -11,8 +11,11 @@ package com.robotoworks.mechanoid.sqlite;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.robotoworks.mechanoid.util.Closeables;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -213,4 +216,27 @@ public class SelectionQueryBuilder {
 	public int delete(ContentResolver resolver, Uri uri) {
 		return resolver.delete(uri, toString(), getArgsArray());
 	}	
+	
+    public int count(ContentResolver resolver, Uri uri) {
+    	Cursor c = null;
+    	
+    	try {
+    		c = resolver.query(uri, new String[]{"count(*)"}, toString(), getArgsArray(), null);
+    		
+    		int count = 0;
+    		
+    		if (c.moveToFirst()) {
+    			count = c.getInt(0);
+    		}
+    		
+    		return count;
+    		
+    	} finally {
+    		Closeables.closeSilently(c);
+    	}
+    }
+    
+    public boolean exists(ContentResolver resolver, Uri uri) {
+    	return count(resolver, uri) > 0;
+    }
 }
