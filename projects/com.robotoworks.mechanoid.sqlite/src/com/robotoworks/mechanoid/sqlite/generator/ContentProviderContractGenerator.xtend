@@ -108,7 +108,7 @@ class ContentProviderContractGenerator {
 						}
 						
 						public int update(ContentResolver contentResolver, SelectionQueryBuilder query) {
-							return mResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+							return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
 						}
 						
 						«IF tbl.hasAndroidPrimaryKey»
@@ -116,7 +116,7 @@ class ContentProviderContractGenerator {
 						 * <p>Update «tbl.name.pascalize» with the given id</p>
 						 */
 						public int update(ContentResolver contentResolver, long id) {
-							return mResolver.update(CONTENT_URI.buildUpon().appendPath(id).build(), mValues, null, null);
+							return contentResolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
 						}
 						
 						«ENDIF»

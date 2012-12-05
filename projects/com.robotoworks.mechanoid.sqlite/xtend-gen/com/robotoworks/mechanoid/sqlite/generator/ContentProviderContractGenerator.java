@@ -489,7 +489,7 @@ public class ContentProviderContractGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t\t\t");
-        _builder.append("return mResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());");
+        _builder.append("return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t\t");
@@ -526,7 +526,7 @@ public class ContentProviderContractGenerator {
             _builder.append("\t");
             _builder.append("\t\t");
             _builder.append("\t");
-            _builder.append("return mResolver.update(CONTENT_URI.buildUpon().appendPath(id).build(), mValues, null, null);");
+            _builder.append("return contentResolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);");
             _builder.newLine();
             _builder.append("\t");
             _builder.append("\t\t");
