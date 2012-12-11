@@ -43,9 +43,9 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.MechanoidContentProvider;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;");
+    _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
-    _builder.append("import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;");
+    _builder.append("import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("import ");
@@ -109,7 +109,7 @@ public class ContentProviderActionGenerator {
             _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("int affected = new SelectionQueryBuilder()");
+            _builder.append("int affected = SQuery.newQuery()");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append(".expr(");
@@ -238,7 +238,7 @@ public class ContentProviderActionGenerator {
             _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("int affected = new SelectionQueryBuilder()");
+            _builder.append("int affected = SQuery.newQuery()");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append(".expr(");
@@ -320,7 +320,7 @@ public class ContentProviderActionGenerator {
             _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("return new SelectionQueryBuilder()");
+            _builder.append("return SQuery.newQuery()");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append(".expr(");
@@ -470,11 +470,11 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.ContentProviderActions;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;");
+    _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.MechanoidContentProvider;");
     _builder.newLine();
-    _builder.append("import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;");
+    _builder.append("import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("import ");
@@ -570,10 +570,7 @@ public class ContentProviderActionGenerator {
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("return new SelectionQueryBuilder()");
+            _builder.append("return SQuery.newQuery()");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append(".expr(");

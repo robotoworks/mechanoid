@@ -45,45 +45,56 @@ public class SkippingPostResult  {
 			
 			while(source.hasNext()) {
 				String name = source.nextName();
-				
-				if(name.equals("outer")) {
-					if(source.peek() != JsonToken.NULL) {
-						source.beginObject();
-						
-						while(source.hasNext()) {
-							name = source.nextName();
+			
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
 							
-							if(name.equals("inner")) {
-								if(source.peek() != JsonToken.NULL) {
-									source.beginObject();
-									
-									while(source.hasNext()) {
-										name = source.nextName();
-										
-										if(name.equals("a")) {
-											subject.setA(source.nextString());
-										}
-										else if(name.equals("b")) {
-											subject.setB(source.nextInt());
-										}
-										else if(name.equals("c")) {
-											subject.setC(source.nextLong());
-										}
-										else {
-											source.skipValue();
-										}
-									}
-									
-									source.endObject();
-								}
-							}
-							else {
-								source.skipValue();
-							}
+				if(name.equals("outer")) {
+					source.beginObject();
+					
+					while(source.hasNext()) {
+						name = source.nextName();
+					
+						if(source.peek() == JsonToken.NULL) {
+							source.skipValue();
+							continue;
 						}
 						
-						source.endObject();
+						if(name.equals("inner")) {
+							source.beginObject();
+							
+							while(source.hasNext()) {
+								name = source.nextName();
+							
+								if(source.peek() == JsonToken.NULL) {
+									source.skipValue();
+									continue;
+								}
+								
+								if(name.equals("a")) {
+									subject.setA(source.nextString());
+								}
+								else if(name.equals("b")) {
+									subject.setB(source.nextInt());
+								}
+								else if(name.equals("c")) {
+									subject.setC(source.nextLong());
+								}
+								else {
+									source.skipValue();
+								}
+							}
+							
+							source.endObject();
+						}
+						else {
+							source.skipValue();
+						}
 					}
+					
+					source.endObject();
 				}
 				else {
 					source.skipValue();

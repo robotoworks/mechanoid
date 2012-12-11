@@ -31,30 +31,34 @@ public class SkippingWithItemResult  {
 			
 			while(source.hasNext()) {
 				String name = source.nextName();
-				
-				if(name.equals("outer")) {
-					if(source.peek() != JsonToken.NULL) {
-						source.beginObject();
-						
-						while(source.hasNext()) {
-							name = source.nextName();
+			
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
 							
-							if(name.equals("inner")) {
-								if(source.peek() != JsonToken.NULL) {
-									Item subjectMember = new Item();
-									provider.get(ItemTransformer.class).transformIn(source, subjectMember);
-									subject.setInner(subjectMember);
-								} else {
-									source.skipValue();
-								}
-							}
-							else {
-								source.skipValue();
-							}
+				if(name.equals("outer")) {
+					source.beginObject();
+					
+					while(source.hasNext()) {
+						name = source.nextName();
+					
+						if(source.peek() == JsonToken.NULL) {
+							source.skipValue();
+							continue;
 						}
 						
-						source.endObject();
+						if(name.equals("inner")) {
+							Item subjectMember = new Item();
+							provider.get(ItemTransformer.class).transformIn(source, subjectMember);
+							subject.setInner(subjectMember);
+						}
+						else {
+							source.skipValue();
+						}
 					}
+					
+					source.endObject();
 				}
 				else {
 					source.skipValue();

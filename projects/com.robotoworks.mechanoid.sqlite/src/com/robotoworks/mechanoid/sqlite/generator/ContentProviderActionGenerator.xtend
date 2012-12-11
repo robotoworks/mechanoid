@@ -23,8 +23,8 @@ class ContentProviderActionGenerator {
 			import android.net.Uri;
 			import com.robotoworks.mechanoid.content.ContentProviderActions;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
-			import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
-			import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
+			import com.robotoworks.mechanoid.sqlite.SQuery;
+			import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;
 			
 			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
@@ -39,7 +39,7 @@ class ContentProviderActionGenerator {
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 					final Context context = provider.getContext();
 					
-					int affected = new SelectionQueryBuilder()
+					int affected = SQuery.newQuery()
 					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.delete(db, Tables.«tbl.name.underscore.toUpperCase»);
@@ -81,7 +81,7 @@ class ContentProviderActionGenerator {
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 					final Context context = provider.getContext();
 					
-					int affected = new SelectionQueryBuilder()
+					int affected = SQuery.newQuery()
 					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.update(db, Tables.«tbl.name.underscore.toUpperCase», values);
@@ -108,7 +108,7 @@ class ContentProviderActionGenerator {
 					«IF tbl.hasAndroidPrimaryKey»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 					
-					return new SelectionQueryBuilder()
+					return SQuery.newQuery()
 					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.query(db, Tables.«tbl.name.underscore.toUpperCase», projection, sortOrder);
@@ -163,9 +163,9 @@ class ContentProviderActionGenerator {
 		import android.database.sqlite.SQLiteDatabase;
 		import android.net.Uri;
 		import com.robotoworks.mechanoid.content.ContentProviderActions;
-		import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
+		import com.robotoworks.mechanoid.sqlite.SQuery;
 		import com.robotoworks.mechanoid.content.MechanoidContentProvider;
-		import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
+		import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;
 		
 		import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 		import «model.packageName».«model.database.name.pascalize»Contract.«vw.name.pascalize»;
@@ -191,8 +191,7 @@ class ContentProviderActionGenerator {
 				«IF forId»
 				«IF vw.hasAndroidPrimaryKey»
 				final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					
-				return new SelectionQueryBuilder()
+				return SQuery.newQuery()
 				.expr(«vw.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
 				.append(selection, selectionArgs)
 				.query(db, Tables.«vw.name.underscore.toUpperCase», projection, sortOrder);

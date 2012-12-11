@@ -23,7 +23,7 @@ class ContentProviderContractGenerator {
 			import android.net.Uri;
 			import android.provider.BaseColumns;
 			import android.content.ContentResolver;
-			import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
+			import com.robotoworks.mechanoid.sqlite.SQuery;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -90,8 +90,17 @@ class ContentProviderContractGenerator {
 						return contentResolver.delete(CONTENT_URI, where, selectionArgs);
 					}
 					
+					
+					
 					/**
-					 * <p>Build and execute an insert or update statements for «tbl.name.pascalize».</p>
+					 * <p>Create a new Builder for «tbl.name.pascalize»</p>
+					 */
+					public static Builder newBuilder() {
+						return new Builder();
+					}
+					
+					/**
+					 * <p>Build and execute insert or update statements for «tbl.name.pascalize».</p>
 					 */
 					public static class Builder {
 						private ContentValues mValues = new ContentValues();
@@ -113,7 +122,7 @@ class ContentProviderContractGenerator {
 						/**
 						 * <p>Update «tbl.name.pascalize» with the given query</p>
 						 */						
-						public int update(ContentResolver contentResolver, SelectionQueryBuilder query) {
+						public int update(ContentResolver contentResolver, SQuery query) {
 							return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
 						}
 						

@@ -3,13 +3,14 @@
 */
 package com.robotoworks.mechanoid.sqlite.ui.labeling;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
- 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.util.Strings;
+
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
@@ -51,6 +52,27 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
     }
 */
 	
+	public String text(ColumnDef e) {
+		PrimaryKeyColumnConstraint c = findPrimaryKeyConstraint(e.getConstraints());
+		
+		ArrayList<String> parts = Lists.newArrayList();
+		parts.add("PK");
+		
+		if(c.isDesc()) {
+			parts.add("desc");
+		} else {
+			parts.add("asc");
+		}
+
+		if(c.isAutoincrement()) {
+			parts.add("autoincrement");
+		}
+		
+		String info =  " (" + Strings.concat(", ", parts) + ")";
+		
+		return e.getName() + info;
+	}
+	
 	public String text(ActionBlock e) {
 		return "Actions";
 	}
@@ -81,12 +103,8 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	}
 	
 	public String image(ColumnDef e) {	
-		if(e.getConstraints() != null) {
-			for(ColumnConstraint c : e.getConstraints()) {
-				if(c instanceof PrimaryKeyColumnConstraint) {
-					return "key.gif";
-				}
-			}
+		if(findPrimaryKeyConstraint(e.getConstraints()) != null) {
+			return "key.gif";
 		}
 
 		return "column.gif";
@@ -116,5 +134,15 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "constraint.gif";
 	}
 	
-	
+	private PrimaryKeyColumnConstraint findPrimaryKeyConstraint(EList<ColumnConstraint> constraints) {
+		if(constraints!= null) {
+			for(ColumnConstraint c : constraints) {
+				if(c instanceof PrimaryKeyColumnConstraint) {
+					return (PrimaryKeyColumnConstraint) c;
+				}
+			}
+		}
+		
+		return null;
+	}
 }

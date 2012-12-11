@@ -20,7 +20,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-public class SelectionQueryBuilder {
+public class SQuery {
 	public interface Op {
 		String EQ = " = ";
 		String NEQ = " != ";
@@ -50,11 +50,15 @@ public class SelectionQueryBuilder {
 		return mArgs.toArray(new String[mArgs.size()]);
 	}
 	
-	public SelectionQueryBuilder() {
+	private SQuery() {
 		mBuilder = new StringBuilder();
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, String arg) {
+	public static SQuery newQuery() {
+		return new SQuery();
+	}
+	
+	public SQuery expr(String column, String op, String arg) {
 		ensureOp();
 		mBuilder.append(column).append(op).append("?");
 		mArgs.add(arg);
@@ -63,7 +67,7 @@ public class SelectionQueryBuilder {
 		return this;
 	}
 	
-	public SelectionQueryBuilder expr(SelectionQueryBuilder builder) {
+	public SQuery expr(SQuery builder) {
 
 		List<String> args = builder.getArgs();
 		
@@ -79,29 +83,29 @@ public class SelectionQueryBuilder {
 		return this;
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, boolean arg) {
+	public SQuery expr(String column, String op, boolean arg) {
 		return expr(column, op, arg ? "1" : "0");
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, int arg) {
+	public SQuery expr(String column, String op, int arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, long arg) {
+	public SQuery expr(String column, String op, long arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, float arg) {
+	public SQuery expr(String column, String op, float arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
 	
-	public SelectionQueryBuilder expr(String column, String op, double arg) {
+	public SQuery expr(String column, String op, double arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
 	
 
 	
-	public SelectionQueryBuilder opt(String column, String op, String arg) {
+	public SQuery opt(String column, String op, String arg) {
 		if(arg == null) {
 			return this;
 		}
@@ -109,42 +113,42 @@ public class SelectionQueryBuilder {
 		return expr(column, op, arg);
 	}
 		
-	public SelectionQueryBuilder opt(String column, String op, int arg) {
+	public SQuery opt(String column, String op, int arg) {
 		if(arg == 0) {
 			return this;
 		}
 		return expr(column, op, String.valueOf(arg));
 	}
 	
-	public SelectionQueryBuilder opt(String column, String op, boolean arg) {
+	public SQuery opt(String column, String op, boolean arg) {
 		if(!arg) {
 			return this;
 		}
 		return expr(column, op, arg);
 	}
 	
-	public SelectionQueryBuilder opt(String column, String op, long arg) {
+	public SQuery opt(String column, String op, long arg) {
 		if(arg == 0) {
 			return this;
 		}
 		return expr(column, op, arg);
 	}
 	
-	public SelectionQueryBuilder opt(String column, String op, float arg) {
+	public SQuery opt(String column, String op, float arg) {
 		if(arg == 0) {
 			return this;
 		}
 		return expr(column, op, arg);
 	}
 	
-	public SelectionQueryBuilder opt(String column, String op, double arg) {
+	public SQuery opt(String column, String op, double arg) {
 		if(arg == 0) {
 			return this;
 		}
 		return expr(column, op, arg);
 	}
 	
-	public SelectionQueryBuilder append(String query, String... args) {
+	public SQuery append(String query, String... args) {
 
 		if(query != null && query.length() > 0) {
 			ensureOp();
@@ -163,13 +167,13 @@ public class SelectionQueryBuilder {
 		return this;
 	}
 	
-	public SelectionQueryBuilder and() {
+	public SQuery and() {
 		mNextOp = AND;
 		
 		return this;
 	}
 	
-	public SelectionQueryBuilder or() {
+	public SQuery or() {
 		mNextOp = OR;
 		
 		return this;
@@ -207,6 +211,10 @@ public class SelectionQueryBuilder {
 	
 	public Cursor query(ContentResolver resolver, Uri uri, String[] projection, String sortOrder) {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
+	public Cursor query(ContentResolver resolver, Uri uri, String[] projection) {
+		return query(resolver, uri, projection, null);
 	}
 	
 	public int update(ContentResolver resolver, Uri uri, ContentValues values) {
