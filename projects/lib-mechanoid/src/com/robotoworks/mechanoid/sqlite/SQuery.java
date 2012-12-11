@@ -201,6 +201,161 @@ public class SQuery {
 		return db.query(table, projection, mBuilder.toString(), getArgsArray(), null, null, orderBy);
 	}
 		
+	public int firstInt(SQLiteDatabase db, String table, String column) {
+		return firstInt(db, table, column, null);
+	}
+	
+	public int firstInt(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		int value = 0;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getInt(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public long firstLong(SQLiteDatabase db, String table, String column) {
+		return firstLong(db, table, column, null);
+	}
+	
+	public long firstLong(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		long value = 0;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getLong(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public double firstDouble(SQLiteDatabase db, String table, String column) {
+		return firstDouble(db, table, column, null);
+	}
+	
+	public double firstDouble(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		double value = 0;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getDouble(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public float firstFloat(SQLiteDatabase db, String table, String column) {
+		return firstFloat(db, table, column, null);
+	}
+	
+	public float firstFloat(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		float value = 0;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getFloat(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public short firstShort(SQLiteDatabase db, String table, String column) {
+		return firstShort(db, table, column, null);
+	}
+	
+	public short firstShort(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		short value = 0;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getShort(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public byte[] firstBlob(SQLiteDatabase db, String table, String column) {
+		return firstBlob(db, table, column, null);
+	}
+	
+	public byte[] firstBlob(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		byte[] value = null;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getBlob(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public boolean firstBoolean(SQLiteDatabase db, String table, String column) {
+		return firstBoolean(db, table, column, null);
+	}
+	
+	public boolean firstBoolean(SQLiteDatabase db, String table, String column, String orderBy) {
+		return firstShort(db, table, column, orderBy) > 0;
+	}
+	
+	public String firstString(SQLiteDatabase db, String table, String column) {
+		return firstString(db, table, column, null);
+	}
+	
+	public String firstString(SQLiteDatabase db, String table, String column, String orderBy) {
+		Cursor cursor = null;
+		String value = null;
+		try {
+			cursor = query(db, table, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getString(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+		
 	public int update(SQLiteDatabase db, String table, ContentValues values) {
 		return db.update(table, values, mBuilder.toString(), getArgsArray());
 	}
@@ -215,6 +370,168 @@ public class SQuery {
 	
 	public Cursor query(ContentResolver resolver, Uri uri, String[] projection) {
 		return query(resolver, uri, projection, null);
+	}
+	
+	public int firstInt(ContentResolver resolver, Uri uri, String column) {
+		return firstInt(resolver, uri, column, null);
+	}
+	
+	public int firstInt(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		int value = 0;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getInt(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public long firstLong(ContentResolver resolver, Uri uri, String column) {
+		return firstLong(resolver, uri, column, null);
+	}
+	
+	public long firstLong(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		long value = 0;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getLong(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public double firstDouble(ContentResolver resolver, Uri uri, String column) {
+		return firstDouble(resolver, uri, column, null);
+	}
+	
+	public double firstDouble(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		double value = 0;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getDouble(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public float firstFloat(ContentResolver resolver, Uri uri, String column) {
+		return firstFloat(resolver, uri, column, null);
+	}
+	
+	public float firstFloat(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		float value = 0;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getFloat(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public short firstShort(ContentResolver resolver, Uri uri, String column) {
+		return firstShort(resolver, uri, column, null);
+	}
+	
+	public short firstShort(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		short value = 0;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getShort(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public byte[] firstBlob(ContentResolver resolver, Uri uri, String column) {
+		return firstBlob(resolver, uri, column, null);
+	}
+	
+	public byte[] firstBlob(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		byte[] value = null;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getBlob(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
+	}
+	
+	public boolean firstBoolean(ContentResolver resolver, Uri uri, String column) {
+		return firstBoolean(resolver, uri, column, null);
+	}
+	
+	public boolean firstBoolean(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		return firstShort(resolver, uri, column, orderBy) > 0;
+	}
+	
+	public String firstString(ContentResolver resolver, Uri uri, String column) {
+		return firstString(resolver, uri, column, null);
+	}
+	
+	public String firstString(ContentResolver resolver, Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		String value = null;
+		
+		try {
+			cursor = query(resolver, uri, new String[] { column }, orderBy);
+			
+			if(cursor.moveToFirst()) {
+				value = cursor.getString(0);
+			}
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+		
+		return value;
 	}
 	
 	public int update(ContentResolver resolver, Uri uri, ContentValues values) {
