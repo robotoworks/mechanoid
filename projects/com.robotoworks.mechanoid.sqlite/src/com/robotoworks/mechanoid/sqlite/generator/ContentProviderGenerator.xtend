@@ -7,6 +7,10 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 
 class ContentProviderGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) '''
@@ -49,9 +53,9 @@ class ContentProviderGenerator {
 			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
-			«IF model.database.actions !=null»
+			«IF model.database.config !=null»
 			
-			«FOR a : model.database.actions.actions»
+			«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 			import «model.packageName».actions.«a.name.pascalize»Actions;
 			«ENDFOR»
 			
@@ -77,8 +81,8 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
-				«IF model.database.actions !=null»
-				«FOR a : model.database.actions.actions»
+				«IF model.database.config.statements !=null»
+				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
@@ -117,8 +121,8 @@ class ContentProviderGenerator {
 					«ENDIF»
 					«ENDFOR»
 					
-					«IF model.database.actions !=null»
-					«FOR a : model.database.actions.actions»
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 					sActions[«a.name.underscore.toUpperCase»] = «a.name.pascalize»Actions.class;
 					«ENDFOR»
 					«ENDIF»
@@ -146,9 +150,10 @@ class ContentProviderGenerator {
 					«ENDFOR»
 
 					// User Actions
-					«IF model.database.actions !=null»
-					«FOR a : model.database.actions.actions»
-					matcher.addURI(authority, "«a.path»", «a.name.underscore.toUpperCase»); 
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
+					«var stmt = a as ActionStatement»
+					matcher.addURI(authority, "«stmt.path»", «a.name.underscore.toUpperCase»); 
 					«ENDFOR»
 					«ENDIF»
 			        return matcher;

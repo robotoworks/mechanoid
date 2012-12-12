@@ -37,6 +37,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getConfigurationStatementAccess().getAlternatives(), "rule__ConfigurationStatement__Alternatives");
 					put(grammarAccess.getExprMultAccess().getOpAlternatives_1_1_0(), "rule__ExprMult__OpAlternatives_1_1_0");
 					put(grammarAccess.getExprAddAccess().getOpAlternatives_1_1_0(), "rule__ExprAdd__OpAlternatives_1_1_0");
 					put(grammarAccess.getExprBitAccess().getOpAlternatives_1_1_0(), "rule__ExprBit__OpAlternatives_1_1_0");
@@ -65,8 +66,9 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConflictResolutionAccess().getAlternatives(), "rule__ConflictResolution__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getDatabaseBlockAccess().getGroup(), "rule__DatabaseBlock__Group__0");
-					put(grammarAccess.getActionBlockAccess().getGroup(), "rule__ActionBlock__Group__0");
-					put(grammarAccess.getActionStatementAccess().getGroup(), "rule__ActionStatement__Group__0");
+					put(grammarAccess.getConfigBlockAccess().getGroup(), "rule__ConfigBlock__Group__0");
+					put(grammarAccess.getConfigurationStatementAccess().getGroup_0(), "rule__ConfigurationStatement__Group_0__0");
+					put(grammarAccess.getConfigurationStatementAccess().getGroup_1(), "rule__ConfigurationStatement__Group_1__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup(), "rule__MigrationBlock__Group__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup_3(), "rule__MigrationBlock__Group_3__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup_3_2(), "rule__MigrationBlock__Group_3_2__0");
@@ -158,11 +160,12 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getDatabaseAssignment_2(), "rule__Model__DatabaseAssignment_2");
 					put(grammarAccess.getDatabaseBlockAccess().getNameAssignment_1(), "rule__DatabaseBlock__NameAssignment_1");
-					put(grammarAccess.getDatabaseBlockAccess().getActionsAssignment_3(), "rule__DatabaseBlock__ActionsAssignment_3");
+					put(grammarAccess.getDatabaseBlockAccess().getConfigAssignment_3(), "rule__DatabaseBlock__ConfigAssignment_3");
 					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4(), "rule__DatabaseBlock__MigrationsAssignment_4");
-					put(grammarAccess.getActionBlockAccess().getActionsAssignment_3(), "rule__ActionBlock__ActionsAssignment_3");
-					put(grammarAccess.getActionStatementAccess().getNameAssignment_0(), "rule__ActionStatement__NameAssignment_0");
-					put(grammarAccess.getActionStatementAccess().getPathAssignment_1(), "rule__ActionStatement__PathAssignment_1");
+					put(grammarAccess.getConfigBlockAccess().getStatementsAssignment_3(), "rule__ConfigBlock__StatementsAssignment_3");
+					put(grammarAccess.getConfigurationStatementAccess().getNameAssignment_0_2(), "rule__ConfigurationStatement__NameAssignment_0_2");
+					put(grammarAccess.getConfigurationStatementAccess().getPathAssignment_0_3(), "rule__ConfigurationStatement__PathAssignment_0_3");
+					put(grammarAccess.getConfigurationStatementAccess().getNameAssignment_1_2(), "rule__ConfigurationStatement__NameAssignment_1_2");
 					put(grammarAccess.getMigrationBlockAccess().getStatementsAssignment_3_0(), "rule__MigrationBlock__StatementsAssignment_3_0");
 					put(grammarAccess.getMigrationBlockAccess().getStatementsAssignment_3_2_0(), "rule__MigrationBlock__StatementsAssignment_3_2_0");
 					put(grammarAccess.getSqlExpressionAccess().getRootAssignment(), "rule__SqlExpression__RootAssignment");

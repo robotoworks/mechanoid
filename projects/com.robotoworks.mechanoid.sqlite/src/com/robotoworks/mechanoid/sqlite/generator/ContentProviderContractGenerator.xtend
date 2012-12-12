@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) { 
@@ -161,11 +162,12 @@ class ContentProviderContractGenerator {
 
 				«ENDFOR»
 				
-				«IF model.database.actions != null»
-				«FOR action : model.database.actions.actions»
+				«IF model.database.config != null»
+				«FOR action : model.database.config.statements.filter([it instanceof ActionStatement])»
+				«var stmt = action as ActionStatement»
 				public static class «action.name.pascalize» {
 				    public static final Uri CONTENT_URI = 
-							BASE_CONTENT_URI.buildUpon().appendPath("«action.path»").build();
+							BASE_CONTENT_URI.buildUpon().appendPath("«stmt.path»").build();
 				
 				    public static final String CONTENT_TYPE =
 				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«action.name»";

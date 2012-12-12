@@ -13,10 +13,11 @@ import org.eclipse.xtext.util.Strings;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
@@ -73,8 +74,8 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return e.getName() + info;
 	}
 	
-	public String text(ActionBlock e) {
-		return "Actions";
+	public String text(ConfigBlock e) {
+		return "Configuration";
 	}
 
 	
@@ -83,12 +84,15 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "Migration (v" + version + ")";
 	}
 	
-	public String image(ActionBlock e) {
+	public String image(ConfigBlock e) {
 		return "actions.gif";
 	}
 	
 	public String image(ActionStatement e) {
 		return "action.gif";
+	}
+	public String image(ActiveRecordRegistrationStatement e) {
+		return "active_record_obj.gif";
 	}
 
 	public String image(DatabaseBlock e) {

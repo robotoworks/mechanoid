@@ -67,8 +67,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
     {
       case SqliteModelPackage.MODEL: return createModel();
       case SqliteModelPackage.DATABASE_BLOCK: return createDatabaseBlock();
-      case SqliteModelPackage.ACTION_BLOCK: return createActionBlock();
-      case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
+      case SqliteModelPackage.CONFIG_BLOCK: return createConfigBlock();
+      case SqliteModelPackage.CONFIGURATION_STATEMENT: return createConfigurationStatement();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
       case SqliteModelPackage.SQL_EXPRESSION: return createSqlExpression();
       case SqliteModelPackage.EXPRESSION: return createExpression();
@@ -89,6 +89,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
+      case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
+      case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT: return createActiveRecordRegistrationStatement();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
       case SqliteModelPackage.EXPR_MULT: return createExprMult();
       case SqliteModelPackage.EXPR_ADD: return createExprAdd();
@@ -199,10 +201,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ActionBlock createActionBlock()
+  public ConfigBlock createConfigBlock()
   {
-    ActionBlockImpl actionBlock = new ActionBlockImpl();
-    return actionBlock;
+    ConfigBlockImpl configBlock = new ConfigBlockImpl();
+    return configBlock;
   }
 
   /**
@@ -210,10 +212,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ActionStatement createActionStatement()
+  public ConfigurationStatement createConfigurationStatement()
   {
-    ActionStatementImpl actionStatement = new ActionStatementImpl();
-    return actionStatement;
+    ConfigurationStatementImpl configurationStatement = new ConfigurationStatementImpl();
+    return configurationStatement;
   }
 
   /**
@@ -434,6 +436,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     LiteralValueImpl literalValue = new LiteralValueImpl();
     return literalValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActionStatement createActionStatement()
+  {
+    ActionStatementImpl actionStatement = new ActionStatementImpl();
+    return actionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ActiveRecordRegistrationStatement createActiveRecordRegistrationStatement()
+  {
+    ActiveRecordRegistrationStatementImpl activeRecordRegistrationStatement = new ActiveRecordRegistrationStatementImpl();
+    return activeRecordRegistrationStatement;
   }
 
   /**

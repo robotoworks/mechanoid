@@ -85,14 +85,14 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createDatabaseBlockAdapter();
       }
       @Override
-      public Adapter caseActionBlock(ActionBlock object)
+      public Adapter caseConfigBlock(ConfigBlock object)
       {
-        return createActionBlockAdapter();
+        return createConfigBlockAdapter();
       }
       @Override
-      public Adapter caseActionStatement(ActionStatement object)
+      public Adapter caseConfigurationStatement(ConfigurationStatement object)
       {
-        return createActionStatementAdapter();
+        return createConfigurationStatementAdapter();
       }
       @Override
       public Adapter caseMigrationBlock(MigrationBlock object)
@@ -193,6 +193,16 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLiteralValue(LiteralValue object)
       {
         return createLiteralValueAdapter();
+      }
+      @Override
+      public Adapter caseActionStatement(ActionStatement object)
+      {
+        return createActionStatementAdapter();
+      }
+      @Override
+      public Adapter caseActiveRecordRegistrationStatement(ActiveRecordRegistrationStatement object)
+      {
+        return createActiveRecordRegistrationStatementAdapter();
       }
       @Override
       public Adapter caseExprConcat(ExprConcat object)
@@ -447,31 +457,31 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock <em>Action Block</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock <em>Config Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock
    * @generated
    */
-  public Adapter createActionBlockAdapter()
+  public Adapter createConfigBlockAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement <em>Action Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement <em>Configuration Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement
    * @generated
    */
-  public Adapter createActionStatementAdapter()
+  public Adapter createConfigurationStatementAdapter()
   {
     return null;
   }
@@ -772,6 +782,36 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement <em>Action Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+   * @generated
+   */
+  public Adapter createActionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement <em>Active Record Registration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
+   * @generated
+   */
+  public Adapter createActiveRecordRegistrationStatementAdapter()
   {
     return null;
   }

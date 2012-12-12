@@ -3,8 +3,8 @@ package com.robotoworks.mechanoid.sqlite.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
@@ -13,6 +13,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
@@ -79,15 +80,15 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SqliteModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SqliteModelPackage.ACTION_BLOCK:
-				if(context == grammarAccess.getActionBlockRule()) {
-					sequence_ActionBlock(context, (ActionBlock) semanticObject); 
+			case SqliteModelPackage.ACTION_STATEMENT:
+				if(context == grammarAccess.getConfigurationStatementRule()) {
+					sequence_ConfigurationStatement(context, (ActionStatement) semanticObject); 
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.ACTION_STATEMENT:
-				if(context == grammarAccess.getActionStatementRule()) {
-					sequence_ActionStatement(context, (ActionStatement) semanticObject); 
+			case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT:
+				if(context == grammarAccess.getConfigurationStatementRule()) {
+					sequence_ConfigurationStatement(context, (ActiveRecordRegistrationStatement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -168,6 +169,12 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ColumnLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CONFIG_BLOCK:
+				if(context == grammarAccess.getConfigBlockRule()) {
+					sequence_ConfigBlock(context, (ConfigBlock) semanticObject); 
 					return; 
 				}
 				else break;
@@ -579,34 +586,6 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (actions+=ActionStatement*)
-	 */
-	protected void sequence_ActionBlock(EObject context, ActionBlock semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID path=STRING)
-	 */
-	protected void sequence_ActionStatement(EObject context, ActionStatement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getActionStatementAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getActionStatementAccess().getPathSTRINGTerminalRuleCall_1_0(), semanticObject.getPath());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     columnDef=ColumnDef
 	 */
 	protected void sequence_AlterTableClause(EObject context, AlterTableAddColumnClause semanticObject) {
@@ -701,6 +680,50 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
+	 *     (statements+=ConfigurationStatement*)
+	 */
+	protected void sequence_ConfigBlock(EObject context, ConfigBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID path=STRING)
+	 */
+	protected void sequence_ConfigurationStatement(EObject context, ActionStatement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CONFIGURATION_STATEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CONFIGURATION_STATEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_0_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_0_3_0(), semanticObject.getPath());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_ConfigurationStatement(EObject context, ActiveRecordRegistrationStatement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CONFIGURATION_STATEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CONFIGURATION_STATEMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_1_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     resolution=ConflictResolution
 	 */
 	protected void sequence_ConflictClause(EObject context, ConflictClause semanticObject) {
@@ -717,7 +740,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (name=ID actions=ActionBlock? migrations+=MigrationBlock*)
+	 *     (name=ID config=ConfigBlock? migrations+=MigrationBlock*)
 	 */
 	protected void sequence_DatabaseBlock(EObject context, DatabaseBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

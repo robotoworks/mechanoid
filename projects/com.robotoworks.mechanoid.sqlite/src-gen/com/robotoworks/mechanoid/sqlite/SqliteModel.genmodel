@@ -26,15 +26,14 @@
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//DatabaseBlock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//DatabaseBlock/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DatabaseBlock/actions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DatabaseBlock/config"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DatabaseBlock/migrations"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//ActionBlock">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ActionBlock/actions"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//ConfigBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ConfigBlock/statements"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//ActionStatement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ActionStatement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ActionStatement/path"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//ConfigurationStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ConfigurationStatement/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//MigrationBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//MigrationBlock/statements"/>
@@ -103,6 +102,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ConflictClause/resolution"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//LiteralValue"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//ActionStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ActionStatement/path"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//ActiveRecordRegistrationStatement"/>
     <genClasses ecoreClass="SqliteModel.ecore#//ExprConcat">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ExprConcat/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ExprConcat/op"/>

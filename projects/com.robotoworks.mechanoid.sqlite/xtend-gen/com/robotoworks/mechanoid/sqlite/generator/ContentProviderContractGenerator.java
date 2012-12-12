@@ -4,10 +4,11 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
@@ -729,14 +730,23 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       DatabaseBlock _database_6 = model.getDatabase();
-      ActionBlock _actions = _database_6.getActions();
-      boolean _notEquals = (!Objects.equal(_actions, null));
+      ConfigBlock _config = _database_6.getConfig();
+      boolean _notEquals = (!Objects.equal(_config, null));
       if (_notEquals) {
         {
           DatabaseBlock _database_7 = model.getDatabase();
-          ActionBlock _actions_1 = _database_7.getActions();
-          EList<ActionStatement> _actions_2 = _actions_1.getActions();
-          for(final ActionStatement action : _actions_2) {
+          ConfigBlock _config_1 = _database_7.getConfig();
+          EList<ConfigurationStatement> _statements_4 = _config_1.getStatements();
+          final Function1<ConfigurationStatement,Boolean> _function_4 = new Function1<ConfigurationStatement,Boolean>() {
+              public Boolean apply(final ConfigurationStatement it) {
+                return Boolean.valueOf((it instanceof ActionStatement));
+              }
+            };
+          Iterable<ConfigurationStatement> _filter_8 = IterableExtensions.<ConfigurationStatement>filter(_statements_4, _function_4);
+          for(final ConfigurationStatement action : _filter_8) {
+            _builder.append("\t");
+            ActionStatement stmt = ((ActionStatement) action);
+            _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("public static class ");
             String _name_34 = action.getName();
@@ -751,7 +761,7 @@ public class ContentProviderContractGenerator {
             _builder.append("\t");
             _builder.append("\t\t\t");
             _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-            String _path = action.getPath();
+            String _path = stmt.getPath();
             _builder.append(_path, "				");
             _builder.append("\").build();");
             _builder.newLineIfNotEmpty();
