@@ -125,7 +125,7 @@ class ActiveRecordGenerator {
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
 				}
 				
-				private static «stmt.name.pascalize»Record fromCursor(Cursor c) {
+				public static «stmt.name.pascalize»Record fromCursor(Cursor c) {
 				    «stmt.name.pascalize»Record item = new «stmt.name.pascalize»Record();
 				    
 					«FOR col : stmt.columnDefs»
@@ -135,7 +135,7 @@ class ActiveRecordGenerator {
 				    return item;
 				}
 				
-				public static «stmt.name.pascalize»Record select(ContentResolver resolver, long id) {
+				public static «stmt.name.pascalize»Record get(ContentResolver resolver, long id) {
 				    Cursor c = null;
 				    
 				    try {
@@ -150,81 +150,6 @@ class ActiveRecordGenerator {
 				    } finally {
 				        Closeables.closeSilently(c);
 				    }
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver, SQuery query) {
-				    return select(resolver, query, null);
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver, SQuery query, String sortOrder) {
-				    Cursor c = null;
-				    
-				    ArrayList<«stmt.name.pascalize»Record> items = new ArrayList<«stmt.name.pascalize»Record>();
-				    
-				    try {
-				        c = query.query(resolver, «stmt.name.pascalize».CONTENT_URI, PROJECTION, sortOrder);
-				        
-				        while(c.moveToNext()) {
-				            items.add(fromCursor(c));
-				        }
-				    } finally {
-				        Closeables.closeSilently(c);
-				    }
-				    
-				    return items;
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver, String selection, String[] selectionArgs, String sortOrder) {
-				    Cursor c = null;
-				    
-				    ArrayList<«stmt.name.pascalize»Record> items = new ArrayList<«stmt.name.pascalize»Record>();
-				    
-				    try {
-				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI, PROJECTION, selection, selectionArgs, sortOrder);
-				        
-				        while(c.moveToNext()) {
-				            items.add(fromCursor(c));
-				        }
-				    } finally {
-				        Closeables.closeSilently(c);
-				    }
-				    
-				    return items;
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver, String selection, String[] selectionArgs) {
-				    return select(resolver, selection, selectionArgs, null);
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver, String selection) {
-				    return select(resolver, selection, null, null);
-				}
-				
-				public static List<«stmt.name.pascalize»Record> select(ContentResolver resolver) {
-				    return select(resolver, null, null, null);
-				}
-				
-				public static «stmt.name.pascalize»Record selectFirst(ContentResolver resolver, SQuery query) {
-					return selectFirst(resolver, query, null);
-				}
-				
-				public static «stmt.name.pascalize»Record selectFirst(ContentResolver resolver, SQuery query, String sortOrder) {
-				    Cursor c = null;
-				    
-				    try {
-				        c = query.query(resolver, «stmt.name.pascalize».CONTENT_URI, PROJECTION, sortOrder);
-				        
-				        if(!c.moveToFirst()) {
-				        	return null;
-				        }
-				        
-				        return fromCursor(c);
-				        
-				    } finally {
-				        Closeables.closeSilently(c);
-				    }
-				    
-				    
 				}
 			}
 		'''

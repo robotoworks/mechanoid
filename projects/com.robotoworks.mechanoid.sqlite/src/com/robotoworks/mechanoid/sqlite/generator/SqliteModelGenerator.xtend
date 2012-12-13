@@ -21,6 +21,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
+import org.eclipse.xtext.generator.OutputConfiguration
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -30,8 +31,11 @@ class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteMigrationGenerator mMigrationGenerator
 	@Inject ContentProviderActionGenerator mActionGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
+	@Inject MechanoidOutputConfigurationProvider configProvider
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		
+		val config = configProvider.outputConfigurations.head
 		
 		var model = resource.contents.head as Model;
 		

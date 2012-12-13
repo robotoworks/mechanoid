@@ -24,11 +24,13 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
 import java.util.Arrays;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -57,7 +59,12 @@ public class SqliteModelGenerator implements IGenerator {
   @Inject
   private ActiveRecordGenerator mActiveRecordGenerator;
   
+  @Inject
+  private MechanoidOutputConfigurationProvider configProvider;
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    Set<OutputConfiguration> _outputConfigurations = this.configProvider.getOutputConfigurations();
+    final OutputConfiguration config = IterableExtensions.<OutputConfiguration>head(_outputConfigurations);
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);

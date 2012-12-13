@@ -38,6 +38,7 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("import java.util.ArrayList;");
     _builder.newLine();
+    _builder.append("import java.util.List;");
     _builder.newLine();
     _builder.append("import android.content.ContentProviderOperation;");
     _builder.newLine();
@@ -60,6 +61,10 @@ public class ContentProviderGenerator {
     _builder.append("import com.robotoworks.mechanoid.content.MechanoidContentProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.sqlite.ActiveRecord;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
     _builder.newLine();
     {
@@ -291,19 +296,18 @@ public class ContentProviderGenerator {
     {
       DatabaseBlock _database_5 = model.getDatabase();
       ConfigBlock _config_2 = _database_5.getConfig();
-      EList<ConfigurationStatement> _statements_7 = _config_2.getStatements();
-      boolean _notEquals_1 = (!Objects.equal(_statements_7, null));
+      boolean _notEquals_1 = (!Objects.equal(_config_2, null));
       if (_notEquals_1) {
         {
           DatabaseBlock _database_6 = model.getDatabase();
           ConfigBlock _config_3 = _database_6.getConfig();
-          EList<ConfigurationStatement> _statements_8 = _config_3.getStatements();
+          EList<ConfigurationStatement> _statements_7 = _config_3.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_7 = IterableExtensions.<ConfigurationStatement>filter(_statements_8, _function_1);
+          Iterable<ConfigurationStatement> _filter_7 = IterableExtensions.<ConfigurationStatement>filter(_statements_7, _function_1);
           for(final ConfigurationStatement a_1 : _filter_7) {
             _builder.append("\t");
             _builder.append("private static final int ");
@@ -341,8 +345,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements_9 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_9, CreateTableStatement.class);
+      EList<Statment> _statements_8 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_8, CreateTableStatement.class);
       for(final CreateTableStatement tbl_3 : _filter_8) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
@@ -376,8 +380,8 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_10 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_9 = Iterables.<CreateViewStatement>filter(_statements_10, CreateViewStatement.class);
+      EList<Statment> _statements_9 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_9 = Iterables.<CreateViewStatement>filter(_statements_9, CreateViewStatement.class);
       for(final CreateViewStatement vw_3 : _filter_9) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
@@ -417,8 +421,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements_11 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_10 = Iterables.<CreateTableStatement>filter(_statements_11, CreateTableStatement.class);
+      EList<Statment> _statements_10 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_10 = Iterables.<CreateTableStatement>filter(_statements_10, CreateTableStatement.class);
       for(final CreateTableStatement tbl_4 : _filter_10) {
         _builder.append("\t\t");
         _builder.append("sActions[");
@@ -452,8 +456,8 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_12 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_11 = Iterables.<CreateViewStatement>filter(_statements_12, CreateViewStatement.class);
+      EList<Statment> _statements_11 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_11 = Iterables.<CreateViewStatement>filter(_statements_11, CreateViewStatement.class);
       for(final CreateViewStatement vw_4 : _filter_11) {
         _builder.append("\t\t");
         _builder.append("sActions[");
@@ -496,13 +500,13 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_8 = model.getDatabase();
           ConfigBlock _config_5 = _database_8.getConfig();
-          EList<ConfigurationStatement> _statements_13 = _config_5.getStatements();
+          EList<ConfigurationStatement> _statements_12 = _config_5.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_12 = IterableExtensions.<ConfigurationStatement>filter(_statements_13, _function_2);
+          Iterable<ConfigurationStatement> _filter_12 = IterableExtensions.<ConfigurationStatement>filter(_statements_12, _function_2);
           for(final ConfigurationStatement a_2 : _filter_12) {
             _builder.append("\t\t");
             _builder.append("sActions[");
@@ -546,8 +550,8 @@ public class ContentProviderGenerator {
     _builder.append("// Tables");
     _builder.newLine();
     {
-      EList<Statment> _statements_14 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_13 = Iterables.<CreateTableStatement>filter(_statements_14, CreateTableStatement.class);
+      EList<Statment> _statements_13 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_13 = Iterables.<CreateTableStatement>filter(_statements_13, CreateTableStatement.class);
       for(final CreateTableStatement tbl_5 : _filter_13) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
@@ -583,8 +587,8 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      EList<Statment> _statements_15 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_14 = Iterables.<CreateViewStatement>filter(_statements_15, CreateViewStatement.class);
+      EList<Statment> _statements_14 = snapshot.getStatements();
+      Iterable<CreateViewStatement> _filter_14 = Iterables.<CreateViewStatement>filter(_statements_14, CreateViewStatement.class);
       for(final CreateViewStatement vw_5 : _filter_14) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
@@ -627,13 +631,13 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_11 = model.getDatabase();
           ConfigBlock _config_7 = _database_11.getConfig();
-          EList<ConfigurationStatement> _statements_16 = _config_7.getStatements();
+          EList<ConfigurationStatement> _statements_15 = _config_7.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_15 = IterableExtensions.<ConfigurationStatement>filter(_statements_16, _function_3);
+          Iterable<ConfigurationStatement> _filter_15 = IterableExtensions.<ConfigurationStatement>filter(_statements_15, _function_3);
           for(final ConfigurationStatement a_3 : _filter_15) {
             _builder.append("\t\t");
             ActionStatement stmt = ((ActionStatement) a_3);
@@ -866,6 +870,32 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("    ");
+    _builder.append("public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("final int match = sUriMatcher.match(uri);");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("if(match == UriMatcher.NO_MATCH) {");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return createActions(sActions[match]).selectRecords(this, uri, sQuery, sortOrder);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("    ");
@@ -915,6 +945,9 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

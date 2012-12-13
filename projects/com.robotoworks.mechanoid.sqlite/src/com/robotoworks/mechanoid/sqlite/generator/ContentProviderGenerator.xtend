@@ -20,7 +20,7 @@ class ContentProviderGenerator {
 			package «model.packageName»;
 			
 			import java.util.ArrayList;
-			
+			import java.util.List;
 			import android.content.ContentProviderOperation;
 			import android.content.ContentProviderResult;
 			import android.content.ContentValues;
@@ -32,7 +32,9 @@ class ContentProviderGenerator {
 			import android.net.Uri;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
-
+			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+			import com.robotoworks.mechanoid.sqlite.SQuery;
+			
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
 			«ENDFOR»
@@ -81,7 +83,7 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
-				«IF model.database.config.statements !=null»
+				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
@@ -237,7 +239,17 @@ class ContentProviderGenerator {
 					
 					return createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
 				}
+
+			    public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {
+			        final int match = sUriMatcher.match(uri);
 			
+			        if(match == UriMatcher.NO_MATCH) {
+			            throw new UnsupportedOperationException("Unknown uri: " + uri);
+			        }
+			        
+			        return createActions(sActions[match]).selectRecords(this, uri, sQuery, sortOrder);
+			    }
+			    
 			    @Override
 			    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
 			            throws OperationApplicationException {
@@ -255,6 +267,8 @@ class ContentProviderGenerator {
 			            db.endTransaction();
 			        }
 			    }
+			    
+
 			}
 			'''
 			
