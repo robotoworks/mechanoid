@@ -86,17 +86,17 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ACTION_BLOCK:
+      case SqliteModelPackage.CONFIG_BLOCK:
       {
-        ActionBlock actionBlock = (ActionBlock)theEObject;
-        T result = caseActionBlock(actionBlock);
+        ConfigBlock configBlock = (ConfigBlock)theEObject;
+        T result = caseConfigBlock(configBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ACTION_STATEMENT:
+      case SqliteModelPackage.CONFIGURATION_STATEMENT:
       {
-        ActionStatement actionStatement = (ActionStatement)theEObject;
-        T result = caseActionStatement(actionStatement);
+        ConfigurationStatement configurationStatement = (ConfigurationStatement)theEObject;
+        T result = caseConfigurationStatement(configurationStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -238,6 +238,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         LiteralValue literalValue = (LiteralValue)theEObject;
         T result = caseLiteralValue(literalValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ACTION_STATEMENT:
+      {
+        ActionStatement actionStatement = (ActionStatement)theEObject;
+        T result = caseActionStatement(actionStatement);
+        if (result == null) result = caseConfigurationStatement(actionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT:
+      {
+        ActiveRecordRegistrationStatement activeRecordRegistrationStatement = (ActiveRecordRegistrationStatement)theEObject;
+        T result = caseActiveRecordRegistrationStatement(activeRecordRegistrationStatement);
+        if (result == null) result = caseConfigurationStatement(activeRecordRegistrationStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -598,33 +614,33 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Action Block</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Config Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Action Block</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Config Block</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseActionBlock(ActionBlock object)
+  public T caseConfigBlock(ConfigBlock object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Configuration Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Configuration Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseActionStatement(ActionStatement object)
+  public T caseConfigurationStatement(ConfigurationStatement object)
   {
     return null;
   }
@@ -945,6 +961,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLiteralValue(LiteralValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActionStatement(ActionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Active Record Registration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Active Record Registration Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActiveRecordRegistrationStatement(ActiveRecordRegistrationStatement object)
   {
     return null;
   }

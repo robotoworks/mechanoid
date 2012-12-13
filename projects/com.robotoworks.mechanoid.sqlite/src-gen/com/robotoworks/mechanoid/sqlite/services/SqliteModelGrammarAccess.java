@@ -58,17 +58,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cActionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cActionsActionBlockParserRuleCall_3_0 = (RuleCall)cActionsAssignment_3.eContents().get(0);
+		private final Assignment cConfigAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConfigConfigBlockParserRuleCall_3_0 = (RuleCall)cConfigAssignment_3.eContents().get(0);
 		private final Assignment cMigrationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cMigrationsMigrationBlockParserRuleCall_4_0 = (RuleCall)cMigrationsAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//DatabaseBlock:
-		//	"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}";
+		//	"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}"
+		//"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"database"
@@ -83,11 +83,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//actions=ActionBlock?
-		public Assignment getActionsAssignment_3() { return cActionsAssignment_3; }
+		//config=ConfigBlock?
+		public Assignment getConfigAssignment_3() { return cConfigAssignment_3; }
 
-		//ActionBlock
-		public RuleCall getActionsActionBlockParserRuleCall_3_0() { return cActionsActionBlockParserRuleCall_3_0; }
+		//ConfigBlock
+		public RuleCall getConfigConfigBlockParserRuleCall_3_0() { return cConfigConfigBlockParserRuleCall_3_0; }
 
 		//migrations+=MigrationBlock*
 		public Assignment getMigrationsAssignment_4() { return cMigrationsAssignment_4; }
@@ -99,68 +99,100 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
-	public class ActionBlockElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ActionBlock");
+	public class ConfigBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConfigBlock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cActionBlockAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cActionsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cConfigBlockAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cConfigKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cActionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cActionsActionStatementParserRuleCall_3_0 = (RuleCall)cActionsAssignment_3.eContents().get(0);
+		private final Assignment cStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatementsConfigurationStatementParserRuleCall_3_0 = (RuleCall)cStatementsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//ActionBlock:
-		//	{ActionBlock} "actions" "{" actions+=ActionStatement* "}";
+		//ConfigBlock:
+		//	{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}";
 		public ParserRule getRule() { return rule; }
 
-		//{ActionBlock} "actions" "{" actions+=ActionStatement* "}"
+		//{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}"
 		public Group getGroup() { return cGroup; }
 
-		//{ActionBlock}
-		public Action getActionBlockAction_0() { return cActionBlockAction_0; }
+		//{ConfigBlock}
+		public Action getConfigBlockAction_0() { return cConfigBlockAction_0; }
 
-		//"actions"
-		public Keyword getActionsKeyword_1() { return cActionsKeyword_1; }
+		//"config"
+		public Keyword getConfigKeyword_1() { return cConfigKeyword_1; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//actions+=ActionStatement*
-		public Assignment getActionsAssignment_3() { return cActionsAssignment_3; }
+		//statements+=ConfigurationStatement*
+		public Assignment getStatementsAssignment_3() { return cStatementsAssignment_3; }
 
-		//ActionStatement
-		public RuleCall getActionsActionStatementParserRuleCall_3_0() { return cActionsActionStatementParserRuleCall_3_0; }
+		//ConfigurationStatement
+		public RuleCall getStatementsConfigurationStatementParserRuleCall_3_0() { return cStatementsConfigurationStatementParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
-	public class ActionStatementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ActionStatement");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cPathAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPathSTRINGTerminalRuleCall_1_0 = (RuleCall)cPathAssignment_1.eContents().get(0);
+	public class ConfigurationStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConfigurationStatement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cActionStatementAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cActionKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cNameAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_0_2_0 = (RuleCall)cNameAssignment_0_2.eContents().get(0);
+		private final Assignment cPathAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cPathSTRINGTerminalRuleCall_0_3_0 = (RuleCall)cPathAssignment_0_3.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cActiveRecordRegistrationStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cActiveKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
 		
-		//ActionStatement:
-		//	name=ID path=STRING;
+		//ConfigurationStatement:
+		//	{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID;
 		public ParserRule getRule() { return rule; }
 
-		//name=ID path=STRING
-		public Group getGroup() { return cGroup; }
+		//{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//{ActionStatement} "action" name=ID path=STRING
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{ActionStatement}
+		public Action getActionStatementAction_0_0() { return cActionStatementAction_0_0; }
+
+		//"action"
+		public Keyword getActionKeyword_0_1() { return cActionKeyword_0_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_0_2() { return cNameAssignment_0_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_2_0() { return cNameIDTerminalRuleCall_0_2_0; }
 
 		//path=STRING
-		public Assignment getPathAssignment_1() { return cPathAssignment_1; }
+		public Assignment getPathAssignment_0_3() { return cPathAssignment_0_3; }
 
 		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_1_0() { return cPathSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getPathSTRINGTerminalRuleCall_0_3_0() { return cPathSTRINGTerminalRuleCall_0_3_0; }
+
+		//{ActiveRecordRegistrationStatement} "active" name=ID
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{ActiveRecordRegistrationStatement}
+		public Action getActiveRecordRegistrationStatementAction_1_0() { return cActiveRecordRegistrationStatementAction_1_0; }
+
+		//"active"
+		public Keyword getActiveKeyword_1_1() { return cActiveKeyword_1_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_2_0() { return cNameIDTerminalRuleCall_1_2_0; }
 	}
 
 	public class MigrationBlockElements extends AbstractParserRuleElementFinder {
@@ -2618,8 +2650,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private ModelElements pModel;
 	private DatabaseBlockElements pDatabaseBlock;
-	private ActionBlockElements pActionBlock;
-	private ActionStatementElements pActionStatement;
+	private ConfigBlockElements pConfigBlock;
+	private ConfigurationStatementElements pConfigurationStatement;
 	private MigrationBlockElements pMigrationBlock;
 	private SqlExpressionElements pSqlExpression;
 	private ExprConcatElements pExprConcat;
@@ -2708,7 +2740,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DatabaseBlock:
-	//	"database" name=ID "{" actions=ActionBlock? migrations+=MigrationBlock* "}";
+	//	"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* "}";
 	public DatabaseBlockElements getDatabaseBlockAccess() {
 		return (pDatabaseBlock != null) ? pDatabaseBlock : (pDatabaseBlock = new DatabaseBlockElements());
 	}
@@ -2717,24 +2749,24 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDatabaseBlockAccess().getRule();
 	}
 
-	//ActionBlock:
-	//	{ActionBlock} "actions" "{" actions+=ActionStatement* "}";
-	public ActionBlockElements getActionBlockAccess() {
-		return (pActionBlock != null) ? pActionBlock : (pActionBlock = new ActionBlockElements());
+	//ConfigBlock:
+	//	{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}";
+	public ConfigBlockElements getConfigBlockAccess() {
+		return (pConfigBlock != null) ? pConfigBlock : (pConfigBlock = new ConfigBlockElements());
 	}
 	
-	public ParserRule getActionBlockRule() {
-		return getActionBlockAccess().getRule();
+	public ParserRule getConfigBlockRule() {
+		return getConfigBlockAccess().getRule();
 	}
 
-	//ActionStatement:
-	//	name=ID path=STRING;
-	public ActionStatementElements getActionStatementAccess() {
-		return (pActionStatement != null) ? pActionStatement : (pActionStatement = new ActionStatementElements());
+	//ConfigurationStatement:
+	//	{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID;
+	public ConfigurationStatementElements getConfigurationStatementAccess() {
+		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
 	}
 	
-	public ParserRule getActionStatementRule() {
-		return getActionStatementAccess().getRule();
+	public ParserRule getConfigurationStatementRule() {
+		return getConfigurationStatementAccess().getRule();
 	}
 
 	//MigrationBlock:
@@ -3118,7 +3150,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\'" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
 	} 

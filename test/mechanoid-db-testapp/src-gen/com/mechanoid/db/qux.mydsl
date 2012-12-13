@@ -1,0 +1,32 @@
+import android.support.v4.app.FragmentActivity
+import android.app.Activity
+import android.widget.TextView
+import com.mechanoid.db.R$id
+
+activity Awesome extends FragmentActivity {
+	icicle int x = 0
+	icicle String y
+	
+	view TextView mTextBox = R$id::menu_settings
+	
+	/* 
+	 
+	 var myQuery = 
+	 	select 
+		 	Products::_ID,
+		 	Products::NAME,
+		 	Products::PRICE
+		from
+		 	Products::CONTENT_URI
+	 	where
+	 	    Products::NAME like 'hello, world'
+	 	order by
+	 	    Products::NAME desc
+	 	
+	 	Cursor c = myQuery.execute
+	 	
+	  
+	 Products::CONTENT_URI 
+	 
+	 */
+}

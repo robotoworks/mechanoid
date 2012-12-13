@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -22,35 +22,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Action Block</b></em>'.
+ * An implementation of the model object '<em><b>Config Block</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ActionBlockImpl#getActions <em>Actions</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ConfigBlockImpl#getStatements <em>Statements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ActionBlockImpl extends MinimalEObjectImpl.Container implements ActionBlock
+public class ConfigBlockImpl extends MinimalEObjectImpl.Container implements ConfigBlock
 {
   /**
-   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+   * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActions()
+   * @see #getStatements()
    * @generated
    * @ordered
    */
-  protected EList<ActionStatement> actions;
+  protected EList<ConfigurationStatement> statements;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ActionBlockImpl()
+  protected ConfigBlockImpl()
   {
     super();
   }
@@ -63,7 +63,7 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.ACTION_BLOCK;
+    return SqliteModelPackage.Literals.CONFIG_BLOCK;
   }
 
   /**
@@ -71,13 +71,13 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ActionStatement> getActions()
+  public EList<ConfigurationStatement> getStatements()
   {
-    if (actions == null)
+    if (statements == null)
     {
-      actions = new EObjectContainmentEList<ActionStatement>(ActionStatement.class, this, SqliteModelPackage.ACTION_BLOCK__ACTIONS);
+      statements = new EObjectContainmentEList<ConfigurationStatement>(ConfigurationStatement.class, this, SqliteModelPackage.CONFIG_BLOCK__STATEMENTS);
     }
-    return actions;
+    return statements;
   }
 
   /**
@@ -90,8 +90,8 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_BLOCK__ACTIONS:
-        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.CONFIG_BLOCK__STATEMENTS:
+        return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +106,8 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_BLOCK__ACTIONS:
-        return getActions();
+      case SqliteModelPackage.CONFIG_BLOCK__STATEMENTS:
+        return getStatements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +123,9 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_BLOCK__ACTIONS:
-        getActions().clear();
-        getActions().addAll((Collection<? extends ActionStatement>)newValue);
+      case SqliteModelPackage.CONFIG_BLOCK__STATEMENTS:
+        getStatements().clear();
+        getStatements().addAll((Collection<? extends ConfigurationStatement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +141,8 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_BLOCK__ACTIONS:
-        getActions().clear();
+      case SqliteModelPackage.CONFIG_BLOCK__STATEMENTS:
+        getStatements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,10 +158,10 @@ public class ActionBlockImpl extends MinimalEObjectImpl.Container implements Act
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_BLOCK__ACTIONS:
-        return actions != null && !actions.isEmpty();
+      case SqliteModelPackage.CONFIG_BLOCK__STATEMENTS:
+        return statements != null && !statements.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ActionBlockImpl
+} //ConfigBlockImpl

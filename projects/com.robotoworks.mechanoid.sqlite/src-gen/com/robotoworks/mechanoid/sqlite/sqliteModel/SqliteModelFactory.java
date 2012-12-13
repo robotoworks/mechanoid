@@ -41,22 +41,22 @@ public interface SqliteModelFactory extends EFactory
   DatabaseBlock createDatabaseBlock();
 
   /**
-   * Returns a new object of class '<em>Action Block</em>'.
+   * Returns a new object of class '<em>Config Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Action Block</em>'.
+   * @return a new object of class '<em>Config Block</em>'.
    * @generated
    */
-  ActionBlock createActionBlock();
+  ConfigBlock createConfigBlock();
 
   /**
-   * Returns a new object of class '<em>Action Statement</em>'.
+   * Returns a new object of class '<em>Configuration Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Action Statement</em>'.
+   * @return a new object of class '<em>Configuration Statement</em>'.
    * @generated
    */
-  ActionStatement createActionStatement();
+  ConfigurationStatement createConfigurationStatement();
 
   /**
    * Returns a new object of class '<em>Migration Block</em>'.
@@ -237,6 +237,24 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   LiteralValue createLiteralValue();
+
+  /**
+   * Returns a new object of class '<em>Action Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action Statement</em>'.
+   * @generated
+   */
+  ActionStatement createActionStatement();
+
+  /**
+   * Returns a new object of class '<em>Active Record Registration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Active Record Registration Statement</em>'.
+   * @generated
+   */
+  ActiveRecordRegistrationStatement createActiveRecordRegistrationStatement();
 
   /**
    * Returns a new object of class '<em>Expr Concat</em>'.

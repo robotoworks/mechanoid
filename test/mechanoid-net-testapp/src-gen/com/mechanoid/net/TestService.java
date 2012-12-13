@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.LinkedHashMap;
+import com.robotoworks.mechanoid.net.NetLogHelper;
 
 public class TestService {
 	private static final String LOG_TAG = "TestService";
@@ -90,10 +91,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetStringArrayResult>(conn, parser);
+			Response<GetStringArrayResult> response = new Response<GetStringArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -134,10 +147,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetIntArrayResult>(conn, parser);
+			Response<GetIntArrayResult> response = new Response<GetIntArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -178,10 +203,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetLongArrayResult>(conn, parser);
+			Response<GetLongArrayResult> response = new Response<GetLongArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -222,10 +259,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetDoubleArrayResult>(conn, parser);
+			Response<GetDoubleArrayResult> response = new Response<GetDoubleArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -266,10 +315,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetBooleanArrayResult>(conn, parser);
+			Response<GetBooleanArrayResult> response = new Response<GetBooleanArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -310,10 +371,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetEnumArrayResult>(conn, parser);
+			Response<GetEnumArrayResult> response = new Response<GetEnumArrayResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -354,10 +427,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetItemResult>(conn, parser);
+			Response<GetItemResult> response = new Response<GetItemResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -398,10 +483,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetNodesResult>(conn, parser);
+			Response<GetNodesResult> response = new Response<GetNodesResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -442,10 +539,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<EchoParamsResult>(conn, parser);
+			Response<EchoParamsResult> response = new Response<EchoParamsResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -486,10 +595,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<SkippingResult>(conn, parser);
+			Response<SkippingResult> response = new Response<SkippingResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -530,10 +651,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<SkippingWithItemResult>(conn, parser);
+			Response<SkippingWithItemResult> response = new Response<SkippingWithItemResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -574,10 +707,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<GetABResult>(conn, parser);
+			Response<GetABResult> response = new Response<GetABResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -612,12 +757,25 @@ public class TestService {
 			for(String key : request.getHeaderKeys()) {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
-			
+		
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+						
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<SkippingPostResult>(conn, parser);
+			Response<SkippingPostResult> response = new Response<SkippingPostResult>(conn, parser);
+		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		
 		} 
 		catch(Exception e) {
@@ -653,12 +811,25 @@ public class TestService {
 			for(String key : request.getHeaderKeys()) {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
-			
+		
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+						
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<PostIntResult>(conn, parser);
+			Response<PostIntResult> response = new Response<PostIntResult>(conn, parser);
+		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		
 		} 
 		catch(Exception e) {
@@ -694,12 +865,25 @@ public class TestService {
 			for(String key : request.getHeaderKeys()) {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
-			
+		
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+						
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<PostStringResult>(conn, parser);
+			Response<PostStringResult> response = new Response<PostStringResult>(conn, parser);
+		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		
 		} 
 		catch(Exception e) {
@@ -735,12 +919,25 @@ public class TestService {
 			for(String key : request.getHeaderKeys()) {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
-			
+		
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+						
 			conn.connect();
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			return new Response<PostStringArrayResult>(conn, parser);
+			Response<PostStringArrayResult> response = new Response<PostStringArrayResult>(conn, parser);
+		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		
 		} 
 		catch(Exception e) {
@@ -777,10 +974,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<EchoSegmentsResult>(conn, parser);
+			Response<EchoSegmentsResult> response = new Response<EchoSegmentsResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -821,10 +1030,22 @@ public class TestService {
 				conn.setRequestProperty(key, request.getHeaderValue(key));
 			}
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<EchoHeadersResult>(conn, parser);
+			Response<EchoHeadersResult> response = new Response<EchoHeadersResult>(conn, parser);
 		
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+		
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);

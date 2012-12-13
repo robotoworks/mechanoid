@@ -4,6 +4,7 @@ import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonWriter;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
+import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.util.List;
 
 
@@ -44,6 +45,11 @@ public class HeaderItemTransformer extends Transformer<HeaderItem, JsonReader, J
 			
 			while(source.hasNext()) {
 				String name = source.nextName();
+				
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
 				
 				if(name.equals("key")) {
 					subject.setKey(source.nextString());

@@ -1,5 +1,10 @@
 package com.robotoworks.mechanoid.content;
 
+import java.util.List;
+
+import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+import com.robotoworks.mechanoid.sqlite.SQuery;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -28,4 +33,8 @@ public abstract class ContentProviderActions {
         }
         return numValues;
     }
+    
+	public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
+		return null;
+	}
 }
