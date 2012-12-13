@@ -33,6 +33,7 @@ class ClientGenerator {
 	import java.net.HttpURLConnection;
 	import java.net.URL;
 	import java.util.LinkedHashMap;
+	import com.robotoworks.mechanoid.net.NetLogHelper;
 	«context.printImports»
 	«context.clearImports»
 	
@@ -158,10 +159,22 @@ class ClientGenerator {
 			
 			«printSetHeadersStatements()»
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
-			return new Response<«method.name.pascalize»Result>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+
+			return response;
 		} 
 		catch(Exception e) {
 			throw new ServiceException(e);
@@ -192,13 +205,26 @@ class ClientGenerator {
 			
 			«printSetHeadersStatements()»
 			
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+			
 			conn.connect();
 			
 			«IF method.body != null»
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			«ENDIF»
 			
-			return new Response<«method.name.pascalize»Result>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
+
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+
+			return response;
 
 		} 
 		catch(Exception e) {
@@ -219,14 +245,27 @@ class ClientGenerator {
 			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
 			«printSetHeadersStatements()»
-			
+
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+						
 			conn.connect();
 			
 			«IF method.body != null»
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			«ENDIF»
 			
-			return new Response<«method.name.pascalize»Result>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
+
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+
+			return response;
 
 		} 
 		catch(Exception e) {
@@ -245,10 +284,23 @@ class ClientGenerator {
 			conn.setRequestMethod("DELETE");
 			
 			«printSetHeadersStatements()»
-			
+
+			if(debug) {
+				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
+			}
+	
 			conn.connect();
 			
-			return new Response<«method.name.pascalize»Result>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
+
+			if(debug) {
+				Log.d(LOG_TAG, "Response " + response.getResponseCode());
+				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
+				
+				Log.d(LOG_TAG, response.readAsText());
+			}
+
+			return response;
 
 		} 
 		catch(Exception e) {

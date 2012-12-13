@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.sqlite.generator.ActiveRecordGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderActionGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderContractGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderGenerator;
@@ -12,8 +13,10 @@ import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshotBuilder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteOpenHelperGenerator;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
@@ -21,11 +24,14 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
 import java.util.Arrays;
+import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.OutputConfiguration;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
@@ -50,14 +56,22 @@ public class SqliteModelGenerator implements IGenerator {
   @Inject
   private ContentProviderActionGenerator mActionGenerator;
   
+  @Inject
+  private ActiveRecordGenerator mActiveRecordGenerator;
+  
+  @Inject
+  private MechanoidOutputConfigurationProvider configProvider;
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    Set<OutputConfiguration> _outputConfigurations = this.configProvider.getOutputConfigurations();
+    final OutputConfiguration config = IterableExtensions.<OutputConfiguration>head(_outputConfigurations);
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);
     Model _build = this.mDbSnapshotBuilder.build(model);
     DatabaseBlock _database = _build.getDatabase();
     EList<MigrationBlock> _migrations = _database.getMigrations();
-    MigrationBlock snapshot = _migrations.get(0);
+    final MigrationBlock snapshot = _migrations.get(0);
     String _packageName = model.getPackageName();
     DatabaseBlock _database_1 = model.getDatabase();
     String _name = _database_1.getName();
@@ -122,22 +136,62 @@ public class SqliteModelGenerator implements IGenerator {
       };
     IterableExtensions.<CreateViewStatement>forEach(_filter_1, _function_1);
     DatabaseBlock _database_6 = model.getDatabase();
-    ActionBlock _actions = _database_6.getActions();
-    boolean _notEquals = (!Objects.equal(_actions, null));
+    ConfigBlock _config = _database_6.getConfig();
+    boolean _notEquals = (!Objects.equal(_config, null));
     if (_notEquals) {
       DatabaseBlock _database_7 = model.getDatabase();
-      ActionBlock _actions_1 = _database_7.getActions();
-      EList<ActionStatement> _actions_2 = _actions_1.getActions();
-      final Procedure1<ActionStatement> _function_2 = new Procedure1<ActionStatement>() {
-          public void apply(final ActionStatement item) {
-            SqliteModelGenerator.this.generateAction(resource, fsa, item);
+      ConfigBlock _config_1 = _database_7.getConfig();
+      EList<ConfigurationStatement> _statements_2 = _config_1.getStatements();
+      final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
+          public Boolean apply(final ConfigurationStatement it) {
+            return Boolean.valueOf((it instanceof ActionStatement));
           }
         };
-      IterableExtensions.<ActionStatement>forEach(_actions_2, _function_2);
+      Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_2);
+      final Procedure1<ConfigurationStatement> _function_3 = new Procedure1<ConfigurationStatement>() {
+          public void apply(final ConfigurationStatement item) {
+            SqliteModelGenerator.this.generateAction(resource, fsa, ((ActionStatement) item));
+          }
+        };
+      IterableExtensions.<ConfigurationStatement>forEach(_filter_2, _function_3);
+      DatabaseBlock _database_8 = model.getDatabase();
+      ConfigBlock _config_2 = _database_8.getConfig();
+      EList<ConfigurationStatement> _statements_3 = _config_2.getStatements();
+      final Function1<ConfigurationStatement,Boolean> _function_4 = new Function1<ConfigurationStatement,Boolean>() {
+          public Boolean apply(final ConfigurationStatement it) {
+            return Boolean.valueOf((it instanceof ActiveRecordRegistrationStatement));
+          }
+        };
+      Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_3, _function_4);
+      final Procedure1<ConfigurationStatement> _function_5 = new Procedure1<ConfigurationStatement>() {
+          public void apply(final ConfigurationStatement it) {
+            EList<Statment> _statements = snapshot.getStatements();
+            final Function1<Statment,Boolean> _function = new Function1<Statment,Boolean>() {
+                public Boolean apply(final Statment stmt) {
+                  boolean _and = false;
+                  if (!(stmt instanceof CreateTableStatement)) {
+                    _and = false;
+                  } else {
+                    String _name = stmt.getName();
+                    String _name_1 = it.getName();
+                    boolean _equals = _name.equals(_name_1);
+                    _and = ((stmt instanceof CreateTableStatement) && _equals);
+                  }
+                  return Boolean.valueOf(_and);
+                }
+              };
+            Statment statement = IterableExtensions.<Statment>findFirst(_statements, _function);
+            boolean _notEquals = (!Objects.equal(statement, null));
+            if (_notEquals) {
+              SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
+            }
+          }
+        };
+      IterableExtensions.<ConfigurationStatement>forEach(_filter_3, _function_5);
     }
-    DatabaseBlock _database_8 = model.getDatabase();
-    EList<MigrationBlock> _migrations_1 = _database_8.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_3 = new Procedure2<MigrationBlock,Integer>() {
+    DatabaseBlock _database_9 = model.getDatabase();
+    EList<MigrationBlock> _migrations_1 = _database_9.getMigrations();
+    final Procedure2<MigrationBlock,Integer> _function_6 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -146,7 +200,20 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_3);
+    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_6);
+  }
+  
+  public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {
+    EList<EObject> _contents = resource.getContents();
+    EObject _head = IterableExtensions.<EObject>head(_contents);
+    Model model = ((Model) _head);
+    String _packageName = model.getPackageName();
+    String _name = statement.getName();
+    String _pascalize = Strings.pascalize(_name);
+    String _concat = _pascalize.concat("Record");
+    String genFileName = Strings.resolveFileName(_packageName, _concat);
+    CharSequence _generate = this.mActiveRecordGenerator.generate(model, statement);
+    fsa.generateFile(genFileName, _generate);
   }
   
   public void generateAction(final Resource resource, final IFileSystemAccess fsa, final ActionStatement action) {

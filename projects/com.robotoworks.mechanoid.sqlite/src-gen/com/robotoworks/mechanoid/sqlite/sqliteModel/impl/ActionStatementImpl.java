@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,35 +18,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ActionStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ActionStatementImpl#getPath <em>Path</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ActionStatementImpl extends MinimalEObjectImpl.Container implements ActionStatement
+public class ActionStatementImpl extends ConfigurationStatementImpl implements ActionStatement
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -94,29 +72,6 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ACTION_STATEMENT__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getPath()
   {
     return path;
@@ -145,8 +100,6 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        return getName();
       case SqliteModelPackage.ACTION_STATEMENT__PATH:
         return getPath();
     }
@@ -163,9 +116,6 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        setName((String)newValue);
-        return;
       case SqliteModelPackage.ACTION_STATEMENT__PATH:
         setPath((String)newValue);
         return;
@@ -183,9 +133,6 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SqliteModelPackage.ACTION_STATEMENT__PATH:
         setPath(PATH_EDEFAULT);
         return;
@@ -203,8 +150,6 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SqliteModelPackage.ACTION_STATEMENT__PATH:
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
     }
@@ -222,9 +167,7 @@ public class ActionStatementImpl extends MinimalEObjectImpl.Container implements
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", path: ");
+    result.append(" (path: ");
     result.append(path);
     result.append(')');
     return result.toString();

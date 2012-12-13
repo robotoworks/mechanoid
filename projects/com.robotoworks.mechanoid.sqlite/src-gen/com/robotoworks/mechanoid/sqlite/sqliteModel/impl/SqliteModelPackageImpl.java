@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
@@ -15,6 +15,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -106,14 +108,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass actionBlockEClass = null;
+  private EClass configBlockEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass actionStatementEClass = null;
+  private EClass configurationStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -254,6 +256,20 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass literalValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass activeRecordRegistrationStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -667,7 +683,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDatabaseBlock_Actions()
+  public EReference getDatabaseBlock_Config()
   {
     return (EReference)databaseBlockEClass.getEStructuralFeatures().get(1);
   }
@@ -687,9 +703,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getActionBlock()
+  public EClass getConfigBlock()
   {
-    return actionBlockEClass;
+    return configBlockEClass;
   }
 
   /**
@@ -697,9 +713,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActionBlock_Actions()
+  public EReference getConfigBlock_Statements()
   {
-    return (EReference)actionBlockEClass.getEStructuralFeatures().get(0);
+    return (EReference)configBlockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -707,9 +723,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getActionStatement()
+  public EClass getConfigurationStatement()
   {
-    return actionStatementEClass;
+    return configurationStatementEClass;
   }
 
   /**
@@ -717,19 +733,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getActionStatement_Name()
+  public EAttribute getConfigurationStatement_Name()
   {
-    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getActionStatement_Path()
-  {
-    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)configurationStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1270,6 +1276,36 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EClass getLiteralValue()
   {
     return literalValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActionStatement()
+  {
+    return actionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getActionStatement_Path()
+  {
+    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActiveRecordRegistrationStatement()
+  {
+    return activeRecordRegistrationStatementEClass;
   }
 
   /**
@@ -2448,15 +2484,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     databaseBlockEClass = createEClass(DATABASE_BLOCK);
     createEAttribute(databaseBlockEClass, DATABASE_BLOCK__NAME);
-    createEReference(databaseBlockEClass, DATABASE_BLOCK__ACTIONS);
+    createEReference(databaseBlockEClass, DATABASE_BLOCK__CONFIG);
     createEReference(databaseBlockEClass, DATABASE_BLOCK__MIGRATIONS);
 
-    actionBlockEClass = createEClass(ACTION_BLOCK);
-    createEReference(actionBlockEClass, ACTION_BLOCK__ACTIONS);
+    configBlockEClass = createEClass(CONFIG_BLOCK);
+    createEReference(configBlockEClass, CONFIG_BLOCK__STATEMENTS);
 
-    actionStatementEClass = createEClass(ACTION_STATEMENT);
-    createEAttribute(actionStatementEClass, ACTION_STATEMENT__NAME);
-    createEAttribute(actionStatementEClass, ACTION_STATEMENT__PATH);
+    configurationStatementEClass = createEClass(CONFIGURATION_STATEMENT);
+    createEAttribute(configurationStatementEClass, CONFIGURATION_STATEMENT__NAME);
 
     migrationBlockEClass = createEClass(MIGRATION_BLOCK);
     createEReference(migrationBlockEClass, MIGRATION_BLOCK__STATEMENTS);
@@ -2531,6 +2566,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(conflictClauseEClass, CONFLICT_CLAUSE__RESOLUTION);
 
     literalValueEClass = createEClass(LITERAL_VALUE);
+
+    actionStatementEClass = createEClass(ACTION_STATEMENT);
+    createEAttribute(actionStatementEClass, ACTION_STATEMENT__PATH);
+
+    activeRecordRegistrationStatementEClass = createEClass(ACTIVE_RECORD_REGISTRATION_STATEMENT);
 
     exprConcatEClass = createEClass(EXPR_CONCAT);
     createEReference(exprConcatEClass, EXPR_CONCAT__LEFT);
@@ -2719,6 +2759,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     // Add supertypes to classes
     sqlExpressionEClass.getESuperTypes().add(this.getExpression());
+    actionStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
+    activeRecordRegistrationStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
     exprConcatEClass.getESuperTypes().add(this.getExpression());
     exprMultEClass.getESuperTypes().add(this.getExpression());
     exprAddEClass.getESuperTypes().add(this.getExpression());
@@ -2767,15 +2809,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(databaseBlockEClass, DatabaseBlock.class, "DatabaseBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDatabaseBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDatabaseBlock_Actions(), this.getActionBlock(), null, "actions", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDatabaseBlock_Config(), this.getConfigBlock(), null, "config", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDatabaseBlock_Migrations(), this.getMigrationBlock(), null, "migrations", null, 0, -1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(actionBlockEClass, ActionBlock.class, "ActionBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActionBlock_Actions(), this.getActionStatement(), null, "actions", null, 0, -1, ActionBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(configBlockEClass, ConfigBlock.class, "ConfigBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConfigBlock_Statements(), this.getConfigurationStatement(), null, "statements", null, 0, -1, ConfigBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getActionStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getActionStatement_Path(), ecorePackage.getEString(), "path", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(configurationStatementEClass, ConfigurationStatement.class, "ConfigurationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConfigurationStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConfigurationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(migrationBlockEClass, MigrationBlock.class, "MigrationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMigrationBlock_Statements(), this.getStatment(), null, "statements", null, 0, -1, MigrationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2850,6 +2891,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getConflictClause_Resolution(), this.getConflictResolution(), "resolution", null, 0, 1, ConflictClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getActionStatement_Path(), ecorePackage.getEString(), "path", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(activeRecordRegistrationStatementEClass, ActiveRecordRegistrationStatement.class, "ActiveRecordRegistrationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(exprConcatEClass, ExprConcat.class, "ExprConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExprConcat_Left(), this.getExpression(), null, "left", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

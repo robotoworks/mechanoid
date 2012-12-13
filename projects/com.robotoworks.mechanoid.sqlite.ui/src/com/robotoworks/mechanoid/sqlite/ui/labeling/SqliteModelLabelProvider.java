@@ -3,10 +3,29 @@
 */
 package com.robotoworks.mechanoid.sqlite.ui.labeling;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
- 
+import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.util.Strings;
+
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 
 /**
  * Provides labels for a EObjects.
@@ -14,7 +33,9 @@ import com.google.inject.Inject;
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
 public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
-
+	@Inject ISerializer serializer;
+	
+	
 	@Inject
 	public SqliteModelLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
@@ -31,4 +52,101 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
       return "MyModel.gif";
     }
 */
+	
+	public String text(ColumnDef e) {
+		PrimaryKeyColumnConstraint c = findPrimaryKeyConstraint(e.getConstraints());
+		
+		ArrayList<String> parts = Lists.newArrayList();
+		parts.add("PK");
+		
+		if(c.isDesc()) {
+			parts.add("desc");
+		} else {
+			parts.add("asc");
+		}
+
+		if(c.isAutoincrement()) {
+			parts.add("autoincrement");
+		}
+		
+		String info =  " (" + Strings.concat(", ", parts) + ")";
+		
+		return e.getName() + info;
+	}
+	
+	public String text(ConfigBlock e) {
+		return "Configuration";
+	}
+
+	
+	public String text(MigrationBlock e) {
+		int version = e.eContainer().eContents().indexOf(e);
+		return "Migration (v" + version + ")";
+	}
+	
+	public String image(ConfigBlock e) {
+		return "actions.gif";
+	}
+	
+	public String image(ActionStatement e) {
+		return "action.gif";
+	}
+	public String image(ActiveRecordRegistrationStatement e) {
+		return "active_record_obj.gif";
+	}
+
+	public String image(DatabaseBlock e) {
+		return "database.gif";
+	}
+	
+	public String image(MigrationBlock e) {
+		return "migration.gif";
+	}
+	public String image(Model e) {
+		return "package.gif";
+	}
+	
+	public String image(ColumnDef e) {	
+		if(findPrimaryKeyConstraint(e.getConstraints()) != null) {
+			return "key.gif";
+		}
+
+		return "column.gif";
+	}
+	
+	public String image(PrimaryKeyColumnConstraint e) {
+		return "key.gif";
+	}
+	
+	public String image(ResultColumn e) {
+		return "column.gif";
+	}
+	
+	public String image(CreateTableStatement e) {
+		return "table.gif";
+	}
+	
+	public String image(CreateViewStatement e) {
+		return "table.gif";
+	}
+	
+	public String image(TableConstraint e) {
+		return "constraint.gif";
+	}
+	
+	public String image(ColumnConstraint e) {
+		return "constraint.gif";
+	}
+	
+	private PrimaryKeyColumnConstraint findPrimaryKeyConstraint(EList<ColumnConstraint> constraints) {
+		if(constraints!= null) {
+			for(ColumnConstraint c : constraints) {
+				if(c instanceof PrimaryKeyColumnConstraint) {
+					return (PrimaryKeyColumnConstraint) c;
+				}
+			}
+		}
+		
+		return null;
+	}
 }

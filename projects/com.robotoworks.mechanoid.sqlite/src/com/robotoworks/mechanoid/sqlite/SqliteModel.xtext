@@ -8,20 +8,21 @@ Model:
 	database=DatabaseBlock;
 
 DatabaseBlock:
-	'database' name=ID '{' (actions=ActionBlock)? (migrations+=MigrationBlock)* '}';
+	'database' name=ID '{' (config=ConfigBlock)? (migrations+=MigrationBlock)* '}';
 
-ActionBlock:
-	{ActionBlock}
-	'actions' '{' (actions+=ActionStatement)* '}'
+ConfigBlock:
+	{ConfigBlock}
+	'config' '{' statements+=ConfigurationStatement* '}'
 ;
 
-ActionStatement:
-	name=ID path=STRING
+ConfigurationStatement:
+	{ActionStatement} 'action' name=ID path=STRING |
+	{ActiveRecordRegistrationStatement} 'active' name=ID
 ;
 
 MigrationBlock:
 	{MigrationBlock}
-	'migration' '{' (statements+=Statment ';' (statements+=Statment ';')*)? '}';
+	'migration' '{' (statements+=Statement ';' (statements+=Statement ';')*)? '}';
 	
 /*
  * Expressions
@@ -108,7 +109,7 @@ SecondaryComparisonOp:
  * Statements
  */
 
-Statment:
+Statement:
 	{CreateTableStatement} 'create' 'table' name=ID '(' columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* (',' constraints+=TableConstraint)* ')' |
 	{AlterTableStatement} 'alter' 'table' name=ID clause=AlterTableClause |
 	{CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement |
@@ -210,8 +211,9 @@ terminal INT returns ecore::EInt:
 	"$$$don't use this anymore$$$";
 	
 terminal STRING	: 
-		"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
-;
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		; 
 
 FQN:
 	ID ("." ID)*;

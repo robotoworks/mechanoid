@@ -7,6 +7,10 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 
 class ContentProviderGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) '''
@@ -16,7 +20,7 @@ class ContentProviderGenerator {
 			package «model.packageName»;
 			
 			import java.util.ArrayList;
-			
+			import java.util.List;
 			import android.content.ContentProviderOperation;
 			import android.content.ContentProviderResult;
 			import android.content.ContentValues;
@@ -28,7 +32,9 @@ class ContentProviderGenerator {
 			import android.net.Uri;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
-
+			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+			import com.robotoworks.mechanoid.sqlite.SQuery;
+			
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
 			«ENDFOR»
@@ -49,9 +55,9 @@ class ContentProviderGenerator {
 			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
-			«IF model.database.actions !=null»
+			«IF model.database.config !=null»
 			
-			«FOR a : model.database.actions.actions»
+			«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 			import «model.packageName».actions.«a.name.pascalize»Actions;
 			«ENDFOR»
 			
@@ -77,8 +83,8 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
-				«IF model.database.actions !=null»
-				«FOR a : model.database.actions.actions»
+				«IF model.database.config !=null»
+				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
@@ -117,8 +123,8 @@ class ContentProviderGenerator {
 					«ENDIF»
 					«ENDFOR»
 					
-					«IF model.database.actions !=null»
-					«FOR a : model.database.actions.actions»
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 					sActions[«a.name.underscore.toUpperCase»] = «a.name.pascalize»Actions.class;
 					«ENDFOR»
 					«ENDIF»
@@ -146,9 +152,10 @@ class ContentProviderGenerator {
 					«ENDFOR»
 
 					// User Actions
-					«IF model.database.actions !=null»
-					«FOR a : model.database.actions.actions»
-					matcher.addURI(authority, "«a.path»", «a.name.underscore.toUpperCase»); 
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
+					«var stmt = a as ActionStatement»
+					matcher.addURI(authority, "«stmt.path»", «a.name.underscore.toUpperCase»); 
 					«ENDFOR»
 					«ENDIF»
 			        return matcher;
@@ -232,7 +239,17 @@ class ContentProviderGenerator {
 					
 					return createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
 				}
+
+			    public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {
+			        final int match = sUriMatcher.match(uri);
 			
+			        if(match == UriMatcher.NO_MATCH) {
+			            throw new UnsupportedOperationException("Unknown uri: " + uri);
+			        }
+			        
+			        return createActions(sActions[match]).selectRecords(this, uri, sQuery, sortOrder);
+			    }
+			    
 			    @Override
 			    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
 			            throws OperationApplicationException {
@@ -250,6 +267,8 @@ class ContentProviderGenerator {
 			            db.endTransaction();
 			        }
 			    }
+			    
+
 			}
 			'''
 			

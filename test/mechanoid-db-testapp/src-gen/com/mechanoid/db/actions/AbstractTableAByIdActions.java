@@ -8,8 +8,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import android.net.Uri;
-import com.robotoworks.mechanoid.sqlite.ContentProviderActions;
-import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;
+import com.robotoworks.mechanoid.content.ContentProviderActions;
+import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder;
 import static com.robotoworks.mechanoid.sqlite.SelectionQueryBuilder.Op.*;
 

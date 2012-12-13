@@ -14,7 +14,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import com.robotoworks.mechanoid.sqlite.MechanoidContentProvider;
+import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 
 import com.mechanoid.db.TestDBContract.TableA;

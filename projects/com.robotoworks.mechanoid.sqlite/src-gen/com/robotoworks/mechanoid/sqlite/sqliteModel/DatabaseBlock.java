@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getName <em>Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getActions <em>Actions</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getConfig <em>Config</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}</li>
  * </ul>
  * </p>
@@ -53,30 +53,30 @@ public interface DatabaseBlock extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Actions</b></em>' containment reference.
+   * Returns the value of the '<em><b>Config</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Actions</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Config</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Actions</em>' containment reference.
-   * @see #setActions(ActionBlock)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDatabaseBlock_Actions()
+   * @return the value of the '<em>Config</em>' containment reference.
+   * @see #setConfig(ConfigBlock)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDatabaseBlock_Config()
    * @model containment="true"
    * @generated
    */
-  ActionBlock getActions();
+  ConfigBlock getConfig();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getActions <em>Actions</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock#getConfig <em>Config</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Actions</em>' containment reference.
-   * @see #getActions()
+   * @param value the new value of the '<em>Config</em>' containment reference.
+   * @see #getConfig()
    * @generated
    */
-  void setActions(ActionBlock value);
+  void setConfig(ConfigBlock value);
 
   /**
    * Returns the value of the '<em><b>Migrations</b></em>' containment reference list.

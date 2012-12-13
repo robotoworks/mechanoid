@@ -48,17 +48,18 @@ public class BTransformer extends Transformer<B, JsonReader, JsonWriter> {
 			while(source.hasNext()) {
 				String name = source.nextName();
 				
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
+				
 				if(name.equals("name")) {
 					subject.setName(source.nextString());
 				}
 				else if(name.equals("a")) {
-					if(source.peek() != JsonToken.NULL) {
-						A subjectMember = new A();
-						provider.get(ATransformer.class).transformIn(source, subjectMember);
-						subject.setA(subjectMember);
-					} else {
-						source.skipValue();
-					}
+					A subjectMember = new A();
+					provider.get(ATransformer.class).transformIn(source, subjectMember);
+					subject.setA(subjectMember);
 				}
 				else {
 					source.skipValue();

@@ -7,7 +7,10 @@ import android.database.Cursor;
 public abstract class CursorWalker {
 	protected abstract Cursor createCursor();
 	protected abstract void step(Cursor cursor);
-	public void walk() {
+	/**
+	 * @return number of records in the query
+	 */
+	public int walk() {
 		Cursor cursor = null;
 		
 		try {
@@ -17,6 +20,9 @@ public abstract class CursorWalker {
 				cursor.moveToNext();	
 				step(cursor);
 			}
+			
+			return cursor.getCount();
+			
 		} finally {
 			Closeables.closeSilently(cursor);
 		}

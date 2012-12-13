@@ -18,6 +18,10 @@ import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigura
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
+import org.eclipse.xtext.generator.OutputConfiguration
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -25,13 +29,17 @@ class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteDatabaseSnapshotBuilder mDbSnapshotBuilder
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject SqliteMigrationGenerator mMigrationGenerator
-	@Inject ContentProviderActionGenerator mActionGenerator;
+	@Inject ContentProviderActionGenerator mActionGenerator
+	@Inject ActiveRecordGenerator mActiveRecordGenerator
+	@Inject MechanoidOutputConfigurationProvider configProvider
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
+		val config = configProvider.outputConfigurations.head
+		
 		var model = resource.contents.head as Model;
 		
-		var snapshot = mDbSnapshotBuilder.build(model).database.migrations.get(0)
+		val snapshot = mDbSnapshotBuilder.build(model).database.migrations.get(0)
 		
 		fsa.generateFile(
 			model.packageName.resolveFileName("Abstract".concat(model.database.name).concat("OpenHelper")), 
@@ -74,16 +82,38 @@ class SqliteModelGenerator implements IGenerator {
 			}
 		];
 		
-		if(model.database.actions != null) {
-			model.database.actions.actions.forEach[
-				item|generateAction(resource, fsa, item)
+		if(model.database.config != null) {
+			model.database.config.statements.filter([it instanceof ActionStatement]).forEach[
+				item|generateAction(resource, fsa, item as ActionStatement)
+			];
+			
+			
+			model.database.config.statements.filter([it instanceof ActiveRecordRegistrationStatement]).forEach[
+				var statement = snapshot.statements.findFirst([stmt|stmt instanceof CreateTableStatement && stmt.name.equals(it.name)])
+				
+				if(statement != null) {
+					generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
+				}
 			];
 		}
+		
 		model.database.migrations.forEach[
 			item,index|
 			if(index> 0) generateMigration(resource, fsa, item, index + 1)
 		];		
 	}
+	
+	def void generateActiveRecordEntity(Resource resource, IFileSystemAccess fsa, CreateTableStatement statement) {
+		
+		var model = resource.contents.head as Model;
+		
+		var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+			
+		fsa.generateFile(genFileName, 
+			mActiveRecordGenerator.generate(model, statement)
+		)		
+	}
+
 	
 	def void generateAction(Resource resource, IFileSystemAccess fsa, ActionStatement action) { 
 		val model = resource.contents.head as Model

@@ -4,6 +4,7 @@ import com.robotoworks.mechanoid.net.Transformer;
 import com.robotoworks.mechanoid.net.TransformException;
 import com.robotoworks.mechanoid.internal.util.JsonWriter;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
+import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.util.List;
 
 
@@ -50,6 +51,11 @@ public class ItemTransformer extends Transformer<Item, JsonReader, JsonWriter> {
 			
 			while(source.hasNext()) {
 				String name = source.nextName();
+				
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
 				
 				if(name.equals("a")) {
 					subject.setA(source.nextString());

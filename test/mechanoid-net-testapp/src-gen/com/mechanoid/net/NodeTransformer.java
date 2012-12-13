@@ -49,17 +49,18 @@ public class NodeTransformer extends Transformer<Node, JsonReader, JsonWriter> {
 			while(source.hasNext()) {
 				String name = source.nextName();
 				
+				if(source.peek() == JsonToken.NULL) {
+					source.skipValue();
+					continue;
+				}
+				
 				if(name.equals("name")) {
 					subject.setName(source.nextString());
 				}
 				else if(name.equals("children")) {
-					if(source.peek() != JsonToken.NULL) {
-						List<Node> subjectMember = new ArrayList<Node>();
-						provider.get(NodeTransformer.class).transformIn(source, subjectMember);
-						subject.setChildren(subjectMember);
-					} else {
-						source.skipValue();
-					}
+					List<Node> subjectMember = new ArrayList<Node>();
+					provider.get(NodeTransformer.class).transformIn(source, subjectMember);
+					subject.setChildren(subjectMember);
 				}
 				else {
 					source.skipValue();
