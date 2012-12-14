@@ -3,7 +3,12 @@
  */
 package com.robotoworks.mechanoid.sqlite.ui;
 
+
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+
+import com.robotoworks.mechanoid.common.MechanoidBuilderParticipant;
+
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +16,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class SqliteModelUiModule extends com.robotoworks.mechanoid.sqlite.ui.AbstractSqliteModelUiModule {
 	public SqliteModelUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+		return MechanoidBuilderParticipant.class;
 	}
 }
