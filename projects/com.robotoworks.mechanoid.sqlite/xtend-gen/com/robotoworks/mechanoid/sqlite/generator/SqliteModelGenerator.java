@@ -75,7 +75,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName = model.getPackageName();
     DatabaseBlock _database_1 = model.getDatabase();
     String _name = _database_1.getName();
-    String _concat = "Abstract".concat(_name);
+    String _pascalize = Strings.pascalize(_name);
+    String _concat = "Abstract".concat(_pascalize);
     String _concat_1 = _concat.concat("OpenHelper");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
     CharSequence _generate = this.mOpenHelperGenerator.generate(model, snapshot);
@@ -83,7 +84,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_1 = model.getPackageName();
     DatabaseBlock _database_2 = model.getDatabase();
     String _name_1 = _database_2.getName();
-    String _concat_2 = _name_1.concat("OpenHelper");
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    String _concat_2 = _pascalize_1.concat("OpenHelper");
     String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
     CharSequence _generateStub = this.mOpenHelperGenerator.generateStub(model, snapshot);
     fsa.generateFile(_resolveFileName_1, 
@@ -91,14 +93,16 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_2 = model.getPackageName();
     DatabaseBlock _database_3 = model.getDatabase();
     String _name_2 = _database_3.getName();
-    String _concat_3 = _name_2.concat("Contract");
+    String _pascalize_2 = Strings.pascalize(_name_2);
+    String _concat_3 = _pascalize_2.concat("Contract");
     String _resolveFileName_2 = Strings.resolveFileName(_packageName_2, _concat_3);
     CharSequence _generate_1 = this.mContentProviderContractGenerator.generate(model, snapshot);
     fsa.generateFile(_resolveFileName_2, _generate_1);
     String _packageName_3 = model.getPackageName();
     DatabaseBlock _database_4 = model.getDatabase();
     String _name_3 = _database_4.getName();
-    String _concat_4 = "Abstract".concat(_name_3);
+    String _pascalize_3 = Strings.pascalize(_name_3);
+    String _concat_4 = "Abstract".concat(_pascalize_3);
     String _concat_5 = _concat_4.concat("ContentProvider");
     String _resolveFileName_3 = Strings.resolveFileName(_packageName_3, _concat_5);
     CharSequence _generate_2 = this.mContentProviderGenerator.generate(model, snapshot);
@@ -106,7 +110,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_4 = model.getPackageName();
     DatabaseBlock _database_5 = model.getDatabase();
     String _name_4 = _database_5.getName();
-    String _concat_6 = _name_4.concat("ContentProvider");
+    String _pascalize_4 = Strings.pascalize(_name_4);
+    String _concat_6 = _pascalize_4.concat("ContentProvider");
     String _resolveFileName_4 = Strings.resolveFileName(_packageName_4, _concat_6);
     CharSequence _generateStub_1 = this.mContentProviderGenerator.generateStub(model, snapshot);
     fsa.generateFile(_resolveFileName_4, 
@@ -340,7 +345,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _concat = _packageName.concat(".migrations");
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
-    String _concat_1 = "Abstract".concat(_name);
+    String _pascalize = Strings.pascalize(_name);
+    String _concat_1 = "Abstract".concat(_pascalize);
     String _concat_2 = _concat_1.concat("MigrationV");
     String _valueOf = String.valueOf(version);
     String _concat_3 = _concat_2.concat(_valueOf);
@@ -349,7 +355,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _concat_4 = _packageName_1.concat(".migrations");
     DatabaseBlock _database_1 = model.getDatabase();
     String _name_1 = _database_1.getName();
-    String _concat_5 = _name_1.concat("MigrationV");
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    String _concat_5 = _pascalize_1.concat("MigrationV");
     String _valueOf_1 = String.valueOf(version);
     String _concat_6 = _concat_5.concat(_valueOf_1);
     String genStubFileName = Strings.resolveFileName(_concat_4, _concat_6);

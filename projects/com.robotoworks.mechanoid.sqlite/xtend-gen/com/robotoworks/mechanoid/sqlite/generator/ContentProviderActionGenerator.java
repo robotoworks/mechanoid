@@ -241,7 +241,7 @@ public class ContentProviderActionGenerator {
         String _name_9 = tbl.getName();
         String _pascalize_6 = Strings.pascalize(_name_9);
         _builder.append(_pascalize_6, "		");
-        _builder.append(".buildGetByIdUri(String.valueOf(id));");
+        _builder.append(".buildUriWithId(id);");
         _builder.newLineIfNotEmpty();
       }
     }

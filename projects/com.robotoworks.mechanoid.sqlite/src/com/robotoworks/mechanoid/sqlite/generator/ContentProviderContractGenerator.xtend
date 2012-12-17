@@ -51,19 +51,29 @@ class ContentProviderContractGenerator {
 						
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 				/**
-				 * <p>Column definitions and helper methods to work with «tbl.name.pascalize»</p>
+				 * <p>Column definitions and helper methods to work with the «tbl.name.pascalize» table.</p>
 				 */
 				public static class «tbl.name.pascalize» implements «tbl.name.pascalize»Columns«IF tbl.hasAndroidPrimaryKey», BaseColumns«ENDIF» {
 				    public static final Uri CONTENT_URI = 
-							BASE_CONTENT_URI.buildUpon().appendPath("«tbl.name»").build();
+							BASE_CONTENT_URI.buildUpon().appendPath("«tbl.name.toLowerCase»").build();
 				
+					/**
+					 * <p>The content type for a cursor that contains many «tbl.name.pascalize» table rows.</p>
+					 */
 				    public static final String CONTENT_TYPE =
 				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«tbl.name»";
+					/**
+					 * <p>The content type for a cursor that contains a single «tbl.name.pascalize» table row.</p>
+					 */
 				    public static final String ITEM_CONTENT_TYPE =
 				            "vnd.android.cursor.item/vnd.«model.database.name.toLowerCase».«tbl.name»";
 				
-				    public static Uri buildGetByIdUri(String id) {
-				        return CONTENT_URI.buildUpon().appendPath(id).build();
+					/**
+					 * <p>Builds a Uri with appended id for a row in the «tbl.name.pascalize» table, 
+					 * eg:- content://«model.packageName».«model.database.name.toLowerCase»/«tbl.name.toLowerCase»/123.</p>
+					 */
+				    public static Uri buildUriWithId(long id) {
+				        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 				    }
 				
 					public static ContentValues createContentValues(«createMethodArgsFromColumns(tbl)») {
@@ -74,7 +84,8 @@ class ContentProviderContractGenerator {
 						return values;
 					}
 					
-					public static Uri insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
+					«var insertArgs = createMethodArgsFromColumns(tbl)»
+					public static Uri insert(ContentResolver contentResolver«IF insertArgs != null || insertArgs.length > 0», «insertArgs»«ENDIF») {
 						ContentValues values = createContentValues(
 						«FOR col : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»
 							«col.name.camelize»
