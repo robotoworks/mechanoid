@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.serializer.ISerializer;
 
 import com.google.inject.Inject;
@@ -22,7 +21,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 
 public class SqliteDatabaseSnapshotBuilder {
 	@Inject private ISerializer serializer;
@@ -45,9 +44,9 @@ public class SqliteDatabaseSnapshotBuilder {
 		DatabaseBlock database = model.getDatabase();
 		
 		for(MigrationBlock migration : database.getMigrations()) {
-			EList<Statment> statements = migration.getStatements();
+			EList<Statement> statements = migration.getStatements();
 			
-			for(Statment statement : statements) {
+			for(Statement statement : statements) {
 				if(statement instanceof CreateTableStatement) {
 					
 					CreateTableStatement createTableStmt = (CreateTableStatement) statement;

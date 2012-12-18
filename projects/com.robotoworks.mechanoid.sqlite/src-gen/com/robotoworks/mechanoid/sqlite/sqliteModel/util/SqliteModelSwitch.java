@@ -129,10 +129,10 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.STATMENT:
+      case SqliteModelPackage.STATEMENT:
       {
-        Statment statment = (Statment)theEObject;
-        T result = caseStatment(statment);
+        Statement statement = (Statement)theEObject;
+        T result = caseStatement(statement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -365,7 +365,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
         T result = caseCreateTableStatement(createTableStatement);
-        if (result == null) result = caseStatment(createTableStatement);
+        if (result == null) result = caseStatement(createTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -373,7 +373,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
         T result = caseAlterTableStatement(alterTableStatement);
-        if (result == null) result = caseStatment(alterTableStatement);
+        if (result == null) result = caseStatement(alterTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -381,7 +381,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
         T result = caseCreateViewStatement(createViewStatement);
-        if (result == null) result = caseStatment(createViewStatement);
+        if (result == null) result = caseStatement(createViewStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -389,7 +389,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         DropTableStatement dropTableStatement = (DropTableStatement)theEObject;
         T result = caseDropTableStatement(dropTableStatement);
-        if (result == null) result = caseStatment(dropTableStatement);
+        if (result == null) result = caseStatement(dropTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -397,7 +397,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
         T result = caseDropViewStatement(dropViewStatement);
-        if (result == null) result = caseStatment(dropViewStatement);
+        if (result == null) result = caseStatement(dropViewStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -710,17 +710,17 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Statment</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Statment</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStatment(Statment object)
+  public T caseStatement(Statement object)
   {
     return null;
   }

@@ -6,21 +6,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Statment</b></em>'.
+ * A representation of the model object '<em><b>Statement</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getStatment()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getStatement()
  * @model
  * @generated
  */
-public interface Statment extends EObject
+public interface Statement extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -32,14 +32,14 @@ public interface Statment extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getStatment_Name()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getStatement_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -48,4 +48,4 @@ public interface Statment extends EObject
    */
   void setName(String value);
 
-} // Statment
+} // Statement

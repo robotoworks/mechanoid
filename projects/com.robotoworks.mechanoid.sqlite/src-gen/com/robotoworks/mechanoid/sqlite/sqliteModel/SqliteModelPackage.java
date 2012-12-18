@@ -318,14 +318,14 @@ public interface SqliteModelPackage extends EPackage
   int CASE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatmentImpl <em>Statment</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatementImpl <em>Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatmentImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStatment()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatementImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStatement()
    * @generated
    */
-  int STATMENT = 8;
+  int STATEMENT = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -334,16 +334,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATMENT__NAME = 0;
+  int STATEMENT__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Statment</em>' class.
+   * The number of structural features of the '<em>Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATMENT_FEATURE_COUNT = 1;
+  int STATEMENT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableClauseImpl <em>Alter Table Clause</em>}' class.
@@ -1580,7 +1580,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TABLE_STATEMENT__NAME = STATMENT__NAME;
+  int CREATE_TABLE_STATEMENT__NAME = STATEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Column Defs</b></em>' containment reference list.
@@ -1589,7 +1589,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TABLE_STATEMENT__COLUMN_DEFS = STATMENT_FEATURE_COUNT + 0;
+  int CREATE_TABLE_STATEMENT__COLUMN_DEFS = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -1598,7 +1598,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TABLE_STATEMENT__CONSTRAINTS = STATMENT_FEATURE_COUNT + 1;
+  int CREATE_TABLE_STATEMENT__CONSTRAINTS = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Create Table Statement</em>' class.
@@ -1607,7 +1607,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TABLE_STATEMENT_FEATURE_COUNT = STATMENT_FEATURE_COUNT + 2;
+  int CREATE_TABLE_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableStatementImpl <em>Alter Table Statement</em>}' class.
@@ -1626,7 +1626,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALTER_TABLE_STATEMENT__NAME = STATMENT__NAME;
+  int ALTER_TABLE_STATEMENT__NAME = STATEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Clause</b></em>' containment reference.
@@ -1635,7 +1635,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALTER_TABLE_STATEMENT__CLAUSE = STATMENT_FEATURE_COUNT + 0;
+  int ALTER_TABLE_STATEMENT__CLAUSE = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Alter Table Statement</em>' class.
@@ -1644,7 +1644,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALTER_TABLE_STATEMENT_FEATURE_COUNT = STATMENT_FEATURE_COUNT + 1;
+  int ALTER_TABLE_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateViewStatementImpl <em>Create View Statement</em>}' class.
@@ -1663,7 +1663,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_VIEW_STATEMENT__NAME = STATMENT__NAME;
+  int CREATE_VIEW_STATEMENT__NAME = STATEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Select Statement</b></em>' containment reference.
@@ -1672,7 +1672,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_VIEW_STATEMENT__SELECT_STATEMENT = STATMENT_FEATURE_COUNT + 0;
+  int CREATE_VIEW_STATEMENT__SELECT_STATEMENT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Create View Statement</em>' class.
@@ -1681,7 +1681,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_VIEW_STATEMENT_FEATURE_COUNT = STATMENT_FEATURE_COUNT + 1;
+  int CREATE_VIEW_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTableStatementImpl <em>Drop Table Statement</em>}' class.
@@ -1700,7 +1700,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DROP_TABLE_STATEMENT__NAME = STATMENT__NAME;
+  int DROP_TABLE_STATEMENT__NAME = STATEMENT__NAME;
 
   /**
    * The number of structural features of the '<em>Drop Table Statement</em>' class.
@@ -1709,7 +1709,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DROP_TABLE_STATEMENT_FEATURE_COUNT = STATMENT_FEATURE_COUNT + 0;
+  int DROP_TABLE_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropViewStatementImpl <em>Drop View Statement</em>}' class.
@@ -1728,7 +1728,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DROP_VIEW_STATEMENT__NAME = STATMENT__NAME;
+  int DROP_VIEW_STATEMENT__NAME = STATEMENT__NAME;
 
   /**
    * The number of structural features of the '<em>Drop View Statement</em>' class.
@@ -1737,7 +1737,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DROP_VIEW_STATEMENT_FEATURE_COUNT = STATMENT_FEATURE_COUNT + 0;
+  int DROP_VIEW_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableRenameClauseImpl <em>Alter Table Rename Clause</em>}' class.
@@ -2661,25 +2661,25 @@ public interface SqliteModelPackage extends EPackage
   EReference getCase_ThenExpression();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment <em>Statment</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Statment</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
+   * @return the meta object for class '<em>Statement</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statement
    * @generated
    */
-  EClass getStatment();
+  EClass getStatement();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statment#getName()
-   * @see #getStatment()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statement#getName()
+   * @see #getStatement()
    * @generated
    */
-  EAttribute getStatment_Name();
+  EAttribute getStatement_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause <em>Alter Table Clause</em>}'.
@@ -4582,14 +4582,14 @@ public interface SqliteModelPackage extends EPackage
     EReference CASE__THEN_EXPRESSION = eINSTANCE.getCase_ThenExpression();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatmentImpl <em>Statment</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatementImpl <em>Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatmentImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStatment()
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatementImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStatement()
      * @generated
      */
-    EClass STATMENT = eINSTANCE.getStatment();
+    EClass STATEMENT = eINSTANCE.getStatement();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -4597,7 +4597,7 @@ public interface SqliteModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STATMENT__NAME = eINSTANCE.getStatment_Name();
+    EAttribute STATEMENT__NAME = eINSTANCE.getStatement_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableClauseImpl <em>Alter Table Clause</em>}' class.

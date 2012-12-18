@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Statment</b></em>'.
+ * An implementation of the model object '<em><b>Statement</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatmentImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.StatementImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StatmentImpl extends MinimalEObjectImpl.Container implements Statment
+public class StatementImpl extends MinimalEObjectImpl.Container implements Statement
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -52,7 +52,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StatmentImpl()
+  protected StatementImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.STATMENT;
+    return SqliteModelPackage.Literals.STATEMENT;
   }
 
   /**
@@ -88,7 +88,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.STATMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.STATEMENT__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +101,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
   {
     switch (featureID)
     {
-      case SqliteModelPackage.STATMENT__NAME:
+      case SqliteModelPackage.STATEMENT__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
   {
     switch (featureID)
     {
-      case SqliteModelPackage.STATMENT__NAME:
+      case SqliteModelPackage.STATEMENT__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
   {
     switch (featureID)
     {
-      case SqliteModelPackage.STATMENT__NAME:
+      case SqliteModelPackage.STATEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
   {
     switch (featureID)
     {
-      case SqliteModelPackage.STATMENT__NAME:
+      case SqliteModelPackage.STATEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -174,4 +174,4 @@ public class StatmentImpl extends MinimalEObjectImpl.Container implements Statme
     return result.toString();
   }
 
-} //StatmentImpl
+} //StatementImpl

@@ -47,8 +47,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Case/whenExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Case/thenExpression"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//Statment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//Statment/name"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//Statement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//Statement/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//AlterTableClause"/>
     <genClasses ecoreClass="SqliteModel.ecore#//ColumnDef">

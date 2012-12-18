@@ -84,27 +84,6 @@ Case:
 'when' whenExpression=SqlExpression 'then' thenExpression=SqlExpression
 ;
 
-PrimaryComparisonOp:
-	  '='
-	| '=='
-	| '!='
-	| '<>'
-	| 'is'
-	| 'is not'
-	| 'in'
-	| 'like'
-	| 'glob'
-	| 'match'
-	| 'regexp'
-;
-
-SecondaryComparisonOp:
-	  '<'
-	| '<='
-	| '>'
-	| '>='
-;
-
 /*
  * Statements
  */

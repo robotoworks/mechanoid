@@ -95,13 +95,13 @@ public interface SqliteModelFactory extends EFactory
   Case createCase();
 
   /**
-   * Returns a new object of class '<em>Statment</em>'.
+   * Returns a new object of class '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Statment</em>'.
+   * @return a new object of class '<em>Statement</em>'.
    * @generated
    */
-  Statment createStatment();
+  Statement createStatement();
 
   /**
    * Returns a new object of class '<em>Alter Table Clause</em>'.

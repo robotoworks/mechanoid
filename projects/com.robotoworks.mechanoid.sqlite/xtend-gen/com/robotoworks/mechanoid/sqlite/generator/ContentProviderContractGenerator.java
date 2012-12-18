@@ -20,7 +20,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -80,7 +80,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements = snapshot.getStatements();
+      EList<Statement> _statements = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
       for(final CreateTableStatement tbl : _filter) {
         _builder.append("\t");
@@ -125,7 +125,7 @@ public class ContentProviderContractGenerator {
     }
     _builder.newLine();
     {
-      EList<Statment> _statements_1 = snapshot.getStatements();
+      EList<Statement> _statements_1 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_2 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
       for(final CreateViewStatement vw : _filter_2) {
         _builder.append("\t");
@@ -158,7 +158,7 @@ public class ContentProviderContractGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     {
-      EList<Statment> _statements_2 = snapshot.getStatements();
+      EList<Statement> _statements_2 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
       for(final CreateTableStatement tbl_1 : _filter_3) {
         _builder.append("\t");
@@ -730,7 +730,7 @@ public class ContentProviderContractGenerator {
     }
     _builder.newLine();
     {
-      EList<Statment> _statements_3 = snapshot.getStatements();
+      EList<Statement> _statements_3 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_7 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
       for(final CreateViewStatement vw_1 : _filter_7) {
         _builder.append("\t");

@@ -19,9 +19,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
-import org.eclipse.xtext.generator.OutputConfiguration
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -89,7 +86,7 @@ class SqliteModelGenerator implements IGenerator {
 			
 			
 			model.database.config.statements.filter([it instanceof ActiveRecordRegistrationStatement]).forEach[
-				var statement = snapshot.statements.findFirst([stmt|stmt instanceof CreateTableStatement && stmt.name.equals(it.name)])
+				var statement = snapshot.statements.findFirst([stmt|stmt instanceof CreateTableStatement && (stmt as CreateTableStatement).name.equals(it.name)])
 				
 				if(statement != null) {
 					generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)

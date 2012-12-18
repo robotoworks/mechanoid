@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CreateViewStatementImpl extends StatmentImpl implements CreateViewStatement
+public class CreateViewStatementImpl extends StatementImpl implements CreateViewStatement
 {
   /**
    * The cached value of the '{@link #getSelectStatement() <em>Select Statement</em>}' containment reference.
