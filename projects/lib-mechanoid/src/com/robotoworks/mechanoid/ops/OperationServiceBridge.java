@@ -31,6 +31,12 @@ public abstract class OperationServiceBridge {
 			
 	private Set<OperationServiceListener> listeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
 
+	private OperationLog mLog = new OperationLog(20);
+	
+	public OperationLog getLog() {
+		return mLog;
+	}
+	
 	private Messenger messenger = new Messenger(new Handler() {
 
 		@Override
@@ -236,6 +242,8 @@ public abstract class OperationServiceBridge {
 
 			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
 
+			mLog.put(requestId, data);
+			
 			notifyOperationComplete(requestId, data);
 		}
 	}

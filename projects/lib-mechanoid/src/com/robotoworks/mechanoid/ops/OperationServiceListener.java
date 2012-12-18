@@ -10,9 +10,17 @@ package com.robotoworks.mechanoid.ops;
 
 import android.os.Bundle;
 
-public interface OperationServiceListener {
-	public void onServiceOperationStarting(OperationServiceBridge bridge, int requestId, Bundle data);
-	public void onServiceOperationComplete(OperationServiceBridge bridge, int requestId, Bundle data);
-	public void onServiceOperationProgress(OperationServiceBridge bridge, int requestId, int progress, Bundle data);
-	public void onServiceOperationAborted(OperationServiceBridge bridge, int requestId, int reason, Bundle data);
+public abstract class OperationServiceListener {
+	public void onServiceOperationStarting(OperationServiceBridge bridge, int requestId, Bundle data) {
+		
+	}
+	public void onServiceOperationComplete(OperationServiceBridge bridge, int requestId, Bundle data) {
+		
+	}
+	public void onServiceOperationProgress(OperationServiceBridge bridge, int requestId, int progress, Bundle data) {
+		
+	}
+	public void onServiceOperationAborted(OperationServiceBridge bridge, int requestId, int reason, Bundle data) {
+		
+	}
 }
