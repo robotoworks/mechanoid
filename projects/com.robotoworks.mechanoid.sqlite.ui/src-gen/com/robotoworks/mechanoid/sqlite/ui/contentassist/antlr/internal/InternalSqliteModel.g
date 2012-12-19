@@ -1874,6 +1874,13 @@ rule__ColumnType__Alternatives
 { after(grammarAccess.getColumnTypeAccess().getBlobEnumLiteralDeclaration_3()); }
 )
 
+    |(
+{ before(grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4()); }
+(	'boolean' 
+)
+{ after(grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);

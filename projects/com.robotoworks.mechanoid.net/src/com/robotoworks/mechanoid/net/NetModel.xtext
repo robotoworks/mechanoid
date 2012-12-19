@@ -47,6 +47,11 @@ HttpDelete:
 	'delete' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (response=ResponseBlock)? '}'
 ;
 
+//Path:
+//	{Path}
+//	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
+//;
+
 ParamsBlock:
 	{ParamsBlock}
 	'params' params+=SimpleMember* (',' params+=SimpleMember)*

@@ -121,7 +121,7 @@ IndexedColumn:
 	name=[ColumnDef] (asc?='asc'|desc?='desc')?;
 
 enum ColumnType:
-	text | integer | real | blob;
+	text | integer | real | blob | boolean;
 
 enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;

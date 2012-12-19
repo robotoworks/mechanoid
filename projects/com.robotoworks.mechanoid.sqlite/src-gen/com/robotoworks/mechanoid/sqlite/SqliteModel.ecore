@@ -62,6 +62,7 @@
     <eLiterals name="integer" value="1" literal="integer"/>
     <eLiterals name="real" value="2" literal="real"/>
     <eLiterals name="blob" value="3" literal="blob"/>
+    <eLiterals name="boolean" value="4" literal="boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConflictResolution">
     <eLiterals name="rollback" literal="rollback"/>

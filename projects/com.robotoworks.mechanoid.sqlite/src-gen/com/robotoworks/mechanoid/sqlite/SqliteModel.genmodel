@@ -12,6 +12,7 @@
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/integer"/>
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/real"/>
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/blob"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/boolean"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SqliteModel.ecore#//ConflictResolution">
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ConflictResolution/rollback"/>

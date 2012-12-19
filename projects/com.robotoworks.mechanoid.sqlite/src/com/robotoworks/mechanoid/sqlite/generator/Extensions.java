@@ -21,6 +21,8 @@ public class Extensions {
 			return "double";
 		case BLOB:
 			return "byte[]";
+		case BOOLEAN:
+			return "boolean";
 		}
 		
 		return "!!ERROR!!";

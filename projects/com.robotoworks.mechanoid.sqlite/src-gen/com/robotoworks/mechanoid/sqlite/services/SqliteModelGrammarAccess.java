@@ -2479,12 +2479,14 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRealRealKeyword_2_0 = (Keyword)cRealEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cBlobEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cBlobBlobKeyword_3_0 = (Keyword)cBlobEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cBooleanEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cBooleanBooleanKeyword_4_0 = (Keyword)cBooleanEnumLiteralDeclaration_4.eContents().get(0);
 		
 		//enum ColumnType:
-		//	text | integer | real | blob;
+		//	text | integer | real | blob | boolean;
 		public EnumRule getRule() { return rule; }
 
-		//text | integer | real | blob
+		//text | integer | real | blob | boolean
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//text
@@ -2510,6 +2512,12 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"blob"
 		public Keyword getBlobBlobKeyword_3_0() { return cBlobBlobKeyword_3_0; }
+
+		//boolean
+		public EnumLiteralDeclaration getBooleanEnumLiteralDeclaration_4() { return cBooleanEnumLiteralDeclaration_4; }
+
+		//"boolean"
+		public Keyword getBooleanBooleanKeyword_4_0() { return cBooleanBooleanKeyword_4_0; }
 	}
 
 	public class ConflictResolutionElements extends AbstractEnumRuleElementFinder {
@@ -2894,7 +2902,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum ColumnType:
-	//	text | integer | real | blob;
+	//	text | integer | real | blob | boolean;
 	public ColumnTypeElements getColumnTypeAccess() {
 		return (unknownRuleColumnType != null) ? unknownRuleColumnType : (unknownRuleColumnType = new ColumnTypeElements());
 	}

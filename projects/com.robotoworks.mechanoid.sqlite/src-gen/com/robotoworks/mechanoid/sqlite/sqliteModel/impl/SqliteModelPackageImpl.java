@@ -3055,6 +3055,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     addEEnumLiteral(columnTypeEEnum, ColumnType.INTEGER);
     addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
     addEEnumLiteral(columnTypeEEnum, ColumnType.BLOB);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.BOOLEAN);
 
     initEEnum(conflictResolutionEEnum, ConflictResolution.class, "ConflictResolution");
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.ROLLBACK);

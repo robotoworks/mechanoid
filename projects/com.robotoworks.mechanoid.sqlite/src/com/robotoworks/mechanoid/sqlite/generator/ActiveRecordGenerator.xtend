@@ -5,6 +5,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType
 
 class ActiveRecordGenerator {
 		def CharSequence generate(Model model, CreateTableStatement stmt) '''
@@ -58,7 +59,11 @@ class ActiveRecordGenerator {
 				private «stmt.name.pascalize»Record(Parcel in) {
 					«var counter=-1»
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					m«col.name.pascalize» = (in.readInt() > 0);
+					«ELSE»
 					m«col.name.pascalize» = in.read«col.type.toJavaTypeName.pascalize»();
+					«ENDIF»
 					«ENDFOR»
 					
 					boolean[] dirtyFlags = new boolean[«stmt.columnDefs.size»];
@@ -76,7 +81,11 @@ class ActiveRecordGenerator {
 				@Override
 				public void writeToParcel(Parcel dest, int flags) {
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					dest.writeInt(m«col.name.pascalize» ? 1 : 0);
+					«ELSE»
 					dest.write«col.type.toJavaTypeName.pascalize»(m«col.name.pascalize»);
+					«ENDIF»
 					«ENDFOR»
 				    dest.writeBooleanArray(new boolean[] {
 						«FOR col : stmt.columnDefs SEPARATOR ","»
@@ -129,7 +138,11 @@ class ActiveRecordGenerator {
 				    «stmt.name.pascalize»Record item = new «stmt.name.pascalize»Record();
 				    
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					item.m«col.name.pascalize» = c.getInt(Indices.«col.name.underscore.toUpperCase») > 0;
+					«ELSE»
 					item.m«col.name.pascalize» = c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»);
+					«ENDIF»
 					«ENDFOR»
 					
 				    return item;
