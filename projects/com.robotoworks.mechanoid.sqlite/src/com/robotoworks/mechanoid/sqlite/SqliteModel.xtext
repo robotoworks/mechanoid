@@ -76,7 +76,8 @@ PrimaryExpression returns Expression:
 		{CaseExpression} 'case' caseExpression=SqlExpression? 
 				cases+=Case cases+=Case*
 				('else' elseExpression=SqlExpression)? 'end' |
-		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')'
+		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
+		{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
 	) isnull?=('is null'|'not null' | 'notnull')?
 ;
 
@@ -122,6 +123,9 @@ IndexedColumn:
 
 enum ColumnType:
 	text | integer | real | blob | boolean;
+	
+enum SqliteDataType:
+	text | integer | real | blob | none | numeric;
 
 enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;

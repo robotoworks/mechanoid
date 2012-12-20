@@ -374,6 +374,15 @@ public interface SqliteModelFactory extends EFactory
   Function createFunction();
 
   /**
+   * Returns a new object of class '<em>Cast Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cast Expression</em>'.
+   * @generated
+   */
+  CastExpression createCastExpression();
+
+  /**
    * Returns a new object of class '<em>Create Table Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

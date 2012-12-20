@@ -61,6 +61,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getResultColumnAccess().getAlternatives(), "rule__ResultColumn__Alternatives");
 					put(grammarAccess.getLiteralValueAccess().getAlternatives(), "rule__LiteralValue__Alternatives");
 					put(grammarAccess.getColumnTypeAccess().getAlternatives(), "rule__ColumnType__Alternatives");
+					put(grammarAccess.getSqliteDataTypeAccess().getAlternatives(), "rule__SqliteDataType__Alternatives");
 					put(grammarAccess.getConflictResolutionAccess().getAlternatives(), "rule__ConflictResolution__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getDatabaseBlockAccess().getGroup(), "rule__DatabaseBlock__Group__0");
@@ -96,6 +97,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_0_5(), "rule__PrimaryExpression__Group_0_5__0");
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_0_5_3_1(), "rule__PrimaryExpression__Group_0_5_3_1__0");
 					put(grammarAccess.getPrimaryExpressionAccess().getGroup_0_5_3_1_1(), "rule__PrimaryExpression__Group_0_5_3_1_1__0");
+					put(grammarAccess.getPrimaryExpressionAccess().getGroup_0_6(), "rule__PrimaryExpression__Group_0_6__0");
 					put(grammarAccess.getCaseAccess().getGroup(), "rule__Case__Group__0");
 					put(grammarAccess.getStatementAccess().getGroup_0(), "rule__Statement__Group_0__0");
 					put(grammarAccess.getStatementAccess().getGroup_0_6(), "rule__Statement__Group_0_6__0");
@@ -196,6 +198,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryExpressionAccess().getAllAssignment_0_5_3_0(), "rule__PrimaryExpression__AllAssignment_0_5_3_0");
 					put(grammarAccess.getPrimaryExpressionAccess().getArgumentsAssignment_0_5_3_1_0(), "rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0");
 					put(grammarAccess.getPrimaryExpressionAccess().getArugmentsAssignment_0_5_3_1_1_1(), "rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1");
+					put(grammarAccess.getPrimaryExpressionAccess().getExpressionAssignment_0_6_3(), "rule__PrimaryExpression__ExpressionAssignment_0_6_3");
+					put(grammarAccess.getPrimaryExpressionAccess().getTypeAssignment_0_6_5(), "rule__PrimaryExpression__TypeAssignment_0_6_5");
 					put(grammarAccess.getPrimaryExpressionAccess().getIsnullAssignment_1(), "rule__PrimaryExpression__IsnullAssignment_1");
 					put(grammarAccess.getCaseAccess().getWhenExpressionAssignment_1(), "rule__Case__WhenExpressionAssignment_1");
 					put(grammarAccess.getCaseAccess().getThenExpressionAssignment_3(), "rule__Case__ThenExpressionAssignment_3");

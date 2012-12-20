@@ -14,6 +14,14 @@
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/blob"/>
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ColumnType/boolean"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SqliteModel.ecore#//SqliteDataType">
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/text"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/integer"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/real"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/blob"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/none"/>
+      <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//SqliteDataType/numeric"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SqliteModel.ecore#//ConflictResolution">
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ConflictResolution/rollback"/>
       <genEnumLiterals ecoreEnumLiteral="SqliteModel.ecore#//ConflictResolution/abort"/>
@@ -173,6 +181,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Function/arguments"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Function/arugments"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//Function/isnull"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//CastExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CastExpression/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//CastExpression/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//CastExpression/isnull"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//CreateTableStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateTableStatement/columnDefs"/>

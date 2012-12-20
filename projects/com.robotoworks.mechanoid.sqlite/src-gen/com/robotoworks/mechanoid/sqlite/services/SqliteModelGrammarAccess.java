@@ -750,6 +750,16 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cArugmentsAssignment_0_5_3_1_1_1 = (Assignment)cGroup_0_5_3_1_1.eContents().get(1);
 		private final RuleCall cArugmentsSqlExpressionParserRuleCall_0_5_3_1_1_1_0 = (RuleCall)cArugmentsAssignment_0_5_3_1_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_5_4 = (Keyword)cGroup_0_5.eContents().get(4);
+		private final Group cGroup_0_6 = (Group)cAlternatives_0.eContents().get(6);
+		private final Action cCastExpressionAction_0_6_0 = (Action)cGroup_0_6.eContents().get(0);
+		private final Keyword cCastKeyword_0_6_1 = (Keyword)cGroup_0_6.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0_6_2 = (Keyword)cGroup_0_6.eContents().get(2);
+		private final Assignment cExpressionAssignment_0_6_3 = (Assignment)cGroup_0_6.eContents().get(3);
+		private final RuleCall cExpressionSqlExpressionParserRuleCall_0_6_3_0 = (RuleCall)cExpressionAssignment_0_6_3.eContents().get(0);
+		private final Keyword cAsKeyword_0_6_4 = (Keyword)cGroup_0_6.eContents().get(4);
+		private final Assignment cTypeAssignment_0_6_5 = (Assignment)cGroup_0_6.eContents().get(5);
+		private final RuleCall cTypeSqliteDataTypeEnumRuleCall_0_6_5_0 = (RuleCall)cTypeAssignment_0_6_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_6_6 = (Keyword)cGroup_0_6.eContents().get(6);
 		private final Assignment cIsnullAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Alternatives cIsnullAlternatives_1_0 = (Alternatives)cIsnullAssignment_1.eContents().get(0);
 		private final Keyword cIsnullIsNullKeyword_1_0_0 = (Keyword)cIsnullAlternatives_1_0.eContents().get(0);
@@ -760,19 +770,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 		//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 		//	cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
-		//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")") isnull?=("is null" | "not null" | "notnull")?;
+		//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+		//	"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?;
 		public ParserRule getRule() { return rule; }
 
 		//({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 		//not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 		//cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
-		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")") isnull?=("is null" | "not null" | "notnull")?
+		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+		//"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?
 		public Group getGroup() { return cGroup; }
 
 		//{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 		//not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 		//cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
-		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")"
+		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+		//"as" type=SqliteDataType ")"
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//{ColumnLiteral} name=FQN
@@ -931,6 +944,36 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//")"
 		public Keyword getRightParenthesisKeyword_0_5_4() { return cRightParenthesisKeyword_0_5_4; }
+
+		//{CastExpression} "cast" "(" expression=SqlExpression "as" type=SqliteDataType ")"
+		public Group getGroup_0_6() { return cGroup_0_6; }
+
+		//{CastExpression}
+		public Action getCastExpressionAction_0_6_0() { return cCastExpressionAction_0_6_0; }
+
+		//"cast"
+		public Keyword getCastKeyword_0_6_1() { return cCastKeyword_0_6_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_0_6_2() { return cLeftParenthesisKeyword_0_6_2; }
+
+		//expression=SqlExpression
+		public Assignment getExpressionAssignment_0_6_3() { return cExpressionAssignment_0_6_3; }
+
+		//SqlExpression
+		public RuleCall getExpressionSqlExpressionParserRuleCall_0_6_3_0() { return cExpressionSqlExpressionParserRuleCall_0_6_3_0; }
+
+		//"as"
+		public Keyword getAsKeyword_0_6_4() { return cAsKeyword_0_6_4; }
+
+		//type=SqliteDataType
+		public Assignment getTypeAssignment_0_6_5() { return cTypeAssignment_0_6_5; }
+
+		//SqliteDataType
+		public RuleCall getTypeSqliteDataTypeEnumRuleCall_0_6_5_0() { return cTypeSqliteDataTypeEnumRuleCall_0_6_5_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_0_6_6() { return cRightParenthesisKeyword_0_6_6; }
 
 		//isnull?=("is null" | "not null" | "notnull")?
 		public Assignment getIsnullAssignment_1() { return cIsnullAssignment_1; }
@@ -2520,6 +2563,66 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getBooleanBooleanKeyword_4_0() { return cBooleanBooleanKeyword_4_0; }
 	}
 
+	public class SqliteDataTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "SqliteDataType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTextEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTextTextKeyword_0_0 = (Keyword)cTextEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cIntegerEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cIntegerIntegerKeyword_1_0 = (Keyword)cIntegerEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cRealEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cRealRealKeyword_2_0 = (Keyword)cRealEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cBlobEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cBlobBlobKeyword_3_0 = (Keyword)cBlobEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cNoneEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cNoneNoneKeyword_4_0 = (Keyword)cNoneEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cNumericEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cNumericNumericKeyword_5_0 = (Keyword)cNumericEnumLiteralDeclaration_5.eContents().get(0);
+		
+		//enum SqliteDataType:
+		//	text | integer | real | blob | none | numeric;
+		public EnumRule getRule() { return rule; }
+
+		//text | integer | real | blob | none | numeric
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//text
+		public EnumLiteralDeclaration getTextEnumLiteralDeclaration_0() { return cTextEnumLiteralDeclaration_0; }
+
+		//"text"
+		public Keyword getTextTextKeyword_0_0() { return cTextTextKeyword_0_0; }
+
+		//integer
+		public EnumLiteralDeclaration getIntegerEnumLiteralDeclaration_1() { return cIntegerEnumLiteralDeclaration_1; }
+
+		//"integer"
+		public Keyword getIntegerIntegerKeyword_1_0() { return cIntegerIntegerKeyword_1_0; }
+
+		//real
+		public EnumLiteralDeclaration getRealEnumLiteralDeclaration_2() { return cRealEnumLiteralDeclaration_2; }
+
+		//"real"
+		public Keyword getRealRealKeyword_2_0() { return cRealRealKeyword_2_0; }
+
+		//blob
+		public EnumLiteralDeclaration getBlobEnumLiteralDeclaration_3() { return cBlobEnumLiteralDeclaration_3; }
+
+		//"blob"
+		public Keyword getBlobBlobKeyword_3_0() { return cBlobBlobKeyword_3_0; }
+
+		//none
+		public EnumLiteralDeclaration getNoneEnumLiteralDeclaration_4() { return cNoneEnumLiteralDeclaration_4; }
+
+		//"none"
+		public Keyword getNoneNoneKeyword_4_0() { return cNoneNoneKeyword_4_0; }
+
+		//numeric
+		public EnumLiteralDeclaration getNumericEnumLiteralDeclaration_5() { return cNumericEnumLiteralDeclaration_5; }
+
+		//"numeric"
+		public Keyword getNumericNumericKeyword_5_0() { return cNumericNumericKeyword_5_0; }
+	}
+
 	public class ConflictResolutionElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ConflictResolution");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2596,6 +2699,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private TableConstraintElements pTableConstraint;
 	private IndexedColumnElements pIndexedColumn;
 	private ColumnTypeElements unknownRuleColumnType;
+	private SqliteDataTypeElements unknownRuleSqliteDataType;
 	private ConflictResolutionElements unknownRuleConflictResolution;
 	private SelectStatementElements pSelectStatement;
 	private CompoundOperatorElements pCompoundOperator;
@@ -2800,7 +2904,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 	//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 	//	cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
-	//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")") isnull?=("is null" | "not null" | "notnull")?;
+	//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+	//	"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?;
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
 	}
@@ -2909,6 +3014,16 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getColumnTypeRule() {
 		return getColumnTypeAccess().getRule();
+	}
+
+	//enum SqliteDataType:
+	//	text | integer | real | blob | none | numeric;
+	public SqliteDataTypeElements getSqliteDataTypeAccess() {
+		return (unknownRuleSqliteDataType != null) ? unknownRuleSqliteDataType : (unknownRuleSqliteDataType = new SqliteDataTypeElements());
+	}
+	
+	public EnumRule getSqliteDataTypeRule() {
+		return getSqliteDataTypeAccess().getRule();
 	}
 
 	//enum ConflictResolution:

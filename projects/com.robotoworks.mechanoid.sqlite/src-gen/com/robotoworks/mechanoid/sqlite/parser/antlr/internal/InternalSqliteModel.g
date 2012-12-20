@@ -1606,12 +1606,71 @@ rulePrimaryExpression returns [EObject current=null]
     {
     	newLeafNode(otherlv_28, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_0_5_4());
     }
+)
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPrimaryExpressionAccess().getCastExpressionAction_0_6_0(),
+            $current);
+    }
+)	otherlv_30='cast' 
+    {
+    	newLeafNode(otherlv_30, grammarAccess.getPrimaryExpressionAccess().getCastKeyword_0_6_1());
+    }
+	otherlv_31='(' 
+    {
+    	newLeafNode(otherlv_31, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_0_6_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_0_6_3_0()); 
+	    }
+		lv_expression_32_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPrimaryExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_32_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_33='as' 
+    {
+    	newLeafNode(otherlv_33, grammarAccess.getPrimaryExpressionAccess().getAsKeyword_0_6_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getTypeSqliteDataTypeEnumRuleCall_0_6_5_0()); 
+	    }
+		lv_type_34_0=ruleSqliteDataType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPrimaryExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_34_0, 
+        		"SqliteDataType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_35=')' 
+    {
+    	newLeafNode(otherlv_35, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_0_6_6());
+    }
 ))(
 (
 (
-		lv_isnull_29_1=	'is null' 
+		lv_isnull_36_1=	'is null' 
     {
-        newLeafNode(lv_isnull_29_1, grammarAccess.getPrimaryExpressionAccess().getIsnullIsNullKeyword_1_0_0());
+        newLeafNode(lv_isnull_36_1, grammarAccess.getPrimaryExpressionAccess().getIsnullIsNullKeyword_1_0_0());
     }
  
 	    {
@@ -1621,9 +1680,9 @@ rulePrimaryExpression returns [EObject current=null]
        		setWithLastConsumed($current, "isnull", true, null);
 	    }
 
-    |		lv_isnull_29_2=	'not null' 
+    |		lv_isnull_36_2=	'not null' 
     {
-        newLeafNode(lv_isnull_29_2, grammarAccess.getPrimaryExpressionAccess().getIsnullNotNullKeyword_1_0_1());
+        newLeafNode(lv_isnull_36_2, grammarAccess.getPrimaryExpressionAccess().getIsnullNotNullKeyword_1_0_1());
     }
  
 	    {
@@ -1633,9 +1692,9 @@ rulePrimaryExpression returns [EObject current=null]
        		setWithLastConsumed($current, "isnull", true, null);
 	    }
 
-    |		lv_isnull_29_3=	'notnull' 
+    |		lv_isnull_36_3=	'notnull' 
     {
-        newLeafNode(lv_isnull_29_3, grammarAccess.getPrimaryExpressionAccess().getIsnullNotnullKeyword_1_0_2());
+        newLeafNode(lv_isnull_36_3, grammarAccess.getPrimaryExpressionAccess().getIsnullNotnullKeyword_1_0_2());
     }
  
 	    {
@@ -3931,6 +3990,49 @@ ruleColumnType returns [Enumerator current=null]
 	{
         $current = grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_4, grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4()); 
+    }
+));
+
+
+
+// Rule SqliteDataType
+ruleSqliteDataType returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='text' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getTextEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getSqliteDataTypeAccess().getTextEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='integer' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getIntegerEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getSqliteDataTypeAccess().getIntegerEnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='real' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getRealEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getSqliteDataTypeAccess().getRealEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='blob' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getBlobEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getSqliteDataTypeAccess().getBlobEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='none' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getNoneEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getSqliteDataTypeAccess().getNoneEnumLiteralDeclaration_4()); 
+    }
+)
+    |(	enumLiteral_5='numeric' 
+	{
+        $current = grammarAccess.getSqliteDataTypeAccess().getNumericEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_5, grammarAccess.getSqliteDataTypeAccess().getNumericEnumLiteralDeclaration_5()); 
     }
 ));
 
