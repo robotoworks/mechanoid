@@ -1,20 +1,27 @@
 package com.robotoworks.mechanoid.sqlite.validation;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
  
 
 public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 
  
+	@Inject TypeReferences typeReferences;
+	
 	@Check
-	public void checkDatabase(DatabaseBlock db) {
+	public void checkDatabase(Model m) {
+		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
+
+		if(type == null) {
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME);
+		}
 	}
 	
 //	@Check

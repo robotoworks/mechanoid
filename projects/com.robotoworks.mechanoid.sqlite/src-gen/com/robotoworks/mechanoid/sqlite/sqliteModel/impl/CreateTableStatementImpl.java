@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CreateTableStatementImpl extends StatmentImpl implements CreateTableStatement
+public class CreateTableStatementImpl extends StatementImpl implements CreateTableStatement
 {
   /**
    * The cached value of the '{@link #getColumnDefs() <em>Column Defs</em>}' containment reference list.

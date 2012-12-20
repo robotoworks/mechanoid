@@ -22,7 +22,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import java.util.Arrays;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -75,7 +75,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName = model.getPackageName();
     DatabaseBlock _database_1 = model.getDatabase();
     String _name = _database_1.getName();
-    String _concat = "Abstract".concat(_name);
+    String _pascalize = Strings.pascalize(_name);
+    String _concat = "Abstract".concat(_pascalize);
     String _concat_1 = _concat.concat("OpenHelper");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
     CharSequence _generate = this.mOpenHelperGenerator.generate(model, snapshot);
@@ -83,7 +84,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_1 = model.getPackageName();
     DatabaseBlock _database_2 = model.getDatabase();
     String _name_1 = _database_2.getName();
-    String _concat_2 = _name_1.concat("OpenHelper");
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    String _concat_2 = _pascalize_1.concat("OpenHelper");
     String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
     CharSequence _generateStub = this.mOpenHelperGenerator.generateStub(model, snapshot);
     fsa.generateFile(_resolveFileName_1, 
@@ -91,14 +93,16 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_2 = model.getPackageName();
     DatabaseBlock _database_3 = model.getDatabase();
     String _name_2 = _database_3.getName();
-    String _concat_3 = _name_2.concat("Contract");
+    String _pascalize_2 = Strings.pascalize(_name_2);
+    String _concat_3 = _pascalize_2.concat("Contract");
     String _resolveFileName_2 = Strings.resolveFileName(_packageName_2, _concat_3);
     CharSequence _generate_1 = this.mContentProviderContractGenerator.generate(model, snapshot);
     fsa.generateFile(_resolveFileName_2, _generate_1);
     String _packageName_3 = model.getPackageName();
     DatabaseBlock _database_4 = model.getDatabase();
     String _name_3 = _database_4.getName();
-    String _concat_4 = "Abstract".concat(_name_3);
+    String _pascalize_3 = Strings.pascalize(_name_3);
+    String _concat_4 = "Abstract".concat(_pascalize_3);
     String _concat_5 = _concat_4.concat("ContentProvider");
     String _resolveFileName_3 = Strings.resolveFileName(_packageName_3, _concat_5);
     CharSequence _generate_2 = this.mContentProviderGenerator.generate(model, snapshot);
@@ -106,12 +110,13 @@ public class SqliteModelGenerator implements IGenerator {
     String _packageName_4 = model.getPackageName();
     DatabaseBlock _database_5 = model.getDatabase();
     String _name_4 = _database_5.getName();
-    String _concat_6 = _name_4.concat("ContentProvider");
+    String _pascalize_4 = Strings.pascalize(_name_4);
+    String _concat_6 = _pascalize_4.concat("ContentProvider");
     String _resolveFileName_4 = Strings.resolveFileName(_packageName_4, _concat_6);
     CharSequence _generateStub_1 = this.mContentProviderGenerator.generateStub(model, snapshot);
     fsa.generateFile(_resolveFileName_4, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub_1);
-    EList<Statment> _statements = snapshot.getStatements();
+    EList<Statement> _statements = snapshot.getStatements();
     Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
     final Procedure1<CreateTableStatement> _function = new Procedure1<CreateTableStatement>() {
         public void apply(final CreateTableStatement item) {
@@ -123,7 +128,7 @@ public class SqliteModelGenerator implements IGenerator {
         }
       };
     IterableExtensions.<CreateTableStatement>forEach(_filter, _function);
-    EList<Statment> _statements_1 = snapshot.getStatements();
+    EList<Statement> _statements_1 = snapshot.getStatements();
     Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
     final Procedure1<CreateViewStatement> _function_1 = new Procedure1<CreateViewStatement>() {
         public void apply(final CreateViewStatement item) {
@@ -165,14 +170,14 @@ public class SqliteModelGenerator implements IGenerator {
       Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_3, _function_4);
       final Procedure1<ConfigurationStatement> _function_5 = new Procedure1<ConfigurationStatement>() {
           public void apply(final ConfigurationStatement it) {
-            EList<Statment> _statements = snapshot.getStatements();
-            final Function1<Statment,Boolean> _function = new Function1<Statment,Boolean>() {
-                public Boolean apply(final Statment stmt) {
+            EList<Statement> _statements = snapshot.getStatements();
+            final Function1<Statement,Boolean> _function = new Function1<Statement,Boolean>() {
+                public Boolean apply(final Statement stmt) {
                   boolean _and = false;
                   if (!(stmt instanceof CreateTableStatement)) {
                     _and = false;
                   } else {
-                    String _name = stmt.getName();
+                    String _name = ((CreateTableStatement) stmt).getName();
                     String _name_1 = it.getName();
                     boolean _equals = _name.equals(_name_1);
                     _and = ((stmt instanceof CreateTableStatement) && _equals);
@@ -180,7 +185,7 @@ public class SqliteModelGenerator implements IGenerator {
                   return Boolean.valueOf(_and);
                 }
               };
-            Statment statement = IterableExtensions.<Statment>findFirst(_statements, _function);
+            Statement statement = IterableExtensions.<Statement>findFirst(_statements, _function);
             boolean _notEquals = (!Objects.equal(statement, null));
             if (_notEquals) {
               SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
@@ -340,7 +345,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _concat = _packageName.concat(".migrations");
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
-    String _concat_1 = "Abstract".concat(_name);
+    String _pascalize = Strings.pascalize(_name);
+    String _concat_1 = "Abstract".concat(_pascalize);
     String _concat_2 = _concat_1.concat("MigrationV");
     String _valueOf = String.valueOf(version);
     String _concat_3 = _concat_2.concat(_valueOf);
@@ -349,7 +355,8 @@ public class SqliteModelGenerator implements IGenerator {
     String _concat_4 = _packageName_1.concat(".migrations");
     DatabaseBlock _database_1 = model.getDatabase();
     String _name_1 = _database_1.getName();
-    String _concat_5 = _name_1.concat("MigrationV");
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    String _concat_5 = _pascalize_1.concat("MigrationV");
     String _valueOf_1 = String.valueOf(version);
     String _concat_6 = _concat_5.concat(_valueOf_1);
     String genStubFileName = Strings.resolveFileName(_concat_4, _concat_6);
@@ -360,7 +367,7 @@ public class SqliteModelGenerator implements IGenerator {
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
-  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final Statment stmt, final boolean forId) {
+  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final Statement stmt, final boolean forId) {
     if (stmt instanceof CreateTableStatement) {
       _generateAction(resource, fsa, (CreateTableStatement)stmt, forId);
       return;

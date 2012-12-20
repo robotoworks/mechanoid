@@ -19,9 +19,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
-import org.eclipse.xtext.generator.OutputConfiguration
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -42,26 +39,26 @@ class SqliteModelGenerator implements IGenerator {
 		val snapshot = mDbSnapshotBuilder.build(model).database.migrations.get(0)
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.database.name).concat("OpenHelper")), 
+			model.packageName.resolveFileName("Abstract".concat(model.database.name.pascalize).concat("OpenHelper")), 
 			mOpenHelperGenerator.generate(model, snapshot)
 		);
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.database.name.concat("OpenHelper")), 
+			model.packageName.resolveFileName(model.database.name.pascalize.concat("OpenHelper")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
 			mOpenHelperGenerator.generateStub(model, snapshot)
 		);
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.database.name.concat("Contract")), 
+			model.packageName.resolveFileName(model.database.name.pascalize.concat("Contract")), 
 			mContentProviderContractGenerator.generate(model, snapshot)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.database.name).concat("ContentProvider")), 
+			model.packageName.resolveFileName("Abstract".concat(model.database.name.pascalize).concat("ContentProvider")), 
 			mContentProviderGenerator.generate(model, snapshot)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.database.name.concat("ContentProvider")), 
+			model.packageName.resolveFileName(model.database.name.pascalize.concat("ContentProvider")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
 			mContentProviderGenerator.generateStub(model, snapshot)
 		);
@@ -89,7 +86,7 @@ class SqliteModelGenerator implements IGenerator {
 			
 			
 			model.database.config.statements.filter([it instanceof ActiveRecordRegistrationStatement]).forEach[
-				var statement = snapshot.statements.findFirst([stmt|stmt instanceof CreateTableStatement && stmt.name.equals(it.name)])
+				var statement = snapshot.statements.findFirst([stmt|stmt instanceof CreateTableStatement && (stmt as CreateTableStatement).name.equals(it.name)])
 				
 				if(statement != null) {
 					generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
@@ -183,8 +180,8 @@ class SqliteModelGenerator implements IGenerator {
 		
 		var model = resource.contents.head as Model;
 		
-		var genFileName = model.packageName.concat(".migrations").resolveFileName("Abstract".concat(model.database.name).concat("MigrationV").concat(String::valueOf(version)))
-		var genStubFileName = model.packageName.concat(".migrations").resolveFileName(model.database.name.concat("MigrationV").concat(String::valueOf(version)))
+		var genFileName = model.packageName.concat(".migrations").resolveFileName("Abstract".concat(model.database.name.pascalize).concat("MigrationV").concat(String::valueOf(version)))
+		var genStubFileName = model.packageName.concat(".migrations").resolveFileName(model.database.name.pascalize.concat("MigrationV").concat(String::valueOf(version)))
 			
 		fsa.generateFile(genFileName, 
 			mMigrationGenerator.generate(model, migration, version)

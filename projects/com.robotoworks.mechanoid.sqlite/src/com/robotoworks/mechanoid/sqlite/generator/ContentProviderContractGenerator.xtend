@@ -25,6 +25,7 @@ class ContentProviderContractGenerator {
 			import android.provider.BaseColumns;
 			import android.content.ContentResolver;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
+			import com.robotoworks.mechanoid.Mechanoid;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -51,19 +52,29 @@ class ContentProviderContractGenerator {
 						
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 				/**
-				 * <p>Column definitions and helper methods to work with «tbl.name.pascalize»</p>
+				 * <p>Column definitions and helper methods to work with the «tbl.name.pascalize» table.</p>
 				 */
 				public static class «tbl.name.pascalize» implements «tbl.name.pascalize»Columns«IF tbl.hasAndroidPrimaryKey», BaseColumns«ENDIF» {
 				    public static final Uri CONTENT_URI = 
-							BASE_CONTENT_URI.buildUpon().appendPath("«tbl.name»").build();
+							BASE_CONTENT_URI.buildUpon().appendPath("«tbl.name.toLowerCase»").build();
 				
+					/**
+					 * <p>The content type for a cursor that contains many «tbl.name.pascalize» table rows.</p>
+					 */
 				    public static final String CONTENT_TYPE =
 				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«tbl.name»";
+					/**
+					 * <p>The content type for a cursor that contains a single «tbl.name.pascalize» table row.</p>
+					 */
 				    public static final String ITEM_CONTENT_TYPE =
 				            "vnd.android.cursor.item/vnd.«model.database.name.toLowerCase».«tbl.name»";
 				
-				    public static Uri buildGetByIdUri(String id) {
-				        return CONTENT_URI.buildUpon().appendPath(id).build();
+					/**
+					 * <p>Builds a Uri with appended id for a row in the «tbl.name.pascalize» table, 
+					 * eg:- content://«model.packageName».«model.database.name.toLowerCase»/«tbl.name.toLowerCase»/123.</p>
+					 */
+				    public static Uri buildUriWithId(long id) {
+				        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 				    }
 				
 					public static ContentValues createContentValues(«createMethodArgsFromColumns(tbl)») {
@@ -74,7 +85,8 @@ class ContentProviderContractGenerator {
 						return values;
 					}
 					
-					public static Uri insert(ContentResolver contentResolver, «createMethodArgsFromColumns(tbl)») {
+					«var insertArgs = createMethodArgsFromColumns(tbl)»
+					public static Uri insert(ContentResolver contentResolver«IF insertArgs != null || insertArgs.length > 0», «insertArgs»«ENDIF») {
 						ContentValues values = createContentValues(
 						«FOR col : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»
 							«col.name.camelize»
@@ -116,23 +128,26 @@ class ContentProviderContractGenerator {
 						/**
 						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
 						 */								
-						public Uri insert(ContentResolver contentResolver) {
-							return contentResolver.insert(CONTENT_URI, mValues);
+						public Uri insert() {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.insert(CONTENT_URI, mValues);
 						}
 						
 						/**
 						 * <p>Update «tbl.name.pascalize» with the given query</p>
 						 */						
-						public int update(ContentResolver contentResolver, SQuery query) {
-							return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+						public int update(SQuery query) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
 						}
 						
 						«IF tbl.hasAndroidPrimaryKey»
 						/**
 						 * <p>Update «tbl.name.pascalize» with the given id</p>
 						 */
-						public int update(ContentResolver contentResolver, long id) {
-							return contentResolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
+						public int update(long id) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
 						}
 						
 						«ENDIF»

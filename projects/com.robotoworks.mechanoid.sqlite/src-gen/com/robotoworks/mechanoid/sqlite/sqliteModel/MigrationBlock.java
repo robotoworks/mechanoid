@@ -26,7 +26,7 @@ public interface MigrationBlock extends EObject
 {
   /**
    * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Statements</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface MigrationBlock extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Statment> getStatements();
+  EList<Statement> getStatements();
 
 } // MigrationBlock

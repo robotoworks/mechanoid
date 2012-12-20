@@ -19,7 +19,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * @model
  * @generated
  */
-public interface CreateViewStatement extends Statment
+public interface CreateViewStatement extends Statement
 {
   /**
    * Returns the value of the '<em><b>Select Statement</b></em>' containment reference.

@@ -73,6 +73,9 @@ public class InternalSqliteModelLexer extends Lexer {
     public static final int T__65=65;
     public static final int T__62=62;
     public static final int T__63=63;
+    public static final int T__116=116;
+    public static final int T__114=114;
+    public static final int T__115=115;
     public static final int T__61=61;
     public static final int T__60=60;
     public static final int T__55=55;
@@ -95,6 +98,7 @@ public class InternalSqliteModelLexer extends Lexer {
     public static final int T__111=111;
     public static final int T__110=110;
     public static final int RULE_INT=7;
+    public static final int T__113=113;
     public static final int T__112=112;
     public static final int T__50=50;
     public static final int T__42=42;
@@ -1049,10 +1053,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:55:7: ( 'is null' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:55:9: 'is null'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:55:7: ( 'cast' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:55:9: 'cast'
             {
-            match("is null"); 
+            match("cast"); 
 
 
             }
@@ -1070,10 +1074,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:56:7: ( 'not null' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:56:9: 'not null'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:56:7: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:56:9: 'as'
             {
-            match("not null"); 
+            match("as"); 
 
 
             }
@@ -1091,10 +1095,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:57:7: ( 'notnull' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:57:9: 'notnull'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:57:7: ( 'is null' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:57:9: 'is null'
             {
-            match("notnull"); 
+            match("is null"); 
 
 
             }
@@ -1112,10 +1116,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:58:7: ( 'when' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:58:9: 'when'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:58:7: ( 'not null' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:58:9: 'not null'
             {
-            match("when"); 
+            match("not null"); 
 
 
             }
@@ -1133,10 +1137,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:59:7: ( 'then' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:59:9: 'then'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:59:7: ( 'notnull' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:59:9: 'notnull'
             {
-            match("then"); 
+            match("notnull"); 
 
 
             }
@@ -1154,10 +1158,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:60:7: ( 'create' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:60:9: 'create'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:60:7: ( 'when' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:60:9: 'when'
             {
-            match("create"); 
+            match("when"); 
 
 
             }
@@ -1175,10 +1179,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:61:7: ( 'table' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:61:9: 'table'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:61:7: ( 'then' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:61:9: 'then'
             {
-            match("table"); 
+            match("then"); 
 
 
             }
@@ -1196,10 +1200,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:62:7: ( 'alter' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:62:9: 'alter'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:62:7: ( 'create' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:62:9: 'create'
             {
-            match("alter"); 
+            match("create"); 
 
 
             }
@@ -1217,10 +1221,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:63:7: ( 'view' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:63:9: 'view'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:63:7: ( 'table' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:63:9: 'table'
             {
-            match("view"); 
+            match("table"); 
 
 
             }
@@ -1238,10 +1242,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:64:7: ( 'as' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:64:9: 'as'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:64:7: ( 'alter' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:64:9: 'alter'
             {
-            match("as"); 
+            match("alter"); 
 
 
             }
@@ -1259,10 +1263,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:65:7: ( 'drop' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:65:9: 'drop'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:65:7: ( 'view' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:65:9: 'view'
             {
-            match("drop"); 
+            match("view"); 
 
 
             }
@@ -1280,10 +1284,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:66:7: ( 'if' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:66:9: 'if'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:66:7: ( 'drop' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:66:9: 'drop'
             {
-            match("if"); 
+            match("drop"); 
 
 
             }
@@ -1301,10 +1305,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:67:7: ( 'rename to' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:67:9: 'rename to'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:67:7: ( 'if' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:67:9: 'if'
             {
-            match("rename to"); 
+            match("if"); 
 
 
             }
@@ -1322,10 +1326,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:68:7: ( 'add column' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:68:9: 'add column'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:68:7: ( 'rename to' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:68:9: 'rename to'
             {
-            match("add column"); 
+            match("rename to"); 
 
 
             }
@@ -1343,10 +1347,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:69:7: ( 'primary' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:69:9: 'primary'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:69:7: ( 'add column' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:69:9: 'add column'
             {
-            match("primary"); 
+            match("add column"); 
 
 
             }
@@ -1364,10 +1368,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:70:7: ( 'key' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:70:9: 'key'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:70:7: ( 'primary' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:70:9: 'primary'
             {
-            match("key"); 
+            match("primary"); 
 
 
             }
@@ -1385,10 +1389,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:71:7: ( 'asc' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:71:9: 'asc'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:71:7: ( 'key' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:71:9: 'key'
             {
-            match("asc"); 
+            match("key"); 
 
 
             }
@@ -1406,10 +1410,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:72:7: ( 'desc' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:72:9: 'desc'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:72:7: ( 'asc' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:72:9: 'asc'
             {
-            match("desc"); 
+            match("asc"); 
 
 
             }
@@ -1427,10 +1431,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:73:7: ( 'autoincrement' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:73:9: 'autoincrement'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:73:7: ( 'desc' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:73:9: 'desc'
             {
-            match("autoincrement"); 
+            match("desc"); 
 
 
             }
@@ -1448,10 +1452,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:74:7: ( 'null' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:74:9: 'null'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:74:7: ( 'autoincrement' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:74:9: 'autoincrement'
             {
-            match("null"); 
+            match("autoincrement"); 
 
 
             }
@@ -1469,10 +1473,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:75:7: ( 'default' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:75:9: 'default'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:75:7: ( 'null' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:75:9: 'null'
             {
-            match("default"); 
+            match("null"); 
 
 
             }
@@ -1490,10 +1494,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:76:7: ( 'constraint' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:76:9: 'constraint'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:76:7: ( 'default' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:76:9: 'default'
             {
-            match("constraint"); 
+            match("default"); 
 
 
             }
@@ -1511,10 +1515,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:77:7: ( 'unique' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:77:9: 'unique'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:77:7: ( 'constraint' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:77:9: 'constraint'
             {
-            match("unique"); 
+            match("constraint"); 
 
 
             }
@@ -1532,10 +1536,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:78:7: ( 'check' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:78:9: 'check'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:78:7: ( 'unique' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:78:9: 'unique'
             {
-            match("check"); 
+            match("unique"); 
 
 
             }
@@ -1553,10 +1557,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:79:7: ( 'order' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:79:9: 'order'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:79:7: ( 'check' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:79:9: 'check'
             {
-            match("order"); 
+            match("check"); 
 
 
             }
@@ -1574,10 +1578,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:80:7: ( 'by' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:80:9: 'by'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:80:7: ( 'order' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:80:9: 'order'
             {
-            match("by"); 
+            match("order"); 
 
 
             }
@@ -1595,10 +1599,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:81:7: ( 'union all' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:81:9: 'union all'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:81:7: ( 'by' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:81:9: 'by'
             {
-            match("union all"); 
+            match("by"); 
 
 
             }
@@ -1616,10 +1620,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:82:7: ( 'union' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:82:9: 'union'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:82:7: ( 'union all' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:82:9: 'union all'
             {
-            match("union"); 
+            match("union all"); 
 
 
             }
@@ -1637,10 +1641,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:83:7: ( 'intersect' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:83:9: 'intersect'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:83:7: ( 'union' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:83:9: 'union'
             {
-            match("intersect"); 
+            match("union"); 
 
 
             }
@@ -1658,10 +1662,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:84:7: ( 'except' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:84:9: 'except'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:84:7: ( 'intersect' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:84:9: 'intersect'
             {
-            match("except"); 
+            match("intersect"); 
 
 
             }
@@ -1679,10 +1683,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:85:7: ( 'select' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:85:9: 'select'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:85:7: ( 'except' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:85:9: 'except'
             {
-            match("select"); 
+            match("except"); 
 
 
             }
@@ -1700,10 +1704,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:86:7: ( 'distinct' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:86:9: 'distinct'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:86:7: ( 'select' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:86:9: 'select'
             {
-            match("distinct"); 
+            match("select"); 
 
 
             }
@@ -1721,10 +1725,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__88;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:87:7: ( 'all' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:87:9: 'all'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:87:7: ( 'distinct' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:87:9: 'distinct'
             {
-            match("all"); 
+            match("distinct"); 
 
 
             }
@@ -1742,10 +1746,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__89;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:88:7: ( 'from' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:88:9: 'from'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:88:7: ( 'all' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:88:9: 'all'
             {
-            match("from"); 
+            match("all"); 
 
 
             }
@@ -1763,10 +1767,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__90;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:89:7: ( 'where' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:89:9: 'where'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:89:7: ( 'from' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:89:9: 'from'
             {
-            match("where"); 
+            match("from"); 
 
 
             }
@@ -1784,10 +1788,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:90:7: ( 'group' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:90:9: 'group'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:90:7: ( 'where' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:90:9: 'where'
             {
-            match("group"); 
+            match("where"); 
 
 
             }
@@ -1805,10 +1809,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:91:7: ( 'natural' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:91:9: 'natural'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:91:7: ( 'group' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:91:9: 'group'
             {
-            match("natural"); 
+            match("group"); 
 
 
             }
@@ -1826,10 +1830,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:92:7: ( 'left' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:92:9: 'left'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:92:7: ( 'natural' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:92:9: 'natural'
             {
-            match("left"); 
+            match("natural"); 
 
 
             }
@@ -1847,10 +1851,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:93:7: ( 'outer' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:93:9: 'outer'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:93:7: ( 'left' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:93:9: 'left'
             {
-            match("outer"); 
+            match("left"); 
 
 
             }
@@ -1868,10 +1872,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:94:7: ( 'inner' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:94:9: 'inner'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:94:7: ( 'outer' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:94:9: 'outer'
             {
-            match("inner"); 
+            match("outer"); 
 
 
             }
@@ -1889,10 +1893,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:95:7: ( 'cross' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:95:9: 'cross'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:95:7: ( 'inner' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:95:9: 'inner'
             {
-            match("cross"); 
+            match("inner"); 
 
 
             }
@@ -1910,10 +1914,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__97;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:96:7: ( 'join' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:96:9: 'join'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:96:7: ( 'cross' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:96:9: 'cross'
             {
-            match("join"); 
+            match("cross"); 
 
 
             }
@@ -1931,10 +1935,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__98;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:97:7: ( 'on' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:97:9: 'on'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:97:7: ( 'join' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:97:9: 'join'
             {
-            match("on"); 
+            match("join"); 
 
 
             }
@@ -1952,10 +1956,11 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__99;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:98:7: ( '.' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:98:9: '.'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:98:7: ( 'on' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:98:9: 'on'
             {
-            match('.'); 
+            match("on"); 
+
 
             }
 
@@ -1972,11 +1977,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__100;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:99:8: ( 'conflict' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:99:10: 'conflict'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:99:8: ( '.' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:99:10: '.'
             {
-            match("conflict"); 
-
+            match('.'); 
 
             }
 
@@ -1993,10 +1997,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__101;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:100:8: ( 'current_time' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:100:10: 'current_time'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:100:8: ( 'conflict' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:100:10: 'conflict'
             {
-            match("current_time"); 
+            match("conflict"); 
 
 
             }
@@ -2014,10 +2018,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:101:8: ( 'current_date' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:101:10: 'current_date'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:101:8: ( 'current_time' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:101:10: 'current_time'
             {
-            match("current_date"); 
+            match("current_time"); 
 
 
             }
@@ -2035,10 +2039,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:102:8: ( 'current_time_stamp' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:102:10: 'current_time_stamp'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:102:8: ( 'current_date' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:102:10: 'current_date'
             {
-            match("current_time_stamp"); 
+            match("current_date"); 
 
 
             }
@@ -2056,10 +2060,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__104;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:103:8: ( 'text' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:103:10: 'text'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:103:8: ( 'current_time_stamp' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:103:10: 'current_time_stamp'
             {
-            match("text"); 
+            match("current_time_stamp"); 
 
 
             }
@@ -2077,10 +2081,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__105;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:104:8: ( 'integer' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:104:10: 'integer'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:104:8: ( 'text' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:104:10: 'text'
             {
-            match("integer"); 
+            match("text"); 
 
 
             }
@@ -2098,10 +2102,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__106;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:105:8: ( 'real' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:105:10: 'real'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:105:8: ( 'integer' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:105:10: 'integer'
             {
-            match("real"); 
+            match("integer"); 
 
 
             }
@@ -2119,10 +2123,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__107;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:106:8: ( 'blob' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:106:10: 'blob'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:106:8: ( 'real' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:106:10: 'real'
             {
-            match("blob"); 
+            match("real"); 
 
 
             }
@@ -2140,10 +2144,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__108;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:107:8: ( 'rollback' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:107:10: 'rollback'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:107:8: ( 'blob' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:107:10: 'blob'
             {
-            match("rollback"); 
+            match("blob"); 
 
 
             }
@@ -2161,10 +2165,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__109;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:108:8: ( 'abort' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:108:10: 'abort'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:108:8: ( 'boolean' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:108:10: 'boolean'
             {
-            match("abort"); 
+            match("boolean"); 
 
 
             }
@@ -2182,10 +2186,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__110;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:109:8: ( 'fail' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:109:10: 'fail'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:109:8: ( 'none' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:109:10: 'none'
             {
-            match("fail"); 
+            match("none"); 
 
 
             }
@@ -2203,10 +2207,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__111;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:110:8: ( 'ignore' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:110:10: 'ignore'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:110:8: ( 'numeric' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:110:10: 'numeric'
             {
-            match("ignore"); 
+            match("numeric"); 
 
 
             }
@@ -2224,10 +2228,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__112;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:111:8: ( 'replace' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:111:10: 'replace'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:111:8: ( 'rollback' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:111:10: 'rollback'
             {
-            match("replace"); 
+            match("rollback"); 
 
 
             }
@@ -2240,15 +2244,99 @@ public class InternalSqliteModelLexer extends Lexer {
     }
     // $ANTLR end "T__112"
 
+    // $ANTLR start "T__113"
+    public final void mT__113() throws RecognitionException {
+        try {
+            int _type = T__113;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:112:8: ( 'abort' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:112:10: 'abort'
+            {
+            match("abort"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__113"
+
+    // $ANTLR start "T__114"
+    public final void mT__114() throws RecognitionException {
+        try {
+            int _type = T__114;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:113:8: ( 'fail' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:113:10: 'fail'
+            {
+            match("fail"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__114"
+
+    // $ANTLR start "T__115"
+    public final void mT__115() throws RecognitionException {
+        try {
+            int _type = T__115;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:114:8: ( 'ignore' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:114:10: 'ignore'
+            {
+            match("ignore"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__115"
+
+    // $ANTLR start "T__116"
+    public final void mT__116() throws RecognitionException {
+        try {
+            int _type = T__116;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:115:8: ( 'replace' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:115:10: 'replace'
+            {
+            match("replace"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__116"
+
     // $ANTLR start "RULE_NUMBER"
     public final void mRULE_NUMBER() throws RecognitionException {
         try {
             int _type = RULE_NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:13: ( ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:15: ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:13: ( ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:15: ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:15: ( '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:15: ( '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -2261,7 +2349,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:16: '0' .. '9'
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:16: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2273,7 +2361,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:27: ( '.' ( '0' .. '9' )+ )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:27: ( '.' ( '0' .. '9' )+ )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -2282,10 +2370,10 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:28: '.' ( '0' .. '9' )+
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:28: '.' ( '0' .. '9' )+
                     {
                     match('.'); 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:32: ( '0' .. '9' )+
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:32: ( '0' .. '9' )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -2299,7 +2387,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3974:33: '0' .. '9'
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:33: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2337,8 +2425,8 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3976:10: ( '$$$don\\'t use this anymore$$$' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3976:12: '$$$don\\'t use this anymore$$$'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4080:10: ( '$$$don\\'t use this anymore$$$' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4080:12: '$$$don\\'t use this anymore$$$'
             {
             match("$$$don't use this anymore$$$"); 
 
@@ -2358,10 +2446,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2379,10 +2467,10 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -2398,7 +2486,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2414,7 +2502,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2439,10 +2527,10 @@ public class InternalSqliteModelLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -2458,7 +2546,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2474,7 +2562,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3978:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2517,10 +2605,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3980:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3980:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4084:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4084:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3980:11: ( '^' )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4084:11: ( '^' )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2529,7 +2617,7 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3980:11: '^'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4084:11: '^'
                     {
                     match('^'); 
 
@@ -2547,7 +2635,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3980:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4084:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop8:
             do {
                 int alt8=2;
@@ -2596,12 +2684,12 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3982:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3982:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4086:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4086:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3982:24: ( options {greedy=false; } : . )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4086:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -2626,7 +2714,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3982:52: .
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4086:52: .
             	    {
             	    matchAny(); 
 
@@ -2656,12 +2744,12 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -2674,7 +2762,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2694,7 +2782,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:40: ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2703,9 +2791,9 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:41: ( '\\r' )? '\\n'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:41: ( '\\r' )? '\\n'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:41: ( '\\r' )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -2714,7 +2802,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:41: '\\r'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2746,10 +2834,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3986:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3986:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4090:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4090:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3986:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4090:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -2803,8 +2891,8 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3988:16: ( . )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3988:18: .
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4092:16: ( . )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4092:18: .
             {
             matchAny(); 
 
@@ -2819,8 +2907,8 @@ public class InternalSqliteModelLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | RULE_NUMBER | RULE_INT | RULE_STRING | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt14=109;
+        // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | RULE_NUMBER | RULE_INT | RULE_STRING | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt14=113;
         alt14 = dfa14.predict(input);
         switch (alt14) {
             case 1 :
@@ -3531,56 +3619,84 @@ public class InternalSqliteModelLexer extends Lexer {
                 }
                 break;
             case 102 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:629: RULE_NUMBER
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:629: T__113
+                {
+                mT__113(); 
+
+                }
+                break;
+            case 103 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:636: T__114
+                {
+                mT__114(); 
+
+                }
+                break;
+            case 104 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:643: T__115
+                {
+                mT__115(); 
+
+                }
+                break;
+            case 105 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:650: T__116
+                {
+                mT__116(); 
+
+                }
+                break;
+            case 106 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:657: RULE_NUMBER
                 {
                 mRULE_NUMBER(); 
 
                 }
                 break;
-            case 103 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:641: RULE_INT
+            case 107 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:669: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 104 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:650: RULE_STRING
+            case 108 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:678: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 105 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:662: RULE_ID
+            case 109 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:690: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 106 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:670: RULE_ML_COMMENT
+            case 110 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:698: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 107 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:686: RULE_SL_COMMENT
+            case 111 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:714: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 108 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:702: RULE_WS
+            case 112 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:730: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 109 :
-                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:710: RULE_ANY_OTHER
+            case 113 :
+                // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1:738: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -3595,118 +3711,122 @@ public class InternalSqliteModelLexer extends Lexer {
     protected DFA14 dfa14 = new DFA14(this);
     static final String DFA14_eotS =
         "\1\51\2\63\2\uffff\3\63\1\uffff\1\112\1\uffff\1\116\3\uffff\1\125"+
-        "\1\130\1\uffff\1\133\1\60\5\63\2\uffff\2\63\1\uffff\11\63\1\u0080"+
-        "\2\uffff\4\60\3\uffff\2\63\1\uffff\4\63\2\uffff\10\63\1\u0096\5"+
-        "\63\25\uffff\1\u009d\1\u00a0\1\u00a1\7\63\1\u00ad\1\63\1\u00af\2"+
-        "\uffff\6\63\1\uffff\7\63\1\u00be\5\63\4\uffff\16\63\1\u00d3\1\63"+
-        "\1\u00d5\1\u00d6\1\uffff\5\63\2\uffff\2\63\2\uffff\13\63\1\uffff"+
-        "\1\63\1\uffff\1\u00ed\5\63\1\u00f3\5\63\1\u00fa\1\63\1\uffff\10"+
-        "\63\1\u0105\1\u0106\4\63\1\u010c\5\63\1\uffff\1\63\3\uffff\4\63"+
-        "\1\uffff\3\63\1\u011e\1\u011f\1\u0120\3\63\1\u0124\4\63\1\uffff"+
-        "\1\63\1\uffff\1\u012a\3\63\1\u012e\1\uffff\1\u012f\1\63\1\u0131"+
-        "\1\63\1\u0133\1\u0134\1\uffff\2\63\1\u0137\1\63\1\u0139\1\u013a"+
-        "\1\u013b\3\63\2\uffff\5\63\1\uffff\1\63\1\u0145\1\u0146\3\63\1\u014a"+
-        "\1\63\1\u014c\1\63\1\u014e\2\uffff\2\63\1\u0151\1\63\3\uffff\1\u0153"+
-        "\2\63\1\uffff\2\63\1\u0158\1\u0159\1\63\1\uffff\3\63\2\uffff\1\u015e"+
-        "\1\uffff\1\u015f\2\uffff\1\63\1\u0162\1\uffff\1\63\3\uffff\5\63"+
-        "\1\u0169\2\63\1\u016c\2\uffff\1\63\1\u016e\1\u016f\1\uffff\1\63"+
-        "\1\uffff\1\63\1\uffff\2\63\1\uffff\1\u0174\1\uffff\1\u0175\3\63"+
-        "\2\uffff\2\63\1\u017b\1\u017c\2\uffff\1\u017d\2\uffff\1\u017e\1"+
-        "\u017f\1\u0180\1\63\1\u0182\1\63\1\uffff\2\63\1\uffff\1\63\2\uffff"+
-        "\3\63\1\u018a\3\uffff\1\u018b\1\63\1\u018d\1\u018e\6\uffff\1\u018f"+
-        "\1\uffff\1\u0190\1\u0191\5\63\2\uffff\1\u0198\5\uffff\4\63\1\u019d"+
-        "\1\u019e\1\uffff\1\u019f\3\63\3\uffff\3\63\1\u01a7\1\u01a8\2\63"+
-        "\2\uffff\1\u01ab\1\63\1\uffff\3\63\1\u01b0\1\uffff";
+        "\1\130\1\uffff\1\133\1\60\5\63\2\uffff\2\63\1\uffff\11\63\1\u0081"+
+        "\2\uffff\4\60\3\uffff\2\63\1\uffff\4\63\2\uffff\7\63\1\u0095\6\63"+
+        "\25\uffff\1\u009e\1\u00a1\1\u00a2\7\63\1\u00ae\1\63\1\u00b0\2\uffff"+
+        "\6\63\1\uffff\7\63\1\u00c1\6\63\4\uffff\16\63\1\u00d8\1\u00d9\1"+
+        "\uffff\1\63\1\u00db\5\63\2\uffff\2\63\2\uffff\13\63\1\uffff\1\63"+
+        "\1\uffff\1\u00f2\7\63\1\u00fa\5\63\1\u0101\1\63\1\uffff\11\63\1"+
+        "\u010d\1\u010e\4\63\1\u0114\1\u0115\5\63\2\uffff\1\63\2\uffff\4"+
+        "\63\1\uffff\3\63\1\u0127\1\u0128\1\u0129\3\63\1\u012d\4\63\1\uffff"+
+        "\1\63\1\uffff\1\u0133\1\u0134\4\63\1\u0139\1\uffff\1\u013a\1\63"+
+        "\1\u013c\1\63\1\u013e\1\u013f\1\uffff\2\63\1\u0142\2\63\1\u0145"+
+        "\1\u0146\1\u0147\3\63\2\uffff\5\63\2\uffff\1\63\1\u0151\1\u0152"+
+        "\3\63\1\u0156\1\63\1\u0158\1\63\1\u015a\2\uffff\2\63\1\u015d\1\63"+
+        "\3\uffff\1\u015f\2\63\1\uffff\2\63\1\u0164\1\u0165\1\63\2\uffff"+
+        "\4\63\2\uffff\1\u016b\1\uffff\1\u016c\2\uffff\1\63\1\u016f\1\uffff"+
+        "\2\63\3\uffff\5\63\1\u0177\2\63\1\u017a\2\uffff\1\63\1\u017c\1\u017d"+
+        "\1\uffff\1\63\1\uffff\1\63\1\uffff\2\63\1\uffff\1\u0182\1\uffff"+
+        "\1\u0183\3\63\2\uffff\3\63\1\u018a\1\u018b\2\uffff\1\u018c\2\uffff"+
+        "\1\63\1\u018e\1\u018f\1\u0190\1\63\1\u0192\1\63\1\uffff\2\63\1\uffff"+
+        "\1\63\2\uffff\3\63\1\u019a\3\uffff\1\u019b\1\63\1\u019d\1\u019e"+
+        "\1\u019f\3\uffff\1\u01a0\3\uffff\1\u01a1\1\uffff\1\u01a2\1\u01a3"+
+        "\5\63\2\uffff\1\u01aa\7\uffff\4\63\1\u01af\1\u01b0\1\uffff\1\u01b1"+
+        "\3\63\3\uffff\3\63\1\u01b9\1\u01ba\2\63\2\uffff\1\u01bd\1\63\1\uffff"+
+        "\3\63\1\u01c2\1\uffff";
     static final String DFA14_eofS =
-        "\u01b1\uffff";
+        "\u01c3\uffff";
     static final String DFA14_minS =
         "\1\0\2\141\2\uffff\1\141\1\142\1\141\1\uffff\1\174\1\uffff\1\52"+
         "\3\uffff\1\74\1\75\1\uffff\2\75\1\146\1\145\1\154\1\145\1\156\2"+
         "\uffff\1\141\1\154\1\uffff\1\150\1\141\1\151\1\145\1\156\1\154\1"+
         "\145\1\141\1\157\1\60\2\uffff\1\44\2\0\1\101\3\uffff\1\143\1\151"+
         "\1\uffff\1\164\1\157\1\146\1\163\2\uffff\1\156\1\163\2\145\1\162"+
-        "\1\164\1\144\1\154\1\60\1\144\1\164\1\157\1\147\1\164\25\uffff\1"+
+        "\1\164\1\144\1\60\1\154\1\144\1\164\1\157\1\147\1\164\25\uffff\1"+
         "\40\2\60\1\156\1\153\1\146\2\157\1\141\1\154\1\60\1\164\1\60\2\uffff"+
-        "\1\164\1\154\1\164\1\143\1\163\1\144\1\uffff\2\145\1\142\1\170\1"+
-        "\145\1\171\1\151\1\60\1\157\1\154\1\157\2\151\4\uffff\1\153\1\155"+
+        "\1\156\1\154\1\164\1\143\1\163\1\144\1\uffff\2\145\1\142\1\170\1"+
+        "\145\1\171\1\151\1\60\2\157\1\154\1\157\2\151\4\uffff\1\153\1\155"+
         "\1\141\1\160\1\143\1\141\1\164\1\146\1\145\1\141\1\163\1\143\1\162"+
-        "\1\151\1\60\1\145\2\60\1\uffff\1\40\1\157\2\162\1\143\1\156\1\uffff"+
+        "\1\151\2\60\1\uffff\1\145\1\60\1\40\1\157\2\162\1\143\1\156\1\uffff"+
         "\2\145\2\uffff\1\157\1\145\1\164\1\142\1\165\1\145\1\141\3\154\1"+
-        "\145\1\uffff\1\145\1\uffff\1\40\1\154\1\165\1\163\2\145\1\60\2\156"+
-        "\1\154\1\164\1\167\1\60\1\157\1\uffff\1\142\1\145\1\155\1\154\1"+
-        "\156\2\141\1\142\2\60\1\165\2\151\1\164\1\60\1\164\1\163\1\153\1"+
-        "\145\1\157\1\uffff\1\162\3\uffff\1\151\1\164\1\141\1\150\1\157\1"+
-        "\147\2\162\3\60\1\160\1\170\1\155\1\60\1\141\1\142\2\162\1\uffff"+
-        "\1\165\1\uffff\1\60\1\162\1\164\1\160\1\60\1\uffff\1\60\1\145\1"+
-        "\60\1\145\2\60\1\uffff\1\165\1\156\1\60\1\143\3\60\1\147\1\162\1"+
-        "\141\2\uffff\1\154\1\156\1\147\1\151\1\162\1\uffff\1\145\2\60\2"+
-        "\156\1\145\1\60\1\156\1\60\1\164\1\60\2\uffff\1\163\1\145\1\60\1"+
-        "\145\3\uffff\1\60\1\160\1\145\1\uffff\1\143\1\141\2\60\1\154\1\uffff"+
-        "\1\141\1\163\1\164\2\uffff\1\60\1\uffff\1\60\2\uffff\1\145\1\40"+
-        "\1\uffff\1\164\3\uffff\1\145\1\171\1\163\1\164\1\143\1\60\1\143"+
-        "\1\141\1\60\2\uffff\1\164\2\60\1\uffff\1\143\1\uffff\1\151\1\uffff"+
-        "\1\145\1\162\1\uffff\1\60\1\uffff\1\60\1\40\1\145\1\143\2\uffff"+
-        "\2\154\2\60\2\uffff\1\60\2\uffff\3\60\1\145\1\60\1\164\1\uffff\1"+
-        "\164\1\151\1\uffff\1\137\2\uffff\1\162\1\157\1\143\1\60\3\uffff"+
-        "\1\60\1\153\2\60\6\uffff\1\60\1\uffff\2\60\1\156\1\144\1\145\1\156"+
-        "\1\164\2\uffff\1\60\5\uffff\1\164\1\151\1\141\1\155\2\60\1\uffff"+
-        "\1\60\1\155\1\164\1\145\3\uffff\2\145\1\156\2\60\1\164\1\163\2\uffff"+
-        "\1\60\1\164\1\uffff\1\141\1\155\1\160\1\60\1\uffff";
+        "\145\1\uffff\1\145\1\uffff\1\40\1\145\1\154\1\145\1\165\1\163\2"+
+        "\145\1\60\2\156\1\154\1\164\1\167\1\60\1\157\1\uffff\1\142\1\154"+
+        "\1\145\1\155\1\154\1\156\2\141\1\142\2\60\1\165\2\151\1\164\2\60"+
+        "\1\164\1\163\1\153\1\145\1\157\2\uffff\1\162\2\uffff\1\151\1\164"+
+        "\1\141\1\150\1\157\1\147\2\162\3\60\1\160\1\170\1\155\1\60\1\141"+
+        "\1\142\2\162\1\uffff\1\165\1\uffff\2\60\2\162\1\164\1\160\1\60\1"+
+        "\uffff\1\60\1\145\1\60\1\145\2\60\1\uffff\1\165\1\156\1\60\1\145"+
+        "\1\143\3\60\1\147\1\162\1\141\2\uffff\1\154\1\156\1\147\1\151\1"+
+        "\162\2\uffff\1\145\2\60\2\156\1\145\1\60\1\156\1\60\1\164\1\60\2"+
+        "\uffff\1\163\1\145\1\60\1\145\3\uffff\1\60\1\160\1\145\1\uffff\1"+
+        "\143\1\141\2\60\1\154\2\uffff\1\151\1\141\1\163\1\164\2\uffff\1"+
+        "\60\1\uffff\1\60\2\uffff\1\145\1\40\1\uffff\1\141\1\164\3\uffff"+
+        "\1\145\1\171\1\163\1\164\1\143\1\60\1\143\1\141\1\60\2\uffff\1\164"+
+        "\2\60\1\uffff\1\143\1\uffff\1\151\1\uffff\1\145\1\162\1\uffff\1"+
+        "\60\1\uffff\1\60\1\40\1\145\1\143\2\uffff\1\154\1\143\1\154\2\60"+
+        "\2\uffff\1\60\2\uffff\1\156\3\60\1\145\1\60\1\164\1\uffff\1\164"+
+        "\1\151\1\uffff\1\137\2\uffff\1\162\1\157\1\143\1\60\3\uffff\1\60"+
+        "\1\153\3\60\3\uffff\1\60\3\uffff\1\60\1\uffff\2\60\1\156\1\144\1"+
+        "\145\1\156\1\164\2\uffff\1\60\7\uffff\1\164\1\151\1\141\1\155\2"+
+        "\60\1\uffff\1\60\1\155\1\164\1\145\3\uffff\2\145\1\156\2\60\1\164"+
+        "\1\163\2\uffff\1\60\1\164\1\uffff\1\141\1\155\1\160\1\60\1\uffff";
     static final String DFA14_maxS =
         "\1\uffff\2\162\2\uffff\2\165\1\151\1\uffff\1\174\1\uffff\1\57\3"+
         "\uffff\2\76\1\uffff\2\75\1\163\1\151\1\162\1\157\1\165\2\uffff\1"+
         "\165\1\170\1\uffff\2\150\1\151\1\145\1\156\1\171\1\145\1\162\1\157"+
         "\1\71\2\uffff\1\44\2\uffff\1\172\3\uffff\1\143\1\151\1\uffff\1\164"+
         "\1\157\2\163\2\uffff\1\156\1\163\1\157\1\145\1\162\1\164\1\144\1"+
-        "\164\1\172\1\144\1\164\1\157\1\147\1\164\25\uffff\3\172\1\156\1"+
-        "\153\1\146\2\157\1\160\1\154\1\172\1\164\1\172\2\uffff\1\164\1\154"+
+        "\172\1\164\1\144\1\164\1\157\1\147\1\164\25\uffff\3\172\1\156\1"+
+        "\153\1\146\2\157\1\160\1\154\1\172\1\164\1\172\2\uffff\1\164\1\155"+
         "\1\164\1\151\1\163\1\144\1\uffff\2\145\1\142\1\170\1\145\1\171\1"+
-        "\151\1\172\1\157\1\154\1\157\2\151\4\uffff\1\153\1\155\1\141\1\160"+
-        "\1\143\1\141\1\164\1\163\1\145\1\141\1\163\1\143\1\162\1\151\1\172"+
-        "\1\145\2\172\1\uffff\1\40\1\157\2\162\1\143\1\156\1\uffff\2\145"+
+        "\151\1\172\2\157\1\154\1\157\2\151\4\uffff\1\153\1\155\1\141\1\160"+
+        "\1\143\1\141\1\164\1\163\1\164\1\141\1\163\1\143\1\162\1\151\2\172"+
+        "\1\uffff\1\145\1\172\1\40\1\157\2\162\1\143\1\156\1\uffff\2\145"+
         "\2\uffff\1\157\1\145\1\164\1\142\1\165\1\145\1\141\3\154\1\145\1"+
-        "\uffff\1\145\1\uffff\1\172\1\154\1\165\1\163\2\145\1\172\1\162\1"+
-        "\156\1\154\1\164\1\167\1\172\1\161\1\uffff\1\142\1\145\1\155\1\154"+
-        "\1\156\2\141\1\142\2\172\1\165\1\151\1\154\1\164\1\172\1\164\1\163"+
-        "\1\153\1\145\1\166\1\uffff\1\162\3\uffff\1\151\1\164\1\141\1\150"+
-        "\1\165\3\162\3\172\1\160\1\170\1\155\1\172\1\141\1\142\2\162\1\uffff"+
-        "\1\165\1\uffff\1\172\1\162\1\164\1\160\1\172\1\uffff\1\172\1\145"+
-        "\1\172\1\145\2\172\1\uffff\1\165\1\156\1\172\1\143\3\172\1\147\1"+
-        "\162\1\141\2\uffff\1\154\1\156\1\147\1\151\1\162\1\uffff\1\145\2"+
-        "\172\2\156\1\145\1\172\1\156\1\172\1\164\1\172\2\uffff\1\163\1\145"+
-        "\1\172\1\145\3\uffff\1\172\1\160\1\145\1\uffff\1\143\1\141\2\172"+
-        "\1\154\1\uffff\1\141\1\163\1\164\2\uffff\1\172\1\uffff\1\172\2\uffff"+
-        "\1\145\1\172\1\uffff\1\164\3\uffff\1\145\1\171\1\163\1\164\1\143"+
-        "\1\172\1\143\1\141\1\172\2\uffff\1\164\2\172\1\uffff\1\143\1\uffff"+
-        "\1\151\1\uffff\1\145\1\162\1\uffff\1\172\1\uffff\1\172\1\40\1\145"+
-        "\1\143\2\uffff\2\154\2\172\2\uffff\1\172\2\uffff\3\172\1\145\1\172"+
+        "\uffff\1\145\1\uffff\1\172\1\145\1\154\1\145\1\165\1\163\2\145\1"+
+        "\172\1\162\1\156\1\154\1\164\1\167\1\172\1\161\1\uffff\1\142\1\154"+
+        "\1\145\1\155\1\154\1\156\2\141\1\142\2\172\1\165\1\151\1\154\1\164"+
+        "\2\172\1\164\1\163\1\153\1\145\1\166\2\uffff\1\162\2\uffff\1\151"+
+        "\1\164\1\141\1\150\1\165\3\162\3\172\1\160\1\170\1\155\1\172\1\141"+
+        "\1\142\2\162\1\uffff\1\165\1\uffff\2\172\2\162\1\164\1\160\1\172"+
+        "\1\uffff\1\172\1\145\1\172\1\145\2\172\1\uffff\1\165\1\156\1\172"+
+        "\1\145\1\143\3\172\1\147\1\162\1\141\2\uffff\1\154\1\156\1\147\1"+
+        "\151\1\162\2\uffff\1\145\2\172\2\156\1\145\1\172\1\156\1\172\1\164"+
+        "\1\172\2\uffff\1\163\1\145\1\172\1\145\3\uffff\1\172\1\160\1\145"+
+        "\1\uffff\1\143\1\141\2\172\1\154\2\uffff\1\151\1\141\1\163\1\164"+
+        "\2\uffff\1\172\1\uffff\1\172\2\uffff\1\145\1\172\1\uffff\1\141\1"+
+        "\164\3\uffff\1\145\1\171\1\163\1\164\1\143\1\172\1\143\1\141\1\172"+
+        "\2\uffff\1\164\2\172\1\uffff\1\143\1\uffff\1\151\1\uffff\1\145\1"+
+        "\162\1\uffff\1\172\1\uffff\1\172\1\40\1\145\1\143\2\uffff\1\154"+
+        "\1\143\1\154\2\172\2\uffff\1\172\2\uffff\1\156\3\172\1\145\1\172"+
         "\1\164\1\uffff\1\164\1\151\1\uffff\1\137\2\uffff\1\162\1\157\1\143"+
-        "\1\172\3\uffff\1\172\1\153\2\172\6\uffff\1\172\1\uffff\2\172\1\156"+
-        "\1\164\1\145\1\156\1\164\2\uffff\1\172\5\uffff\1\164\1\151\1\141"+
-        "\1\155\2\172\1\uffff\1\172\1\155\1\164\1\145\3\uffff\2\145\1\156"+
-        "\2\172\1\164\1\163\2\uffff\1\172\1\164\1\uffff\1\141\1\155\1\160"+
-        "\1\172\1\uffff";
+        "\1\172\3\uffff\1\172\1\153\3\172\3\uffff\1\172\3\uffff\1\172\1\uffff"+
+        "\2\172\1\156\1\164\1\145\1\156\1\164\2\uffff\1\172\7\uffff\1\164"+
+        "\1\151\1\141\1\155\2\172\1\uffff\1\172\1\155\1\164\1\145\3\uffff"+
+        "\2\145\1\156\2\172\1\164\1\163\2\uffff\1\172\1\164\1\uffff\1\141"+
+        "\1\155\1\160\1\172\1\uffff";
     static final String DFA14_acceptS =
         "\3\uffff\1\3\1\4\3\uffff\1\11\1\uffff\1\13\1\uffff\1\15\1\16\1\17"+
-        "\2\uffff\1\22\7\uffff\1\45\1\46\2\uffff\1\54\12\uffff\2\146\4\uffff"+
-        "\1\151\1\154\1\155\2\uffff\1\151\4\uffff\1\3\1\4\16\uffff\1\11\1"+
-        "\12\1\23\1\13\1\152\1\153\1\14\1\15\1\16\1\17\1\20\1\25\1\33\1\24"+
+        "\2\uffff\1\22\7\uffff\1\45\1\46\2\uffff\1\54\12\uffff\2\152\4\uffff"+
+        "\1\155\1\160\1\161\2\uffff\1\155\4\uffff\1\3\1\4\16\uffff\1\11\1"+
+        "\12\1\23\1\13\1\156\1\157\1\14\1\15\1\16\1\17\1\20\1\25\1\33\1\24"+
         "\1\21\1\27\1\26\1\22\1\31\1\30\1\32\15\uffff\1\45\1\46\6\uffff\1"+
-        "\54\15\uffff\1\130\1\147\1\150\1\154\22\uffff\1\66\6\uffff\1\34"+
-        "\2\uffff\1\36\1\70\13\uffff\1\44\1\uffff\1\127\16\uffff\1\106\24"+
-        "\uffff\1\43\1\uffff\1\115\1\75\1\72\23\uffff\1\56\1\uffff\1\47\5"+
-        "\uffff\1\53\6\uffff\1\74\12\uffff\1\67\1\76\5\uffff\1\51\13\uffff"+
-        "\1\35\1\55\4\uffff\1\37\1\122\1\40\3\uffff\1\137\5\uffff\1\100\3"+
-        "\uffff\1\52\1\60\1\uffff\1\61\1\uffff\1\135\1\65\2\uffff\1\140\1"+
-        "\uffff\1\116\1\143\1\126\11\uffff\1\125\1\104\3\uffff\1\64\1\uffff"+
-        "\1\142\1\uffff\1\41\2\uffff\1\124\1\uffff\1\120\4\uffff\1\105\1"+
-        "\123\4\uffff\1\117\1\63\1\uffff\1\107\1\110\6\uffff\1\5\2\uffff"+
-        "\1\62\1\uffff\1\6\1\7\4\uffff\1\144\1\42\1\71\4\uffff\1\50\1\112"+
-        "\1\103\1\113\1\1\1\73\1\uffff\1\101\7\uffff\1\136\1\145\1\uffff"+
-        "\1\57\1\121\1\2\1\114\1\131\6\uffff\1\141\4\uffff\1\10\1\111\1\102"+
-        "\7\uffff\1\132\1\133\2\uffff\1\77\4\uffff\1\134";
+        "\54\16\uffff\1\131\1\153\1\154\1\160\20\uffff\1\56\10\uffff\1\34"+
+        "\2\uffff\1\36\1\71\13\uffff\1\44\1\uffff\1\130\20\uffff\1\107\26"+
+        "\uffff\1\43\1\76\1\uffff\1\116\1\73\23\uffff\1\60\1\uffff\1\47\7"+
+        "\uffff\1\53\6\uffff\1\75\13\uffff\1\70\1\77\5\uffff\1\51\1\55\13"+
+        "\uffff\1\35\1\57\4\uffff\1\37\1\123\1\40\3\uffff\1\140\5\uffff\1"+
+        "\143\1\101\4\uffff\1\52\1\62\1\uffff\1\63\1\uffff\1\136\1\67\2\uffff"+
+        "\1\141\2\uffff\1\117\1\147\1\127\11\uffff\1\126\1\105\3\uffff\1"+
+        "\66\1\uffff\1\146\1\uffff\1\41\2\uffff\1\125\1\uffff\1\121\4\uffff"+
+        "\1\106\1\124\5\uffff\1\120\1\65\1\uffff\1\110\1\111\7\uffff\1\5"+
+        "\2\uffff\1\64\1\uffff\1\6\1\7\4\uffff\1\150\1\42\1\72\5\uffff\1"+
+        "\50\1\113\1\104\1\uffff\1\114\1\1\1\74\1\uffff\1\102\7\uffff\1\137"+
+        "\1\151\1\uffff\1\61\1\144\1\122\1\142\1\2\1\115\1\132\6\uffff\1"+
+        "\145\4\uffff\1\10\1\112\1\103\7\uffff\1\133\1\134\2\uffff\1\100"+
+        "\4\uffff\1\135";
     static final String DFA14_specialS =
-        "\1\1\52\uffff\1\2\1\0\u0184\uffff}>";
+        "\1\0\52\uffff\1\2\1\1\u0196\uffff}>";
     static final String[] DFA14_transitionS = {
             "\11\60\2\57\2\60\1\57\22\60\1\57\1\23\1\53\1\60\1\52\1\14\1"+
             "\21\1\54\1\31\1\32\1\12\1\15\1\35\1\16\1\47\1\13\12\50\1\60"+
@@ -3719,7 +3839,7 @@ public class InternalSqliteModelLexer extends Lexer {
             "",
             "",
             "\1\73\6\uffff\1\75\6\uffff\1\72\2\uffff\1\74\2\uffff\1\76",
-            "\1\105\1\77\1\103\7\uffff\1\101\1\uffff\1\100\4\uffff\1\102"+
+            "\1\105\1\77\1\103\7\uffff\1\102\1\uffff\1\100\4\uffff\1\101"+
             "\1\uffff\1\104",
             "\1\107\7\uffff\1\106",
             "",
@@ -3749,43 +3869,43 @@ public class InternalSqliteModelLexer extends Lexer {
             "\1\167",
             "\1\170",
             "\1\171",
-            "\1\173\14\uffff\1\172",
-            "\1\174",
-            "\1\176\20\uffff\1\175",
-            "\1\177",
+            "\1\173\2\uffff\1\174\11\uffff\1\172",
+            "\1\175",
+            "\1\177\20\uffff\1\176",
+            "\1\u0080",
             "\12\51",
             "",
             "",
-            "\1\u0081",
-            "\0\u0082",
-            "\0\u0082",
+            "\1\u0082",
+            "\0\u0083",
+            "\0\u0083",
             "\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
             "",
             "",
-            "\1\u0084",
             "\1\u0085",
-            "",
             "\1\u0086",
+            "",
             "\1\u0087",
-            "\1\u0089\14\uffff\1\u0088",
-            "\1\u008a",
-            "",
-            "",
+            "\1\u0088",
+            "\1\u008a\14\uffff\1\u0089",
             "\1\u008b",
+            "",
+            "",
             "\1\u008c",
-            "\1\u008d\11\uffff\1\u008e",
-            "\1\u008f",
+            "\1\u008d",
+            "\1\u008e\11\uffff\1\u008f",
             "\1\u0090",
             "\1\u0091",
             "\1\u0092",
-            "\1\u0094\7\uffff\1\u0093",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\2\63\1\u0095\27\63",
-            "\1\u0097",
+            "\1\u0093",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\2\63\1\u0094\27\63",
+            "\1\u0097\7\uffff\1\u0096",
             "\1\u0098",
             "\1\u0099",
             "\1\u009a",
             "\1\u009b",
+            "\1\u009c",
             "",
             "",
             "",
@@ -3807,282 +3927,272 @@ public class InternalSqliteModelLexer extends Lexer {
             "",
             "",
             "",
-            "\1\u009c\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
+            "\1\u009d\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
             "\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\15\63\1\u009f\5\63"+
-            "\1\u009e\6\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\15\63\1\u00a0\5\63"+
+            "\1\u009f\6\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u00a2",
             "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
             "\1\u00a6",
-            "\1\u00a9\5\uffff\1\u00a7\6\uffff\1\u00a8\1\uffff\1\u00aa",
-            "\1\u00ab",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\3\63\1\u00ac\26\63",
-            "\1\u00ae",
+            "\1\u00a7",
+            "\1\u00aa\5\uffff\1\u00a8\6\uffff\1\u00a9\1\uffff\1\u00ab",
+            "\1\u00ac",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\3\63\1\u00ad\26\63",
+            "\1\u00af",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
             "",
-            "\1\u00b0",
-            "\1\u00b1",
-            "\1\u00b2",
-            "\1\u00b4\5\uffff\1\u00b3",
+            "\1\u00b2\5\uffff\1\u00b1",
+            "\1\u00b3\1\u00b4",
             "\1\u00b5",
-            "\1\u00b6",
-            "",
-            "\1\u00b7",
+            "\1\u00b7\5\uffff\1\u00b6",
             "\1\u00b8",
             "\1\u00b9",
+            "",
             "\1\u00ba",
             "\1\u00bb",
             "\1\u00bc",
             "\1\u00bd",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u00be",
             "\1\u00bf",
             "\1\u00c0",
-            "\1\u00c1",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u00c2",
             "\1\u00c3",
-            "",
-            "",
-            "",
-            "",
             "\1\u00c4",
             "\1\u00c5",
             "\1\u00c6",
             "\1\u00c7",
+            "",
+            "",
+            "",
+            "",
             "\1\u00c8",
             "\1\u00c9",
             "\1\u00ca",
-            "\1\u00cb\14\uffff\1\u00cc",
+            "\1\u00cb",
+            "\1\u00cc",
             "\1\u00cd",
             "\1\u00ce",
-            "\1\u00cf",
-            "\1\u00d0",
-            "\1\u00d1",
-            "\1\u00d2",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u00cf\14\uffff\1\u00d0",
+            "\1\u00d1\16\uffff\1\u00d2",
+            "\1\u00d3",
             "\1\u00d4",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
+            "\1\u00d5",
+            "\1\u00d6",
             "\1\u00d7",
-            "\1\u00d8",
-            "\1\u00d9",
-            "\1\u00da",
-            "\1\u00db",
-            "\1\u00dc",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
+            "\1\u00da",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u00dc",
             "\1\u00dd",
             "\1\u00de",
-            "",
-            "",
             "\1\u00df",
             "\1\u00e0",
             "\1\u00e1",
+            "",
             "\1\u00e2",
             "\1\u00e3",
+            "",
+            "",
             "\1\u00e4",
             "\1\u00e5",
             "\1\u00e6",
             "\1\u00e7",
             "\1\u00e8",
             "\1\u00e9",
-            "",
             "\1\u00ea",
-            "",
-            "\1\u00eb\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
-            "\15\63\1\u00ec\14\63",
+            "\1\u00eb",
+            "\1\u00ec",
+            "\1\u00ed",
             "\1\u00ee",
+            "",
             "\1\u00ef",
-            "\1\u00f0",
-            "\1\u00f1",
-            "\1\u00f2",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u00f4\3\uffff\1\u00f5",
+            "",
+            "\1\u00f0\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
+            "\15\63\1\u00f1\14\63",
+            "\1\u00f3",
+            "\1\u00f4",
+            "\1\u00f5",
             "\1\u00f6",
             "\1\u00f7",
             "\1\u00f8",
             "\1\u00f9",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u00fc\1\uffff\1\u00fb",
-            "",
+            "\1\u00fb\3\uffff\1\u00fc",
             "\1\u00fd",
             "\1\u00fe",
             "\1\u00ff",
             "\1\u0100",
-            "\1\u0101",
-            "\1\u0102",
-            "\1\u0103",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0103\1\uffff\1\u0102",
+            "",
             "\1\u0104",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0105",
+            "\1\u0106",
             "\1\u0107",
             "\1\u0108",
-            "\1\u0109\2\uffff\1\u010a",
+            "\1\u0109",
+            "\1\u010a",
             "\1\u010b",
+            "\1\u010c",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u010d",
-            "\1\u010e",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u010f",
             "\1\u0110",
-            "\1\u0111\6\uffff\1\u0112",
-            "",
+            "\1\u0111\2\uffff\1\u0112",
             "\1\u0113",
-            "",
-            "",
-            "",
-            "\1\u0114",
-            "\1\u0115",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0116",
             "\1\u0117",
-            "\1\u0118\5\uffff\1\u0119",
-            "\1\u011b\12\uffff\1\u011a",
+            "\1\u0118",
+            "\1\u0119",
+            "\1\u011a\6\uffff\1\u011b",
+            "",
+            "",
             "\1\u011c",
+            "",
+            "",
             "\1\u011d",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0121",
-            "\1\u0122",
-            "\1\u0123",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u011e",
+            "\1\u011f",
+            "\1\u0120",
+            "\1\u0121\5\uffff\1\u0122",
+            "\1\u0124\12\uffff\1\u0123",
             "\1\u0125",
             "\1\u0126",
-            "\1\u0127",
-            "\1\u0128",
-            "",
-            "\1\u0129",
-            "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u012a",
             "\1\u012b",
             "\1\u012c",
-            "\1\u012d",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u012e",
+            "\1\u012f",
             "\1\u0130",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0132",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0131",
             "",
+            "\1\u0132",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0135",
             "\1\u0136",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0137",
             "\1\u0138",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u013b",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u013c",
             "\1\u013d",
-            "\1\u013e",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
-            "",
-            "\1\u013f",
             "\1\u0140",
             "\1\u0141",
-            "\1\u0142",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0143",
-            "",
             "\1\u0144",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0147",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0148",
             "\1\u0149",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u014a",
+            "",
+            "",
             "\1\u014b",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u014c",
             "\1\u014d",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "",
+            "\1\u014e",
             "\1\u014f",
+            "",
+            "",
             "\1\u0150",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0152",
-            "",
-            "",
-            "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0153",
             "\1\u0154",
             "\1\u0155",
-            "",
-            "\1\u0156",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0157",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0159",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u015a",
+            "",
             "",
             "\1\u015b",
             "\1\u015c",
-            "\1\u015d",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u015e",
+            "",
             "",
             "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "",
             "\1\u0160",
-            "\1\u0161\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
-            "\32\63",
+            "\1\u0161",
             "",
+            "\1\u0162",
             "\1\u0163",
-            "",
-            "",
-            "",
-            "\1\u0164",
-            "\1\u0165",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0166",
+            "",
+            "",
             "\1\u0167",
             "\1\u0168",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0169",
             "\1\u016a",
-            "\1\u016b",
+            "",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
             "",
             "\1\u016d",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u016e\17\uffff\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff"+
+            "\32\63",
             "",
             "\1\u0170",
-            "",
             "\1\u0171",
+            "",
+            "",
             "",
             "\1\u0172",
             "\1\u0173",
-            "",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0174",
+            "\1\u0175",
             "\1\u0176",
-            "\1\u0177",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0178",
-            "",
-            "",
             "\1\u0179",
-            "\1\u017a",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
             "",
+            "\1\u017b",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
+            "\1\u017e",
             "",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u017f",
+            "",
+            "\1\u0180",
             "\1\u0181",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0183",
             "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u0184",
             "\1\u0185",
-            "",
             "\1\u0186",
             "",
             "",
@@ -4090,65 +4200,93 @@ public class InternalSqliteModelLexer extends Lexer {
             "\1\u0188",
             "\1\u0189",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "",
-            "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u018c",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "",
-            "",
-            "",
-            "",
             "",
             "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
+            "",
+            "\1\u018d",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u0192",
-            "\1\u0194\17\uffff\1\u0193",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0191",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u0193",
+            "",
+            "\1\u0194",
             "\1\u0195",
+            "",
             "\1\u0196",
+            "",
+            "",
             "\1\u0197",
-            "",
-            "",
+            "\1\u0198",
+            "\1\u0199",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "",
             "",
             "",
-            "",
-            "",
-            "\1\u0199",
-            "\1\u019a",
-            "\1\u019b",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u019c",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
+            "",
             "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u01a0",
-            "\1\u01a1",
-            "\1\u01a2",
             "",
             "",
             "",
-            "\1\u01a3",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             "\1\u01a4",
-            "\1\u01a5",
-            "\12\63\7\uffff\32\63\4\uffff\1\u01a6\1\uffff\32\63",
-            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u01a6\17\uffff\1\u01a5",
+            "\1\u01a7",
+            "\1\u01a8",
             "\1\u01a9",
-            "\1\u01aa",
             "",
             "",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
-            "\1\u01ac",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\u01ab",
+            "\1\u01ac",
             "\1\u01ad",
             "\1\u01ae",
-            "\1\u01af",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u01b2",
+            "\1\u01b3",
+            "\1\u01b4",
+            "",
+            "",
+            "",
+            "\1\u01b5",
+            "\1\u01b6",
+            "\1\u01b7",
+            "\12\63\7\uffff\32\63\4\uffff\1\u01b8\1\uffff\32\63",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u01bb",
+            "\1\u01bc",
+            "",
+            "",
+            "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
+            "\1\u01be",
+            "",
+            "\1\u01bf",
+            "\1\u01c0",
+            "\1\u01c1",
             "\12\63\7\uffff\32\63\4\uffff\1\63\1\uffff\32\63",
             ""
     };
@@ -4183,23 +4321,13 @@ public class InternalSqliteModelLexer extends Lexer {
             this.transition = DFA14_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | RULE_NUMBER | RULE_INT | RULE_STRING | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | RULE_NUMBER | RULE_INT | RULE_STRING | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA14_44 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_44>='\u0000' && LA14_44<='\uFFFF')) ) {s = 130;}
-
-                        else s = 48;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA14_0 = input.LA(1);
 
                         s = -1;
@@ -4301,11 +4429,21 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
+                    case 1 : 
+                        int LA14_44 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_44>='\u0000' && LA14_44<='\uFFFF')) ) {s = 131;}
+
+                        else s = 48;
+
+                        if ( s>=0 ) return s;
+                        break;
                     case 2 : 
                         int LA14_43 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA14_43>='\u0000' && LA14_43<='\uFFFF')) ) {s = 130;}
+                        if ( ((LA14_43>='\u0000' && LA14_43<='\uFFFF')) ) {s = 131;}
 
                         else s = 48;
 

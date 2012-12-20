@@ -73,7 +73,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SQL_EXPRESSION: return createSqlExpression();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
-      case SqliteModelPackage.STATMENT: return createStatment();
+      case SqliteModelPackage.STATEMENT: return createStatement();
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
@@ -104,6 +104,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
       case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
       case SqliteModelPackage.FUNCTION: return createFunction();
+      case SqliteModelPackage.CAST_EXPRESSION: return createCastExpression();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
@@ -148,6 +149,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
     {
       case SqliteModelPackage.COLUMN_TYPE:
         return createColumnTypeFromString(eDataType, initialValue);
+      case SqliteModelPackage.SQLITE_DATA_TYPE:
+        return createSqliteDataTypeFromString(eDataType, initialValue);
       case SqliteModelPackage.CONFLICT_RESOLUTION:
         return createConflictResolutionFromString(eDataType, initialValue);
       default:
@@ -167,6 +170,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
     {
       case SqliteModelPackage.COLUMN_TYPE:
         return convertColumnTypeToString(eDataType, instanceValue);
+      case SqliteModelPackage.SQLITE_DATA_TYPE:
+        return convertSqliteDataTypeToString(eDataType, instanceValue);
       case SqliteModelPackage.CONFLICT_RESOLUTION:
         return convertConflictResolutionToString(eDataType, instanceValue);
       default:
@@ -267,10 +272,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Statment createStatment()
+  public Statement createStatement()
   {
-    StatmentImpl statment = new StatmentImpl();
-    return statment;
+    StatementImpl statement = new StatementImpl();
+    return statement;
   }
 
   /**
@@ -608,6 +613,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public CastExpression createCastExpression()
+  {
+    CastExpressionImpl castExpression = new CastExpressionImpl();
+    return castExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CreateTableStatement createCreateTableStatement()
   {
     CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
@@ -918,6 +934,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * @generated
    */
   public String convertColumnTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SqliteDataType createSqliteDataTypeFromString(EDataType eDataType, String initialValue)
+  {
+    SqliteDataType result = SqliteDataType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertSqliteDataTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

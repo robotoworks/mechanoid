@@ -131,11 +131,16 @@ public class OperationGenerator {
     String _name_8 = op.getName();
     String _pascalize_4 = Strings.pascalize(_name_8);
     _builder.append(_pascalize_4, "	");
-    _builder.append("Intent(Context context");
+    _builder.append("Intent(");
     {
       EList<OperationArg> _args_3 = op.getArgs();
+      boolean _hasElements = false;
       for(final OperationArg arg_3 : _args_3) {
-        _builder.append(", ");
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(", ", "	");
+        }
         OpArgType _type_2 = arg_3.getType();
         String _typeLiteral_2 = Extensions.toTypeLiteral(_type_2);
         _builder.append(_typeLiteral_2, "	");

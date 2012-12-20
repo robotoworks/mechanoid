@@ -37,6 +37,8 @@ public class SharedPreferencesGenerator {
     _builder.newLine();
     _builder.append("import android.content.SharedPreferences.OnSharedPreferenceChangeListener;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.Mechanoid;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
     String _name = sp.getName();
@@ -96,7 +98,7 @@ public class SharedPreferencesGenerator {
     String _name_5 = sp.getName();
     String _pascalize_3 = Strings.pascalize(_name_5);
     _builder.append(_pascalize_3, "	");
-    _builder.append("Preferences getInstance(Context context) {");
+    _builder.append("Preferences getInstance() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("if(sInstance == null) {");
@@ -106,7 +108,7 @@ public class SharedPreferencesGenerator {
     String _name_6 = sp.getName();
     String _pascalize_4 = Strings.pascalize(_name_6);
     _builder.append(_pascalize_4, "			");
-    _builder.append("Preferences(context);");
+    _builder.append("Preferences(Mechanoid.getApplicationContext());");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("}");

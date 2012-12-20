@@ -76,33 +76,13 @@ PrimaryExpression returns Expression:
 		{CaseExpression} 'case' caseExpression=SqlExpression? 
 				cases+=Case cases+=Case*
 				('else' elseExpression=SqlExpression)? 'end' |
-		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')'
+		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
+		{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
 	) isnull?=('is null'|'not null' | 'notnull')?
 ;
 
 Case:
 'when' whenExpression=SqlExpression 'then' thenExpression=SqlExpression
-;
-
-PrimaryComparisonOp:
-	  '='
-	| '=='
-	| '!='
-	| '<>'
-	| 'is'
-	| 'is not'
-	| 'in'
-	| 'like'
-	| 'glob'
-	| 'match'
-	| 'regexp'
-;
-
-SecondaryComparisonOp:
-	  '<'
-	| '<='
-	| '>'
-	| '>='
 ;
 
 /*
@@ -142,7 +122,10 @@ IndexedColumn:
 	name=[ColumnDef] (asc?='asc'|desc?='desc')?;
 
 enum ColumnType:
-	text | integer | real | blob;
+	text | integer | real | blob | boolean;
+	
+enum SqliteDataType:
+	text | integer | real | blob | none | numeric;
 
 enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;

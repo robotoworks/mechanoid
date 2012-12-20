@@ -1,6 +1,5 @@
 package com.robotoworks.mechanoid.sqlite;
 
-import android.content.ContentResolver;
 
 public abstract class ActiveRecord {
     /**
@@ -9,7 +8,7 @@ public abstract class ActiveRecord {
      * @return the new _id of the record, the id property of this active record
      * will also be updated
      */
-    public abstract long save(ContentResolver resolver);
+    public abstract long save();
     
     
     /**
@@ -17,6 +16,6 @@ public abstract class ActiveRecord {
      * @param query
      * @return the number of records affected
      */
-    public abstract int update(ContentResolver resolver, SQuery query);
-    public abstract boolean delete(ContentResolver resolver);
+    public abstract int update(SQuery query);
+    public abstract boolean delete();
 }

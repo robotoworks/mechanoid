@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class DropViewStatementImpl extends StatmentImpl implements DropViewStatement
+public class DropViewStatementImpl extends StatementImpl implements DropViewStatement
 {
   /**
    * <!-- begin-user-doc -->

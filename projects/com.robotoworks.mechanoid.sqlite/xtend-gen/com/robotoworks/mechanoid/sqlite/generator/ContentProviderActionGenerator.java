@@ -11,7 +11,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -241,7 +241,7 @@ public class ContentProviderActionGenerator {
         String _name_9 = tbl.getName();
         String _pascalize_6 = Strings.pascalize(_name_9);
         _builder.append(_pascalize_6, "		");
-        _builder.append(".buildGetByIdUri(String.valueOf(id));");
+        _builder.append(".buildUriWithId(id);");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -911,7 +911,7 @@ public class ContentProviderActionGenerator {
     return _and;
   }
   
-  public CharSequence generate(final Model model, final Statment tbl, final boolean forId) {
+  public CharSequence generate(final Model model, final Statement tbl, final boolean forId) {
     if (tbl instanceof CreateTableStatement) {
       return _generate(model, (CreateTableStatement)tbl, forId);
     } else if (tbl instanceof CreateViewStatement) {
@@ -922,7 +922,7 @@ public class ContentProviderActionGenerator {
     }
   }
   
-  public CharSequence generateStub(final Model model, final Statment tbl, final boolean forId) {
+  public CharSequence generateStub(final Model model, final Statement tbl, final boolean forId) {
     if (tbl instanceof CreateTableStatement) {
       return _generateStub(model, (CreateTableStatement)tbl, forId);
     } else if (tbl instanceof CreateViewStatement) {

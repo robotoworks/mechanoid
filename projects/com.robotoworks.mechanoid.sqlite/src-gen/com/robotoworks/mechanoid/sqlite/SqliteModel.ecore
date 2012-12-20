@@ -23,7 +23,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MigrationBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
-        eType="#//Statment" containment="true"/>
+        eType="#//Statement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SqlExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Expression"
@@ -37,7 +37,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="thenExpression" eType="#//SqlExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Statment">
+  <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableClause"/>
@@ -62,6 +62,15 @@
     <eLiterals name="integer" value="1" literal="integer"/>
     <eLiterals name="real" value="2" literal="real"/>
     <eLiterals name="blob" value="3" literal="blob"/>
+    <eLiterals name="boolean" value="4" literal="boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqliteDataType">
+    <eLiterals name="text" literal="text"/>
+    <eLiterals name="integer" value="1" literal="integer"/>
+    <eLiterals name="real" value="2" literal="real"/>
+    <eLiterals name="blob" value="3" literal="blob"/>
+    <eLiterals name="none" value="4" literal="none"/>
+    <eLiterals name="numeric" value="5" literal="numeric"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConflictResolution">
     <eLiterals name="rollback" literal="rollback"/>
@@ -211,22 +220,28 @@
         eType="#//SqlExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isnull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CreateTableStatement" eSuperTypes="#//Statment">
+  <eClassifiers xsi:type="ecore:EClass" name="CastExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SqliteDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isnull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateTableStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="columnDefs" upperBound="-1"
         eType="#//ColumnDef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//TableConstraint" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlterTableStatement" eSuperTypes="#//Statment">
+  <eClassifiers xsi:type="ecore:EClass" name="AlterTableStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//AlterTableClause"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CreateViewStatement" eSuperTypes="#//Statment">
+  <eClassifiers xsi:type="ecore:EClass" name="CreateViewStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//Statment"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//Statment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//Statement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableRenameClause" eSuperTypes="#//AlterTableClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
