@@ -12,7 +12,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -68,7 +68,7 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements = snapshot.getStatements();
+      EList<Statement> _statements = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
       for(final CreateTableStatement tbl : _filter) {
         _builder.append("import ");
@@ -88,7 +88,7 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_1 = snapshot.getStatements();
+      EList<Statement> _statements_1 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
       for(final CreateViewStatement vw : _filter_1) {
         _builder.append("import ");
@@ -110,7 +110,7 @@ public class ContentProviderGenerator {
     }
     _builder.newLine();
     {
-      EList<Statment> _statements_2 = snapshot.getStatements();
+      EList<Statement> _statements_2 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
       for(final CreateTableStatement tbl_1 : _filter_2) {
         _builder.append("import ");
@@ -139,7 +139,7 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_3 = snapshot.getStatements();
+      EList<Statement> _statements_3 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_3 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
       for(final CreateViewStatement vw_1 : _filter_3) {
         _builder.append("import ");
@@ -221,7 +221,7 @@ public class ContentProviderGenerator {
     int counter = (-1);
     _builder.newLineIfNotEmpty();
     {
-      EList<Statment> _statements_5 = snapshot.getStatements();
+      EList<Statement> _statements_5 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_5 = Iterables.<CreateTableStatement>filter(_statements_5, CreateTableStatement.class);
       for(final CreateTableStatement tbl_2 : _filter_5) {
         _builder.append("\t");
@@ -257,7 +257,7 @@ public class ContentProviderGenerator {
     }
     _builder.newLine();
     {
-      EList<Statment> _statements_6 = snapshot.getStatements();
+      EList<Statement> _statements_6 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_6 = Iterables.<CreateViewStatement>filter(_statements_6, CreateViewStatement.class);
       for(final CreateViewStatement vw_2 : _filter_6) {
         _builder.append("\t");
@@ -345,7 +345,7 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements_8 = snapshot.getStatements();
+      EList<Statement> _statements_8 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_8, CreateTableStatement.class);
       for(final CreateTableStatement tbl_3 : _filter_8) {
         _builder.append("\t\t");
@@ -380,7 +380,7 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_9 = snapshot.getStatements();
+      EList<Statement> _statements_9 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_9 = Iterables.<CreateViewStatement>filter(_statements_9, CreateViewStatement.class);
       for(final CreateViewStatement vw_3 : _filter_9) {
         _builder.append("\t\t");
@@ -421,7 +421,7 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<Statment> _statements_10 = snapshot.getStatements();
+      EList<Statement> _statements_10 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_10 = Iterables.<CreateTableStatement>filter(_statements_10, CreateTableStatement.class);
       for(final CreateTableStatement tbl_4 : _filter_10) {
         _builder.append("\t\t");
@@ -456,7 +456,7 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<Statment> _statements_11 = snapshot.getStatements();
+      EList<Statement> _statements_11 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_11 = Iterables.<CreateViewStatement>filter(_statements_11, CreateViewStatement.class);
       for(final CreateViewStatement vw_4 : _filter_11) {
         _builder.append("\t\t");
@@ -550,7 +550,7 @@ public class ContentProviderGenerator {
     _builder.append("// Tables");
     _builder.newLine();
     {
-      EList<Statment> _statements_13 = snapshot.getStatements();
+      EList<Statement> _statements_13 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_13 = Iterables.<CreateTableStatement>filter(_statements_13, CreateTableStatement.class);
       for(final CreateTableStatement tbl_5 : _filter_13) {
         _builder.append("\t\t");
@@ -587,7 +587,7 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      EList<Statment> _statements_14 = snapshot.getStatements();
+      EList<Statement> _statements_14 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_14 = Iterables.<CreateViewStatement>filter(_statements_14, CreateViewStatement.class);
       for(final CreateViewStatement vw_5 : _filter_14) {
         _builder.append("\t\t");

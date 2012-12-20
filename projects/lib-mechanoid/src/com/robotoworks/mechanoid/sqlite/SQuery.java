@@ -14,11 +14,11 @@ import java.util.List;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.util.Closeables;
 
@@ -366,7 +366,9 @@ public class SQuery {
 		return db.delete(table, mBuilder.toString(), getArgsArray());
 	}	
 	
-	public <T extends ActiveRecord> List<T> select(ContentResolver resolver, Uri uri, String sortOrder) {
+	public <T extends ActiveRecord> List<T> select(Uri uri, String sortOrder) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
 		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
 		
 		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
@@ -376,7 +378,9 @@ public class SQuery {
 		return records;
 	}
 	
-	public <T extends ActiveRecord> List<T> select(ContentResolver resolver, Uri uri) {
+	public <T extends ActiveRecord> List<T> select(Uri uri) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
 		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
 		
 		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
@@ -386,7 +390,9 @@ public class SQuery {
 		return records;
 	}
 	
-	public <T extends ActiveRecord> T selectFirst(ContentResolver resolver, Uri uri, String sortOrder) {
+	public <T extends ActiveRecord> T selectFirst(Uri uri, String sortOrder) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
 		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
 		
 		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
@@ -400,7 +406,9 @@ public class SQuery {
 		}
 	}
 	
-	public <T extends ActiveRecord> T selectFirst(ContentResolver resolver, Uri uri) {
+	public <T extends ActiveRecord> T selectFirst(Uri uri) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
 		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
 		
 		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
@@ -414,40 +422,42 @@ public class SQuery {
 		}
 	}
 	
-	public Cursor select(ContentResolver resolver, Uri uri, String[] projection, String sortOrder) {
+	public Cursor select(Uri uri, String[] projection, String sortOrder) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
-	public Cursor select(ContentResolver resolver, Uri uri, String[] projection) {
-		return select(resolver, uri, projection, null);
+	public Cursor select(Uri uri, String[] projection) {
+		return select(uri, projection, null);
 	}
 	
-	public android.content.CursorLoader createLoader(Context context, Uri uri, String[] projection, String sortOrder) {
-		return new android.content.CursorLoader(context, uri, projection, toString(), getArgsArray(), sortOrder);
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder) {
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
-	public android.content.CursorLoader createLoader(Context context, Uri uri, String[] projection) {
-		return new android.content.CursorLoader(context, uri, projection, toString(), getArgsArray(), null);
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection) {
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
 
-	public android.support.v4.content.CursorLoader createSupportLoader(Context context, Uri uri, String[] projection, String sortOrder) {
-		return new android.support.v4.content.CursorLoader(context, uri, projection, toString(), getArgsArray(), sortOrder);
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder) {
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
-	public android.support.v4.content.CursorLoader createSupportLoader(Context context, Uri uri, String[] projection) {
-		return new android.support.v4.content.CursorLoader(context, uri, projection, toString(), getArgsArray(), null);
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection) {
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
 	
-	public int firstInt(ContentResolver resolver, Uri uri, String column) {
-		return firstInt(resolver, uri, column, null);
+	public int firstInt(Uri uri, String column) {
+		return firstInt(uri, column, null);
 	}
 	
-	public int firstInt(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public int firstInt(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		int value = 0;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getInt(0);
@@ -460,16 +470,16 @@ public class SQuery {
 		return value;
 	}
 	
-	public long firstLong(ContentResolver resolver, Uri uri, String column) {
-		return firstLong(resolver, uri, column, null);
+	public long firstLong(Uri uri, String column) {
+		return firstLong(uri, column, null);
 	}
 	
-	public long firstLong(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public long firstLong(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		long value = 0;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getLong(0);
@@ -482,16 +492,16 @@ public class SQuery {
 		return value;
 	}
 	
-	public double firstDouble(ContentResolver resolver, Uri uri, String column) {
-		return firstDouble(resolver, uri, column, null);
+	public double firstDouble(Uri uri, String column) {
+		return firstDouble(uri, column, null);
 	}
 	
-	public double firstDouble(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public double firstDouble(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		double value = 0;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getDouble(0);
@@ -504,16 +514,16 @@ public class SQuery {
 		return value;
 	}
 	
-	public float firstFloat(ContentResolver resolver, Uri uri, String column) {
-		return firstFloat(resolver, uri, column, null);
+	public float firstFloat(Uri uri, String column) {
+		return firstFloat(uri, column, null);
 	}
 	
-	public float firstFloat(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public float firstFloat(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		float value = 0;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getFloat(0);
@@ -526,16 +536,16 @@ public class SQuery {
 		return value;
 	}
 	
-	public short firstShort(ContentResolver resolver, Uri uri, String column) {
-		return firstShort(resolver, uri, column, null);
+	public short firstShort(Uri uri, String column) {
+		return firstShort(uri, column, null);
 	}
 	
-	public short firstShort(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public short firstShort(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		short value = 0;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getShort(0);
@@ -548,16 +558,16 @@ public class SQuery {
 		return value;
 	}
 	
-	public byte[] firstBlob(ContentResolver resolver, Uri uri, String column) {
-		return firstBlob(resolver, uri, column, null);
+	public byte[] firstBlob(Uri uri, String column) {
+		return firstBlob(uri, column, null);
 	}
 	
-	public byte[] firstBlob(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public byte[] firstBlob(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		byte[] value = null;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getBlob(0);
@@ -570,24 +580,24 @@ public class SQuery {
 		return value;
 	}
 	
-	public boolean firstBoolean(ContentResolver resolver, Uri uri, String column) {
-		return firstBoolean(resolver, uri, column, null);
+	public boolean firstBoolean(Uri uri, String column) {
+		return firstBoolean(uri, column, null);
 	}
 	
-	public boolean firstBoolean(ContentResolver resolver, Uri uri, String column, String orderBy) {
-		return firstShort(resolver, uri, column, orderBy) > 0;
+	public boolean firstBoolean(Uri uri, String column, String orderBy) {
+		return firstShort(uri, column, orderBy) > 0;
 	}
 	
-	public String firstString(ContentResolver resolver, Uri uri, String column) {
-		return firstString(resolver, uri, column, null);
+	public String firstString(Uri uri, String column) {
+		return firstString(uri, column, null);
 	}
 	
-	public String firstString(ContentResolver resolver, Uri uri, String column, String orderBy) {
+	public String firstString(Uri uri, String column, String orderBy) {
 		Cursor cursor = null;
 		String value = null;
 		
 		try {
-			cursor = select(resolver, uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getString(0);
@@ -600,15 +610,19 @@ public class SQuery {
 		return value;
 	}
 	
-	public int update(ContentResolver resolver, Uri uri, ContentValues values) {
+	public int update(Uri uri, ContentValues values) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
 		return resolver.update(uri, values, toString(), getArgsArray());
 	}
 	
-	public int delete(ContentResolver resolver, Uri uri) {
+	public int delete(Uri uri) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
 		return resolver.delete(uri, toString(), getArgsArray());
 	}	
 	
-    public int count(ContentResolver resolver, Uri uri) {
+    public int count(Uri uri) {
+    	ContentResolver resolver = Mechanoid.getContentResolver();
+    	
     	Cursor c = null;
     	
     	try {
@@ -627,7 +641,7 @@ public class SQuery {
     	}
     }
     
-    public boolean exists(ContentResolver resolver, Uri uri) {
-    	return count(resolver, uri) > 0;
+    public boolean exists(Uri uri) {
+    	return count(uri) > 0;
     }
 }

@@ -79,7 +79,7 @@ class ContentProviderActionGenerator {
 
 					long id = db.insertOrThrow(Tables.«tbl.name.underscore.toUpperCase», null, values);
 					context.getContentResolver().notifyChange(uri, null);
-					return «tbl.name.pascalize».buildGetByIdUri(String.valueOf(id));
+					return «tbl.name.pascalize».buildUriWithId(id);
 				    «ENDIF»
 				}
 				

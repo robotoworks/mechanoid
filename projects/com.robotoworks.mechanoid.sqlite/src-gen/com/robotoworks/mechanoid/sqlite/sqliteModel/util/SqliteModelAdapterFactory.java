@@ -115,9 +115,9 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createCaseAdapter();
       }
       @Override
-      public Adapter caseStatment(Statment object)
+      public Adapter caseStatement(Statement object)
       {
-        return createStatmentAdapter();
+        return createStatementAdapter();
       }
       @Override
       public Adapter caseAlterTableClause(AlterTableClause object)
@@ -268,6 +268,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFunction(Function object)
       {
         return createFunctionAdapter();
+      }
+      @Override
+      public Adapter caseCastExpression(CastExpression object)
+      {
+        return createCastExpressionAdapter();
       }
       @Override
       public Adapter caseCreateTableStatement(CreateTableStatement object)
@@ -547,16 +552,16 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statment <em>Statment</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statment
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statement
    * @generated
    */
-  public Adapter createStatmentAdapter()
+  public Adapter createStatementAdapter()
   {
     return null;
   }
@@ -1007,6 +1012,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression <em>Cast Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression
+   * @generated
+   */
+  public Adapter createCastExpressionAdapter()
   {
     return null;
   }

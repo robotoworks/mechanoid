@@ -13,6 +13,6 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * @model
  * @generated
  */
-public interface DropTableStatement extends Statment
+public interface DropTableStatement extends Statement
 {
 } // DropTableStatement

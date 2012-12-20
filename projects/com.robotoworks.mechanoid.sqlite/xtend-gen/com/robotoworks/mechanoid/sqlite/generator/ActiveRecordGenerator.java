@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
+import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
@@ -82,7 +83,8 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.sqlite.ActiveRecord;");
     _builder.newLine();
-    _builder.append("\t\t\t");
+    _builder.append("import com.robotoworks.mechanoid.Mechanoid;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
     String _name_4 = stmt.getName();
@@ -203,18 +205,32 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
       for(final ColumnDef col : _columnDefs) {
-        _builder.append("\t\t");
-        _builder.append("m");
-        String _name_13 = col.getName();
-        String _pascalize_13 = Strings.pascalize(_name_13);
-        _builder.append(_pascalize_13, "		");
-        _builder.append(" = in.read");
-        ColumnType _type = col.getType();
-        String _javaTypeName = Extensions.toJavaTypeName(_type);
-        String _pascalize_14 = Strings.pascalize(_javaTypeName);
-        _builder.append(_pascalize_14, "		");
-        _builder.append("();");
-        _builder.newLineIfNotEmpty();
+        {
+          ColumnType _type = col.getType();
+          boolean _equals = Objects.equal(_type, ColumnType.BOOLEAN);
+          if (_equals) {
+            _builder.append("\t\t");
+            _builder.append("m");
+            String _name_13 = col.getName();
+            String _pascalize_13 = Strings.pascalize(_name_13);
+            _builder.append(_pascalize_13, "		");
+            _builder.append(" = (in.readInt() > 0);");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            _builder.append("m");
+            String _name_14 = col.getName();
+            String _pascalize_14 = Strings.pascalize(_name_14);
+            _builder.append(_pascalize_14, "		");
+            _builder.append(" = in.read");
+            ColumnType _type_1 = col.getType();
+            String _javaTypeName = Extensions.toJavaTypeName(_type_1);
+            String _pascalize_15 = Strings.pascalize(_javaTypeName);
+            _builder.append(_pascalize_15, "		");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("\t\t");
@@ -234,9 +250,9 @@ public class ActiveRecordGenerator {
       for(final ColumnDef col_1 : _columnDefs_2) {
         _builder.append("\t\t");
         _builder.append("m");
-        String _name_14 = col_1.getName();
-        String _pascalize_15 = Strings.pascalize(_name_14);
-        _builder.append(_pascalize_15, "		");
+        String _name_15 = col_1.getName();
+        String _pascalize_16 = Strings.pascalize(_name_15);
+        _builder.append(_pascalize_16, "		");
         _builder.append("Dirty = dirtyFlags[");
         int _plus = (counter + 1);
         int _counter = counter = _plus;
@@ -273,18 +289,32 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnDef> _columnDefs_3 = stmt.getColumnDefs();
       for(final ColumnDef col_2 : _columnDefs_3) {
-        _builder.append("\t\t");
-        _builder.append("dest.write");
-        ColumnType _type_1 = col_2.getType();
-        String _javaTypeName_1 = Extensions.toJavaTypeName(_type_1);
-        String _pascalize_16 = Strings.pascalize(_javaTypeName_1);
-        _builder.append(_pascalize_16, "		");
-        _builder.append("(m");
-        String _name_15 = col_2.getName();
-        String _pascalize_17 = Strings.pascalize(_name_15);
-        _builder.append(_pascalize_17, "		");
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
+        {
+          ColumnType _type_2 = col_2.getType();
+          boolean _equals_1 = Objects.equal(_type_2, ColumnType.BOOLEAN);
+          if (_equals_1) {
+            _builder.append("\t\t");
+            _builder.append("dest.writeInt(m");
+            String _name_16 = col_2.getName();
+            String _pascalize_17 = Strings.pascalize(_name_16);
+            _builder.append(_pascalize_17, "		");
+            _builder.append(" ? 1 : 0);");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            _builder.append("dest.write");
+            ColumnType _type_3 = col_2.getType();
+            String _javaTypeName_1 = Extensions.toJavaTypeName(_type_3);
+            String _pascalize_18 = Strings.pascalize(_javaTypeName_1);
+            _builder.append(_pascalize_18, "		");
+            _builder.append("(m");
+            String _name_17 = col_2.getName();
+            String _pascalize_19 = Strings.pascalize(_name_17);
+            _builder.append(_pascalize_19, "		");
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("\t    ");
@@ -301,9 +331,9 @@ public class ActiveRecordGenerator {
         }
         _builder.append("\t\t\t");
         _builder.append("m");
-        String _name_16 = col_3.getName();
-        String _pascalize_18 = Strings.pascalize(_name_16);
-        _builder.append(_pascalize_18, "			");
+        String _name_18 = col_3.getName();
+        String _pascalize_20 = Strings.pascalize(_name_18);
+        _builder.append(_pascalize_20, "			");
         _builder.append("Dirty");
         _builder.newLineIfNotEmpty();
       }
@@ -321,9 +351,9 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Builder builder = ");
-    String _name_17 = stmt.getName();
-    String _pascalize_19 = Strings.pascalize(_name_17);
-    _builder.append(_pascalize_19, "		");
+    String _name_19 = stmt.getName();
+    String _pascalize_21 = Strings.pascalize(_name_19);
+    _builder.append(_pascalize_21, "		");
     _builder.append(".newBuilder();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -341,21 +371,21 @@ public class ActiveRecordGenerator {
       for(final ColumnDef col_4 : _filter) {
         _builder.append("\t\t");
         _builder.append("if(m");
-        String _name_18 = col_4.getName();
-        String _pascalize_20 = Strings.pascalize(_name_18);
-        _builder.append(_pascalize_20, "		");
+        String _name_20 = col_4.getName();
+        String _pascalize_22 = Strings.pascalize(_name_20);
+        _builder.append(_pascalize_22, "		");
         _builder.append("Dirty) {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("\t");
         _builder.append("builder.set");
-        String _name_19 = col_4.getName();
-        String _pascalize_21 = Strings.pascalize(_name_19);
-        _builder.append(_pascalize_21, "			");
+        String _name_21 = col_4.getName();
+        String _pascalize_23 = Strings.pascalize(_name_21);
+        _builder.append(_pascalize_23, "			");
         _builder.append("(m");
-        String _name_20 = col_4.getName();
-        String _pascalize_22 = Strings.pascalize(_name_20);
-        _builder.append(_pascalize_22, "			");
+        String _name_22 = col_4.getName();
+        String _pascalize_24 = Strings.pascalize(_name_22);
+        _builder.append(_pascalize_24, "			");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -377,7 +407,7 @@ public class ActiveRecordGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public long save(ContentResolver resolver){");
+    _builder.append("public long save(){");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Builder builder = createBuilder();");
@@ -388,13 +418,13 @@ public class ActiveRecordGenerator {
     _builder.append("if(m_id > 0) {");
     _builder.newLine();
     _builder.append("\t\t    ");
-    _builder.append("builder.update(resolver, m_id);");
+    _builder.append("builder.update(m_id);");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("} else {");
     _builder.newLine();
     _builder.append("\t\t    ");
-    _builder.append("Uri uri = builder.insert(resolver);");
+    _builder.append("Uri uri = builder.insert();");
     _builder.newLine();
     _builder.append("\t\t    ");
     _builder.append("m_id = ContentUris.parseId(uri);");
@@ -416,7 +446,7 @@ public class ActiveRecordGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public int update(ContentResolver resolver, SQuery query){");
+    _builder.append("public int update(SQuery query){");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Builder builder = createBuilder();");
@@ -424,7 +454,7 @@ public class ActiveRecordGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return builder.update(resolver, query);");
+    _builder.append("return builder.update(query);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -435,15 +465,20 @@ public class ActiveRecordGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public boolean delete(ContentResolver resolver){");
+    _builder.append("public boolean delete(){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("ContentResolver resolver = Mechanoid.getContentResolver();");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("return resolver.delete(");
     _builder.newLine();
     _builder.append("\t\t\t");
-    String _name_21 = stmt.getName();
-    String _pascalize_23 = Strings.pascalize(_name_21);
-    _builder.append(_pascalize_23, "			");
+    String _name_23 = stmt.getName();
+    String _pascalize_25 = Strings.pascalize(_name_23);
+    _builder.append(_pascalize_25, "			");
     _builder.append(".CONTENT_URI.buildUpon()");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
@@ -456,19 +491,19 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static ");
-    String _name_22 = stmt.getName();
-    String _pascalize_24 = Strings.pascalize(_name_22);
-    _builder.append(_pascalize_24, "	");
+    String _name_24 = stmt.getName();
+    String _pascalize_26 = Strings.pascalize(_name_24);
+    _builder.append(_pascalize_26, "	");
     _builder.append("Record fromCursor(Cursor c) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
-    String _name_23 = stmt.getName();
-    String _pascalize_25 = Strings.pascalize(_name_23);
-    _builder.append(_pascalize_25, "	    ");
+    String _name_25 = stmt.getName();
+    String _pascalize_27 = Strings.pascalize(_name_25);
+    _builder.append(_pascalize_27, "	    ");
     _builder.append("Record item = new ");
-    String _name_24 = stmt.getName();
-    String _pascalize_26 = Strings.pascalize(_name_24);
-    _builder.append(_pascalize_26, "	    ");
+    String _name_26 = stmt.getName();
+    String _pascalize_28 = Strings.pascalize(_name_26);
+    _builder.append(_pascalize_28, "	    ");
     _builder.append("Record();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
@@ -476,23 +511,42 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnDef> _columnDefs_6 = stmt.getColumnDefs();
       for(final ColumnDef col_5 : _columnDefs_6) {
-        _builder.append("\t\t");
-        _builder.append("item.m");
-        String _name_25 = col_5.getName();
-        String _pascalize_27 = Strings.pascalize(_name_25);
-        _builder.append(_pascalize_27, "		");
-        _builder.append(" = c.get");
-        ColumnType _type_2 = col_5.getType();
-        String _javaTypeName_2 = Extensions.toJavaTypeName(_type_2);
-        String _pascalize_28 = Strings.pascalize(_javaTypeName_2);
-        _builder.append(_pascalize_28, "		");
-        _builder.append("(Indices.");
-        String _name_26 = col_5.getName();
-        String _underscore = Strings.underscore(_name_26);
-        String _upperCase = _underscore.toUpperCase();
-        _builder.append(_upperCase, "		");
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
+        {
+          ColumnType _type_4 = col_5.getType();
+          boolean _equals_2 = Objects.equal(_type_4, ColumnType.BOOLEAN);
+          if (_equals_2) {
+            _builder.append("\t\t");
+            _builder.append("item.m");
+            String _name_27 = col_5.getName();
+            String _pascalize_29 = Strings.pascalize(_name_27);
+            _builder.append(_pascalize_29, "		");
+            _builder.append(" = c.getInt(Indices.");
+            String _name_28 = col_5.getName();
+            String _underscore = Strings.underscore(_name_28);
+            String _upperCase = _underscore.toUpperCase();
+            _builder.append(_upperCase, "		");
+            _builder.append(") > 0;");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            _builder.append("item.m");
+            String _name_29 = col_5.getName();
+            String _pascalize_30 = Strings.pascalize(_name_29);
+            _builder.append(_pascalize_30, "		");
+            _builder.append(" = c.get");
+            ColumnType _type_5 = col_5.getType();
+            String _javaTypeName_2 = Extensions.toJavaTypeName(_type_5);
+            String _pascalize_31 = Strings.pascalize(_javaTypeName_2);
+            _builder.append(_pascalize_31, "		");
+            _builder.append("(Indices.");
+            String _name_30 = col_5.getName();
+            String _underscore_1 = Strings.underscore(_name_30);
+            String _upperCase_1 = _underscore_1.toUpperCase();
+            _builder.append(_upperCase_1, "		");
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("\t\t");
@@ -507,13 +561,18 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static ");
-    String _name_27 = stmt.getName();
-    String _pascalize_29 = Strings.pascalize(_name_27);
-    _builder.append(_pascalize_29, "	");
-    _builder.append("Record get(ContentResolver resolver, long id) {");
+    String _name_31 = stmt.getName();
+    String _pascalize_32 = Strings.pascalize(_name_31);
+    _builder.append(_pascalize_32, "	");
+    _builder.append("Record get(long id) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
     _builder.append("Cursor c = null;");
+    _builder.newLine();
+    _builder.append("\t    ");
+    _builder.newLine();
+    _builder.append("\t    ");
+    _builder.append("ContentResolver resolver = Mechanoid.getContentResolver();");
     _builder.newLine();
     _builder.append("\t    ");
     _builder.newLine();
@@ -522,9 +581,9 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t        ");
     _builder.append("c = resolver.query(");
-    String _name_28 = stmt.getName();
-    String _pascalize_30 = Strings.pascalize(_name_28);
-    _builder.append(_pascalize_30, "	        ");
+    String _name_32 = stmt.getName();
+    String _pascalize_33 = Strings.pascalize(_name_32);
+    _builder.append(_pascalize_33, "	        ");
     _builder.append(".CONTENT_URI.buildUpon()");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");

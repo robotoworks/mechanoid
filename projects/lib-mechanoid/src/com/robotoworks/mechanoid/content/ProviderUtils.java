@@ -1,43 +1,43 @@
 package com.robotoworks.mechanoid.content;
 
-import com.robotoworks.mechanoid.util.Closeables;
-
 import android.content.ContentResolver;
-import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+
+import com.robotoworks.mechanoid.Mechanoid;
+import com.robotoworks.mechanoid.util.Closeables;
 
 public final class ProviderUtils {
 	private ProviderUtils(){}
 	
-    public static int delete(Context context, Uri uri) {
-        ContentResolver resolver = context.getContentResolver();
+    public static int delete(Uri uri) {
+        ContentResolver resolver = Mechanoid.getContentResolver();
         return resolver.delete(uri, null, null);
     }
     
-    public static int delete(Context context, Uri uri, String where, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
+    public static int delete(Uri uri, String where, String[] selectionArgs) {
+    	ContentResolver resolver = Mechanoid.getContentResolver();
     	return resolver.delete(uri, where, selectionArgs);
     }
     
-    public static boolean isEmpty(Context context, Uri uri) {
-    	return getCount(context, uri) == 0;
+    public static boolean isEmpty(Uri uri) {
+    	return getCount(uri) == 0;
     }
     
-    public static int getCount(Context context, Uri uri) {
-    	return getInt(context, uri, "count(*)", null, null);
+    public static int getCount(Uri uri) {
+    	return getInt(uri, "count(*)", null, null);
     }
     
-    public static int getCount(Context context, Uri uri, String selection, String[] selectionArgs) {
-    	return getInt(context, uri, "count(*)", selection, selectionArgs);
+    public static int getCount(Uri uri, String selection, String[] selectionArgs) {
+    	return getInt(uri, "count(*)", selection, selectionArgs);
     }
     
-    public static int getCount(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-    	return getInt(context, uri, "count(" + column + ")", selection, selectionArgs);
+    public static int getCount(Uri uri, String column, String selection, String[] selectionArgs) {
+    	return getInt(uri, "count(" + column + ")", selection, selectionArgs);
     }
     
-    public static String getString(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-        ContentResolver resolver = context.getContentResolver();
+    public static String getString(Uri uri, String column, String selection, String[] selectionArgs) {
+        ContentResolver resolver = Mechanoid.getContentResolver();
         
         Cursor c = null;
         
@@ -57,8 +57,8 @@ public final class ProviderUtils {
         }
     }
     
-    public static long getLong(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
+    public static long getLong(Uri uri, String column, String selection, String[] selectionArgs) {
+    	ContentResolver resolver = Mechanoid.getContentResolver();
     	
     	Cursor c = null;
     	
@@ -78,8 +78,8 @@ public final class ProviderUtils {
     	}
     }
     
-    public static int getInt(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
+    public static int getInt(Uri uri, String column, String selection, String[] selectionArgs) {
+    	ContentResolver resolver = Mechanoid.getContentResolver();
     	
     	Cursor c = null;
     	
@@ -99,8 +99,8 @@ public final class ProviderUtils {
     	}
     }
     
-    public static double getDouble(Context context, Uri uri, String column, String selection, String[] selectionArgs) {
-    	ContentResolver resolver = context.getContentResolver();
+    public static double getDouble(Uri uri, String column, String selection, String[] selectionArgs) {
+    	ContentResolver resolver = Mechanoid.getContentResolver();
     	
     	Cursor c = null;
     	

@@ -5,6 +5,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType
 
 class ActiveRecordGenerator {
 		def CharSequence generate(Model model, CreateTableStatement stmt) '''
@@ -28,7 +29,8 @@ class ActiveRecordGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-						
+			import com.robotoworks.mechanoid.Mechanoid;
+			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
 			    	= new Parcelable.Creator<«stmt.name.pascalize»Record>() {
@@ -58,7 +60,11 @@ class ActiveRecordGenerator {
 				private «stmt.name.pascalize»Record(Parcel in) {
 					«var counter=-1»
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					m«col.name.pascalize» = (in.readInt() > 0);
+					«ELSE»
 					m«col.name.pascalize» = in.read«col.type.toJavaTypeName.pascalize»();
+					«ENDIF»
 					«ENDFOR»
 					
 					boolean[] dirtyFlags = new boolean[«stmt.columnDefs.size»];
@@ -76,7 +82,11 @@ class ActiveRecordGenerator {
 				@Override
 				public void writeToParcel(Parcel dest, int flags) {
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					dest.writeInt(m«col.name.pascalize» ? 1 : 0);
+					«ELSE»
 					dest.write«col.type.toJavaTypeName.pascalize»(m«col.name.pascalize»);
+					«ENDIF»
 					«ENDFOR»
 				    dest.writeBooleanArray(new boolean[] {
 						«FOR col : stmt.columnDefs SEPARATOR ","»
@@ -98,13 +108,13 @@ class ActiveRecordGenerator {
 				}
 			    
 			    @Override
-				public long save(ContentResolver resolver){
+				public long save(){
 					Builder builder = createBuilder();
 					
 					if(m_id > 0) {
-					    builder.update(resolver, m_id);
+					    builder.update(m_id);
 					} else {
-					    Uri uri = builder.insert(resolver);
+					    Uri uri = builder.insert();
 					    m_id = ContentUris.parseId(uri);
 					}
 					
@@ -112,14 +122,16 @@ class ActiveRecordGenerator {
 				}
 				
 			    @Override
-				public int update(ContentResolver resolver, SQuery query){
+				public int update(SQuery query){
 					Builder builder = createBuilder();
 					
-					return builder.update(resolver, query);
+					return builder.update(query);
 				}
 				
 			    @Override
-				public boolean delete(ContentResolver resolver){
+				public boolean delete(){
+					ContentResolver resolver = Mechanoid.getContentResolver();
+					
 					return resolver.delete(
 						«stmt.name.pascalize».CONTENT_URI.buildUpon()
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
@@ -129,14 +141,20 @@ class ActiveRecordGenerator {
 				    «stmt.name.pascalize»Record item = new «stmt.name.pascalize»Record();
 				    
 					«FOR col : stmt.columnDefs»
+					«IF col.type == ColumnType::BOOLEAN»
+					item.m«col.name.pascalize» = c.getInt(Indices.«col.name.underscore.toUpperCase») > 0;
+					«ELSE»
 					item.m«col.name.pascalize» = c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»);
+					«ENDIF»
 					«ENDFOR»
 					
 				    return item;
 				}
 				
-				public static «stmt.name.pascalize»Record get(ContentResolver resolver, long id) {
+				public static «stmt.name.pascalize»Record get(long id) {
 				    Cursor c = null;
+				    
+				    ContentResolver resolver = Mechanoid.getContentResolver();
 				    
 				    try {
 				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI.buildUpon()

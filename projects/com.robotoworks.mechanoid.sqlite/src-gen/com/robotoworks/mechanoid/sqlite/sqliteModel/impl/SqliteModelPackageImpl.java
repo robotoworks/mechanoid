@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
@@ -66,9 +67,10 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteDataType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.StringLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint;
@@ -150,7 +152,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass statmentEClass = null;
+  private EClass statementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -367,6 +369,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass castExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass createTableStatementEClass = null;
 
   /**
@@ -557,6 +566,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EEnum columnTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum sqliteDataTypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -833,9 +849,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getStatment()
+  public EClass getStatement()
   {
-    return statmentEClass;
+    return statementEClass;
   }
 
   /**
@@ -843,9 +859,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStatment_Name()
+  public EAttribute getStatement_Name()
   {
-    return (EAttribute)statmentEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)statementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1853,6 +1869,46 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCastExpression()
+  {
+    return castExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCastExpression_Expression()
+  {
+    return (EReference)castExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCastExpression_Type()
+  {
+    return (EAttribute)castExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCastExpression_Isnull()
+  {
+    return (EAttribute)castExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCreateTableStatement()
   {
     return createTableStatementEClass;
@@ -2443,6 +2499,16 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getSqliteDataType()
+  {
+    return sqliteDataTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getConflictResolution()
   {
     return conflictResolutionEEnum;
@@ -2506,8 +2572,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(caseEClass, CASE__WHEN_EXPRESSION);
     createEReference(caseEClass, CASE__THEN_EXPRESSION);
 
-    statmentEClass = createEClass(STATMENT);
-    createEAttribute(statmentEClass, STATMENT__NAME);
+    statementEClass = createEClass(STATEMENT);
+    createEAttribute(statementEClass, STATEMENT__NAME);
 
     alterTableClauseEClass = createEClass(ALTER_TABLE_CLAUSE);
 
@@ -2639,6 +2705,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(functionEClass, FUNCTION__ARUGMENTS);
     createEAttribute(functionEClass, FUNCTION__ISNULL);
 
+    castExpressionEClass = createEClass(CAST_EXPRESSION);
+    createEReference(castExpressionEClass, CAST_EXPRESSION__EXPRESSION);
+    createEAttribute(castExpressionEClass, CAST_EXPRESSION__TYPE);
+    createEAttribute(castExpressionEClass, CAST_EXPRESSION__ISNULL);
+
     createTableStatementEClass = createEClass(CREATE_TABLE_STATEMENT);
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__COLUMN_DEFS);
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__CONSTRAINTS);
@@ -2726,6 +2797,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     // Create enums
     columnTypeEEnum = createEEnum(COLUMN_TYPE);
+    sqliteDataTypeEEnum = createEEnum(SQLITE_DATA_TYPE);
     conflictResolutionEEnum = createEEnum(CONFLICT_RESOLUTION);
   }
 
@@ -2774,11 +2846,12 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     selectStatementExpressionEClass.getESuperTypes().add(this.getExpression());
     caseExpressionEClass.getESuperTypes().add(this.getExpression());
     functionEClass.getESuperTypes().add(this.getExpression());
-    createTableStatementEClass.getESuperTypes().add(this.getStatment());
-    alterTableStatementEClass.getESuperTypes().add(this.getStatment());
-    createViewStatementEClass.getESuperTypes().add(this.getStatment());
-    dropTableStatementEClass.getESuperTypes().add(this.getStatment());
-    dropViewStatementEClass.getESuperTypes().add(this.getStatment());
+    castExpressionEClass.getESuperTypes().add(this.getExpression());
+    createTableStatementEClass.getESuperTypes().add(this.getStatement());
+    alterTableStatementEClass.getESuperTypes().add(this.getStatement());
+    createViewStatementEClass.getESuperTypes().add(this.getStatement());
+    dropTableStatementEClass.getESuperTypes().add(this.getStatement());
+    dropViewStatementEClass.getESuperTypes().add(this.getStatement());
     alterTableRenameClauseEClass.getESuperTypes().add(this.getAlterTableClause());
     alterTableAddColumnClauseEClass.getESuperTypes().add(this.getAlterTableClause());
     primaryKeyColumnConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
@@ -2819,7 +2892,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getConfigurationStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConfigurationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(migrationBlockEClass, MigrationBlock.class, "MigrationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMigrationBlock_Statements(), this.getStatment(), null, "statements", null, 0, -1, MigrationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMigrationBlock_Statements(), this.getStatement(), null, "statements", null, 0, -1, MigrationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sqlExpressionEClass, SqlExpression.class, "SqlExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSqlExpression_Root(), this.getExpression(), null, "root", null, 0, 1, SqlExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2831,8 +2904,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getCase_WhenExpression(), this.getSqlExpression(), null, "whenExpression", null, 0, 1, Case.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCase_ThenExpression(), this.getSqlExpression(), null, "thenExpression", null, 0, 1, Case.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(statmentEClass, Statment.class, "Statment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStatment_Name(), ecorePackage.getEString(), "name", null, 0, 1, Statment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(alterTableClauseEClass, AlterTableClause.class, "AlterTableClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2964,6 +3037,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getFunction_Arugments(), this.getSqlExpression(), null, "arugments", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunction_Isnull(), ecorePackage.getEBoolean(), "isnull", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(castExpressionEClass, CastExpression.class, "CastExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCastExpression_Expression(), this.getSqlExpression(), null, "expression", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCastExpression_Type(), this.getSqliteDataType(), "type", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCastExpression_Isnull(), ecorePackage.getEBoolean(), "isnull", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(createTableStatementEClass, CreateTableStatement.class, "CreateTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCreateTableStatement_ColumnDefs(), this.getColumnDef(), null, "columnDefs", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCreateTableStatement_Constraints(), this.getTableConstraint(), null, "constraints", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3055,6 +3133,15 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     addEEnumLiteral(columnTypeEEnum, ColumnType.INTEGER);
     addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
     addEEnumLiteral(columnTypeEEnum, ColumnType.BLOB);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.BOOLEAN);
+
+    initEEnum(sqliteDataTypeEEnum, SqliteDataType.class, "SqliteDataType");
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.TEXT);
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.INTEGER);
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.REAL);
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.BLOB);
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.NONE);
+    addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.NUMERIC);
 
     initEEnum(conflictResolutionEEnum, ConflictResolution.class, "ConflictResolution");
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.ROLLBACK);

@@ -5,7 +5,7 @@ import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statment;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.serializer.ISerializer;
@@ -52,8 +52,8 @@ public class SqliteMigrationGenerator {
     _builder.append("public void up(SQLiteDatabase db) {");
     _builder.newLine();
     {
-      EList<Statment> _statements = snapshot.getStatements();
-      for(final Statment stmt : _statements) {
+      EList<Statement> _statements = snapshot.getStatements();
+      for(final Statement stmt : _statements) {
         _builder.append("\t\t");
         _builder.append("db.execSQL(");
         _builder.newLine();

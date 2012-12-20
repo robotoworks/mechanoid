@@ -57,7 +57,17 @@ public enum ColumnType implements Enumerator
    * @generated
    * @ordered
    */
-  BLOB(3, "blob", "blob");
+  BLOB(3, "blob", "blob"),
+
+  /**
+   * The '<em><b>Boolean</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #BOOLEAN_VALUE
+   * @generated
+   * @ordered
+   */
+  BOOLEAN(4, "boolean", "boolean");
 
   /**
    * The '<em><b>Text</b></em>' literal value.
@@ -120,6 +130,21 @@ public enum ColumnType implements Enumerator
   public static final int BLOB_VALUE = 3;
 
   /**
+   * The '<em><b>Boolean</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Boolean</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #BOOLEAN
+   * @model name="boolean"
+   * @generated
+   * @ordered
+   */
+  public static final int BOOLEAN_VALUE = 4;
+
+  /**
    * An array of all the '<em><b>Column Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +157,7 @@ public enum ColumnType implements Enumerator
       INTEGER,
       REAL,
       BLOB,
+      BOOLEAN,
     };
 
   /**
@@ -194,6 +220,7 @@ public enum ColumnType implements Enumerator
       case INTEGER_VALUE: return INTEGER;
       case REAL_VALUE: return REAL;
       case BLOB_VALUE: return BLOB;
+      case BOOLEAN_VALUE: return BOOLEAN;
     }
     return null;
   }

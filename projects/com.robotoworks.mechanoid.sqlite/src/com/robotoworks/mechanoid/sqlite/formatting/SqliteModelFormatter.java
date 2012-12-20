@@ -26,7 +26,7 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
 		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
 				
-		c.setLinewrap().after(g.getStatmentAccess().getLeftParenthesisKeyword_0_4());
+		c.setLinewrap().after(g.getStatementAccess().getLeftParenthesisKeyword_0_4());
 		c.setLinewrap().after(g.getColumnDefRule());
 	}
 }
