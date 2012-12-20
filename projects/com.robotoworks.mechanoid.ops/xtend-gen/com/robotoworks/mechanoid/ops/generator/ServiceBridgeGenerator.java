@@ -43,9 +43,9 @@ public class ServiceBridgeGenerator {
     _builder.append(_pascalize, "");
     _builder.append("Service;");
     _builder.newLineIfNotEmpty();
-    _builder.append("import android.content.Context;");
-    _builder.newLine();
     _builder.append("import android.content.Intent;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.Mechanoid;\t\t\t");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public abstract class Abstract");
@@ -82,11 +82,16 @@ public class ServiceBridgeGenerator {
         String _name_3 = op.getName();
         String _pascalize_3 = Strings.pascalize(_name_3);
         _builder.append(_pascalize_3, "	");
-        _builder.append("Operation(Context context");
+        _builder.append("Operation(");
         {
           EList<OperationArg> _args = op.getArgs();
+          boolean _hasElements = false;
           for(final OperationArg arg : _args) {
-            _builder.append(", ");
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder.appendImmediate(", ", "	");
+            }
             OpArgType _type = arg.getType();
             String _typeLiteral = Extensions.toTypeLiteral(_type);
             _builder.append(_typeLiteral, "	");
@@ -108,11 +113,16 @@ public class ServiceBridgeGenerator {
         String _name_6 = op.getName();
         String _pascalize_5 = Strings.pascalize(_name_6);
         _builder.append(_pascalize_5, "		");
-        _builder.append("Intent(context");
+        _builder.append("Intent(");
         {
           EList<OperationArg> _args_1 = op.getArgs();
+          boolean _hasElements_1 = false;
           for(final OperationArg arg_1 : _args_1) {
-            _builder.append(", ");
+            if (!_hasElements_1) {
+              _hasElements_1 = true;
+            } else {
+              _builder.appendImmediate(", ", "		");
+            }
             String _name_7 = arg_1.getName();
             String _camelize_1 = Strings.camelize(_name_7);
             _builder.append(_camelize_1, "		");
@@ -212,14 +222,14 @@ public class ServiceBridgeGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("int requestId = createServiceRequest(context, intent);");
+        _builder.append("int requestId = createServiceRequest(intent);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("context.startService(intent);");
+        _builder.append("Mechanoid.startService(intent);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");

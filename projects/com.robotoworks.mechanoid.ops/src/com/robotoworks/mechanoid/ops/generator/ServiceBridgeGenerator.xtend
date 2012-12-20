@@ -16,8 +16,8 @@ class ServiceBridgeGenerator {
 			
 			import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 			import «model.packageName».«svc.name.pascalize»Service;
-			import android.content.Context;
 			import android.content.Intent;
+			import com.robotoworks.mechanoid.Mechanoid;			
 			
 			public abstract class Abstract«svc.name.pascalize»ServiceBridge extends OperationServiceBridge {
 				private static final Class<?> SERVICE_CLASS = «svc.name.pascalize»Service.class;
@@ -28,8 +28,8 @@ class ServiceBridgeGenerator {
 			
 				
 				«FOR op : svc.ops»
-				public int execute«op.name.pascalize»Operation(Context context«FOR arg : op.args», «arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
-					Intent intent = Abstract«op.name.pascalize»Operation.create«op.name.pascalize»Intent(context«FOR arg : op.args», «arg.name.camelize»«ENDFOR»);
+				public int execute«op.name.pascalize»Operation(«FOR arg : op.args SEPARATOR ', '»«arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
+					Intent intent = Abstract«op.name.pascalize»Operation.create«op.name.pascalize»Intent(«FOR arg : op.args SEPARATOR ', '»«arg.name.camelize»«ENDFOR»);
 					
 					«IF op.unique != null && op.unique.args.size > 0»
 					android.os.Bundle matcher = new android.os.Bundle();
@@ -45,9 +45,9 @@ class ServiceBridgeGenerator {
 						return extractRequestId(existingRequest);
 					}
 					
-					int requestId = createServiceRequest(context, intent);
+					int requestId = createServiceRequest(intent);
 					
-					context.startService(intent);
+					Mechanoid.startService(intent);
 					
 					return requestId;
 				}

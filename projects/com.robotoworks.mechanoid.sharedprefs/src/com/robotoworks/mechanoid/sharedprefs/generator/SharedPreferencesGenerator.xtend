@@ -18,6 +18,7 @@ class SharedPreferencesGenerator {
 			import android.content.Context;
 			import android.content.SharedPreferences;
 			import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+			import com.robotoworks.mechanoid.Mechanoid;
 			
 			public class «sp.name.pascalize»Preferences {
 				
@@ -33,9 +34,9 @@ class SharedPreferencesGenerator {
 			
 				private static «sp.name.pascalize»Preferences sInstance;
 			
-				public static «sp.name.pascalize»Preferences getInstance(Context context) {
+				public static «sp.name.pascalize»Preferences getInstance() {
 					if(sInstance == null) {
-						sInstance = new «sp.name.pascalize»Preferences(context);
+						sInstance = new «sp.name.pascalize»Preferences(Mechanoid.getApplicationContext());
 					}
 					
 					return sInstance;

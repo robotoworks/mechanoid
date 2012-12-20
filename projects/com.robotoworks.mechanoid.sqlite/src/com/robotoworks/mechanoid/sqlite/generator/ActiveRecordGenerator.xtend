@@ -29,7 +29,8 @@ class ActiveRecordGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-						
+			import com.robotoworks.mechanoid.Mechanoid;
+			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
 			    	= new Parcelable.Creator<«stmt.name.pascalize»Record>() {
@@ -107,13 +108,13 @@ class ActiveRecordGenerator {
 				}
 			    
 			    @Override
-				public long save(ContentResolver resolver){
+				public long save(){
 					Builder builder = createBuilder();
 					
 					if(m_id > 0) {
-					    builder.update(resolver, m_id);
+					    builder.update(m_id);
 					} else {
-					    Uri uri = builder.insert(resolver);
+					    Uri uri = builder.insert();
 					    m_id = ContentUris.parseId(uri);
 					}
 					
@@ -121,14 +122,16 @@ class ActiveRecordGenerator {
 				}
 				
 			    @Override
-				public int update(ContentResolver resolver, SQuery query){
+				public int update(SQuery query){
 					Builder builder = createBuilder();
 					
-					return builder.update(resolver, query);
+					return builder.update(query);
 				}
 				
 			    @Override
-				public boolean delete(ContentResolver resolver){
+				public boolean delete(){
+					ContentResolver resolver = Mechanoid.getContentResolver();
+					
 					return resolver.delete(
 						«stmt.name.pascalize».CONTENT_URI.buildUpon()
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
@@ -148,8 +151,10 @@ class ActiveRecordGenerator {
 				    return item;
 				}
 				
-				public static «stmt.name.pascalize»Record get(ContentResolver resolver, long id) {
+				public static «stmt.name.pascalize»Record get(long id) {
 				    Cursor c = null;
+				    
+				    ContentResolver resolver = Mechanoid.getContentResolver();
 				    
 				    try {
 				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI.buildUpon()

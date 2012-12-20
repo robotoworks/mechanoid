@@ -25,6 +25,7 @@ class ContentProviderContractGenerator {
 			import android.provider.BaseColumns;
 			import android.content.ContentResolver;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
+			import com.robotoworks.mechanoid.Mechanoid;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -127,23 +128,26 @@ class ContentProviderContractGenerator {
 						/**
 						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
 						 */								
-						public Uri insert(ContentResolver contentResolver) {
-							return contentResolver.insert(CONTENT_URI, mValues);
+						public Uri insert() {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.insert(CONTENT_URI, mValues);
 						}
 						
 						/**
 						 * <p>Update «tbl.name.pascalize» with the given query</p>
 						 */						
-						public int update(ContentResolver contentResolver, SQuery query) {
-							return contentResolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+						public int update(SQuery query) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
 						}
 						
 						«IF tbl.hasAndroidPrimaryKey»
 						/**
 						 * <p>Update «tbl.name.pascalize» with the given id</p>
 						 */
-						public int update(ContentResolver contentResolver, long id) {
-							return contentResolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
+						public int update(long id) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
 						}
 						
 						«ENDIF»

@@ -11,6 +11,8 @@ package com.robotoworks.mechanoid.ops;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import com.robotoworks.mechanoid.Mechanoid;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -87,7 +89,8 @@ public abstract class OperationServiceBridge {
 	 * @param intent
 	 * @return request id
 	 */
-	protected int createServiceRequest(Context context, Intent intent) {
+	protected int createServiceRequest(Intent intent) {
+		Context context = Mechanoid.getApplicationContext();
 		int id = createRequestId();
 		intent.setClass(context, getServiceClass());
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
@@ -167,7 +170,8 @@ public abstract class OperationServiceBridge {
 	 * @param requestId The id of the operation to abort
 	 * @param reason A code used to identify a reason for aborting
 	 */
-	public void abort(Context context, int requestId, int reason) {
+	public void abort(int requestId, int reason) {
+		Context context = Mechanoid.getApplicationContext();
 		Intent intent = new Intent(OperationService.ACTION_ABORT);
 		intent.setClass(context, getServiceClass());
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
@@ -186,7 +190,9 @@ public abstract class OperationServiceBridge {
 	 * @param intent
 	 * @return the request id
 	 */
-	public int execute(Context context, Intent intent) {
+	public int execute(Intent intent) {
+		
+		Context context = Mechanoid.getApplicationContext();
 		
 		intent.setClass(context, getServiceClass());
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);

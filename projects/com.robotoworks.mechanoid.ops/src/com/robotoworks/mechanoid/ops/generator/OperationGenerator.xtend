@@ -35,7 +35,7 @@ class OperationGenerator {
 				}
 				«ENDFOR»
 			
-				public static final Intent create«op.name.pascalize»Intent(Context context«FOR arg: op.args», «arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
+				public static final Intent create«op.name.pascalize»Intent(«FOR arg: op.args SEPARATOR ', '»«arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
 					Intent intent = new Intent(ACTION_«op.name.underscore.toUpperCase»);
 					
 					Bundle extras = new Bundle();
