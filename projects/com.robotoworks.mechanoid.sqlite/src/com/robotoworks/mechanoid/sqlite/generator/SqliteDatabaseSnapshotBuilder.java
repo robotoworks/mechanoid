@@ -1,6 +1,8 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 
+import java.util.LinkedHashMap;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -14,25 +16,29 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 
 public class SqliteDatabaseSnapshotBuilder {
 	@Inject private ISerializer serializer;
 	
-	private DatabaseImage mImage;
+	public LinkedHashMap<String, CreateTableStatement> mTables = new LinkedHashMap<String, CreateTableStatement>();
+	public LinkedHashMap<String, CreateViewStatement> mViews = new LinkedHashMap<String, CreateViewStatement>();
+	public LinkedHashMap<String, CreateTriggerStatement> mTriggers = new LinkedHashMap<String, CreateTriggerStatement>();
+	public String mPackageName;
+	
 	private Model mSnapshotModel;
 		
 	public Model build(Model model) {
 		
-		mImage = new DatabaseImage();
-						
 		buildSnapshot(model);
 				
 		buildSnapshotModel();
@@ -44,47 +50,55 @@ public class SqliteDatabaseSnapshotBuilder {
 		DatabaseBlock database = model.getDatabase();
 		
 		for(MigrationBlock migration : database.getMigrations()) {
-			EList<Statement> statements = migration.getStatements();
+			EList<DDLStatement> statements = migration.getStatements();
 			
-			for(Statement statement : statements) {
+			for(DDLStatement statement : statements) {
 				if(statement instanceof CreateTableStatement) {
 					
 					CreateTableStatement createTableStmt = (CreateTableStatement) statement;
 					
 					CreateTableStatement copy = EcoreUtil.copy(createTableStmt);
-					mImage.tables.put(createTableStmt.getName(), copy);
+					mTables.put(createTableStmt.getName(), copy);
 					
 				} else if (statement instanceof CreateViewStatement) {
 					
 					CreateViewStatement createViewStmt = (CreateViewStatement) statement;
 					
-					mImage.views.put(createViewStmt.getName(), createViewStmt);
+					mViews.put(createViewStmt.getName(), createViewStmt);
 					
 				} else if(statement instanceof AlterTableStatement) {
 					
 					AlterTableStatement alter = (AlterTableStatement) statement;
 					
-					CreateTableStatement tableToAlter = mImage.tables.get(alter.getName());
+					CreateTableStatement tableToAlter = mTables.get(alter.getName());
 					
 					if(alter.getClause() instanceof AlterTableRenameClause) {
 						
 						AlterTableRenameClause renameClause = (AlterTableRenameClause) alter.getClause();
 						tableToAlter.setName(renameClause.getName());
 						
-						mImage.tables.put(renameClause.getName(), tableToAlter);
-						mImage.tables.remove(alter.getName());
+						mTables.put(renameClause.getName(), tableToAlter);
+						mTables.remove(alter.getName());
 						
 					} else if(alter.getClause() instanceof AlterTableAddColumnClause) {
 						
 						AlterTableAddColumnClause addColumnClause = (AlterTableAddColumnClause) alter.getClause();
 						tableToAlter.getColumnDefs().add(EcoreUtil.copy(addColumnClause.getColumnDef()));				
 					} 
+				} else if (statement instanceof CreateTriggerStatement) {
+					CreateTriggerStatement createTriggerStmt = (CreateTriggerStatement) statement;
+					
+					mTriggers.put(createTriggerStmt.getName(), createTriggerStmt);
+					
 				} else if (statement instanceof DropTableStatement) {
 					DropTableStatement dropTableStmt = (DropTableStatement) statement;
-					mImage.tables.remove(dropTableStmt.getName());
+					mTables.remove(dropTableStmt.getName());
 				} else if (statement instanceof DropViewStatement) {
 					DropViewStatement dropViewStmt = (DropViewStatement) statement;
-					mImage.views.remove(dropViewStmt.getName());
+					mViews.remove(dropViewStmt.getName());
+				} else if (statement instanceof DropTriggerStatement) {
+					DropTriggerStatement dropTriggerStmt = (DropTriggerStatement) statement;
+					mTriggers.remove(dropTriggerStmt.getName());					
 				}
 			}
 		}
@@ -109,11 +123,15 @@ public class SqliteDatabaseSnapshotBuilder {
 		
 		res.getContents().add(mSnapshotModel);
 		
-		for(CreateTableStatement stmt : mImage.tables.values()) {
+		for(CreateTableStatement stmt : mTables.values()) {
 			migration.getStatements().add(stmt);
 		}
 		
-		for(CreateViewStatement stmt : mImage.views.values()) {
+		for(CreateViewStatement stmt : mViews.values()) {
+			migration.getStatements().add(stmt);
+		}
+		
+		for(CreateTriggerStatement stmt : mTriggers.values()) {
 			migration.getStatements().add(stmt);
 		}
 		

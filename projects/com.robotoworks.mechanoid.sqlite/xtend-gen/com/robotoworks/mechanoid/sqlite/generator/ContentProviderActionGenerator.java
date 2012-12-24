@@ -9,9 +9,9 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -911,7 +911,7 @@ public class ContentProviderActionGenerator {
     return _and;
   }
   
-  public CharSequence generate(final Model model, final Statement tbl, final boolean forId) {
+  public CharSequence generate(final Model model, final DDLStatement tbl, final boolean forId) {
     if (tbl instanceof CreateTableStatement) {
       return _generate(model, (CreateTableStatement)tbl, forId);
     } else if (tbl instanceof CreateViewStatement) {
@@ -922,7 +922,7 @@ public class ContentProviderActionGenerator {
     }
   }
   
-  public CharSequence generateStub(final Model model, final Statement tbl, final boolean forId) {
+  public CharSequence generateStub(final Model model, final DDLStatement tbl, final boolean forId) {
     if (tbl instanceof CreateTableStatement) {
       return _generateStub(model, (CreateTableStatement)tbl, forId);
     } else if (tbl instanceof CreateViewStatement) {

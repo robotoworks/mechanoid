@@ -129,10 +129,56 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.STATEMENT:
+      case SqliteModelPackage.DDL_STATEMENT:
       {
-        Statement statement = (Statement)theEObject;
-        T result = caseStatement(statement);
+        DDLStatement ddlStatement = (DDLStatement)theEObject;
+        T result = caseDDLStatement(ddlStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DML_STATEMENT:
+      {
+        DMLStatement dmlStatement = (DMLStatement)theEObject;
+        T result = caseDMLStatement(dmlStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DELETE_STATEMENT:
+      {
+        DeleteStatement deleteStatement = (DeleteStatement)theEObject;
+        T result = caseDeleteStatement(deleteStatement);
+        if (result == null) result = caseDMLStatement(deleteStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.INSERT_STATEMENT:
+      {
+        InsertStatement insertStatement = (InsertStatement)theEObject;
+        T result = caseInsertStatement(insertStatement);
+        if (result == null) result = caseDMLStatement(insertStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.UPDATE_STATEMENT:
+      {
+        UpdateStatement updateStatement = (UpdateStatement)theEObject;
+        T result = caseUpdateStatement(updateStatement);
+        if (result == null) result = caseDMLStatement(updateStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION:
+      {
+        UpdateColumnExpression updateColumnExpression = (UpdateColumnExpression)theEObject;
+        T result = caseUpdateColumnExpression(updateColumnExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SELECT_STATEMENT:
+      {
+        SelectStatement selectStatement = (SelectStatement)theEObject;
+        T result = caseSelectStatement(selectStatement);
+        if (result == null) result = caseDMLStatement(selectStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -175,13 +221,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         IndexedColumn indexedColumn = (IndexedColumn)theEObject;
         T result = caseIndexedColumn(indexedColumn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SELECT_STATEMENT:
-      {
-        SelectStatement selectStatement = (SelectStatement)theEObject;
-        T result = caseSelectStatement(selectStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -373,15 +412,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
         T result = caseCreateTableStatement(createTableStatement);
-        if (result == null) result = caseStatement(createTableStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT:
-      {
-        AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
-        T result = caseAlterTableStatement(alterTableStatement);
-        if (result == null) result = caseStatement(alterTableStatement);
+        if (result == null) result = caseDDLStatement(createTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -389,7 +420,23 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
         T result = caseCreateViewStatement(createViewStatement);
-        if (result == null) result = caseStatement(createViewStatement);
+        if (result == null) result = caseDDLStatement(createViewStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT:
+      {
+        CreateTriggerStatement createTriggerStatement = (CreateTriggerStatement)theEObject;
+        T result = caseCreateTriggerStatement(createTriggerStatement);
+        if (result == null) result = caseDDLStatement(createTriggerStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT:
+      {
+        AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
+        T result = caseAlterTableStatement(alterTableStatement);
+        if (result == null) result = caseDDLStatement(alterTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -397,7 +444,15 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         DropTableStatement dropTableStatement = (DropTableStatement)theEObject;
         T result = caseDropTableStatement(dropTableStatement);
-        if (result == null) result = caseStatement(dropTableStatement);
+        if (result == null) result = caseDDLStatement(dropTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT:
+      {
+        DropTriggerStatement dropTriggerStatement = (DropTriggerStatement)theEObject;
+        T result = caseDropTriggerStatement(dropTriggerStatement);
+        if (result == null) result = caseDDLStatement(dropTriggerStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -405,7 +460,7 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
         T result = caseDropViewStatement(dropViewStatement);
-        if (result == null) result = caseStatement(dropViewStatement);
+        if (result == null) result = caseDDLStatement(dropViewStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -718,17 +773,113 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>DDL Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>DDL Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStatement(Statement object)
+  public T caseDDLStatement(DDLStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>DML Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>DML Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDMLStatement(DMLStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Delete Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Delete Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeleteStatement(DeleteStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Insert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Insert Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInsertStatement(InsertStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdateStatement(UpdateStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update Column Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update Column Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdateColumnExpression(UpdateColumnExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectStatement(SelectStatement object)
   {
     return null;
   }
@@ -825,22 +976,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseIndexedColumn(IndexedColumn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelectStatement(SelectStatement object)
   {
     return null;
   }
@@ -1246,22 +1381,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableStatement(AlterTableStatement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1278,6 +1397,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateTriggerStatement(CreateTriggerStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlterTableStatement(AlterTableStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1289,6 +1440,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDropTableStatement(DropTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropTriggerStatement(DropTriggerStatement object)
   {
     return null;
   }

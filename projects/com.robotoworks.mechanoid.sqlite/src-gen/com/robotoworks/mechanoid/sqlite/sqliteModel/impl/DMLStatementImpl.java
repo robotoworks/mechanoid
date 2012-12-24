@@ -2,28 +2,30 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Drop Table Statement</b></em>'.
+ * An implementation of the model object '<em><b>DML Statement</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class DropTableStatementImpl extends DDLStatementImpl implements DropTableStatement
+public class DMLStatementImpl extends MinimalEObjectImpl.Container implements DMLStatement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DropTableStatementImpl()
+  protected DMLStatementImpl()
   {
     super();
   }
@@ -36,7 +38,7 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.DROP_TABLE_STATEMENT;
+    return SqliteModelPackage.Literals.DML_STATEMENT;
   }
 
-} //DropTableStatementImpl
+} //DMLStatementImpl

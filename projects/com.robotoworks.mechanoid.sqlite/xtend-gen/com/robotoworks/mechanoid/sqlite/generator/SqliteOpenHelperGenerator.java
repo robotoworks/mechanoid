@@ -4,11 +4,12 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.serializer.ISerializer;
@@ -104,7 +105,7 @@ public class SqliteOpenHelperGenerator {
     _builder.append("public interface Tables {");
     _builder.newLine();
     {
-      EList<Statement> _statements = snapshot.getStatements();
+      EList<DDLStatement> _statements = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
       for(final CreateTableStatement table : _filter) {
         _builder.append("\t\t");
@@ -121,7 +122,7 @@ public class SqliteOpenHelperGenerator {
       }
     }
     {
-      EList<Statement> _statements_1 = snapshot.getStatements();
+      EList<DDLStatement> _statements_1 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
       for(final CreateViewStatement view : _filter_1) {
         _builder.append("\t\t");
@@ -163,7 +164,7 @@ public class SqliteOpenHelperGenerator {
     _builder.append("public void onCreate(SQLiteDatabase db) {");
     _builder.newLine();
     {
-      EList<Statement> _statements_2 = snapshot.getStatements();
+      EList<DDLStatement> _statements_2 = snapshot.getStatements();
       Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
       for(final CreateTableStatement table_1 : _filter_2) {
         _builder.append("\t\t");
@@ -195,7 +196,7 @@ public class SqliteOpenHelperGenerator {
       }
     }
     {
-      EList<Statement> _statements_3 = snapshot.getStatements();
+      EList<DDLStatement> _statements_3 = snapshot.getStatements();
       Iterable<CreateViewStatement> _filter_3 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
       for(final CreateViewStatement view_1 : _filter_3) {
         _builder.append("\t\t");
@@ -217,6 +218,40 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\"");
             String _trim_3 = line_1.trim();
             _builder.append(_trim_3, "			");
+            _builder.append(" \"");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.append(");");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.newLine();
+      }
+    }
+    {
+      EList<DDLStatement> _statements_4 = snapshot.getStatements();
+      Iterable<CreateTriggerStatement> _filter_4 = Iterables.<CreateTriggerStatement>filter(_statements_4, CreateTriggerStatement.class);
+      for(final CreateTriggerStatement trigger : _filter_4) {
+        _builder.append("\t\t");
+        _builder.append("db.execSQL(");
+        _builder.newLine();
+        {
+          String _serialize_2 = this._iSerializer.serialize(trigger);
+          String _trim_4 = _serialize_2.trim();
+          String[] _split_2 = _trim_4.split("\\r?\\n");
+          boolean _hasElements_2 = false;
+          for(final String line_2 : _split_2) {
+            if (!_hasElements_2) {
+              _hasElements_2 = true;
+            } else {
+              _builder.appendImmediate(" +", "			");
+            }
+            _builder.append("\t\t");
+            _builder.append("\t");
+            _builder.append("\"");
+            String _trim_5 = line_2.trim();
+            _builder.append(_trim_5, "			");
             _builder.append(" \"");
             _builder.newLineIfNotEmpty();
           }

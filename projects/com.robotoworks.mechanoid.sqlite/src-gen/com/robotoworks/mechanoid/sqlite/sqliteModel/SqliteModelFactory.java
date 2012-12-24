@@ -95,13 +95,67 @@ public interface SqliteModelFactory extends EFactory
   Case createCase();
 
   /**
-   * Returns a new object of class '<em>Statement</em>'.
+   * Returns a new object of class '<em>DDL Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Statement</em>'.
+   * @return a new object of class '<em>DDL Statement</em>'.
    * @generated
    */
-  Statement createStatement();
+  DDLStatement createDDLStatement();
+
+  /**
+   * Returns a new object of class '<em>DML Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>DML Statement</em>'.
+   * @generated
+   */
+  DMLStatement createDMLStatement();
+
+  /**
+   * Returns a new object of class '<em>Delete Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Delete Statement</em>'.
+   * @generated
+   */
+  DeleteStatement createDeleteStatement();
+
+  /**
+   * Returns a new object of class '<em>Insert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Insert Statement</em>'.
+   * @generated
+   */
+  InsertStatement createInsertStatement();
+
+  /**
+   * Returns a new object of class '<em>Update Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update Statement</em>'.
+   * @generated
+   */
+  UpdateStatement createUpdateStatement();
+
+  /**
+   * Returns a new object of class '<em>Update Column Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update Column Expression</em>'.
+   * @generated
+   */
+  UpdateColumnExpression createUpdateColumnExpression();
+
+  /**
+   * Returns a new object of class '<em>Select Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Statement</em>'.
+   * @generated
+   */
+  SelectStatement createSelectStatement();
 
   /**
    * Returns a new object of class '<em>Alter Table Clause</em>'.
@@ -156,15 +210,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   IndexedColumn createIndexedColumn();
-
-  /**
-   * Returns a new object of class '<em>Select Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select Statement</em>'.
-   * @generated
-   */
-  SelectStatement createSelectStatement();
 
   /**
    * Returns a new object of class '<em>Ordering Term</em>'.
@@ -392,15 +437,6 @@ public interface SqliteModelFactory extends EFactory
   CreateTableStatement createCreateTableStatement();
 
   /**
-   * Returns a new object of class '<em>Alter Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Statement</em>'.
-   * @generated
-   */
-  AlterTableStatement createAlterTableStatement();
-
-  /**
    * Returns a new object of class '<em>Create View Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -410,6 +446,24 @@ public interface SqliteModelFactory extends EFactory
   CreateViewStatement createCreateViewStatement();
 
   /**
+   * Returns a new object of class '<em>Create Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create Trigger Statement</em>'.
+   * @generated
+   */
+  CreateTriggerStatement createCreateTriggerStatement();
+
+  /**
+   * Returns a new object of class '<em>Alter Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alter Table Statement</em>'.
+   * @generated
+   */
+  AlterTableStatement createAlterTableStatement();
+
+  /**
    * Returns a new object of class '<em>Drop Table Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -417,6 +471,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   DropTableStatement createDropTableStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop Trigger Statement</em>'.
+   * @generated
+   */
+  DropTriggerStatement createDropTriggerStatement();
 
   /**
    * Returns a new object of class '<em>Drop View Statement</em>'.

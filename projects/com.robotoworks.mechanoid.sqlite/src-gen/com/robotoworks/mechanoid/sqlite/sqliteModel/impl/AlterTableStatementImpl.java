@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AlterTableStatementImpl extends StatementImpl implements AlterTableStatement
+public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTableStatement
 {
   /**
    * The cached value of the '{@link #getClause() <em>Clause</em>}' containment reference.
