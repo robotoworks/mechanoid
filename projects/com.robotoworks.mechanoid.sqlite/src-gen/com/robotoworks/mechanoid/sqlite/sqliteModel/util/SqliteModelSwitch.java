@@ -280,6 +280,13 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.TABLE_SOURCE:
+      {
+        TableSource tableSource = (TableSource)theEObject;
+        T result = caseTableSource(tableSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.ACTION_STATEMENT:
       {
         ActionStatement actionStatement = (ActionStatement)theEObject;
@@ -573,14 +580,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         ResultColumnAll resultColumnAll = (ResultColumnAll)theEObject;
         T result = caseResultColumnAll(resultColumnAll);
         if (result == null) result = caseResultColumn(resultColumnAll);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF:
-      {
-        ResultColumnAllWithTableRef resultColumnAllWithTableRef = (ResultColumnAllWithTableRef)theEObject;
-        T result = caseResultColumnAllWithTableRef(resultColumnAllWithTableRef);
-        if (result == null) result = caseResultColumn(resultColumnAllWithTableRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1104,6 +1103,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLiteralValue(LiteralValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Table Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Table Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTableSource(TableSource object)
   {
     return null;
   }
@@ -1696,22 +1711,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseResultColumnAll(ResultColumnAll object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column All With Table Ref</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column All With Table Ref</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultColumnAllWithTableRef(ResultColumnAllWithTableRef object)
   {
     return null;
   }

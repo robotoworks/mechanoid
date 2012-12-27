@@ -17,7 +17,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
@@ -977,15 +976,9 @@ public class ContentProviderContractGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateInterfaceMemberForResultColumn(final ResultColumnAllWithTableRef column) {
-    return null;
-  }
-  
   public CharSequence generateInterfaceMemberForResultColumn(final ResultColumn column) {
     if (column instanceof ResultColumnAll) {
       return _generateInterfaceMemberForResultColumn((ResultColumnAll)column);
-    } else if (column instanceof ResultColumnAllWithTableRef) {
-      return _generateInterfaceMemberForResultColumn((ResultColumnAllWithTableRef)column);
     } else if (column instanceof ResultColumnExpression) {
       return _generateInterfaceMemberForResultColumn((ResultColumnExpression)column);
     } else {

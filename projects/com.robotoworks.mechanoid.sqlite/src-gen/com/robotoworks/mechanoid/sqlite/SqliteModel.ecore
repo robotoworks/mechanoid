@@ -155,6 +155,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolution" eType="#//ConflictResolution"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TableSource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableAlias" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//ConfigurationStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -326,8 +330,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceTable" eSuperTypes="#//SingleSource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//TableSource"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceSelectStatement" eSuperTypes="#//SingleSource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
@@ -337,9 +341,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinSource" eType="#//JoinSource"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultColumnAll" eSuperTypes="#//ResultColumn"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultColumnAllWithTableRef" eSuperTypes="#//ResultColumn">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableRef" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResultColumnAll" eSuperTypes="#//ResultColumn">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableSource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResultColumnExpression" eSuperTypes="#//ResultColumn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"

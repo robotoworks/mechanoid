@@ -284,6 +284,15 @@ public interface SqliteModelFactory extends EFactory
   LiteralValue createLiteralValue();
 
   /**
+   * Returns a new object of class '<em>Table Source</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Source</em>'.
+   * @generated
+   */
+  TableSource createTableSource();
+
+  /**
    * Returns a new object of class '<em>Action Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -615,15 +624,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   ResultColumnAll createResultColumnAll();
-
-  /**
-   * Returns a new object of class '<em>Result Column All With Table Ref</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column All With Table Ref</em>'.
-   * @generated
-   */
-  ResultColumnAllWithTableRef createResultColumnAllWithTableRef();
 
   /**
    * Returns a new object of class '<em>Result Column Expression</em>'.

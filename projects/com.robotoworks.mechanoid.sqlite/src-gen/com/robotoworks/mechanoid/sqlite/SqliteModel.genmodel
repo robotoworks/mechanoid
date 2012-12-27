@@ -133,6 +133,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ConflictClause/resolution"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//LiteralValue"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//TableSource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//TableSource/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//TableSource/tableAlias"/>
+    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ActionStatement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ActionStatement/path"/>
     </genClasses>
@@ -263,8 +267,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CheckTableConstraint/expression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceTable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/tableName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceTable/source"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceSelectStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceSelectStatement/selectStatement"/>
@@ -272,9 +275,8 @@
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceJoin">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceJoin/joinSource"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnAll"/>
-    <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnAllWithTableRef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnAllWithTableRef/tableRef"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnAll">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ResultColumnAll/table"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ResultColumnExpression/expression"/>

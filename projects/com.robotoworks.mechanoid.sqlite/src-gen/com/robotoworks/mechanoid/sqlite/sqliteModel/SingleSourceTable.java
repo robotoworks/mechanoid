@@ -11,8 +11,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableName <em>Table Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,55 +22,29 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface SingleSourceTable extends SingleSource
 {
   /**
-   * Returns the value of the '<em><b>Table Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Source</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Source</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table Name</em>' attribute.
-   * @see #setTableName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_TableName()
-   * @model
+   * @return the value of the '<em>Source</em>' containment reference.
+   * @see #setSource(TableSource)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Source()
+   * @model containment="true"
    * @generated
    */
-  String getTableName();
+  TableSource getSource();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableName <em>Table Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getSource <em>Source</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table Name</em>' attribute.
-   * @see #getTableName()
+   * @param value the new value of the '<em>Source</em>' containment reference.
+   * @see #getSource()
    * @generated
    */
-  void setTableName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setSource(TableSource value);
 
 } // SingleSourceTable

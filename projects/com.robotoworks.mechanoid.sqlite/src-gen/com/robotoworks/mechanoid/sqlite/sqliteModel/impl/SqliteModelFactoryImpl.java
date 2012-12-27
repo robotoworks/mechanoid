@@ -94,6 +94,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
+      case SqliteModelPackage.TABLE_SOURCE: return createTableSource();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
       case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT: return createActiveRecordRegistrationStatement();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
@@ -131,7 +132,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
       case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
       case SqliteModelPackage.RESULT_COLUMN_ALL: return createResultColumnAll();
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF: return createResultColumnAllWithTableRef();
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION: return createResultColumnExpression();
       case SqliteModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       case SqliteModelPackage.STRING_LITERAL: return createStringLiteral();
@@ -503,6 +503,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     LiteralValueImpl literalValue = new LiteralValueImpl();
     return literalValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TableSource createTableSource()
+  {
+    TableSourceImpl tableSource = new TableSourceImpl();
+    return tableSource;
   }
 
   /**
@@ -910,17 +921,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ResultColumnAllImpl resultColumnAll = new ResultColumnAllImpl();
     return resultColumnAll;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumnAllWithTableRef createResultColumnAllWithTableRef()
-  {
-    ResultColumnAllWithTableRefImpl resultColumnAllWithTableRef = new ResultColumnAllWithTableRefImpl();
-    return resultColumnAllWithTableRef;
   }
 
   /**

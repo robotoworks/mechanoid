@@ -5,7 +5,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
@@ -209,10 +208,6 @@ class ContentProviderContractGenerator {
 		String «column.name.underscore.toUpperCase» = "«column.name»";
 		«ENDIF»
 		'''		
-	}
-
-	def dispatch generateInterfaceMemberForResultColumn(ResultColumnAllWithTableRef column) { 
-		
 	}
 	
 }

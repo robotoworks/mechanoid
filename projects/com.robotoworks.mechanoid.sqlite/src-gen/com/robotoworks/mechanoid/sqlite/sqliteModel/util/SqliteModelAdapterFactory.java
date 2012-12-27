@@ -220,6 +220,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createLiteralValueAdapter();
       }
       @Override
+      public Adapter caseTableSource(TableSource object)
+      {
+        return createTableSourceAdapter();
+      }
+      @Override
       public Adapter caseActionStatement(ActionStatement object)
       {
         return createActionStatementAdapter();
@@ -403,11 +408,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseResultColumnAll(ResultColumnAll object)
       {
         return createResultColumnAllAdapter();
-      }
-      @Override
-      public Adapter caseResultColumnAllWithTableRef(ResultColumnAllWithTableRef object)
-      {
-        return createResultColumnAllWithTableRefAdapter();
       }
       @Override
       public Adapter caseResultColumnExpression(ResultColumnExpression object)
@@ -897,6 +897,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.TableSource <em>Table Source</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.TableSource
+   * @generated
+   */
+  public Adapter createTableSourceAdapter()
   {
     return null;
   }
@@ -1452,21 +1467,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createResultColumnAllAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef <em>Result Column All With Table Ref</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef
-   * @generated
-   */
-  public Adapter createResultColumnAllWithTableRefAdapter()
   {
     return null;
   }

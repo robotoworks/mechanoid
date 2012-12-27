@@ -190,7 +190,7 @@ JoinSource:
 ;
 
 SingleSource:
-	{SingleSourceTable} tableName=ID ('as' name=ID)? |
+	{SingleSourceTable} source=TableSource |
 	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' |
 	{SingleSourceJoin} '(' joinSource=JoinSource ')'
 ;
@@ -200,8 +200,7 @@ JoinStatement:
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 ResultColumn:
-	{ResultColumnAll} '*' |
-	{ResultColumnAllWithTableRef} tableRef=ID'.' '*' |
+	{ResultColumnAll} (table=[TableSource])? '*' |
 	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
 ;
 
@@ -235,3 +234,7 @@ terminal STRING	:
 
 FQN:
 	ID ("." ID)*;
+	
+TableSource:
+	table=[CreateTableStatement] ('as' tableAlias=ID)?
+;
