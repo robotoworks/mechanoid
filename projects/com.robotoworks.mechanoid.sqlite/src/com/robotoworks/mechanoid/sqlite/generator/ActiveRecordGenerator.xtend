@@ -14,9 +14,6 @@ class ActiveRecordGenerator {
 			 */
 			package «model.packageName»;
 
-			import java.util.ArrayList;
-			import java.util.List;
-			
 			import android.content.ContentResolver;
 			import android.content.ContentUris;
 			import android.database.Cursor;
@@ -137,16 +134,53 @@ class ActiveRecordGenerator {
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
 				}
 				
+			    @Override
+				public void setDirty(boolean dirty){
+					«FOR col : stmt.columnDefs»
+					m«col.name.pascalize»Dirty = dirty;
+					«ENDFOR»
+				}
+				
+			    @Override
+				public void reload(){
+					if(m_id == 0) {
+						return;
+					}
+				    
+				    Cursor c = null;
+				    
+				    ContentResolver resolver = Mechanoid.getContentResolver();
+				    
+				    try {
+				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI.buildUpon()
+						.appendPath(String.valueOf(m_id)).build(), PROJECTION, null, null, null);
+				        
+				        if(c.moveToFirst()) {
+				        	setPropertiesFromCursor(c);
+				        	setDirty(false);
+				        }
+				    } finally {
+				        Closeables.closeSilently(c);
+				    }
+				}
+				
+				protected void setPropertiesFromCursor(Cursor c) {
+					setId(c.getLong(Indices._ID));
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«IF col.type == ColumnType::BOOLEAN»
+					set«col.name.pascalize»(c.getInt(Indices.«col.name.underscore.toUpperCase») > 0);
+					«ELSE»
+					set«col.name.pascalize»(c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»));
+					«ENDIF»
+					«ENDFOR»
+				}
+				
 				public static «stmt.name.pascalize»Record fromCursor(Cursor c) {
 				    «stmt.name.pascalize»Record item = new «stmt.name.pascalize»Record();
 				    
-					«FOR col : stmt.columnDefs»
-					«IF col.type == ColumnType::BOOLEAN»
-					item.m«col.name.pascalize» = c.getInt(Indices.«col.name.underscore.toUpperCase») > 0;
-					«ELSE»
-					item.m«col.name.pascalize» = c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»);
-					«ENDIF»
-					«ENDFOR»
+					item.setPropertiesFromCursor(c);
+					
+					item.setDirty(false);
 					
 				    return item;
 				}

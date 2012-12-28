@@ -18,4 +18,15 @@ public abstract class ActiveRecord {
      */
     public abstract int update(SQuery query);
     public abstract boolean delete();
+    
+    /**
+     * Set all fields in this record to dirty
+     * @param dirty
+     */
+    public abstract void setDirty(boolean dirty);
+    
+    /**
+     * Reload this record, if it has an id
+     */
+    public abstract void reload();
 }
