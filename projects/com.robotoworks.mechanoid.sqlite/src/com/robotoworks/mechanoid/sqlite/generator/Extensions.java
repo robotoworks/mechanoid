@@ -33,7 +33,7 @@ public class Extensions {
 		for(ResultColumn col : resultColumns) {
 			if(col instanceof ResultColumnExpression) {
 				ResultColumnExpression expr = (ResultColumnExpression) col;
-				if(expr.getName() != null && !expr.getName().equals("") && expr.getName().equals("_id")) {
+				if(expr.getAlias()!= null && !expr.getAlias().equals("") && expr.getAlias().equals("_id")) {
 					return true;
 				}
 			}

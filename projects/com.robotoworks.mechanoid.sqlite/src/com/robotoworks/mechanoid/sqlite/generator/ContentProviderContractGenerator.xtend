@@ -204,8 +204,8 @@ class ContentProviderContractGenerator {
 	
 	def dispatch generateInterfaceMemberForResultColumn(ResultColumnExpression column) { 
 		'''
-		«IF column.name != null && !column.name.equals("") && !column.name.equals("_id")»
-		String «column.name.underscore.toUpperCase» = "«column.name»";
+		«IF column.alias != null && !column.alias.equals("") && !column.alias.equals("_id")»
+		String «column.alias.underscore.toUpperCase» = "«column.alias»";
 		«ENDIF»
 		'''		
 	}

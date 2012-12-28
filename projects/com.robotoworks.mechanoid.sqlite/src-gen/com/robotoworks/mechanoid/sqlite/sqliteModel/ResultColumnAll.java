@@ -22,29 +22,29 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface ResultColumnAll extends ResultColumn
 {
   /**
-   * Returns the value of the '<em><b>Table</b></em>' reference.
+   * Returns the value of the '<em><b>Table</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table</em>' reference isn't clear,
+   * If the meaning of the '<em>Table</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table</em>' reference.
-   * @see #setTable(TableSource)
+   * @return the value of the '<em>Table</em>' attribute.
+   * @see #setTable(String)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Table()
    * @model
    * @generated
    */
-  TableSource getTable();
+  String getTable();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}' reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table</em>' reference.
+   * @param value the new value of the '<em>Table</em>' attribute.
    * @see #getTable()
    * @generated
    */
-  void setTable(TableSource value);
+  void setTable(String value);
 
 } // ResultColumnAll

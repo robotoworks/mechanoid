@@ -94,7 +94,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
-      case SqliteModelPackage.TABLE_SOURCE: return createTableSource();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
       case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT: return createActiveRecordRegistrationStatement();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
@@ -503,17 +502,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     LiteralValueImpl literalValue = new LiteralValueImpl();
     return literalValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TableSource createTableSource()
-  {
-    TableSourceImpl tableSource = new TableSourceImpl();
-    return tableSource;
   }
 
   /**

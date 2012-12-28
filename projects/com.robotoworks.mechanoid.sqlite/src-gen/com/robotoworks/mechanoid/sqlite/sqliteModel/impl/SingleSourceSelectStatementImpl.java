@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceSelectStatementImpl#getSelectStatement <em>Select Statement</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceSelectStatementImpl#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +39,26 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
    * @ordered
    */
   protected SelectStatement selectStatement;
+
+  /**
+   * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlias()
+   * @generated
+   * @ordered
+   */
+  protected static final String ALIAS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlias()
+   * @generated
+   * @ordered
+   */
+  protected String alias = ALIAS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,6 +134,29 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getAlias()
+  {
+    return alias;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlias(String newAlias)
+  {
+    String oldAlias = alias;
+    alias = newAlias;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__ALIAS, oldAlias, alias));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -136,6 +180,8 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
     {
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT:
         return getSelectStatement();
+      case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__ALIAS:
+        return getAlias();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,6 +198,9 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
     {
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)newValue);
+        return;
+      case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__ALIAS:
+        setAlias((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,6 +219,9 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)null);
         return;
+      case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__ALIAS:
+        setAlias(ALIAS_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -186,8 +238,27 @@ public class SingleSourceSelectStatementImpl extends SingleSourceImpl implements
     {
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT:
         return selectStatement != null;
+      case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT__ALIAS:
+        return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (alias: ");
+    result.append(alias);
+    result.append(')');
+    return result.toString();
   }
 
 } //SingleSourceSelectStatementImpl

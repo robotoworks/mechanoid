@@ -4089,87 +4089,131 @@ ruleSingleSource returns [EObject current=null]
     }
 )(
 (
-		{ 
-	        newCompositeNode(grammarAccess.getSingleSourceAccess().getSourceTableSourceParserRuleCall_0_1_0()); 
-	    }
-		lv_source_1_0=ruleTableSource		{
+		lv_table_1_0=RULE_ID
+		{
+			newLeafNode(lv_table_1_0, grammarAccess.getSingleSourceAccess().getTableIDTerminalRuleCall_0_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSingleSourceRule());
+	            $current = createModelElement(grammarAccess.getSingleSourceRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
-       			"source",
-        		lv_source_1_0, 
-        		"TableSource");
-	        afterParserOrEnumRuleCall();
+       			"table",
+        		lv_table_1_0, 
+        		"ID");
 	    }
 
 )
-))
+)(	otherlv_2='as' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getSingleSourceAccess().getAsKeyword_0_2_0());
+    }
+(
+(
+		lv_alias_3_0=RULE_ID
+		{
+			newLeafNode(lv_alias_3_0, grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_0_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSingleSourceRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"alias",
+        		lv_alias_3_0, 
+        		"ID");
+	    }
+
+)
+))?)
     |((
     {
         $current = forceCreateModelElement(
             grammarAccess.getSingleSourceAccess().getSingleSourceSelectStatementAction_1_0(),
             $current);
     }
-)	otherlv_3='(' 
+)	otherlv_5='(' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_1_1());
+    	newLeafNode(otherlv_5, grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_1_1());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getSingleSourceAccess().getSelectStatementSelectStatementParserRuleCall_1_2_0()); 
 	    }
-		lv_selectStatement_4_0=ruleSelectStatement		{
+		lv_selectStatement_6_0=ruleSelectStatement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSingleSourceRule());
 	        }
        		set(
        			$current, 
        			"selectStatement",
-        		lv_selectStatement_4_0, 
+        		lv_selectStatement_6_0, 
         		"SelectStatement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_5=')' 
+)	otherlv_7=')' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_1_3());
+    	newLeafNode(otherlv_7, grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_1_3());
     }
+(	otherlv_8='as' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getSingleSourceAccess().getAsKeyword_1_4_0());
+    }
+(
+(
+		lv_alias_9_0=RULE_ID
+		{
+			newLeafNode(lv_alias_9_0, grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_1_4_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSingleSourceRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"alias",
+        		lv_alias_9_0, 
+        		"ID");
+	    }
+
 )
+))?)
     |((
     {
         $current = forceCreateModelElement(
             grammarAccess.getSingleSourceAccess().getSingleSourceJoinAction_2_0(),
             $current);
     }
-)	otherlv_7='(' 
+)	otherlv_11='(' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_2_1());
+    	newLeafNode(otherlv_11, grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_2_1());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getSingleSourceAccess().getJoinSourceJoinSourceParserRuleCall_2_2_0()); 
 	    }
-		lv_joinSource_8_0=ruleJoinSource		{
+		lv_joinSource_12_0=ruleJoinSource		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSingleSourceRule());
 	        }
        		set(
        			$current, 
        			"joinSource",
-        		lv_joinSource_8_0, 
+        		lv_joinSource_12_0, 
         		"JoinSource");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_9=')' 
+)	otherlv_13=')' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_2_3());
+    	newLeafNode(otherlv_13, grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_2_3());
     }
 ))
 ;
@@ -4348,15 +4392,20 @@ ruleResultColumn returns [EObject current=null]
     }
 )(
 (
+		lv_table_1_0=RULE_ID
 		{
-			if ($current==null) {
+			newLeafNode(lv_table_1_0, grammarAccess.getResultColumnAccess().getTableIDTerminalRuleCall_0_1_0()); 
+		}
+		{
+	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getResultColumnRule());
 	        }
-        }
-	otherlv_1=RULE_ID
-	{
-		newLeafNode(otherlv_1, grammarAccess.getResultColumnAccess().getTableTableSourceCrossReference_0_1_0()); 
-	}
+       		setWithLastConsumed(
+       			$current, 
+       			"table",
+        		lv_table_1_0, 
+        		"ID");
+	    }
 
 )
 )?	otherlv_2='*' 
@@ -4394,9 +4443,9 @@ ruleResultColumn returns [EObject current=null]
     }
 (
 (
-		lv_name_6_0=RULE_ID
+		lv_alias_6_0=RULE_ID
 		{
-			newLeafNode(lv_name_6_0, grammarAccess.getResultColumnAccess().getNameIDTerminalRuleCall_1_2_1_0()); 
+			newLeafNode(lv_alias_6_0, grammarAccess.getResultColumnAccess().getAliasIDTerminalRuleCall_1_2_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4404,8 +4453,8 @@ ruleResultColumn returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_6_0, 
+       			"alias",
+        		lv_alias_6_0, 
         		"ID");
 	    }
 
@@ -4692,62 +4741,6 @@ ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
 )*)
     ;
-
-
-
-
-
-// Entry rule entryRuleTableSource
-entryRuleTableSource returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getTableSourceRule()); }
-	 iv_ruleTableSource=ruleTableSource 
-	 { $current=$iv_ruleTableSource.current; } 
-	 EOF 
-;
-
-// Rule TableSource
-ruleTableSource returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTableSourceRule());
-	        }
-        }
-	otherlv_0=RULE_ID
-	{
-		newLeafNode(otherlv_0, grammarAccess.getTableSourceAccess().getTableCreateTableStatementCrossReference_0_0()); 
-	}
-
-)
-)(	otherlv_1='as' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getTableSourceAccess().getAsKeyword_1_0());
-    }
-(
-(
-		lv_tableAlias_2_0=RULE_ID
-		{
-			newLeafNode(lv_tableAlias_2_0, grammarAccess.getTableSourceAccess().getTableAliasIDTerminalRuleCall_1_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTableSourceRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"tableAlias",
-        		lv_tableAlias_2_0, 
-        		"ID");
-	    }
-
-)
-))?)
-;
 
 
 

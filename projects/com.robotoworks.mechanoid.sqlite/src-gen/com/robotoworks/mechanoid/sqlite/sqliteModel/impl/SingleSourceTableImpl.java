@@ -4,13 +4,10 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.TableSource;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -21,7 +18,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,14 +28,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSourceTable
 {
   /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
+   * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSource()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected TableSource source;
+  protected static final String TABLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTable()
+   * @generated
+   * @ordered
+   */
+  protected String table = TABLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlias()
+   * @generated
+   * @ordered
+   */
+  protected static final String ALIAS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlias()
+   * @generated
+   * @ordered
+   */
+  protected String alias = ALIAS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,9 +93,9 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public TableSource getSource()
+  public String getTable()
   {
-    return source;
+    return table;
   }
 
   /**
@@ -75,16 +103,12 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSource(TableSource newSource, NotificationChain msgs)
+  public void setTable(String newTable)
   {
-    TableSource oldSource = source;
-    source = newSource;
+    String oldTable = table;
+    table = newTable;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE, oldSource, newSource);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE, oldTable, table));
   }
 
   /**
@@ -92,20 +116,9 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(TableSource newSource)
+  public String getAlias()
   {
-    if (newSource != source)
-    {
-      NotificationChain msgs = null;
-      if (source != null)
-        msgs = ((InternalEObject)source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE, null, msgs);
-      if (newSource != null)
-        msgs = ((InternalEObject)newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE, null, msgs);
-      msgs = basicSetSource(newSource, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE, newSource, newSource));
+    return alias;
   }
 
   /**
@@ -113,15 +126,12 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setAlias(String newAlias)
   {
-    switch (featureID)
-    {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE:
-        return basicSetSource(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldAlias = alias;
+    alias = newAlias;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS, oldAlias, alias));
   }
 
   /**
@@ -134,8 +144,10 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE:
-        return getSource();
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        return getTable();
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        return getAlias();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -150,8 +162,11 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE:
-        setSource((TableSource)newValue);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        setTable((String)newValue);
+        return;
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        setAlias((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -167,8 +182,11 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE:
-        setSource((TableSource)null);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        setTable(TABLE_EDEFAULT);
+        return;
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        setAlias(ALIAS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -184,10 +202,31 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__SOURCE:
-        return source != null;
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (table: ");
+    result.append(table);
+    result.append(", alias: ");
+    result.append(alias);
+    result.append(')');
+    return result.toString();
   }
 
 } //SingleSourceTableImpl

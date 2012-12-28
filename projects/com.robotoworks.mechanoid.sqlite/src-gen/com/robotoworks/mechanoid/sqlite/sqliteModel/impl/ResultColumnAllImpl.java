@@ -4,12 +4,10 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.TableSource;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -29,14 +27,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColumnAll
 {
   /**
-   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
+   * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTable()
    * @generated
    * @ordered
    */
-  protected TableSource table;
+  protected static final String TABLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTable()
+   * @generated
+   * @ordered
+   */
+  protected String table = TABLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,27 +72,7 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public TableSource getTable()
-  {
-    if (table != null && table.eIsProxy())
-    {
-      InternalEObject oldTable = (InternalEObject)table;
-      table = (TableSource)eResolveProxy(oldTable);
-      if (table != oldTable)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.RESULT_COLUMN_ALL__TABLE, oldTable, table));
-      }
-    }
-    return table;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TableSource basicGetTable()
+  public String getTable()
   {
     return table;
   }
@@ -94,9 +82,9 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTable(TableSource newTable)
+  public void setTable(String newTable)
   {
-    TableSource oldTable = table;
+    String oldTable = table;
     table = newTable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__TABLE, oldTable, table));
@@ -113,8 +101,7 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        if (resolve) return getTable();
-        return basicGetTable();
+        return getTable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,7 +117,7 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        setTable((TableSource)newValue);
+        setTable((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +134,7 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        setTable((TableSource)null);
+        setTable(TABLE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -164,9 +151,26 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        return table != null;
+        return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (table: ");
+    result.append(table);
+    result.append(')');
+    return result.toString();
   }
 
 } //ResultColumnAllImpl

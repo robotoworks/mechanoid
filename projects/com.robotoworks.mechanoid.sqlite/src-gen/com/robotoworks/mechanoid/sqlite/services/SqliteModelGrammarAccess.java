@@ -2648,14 +2648,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cSingleSourceTableAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Assignment cSourceAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cSourceTableSourceParserRuleCall_0_1_0 = (RuleCall)cSourceAssignment_0_1.eContents().get(0);
+		private final Assignment cTableAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cTableIDTerminalRuleCall_0_1_0 = (RuleCall)cTableAssignment_0_1.eContents().get(0);
+		private final Group cGroup_0_2 = (Group)cGroup_0.eContents().get(2);
+		private final Keyword cAsKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
+		private final Assignment cAliasAssignment_0_2_1 = (Assignment)cGroup_0_2.eContents().get(1);
+		private final RuleCall cAliasIDTerminalRuleCall_0_2_1_0 = (RuleCall)cAliasAssignment_0_2_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cSingleSourceSelectStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cSelectStatementAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cSelectStatementSelectStatementParserRuleCall_1_2_0 = (RuleCall)cSelectStatementAssignment_1_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Group cGroup_1_4 = (Group)cGroup_1.eContents().get(4);
+		private final Keyword cAsKeyword_1_4_0 = (Keyword)cGroup_1_4.eContents().get(0);
+		private final Assignment cAliasAssignment_1_4_1 = (Assignment)cGroup_1_4.eContents().get(1);
+		private final RuleCall cAliasIDTerminalRuleCall_1_4_1_0 = (RuleCall)cAliasAssignment_1_4_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cSingleSourceJoinAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
@@ -2664,27 +2672,39 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		
 		//SingleSource:
-		//	{SingleSourceTable} source=TableSource | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" |
-		//	{SingleSourceJoin} "(" joinSource=JoinSource ")";
+		//	{SingleSourceTable} table=ID ("as" alias=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")"
+		//	("as" alias=ID)? | {SingleSourceJoin} "(" joinSource=JoinSource ")";
 		public ParserRule getRule() { return rule; }
 
-		//{SingleSourceTable} source=TableSource | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" |
-		//{SingleSourceJoin} "(" joinSource=JoinSource ")"
+		//{SingleSourceTable} table=ID ("as" alias=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")"
+		//("as" alias=ID)? | {SingleSourceJoin} "(" joinSource=JoinSource ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{SingleSourceTable} source=TableSource
+		//{SingleSourceTable} table=ID ("as" alias=ID)?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//{SingleSourceTable}
 		public Action getSingleSourceTableAction_0_0() { return cSingleSourceTableAction_0_0; }
 
-		//source=TableSource
-		public Assignment getSourceAssignment_0_1() { return cSourceAssignment_0_1; }
+		//table=ID
+		public Assignment getTableAssignment_0_1() { return cTableAssignment_0_1; }
 
-		//TableSource
-		public RuleCall getSourceTableSourceParserRuleCall_0_1_0() { return cSourceTableSourceParserRuleCall_0_1_0; }
+		//ID
+		public RuleCall getTableIDTerminalRuleCall_0_1_0() { return cTableIDTerminalRuleCall_0_1_0; }
 
-		//{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")"
+		//("as" alias=ID)?
+		public Group getGroup_0_2() { return cGroup_0_2; }
+
+		//"as"
+		public Keyword getAsKeyword_0_2_0() { return cAsKeyword_0_2_0; }
+
+		//alias=ID
+		public Assignment getAliasAssignment_0_2_1() { return cAliasAssignment_0_2_1; }
+
+		//ID
+		public RuleCall getAliasIDTerminalRuleCall_0_2_1_0() { return cAliasIDTerminalRuleCall_0_2_1_0; }
+
+		//{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" ("as" alias=ID)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{SingleSourceSelectStatement}
@@ -2701,6 +2721,18 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//")"
 		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
+
+		//("as" alias=ID)?
+		public Group getGroup_1_4() { return cGroup_1_4; }
+
+		//"as"
+		public Keyword getAsKeyword_1_4_0() { return cAsKeyword_1_4_0; }
+
+		//alias=ID
+		public Assignment getAliasAssignment_1_4_1() { return cAliasAssignment_1_4_1; }
+
+		//ID
+		public RuleCall getAliasIDTerminalRuleCall_1_4_1_0() { return cAliasIDTerminalRuleCall_1_4_1_0; }
 
 		//{SingleSourceJoin} "(" joinSource=JoinSource ")"
 		public Group getGroup_2() { return cGroup_2; }
@@ -2817,8 +2849,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cResultColumnAllAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Assignment cTableAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cTableTableSourceCrossReference_0_1_0 = (CrossReference)cTableAssignment_0_1.eContents().get(0);
-		private final RuleCall cTableTableSourceIDTerminalRuleCall_0_1_0_1 = (RuleCall)cTableTableSourceCrossReference_0_1_0.eContents().get(1);
+		private final RuleCall cTableIDTerminalRuleCall_0_1_0 = (RuleCall)cTableAssignment_0_1.eContents().get(0);
 		private final Keyword cAsteriskKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cResultColumnExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
@@ -2826,35 +2857,32 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionSqlExpressionParserRuleCall_1_1_0 = (RuleCall)cExpressionAssignment_1_1.eContents().get(0);
 		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
 		private final Keyword cAsKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
-		private final Assignment cNameAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_2_1_0 = (RuleCall)cNameAssignment_1_2_1.eContents().get(0);
+		private final Assignment cAliasAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cAliasIDTerminalRuleCall_1_2_1_0 = (RuleCall)cAliasAssignment_1_2_1.eContents().get(0);
 		
 		//ResultColumn:
-		//	{ResultColumnAll} table=[TableSource]? "*" | {ResultColumnExpression} expression=SqlExpression ("as" name=ID)?;
+		//	{ResultColumnAll} table=ID? "*" | {ResultColumnExpression} expression=SqlExpression ("as" alias=ID)?;
 		public ParserRule getRule() { return rule; }
 
-		//{ResultColumnAll} table=[TableSource]? "*" | {ResultColumnExpression} expression=SqlExpression ("as" name=ID)?
+		//{ResultColumnAll} table=ID? "*" | {ResultColumnExpression} expression=SqlExpression ("as" alias=ID)?
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{ResultColumnAll} table=[TableSource]? "*"
+		//{ResultColumnAll} table=ID? "*"
 		public Group getGroup_0() { return cGroup_0; }
 
 		//{ResultColumnAll}
 		public Action getResultColumnAllAction_0_0() { return cResultColumnAllAction_0_0; }
 
-		//table=[TableSource]?
+		//table=ID?
 		public Assignment getTableAssignment_0_1() { return cTableAssignment_0_1; }
 
-		//[TableSource]
-		public CrossReference getTableTableSourceCrossReference_0_1_0() { return cTableTableSourceCrossReference_0_1_0; }
-
 		//ID
-		public RuleCall getTableTableSourceIDTerminalRuleCall_0_1_0_1() { return cTableTableSourceIDTerminalRuleCall_0_1_0_1; }
+		public RuleCall getTableIDTerminalRuleCall_0_1_0() { return cTableIDTerminalRuleCall_0_1_0; }
 
 		//"*"
 		public Keyword getAsteriskKeyword_0_2() { return cAsteriskKeyword_0_2; }
 
-		//{ResultColumnExpression} expression=SqlExpression ("as" name=ID)?
+		//{ResultColumnExpression} expression=SqlExpression ("as" alias=ID)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{ResultColumnExpression}
@@ -2866,17 +2894,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//SqlExpression
 		public RuleCall getExpressionSqlExpressionParserRuleCall_1_1_0() { return cExpressionSqlExpressionParserRuleCall_1_1_0; }
 
-		//("as" name=ID)?
+		//("as" alias=ID)?
 		public Group getGroup_1_2() { return cGroup_1_2; }
 
 		//"as"
 		public Keyword getAsKeyword_1_2_0() { return cAsKeyword_1_2_0; }
 
-		//name=ID
-		public Assignment getNameAssignment_1_2_1() { return cNameAssignment_1_2_1; }
+		//alias=ID
+		public Assignment getAliasAssignment_1_2_1() { return cAliasAssignment_1_2_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_2_1_0() { return cNameIDTerminalRuleCall_1_2_1_0; }
+		public RuleCall getAliasIDTerminalRuleCall_1_2_1_0() { return cAliasIDTerminalRuleCall_1_2_1_0; }
 	}
 
 	public class ConflictClauseElements extends AbstractParserRuleElementFinder {
@@ -3065,46 +3093,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
-	}
-
-	public class TableSourceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TableSource");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTableAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cTableCreateTableStatementCrossReference_0_0 = (CrossReference)cTableAssignment_0.eContents().get(0);
-		private final RuleCall cTableCreateTableStatementIDTerminalRuleCall_0_0_1 = (RuleCall)cTableCreateTableStatementCrossReference_0_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cAsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cTableAliasAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cTableAliasIDTerminalRuleCall_1_1_0 = (RuleCall)cTableAliasAssignment_1_1.eContents().get(0);
-		
-		//TableSource:
-		//	table=[CreateTableStatement] ("as" tableAlias=ID)?;
-		public ParserRule getRule() { return rule; }
-
-		//table=[CreateTableStatement] ("as" tableAlias=ID)?
-		public Group getGroup() { return cGroup; }
-
-		//table=[CreateTableStatement]
-		public Assignment getTableAssignment_0() { return cTableAssignment_0; }
-
-		//[CreateTableStatement]
-		public CrossReference getTableCreateTableStatementCrossReference_0_0() { return cTableCreateTableStatementCrossReference_0_0; }
-
-		//ID
-		public RuleCall getTableCreateTableStatementIDTerminalRuleCall_0_0_1() { return cTableCreateTableStatementIDTerminalRuleCall_0_0_1; }
-
-		//("as" tableAlias=ID)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"as"
-		public Keyword getAsKeyword_1_0() { return cAsKeyword_1_0; }
-
-		//tableAlias=ID
-		public Assignment getTableAliasAssignment_1_1() { return cTableAliasAssignment_1_1; }
-
-		//ID
-		public RuleCall getTableAliasIDTerminalRuleCall_1_1_0() { return cTableAliasIDTerminalRuleCall_1_1_0; }
 	}
 	
 	
@@ -3318,7 +3306,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tINT;
 	private TerminalRule tSTRING;
 	private FQNElements pFQN;
-	private TableSourceElements pTableSource;
 	
 	private final Grammar grammar;
 
@@ -3751,8 +3738,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SingleSource:
-	//	{SingleSourceTable} source=TableSource | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" |
-	//	{SingleSourceJoin} "(" joinSource=JoinSource ")";
+	//	{SingleSourceTable} table=ID ("as" alias=ID)? | {SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")"
+	//	("as" alias=ID)? | {SingleSourceJoin} "(" joinSource=JoinSource ")";
 	public SingleSourceElements getSingleSourceAccess() {
 		return (pSingleSource != null) ? pSingleSource : (pSingleSource = new SingleSourceElements());
 	}
@@ -3773,7 +3760,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ResultColumn:
-	//	{ResultColumnAll} table=[TableSource]? "*" | {ResultColumnExpression} expression=SqlExpression ("as" name=ID)?;
+	//	{ResultColumnAll} table=ID? "*" | {ResultColumnExpression} expression=SqlExpression ("as" alias=ID)?;
 	public ResultColumnElements getResultColumnAccess() {
 		return (pResultColumn != null) ? pResultColumn : (pResultColumn = new ResultColumnElements());
 	}
@@ -3841,16 +3828,6 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getFQNRule() {
 		return getFQNAccess().getRule();
-	}
-
-	//TableSource:
-	//	table=[CreateTableStatement] ("as" tableAlias=ID)?;
-	public TableSourceElements getTableSourceAccess() {
-		return (pTableSource != null) ? pTableSource : (pTableSource = new TableSourceElements());
-	}
-	
-	public ParserRule getTableSourceRule() {
-		return getTableSourceAccess().getRule();
 	}
 
 	//terminal ID:
