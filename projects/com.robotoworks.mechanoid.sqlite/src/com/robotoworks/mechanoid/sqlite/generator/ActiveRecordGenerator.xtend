@@ -27,6 +27,7 @@ class ActiveRecordGenerator {
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 			import com.robotoworks.mechanoid.Mechanoid;
+			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
@@ -115,6 +116,24 @@ class ActiveRecordGenerator {
 					    m_id = ContentUris.parseId(uri);
 					}
 					
+					setDirty(false);
+					
+					return m_id;
+				}
+				
+			    @Override
+				public long save(boolean notifyChange){
+					Builder builder = createBuilder();
+					
+					if(m_id > 0) {
+					    builder.update(m_id, notifyChange);
+					} else {
+					    Uri uri = builder.insert(notifyChange);
+					    m_id = ContentUris.parseId(uri);
+					}
+					
+					setDirty(false);
+					
 					return m_id;
 				}
 				
@@ -122,16 +141,52 @@ class ActiveRecordGenerator {
 				public int update(SQuery query){
 					Builder builder = createBuilder();
 					
-					return builder.update(query);
+					int affected = builder.update(query);
+					
+					setDirty(false);
+					
+					return affected;
+				}
+				
+			    @Override
+				public int update(SQuery query, boolean notifyChange){
+					Builder builder = createBuilder();
+					
+					int affected = builder.update(query, notifyChange);
+					
+					setDirty(false);
+					
+					return affected;
 				}
 				
 			    @Override
 				public boolean delete(){
 					ContentResolver resolver = Mechanoid.getContentResolver();
 					
-					return resolver.delete(
+					boolean result = resolver.delete(
 						«stmt.name.pascalize».CONTENT_URI.buildUpon()
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
+						
+					setDirty(false);
+					
+					return result;
+				}
+				
+			    @Override
+				public boolean delete(boolean notifyChange){
+					ContentResolver resolver = Mechanoid.getContentResolver();
+					
+					Uri uri = «stmt.name.pascalize».CONTENT_URI.buildUpon()
+						.appendPath(String.valueOf(m_id))
+						.appendQueryParameter(
+							MechanoidContentProvider.PARAM_NOTIFY, 
+							String.valueOf(notifyChange)).build();
+
+					boolean result = resolver.delete(uri, null, null) > 0;
+						
+					setDirty(false);
+					
+					return result;
 				}
 				
 			    @Override
