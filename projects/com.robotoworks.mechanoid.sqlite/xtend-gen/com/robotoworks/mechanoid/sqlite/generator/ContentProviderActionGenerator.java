@@ -40,8 +40,6 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.append("import android.content.ContentValues;");
     _builder.newLine();
-    _builder.append("import android.content.Context;");
-    _builder.newLine();
     _builder.append("import android.database.sqlite.SQLiteDatabase;");
     _builder.newLine();
     _builder.append("import android.database.Cursor;");
@@ -54,11 +52,7 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
-    _builder.append("import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;");
-    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.sqlite.ActiveRecord;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
     _builder.append("import java.util.ArrayList;");
     _builder.newLine();
@@ -136,9 +130,6 @@ public class ContentProviderActionGenerator {
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("final Context context = provider.getContext();");
-            _builder.newLine();
-            _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append("int affected = SQuery.newQuery()");
@@ -148,7 +139,7 @@ public class ContentProviderActionGenerator {
             String _name_5 = tbl.getName();
             String _pascalize_5 = Strings.pascalize(_name_5);
             _builder.append(_pascalize_5, "		");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
+            _builder.append("._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
             _builder.append(".append(selection, selectionArgs)");
@@ -164,11 +155,6 @@ public class ContentProviderActionGenerator {
             _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("context.getContentResolver().notifyChange(uri, null);");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
             _builder.append("return affected;");
             _builder.newLine();
           } else {
@@ -181,24 +167,15 @@ public class ContentProviderActionGenerator {
         _builder.append("\t\t");
         _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
         _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("final Context context = provider.getContext();");
-        _builder.newLine();
         _builder.newLine();
         _builder.append("\t\t");
-        _builder.append("int affected = db.delete(Tables.");
+        _builder.append("return db.delete(Tables.");
         String _name_7 = tbl.getName();
         String _underscore_1 = Strings.underscore(_name_7);
         String _upperCase_1 = _underscore_1.toUpperCase();
         _builder.append(_upperCase_1, "		");
         _builder.append(", selection, selectionArgs);");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("context.getContentResolver().notifyChange(uri, null);");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("return affected;");
-        _builder.newLine();
       }
     }
     _builder.append("\t");
@@ -221,9 +198,6 @@ public class ContentProviderActionGenerator {
         _builder.append("\t\t");
         _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
         _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("final Context context = provider.getContext();");
-        _builder.newLine();
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("long id = db.insertOrThrow(Tables.");
@@ -234,15 +208,28 @@ public class ContentProviderActionGenerator {
         _builder.append(", null, values);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
-        _builder.append("context.getContentResolver().notifyChange(uri, null);");
         _builder.newLine();
         _builder.append("\t\t");
+        _builder.append("if(id > -1) {");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("\t");
         _builder.append("return ");
         String _name_9 = tbl.getName();
         String _pascalize_6 = Strings.pascalize(_name_9);
-        _builder.append(_pascalize_6, "		");
+        _builder.append(_pascalize_6, "			");
         _builder.append(".buildUriWithId(id);");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.append("return null;");
+        _builder.newLine();
+        _builder.append("\t\t");
+        _builder.newLine();
       }
     }
     _builder.append("\t");
@@ -265,9 +252,6 @@ public class ContentProviderActionGenerator {
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
             _builder.append("\t\t");
-            _builder.append("final Context context = provider.getContext();");
-            _builder.newLine();
-            _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append("int affected = SQuery.newQuery()");
@@ -277,7 +261,7 @@ public class ContentProviderActionGenerator {
             String _name_10 = tbl.getName();
             String _pascalize_7 = Strings.pascalize(_name_10);
             _builder.append(_pascalize_7, "		");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
+            _builder.append("._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
             _builder.append(".append(selection, selectionArgs)");
@@ -290,11 +274,6 @@ public class ContentProviderActionGenerator {
             _builder.append(_upperCase_3, "		");
             _builder.append(", values);");
             _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("context.getContentResolver().notifyChange(uri, null);");
-            _builder.newLine();
             _builder.append("\t\t");
             _builder.newLine();
             _builder.append("\t\t");
@@ -311,9 +290,6 @@ public class ContentProviderActionGenerator {
         _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
         _builder.newLine();
         _builder.append("\t\t");
-        _builder.append("final Context context = provider.getContext();");
-        _builder.newLine();
-        _builder.append("\t\t");
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("int affected = db.update(Tables.");
@@ -323,8 +299,6 @@ public class ContentProviderActionGenerator {
         _builder.append(_upperCase_4, "		");
         _builder.append(", values, selection, selectionArgs);");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("context.getContentResolver().notifyChange(uri, null);");
         _builder.newLine();
         _builder.append("\t\t");
         _builder.append("return affected;");
@@ -359,7 +333,7 @@ public class ContentProviderActionGenerator {
             String _name_13 = tbl.getName();
             String _pascalize_8 = Strings.pascalize(_name_13);
             _builder.append(_pascalize_8, "		");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
+            _builder.append("._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
             _builder.append(".append(selection, selectionArgs)");
@@ -458,11 +432,6 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.append("    \t");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("provider.getContext().getContentResolver().notifyChange(uri, null);");
-    _builder.newLine();
-    _builder.append("    \t");
-    _builder.newLine();
     _builder.append("    \t");
     _builder.append("return numValues;");
     _builder.newLine();
@@ -484,6 +453,13 @@ public class ContentProviderActionGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
+        _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
         _builder.append("Cursor c = null;");
         _builder.newLine();
         _builder.append("\t");
@@ -501,16 +477,17 @@ public class ContentProviderActionGenerator {
         _builder.append("try {");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t    ");
-        _builder.append("c = provider.query(");
+        _builder.append("\t\t");
+        _builder.append("c = db.query(Tables.");
         String _name_17 = tbl.getName();
-        String _pascalize_9 = Strings.pascalize(_name_17);
-        _builder.append(_pascalize_9, "		    ");
-        _builder.append(".CONTENT_URI, ");
+        String _underscore_8 = Strings.underscore(_name_17);
+        String _upperCase_8 = _underscore_8.toUpperCase();
+        _builder.append(_upperCase_8, "			");
+        _builder.append(", ");
         String _name_18 = tbl.getName();
-        String _pascalize_10 = Strings.pascalize(_name_18);
-        _builder.append(_pascalize_10, "		    ");
-        _builder.append("Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), sortOrder);");
+        String _pascalize_9 = Strings.pascalize(_name_18);
+        _builder.append(_pascalize_9, "			");
+        _builder.append("Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t    ");
@@ -523,8 +500,8 @@ public class ContentProviderActionGenerator {
         _builder.append("\t        ");
         _builder.append("items.add((T)");
         String _name_19 = tbl.getName();
-        String _pascalize_11 = Strings.pascalize(_name_19);
-        _builder.append(_pascalize_11, "		        ");
+        String _pascalize_10 = Strings.pascalize(_name_19);
+        _builder.append(_pascalize_10, "		        ");
         _builder.append("Record.fromCursor(c));");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -591,8 +568,6 @@ public class ContentProviderActionGenerator {
     _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.MechanoidContentProvider;");
-    _builder.newLine();
-    _builder.append("import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("import ");
@@ -695,7 +670,7 @@ public class ContentProviderActionGenerator {
             String _name_4 = vw.getName();
             String _pascalize_4 = Strings.pascalize(_name_4);
             _builder.append(_pascalize_4, "		");
-            _builder.append("._ID, EQ, uri.getPathSegments().get(1))");
+            _builder.append("._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
             _builder.append(".append(selection, selectionArgs)");
