@@ -162,12 +162,14 @@ class ContentProviderActionGenerator {
 				@SuppressWarnings("unchecked")
 				@Override
 				public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
+					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+					
 					Cursor c = null;
 					
 					ArrayList<T> items = new ArrayList<T>();
 					
 					try {
-					    c = provider.query(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize»Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), sortOrder);
+						c = db.query(Tables.«tbl.name.underscore.toUpperCase», «tbl.name.pascalize»Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
 					    
 					    while(c.moveToNext()) {
 					        items.add((T)«tbl.name.pascalize»Record.fromCursor(c));
