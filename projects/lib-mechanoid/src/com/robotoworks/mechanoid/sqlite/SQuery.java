@@ -428,23 +428,63 @@ public class SQuery {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public Cursor select(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		
+		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
 	public Cursor select(Uri uri, String[] projection) {
 		return select(uri, projection, null);
+	}
+	
+	public Cursor select(Uri uri, String[] projection, boolean enableNotifications) {
+		return select(uri, projection, null, enableNotifications);
 	}
 	
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder) {
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+		
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection) {
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
 
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, boolean enableNotifications) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+	}
+	
 	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder) {
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+			
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
 	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection) {
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+	}
+	
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
 	
@@ -457,7 +497,7 @@ public class SQuery {
 		int value = 0;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getInt(0);
@@ -479,7 +519,7 @@ public class SQuery {
 		long value = 0;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getLong(0);
@@ -501,7 +541,7 @@ public class SQuery {
 		double value = 0;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getDouble(0);
@@ -523,7 +563,7 @@ public class SQuery {
 		float value = 0;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getFloat(0);
@@ -545,7 +585,7 @@ public class SQuery {
 		short value = 0;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getShort(0);
@@ -567,7 +607,7 @@ public class SQuery {
 		byte[] value = null;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getBlob(0);
@@ -597,7 +637,7 @@ public class SQuery {
 		String value = null;
 		
 		try {
-			cursor = select(uri, new String[] { column }, orderBy);
+			cursor = select(uri, new String[] { column }, orderBy, false);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getString(0);
@@ -615,7 +655,23 @@ public class SQuery {
 		return resolver.update(uri, values, toString(), getArgsArray());
 	}
 	
+	public int update(Uri uri, ContentValues values, boolean notifyChange) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(notifyChange)).build();
+		
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		return resolver.update(uri, values, toString(), getArgsArray());
+	}
+	
 	public int delete(Uri uri) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		return resolver.delete(uri, toString(), getArgsArray());
+	}	
+	
+	public int delete(Uri uri, boolean notifyChange) {
+		
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(notifyChange)).build();
+
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		return resolver.delete(uri, toString(), getArgsArray());
 	}	
@@ -624,6 +680,8 @@ public class SQuery {
     	ContentResolver resolver = Mechanoid.getContentResolver();
     	
     	Cursor c = null;
+    	
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, "false").build();
     	
     	try {
     		c = resolver.query(uri, new String[]{"count(*)"}, toString(), getArgsArray(), null);
