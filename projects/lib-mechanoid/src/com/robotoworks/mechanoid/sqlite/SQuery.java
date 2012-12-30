@@ -22,7 +22,82 @@ import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.util.Closeables;
 
+/**
+ * <p>Construct content provider/database queries using a fluent API.</p>
+ * 
+ * <p>To create a new SQuery instance use the factory method {@link SQuery#newQuery()}</p>
+ * 
+ * <p>Expressions can be chained using the {@link expr()} overloads, by default expressions are AND'd together
+ * unless an explicit call is made to {@link or()} or {@link and()} between each expression, eg:-</p>
+ * 
+ * <pre><code>Cursor cursor = SQuery.newQuery()
+ *     .expr(Books.TITLE, Op.LIKE, "A%")
+ *     .or()
+ *     .expr(Books.TITLE, Op.LIKE, "B%")
+ *     .select(Books.CONTENT_URI,
+ *         new String[] {
+ *             Books._ID,
+ *             Books.TITLE
+ *         });</code></pre>
+ *
+ * <p>If a query ends with either {@link or()} or {@link and()} they will not be included when executing the query
+ * since it is an error to end a query without the right operand of an expression.</p>
+ */
 public class SQuery {
+	/**
+	 * Used to represent Sqlite literal types used in expressions.
+	 * 
+	 * @see SQuery#NULL
+	 * @see SQuery#CURRENT_TIME
+	 * @see SQuery#CURRENT_DATE
+	 * @see SQuery#CURRENT_TIMESTAMP
+	 *
+	 */
+	public static final class Literal {
+		protected final String value;
+		
+		protected Literal(String value) {
+			this.value = value;
+		}
+	}
+	
+	/**
+	 * Represents the Sqlite literal NULL
+	 */
+	public static final Literal NULL = new Literal("NULL");
+	
+	/**
+	 * Represents the Sqlite literal CURRENT_TIME
+	 */
+	public static final Literal CURRENT_TIME = new Literal("CURRENT_TIME");
+	
+	/**
+	 * Represents the Sqlite literal CURRENT_DATE
+	 */
+	public static final Literal CURRENT_DATE = new Literal("CURRENT_DATE");
+	
+	/**
+	 * Represents the Sqlite literal CURRENT_TIMESTAMP
+	 */
+	public static final Literal CURRENT_TIMESTAMP = new Literal("CURRENT_TIMESTAMP");
+	
+	/**
+	 * <p>Comparison operator constants used in SQuery expressions.</p>
+	 * 
+	 * <h2>Example</h2>
+	 * <pre><code>BooksRecord record = SQuery.newQuery()
+	 *     .expr(Books.TITLE, Op.EQ, "Musashi")
+	 *     .selectFirst(Books.CONTENT_URI);
+	 * </code></pre>
+	 * 
+	 * @see SQuery#expr(String, String, boolean)
+	 * @see SQuery#expr(String, String, double)
+	 * @see SQuery#expr(String, String, float)
+	 * @see SQuery#expr(String, String, int)
+	 * @see SQuery#expr(String, String, long)
+	 * @see SQuery#expr(String, String, String)
+	 * @see SQuery#expr(String, String, Literal)
+	 */
 	public interface Op {
 		String EQ = " = ";
 		String NEQ = " != ";
@@ -37,6 +112,7 @@ public class SQuery {
 	}
 	
 	private static final String AND = " AND ";
+	
 	private static final String OR = " OR ";
 	
 	
@@ -44,10 +120,16 @@ public class SQuery {
 	private List<String> mArgs = new ArrayList<String>();
 	private String mNextOp = null;
 	
+	/**
+	 * @return A list of expression arguments added so far
+	 */
 	public List<String> getArgs() {
 		return mArgs;
 	}
 	
+	/**
+	 * @return An array of expression arguments added so far
+	 */
 	public String[] getArgsArray() {
 		return mArgs.toArray(new String[mArgs.size()]);
 	}
@@ -60,6 +142,16 @@ public class SQuery {
 		return new SQuery();
 	}
 	
+	/**
+	 * <p>Add an expression to the end of the currently added expressions, if
+	 * no previous boolean operator has been given ({@link and()} or {@link or()}) then
+	 * AND will be used by default when appending this expression.</p>
+	 * @param column Usually the column on the left side of the expression
+	 * @param op The operator, see {@link Op} for available operators
+	 * @param arg An argument for the right side of the expression, this will be added to
+	 * an array of expressions to be added as a bind argument.
+	 * @return
+	 */
 	public SQuery expr(String column, String op, String arg) {
 		ensureOp();
 		mBuilder.append(column).append(op).append("?");
@@ -68,15 +160,66 @@ public class SQuery {
 		
 		return this;
 	}
-	
-	public SQuery expr(SQuery builder) {
 
-		List<String> args = builder.getArgs();
+	/**
+	 * <p>Add an expression to the end of the currently added expressions, if
+	 * no previous boolean operator has been given ({@link and()} or {@link or()}) then
+	 * AND will be used by default when appending this expression.</p>
+	 * @param column Usually the column on the left side of the expression
+	 * @param op The operator, see {@link Op} for available operators
+	 * @param arg An argument of type {@link Literal}, can be {@link SQuery#NULL}, 
+	 * {@link SQuery#CURRENT_TIME}, {@link SQuery#CURRENT_DATE} or {@link SQuery#CURRENT_TIMESTAMP}.
+	 * @return
+	 */
+	public SQuery expr(String column, String op, Literal arg) {
+		ensureOp();
+		
+		mBuilder.append(column).append(op).append(" ").append(arg.value);
+		mNextOp = null;
+		
+		return this;
+	}
+	
+	/**
+	 * <p>An ISNULL expression on the given column name, ie:- column ISNULL</p>
+	 * @param column Usually the column name
+	 * @return
+	 */
+	public SQuery exprIsNull(String column) {
+		ensureOp();
+		mBuilder.append(column).append(" ISNULL");
+		mNextOp = null;
+		
+		return this;
+	}
+	
+	/**
+	 * A NOTNULL expression on the given column name, ie:- NOTNULL
+	 * @param column Usually the colum name
+	 * @return
+	 */
+	public SQuery exprNotNull(String column) {
+		ensureOp();
+		mBuilder.append(column).append(" NOTNULL");
+		mNextOp = null;
+		
+		return this;
+	}
+	
+	/**
+	 * Add a sub-expression to this expression, the sub-expression will be enclosed in brackets, ie:-
+	 * a=? AND (b=?) AND c=? where the expression contained in the brackets is the sub-expression
+	 * @param builder A query to use as a sub-expression
+	 * @return
+	 */
+	public SQuery expr(SQuery query) {
+
+		List<String> args = query.getArgs();
 		
 		
 		if(args.size() > 0) {
 			ensureOp();
-			mBuilder.append("(").append(builder).append(")");
+			mBuilder.append("(").append(query).append(")");
 			mArgs.addAll(args);
 		}
 		
@@ -85,27 +228,40 @@ public class SQuery {
 		return this;
 	}
 	
+	/**
+	 * @see SQuery#expr(String, String, String)
+	 */
 	public SQuery expr(String column, String op, boolean arg) {
 		return expr(column, op, arg ? "1" : "0");
 	}
-	
+
+	/**
+	 * @see SQuery#expr(String, String, String)
+	 */
 	public SQuery expr(String column, String op, int arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
 	
+	/**
+	 * @see SQuery#expr(String, String, String)
+	 */	
 	public SQuery expr(String column, String op, long arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
-	
+
+	/**
+	 * @see SQuery#expr(String, String, String)
+	 */
 	public SQuery expr(String column, String op, float arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
-	
+
+	/**
+	 * @see SQuery#expr(String, String, String)
+	 */
 	public SQuery expr(String column, String op, double arg) {
 		return expr(column, op, String.valueOf(arg));
 	}
-	
-
 	
 	public SQuery opt(String column, String op, String arg) {
 		if(arg == null) {
@@ -366,6 +522,12 @@ public class SQuery {
 		return db.delete(table, mBuilder.toString(), getArgsArray());
 	}	
 	
+	/**
+	 * <p>Select records using this query</p>
+	 * @param uri The ContentProvider Uri to query for
+	 * @param sortOrder The order by clause
+	 * @return The results as active records
+	 */
 	public <T extends ActiveRecord> List<T> select(Uri uri, String sortOrder) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
@@ -378,6 +540,11 @@ public class SQuery {
 		return records;
 	}
 	
+	/**
+	 * <p>Select records using this query</p>
+	 * @param uri The ContentProvider Uri to query for
+	 * @return The results as active records
+	 */	
 	public <T extends ActiveRecord> List<T> select(Uri uri) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
@@ -389,7 +556,13 @@ public class SQuery {
 		
 		return records;
 	}
-	
+
+	/**
+	 * <p>Select the first record from the results of using this query</p>
+	 * @param uri The ContentProvider Uri to query for
+	 * @param sortOrder The order by clause
+	 * @return The results as active records
+	 */	
 	public <T extends ActiveRecord> T selectFirst(Uri uri, String sortOrder) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
@@ -406,6 +579,11 @@ public class SQuery {
 		}
 	}
 	
+	/**
+	 * <p>Select the first record from the results of using this query</p>
+	 * @param uri The ContentProvider Uri to query for
+	 * @return The results as active records
+	 */		
 	public <T extends ActiveRecord> T selectFirst(Uri uri) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
