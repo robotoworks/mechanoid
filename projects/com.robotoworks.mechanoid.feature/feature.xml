@@ -2,7 +2,7 @@
 <feature
       id="com.robotoworks.mechanoid.feature"
       label="Robotoworks Mechanoid"
-      version="1.0.0.alpha19"
+      version="1.0.0.alpha20"
       provider-name="Robotoworks Limited">
 
    <description url="http://www.robotoworks.com/mechanoid-plugin">
