@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
 
+import com.justeat.app.ops.net.UnexpectedHttpStatusException;
 import com.robotoworks.mechanoid.util.Streams;
 
 public class Response<T> {
@@ -54,12 +55,40 @@ public class Response<T> {
 	private Map<String, List<String>> mHeaders;
 	
 	private byte[] mInputBytes;
+	
+	private boolean mParsed;
 
 	/**
 	 * @return The HTTP Response Code, i.e.:- 200
 	 */
 	public int getResponseCode() {
 		return mResponseCode;
+	}
+	
+	/**
+	 * <p>Checks to see if the response code is HTTP_OK and if not, throws
+	 * a {@link UnexpectedHttpStatusException}.</p>
+	 * 
+	 * <p>In some circumstances it is useful to call this to enforce a post condition
+	 * on the response code to ensure its HTTP_OK before continuing</p>
+	 */
+	public void checkResponseCodeOk() throws UnexpectedHttpStatusException {
+		if(mResponseCode != HTTP_OK) {
+			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
+		}
+	}
+	
+	/**
+	 * <p>Checks to see if the response code is the given response code and if not, throws
+	 * a {@link UnexpectedHttpStatusException}.</p>
+	 * 
+	 * <p>In some circumstances it is useful to call this to enforce a post condition
+	 * on the response code to ensure its of a certain code before continuing</p>
+	 */
+	public void checkResponseCode(int responseCode) throws UnexpectedHttpStatusException {
+		if(mResponseCode != HTTP_OK) {
+			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
+		}
 	}
 
 	/**
@@ -86,24 +115,39 @@ public class Response<T> {
 	 * @throws ServiceException
 	 */
 	public T parse() throws ServiceException {
-		if(mContent != null) {
+		if(mParsed) {
 			return mContent;
 		}
 		
 		try {
 			InputStream stream = null;
 			if(mInputBytes == null) {
-				stream = mConn.getInputStream();
+				stream = getInputStream();
 			} else {
-				stream = new ByteArrayInputStream(mInputBytes);
+				if(mInputBytes.length > 0) {
+					stream = new ByteArrayInputStream(mInputBytes);
+				}
 			}
 			
-			mContent = mParser.parse(stream);
+			if(stream != null) {
+				mContent = mParser.parse(stream);
+			}
+			
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
 		
+		mParsed = true;
+		
 		return mContent;
+	}
+
+	private InputStream getInputStream() throws IOException {
+		if(mResponseCode == 200) {
+			return mConn.getInputStream();
+		} else {
+			return mConn.getErrorStream();
+		}
 	}
 	
 	/**
@@ -117,7 +161,12 @@ public class Response<T> {
 	 */
 	public String readAsText() throws IOException {
 		if(mInputBytes == null) {
-			mInputBytes = Streams.readAllBytes(mConn.getInputStream());
+			InputStream stream = getInputStream();
+			if(stream == null) {
+				mInputBytes = new byte[]{};
+			} else {
+				mInputBytes = Streams.readAllBytes(getInputStream());
+			}
 		}
 		
 		return Streams.readAllText(new ByteArrayInputStream(mInputBytes));
