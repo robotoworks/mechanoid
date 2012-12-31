@@ -54,6 +54,8 @@ public class Response<T> {
 	private Map<String, List<String>> mHeaders;
 	
 	private byte[] mInputBytes;
+	
+	private boolean mParsed;
 
 	/**
 	 * @return The HTTP Response Code, i.e.:- 200
@@ -86,24 +88,39 @@ public class Response<T> {
 	 * @throws ServiceException
 	 */
 	public T parse() throws ServiceException {
-		if(mContent != null) {
+		if(mParsed) {
 			return mContent;
 		}
 		
 		try {
 			InputStream stream = null;
 			if(mInputBytes == null) {
-				stream = mConn.getInputStream();
+				stream = getInputStream();
 			} else {
-				stream = new ByteArrayInputStream(mInputBytes);
+				if(mInputBytes.length > 0) {
+					stream = new ByteArrayInputStream(mInputBytes);
+				}
 			}
 			
-			mContent = mParser.parse(stream);
+			if(stream != null) {
+				mContent = mParser.parse(stream);
+			}
+			
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
 		
+		mParsed = true;
+		
 		return mContent;
+	}
+
+	private InputStream getInputStream() throws IOException {
+		if(mResponseCode == 200) {
+			return mConn.getInputStream();
+		} else {
+			return mConn.getErrorStream();
+		}
 	}
 	
 	/**
@@ -117,7 +134,12 @@ public class Response<T> {
 	 */
 	public String readAsText() throws IOException {
 		if(mInputBytes == null) {
-			mInputBytes = Streams.readAllBytes(mConn.getInputStream());
+			InputStream stream = getInputStream();
+			if(stream == null) {
+				mInputBytes = new byte[]{};
+			} else {
+				mInputBytes = Streams.readAllBytes(getInputStream());
+			}
 		}
 		
 		return Streams.readAllText(new ByteArrayInputStream(mInputBytes));
