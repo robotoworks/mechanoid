@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getTableName <em>Table Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,44 +28,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSourceTable
 {
   /**
-   * The default value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
+   * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableName()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected static final String TABLE_NAME_EDEFAULT = null;
+  protected static final String TABLE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
+   * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableName()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected String tableName = TABLE_NAME_EDEFAULT;
+  protected String table = TABLE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getAlias()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String ALIAS_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getAlias()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String alias = ALIAS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -93,9 +93,9 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTableName()
+  public String getTable()
   {
-    return tableName;
+    return table;
   }
 
   /**
@@ -103,12 +103,12 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTableName(String newTableName)
+  public void setTable(String newTable)
   {
-    String oldTableName = tableName;
-    tableName = newTableName;
+    String oldTable = table;
+    table = newTable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_NAME, oldTableName, tableName));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE, oldTable, table));
   }
 
   /**
@@ -116,9 +116,9 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getAlias()
   {
-    return name;
+    return alias;
   }
 
   /**
@@ -126,12 +126,12 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setAlias(String newAlias)
   {
-    String oldName = name;
-    name = newName;
+    String oldAlias = alias;
+    alias = newAlias;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS, oldAlias, alias));
   }
 
   /**
@@ -144,10 +144,10 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_NAME:
-        return getTableName();
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__NAME:
-        return getName();
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        return getTable();
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        return getAlias();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -162,11 +162,11 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_NAME:
-        setTableName((String)newValue);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        setTable((String)newValue);
         return;
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__NAME:
-        setName((String)newValue);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        setAlias((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -182,11 +182,11 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_NAME:
-        setTableName(TABLE_NAME_EDEFAULT);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        setTable(TABLE_EDEFAULT);
         return;
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__NAME:
-        setName(NAME_EDEFAULT);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        setAlias(ALIAS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -202,10 +202,10 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_NAME:
-        return TABLE_NAME_EDEFAULT == null ? tableName != null : !TABLE_NAME_EDEFAULT.equals(tableName);
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE:
+        return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+      case SqliteModelPackage.SINGLE_SOURCE_TABLE__ALIAS:
+        return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
     }
     return super.eIsSet(featureID);
   }
@@ -221,10 +221,10 @@ public class SingleSourceTableImpl extends SingleSourceImpl implements SingleSou
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tableName: ");
-    result.append(tableName);
-    result.append(", name: ");
-    result.append(name);
+    result.append(" (table: ");
+    result.append(table);
+    result.append(", alias: ");
+    result.append(alias);
     result.append(')');
     return result.toString();
   }

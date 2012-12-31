@@ -9,6 +9,7 @@ public abstract class ActiveRecord {
      * will also be updated
      */
     public abstract long save();
+    public abstract long save(boolean notifyChange);
     
     
     /**
@@ -17,5 +18,22 @@ public abstract class ActiveRecord {
      * @return the number of records affected
      */
     public abstract int update(SQuery query);
+    
+    public abstract int update(SQuery query, boolean notifyChange);
+    
+    
     public abstract boolean delete();
+    
+    public abstract boolean delete(boolean notifyChange);
+    
+    /**
+     * Set all fields in this record to dirty
+     * @param dirty
+     */
+    public abstract void setDirty(boolean dirty);
+    
+    /**
+     * Reload this record, if it has an id
+     */
+    public abstract void reload();
 }

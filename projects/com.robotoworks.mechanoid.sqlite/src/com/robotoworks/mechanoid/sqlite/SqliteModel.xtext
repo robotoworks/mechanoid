@@ -22,7 +22,7 @@ ConfigurationStatement:
 
 MigrationBlock:
 	{MigrationBlock}
-	'migration' '{' (statements+=Statement ';' (statements+=Statement ';')*)? '}';
+	'migration' '{' (statements+=DDLStatement ';' (statements+=DDLStatement ';')*)? '}';
 	
 /*
  * Expressions
@@ -89,12 +89,51 @@ Case:
  * Statements
  */
 
-Statement:
-	{CreateTableStatement} 'create' 'table' name=ID '(' columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* (',' constraints+=TableConstraint)* ')' |
-	{AlterTableStatement} 'alter' 'table' name=ID clause=AlterTableClause |
-	{CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement |
-	{DropTableStatement} 'drop' 'table' ('if' 'exists')? name=ID |
-	{DropViewStatement} 'drop' 'view' ('if' 'exists')? name=ID;
+DDLStatement:
+	{CreateTableStatement} 'create' 'table' name=ID '(' columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* (',' constraints+=TableConstraint)* ')'
+	| {CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement
+	| {CreateTriggerStatement} 'create' 'trigger' name=ID ('before'|'after'|'instead' 'of')?
+	  ('delete'|'insert'|'update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
+	  'on' tableName=ID ('for' 'each' 'row')? ('when' whenExpression=SqlExpression)?
+	  'begin' (statements+=DMLStatement ';' (statements+=DMLStatement ';')*)? 'end'
+	| {AlterTableStatement} 'alter' 'table' name=ID clause=AlterTableClause
+	| {DropTableStatement} 'drop' 'table' ('if' 'exists')? name=ID
+	| {DropTriggerStatement} 'drop' 'trigger' ('if' 'exists')? name=ID
+	| {DropViewStatement} 'drop' 'view' ('if' 'exists')? name=ID
+;
+
+DMLStatement:
+	SelectStatement | InsertStatement | UpdateStatement | DeleteStatement
+;
+
+DeleteStatement:
+	'delete' 'from' tableName=ID ('where' expression=SqlExpression)?	
+;
+
+InsertStatement:
+	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' tableName=ID
+	('(' columnNames+=ID (',' columnNames+=ID)* ')')? 
+	(('values' 
+		'(' expressions+=SqlExpression (',' expressions+=SqlExpression)* ')'
+		| selectStatement=SelectStatement
+	)|'default' 'values')
+;
+
+UpdateStatement:
+	'update' ('or' (conflictResolution=ConflictResolution))? tableName=ID
+	'set' updateColumnExpressions+=UpdateColumnExpression (',' updateColumnExpressions+=UpdateColumnExpression)*
+	('where' whereExpression=SqlExpression)?
+;
+
+UpdateColumnExpression:
+	columnName=ID '=' expression=SqlExpression
+;
+
+
+SelectStatement:
+	coreStatements+=SelectCore (CompoundOperator coreStatements+=SelectCore)*
+	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+;
 
 AlterTableClause:
 	{AlterTableRenameClause} 'rename to' name=ID |
@@ -130,10 +169,6 @@ enum SqliteDataType:
 enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;
 
-SelectStatement:
-	coreStatements+=SelectCore (CompoundOperator coreStatements+=SelectCore)*
-	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
-;
 
 CompoundOperator:
 	'union all' | 'union' | 'intersect' | 'except'
@@ -155,8 +190,8 @@ JoinSource:
 ;
 
 SingleSource:
-	{SingleSourceTable} tableName=ID ('as' name=ID)? |
-	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' |
+	{SingleSourceTable} table=ID ('as' alias=ID)? |
+	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' alias=ID)? |
 	{SingleSourceJoin} '(' joinSource=JoinSource ')'
 ;
 
@@ -165,9 +200,8 @@ JoinStatement:
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 ResultColumn:
-	{ResultColumnAll} '*' |
-	{ResultColumnAllWithTableRef} tableRef=ID'.' '*' |
-	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
+	{ResultColumnAll} (table=ID)? '*' |
+	{ResultColumnExpression} expression=SqlExpression ('as' alias=ID)?
 ;
 
 ConflictClause:

@@ -9,6 +9,7 @@ import org.eclipse.xtext.serializer.ISerializer
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement
 
 class SqliteOpenHelperGenerator {
 		@Inject extension ISerializer
@@ -61,6 +62,14 @@ class SqliteOpenHelperGenerator {
 						«FOR view : snapshot.statements.filter(typeof(CreateViewStatement))»
 						db.execSQL(
 							«FOR line : view.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
+							"«line.trim» "
+							«ENDFOR»
+						);
+						
+						«ENDFOR»
+						«FOR trigger : snapshot.statements.filter(typeof(CreateTriggerStatement))»
+						db.execSQL(
+							«FOR line : trigger.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
 							"«line.trim» "
 							«ENDFOR»
 						);

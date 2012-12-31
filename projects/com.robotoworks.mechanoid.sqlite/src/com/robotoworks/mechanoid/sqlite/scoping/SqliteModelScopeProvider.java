@@ -18,7 +18,9 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 public class SqliteModelScopeProvider extends AbstractDeclarativeScopeProvider {
 @Override
 public IScope getScope(EObject context, EReference reference) {
-	return super.getScope(context, reference);
+	IScope scope = super.getScope(context, reference);
+	
+	return scope;
 }
 
 

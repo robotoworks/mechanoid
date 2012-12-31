@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class DropTableStatementImpl extends StatementImpl implements DropTableStatement
+public class DropTableStatementImpl extends DDLStatementImpl implements DropTableStatement
 {
   /**
    * <!-- begin-user-doc -->

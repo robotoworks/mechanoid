@@ -4,8 +4,6 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Select Statement</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface SelectStatement extends EObject
+public interface SelectStatement extends DMLStatement
 {
   /**
    * Returns the value of the '<em><b>Core Statements</b></em>' containment reference list.

@@ -168,7 +168,6 @@ class ClientGenerator {
 			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -209,16 +208,23 @@ class ClientGenerator {
 				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
 			}
 			
-			conn.connect();
-			
+			conn.connect()
 			«IF method.body != null»
-			request.writeBody(transformerProvider, conn.getOutputStream());
-			«ENDIF»
 			
+			«context.registerImport("java.io.ByteArrayOutputStream")»
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			«ENDIF»
 			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -251,15 +257,22 @@ class ClientGenerator {
 			}
 						
 			conn.connect();
-			
 			«IF method.body != null»
-			request.writeBody(transformerProvider, conn.getOutputStream());
-			«ENDIF»
 			
+			«context.registerImport("java.io.ByteArrayOutputStream")»
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
+			request.writeBody(transformerProvider, conn.getOutputStream());
+			
+			«ENDIF»
 			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -294,7 +307,6 @@ class ClientGenerator {
 			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());

@@ -2,9 +2,9 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 
 import java.util.Collection;
 
@@ -43,7 +43,7 @@ public class MigrationBlockImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    * @ordered
    */
-  protected EList<Statement> statements;
+  protected EList<DDLStatement> statements;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +71,11 @@ public class MigrationBlockImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Statement> getStatements()
+  public EList<DDLStatement> getStatements()
   {
     if (statements == null)
     {
-      statements = new EObjectContainmentEList<Statement>(Statement.class, this, SqliteModelPackage.MIGRATION_BLOCK__STATEMENTS);
+      statements = new EObjectContainmentEList<DDLStatement>(DDLStatement.class, this, SqliteModelPackage.MIGRATION_BLOCK__STATEMENTS);
     }
     return statements;
   }
@@ -125,7 +125,7 @@ public class MigrationBlockImpl extends MinimalEObjectImpl.Container implements 
     {
       case SqliteModelPackage.MIGRATION_BLOCK__STATEMENTS:
         getStatements().clear();
-        getStatements().addAll((Collection<? extends Statement>)newValue);
+        getStatements().addAll((Collection<? extends DDLStatement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

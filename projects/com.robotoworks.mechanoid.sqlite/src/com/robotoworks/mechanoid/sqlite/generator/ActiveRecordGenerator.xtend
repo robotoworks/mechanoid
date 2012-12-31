@@ -14,9 +14,6 @@ class ActiveRecordGenerator {
 			 */
 			package «model.packageName»;
 
-			import java.util.ArrayList;
-			import java.util.List;
-			
 			import android.content.ContentResolver;
 			import android.content.ContentUris;
 			import android.database.Cursor;
@@ -30,6 +27,7 @@ class ActiveRecordGenerator {
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 			import com.robotoworks.mechanoid.Mechanoid;
+			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
@@ -118,6 +116,24 @@ class ActiveRecordGenerator {
 					    m_id = ContentUris.parseId(uri);
 					}
 					
+					setDirty(false);
+					
+					return m_id;
+				}
+				
+			    @Override
+				public long save(boolean notifyChange){
+					Builder builder = createBuilder();
+					
+					if(m_id > 0) {
+					    builder.update(m_id, notifyChange);
+					} else {
+					    Uri uri = builder.insert(notifyChange);
+					    m_id = ContentUris.parseId(uri);
+					}
+					
+					setDirty(false);
+					
 					return m_id;
 				}
 				
@@ -125,28 +141,101 @@ class ActiveRecordGenerator {
 				public int update(SQuery query){
 					Builder builder = createBuilder();
 					
-					return builder.update(query);
+					int affected = builder.update(query);
+					
+					setDirty(false);
+					
+					return affected;
+				}
+				
+			    @Override
+				public int update(SQuery query, boolean notifyChange){
+					Builder builder = createBuilder();
+					
+					int affected = builder.update(query, notifyChange);
+					
+					setDirty(false);
+					
+					return affected;
 				}
 				
 			    @Override
 				public boolean delete(){
 					ContentResolver resolver = Mechanoid.getContentResolver();
 					
-					return resolver.delete(
+					boolean result = resolver.delete(
 						«stmt.name.pascalize».CONTENT_URI.buildUpon()
 						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
+						
+					setDirty(false);
+					
+					return result;
+				}
+				
+			    @Override
+				public boolean delete(boolean notifyChange){
+					ContentResolver resolver = Mechanoid.getContentResolver();
+					
+					Uri uri = «stmt.name.pascalize».CONTENT_URI.buildUpon()
+						.appendPath(String.valueOf(m_id))
+						.appendQueryParameter(
+							MechanoidContentProvider.PARAM_NOTIFY, 
+							String.valueOf(notifyChange)).build();
+
+					boolean result = resolver.delete(uri, null, null) > 0;
+						
+					setDirty(false);
+					
+					return result;
+				}
+				
+			    @Override
+				public void setDirty(boolean dirty){
+					«FOR col : stmt.columnDefs»
+					m«col.name.pascalize»Dirty = dirty;
+					«ENDFOR»
+				}
+				
+			    @Override
+				public void reload(){
+					if(m_id == 0) {
+						return;
+					}
+				    
+				    Cursor c = null;
+				    
+				    ContentResolver resolver = Mechanoid.getContentResolver();
+				    
+				    try {
+				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI.buildUpon()
+						.appendPath(String.valueOf(m_id)).build(), PROJECTION, null, null, null);
+				        
+				        if(c.moveToFirst()) {
+				        	setPropertiesFromCursor(c);
+				        	setDirty(false);
+				        }
+				    } finally {
+				        Closeables.closeSilently(c);
+				    }
+				}
+				
+				protected void setPropertiesFromCursor(Cursor c) {
+					setId(c.getLong(Indices._ID));
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«IF col.type == ColumnType::BOOLEAN»
+					set«col.name.pascalize»(c.getInt(Indices.«col.name.underscore.toUpperCase») > 0);
+					«ELSE»
+					set«col.name.pascalize»(c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»));
+					«ENDIF»
+					«ENDFOR»
 				}
 				
 				public static «stmt.name.pascalize»Record fromCursor(Cursor c) {
 				    «stmt.name.pascalize»Record item = new «stmt.name.pascalize»Record();
 				    
-					«FOR col : stmt.columnDefs»
-					«IF col.type == ColumnType::BOOLEAN»
-					item.m«col.name.pascalize» = c.getInt(Indices.«col.name.underscore.toUpperCase») > 0;
-					«ELSE»
-					item.m«col.name.pascalize» = c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»);
-					«ENDIF»
-					«ENDFOR»
+					item.setPropertiesFromCursor(c);
+					
+					item.setDirty(false);
 					
 				    return item;
 				}

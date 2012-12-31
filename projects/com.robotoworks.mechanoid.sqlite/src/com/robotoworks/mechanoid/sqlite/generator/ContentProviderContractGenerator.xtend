@@ -5,7 +5,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
@@ -26,6 +25,7 @@ class ContentProviderContractGenerator {
 			import android.content.ContentResolver;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.Mechanoid;
+			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -77,33 +77,13 @@ class ContentProviderContractGenerator {
 				        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 				    }
 				
-					public static ContentValues createContentValues(«createMethodArgsFromColumns(tbl)») {
-						ContentValues values = new ContentValues();
-						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
-						values.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», «col.name.camelize»);
-						«ENDFOR»
-						return values;
+					public static int delete() {
+						return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
 					}
 					
-					«var insertArgs = createMethodArgsFromColumns(tbl)»
-					public static Uri insert(ContentResolver contentResolver«IF insertArgs != null || insertArgs.length > 0», «insertArgs»«ENDIF») {
-						ContentValues values = createContentValues(
-						«FOR col : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»
-							«col.name.camelize»
-						«ENDFOR»
-						);
-						return contentResolver.insert(CONTENT_URI, values);
+					public static int delete(String where, String[] selectionArgs) {
+						return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
 					}
-					
-					public static int delete(ContentResolver contentResolver) {
-						return contentResolver.delete(CONTENT_URI, null, null);
-					}
-					
-					public static int delete(ContentResolver contentResolver, String where, String[] selectionArgs) {
-						return contentResolver.delete(CONTENT_URI, where, selectionArgs);
-					}
-					
-					
 					
 					/**
 					 * <p>Create a new Builder for «tbl.name.pascalize»</p>
@@ -134,11 +114,39 @@ class ContentProviderContractGenerator {
 						}
 						
 						/**
+						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
+						 */								
+						public Uri insert(boolean notifyChange) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							
+							Uri uri = CONTENT_URI.buildUpon()
+								.appendQueryParameter(
+									MechanoidContentProvider.PARAM_NOTIFY, 
+									String.valueOf(notifyChange)).build();
+							
+							return resolver.insert(uri, mValues);
+						}
+						
+						/**
 						 * <p>Update «tbl.name.pascalize» with the given query</p>
 						 */						
 						public int update(SQuery query) {
 							ContentResolver resolver = Mechanoid.getContentResolver();
 							return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+						}
+						
+						/**
+						 * <p>Update «tbl.name.pascalize» with the given query</p>
+						 */						
+						public int update(SQuery query, boolean notifyChange) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							
+							Uri uri = CONTENT_URI.buildUpon()
+								.appendQueryParameter(
+									MechanoidContentProvider.PARAM_NOTIFY, 
+									String.valueOf(notifyChange)).build();
+
+							return resolver.update(uri, mValues, query.toString(), query.getArgsArray());
 						}
 						
 						«IF tbl.hasAndroidPrimaryKey»
@@ -148,6 +156,21 @@ class ContentProviderContractGenerator {
 						public int update(long id) {
 							ContentResolver resolver = Mechanoid.getContentResolver();
 							return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
+						}
+						
+						/**
+						 * <p>Update «tbl.name.pascalize» with the given id</p>
+						 */
+						public int update(long id, boolean notifyChange) {
+							ContentResolver resolver = Mechanoid.getContentResolver();
+							
+							Uri uri = CONTENT_URI.buildUpon()
+								.appendPath(String.valueOf(id))
+								.appendQueryParameter(
+									MechanoidContentProvider.PARAM_NOTIFY, 
+									String.valueOf(notifyChange)).build();
+									
+							return resolver.update(uri, mValues, null, null);
 						}
 						
 						«ENDIF»
@@ -205,14 +228,10 @@ class ContentProviderContractGenerator {
 	
 	def dispatch generateInterfaceMemberForResultColumn(ResultColumnExpression column) { 
 		'''
-		«IF column.name != null && !column.name.equals("") && !column.name.equals("_id")»
-		String «column.name.underscore.toUpperCase» = "«column.name»";
+		«IF column.alias != null && !column.alias.equals("") && !column.alias.equals("_id")»
+		String «column.alias.underscore.toUpperCase» = "«column.alias»";
 		«ENDIF»
 		'''		
-	}
-
-	def dispatch generateInterfaceMemberForResultColumn(ResultColumnAllWithTableRef column) { 
-		
 	}
 	
 }

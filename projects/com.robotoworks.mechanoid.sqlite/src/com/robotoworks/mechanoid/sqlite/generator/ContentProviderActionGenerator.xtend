@@ -18,16 +18,13 @@ class ContentProviderActionGenerator {
 			package «model.packageName».actions;
 
 			import android.content.ContentValues;
-			import android.content.Context;
 			import android.database.sqlite.SQLiteDatabase;
 			import android.database.Cursor;
 			import android.net.Uri;
 			import com.robotoworks.mechanoid.content.ContentProviderActions;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
-			import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import java.util.ArrayList;
 			import java.util.List;
 			import com.robotoworks.mechanoid.util.Closeables;
@@ -46,14 +43,11 @@ class ContentProviderActionGenerator {
 					«IF forId»
 					«IF tbl.hasAndroidPrimaryKey»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					final Context context = provider.getContext();
 					
 					int affected = SQuery.newQuery()
-					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
+					.expr(«tbl.name.pascalize»._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.delete(db, Tables.«tbl.name.underscore.toUpperCase»);
-					
-					context.getContentResolver().notifyChange(uri, null);
 					
 					return affected;
 					«ELSE»
@@ -61,11 +55,8 @@ class ContentProviderActionGenerator {
 					«ENDIF»
 					«ELSE»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					final Context context = provider.getContext();
 
-					int affected = db.delete(Tables.«tbl.name.underscore.toUpperCase», selection, selectionArgs);
-					context.getContentResolver().notifyChange(uri, null);
-					return affected;
+					return db.delete(Tables.«tbl.name.underscore.toUpperCase», selection, selectionArgs);
 					«ENDIF»
 				}
 				
@@ -75,11 +66,15 @@ class ContentProviderActionGenerator {
 					return null; // Cannot insert on _id
 					«ELSE»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					final Context context = provider.getContext();
 
 					long id = db.insertOrThrow(Tables.«tbl.name.underscore.toUpperCase», null, values);
-					context.getContentResolver().notifyChange(uri, null);
-					return «tbl.name.pascalize».buildUriWithId(id);
+					
+					if(id > -1) {
+						return «tbl.name.pascalize».buildUriWithId(id);
+					}
+					
+					return null;
+					
 				    «ENDIF»
 				}
 				
@@ -88,14 +83,11 @@ class ContentProviderActionGenerator {
 					«IF forId»
 					«IF tbl.hasAndroidPrimaryKey»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					final Context context = provider.getContext();
 					
 					int affected = SQuery.newQuery()
-					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
+					.expr(«tbl.name.pascalize»._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.update(db, Tables.«tbl.name.underscore.toUpperCase», values);
-					
-					context.getContentResolver().notifyChange(uri, null);
 					
 					return affected;
 					«ELSE»
@@ -103,10 +95,9 @@ class ContentProviderActionGenerator {
 					«ENDIF»
 					«ELSE»
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-					final Context context = provider.getContext();
 					
 					int affected = db.update(Tables.«tbl.name.underscore.toUpperCase», values, selection, selectionArgs);
-					context.getContentResolver().notifyChange(uri, null);
+
 					return affected;
 					«ENDIF»
 				}
@@ -118,7 +109,7 @@ class ContentProviderActionGenerator {
 					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 					
 					return SQuery.newQuery()
-					.expr(«tbl.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
+					.expr(«tbl.name.pascalize»._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 					.append(selection, selectionArgs)
 					.query(db, Tables.«tbl.name.underscore.toUpperCase», projection, sortOrder);
 					«ELSE»
@@ -153,8 +144,6 @@ class ContentProviderActionGenerator {
 			    		db.endTransaction();
 			    	}
 			    	
-					provider.getContext().getContentResolver().notifyChange(uri, null);
-			    	
 			    	return numValues;
 			    }
 			    
@@ -162,12 +151,14 @@ class ContentProviderActionGenerator {
 				@SuppressWarnings("unchecked")
 				@Override
 				public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
+					final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+					
 					Cursor c = null;
 					
 					ArrayList<T> items = new ArrayList<T>();
 					
 					try {
-					    c = provider.query(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize»Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), sortOrder);
+						c = db.query(Tables.«tbl.name.underscore.toUpperCase», «tbl.name.pascalize»Record.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
 					    
 					    while(c.moveToNext()) {
 					        items.add((T)«tbl.name.pascalize»Record.fromCursor(c));
@@ -196,7 +187,6 @@ class ContentProviderActionGenerator {
 		import com.robotoworks.mechanoid.content.ContentProviderActions;
 		import com.robotoworks.mechanoid.sqlite.SQuery;
 		import com.robotoworks.mechanoid.content.MechanoidContentProvider;
-		import static com.robotoworks.mechanoid.sqlite.SQuery.Op.*;
 		
 		import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 		import «model.packageName».«model.database.name.pascalize»Contract.«vw.name.pascalize»;
@@ -223,7 +213,7 @@ class ContentProviderActionGenerator {
 				«IF vw.hasAndroidPrimaryKey»
 				final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 				return SQuery.newQuery()
-				.expr(«vw.name.pascalize»._ID, EQ, uri.getPathSegments().get(1))
+				.expr(«vw.name.pascalize»._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 				.append(selection, selectionArgs)
 				.query(db, Tables.«vw.name.underscore.toUpperCase», projection, sortOrder);
 				«ELSE»
