@@ -115,9 +115,39 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createCaseAdapter();
       }
       @Override
-      public Adapter caseStatement(Statement object)
+      public Adapter caseDDLStatement(DDLStatement object)
       {
-        return createStatementAdapter();
+        return createDDLStatementAdapter();
+      }
+      @Override
+      public Adapter caseDMLStatement(DMLStatement object)
+      {
+        return createDMLStatementAdapter();
+      }
+      @Override
+      public Adapter caseDeleteStatement(DeleteStatement object)
+      {
+        return createDeleteStatementAdapter();
+      }
+      @Override
+      public Adapter caseInsertStatement(InsertStatement object)
+      {
+        return createInsertStatementAdapter();
+      }
+      @Override
+      public Adapter caseUpdateStatement(UpdateStatement object)
+      {
+        return createUpdateStatementAdapter();
+      }
+      @Override
+      public Adapter caseUpdateColumnExpression(UpdateColumnExpression object)
+      {
+        return createUpdateColumnExpressionAdapter();
+      }
+      @Override
+      public Adapter caseSelectStatement(SelectStatement object)
+      {
+        return createSelectStatementAdapter();
       }
       @Override
       public Adapter caseAlterTableClause(AlterTableClause object)
@@ -148,11 +178,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseIndexedColumn(IndexedColumn object)
       {
         return createIndexedColumnAdapter();
-      }
-      @Override
-      public Adapter caseSelectStatement(SelectStatement object)
-      {
-        return createSelectStatementAdapter();
       }
       @Override
       public Adapter caseOrderingTerm(OrderingTerm object)
@@ -280,19 +305,29 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createCreateTableStatementAdapter();
       }
       @Override
-      public Adapter caseAlterTableStatement(AlterTableStatement object)
-      {
-        return createAlterTableStatementAdapter();
-      }
-      @Override
       public Adapter caseCreateViewStatement(CreateViewStatement object)
       {
         return createCreateViewStatementAdapter();
       }
       @Override
+      public Adapter caseCreateTriggerStatement(CreateTriggerStatement object)
+      {
+        return createCreateTriggerStatementAdapter();
+      }
+      @Override
+      public Adapter caseAlterTableStatement(AlterTableStatement object)
+      {
+        return createAlterTableStatementAdapter();
+      }
+      @Override
       public Adapter caseDropTableStatement(DropTableStatement object)
       {
         return createDropTableStatementAdapter();
+      }
+      @Override
+      public Adapter caseDropTriggerStatement(DropTriggerStatement object)
+      {
+        return createDropTriggerStatementAdapter();
       }
       @Override
       public Adapter caseDropViewStatement(DropViewStatement object)
@@ -368,11 +403,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseResultColumnAll(ResultColumnAll object)
       {
         return createResultColumnAllAdapter();
-      }
-      @Override
-      public Adapter caseResultColumnAllWithTableRef(ResultColumnAllWithTableRef object)
-      {
-        return createResultColumnAllWithTableRefAdapter();
       }
       @Override
       public Adapter caseResultColumnExpression(ResultColumnExpression object)
@@ -552,16 +582,106 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Statement <em>Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement <em>DDL Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.Statement
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement
    * @generated
    */
-  public Adapter createStatementAdapter()
+  public Adapter createDDLStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement <em>DML Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement
+   * @generated
+   */
+  public Adapter createDMLStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement <em>Delete Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement
+   * @generated
+   */
+  public Adapter createDeleteStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement <em>Insert Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement
+   * @generated
+   */
+  public Adapter createInsertStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement <em>Update Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement
+   * @generated
+   */
+  public Adapter createUpdateStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression <em>Update Column Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression
+   * @generated
+   */
+  public Adapter createUpdateColumnExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement <em>Select Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement
+   * @generated
+   */
+  public Adapter createSelectStatementAdapter()
   {
     return null;
   }
@@ -652,21 +772,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createIndexedColumnAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement <em>Select Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement
-   * @generated
-   */
-  public Adapter createSelectStatementAdapter()
   {
     return null;
   }
@@ -1047,21 +1152,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement <em>Alter Table Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement
-   * @generated
-   */
-  public Adapter createAlterTableStatementAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement <em>Create View Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1077,6 +1167,36 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement <em>Create Trigger Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement
+   * @generated
+   */
+  public Adapter createCreateTriggerStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement <em>Alter Table Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement
+   * @generated
+   */
+  public Adapter createAlterTableStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement <em>Drop Table Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1087,6 +1207,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDropTableStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement <em>Drop Trigger Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement
+   * @generated
+   */
+  public Adapter createDropTriggerStatementAdapter()
   {
     return null;
   }
@@ -1312,21 +1447,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createResultColumnAllAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef <em>Result Column All With Table Ref</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef
-   * @generated
-   */
-  public Adapter createResultColumnAllWithTableRefAdapter()
   {
     return null;
   }

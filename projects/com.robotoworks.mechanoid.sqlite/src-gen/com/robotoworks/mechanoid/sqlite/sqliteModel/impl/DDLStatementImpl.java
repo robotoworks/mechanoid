@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAllWithTableRef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -10,48 +10,49 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Result Column All With Table Ref</b></em>'.
+ * An implementation of the model object '<em><b>DDL Statement</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllWithTableRefImpl#getTableRef <em>Table Ref</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DDLStatementImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements ResultColumnAllWithTableRef
+public class DDLStatementImpl extends MinimalEObjectImpl.Container implements DDLStatement
 {
   /**
-   * The default value of the '{@link #getTableRef() <em>Table Ref</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableRef()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String TABLE_REF_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTableRef() <em>Table Ref</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableRef()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String tableRef = TABLE_REF_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ResultColumnAllWithTableRefImpl()
+  protected DDLStatementImpl()
   {
     super();
   }
@@ -64,7 +65,7 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.RESULT_COLUMN_ALL_WITH_TABLE_REF;
+    return SqliteModelPackage.Literals.DDL_STATEMENT;
   }
 
   /**
@@ -72,9 +73,9 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTableRef()
+  public String getName()
   {
-    return tableRef;
+    return name;
   }
 
   /**
@@ -82,12 +83,12 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTableRef(String newTableRef)
+  public void setName(String newName)
   {
-    String oldTableRef = tableRef;
-    tableRef = newTableRef;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF__TABLE_REF, oldTableRef, tableRef));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DDL_STATEMENT__NAME, oldName, name));
   }
 
   /**
@@ -100,8 +101,8 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF__TABLE_REF:
-        return getTableRef();
+      case SqliteModelPackage.DDL_STATEMENT__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +117,8 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF__TABLE_REF:
-        setTableRef((String)newValue);
+      case SqliteModelPackage.DDL_STATEMENT__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +134,8 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF__TABLE_REF:
-        setTableRef(TABLE_REF_EDEFAULT);
+      case SqliteModelPackage.DDL_STATEMENT__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -150,8 +151,8 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF__TABLE_REF:
-        return TABLE_REF_EDEFAULT == null ? tableRef != null : !TABLE_REF_EDEFAULT.equals(tableRef);
+      case SqliteModelPackage.DDL_STATEMENT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -167,10 +168,10 @@ public class ResultColumnAllWithTableRefImpl extends ResultColumnImpl implements
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tableRef: ");
-    result.append(tableRef);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //ResultColumnAllWithTableRefImpl
+} //DDLStatementImpl

@@ -19,10 +19,10 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Statement;
 import java.util.Arrays;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -116,7 +116,7 @@ public class SqliteModelGenerator implements IGenerator {
     CharSequence _generateStub_1 = this.mContentProviderGenerator.generateStub(model, snapshot);
     fsa.generateFile(_resolveFileName_4, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub_1);
-    EList<Statement> _statements = snapshot.getStatements();
+    EList<DDLStatement> _statements = snapshot.getStatements();
     Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
     final Procedure1<CreateTableStatement> _function = new Procedure1<CreateTableStatement>() {
         public void apply(final CreateTableStatement item) {
@@ -128,7 +128,7 @@ public class SqliteModelGenerator implements IGenerator {
         }
       };
     IterableExtensions.<CreateTableStatement>forEach(_filter, _function);
-    EList<Statement> _statements_1 = snapshot.getStatements();
+    EList<DDLStatement> _statements_1 = snapshot.getStatements();
     Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
     final Procedure1<CreateViewStatement> _function_1 = new Procedure1<CreateViewStatement>() {
         public void apply(final CreateViewStatement item) {
@@ -170,9 +170,9 @@ public class SqliteModelGenerator implements IGenerator {
       Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_3, _function_4);
       final Procedure1<ConfigurationStatement> _function_5 = new Procedure1<ConfigurationStatement>() {
           public void apply(final ConfigurationStatement it) {
-            EList<Statement> _statements = snapshot.getStatements();
-            final Function1<Statement,Boolean> _function = new Function1<Statement,Boolean>() {
-                public Boolean apply(final Statement stmt) {
+            EList<DDLStatement> _statements = snapshot.getStatements();
+            final Function1<DDLStatement,Boolean> _function = new Function1<DDLStatement,Boolean>() {
+                public Boolean apply(final DDLStatement stmt) {
                   boolean _and = false;
                   if (!(stmt instanceof CreateTableStatement)) {
                     _and = false;
@@ -185,7 +185,7 @@ public class SqliteModelGenerator implements IGenerator {
                   return Boolean.valueOf(_and);
                 }
               };
-            Statement statement = IterableExtensions.<Statement>findFirst(_statements, _function);
+            DDLStatement statement = IterableExtensions.<DDLStatement>findFirst(_statements, _function);
             boolean _notEquals = (!Objects.equal(statement, null));
             if (_notEquals) {
               SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
@@ -367,7 +367,7 @@ public class SqliteModelGenerator implements IGenerator {
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
-  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final Statement stmt, final boolean forId) {
+  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final DDLStatement stmt, final boolean forId) {
     if (stmt instanceof CreateTableStatement) {
       _generateAction(resource, fsa, (CreateTableStatement)stmt, forId);
       return;

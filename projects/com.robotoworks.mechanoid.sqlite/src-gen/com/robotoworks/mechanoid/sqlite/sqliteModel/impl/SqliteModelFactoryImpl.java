@@ -73,14 +73,19 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SQL_EXPRESSION: return createSqlExpression();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
-      case SqliteModelPackage.STATEMENT: return createStatement();
+      case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
+      case SqliteModelPackage.DML_STATEMENT: return createDMLStatement();
+      case SqliteModelPackage.DELETE_STATEMENT: return createDeleteStatement();
+      case SqliteModelPackage.INSERT_STATEMENT: return createInsertStatement();
+      case SqliteModelPackage.UPDATE_STATEMENT: return createUpdateStatement();
+      case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION: return createUpdateColumnExpression();
+      case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
       case SqliteModelPackage.DEFAULT_VALUE: return createDefaultValue();
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
-      case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
@@ -106,9 +111,11 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CAST_EXPRESSION: return createCastExpression();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
       case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
       case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
       case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
@@ -124,7 +131,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
       case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
       case SqliteModelPackage.RESULT_COLUMN_ALL: return createResultColumnAll();
-      case SqliteModelPackage.RESULT_COLUMN_ALL_WITH_TABLE_REF: return createResultColumnAllWithTableRef();
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION: return createResultColumnExpression();
       case SqliteModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       case SqliteModelPackage.STRING_LITERAL: return createStringLiteral();
@@ -272,10 +278,76 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Statement createStatement()
+  public DDLStatement createDDLStatement()
   {
-    StatementImpl statement = new StatementImpl();
-    return statement;
+    DDLStatementImpl ddlStatement = new DDLStatementImpl();
+    return ddlStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DMLStatement createDMLStatement()
+  {
+    DMLStatementImpl dmlStatement = new DMLStatementImpl();
+    return dmlStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeleteStatement createDeleteStatement()
+  {
+    DeleteStatementImpl deleteStatement = new DeleteStatementImpl();
+    return deleteStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InsertStatement createInsertStatement()
+  {
+    InsertStatementImpl insertStatement = new InsertStatementImpl();
+    return insertStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpdateStatement createUpdateStatement()
+  {
+    UpdateStatementImpl updateStatement = new UpdateStatementImpl();
+    return updateStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpdateColumnExpression createUpdateColumnExpression()
+  {
+    UpdateColumnExpressionImpl updateColumnExpression = new UpdateColumnExpressionImpl();
+    return updateColumnExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectStatement createSelectStatement()
+  {
+    SelectStatementImpl selectStatement = new SelectStatementImpl();
+    return selectStatement;
   }
 
   /**
@@ -342,17 +414,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     IndexedColumnImpl indexedColumn = new IndexedColumnImpl();
     return indexedColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SelectStatement createSelectStatement()
-  {
-    SelectStatementImpl selectStatement = new SelectStatementImpl();
-    return selectStatement;
   }
 
   /**
@@ -635,17 +696,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlterTableStatement createAlterTableStatement()
-  {
-    AlterTableStatementImpl alterTableStatement = new AlterTableStatementImpl();
-    return alterTableStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public CreateViewStatement createCreateViewStatement()
   {
     CreateViewStatementImpl createViewStatement = new CreateViewStatementImpl();
@@ -657,10 +707,43 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public CreateTriggerStatement createCreateTriggerStatement()
+  {
+    CreateTriggerStatementImpl createTriggerStatement = new CreateTriggerStatementImpl();
+    return createTriggerStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlterTableStatement createAlterTableStatement()
+  {
+    AlterTableStatementImpl alterTableStatement = new AlterTableStatementImpl();
+    return alterTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public DropTableStatement createDropTableStatement()
   {
     DropTableStatementImpl dropTableStatement = new DropTableStatementImpl();
     return dropTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropTriggerStatement createDropTriggerStatement()
+  {
+    DropTriggerStatementImpl dropTriggerStatement = new DropTriggerStatementImpl();
+    return dropTriggerStatement;
   }
 
   /**
@@ -826,17 +909,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ResultColumnAllImpl resultColumnAll = new ResultColumnAllImpl();
     return resultColumnAll;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumnAllWithTableRef createResultColumnAllWithTableRef()
-  {
-    ResultColumnAllWithTableRefImpl resultColumnAllWithTableRef = new ResultColumnAllWithTableRefImpl();
-    return resultColumnAllWithTableRef;
   }
 
   /**

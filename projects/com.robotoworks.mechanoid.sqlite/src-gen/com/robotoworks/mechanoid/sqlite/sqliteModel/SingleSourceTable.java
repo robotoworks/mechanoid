@@ -11,8 +11,8 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableName <em>Table Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias <em>Alias</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,55 +23,55 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface SingleSourceTable extends SingleSource
 {
   /**
-   * Returns the value of the '<em><b>Table Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Table</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Table</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table Name</em>' attribute.
-   * @see #setTableName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_TableName()
+   * @return the value of the '<em>Table</em>' attribute.
+   * @see #setTable(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Table()
    * @model
    * @generated
    */
-  String getTableName();
+  String getTable();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableName <em>Table Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable <em>Table</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table Name</em>' attribute.
-   * @see #getTableName()
+   * @param value the new value of the '<em>Table</em>' attribute.
+   * @see #getTable()
    * @generated
    */
-  void setTableName(String value);
+  void setTable(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Alias</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Alias</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Name()
+   * @return the value of the '<em>Alias</em>' attribute.
+   * @see #setAlias(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Alias()
    * @model
    * @generated
    */
-  String getName();
+  String getAlias();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias <em>Alias</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Alias</em>' attribute.
+   * @see #getAlias()
    * @generated
    */
-  void setName(String value);
+  void setAlias(String value);
 
 } // SingleSourceTable

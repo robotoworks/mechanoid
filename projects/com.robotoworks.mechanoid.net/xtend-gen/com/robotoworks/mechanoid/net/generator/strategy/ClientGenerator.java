@@ -568,9 +568,6 @@ public class ClientGenerator {
     _builder.append("if(debug) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("Log.d(LOG_TAG, \"Response \" + response.getResponseCode());");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.append("NetLogHelper.logProperties(LOG_TAG, response.getHeaders());");
     _builder.newLine();
     _builder.append("\t\t");
@@ -668,21 +665,47 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("conn.connect();");
-    _builder.newLine();
-    _builder.append("\t");
+    _builder.append("conn.connect()");
     _builder.newLine();
     {
       BodyBlock _body = method.getBody();
       boolean _notEquals = (!Objects.equal(_body, null));
       if (_notEquals) {
         _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        this.context.registerImport("java.io.ByteArrayOutputStream");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("if(debug) {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("request.writeBody(transformerProvider, debugOutStream);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), \"UTF-8\"));");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.newLine();
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
     _builder.append("\t");
     _builder.append("Response<");
     String _name = method.getName();
@@ -697,9 +720,6 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("if(debug) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Log.d(LOG_TAG, \"Response \" + response.getResponseCode());");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("NetLogHelper.logProperties(LOG_TAG, response.getHeaders());");
@@ -781,19 +801,45 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.append("conn.connect();");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
     {
       BodyBlock _body = method.getBody();
       boolean _notEquals = (!Objects.equal(_body, null));
       if (_notEquals) {
         _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        this.context.registerImport("java.io.ByteArrayOutputStream");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("if(debug) {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("request.writeBody(transformerProvider, debugOutStream);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("    ");
+        _builder.append("Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), \"UTF-8\"));");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.append("request.writeBody(transformerProvider, conn.getOutputStream());");
+        _builder.newLine();
+        _builder.append("\t");
         _builder.newLine();
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
     _builder.append("\t");
     _builder.append("Response<");
     String _name = method.getName();
@@ -808,9 +854,6 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("if(debug) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Log.d(LOG_TAG, \"Response \" + response.getResponseCode());");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("NetLogHelper.logProperties(LOG_TAG, response.getHeaders());");
@@ -903,9 +946,6 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if(debug) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("Log.d(LOG_TAG, \"Response \" + response.getResponseCode());");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("NetLogHelper.logProperties(LOG_TAG, response.getHeaders());");

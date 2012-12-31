@@ -1,16 +1,13 @@
 package com.robotoworks.mechanoid.sqlite.generator
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 
 class ContentProviderGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) '''
@@ -180,7 +177,13 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					return createActions(sActions[match]).delete(this, uri, selection, selectionArgs);
+					int affected = createActions(sActions[match]).delete(this, uri, selection, selectionArgs);
+					
+					if(affected > 0) {
+						tryNotifyChange(uri);
+					}
+					
+					return affected;
 				}
 			
 				@Override
@@ -192,7 +195,13 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					return createActions(sActions[match]).insert(this, uri, values);
+					Uri newUri = createActions(sActions[match]).insert(this, uri, values);
+					
+					if(newUri != null) {
+						tryNotifyChange(uri);
+					}
+					
+					return newUri;
 				}
 				
 				@Override
@@ -204,7 +213,13 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					return createActions(sActions[match]).bulkInsert(this, uri, values);
+					int affected = createActions(sActions[match]).bulkInsert(this, uri, values);
+					
+					if(affected > 0) {
+						tryNotifyChange(uri);
+					}
+					
+					return affected;
 			    }
 			
 				@Override
@@ -222,9 +237,7 @@ class ContentProviderGenerator {
 					
 					Cursor cursor = createActions(sActions[match]).query(this, uri, projection, selection, selectionArgs, sortOrder);
 			
-					if(cursor != null) {
-						cursor.setNotificationUri(getContext().getContentResolver(), uri);
-					}
+					trySetNotificationUri(cursor, uri);
 					
 					return cursor;
 				}
@@ -237,7 +250,13 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					return createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
+					int affected = createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
+
+					if(affected > 0) {
+						tryNotifyChange(uri);
+					}
+
+					return affected;
 				}
 
 			    public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {

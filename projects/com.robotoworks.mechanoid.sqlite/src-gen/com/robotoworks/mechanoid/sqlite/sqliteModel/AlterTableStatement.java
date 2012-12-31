@@ -19,7 +19,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * @model
  * @generated
  */
-public interface AlterTableStatement extends Statement
+public interface AlterTableStatement extends DDLStatement
 {
   /**
    * Returns the value of the '<em><b>Clause</b></em>' containment reference.
