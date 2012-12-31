@@ -387,6 +387,7 @@ class RequestGenerator {
 		UserType elementType,
 		ComplexTypeDeclaration declaration
 	) '''
+		«context.registerImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
 			transformerProvider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
 		«generateSerializationStatementFooter(true)»

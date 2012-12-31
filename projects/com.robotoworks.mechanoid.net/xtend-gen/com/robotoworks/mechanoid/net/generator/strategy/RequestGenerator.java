@@ -1113,6 +1113,8 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForUserTypeGenericList(final BodyBlock body, final GenericListType type, final UserType elementType, final ComplexTypeDeclaration declaration) {
     StringConcatenation _builder = new StringConcatenation();
+    this.context.registerImport("java.util.List");
+    _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementHeader = this.generateSerializationStatementHeader(true);
     _builder.append(_generateSerializationStatementHeader, "");
     _builder.newLineIfNotEmpty();

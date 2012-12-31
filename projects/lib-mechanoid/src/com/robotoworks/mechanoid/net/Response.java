@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
 
+import com.justeat.app.ops.net.UnexpectedHttpStatusException;
 import com.robotoworks.mechanoid.util.Streams;
 
 public class Response<T> {
@@ -62,6 +63,32 @@ public class Response<T> {
 	 */
 	public int getResponseCode() {
 		return mResponseCode;
+	}
+	
+	/**
+	 * <p>Checks to see if the response code is HTTP_OK and if not, throws
+	 * a {@link UnexpectedHttpStatusException}.</p>
+	 * 
+	 * <p>In some circumstances it is useful to call this to enforce a post condition
+	 * on the response code to ensure its HTTP_OK before continuing</p>
+	 */
+	public void checkResponseCodeOk() throws UnexpectedHttpStatusException {
+		if(mResponseCode != HTTP_OK) {
+			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
+		}
+	}
+	
+	/**
+	 * <p>Checks to see if the response code is the given response code and if not, throws
+	 * a {@link UnexpectedHttpStatusException}.</p>
+	 * 
+	 * <p>In some circumstances it is useful to call this to enforce a post condition
+	 * on the response code to ensure its of a certain code before continuing</p>
+	 */
+	public void checkResponseCode(int responseCode) throws UnexpectedHttpStatusException {
+		if(mResponseCode != HTTP_OK) {
+			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
+		}
 	}
 
 	/**
