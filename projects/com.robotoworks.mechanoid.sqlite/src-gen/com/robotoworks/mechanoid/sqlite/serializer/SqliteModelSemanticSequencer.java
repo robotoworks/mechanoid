@@ -1356,7 +1356,8 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *         resultColumns+=ResultColumn* 
 	 *         source=JoinSource? 
 	 *         whereExpression=SqlExpression? 
-	 *         (groupByExpressions+=SqlExpression groupByExpressions+=SqlExpression*)?
+	 *         (groupByExpressions+=SqlExpression groupByExpressions+=SqlExpression*)? 
+	 *         havingExpression=SqlExpression?
 	 *     )
 	 */
 	protected void sequence_SelectCore(EObject context, SelectCore semanticObject) {

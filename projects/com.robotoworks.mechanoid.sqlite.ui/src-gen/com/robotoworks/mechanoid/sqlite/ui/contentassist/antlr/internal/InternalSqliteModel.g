@@ -12418,6 +12418,7 @@ rule__SelectCore__Group__6
     }
 :
 	rule__SelectCore__Group__6__Impl
+	rule__SelectCore__Group__7
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -12438,6 +12439,36 @@ rule__SelectCore__Group__6__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__SelectCore__Group__7
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SelectCore__Group__7__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SelectCore__Group__7__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectCoreAccess().getGroup_7()); }
+(rule__SelectCore__Group_7__0)?
+{ after(grammarAccess.getSelectCoreAccess().getGroup_7()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -12821,6 +12852,69 @@ rule__SelectCore__Group_6_3__1__Impl
 { before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_3_1()); }
 (rule__SelectCore__GroupByExpressionsAssignment_6_3_1)
 { after(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__SelectCore__Group_7__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SelectCore__Group_7__0__Impl
+	rule__SelectCore__Group_7__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SelectCore__Group_7__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectCoreAccess().getHavingKeyword_7_0()); }
+
+	'having' 
+
+{ after(grammarAccess.getSelectCoreAccess().getHavingKeyword_7_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__SelectCore__Group_7__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SelectCore__Group_7__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SelectCore__Group_7__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectCoreAccess().getHavingExpressionAssignment_7_1()); }
+(rule__SelectCore__HavingExpressionAssignment_7_1)
+{ after(grammarAccess.getSelectCoreAccess().getHavingExpressionAssignment_7_1()); }
 )
 
 ;
@@ -16524,6 +16618,21 @@ rule__SelectCore__GroupByExpressionsAssignment_6_3_1
 (
 { before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0()); }
 	ruleSqlExpression{ after(grammarAccess.getSelectCoreAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SelectCore__HavingExpressionAssignment_7_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectCoreAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); }
+	ruleSqlExpression{ after(grammarAccess.getSelectCoreAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); }
 )
 
 ;

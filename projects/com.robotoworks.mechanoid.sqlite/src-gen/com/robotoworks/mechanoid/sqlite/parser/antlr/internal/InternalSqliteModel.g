@@ -4003,7 +4003,29 @@ ruleSelectCore returns [EObject current=null]
 	    }
 
 )
-))*)?)
+))*)?(	otherlv_15='having' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getSelectCoreAccess().getHavingKeyword_7_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectCoreAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); 
+	    }
+		lv_havingExpression_16_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectCoreRule());
+	        }
+       		set(
+       			$current, 
+       			"havingExpression",
+        		lv_havingExpression_16_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 

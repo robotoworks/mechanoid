@@ -83,7 +83,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'delete' | 'insert' | 'update'
+	 *     'delete' | 'update' | 'insert'
 	 */
 	protected void emit_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -91,7 +91,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('instead' 'of') | ('after' | 'before')?
+	 *     ('after' | 'before')? | ('instead' 'of')
 	 */
 	protected void emit_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

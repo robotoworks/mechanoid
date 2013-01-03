@@ -183,6 +183,7 @@ SelectCore:
 	('from' source=JoinSource)?
 	('where' whereExpression=SqlExpression)?
 	('group' 'by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
+	('having' havingExpression=SqlExpression)?
 ;
 
 JoinSource:

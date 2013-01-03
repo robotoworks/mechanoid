@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getSource <em>Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getWhereExpression <em>Where Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getGroupByExpressions <em>Group By Expressions</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression <em>Having Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -164,5 +165,31 @@ public interface SelectCore extends EObject
    * @generated
    */
   EList<SqlExpression> getGroupByExpressions();
+
+  /**
+   * Returns the value of the '<em><b>Having Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Having Expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Having Expression</em>' containment reference.
+   * @see #setHavingExpression(SqlExpression)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectCore_HavingExpression()
+   * @model containment="true"
+   * @generated
+   */
+  SqlExpression getHavingExpression();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression <em>Having Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Having Expression</em>' containment reference.
+   * @see #getHavingExpression()
+   * @generated
+   */
+  void setHavingExpression(SqlExpression value);
 
 } // SelectCore
