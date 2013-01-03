@@ -882,13 +882,22 @@ public interface SqliteModelPackage extends EPackage
   int SELECT_CORE__GROUP_BY_EXPRESSIONS = 5;
 
   /**
+   * The feature id for the '<em><b>Having Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__HAVING_EXPRESSION = 6;
+
+  /**
    * The number of structural features of the '<em>Select Core</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELECT_CORE_FEATURE_COUNT = 6;
+  int SELECT_CORE_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.JoinSourceImpl <em>Join Source</em>}' class.
@@ -3513,6 +3522,17 @@ public interface SqliteModelPackage extends EPackage
   EReference getSelectCore_GroupByExpressions();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression <em>Having Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Having Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression()
+   * @see #getSelectCore()
+   * @generated
+   */
+  EReference getSelectCore_HavingExpression();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource <em>Join Source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5647,6 +5667,14 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference SELECT_CORE__GROUP_BY_EXPRESSIONS = eINSTANCE.getSelectCore_GroupByExpressions();
+
+    /**
+     * The meta object literal for the '<em><b>Having Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE__HAVING_EXPRESSION = eINSTANCE.getSelectCore_HavingExpression();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.JoinSourceImpl <em>Join Source</em>}' class.

@@ -168,6 +168,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectCoreAccess().getGroup_5(), "rule__SelectCore__Group_5__0");
 					put(grammarAccess.getSelectCoreAccess().getGroup_6(), "rule__SelectCore__Group_6__0");
 					put(grammarAccess.getSelectCoreAccess().getGroup_6_3(), "rule__SelectCore__Group_6_3__0");
+					put(grammarAccess.getSelectCoreAccess().getGroup_7(), "rule__SelectCore__Group_7__0");
 					put(grammarAccess.getJoinSourceAccess().getGroup(), "rule__JoinSource__Group__0");
 					put(grammarAccess.getSingleSourceAccess().getGroup_0(), "rule__SingleSource__Group_0__0");
 					put(grammarAccess.getSingleSourceAccess().getGroup_0_2(), "rule__SingleSource__Group_0_2__0");
@@ -309,6 +310,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectCoreAccess().getWhereExpressionAssignment_5_1(), "rule__SelectCore__WhereExpressionAssignment_5_1");
 					put(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_2(), "rule__SelectCore__GroupByExpressionsAssignment_6_2");
 					put(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_3_1(), "rule__SelectCore__GroupByExpressionsAssignment_6_3_1");
+					put(grammarAccess.getSelectCoreAccess().getHavingExpressionAssignment_7_1(), "rule__SelectCore__HavingExpressionAssignment_7_1");
 					put(grammarAccess.getJoinSourceAccess().getSourceAssignment_0(), "rule__JoinSource__SourceAssignment_0");
 					put(grammarAccess.getJoinSourceAccess().getJoinStatementsAssignment_1(), "rule__JoinSource__JoinStatementsAssignment_1");
 					put(grammarAccess.getSingleSourceAccess().getTableAssignment_0_1(), "rule__SingleSource__TableAssignment_0_1");

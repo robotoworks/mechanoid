@@ -1367,6 +1367,16 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getSelectCore_HavingExpression()
+  {
+    return (EReference)selectCoreEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getJoinSource()
   {
     return joinSourceEClass;
@@ -2921,6 +2931,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(selectCoreEClass, SELECT_CORE__SOURCE);
     createEReference(selectCoreEClass, SELECT_CORE__WHERE_EXPRESSION);
     createEReference(selectCoreEClass, SELECT_CORE__GROUP_BY_EXPRESSIONS);
+    createEReference(selectCoreEClass, SELECT_CORE__HAVING_EXPRESSION);
 
     joinSourceEClass = createEClass(JOIN_SOURCE);
     createEReference(joinSourceEClass, JOIN_SOURCE__SOURCE);
@@ -3288,6 +3299,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getSelectCore_Source(), this.getJoinSource(), null, "source", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_WhereExpression(), this.getSqlExpression(), null, "whereExpression", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_GroupByExpressions(), this.getSqlExpression(), null, "groupByExpressions", null, 0, -1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCore_HavingExpression(), this.getSqlExpression(), null, "havingExpression", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(joinSourceEClass, JoinSource.class, "JoinSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getJoinSource_Source(), this.getSingleSource(), null, "source", null, 0, 1, JoinSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
