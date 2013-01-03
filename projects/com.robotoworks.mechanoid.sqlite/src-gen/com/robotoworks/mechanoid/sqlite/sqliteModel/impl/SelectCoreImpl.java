@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getWhereExpression <em>Where Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getHavingExpression <em>Having Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,6 +124,16 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * @ordered
    */
   protected EList<SqlExpression> groupByExpressions;
+
+  /**
+   * The cached value of the '{@link #getHavingExpression() <em>Having Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHavingExpression()
+   * @generated
+   * @ordered
+   */
+  protected SqlExpression havingExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -320,6 +331,54 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
+  public SqlExpression getHavingExpression()
+  {
+    return havingExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHavingExpression(SqlExpression newHavingExpression, NotificationChain msgs)
+  {
+    SqlExpression oldHavingExpression = havingExpression;
+    havingExpression = newHavingExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, oldHavingExpression, newHavingExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHavingExpression(SqlExpression newHavingExpression)
+  {
+    if (newHavingExpression != havingExpression)
+    {
+      NotificationChain msgs = null;
+      if (havingExpression != null)
+        msgs = ((InternalEObject)havingExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, null, msgs);
+      if (newHavingExpression != null)
+        msgs = ((InternalEObject)newHavingExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, null, msgs);
+      msgs = basicSetHavingExpression(newHavingExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, newHavingExpression, newHavingExpression));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -333,6 +392,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return basicSetWhereExpression(null, msgs);
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
+        return basicSetHavingExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -359,6 +420,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return getWhereExpression();
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return getGroupByExpressions();
+      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
+        return getHavingExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -394,6 +457,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         getGroupByExpressions().clear();
         getGroupByExpressions().addAll((Collection<? extends SqlExpression>)newValue);
         return;
+      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
+        setHavingExpression((SqlExpression)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -426,6 +492,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         getGroupByExpressions().clear();
         return;
+      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
+        setHavingExpression((SqlExpression)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -452,6 +521,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
         return whereExpression != null;
       case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
         return groupByExpressions != null && !groupByExpressions.isEmpty();
+      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
+        return havingExpression != null;
     }
     return super.eIsSet(featureID);
   }

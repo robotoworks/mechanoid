@@ -131,6 +131,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
         eType="#//SqlExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//SqlExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinSource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SingleSource"

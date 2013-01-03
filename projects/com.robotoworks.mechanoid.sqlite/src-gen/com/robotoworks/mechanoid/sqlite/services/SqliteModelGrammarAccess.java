@@ -2515,16 +2515,20 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
 		private final Assignment cGroupByExpressionsAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
 		private final RuleCall cGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0 = (RuleCall)cGroupByExpressionsAssignment_6_3_1.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cHavingKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cHavingExpressionAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cHavingExpressionSqlExpressionParserRuleCall_7_1_0 = (RuleCall)cHavingExpressionAssignment_7_1.eContents().get(0);
 		
 		//SelectCore:
 		//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
 		//	source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group" "by" groupByExpressions+=SqlExpression (","
-		//	groupByExpressions+=SqlExpression)*)?;
+		//	groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?;
 		public ParserRule getRule() { return rule; }
 
 		//"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
 		//source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group" "by" groupByExpressions+=SqlExpression (","
-		//groupByExpressions+=SqlExpression)*)?
+		//groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?
 		public Group getGroup() { return cGroup; }
 
 		//"select"
@@ -2613,6 +2617,18 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//SqlExpression
 		public RuleCall getGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0() { return cGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0; }
+
+		//("having" havingExpression=SqlExpression)?
+		public Group getGroup_7() { return cGroup_7; }
+
+		//"having"
+		public Keyword getHavingKeyword_7_0() { return cHavingKeyword_7_0; }
+
+		//havingExpression=SqlExpression
+		public Assignment getHavingExpressionAssignment_7_1() { return cHavingExpressionAssignment_7_1; }
+
+		//SqlExpression
+		public RuleCall getHavingExpressionSqlExpressionParserRuleCall_7_1_0() { return cHavingExpressionSqlExpressionParserRuleCall_7_1_0; }
 	}
 
 	public class JoinSourceElements extends AbstractParserRuleElementFinder {
@@ -3718,7 +3734,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SelectCore:
 	//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
 	//	source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group" "by" groupByExpressions+=SqlExpression (","
-	//	groupByExpressions+=SqlExpression)*)?;
+	//	groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?;
 	public SelectCoreElements getSelectCoreAccess() {
 		return (pSelectCore != null) ? pSelectCore : (pSelectCore = new SelectCoreElements());
 	}

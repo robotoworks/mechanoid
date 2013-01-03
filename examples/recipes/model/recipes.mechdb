@@ -1,0 +1,11 @@
+package com.robotoworks.examples.recipes.content
+
+database RecipesDB {
+	migration {
+		create table recipes (
+			_id integer primary key autoincrement,
+			title text,
+			description text
+		);
+	}
+}

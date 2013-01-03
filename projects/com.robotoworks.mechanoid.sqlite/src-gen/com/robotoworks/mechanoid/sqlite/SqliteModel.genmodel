@@ -113,6 +113,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/source"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/whereExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/groupByExpressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectCore/havingExpression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//JoinSource">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//JoinSource/source"/>

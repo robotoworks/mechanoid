@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalSqliteModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NUMBER", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'is null'", "'not null'", "'notnull'", "'before'", "'after'", "'delete'", "'insert'", "'replace'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'boolean'", "'none'", "'numeric'", "'rollback'", "'abort'", "'fail'", "'ignore'", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "'active'", "'migration'", "';'", "'('", "')'", "'case'", "'end'", "'else'", "','", "'cast'", "'as'", "'when'", "'then'", "'create'", "'table'", "'view'", "'trigger'", "'on'", "'begin'", "'instead'", "'of'", "'update'", "'for'", "'each'", "'row'", "'alter'", "'drop'", "'if'", "'exists'", "'from'", "'where'", "'into'", "'or'", "'values'", "'default'", "'set'", "'order'", "'by'", "'rename to'", "'add column'", "'primary'", "'key'", "'not'", "'null'", "'unique'", "'constraint'", "'check'", "'select'", "'group'", "'join'", "'conflict'", "'.'", "'||'", "'and'", "'asc'", "'desc'", "'autoincrement'", "'distinct'", "'all'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'current_time'", "'current_date'", "'current_time_stamp'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NUMBER", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'is null'", "'not null'", "'notnull'", "'before'", "'after'", "'delete'", "'insert'", "'replace'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'boolean'", "'none'", "'numeric'", "'rollback'", "'abort'", "'fail'", "'ignore'", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "'active'", "'migration'", "';'", "'('", "')'", "'case'", "'end'", "'else'", "','", "'cast'", "'as'", "'when'", "'then'", "'create'", "'table'", "'view'", "'trigger'", "'on'", "'begin'", "'instead'", "'of'", "'update'", "'for'", "'each'", "'row'", "'alter'", "'drop'", "'if'", "'exists'", "'from'", "'where'", "'into'", "'or'", "'values'", "'default'", "'set'", "'order'", "'by'", "'rename to'", "'add column'", "'primary'", "'key'", "'not'", "'null'", "'unique'", "'constraint'", "'check'", "'select'", "'group'", "'having'", "'join'", "'conflict'", "'.'", "'||'", "'and'", "'asc'", "'desc'", "'autoincrement'", "'distinct'", "'all'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'current_time'", "'current_date'", "'current_time_stamp'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -81,6 +81,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final int T__74=74;
     public static final int T__131=131;
     public static final int T__73=73;
+    public static final int T__132=132;
     public static final int T__79=79;
     public static final int T__78=78;
     public static final int T__77=77;
@@ -4371,7 +4372,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             if ( (LA8_0==12) ) {
                 alt8=1;
             }
-            else if ( ((LA8_0>=RULE_NUMBER && LA8_0<=RULE_STRING)||LA8_0==16||LA8_0==68||LA8_0==70||LA8_0==74||LA8_0==93||(LA8_0>=107 && LA8_0<=108)||(LA8_0>=129 && LA8_0<=131)) ) {
+            else if ( ((LA8_0>=RULE_NUMBER && LA8_0<=RULE_STRING)||LA8_0==16||LA8_0==68||LA8_0==70||LA8_0==74||LA8_0==93||(LA8_0>=107 && LA8_0<=108)||(LA8_0>=130 && LA8_0<=132)) ) {
                 alt8=2;
             }
             else {
@@ -5578,10 +5579,10 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt19=2;
             int LA19_0 = input.LA(1);
 
-            if ( (LA19_0==119) ) {
+            if ( (LA19_0==120) ) {
                 alt19=1;
             }
-            else if ( (LA19_0==120) ) {
+            else if ( (LA19_0==121) ) {
                 alt19=2;
             }
             else {
@@ -5669,7 +5670,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt20=2;
             int LA20_0 = input.LA(1);
 
-            if ( (LA20_0==RULE_NUMBER||LA20_0==RULE_STRING||LA20_0==16||LA20_0==108||(LA20_0>=129 && LA20_0<=131)) ) {
+            if ( (LA20_0==RULE_NUMBER||LA20_0==RULE_STRING||LA20_0==16||LA20_0==108||(LA20_0>=130 && LA20_0<=132)) ) {
                 alt20=1;
             }
             else if ( (LA20_0==68) ) {
@@ -5770,14 +5771,14 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                         alt21=2;
                         }
                         break;
-                    case 111:
-                        {
-                        alt21=3;
-                        }
-                        break;
                     case 109:
                         {
                         alt21=1;
+                        }
+                        break;
+                    case 111:
+                        {
+                        alt21=3;
                         }
                         break;
                     default:
@@ -5922,10 +5923,10 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt22=2;
             int LA22_0 = input.LA(1);
 
-            if ( (LA22_0==119) ) {
+            if ( (LA22_0==120) ) {
                 alt22=1;
             }
-            else if ( (LA22_0==120) ) {
+            else if ( (LA22_0==121) ) {
                 alt22=2;
             }
             else {
@@ -6128,10 +6129,10 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt24=2;
             int LA24_0 = input.LA(1);
 
-            if ( (LA24_0==119) ) {
+            if ( (LA24_0==120) ) {
                 alt24=1;
             }
-            else if ( (LA24_0==120) ) {
+            else if ( (LA24_0==121) ) {
                 alt24=2;
             }
             else {
@@ -6219,10 +6220,10 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( (LA25_0==122) ) {
+            if ( (LA25_0==123) ) {
                 alt25=1;
             }
-            else if ( (LA25_0==123) ) {
+            else if ( (LA25_0==124) ) {
                 alt25=2;
             }
             else {
@@ -6438,17 +6439,17 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:2089:1: ( ( ( rule__JoinStatement__Group_2_0__0 ) ) | ( ( rule__JoinStatement__InnerAssignment_2_1 ) ) | ( ( rule__JoinStatement__CrossAssignment_2_2 ) ) )
             int alt27=3;
             switch ( input.LA(1) ) {
-            case 125:
+            case 126:
                 {
                 alt27=1;
                 }
                 break;
-            case 127:
+            case 128:
                 {
                 alt27=2;
                 }
                 break;
-            case 128:
+            case 129:
                 {
                 alt27=3;
                 }
@@ -6567,13 +6568,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                 {
                 int LA28_1 = input.LA(2);
 
-                if ( (LA28_1==12) ) {
+                if ( (LA28_1==EOF||(LA28_1>=13 && LA28_1<=38)||(LA28_1>=44 && LA28_1<=47)||(LA28_1>=67 && LA28_1<=69)||LA28_1==73||LA28_1==75||(LA28_1>=94 && LA28_1<=95)||LA28_1==97||LA28_1==101||(LA28_1>=113 && LA28_1<=114)||(LA28_1>=117 && LA28_1<=119)) ) {
+                    alt28=2;
+                }
+                else if ( (LA28_1==12) ) {
                     int LA28_4 = input.LA(3);
 
-                    if ( (LA28_4==EOF||(LA28_4>=44 && LA28_4<=47)||LA28_4==67||LA28_4==69||LA28_4==73||(LA28_4>=94 && LA28_4<=95)||LA28_4==101||LA28_4==113) ) {
+                    if ( (LA28_4==EOF||(LA28_4>=44 && LA28_4<=47)||LA28_4==67||LA28_4==69||LA28_4==73||(LA28_4>=94 && LA28_4<=95)||LA28_4==101||(LA28_4>=113 && LA28_4<=114)) ) {
                         alt28=1;
                     }
-                    else if ( ((LA28_4>=RULE_NUMBER && LA28_4<=RULE_STRING)||LA28_4==16||LA28_4==68||LA28_4==70||LA28_4==74||LA28_4==93||(LA28_4>=107 && LA28_4<=108)||(LA28_4>=129 && LA28_4<=131)) ) {
+                    else if ( ((LA28_4>=RULE_NUMBER && LA28_4<=RULE_STRING)||LA28_4==16||LA28_4==68||LA28_4==70||LA28_4==74||LA28_4==93||(LA28_4>=107 && LA28_4<=108)||(LA28_4>=130 && LA28_4<=132)) ) {
                         alt28=2;
                     }
                     else {
@@ -6582,9 +6586,6 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
                         throw nvae;
                     }
-                }
-                else if ( (LA28_1==EOF||(LA28_1>=13 && LA28_1<=38)||(LA28_1>=44 && LA28_1<=47)||(LA28_1>=67 && LA28_1<=69)||LA28_1==73||LA28_1==75||(LA28_1>=94 && LA28_1<=95)||LA28_1==97||LA28_1==101||LA28_1==113||(LA28_1>=116 && LA28_1<=118)) ) {
-                    alt28=2;
                 }
                 else {
                     NoViableAltException nvae =
@@ -6608,9 +6609,9 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             case 93:
             case 107:
             case 108:
-            case 129:
             case 130:
             case 131:
+            case 132:
                 {
                 alt28=2;
                 }
@@ -6716,17 +6717,17 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                 alt29=3;
                 }
                 break;
-            case 129:
+            case 130:
                 {
                 alt29=4;
                 }
                 break;
-            case 130:
+            case 131:
                 {
                 alt29=5;
                 }
                 break;
-            case 131:
+            case 132:
                 {
                 alt29=6;
                 }
@@ -10050,7 +10051,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( (LA38_0==117) ) {
+                if ( (LA38_0==118) ) {
                     alt38=1;
                 }
 
@@ -12552,7 +12553,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
-                if ( (LA44_0==118) ) {
+                if ( (LA44_0==119) ) {
                     alt44=1;
                 }
 
@@ -14667,7 +14668,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt49=2;
             int LA49_0 = input.LA(1);
 
-            if ( ((LA49_0>=RULE_NUMBER && LA49_0<=RULE_STRING)||LA49_0==16||LA49_0==68||LA49_0==70||LA49_0==74||LA49_0==93||(LA49_0>=107 && LA49_0<=108)||(LA49_0>=129 && LA49_0<=131)) ) {
+            if ( ((LA49_0>=RULE_NUMBER && LA49_0<=RULE_STRING)||LA49_0==16||LA49_0==68||LA49_0==70||LA49_0==74||LA49_0==93||(LA49_0>=107 && LA49_0<=108)||(LA49_0>=130 && LA49_0<=132)) ) {
                 alt49=1;
             }
             switch (alt49) {
@@ -28619,7 +28620,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt77=2;
             int LA77_0 = input.LA(1);
 
-            if ( ((LA77_0>=119 && LA77_0<=120)) ) {
+            if ( ((LA77_0>=120 && LA77_0<=121)) ) {
                 alt77=1;
             }
             switch (alt77) {
@@ -28710,7 +28711,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( (LA78_0==121) ) {
+            if ( (LA78_0==122) ) {
                 alt78=1;
             }
             switch (alt78) {
@@ -32546,7 +32547,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt85=2;
             int LA85_0 = input.LA(1);
 
-            if ( ((LA85_0>=119 && LA85_0<=120)) ) {
+            if ( ((LA85_0>=120 && LA85_0<=121)) ) {
                 alt85=1;
             }
             switch (alt85) {
@@ -32722,7 +32723,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt86=2;
             int LA86_0 = input.LA(1);
 
-            if ( ((LA86_0>=119 && LA86_0<=120)) ) {
+            if ( ((LA86_0>=120 && LA86_0<=121)) ) {
                 alt86=1;
             }
             switch (alt86) {
@@ -32893,7 +32894,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             int alt87=2;
             int LA87_0 = input.LA(1);
 
-            if ( ((LA87_0>=122 && LA87_0<=123)) ) {
+            if ( ((LA87_0>=123 && LA87_0<=124)) ) {
                 alt87=1;
             }
             switch (alt87) {
@@ -33314,17 +33315,22 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group__6"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12415:1: rule__SelectCore__Group__6 : rule__SelectCore__Group__6__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12415:1: rule__SelectCore__Group__6 : rule__SelectCore__Group__6__Impl rule__SelectCore__Group__7 ;
     public final void rule__SelectCore__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12419:1: ( rule__SelectCore__Group__6__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12420:2: rule__SelectCore__Group__6__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12419:1: ( rule__SelectCore__Group__6__Impl rule__SelectCore__Group__7 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12420:2: rule__SelectCore__Group__6__Impl rule__SelectCore__Group__7
             {
             pushFollow(FOLLOW_rule__SelectCore__Group__6__Impl_in_rule__SelectCore__Group__625012);
             rule__SelectCore__Group__6__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__SelectCore__Group__7_in_rule__SelectCore__Group__625015);
+            rule__SelectCore__Group__7();
 
             state._fsp--;
 
@@ -33347,20 +33353,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group__6__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12426:1: rule__SelectCore__Group__6__Impl : ( ( rule__SelectCore__Group_6__0 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12427:1: rule__SelectCore__Group__6__Impl : ( ( rule__SelectCore__Group_6__0 )? ) ;
     public final void rule__SelectCore__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12430:1: ( ( ( rule__SelectCore__Group_6__0 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12431:1: ( ( rule__SelectCore__Group_6__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12431:1: ( ( ( rule__SelectCore__Group_6__0 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12432:1: ( ( rule__SelectCore__Group_6__0 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12431:1: ( ( rule__SelectCore__Group_6__0 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12432:1: ( rule__SelectCore__Group_6__0 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12432:1: ( ( rule__SelectCore__Group_6__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12433:1: ( rule__SelectCore__Group_6__0 )?
             {
              before(grammarAccess.getSelectCoreAccess().getGroup_6()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12433:1: ( rule__SelectCore__Group_6__0 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12434:1: ( rule__SelectCore__Group_6__0 )?
             int alt91=2;
             int LA91_0 = input.LA(1);
 
@@ -33369,9 +33375,9 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             }
             switch (alt91) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12433:2: rule__SelectCore__Group_6__0
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12434:2: rule__SelectCore__Group_6__0
                     {
-                    pushFollow(FOLLOW_rule__SelectCore__Group_6__0_in_rule__SelectCore__Group__6__Impl25039);
+                    pushFollow(FOLLOW_rule__SelectCore__Group_6__0_in_rule__SelectCore__Group__6__Impl25042);
                     rule__SelectCore__Group_6__0();
 
                     state._fsp--;
@@ -33404,22 +33410,113 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__SelectCore__Group__6__Impl"
 
 
+    // $ANTLR start "rule__SelectCore__Group__7"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12444:1: rule__SelectCore__Group__7 : rule__SelectCore__Group__7__Impl ;
+    public final void rule__SelectCore__Group__7() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12448:1: ( rule__SelectCore__Group__7__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12449:2: rule__SelectCore__Group__7__Impl
+            {
+            pushFollow(FOLLOW_rule__SelectCore__Group__7__Impl_in_rule__SelectCore__Group__725073);
+            rule__SelectCore__Group__7__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group__7"
+
+
+    // $ANTLR start "rule__SelectCore__Group__7__Impl"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12455:1: rule__SelectCore__Group__7__Impl : ( ( rule__SelectCore__Group_7__0 )? ) ;
+    public final void rule__SelectCore__Group__7__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12459:1: ( ( ( rule__SelectCore__Group_7__0 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12460:1: ( ( rule__SelectCore__Group_7__0 )? )
+            {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12460:1: ( ( rule__SelectCore__Group_7__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12461:1: ( rule__SelectCore__Group_7__0 )?
+            {
+             before(grammarAccess.getSelectCoreAccess().getGroup_7()); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12462:1: ( rule__SelectCore__Group_7__0 )?
+            int alt92=2;
+            int LA92_0 = input.LA(1);
+
+            if ( (LA92_0==114) ) {
+                alt92=1;
+            }
+            switch (alt92) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12462:2: rule__SelectCore__Group_7__0
+                    {
+                    pushFollow(FOLLOW_rule__SelectCore__Group_7__0_in_rule__SelectCore__Group__7__Impl25100);
+                    rule__SelectCore__Group_7__0();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getSelectCoreAccess().getGroup_7()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group__7__Impl"
+
+
     // $ANTLR start "rule__SelectCore__Group_3__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12457:1: rule__SelectCore__Group_3__0 : rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12488:1: rule__SelectCore__Group_3__0 : rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1 ;
     public final void rule__SelectCore__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12461:1: ( rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12462:2: rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12492:1: ( rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12493:2: rule__SelectCore__Group_3__0__Impl rule__SelectCore__Group_3__1
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_3__0__Impl_in_rule__SelectCore__Group_3__025084);
+            pushFollow(FOLLOW_rule__SelectCore__Group_3__0__Impl_in_rule__SelectCore__Group_3__025147);
             rule__SelectCore__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_3__1_in_rule__SelectCore__Group_3__025087);
+            pushFollow(FOLLOW_rule__SelectCore__Group_3__1_in_rule__SelectCore__Group_3__025150);
             rule__SelectCore__Group_3__1();
 
             state._fsp--;
@@ -33443,20 +33540,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_3__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12469:1: rule__SelectCore__Group_3__0__Impl : ( ',' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12500:1: rule__SelectCore__Group_3__0__Impl : ( ',' ) ;
     public final void rule__SelectCore__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12473:1: ( ( ',' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12474:1: ( ',' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12504:1: ( ( ',' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12505:1: ( ',' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12474:1: ( ',' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12475:1: ','
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12505:1: ( ',' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12506:1: ','
             {
              before(grammarAccess.getSelectCoreAccess().getCommaKeyword_3_0()); 
-            match(input,73,FOLLOW_73_in_rule__SelectCore__Group_3__0__Impl25115); 
+            match(input,73,FOLLOW_73_in_rule__SelectCore__Group_3__0__Impl25178); 
              after(grammarAccess.getSelectCoreAccess().getCommaKeyword_3_0()); 
 
             }
@@ -33480,16 +33577,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_3__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12488:1: rule__SelectCore__Group_3__1 : rule__SelectCore__Group_3__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12519:1: rule__SelectCore__Group_3__1 : rule__SelectCore__Group_3__1__Impl ;
     public final void rule__SelectCore__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12492:1: ( rule__SelectCore__Group_3__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12493:2: rule__SelectCore__Group_3__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12523:1: ( rule__SelectCore__Group_3__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12524:2: rule__SelectCore__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_3__1__Impl_in_rule__SelectCore__Group_3__125146);
+            pushFollow(FOLLOW_rule__SelectCore__Group_3__1__Impl_in_rule__SelectCore__Group_3__125209);
             rule__SelectCore__Group_3__1__Impl();
 
             state._fsp--;
@@ -33513,23 +33610,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_3__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12499:1: rule__SelectCore__Group_3__1__Impl : ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12530:1: rule__SelectCore__Group_3__1__Impl : ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) ) ;
     public final void rule__SelectCore__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12503:1: ( ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12504:1: ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12534:1: ( ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12535:1: ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12504:1: ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12505:1: ( rule__SelectCore__ResultColumnsAssignment_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12535:1: ( ( rule__SelectCore__ResultColumnsAssignment_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12536:1: ( rule__SelectCore__ResultColumnsAssignment_3_1 )
             {
              before(grammarAccess.getSelectCoreAccess().getResultColumnsAssignment_3_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12506:1: ( rule__SelectCore__ResultColumnsAssignment_3_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12506:2: rule__SelectCore__ResultColumnsAssignment_3_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12537:1: ( rule__SelectCore__ResultColumnsAssignment_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12537:2: rule__SelectCore__ResultColumnsAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__SelectCore__ResultColumnsAssignment_3_1_in_rule__SelectCore__Group_3__1__Impl25173);
+            pushFollow(FOLLOW_rule__SelectCore__ResultColumnsAssignment_3_1_in_rule__SelectCore__Group_3__1__Impl25236);
             rule__SelectCore__ResultColumnsAssignment_3_1();
 
             state._fsp--;
@@ -33560,21 +33657,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_4__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12520:1: rule__SelectCore__Group_4__0 : rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12551:1: rule__SelectCore__Group_4__0 : rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1 ;
     public final void rule__SelectCore__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12524:1: ( rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12525:2: rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12555:1: ( rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12556:2: rule__SelectCore__Group_4__0__Impl rule__SelectCore__Group_4__1
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_4__0__Impl_in_rule__SelectCore__Group_4__025207);
+            pushFollow(FOLLOW_rule__SelectCore__Group_4__0__Impl_in_rule__SelectCore__Group_4__025270);
             rule__SelectCore__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_4__1_in_rule__SelectCore__Group_4__025210);
+            pushFollow(FOLLOW_rule__SelectCore__Group_4__1_in_rule__SelectCore__Group_4__025273);
             rule__SelectCore__Group_4__1();
 
             state._fsp--;
@@ -33598,20 +33695,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_4__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12532:1: rule__SelectCore__Group_4__0__Impl : ( 'from' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12563:1: rule__SelectCore__Group_4__0__Impl : ( 'from' ) ;
     public final void rule__SelectCore__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12536:1: ( ( 'from' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12537:1: ( 'from' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12567:1: ( ( 'from' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12568:1: ( 'from' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12537:1: ( 'from' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12538:1: 'from'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12568:1: ( 'from' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12569:1: 'from'
             {
              before(grammarAccess.getSelectCoreAccess().getFromKeyword_4_0()); 
-            match(input,94,FOLLOW_94_in_rule__SelectCore__Group_4__0__Impl25238); 
+            match(input,94,FOLLOW_94_in_rule__SelectCore__Group_4__0__Impl25301); 
              after(grammarAccess.getSelectCoreAccess().getFromKeyword_4_0()); 
 
             }
@@ -33635,16 +33732,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_4__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12551:1: rule__SelectCore__Group_4__1 : rule__SelectCore__Group_4__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12582:1: rule__SelectCore__Group_4__1 : rule__SelectCore__Group_4__1__Impl ;
     public final void rule__SelectCore__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12555:1: ( rule__SelectCore__Group_4__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12556:2: rule__SelectCore__Group_4__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12586:1: ( rule__SelectCore__Group_4__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12587:2: rule__SelectCore__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_4__1__Impl_in_rule__SelectCore__Group_4__125269);
+            pushFollow(FOLLOW_rule__SelectCore__Group_4__1__Impl_in_rule__SelectCore__Group_4__125332);
             rule__SelectCore__Group_4__1__Impl();
 
             state._fsp--;
@@ -33668,23 +33765,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_4__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12562:1: rule__SelectCore__Group_4__1__Impl : ( ( rule__SelectCore__SourceAssignment_4_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12593:1: rule__SelectCore__Group_4__1__Impl : ( ( rule__SelectCore__SourceAssignment_4_1 ) ) ;
     public final void rule__SelectCore__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12566:1: ( ( ( rule__SelectCore__SourceAssignment_4_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12567:1: ( ( rule__SelectCore__SourceAssignment_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12597:1: ( ( ( rule__SelectCore__SourceAssignment_4_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12598:1: ( ( rule__SelectCore__SourceAssignment_4_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12567:1: ( ( rule__SelectCore__SourceAssignment_4_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12568:1: ( rule__SelectCore__SourceAssignment_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12598:1: ( ( rule__SelectCore__SourceAssignment_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12599:1: ( rule__SelectCore__SourceAssignment_4_1 )
             {
              before(grammarAccess.getSelectCoreAccess().getSourceAssignment_4_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12569:1: ( rule__SelectCore__SourceAssignment_4_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12569:2: rule__SelectCore__SourceAssignment_4_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12600:1: ( rule__SelectCore__SourceAssignment_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12600:2: rule__SelectCore__SourceAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__SelectCore__SourceAssignment_4_1_in_rule__SelectCore__Group_4__1__Impl25296);
+            pushFollow(FOLLOW_rule__SelectCore__SourceAssignment_4_1_in_rule__SelectCore__Group_4__1__Impl25359);
             rule__SelectCore__SourceAssignment_4_1();
 
             state._fsp--;
@@ -33715,21 +33812,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_5__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12583:1: rule__SelectCore__Group_5__0 : rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12614:1: rule__SelectCore__Group_5__0 : rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1 ;
     public final void rule__SelectCore__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12587:1: ( rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12588:2: rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12618:1: ( rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12619:2: rule__SelectCore__Group_5__0__Impl rule__SelectCore__Group_5__1
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_5__0__Impl_in_rule__SelectCore__Group_5__025330);
+            pushFollow(FOLLOW_rule__SelectCore__Group_5__0__Impl_in_rule__SelectCore__Group_5__025393);
             rule__SelectCore__Group_5__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_5__1_in_rule__SelectCore__Group_5__025333);
+            pushFollow(FOLLOW_rule__SelectCore__Group_5__1_in_rule__SelectCore__Group_5__025396);
             rule__SelectCore__Group_5__1();
 
             state._fsp--;
@@ -33753,20 +33850,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_5__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12595:1: rule__SelectCore__Group_5__0__Impl : ( 'where' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12626:1: rule__SelectCore__Group_5__0__Impl : ( 'where' ) ;
     public final void rule__SelectCore__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12599:1: ( ( 'where' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12600:1: ( 'where' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12630:1: ( ( 'where' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12631:1: ( 'where' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12600:1: ( 'where' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12601:1: 'where'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12631:1: ( 'where' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12632:1: 'where'
             {
              before(grammarAccess.getSelectCoreAccess().getWhereKeyword_5_0()); 
-            match(input,95,FOLLOW_95_in_rule__SelectCore__Group_5__0__Impl25361); 
+            match(input,95,FOLLOW_95_in_rule__SelectCore__Group_5__0__Impl25424); 
              after(grammarAccess.getSelectCoreAccess().getWhereKeyword_5_0()); 
 
             }
@@ -33790,16 +33887,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_5__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12614:1: rule__SelectCore__Group_5__1 : rule__SelectCore__Group_5__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12645:1: rule__SelectCore__Group_5__1 : rule__SelectCore__Group_5__1__Impl ;
     public final void rule__SelectCore__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12618:1: ( rule__SelectCore__Group_5__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12619:2: rule__SelectCore__Group_5__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12649:1: ( rule__SelectCore__Group_5__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12650:2: rule__SelectCore__Group_5__1__Impl
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_5__1__Impl_in_rule__SelectCore__Group_5__125392);
+            pushFollow(FOLLOW_rule__SelectCore__Group_5__1__Impl_in_rule__SelectCore__Group_5__125455);
             rule__SelectCore__Group_5__1__Impl();
 
             state._fsp--;
@@ -33823,23 +33920,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_5__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12625:1: rule__SelectCore__Group_5__1__Impl : ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12656:1: rule__SelectCore__Group_5__1__Impl : ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) ) ;
     public final void rule__SelectCore__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12629:1: ( ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12630:1: ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12660:1: ( ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12661:1: ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12630:1: ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12631:1: ( rule__SelectCore__WhereExpressionAssignment_5_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12661:1: ( ( rule__SelectCore__WhereExpressionAssignment_5_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12662:1: ( rule__SelectCore__WhereExpressionAssignment_5_1 )
             {
              before(grammarAccess.getSelectCoreAccess().getWhereExpressionAssignment_5_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12632:1: ( rule__SelectCore__WhereExpressionAssignment_5_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12632:2: rule__SelectCore__WhereExpressionAssignment_5_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12663:1: ( rule__SelectCore__WhereExpressionAssignment_5_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12663:2: rule__SelectCore__WhereExpressionAssignment_5_1
             {
-            pushFollow(FOLLOW_rule__SelectCore__WhereExpressionAssignment_5_1_in_rule__SelectCore__Group_5__1__Impl25419);
+            pushFollow(FOLLOW_rule__SelectCore__WhereExpressionAssignment_5_1_in_rule__SelectCore__Group_5__1__Impl25482);
             rule__SelectCore__WhereExpressionAssignment_5_1();
 
             state._fsp--;
@@ -33870,21 +33967,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12646:1: rule__SelectCore__Group_6__0 : rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12677:1: rule__SelectCore__Group_6__0 : rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1 ;
     public final void rule__SelectCore__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12650:1: ( rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12651:2: rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12681:1: ( rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12682:2: rule__SelectCore__Group_6__0__Impl rule__SelectCore__Group_6__1
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__0__Impl_in_rule__SelectCore__Group_6__025453);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__0__Impl_in_rule__SelectCore__Group_6__025516);
             rule__SelectCore__Group_6__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__1_in_rule__SelectCore__Group_6__025456);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__1_in_rule__SelectCore__Group_6__025519);
             rule__SelectCore__Group_6__1();
 
             state._fsp--;
@@ -33908,20 +34005,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12658:1: rule__SelectCore__Group_6__0__Impl : ( 'group' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12689:1: rule__SelectCore__Group_6__0__Impl : ( 'group' ) ;
     public final void rule__SelectCore__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12662:1: ( ( 'group' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12663:1: ( 'group' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12693:1: ( ( 'group' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12694:1: ( 'group' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12663:1: ( 'group' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12664:1: 'group'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12694:1: ( 'group' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12695:1: 'group'
             {
              before(grammarAccess.getSelectCoreAccess().getGroupKeyword_6_0()); 
-            match(input,113,FOLLOW_113_in_rule__SelectCore__Group_6__0__Impl25484); 
+            match(input,113,FOLLOW_113_in_rule__SelectCore__Group_6__0__Impl25547); 
              after(grammarAccess.getSelectCoreAccess().getGroupKeyword_6_0()); 
 
             }
@@ -33945,21 +34042,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12677:1: rule__SelectCore__Group_6__1 : rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12708:1: rule__SelectCore__Group_6__1 : rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2 ;
     public final void rule__SelectCore__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12681:1: ( rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12682:2: rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12712:1: ( rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12713:2: rule__SelectCore__Group_6__1__Impl rule__SelectCore__Group_6__2
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__1__Impl_in_rule__SelectCore__Group_6__125515);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__1__Impl_in_rule__SelectCore__Group_6__125578);
             rule__SelectCore__Group_6__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__2_in_rule__SelectCore__Group_6__125518);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__2_in_rule__SelectCore__Group_6__125581);
             rule__SelectCore__Group_6__2();
 
             state._fsp--;
@@ -33983,20 +34080,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12689:1: rule__SelectCore__Group_6__1__Impl : ( 'by' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12720:1: rule__SelectCore__Group_6__1__Impl : ( 'by' ) ;
     public final void rule__SelectCore__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12693:1: ( ( 'by' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12694:1: ( 'by' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12724:1: ( ( 'by' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12725:1: ( 'by' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12694:1: ( 'by' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12695:1: 'by'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12725:1: ( 'by' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12726:1: 'by'
             {
              before(grammarAccess.getSelectCoreAccess().getByKeyword_6_1()); 
-            match(input,102,FOLLOW_102_in_rule__SelectCore__Group_6__1__Impl25546); 
+            match(input,102,FOLLOW_102_in_rule__SelectCore__Group_6__1__Impl25609); 
              after(grammarAccess.getSelectCoreAccess().getByKeyword_6_1()); 
 
             }
@@ -34020,21 +34117,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12708:1: rule__SelectCore__Group_6__2 : rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12739:1: rule__SelectCore__Group_6__2 : rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3 ;
     public final void rule__SelectCore__Group_6__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12712:1: ( rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12713:2: rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12743:1: ( rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12744:2: rule__SelectCore__Group_6__2__Impl rule__SelectCore__Group_6__3
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__2__Impl_in_rule__SelectCore__Group_6__225577);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__2__Impl_in_rule__SelectCore__Group_6__225640);
             rule__SelectCore__Group_6__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__3_in_rule__SelectCore__Group_6__225580);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__3_in_rule__SelectCore__Group_6__225643);
             rule__SelectCore__Group_6__3();
 
             state._fsp--;
@@ -34058,23 +34155,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12720:1: rule__SelectCore__Group_6__2__Impl : ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12751:1: rule__SelectCore__Group_6__2__Impl : ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) ) ;
     public final void rule__SelectCore__Group_6__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12724:1: ( ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12725:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12755:1: ( ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12756:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12725:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12726:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12756:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12757:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_2 )
             {
              before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12727:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12727:2: rule__SelectCore__GroupByExpressionsAssignment_6_2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12758:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12758:2: rule__SelectCore__GroupByExpressionsAssignment_6_2
             {
-            pushFollow(FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_2_in_rule__SelectCore__Group_6__2__Impl25607);
+            pushFollow(FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_2_in_rule__SelectCore__Group_6__2__Impl25670);
             rule__SelectCore__GroupByExpressionsAssignment_6_2();
 
             state._fsp--;
@@ -34105,16 +34202,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12737:1: rule__SelectCore__Group_6__3 : rule__SelectCore__Group_6__3__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12768:1: rule__SelectCore__Group_6__3 : rule__SelectCore__Group_6__3__Impl ;
     public final void rule__SelectCore__Group_6__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12741:1: ( rule__SelectCore__Group_6__3__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12742:2: rule__SelectCore__Group_6__3__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12772:1: ( rule__SelectCore__Group_6__3__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12773:2: rule__SelectCore__Group_6__3__Impl
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6__3__Impl_in_rule__SelectCore__Group_6__325637);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6__3__Impl_in_rule__SelectCore__Group_6__325700);
             rule__SelectCore__Group_6__3__Impl();
 
             state._fsp--;
@@ -34138,35 +34235,35 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6__3__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12748:1: rule__SelectCore__Group_6__3__Impl : ( ( rule__SelectCore__Group_6_3__0 )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12779:1: rule__SelectCore__Group_6__3__Impl : ( ( rule__SelectCore__Group_6_3__0 )* ) ;
     public final void rule__SelectCore__Group_6__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12752:1: ( ( ( rule__SelectCore__Group_6_3__0 )* ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12753:1: ( ( rule__SelectCore__Group_6_3__0 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12783:1: ( ( ( rule__SelectCore__Group_6_3__0 )* ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12784:1: ( ( rule__SelectCore__Group_6_3__0 )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12753:1: ( ( rule__SelectCore__Group_6_3__0 )* )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12754:1: ( rule__SelectCore__Group_6_3__0 )*
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12784:1: ( ( rule__SelectCore__Group_6_3__0 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12785:1: ( rule__SelectCore__Group_6_3__0 )*
             {
              before(grammarAccess.getSelectCoreAccess().getGroup_6_3()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12755:1: ( rule__SelectCore__Group_6_3__0 )*
-            loop92:
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12786:1: ( rule__SelectCore__Group_6_3__0 )*
+            loop93:
             do {
-                int alt92=2;
-                int LA92_0 = input.LA(1);
+                int alt93=2;
+                int LA93_0 = input.LA(1);
 
-                if ( (LA92_0==73) ) {
-                    alt92=1;
+                if ( (LA93_0==73) ) {
+                    alt93=1;
                 }
 
 
-                switch (alt92) {
+                switch (alt93) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12755:2: rule__SelectCore__Group_6_3__0
+            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12786:2: rule__SelectCore__Group_6_3__0
             	    {
-            	    pushFollow(FOLLOW_rule__SelectCore__Group_6_3__0_in_rule__SelectCore__Group_6__3__Impl25664);
+            	    pushFollow(FOLLOW_rule__SelectCore__Group_6_3__0_in_rule__SelectCore__Group_6__3__Impl25727);
             	    rule__SelectCore__Group_6_3__0();
 
             	    state._fsp--;
@@ -34176,7 +34273,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop92;
+            	    break loop93;
                 }
             } while (true);
 
@@ -34203,21 +34300,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6_3__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12773:1: rule__SelectCore__Group_6_3__0 : rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12804:1: rule__SelectCore__Group_6_3__0 : rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1 ;
     public final void rule__SelectCore__Group_6_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12777:1: ( rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12778:2: rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12808:1: ( rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12809:2: rule__SelectCore__Group_6_3__0__Impl rule__SelectCore__Group_6_3__1
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__0__Impl_in_rule__SelectCore__Group_6_3__025703);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__0__Impl_in_rule__SelectCore__Group_6_3__025766);
             rule__SelectCore__Group_6_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__1_in_rule__SelectCore__Group_6_3__025706);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__1_in_rule__SelectCore__Group_6_3__025769);
             rule__SelectCore__Group_6_3__1();
 
             state._fsp--;
@@ -34241,20 +34338,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6_3__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12785:1: rule__SelectCore__Group_6_3__0__Impl : ( ',' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12816:1: rule__SelectCore__Group_6_3__0__Impl : ( ',' ) ;
     public final void rule__SelectCore__Group_6_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12789:1: ( ( ',' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12790:1: ( ',' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12820:1: ( ( ',' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12821:1: ( ',' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12790:1: ( ',' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12791:1: ','
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12821:1: ( ',' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12822:1: ','
             {
              before(grammarAccess.getSelectCoreAccess().getCommaKeyword_6_3_0()); 
-            match(input,73,FOLLOW_73_in_rule__SelectCore__Group_6_3__0__Impl25734); 
+            match(input,73,FOLLOW_73_in_rule__SelectCore__Group_6_3__0__Impl25797); 
              after(grammarAccess.getSelectCoreAccess().getCommaKeyword_6_3_0()); 
 
             }
@@ -34278,16 +34375,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6_3__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12804:1: rule__SelectCore__Group_6_3__1 : rule__SelectCore__Group_6_3__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12835:1: rule__SelectCore__Group_6_3__1 : rule__SelectCore__Group_6_3__1__Impl ;
     public final void rule__SelectCore__Group_6_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12808:1: ( rule__SelectCore__Group_6_3__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12809:2: rule__SelectCore__Group_6_3__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12839:1: ( rule__SelectCore__Group_6_3__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12840:2: rule__SelectCore__Group_6_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__1__Impl_in_rule__SelectCore__Group_6_3__125765);
+            pushFollow(FOLLOW_rule__SelectCore__Group_6_3__1__Impl_in_rule__SelectCore__Group_6_3__125828);
             rule__SelectCore__Group_6_3__1__Impl();
 
             state._fsp--;
@@ -34311,23 +34408,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__Group_6_3__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12815:1: rule__SelectCore__Group_6_3__1__Impl : ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12846:1: rule__SelectCore__Group_6_3__1__Impl : ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) ) ;
     public final void rule__SelectCore__Group_6_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12819:1: ( ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12820:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12850:1: ( ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12851:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12820:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12821:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12851:1: ( ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12852:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 )
             {
              before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsAssignment_6_3_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12822:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12822:2: rule__SelectCore__GroupByExpressionsAssignment_6_3_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12853:1: ( rule__SelectCore__GroupByExpressionsAssignment_6_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12853:2: rule__SelectCore__GroupByExpressionsAssignment_6_3_1
             {
-            pushFollow(FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_3_1_in_rule__SelectCore__Group_6_3__1__Impl25792);
+            pushFollow(FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_3_1_in_rule__SelectCore__Group_6_3__1__Impl25855);
             rule__SelectCore__GroupByExpressionsAssignment_6_3_1();
 
             state._fsp--;
@@ -34357,22 +34454,177 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__SelectCore__Group_6_3__1__Impl"
 
 
+    // $ANTLR start "rule__SelectCore__Group_7__0"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12867:1: rule__SelectCore__Group_7__0 : rule__SelectCore__Group_7__0__Impl rule__SelectCore__Group_7__1 ;
+    public final void rule__SelectCore__Group_7__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12871:1: ( rule__SelectCore__Group_7__0__Impl rule__SelectCore__Group_7__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12872:2: rule__SelectCore__Group_7__0__Impl rule__SelectCore__Group_7__1
+            {
+            pushFollow(FOLLOW_rule__SelectCore__Group_7__0__Impl_in_rule__SelectCore__Group_7__025889);
+            rule__SelectCore__Group_7__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__SelectCore__Group_7__1_in_rule__SelectCore__Group_7__025892);
+            rule__SelectCore__Group_7__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group_7__0"
+
+
+    // $ANTLR start "rule__SelectCore__Group_7__0__Impl"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12879:1: rule__SelectCore__Group_7__0__Impl : ( 'having' ) ;
+    public final void rule__SelectCore__Group_7__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12883:1: ( ( 'having' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12884:1: ( 'having' )
+            {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12884:1: ( 'having' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12885:1: 'having'
+            {
+             before(grammarAccess.getSelectCoreAccess().getHavingKeyword_7_0()); 
+            match(input,114,FOLLOW_114_in_rule__SelectCore__Group_7__0__Impl25920); 
+             after(grammarAccess.getSelectCoreAccess().getHavingKeyword_7_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group_7__0__Impl"
+
+
+    // $ANTLR start "rule__SelectCore__Group_7__1"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12898:1: rule__SelectCore__Group_7__1 : rule__SelectCore__Group_7__1__Impl ;
+    public final void rule__SelectCore__Group_7__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12902:1: ( rule__SelectCore__Group_7__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12903:2: rule__SelectCore__Group_7__1__Impl
+            {
+            pushFollow(FOLLOW_rule__SelectCore__Group_7__1__Impl_in_rule__SelectCore__Group_7__125951);
+            rule__SelectCore__Group_7__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group_7__1"
+
+
+    // $ANTLR start "rule__SelectCore__Group_7__1__Impl"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12909:1: rule__SelectCore__Group_7__1__Impl : ( ( rule__SelectCore__HavingExpressionAssignment_7_1 ) ) ;
+    public final void rule__SelectCore__Group_7__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12913:1: ( ( ( rule__SelectCore__HavingExpressionAssignment_7_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12914:1: ( ( rule__SelectCore__HavingExpressionAssignment_7_1 ) )
+            {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12914:1: ( ( rule__SelectCore__HavingExpressionAssignment_7_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12915:1: ( rule__SelectCore__HavingExpressionAssignment_7_1 )
+            {
+             before(grammarAccess.getSelectCoreAccess().getHavingExpressionAssignment_7_1()); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12916:1: ( rule__SelectCore__HavingExpressionAssignment_7_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12916:2: rule__SelectCore__HavingExpressionAssignment_7_1
+            {
+            pushFollow(FOLLOW_rule__SelectCore__HavingExpressionAssignment_7_1_in_rule__SelectCore__Group_7__1__Impl25978);
+            rule__SelectCore__HavingExpressionAssignment_7_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getSelectCoreAccess().getHavingExpressionAssignment_7_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__Group_7__1__Impl"
+
+
     // $ANTLR start "rule__JoinSource__Group__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12836:1: rule__JoinSource__Group__0 : rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12930:1: rule__JoinSource__Group__0 : rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1 ;
     public final void rule__JoinSource__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12840:1: ( rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12841:2: rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12934:1: ( rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12935:2: rule__JoinSource__Group__0__Impl rule__JoinSource__Group__1
             {
-            pushFollow(FOLLOW_rule__JoinSource__Group__0__Impl_in_rule__JoinSource__Group__025826);
+            pushFollow(FOLLOW_rule__JoinSource__Group__0__Impl_in_rule__JoinSource__Group__026012);
             rule__JoinSource__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinSource__Group__1_in_rule__JoinSource__Group__025829);
+            pushFollow(FOLLOW_rule__JoinSource__Group__1_in_rule__JoinSource__Group__026015);
             rule__JoinSource__Group__1();
 
             state._fsp--;
@@ -34396,23 +34648,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinSource__Group__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12848:1: rule__JoinSource__Group__0__Impl : ( ( rule__JoinSource__SourceAssignment_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12942:1: rule__JoinSource__Group__0__Impl : ( ( rule__JoinSource__SourceAssignment_0 ) ) ;
     public final void rule__JoinSource__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12852:1: ( ( ( rule__JoinSource__SourceAssignment_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12853:1: ( ( rule__JoinSource__SourceAssignment_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12946:1: ( ( ( rule__JoinSource__SourceAssignment_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12947:1: ( ( rule__JoinSource__SourceAssignment_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12853:1: ( ( rule__JoinSource__SourceAssignment_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12854:1: ( rule__JoinSource__SourceAssignment_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12947:1: ( ( rule__JoinSource__SourceAssignment_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12948:1: ( rule__JoinSource__SourceAssignment_0 )
             {
              before(grammarAccess.getJoinSourceAccess().getSourceAssignment_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12855:1: ( rule__JoinSource__SourceAssignment_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12855:2: rule__JoinSource__SourceAssignment_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12949:1: ( rule__JoinSource__SourceAssignment_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12949:2: rule__JoinSource__SourceAssignment_0
             {
-            pushFollow(FOLLOW_rule__JoinSource__SourceAssignment_0_in_rule__JoinSource__Group__0__Impl25856);
+            pushFollow(FOLLOW_rule__JoinSource__SourceAssignment_0_in_rule__JoinSource__Group__0__Impl26042);
             rule__JoinSource__SourceAssignment_0();
 
             state._fsp--;
@@ -34443,16 +34695,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinSource__Group__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12865:1: rule__JoinSource__Group__1 : rule__JoinSource__Group__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12959:1: rule__JoinSource__Group__1 : rule__JoinSource__Group__1__Impl ;
     public final void rule__JoinSource__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12869:1: ( rule__JoinSource__Group__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12870:2: rule__JoinSource__Group__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12963:1: ( rule__JoinSource__Group__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12964:2: rule__JoinSource__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__JoinSource__Group__1__Impl_in_rule__JoinSource__Group__125886);
+            pushFollow(FOLLOW_rule__JoinSource__Group__1__Impl_in_rule__JoinSource__Group__126072);
             rule__JoinSource__Group__1__Impl();
 
             state._fsp--;
@@ -34476,35 +34728,35 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinSource__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12876:1: rule__JoinSource__Group__1__Impl : ( ( rule__JoinSource__JoinStatementsAssignment_1 )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12970:1: rule__JoinSource__Group__1__Impl : ( ( rule__JoinSource__JoinStatementsAssignment_1 )* ) ;
     public final void rule__JoinSource__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12880:1: ( ( ( rule__JoinSource__JoinStatementsAssignment_1 )* ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12881:1: ( ( rule__JoinSource__JoinStatementsAssignment_1 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12974:1: ( ( ( rule__JoinSource__JoinStatementsAssignment_1 )* ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12975:1: ( ( rule__JoinSource__JoinStatementsAssignment_1 )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12881:1: ( ( rule__JoinSource__JoinStatementsAssignment_1 )* )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12882:1: ( rule__JoinSource__JoinStatementsAssignment_1 )*
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12975:1: ( ( rule__JoinSource__JoinStatementsAssignment_1 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12976:1: ( rule__JoinSource__JoinStatementsAssignment_1 )*
             {
              before(grammarAccess.getJoinSourceAccess().getJoinStatementsAssignment_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12883:1: ( rule__JoinSource__JoinStatementsAssignment_1 )*
-            loop93:
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12977:1: ( rule__JoinSource__JoinStatementsAssignment_1 )*
+            loop94:
             do {
-                int alt93=2;
-                int LA93_0 = input.LA(1);
+                int alt94=2;
+                int LA94_0 = input.LA(1);
 
-                if ( (LA93_0==114||(LA93_0>=124 && LA93_0<=125)||(LA93_0>=127 && LA93_0<=128)) ) {
-                    alt93=1;
+                if ( (LA94_0==115||(LA94_0>=125 && LA94_0<=126)||(LA94_0>=128 && LA94_0<=129)) ) {
+                    alt94=1;
                 }
 
 
-                switch (alt93) {
+                switch (alt94) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12883:2: rule__JoinSource__JoinStatementsAssignment_1
+            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12977:2: rule__JoinSource__JoinStatementsAssignment_1
             	    {
-            	    pushFollow(FOLLOW_rule__JoinSource__JoinStatementsAssignment_1_in_rule__JoinSource__Group__1__Impl25913);
+            	    pushFollow(FOLLOW_rule__JoinSource__JoinStatementsAssignment_1_in_rule__JoinSource__Group__1__Impl26099);
             	    rule__JoinSource__JoinStatementsAssignment_1();
 
             	    state._fsp--;
@@ -34514,7 +34766,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop93;
+            	    break loop94;
                 }
             } while (true);
 
@@ -34541,21 +34793,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12897:1: rule__SingleSource__Group_0__0 : rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12991:1: rule__SingleSource__Group_0__0 : rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1 ;
     public final void rule__SingleSource__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12901:1: ( rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12902:2: rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12995:1: ( rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12996:2: rule__SingleSource__Group_0__0__Impl rule__SingleSource__Group_0__1
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_0__0__Impl_in_rule__SingleSource__Group_0__025948);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0__0__Impl_in_rule__SingleSource__Group_0__026134);
             rule__SingleSource__Group_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_0__1_in_rule__SingleSource__Group_0__025951);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0__1_in_rule__SingleSource__Group_0__026137);
             rule__SingleSource__Group_0__1();
 
             state._fsp--;
@@ -34579,21 +34831,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12909:1: rule__SingleSource__Group_0__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13003:1: rule__SingleSource__Group_0__0__Impl : ( () ) ;
     public final void rule__SingleSource__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12913:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12914:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13007:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13008:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12914:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12915:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13008:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13009:1: ()
             {
              before(grammarAccess.getSingleSourceAccess().getSingleSourceTableAction_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12916:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12918:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13010:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13012:1: 
             {
             }
 
@@ -34616,21 +34868,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12928:1: rule__SingleSource__Group_0__1 : rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13022:1: rule__SingleSource__Group_0__1 : rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2 ;
     public final void rule__SingleSource__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12932:1: ( rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12933:2: rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13026:1: ( rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13027:2: rule__SingleSource__Group_0__1__Impl rule__SingleSource__Group_0__2
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_0__1__Impl_in_rule__SingleSource__Group_0__126009);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0__1__Impl_in_rule__SingleSource__Group_0__126195);
             rule__SingleSource__Group_0__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_0__2_in_rule__SingleSource__Group_0__126012);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0__2_in_rule__SingleSource__Group_0__126198);
             rule__SingleSource__Group_0__2();
 
             state._fsp--;
@@ -34654,23 +34906,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12940:1: rule__SingleSource__Group_0__1__Impl : ( ( rule__SingleSource__TableAssignment_0_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13034:1: rule__SingleSource__Group_0__1__Impl : ( ( rule__SingleSource__TableAssignment_0_1 ) ) ;
     public final void rule__SingleSource__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12944:1: ( ( ( rule__SingleSource__TableAssignment_0_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12945:1: ( ( rule__SingleSource__TableAssignment_0_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13038:1: ( ( ( rule__SingleSource__TableAssignment_0_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13039:1: ( ( rule__SingleSource__TableAssignment_0_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12945:1: ( ( rule__SingleSource__TableAssignment_0_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12946:1: ( rule__SingleSource__TableAssignment_0_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13039:1: ( ( rule__SingleSource__TableAssignment_0_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13040:1: ( rule__SingleSource__TableAssignment_0_1 )
             {
              before(grammarAccess.getSingleSourceAccess().getTableAssignment_0_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12947:1: ( rule__SingleSource__TableAssignment_0_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12947:2: rule__SingleSource__TableAssignment_0_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13041:1: ( rule__SingleSource__TableAssignment_0_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13041:2: rule__SingleSource__TableAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__SingleSource__TableAssignment_0_1_in_rule__SingleSource__Group_0__1__Impl26039);
+            pushFollow(FOLLOW_rule__SingleSource__TableAssignment_0_1_in_rule__SingleSource__Group_0__1__Impl26225);
             rule__SingleSource__TableAssignment_0_1();
 
             state._fsp--;
@@ -34701,16 +34953,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12957:1: rule__SingleSource__Group_0__2 : rule__SingleSource__Group_0__2__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13051:1: rule__SingleSource__Group_0__2 : rule__SingleSource__Group_0__2__Impl ;
     public final void rule__SingleSource__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12961:1: ( rule__SingleSource__Group_0__2__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12962:2: rule__SingleSource__Group_0__2__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13055:1: ( rule__SingleSource__Group_0__2__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13056:2: rule__SingleSource__Group_0__2__Impl
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_0__2__Impl_in_rule__SingleSource__Group_0__226069);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0__2__Impl_in_rule__SingleSource__Group_0__226255);
             rule__SingleSource__Group_0__2__Impl();
 
             state._fsp--;
@@ -34734,31 +34986,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12968:1: rule__SingleSource__Group_0__2__Impl : ( ( rule__SingleSource__Group_0_2__0 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13062:1: rule__SingleSource__Group_0__2__Impl : ( ( rule__SingleSource__Group_0_2__0 )? ) ;
     public final void rule__SingleSource__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12972:1: ( ( ( rule__SingleSource__Group_0_2__0 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12973:1: ( ( rule__SingleSource__Group_0_2__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13066:1: ( ( ( rule__SingleSource__Group_0_2__0 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13067:1: ( ( rule__SingleSource__Group_0_2__0 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12973:1: ( ( rule__SingleSource__Group_0_2__0 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12974:1: ( rule__SingleSource__Group_0_2__0 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13067:1: ( ( rule__SingleSource__Group_0_2__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13068:1: ( rule__SingleSource__Group_0_2__0 )?
             {
              before(grammarAccess.getSingleSourceAccess().getGroup_0_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12975:1: ( rule__SingleSource__Group_0_2__0 )?
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13069:1: ( rule__SingleSource__Group_0_2__0 )?
+            int alt95=2;
+            int LA95_0 = input.LA(1);
 
-            if ( (LA94_0==75) ) {
-                alt94=1;
+            if ( (LA95_0==75) ) {
+                alt95=1;
             }
-            switch (alt94) {
+            switch (alt95) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12975:2: rule__SingleSource__Group_0_2__0
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13069:2: rule__SingleSource__Group_0_2__0
                     {
-                    pushFollow(FOLLOW_rule__SingleSource__Group_0_2__0_in_rule__SingleSource__Group_0__2__Impl26096);
+                    pushFollow(FOLLOW_rule__SingleSource__Group_0_2__0_in_rule__SingleSource__Group_0__2__Impl26282);
                     rule__SingleSource__Group_0_2__0();
 
                     state._fsp--;
@@ -34792,21 +35044,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0_2__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12991:1: rule__SingleSource__Group_0_2__0 : rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13085:1: rule__SingleSource__Group_0_2__0 : rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1 ;
     public final void rule__SingleSource__Group_0_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12995:1: ( rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:12996:2: rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13089:1: ( rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13090:2: rule__SingleSource__Group_0_2__0__Impl rule__SingleSource__Group_0_2__1
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__0__Impl_in_rule__SingleSource__Group_0_2__026133);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__0__Impl_in_rule__SingleSource__Group_0_2__026319);
             rule__SingleSource__Group_0_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__1_in_rule__SingleSource__Group_0_2__026136);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__1_in_rule__SingleSource__Group_0_2__026322);
             rule__SingleSource__Group_0_2__1();
 
             state._fsp--;
@@ -34830,20 +35082,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0_2__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13003:1: rule__SingleSource__Group_0_2__0__Impl : ( 'as' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13097:1: rule__SingleSource__Group_0_2__0__Impl : ( 'as' ) ;
     public final void rule__SingleSource__Group_0_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13007:1: ( ( 'as' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13008:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13101:1: ( ( 'as' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13102:1: ( 'as' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13008:1: ( 'as' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13009:1: 'as'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13102:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13103:1: 'as'
             {
              before(grammarAccess.getSingleSourceAccess().getAsKeyword_0_2_0()); 
-            match(input,75,FOLLOW_75_in_rule__SingleSource__Group_0_2__0__Impl26164); 
+            match(input,75,FOLLOW_75_in_rule__SingleSource__Group_0_2__0__Impl26350); 
              after(grammarAccess.getSingleSourceAccess().getAsKeyword_0_2_0()); 
 
             }
@@ -34867,16 +35119,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0_2__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13022:1: rule__SingleSource__Group_0_2__1 : rule__SingleSource__Group_0_2__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13116:1: rule__SingleSource__Group_0_2__1 : rule__SingleSource__Group_0_2__1__Impl ;
     public final void rule__SingleSource__Group_0_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13026:1: ( rule__SingleSource__Group_0_2__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13027:2: rule__SingleSource__Group_0_2__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13120:1: ( rule__SingleSource__Group_0_2__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13121:2: rule__SingleSource__Group_0_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__1__Impl_in_rule__SingleSource__Group_0_2__126195);
+            pushFollow(FOLLOW_rule__SingleSource__Group_0_2__1__Impl_in_rule__SingleSource__Group_0_2__126381);
             rule__SingleSource__Group_0_2__1__Impl();
 
             state._fsp--;
@@ -34900,23 +35152,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_0_2__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13033:1: rule__SingleSource__Group_0_2__1__Impl : ( ( rule__SingleSource__AliasAssignment_0_2_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13127:1: rule__SingleSource__Group_0_2__1__Impl : ( ( rule__SingleSource__AliasAssignment_0_2_1 ) ) ;
     public final void rule__SingleSource__Group_0_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13037:1: ( ( ( rule__SingleSource__AliasAssignment_0_2_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13038:1: ( ( rule__SingleSource__AliasAssignment_0_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13131:1: ( ( ( rule__SingleSource__AliasAssignment_0_2_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13132:1: ( ( rule__SingleSource__AliasAssignment_0_2_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13038:1: ( ( rule__SingleSource__AliasAssignment_0_2_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13039:1: ( rule__SingleSource__AliasAssignment_0_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13132:1: ( ( rule__SingleSource__AliasAssignment_0_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13133:1: ( rule__SingleSource__AliasAssignment_0_2_1 )
             {
              before(grammarAccess.getSingleSourceAccess().getAliasAssignment_0_2_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13040:1: ( rule__SingleSource__AliasAssignment_0_2_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13040:2: rule__SingleSource__AliasAssignment_0_2_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13134:1: ( rule__SingleSource__AliasAssignment_0_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13134:2: rule__SingleSource__AliasAssignment_0_2_1
             {
-            pushFollow(FOLLOW_rule__SingleSource__AliasAssignment_0_2_1_in_rule__SingleSource__Group_0_2__1__Impl26222);
+            pushFollow(FOLLOW_rule__SingleSource__AliasAssignment_0_2_1_in_rule__SingleSource__Group_0_2__1__Impl26408);
             rule__SingleSource__AliasAssignment_0_2_1();
 
             state._fsp--;
@@ -34947,21 +35199,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13054:1: rule__SingleSource__Group_1__0 : rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13148:1: rule__SingleSource__Group_1__0 : rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1 ;
     public final void rule__SingleSource__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13058:1: ( rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13059:2: rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13152:1: ( rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13153:2: rule__SingleSource__Group_1__0__Impl rule__SingleSource__Group_1__1
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__0__Impl_in_rule__SingleSource__Group_1__026256);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__0__Impl_in_rule__SingleSource__Group_1__026442);
             rule__SingleSource__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__1_in_rule__SingleSource__Group_1__026259);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__1_in_rule__SingleSource__Group_1__026445);
             rule__SingleSource__Group_1__1();
 
             state._fsp--;
@@ -34985,21 +35237,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13066:1: rule__SingleSource__Group_1__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13160:1: rule__SingleSource__Group_1__0__Impl : ( () ) ;
     public final void rule__SingleSource__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13070:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13071:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13164:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13165:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13071:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13072:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13165:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13166:1: ()
             {
              before(grammarAccess.getSingleSourceAccess().getSingleSourceSelectStatementAction_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13073:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13075:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13167:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13169:1: 
             {
             }
 
@@ -35022,21 +35274,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13085:1: rule__SingleSource__Group_1__1 : rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13179:1: rule__SingleSource__Group_1__1 : rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2 ;
     public final void rule__SingleSource__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13089:1: ( rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13090:2: rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13183:1: ( rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13184:2: rule__SingleSource__Group_1__1__Impl rule__SingleSource__Group_1__2
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__1__Impl_in_rule__SingleSource__Group_1__126317);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__1__Impl_in_rule__SingleSource__Group_1__126503);
             rule__SingleSource__Group_1__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__2_in_rule__SingleSource__Group_1__126320);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__2_in_rule__SingleSource__Group_1__126506);
             rule__SingleSource__Group_1__2();
 
             state._fsp--;
@@ -35060,20 +35312,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13097:1: rule__SingleSource__Group_1__1__Impl : ( '(' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13191:1: rule__SingleSource__Group_1__1__Impl : ( '(' ) ;
     public final void rule__SingleSource__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13101:1: ( ( '(' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13102:1: ( '(' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13195:1: ( ( '(' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13196:1: ( '(' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13102:1: ( '(' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13103:1: '('
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13196:1: ( '(' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13197:1: '('
             {
              before(grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_1_1()); 
-            match(input,68,FOLLOW_68_in_rule__SingleSource__Group_1__1__Impl26348); 
+            match(input,68,FOLLOW_68_in_rule__SingleSource__Group_1__1__Impl26534); 
              after(grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_1_1()); 
 
             }
@@ -35097,21 +35349,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13116:1: rule__SingleSource__Group_1__2 : rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13210:1: rule__SingleSource__Group_1__2 : rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3 ;
     public final void rule__SingleSource__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13120:1: ( rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13121:2: rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13214:1: ( rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13215:2: rule__SingleSource__Group_1__2__Impl rule__SingleSource__Group_1__3
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__2__Impl_in_rule__SingleSource__Group_1__226379);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__2__Impl_in_rule__SingleSource__Group_1__226565);
             rule__SingleSource__Group_1__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__3_in_rule__SingleSource__Group_1__226382);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__3_in_rule__SingleSource__Group_1__226568);
             rule__SingleSource__Group_1__3();
 
             state._fsp--;
@@ -35135,23 +35387,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13128:1: rule__SingleSource__Group_1__2__Impl : ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13222:1: rule__SingleSource__Group_1__2__Impl : ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) ) ;
     public final void rule__SingleSource__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13132:1: ( ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13133:1: ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13226:1: ( ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13227:1: ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13133:1: ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13134:1: ( rule__SingleSource__SelectStatementAssignment_1_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13227:1: ( ( rule__SingleSource__SelectStatementAssignment_1_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13228:1: ( rule__SingleSource__SelectStatementAssignment_1_2 )
             {
              before(grammarAccess.getSingleSourceAccess().getSelectStatementAssignment_1_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13135:1: ( rule__SingleSource__SelectStatementAssignment_1_2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13135:2: rule__SingleSource__SelectStatementAssignment_1_2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13229:1: ( rule__SingleSource__SelectStatementAssignment_1_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13229:2: rule__SingleSource__SelectStatementAssignment_1_2
             {
-            pushFollow(FOLLOW_rule__SingleSource__SelectStatementAssignment_1_2_in_rule__SingleSource__Group_1__2__Impl26409);
+            pushFollow(FOLLOW_rule__SingleSource__SelectStatementAssignment_1_2_in_rule__SingleSource__Group_1__2__Impl26595);
             rule__SingleSource__SelectStatementAssignment_1_2();
 
             state._fsp--;
@@ -35182,21 +35434,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13145:1: rule__SingleSource__Group_1__3 : rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13239:1: rule__SingleSource__Group_1__3 : rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4 ;
     public final void rule__SingleSource__Group_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13149:1: ( rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13150:2: rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13243:1: ( rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13244:2: rule__SingleSource__Group_1__3__Impl rule__SingleSource__Group_1__4
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__3__Impl_in_rule__SingleSource__Group_1__326439);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__3__Impl_in_rule__SingleSource__Group_1__326625);
             rule__SingleSource__Group_1__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__4_in_rule__SingleSource__Group_1__326442);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__4_in_rule__SingleSource__Group_1__326628);
             rule__SingleSource__Group_1__4();
 
             state._fsp--;
@@ -35220,20 +35472,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__3__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13157:1: rule__SingleSource__Group_1__3__Impl : ( ')' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13251:1: rule__SingleSource__Group_1__3__Impl : ( ')' ) ;
     public final void rule__SingleSource__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13161:1: ( ( ')' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13162:1: ( ')' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13255:1: ( ( ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13256:1: ( ')' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13162:1: ( ')' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13163:1: ')'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13256:1: ( ')' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13257:1: ')'
             {
              before(grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_1_3()); 
-            match(input,69,FOLLOW_69_in_rule__SingleSource__Group_1__3__Impl26470); 
+            match(input,69,FOLLOW_69_in_rule__SingleSource__Group_1__3__Impl26656); 
              after(grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_1_3()); 
 
             }
@@ -35257,16 +35509,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13176:1: rule__SingleSource__Group_1__4 : rule__SingleSource__Group_1__4__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13270:1: rule__SingleSource__Group_1__4 : rule__SingleSource__Group_1__4__Impl ;
     public final void rule__SingleSource__Group_1__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13180:1: ( rule__SingleSource__Group_1__4__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13181:2: rule__SingleSource__Group_1__4__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13274:1: ( rule__SingleSource__Group_1__4__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13275:2: rule__SingleSource__Group_1__4__Impl
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1__4__Impl_in_rule__SingleSource__Group_1__426501);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1__4__Impl_in_rule__SingleSource__Group_1__426687);
             rule__SingleSource__Group_1__4__Impl();
 
             state._fsp--;
@@ -35290,31 +35542,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1__4__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13187:1: rule__SingleSource__Group_1__4__Impl : ( ( rule__SingleSource__Group_1_4__0 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13281:1: rule__SingleSource__Group_1__4__Impl : ( ( rule__SingleSource__Group_1_4__0 )? ) ;
     public final void rule__SingleSource__Group_1__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13191:1: ( ( ( rule__SingleSource__Group_1_4__0 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13192:1: ( ( rule__SingleSource__Group_1_4__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13285:1: ( ( ( rule__SingleSource__Group_1_4__0 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13286:1: ( ( rule__SingleSource__Group_1_4__0 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13192:1: ( ( rule__SingleSource__Group_1_4__0 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13193:1: ( rule__SingleSource__Group_1_4__0 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13286:1: ( ( rule__SingleSource__Group_1_4__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13287:1: ( rule__SingleSource__Group_1_4__0 )?
             {
              before(grammarAccess.getSingleSourceAccess().getGroup_1_4()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13194:1: ( rule__SingleSource__Group_1_4__0 )?
-            int alt95=2;
-            int LA95_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13288:1: ( rule__SingleSource__Group_1_4__0 )?
+            int alt96=2;
+            int LA96_0 = input.LA(1);
 
-            if ( (LA95_0==75) ) {
-                alt95=1;
+            if ( (LA96_0==75) ) {
+                alt96=1;
             }
-            switch (alt95) {
+            switch (alt96) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13194:2: rule__SingleSource__Group_1_4__0
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13288:2: rule__SingleSource__Group_1_4__0
                     {
-                    pushFollow(FOLLOW_rule__SingleSource__Group_1_4__0_in_rule__SingleSource__Group_1__4__Impl26528);
+                    pushFollow(FOLLOW_rule__SingleSource__Group_1_4__0_in_rule__SingleSource__Group_1__4__Impl26714);
                     rule__SingleSource__Group_1_4__0();
 
                     state._fsp--;
@@ -35348,21 +35600,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1_4__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13214:1: rule__SingleSource__Group_1_4__0 : rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13308:1: rule__SingleSource__Group_1_4__0 : rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1 ;
     public final void rule__SingleSource__Group_1_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13218:1: ( rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13219:2: rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13312:1: ( rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13313:2: rule__SingleSource__Group_1_4__0__Impl rule__SingleSource__Group_1_4__1
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__0__Impl_in_rule__SingleSource__Group_1_4__026569);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__0__Impl_in_rule__SingleSource__Group_1_4__026755);
             rule__SingleSource__Group_1_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__1_in_rule__SingleSource__Group_1_4__026572);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__1_in_rule__SingleSource__Group_1_4__026758);
             rule__SingleSource__Group_1_4__1();
 
             state._fsp--;
@@ -35386,20 +35638,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1_4__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13226:1: rule__SingleSource__Group_1_4__0__Impl : ( 'as' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13320:1: rule__SingleSource__Group_1_4__0__Impl : ( 'as' ) ;
     public final void rule__SingleSource__Group_1_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13230:1: ( ( 'as' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13231:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13324:1: ( ( 'as' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13325:1: ( 'as' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13231:1: ( 'as' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13232:1: 'as'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13325:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13326:1: 'as'
             {
              before(grammarAccess.getSingleSourceAccess().getAsKeyword_1_4_0()); 
-            match(input,75,FOLLOW_75_in_rule__SingleSource__Group_1_4__0__Impl26600); 
+            match(input,75,FOLLOW_75_in_rule__SingleSource__Group_1_4__0__Impl26786); 
              after(grammarAccess.getSingleSourceAccess().getAsKeyword_1_4_0()); 
 
             }
@@ -35423,16 +35675,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1_4__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13245:1: rule__SingleSource__Group_1_4__1 : rule__SingleSource__Group_1_4__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13339:1: rule__SingleSource__Group_1_4__1 : rule__SingleSource__Group_1_4__1__Impl ;
     public final void rule__SingleSource__Group_1_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13249:1: ( rule__SingleSource__Group_1_4__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13250:2: rule__SingleSource__Group_1_4__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13343:1: ( rule__SingleSource__Group_1_4__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13344:2: rule__SingleSource__Group_1_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__1__Impl_in_rule__SingleSource__Group_1_4__126631);
+            pushFollow(FOLLOW_rule__SingleSource__Group_1_4__1__Impl_in_rule__SingleSource__Group_1_4__126817);
             rule__SingleSource__Group_1_4__1__Impl();
 
             state._fsp--;
@@ -35456,23 +35708,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_1_4__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13256:1: rule__SingleSource__Group_1_4__1__Impl : ( ( rule__SingleSource__AliasAssignment_1_4_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13350:1: rule__SingleSource__Group_1_4__1__Impl : ( ( rule__SingleSource__AliasAssignment_1_4_1 ) ) ;
     public final void rule__SingleSource__Group_1_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13260:1: ( ( ( rule__SingleSource__AliasAssignment_1_4_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13261:1: ( ( rule__SingleSource__AliasAssignment_1_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13354:1: ( ( ( rule__SingleSource__AliasAssignment_1_4_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13355:1: ( ( rule__SingleSource__AliasAssignment_1_4_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13261:1: ( ( rule__SingleSource__AliasAssignment_1_4_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13262:1: ( rule__SingleSource__AliasAssignment_1_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13355:1: ( ( rule__SingleSource__AliasAssignment_1_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13356:1: ( rule__SingleSource__AliasAssignment_1_4_1 )
             {
              before(grammarAccess.getSingleSourceAccess().getAliasAssignment_1_4_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13263:1: ( rule__SingleSource__AliasAssignment_1_4_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13263:2: rule__SingleSource__AliasAssignment_1_4_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13357:1: ( rule__SingleSource__AliasAssignment_1_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13357:2: rule__SingleSource__AliasAssignment_1_4_1
             {
-            pushFollow(FOLLOW_rule__SingleSource__AliasAssignment_1_4_1_in_rule__SingleSource__Group_1_4__1__Impl26658);
+            pushFollow(FOLLOW_rule__SingleSource__AliasAssignment_1_4_1_in_rule__SingleSource__Group_1_4__1__Impl26844);
             rule__SingleSource__AliasAssignment_1_4_1();
 
             state._fsp--;
@@ -35503,21 +35755,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13277:1: rule__SingleSource__Group_2__0 : rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13371:1: rule__SingleSource__Group_2__0 : rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1 ;
     public final void rule__SingleSource__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13281:1: ( rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13282:2: rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13375:1: ( rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13376:2: rule__SingleSource__Group_2__0__Impl rule__SingleSource__Group_2__1
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__0__Impl_in_rule__SingleSource__Group_2__026692);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__0__Impl_in_rule__SingleSource__Group_2__026878);
             rule__SingleSource__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__1_in_rule__SingleSource__Group_2__026695);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__1_in_rule__SingleSource__Group_2__026881);
             rule__SingleSource__Group_2__1();
 
             state._fsp--;
@@ -35541,21 +35793,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13289:1: rule__SingleSource__Group_2__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13383:1: rule__SingleSource__Group_2__0__Impl : ( () ) ;
     public final void rule__SingleSource__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13293:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13294:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13387:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13388:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13294:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13295:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13388:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13389:1: ()
             {
              before(grammarAccess.getSingleSourceAccess().getSingleSourceJoinAction_2_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13296:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13298:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13390:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13392:1: 
             {
             }
 
@@ -35578,21 +35830,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13308:1: rule__SingleSource__Group_2__1 : rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13402:1: rule__SingleSource__Group_2__1 : rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2 ;
     public final void rule__SingleSource__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13312:1: ( rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13313:2: rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13406:1: ( rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13407:2: rule__SingleSource__Group_2__1__Impl rule__SingleSource__Group_2__2
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__1__Impl_in_rule__SingleSource__Group_2__126753);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__1__Impl_in_rule__SingleSource__Group_2__126939);
             rule__SingleSource__Group_2__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__2_in_rule__SingleSource__Group_2__126756);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__2_in_rule__SingleSource__Group_2__126942);
             rule__SingleSource__Group_2__2();
 
             state._fsp--;
@@ -35616,20 +35868,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13320:1: rule__SingleSource__Group_2__1__Impl : ( '(' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13414:1: rule__SingleSource__Group_2__1__Impl : ( '(' ) ;
     public final void rule__SingleSource__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13324:1: ( ( '(' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13325:1: ( '(' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13418:1: ( ( '(' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13419:1: ( '(' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13325:1: ( '(' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13326:1: '('
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13419:1: ( '(' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13420:1: '('
             {
              before(grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_2_1()); 
-            match(input,68,FOLLOW_68_in_rule__SingleSource__Group_2__1__Impl26784); 
+            match(input,68,FOLLOW_68_in_rule__SingleSource__Group_2__1__Impl26970); 
              after(grammarAccess.getSingleSourceAccess().getLeftParenthesisKeyword_2_1()); 
 
             }
@@ -35653,21 +35905,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13339:1: rule__SingleSource__Group_2__2 : rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13433:1: rule__SingleSource__Group_2__2 : rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3 ;
     public final void rule__SingleSource__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13343:1: ( rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13344:2: rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13437:1: ( rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13438:2: rule__SingleSource__Group_2__2__Impl rule__SingleSource__Group_2__3
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__2__Impl_in_rule__SingleSource__Group_2__226815);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__2__Impl_in_rule__SingleSource__Group_2__227001);
             rule__SingleSource__Group_2__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__3_in_rule__SingleSource__Group_2__226818);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__3_in_rule__SingleSource__Group_2__227004);
             rule__SingleSource__Group_2__3();
 
             state._fsp--;
@@ -35691,23 +35943,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13351:1: rule__SingleSource__Group_2__2__Impl : ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13445:1: rule__SingleSource__Group_2__2__Impl : ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) ) ;
     public final void rule__SingleSource__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13355:1: ( ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13356:1: ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13449:1: ( ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13450:1: ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13356:1: ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13357:1: ( rule__SingleSource__JoinSourceAssignment_2_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13450:1: ( ( rule__SingleSource__JoinSourceAssignment_2_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13451:1: ( rule__SingleSource__JoinSourceAssignment_2_2 )
             {
              before(grammarAccess.getSingleSourceAccess().getJoinSourceAssignment_2_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13358:1: ( rule__SingleSource__JoinSourceAssignment_2_2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13358:2: rule__SingleSource__JoinSourceAssignment_2_2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13452:1: ( rule__SingleSource__JoinSourceAssignment_2_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13452:2: rule__SingleSource__JoinSourceAssignment_2_2
             {
-            pushFollow(FOLLOW_rule__SingleSource__JoinSourceAssignment_2_2_in_rule__SingleSource__Group_2__2__Impl26845);
+            pushFollow(FOLLOW_rule__SingleSource__JoinSourceAssignment_2_2_in_rule__SingleSource__Group_2__2__Impl27031);
             rule__SingleSource__JoinSourceAssignment_2_2();
 
             state._fsp--;
@@ -35738,16 +35990,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13368:1: rule__SingleSource__Group_2__3 : rule__SingleSource__Group_2__3__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13462:1: rule__SingleSource__Group_2__3 : rule__SingleSource__Group_2__3__Impl ;
     public final void rule__SingleSource__Group_2__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13372:1: ( rule__SingleSource__Group_2__3__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13373:2: rule__SingleSource__Group_2__3__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13466:1: ( rule__SingleSource__Group_2__3__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13467:2: rule__SingleSource__Group_2__3__Impl
             {
-            pushFollow(FOLLOW_rule__SingleSource__Group_2__3__Impl_in_rule__SingleSource__Group_2__326875);
+            pushFollow(FOLLOW_rule__SingleSource__Group_2__3__Impl_in_rule__SingleSource__Group_2__327061);
             rule__SingleSource__Group_2__3__Impl();
 
             state._fsp--;
@@ -35771,20 +36023,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__Group_2__3__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13379:1: rule__SingleSource__Group_2__3__Impl : ( ')' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13473:1: rule__SingleSource__Group_2__3__Impl : ( ')' ) ;
     public final void rule__SingleSource__Group_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13383:1: ( ( ')' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13384:1: ( ')' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13477:1: ( ( ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13478:1: ( ')' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13384:1: ( ')' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13385:1: ')'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13478:1: ( ')' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13479:1: ')'
             {
              before(grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_2_3()); 
-            match(input,69,FOLLOW_69_in_rule__SingleSource__Group_2__3__Impl26903); 
+            match(input,69,FOLLOW_69_in_rule__SingleSource__Group_2__3__Impl27089); 
              after(grammarAccess.getSingleSourceAccess().getRightParenthesisKeyword_2_3()); 
 
             }
@@ -35808,21 +36060,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13406:1: rule__JoinStatement__Group__0 : rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13500:1: rule__JoinStatement__Group__0 : rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1 ;
     public final void rule__JoinStatement__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13410:1: ( rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13411:2: rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13504:1: ( rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13505:2: rule__JoinStatement__Group__0__Impl rule__JoinStatement__Group__1
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__0__Impl_in_rule__JoinStatement__Group__026942);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__0__Impl_in_rule__JoinStatement__Group__027128);
             rule__JoinStatement__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__1_in_rule__JoinStatement__Group__026945);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__1_in_rule__JoinStatement__Group__027131);
             rule__JoinStatement__Group__1();
 
             state._fsp--;
@@ -35846,21 +36098,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13418:1: rule__JoinStatement__Group__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13512:1: rule__JoinStatement__Group__0__Impl : ( () ) ;
     public final void rule__JoinStatement__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13422:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13423:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13516:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13517:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13423:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13424:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13517:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13518:1: ()
             {
              before(grammarAccess.getJoinStatementAccess().getJoinStatementAction_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13425:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13427:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13519:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13521:1: 
             {
             }
 
@@ -35883,21 +36135,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13437:1: rule__JoinStatement__Group__1 : rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13531:1: rule__JoinStatement__Group__1 : rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2 ;
     public final void rule__JoinStatement__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13441:1: ( rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13442:2: rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13535:1: ( rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13536:2: rule__JoinStatement__Group__1__Impl rule__JoinStatement__Group__2
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__1__Impl_in_rule__JoinStatement__Group__127003);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__1__Impl_in_rule__JoinStatement__Group__127189);
             rule__JoinStatement__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__2_in_rule__JoinStatement__Group__127006);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__2_in_rule__JoinStatement__Group__127192);
             rule__JoinStatement__Group__2();
 
             state._fsp--;
@@ -35921,31 +36173,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13449:1: rule__JoinStatement__Group__1__Impl : ( ( rule__JoinStatement__NaturalAssignment_1 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13543:1: rule__JoinStatement__Group__1__Impl : ( ( rule__JoinStatement__NaturalAssignment_1 )? ) ;
     public final void rule__JoinStatement__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13453:1: ( ( ( rule__JoinStatement__NaturalAssignment_1 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13454:1: ( ( rule__JoinStatement__NaturalAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13547:1: ( ( ( rule__JoinStatement__NaturalAssignment_1 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13548:1: ( ( rule__JoinStatement__NaturalAssignment_1 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13454:1: ( ( rule__JoinStatement__NaturalAssignment_1 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13455:1: ( rule__JoinStatement__NaturalAssignment_1 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13548:1: ( ( rule__JoinStatement__NaturalAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13549:1: ( rule__JoinStatement__NaturalAssignment_1 )?
             {
              before(grammarAccess.getJoinStatementAccess().getNaturalAssignment_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13456:1: ( rule__JoinStatement__NaturalAssignment_1 )?
-            int alt96=2;
-            int LA96_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13550:1: ( rule__JoinStatement__NaturalAssignment_1 )?
+            int alt97=2;
+            int LA97_0 = input.LA(1);
 
-            if ( (LA96_0==124) ) {
-                alt96=1;
+            if ( (LA97_0==125) ) {
+                alt97=1;
             }
-            switch (alt96) {
+            switch (alt97) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13456:2: rule__JoinStatement__NaturalAssignment_1
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13550:2: rule__JoinStatement__NaturalAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__JoinStatement__NaturalAssignment_1_in_rule__JoinStatement__Group__1__Impl27033);
+                    pushFollow(FOLLOW_rule__JoinStatement__NaturalAssignment_1_in_rule__JoinStatement__Group__1__Impl27219);
                     rule__JoinStatement__NaturalAssignment_1();
 
                     state._fsp--;
@@ -35979,21 +36231,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13466:1: rule__JoinStatement__Group__2 : rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13560:1: rule__JoinStatement__Group__2 : rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3 ;
     public final void rule__JoinStatement__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13470:1: ( rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13471:2: rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13564:1: ( rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13565:2: rule__JoinStatement__Group__2__Impl rule__JoinStatement__Group__3
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__2__Impl_in_rule__JoinStatement__Group__227064);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__2__Impl_in_rule__JoinStatement__Group__227250);
             rule__JoinStatement__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__3_in_rule__JoinStatement__Group__227067);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__3_in_rule__JoinStatement__Group__227253);
             rule__JoinStatement__Group__3();
 
             state._fsp--;
@@ -36017,31 +36269,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13478:1: rule__JoinStatement__Group__2__Impl : ( ( rule__JoinStatement__Alternatives_2 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13572:1: rule__JoinStatement__Group__2__Impl : ( ( rule__JoinStatement__Alternatives_2 )? ) ;
     public final void rule__JoinStatement__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13482:1: ( ( ( rule__JoinStatement__Alternatives_2 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13483:1: ( ( rule__JoinStatement__Alternatives_2 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13576:1: ( ( ( rule__JoinStatement__Alternatives_2 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13577:1: ( ( rule__JoinStatement__Alternatives_2 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13483:1: ( ( rule__JoinStatement__Alternatives_2 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13484:1: ( rule__JoinStatement__Alternatives_2 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13577:1: ( ( rule__JoinStatement__Alternatives_2 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13578:1: ( rule__JoinStatement__Alternatives_2 )?
             {
              before(grammarAccess.getJoinStatementAccess().getAlternatives_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13485:1: ( rule__JoinStatement__Alternatives_2 )?
-            int alt97=2;
-            int LA97_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13579:1: ( rule__JoinStatement__Alternatives_2 )?
+            int alt98=2;
+            int LA98_0 = input.LA(1);
 
-            if ( (LA97_0==125||(LA97_0>=127 && LA97_0<=128)) ) {
-                alt97=1;
+            if ( (LA98_0==126||(LA98_0>=128 && LA98_0<=129)) ) {
+                alt98=1;
             }
-            switch (alt97) {
+            switch (alt98) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13485:2: rule__JoinStatement__Alternatives_2
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13579:2: rule__JoinStatement__Alternatives_2
                     {
-                    pushFollow(FOLLOW_rule__JoinStatement__Alternatives_2_in_rule__JoinStatement__Group__2__Impl27094);
+                    pushFollow(FOLLOW_rule__JoinStatement__Alternatives_2_in_rule__JoinStatement__Group__2__Impl27280);
                     rule__JoinStatement__Alternatives_2();
 
                     state._fsp--;
@@ -36075,21 +36327,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13495:1: rule__JoinStatement__Group__3 : rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13589:1: rule__JoinStatement__Group__3 : rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4 ;
     public final void rule__JoinStatement__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13499:1: ( rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13500:2: rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13593:1: ( rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13594:2: rule__JoinStatement__Group__3__Impl rule__JoinStatement__Group__4
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__3__Impl_in_rule__JoinStatement__Group__327125);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__3__Impl_in_rule__JoinStatement__Group__327311);
             rule__JoinStatement__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__4_in_rule__JoinStatement__Group__327128);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__4_in_rule__JoinStatement__Group__327314);
             rule__JoinStatement__Group__4();
 
             state._fsp--;
@@ -36113,20 +36365,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__3__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13507:1: rule__JoinStatement__Group__3__Impl : ( 'join' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13601:1: rule__JoinStatement__Group__3__Impl : ( 'join' ) ;
     public final void rule__JoinStatement__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13511:1: ( ( 'join' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13512:1: ( 'join' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13605:1: ( ( 'join' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13606:1: ( 'join' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13512:1: ( 'join' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13513:1: 'join'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13606:1: ( 'join' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13607:1: 'join'
             {
              before(grammarAccess.getJoinStatementAccess().getJoinKeyword_3()); 
-            match(input,114,FOLLOW_114_in_rule__JoinStatement__Group__3__Impl27156); 
+            match(input,115,FOLLOW_115_in_rule__JoinStatement__Group__3__Impl27342); 
              after(grammarAccess.getJoinStatementAccess().getJoinKeyword_3()); 
 
             }
@@ -36150,21 +36402,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13526:1: rule__JoinStatement__Group__4 : rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13620:1: rule__JoinStatement__Group__4 : rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5 ;
     public final void rule__JoinStatement__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13530:1: ( rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13531:2: rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13624:1: ( rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13625:2: rule__JoinStatement__Group__4__Impl rule__JoinStatement__Group__5
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__4__Impl_in_rule__JoinStatement__Group__427187);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__4__Impl_in_rule__JoinStatement__Group__427373);
             rule__JoinStatement__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__5_in_rule__JoinStatement__Group__427190);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__5_in_rule__JoinStatement__Group__427376);
             rule__JoinStatement__Group__5();
 
             state._fsp--;
@@ -36188,23 +36440,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__4__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13538:1: rule__JoinStatement__Group__4__Impl : ( ( rule__JoinStatement__SingleSourceAssignment_4 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13632:1: rule__JoinStatement__Group__4__Impl : ( ( rule__JoinStatement__SingleSourceAssignment_4 ) ) ;
     public final void rule__JoinStatement__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13542:1: ( ( ( rule__JoinStatement__SingleSourceAssignment_4 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13543:1: ( ( rule__JoinStatement__SingleSourceAssignment_4 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13636:1: ( ( ( rule__JoinStatement__SingleSourceAssignment_4 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13637:1: ( ( rule__JoinStatement__SingleSourceAssignment_4 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13543:1: ( ( rule__JoinStatement__SingleSourceAssignment_4 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13544:1: ( rule__JoinStatement__SingleSourceAssignment_4 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13637:1: ( ( rule__JoinStatement__SingleSourceAssignment_4 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13638:1: ( rule__JoinStatement__SingleSourceAssignment_4 )
             {
              before(grammarAccess.getJoinStatementAccess().getSingleSourceAssignment_4()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13545:1: ( rule__JoinStatement__SingleSourceAssignment_4 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13545:2: rule__JoinStatement__SingleSourceAssignment_4
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13639:1: ( rule__JoinStatement__SingleSourceAssignment_4 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13639:2: rule__JoinStatement__SingleSourceAssignment_4
             {
-            pushFollow(FOLLOW_rule__JoinStatement__SingleSourceAssignment_4_in_rule__JoinStatement__Group__4__Impl27217);
+            pushFollow(FOLLOW_rule__JoinStatement__SingleSourceAssignment_4_in_rule__JoinStatement__Group__4__Impl27403);
             rule__JoinStatement__SingleSourceAssignment_4();
 
             state._fsp--;
@@ -36235,21 +36487,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__5"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13555:1: rule__JoinStatement__Group__5 : rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13649:1: rule__JoinStatement__Group__5 : rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6 ;
     public final void rule__JoinStatement__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13559:1: ( rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13560:2: rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13653:1: ( rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13654:2: rule__JoinStatement__Group__5__Impl rule__JoinStatement__Group__6
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__5__Impl_in_rule__JoinStatement__Group__527247);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__5__Impl_in_rule__JoinStatement__Group__527433);
             rule__JoinStatement__Group__5__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group__6_in_rule__JoinStatement__Group__527250);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__6_in_rule__JoinStatement__Group__527436);
             rule__JoinStatement__Group__6();
 
             state._fsp--;
@@ -36273,20 +36525,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__5__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13567:1: rule__JoinStatement__Group__5__Impl : ( 'on' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13661:1: rule__JoinStatement__Group__5__Impl : ( 'on' ) ;
     public final void rule__JoinStatement__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13571:1: ( ( 'on' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13572:1: ( 'on' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13665:1: ( ( 'on' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13666:1: ( 'on' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13572:1: ( 'on' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13573:1: 'on'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13666:1: ( 'on' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13667:1: 'on'
             {
              before(grammarAccess.getJoinStatementAccess().getOnKeyword_5()); 
-            match(input,82,FOLLOW_82_in_rule__JoinStatement__Group__5__Impl27278); 
+            match(input,82,FOLLOW_82_in_rule__JoinStatement__Group__5__Impl27464); 
              after(grammarAccess.getJoinStatementAccess().getOnKeyword_5()); 
 
             }
@@ -36310,16 +36562,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__6"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13586:1: rule__JoinStatement__Group__6 : rule__JoinStatement__Group__6__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13680:1: rule__JoinStatement__Group__6 : rule__JoinStatement__Group__6__Impl ;
     public final void rule__JoinStatement__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13590:1: ( rule__JoinStatement__Group__6__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13591:2: rule__JoinStatement__Group__6__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13684:1: ( rule__JoinStatement__Group__6__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13685:2: rule__JoinStatement__Group__6__Impl
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group__6__Impl_in_rule__JoinStatement__Group__627309);
+            pushFollow(FOLLOW_rule__JoinStatement__Group__6__Impl_in_rule__JoinStatement__Group__627495);
             rule__JoinStatement__Group__6__Impl();
 
             state._fsp--;
@@ -36343,23 +36595,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group__6__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13597:1: rule__JoinStatement__Group__6__Impl : ( ( rule__JoinStatement__ExpressionAssignment_6 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13691:1: rule__JoinStatement__Group__6__Impl : ( ( rule__JoinStatement__ExpressionAssignment_6 ) ) ;
     public final void rule__JoinStatement__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13601:1: ( ( ( rule__JoinStatement__ExpressionAssignment_6 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13602:1: ( ( rule__JoinStatement__ExpressionAssignment_6 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13695:1: ( ( ( rule__JoinStatement__ExpressionAssignment_6 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13696:1: ( ( rule__JoinStatement__ExpressionAssignment_6 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13602:1: ( ( rule__JoinStatement__ExpressionAssignment_6 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13603:1: ( rule__JoinStatement__ExpressionAssignment_6 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13696:1: ( ( rule__JoinStatement__ExpressionAssignment_6 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13697:1: ( rule__JoinStatement__ExpressionAssignment_6 )
             {
              before(grammarAccess.getJoinStatementAccess().getExpressionAssignment_6()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13604:1: ( rule__JoinStatement__ExpressionAssignment_6 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13604:2: rule__JoinStatement__ExpressionAssignment_6
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13698:1: ( rule__JoinStatement__ExpressionAssignment_6 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13698:2: rule__JoinStatement__ExpressionAssignment_6
             {
-            pushFollow(FOLLOW_rule__JoinStatement__ExpressionAssignment_6_in_rule__JoinStatement__Group__6__Impl27336);
+            pushFollow(FOLLOW_rule__JoinStatement__ExpressionAssignment_6_in_rule__JoinStatement__Group__6__Impl27522);
             rule__JoinStatement__ExpressionAssignment_6();
 
             state._fsp--;
@@ -36390,21 +36642,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group_2_0__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13628:1: rule__JoinStatement__Group_2_0__0 : rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13722:1: rule__JoinStatement__Group_2_0__0 : rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1 ;
     public final void rule__JoinStatement__Group_2_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13632:1: ( rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13633:2: rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13726:1: ( rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13727:2: rule__JoinStatement__Group_2_0__0__Impl rule__JoinStatement__Group_2_0__1
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__0__Impl_in_rule__JoinStatement__Group_2_0__027380);
+            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__0__Impl_in_rule__JoinStatement__Group_2_0__027566);
             rule__JoinStatement__Group_2_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__1_in_rule__JoinStatement__Group_2_0__027383);
+            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__1_in_rule__JoinStatement__Group_2_0__027569);
             rule__JoinStatement__Group_2_0__1();
 
             state._fsp--;
@@ -36428,23 +36680,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group_2_0__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13640:1: rule__JoinStatement__Group_2_0__0__Impl : ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13734:1: rule__JoinStatement__Group_2_0__0__Impl : ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) ) ;
     public final void rule__JoinStatement__Group_2_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13644:1: ( ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13645:1: ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13738:1: ( ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13739:1: ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13645:1: ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13646:1: ( rule__JoinStatement__LeftAssignment_2_0_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13739:1: ( ( rule__JoinStatement__LeftAssignment_2_0_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13740:1: ( rule__JoinStatement__LeftAssignment_2_0_0 )
             {
              before(grammarAccess.getJoinStatementAccess().getLeftAssignment_2_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13647:1: ( rule__JoinStatement__LeftAssignment_2_0_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13647:2: rule__JoinStatement__LeftAssignment_2_0_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13741:1: ( rule__JoinStatement__LeftAssignment_2_0_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13741:2: rule__JoinStatement__LeftAssignment_2_0_0
             {
-            pushFollow(FOLLOW_rule__JoinStatement__LeftAssignment_2_0_0_in_rule__JoinStatement__Group_2_0__0__Impl27410);
+            pushFollow(FOLLOW_rule__JoinStatement__LeftAssignment_2_0_0_in_rule__JoinStatement__Group_2_0__0__Impl27596);
             rule__JoinStatement__LeftAssignment_2_0_0();
 
             state._fsp--;
@@ -36475,16 +36727,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group_2_0__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13657:1: rule__JoinStatement__Group_2_0__1 : rule__JoinStatement__Group_2_0__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13751:1: rule__JoinStatement__Group_2_0__1 : rule__JoinStatement__Group_2_0__1__Impl ;
     public final void rule__JoinStatement__Group_2_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13661:1: ( rule__JoinStatement__Group_2_0__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13662:2: rule__JoinStatement__Group_2_0__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13755:1: ( rule__JoinStatement__Group_2_0__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13756:2: rule__JoinStatement__Group_2_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__1__Impl_in_rule__JoinStatement__Group_2_0__127440);
+            pushFollow(FOLLOW_rule__JoinStatement__Group_2_0__1__Impl_in_rule__JoinStatement__Group_2_0__127626);
             rule__JoinStatement__Group_2_0__1__Impl();
 
             state._fsp--;
@@ -36508,31 +36760,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__Group_2_0__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13668:1: rule__JoinStatement__Group_2_0__1__Impl : ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13762:1: rule__JoinStatement__Group_2_0__1__Impl : ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? ) ;
     public final void rule__JoinStatement__Group_2_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13672:1: ( ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13673:1: ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13766:1: ( ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13767:1: ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13673:1: ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13674:1: ( rule__JoinStatement__OuterAssignment_2_0_1 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13767:1: ( ( rule__JoinStatement__OuterAssignment_2_0_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13768:1: ( rule__JoinStatement__OuterAssignment_2_0_1 )?
             {
              before(grammarAccess.getJoinStatementAccess().getOuterAssignment_2_0_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13675:1: ( rule__JoinStatement__OuterAssignment_2_0_1 )?
-            int alt98=2;
-            int LA98_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13769:1: ( rule__JoinStatement__OuterAssignment_2_0_1 )?
+            int alt99=2;
+            int LA99_0 = input.LA(1);
 
-            if ( (LA98_0==126) ) {
-                alt98=1;
+            if ( (LA99_0==127) ) {
+                alt99=1;
             }
-            switch (alt98) {
+            switch (alt99) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13675:2: rule__JoinStatement__OuterAssignment_2_0_1
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13769:2: rule__JoinStatement__OuterAssignment_2_0_1
                     {
-                    pushFollow(FOLLOW_rule__JoinStatement__OuterAssignment_2_0_1_in_rule__JoinStatement__Group_2_0__1__Impl27467);
+                    pushFollow(FOLLOW_rule__JoinStatement__OuterAssignment_2_0_1_in_rule__JoinStatement__Group_2_0__1__Impl27653);
                     rule__JoinStatement__OuterAssignment_2_0_1();
 
                     state._fsp--;
@@ -36566,21 +36818,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13689:1: rule__ResultColumn__Group_0__0 : rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13783:1: rule__ResultColumn__Group_0__0 : rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1 ;
     public final void rule__ResultColumn__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13693:1: ( rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13694:2: rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13787:1: ( rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13788:2: rule__ResultColumn__Group_0__0__Impl rule__ResultColumn__Group_0__1
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_0__0__Impl_in_rule__ResultColumn__Group_0__027502);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_0__0__Impl_in_rule__ResultColumn__Group_0__027688);
             rule__ResultColumn__Group_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResultColumn__Group_0__1_in_rule__ResultColumn__Group_0__027505);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_0__1_in_rule__ResultColumn__Group_0__027691);
             rule__ResultColumn__Group_0__1();
 
             state._fsp--;
@@ -36604,21 +36856,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13701:1: rule__ResultColumn__Group_0__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13795:1: rule__ResultColumn__Group_0__0__Impl : ( () ) ;
     public final void rule__ResultColumn__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13705:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13706:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13799:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13800:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13706:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13707:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13800:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13801:1: ()
             {
              before(grammarAccess.getResultColumnAccess().getResultColumnAllAction_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13708:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13710:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13802:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13804:1: 
             {
             }
 
@@ -36641,21 +36893,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13720:1: rule__ResultColumn__Group_0__1 : rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13814:1: rule__ResultColumn__Group_0__1 : rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2 ;
     public final void rule__ResultColumn__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13724:1: ( rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13725:2: rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13818:1: ( rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13819:2: rule__ResultColumn__Group_0__1__Impl rule__ResultColumn__Group_0__2
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_0__1__Impl_in_rule__ResultColumn__Group_0__127563);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_0__1__Impl_in_rule__ResultColumn__Group_0__127749);
             rule__ResultColumn__Group_0__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResultColumn__Group_0__2_in_rule__ResultColumn__Group_0__127566);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_0__2_in_rule__ResultColumn__Group_0__127752);
             rule__ResultColumn__Group_0__2();
 
             state._fsp--;
@@ -36679,31 +36931,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13732:1: rule__ResultColumn__Group_0__1__Impl : ( ( rule__ResultColumn__TableAssignment_0_1 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13826:1: rule__ResultColumn__Group_0__1__Impl : ( ( rule__ResultColumn__TableAssignment_0_1 )? ) ;
     public final void rule__ResultColumn__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13736:1: ( ( ( rule__ResultColumn__TableAssignment_0_1 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13737:1: ( ( rule__ResultColumn__TableAssignment_0_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13830:1: ( ( ( rule__ResultColumn__TableAssignment_0_1 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13831:1: ( ( rule__ResultColumn__TableAssignment_0_1 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13737:1: ( ( rule__ResultColumn__TableAssignment_0_1 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13738:1: ( rule__ResultColumn__TableAssignment_0_1 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13831:1: ( ( rule__ResultColumn__TableAssignment_0_1 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13832:1: ( rule__ResultColumn__TableAssignment_0_1 )?
             {
              before(grammarAccess.getResultColumnAccess().getTableAssignment_0_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13739:1: ( rule__ResultColumn__TableAssignment_0_1 )?
-            int alt99=2;
-            int LA99_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13833:1: ( rule__ResultColumn__TableAssignment_0_1 )?
+            int alt100=2;
+            int LA100_0 = input.LA(1);
 
-            if ( (LA99_0==RULE_ID) ) {
-                alt99=1;
+            if ( (LA100_0==RULE_ID) ) {
+                alt100=1;
             }
-            switch (alt99) {
+            switch (alt100) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13739:2: rule__ResultColumn__TableAssignment_0_1
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13833:2: rule__ResultColumn__TableAssignment_0_1
                     {
-                    pushFollow(FOLLOW_rule__ResultColumn__TableAssignment_0_1_in_rule__ResultColumn__Group_0__1__Impl27593);
+                    pushFollow(FOLLOW_rule__ResultColumn__TableAssignment_0_1_in_rule__ResultColumn__Group_0__1__Impl27779);
                     rule__ResultColumn__TableAssignment_0_1();
 
                     state._fsp--;
@@ -36737,16 +36989,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13749:1: rule__ResultColumn__Group_0__2 : rule__ResultColumn__Group_0__2__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13843:1: rule__ResultColumn__Group_0__2 : rule__ResultColumn__Group_0__2__Impl ;
     public final void rule__ResultColumn__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13753:1: ( rule__ResultColumn__Group_0__2__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13754:2: rule__ResultColumn__Group_0__2__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13847:1: ( rule__ResultColumn__Group_0__2__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13848:2: rule__ResultColumn__Group_0__2__Impl
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_0__2__Impl_in_rule__ResultColumn__Group_0__227624);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_0__2__Impl_in_rule__ResultColumn__Group_0__227810);
             rule__ResultColumn__Group_0__2__Impl();
 
             state._fsp--;
@@ -36770,20 +37022,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_0__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13760:1: rule__ResultColumn__Group_0__2__Impl : ( '*' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13854:1: rule__ResultColumn__Group_0__2__Impl : ( '*' ) ;
     public final void rule__ResultColumn__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13764:1: ( ( '*' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13765:1: ( '*' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13858:1: ( ( '*' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13859:1: ( '*' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13765:1: ( '*' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13766:1: '*'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13859:1: ( '*' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13860:1: '*'
             {
              before(grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_2()); 
-            match(input,12,FOLLOW_12_in_rule__ResultColumn__Group_0__2__Impl27652); 
+            match(input,12,FOLLOW_12_in_rule__ResultColumn__Group_0__2__Impl27838); 
              after(grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_2()); 
 
             }
@@ -36807,21 +37059,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13785:1: rule__ResultColumn__Group_1__0 : rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13879:1: rule__ResultColumn__Group_1__0 : rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1 ;
     public final void rule__ResultColumn__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13789:1: ( rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13790:2: rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13883:1: ( rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13884:2: rule__ResultColumn__Group_1__0__Impl rule__ResultColumn__Group_1__1
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1__0__Impl_in_rule__ResultColumn__Group_1__027689);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1__0__Impl_in_rule__ResultColumn__Group_1__027875);
             rule__ResultColumn__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1__1_in_rule__ResultColumn__Group_1__027692);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1__1_in_rule__ResultColumn__Group_1__027878);
             rule__ResultColumn__Group_1__1();
 
             state._fsp--;
@@ -36845,21 +37097,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13797:1: rule__ResultColumn__Group_1__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13891:1: rule__ResultColumn__Group_1__0__Impl : ( () ) ;
     public final void rule__ResultColumn__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13801:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13802:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13895:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13896:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13802:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13803:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13896:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13897:1: ()
             {
              before(grammarAccess.getResultColumnAccess().getResultColumnExpressionAction_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13804:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13806:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13898:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13900:1: 
             {
             }
 
@@ -36882,21 +37134,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13816:1: rule__ResultColumn__Group_1__1 : rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13910:1: rule__ResultColumn__Group_1__1 : rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2 ;
     public final void rule__ResultColumn__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13820:1: ( rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13821:2: rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13914:1: ( rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13915:2: rule__ResultColumn__Group_1__1__Impl rule__ResultColumn__Group_1__2
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1__1__Impl_in_rule__ResultColumn__Group_1__127750);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1__1__Impl_in_rule__ResultColumn__Group_1__127936);
             rule__ResultColumn__Group_1__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1__2_in_rule__ResultColumn__Group_1__127753);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1__2_in_rule__ResultColumn__Group_1__127939);
             rule__ResultColumn__Group_1__2();
 
             state._fsp--;
@@ -36920,23 +37172,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13828:1: rule__ResultColumn__Group_1__1__Impl : ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13922:1: rule__ResultColumn__Group_1__1__Impl : ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) ) ;
     public final void rule__ResultColumn__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13832:1: ( ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13833:1: ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13926:1: ( ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13927:1: ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13833:1: ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13834:1: ( rule__ResultColumn__ExpressionAssignment_1_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13927:1: ( ( rule__ResultColumn__ExpressionAssignment_1_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13928:1: ( rule__ResultColumn__ExpressionAssignment_1_1 )
             {
              before(grammarAccess.getResultColumnAccess().getExpressionAssignment_1_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13835:1: ( rule__ResultColumn__ExpressionAssignment_1_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13835:2: rule__ResultColumn__ExpressionAssignment_1_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13929:1: ( rule__ResultColumn__ExpressionAssignment_1_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13929:2: rule__ResultColumn__ExpressionAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__ResultColumn__ExpressionAssignment_1_1_in_rule__ResultColumn__Group_1__1__Impl27780);
+            pushFollow(FOLLOW_rule__ResultColumn__ExpressionAssignment_1_1_in_rule__ResultColumn__Group_1__1__Impl27966);
             rule__ResultColumn__ExpressionAssignment_1_1();
 
             state._fsp--;
@@ -36967,16 +37219,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13845:1: rule__ResultColumn__Group_1__2 : rule__ResultColumn__Group_1__2__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13939:1: rule__ResultColumn__Group_1__2 : rule__ResultColumn__Group_1__2__Impl ;
     public final void rule__ResultColumn__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13849:1: ( rule__ResultColumn__Group_1__2__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13850:2: rule__ResultColumn__Group_1__2__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13943:1: ( rule__ResultColumn__Group_1__2__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13944:2: rule__ResultColumn__Group_1__2__Impl
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1__2__Impl_in_rule__ResultColumn__Group_1__227810);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1__2__Impl_in_rule__ResultColumn__Group_1__227996);
             rule__ResultColumn__Group_1__2__Impl();
 
             state._fsp--;
@@ -37000,31 +37252,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13856:1: rule__ResultColumn__Group_1__2__Impl : ( ( rule__ResultColumn__Group_1_2__0 )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13950:1: rule__ResultColumn__Group_1__2__Impl : ( ( rule__ResultColumn__Group_1_2__0 )? ) ;
     public final void rule__ResultColumn__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13860:1: ( ( ( rule__ResultColumn__Group_1_2__0 )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13861:1: ( ( rule__ResultColumn__Group_1_2__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13954:1: ( ( ( rule__ResultColumn__Group_1_2__0 )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13955:1: ( ( rule__ResultColumn__Group_1_2__0 )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13861:1: ( ( rule__ResultColumn__Group_1_2__0 )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13862:1: ( rule__ResultColumn__Group_1_2__0 )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13955:1: ( ( rule__ResultColumn__Group_1_2__0 )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13956:1: ( rule__ResultColumn__Group_1_2__0 )?
             {
              before(grammarAccess.getResultColumnAccess().getGroup_1_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13863:1: ( rule__ResultColumn__Group_1_2__0 )?
-            int alt100=2;
-            int LA100_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13957:1: ( rule__ResultColumn__Group_1_2__0 )?
+            int alt101=2;
+            int LA101_0 = input.LA(1);
 
-            if ( (LA100_0==75) ) {
-                alt100=1;
+            if ( (LA101_0==75) ) {
+                alt101=1;
             }
-            switch (alt100) {
+            switch (alt101) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13863:2: rule__ResultColumn__Group_1_2__0
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13957:2: rule__ResultColumn__Group_1_2__0
                     {
-                    pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__0_in_rule__ResultColumn__Group_1__2__Impl27837);
+                    pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__0_in_rule__ResultColumn__Group_1__2__Impl28023);
                     rule__ResultColumn__Group_1_2__0();
 
                     state._fsp--;
@@ -37058,21 +37310,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1_2__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13879:1: rule__ResultColumn__Group_1_2__0 : rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13973:1: rule__ResultColumn__Group_1_2__0 : rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1 ;
     public final void rule__ResultColumn__Group_1_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13883:1: ( rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13884:2: rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13977:1: ( rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13978:2: rule__ResultColumn__Group_1_2__0__Impl rule__ResultColumn__Group_1_2__1
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__0__Impl_in_rule__ResultColumn__Group_1_2__027874);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__0__Impl_in_rule__ResultColumn__Group_1_2__028060);
             rule__ResultColumn__Group_1_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__1_in_rule__ResultColumn__Group_1_2__027877);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__1_in_rule__ResultColumn__Group_1_2__028063);
             rule__ResultColumn__Group_1_2__1();
 
             state._fsp--;
@@ -37096,20 +37348,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1_2__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13891:1: rule__ResultColumn__Group_1_2__0__Impl : ( 'as' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13985:1: rule__ResultColumn__Group_1_2__0__Impl : ( 'as' ) ;
     public final void rule__ResultColumn__Group_1_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13895:1: ( ( 'as' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13896:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13989:1: ( ( 'as' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13990:1: ( 'as' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13896:1: ( 'as' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13897:1: 'as'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13990:1: ( 'as' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13991:1: 'as'
             {
              before(grammarAccess.getResultColumnAccess().getAsKeyword_1_2_0()); 
-            match(input,75,FOLLOW_75_in_rule__ResultColumn__Group_1_2__0__Impl27905); 
+            match(input,75,FOLLOW_75_in_rule__ResultColumn__Group_1_2__0__Impl28091); 
              after(grammarAccess.getResultColumnAccess().getAsKeyword_1_2_0()); 
 
             }
@@ -37133,16 +37385,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1_2__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13910:1: rule__ResultColumn__Group_1_2__1 : rule__ResultColumn__Group_1_2__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14004:1: rule__ResultColumn__Group_1_2__1 : rule__ResultColumn__Group_1_2__1__Impl ;
     public final void rule__ResultColumn__Group_1_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13914:1: ( rule__ResultColumn__Group_1_2__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13915:2: rule__ResultColumn__Group_1_2__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14008:1: ( rule__ResultColumn__Group_1_2__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14009:2: rule__ResultColumn__Group_1_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__1__Impl_in_rule__ResultColumn__Group_1_2__127936);
+            pushFollow(FOLLOW_rule__ResultColumn__Group_1_2__1__Impl_in_rule__ResultColumn__Group_1_2__128122);
             rule__ResultColumn__Group_1_2__1__Impl();
 
             state._fsp--;
@@ -37166,23 +37418,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__Group_1_2__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13921:1: rule__ResultColumn__Group_1_2__1__Impl : ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14015:1: rule__ResultColumn__Group_1_2__1__Impl : ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) ) ;
     public final void rule__ResultColumn__Group_1_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13925:1: ( ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13926:1: ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14019:1: ( ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14020:1: ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13926:1: ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13927:1: ( rule__ResultColumn__AliasAssignment_1_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14020:1: ( ( rule__ResultColumn__AliasAssignment_1_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14021:1: ( rule__ResultColumn__AliasAssignment_1_2_1 )
             {
              before(grammarAccess.getResultColumnAccess().getAliasAssignment_1_2_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13928:1: ( rule__ResultColumn__AliasAssignment_1_2_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13928:2: rule__ResultColumn__AliasAssignment_1_2_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14022:1: ( rule__ResultColumn__AliasAssignment_1_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14022:2: rule__ResultColumn__AliasAssignment_1_2_1
             {
-            pushFollow(FOLLOW_rule__ResultColumn__AliasAssignment_1_2_1_in_rule__ResultColumn__Group_1_2__1__Impl27963);
+            pushFollow(FOLLOW_rule__ResultColumn__AliasAssignment_1_2_1_in_rule__ResultColumn__Group_1_2__1__Impl28149);
             rule__ResultColumn__AliasAssignment_1_2_1();
 
             state._fsp--;
@@ -37213,21 +37465,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13942:1: rule__ConflictClause__Group__0 : rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14036:1: rule__ConflictClause__Group__0 : rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1 ;
     public final void rule__ConflictClause__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13946:1: ( rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13947:2: rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14040:1: ( rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14041:2: rule__ConflictClause__Group__0__Impl rule__ConflictClause__Group__1
             {
-            pushFollow(FOLLOW_rule__ConflictClause__Group__0__Impl_in_rule__ConflictClause__Group__027997);
+            pushFollow(FOLLOW_rule__ConflictClause__Group__0__Impl_in_rule__ConflictClause__Group__028183);
             rule__ConflictClause__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ConflictClause__Group__1_in_rule__ConflictClause__Group__028000);
+            pushFollow(FOLLOW_rule__ConflictClause__Group__1_in_rule__ConflictClause__Group__028186);
             rule__ConflictClause__Group__1();
 
             state._fsp--;
@@ -37251,20 +37503,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13954:1: rule__ConflictClause__Group__0__Impl : ( 'on' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14048:1: rule__ConflictClause__Group__0__Impl : ( 'on' ) ;
     public final void rule__ConflictClause__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13958:1: ( ( 'on' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13959:1: ( 'on' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14052:1: ( ( 'on' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14053:1: ( 'on' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13959:1: ( 'on' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13960:1: 'on'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14053:1: ( 'on' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14054:1: 'on'
             {
              before(grammarAccess.getConflictClauseAccess().getOnKeyword_0()); 
-            match(input,82,FOLLOW_82_in_rule__ConflictClause__Group__0__Impl28028); 
+            match(input,82,FOLLOW_82_in_rule__ConflictClause__Group__0__Impl28214); 
              after(grammarAccess.getConflictClauseAccess().getOnKeyword_0()); 
 
             }
@@ -37288,21 +37540,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13973:1: rule__ConflictClause__Group__1 : rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14067:1: rule__ConflictClause__Group__1 : rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2 ;
     public final void rule__ConflictClause__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13977:1: ( rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13978:2: rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14071:1: ( rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14072:2: rule__ConflictClause__Group__1__Impl rule__ConflictClause__Group__2
             {
-            pushFollow(FOLLOW_rule__ConflictClause__Group__1__Impl_in_rule__ConflictClause__Group__128059);
+            pushFollow(FOLLOW_rule__ConflictClause__Group__1__Impl_in_rule__ConflictClause__Group__128245);
             rule__ConflictClause__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ConflictClause__Group__2_in_rule__ConflictClause__Group__128062);
+            pushFollow(FOLLOW_rule__ConflictClause__Group__2_in_rule__ConflictClause__Group__128248);
             rule__ConflictClause__Group__2();
 
             state._fsp--;
@@ -37326,20 +37578,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13985:1: rule__ConflictClause__Group__1__Impl : ( 'conflict' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14079:1: rule__ConflictClause__Group__1__Impl : ( 'conflict' ) ;
     public final void rule__ConflictClause__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13989:1: ( ( 'conflict' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13990:1: ( 'conflict' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14083:1: ( ( 'conflict' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14084:1: ( 'conflict' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13990:1: ( 'conflict' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:13991:1: 'conflict'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14084:1: ( 'conflict' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14085:1: 'conflict'
             {
              before(grammarAccess.getConflictClauseAccess().getConflictKeyword_1()); 
-            match(input,115,FOLLOW_115_in_rule__ConflictClause__Group__1__Impl28090); 
+            match(input,116,FOLLOW_116_in_rule__ConflictClause__Group__1__Impl28276); 
              after(grammarAccess.getConflictClauseAccess().getConflictKeyword_1()); 
 
             }
@@ -37363,16 +37615,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14004:1: rule__ConflictClause__Group__2 : rule__ConflictClause__Group__2__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14098:1: rule__ConflictClause__Group__2 : rule__ConflictClause__Group__2__Impl ;
     public final void rule__ConflictClause__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14008:1: ( rule__ConflictClause__Group__2__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14009:2: rule__ConflictClause__Group__2__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14102:1: ( rule__ConflictClause__Group__2__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14103:2: rule__ConflictClause__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__ConflictClause__Group__2__Impl_in_rule__ConflictClause__Group__228121);
+            pushFollow(FOLLOW_rule__ConflictClause__Group__2__Impl_in_rule__ConflictClause__Group__228307);
             rule__ConflictClause__Group__2__Impl();
 
             state._fsp--;
@@ -37396,23 +37648,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__Group__2__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14015:1: rule__ConflictClause__Group__2__Impl : ( ( rule__ConflictClause__ResolutionAssignment_2 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14109:1: rule__ConflictClause__Group__2__Impl : ( ( rule__ConflictClause__ResolutionAssignment_2 ) ) ;
     public final void rule__ConflictClause__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14019:1: ( ( ( rule__ConflictClause__ResolutionAssignment_2 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14020:1: ( ( rule__ConflictClause__ResolutionAssignment_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14113:1: ( ( ( rule__ConflictClause__ResolutionAssignment_2 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14114:1: ( ( rule__ConflictClause__ResolutionAssignment_2 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14020:1: ( ( rule__ConflictClause__ResolutionAssignment_2 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14021:1: ( rule__ConflictClause__ResolutionAssignment_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14114:1: ( ( rule__ConflictClause__ResolutionAssignment_2 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14115:1: ( rule__ConflictClause__ResolutionAssignment_2 )
             {
              before(grammarAccess.getConflictClauseAccess().getResolutionAssignment_2()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14022:1: ( rule__ConflictClause__ResolutionAssignment_2 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14022:2: rule__ConflictClause__ResolutionAssignment_2
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14116:1: ( rule__ConflictClause__ResolutionAssignment_2 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14116:2: rule__ConflictClause__ResolutionAssignment_2
             {
-            pushFollow(FOLLOW_rule__ConflictClause__ResolutionAssignment_2_in_rule__ConflictClause__Group__2__Impl28148);
+            pushFollow(FOLLOW_rule__ConflictClause__ResolutionAssignment_2_in_rule__ConflictClause__Group__2__Impl28334);
             rule__ConflictClause__ResolutionAssignment_2();
 
             state._fsp--;
@@ -37443,21 +37695,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_0__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14038:1: rule__LiteralValue__Group_0__0 : rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14132:1: rule__LiteralValue__Group_0__0 : rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1 ;
     public final void rule__LiteralValue__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14042:1: ( rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14043:2: rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14136:1: ( rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14137:2: rule__LiteralValue__Group_0__0__Impl rule__LiteralValue__Group_0__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_0__0__Impl_in_rule__LiteralValue__Group_0__028184);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_0__0__Impl_in_rule__LiteralValue__Group_0__028370);
             rule__LiteralValue__Group_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_0__1_in_rule__LiteralValue__Group_0__028187);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_0__1_in_rule__LiteralValue__Group_0__028373);
             rule__LiteralValue__Group_0__1();
 
             state._fsp--;
@@ -37481,21 +37733,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_0__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14050:1: rule__LiteralValue__Group_0__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14144:1: rule__LiteralValue__Group_0__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14054:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14055:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14148:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14149:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14055:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14056:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14149:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14150:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getNumericLiteralAction_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14057:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14059:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14151:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14153:1: 
             {
             }
 
@@ -37518,16 +37770,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_0__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14069:1: rule__LiteralValue__Group_0__1 : rule__LiteralValue__Group_0__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14163:1: rule__LiteralValue__Group_0__1 : rule__LiteralValue__Group_0__1__Impl ;
     public final void rule__LiteralValue__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14073:1: ( rule__LiteralValue__Group_0__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14074:2: rule__LiteralValue__Group_0__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14167:1: ( rule__LiteralValue__Group_0__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14168:2: rule__LiteralValue__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_0__1__Impl_in_rule__LiteralValue__Group_0__128245);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_0__1__Impl_in_rule__LiteralValue__Group_0__128431);
             rule__LiteralValue__Group_0__1__Impl();
 
             state._fsp--;
@@ -37551,23 +37803,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_0__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14080:1: rule__LiteralValue__Group_0__1__Impl : ( ( rule__LiteralValue__NumberAssignment_0_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14174:1: rule__LiteralValue__Group_0__1__Impl : ( ( rule__LiteralValue__NumberAssignment_0_1 ) ) ;
     public final void rule__LiteralValue__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14084:1: ( ( ( rule__LiteralValue__NumberAssignment_0_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14085:1: ( ( rule__LiteralValue__NumberAssignment_0_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14178:1: ( ( ( rule__LiteralValue__NumberAssignment_0_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14179:1: ( ( rule__LiteralValue__NumberAssignment_0_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14085:1: ( ( rule__LiteralValue__NumberAssignment_0_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14086:1: ( rule__LiteralValue__NumberAssignment_0_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14179:1: ( ( rule__LiteralValue__NumberAssignment_0_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14180:1: ( rule__LiteralValue__NumberAssignment_0_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getNumberAssignment_0_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14087:1: ( rule__LiteralValue__NumberAssignment_0_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14087:2: rule__LiteralValue__NumberAssignment_0_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14181:1: ( rule__LiteralValue__NumberAssignment_0_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14181:2: rule__LiteralValue__NumberAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__NumberAssignment_0_1_in_rule__LiteralValue__Group_0__1__Impl28272);
+            pushFollow(FOLLOW_rule__LiteralValue__NumberAssignment_0_1_in_rule__LiteralValue__Group_0__1__Impl28458);
             rule__LiteralValue__NumberAssignment_0_1();
 
             state._fsp--;
@@ -37598,21 +37850,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_1__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14101:1: rule__LiteralValue__Group_1__0 : rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14195:1: rule__LiteralValue__Group_1__0 : rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1 ;
     public final void rule__LiteralValue__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14105:1: ( rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14106:2: rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14199:1: ( rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14200:2: rule__LiteralValue__Group_1__0__Impl rule__LiteralValue__Group_1__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_1__0__Impl_in_rule__LiteralValue__Group_1__028306);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_1__0__Impl_in_rule__LiteralValue__Group_1__028492);
             rule__LiteralValue__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_1__1_in_rule__LiteralValue__Group_1__028309);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_1__1_in_rule__LiteralValue__Group_1__028495);
             rule__LiteralValue__Group_1__1();
 
             state._fsp--;
@@ -37636,21 +37888,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_1__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14113:1: rule__LiteralValue__Group_1__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14207:1: rule__LiteralValue__Group_1__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14117:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14118:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14211:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14212:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14118:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14119:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14212:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14213:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getStringLiteralAction_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14120:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14122:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14214:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14216:1: 
             {
             }
 
@@ -37673,16 +37925,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_1__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14132:1: rule__LiteralValue__Group_1__1 : rule__LiteralValue__Group_1__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14226:1: rule__LiteralValue__Group_1__1 : rule__LiteralValue__Group_1__1__Impl ;
     public final void rule__LiteralValue__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14136:1: ( rule__LiteralValue__Group_1__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14137:2: rule__LiteralValue__Group_1__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14230:1: ( rule__LiteralValue__Group_1__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14231:2: rule__LiteralValue__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_1__1__Impl_in_rule__LiteralValue__Group_1__128367);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_1__1__Impl_in_rule__LiteralValue__Group_1__128553);
             rule__LiteralValue__Group_1__1__Impl();
 
             state._fsp--;
@@ -37706,23 +37958,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_1__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14143:1: rule__LiteralValue__Group_1__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_1_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14237:1: rule__LiteralValue__Group_1__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_1_1 ) ) ;
     public final void rule__LiteralValue__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14147:1: ( ( ( rule__LiteralValue__LiteralAssignment_1_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14148:1: ( ( rule__LiteralValue__LiteralAssignment_1_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14241:1: ( ( ( rule__LiteralValue__LiteralAssignment_1_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14242:1: ( ( rule__LiteralValue__LiteralAssignment_1_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14148:1: ( ( rule__LiteralValue__LiteralAssignment_1_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14149:1: ( rule__LiteralValue__LiteralAssignment_1_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14242:1: ( ( rule__LiteralValue__LiteralAssignment_1_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14243:1: ( rule__LiteralValue__LiteralAssignment_1_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralAssignment_1_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14150:1: ( rule__LiteralValue__LiteralAssignment_1_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14150:2: rule__LiteralValue__LiteralAssignment_1_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14244:1: ( rule__LiteralValue__LiteralAssignment_1_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14244:2: rule__LiteralValue__LiteralAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_1_1_in_rule__LiteralValue__Group_1__1__Impl28394);
+            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_1_1_in_rule__LiteralValue__Group_1__1__Impl28580);
             rule__LiteralValue__LiteralAssignment_1_1();
 
             state._fsp--;
@@ -37753,21 +38005,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_2__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14164:1: rule__LiteralValue__Group_2__0 : rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14258:1: rule__LiteralValue__Group_2__0 : rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1 ;
     public final void rule__LiteralValue__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14168:1: ( rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14169:2: rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14262:1: ( rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14263:2: rule__LiteralValue__Group_2__0__Impl rule__LiteralValue__Group_2__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_2__0__Impl_in_rule__LiteralValue__Group_2__028428);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_2__0__Impl_in_rule__LiteralValue__Group_2__028614);
             rule__LiteralValue__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_2__1_in_rule__LiteralValue__Group_2__028431);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_2__1_in_rule__LiteralValue__Group_2__028617);
             rule__LiteralValue__Group_2__1();
 
             state._fsp--;
@@ -37791,21 +38043,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_2__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14176:1: rule__LiteralValue__Group_2__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14270:1: rule__LiteralValue__Group_2__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14180:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14181:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14274:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14275:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14181:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14182:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14275:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14276:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getNullLiteralAction_2_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14183:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14185:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14277:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14279:1: 
             {
             }
 
@@ -37828,16 +38080,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_2__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14195:1: rule__LiteralValue__Group_2__1 : rule__LiteralValue__Group_2__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14289:1: rule__LiteralValue__Group_2__1 : rule__LiteralValue__Group_2__1__Impl ;
     public final void rule__LiteralValue__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14199:1: ( rule__LiteralValue__Group_2__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14200:2: rule__LiteralValue__Group_2__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14293:1: ( rule__LiteralValue__Group_2__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14294:2: rule__LiteralValue__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_2__1__Impl_in_rule__LiteralValue__Group_2__128489);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_2__1__Impl_in_rule__LiteralValue__Group_2__128675);
             rule__LiteralValue__Group_2__1__Impl();
 
             state._fsp--;
@@ -37861,23 +38113,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_2__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14206:1: rule__LiteralValue__Group_2__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_2_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14300:1: rule__LiteralValue__Group_2__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_2_1 ) ) ;
     public final void rule__LiteralValue__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14210:1: ( ( ( rule__LiteralValue__LiteralAssignment_2_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14211:1: ( ( rule__LiteralValue__LiteralAssignment_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14304:1: ( ( ( rule__LiteralValue__LiteralAssignment_2_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14305:1: ( ( rule__LiteralValue__LiteralAssignment_2_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14211:1: ( ( rule__LiteralValue__LiteralAssignment_2_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14212:1: ( rule__LiteralValue__LiteralAssignment_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14305:1: ( ( rule__LiteralValue__LiteralAssignment_2_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14306:1: ( rule__LiteralValue__LiteralAssignment_2_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralAssignment_2_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14213:1: ( rule__LiteralValue__LiteralAssignment_2_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14213:2: rule__LiteralValue__LiteralAssignment_2_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14307:1: ( rule__LiteralValue__LiteralAssignment_2_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14307:2: rule__LiteralValue__LiteralAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_2_1_in_rule__LiteralValue__Group_2__1__Impl28516);
+            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_2_1_in_rule__LiteralValue__Group_2__1__Impl28702);
             rule__LiteralValue__LiteralAssignment_2_1();
 
             state._fsp--;
@@ -37908,21 +38160,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_3__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14227:1: rule__LiteralValue__Group_3__0 : rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14321:1: rule__LiteralValue__Group_3__0 : rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1 ;
     public final void rule__LiteralValue__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14231:1: ( rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14232:2: rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14325:1: ( rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14326:2: rule__LiteralValue__Group_3__0__Impl rule__LiteralValue__Group_3__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_3__0__Impl_in_rule__LiteralValue__Group_3__028550);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_3__0__Impl_in_rule__LiteralValue__Group_3__028736);
             rule__LiteralValue__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_3__1_in_rule__LiteralValue__Group_3__028553);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_3__1_in_rule__LiteralValue__Group_3__028739);
             rule__LiteralValue__Group_3__1();
 
             state._fsp--;
@@ -37946,21 +38198,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_3__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14239:1: rule__LiteralValue__Group_3__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14333:1: rule__LiteralValue__Group_3__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14243:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14244:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14337:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14338:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14244:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14245:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14338:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14339:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getCurrentTimeLiteralAction_3_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14246:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14248:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14340:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14342:1: 
             {
             }
 
@@ -37983,16 +38235,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_3__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14258:1: rule__LiteralValue__Group_3__1 : rule__LiteralValue__Group_3__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14352:1: rule__LiteralValue__Group_3__1 : rule__LiteralValue__Group_3__1__Impl ;
     public final void rule__LiteralValue__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14262:1: ( rule__LiteralValue__Group_3__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14263:2: rule__LiteralValue__Group_3__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14356:1: ( rule__LiteralValue__Group_3__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14357:2: rule__LiteralValue__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_3__1__Impl_in_rule__LiteralValue__Group_3__128611);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_3__1__Impl_in_rule__LiteralValue__Group_3__128797);
             rule__LiteralValue__Group_3__1__Impl();
 
             state._fsp--;
@@ -38016,23 +38268,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_3__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14269:1: rule__LiteralValue__Group_3__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_3_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14363:1: rule__LiteralValue__Group_3__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_3_1 ) ) ;
     public final void rule__LiteralValue__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14273:1: ( ( ( rule__LiteralValue__LiteralAssignment_3_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14274:1: ( ( rule__LiteralValue__LiteralAssignment_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14367:1: ( ( ( rule__LiteralValue__LiteralAssignment_3_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14368:1: ( ( rule__LiteralValue__LiteralAssignment_3_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14274:1: ( ( rule__LiteralValue__LiteralAssignment_3_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14275:1: ( rule__LiteralValue__LiteralAssignment_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14368:1: ( ( rule__LiteralValue__LiteralAssignment_3_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14369:1: ( rule__LiteralValue__LiteralAssignment_3_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralAssignment_3_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14276:1: ( rule__LiteralValue__LiteralAssignment_3_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14276:2: rule__LiteralValue__LiteralAssignment_3_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14370:1: ( rule__LiteralValue__LiteralAssignment_3_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14370:2: rule__LiteralValue__LiteralAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_3_1_in_rule__LiteralValue__Group_3__1__Impl28638);
+            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_3_1_in_rule__LiteralValue__Group_3__1__Impl28824);
             rule__LiteralValue__LiteralAssignment_3_1();
 
             state._fsp--;
@@ -38063,21 +38315,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_4__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14290:1: rule__LiteralValue__Group_4__0 : rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14384:1: rule__LiteralValue__Group_4__0 : rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1 ;
     public final void rule__LiteralValue__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14294:1: ( rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14295:2: rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14388:1: ( rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14389:2: rule__LiteralValue__Group_4__0__Impl rule__LiteralValue__Group_4__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_4__0__Impl_in_rule__LiteralValue__Group_4__028672);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_4__0__Impl_in_rule__LiteralValue__Group_4__028858);
             rule__LiteralValue__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_4__1_in_rule__LiteralValue__Group_4__028675);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_4__1_in_rule__LiteralValue__Group_4__028861);
             rule__LiteralValue__Group_4__1();
 
             state._fsp--;
@@ -38101,21 +38353,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_4__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14302:1: rule__LiteralValue__Group_4__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14396:1: rule__LiteralValue__Group_4__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14306:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14307:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14400:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14401:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14307:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14308:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14401:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14402:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getCurrentDateLiteralAction_4_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14309:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14311:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14403:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14405:1: 
             {
             }
 
@@ -38138,16 +38390,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_4__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14321:1: rule__LiteralValue__Group_4__1 : rule__LiteralValue__Group_4__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14415:1: rule__LiteralValue__Group_4__1 : rule__LiteralValue__Group_4__1__Impl ;
     public final void rule__LiteralValue__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14325:1: ( rule__LiteralValue__Group_4__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14326:2: rule__LiteralValue__Group_4__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14419:1: ( rule__LiteralValue__Group_4__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14420:2: rule__LiteralValue__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_4__1__Impl_in_rule__LiteralValue__Group_4__128733);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_4__1__Impl_in_rule__LiteralValue__Group_4__128919);
             rule__LiteralValue__Group_4__1__Impl();
 
             state._fsp--;
@@ -38171,23 +38423,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_4__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14332:1: rule__LiteralValue__Group_4__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_4_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14426:1: rule__LiteralValue__Group_4__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_4_1 ) ) ;
     public final void rule__LiteralValue__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14336:1: ( ( ( rule__LiteralValue__LiteralAssignment_4_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14337:1: ( ( rule__LiteralValue__LiteralAssignment_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14430:1: ( ( ( rule__LiteralValue__LiteralAssignment_4_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14431:1: ( ( rule__LiteralValue__LiteralAssignment_4_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14337:1: ( ( rule__LiteralValue__LiteralAssignment_4_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14338:1: ( rule__LiteralValue__LiteralAssignment_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14431:1: ( ( rule__LiteralValue__LiteralAssignment_4_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14432:1: ( rule__LiteralValue__LiteralAssignment_4_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralAssignment_4_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14339:1: ( rule__LiteralValue__LiteralAssignment_4_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14339:2: rule__LiteralValue__LiteralAssignment_4_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14433:1: ( rule__LiteralValue__LiteralAssignment_4_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14433:2: rule__LiteralValue__LiteralAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_4_1_in_rule__LiteralValue__Group_4__1__Impl28760);
+            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_4_1_in_rule__LiteralValue__Group_4__1__Impl28946);
             rule__LiteralValue__LiteralAssignment_4_1();
 
             state._fsp--;
@@ -38218,21 +38470,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_5__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14353:1: rule__LiteralValue__Group_5__0 : rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14447:1: rule__LiteralValue__Group_5__0 : rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1 ;
     public final void rule__LiteralValue__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14357:1: ( rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14358:2: rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14451:1: ( rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14452:2: rule__LiteralValue__Group_5__0__Impl rule__LiteralValue__Group_5__1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_5__0__Impl_in_rule__LiteralValue__Group_5__028794);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_5__0__Impl_in_rule__LiteralValue__Group_5__028980);
             rule__LiteralValue__Group_5__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__LiteralValue__Group_5__1_in_rule__LiteralValue__Group_5__028797);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_5__1_in_rule__LiteralValue__Group_5__028983);
             rule__LiteralValue__Group_5__1();
 
             state._fsp--;
@@ -38256,21 +38508,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_5__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14365:1: rule__LiteralValue__Group_5__0__Impl : ( () ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14459:1: rule__LiteralValue__Group_5__0__Impl : ( () ) ;
     public final void rule__LiteralValue__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14369:1: ( ( () ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14370:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14463:1: ( ( () ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14464:1: ( () )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14370:1: ( () )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14371:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14464:1: ( () )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14465:1: ()
             {
              before(grammarAccess.getLiteralValueAccess().getCurrentTimeStampLiteralAction_5_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14372:1: ()
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14374:1: 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14466:1: ()
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14468:1: 
             {
             }
 
@@ -38293,16 +38545,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_5__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14384:1: rule__LiteralValue__Group_5__1 : rule__LiteralValue__Group_5__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14478:1: rule__LiteralValue__Group_5__1 : rule__LiteralValue__Group_5__1__Impl ;
     public final void rule__LiteralValue__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14388:1: ( rule__LiteralValue__Group_5__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14389:2: rule__LiteralValue__Group_5__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14482:1: ( rule__LiteralValue__Group_5__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14483:2: rule__LiteralValue__Group_5__1__Impl
             {
-            pushFollow(FOLLOW_rule__LiteralValue__Group_5__1__Impl_in_rule__LiteralValue__Group_5__128855);
+            pushFollow(FOLLOW_rule__LiteralValue__Group_5__1__Impl_in_rule__LiteralValue__Group_5__129041);
             rule__LiteralValue__Group_5__1__Impl();
 
             state._fsp--;
@@ -38326,23 +38578,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__Group_5__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14395:1: rule__LiteralValue__Group_5__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_5_1 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14489:1: rule__LiteralValue__Group_5__1__Impl : ( ( rule__LiteralValue__LiteralAssignment_5_1 ) ) ;
     public final void rule__LiteralValue__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14399:1: ( ( ( rule__LiteralValue__LiteralAssignment_5_1 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14400:1: ( ( rule__LiteralValue__LiteralAssignment_5_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14493:1: ( ( ( rule__LiteralValue__LiteralAssignment_5_1 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14494:1: ( ( rule__LiteralValue__LiteralAssignment_5_1 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14400:1: ( ( rule__LiteralValue__LiteralAssignment_5_1 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14401:1: ( rule__LiteralValue__LiteralAssignment_5_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14494:1: ( ( rule__LiteralValue__LiteralAssignment_5_1 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14495:1: ( rule__LiteralValue__LiteralAssignment_5_1 )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralAssignment_5_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14402:1: ( rule__LiteralValue__LiteralAssignment_5_1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14402:2: rule__LiteralValue__LiteralAssignment_5_1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14496:1: ( rule__LiteralValue__LiteralAssignment_5_1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14496:2: rule__LiteralValue__LiteralAssignment_5_1
             {
-            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_5_1_in_rule__LiteralValue__Group_5__1__Impl28882);
+            pushFollow(FOLLOW_rule__LiteralValue__LiteralAssignment_5_1_in_rule__LiteralValue__Group_5__1__Impl29068);
             rule__LiteralValue__LiteralAssignment_5_1();
 
             state._fsp--;
@@ -38373,21 +38625,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SignedNumber__Group__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14416:1: rule__SignedNumber__Group__0 : rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14510:1: rule__SignedNumber__Group__0 : rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1 ;
     public final void rule__SignedNumber__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14420:1: ( rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14421:2: rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14514:1: ( rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14515:2: rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1
             {
-            pushFollow(FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__028916);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__029102);
             rule__SignedNumber__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__028919);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__029105);
             rule__SignedNumber__Group__1();
 
             state._fsp--;
@@ -38411,31 +38663,31 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SignedNumber__Group__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14428:1: rule__SignedNumber__Group__0__Impl : ( ( '-' )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14522:1: rule__SignedNumber__Group__0__Impl : ( ( '-' )? ) ;
     public final void rule__SignedNumber__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14432:1: ( ( ( '-' )? ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14433:1: ( ( '-' )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14526:1: ( ( ( '-' )? ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14527:1: ( ( '-' )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14433:1: ( ( '-' )? )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14434:1: ( '-' )?
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14527:1: ( ( '-' )? )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14528:1: ( '-' )?
             {
              before(grammarAccess.getSignedNumberAccess().getHyphenMinusKeyword_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14435:1: ( '-' )?
-            int alt101=2;
-            int LA101_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14529:1: ( '-' )?
+            int alt102=2;
+            int LA102_0 = input.LA(1);
 
-            if ( (LA101_0==16) ) {
-                alt101=1;
+            if ( (LA102_0==16) ) {
+                alt102=1;
             }
-            switch (alt101) {
+            switch (alt102) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14436:2: '-'
+                    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14530:2: '-'
                     {
-                    match(input,16,FOLLOW_16_in_rule__SignedNumber__Group__0__Impl28948); 
+                    match(input,16,FOLLOW_16_in_rule__SignedNumber__Group__0__Impl29134); 
 
                     }
                     break;
@@ -38465,16 +38717,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SignedNumber__Group__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14447:1: rule__SignedNumber__Group__1 : rule__SignedNumber__Group__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14541:1: rule__SignedNumber__Group__1 : rule__SignedNumber__Group__1__Impl ;
     public final void rule__SignedNumber__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14451:1: ( rule__SignedNumber__Group__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14452:2: rule__SignedNumber__Group__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14545:1: ( rule__SignedNumber__Group__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14546:2: rule__SignedNumber__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__128981);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__129167);
             rule__SignedNumber__Group__1__Impl();
 
             state._fsp--;
@@ -38498,20 +38750,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SignedNumber__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14458:1: rule__SignedNumber__Group__1__Impl : ( RULE_NUMBER ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14552:1: rule__SignedNumber__Group__1__Impl : ( RULE_NUMBER ) ;
     public final void rule__SignedNumber__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14462:1: ( ( RULE_NUMBER ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14463:1: ( RULE_NUMBER )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14556:1: ( ( RULE_NUMBER ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14557:1: ( RULE_NUMBER )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14463:1: ( RULE_NUMBER )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14464:1: RULE_NUMBER
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14557:1: ( RULE_NUMBER )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14558:1: RULE_NUMBER
             {
              before(grammarAccess.getSignedNumberAccess().getNUMBERTerminalRuleCall_1()); 
-            match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl29008); 
+            match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl29194); 
              after(grammarAccess.getSignedNumberAccess().getNUMBERTerminalRuleCall_1()); 
 
             }
@@ -38535,21 +38787,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14479:1: rule__FQN__Group__0 : rule__FQN__Group__0__Impl rule__FQN__Group__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14573:1: rule__FQN__Group__0 : rule__FQN__Group__0__Impl rule__FQN__Group__1 ;
     public final void rule__FQN__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14483:1: ( rule__FQN__Group__0__Impl rule__FQN__Group__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14484:2: rule__FQN__Group__0__Impl rule__FQN__Group__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14577:1: ( rule__FQN__Group__0__Impl rule__FQN__Group__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14578:2: rule__FQN__Group__0__Impl rule__FQN__Group__1
             {
-            pushFollow(FOLLOW_rule__FQN__Group__0__Impl_in_rule__FQN__Group__029041);
+            pushFollow(FOLLOW_rule__FQN__Group__0__Impl_in_rule__FQN__Group__029227);
             rule__FQN__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FQN__Group__1_in_rule__FQN__Group__029044);
+            pushFollow(FOLLOW_rule__FQN__Group__1_in_rule__FQN__Group__029230);
             rule__FQN__Group__1();
 
             state._fsp--;
@@ -38573,20 +38825,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14491:1: rule__FQN__Group__0__Impl : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14585:1: rule__FQN__Group__0__Impl : ( RULE_ID ) ;
     public final void rule__FQN__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14495:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14496:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14589:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14590:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14496:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14497:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14590:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14591:1: RULE_ID
             {
              before(grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FQN__Group__0__Impl29071); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FQN__Group__0__Impl29257); 
              after(grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
 
             }
@@ -38610,16 +38862,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14508:1: rule__FQN__Group__1 : rule__FQN__Group__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14602:1: rule__FQN__Group__1 : rule__FQN__Group__1__Impl ;
     public final void rule__FQN__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14512:1: ( rule__FQN__Group__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14513:2: rule__FQN__Group__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14606:1: ( rule__FQN__Group__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14607:2: rule__FQN__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__FQN__Group__1__Impl_in_rule__FQN__Group__129100);
+            pushFollow(FOLLOW_rule__FQN__Group__1__Impl_in_rule__FQN__Group__129286);
             rule__FQN__Group__1__Impl();
 
             state._fsp--;
@@ -38643,35 +38895,35 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14519:1: rule__FQN__Group__1__Impl : ( ( rule__FQN__Group_1__0 )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14613:1: rule__FQN__Group__1__Impl : ( ( rule__FQN__Group_1__0 )* ) ;
     public final void rule__FQN__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14523:1: ( ( ( rule__FQN__Group_1__0 )* ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14524:1: ( ( rule__FQN__Group_1__0 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14617:1: ( ( ( rule__FQN__Group_1__0 )* ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14618:1: ( ( rule__FQN__Group_1__0 )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14524:1: ( ( rule__FQN__Group_1__0 )* )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14525:1: ( rule__FQN__Group_1__0 )*
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14618:1: ( ( rule__FQN__Group_1__0 )* )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14619:1: ( rule__FQN__Group_1__0 )*
             {
              before(grammarAccess.getFQNAccess().getGroup_1()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14526:1: ( rule__FQN__Group_1__0 )*
-            loop102:
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14620:1: ( rule__FQN__Group_1__0 )*
+            loop103:
             do {
-                int alt102=2;
-                int LA102_0 = input.LA(1);
+                int alt103=2;
+                int LA103_0 = input.LA(1);
 
-                if ( (LA102_0==116) ) {
-                    alt102=1;
+                if ( (LA103_0==117) ) {
+                    alt103=1;
                 }
 
 
-                switch (alt102) {
+                switch (alt103) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14526:2: rule__FQN__Group_1__0
+            	    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14620:2: rule__FQN__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__FQN__Group_1__0_in_rule__FQN__Group__1__Impl29127);
+            	    pushFollow(FOLLOW_rule__FQN__Group_1__0_in_rule__FQN__Group__1__Impl29313);
             	    rule__FQN__Group_1__0();
 
             	    state._fsp--;
@@ -38681,7 +38933,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop102;
+            	    break loop103;
                 }
             } while (true);
 
@@ -38708,21 +38960,21 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group_1__0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14540:1: rule__FQN__Group_1__0 : rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1 ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14634:1: rule__FQN__Group_1__0 : rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1 ;
     public final void rule__FQN__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14544:1: ( rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14545:2: rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14638:1: ( rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14639:2: rule__FQN__Group_1__0__Impl rule__FQN__Group_1__1
             {
-            pushFollow(FOLLOW_rule__FQN__Group_1__0__Impl_in_rule__FQN__Group_1__029162);
+            pushFollow(FOLLOW_rule__FQN__Group_1__0__Impl_in_rule__FQN__Group_1__029348);
             rule__FQN__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FQN__Group_1__1_in_rule__FQN__Group_1__029165);
+            pushFollow(FOLLOW_rule__FQN__Group_1__1_in_rule__FQN__Group_1__029351);
             rule__FQN__Group_1__1();
 
             state._fsp--;
@@ -38746,20 +38998,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group_1__0__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14552:1: rule__FQN__Group_1__0__Impl : ( '.' ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14646:1: rule__FQN__Group_1__0__Impl : ( '.' ) ;
     public final void rule__FQN__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14556:1: ( ( '.' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14557:1: ( '.' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14650:1: ( ( '.' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14651:1: ( '.' )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14557:1: ( '.' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14558:1: '.'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14651:1: ( '.' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14652:1: '.'
             {
              before(grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
-            match(input,116,FOLLOW_116_in_rule__FQN__Group_1__0__Impl29193); 
+            match(input,117,FOLLOW_117_in_rule__FQN__Group_1__0__Impl29379); 
              after(grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
 
             }
@@ -38783,16 +39035,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group_1__1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14571:1: rule__FQN__Group_1__1 : rule__FQN__Group_1__1__Impl ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14665:1: rule__FQN__Group_1__1 : rule__FQN__Group_1__1__Impl ;
     public final void rule__FQN__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14575:1: ( rule__FQN__Group_1__1__Impl )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14576:2: rule__FQN__Group_1__1__Impl
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14669:1: ( rule__FQN__Group_1__1__Impl )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14670:2: rule__FQN__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__FQN__Group_1__1__Impl_in_rule__FQN__Group_1__129224);
+            pushFollow(FOLLOW_rule__FQN__Group_1__1__Impl_in_rule__FQN__Group_1__129410);
             rule__FQN__Group_1__1__Impl();
 
             state._fsp--;
@@ -38816,20 +39068,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__FQN__Group_1__1__Impl"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14582:1: rule__FQN__Group_1__1__Impl : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14676:1: rule__FQN__Group_1__1__Impl : ( RULE_ID ) ;
     public final void rule__FQN__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14586:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14587:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14680:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14681:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14587:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14588:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14681:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14682:1: RULE_ID
             {
              before(grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FQN__Group_1__1__Impl29251); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FQN__Group_1__1__Impl29437); 
              after(grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
 
             }
@@ -38853,20 +39105,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Model__PackageNameAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14604:1: rule__Model__PackageNameAssignment_1 : ( ruleFQN ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14698:1: rule__Model__PackageNameAssignment_1 : ( ruleFQN ) ;
     public final void rule__Model__PackageNameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14608:1: ( ( ruleFQN ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14609:1: ( ruleFQN )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14702:1: ( ( ruleFQN ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14703:1: ( ruleFQN )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14609:1: ( ruleFQN )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14610:1: ruleFQN
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14703:1: ( ruleFQN )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14704:1: ruleFQN
             {
              before(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleFQN_in_rule__Model__PackageNameAssignment_129289);
+            pushFollow(FOLLOW_ruleFQN_in_rule__Model__PackageNameAssignment_129475);
             ruleFQN();
 
             state._fsp--;
@@ -38894,20 +39146,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Model__DatabaseAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14619:1: rule__Model__DatabaseAssignment_2 : ( ruleDatabaseBlock ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14713:1: rule__Model__DatabaseAssignment_2 : ( ruleDatabaseBlock ) ;
     public final void rule__Model__DatabaseAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14623:1: ( ( ruleDatabaseBlock ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14624:1: ( ruleDatabaseBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14717:1: ( ( ruleDatabaseBlock ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14718:1: ( ruleDatabaseBlock )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14624:1: ( ruleDatabaseBlock )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14625:1: ruleDatabaseBlock
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14718:1: ( ruleDatabaseBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14719:1: ruleDatabaseBlock
             {
              before(grammarAccess.getModelAccess().getDatabaseDatabaseBlockParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleDatabaseBlock_in_rule__Model__DatabaseAssignment_229320);
+            pushFollow(FOLLOW_ruleDatabaseBlock_in_rule__Model__DatabaseAssignment_229506);
             ruleDatabaseBlock();
 
             state._fsp--;
@@ -38935,20 +39187,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DatabaseBlock__NameAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14634:1: rule__DatabaseBlock__NameAssignment_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14728:1: rule__DatabaseBlock__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__DatabaseBlock__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14638:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14639:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14732:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14733:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14639:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14640:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14733:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14734:1: RULE_ID
             {
              before(grammarAccess.getDatabaseBlockAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DatabaseBlock__NameAssignment_129351); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DatabaseBlock__NameAssignment_129537); 
              after(grammarAccess.getDatabaseBlockAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -38972,20 +39224,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DatabaseBlock__ConfigAssignment_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14649:1: rule__DatabaseBlock__ConfigAssignment_3 : ( ruleConfigBlock ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14743:1: rule__DatabaseBlock__ConfigAssignment_3 : ( ruleConfigBlock ) ;
     public final void rule__DatabaseBlock__ConfigAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14653:1: ( ( ruleConfigBlock ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14654:1: ( ruleConfigBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14747:1: ( ( ruleConfigBlock ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14748:1: ( ruleConfigBlock )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14654:1: ( ruleConfigBlock )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14655:1: ruleConfigBlock
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14748:1: ( ruleConfigBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14749:1: ruleConfigBlock
             {
              before(grammarAccess.getDatabaseBlockAccess().getConfigConfigBlockParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleConfigBlock_in_rule__DatabaseBlock__ConfigAssignment_329382);
+            pushFollow(FOLLOW_ruleConfigBlock_in_rule__DatabaseBlock__ConfigAssignment_329568);
             ruleConfigBlock();
 
             state._fsp--;
@@ -39013,20 +39265,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DatabaseBlock__MigrationsAssignment_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14664:1: rule__DatabaseBlock__MigrationsAssignment_4 : ( ruleMigrationBlock ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14758:1: rule__DatabaseBlock__MigrationsAssignment_4 : ( ruleMigrationBlock ) ;
     public final void rule__DatabaseBlock__MigrationsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14668:1: ( ( ruleMigrationBlock ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14669:1: ( ruleMigrationBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14762:1: ( ( ruleMigrationBlock ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14763:1: ( ruleMigrationBlock )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14669:1: ( ruleMigrationBlock )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14670:1: ruleMigrationBlock
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14763:1: ( ruleMigrationBlock )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14764:1: ruleMigrationBlock
             {
              before(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleMigrationBlock_in_rule__DatabaseBlock__MigrationsAssignment_429413);
+            pushFollow(FOLLOW_ruleMigrationBlock_in_rule__DatabaseBlock__MigrationsAssignment_429599);
             ruleMigrationBlock();
 
             state._fsp--;
@@ -39054,20 +39306,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConfigBlock__StatementsAssignment_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14679:1: rule__ConfigBlock__StatementsAssignment_3 : ( ruleConfigurationStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14773:1: rule__ConfigBlock__StatementsAssignment_3 : ( ruleConfigurationStatement ) ;
     public final void rule__ConfigBlock__StatementsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14683:1: ( ( ruleConfigurationStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14684:1: ( ruleConfigurationStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14777:1: ( ( ruleConfigurationStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14778:1: ( ruleConfigurationStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14684:1: ( ruleConfigurationStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14685:1: ruleConfigurationStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14778:1: ( ruleConfigurationStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14779:1: ruleConfigurationStatement
             {
              before(grammarAccess.getConfigBlockAccess().getStatementsConfigurationStatementParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleConfigurationStatement_in_rule__ConfigBlock__StatementsAssignment_329444);
+            pushFollow(FOLLOW_ruleConfigurationStatement_in_rule__ConfigBlock__StatementsAssignment_329630);
             ruleConfigurationStatement();
 
             state._fsp--;
@@ -39095,20 +39347,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConfigurationStatement__NameAssignment_0_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14694:1: rule__ConfigurationStatement__NameAssignment_0_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14788:1: rule__ConfigurationStatement__NameAssignment_0_2 : ( RULE_ID ) ;
     public final void rule__ConfigurationStatement__NameAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14698:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14699:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14792:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14793:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14699:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14700:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14793:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14794:1: RULE_ID
             {
              before(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_0_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_0_229475); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_0_229661); 
              after(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_0_2_0()); 
 
             }
@@ -39132,20 +39384,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConfigurationStatement__PathAssignment_0_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14709:1: rule__ConfigurationStatement__PathAssignment_0_3 : ( RULE_STRING ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14803:1: rule__ConfigurationStatement__PathAssignment_0_3 : ( RULE_STRING ) ;
     public final void rule__ConfigurationStatement__PathAssignment_0_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14713:1: ( ( RULE_STRING ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14714:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14807:1: ( ( RULE_STRING ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14808:1: ( RULE_STRING )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14714:1: ( RULE_STRING )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14715:1: RULE_STRING
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14808:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14809:1: RULE_STRING
             {
              before(grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_0_3_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ConfigurationStatement__PathAssignment_0_329506); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__ConfigurationStatement__PathAssignment_0_329692); 
              after(grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_0_3_0()); 
 
             }
@@ -39169,20 +39421,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConfigurationStatement__NameAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14724:1: rule__ConfigurationStatement__NameAssignment_1_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14818:1: rule__ConfigurationStatement__NameAssignment_1_2 : ( RULE_ID ) ;
     public final void rule__ConfigurationStatement__NameAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14728:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14729:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14822:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14823:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14729:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14730:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14823:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14824:1: RULE_ID
             {
              before(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_1_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_1_229537); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_1_229723); 
              after(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_1_2_0()); 
 
             }
@@ -39206,20 +39458,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__MigrationBlock__StatementsAssignment_3_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14739:1: rule__MigrationBlock__StatementsAssignment_3_0 : ( ruleDDLStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14833:1: rule__MigrationBlock__StatementsAssignment_3_0 : ( ruleDDLStatement ) ;
     public final void rule__MigrationBlock__StatementsAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14743:1: ( ( ruleDDLStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14744:1: ( ruleDDLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14837:1: ( ( ruleDDLStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14838:1: ( ruleDDLStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14744:1: ( ruleDDLStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14745:1: ruleDDLStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14838:1: ( ruleDDLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14839:1: ruleDDLStatement
             {
              before(grammarAccess.getMigrationBlockAccess().getStatementsDDLStatementParserRuleCall_3_0_0()); 
-            pushFollow(FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_029568);
+            pushFollow(FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_029754);
             ruleDDLStatement();
 
             state._fsp--;
@@ -39247,20 +39499,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__MigrationBlock__StatementsAssignment_3_2_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14754:1: rule__MigrationBlock__StatementsAssignment_3_2_0 : ( ruleDDLStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14848:1: rule__MigrationBlock__StatementsAssignment_3_2_0 : ( ruleDDLStatement ) ;
     public final void rule__MigrationBlock__StatementsAssignment_3_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14758:1: ( ( ruleDDLStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14759:1: ( ruleDDLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14852:1: ( ( ruleDDLStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14853:1: ( ruleDDLStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14759:1: ( ruleDDLStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14760:1: ruleDDLStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14853:1: ( ruleDDLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14854:1: ruleDDLStatement
             {
              before(grammarAccess.getMigrationBlockAccess().getStatementsDDLStatementParserRuleCall_3_2_0_0()); 
-            pushFollow(FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_2_029599);
+            pushFollow(FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_2_029785);
             ruleDDLStatement();
 
             state._fsp--;
@@ -39288,20 +39540,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SqlExpression__RootAssignment"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14769:1: rule__SqlExpression__RootAssignment : ( ruleExprConcat ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14863:1: rule__SqlExpression__RootAssignment : ( ruleExprConcat ) ;
     public final void rule__SqlExpression__RootAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14773:1: ( ( ruleExprConcat ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14774:1: ( ruleExprConcat )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14867:1: ( ( ruleExprConcat ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14868:1: ( ruleExprConcat )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14774:1: ( ruleExprConcat )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14775:1: ruleExprConcat
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14868:1: ( ruleExprConcat )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14869:1: ruleExprConcat
             {
              before(grammarAccess.getSqlExpressionAccess().getRootExprConcatParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleExprConcat_in_rule__SqlExpression__RootAssignment29630);
+            pushFollow(FOLLOW_ruleExprConcat_in_rule__SqlExpression__RootAssignment29816);
             ruleExprConcat();
 
             state._fsp--;
@@ -39329,24 +39581,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprConcat__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14784:1: rule__ExprConcat__OpAssignment_1_1 : ( ( '||' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14878:1: rule__ExprConcat__OpAssignment_1_1 : ( ( '||' ) ) ;
     public final void rule__ExprConcat__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14788:1: ( ( ( '||' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14789:1: ( ( '||' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14882:1: ( ( ( '||' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14883:1: ( ( '||' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14789:1: ( ( '||' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14790:1: ( '||' )
-            {
-             before(grammarAccess.getExprConcatAccess().getOpVerticalLineVerticalLineKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14791:1: ( '||' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14792:1: '||'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14883:1: ( ( '||' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14884:1: ( '||' )
             {
              before(grammarAccess.getExprConcatAccess().getOpVerticalLineVerticalLineKeyword_1_1_0()); 
-            match(input,117,FOLLOW_117_in_rule__ExprConcat__OpAssignment_1_129666); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14885:1: ( '||' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14886:1: '||'
+            {
+             before(grammarAccess.getExprConcatAccess().getOpVerticalLineVerticalLineKeyword_1_1_0()); 
+            match(input,118,FOLLOW_118_in_rule__ExprConcat__OpAssignment_1_129852); 
              after(grammarAccess.getExprConcatAccess().getOpVerticalLineVerticalLineKeyword_1_1_0()); 
 
             }
@@ -39374,20 +39626,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprConcat__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14807:1: rule__ExprConcat__RightAssignment_1_2 : ( ruleExprMult ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14901:1: rule__ExprConcat__RightAssignment_1_2 : ( ruleExprMult ) ;
     public final void rule__ExprConcat__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14811:1: ( ( ruleExprMult ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14812:1: ( ruleExprMult )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14905:1: ( ( ruleExprMult ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14906:1: ( ruleExprMult )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14812:1: ( ruleExprMult )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14813:1: ruleExprMult
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14906:1: ( ruleExprMult )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14907:1: ruleExprMult
             {
              before(grammarAccess.getExprConcatAccess().getRightExprMultParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprMult_in_rule__ExprConcat__RightAssignment_1_229705);
+            pushFollow(FOLLOW_ruleExprMult_in_rule__ExprConcat__RightAssignment_1_229891);
             ruleExprMult();
 
             state._fsp--;
@@ -39415,23 +39667,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprMult__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14822:1: rule__ExprMult__OpAssignment_1_1 : ( ( rule__ExprMult__OpAlternatives_1_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14916:1: rule__ExprMult__OpAssignment_1_1 : ( ( rule__ExprMult__OpAlternatives_1_1_0 ) ) ;
     public final void rule__ExprMult__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14826:1: ( ( ( rule__ExprMult__OpAlternatives_1_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14827:1: ( ( rule__ExprMult__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14920:1: ( ( ( rule__ExprMult__OpAlternatives_1_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14921:1: ( ( rule__ExprMult__OpAlternatives_1_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14827:1: ( ( rule__ExprMult__OpAlternatives_1_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14828:1: ( rule__ExprMult__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14921:1: ( ( rule__ExprMult__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14922:1: ( rule__ExprMult__OpAlternatives_1_1_0 )
             {
              before(grammarAccess.getExprMultAccess().getOpAlternatives_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14829:1: ( rule__ExprMult__OpAlternatives_1_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14829:2: rule__ExprMult__OpAlternatives_1_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14923:1: ( rule__ExprMult__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14923:2: rule__ExprMult__OpAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__ExprMult__OpAlternatives_1_1_0_in_rule__ExprMult__OpAssignment_1_129736);
+            pushFollow(FOLLOW_rule__ExprMult__OpAlternatives_1_1_0_in_rule__ExprMult__OpAssignment_1_129922);
             rule__ExprMult__OpAlternatives_1_1_0();
 
             state._fsp--;
@@ -39462,20 +39714,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprMult__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14838:1: rule__ExprMult__RightAssignment_1_2 : ( ruleExprAdd ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14932:1: rule__ExprMult__RightAssignment_1_2 : ( ruleExprAdd ) ;
     public final void rule__ExprMult__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14842:1: ( ( ruleExprAdd ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14843:1: ( ruleExprAdd )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14936:1: ( ( ruleExprAdd ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14937:1: ( ruleExprAdd )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14843:1: ( ruleExprAdd )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14844:1: ruleExprAdd
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14937:1: ( ruleExprAdd )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14938:1: ruleExprAdd
             {
              before(grammarAccess.getExprMultAccess().getRightExprAddParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprAdd_in_rule__ExprMult__RightAssignment_1_229769);
+            pushFollow(FOLLOW_ruleExprAdd_in_rule__ExprMult__RightAssignment_1_229955);
             ruleExprAdd();
 
             state._fsp--;
@@ -39503,23 +39755,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprAdd__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14853:1: rule__ExprAdd__OpAssignment_1_1 : ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14947:1: rule__ExprAdd__OpAssignment_1_1 : ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) ) ;
     public final void rule__ExprAdd__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14857:1: ( ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14858:1: ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14951:1: ( ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14952:1: ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14858:1: ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14859:1: ( rule__ExprAdd__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14952:1: ( ( rule__ExprAdd__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14953:1: ( rule__ExprAdd__OpAlternatives_1_1_0 )
             {
              before(grammarAccess.getExprAddAccess().getOpAlternatives_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14860:1: ( rule__ExprAdd__OpAlternatives_1_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14860:2: rule__ExprAdd__OpAlternatives_1_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14954:1: ( rule__ExprAdd__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14954:2: rule__ExprAdd__OpAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__ExprAdd__OpAlternatives_1_1_0_in_rule__ExprAdd__OpAssignment_1_129800);
+            pushFollow(FOLLOW_rule__ExprAdd__OpAlternatives_1_1_0_in_rule__ExprAdd__OpAssignment_1_129986);
             rule__ExprAdd__OpAlternatives_1_1_0();
 
             state._fsp--;
@@ -39550,20 +39802,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprAdd__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14869:1: rule__ExprAdd__RightAssignment_1_2 : ( ruleExprBit ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14963:1: rule__ExprAdd__RightAssignment_1_2 : ( ruleExprBit ) ;
     public final void rule__ExprAdd__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14873:1: ( ( ruleExprBit ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14874:1: ( ruleExprBit )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14967:1: ( ( ruleExprBit ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14968:1: ( ruleExprBit )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14874:1: ( ruleExprBit )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14875:1: ruleExprBit
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14968:1: ( ruleExprBit )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14969:1: ruleExprBit
             {
              before(grammarAccess.getExprAddAccess().getRightExprBitParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprBit_in_rule__ExprAdd__RightAssignment_1_229833);
+            pushFollow(FOLLOW_ruleExprBit_in_rule__ExprAdd__RightAssignment_1_230019);
             ruleExprBit();
 
             state._fsp--;
@@ -39591,23 +39843,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprBit__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14884:1: rule__ExprBit__OpAssignment_1_1 : ( ( rule__ExprBit__OpAlternatives_1_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14978:1: rule__ExprBit__OpAssignment_1_1 : ( ( rule__ExprBit__OpAlternatives_1_1_0 ) ) ;
     public final void rule__ExprBit__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14888:1: ( ( ( rule__ExprBit__OpAlternatives_1_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14889:1: ( ( rule__ExprBit__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14982:1: ( ( ( rule__ExprBit__OpAlternatives_1_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14983:1: ( ( rule__ExprBit__OpAlternatives_1_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14889:1: ( ( rule__ExprBit__OpAlternatives_1_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14890:1: ( rule__ExprBit__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14983:1: ( ( rule__ExprBit__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14984:1: ( rule__ExprBit__OpAlternatives_1_1_0 )
             {
              before(grammarAccess.getExprBitAccess().getOpAlternatives_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14891:1: ( rule__ExprBit__OpAlternatives_1_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14891:2: rule__ExprBit__OpAlternatives_1_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14985:1: ( rule__ExprBit__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14985:2: rule__ExprBit__OpAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__ExprBit__OpAlternatives_1_1_0_in_rule__ExprBit__OpAssignment_1_129864);
+            pushFollow(FOLLOW_rule__ExprBit__OpAlternatives_1_1_0_in_rule__ExprBit__OpAssignment_1_130050);
             rule__ExprBit__OpAlternatives_1_1_0();
 
             state._fsp--;
@@ -39638,20 +39890,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprBit__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14900:1: rule__ExprBit__RightAssignment_1_2 : ( ruleExprRelate ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14994:1: rule__ExprBit__RightAssignment_1_2 : ( ruleExprRelate ) ;
     public final void rule__ExprBit__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14904:1: ( ( ruleExprRelate ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14905:1: ( ruleExprRelate )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14998:1: ( ( ruleExprRelate ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14999:1: ( ruleExprRelate )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14905:1: ( ruleExprRelate )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14906:1: ruleExprRelate
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14999:1: ( ruleExprRelate )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15000:1: ruleExprRelate
             {
              before(grammarAccess.getExprBitAccess().getRightExprRelateParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprRelate_in_rule__ExprBit__RightAssignment_1_229897);
+            pushFollow(FOLLOW_ruleExprRelate_in_rule__ExprBit__RightAssignment_1_230083);
             ruleExprRelate();
 
             state._fsp--;
@@ -39679,23 +39931,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprRelate__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14915:1: rule__ExprRelate__OpAssignment_1_1 : ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15009:1: rule__ExprRelate__OpAssignment_1_1 : ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) ) ;
     public final void rule__ExprRelate__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14919:1: ( ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14920:1: ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15013:1: ( ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15014:1: ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14920:1: ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14921:1: ( rule__ExprRelate__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15014:1: ( ( rule__ExprRelate__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15015:1: ( rule__ExprRelate__OpAlternatives_1_1_0 )
             {
              before(grammarAccess.getExprRelateAccess().getOpAlternatives_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14922:1: ( rule__ExprRelate__OpAlternatives_1_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14922:2: rule__ExprRelate__OpAlternatives_1_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15016:1: ( rule__ExprRelate__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15016:2: rule__ExprRelate__OpAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__ExprRelate__OpAlternatives_1_1_0_in_rule__ExprRelate__OpAssignment_1_129928);
+            pushFollow(FOLLOW_rule__ExprRelate__OpAlternatives_1_1_0_in_rule__ExprRelate__OpAssignment_1_130114);
             rule__ExprRelate__OpAlternatives_1_1_0();
 
             state._fsp--;
@@ -39726,20 +39978,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprRelate__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14931:1: rule__ExprRelate__RightAssignment_1_2 : ( ruleExprEqual ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15025:1: rule__ExprRelate__RightAssignment_1_2 : ( ruleExprEqual ) ;
     public final void rule__ExprRelate__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14935:1: ( ( ruleExprEqual ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14936:1: ( ruleExprEqual )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15029:1: ( ( ruleExprEqual ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15030:1: ( ruleExprEqual )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14936:1: ( ruleExprEqual )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14937:1: ruleExprEqual
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15030:1: ( ruleExprEqual )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15031:1: ruleExprEqual
             {
              before(grammarAccess.getExprRelateAccess().getRightExprEqualParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprEqual_in_rule__ExprRelate__RightAssignment_1_229961);
+            pushFollow(FOLLOW_ruleExprEqual_in_rule__ExprRelate__RightAssignment_1_230147);
             ruleExprEqual();
 
             state._fsp--;
@@ -39767,23 +40019,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprEqual__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14946:1: rule__ExprEqual__OpAssignment_1_1 : ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15040:1: rule__ExprEqual__OpAssignment_1_1 : ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) ) ;
     public final void rule__ExprEqual__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14950:1: ( ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14951:1: ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15044:1: ( ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15045:1: ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14951:1: ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14952:1: ( rule__ExprEqual__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15045:1: ( ( rule__ExprEqual__OpAlternatives_1_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15046:1: ( rule__ExprEqual__OpAlternatives_1_1_0 )
             {
              before(grammarAccess.getExprEqualAccess().getOpAlternatives_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14953:1: ( rule__ExprEqual__OpAlternatives_1_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14953:2: rule__ExprEqual__OpAlternatives_1_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15047:1: ( rule__ExprEqual__OpAlternatives_1_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15047:2: rule__ExprEqual__OpAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__ExprEqual__OpAlternatives_1_1_0_in_rule__ExprEqual__OpAssignment_1_129992);
+            pushFollow(FOLLOW_rule__ExprEqual__OpAlternatives_1_1_0_in_rule__ExprEqual__OpAssignment_1_130178);
             rule__ExprEqual__OpAlternatives_1_1_0();
 
             state._fsp--;
@@ -39814,20 +40066,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprEqual__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14962:1: rule__ExprEqual__RightAssignment_1_2 : ( ruleExprAnd ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15056:1: rule__ExprEqual__RightAssignment_1_2 : ( ruleExprAnd ) ;
     public final void rule__ExprEqual__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14966:1: ( ( ruleExprAnd ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14967:1: ( ruleExprAnd )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15060:1: ( ( ruleExprAnd ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15061:1: ( ruleExprAnd )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14967:1: ( ruleExprAnd )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14968:1: ruleExprAnd
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15061:1: ( ruleExprAnd )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15062:1: ruleExprAnd
             {
              before(grammarAccess.getExprEqualAccess().getRightExprAndParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprAnd_in_rule__ExprEqual__RightAssignment_1_230025);
+            pushFollow(FOLLOW_ruleExprAnd_in_rule__ExprEqual__RightAssignment_1_230211);
             ruleExprAnd();
 
             state._fsp--;
@@ -39855,24 +40107,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprAnd__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14977:1: rule__ExprAnd__OpAssignment_1_1 : ( ( 'and' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15071:1: rule__ExprAnd__OpAssignment_1_1 : ( ( 'and' ) ) ;
     public final void rule__ExprAnd__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14981:1: ( ( ( 'and' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14982:1: ( ( 'and' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15075:1: ( ( ( 'and' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15076:1: ( ( 'and' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14982:1: ( ( 'and' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14983:1: ( 'and' )
-            {
-             before(grammarAccess.getExprAndAccess().getOpAndKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14984:1: ( 'and' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:14985:1: 'and'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15076:1: ( ( 'and' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15077:1: ( 'and' )
             {
              before(grammarAccess.getExprAndAccess().getOpAndKeyword_1_1_0()); 
-            match(input,118,FOLLOW_118_in_rule__ExprAnd__OpAssignment_1_130061); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15078:1: ( 'and' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15079:1: 'and'
+            {
+             before(grammarAccess.getExprAndAccess().getOpAndKeyword_1_1_0()); 
+            match(input,119,FOLLOW_119_in_rule__ExprAnd__OpAssignment_1_130247); 
              after(grammarAccess.getExprAndAccess().getOpAndKeyword_1_1_0()); 
 
             }
@@ -39900,20 +40152,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprAnd__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15000:1: rule__ExprAnd__RightAssignment_1_2 : ( ruleExprOr ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15094:1: rule__ExprAnd__RightAssignment_1_2 : ( ruleExprOr ) ;
     public final void rule__ExprAnd__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15004:1: ( ( ruleExprOr ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15005:1: ( ruleExprOr )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15098:1: ( ( ruleExprOr ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15099:1: ( ruleExprOr )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15005:1: ( ruleExprOr )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15006:1: ruleExprOr
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15099:1: ( ruleExprOr )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15100:1: ruleExprOr
             {
              before(grammarAccess.getExprAndAccess().getRightExprOrParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleExprOr_in_rule__ExprAnd__RightAssignment_1_230100);
+            pushFollow(FOLLOW_ruleExprOr_in_rule__ExprAnd__RightAssignment_1_230286);
             ruleExprOr();
 
             state._fsp--;
@@ -39941,24 +40193,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprOr__OpAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15015:1: rule__ExprOr__OpAssignment_1_1 : ( ( 'or' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15109:1: rule__ExprOr__OpAssignment_1_1 : ( ( 'or' ) ) ;
     public final void rule__ExprOr__OpAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15019:1: ( ( ( 'or' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15020:1: ( ( 'or' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15113:1: ( ( ( 'or' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15114:1: ( ( 'or' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15020:1: ( ( 'or' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15021:1: ( 'or' )
-            {
-             before(grammarAccess.getExprOrAccess().getOpOrKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15022:1: ( 'or' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15023:1: 'or'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15114:1: ( ( 'or' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15115:1: ( 'or' )
             {
              before(grammarAccess.getExprOrAccess().getOpOrKeyword_1_1_0()); 
-            match(input,97,FOLLOW_97_in_rule__ExprOr__OpAssignment_1_130136); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15116:1: ( 'or' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15117:1: 'or'
+            {
+             before(grammarAccess.getExprOrAccess().getOpOrKeyword_1_1_0()); 
+            match(input,97,FOLLOW_97_in_rule__ExprOr__OpAssignment_1_130322); 
              after(grammarAccess.getExprOrAccess().getOpOrKeyword_1_1_0()); 
 
             }
@@ -39986,20 +40238,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ExprOr__RightAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15038:1: rule__ExprOr__RightAssignment_1_2 : ( rulePrimaryExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15132:1: rule__ExprOr__RightAssignment_1_2 : ( rulePrimaryExpression ) ;
     public final void rule__ExprOr__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15042:1: ( ( rulePrimaryExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15043:1: ( rulePrimaryExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15136:1: ( ( rulePrimaryExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15137:1: ( rulePrimaryExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15043:1: ( rulePrimaryExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15044:1: rulePrimaryExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15137:1: ( rulePrimaryExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15138:1: rulePrimaryExpression
             {
              before(grammarAccess.getExprOrAccess().getRightPrimaryExpressionParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_rulePrimaryExpression_in_rule__ExprOr__RightAssignment_1_230175);
+            pushFollow(FOLLOW_rulePrimaryExpression_in_rule__ExprOr__RightAssignment_1_230361);
             rulePrimaryExpression();
 
             state._fsp--;
@@ -40027,20 +40279,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__NameAssignment_0_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15053:1: rule__PrimaryExpression__NameAssignment_0_0_1 : ( ruleFQN ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15147:1: rule__PrimaryExpression__NameAssignment_0_0_1 : ( ruleFQN ) ;
     public final void rule__PrimaryExpression__NameAssignment_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15057:1: ( ( ruleFQN ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15058:1: ( ruleFQN )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15151:1: ( ( ruleFQN ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15152:1: ( ruleFQN )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15058:1: ( ruleFQN )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15059:1: ruleFQN
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15152:1: ( ruleFQN )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15153:1: ruleFQN
             {
              before(grammarAccess.getPrimaryExpressionAccess().getNameFQNParserRuleCall_0_0_1_0()); 
-            pushFollow(FOLLOW_ruleFQN_in_rule__PrimaryExpression__NameAssignment_0_0_130206);
+            pushFollow(FOLLOW_ruleFQN_in_rule__PrimaryExpression__NameAssignment_0_0_130392);
             ruleFQN();
 
             state._fsp--;
@@ -40068,20 +40320,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__LiteralValueAssignment_0_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15068:1: rule__PrimaryExpression__LiteralValueAssignment_0_1_1 : ( ruleLiteralValue ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15162:1: rule__PrimaryExpression__LiteralValueAssignment_0_1_1 : ( ruleLiteralValue ) ;
     public final void rule__PrimaryExpression__LiteralValueAssignment_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15072:1: ( ( ruleLiteralValue ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15073:1: ( ruleLiteralValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15166:1: ( ( ruleLiteralValue ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15167:1: ( ruleLiteralValue )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15073:1: ( ruleLiteralValue )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15074:1: ruleLiteralValue
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15167:1: ( ruleLiteralValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15168:1: ruleLiteralValue
             {
              before(grammarAccess.getPrimaryExpressionAccess().getLiteralValueLiteralValueParserRuleCall_0_1_1_0()); 
-            pushFollow(FOLLOW_ruleLiteralValue_in_rule__PrimaryExpression__LiteralValueAssignment_0_1_130237);
+            pushFollow(FOLLOW_ruleLiteralValue_in_rule__PrimaryExpression__LiteralValueAssignment_0_1_130423);
             ruleLiteralValue();
 
             state._fsp--;
@@ -40109,24 +40361,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__NotAssignment_0_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15083:1: rule__PrimaryExpression__NotAssignment_0_3_1 : ( ( 'not' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15177:1: rule__PrimaryExpression__NotAssignment_0_3_1 : ( ( 'not' ) ) ;
     public final void rule__PrimaryExpression__NotAssignment_0_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15087:1: ( ( ( 'not' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15088:1: ( ( 'not' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15181:1: ( ( ( 'not' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15182:1: ( ( 'not' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15088:1: ( ( 'not' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15089:1: ( 'not' )
-            {
-             before(grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_0_3_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15090:1: ( 'not' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15091:1: 'not'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15182:1: ( ( 'not' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15183:1: ( 'not' )
             {
              before(grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_0_3_1_0()); 
-            match(input,107,FOLLOW_107_in_rule__PrimaryExpression__NotAssignment_0_3_130273); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15184:1: ( 'not' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15185:1: 'not'
+            {
+             before(grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_0_3_1_0()); 
+            match(input,107,FOLLOW_107_in_rule__PrimaryExpression__NotAssignment_0_3_130459); 
              after(grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_0_3_1_0()); 
 
             }
@@ -40154,24 +40406,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__ExistsAssignment_0_3_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15106:1: rule__PrimaryExpression__ExistsAssignment_0_3_2 : ( ( 'exists' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15200:1: rule__PrimaryExpression__ExistsAssignment_0_3_2 : ( ( 'exists' ) ) ;
     public final void rule__PrimaryExpression__ExistsAssignment_0_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15110:1: ( ( ( 'exists' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15111:1: ( ( 'exists' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15204:1: ( ( ( 'exists' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15205:1: ( ( 'exists' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15111:1: ( ( 'exists' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15112:1: ( 'exists' )
-            {
-             before(grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_0_3_2_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15113:1: ( 'exists' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15114:1: 'exists'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15205:1: ( ( 'exists' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15206:1: ( 'exists' )
             {
              before(grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_0_3_2_0()); 
-            match(input,93,FOLLOW_93_in_rule__PrimaryExpression__ExistsAssignment_0_3_230317); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15207:1: ( 'exists' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15208:1: 'exists'
+            {
+             before(grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_0_3_2_0()); 
+            match(input,93,FOLLOW_93_in_rule__PrimaryExpression__ExistsAssignment_0_3_230503); 
              after(grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_0_3_2_0()); 
 
             }
@@ -40199,20 +40451,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__SelectAssignment_0_3_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15129:1: rule__PrimaryExpression__SelectAssignment_0_3_4 : ( ruleSelectStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15223:1: rule__PrimaryExpression__SelectAssignment_0_3_4 : ( ruleSelectStatement ) ;
     public final void rule__PrimaryExpression__SelectAssignment_0_3_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15133:1: ( ( ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15134:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15227:1: ( ( ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15228:1: ( ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15134:1: ( ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15135:1: ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15228:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15229:1: ruleSelectStatement
             {
              before(grammarAccess.getPrimaryExpressionAccess().getSelectSelectStatementParserRuleCall_0_3_4_0()); 
-            pushFollow(FOLLOW_ruleSelectStatement_in_rule__PrimaryExpression__SelectAssignment_0_3_430356);
+            pushFollow(FOLLOW_ruleSelectStatement_in_rule__PrimaryExpression__SelectAssignment_0_3_430542);
             ruleSelectStatement();
 
             state._fsp--;
@@ -40240,20 +40492,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__CaseExpressionAssignment_0_4_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15144:1: rule__PrimaryExpression__CaseExpressionAssignment_0_4_2 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15238:1: rule__PrimaryExpression__CaseExpressionAssignment_0_4_2 : ( ruleSqlExpression ) ;
     public final void rule__PrimaryExpression__CaseExpressionAssignment_0_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15148:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15149:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15242:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15243:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15149:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15150:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15243:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15244:1: ruleSqlExpression
             {
              before(grammarAccess.getPrimaryExpressionAccess().getCaseExpressionSqlExpressionParserRuleCall_0_4_2_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__CaseExpressionAssignment_0_4_230387);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__CaseExpressionAssignment_0_4_230573);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40281,20 +40533,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__CasesAssignment_0_4_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15159:1: rule__PrimaryExpression__CasesAssignment_0_4_3 : ( ruleCase ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15253:1: rule__PrimaryExpression__CasesAssignment_0_4_3 : ( ruleCase ) ;
     public final void rule__PrimaryExpression__CasesAssignment_0_4_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15163:1: ( ( ruleCase ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15164:1: ( ruleCase )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15257:1: ( ( ruleCase ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15258:1: ( ruleCase )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15164:1: ( ruleCase )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15165:1: ruleCase
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15258:1: ( ruleCase )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15259:1: ruleCase
             {
              before(grammarAccess.getPrimaryExpressionAccess().getCasesCaseParserRuleCall_0_4_3_0()); 
-            pushFollow(FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_330418);
+            pushFollow(FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_330604);
             ruleCase();
 
             state._fsp--;
@@ -40322,20 +40574,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__CasesAssignment_0_4_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15174:1: rule__PrimaryExpression__CasesAssignment_0_4_4 : ( ruleCase ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15268:1: rule__PrimaryExpression__CasesAssignment_0_4_4 : ( ruleCase ) ;
     public final void rule__PrimaryExpression__CasesAssignment_0_4_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15178:1: ( ( ruleCase ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15179:1: ( ruleCase )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15272:1: ( ( ruleCase ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15273:1: ( ruleCase )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15179:1: ( ruleCase )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15180:1: ruleCase
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15273:1: ( ruleCase )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15274:1: ruleCase
             {
              before(grammarAccess.getPrimaryExpressionAccess().getCasesCaseParserRuleCall_0_4_4_0()); 
-            pushFollow(FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_430449);
+            pushFollow(FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_430635);
             ruleCase();
 
             state._fsp--;
@@ -40363,20 +40615,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15189:1: rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15283:1: rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_1 : ( ruleSqlExpression ) ;
     public final void rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15193:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15194:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15287:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15288:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15194:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15195:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15288:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15289:1: ruleSqlExpression
             {
              before(grammarAccess.getPrimaryExpressionAccess().getElseExpressionSqlExpressionParserRuleCall_0_4_5_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_130480);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_130666);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40404,20 +40656,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__NameAssignment_0_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15204:1: rule__PrimaryExpression__NameAssignment_0_5_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15298:1: rule__PrimaryExpression__NameAssignment_0_5_1 : ( RULE_ID ) ;
     public final void rule__PrimaryExpression__NameAssignment_0_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15208:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15209:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15302:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15303:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15209:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15210:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15303:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15304:1: RULE_ID
             {
              before(grammarAccess.getPrimaryExpressionAccess().getNameIDTerminalRuleCall_0_5_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PrimaryExpression__NameAssignment_0_5_130511); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PrimaryExpression__NameAssignment_0_5_130697); 
              after(grammarAccess.getPrimaryExpressionAccess().getNameIDTerminalRuleCall_0_5_1_0()); 
 
             }
@@ -40441,24 +40693,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__AllAssignment_0_5_3_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15219:1: rule__PrimaryExpression__AllAssignment_0_5_3_0 : ( ( '*' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15313:1: rule__PrimaryExpression__AllAssignment_0_5_3_0 : ( ( '*' ) ) ;
     public final void rule__PrimaryExpression__AllAssignment_0_5_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15223:1: ( ( ( '*' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15224:1: ( ( '*' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15317:1: ( ( ( '*' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15318:1: ( ( '*' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15224:1: ( ( '*' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15225:1: ( '*' )
-            {
-             before(grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_0_5_3_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15226:1: ( '*' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15227:1: '*'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15318:1: ( ( '*' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15319:1: ( '*' )
             {
              before(grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_0_5_3_0_0()); 
-            match(input,12,FOLLOW_12_in_rule__PrimaryExpression__AllAssignment_0_5_3_030547); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15320:1: ( '*' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15321:1: '*'
+            {
+             before(grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_0_5_3_0_0()); 
+            match(input,12,FOLLOW_12_in_rule__PrimaryExpression__AllAssignment_0_5_3_030733); 
              after(grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_0_5_3_0_0()); 
 
             }
@@ -40486,20 +40738,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15242:1: rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15336:1: rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0 : ( ruleSqlExpression ) ;
     public final void rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15246:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15247:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15340:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15341:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15247:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15248:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15341:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15342:1: ruleSqlExpression
             {
              before(grammarAccess.getPrimaryExpressionAccess().getArgumentsSqlExpressionParserRuleCall_0_5_3_1_0_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_030586);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_030772);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40527,20 +40779,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15257:1: rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15351:1: rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1 : ( ruleSqlExpression ) ;
     public final void rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15261:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15262:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15355:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15356:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15262:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15263:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15356:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15357:1: ruleSqlExpression
             {
              before(grammarAccess.getPrimaryExpressionAccess().getArugmentsSqlExpressionParserRuleCall_0_5_3_1_1_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_130617);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_130803);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40568,20 +40820,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__ExpressionAssignment_0_6_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15272:1: rule__PrimaryExpression__ExpressionAssignment_0_6_3 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15366:1: rule__PrimaryExpression__ExpressionAssignment_0_6_3 : ( ruleSqlExpression ) ;
     public final void rule__PrimaryExpression__ExpressionAssignment_0_6_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15276:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15277:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15370:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15371:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15277:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15278:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15371:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15372:1: ruleSqlExpression
             {
              before(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_0_6_3_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ExpressionAssignment_0_6_330648);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ExpressionAssignment_0_6_330834);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40609,20 +40861,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__TypeAssignment_0_6_5"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15287:1: rule__PrimaryExpression__TypeAssignment_0_6_5 : ( ruleSqliteDataType ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15381:1: rule__PrimaryExpression__TypeAssignment_0_6_5 : ( ruleSqliteDataType ) ;
     public final void rule__PrimaryExpression__TypeAssignment_0_6_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15291:1: ( ( ruleSqliteDataType ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15292:1: ( ruleSqliteDataType )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15385:1: ( ( ruleSqliteDataType ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15386:1: ( ruleSqliteDataType )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15292:1: ( ruleSqliteDataType )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15293:1: ruleSqliteDataType
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15386:1: ( ruleSqliteDataType )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15387:1: ruleSqliteDataType
             {
              before(grammarAccess.getPrimaryExpressionAccess().getTypeSqliteDataTypeEnumRuleCall_0_6_5_0()); 
-            pushFollow(FOLLOW_ruleSqliteDataType_in_rule__PrimaryExpression__TypeAssignment_0_6_530679);
+            pushFollow(FOLLOW_ruleSqliteDataType_in_rule__PrimaryExpression__TypeAssignment_0_6_530865);
             ruleSqliteDataType();
 
             state._fsp--;
@@ -40650,23 +40902,23 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PrimaryExpression__IsnullAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15302:1: rule__PrimaryExpression__IsnullAssignment_1 : ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15396:1: rule__PrimaryExpression__IsnullAssignment_1 : ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) ) ;
     public final void rule__PrimaryExpression__IsnullAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15306:1: ( ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15307:1: ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15400:1: ( ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15401:1: ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15307:1: ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15308:1: ( rule__PrimaryExpression__IsnullAlternatives_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15401:1: ( ( rule__PrimaryExpression__IsnullAlternatives_1_0 ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15402:1: ( rule__PrimaryExpression__IsnullAlternatives_1_0 )
             {
              before(grammarAccess.getPrimaryExpressionAccess().getIsnullAlternatives_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15309:1: ( rule__PrimaryExpression__IsnullAlternatives_1_0 )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15309:2: rule__PrimaryExpression__IsnullAlternatives_1_0
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15403:1: ( rule__PrimaryExpression__IsnullAlternatives_1_0 )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15403:2: rule__PrimaryExpression__IsnullAlternatives_1_0
             {
-            pushFollow(FOLLOW_rule__PrimaryExpression__IsnullAlternatives_1_0_in_rule__PrimaryExpression__IsnullAssignment_130710);
+            pushFollow(FOLLOW_rule__PrimaryExpression__IsnullAlternatives_1_0_in_rule__PrimaryExpression__IsnullAssignment_130896);
             rule__PrimaryExpression__IsnullAlternatives_1_0();
 
             state._fsp--;
@@ -40697,20 +40949,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Case__WhenExpressionAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15318:1: rule__Case__WhenExpressionAssignment_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15412:1: rule__Case__WhenExpressionAssignment_1 : ( ruleSqlExpression ) ;
     public final void rule__Case__WhenExpressionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15322:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15323:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15416:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15417:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15323:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15324:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15417:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15418:1: ruleSqlExpression
             {
              before(grammarAccess.getCaseAccess().getWhenExpressionSqlExpressionParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__Case__WhenExpressionAssignment_130743);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__Case__WhenExpressionAssignment_130929);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40738,20 +40990,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Case__ThenExpressionAssignment_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15333:1: rule__Case__ThenExpressionAssignment_3 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15427:1: rule__Case__ThenExpressionAssignment_3 : ( ruleSqlExpression ) ;
     public final void rule__Case__ThenExpressionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15337:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15338:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15431:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15432:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15338:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15339:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15432:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15433:1: ruleSqlExpression
             {
              before(grammarAccess.getCaseAccess().getThenExpressionSqlExpressionParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__Case__ThenExpressionAssignment_330774);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__Case__ThenExpressionAssignment_330960);
             ruleSqlExpression();
 
             state._fsp--;
@@ -40779,20 +41031,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_0_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15348:1: rule__DDLStatement__NameAssignment_0_3 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15442:1: rule__DDLStatement__NameAssignment_0_3 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_0_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15352:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15353:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15446:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15447:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15353:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15354:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15447:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15448:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_0_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_0_330805); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_0_330991); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_0_3_0()); 
 
             }
@@ -40816,20 +41068,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__ColumnDefsAssignment_0_5"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15363:1: rule__DDLStatement__ColumnDefsAssignment_0_5 : ( ruleColumnDef ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15457:1: rule__DDLStatement__ColumnDefsAssignment_0_5 : ( ruleColumnDef ) ;
     public final void rule__DDLStatement__ColumnDefsAssignment_0_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15367:1: ( ( ruleColumnDef ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15368:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15461:1: ( ( ruleColumnDef ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15462:1: ( ruleColumnDef )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15368:1: ( ruleColumnDef )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15369:1: ruleColumnDef
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15462:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15463:1: ruleColumnDef
             {
              before(grammarAccess.getDDLStatementAccess().getColumnDefsColumnDefParserRuleCall_0_5_0()); 
-            pushFollow(FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_530836);
+            pushFollow(FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_531022);
             ruleColumnDef();
 
             state._fsp--;
@@ -40857,20 +41109,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__ColumnDefsAssignment_0_6_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15378:1: rule__DDLStatement__ColumnDefsAssignment_0_6_1 : ( ruleColumnDef ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15472:1: rule__DDLStatement__ColumnDefsAssignment_0_6_1 : ( ruleColumnDef ) ;
     public final void rule__DDLStatement__ColumnDefsAssignment_0_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15382:1: ( ( ruleColumnDef ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15383:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15476:1: ( ( ruleColumnDef ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15477:1: ( ruleColumnDef )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15383:1: ( ruleColumnDef )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15384:1: ruleColumnDef
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15477:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15478:1: ruleColumnDef
             {
              before(grammarAccess.getDDLStatementAccess().getColumnDefsColumnDefParserRuleCall_0_6_1_0()); 
-            pushFollow(FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_6_130867);
+            pushFollow(FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_6_131053);
             ruleColumnDef();
 
             state._fsp--;
@@ -40898,20 +41150,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__ConstraintsAssignment_0_7_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15393:1: rule__DDLStatement__ConstraintsAssignment_0_7_1 : ( ruleTableConstraint ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15487:1: rule__DDLStatement__ConstraintsAssignment_0_7_1 : ( ruleTableConstraint ) ;
     public final void rule__DDLStatement__ConstraintsAssignment_0_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15397:1: ( ( ruleTableConstraint ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15398:1: ( ruleTableConstraint )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15491:1: ( ( ruleTableConstraint ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15492:1: ( ruleTableConstraint )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15398:1: ( ruleTableConstraint )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15399:1: ruleTableConstraint
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15492:1: ( ruleTableConstraint )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15493:1: ruleTableConstraint
             {
              before(grammarAccess.getDDLStatementAccess().getConstraintsTableConstraintParserRuleCall_0_7_1_0()); 
-            pushFollow(FOLLOW_ruleTableConstraint_in_rule__DDLStatement__ConstraintsAssignment_0_7_130898);
+            pushFollow(FOLLOW_ruleTableConstraint_in_rule__DDLStatement__ConstraintsAssignment_0_7_131084);
             ruleTableConstraint();
 
             state._fsp--;
@@ -40939,20 +41191,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_1_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15408:1: rule__DDLStatement__NameAssignment_1_3 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15502:1: rule__DDLStatement__NameAssignment_1_3 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_1_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15412:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15413:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15506:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15507:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15413:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15414:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15507:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15508:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_1_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_1_330929); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_1_331115); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_1_3_0()); 
 
             }
@@ -40976,20 +41228,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__SelectStatementAssignment_1_5"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15423:1: rule__DDLStatement__SelectStatementAssignment_1_5 : ( ruleSelectStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15517:1: rule__DDLStatement__SelectStatementAssignment_1_5 : ( ruleSelectStatement ) ;
     public final void rule__DDLStatement__SelectStatementAssignment_1_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15427:1: ( ( ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15428:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15521:1: ( ( ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15522:1: ( ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15428:1: ( ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15429:1: ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15522:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15523:1: ruleSelectStatement
             {
              before(grammarAccess.getDDLStatementAccess().getSelectStatementSelectStatementParserRuleCall_1_5_0()); 
-            pushFollow(FOLLOW_ruleSelectStatement_in_rule__DDLStatement__SelectStatementAssignment_1_530960);
+            pushFollow(FOLLOW_ruleSelectStatement_in_rule__DDLStatement__SelectStatementAssignment_1_531146);
             ruleSelectStatement();
 
             state._fsp--;
@@ -41017,20 +41269,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_2_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15438:1: rule__DDLStatement__NameAssignment_2_3 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15532:1: rule__DDLStatement__NameAssignment_2_3 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_2_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15442:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15443:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15536:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15537:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15443:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15444:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15537:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15538:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_2_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_2_330991); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_2_331177); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_2_3_0()); 
 
             }
@@ -41054,20 +41306,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15453:1: rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15547:1: rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_1 : ( RULE_ID ) ;
     public final void rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15457:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15458:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15551:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15552:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15458:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15459:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15552:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15553:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_2_5_2_1_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_131022); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_131208); 
              after(grammarAccess.getDDLStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_2_5_2_1_1_0()); 
 
             }
@@ -41091,20 +41343,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15468:1: rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15562:1: rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_1 : ( RULE_ID ) ;
     public final void rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15472:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15473:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15566:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15567:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15473:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15474:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15567:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15568:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_2_5_2_1_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_131053); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_131239); 
              after(grammarAccess.getDDLStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_2_5_2_1_2_1_0()); 
 
             }
@@ -41128,20 +41380,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__TableNameAssignment_2_7"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15483:1: rule__DDLStatement__TableNameAssignment_2_7 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15577:1: rule__DDLStatement__TableNameAssignment_2_7 : ( RULE_ID ) ;
     public final void rule__DDLStatement__TableNameAssignment_2_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15487:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15488:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15581:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15582:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15488:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15489:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15582:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15583:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getTableNameIDTerminalRuleCall_2_7_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__TableNameAssignment_2_731084); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__TableNameAssignment_2_731270); 
              after(grammarAccess.getDDLStatementAccess().getTableNameIDTerminalRuleCall_2_7_0()); 
 
             }
@@ -41165,20 +41417,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__WhenExpressionAssignment_2_9_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15498:1: rule__DDLStatement__WhenExpressionAssignment_2_9_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15592:1: rule__DDLStatement__WhenExpressionAssignment_2_9_1 : ( ruleSqlExpression ) ;
     public final void rule__DDLStatement__WhenExpressionAssignment_2_9_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15502:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15503:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15596:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15597:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15503:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15504:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15597:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15598:1: ruleSqlExpression
             {
              before(grammarAccess.getDDLStatementAccess().getWhenExpressionSqlExpressionParserRuleCall_2_9_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DDLStatement__WhenExpressionAssignment_2_9_131115);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DDLStatement__WhenExpressionAssignment_2_9_131301);
             ruleSqlExpression();
 
             state._fsp--;
@@ -41206,20 +41458,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__StatementsAssignment_2_11_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15513:1: rule__DDLStatement__StatementsAssignment_2_11_0 : ( ruleDMLStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15607:1: rule__DDLStatement__StatementsAssignment_2_11_0 : ( ruleDMLStatement ) ;
     public final void rule__DDLStatement__StatementsAssignment_2_11_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15517:1: ( ( ruleDMLStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15518:1: ( ruleDMLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15611:1: ( ( ruleDMLStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15612:1: ( ruleDMLStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15518:1: ( ruleDMLStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15519:1: ruleDMLStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15612:1: ( ruleDMLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15613:1: ruleDMLStatement
             {
              before(grammarAccess.getDDLStatementAccess().getStatementsDMLStatementParserRuleCall_2_11_0_0()); 
-            pushFollow(FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_031146);
+            pushFollow(FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_031332);
             ruleDMLStatement();
 
             state._fsp--;
@@ -41247,20 +41499,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__StatementsAssignment_2_11_2_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15528:1: rule__DDLStatement__StatementsAssignment_2_11_2_0 : ( ruleDMLStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15622:1: rule__DDLStatement__StatementsAssignment_2_11_2_0 : ( ruleDMLStatement ) ;
     public final void rule__DDLStatement__StatementsAssignment_2_11_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15532:1: ( ( ruleDMLStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15533:1: ( ruleDMLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15626:1: ( ( ruleDMLStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15627:1: ( ruleDMLStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15533:1: ( ruleDMLStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15534:1: ruleDMLStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15627:1: ( ruleDMLStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15628:1: ruleDMLStatement
             {
              before(grammarAccess.getDDLStatementAccess().getStatementsDMLStatementParserRuleCall_2_11_2_0_0()); 
-            pushFollow(FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_2_031177);
+            pushFollow(FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_2_031363);
             ruleDMLStatement();
 
             state._fsp--;
@@ -41288,20 +41540,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_3_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15543:1: rule__DDLStatement__NameAssignment_3_3 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15637:1: rule__DDLStatement__NameAssignment_3_3 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_3_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15547:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15548:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15641:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15642:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15548:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15549:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15642:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15643:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_3_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_3_331208); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_3_331394); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_3_3_0()); 
 
             }
@@ -41325,20 +41577,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__ClauseAssignment_3_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15558:1: rule__DDLStatement__ClauseAssignment_3_4 : ( ruleAlterTableClause ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15652:1: rule__DDLStatement__ClauseAssignment_3_4 : ( ruleAlterTableClause ) ;
     public final void rule__DDLStatement__ClauseAssignment_3_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15562:1: ( ( ruleAlterTableClause ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15563:1: ( ruleAlterTableClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15656:1: ( ( ruleAlterTableClause ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15657:1: ( ruleAlterTableClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15563:1: ( ruleAlterTableClause )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15564:1: ruleAlterTableClause
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15657:1: ( ruleAlterTableClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15658:1: ruleAlterTableClause
             {
              before(grammarAccess.getDDLStatementAccess().getClauseAlterTableClauseParserRuleCall_3_4_0()); 
-            pushFollow(FOLLOW_ruleAlterTableClause_in_rule__DDLStatement__ClauseAssignment_3_431239);
+            pushFollow(FOLLOW_ruleAlterTableClause_in_rule__DDLStatement__ClauseAssignment_3_431425);
             ruleAlterTableClause();
 
             state._fsp--;
@@ -41366,20 +41618,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_4_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15573:1: rule__DDLStatement__NameAssignment_4_4 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15667:1: rule__DDLStatement__NameAssignment_4_4 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_4_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15577:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15578:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15671:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15672:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15578:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15579:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15672:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15673:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_4_4_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_4_431270); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_4_431456); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_4_4_0()); 
 
             }
@@ -41403,20 +41655,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_5_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15588:1: rule__DDLStatement__NameAssignment_5_4 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15682:1: rule__DDLStatement__NameAssignment_5_4 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_5_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15592:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15593:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15686:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15687:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15593:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15594:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15687:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15688:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_5_4_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_5_431301); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_5_431487); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_5_4_0()); 
 
             }
@@ -41440,20 +41692,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DDLStatement__NameAssignment_6_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15603:1: rule__DDLStatement__NameAssignment_6_4 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15697:1: rule__DDLStatement__NameAssignment_6_4 : ( RULE_ID ) ;
     public final void rule__DDLStatement__NameAssignment_6_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15607:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15608:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15701:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15702:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15608:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15609:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15702:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15703:1: RULE_ID
             {
              before(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_6_4_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_6_431332); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_6_431518); 
              after(grammarAccess.getDDLStatementAccess().getNameIDTerminalRuleCall_6_4_0()); 
 
             }
@@ -41477,20 +41729,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DeleteStatement__TableNameAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15618:1: rule__DeleteStatement__TableNameAssignment_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15712:1: rule__DeleteStatement__TableNameAssignment_2 : ( RULE_ID ) ;
     public final void rule__DeleteStatement__TableNameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15622:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15623:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15716:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15717:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15623:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15624:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15717:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15718:1: RULE_ID
             {
              before(grammarAccess.getDeleteStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DeleteStatement__TableNameAssignment_231363); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DeleteStatement__TableNameAssignment_231549); 
              after(grammarAccess.getDeleteStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -41514,20 +41766,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DeleteStatement__ExpressionAssignment_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15633:1: rule__DeleteStatement__ExpressionAssignment_3_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15727:1: rule__DeleteStatement__ExpressionAssignment_3_1 : ( ruleSqlExpression ) ;
     public final void rule__DeleteStatement__ExpressionAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15637:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15638:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15731:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15732:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15638:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15639:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15732:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15733:1: ruleSqlExpression
             {
              before(grammarAccess.getDeleteStatementAccess().getExpressionSqlExpressionParserRuleCall_3_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DeleteStatement__ExpressionAssignment_3_131394);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DeleteStatement__ExpressionAssignment_3_131580);
             ruleSqlExpression();
 
             state._fsp--;
@@ -41555,20 +41807,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__ConflictResolutionAssignment_0_0_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15648:1: rule__InsertStatement__ConflictResolutionAssignment_0_0_1_1 : ( ruleConflictResolution ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15742:1: rule__InsertStatement__ConflictResolutionAssignment_0_0_1_1 : ( ruleConflictResolution ) ;
     public final void rule__InsertStatement__ConflictResolutionAssignment_0_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15652:1: ( ( ruleConflictResolution ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15653:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15746:1: ( ( ruleConflictResolution ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15747:1: ( ruleConflictResolution )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15653:1: ( ruleConflictResolution )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15654:1: ruleConflictResolution
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15747:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15748:1: ruleConflictResolution
             {
              before(grammarAccess.getInsertStatementAccess().getConflictResolutionConflictResolutionEnumRuleCall_0_0_1_1_0()); 
-            pushFollow(FOLLOW_ruleConflictResolution_in_rule__InsertStatement__ConflictResolutionAssignment_0_0_1_131425);
+            pushFollow(FOLLOW_ruleConflictResolution_in_rule__InsertStatement__ConflictResolutionAssignment_0_0_1_131611);
             ruleConflictResolution();
 
             state._fsp--;
@@ -41596,20 +41848,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__TableNameAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15663:1: rule__InsertStatement__TableNameAssignment_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15757:1: rule__InsertStatement__TableNameAssignment_2 : ( RULE_ID ) ;
     public final void rule__InsertStatement__TableNameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15667:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15668:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15761:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15762:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15668:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15669:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15762:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15763:1: RULE_ID
             {
              before(grammarAccess.getInsertStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__TableNameAssignment_231456); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__TableNameAssignment_231642); 
              after(grammarAccess.getInsertStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -41633,20 +41885,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__ColumnNamesAssignment_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15678:1: rule__InsertStatement__ColumnNamesAssignment_3_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15772:1: rule__InsertStatement__ColumnNamesAssignment_3_1 : ( RULE_ID ) ;
     public final void rule__InsertStatement__ColumnNamesAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15682:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15683:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15776:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15777:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15683:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15684:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15777:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15778:1: RULE_ID
             {
              before(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_131487); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_131673); 
              after(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); 
 
             }
@@ -41670,20 +41922,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__ColumnNamesAssignment_3_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15693:1: rule__InsertStatement__ColumnNamesAssignment_3_2_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15787:1: rule__InsertStatement__ColumnNamesAssignment_3_2_1 : ( RULE_ID ) ;
     public final void rule__InsertStatement__ColumnNamesAssignment_3_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15697:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15698:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15791:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15792:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15698:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15699:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15792:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15793:1: RULE_ID
             {
              before(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_2_131518); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_2_131704); 
              after(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); 
 
             }
@@ -41707,20 +41959,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__ExpressionsAssignment_4_0_0_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15708:1: rule__InsertStatement__ExpressionsAssignment_4_0_0_2 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15802:1: rule__InsertStatement__ExpressionsAssignment_4_0_0_2 : ( ruleSqlExpression ) ;
     public final void rule__InsertStatement__ExpressionsAssignment_4_0_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15712:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15713:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15806:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15807:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15713:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15714:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15807:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15808:1: ruleSqlExpression
             {
              before(grammarAccess.getInsertStatementAccess().getExpressionsSqlExpressionParserRuleCall_4_0_0_2_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_231549);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_231735);
             ruleSqlExpression();
 
             state._fsp--;
@@ -41748,20 +42000,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__ExpressionsAssignment_4_0_0_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15723:1: rule__InsertStatement__ExpressionsAssignment_4_0_0_3_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15817:1: rule__InsertStatement__ExpressionsAssignment_4_0_0_3_1 : ( ruleSqlExpression ) ;
     public final void rule__InsertStatement__ExpressionsAssignment_4_0_0_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15727:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15728:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15821:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15822:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15728:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15729:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15822:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15823:1: ruleSqlExpression
             {
              before(grammarAccess.getInsertStatementAccess().getExpressionsSqlExpressionParserRuleCall_4_0_0_3_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_3_131580);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_3_131766);
             ruleSqlExpression();
 
             state._fsp--;
@@ -41789,20 +42041,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__InsertStatement__SelectStatementAssignment_4_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15738:1: rule__InsertStatement__SelectStatementAssignment_4_0_1 : ( ruleSelectStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15832:1: rule__InsertStatement__SelectStatementAssignment_4_0_1 : ( ruleSelectStatement ) ;
     public final void rule__InsertStatement__SelectStatementAssignment_4_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15742:1: ( ( ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15743:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15836:1: ( ( ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15837:1: ( ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15743:1: ( ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15744:1: ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15837:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15838:1: ruleSelectStatement
             {
              before(grammarAccess.getInsertStatementAccess().getSelectStatementSelectStatementParserRuleCall_4_0_1_0()); 
-            pushFollow(FOLLOW_ruleSelectStatement_in_rule__InsertStatement__SelectStatementAssignment_4_0_131611);
+            pushFollow(FOLLOW_ruleSelectStatement_in_rule__InsertStatement__SelectStatementAssignment_4_0_131797);
             ruleSelectStatement();
 
             state._fsp--;
@@ -41830,20 +42082,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateStatement__ConflictResolutionAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15753:1: rule__UpdateStatement__ConflictResolutionAssignment_1_1 : ( ruleConflictResolution ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15847:1: rule__UpdateStatement__ConflictResolutionAssignment_1_1 : ( ruleConflictResolution ) ;
     public final void rule__UpdateStatement__ConflictResolutionAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15757:1: ( ( ruleConflictResolution ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15758:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15851:1: ( ( ruleConflictResolution ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15852:1: ( ruleConflictResolution )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15758:1: ( ruleConflictResolution )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15759:1: ruleConflictResolution
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15852:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15853:1: ruleConflictResolution
             {
              before(grammarAccess.getUpdateStatementAccess().getConflictResolutionConflictResolutionEnumRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleConflictResolution_in_rule__UpdateStatement__ConflictResolutionAssignment_1_131642);
+            pushFollow(FOLLOW_ruleConflictResolution_in_rule__UpdateStatement__ConflictResolutionAssignment_1_131828);
             ruleConflictResolution();
 
             state._fsp--;
@@ -41871,20 +42123,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateStatement__TableNameAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15768:1: rule__UpdateStatement__TableNameAssignment_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15862:1: rule__UpdateStatement__TableNameAssignment_2 : ( RULE_ID ) ;
     public final void rule__UpdateStatement__TableNameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15772:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15773:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15866:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15867:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15773:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15774:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15867:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15868:1: RULE_ID
             {
              before(grammarAccess.getUpdateStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UpdateStatement__TableNameAssignment_231673); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UpdateStatement__TableNameAssignment_231859); 
              after(grammarAccess.getUpdateStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -41908,20 +42160,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateStatement__UpdateColumnExpressionsAssignment_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15783:1: rule__UpdateStatement__UpdateColumnExpressionsAssignment_4 : ( ruleUpdateColumnExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15877:1: rule__UpdateStatement__UpdateColumnExpressionsAssignment_4 : ( ruleUpdateColumnExpression ) ;
     public final void rule__UpdateStatement__UpdateColumnExpressionsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15787:1: ( ( ruleUpdateColumnExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15788:1: ( ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15881:1: ( ( ruleUpdateColumnExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15882:1: ( ruleUpdateColumnExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15788:1: ( ruleUpdateColumnExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15789:1: ruleUpdateColumnExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15882:1: ( ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15883:1: ruleUpdateColumnExpression
             {
              before(grammarAccess.getUpdateStatementAccess().getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_431704);
+            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_431890);
             ruleUpdateColumnExpression();
 
             state._fsp--;
@@ -41949,20 +42201,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15798:1: rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_1 : ( ruleUpdateColumnExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15892:1: rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_1 : ( ruleUpdateColumnExpression ) ;
     public final void rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15802:1: ( ( ruleUpdateColumnExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15803:1: ( ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15896:1: ( ( ruleUpdateColumnExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15897:1: ( ruleUpdateColumnExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15803:1: ( ruleUpdateColumnExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15804:1: ruleUpdateColumnExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15897:1: ( ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15898:1: ruleUpdateColumnExpression
             {
              before(grammarAccess.getUpdateStatementAccess().getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_5_1_0()); 
-            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_131735);
+            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_131921);
             ruleUpdateColumnExpression();
 
             state._fsp--;
@@ -41990,20 +42242,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateStatement__WhereExpressionAssignment_6_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15813:1: rule__UpdateStatement__WhereExpressionAssignment_6_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15907:1: rule__UpdateStatement__WhereExpressionAssignment_6_1 : ( ruleSqlExpression ) ;
     public final void rule__UpdateStatement__WhereExpressionAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15817:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15818:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15911:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15912:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15818:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15819:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15912:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15913:1: ruleSqlExpression
             {
              before(grammarAccess.getUpdateStatementAccess().getWhereExpressionSqlExpressionParserRuleCall_6_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__UpdateStatement__WhereExpressionAssignment_6_131766);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__UpdateStatement__WhereExpressionAssignment_6_131952);
             ruleSqlExpression();
 
             state._fsp--;
@@ -42031,20 +42283,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateColumnExpression__ColumnNameAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15828:1: rule__UpdateColumnExpression__ColumnNameAssignment_0 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15922:1: rule__UpdateColumnExpression__ColumnNameAssignment_0 : ( RULE_ID ) ;
     public final void rule__UpdateColumnExpression__ColumnNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15832:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15833:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15926:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15927:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15833:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15834:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15927:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15928:1: RULE_ID
             {
              before(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UpdateColumnExpression__ColumnNameAssignment_031797); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UpdateColumnExpression__ColumnNameAssignment_031983); 
              after(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -42068,20 +42320,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__UpdateColumnExpression__ExpressionAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15843:1: rule__UpdateColumnExpression__ExpressionAssignment_2 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15937:1: rule__UpdateColumnExpression__ExpressionAssignment_2 : ( ruleSqlExpression ) ;
     public final void rule__UpdateColumnExpression__ExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15847:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15848:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15941:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15942:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15848:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15849:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15942:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15943:1: ruleSqlExpression
             {
              before(grammarAccess.getUpdateColumnExpressionAccess().getExpressionSqlExpressionParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__UpdateColumnExpression__ExpressionAssignment_231828);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__UpdateColumnExpression__ExpressionAssignment_232014);
             ruleSqlExpression();
 
             state._fsp--;
@@ -42109,20 +42361,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectStatement__CoreStatementsAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15858:1: rule__SelectStatement__CoreStatementsAssignment_0 : ( ruleSelectCore ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15952:1: rule__SelectStatement__CoreStatementsAssignment_0 : ( ruleSelectCore ) ;
     public final void rule__SelectStatement__CoreStatementsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15862:1: ( ( ruleSelectCore ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15863:1: ( ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15956:1: ( ( ruleSelectCore ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15957:1: ( ruleSelectCore )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15863:1: ( ruleSelectCore )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15864:1: ruleSelectCore
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15957:1: ( ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15958:1: ruleSelectCore
             {
              before(grammarAccess.getSelectStatementAccess().getCoreStatementsSelectCoreParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_031859);
+            pushFollow(FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_032045);
             ruleSelectCore();
 
             state._fsp--;
@@ -42150,20 +42402,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectStatement__CoreStatementsAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15873:1: rule__SelectStatement__CoreStatementsAssignment_1_1 : ( ruleSelectCore ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15967:1: rule__SelectStatement__CoreStatementsAssignment_1_1 : ( ruleSelectCore ) ;
     public final void rule__SelectStatement__CoreStatementsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15877:1: ( ( ruleSelectCore ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15878:1: ( ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15971:1: ( ( ruleSelectCore ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15972:1: ( ruleSelectCore )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15878:1: ( ruleSelectCore )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15879:1: ruleSelectCore
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15972:1: ( ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15973:1: ruleSelectCore
             {
              before(grammarAccess.getSelectStatementAccess().getCoreStatementsSelectCoreParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_1_131890);
+            pushFollow(FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_1_132076);
             ruleSelectCore();
 
             state._fsp--;
@@ -42191,20 +42443,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectStatement__OrderingTermsAssignment_2_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15888:1: rule__SelectStatement__OrderingTermsAssignment_2_2 : ( ruleOrderingTerm ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15982:1: rule__SelectStatement__OrderingTermsAssignment_2_2 : ( ruleOrderingTerm ) ;
     public final void rule__SelectStatement__OrderingTermsAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15892:1: ( ( ruleOrderingTerm ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15893:1: ( ruleOrderingTerm )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15986:1: ( ( ruleOrderingTerm ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15987:1: ( ruleOrderingTerm )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15893:1: ( ruleOrderingTerm )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15894:1: ruleOrderingTerm
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15987:1: ( ruleOrderingTerm )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15988:1: ruleOrderingTerm
             {
              before(grammarAccess.getSelectStatementAccess().getOrderingTermsOrderingTermParserRuleCall_2_2_0()); 
-            pushFollow(FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_231921);
+            pushFollow(FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_232107);
             ruleOrderingTerm();
 
             state._fsp--;
@@ -42232,20 +42484,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectStatement__OrderingTermsAssignment_2_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15903:1: rule__SelectStatement__OrderingTermsAssignment_2_3_1 : ( ruleOrderingTerm ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15997:1: rule__SelectStatement__OrderingTermsAssignment_2_3_1 : ( ruleOrderingTerm ) ;
     public final void rule__SelectStatement__OrderingTermsAssignment_2_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15907:1: ( ( ruleOrderingTerm ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15908:1: ( ruleOrderingTerm )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16001:1: ( ( ruleOrderingTerm ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16002:1: ( ruleOrderingTerm )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15908:1: ( ruleOrderingTerm )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15909:1: ruleOrderingTerm
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16002:1: ( ruleOrderingTerm )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16003:1: ruleOrderingTerm
             {
              before(grammarAccess.getSelectStatementAccess().getOrderingTermsOrderingTermParserRuleCall_2_3_1_0()); 
-            pushFollow(FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_3_131952);
+            pushFollow(FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_3_132138);
             ruleOrderingTerm();
 
             state._fsp--;
@@ -42273,20 +42525,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__AlterTableClause__NameAssignment_0_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15918:1: rule__AlterTableClause__NameAssignment_0_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16012:1: rule__AlterTableClause__NameAssignment_0_2 : ( RULE_ID ) ;
     public final void rule__AlterTableClause__NameAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15922:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15923:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16016:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16017:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15923:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15924:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16017:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16018:1: RULE_ID
             {
              before(grammarAccess.getAlterTableClauseAccess().getNameIDTerminalRuleCall_0_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__AlterTableClause__NameAssignment_0_231983); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__AlterTableClause__NameAssignment_0_232169); 
              after(grammarAccess.getAlterTableClauseAccess().getNameIDTerminalRuleCall_0_2_0()); 
 
             }
@@ -42310,20 +42562,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__AlterTableClause__ColumnDefAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15933:1: rule__AlterTableClause__ColumnDefAssignment_1_2 : ( ruleColumnDef ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16027:1: rule__AlterTableClause__ColumnDefAssignment_1_2 : ( ruleColumnDef ) ;
     public final void rule__AlterTableClause__ColumnDefAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15937:1: ( ( ruleColumnDef ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15938:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16031:1: ( ( ruleColumnDef ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16032:1: ( ruleColumnDef )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15938:1: ( ruleColumnDef )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15939:1: ruleColumnDef
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16032:1: ( ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16033:1: ruleColumnDef
             {
              before(grammarAccess.getAlterTableClauseAccess().getColumnDefColumnDefParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleColumnDef_in_rule__AlterTableClause__ColumnDefAssignment_1_232014);
+            pushFollow(FOLLOW_ruleColumnDef_in_rule__AlterTableClause__ColumnDefAssignment_1_232200);
             ruleColumnDef();
 
             state._fsp--;
@@ -42351,20 +42603,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnDef__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15948:1: rule__ColumnDef__NameAssignment_0 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16042:1: rule__ColumnDef__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__ColumnDef__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15952:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15953:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16046:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16047:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15953:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15954:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16047:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16048:1: RULE_ID
             {
              before(grammarAccess.getColumnDefAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ColumnDef__NameAssignment_032045); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ColumnDef__NameAssignment_032231); 
              after(grammarAccess.getColumnDefAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -42388,20 +42640,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnDef__TypeAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15963:1: rule__ColumnDef__TypeAssignment_1 : ( ruleColumnType ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16057:1: rule__ColumnDef__TypeAssignment_1 : ( ruleColumnType ) ;
     public final void rule__ColumnDef__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15967:1: ( ( ruleColumnType ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15968:1: ( ruleColumnType )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16061:1: ( ( ruleColumnType ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16062:1: ( ruleColumnType )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15968:1: ( ruleColumnType )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15969:1: ruleColumnType
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16062:1: ( ruleColumnType )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16063:1: ruleColumnType
             {
              before(grammarAccess.getColumnDefAccess().getTypeColumnTypeEnumRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleColumnType_in_rule__ColumnDef__TypeAssignment_132076);
+            pushFollow(FOLLOW_ruleColumnType_in_rule__ColumnDef__TypeAssignment_132262);
             ruleColumnType();
 
             state._fsp--;
@@ -42429,20 +42681,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnDef__ConstraintsAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15978:1: rule__ColumnDef__ConstraintsAssignment_2 : ( ruleColumnConstraint ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16072:1: rule__ColumnDef__ConstraintsAssignment_2 : ( ruleColumnConstraint ) ;
     public final void rule__ColumnDef__ConstraintsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15982:1: ( ( ruleColumnConstraint ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15983:1: ( ruleColumnConstraint )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16076:1: ( ( ruleColumnConstraint ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16077:1: ( ruleColumnConstraint )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15983:1: ( ruleColumnConstraint )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15984:1: ruleColumnConstraint
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16077:1: ( ruleColumnConstraint )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16078:1: ruleColumnConstraint
             {
              before(grammarAccess.getColumnDefAccess().getConstraintsColumnConstraintParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleColumnConstraint_in_rule__ColumnDef__ConstraintsAssignment_232107);
+            pushFollow(FOLLOW_ruleColumnConstraint_in_rule__ColumnDef__ConstraintsAssignment_232293);
             ruleColumnConstraint();
 
             state._fsp--;
@@ -42470,24 +42722,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnConstraint__AscAssignment_0_3_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15993:1: rule__ColumnConstraint__AscAssignment_0_3_0 : ( ( 'asc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16087:1: rule__ColumnConstraint__AscAssignment_0_3_0 : ( ( 'asc' ) ) ;
     public final void rule__ColumnConstraint__AscAssignment_0_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15997:1: ( ( ( 'asc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15998:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16091:1: ( ( ( 'asc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16092:1: ( ( 'asc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15998:1: ( ( 'asc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:15999:1: ( 'asc' )
-            {
-             before(grammarAccess.getColumnConstraintAccess().getAscAscKeyword_0_3_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16000:1: ( 'asc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16001:1: 'asc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16092:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16093:1: ( 'asc' )
             {
              before(grammarAccess.getColumnConstraintAccess().getAscAscKeyword_0_3_0_0()); 
-            match(input,119,FOLLOW_119_in_rule__ColumnConstraint__AscAssignment_0_3_032143); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16094:1: ( 'asc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16095:1: 'asc'
+            {
+             before(grammarAccess.getColumnConstraintAccess().getAscAscKeyword_0_3_0_0()); 
+            match(input,120,FOLLOW_120_in_rule__ColumnConstraint__AscAssignment_0_3_032329); 
              after(grammarAccess.getColumnConstraintAccess().getAscAscKeyword_0_3_0_0()); 
 
             }
@@ -42515,24 +42767,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnConstraint__DescAssignment_0_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16016:1: rule__ColumnConstraint__DescAssignment_0_3_1 : ( ( 'desc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16110:1: rule__ColumnConstraint__DescAssignment_0_3_1 : ( ( 'desc' ) ) ;
     public final void rule__ColumnConstraint__DescAssignment_0_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16020:1: ( ( ( 'desc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16021:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16114:1: ( ( ( 'desc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16115:1: ( ( 'desc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16021:1: ( ( 'desc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16022:1: ( 'desc' )
-            {
-             before(grammarAccess.getColumnConstraintAccess().getDescDescKeyword_0_3_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16023:1: ( 'desc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16024:1: 'desc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16115:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16116:1: ( 'desc' )
             {
              before(grammarAccess.getColumnConstraintAccess().getDescDescKeyword_0_3_1_0()); 
-            match(input,120,FOLLOW_120_in_rule__ColumnConstraint__DescAssignment_0_3_132187); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16117:1: ( 'desc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16118:1: 'desc'
+            {
+             before(grammarAccess.getColumnConstraintAccess().getDescDescKeyword_0_3_1_0()); 
+            match(input,121,FOLLOW_121_in_rule__ColumnConstraint__DescAssignment_0_3_132373); 
              after(grammarAccess.getColumnConstraintAccess().getDescDescKeyword_0_3_1_0()); 
 
             }
@@ -42560,24 +42812,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnConstraint__AutoincrementAssignment_0_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16039:1: rule__ColumnConstraint__AutoincrementAssignment_0_4 : ( ( 'autoincrement' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16133:1: rule__ColumnConstraint__AutoincrementAssignment_0_4 : ( ( 'autoincrement' ) ) ;
     public final void rule__ColumnConstraint__AutoincrementAssignment_0_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16043:1: ( ( ( 'autoincrement' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16044:1: ( ( 'autoincrement' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16137:1: ( ( ( 'autoincrement' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16138:1: ( ( 'autoincrement' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16044:1: ( ( 'autoincrement' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16045:1: ( 'autoincrement' )
-            {
-             before(grammarAccess.getColumnConstraintAccess().getAutoincrementAutoincrementKeyword_0_4_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16046:1: ( 'autoincrement' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16047:1: 'autoincrement'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16138:1: ( ( 'autoincrement' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16139:1: ( 'autoincrement' )
             {
              before(grammarAccess.getColumnConstraintAccess().getAutoincrementAutoincrementKeyword_0_4_0()); 
-            match(input,121,FOLLOW_121_in_rule__ColumnConstraint__AutoincrementAssignment_0_432231); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16140:1: ( 'autoincrement' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16141:1: 'autoincrement'
+            {
+             before(grammarAccess.getColumnConstraintAccess().getAutoincrementAutoincrementKeyword_0_4_0()); 
+            match(input,122,FOLLOW_122_in_rule__ColumnConstraint__AutoincrementAssignment_0_432417); 
              after(grammarAccess.getColumnConstraintAccess().getAutoincrementAutoincrementKeyword_0_4_0()); 
 
             }
@@ -42605,20 +42857,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnConstraint__ConflictClauseAssignment_1_3"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16062:1: rule__ColumnConstraint__ConflictClauseAssignment_1_3 : ( ruleConflictClause ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16156:1: rule__ColumnConstraint__ConflictClauseAssignment_1_3 : ( ruleConflictClause ) ;
     public final void rule__ColumnConstraint__ConflictClauseAssignment_1_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16066:1: ( ( ruleConflictClause ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16067:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16160:1: ( ( ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16161:1: ( ruleConflictClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16067:1: ( ruleConflictClause )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16068:1: ruleConflictClause
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16161:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16162:1: ruleConflictClause
             {
              before(grammarAccess.getColumnConstraintAccess().getConflictClauseConflictClauseParserRuleCall_1_3_0()); 
-            pushFollow(FOLLOW_ruleConflictClause_in_rule__ColumnConstraint__ConflictClauseAssignment_1_332270);
+            pushFollow(FOLLOW_ruleConflictClause_in_rule__ColumnConstraint__ConflictClauseAssignment_1_332456);
             ruleConflictClause();
 
             state._fsp--;
@@ -42646,20 +42898,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ColumnConstraint__DefaultValueAssignment_2_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16077:1: rule__ColumnConstraint__DefaultValueAssignment_2_2 : ( ruleDefaultValue ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16171:1: rule__ColumnConstraint__DefaultValueAssignment_2_2 : ( ruleDefaultValue ) ;
     public final void rule__ColumnConstraint__DefaultValueAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16081:1: ( ( ruleDefaultValue ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16082:1: ( ruleDefaultValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16175:1: ( ( ruleDefaultValue ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16176:1: ( ruleDefaultValue )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16082:1: ( ruleDefaultValue )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16083:1: ruleDefaultValue
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16176:1: ( ruleDefaultValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16177:1: ruleDefaultValue
             {
              before(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_2_2_0()); 
-            pushFollow(FOLLOW_ruleDefaultValue_in_rule__ColumnConstraint__DefaultValueAssignment_2_232301);
+            pushFollow(FOLLOW_ruleDefaultValue_in_rule__ColumnConstraint__DefaultValueAssignment_2_232487);
             ruleDefaultValue();
 
             state._fsp--;
@@ -42687,20 +42939,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DefaultValue__LiteralAssignment_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16092:1: rule__DefaultValue__LiteralAssignment_0_1 : ( ruleLiteralValue ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16186:1: rule__DefaultValue__LiteralAssignment_0_1 : ( ruleLiteralValue ) ;
     public final void rule__DefaultValue__LiteralAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16096:1: ( ( ruleLiteralValue ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16097:1: ( ruleLiteralValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16190:1: ( ( ruleLiteralValue ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16191:1: ( ruleLiteralValue )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16097:1: ( ruleLiteralValue )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16098:1: ruleLiteralValue
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16191:1: ( ruleLiteralValue )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16192:1: ruleLiteralValue
             {
              before(grammarAccess.getDefaultValueAccess().getLiteralLiteralValueParserRuleCall_0_1_0()); 
-            pushFollow(FOLLOW_ruleLiteralValue_in_rule__DefaultValue__LiteralAssignment_0_132332);
+            pushFollow(FOLLOW_ruleLiteralValue_in_rule__DefaultValue__LiteralAssignment_0_132518);
             ruleLiteralValue();
 
             state._fsp--;
@@ -42728,20 +42980,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DefaultValue__ExpressionAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16107:1: rule__DefaultValue__ExpressionAssignment_1_2 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16201:1: rule__DefaultValue__ExpressionAssignment_1_2 : ( ruleSqlExpression ) ;
     public final void rule__DefaultValue__ExpressionAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16111:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16112:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16205:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16206:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16112:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16113:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16206:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16207:1: ruleSqlExpression
             {
              before(grammarAccess.getDefaultValueAccess().getExpressionSqlExpressionParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DefaultValue__ExpressionAssignment_1_232363);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__DefaultValue__ExpressionAssignment_1_232549);
             ruleSqlExpression();
 
             state._fsp--;
@@ -42769,20 +43021,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__NameAssignment_0_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16122:1: rule__TableConstraint__NameAssignment_0_1_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16216:1: rule__TableConstraint__NameAssignment_0_1_1 : ( RULE_ID ) ;
     public final void rule__TableConstraint__NameAssignment_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16126:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16127:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16220:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16221:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16127:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16128:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16221:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16222:1: RULE_ID
             {
              before(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_0_1_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_0_1_132394); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_0_1_132580); 
              after(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_0_1_1_0()); 
 
             }
@@ -42806,20 +43058,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ColumnsAssignment_0_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16137:1: rule__TableConstraint__ColumnsAssignment_0_4 : ( ruleIndexedColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16231:1: rule__TableConstraint__ColumnsAssignment_0_4 : ( ruleIndexedColumn ) ;
     public final void rule__TableConstraint__ColumnsAssignment_0_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16141:1: ( ( ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16142:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16235:1: ( ( ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16236:1: ( ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16142:1: ( ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16143:1: ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16236:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16237:1: ruleIndexedColumn
             {
              before(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_0_4_0()); 
-            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_432425);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_432611);
             ruleIndexedColumn();
 
             state._fsp--;
@@ -42847,20 +43099,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ColumnsAssignment_0_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16152:1: rule__TableConstraint__ColumnsAssignment_0_5_1 : ( ruleIndexedColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16246:1: rule__TableConstraint__ColumnsAssignment_0_5_1 : ( ruleIndexedColumn ) ;
     public final void rule__TableConstraint__ColumnsAssignment_0_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16156:1: ( ( ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16157:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16250:1: ( ( ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16251:1: ( ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16157:1: ( ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16158:1: ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16251:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16252:1: ruleIndexedColumn
             {
              before(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_0_5_1_0()); 
-            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_5_132456);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_5_132642);
             ruleIndexedColumn();
 
             state._fsp--;
@@ -42888,20 +43140,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ConflictClauseAssignment_0_7"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16167:1: rule__TableConstraint__ConflictClauseAssignment_0_7 : ( ruleConflictClause ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16261:1: rule__TableConstraint__ConflictClauseAssignment_0_7 : ( ruleConflictClause ) ;
     public final void rule__TableConstraint__ConflictClauseAssignment_0_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16171:1: ( ( ruleConflictClause ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16172:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16265:1: ( ( ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16266:1: ( ruleConflictClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16172:1: ( ruleConflictClause )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16173:1: ruleConflictClause
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16266:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16267:1: ruleConflictClause
             {
              before(grammarAccess.getTableConstraintAccess().getConflictClauseConflictClauseParserRuleCall_0_7_0()); 
-            pushFollow(FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_0_732487);
+            pushFollow(FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_0_732673);
             ruleConflictClause();
 
             state._fsp--;
@@ -42929,20 +43181,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__NameAssignment_1_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16182:1: rule__TableConstraint__NameAssignment_1_1_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16276:1: rule__TableConstraint__NameAssignment_1_1_1 : ( RULE_ID ) ;
     public final void rule__TableConstraint__NameAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16186:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16187:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16280:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16281:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16187:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16188:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16281:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16282:1: RULE_ID
             {
              before(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_1_1_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_1_1_132518); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_1_1_132704); 
              after(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_1_1_1_0()); 
 
             }
@@ -42966,20 +43218,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ColumnsAssignment_1_5"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16197:1: rule__TableConstraint__ColumnsAssignment_1_5 : ( ruleIndexedColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16291:1: rule__TableConstraint__ColumnsAssignment_1_5 : ( ruleIndexedColumn ) ;
     public final void rule__TableConstraint__ColumnsAssignment_1_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16201:1: ( ( ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16202:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16295:1: ( ( ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16296:1: ( ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16202:1: ( ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16203:1: ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16296:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16297:1: ruleIndexedColumn
             {
              before(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_1_5_0()); 
-            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_532549);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_532735);
             ruleIndexedColumn();
 
             state._fsp--;
@@ -43007,20 +43259,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ColumnsAssignment_1_6_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16212:1: rule__TableConstraint__ColumnsAssignment_1_6_1 : ( ruleIndexedColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16306:1: rule__TableConstraint__ColumnsAssignment_1_6_1 : ( ruleIndexedColumn ) ;
     public final void rule__TableConstraint__ColumnsAssignment_1_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16216:1: ( ( ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16217:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16310:1: ( ( ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16311:1: ( ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16217:1: ( ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16218:1: ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16311:1: ( ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16312:1: ruleIndexedColumn
             {
              before(grammarAccess.getTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_1_6_1_0()); 
-            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_6_132580);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_6_132766);
             ruleIndexedColumn();
 
             state._fsp--;
@@ -43048,20 +43300,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ConflictClauseAssignment_1_8"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16227:1: rule__TableConstraint__ConflictClauseAssignment_1_8 : ( ruleConflictClause ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16321:1: rule__TableConstraint__ConflictClauseAssignment_1_8 : ( ruleConflictClause ) ;
     public final void rule__TableConstraint__ConflictClauseAssignment_1_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16231:1: ( ( ruleConflictClause ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16232:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16325:1: ( ( ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16326:1: ( ruleConflictClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16232:1: ( ruleConflictClause )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16233:1: ruleConflictClause
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16326:1: ( ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16327:1: ruleConflictClause
             {
              before(grammarAccess.getTableConstraintAccess().getConflictClauseConflictClauseParserRuleCall_1_8_0()); 
-            pushFollow(FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_1_832611);
+            pushFollow(FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_1_832797);
             ruleConflictClause();
 
             state._fsp--;
@@ -43089,20 +43341,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__NameAssignment_2_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16242:1: rule__TableConstraint__NameAssignment_2_1_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16336:1: rule__TableConstraint__NameAssignment_2_1_1 : ( RULE_ID ) ;
     public final void rule__TableConstraint__NameAssignment_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16246:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16247:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16340:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16341:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16247:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16248:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16341:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16342:1: RULE_ID
             {
              before(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_2_1_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_2_1_132642); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_2_1_132828); 
              after(grammarAccess.getTableConstraintAccess().getNameIDTerminalRuleCall_2_1_1_0()); 
 
             }
@@ -43126,20 +43378,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TableConstraint__ExpressionAssignment_2_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16257:1: rule__TableConstraint__ExpressionAssignment_2_4 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16351:1: rule__TableConstraint__ExpressionAssignment_2_4 : ( ruleSqlExpression ) ;
     public final void rule__TableConstraint__ExpressionAssignment_2_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16261:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16262:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16355:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16356:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16262:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16263:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16356:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16357:1: ruleSqlExpression
             {
              before(grammarAccess.getTableConstraintAccess().getExpressionSqlExpressionParserRuleCall_2_4_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__TableConstraint__ExpressionAssignment_2_432673);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__TableConstraint__ExpressionAssignment_2_432859);
             ruleSqlExpression();
 
             state._fsp--;
@@ -43167,24 +43419,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__IndexedColumn__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16272:1: rule__IndexedColumn__NameAssignment_0 : ( ( RULE_ID ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16366:1: rule__IndexedColumn__NameAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__IndexedColumn__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16276:1: ( ( ( RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16277:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16370:1: ( ( ( RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16371:1: ( ( RULE_ID ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16277:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16278:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16371:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16372:1: ( RULE_ID )
             {
              before(grammarAccess.getIndexedColumnAccess().getNameColumnDefCrossReference_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16279:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16280:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16373:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16374:1: RULE_ID
             {
              before(grammarAccess.getIndexedColumnAccess().getNameColumnDefIDTerminalRuleCall_0_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__IndexedColumn__NameAssignment_032708); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__IndexedColumn__NameAssignment_032894); 
              after(grammarAccess.getIndexedColumnAccess().getNameColumnDefIDTerminalRuleCall_0_0_1()); 
 
             }
@@ -43212,24 +43464,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__IndexedColumn__AscAssignment_1_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16291:1: rule__IndexedColumn__AscAssignment_1_0 : ( ( 'asc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16385:1: rule__IndexedColumn__AscAssignment_1_0 : ( ( 'asc' ) ) ;
     public final void rule__IndexedColumn__AscAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16295:1: ( ( ( 'asc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16296:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16389:1: ( ( ( 'asc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16390:1: ( ( 'asc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16296:1: ( ( 'asc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16297:1: ( 'asc' )
-            {
-             before(grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16298:1: ( 'asc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16299:1: 'asc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16390:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16391:1: ( 'asc' )
             {
              before(grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0()); 
-            match(input,119,FOLLOW_119_in_rule__IndexedColumn__AscAssignment_1_032748); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16392:1: ( 'asc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16393:1: 'asc'
+            {
+             before(grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0()); 
+            match(input,120,FOLLOW_120_in_rule__IndexedColumn__AscAssignment_1_032934); 
              after(grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0()); 
 
             }
@@ -43257,24 +43509,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__IndexedColumn__DescAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16314:1: rule__IndexedColumn__DescAssignment_1_1 : ( ( 'desc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16408:1: rule__IndexedColumn__DescAssignment_1_1 : ( ( 'desc' ) ) ;
     public final void rule__IndexedColumn__DescAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16318:1: ( ( ( 'desc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16319:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16412:1: ( ( ( 'desc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16413:1: ( ( 'desc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16319:1: ( ( 'desc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16320:1: ( 'desc' )
-            {
-             before(grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16321:1: ( 'desc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16322:1: 'desc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16413:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16414:1: ( 'desc' )
             {
              before(grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0()); 
-            match(input,120,FOLLOW_120_in_rule__IndexedColumn__DescAssignment_1_132792); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16415:1: ( 'desc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16416:1: 'desc'
+            {
+             before(grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0()); 
+            match(input,121,FOLLOW_121_in_rule__IndexedColumn__DescAssignment_1_132978); 
              after(grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0()); 
 
             }
@@ -43302,20 +43554,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__OrderingTerm__ExpressionAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16337:1: rule__OrderingTerm__ExpressionAssignment_0 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16431:1: rule__OrderingTerm__ExpressionAssignment_0 : ( ruleSqlExpression ) ;
     public final void rule__OrderingTerm__ExpressionAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16341:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16342:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16435:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16436:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16342:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16343:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16436:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16437:1: ruleSqlExpression
             {
              before(grammarAccess.getOrderingTermAccess().getExpressionSqlExpressionParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__OrderingTerm__ExpressionAssignment_032831);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__OrderingTerm__ExpressionAssignment_033017);
             ruleSqlExpression();
 
             state._fsp--;
@@ -43343,24 +43595,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__OrderingTerm__AscAssignment_1_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16352:1: rule__OrderingTerm__AscAssignment_1_0 : ( ( 'asc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16446:1: rule__OrderingTerm__AscAssignment_1_0 : ( ( 'asc' ) ) ;
     public final void rule__OrderingTerm__AscAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16356:1: ( ( ( 'asc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16357:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16450:1: ( ( ( 'asc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16451:1: ( ( 'asc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16357:1: ( ( 'asc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16358:1: ( 'asc' )
-            {
-             before(grammarAccess.getOrderingTermAccess().getAscAscKeyword_1_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16359:1: ( 'asc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16360:1: 'asc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16451:1: ( ( 'asc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16452:1: ( 'asc' )
             {
              before(grammarAccess.getOrderingTermAccess().getAscAscKeyword_1_0_0()); 
-            match(input,119,FOLLOW_119_in_rule__OrderingTerm__AscAssignment_1_032867); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16453:1: ( 'asc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16454:1: 'asc'
+            {
+             before(grammarAccess.getOrderingTermAccess().getAscAscKeyword_1_0_0()); 
+            match(input,120,FOLLOW_120_in_rule__OrderingTerm__AscAssignment_1_033053); 
              after(grammarAccess.getOrderingTermAccess().getAscAscKeyword_1_0_0()); 
 
             }
@@ -43388,24 +43640,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__OrderingTerm__DescAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16375:1: rule__OrderingTerm__DescAssignment_1_1 : ( ( 'desc' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16469:1: rule__OrderingTerm__DescAssignment_1_1 : ( ( 'desc' ) ) ;
     public final void rule__OrderingTerm__DescAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16379:1: ( ( ( 'desc' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16380:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16473:1: ( ( ( 'desc' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16474:1: ( ( 'desc' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16380:1: ( ( 'desc' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16381:1: ( 'desc' )
-            {
-             before(grammarAccess.getOrderingTermAccess().getDescDescKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16382:1: ( 'desc' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16383:1: 'desc'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16474:1: ( ( 'desc' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16475:1: ( 'desc' )
             {
              before(grammarAccess.getOrderingTermAccess().getDescDescKeyword_1_1_0()); 
-            match(input,120,FOLLOW_120_in_rule__OrderingTerm__DescAssignment_1_132911); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16476:1: ( 'desc' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16477:1: 'desc'
+            {
+             before(grammarAccess.getOrderingTermAccess().getDescDescKeyword_1_1_0()); 
+            match(input,121,FOLLOW_121_in_rule__OrderingTerm__DescAssignment_1_133097); 
              after(grammarAccess.getOrderingTermAccess().getDescDescKeyword_1_1_0()); 
 
             }
@@ -43433,24 +43685,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__DistinctAssignment_1_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16398:1: rule__SelectCore__DistinctAssignment_1_0 : ( ( 'distinct' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16492:1: rule__SelectCore__DistinctAssignment_1_0 : ( ( 'distinct' ) ) ;
     public final void rule__SelectCore__DistinctAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16402:1: ( ( ( 'distinct' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16403:1: ( ( 'distinct' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16496:1: ( ( ( 'distinct' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16497:1: ( ( 'distinct' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16403:1: ( ( 'distinct' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16404:1: ( 'distinct' )
-            {
-             before(grammarAccess.getSelectCoreAccess().getDistinctDistinctKeyword_1_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16405:1: ( 'distinct' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16406:1: 'distinct'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16497:1: ( ( 'distinct' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16498:1: ( 'distinct' )
             {
              before(grammarAccess.getSelectCoreAccess().getDistinctDistinctKeyword_1_0_0()); 
-            match(input,122,FOLLOW_122_in_rule__SelectCore__DistinctAssignment_1_032955); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16499:1: ( 'distinct' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16500:1: 'distinct'
+            {
+             before(grammarAccess.getSelectCoreAccess().getDistinctDistinctKeyword_1_0_0()); 
+            match(input,123,FOLLOW_123_in_rule__SelectCore__DistinctAssignment_1_033141); 
              after(grammarAccess.getSelectCoreAccess().getDistinctDistinctKeyword_1_0_0()); 
 
             }
@@ -43478,24 +43730,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__AllAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16421:1: rule__SelectCore__AllAssignment_1_1 : ( ( 'all' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16515:1: rule__SelectCore__AllAssignment_1_1 : ( ( 'all' ) ) ;
     public final void rule__SelectCore__AllAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16425:1: ( ( ( 'all' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16426:1: ( ( 'all' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16519:1: ( ( ( 'all' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16520:1: ( ( 'all' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16426:1: ( ( 'all' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16427:1: ( 'all' )
-            {
-             before(grammarAccess.getSelectCoreAccess().getAllAllKeyword_1_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16428:1: ( 'all' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16429:1: 'all'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16520:1: ( ( 'all' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16521:1: ( 'all' )
             {
              before(grammarAccess.getSelectCoreAccess().getAllAllKeyword_1_1_0()); 
-            match(input,123,FOLLOW_123_in_rule__SelectCore__AllAssignment_1_132999); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16522:1: ( 'all' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16523:1: 'all'
+            {
+             before(grammarAccess.getSelectCoreAccess().getAllAllKeyword_1_1_0()); 
+            match(input,124,FOLLOW_124_in_rule__SelectCore__AllAssignment_1_133185); 
              after(grammarAccess.getSelectCoreAccess().getAllAllKeyword_1_1_0()); 
 
             }
@@ -43523,20 +43775,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__ResultColumnsAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16444:1: rule__SelectCore__ResultColumnsAssignment_2 : ( ruleResultColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16538:1: rule__SelectCore__ResultColumnsAssignment_2 : ( ruleResultColumn ) ;
     public final void rule__SelectCore__ResultColumnsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16448:1: ( ( ruleResultColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16449:1: ( ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16542:1: ( ( ruleResultColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16543:1: ( ruleResultColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16449:1: ( ruleResultColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16450:1: ruleResultColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16543:1: ( ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16544:1: ruleResultColumn
             {
              before(grammarAccess.getSelectCoreAccess().getResultColumnsResultColumnParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_233038);
+            pushFollow(FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_233224);
             ruleResultColumn();
 
             state._fsp--;
@@ -43564,20 +43816,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__ResultColumnsAssignment_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16459:1: rule__SelectCore__ResultColumnsAssignment_3_1 : ( ruleResultColumn ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16553:1: rule__SelectCore__ResultColumnsAssignment_3_1 : ( ruleResultColumn ) ;
     public final void rule__SelectCore__ResultColumnsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16463:1: ( ( ruleResultColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16464:1: ( ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16557:1: ( ( ruleResultColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16558:1: ( ruleResultColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16464:1: ( ruleResultColumn )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16465:1: ruleResultColumn
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16558:1: ( ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16559:1: ruleResultColumn
             {
              before(grammarAccess.getSelectCoreAccess().getResultColumnsResultColumnParserRuleCall_3_1_0()); 
-            pushFollow(FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_3_133069);
+            pushFollow(FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_3_133255);
             ruleResultColumn();
 
             state._fsp--;
@@ -43605,20 +43857,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__SourceAssignment_4_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16474:1: rule__SelectCore__SourceAssignment_4_1 : ( ruleJoinSource ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16568:1: rule__SelectCore__SourceAssignment_4_1 : ( ruleJoinSource ) ;
     public final void rule__SelectCore__SourceAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16478:1: ( ( ruleJoinSource ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16479:1: ( ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16572:1: ( ( ruleJoinSource ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16573:1: ( ruleJoinSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16479:1: ( ruleJoinSource )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16480:1: ruleJoinSource
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16573:1: ( ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16574:1: ruleJoinSource
             {
              before(grammarAccess.getSelectCoreAccess().getSourceJoinSourceParserRuleCall_4_1_0()); 
-            pushFollow(FOLLOW_ruleJoinSource_in_rule__SelectCore__SourceAssignment_4_133100);
+            pushFollow(FOLLOW_ruleJoinSource_in_rule__SelectCore__SourceAssignment_4_133286);
             ruleJoinSource();
 
             state._fsp--;
@@ -43646,20 +43898,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__WhereExpressionAssignment_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16489:1: rule__SelectCore__WhereExpressionAssignment_5_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16583:1: rule__SelectCore__WhereExpressionAssignment_5_1 : ( ruleSqlExpression ) ;
     public final void rule__SelectCore__WhereExpressionAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16493:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16494:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16587:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16588:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16494:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16495:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16588:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16589:1: ruleSqlExpression
             {
              before(grammarAccess.getSelectCoreAccess().getWhereExpressionSqlExpressionParserRuleCall_5_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__WhereExpressionAssignment_5_133131);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__WhereExpressionAssignment_5_133317);
             ruleSqlExpression();
 
             state._fsp--;
@@ -43687,20 +43939,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__GroupByExpressionsAssignment_6_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16504:1: rule__SelectCore__GroupByExpressionsAssignment_6_2 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16598:1: rule__SelectCore__GroupByExpressionsAssignment_6_2 : ( ruleSqlExpression ) ;
     public final void rule__SelectCore__GroupByExpressionsAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16508:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16509:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16602:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16603:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16509:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16510:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16603:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16604:1: ruleSqlExpression
             {
              before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_2_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_233162);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_233348);
             ruleSqlExpression();
 
             state._fsp--;
@@ -43728,20 +43980,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SelectCore__GroupByExpressionsAssignment_6_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16519:1: rule__SelectCore__GroupByExpressionsAssignment_6_3_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16613:1: rule__SelectCore__GroupByExpressionsAssignment_6_3_1 : ( ruleSqlExpression ) ;
     public final void rule__SelectCore__GroupByExpressionsAssignment_6_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16523:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16524:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16617:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16618:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16524:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16525:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16618:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16619:1: ruleSqlExpression
             {
              before(grammarAccess.getSelectCoreAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_3_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_3_133193);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_3_133379);
             ruleSqlExpression();
 
             state._fsp--;
@@ -43768,21 +44020,62 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__SelectCore__GroupByExpressionsAssignment_6_3_1"
 
 
+    // $ANTLR start "rule__SelectCore__HavingExpressionAssignment_7_1"
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16628:1: rule__SelectCore__HavingExpressionAssignment_7_1 : ( ruleSqlExpression ) ;
+    public final void rule__SelectCore__HavingExpressionAssignment_7_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16632:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16633:1: ( ruleSqlExpression )
+            {
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16633:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16634:1: ruleSqlExpression
+            {
+             before(grammarAccess.getSelectCoreAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); 
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__SelectCore__HavingExpressionAssignment_7_133410);
+            ruleSqlExpression();
+
+            state._fsp--;
+
+             after(grammarAccess.getSelectCoreAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SelectCore__HavingExpressionAssignment_7_1"
+
+
     // $ANTLR start "rule__JoinSource__SourceAssignment_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16534:1: rule__JoinSource__SourceAssignment_0 : ( ruleSingleSource ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16643:1: rule__JoinSource__SourceAssignment_0 : ( ruleSingleSource ) ;
     public final void rule__JoinSource__SourceAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16538:1: ( ( ruleSingleSource ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16539:1: ( ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16647:1: ( ( ruleSingleSource ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16648:1: ( ruleSingleSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16539:1: ( ruleSingleSource )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16540:1: ruleSingleSource
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16648:1: ( ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16649:1: ruleSingleSource
             {
              before(grammarAccess.getJoinSourceAccess().getSourceSingleSourceParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleSingleSource_in_rule__JoinSource__SourceAssignment_033224);
+            pushFollow(FOLLOW_ruleSingleSource_in_rule__JoinSource__SourceAssignment_033441);
             ruleSingleSource();
 
             state._fsp--;
@@ -43810,20 +44103,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinSource__JoinStatementsAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16549:1: rule__JoinSource__JoinStatementsAssignment_1 : ( ruleJoinStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16658:1: rule__JoinSource__JoinStatementsAssignment_1 : ( ruleJoinStatement ) ;
     public final void rule__JoinSource__JoinStatementsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16553:1: ( ( ruleJoinStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16554:1: ( ruleJoinStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16662:1: ( ( ruleJoinStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16663:1: ( ruleJoinStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16554:1: ( ruleJoinStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16555:1: ruleJoinStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16663:1: ( ruleJoinStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16664:1: ruleJoinStatement
             {
              before(grammarAccess.getJoinSourceAccess().getJoinStatementsJoinStatementParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleJoinStatement_in_rule__JoinSource__JoinStatementsAssignment_133255);
+            pushFollow(FOLLOW_ruleJoinStatement_in_rule__JoinSource__JoinStatementsAssignment_133472);
             ruleJoinStatement();
 
             state._fsp--;
@@ -43851,20 +44144,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__TableAssignment_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16564:1: rule__SingleSource__TableAssignment_0_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16673:1: rule__SingleSource__TableAssignment_0_1 : ( RULE_ID ) ;
     public final void rule__SingleSource__TableAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16568:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16569:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16677:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16678:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16569:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16570:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16678:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16679:1: RULE_ID
             {
              before(grammarAccess.getSingleSourceAccess().getTableIDTerminalRuleCall_0_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__TableAssignment_0_133286); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__TableAssignment_0_133503); 
              after(grammarAccess.getSingleSourceAccess().getTableIDTerminalRuleCall_0_1_0()); 
 
             }
@@ -43888,20 +44181,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__AliasAssignment_0_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16579:1: rule__SingleSource__AliasAssignment_0_2_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16688:1: rule__SingleSource__AliasAssignment_0_2_1 : ( RULE_ID ) ;
     public final void rule__SingleSource__AliasAssignment_0_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16583:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16584:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16692:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16693:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16584:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16585:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16693:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16694:1: RULE_ID
             {
              before(grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_0_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_0_2_133317); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_0_2_133534); 
              after(grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_0_2_1_0()); 
 
             }
@@ -43925,20 +44218,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__SelectStatementAssignment_1_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16594:1: rule__SingleSource__SelectStatementAssignment_1_2 : ( ruleSelectStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16703:1: rule__SingleSource__SelectStatementAssignment_1_2 : ( ruleSelectStatement ) ;
     public final void rule__SingleSource__SelectStatementAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16598:1: ( ( ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16599:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16707:1: ( ( ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16708:1: ( ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16599:1: ( ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16600:1: ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16708:1: ( ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16709:1: ruleSelectStatement
             {
              before(grammarAccess.getSingleSourceAccess().getSelectStatementSelectStatementParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleSelectStatement_in_rule__SingleSource__SelectStatementAssignment_1_233348);
+            pushFollow(FOLLOW_ruleSelectStatement_in_rule__SingleSource__SelectStatementAssignment_1_233565);
             ruleSelectStatement();
 
             state._fsp--;
@@ -43966,20 +44259,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__AliasAssignment_1_4_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16609:1: rule__SingleSource__AliasAssignment_1_4_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16718:1: rule__SingleSource__AliasAssignment_1_4_1 : ( RULE_ID ) ;
     public final void rule__SingleSource__AliasAssignment_1_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16613:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16614:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16722:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16723:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16614:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16615:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16723:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16724:1: RULE_ID
             {
              before(grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_1_4_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_1_4_133379); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_1_4_133596); 
              after(grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_1_4_1_0()); 
 
             }
@@ -44003,20 +44296,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__SingleSource__JoinSourceAssignment_2_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16624:1: rule__SingleSource__JoinSourceAssignment_2_2 : ( ruleJoinSource ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16733:1: rule__SingleSource__JoinSourceAssignment_2_2 : ( ruleJoinSource ) ;
     public final void rule__SingleSource__JoinSourceAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16628:1: ( ( ruleJoinSource ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16629:1: ( ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16737:1: ( ( ruleJoinSource ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16738:1: ( ruleJoinSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16629:1: ( ruleJoinSource )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16630:1: ruleJoinSource
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16738:1: ( ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16739:1: ruleJoinSource
             {
              before(grammarAccess.getSingleSourceAccess().getJoinSourceJoinSourceParserRuleCall_2_2_0()); 
-            pushFollow(FOLLOW_ruleJoinSource_in_rule__SingleSource__JoinSourceAssignment_2_233410);
+            pushFollow(FOLLOW_ruleJoinSource_in_rule__SingleSource__JoinSourceAssignment_2_233627);
             ruleJoinSource();
 
             state._fsp--;
@@ -44044,24 +44337,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__NaturalAssignment_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16639:1: rule__JoinStatement__NaturalAssignment_1 : ( ( 'natural' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16748:1: rule__JoinStatement__NaturalAssignment_1 : ( ( 'natural' ) ) ;
     public final void rule__JoinStatement__NaturalAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16643:1: ( ( ( 'natural' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16644:1: ( ( 'natural' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16752:1: ( ( ( 'natural' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16753:1: ( ( 'natural' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16644:1: ( ( 'natural' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16645:1: ( 'natural' )
-            {
-             before(grammarAccess.getJoinStatementAccess().getNaturalNaturalKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16646:1: ( 'natural' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16647:1: 'natural'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16753:1: ( ( 'natural' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16754:1: ( 'natural' )
             {
              before(grammarAccess.getJoinStatementAccess().getNaturalNaturalKeyword_1_0()); 
-            match(input,124,FOLLOW_124_in_rule__JoinStatement__NaturalAssignment_133446); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16755:1: ( 'natural' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16756:1: 'natural'
+            {
+             before(grammarAccess.getJoinStatementAccess().getNaturalNaturalKeyword_1_0()); 
+            match(input,125,FOLLOW_125_in_rule__JoinStatement__NaturalAssignment_133663); 
              after(grammarAccess.getJoinStatementAccess().getNaturalNaturalKeyword_1_0()); 
 
             }
@@ -44089,24 +44382,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__LeftAssignment_2_0_0"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16662:1: rule__JoinStatement__LeftAssignment_2_0_0 : ( ( 'left' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16771:1: rule__JoinStatement__LeftAssignment_2_0_0 : ( ( 'left' ) ) ;
     public final void rule__JoinStatement__LeftAssignment_2_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16666:1: ( ( ( 'left' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16667:1: ( ( 'left' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16775:1: ( ( ( 'left' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16776:1: ( ( 'left' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16667:1: ( ( 'left' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16668:1: ( 'left' )
-            {
-             before(grammarAccess.getJoinStatementAccess().getLeftLeftKeyword_2_0_0_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16669:1: ( 'left' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16670:1: 'left'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16776:1: ( ( 'left' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16777:1: ( 'left' )
             {
              before(grammarAccess.getJoinStatementAccess().getLeftLeftKeyword_2_0_0_0()); 
-            match(input,125,FOLLOW_125_in_rule__JoinStatement__LeftAssignment_2_0_033490); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16778:1: ( 'left' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16779:1: 'left'
+            {
+             before(grammarAccess.getJoinStatementAccess().getLeftLeftKeyword_2_0_0_0()); 
+            match(input,126,FOLLOW_126_in_rule__JoinStatement__LeftAssignment_2_0_033707); 
              after(grammarAccess.getJoinStatementAccess().getLeftLeftKeyword_2_0_0_0()); 
 
             }
@@ -44134,24 +44427,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__OuterAssignment_2_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16685:1: rule__JoinStatement__OuterAssignment_2_0_1 : ( ( 'outer' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16794:1: rule__JoinStatement__OuterAssignment_2_0_1 : ( ( 'outer' ) ) ;
     public final void rule__JoinStatement__OuterAssignment_2_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16689:1: ( ( ( 'outer' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16690:1: ( ( 'outer' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16798:1: ( ( ( 'outer' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16799:1: ( ( 'outer' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16690:1: ( ( 'outer' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16691:1: ( 'outer' )
-            {
-             before(grammarAccess.getJoinStatementAccess().getOuterOuterKeyword_2_0_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16692:1: ( 'outer' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16693:1: 'outer'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16799:1: ( ( 'outer' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16800:1: ( 'outer' )
             {
              before(grammarAccess.getJoinStatementAccess().getOuterOuterKeyword_2_0_1_0()); 
-            match(input,126,FOLLOW_126_in_rule__JoinStatement__OuterAssignment_2_0_133534); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16801:1: ( 'outer' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16802:1: 'outer'
+            {
+             before(grammarAccess.getJoinStatementAccess().getOuterOuterKeyword_2_0_1_0()); 
+            match(input,127,FOLLOW_127_in_rule__JoinStatement__OuterAssignment_2_0_133751); 
              after(grammarAccess.getJoinStatementAccess().getOuterOuterKeyword_2_0_1_0()); 
 
             }
@@ -44179,24 +44472,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__InnerAssignment_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16708:1: rule__JoinStatement__InnerAssignment_2_1 : ( ( 'inner' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16817:1: rule__JoinStatement__InnerAssignment_2_1 : ( ( 'inner' ) ) ;
     public final void rule__JoinStatement__InnerAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16712:1: ( ( ( 'inner' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16713:1: ( ( 'inner' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16821:1: ( ( ( 'inner' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16822:1: ( ( 'inner' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16713:1: ( ( 'inner' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16714:1: ( 'inner' )
-            {
-             before(grammarAccess.getJoinStatementAccess().getInnerInnerKeyword_2_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16715:1: ( 'inner' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16716:1: 'inner'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16822:1: ( ( 'inner' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16823:1: ( 'inner' )
             {
              before(grammarAccess.getJoinStatementAccess().getInnerInnerKeyword_2_1_0()); 
-            match(input,127,FOLLOW_127_in_rule__JoinStatement__InnerAssignment_2_133578); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16824:1: ( 'inner' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16825:1: 'inner'
+            {
+             before(grammarAccess.getJoinStatementAccess().getInnerInnerKeyword_2_1_0()); 
+            match(input,128,FOLLOW_128_in_rule__JoinStatement__InnerAssignment_2_133795); 
              after(grammarAccess.getJoinStatementAccess().getInnerInnerKeyword_2_1_0()); 
 
             }
@@ -44224,24 +44517,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__CrossAssignment_2_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16731:1: rule__JoinStatement__CrossAssignment_2_2 : ( ( 'cross' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16840:1: rule__JoinStatement__CrossAssignment_2_2 : ( ( 'cross' ) ) ;
     public final void rule__JoinStatement__CrossAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16735:1: ( ( ( 'cross' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16736:1: ( ( 'cross' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16844:1: ( ( ( 'cross' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16845:1: ( ( 'cross' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16736:1: ( ( 'cross' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16737:1: ( 'cross' )
-            {
-             before(grammarAccess.getJoinStatementAccess().getCrossCrossKeyword_2_2_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16738:1: ( 'cross' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16739:1: 'cross'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16845:1: ( ( 'cross' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16846:1: ( 'cross' )
             {
              before(grammarAccess.getJoinStatementAccess().getCrossCrossKeyword_2_2_0()); 
-            match(input,128,FOLLOW_128_in_rule__JoinStatement__CrossAssignment_2_233622); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16847:1: ( 'cross' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16848:1: 'cross'
+            {
+             before(grammarAccess.getJoinStatementAccess().getCrossCrossKeyword_2_2_0()); 
+            match(input,129,FOLLOW_129_in_rule__JoinStatement__CrossAssignment_2_233839); 
              after(grammarAccess.getJoinStatementAccess().getCrossCrossKeyword_2_2_0()); 
 
             }
@@ -44269,20 +44562,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__SingleSourceAssignment_4"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16754:1: rule__JoinStatement__SingleSourceAssignment_4 : ( ruleSingleSource ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16863:1: rule__JoinStatement__SingleSourceAssignment_4 : ( ruleSingleSource ) ;
     public final void rule__JoinStatement__SingleSourceAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16758:1: ( ( ruleSingleSource ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16759:1: ( ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16867:1: ( ( ruleSingleSource ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16868:1: ( ruleSingleSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16759:1: ( ruleSingleSource )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16760:1: ruleSingleSource
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16868:1: ( ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16869:1: ruleSingleSource
             {
              before(grammarAccess.getJoinStatementAccess().getSingleSourceSingleSourceParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleSingleSource_in_rule__JoinStatement__SingleSourceAssignment_433661);
+            pushFollow(FOLLOW_ruleSingleSource_in_rule__JoinStatement__SingleSourceAssignment_433878);
             ruleSingleSource();
 
             state._fsp--;
@@ -44310,20 +44603,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__JoinStatement__ExpressionAssignment_6"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16769:1: rule__JoinStatement__ExpressionAssignment_6 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16878:1: rule__JoinStatement__ExpressionAssignment_6 : ( ruleSqlExpression ) ;
     public final void rule__JoinStatement__ExpressionAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16773:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16774:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16882:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16883:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16774:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16775:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16883:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16884:1: ruleSqlExpression
             {
              before(grammarAccess.getJoinStatementAccess().getExpressionSqlExpressionParserRuleCall_6_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__JoinStatement__ExpressionAssignment_633692);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__JoinStatement__ExpressionAssignment_633909);
             ruleSqlExpression();
 
             state._fsp--;
@@ -44351,20 +44644,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__TableAssignment_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16784:1: rule__ResultColumn__TableAssignment_0_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16893:1: rule__ResultColumn__TableAssignment_0_1 : ( RULE_ID ) ;
     public final void rule__ResultColumn__TableAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16788:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16789:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16897:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16898:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16789:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16790:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16898:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16899:1: RULE_ID
             {
              before(grammarAccess.getResultColumnAccess().getTableIDTerminalRuleCall_0_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResultColumn__TableAssignment_0_133723); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResultColumn__TableAssignment_0_133940); 
              after(grammarAccess.getResultColumnAccess().getTableIDTerminalRuleCall_0_1_0()); 
 
             }
@@ -44388,20 +44681,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__ExpressionAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16799:1: rule__ResultColumn__ExpressionAssignment_1_1 : ( ruleSqlExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16908:1: rule__ResultColumn__ExpressionAssignment_1_1 : ( ruleSqlExpression ) ;
     public final void rule__ResultColumn__ExpressionAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16803:1: ( ( ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16804:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16912:1: ( ( ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16913:1: ( ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16804:1: ( ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16805:1: ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16913:1: ( ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16914:1: ruleSqlExpression
             {
              before(grammarAccess.getResultColumnAccess().getExpressionSqlExpressionParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleSqlExpression_in_rule__ResultColumn__ExpressionAssignment_1_133754);
+            pushFollow(FOLLOW_ruleSqlExpression_in_rule__ResultColumn__ExpressionAssignment_1_133971);
             ruleSqlExpression();
 
             state._fsp--;
@@ -44429,20 +44722,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ResultColumn__AliasAssignment_1_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16814:1: rule__ResultColumn__AliasAssignment_1_2_1 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16923:1: rule__ResultColumn__AliasAssignment_1_2_1 : ( RULE_ID ) ;
     public final void rule__ResultColumn__AliasAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16818:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16819:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16927:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16928:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16819:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16820:1: RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16928:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16929:1: RULE_ID
             {
              before(grammarAccess.getResultColumnAccess().getAliasIDTerminalRuleCall_1_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResultColumn__AliasAssignment_1_2_133785); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResultColumn__AliasAssignment_1_2_134002); 
              after(grammarAccess.getResultColumnAccess().getAliasIDTerminalRuleCall_1_2_1_0()); 
 
             }
@@ -44466,20 +44759,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__ConflictClause__ResolutionAssignment_2"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16829:1: rule__ConflictClause__ResolutionAssignment_2 : ( ruleConflictResolution ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16938:1: rule__ConflictClause__ResolutionAssignment_2 : ( ruleConflictResolution ) ;
     public final void rule__ConflictClause__ResolutionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16833:1: ( ( ruleConflictResolution ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16834:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16942:1: ( ( ruleConflictResolution ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16943:1: ( ruleConflictResolution )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16834:1: ( ruleConflictResolution )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16835:1: ruleConflictResolution
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16943:1: ( ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16944:1: ruleConflictResolution
             {
              before(grammarAccess.getConflictClauseAccess().getResolutionConflictResolutionEnumRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleConflictResolution_in_rule__ConflictClause__ResolutionAssignment_233816);
+            pushFollow(FOLLOW_ruleConflictResolution_in_rule__ConflictClause__ResolutionAssignment_234033);
             ruleConflictResolution();
 
             state._fsp--;
@@ -44507,20 +44800,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__NumberAssignment_0_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16844:1: rule__LiteralValue__NumberAssignment_0_1 : ( ruleSignedNumber ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16953:1: rule__LiteralValue__NumberAssignment_0_1 : ( ruleSignedNumber ) ;
     public final void rule__LiteralValue__NumberAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16848:1: ( ( ruleSignedNumber ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16849:1: ( ruleSignedNumber )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16957:1: ( ( ruleSignedNumber ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16958:1: ( ruleSignedNumber )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16849:1: ( ruleSignedNumber )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16850:1: ruleSignedNumber
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16958:1: ( ruleSignedNumber )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16959:1: ruleSignedNumber
             {
              before(grammarAccess.getLiteralValueAccess().getNumberSignedNumberParserRuleCall_0_1_0()); 
-            pushFollow(FOLLOW_ruleSignedNumber_in_rule__LiteralValue__NumberAssignment_0_133847);
+            pushFollow(FOLLOW_ruleSignedNumber_in_rule__LiteralValue__NumberAssignment_0_134064);
             ruleSignedNumber();
 
             state._fsp--;
@@ -44548,20 +44841,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_1_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16859:1: rule__LiteralValue__LiteralAssignment_1_1 : ( RULE_STRING ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16968:1: rule__LiteralValue__LiteralAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__LiteralValue__LiteralAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16863:1: ( ( RULE_STRING ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16864:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16972:1: ( ( RULE_STRING ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16973:1: ( RULE_STRING )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16864:1: ( RULE_STRING )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16865:1: RULE_STRING
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16973:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16974:1: RULE_STRING
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__LiteralValue__LiteralAssignment_1_133878); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__LiteralValue__LiteralAssignment_1_134095); 
              after(grammarAccess.getLiteralValueAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
 
             }
@@ -44585,24 +44878,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_2_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16874:1: rule__LiteralValue__LiteralAssignment_2_1 : ( ( 'null' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16983:1: rule__LiteralValue__LiteralAssignment_2_1 : ( ( 'null' ) ) ;
     public final void rule__LiteralValue__LiteralAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16878:1: ( ( ( 'null' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16879:1: ( ( 'null' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16987:1: ( ( ( 'null' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16988:1: ( ( 'null' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16879:1: ( ( 'null' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16880:1: ( 'null' )
-            {
-             before(grammarAccess.getLiteralValueAccess().getLiteralNullKeyword_2_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16881:1: ( 'null' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16882:1: 'null'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16988:1: ( ( 'null' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16989:1: ( 'null' )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralNullKeyword_2_1_0()); 
-            match(input,108,FOLLOW_108_in_rule__LiteralValue__LiteralAssignment_2_133914); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16990:1: ( 'null' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16991:1: 'null'
+            {
+             before(grammarAccess.getLiteralValueAccess().getLiteralNullKeyword_2_1_0()); 
+            match(input,108,FOLLOW_108_in_rule__LiteralValue__LiteralAssignment_2_134131); 
              after(grammarAccess.getLiteralValueAccess().getLiteralNullKeyword_2_1_0()); 
 
             }
@@ -44630,24 +44923,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_3_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16897:1: rule__LiteralValue__LiteralAssignment_3_1 : ( ( 'current_time' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17006:1: rule__LiteralValue__LiteralAssignment_3_1 : ( ( 'current_time' ) ) ;
     public final void rule__LiteralValue__LiteralAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16901:1: ( ( ( 'current_time' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16902:1: ( ( 'current_time' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17010:1: ( ( ( 'current_time' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17011:1: ( ( 'current_time' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16902:1: ( ( 'current_time' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16903:1: ( 'current_time' )
-            {
-             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timeKeyword_3_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16904:1: ( 'current_time' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16905:1: 'current_time'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17011:1: ( ( 'current_time' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17012:1: ( 'current_time' )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timeKeyword_3_1_0()); 
-            match(input,129,FOLLOW_129_in_rule__LiteralValue__LiteralAssignment_3_133958); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17013:1: ( 'current_time' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17014:1: 'current_time'
+            {
+             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timeKeyword_3_1_0()); 
+            match(input,130,FOLLOW_130_in_rule__LiteralValue__LiteralAssignment_3_134175); 
              after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timeKeyword_3_1_0()); 
 
             }
@@ -44675,24 +44968,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_4_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16920:1: rule__LiteralValue__LiteralAssignment_4_1 : ( ( 'current_date' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17029:1: rule__LiteralValue__LiteralAssignment_4_1 : ( ( 'current_date' ) ) ;
     public final void rule__LiteralValue__LiteralAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16924:1: ( ( ( 'current_date' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16925:1: ( ( 'current_date' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17033:1: ( ( ( 'current_date' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17034:1: ( ( 'current_date' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16925:1: ( ( 'current_date' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16926:1: ( 'current_date' )
-            {
-             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_dateKeyword_4_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16927:1: ( 'current_date' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16928:1: 'current_date'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17034:1: ( ( 'current_date' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17035:1: ( 'current_date' )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_dateKeyword_4_1_0()); 
-            match(input,130,FOLLOW_130_in_rule__LiteralValue__LiteralAssignment_4_134002); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17036:1: ( 'current_date' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17037:1: 'current_date'
+            {
+             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_dateKeyword_4_1_0()); 
+            match(input,131,FOLLOW_131_in_rule__LiteralValue__LiteralAssignment_4_134219); 
              after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_dateKeyword_4_1_0()); 
 
             }
@@ -44720,24 +45013,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_5_1"
-    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16943:1: rule__LiteralValue__LiteralAssignment_5_1 : ( ( 'current_time_stamp' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17052:1: rule__LiteralValue__LiteralAssignment_5_1 : ( ( 'current_time_stamp' ) ) ;
     public final void rule__LiteralValue__LiteralAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16947:1: ( ( ( 'current_time_stamp' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16948:1: ( ( 'current_time_stamp' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17056:1: ( ( ( 'current_time_stamp' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17057:1: ( ( 'current_time_stamp' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16948:1: ( ( 'current_time_stamp' ) )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16949:1: ( 'current_time_stamp' )
-            {
-             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16950:1: ( 'current_time_stamp' )
-            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:16951:1: 'current_time_stamp'
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17057:1: ( ( 'current_time_stamp' ) )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17058:1: ( 'current_time_stamp' )
             {
              before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
-            match(input,131,FOLLOW_131_in_rule__LiteralValue__LiteralAssignment_5_134046); 
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17059:1: ( 'current_time_stamp' )
+            // ../com.robotoworks.mechanoid.sqlite.ui/src-gen/com/robotoworks/mechanoid/sqlite/ui/contentassist/antlr/internal/InternalSqliteModel.g:17060:1: 'current_time_stamp'
+            {
+             before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
+            match(input,132,FOLLOW_132_in_rule__LiteralValue__LiteralAssignment_5_134263); 
              after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
 
             }
@@ -44775,20 +45068,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     static final String DFA7_minS =
         "\1\4\1\14\1\uffff\1\4\6\uffff";
     static final String DFA7_maxS =
-        "\1\u0083\1\u0080\1\uffff\1\u0083\6\uffff";
+        "\1\u0084\1\u0081\1\uffff\1\u0084\6\uffff";
     static final String DFA7_acceptS =
         "\2\uffff\1\2\1\uffff\1\4\1\5\1\7\1\6\1\1\1\3";
     static final String DFA7_specialS =
         "\12\uffff}>";
     static final String[] DFA7_transitionS = {
             "\1\2\1\1\1\2\11\uffff\1\2\63\uffff\1\3\1\uffff\1\5\3\uffff\1"+
-            "\6\22\uffff\1\4\15\uffff\1\4\1\2\24\uffff\3\2",
+            "\6\22\uffff\1\4\15\uffff\1\4\1\2\25\uffff\3\2",
             "\33\10\5\uffff\4\10\23\uffff\1\10\1\7\1\10\1\uffff\3\10\1\uffff"+
             "\3\10\5\uffff\1\10\12\uffff\2\10\1\uffff\1\10\3\uffff\1\10\13"+
-            "\uffff\2\10\1\uffff\5\10\3\uffff\2\10\1\uffff\2\10",
+            "\uffff\3\10\1\uffff\5\10\3\uffff\2\10\1\uffff\2\10",
             "",
             "\3\11\11\uffff\1\11\63\uffff\1\11\1\uffff\1\11\3\uffff\1\11"+
-            "\22\uffff\1\11\15\uffff\2\11\3\uffff\1\4\20\uffff\3\11",
+            "\22\uffff\1\11\15\uffff\2\11\3\uffff\1\4\21\uffff\3\11",
             "",
             "",
             "",
@@ -44839,14 +45132,14 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     static final String DFA10_maxS =
         "\1\133\1\121\1\uffff\1\121\6\uffff";
     static final String DFA10_acceptS =
-        "\2\uffff\1\4\1\uffff\1\1\1\2\1\3\1\7\1\6\1\5";
+        "\2\uffff\1\4\1\uffff\1\3\1\2\1\1\1\5\1\7\1\6";
     static final String DFA10_specialS =
         "\12\uffff}>";
     static final String[] DFA10_transitionS = {
             "\1\1\13\uffff\1\2\1\3",
-            "\1\4\1\5\1\6",
+            "\1\6\1\5\1\4",
             "",
-            "\1\11\1\7\1\10",
+            "\1\7\1\10\1\11",
             "",
             "",
             "",
@@ -45207,14 +45500,14 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__MigrationBlock__StatementsAssignment_3_2_0_in_rule__MigrationBlock__Group_3_2__0__Impl7048 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__MigrationBlock__Group_3_2__1__Impl_in_rule__MigrationBlock__Group_3_2__17078 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_67_in_rule__MigrationBlock__Group_3_2__1__Impl7106 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprConcat__Group__0__Impl_in_rule__ExprConcat__Group__07141 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L});
+    public static final BitSet FOLLOW_rule__ExprConcat__Group__0__Impl_in_rule__ExprConcat__Group__07141 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
     public static final BitSet FOLLOW_rule__ExprConcat__Group__1_in_rule__ExprConcat__Group__07144 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprMult_in_rule__ExprConcat__Group__0__Impl7171 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprConcat__Group__1__Impl_in_rule__ExprConcat__Group__17200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__0_in_rule__ExprConcat__Group__1__Impl7227 = new BitSet(new long[]{0x0000000000000002L,0x0020000000000000L});
-    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__0__Impl_in_rule__ExprConcat__Group_1__07262 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L});
+    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__0_in_rule__ExprConcat__Group__1__Impl7227 = new BitSet(new long[]{0x0000000000000002L,0x0040000000000000L});
+    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__0__Impl_in_rule__ExprConcat__Group_1__07262 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
     public static final BitSet FOLLOW_rule__ExprConcat__Group_1__1_in_rule__ExprConcat__Group_1__07265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__1__Impl_in_rule__ExprConcat__Group_1__17323 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprConcat__Group_1__1__Impl_in_rule__ExprConcat__Group_1__17323 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprConcat__Group_1__2_in_rule__ExprConcat__Group_1__17326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprConcat__OpAssignment_1_1_in_rule__ExprConcat__Group_1__1__Impl7353 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprConcat__Group_1__2__Impl_in_rule__ExprConcat__Group_1__27383 = new BitSet(new long[]{0x0000000000000002L});
@@ -45226,7 +45519,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprMult__Group_1__0_in_rule__ExprMult__Group__1__Impl7532 = new BitSet(new long[]{0x0000000000007002L});
     public static final BitSet FOLLOW_rule__ExprMult__Group_1__0__Impl_in_rule__ExprMult__Group_1__07567 = new BitSet(new long[]{0x0000000000007000L});
     public static final BitSet FOLLOW_rule__ExprMult__Group_1__1_in_rule__ExprMult__Group_1__07570 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprMult__Group_1__1__Impl_in_rule__ExprMult__Group_1__17628 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprMult__Group_1__1__Impl_in_rule__ExprMult__Group_1__17628 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprMult__Group_1__2_in_rule__ExprMult__Group_1__17631 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprMult__OpAssignment_1_1_in_rule__ExprMult__Group_1__1__Impl7658 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprMult__Group_1__2__Impl_in_rule__ExprMult__Group_1__27688 = new BitSet(new long[]{0x0000000000000002L});
@@ -45238,7 +45531,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprAdd__Group_1__0_in_rule__ExprAdd__Group__1__Impl7837 = new BitSet(new long[]{0x0000000000018002L});
     public static final BitSet FOLLOW_rule__ExprAdd__Group_1__0__Impl_in_rule__ExprAdd__Group_1__07872 = new BitSet(new long[]{0x0000000000018000L});
     public static final BitSet FOLLOW_rule__ExprAdd__Group_1__1_in_rule__ExprAdd__Group_1__07875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprAdd__Group_1__1__Impl_in_rule__ExprAdd__Group_1__17933 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprAdd__Group_1__1__Impl_in_rule__ExprAdd__Group_1__17933 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprAdd__Group_1__2_in_rule__ExprAdd__Group_1__17936 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprAdd__OpAssignment_1_1_in_rule__ExprAdd__Group_1__1__Impl7963 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprAdd__Group_1__2__Impl_in_rule__ExprAdd__Group_1__27993 = new BitSet(new long[]{0x0000000000000002L});
@@ -45250,7 +45543,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprBit__Group_1__0_in_rule__ExprBit__Group__1__Impl8142 = new BitSet(new long[]{0x00000000001E0002L});
     public static final BitSet FOLLOW_rule__ExprBit__Group_1__0__Impl_in_rule__ExprBit__Group_1__08177 = new BitSet(new long[]{0x00000000001E0000L});
     public static final BitSet FOLLOW_rule__ExprBit__Group_1__1_in_rule__ExprBit__Group_1__08180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprBit__Group_1__1__Impl_in_rule__ExprBit__Group_1__18238 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprBit__Group_1__1__Impl_in_rule__ExprBit__Group_1__18238 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprBit__Group_1__2_in_rule__ExprBit__Group_1__18241 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprBit__OpAssignment_1_1_in_rule__ExprBit__Group_1__1__Impl8268 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprBit__Group_1__2__Impl_in_rule__ExprBit__Group_1__28298 = new BitSet(new long[]{0x0000000000000002L});
@@ -45262,7 +45555,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprRelate__Group_1__0_in_rule__ExprRelate__Group__1__Impl8447 = new BitSet(new long[]{0x0000000001E00002L});
     public static final BitSet FOLLOW_rule__ExprRelate__Group_1__0__Impl_in_rule__ExprRelate__Group_1__08482 = new BitSet(new long[]{0x0000000001E00000L});
     public static final BitSet FOLLOW_rule__ExprRelate__Group_1__1_in_rule__ExprRelate__Group_1__08485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprRelate__Group_1__1__Impl_in_rule__ExprRelate__Group_1__18543 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprRelate__Group_1__1__Impl_in_rule__ExprRelate__Group_1__18543 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprRelate__Group_1__2_in_rule__ExprRelate__Group_1__18546 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprRelate__OpAssignment_1_1_in_rule__ExprRelate__Group_1__1__Impl8573 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprRelate__Group_1__2__Impl_in_rule__ExprRelate__Group_1__28603 = new BitSet(new long[]{0x0000000000000002L});
@@ -45274,19 +45567,19 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprEqual__Group_1__0_in_rule__ExprEqual__Group__1__Impl8752 = new BitSet(new long[]{0x0000000FFE000002L});
     public static final BitSet FOLLOW_rule__ExprEqual__Group_1__0__Impl_in_rule__ExprEqual__Group_1__08787 = new BitSet(new long[]{0x0000000FFE000000L});
     public static final BitSet FOLLOW_rule__ExprEqual__Group_1__1_in_rule__ExprEqual__Group_1__08790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprEqual__Group_1__1__Impl_in_rule__ExprEqual__Group_1__18848 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprEqual__Group_1__1__Impl_in_rule__ExprEqual__Group_1__18848 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprEqual__Group_1__2_in_rule__ExprEqual__Group_1__18851 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprEqual__OpAssignment_1_1_in_rule__ExprEqual__Group_1__1__Impl8878 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprEqual__Group_1__2__Impl_in_rule__ExprEqual__Group_1__28908 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprEqual__RightAssignment_1_2_in_rule__ExprEqual__Group_1__2__Impl8935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprAnd__Group__0__Impl_in_rule__ExprAnd__Group__08971 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
+    public static final BitSet FOLLOW_rule__ExprAnd__Group__0__Impl_in_rule__ExprAnd__Group__08971 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
     public static final BitSet FOLLOW_rule__ExprAnd__Group__1_in_rule__ExprAnd__Group__08974 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprOr_in_rule__ExprAnd__Group__0__Impl9001 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprAnd__Group__1__Impl_in_rule__ExprAnd__Group__19030 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__0_in_rule__ExprAnd__Group__1__Impl9057 = new BitSet(new long[]{0x0000000000000002L,0x0040000000000000L});
-    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__0__Impl_in_rule__ExprAnd__Group_1__09092 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
+    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__0_in_rule__ExprAnd__Group__1__Impl9057 = new BitSet(new long[]{0x0000000000000002L,0x0080000000000000L});
+    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__0__Impl_in_rule__ExprAnd__Group_1__09092 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
     public static final BitSet FOLLOW_rule__ExprAnd__Group_1__1_in_rule__ExprAnd__Group_1__09095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__1__Impl_in_rule__ExprAnd__Group_1__19153 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprAnd__Group_1__1__Impl_in_rule__ExprAnd__Group_1__19153 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprAnd__Group_1__2_in_rule__ExprAnd__Group_1__19156 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprAnd__OpAssignment_1_1_in_rule__ExprAnd__Group_1__1__Impl9183 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprAnd__Group_1__2__Impl_in_rule__ExprAnd__Group_1__29213 = new BitSet(new long[]{0x0000000000000002L});
@@ -45298,7 +45591,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ExprOr__Group_1__0_in_rule__ExprOr__Group__1__Impl9362 = new BitSet(new long[]{0x0000000000000002L,0x0000000200000000L});
     public static final BitSet FOLLOW_rule__ExprOr__Group_1__0__Impl_in_rule__ExprOr__Group_1__09397 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
     public static final BitSet FOLLOW_rule__ExprOr__Group_1__1_in_rule__ExprOr__Group_1__09400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprOr__Group_1__1__Impl_in_rule__ExprOr__Group_1__19458 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ExprOr__Group_1__1__Impl_in_rule__ExprOr__Group_1__19458 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ExprOr__Group_1__2_in_rule__ExprOr__Group_1__19461 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprOr__OpAssignment_1_1_in_rule__ExprOr__Group_1__1__Impl9488 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprOr__Group_1__2__Impl_in_rule__ExprOr__Group_1__29518 = new BitSet(new long[]{0x0000000000000002L});
@@ -45312,11 +45605,11 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_0__1_in_rule__PrimaryExpression__Group_0_0__09706 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_0__1__Impl_in_rule__PrimaryExpression__Group_0_0__19764 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__NameAssignment_0_0_1_in_rule__PrimaryExpression__Group_0_0__1__Impl9791 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_1__0__Impl_in_rule__PrimaryExpression__Group_0_1__09825 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_1__0__Impl_in_rule__PrimaryExpression__Group_0_1__09825 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_1__1_in_rule__PrimaryExpression__Group_0_1__09828 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_1__1__Impl_in_rule__PrimaryExpression__Group_0_1__19886 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__LiteralValueAssignment_0_1_1_in_rule__PrimaryExpression__Group_0_1__1__Impl9913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_2__0__Impl_in_rule__PrimaryExpression__Group_0_2__09947 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_2__0__Impl_in_rule__PrimaryExpression__Group_0_2__09947 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_2__1_in_rule__PrimaryExpression__Group_0_2__09950 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__PrimaryExpression__Group_0_2__0__Impl9978 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_2__1__Impl_in_rule__PrimaryExpression__Group_0_2__110009 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -45342,24 +45635,24 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_69_in_rule__PrimaryExpression__Group_0_3__5__Impl10466 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__0__Impl_in_rule__PrimaryExpression__Group_0_4__010509 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__1_in_rule__PrimaryExpression__Group_0_4__010512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__1__Impl_in_rule__PrimaryExpression__Group_0_4__110570 = new BitSet(new long[]{0x0000000000010070L,0x0000180020001450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__1__Impl_in_rule__PrimaryExpression__Group_0_4__110570 = new BitSet(new long[]{0x0000000000010070L,0x0000180020001450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__2_in_rule__PrimaryExpression__Group_0_4__110573 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__PrimaryExpression__Group_0_4__1__Impl10601 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__2__Impl_in_rule__PrimaryExpression__Group_0_4__210632 = new BitSet(new long[]{0x0000000000010070L,0x0000180020001450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__2__Impl_in_rule__PrimaryExpression__Group_0_4__210632 = new BitSet(new long[]{0x0000000000010070L,0x0000180020001450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__3_in_rule__PrimaryExpression__Group_0_4__210635 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__CaseExpressionAssignment_0_4_2_in_rule__PrimaryExpression__Group_0_4__2__Impl10662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__3__Impl_in_rule__PrimaryExpression__Group_0_4__310693 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__3__Impl_in_rule__PrimaryExpression__Group_0_4__310693 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__4_in_rule__PrimaryExpression__Group_0_4__310696 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__CasesAssignment_0_4_3_in_rule__PrimaryExpression__Group_0_4__3__Impl10723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__4__Impl_in_rule__PrimaryExpression__Group_0_4__410753 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__4__Impl_in_rule__PrimaryExpression__Group_0_4__410753 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__5_in_rule__PrimaryExpression__Group_0_4__410756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__CasesAssignment_0_4_4_in_rule__PrimaryExpression__Group_0_4__4__Impl10783 = new BitSet(new long[]{0x0000000000010072L,0x0000180020001450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__5__Impl_in_rule__PrimaryExpression__Group_0_4__510814 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__CasesAssignment_0_4_4_in_rule__PrimaryExpression__Group_0_4__4__Impl10783 = new BitSet(new long[]{0x0000000000010072L,0x0000180020001450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__5__Impl_in_rule__PrimaryExpression__Group_0_4__510814 = new BitSet(new long[]{0x0000000000010070L,0x00001800200015D0L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__6_in_rule__PrimaryExpression__Group_0_4__510817 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4_5__0_in_rule__PrimaryExpression__Group_0_4__5__Impl10844 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4__6__Impl_in_rule__PrimaryExpression__Group_0_4__610875 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_71_in_rule__PrimaryExpression__Group_0_4__6__Impl10903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4_5__0__Impl_in_rule__PrimaryExpression__Group_0_4_5__010948 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4_5__0__Impl_in_rule__PrimaryExpression__Group_0_4_5__010948 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4_5__1_in_rule__PrimaryExpression__Group_0_4_5__010951 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_72_in_rule__PrimaryExpression__Group_0_4_5__0__Impl10979 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_4_5__1__Impl_in_rule__PrimaryExpression__Group_0_4_5__111010 = new BitSet(new long[]{0x0000000000000002L});
@@ -45369,7 +45662,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__1__Impl_in_rule__PrimaryExpression__Group_0_5__111132 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__2_in_rule__PrimaryExpression__Group_0_5__111135 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__NameAssignment_0_5_1_in_rule__PrimaryExpression__Group_0_5__1__Impl11162 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__2__Impl_in_rule__PrimaryExpression__Group_0_5__211192 = new BitSet(new long[]{0x0000000000011070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__2__Impl_in_rule__PrimaryExpression__Group_0_5__211192 = new BitSet(new long[]{0x0000000000011070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__3_in_rule__PrimaryExpression__Group_0_5__211195 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__PrimaryExpression__Group_0_5__2__Impl11223 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5__3__Impl_in_rule__PrimaryExpression__Group_0_5__311254 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -45382,17 +45675,17 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_0_in_rule__PrimaryExpression__Group_0_5_3_1__0__Impl11413 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1__1__Impl_in_rule__PrimaryExpression__Group_0_5_3_1__111443 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1_1__0_in_rule__PrimaryExpression__Group_0_5_3_1__1__Impl11470 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1_1__0__Impl_in_rule__PrimaryExpression__Group_0_5_3_1_1__011505 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1_1__0__Impl_in_rule__PrimaryExpression__Group_0_5_3_1_1__011505 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1_1__1_in_rule__PrimaryExpression__Group_0_5_3_1_1__011508 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__PrimaryExpression__Group_0_5_3_1_1__0__Impl11536 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_5_3_1_1__1__Impl_in_rule__PrimaryExpression__Group_0_5_3_1_1__111567 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_1_in_rule__PrimaryExpression__Group_0_5_3_1_1__1__Impl11594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__0__Impl_in_rule__PrimaryExpression__Group_0_6__011628 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__0__Impl_in_rule__PrimaryExpression__Group_0_6__011628 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__1_in_rule__PrimaryExpression__Group_0_6__011631 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__1__Impl_in_rule__PrimaryExpression__Group_0_6__111689 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__2_in_rule__PrimaryExpression__Group_0_6__111692 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_74_in_rule__PrimaryExpression__Group_0_6__1__Impl11720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__2__Impl_in_rule__PrimaryExpression__Group_0_6__211751 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__2__Impl_in_rule__PrimaryExpression__Group_0_6__211751 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__3_in_rule__PrimaryExpression__Group_0_6__211754 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__PrimaryExpression__Group_0_6__2__Impl11782 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__3__Impl_in_rule__PrimaryExpression__Group_0_6__311813 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
@@ -45406,13 +45699,13 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__PrimaryExpression__TypeAssignment_0_6_5_in_rule__PrimaryExpression__Group_0_6__5__Impl11965 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PrimaryExpression__Group_0_6__6__Impl_in_rule__PrimaryExpression__Group_0_6__611995 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__PrimaryExpression__Group_0_6__6__Impl12023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Case__Group__0__Impl_in_rule__Case__Group__012068 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__Case__Group__0__Impl_in_rule__Case__Group__012068 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__Case__Group__1_in_rule__Case__Group__012071 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_76_in_rule__Case__Group__0__Impl12099 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Case__Group__1__Impl_in_rule__Case__Group__112130 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_rule__Case__Group__2_in_rule__Case__Group__112133 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Case__WhenExpressionAssignment_1_in_rule__Case__Group__1__Impl12160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Case__Group__2__Impl_in_rule__Case__Group__212190 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__Case__Group__2__Impl_in_rule__Case__Group__212190 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__Case__Group__3_in_rule__Case__Group__212193 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_77_in_rule__Case__Group__2__Impl12221 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Case__Group__3__Impl_in_rule__Case__Group__312252 = new BitSet(new long[]{0x0000000000000002L});
@@ -45536,7 +45829,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_88_in_rule__DDLStatement__Group_2_8__1__Impl14974 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DDLStatement__Group_2_8__2__Impl_in_rule__DDLStatement__Group_2_8__215005 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_89_in_rule__DDLStatement__Group_2_8__2__Impl15033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DDLStatement__Group_2_9__0__Impl_in_rule__DDLStatement__Group_2_9__015070 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__DDLStatement__Group_2_9__0__Impl_in_rule__DDLStatement__Group_2_9__015070 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__DDLStatement__Group_2_9__1_in_rule__DDLStatement__Group_2_9__015073 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_76_in_rule__DDLStatement__Group_2_9__0__Impl15101 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DDLStatement__Group_2_9__1__Impl_in_rule__DDLStatement__Group_2_9__115132 = new BitSet(new long[]{0x0000000000000002L});
@@ -45632,7 +45925,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__DeleteStatement__TableNameAssignment_2_in_rule__DeleteStatement__Group__2__Impl17282 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DeleteStatement__Group__3__Impl_in_rule__DeleteStatement__Group__317312 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DeleteStatement__Group_3__0_in_rule__DeleteStatement__Group__3__Impl17339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DeleteStatement__Group_3__0__Impl_in_rule__DeleteStatement__Group_3__017378 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__DeleteStatement__Group_3__0__Impl_in_rule__DeleteStatement__Group_3__017378 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__DeleteStatement__Group_3__1_in_rule__DeleteStatement__Group_3__017381 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_95_in_rule__DeleteStatement__Group_3__0__Impl17409 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DeleteStatement__Group_3__1__Impl_in_rule__DeleteStatement__Group_3__117440 = new BitSet(new long[]{0x0000000000000002L});
@@ -45680,7 +45973,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__0__Impl_in_rule__InsertStatement__Group_4_0_0__018431 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__1_in_rule__InsertStatement__Group_4_0_0__018434 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_98_in_rule__InsertStatement__Group_4_0_0__0__Impl18462 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__1__Impl_in_rule__InsertStatement__Group_4_0_0__118493 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__1__Impl_in_rule__InsertStatement__Group_4_0_0__118493 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__2_in_rule__InsertStatement__Group_4_0_0__118496 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__InsertStatement__Group_4_0_0__1__Impl18524 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__2__Impl_in_rule__InsertStatement__Group_4_0_0__218555 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000220L});
@@ -45691,7 +45984,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0_3__0_in_rule__InsertStatement__Group_4_0_0__3__Impl18645 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0__4__Impl_in_rule__InsertStatement__Group_4_0_0__418676 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__InsertStatement__Group_4_0_0__4__Impl18704 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0_3__0__Impl_in_rule__InsertStatement__Group_4_0_0_3__018745 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0_3__0__Impl_in_rule__InsertStatement__Group_4_0_0_3__018745 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0_3__1_in_rule__InsertStatement__Group_4_0_0_3__018748 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__InsertStatement__Group_4_0_0_3__0__Impl18776 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__InsertStatement__Group_4_0_0_3__1__Impl_in_rule__InsertStatement__Group_4_0_0_3__118807 = new BitSet(new long[]{0x0000000000000002L});
@@ -45731,7 +46024,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_73_in_rule__UpdateStatement__Group_5__0__Impl19585 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__UpdateStatement__Group_5__1__Impl_in_rule__UpdateStatement__Group_5__119616 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_1_in_rule__UpdateStatement__Group_5__1__Impl19643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UpdateStatement__Group_6__0__Impl_in_rule__UpdateStatement__Group_6__019677 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__UpdateStatement__Group_6__0__Impl_in_rule__UpdateStatement__Group_6__019677 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__UpdateStatement__Group_6__1_in_rule__UpdateStatement__Group_6__019680 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_95_in_rule__UpdateStatement__Group_6__0__Impl19708 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__UpdateStatement__Group_6__1__Impl_in_rule__UpdateStatement__Group_6__119739 = new BitSet(new long[]{0x0000000000000002L});
@@ -45739,7 +46032,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__0__Impl_in_rule__UpdateColumnExpression__Group__019800 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__1_in_rule__UpdateColumnExpression__Group__019803 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__UpdateColumnExpression__ColumnNameAssignment_0_in_rule__UpdateColumnExpression__Group__0__Impl19830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__1__Impl_in_rule__UpdateColumnExpression__Group__119860 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__1__Impl_in_rule__UpdateColumnExpression__Group__119860 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__2_in_rule__UpdateColumnExpression__Group__119863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_25_in_rule__UpdateColumnExpression__Group__1__Impl19891 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__UpdateColumnExpression__Group__2__Impl_in_rule__UpdateColumnExpression__Group__219922 = new BitSet(new long[]{0x0000000000000002L});
@@ -45760,7 +46053,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2__0__Impl_in_rule__SelectStatement__Group_2__020290 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2__1_in_rule__SelectStatement__Group_2__020293 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_101_in_rule__SelectStatement__Group_2__0__Impl20321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectStatement__Group_2__1__Impl_in_rule__SelectStatement__Group_2__120352 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__SelectStatement__Group_2__1__Impl_in_rule__SelectStatement__Group_2__120352 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2__2_in_rule__SelectStatement__Group_2__120355 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_102_in_rule__SelectStatement__Group_2__1__Impl20383 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2__2__Impl_in_rule__SelectStatement__Group_2__220414 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
@@ -45768,7 +46061,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__SelectStatement__OrderingTermsAssignment_2_2_in_rule__SelectStatement__Group_2__2__Impl20444 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2__3__Impl_in_rule__SelectStatement__Group_2__320474 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2_3__0_in_rule__SelectStatement__Group_2__3__Impl20501 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_rule__SelectStatement__Group_2_3__0__Impl_in_rule__SelectStatement__Group_2_3__020540 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__SelectStatement__Group_2_3__0__Impl_in_rule__SelectStatement__Group_2_3__020540 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2_3__1_in_rule__SelectStatement__Group_2_3__020543 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__SelectStatement__Group_2_3__0__Impl20571 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectStatement__Group_2_3__1__Impl_in_rule__SelectStatement__Group_2_3__120602 = new BitSet(new long[]{0x0000000000000002L});
@@ -45800,10 +46093,10 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__1__Impl_in_rule__ColumnConstraint__Group_0__121280 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__2_in_rule__ColumnConstraint__Group_0__121283 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_105_in_rule__ColumnConstraint__Group_0__1__Impl21311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__2__Impl_in_rule__ColumnConstraint__Group_0__221342 = new BitSet(new long[]{0x0000000000000000L,0x0380000000000000L});
+    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__2__Impl_in_rule__ColumnConstraint__Group_0__221342 = new BitSet(new long[]{0x0000000000000000L,0x0700000000000000L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__3_in_rule__ColumnConstraint__Group_0__221345 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_106_in_rule__ColumnConstraint__Group_0__2__Impl21373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__3__Impl_in_rule__ColumnConstraint__Group_0__321404 = new BitSet(new long[]{0x0000000000000000L,0x0380000000000000L});
+    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__3__Impl_in_rule__ColumnConstraint__Group_0__321404 = new BitSet(new long[]{0x0000000000000000L,0x0700000000000000L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__4_in_rule__ColumnConstraint__Group_0__321407 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Alternatives_0_3_in_rule__ColumnConstraint__Group_0__3__Impl21434 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_0__4__Impl_in_rule__ColumnConstraint__Group_0__421465 = new BitSet(new long[]{0x0000000000000002L});
@@ -45820,18 +46113,18 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__ColumnConstraint__ConflictClauseAssignment_1_3_in_rule__ColumnConstraint__Group_1__3__Impl21745 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__0__Impl_in_rule__ColumnConstraint__Group_2__021784 = new BitSet(new long[]{0x0000000000000000L,0x00000A0800000000L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__1_in_rule__ColumnConstraint__Group_2__021787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__1__Impl_in_rule__ColumnConstraint__Group_2__121845 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000010L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__1__Impl_in_rule__ColumnConstraint__Group_2__121845 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000010L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__2_in_rule__ColumnConstraint__Group_2__121848 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_99_in_rule__ColumnConstraint__Group_2__1__Impl21876 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__Group_2__2__Impl_in_rule__ColumnConstraint__Group_2__221907 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ColumnConstraint__DefaultValueAssignment_2_2_in_rule__ColumnConstraint__Group_2__2__Impl21934 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DefaultValue__Group_0__0__Impl_in_rule__DefaultValue__Group_0__021970 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__DefaultValue__Group_0__0__Impl_in_rule__DefaultValue__Group_0__021970 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__DefaultValue__Group_0__1_in_rule__DefaultValue__Group_0__021973 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefaultValue__Group_0__1__Impl_in_rule__DefaultValue__Group_0__122031 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefaultValue__LiteralAssignment_0_1_in_rule__DefaultValue__Group_0__1__Impl22058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DefaultValue__Group_1__0__Impl_in_rule__DefaultValue__Group_1__022092 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000010L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__DefaultValue__Group_1__0__Impl_in_rule__DefaultValue__Group_1__022092 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000010L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__DefaultValue__Group_1__1_in_rule__DefaultValue__Group_1__022095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DefaultValue__Group_1__1__Impl_in_rule__DefaultValue__Group_1__122153 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__DefaultValue__Group_1__1__Impl_in_rule__DefaultValue__Group_1__122153 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__DefaultValue__Group_1__2_in_rule__DefaultValue__Group_1__122156 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__DefaultValue__Group_1__1__Impl22184 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefaultValue__Group_1__2__Impl_in_rule__DefaultValue__Group_1__222215 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -45914,7 +46207,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_rule__TableConstraint__Group_2__2__Impl_in_rule__TableConstraint__Group_2__224024 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__TableConstraint__Group_2__3_in_rule__TableConstraint__Group_2__224027 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_111_in_rule__TableConstraint__Group_2__2__Impl24055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TableConstraint__Group_2__3__Impl_in_rule__TableConstraint__Group_2__324086 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__TableConstraint__Group_2__3__Impl_in_rule__TableConstraint__Group_2__324086 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__TableConstraint__Group_2__4_in_rule__TableConstraint__Group_2__324089 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__TableConstraint__Group_2__3__Impl24117 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TableConstraint__Group_2__4__Impl_in_rule__TableConstraint__Group_2__424148 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -45927,345 +46220,354 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final BitSet FOLLOW_110_in_rule__TableConstraint__Group_2_1__0__Impl24310 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TableConstraint__Group_2_1__1__Impl_in_rule__TableConstraint__Group_2_1__124341 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TableConstraint__NameAssignment_2_1_1_in_rule__TableConstraint__Group_2_1__1__Impl24368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IndexedColumn__Group__0__Impl_in_rule__IndexedColumn__Group__024402 = new BitSet(new long[]{0x0000000000000000L,0x0180000000000000L});
+    public static final BitSet FOLLOW_rule__IndexedColumn__Group__0__Impl_in_rule__IndexedColumn__Group__024402 = new BitSet(new long[]{0x0000000000000000L,0x0300000000000000L});
     public static final BitSet FOLLOW_rule__IndexedColumn__Group__1_in_rule__IndexedColumn__Group__024405 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IndexedColumn__NameAssignment_0_in_rule__IndexedColumn__Group__0__Impl24432 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IndexedColumn__Group__1__Impl_in_rule__IndexedColumn__Group__124462 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IndexedColumn__Alternatives_1_in_rule__IndexedColumn__Group__1__Impl24489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__OrderingTerm__Group__0__Impl_in_rule__OrderingTerm__Group__024524 = new BitSet(new long[]{0x0000000000000000L,0x0180000000000000L});
+    public static final BitSet FOLLOW_rule__OrderingTerm__Group__0__Impl_in_rule__OrderingTerm__Group__024524 = new BitSet(new long[]{0x0000000000000000L,0x0300000000000000L});
     public static final BitSet FOLLOW_rule__OrderingTerm__Group__1_in_rule__OrderingTerm__Group__024527 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__OrderingTerm__ExpressionAssignment_0_in_rule__OrderingTerm__Group__0__Impl24554 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__OrderingTerm__Group__1__Impl_in_rule__OrderingTerm__Group__124584 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__OrderingTerm__Alternatives_1_in_rule__OrderingTerm__Group__1__Impl24611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__0__Impl_in_rule__SelectCore__Group__024646 = new BitSet(new long[]{0x0000000000011070L,0x0C00180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__0__Impl_in_rule__SelectCore__Group__024646 = new BitSet(new long[]{0x0000000000011070L,0x1800180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__SelectCore__Group__1_in_rule__SelectCore__Group__024649 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_112_in_rule__SelectCore__Group__0__Impl24677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__1__Impl_in_rule__SelectCore__Group__124708 = new BitSet(new long[]{0x0000000000011070L,0x0C00180020000450L,0x000000000000000EL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__1__Impl_in_rule__SelectCore__Group__124708 = new BitSet(new long[]{0x0000000000011070L,0x1800180020000450L,0x000000000000001CL});
     public static final BitSet FOLLOW_rule__SelectCore__Group__2_in_rule__SelectCore__Group__124711 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectCore__Alternatives_1_in_rule__SelectCore__Group__1__Impl24738 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__2__Impl_in_rule__SelectCore__Group__224769 = new BitSet(new long[]{0x0000000000000000L,0x00020000C0000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__2__Impl_in_rule__SelectCore__Group__224769 = new BitSet(new long[]{0x0000000000000000L,0x00060000C0000200L});
     public static final BitSet FOLLOW_rule__SelectCore__Group__3_in_rule__SelectCore__Group__224772 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectCore__ResultColumnsAssignment_2_in_rule__SelectCore__Group__2__Impl24799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__3__Impl_in_rule__SelectCore__Group__324829 = new BitSet(new long[]{0x0000000000000000L,0x00020000C0000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__3__Impl_in_rule__SelectCore__Group__324829 = new BitSet(new long[]{0x0000000000000000L,0x00060000C0000200L});
     public static final BitSet FOLLOW_rule__SelectCore__Group__4_in_rule__SelectCore__Group__324832 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectCore__Group_3__0_in_rule__SelectCore__Group__3__Impl24859 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__4__Impl_in_rule__SelectCore__Group__424890 = new BitSet(new long[]{0x0000000000000000L,0x00020000C0000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__4__Impl_in_rule__SelectCore__Group__424890 = new BitSet(new long[]{0x0000000000000000L,0x00060000C0000200L});
     public static final BitSet FOLLOW_rule__SelectCore__Group__5_in_rule__SelectCore__Group__424893 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectCore__Group_4__0_in_rule__SelectCore__Group__4__Impl24920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__5__Impl_in_rule__SelectCore__Group__524951 = new BitSet(new long[]{0x0000000000000000L,0x00020000C0000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__5__Impl_in_rule__SelectCore__Group__524951 = new BitSet(new long[]{0x0000000000000000L,0x00060000C0000200L});
     public static final BitSet FOLLOW_rule__SelectCore__Group__6_in_rule__SelectCore__Group__524954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SelectCore__Group_5__0_in_rule__SelectCore__Group__5__Impl24981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group__6__Impl_in_rule__SelectCore__Group__625012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__0_in_rule__SelectCore__Group__6__Impl25039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_3__0__Impl_in_rule__SelectCore__Group_3__025084 = new BitSet(new long[]{0x0000000000011070L,0x0C00180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_3__1_in_rule__SelectCore__Group_3__025087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_rule__SelectCore__Group_3__0__Impl25115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_3__1__Impl_in_rule__SelectCore__Group_3__125146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__ResultColumnsAssignment_3_1_in_rule__SelectCore__Group_3__1__Impl25173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_4__0__Impl_in_rule__SelectCore__Group_4__025207 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_4__1_in_rule__SelectCore__Group_4__025210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_94_in_rule__SelectCore__Group_4__0__Impl25238 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_4__1__Impl_in_rule__SelectCore__Group_4__125269 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__SourceAssignment_4_1_in_rule__SelectCore__Group_4__1__Impl25296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_5__0__Impl_in_rule__SelectCore__Group_5__025330 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_5__1_in_rule__SelectCore__Group_5__025333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_95_in_rule__SelectCore__Group_5__0__Impl25361 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_5__1__Impl_in_rule__SelectCore__Group_5__125392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__WhereExpressionAssignment_5_1_in_rule__SelectCore__Group_5__1__Impl25419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__0__Impl_in_rule__SelectCore__Group_6__025453 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__1_in_rule__SelectCore__Group_6__025456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_113_in_rule__SelectCore__Group_6__0__Impl25484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__1__Impl_in_rule__SelectCore__Group_6__125515 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__2_in_rule__SelectCore__Group_6__125518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_102_in_rule__SelectCore__Group_6__1__Impl25546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__2__Impl_in_rule__SelectCore__Group_6__225577 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__3_in_rule__SelectCore__Group_6__225580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_2_in_rule__SelectCore__Group_6__2__Impl25607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6__3__Impl_in_rule__SelectCore__Group_6__325637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__0_in_rule__SelectCore__Group_6__3__Impl25664 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__0__Impl_in_rule__SelectCore__Group_6_3__025703 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__1_in_rule__SelectCore__Group_6_3__025706 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_rule__SelectCore__Group_6_3__0__Impl25734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__1__Impl_in_rule__SelectCore__Group_6_3__125765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_3_1_in_rule__SelectCore__Group_6_3__1__Impl25792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinSource__Group__0__Impl_in_rule__JoinSource__Group__025826 = new BitSet(new long[]{0x0000000000000000L,0xB004000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_rule__JoinSource__Group__1_in_rule__JoinSource__Group__025829 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinSource__SourceAssignment_0_in_rule__JoinSource__Group__0__Impl25856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinSource__Group__1__Impl_in_rule__JoinSource__Group__125886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinSource__JoinStatementsAssignment_1_in_rule__JoinSource__Group__1__Impl25913 = new BitSet(new long[]{0x0000000000000002L,0xB004000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0__0__Impl_in_rule__SingleSource__Group_0__025948 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0__1_in_rule__SingleSource__Group_0__025951 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0__1__Impl_in_rule__SingleSource__Group_0__126009 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0__2_in_rule__SingleSource__Group_0__126012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__TableAssignment_0_1_in_rule__SingleSource__Group_0__1__Impl26039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0__2__Impl_in_rule__SingleSource__Group_0__226069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__0_in_rule__SingleSource__Group_0__2__Impl26096 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__0__Impl_in_rule__SingleSource__Group_0_2__026133 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__1_in_rule__SingleSource__Group_0_2__026136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_rule__SingleSource__Group_0_2__0__Impl26164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__1__Impl_in_rule__SingleSource__Group_0_2__126195 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__AliasAssignment_0_2_1_in_rule__SingleSource__Group_0_2__1__Impl26222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__0__Impl_in_rule__SingleSource__Group_1__026256 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__1_in_rule__SingleSource__Group_1__026259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__1__Impl_in_rule__SingleSource__Group_1__126317 = new BitSet(new long[]{0x0000000000000000L,0x0001000000000000L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__2_in_rule__SingleSource__Group_1__126320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_rule__SingleSource__Group_1__1__Impl26348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__2__Impl_in_rule__SingleSource__Group_1__226379 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__3_in_rule__SingleSource__Group_1__226382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__SelectStatementAssignment_1_2_in_rule__SingleSource__Group_1__2__Impl26409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__3__Impl_in_rule__SingleSource__Group_1__326439 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__4_in_rule__SingleSource__Group_1__326442 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_rule__SingleSource__Group_1__3__Impl26470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1__4__Impl_in_rule__SingleSource__Group_1__426501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__0_in_rule__SingleSource__Group_1__4__Impl26528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__0__Impl_in_rule__SingleSource__Group_1_4__026569 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__1_in_rule__SingleSource__Group_1_4__026572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_rule__SingleSource__Group_1_4__0__Impl26600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__1__Impl_in_rule__SingleSource__Group_1_4__126631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__AliasAssignment_1_4_1_in_rule__SingleSource__Group_1_4__1__Impl26658 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__0__Impl_in_rule__SingleSource__Group_2__026692 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__1_in_rule__SingleSource__Group_2__026695 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__1__Impl_in_rule__SingleSource__Group_2__126753 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__2_in_rule__SingleSource__Group_2__126756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_rule__SingleSource__Group_2__1__Impl26784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__2__Impl_in_rule__SingleSource__Group_2__226815 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__3_in_rule__SingleSource__Group_2__226818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__JoinSourceAssignment_2_2_in_rule__SingleSource__Group_2__2__Impl26845 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SingleSource__Group_2__3__Impl_in_rule__SingleSource__Group_2__326875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_rule__SingleSource__Group_2__3__Impl26903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__0__Impl_in_rule__JoinStatement__Group__026942 = new BitSet(new long[]{0x0000000000000000L,0xB004000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__1_in_rule__JoinStatement__Group__026945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__1__Impl_in_rule__JoinStatement__Group__127003 = new BitSet(new long[]{0x0000000000000000L,0xB004000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__2_in_rule__JoinStatement__Group__127006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__NaturalAssignment_1_in_rule__JoinStatement__Group__1__Impl27033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__2__Impl_in_rule__JoinStatement__Group__227064 = new BitSet(new long[]{0x0000000000000000L,0xB004000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__3_in_rule__JoinStatement__Group__227067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Alternatives_2_in_rule__JoinStatement__Group__2__Impl27094 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__3__Impl_in_rule__JoinStatement__Group__327125 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__4_in_rule__JoinStatement__Group__327128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_114_in_rule__JoinStatement__Group__3__Impl27156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__4__Impl_in_rule__JoinStatement__Group__427187 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__5_in_rule__JoinStatement__Group__427190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__SingleSourceAssignment_4_in_rule__JoinStatement__Group__4__Impl27217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__5__Impl_in_rule__JoinStatement__Group__527247 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__6_in_rule__JoinStatement__Group__527250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_82_in_rule__JoinStatement__Group__5__Impl27278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group__6__Impl_in_rule__JoinStatement__Group__627309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__ExpressionAssignment_6_in_rule__JoinStatement__Group__6__Impl27336 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__0__Impl_in_rule__JoinStatement__Group_2_0__027380 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__1_in_rule__JoinStatement__Group_2_0__027383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__LeftAssignment_2_0_0_in_rule__JoinStatement__Group_2_0__0__Impl27410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__1__Impl_in_rule__JoinStatement__Group_2_0__127440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JoinStatement__OuterAssignment_2_0_1_in_rule__JoinStatement__Group_2_0__1__Impl27467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__0__Impl_in_rule__ResultColumn__Group_0__027502 = new BitSet(new long[]{0x0000000000001020L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__1_in_rule__ResultColumn__Group_0__027505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__1__Impl_in_rule__ResultColumn__Group_0__127563 = new BitSet(new long[]{0x0000000000001020L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__2_in_rule__ResultColumn__Group_0__127566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__TableAssignment_0_1_in_rule__ResultColumn__Group_0__1__Impl27593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__2__Impl_in_rule__ResultColumn__Group_0__227624 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__ResultColumn__Group_0__2__Impl27652 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__0__Impl_in_rule__ResultColumn__Group_1__027689 = new BitSet(new long[]{0x0000000000011070L,0x0C00180020000450L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__1_in_rule__ResultColumn__Group_1__027692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__1__Impl_in_rule__ResultColumn__Group_1__127750 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__2_in_rule__ResultColumn__Group_1__127753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__ExpressionAssignment_1_1_in_rule__ResultColumn__Group_1__1__Impl27780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__2__Impl_in_rule__ResultColumn__Group_1__227810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__0_in_rule__ResultColumn__Group_1__2__Impl27837 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__0__Impl_in_rule__ResultColumn__Group_1_2__027874 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__1_in_rule__ResultColumn__Group_1_2__027877 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_rule__ResultColumn__Group_1_2__0__Impl27905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__1__Impl_in_rule__ResultColumn__Group_1_2__127936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResultColumn__AliasAssignment_1_2_1_in_rule__ResultColumn__Group_1_2__1__Impl27963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConflictClause__Group__0__Impl_in_rule__ConflictClause__Group__027997 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000000L});
-    public static final BitSet FOLLOW_rule__ConflictClause__Group__1_in_rule__ConflictClause__Group__028000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_82_in_rule__ConflictClause__Group__0__Impl28028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConflictClause__Group__1__Impl_in_rule__ConflictClause__Group__128059 = new BitSet(new long[]{0x0780080000000000L});
-    public static final BitSet FOLLOW_rule__ConflictClause__Group__2_in_rule__ConflictClause__Group__128062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_115_in_rule__ConflictClause__Group__1__Impl28090 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConflictClause__Group__2__Impl_in_rule__ConflictClause__Group__228121 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConflictClause__ResolutionAssignment_2_in_rule__ConflictClause__Group__2__Impl28148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__0__Impl_in_rule__LiteralValue__Group_0__028184 = new BitSet(new long[]{0x0000000000010010L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__1_in_rule__LiteralValue__Group_0__028187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__1__Impl_in_rule__LiteralValue__Group_0__128245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__NumberAssignment_0_1_in_rule__LiteralValue__Group_0__1__Impl28272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__0__Impl_in_rule__LiteralValue__Group_1__028306 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__1_in_rule__LiteralValue__Group_1__028309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__1__Impl_in_rule__LiteralValue__Group_1__128367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_1_1_in_rule__LiteralValue__Group_1__1__Impl28394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__0__Impl_in_rule__LiteralValue__Group_2__028428 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__1_in_rule__LiteralValue__Group_2__028431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__1__Impl_in_rule__LiteralValue__Group_2__128489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_2_1_in_rule__LiteralValue__Group_2__1__Impl28516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__0__Impl_in_rule__LiteralValue__Group_3__028550 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__1_in_rule__LiteralValue__Group_3__028553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__1__Impl_in_rule__LiteralValue__Group_3__128611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_3_1_in_rule__LiteralValue__Group_3__1__Impl28638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__0__Impl_in_rule__LiteralValue__Group_4__028672 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__1_in_rule__LiteralValue__Group_4__028675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__1__Impl_in_rule__LiteralValue__Group_4__128733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_4_1_in_rule__LiteralValue__Group_4__1__Impl28760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__0__Impl_in_rule__LiteralValue__Group_5__028794 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000000EL});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__1_in_rule__LiteralValue__Group_5__028797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__1__Impl_in_rule__LiteralValue__Group_5__128855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_5_1_in_rule__LiteralValue__Group_5__1__Impl28882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__028916 = new BitSet(new long[]{0x0000000000010010L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__028919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__SignedNumber__Group__0__Impl28948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__128981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl29008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FQN__Group__0__Impl_in_rule__FQN__Group__029041 = new BitSet(new long[]{0x0000000000000000L,0x0010000000000000L});
-    public static final BitSet FOLLOW_rule__FQN__Group__1_in_rule__FQN__Group__029044 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FQN__Group__0__Impl29071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FQN__Group__1__Impl_in_rule__FQN__Group__129100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FQN__Group_1__0_in_rule__FQN__Group__1__Impl29127 = new BitSet(new long[]{0x0000000000000002L,0x0010000000000000L});
-    public static final BitSet FOLLOW_rule__FQN__Group_1__0__Impl_in_rule__FQN__Group_1__029162 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__FQN__Group_1__1_in_rule__FQN__Group_1__029165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_116_in_rule__FQN__Group_1__0__Impl29193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FQN__Group_1__1__Impl_in_rule__FQN__Group_1__129224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FQN__Group_1__1__Impl29251 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_rule__Model__PackageNameAssignment_129289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDatabaseBlock_in_rule__Model__DatabaseAssignment_229320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DatabaseBlock__NameAssignment_129351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConfigBlock_in_rule__DatabaseBlock__ConfigAssignment_329382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMigrationBlock_in_rule__DatabaseBlock__MigrationsAssignment_429413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConfigurationStatement_in_rule__ConfigBlock__StatementsAssignment_329444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_0_229475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__ConfigurationStatement__PathAssignment_0_329506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_1_229537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_029568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_2_029599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprConcat_in_rule__SqlExpression__RootAssignment29630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_117_in_rule__ExprConcat__OpAssignment_1_129666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprMult_in_rule__ExprConcat__RightAssignment_1_229705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprMult__OpAlternatives_1_1_0_in_rule__ExprMult__OpAssignment_1_129736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprAdd_in_rule__ExprMult__RightAssignment_1_229769 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprAdd__OpAlternatives_1_1_0_in_rule__ExprAdd__OpAssignment_1_129800 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprBit_in_rule__ExprAdd__RightAssignment_1_229833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprBit__OpAlternatives_1_1_0_in_rule__ExprBit__OpAssignment_1_129864 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprRelate_in_rule__ExprBit__RightAssignment_1_229897 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprRelate__OpAlternatives_1_1_0_in_rule__ExprRelate__OpAssignment_1_129928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprEqual_in_rule__ExprRelate__RightAssignment_1_229961 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExprEqual__OpAlternatives_1_1_0_in_rule__ExprEqual__OpAssignment_1_129992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprAnd_in_rule__ExprEqual__RightAssignment_1_230025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_118_in_rule__ExprAnd__OpAssignment_1_130061 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprOr_in_rule__ExprAnd__RightAssignment_1_230100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_97_in_rule__ExprOr__OpAssignment_1_130136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimaryExpression_in_rule__ExprOr__RightAssignment_1_230175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_rule__PrimaryExpression__NameAssignment_0_0_130206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteralValue_in_rule__PrimaryExpression__LiteralValueAssignment_0_1_130237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_rule__PrimaryExpression__NotAssignment_0_3_130273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_rule__PrimaryExpression__ExistsAssignment_0_3_230317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__PrimaryExpression__SelectAssignment_0_3_430356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__CaseExpressionAssignment_0_4_230387 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_330418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_430449 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_130480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PrimaryExpression__NameAssignment_0_5_130511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__PrimaryExpression__AllAssignment_0_5_3_030547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_030586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_130617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ExpressionAssignment_0_6_330648 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqliteDataType_in_rule__PrimaryExpression__TypeAssignment_0_6_530679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PrimaryExpression__IsnullAlternatives_1_0_in_rule__PrimaryExpression__IsnullAssignment_130710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__Case__WhenExpressionAssignment_130743 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__Case__ThenExpressionAssignment_330774 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_0_330805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_530836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_6_130867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTableConstraint_in_rule__DDLStatement__ConstraintsAssignment_0_7_130898 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_1_330929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__DDLStatement__SelectStatementAssignment_1_530960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_2_330991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_131022 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_131053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__TableNameAssignment_2_731084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DDLStatement__WhenExpressionAssignment_2_9_131115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_031146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_2_031177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_3_331208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlterTableClause_in_rule__DDLStatement__ClauseAssignment_3_431239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_4_431270 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_5_431301 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_6_431332 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__DeleteStatement__TableNameAssignment_231363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DeleteStatement__ExpressionAssignment_3_131394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__InsertStatement__ConflictResolutionAssignment_0_0_1_131425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__TableNameAssignment_231456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_131487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_2_131518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_231549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_3_131580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__InsertStatement__SelectStatementAssignment_4_0_131611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__UpdateStatement__ConflictResolutionAssignment_1_131642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__UpdateStatement__TableNameAssignment_231673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_431704 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_131735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__UpdateStatement__WhereExpressionAssignment_6_131766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__UpdateColumnExpression__ColumnNameAssignment_031797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__UpdateColumnExpression__ExpressionAssignment_231828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_031859 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_1_131890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_231921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_3_131952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__AlterTableClause__NameAssignment_0_231983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_rule__AlterTableClause__ColumnDefAssignment_1_232014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ColumnDef__NameAssignment_032045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnType_in_rule__ColumnDef__TypeAssignment_132076 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnConstraint_in_rule__ColumnDef__ConstraintsAssignment_232107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_119_in_rule__ColumnConstraint__AscAssignment_0_3_032143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_120_in_rule__ColumnConstraint__DescAssignment_0_3_132187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_121_in_rule__ColumnConstraint__AutoincrementAssignment_0_432231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_rule__ColumnConstraint__ConflictClauseAssignment_1_332270 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultValue_in_rule__ColumnConstraint__DefaultValueAssignment_2_232301 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteralValue_in_rule__DefaultValue__LiteralAssignment_0_132332 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DefaultValue__ExpressionAssignment_1_232363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_0_1_132394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_432425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_5_132456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_0_732487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_1_1_132518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_532549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_6_132580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_1_832611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_2_1_132642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__TableConstraint__ExpressionAssignment_2_432673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__IndexedColumn__NameAssignment_032708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_119_in_rule__IndexedColumn__AscAssignment_1_032748 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_120_in_rule__IndexedColumn__DescAssignment_1_132792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__OrderingTerm__ExpressionAssignment_032831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_119_in_rule__OrderingTerm__AscAssignment_1_032867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_120_in_rule__OrderingTerm__DescAssignment_1_132911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_122_in_rule__SelectCore__DistinctAssignment_1_032955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_123_in_rule__SelectCore__AllAssignment_1_132999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_233038 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_3_133069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJoinSource_in_rule__SelectCore__SourceAssignment_4_133100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__WhereExpressionAssignment_5_133131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_233162 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_3_133193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSource_in_rule__JoinSource__SourceAssignment_033224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJoinStatement_in_rule__JoinSource__JoinStatementsAssignment_133255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__TableAssignment_0_133286 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_0_2_133317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__SingleSource__SelectStatementAssignment_1_233348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_1_4_133379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJoinSource_in_rule__SingleSource__JoinSourceAssignment_2_233410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_124_in_rule__JoinStatement__NaturalAssignment_133446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_125_in_rule__JoinStatement__LeftAssignment_2_0_033490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_126_in_rule__JoinStatement__OuterAssignment_2_0_133534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_127_in_rule__JoinStatement__InnerAssignment_2_133578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_128_in_rule__JoinStatement__CrossAssignment_2_233622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSource_in_rule__JoinStatement__SingleSourceAssignment_433661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__JoinStatement__ExpressionAssignment_633692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ResultColumn__TableAssignment_0_133723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__ResultColumn__ExpressionAssignment_1_133754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ResultColumn__AliasAssignment_1_2_133785 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__ConflictClause__ResolutionAssignment_233816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_rule__LiteralValue__NumberAssignment_0_133847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__LiteralValue__LiteralAssignment_1_133878 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_108_in_rule__LiteralValue__LiteralAssignment_2_133914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_129_in_rule__LiteralValue__LiteralAssignment_3_133958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_130_in_rule__LiteralValue__LiteralAssignment_4_134002 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_131_in_rule__LiteralValue__LiteralAssignment_5_134046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__6__Impl_in_rule__SelectCore__Group__625012 = new BitSet(new long[]{0x0000000000000000L,0x00060000C0000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__7_in_rule__SelectCore__Group__625015 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__0_in_rule__SelectCore__Group__6__Impl25042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group__7__Impl_in_rule__SelectCore__Group__725073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_7__0_in_rule__SelectCore__Group__7__Impl25100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_3__0__Impl_in_rule__SelectCore__Group_3__025147 = new BitSet(new long[]{0x0000000000011070L,0x1800180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_3__1_in_rule__SelectCore__Group_3__025150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_rule__SelectCore__Group_3__0__Impl25178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_3__1__Impl_in_rule__SelectCore__Group_3__125209 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__ResultColumnsAssignment_3_1_in_rule__SelectCore__Group_3__1__Impl25236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_4__0__Impl_in_rule__SelectCore__Group_4__025270 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_4__1_in_rule__SelectCore__Group_4__025273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_rule__SelectCore__Group_4__0__Impl25301 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_4__1__Impl_in_rule__SelectCore__Group_4__125332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__SourceAssignment_4_1_in_rule__SelectCore__Group_4__1__Impl25359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_5__0__Impl_in_rule__SelectCore__Group_5__025393 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_5__1_in_rule__SelectCore__Group_5__025396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_95_in_rule__SelectCore__Group_5__0__Impl25424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_5__1__Impl_in_rule__SelectCore__Group_5__125455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__WhereExpressionAssignment_5_1_in_rule__SelectCore__Group_5__1__Impl25482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__0__Impl_in_rule__SelectCore__Group_6__025516 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__1_in_rule__SelectCore__Group_6__025519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_113_in_rule__SelectCore__Group_6__0__Impl25547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__1__Impl_in_rule__SelectCore__Group_6__125578 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__2_in_rule__SelectCore__Group_6__125581 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_102_in_rule__SelectCore__Group_6__1__Impl25609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__2__Impl_in_rule__SelectCore__Group_6__225640 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__3_in_rule__SelectCore__Group_6__225643 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_2_in_rule__SelectCore__Group_6__2__Impl25670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6__3__Impl_in_rule__SelectCore__Group_6__325700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__0_in_rule__SelectCore__Group_6__3__Impl25727 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__0__Impl_in_rule__SelectCore__Group_6_3__025766 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__1_in_rule__SelectCore__Group_6_3__025769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_rule__SelectCore__Group_6_3__0__Impl25797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_6_3__1__Impl_in_rule__SelectCore__Group_6_3__125828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__GroupByExpressionsAssignment_6_3_1_in_rule__SelectCore__Group_6_3__1__Impl25855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_7__0__Impl_in_rule__SelectCore__Group_7__025889 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_7__1_in_rule__SelectCore__Group_7__025892 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_114_in_rule__SelectCore__Group_7__0__Impl25920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__Group_7__1__Impl_in_rule__SelectCore__Group_7__125951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SelectCore__HavingExpressionAssignment_7_1_in_rule__SelectCore__Group_7__1__Impl25978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinSource__Group__0__Impl_in_rule__JoinSource__Group__026012 = new BitSet(new long[]{0x0000000000000000L,0x6008000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_rule__JoinSource__Group__1_in_rule__JoinSource__Group__026015 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinSource__SourceAssignment_0_in_rule__JoinSource__Group__0__Impl26042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinSource__Group__1__Impl_in_rule__JoinSource__Group__126072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinSource__JoinStatementsAssignment_1_in_rule__JoinSource__Group__1__Impl26099 = new BitSet(new long[]{0x0000000000000002L,0x6008000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0__0__Impl_in_rule__SingleSource__Group_0__026134 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0__1_in_rule__SingleSource__Group_0__026137 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0__1__Impl_in_rule__SingleSource__Group_0__126195 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0__2_in_rule__SingleSource__Group_0__126198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__TableAssignment_0_1_in_rule__SingleSource__Group_0__1__Impl26225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0__2__Impl_in_rule__SingleSource__Group_0__226255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__0_in_rule__SingleSource__Group_0__2__Impl26282 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__0__Impl_in_rule__SingleSource__Group_0_2__026319 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__1_in_rule__SingleSource__Group_0_2__026322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_rule__SingleSource__Group_0_2__0__Impl26350 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_0_2__1__Impl_in_rule__SingleSource__Group_0_2__126381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__AliasAssignment_0_2_1_in_rule__SingleSource__Group_0_2__1__Impl26408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__0__Impl_in_rule__SingleSource__Group_1__026442 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__1_in_rule__SingleSource__Group_1__026445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__1__Impl_in_rule__SingleSource__Group_1__126503 = new BitSet(new long[]{0x0000000000000000L,0x0001000000000000L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__2_in_rule__SingleSource__Group_1__126506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_rule__SingleSource__Group_1__1__Impl26534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__2__Impl_in_rule__SingleSource__Group_1__226565 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__3_in_rule__SingleSource__Group_1__226568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__SelectStatementAssignment_1_2_in_rule__SingleSource__Group_1__2__Impl26595 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__3__Impl_in_rule__SingleSource__Group_1__326625 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__4_in_rule__SingleSource__Group_1__326628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_rule__SingleSource__Group_1__3__Impl26656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1__4__Impl_in_rule__SingleSource__Group_1__426687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__0_in_rule__SingleSource__Group_1__4__Impl26714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__0__Impl_in_rule__SingleSource__Group_1_4__026755 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__1_in_rule__SingleSource__Group_1_4__026758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_rule__SingleSource__Group_1_4__0__Impl26786 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_1_4__1__Impl_in_rule__SingleSource__Group_1_4__126817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__AliasAssignment_1_4_1_in_rule__SingleSource__Group_1_4__1__Impl26844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__0__Impl_in_rule__SingleSource__Group_2__026878 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__1_in_rule__SingleSource__Group_2__026881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__1__Impl_in_rule__SingleSource__Group_2__126939 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__2_in_rule__SingleSource__Group_2__126942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_rule__SingleSource__Group_2__1__Impl26970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__2__Impl_in_rule__SingleSource__Group_2__227001 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__3_in_rule__SingleSource__Group_2__227004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__JoinSourceAssignment_2_2_in_rule__SingleSource__Group_2__2__Impl27031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SingleSource__Group_2__3__Impl_in_rule__SingleSource__Group_2__327061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_rule__SingleSource__Group_2__3__Impl27089 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__0__Impl_in_rule__JoinStatement__Group__027128 = new BitSet(new long[]{0x0000000000000000L,0x6008000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__1_in_rule__JoinStatement__Group__027131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__1__Impl_in_rule__JoinStatement__Group__127189 = new BitSet(new long[]{0x0000000000000000L,0x6008000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__2_in_rule__JoinStatement__Group__127192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__NaturalAssignment_1_in_rule__JoinStatement__Group__1__Impl27219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__2__Impl_in_rule__JoinStatement__Group__227250 = new BitSet(new long[]{0x0000000000000000L,0x6008000000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__3_in_rule__JoinStatement__Group__227253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Alternatives_2_in_rule__JoinStatement__Group__2__Impl27280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__3__Impl_in_rule__JoinStatement__Group__327311 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__4_in_rule__JoinStatement__Group__327314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_115_in_rule__JoinStatement__Group__3__Impl27342 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__4__Impl_in_rule__JoinStatement__Group__427373 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__5_in_rule__JoinStatement__Group__427376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__SingleSourceAssignment_4_in_rule__JoinStatement__Group__4__Impl27403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__5__Impl_in_rule__JoinStatement__Group__527433 = new BitSet(new long[]{0x0000000000010070L,0x0000180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__6_in_rule__JoinStatement__Group__527436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_82_in_rule__JoinStatement__Group__5__Impl27464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group__6__Impl_in_rule__JoinStatement__Group__627495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__ExpressionAssignment_6_in_rule__JoinStatement__Group__6__Impl27522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__0__Impl_in_rule__JoinStatement__Group_2_0__027566 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__1_in_rule__JoinStatement__Group_2_0__027569 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__LeftAssignment_2_0_0_in_rule__JoinStatement__Group_2_0__0__Impl27596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__Group_2_0__1__Impl_in_rule__JoinStatement__Group_2_0__127626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JoinStatement__OuterAssignment_2_0_1_in_rule__JoinStatement__Group_2_0__1__Impl27653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__0__Impl_in_rule__ResultColumn__Group_0__027688 = new BitSet(new long[]{0x0000000000001020L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__1_in_rule__ResultColumn__Group_0__027691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__1__Impl_in_rule__ResultColumn__Group_0__127749 = new BitSet(new long[]{0x0000000000001020L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__2_in_rule__ResultColumn__Group_0__127752 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__TableAssignment_0_1_in_rule__ResultColumn__Group_0__1__Impl27779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_0__2__Impl_in_rule__ResultColumn__Group_0__227810 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__ResultColumn__Group_0__2__Impl27838 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__0__Impl_in_rule__ResultColumn__Group_1__027875 = new BitSet(new long[]{0x0000000000011070L,0x1800180020000450L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__1_in_rule__ResultColumn__Group_1__027878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__1__Impl_in_rule__ResultColumn__Group_1__127936 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__2_in_rule__ResultColumn__Group_1__127939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__ExpressionAssignment_1_1_in_rule__ResultColumn__Group_1__1__Impl27966 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1__2__Impl_in_rule__ResultColumn__Group_1__227996 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__0_in_rule__ResultColumn__Group_1__2__Impl28023 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__0__Impl_in_rule__ResultColumn__Group_1_2__028060 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__1_in_rule__ResultColumn__Group_1_2__028063 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_rule__ResultColumn__Group_1_2__0__Impl28091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__Group_1_2__1__Impl_in_rule__ResultColumn__Group_1_2__128122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResultColumn__AliasAssignment_1_2_1_in_rule__ResultColumn__Group_1_2__1__Impl28149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ConflictClause__Group__0__Impl_in_rule__ConflictClause__Group__028183 = new BitSet(new long[]{0x0000000000000000L,0x0010000000000000L});
+    public static final BitSet FOLLOW_rule__ConflictClause__Group__1_in_rule__ConflictClause__Group__028186 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_82_in_rule__ConflictClause__Group__0__Impl28214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ConflictClause__Group__1__Impl_in_rule__ConflictClause__Group__128245 = new BitSet(new long[]{0x0780080000000000L});
+    public static final BitSet FOLLOW_rule__ConflictClause__Group__2_in_rule__ConflictClause__Group__128248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_116_in_rule__ConflictClause__Group__1__Impl28276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ConflictClause__Group__2__Impl_in_rule__ConflictClause__Group__228307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ConflictClause__ResolutionAssignment_2_in_rule__ConflictClause__Group__2__Impl28334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__0__Impl_in_rule__LiteralValue__Group_0__028370 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__1_in_rule__LiteralValue__Group_0__028373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_0__1__Impl_in_rule__LiteralValue__Group_0__128431 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__NumberAssignment_0_1_in_rule__LiteralValue__Group_0__1__Impl28458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__0__Impl_in_rule__LiteralValue__Group_1__028492 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__1_in_rule__LiteralValue__Group_1__028495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_1__1__Impl_in_rule__LiteralValue__Group_1__128553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_1_1_in_rule__LiteralValue__Group_1__1__Impl28580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__0__Impl_in_rule__LiteralValue__Group_2__028614 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__1_in_rule__LiteralValue__Group_2__028617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_2__1__Impl_in_rule__LiteralValue__Group_2__128675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_2_1_in_rule__LiteralValue__Group_2__1__Impl28702 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__0__Impl_in_rule__LiteralValue__Group_3__028736 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__1_in_rule__LiteralValue__Group_3__028739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_3__1__Impl_in_rule__LiteralValue__Group_3__128797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_3_1_in_rule__LiteralValue__Group_3__1__Impl28824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__0__Impl_in_rule__LiteralValue__Group_4__028858 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__1_in_rule__LiteralValue__Group_4__028861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_4__1__Impl_in_rule__LiteralValue__Group_4__128919 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_4_1_in_rule__LiteralValue__Group_4__1__Impl28946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__0__Impl_in_rule__LiteralValue__Group_5__028980 = new BitSet(new long[]{0x0000000000010050L,0x0000100000000000L,0x000000000000001CL});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__1_in_rule__LiteralValue__Group_5__028983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__Group_5__1__Impl_in_rule__LiteralValue__Group_5__129041 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LiteralValue__LiteralAssignment_5_1_in_rule__LiteralValue__Group_5__1__Impl29068 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__029102 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__029105 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__SignedNumber__Group__0__Impl29134 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__129167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl29194 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FQN__Group__0__Impl_in_rule__FQN__Group__029227 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L});
+    public static final BitSet FOLLOW_rule__FQN__Group__1_in_rule__FQN__Group__029230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FQN__Group__0__Impl29257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FQN__Group__1__Impl_in_rule__FQN__Group__129286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FQN__Group_1__0_in_rule__FQN__Group__1__Impl29313 = new BitSet(new long[]{0x0000000000000002L,0x0020000000000000L});
+    public static final BitSet FOLLOW_rule__FQN__Group_1__0__Impl_in_rule__FQN__Group_1__029348 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__FQN__Group_1__1_in_rule__FQN__Group_1__029351 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_117_in_rule__FQN__Group_1__0__Impl29379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FQN__Group_1__1__Impl_in_rule__FQN__Group_1__129410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FQN__Group_1__1__Impl29437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_rule__Model__PackageNameAssignment_129475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDatabaseBlock_in_rule__Model__DatabaseAssignment_229506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DatabaseBlock__NameAssignment_129537 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConfigBlock_in_rule__DatabaseBlock__ConfigAssignment_329568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMigrationBlock_in_rule__DatabaseBlock__MigrationsAssignment_429599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConfigurationStatement_in_rule__ConfigBlock__StatementsAssignment_329630 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_0_229661 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__ConfigurationStatement__PathAssignment_0_329692 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ConfigurationStatement__NameAssignment_1_229723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_029754 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDDLStatement_in_rule__MigrationBlock__StatementsAssignment_3_2_029785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprConcat_in_rule__SqlExpression__RootAssignment29816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_118_in_rule__ExprConcat__OpAssignment_1_129852 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprMult_in_rule__ExprConcat__RightAssignment_1_229891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExprMult__OpAlternatives_1_1_0_in_rule__ExprMult__OpAssignment_1_129922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprAdd_in_rule__ExprMult__RightAssignment_1_229955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExprAdd__OpAlternatives_1_1_0_in_rule__ExprAdd__OpAssignment_1_129986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprBit_in_rule__ExprAdd__RightAssignment_1_230019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExprBit__OpAlternatives_1_1_0_in_rule__ExprBit__OpAssignment_1_130050 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprRelate_in_rule__ExprBit__RightAssignment_1_230083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExprRelate__OpAlternatives_1_1_0_in_rule__ExprRelate__OpAssignment_1_130114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprEqual_in_rule__ExprRelate__RightAssignment_1_230147 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ExprEqual__OpAlternatives_1_1_0_in_rule__ExprEqual__OpAssignment_1_130178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprAnd_in_rule__ExprEqual__RightAssignment_1_230211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_119_in_rule__ExprAnd__OpAssignment_1_130247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprOr_in_rule__ExprAnd__RightAssignment_1_230286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_97_in_rule__ExprOr__OpAssignment_1_130322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimaryExpression_in_rule__ExprOr__RightAssignment_1_230361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_rule__PrimaryExpression__NameAssignment_0_0_130392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteralValue_in_rule__PrimaryExpression__LiteralValueAssignment_0_1_130423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_rule__PrimaryExpression__NotAssignment_0_3_130459 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_93_in_rule__PrimaryExpression__ExistsAssignment_0_3_230503 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__PrimaryExpression__SelectAssignment_0_3_430542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__CaseExpressionAssignment_0_4_230573 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_330604 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCase_in_rule__PrimaryExpression__CasesAssignment_0_4_430635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ElseExpressionAssignment_0_4_5_130666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PrimaryExpression__NameAssignment_0_5_130697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__PrimaryExpression__AllAssignment_0_5_3_030733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArgumentsAssignment_0_5_3_1_030772 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ArugmentsAssignment_0_5_3_1_1_130803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__PrimaryExpression__ExpressionAssignment_0_6_330834 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqliteDataType_in_rule__PrimaryExpression__TypeAssignment_0_6_530865 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PrimaryExpression__IsnullAlternatives_1_0_in_rule__PrimaryExpression__IsnullAssignment_130896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__Case__WhenExpressionAssignment_130929 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__Case__ThenExpressionAssignment_330960 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_0_330991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_531022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_rule__DDLStatement__ColumnDefsAssignment_0_6_131053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTableConstraint_in_rule__DDLStatement__ConstraintsAssignment_0_7_131084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_1_331115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__DDLStatement__SelectStatementAssignment_1_531146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_2_331177 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_131208 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__UpdateColumnNamesAssignment_2_5_2_1_2_131239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__TableNameAssignment_2_731270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DDLStatement__WhenExpressionAssignment_2_9_131301 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_031332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDMLStatement_in_rule__DDLStatement__StatementsAssignment_2_11_2_031363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_3_331394 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlterTableClause_in_rule__DDLStatement__ClauseAssignment_3_431425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_4_431456 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_5_431487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DDLStatement__NameAssignment_6_431518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DeleteStatement__TableNameAssignment_231549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DeleteStatement__ExpressionAssignment_3_131580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__InsertStatement__ConflictResolutionAssignment_0_0_1_131611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__TableNameAssignment_231642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_131673 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__InsertStatement__ColumnNamesAssignment_3_2_131704 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_231735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__InsertStatement__ExpressionsAssignment_4_0_0_3_131766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__InsertStatement__SelectStatementAssignment_4_0_131797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__UpdateStatement__ConflictResolutionAssignment_1_131828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__UpdateStatement__TableNameAssignment_231859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_431890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_rule__UpdateStatement__UpdateColumnExpressionsAssignment_5_131921 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__UpdateStatement__WhereExpressionAssignment_6_131952 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__UpdateColumnExpression__ColumnNameAssignment_031983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__UpdateColumnExpression__ExpressionAssignment_232014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_032045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectCore_in_rule__SelectStatement__CoreStatementsAssignment_1_132076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_232107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrderingTerm_in_rule__SelectStatement__OrderingTermsAssignment_2_3_132138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__AlterTableClause__NameAssignment_0_232169 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_rule__AlterTableClause__ColumnDefAssignment_1_232200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ColumnDef__NameAssignment_032231 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnType_in_rule__ColumnDef__TypeAssignment_132262 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnConstraint_in_rule__ColumnDef__ConstraintsAssignment_232293 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_120_in_rule__ColumnConstraint__AscAssignment_0_3_032329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_rule__ColumnConstraint__DescAssignment_0_3_132373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_122_in_rule__ColumnConstraint__AutoincrementAssignment_0_432417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_rule__ColumnConstraint__ConflictClauseAssignment_1_332456 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultValue_in_rule__ColumnConstraint__DefaultValueAssignment_2_232487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteralValue_in_rule__DefaultValue__LiteralAssignment_0_132518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__DefaultValue__ExpressionAssignment_1_232549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_0_1_132580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_432611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_0_5_132642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_0_732673 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_1_1_132704 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_532735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rule__TableConstraint__ColumnsAssignment_1_6_132766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_rule__TableConstraint__ConflictClauseAssignment_1_832797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__TableConstraint__NameAssignment_2_1_132828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__TableConstraint__ExpressionAssignment_2_432859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__IndexedColumn__NameAssignment_032894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_120_in_rule__IndexedColumn__AscAssignment_1_032934 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_rule__IndexedColumn__DescAssignment_1_132978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__OrderingTerm__ExpressionAssignment_033017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_120_in_rule__OrderingTerm__AscAssignment_1_033053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_rule__OrderingTerm__DescAssignment_1_133097 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_123_in_rule__SelectCore__DistinctAssignment_1_033141 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_124_in_rule__SelectCore__AllAssignment_1_133185 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_233224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResultColumn_in_rule__SelectCore__ResultColumnsAssignment_3_133255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJoinSource_in_rule__SelectCore__SourceAssignment_4_133286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__WhereExpressionAssignment_5_133317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_233348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__GroupByExpressionsAssignment_6_3_133379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__SelectCore__HavingExpressionAssignment_7_133410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSource_in_rule__JoinSource__SourceAssignment_033441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJoinStatement_in_rule__JoinSource__JoinStatementsAssignment_133472 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__TableAssignment_0_133503 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_0_2_133534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_rule__SingleSource__SelectStatementAssignment_1_233565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SingleSource__AliasAssignment_1_4_133596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJoinSource_in_rule__SingleSource__JoinSourceAssignment_2_233627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_125_in_rule__JoinStatement__NaturalAssignment_133663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_126_in_rule__JoinStatement__LeftAssignment_2_0_033707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_127_in_rule__JoinStatement__OuterAssignment_2_0_133751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_128_in_rule__JoinStatement__InnerAssignment_2_133795 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_129_in_rule__JoinStatement__CrossAssignment_2_233839 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSource_in_rule__JoinStatement__SingleSourceAssignment_433878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__JoinStatement__ExpressionAssignment_633909 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ResultColumn__TableAssignment_0_133940 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rule__ResultColumn__ExpressionAssignment_1_133971 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ResultColumn__AliasAssignment_1_2_134002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_rule__ConflictClause__ResolutionAssignment_234033 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_rule__LiteralValue__NumberAssignment_0_134064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__LiteralValue__LiteralAssignment_1_134095 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_108_in_rule__LiteralValue__LiteralAssignment_2_134131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_130_in_rule__LiteralValue__LiteralAssignment_3_134175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_131_in_rule__LiteralValue__LiteralAssignment_4_134219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_132_in_rule__LiteralValue__LiteralAssignment_5_134263 = new BitSet(new long[]{0x0000000000000002L});
 
 }
