@@ -15,6 +15,7 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 	public static final int VERSION = 1;
 
 	public interface Tables {
+		String NOTES = "notes";
 		String RECIPES = "recipes";
 	}
 
@@ -24,6 +25,14 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		db.execSQL(
+			"create table notes ( " +
+			"_id integer primary key autoincrement " +
+			", title text " +
+			", note text " +
+			", author text " +
+			") "
+		);
 		db.execSQL(
 			"create table recipes ( " +
 			"_id integer primary key autoincrement " +

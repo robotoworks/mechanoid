@@ -19,8 +19,11 @@ import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 import com.robotoworks.mechanoid.sqlite.SQuery;
 
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Notes;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 
+import com.robotoworks.examples.recipes.content.actions.NotesActions;
+import com.robotoworks.examples.recipes.content.actions.NotesByIdActions;
 import com.robotoworks.examples.recipes.content.actions.RecipesActions;
 import com.robotoworks.examples.recipes.content.actions.RecipesByIdActions;
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
@@ -29,22 +32,28 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 	private static final String[] sContentTypes;
 	private static final Class<?>[] sActions;
     
-	private static final int RECIPES = 0;
-	private static final int RECIPES_ID = 1;
+	private static final int NOTES = 0;
+	private static final int NOTES_ID = 1;
+	private static final int RECIPES = 2;
+	private static final int RECIPES_ID = 3;
 
 	
-	public static final int NUM_URI_MATCHERS = 2;
+	public static final int NUM_URI_MATCHERS = 4;
 
 	static {
 		sUriMatcher = buildUriMatcher();
 	
 		sContentTypes = new String[NUM_URI_MATCHERS];
 
+		sContentTypes[NOTES] = Notes.CONTENT_TYPE;
+		sContentTypes[NOTES_ID] = Notes.ITEM_CONTENT_TYPE;
 		sContentTypes[RECIPES] = Recipes.CONTENT_TYPE;
 		sContentTypes[RECIPES_ID] = Recipes.ITEM_CONTENT_TYPE;
 		
 		sActions = new Class<?>[NUM_URI_MATCHERS];
 
+		sActions[NOTES] = NotesActions.class;
+		sActions[NOTES_ID] = NotesByIdActions.class;
 		sActions[RECIPES] = RecipesActions.class;
 		sActions[RECIPES_ID] = RecipesByIdActions.class;
 		
@@ -56,6 +65,8 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
         final String authority = RecipesDBContract.CONTENT_AUTHORITY;
 
 		// Tables
+		matcher.addURI(authority, "notes", NOTES);
+		matcher.addURI(authority, "notes/#", NOTES_ID);
 		matcher.addURI(authority, "recipes", RECIPES);
 		matcher.addURI(authority, "recipes/#", RECIPES_ID);
 

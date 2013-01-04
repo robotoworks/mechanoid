@@ -11,7 +11,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 
-public class RecipesSimpleListFragment extends ListFragment {
+public class RecipeListFragment extends ListFragment {
 
     private RecipesCursorAdapter mAdapter;
 
