@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import com.robotoworks.mechanoid.net.NetLogHelper;
+import java.io.ByteArrayOutputStream;
 
 public class TestService {
 	private static final String LOG_TAG = "TestService";
@@ -100,7 +101,6 @@ public class TestService {
 			Response<GetStringArrayResult> response = new Response<GetStringArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -156,7 +156,6 @@ public class TestService {
 			Response<GetIntArrayResult> response = new Response<GetIntArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -212,7 +211,6 @@ public class TestService {
 			Response<GetLongArrayResult> response = new Response<GetLongArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -268,7 +266,6 @@ public class TestService {
 			Response<GetDoubleArrayResult> response = new Response<GetDoubleArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -324,7 +321,6 @@ public class TestService {
 			Response<GetBooleanArrayResult> response = new Response<GetBooleanArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -380,7 +376,6 @@ public class TestService {
 			Response<GetEnumArrayResult> response = new Response<GetEnumArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -436,7 +431,6 @@ public class TestService {
 			Response<GetItemResult> response = new Response<GetItemResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -492,7 +486,6 @@ public class TestService {
 			Response<GetNodesResult> response = new Response<GetNodesResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -548,7 +541,6 @@ public class TestService {
 			Response<EchoParamsResult> response = new Response<EchoParamsResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -604,7 +596,6 @@ public class TestService {
 			Response<SkippingResult> response = new Response<SkippingResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -660,7 +651,6 @@ public class TestService {
 			Response<SkippingWithItemResult> response = new Response<SkippingWithItemResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -716,7 +706,6 @@ public class TestService {
 			Response<GetABResult> response = new Response<GetABResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -764,12 +753,18 @@ public class TestService {
 						
 			conn.connect();
 			
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
 			Response<SkippingPostResult> response = new Response<SkippingPostResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -818,12 +813,18 @@ public class TestService {
 						
 			conn.connect();
 			
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
 			Response<PostIntResult> response = new Response<PostIntResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -872,12 +873,18 @@ public class TestService {
 						
 			conn.connect();
 			
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
 			Response<PostStringResult> response = new Response<PostStringResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -926,12 +933,18 @@ public class TestService {
 						
 			conn.connect();
 			
+			if(debug) {
+			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+			    request.writeBody(transformerProvider, debugOutStream);
+			    
+			    Log.d(LOG_TAG, new String(debugOutStream.toByteArray(), "UTF-8"));
+			}
+			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
 			Response<PostStringArrayResult> response = new Response<PostStringArrayResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -983,7 +996,6 @@ public class TestService {
 			Response<EchoSegmentsResult> response = new Response<EchoSegmentsResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());
@@ -1039,7 +1051,6 @@ public class TestService {
 			Response<EchoHeadersResult> response = new Response<EchoHeadersResult>(conn, parser);
 		
 			if(debug) {
-				Log.d(LOG_TAG, "Response " + response.getResponseCode());
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
 				
 				Log.d(LOG_TAG, response.readAsText());

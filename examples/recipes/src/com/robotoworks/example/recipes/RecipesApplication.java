@@ -20,13 +20,18 @@ public class RecipesApplication extends Application {
         .insert();
         
         Recipes.newBuilder()
-        .setTitle("Beef Stew")
+        .setTitle("Stew")
         .setDescription("Hearty stew with beef and vegtables")
         .insert();
         
         Recipes.newBuilder()
         .setTitle("Ragu")
         .setDescription("Tasty ragu great served with rice or pasta")
+        .insert();
+        
+        Recipes.newBuilder()
+        .setTitle("Vegetable Soup")
+        .setDescription("Delicious traditional potato and carrot soup")
         .insert();
     }
 }
