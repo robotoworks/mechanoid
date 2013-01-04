@@ -16,6 +16,12 @@ public class RecipesDBContract  {
 
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
+	interface NotesColumns {
+		String TITLE = "title";
+		String NOTE = "note";
+		String AUTHOR = "author";
+	}
+	
 	interface RecipesColumns {
 		String TITLE = "title";
 		String DESCRIPTION = "description";
@@ -23,6 +29,142 @@ public class RecipesDBContract  {
 	
 
 			
+	/**
+	 * <p>Column definitions and helper methods to work with the Notes table.</p>
+	 */
+	public static class Notes implements NotesColumns, BaseColumns {
+	    public static final Uri CONTENT_URI = 
+				BASE_CONTENT_URI.buildUpon().appendPath("notes").build();
+	
+		/**
+		 * <p>The content type for a cursor that contains many Notes table rows.</p>
+		 */
+	    public static final String CONTENT_TYPE =
+	            "vnd.android.cursor.dir/vnd.recipesdb.notes";
+		/**
+		 * <p>The content type for a cursor that contains a single Notes table row.</p>
+		 */
+	    public static final String ITEM_CONTENT_TYPE =
+	            "vnd.android.cursor.item/vnd.recipesdb.notes";
+	
+		/**
+		 * <p>Builds a Uri with appended id for a row in the Notes table, 
+		 * eg:- content://com.robotoworks.examples.recipes.content.recipesdb/notes/123.</p>
+		 */
+	    public static Uri buildUriWithId(long id) {
+	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
+	    }
+	
+		public static int delete() {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+		}
+		
+		public static int delete(String where, String[] selectionArgs) {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+		}
+		
+		/**
+		 * <p>Create a new Builder for Notes</p>
+		 */
+		public static Builder newBuilder() {
+			return new Builder();
+		}
+		
+		/**
+		 * <p>Build and execute insert or update statements for Notes.</p>
+		 */
+		public static class Builder {
+			private ContentValues mValues = new ContentValues();
+			
+			public Builder setTitle(String value) {
+				mValues.put(Notes.TITLE, value);
+				return this;
+			}
+			public Builder setNote(String value) {
+				mValues.put(Notes.NOTE, value);
+				return this;
+			}
+			public Builder setAuthor(String value) {
+				mValues.put(Notes.AUTHOR, value);
+				return this;
+			}
+			
+			/**
+			 * <p>Insert into Notes with the values set on this builder.</p>
+			 */								
+			public Uri insert() {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				return resolver.insert(CONTENT_URI, mValues);
+			}
+			
+			/**
+			 * <p>Insert into Notes with the values set on this builder.</p>
+			 */								
+			public Uri insert(boolean notifyChange) {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				
+				Uri uri = CONTENT_URI.buildUpon()
+					.appendQueryParameter(
+						MechanoidContentProvider.PARAM_NOTIFY, 
+						String.valueOf(notifyChange)).build();
+				
+				return resolver.insert(uri, mValues);
+			}
+			
+			/**
+			 * <p>Update Notes with the given query</p>
+			 */						
+			public int update(SQuery query) {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
+			}
+			
+			/**
+			 * <p>Update Notes with the given query</p>
+			 */						
+			public int update(SQuery query, boolean notifyChange) {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				
+				Uri uri = CONTENT_URI.buildUpon()
+					.appendQueryParameter(
+						MechanoidContentProvider.PARAM_NOTIFY, 
+						String.valueOf(notifyChange)).build();
+
+				return resolver.update(uri, mValues, query.toString(), query.getArgsArray());
+			}
+			
+			/**
+			 * <p>Update Notes with the given id</p>
+			 */
+			public int update(long id) {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
+			}
+			
+			/**
+			 * <p>Update Notes with the given id</p>
+			 */
+			public int update(long id, boolean notifyChange) {
+				ContentResolver resolver = Mechanoid.getContentResolver();
+				
+				Uri uri = CONTENT_URI.buildUpon()
+					.appendPath(String.valueOf(id))
+					.appendQueryParameter(
+						MechanoidContentProvider.PARAM_NOTIFY, 
+						String.valueOf(notifyChange)).build();
+						
+				return resolver.update(uri, mValues, null, null);
+			}
+			
+			/**
+			 * <p>Get ContentValues built so far by this builder for Notes.</p>
+			 */						
+			public ContentValues getValues() {
+				return mValues;
+			}
+		}
+	}
+	
 	/**
 	 * <p>Column definitions and helper methods to work with the Recipes table.</p>
 	 */
