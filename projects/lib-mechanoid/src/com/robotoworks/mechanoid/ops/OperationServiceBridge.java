@@ -27,11 +27,11 @@ public abstract class OperationServiceBridge {
 	public static final int MSG_OPERATION_PROGRESS = 3;
 	public static final int MSG_OPERATION_ABORTED = 4;
 	
-	private int requestIdCounter = 1;
+	private int mRequestIdCounter = 1;
 		
-	private SparseArray<Intent> pendingRequests = new SparseArray<Intent>();
+	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
 			
-	private Set<OperationServiceListener> listeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
+	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
 
 	private OperationLog mLog = new OperationLog(20);
 	
@@ -45,32 +45,32 @@ public abstract class OperationServiceBridge {
 		public void handleMessage(Message msg) {
 			switch(msg.what) {
 				case MSG_OPERATION_STARTING: {
-					int requestId = msg.arg1;
+					int id = msg.arg1;
 					Bundle data = msg.getData();
 					
-					onOperationStarting(requestId, data);
+					onOperationStarting(id, data);
 					break;
 				}
 				case MSG_OPERATION_COMPLETE: {
-					int requestId = msg.arg1;
+					int id = msg.arg1;
 					Bundle data = msg.getData();
 					
-					onOperationComplete(requestId, data);
+					onOperationComplete(id, data);
 					break;
 				}
 				case MSG_OPERATION_PROGRESS: {
-					int requestId = msg.arg1;
+					int id = msg.arg1;
 					int progress = msg.arg2;
 					Bundle data = msg.getData();
 					
-					onOperationProgress(requestId, progress, data);
+					onOperationProgress(id, progress, data);
 					break;
 				}
 				case MSG_OPERATION_ABORTED: {
-					int requestId = msg.arg1;
+					int id = msg.arg1;
 					int reason = msg.arg2;
 					Bundle data = msg.getData();
-					onOperationAborted(requestId, reason, data);
+					onOperationAborted(id, reason, data);
 					break;
 				}
 			}
@@ -80,7 +80,7 @@ public abstract class OperationServiceBridge {
 	protected abstract Class<?> getServiceClass();
 	
 	private int createRequestId() {
-		return requestIdCounter++;
+		return mRequestIdCounter++;
 	}
 		
 	/**
@@ -102,7 +102,7 @@ public abstract class OperationServiceBridge {
 	}
 	
 	private void addPendingRequest(int requestId, Intent intent) {
-		pendingRequests.put(requestId, intent);
+		mPendingRequests.put(requestId, intent);
 	}
 	
 	/**
@@ -112,8 +112,8 @@ public abstract class OperationServiceBridge {
 	 * request was found
 	 */
 	public Intent findPendingRequestByAction(String action) {
-		for (int i = 0; i < pendingRequests.size(); i++) {
-			Intent request = pendingRequests.valueAt(i);
+		for (int i = 0; i < mPendingRequests.size(); i++) {
+			Intent request = mPendingRequests.valueAt(i);
 			if(request.getAction().equals(action)) {
 				return request;
 			}
@@ -130,8 +130,8 @@ public abstract class OperationServiceBridge {
 	 * if no matching request was found
 	 */
 	public Intent findPendingRequestByActionWithExtras(String action, Bundle extras) {
-		for (int i = 0; i < pendingRequests.size(); i++) {
-			Intent request = pendingRequests.valueAt(i);
+		for (int i = 0; i < mPendingRequests.size(); i++) {
+			Intent request = mPendingRequests.valueAt(i);
 			if(request.getAction().equals(action) && intentContainsExtras(request, extras)) {
 				return request;
 			}
@@ -141,8 +141,8 @@ public abstract class OperationServiceBridge {
 	}
 	
 	private Intent removePendingRequestById(int requestId) {
-		Intent intent = pendingRequests.get(requestId);
-		pendingRequests.delete(requestId);
+		Intent intent = mPendingRequests.get(requestId);
+		mPendingRequests.delete(requestId);
 		return intent;
 	}
 	
@@ -160,7 +160,7 @@ public abstract class OperationServiceBridge {
 	public boolean isRequestPending(int requestId) {
 		if(requestId <= 0) return false;
 		
-		return (pendingRequests.get(requestId) != null);
+		return (mPendingRequests.get(requestId) != null);
 	}
 	
 	/**
@@ -212,7 +212,7 @@ public abstract class OperationServiceBridge {
 	 * @param listener The listener to register
 	 */
 	public void bindListener(OperationServiceListener listener) {
-		this.listeners.add(listener);
+		this.mListeners.add(listener);
 	}
 	
 	/**
@@ -221,12 +221,12 @@ public abstract class OperationServiceBridge {
 	 * @param listener The listener to unregister
 	 */
 	public void unbindListener(OperationServiceListener listener) {
-		this.listeners.remove(listener);
+		this.mListeners.remove(listener);
 	}
 	
 	protected void onOperationStarting(int requestId, Bundle data) {
 		
-		Intent intent = pendingRequests.get(requestId);
+		Intent intent = mPendingRequests.get(requestId);
 		
 		if(intent != null) {
 			if(data == null) {
@@ -256,7 +256,7 @@ public abstract class OperationServiceBridge {
 	
 	protected void onOperationProgress(int requestId, int progress, Bundle data) {
 		
-		Intent intent = pendingRequests.get(requestId);
+		Intent intent = mPendingRequests.get(requestId);
 		
 		if(intent != null) {
 
@@ -286,33 +286,33 @@ public abstract class OperationServiceBridge {
 	}
 
 	private void notifyOperationStarting(int requestId, Bundle data) {
-		for(OperationServiceListener listener : listeners) {
+		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onServiceOperationStarting(this, requestId, data);
+				listener.onOperationStarting(this, requestId, data);
 			}
 		}
 	}
 
 	private void notifyOperationComplete(int requestId, Bundle data) {
-		for(OperationServiceListener listener : listeners) {
+		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onServiceOperationComplete(this, requestId, data);
+				listener.onOperationComplete(this, requestId, data);
 			}
 		}
 	}
 
 	private void notifyOperationProgress(int requestId, int progress, Bundle data) {
-		for(OperationServiceListener listener : listeners) {
+		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onServiceOperationProgress(this, requestId, progress, data);
+				listener.onOperationProgress(this, requestId, progress, data);
 			}
 		}
 	}
 	
 	private void notifyOperationAborted(int requestId, int reason, Bundle data) {
-		for(OperationServiceListener listener : listeners) {
+		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onServiceOperationAborted(this, requestId, reason, data);
+				listener.onOperationAborted(this, requestId, reason, data);
 			}
 		}
 	}
