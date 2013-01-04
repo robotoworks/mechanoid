@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity {
         
         switch(v.getId()) {
         case R.id.button_recipes_simple:
-            fragName = RecipesSimpleListFragment.class.getName();
+            fragName = RecipeListFragment.class.getName();
             break;
         }
         
