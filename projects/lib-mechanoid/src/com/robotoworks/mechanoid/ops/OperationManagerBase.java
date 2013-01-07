@@ -11,8 +11,8 @@ import android.util.SparseArray;
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 import com.robotoworks.mechanoid.ops.OperationServiceListener;
 
-public class OperationManagerBase<T extends OperationServiceBridge> {
-    private OperationManagerCallbacks<T> mCallbacks;
+public abstract class OperationManagerBase<T extends OperationServiceBridge> {
+    OperationManagerCallbacks<T> mCallbacks;
     
     static class OpInfo implements Parcelable {
         int mUserId = 0;

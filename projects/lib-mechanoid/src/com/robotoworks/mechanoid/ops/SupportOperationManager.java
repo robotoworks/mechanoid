@@ -1,58 +1,114 @@
 package com.robotoworks.mechanoid.ops;
 
+import java.lang.ref.WeakReference;
+
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
-
-import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 
 public class SupportOperationManager<T extends OperationServiceBridge> extends OperationManagerBase<T> {
 
-    public SupportOperationManager(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks) {
-        super(bridge, callbacks);
+	@SuppressWarnings("unchecked")
+	public static <T extends OperationServiceBridge> SupportOperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks) {
+		
+        String tag = "Tags." + bridge.getClass().getName() + callbacks.getClass().getName();
         
-        String tag = bridge.getClass().getName() + ".OperationManager.Tag";
+        SupportOperationManager<T> operationManager = null;
         
         PersistenceFragment frag = (PersistenceFragment) fragmentManager.findFragmentByTag(tag);
         if(frag == null) {
+        	
             frag = new PersistenceFragment();
-            frag.setOperationManager(this);
+            operationManager = new SupportOperationManager<T>(bridge, callbacks);
+            frag.setOperationManager(operationManager);
             fragmentManager.beginTransaction().add(frag, tag).commit();
         } else {
-            frag.setOperationManager(this);
-        }
-        
+        	operationManager = (SupportOperationManager<T>) frag.getOperationManager();
+        	
+        	if(operationManager == null) {
+        		operationManager = new SupportOperationManager<T>(bridge, callbacks);
+        		frag.setOperationManager(operationManager);
+        	} else {
+        		operationManager.mCallbacks = callbacks;
+        	}
+        }		
+		
+		return operationManager;
+	}
+	
+    private SupportOperationManager(T bridge, OperationManagerCallbacks<T> callbacks) {
+        super(bridge, callbacks);        
     }
     
     public static class PersistenceFragment extends Fragment {
-        private OperationManagerBase<?> mOperationManager;
-
-        void setOperationManager(OperationManagerBase<?> operationManager) {
-            mOperationManager = operationManager;
-        }
+        private WeakReference<OperationManagerBase<?>> mOperationManagerRef;
+        
+        public void setOperationManager(OperationManagerBase<?> operationManager) {
+        	mOperationManagerRef = new WeakReference<OperationManagerBase<?>>(operationManager);
+		}
+        
+        public OperationManagerBase<?> getOperationManager() {
+        	if(mOperationManagerRef == null) {
+        		return null;
+        	}
+        	
+			return mOperationManagerRef.get();
+		}
         
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            mOperationManager.restoreState(savedInstanceState);
+            
+            OperationManagerBase<?> operationManager = getOperationManager();
+            
+            if(operationManager != null) {
+            	operationManager.restoreState(savedInstanceState);
+            } else {
+            	removeSelf();
+            }
         }
-        
-        @Override
+
+		@Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
-            mOperationManager.saveState(outState);
+            
+            OperationManagerBase<?> operationManager = getOperationManager();
+            
+            if(operationManager != null) {
+            	operationManager.saveState(outState);
+            } else {
+            	removeSelf();
+            }
         }
         
         @Override
         public void onStart() {
             super.onStart();
-            mOperationManager.start();
+            
+            OperationManagerBase<?> operationManager = getOperationManager();
+            
+            if(operationManager != null) {
+            	operationManager.start();
+            } else {
+            	removeSelf();
+            }
         }
         
         @Override
         public void onStop() {
             super.onStop();
-            mOperationManager.stop();
+            
+            OperationManagerBase<?> operationManager = getOperationManager();
+            
+            if(operationManager != null) {
+            	operationManager.stop();
+            } else {
+            	removeSelf();
+            }
         }
+        
+		private void removeSelf() {
+			getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+		}
     }
 }
