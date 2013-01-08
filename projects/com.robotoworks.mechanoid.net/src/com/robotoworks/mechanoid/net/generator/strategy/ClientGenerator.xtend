@@ -198,6 +198,7 @@ class ClientGenerator {
 			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
 			conn.setRequestMethod("PUT");
 			
 			conn.setRequestProperty("Content-Type", "application/json, text/json");
@@ -246,6 +247,7 @@ class ClientGenerator {
 			}
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");
 			
 			conn.setRequestProperty("Content-Type", "application/json, text/json");

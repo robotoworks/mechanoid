@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
 
-import com.justeat.app.ops.net.UnexpectedHttpStatusException;
 import com.robotoworks.mechanoid.util.Streams;
 
 public class Response<T> {

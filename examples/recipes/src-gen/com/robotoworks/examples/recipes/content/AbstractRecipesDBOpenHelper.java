@@ -37,7 +37,7 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 			"create table recipes ( " +
 			"_id integer primary key autoincrement " +
 			", title text " +
-			", description text " +
+			", description text default ( "lorem ipsum" ) " +
 			") "
 		);
 	}

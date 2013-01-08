@@ -638,6 +638,9 @@ public class ClientGenerator {
     _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("conn.setDoOutput(true);");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("conn.setRequestMethod(\"PUT\");");
     _builder.newLine();
     _builder.append("\t");
@@ -771,6 +774,9 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("HttpURLConnection conn = (HttpURLConnection) url.openConnection();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("conn.setDoOutput(true);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("conn.setRequestMethod(\"POST\");");
