@@ -87,7 +87,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             }
             
             op.mResult = data;
-            mCallbacks.onOperationComplete((T)mBridge, op.mUserId, data);
+            mCallbacks.onOperationComplete((T)mBridge, op.mUserId, data, false);
             op.mCallbackInvoked = true;
         }
         
@@ -164,16 +164,14 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             
             if (result != null) {
                 op.mResult = result;
-                invokeCallbackOnce(op);
+                
+                if(!op.mCallbackInvoked) {
+                    mCallbacks.onOperationComplete(mBridge, op.mUserId, op.mResult, false);
+                    op.mCallbackInvoked = true;
+                }
+                
                 continue;
             }                    
-        }
-    }
-
-    private void invokeCallbackOnce(OpInfo op) {
-        if(!op.mCallbackInvoked) {
-            mCallbacks.onOperationComplete(mBridge, op.mUserId, op.mResult);
-            op.mCallbackInvoked = true;
         }
     }
 
@@ -181,6 +179,24 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         mBridge.unbindListener(mServiceListener);
     }
     
+    /**
+     * <p>Run an operation associated to the user-defined id, when invoked this method,
+     * the associated {@link OperationManagerCallbacks#createOperation(OperationServiceBridge, int)} will
+     * be invoked to actually create the operation (effectively running it) if the manager has not run the operation before.</p>
+     * 
+     * <p>When the operation completes, {@link OperationManagerCallbacks#onOperationComplete(OperationServiceBridge, int, Bundle, boolean)}
+     * will be invoked.</p>
+     * <p><b>runOperation</b> can be invoked many times for the same operation, however it will only run the operation once,
+     * subsequent calls will be ignored unless the <b>force</b> argument is set to true. In all cases the 
+     * {@link OperationManagerCallbacks#onOperationComplete(OperationServiceBridge, int, Bundle, boolean)} will
+     * be invoked for each call to runOperation but subsequent calls for the same operation will have the <b>fromCache</b> argument set to true.</p>
+     * 
+     * <p>Setting the force flag to true, will force the operation to run, if an operation is currently running then it will continue to run but 
+     * its result will be ignored and no callbacks will be received.</p>
+     *
+     * @param id user-defined id representing the operation to run
+     * @param force wether to force the operation to run
+     */
     public void runOperation(int id, boolean force) {
         
         if(!mStarted) {
@@ -204,7 +220,14 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
                 
                 mOperations.put(id, newOp);
             }
-        } 
+            
+            return;
+        }
+        
+        if(op.mResult != null) {
+        	mCallbacks.onOperationComplete(mBridge, op.mUserId, op.mResult, op.mCallbackInvoked);
+        	op.mCallbackInvoked = true;
+        }
     }
 
     private void queuePendingOperation(final int pendingId, final boolean pendingForce) {
