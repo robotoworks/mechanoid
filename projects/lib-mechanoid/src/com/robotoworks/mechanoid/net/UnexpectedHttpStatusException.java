@@ -1,4 +1,4 @@
-package com.justeat.app.ops.net;
+package com.robotoworks.mechanoid.net;
 
 public class UnexpectedHttpStatusException extends RuntimeException {
     private static final long serialVersionUID = 1L;
