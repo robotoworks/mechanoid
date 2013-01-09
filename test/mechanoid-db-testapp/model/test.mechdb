@@ -3,7 +3,8 @@ package com.mechanoid.db
 database TestDB {
 	migration {
 		create table table_a ( 
-			_id integer primary key autoincrement
+			_id integer primary key autoincrement,
+			qux text
 		);
 		
 		create view hehehe as
@@ -11,7 +12,7 @@ database TestDB {
 	}
 	
 	migration {
-		drop table if exists table_a;
+		drop view if exists hehehe;
 	}
 
 	migration {

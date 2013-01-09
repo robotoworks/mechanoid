@@ -19,24 +19,22 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
+import com.google.inject.Provider
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
 	@Inject ContentProviderContractGenerator mContentProviderContractGenerator
-	@Inject SqliteDatabaseSnapshotBuilder mDbSnapshotBuilder
+	@Inject Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject SqliteMigrationGenerator mMigrationGenerator
 	@Inject ContentProviderActionGenerator mActionGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
-	@Inject MechanoidOutputConfigurationProvider configProvider
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
-		val config = configProvider.outputConfigurations.head
-		
 		var model = resource.contents.head as Model;
 		
-		val snapshot = mDbSnapshotBuilder.build(model).database.migrations.get(0)
+		val snapshot = mDbSnapshotBuilderProvider.get().build(model).database.migrations.get(0)
 		
 		fsa.generateFile(
 			model.packageName.resolveFileName("Abstract".concat(model.database.name.pascalize).concat("OpenHelper")), 

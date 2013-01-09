@@ -140,6 +140,7 @@ class JsonReaderGenerator {
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
 		«context.registerImport("java.util.List")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		List<«itemType.boxedTypeSignature»> subjectMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
 		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''

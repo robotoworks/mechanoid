@@ -19,6 +19,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SqliteModelGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_DDLStatement_AfterKeyword_2_4_1_q_or_BeforeKeyword_2_4_0_q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__;
 	protected AbstractElementAlias match_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0;
 	protected AbstractElementAlias match_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__;
 	protected AbstractElementAlias match_DDLStatement___ForKeyword_2_8_0_EachKeyword_2_8_1_RowKeyword_2_8_2__q;
@@ -30,6 +31,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SqliteModelGrammarAccess) access;
+		match_DDLStatement_AfterKeyword_2_4_1_q_or_BeforeKeyword_2_4_0_q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getInsteadKeyword_2_4_2_0()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getOfKeyword_2_4_2_1())), new TokenAlias(false, true, grammarAccess.getDDLStatementAccess().getAfterKeyword_2_4_1()), new TokenAlias(false, true, grammarAccess.getDDLStatementAccess().getBeforeKeyword_2_4_0()));
 		match_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getDeleteKeyword_2_5_0()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getInsertKeyword_2_5_1()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getUpdateKeyword_2_5_2_0()));
 		match_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__ = new AlternativeAlias(false, false, new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getAfterKeyword_2_4_1()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getBeforeKeyword_2_4_0())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getInsteadKeyword_2_4_2_0()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getOfKeyword_2_4_2_1())));
 		match_DDLStatement___ForKeyword_2_8_0_EachKeyword_2_8_1_RowKeyword_2_8_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getForKeyword_2_8_0()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getEachKeyword_2_8_1()), new TokenAlias(false, false, grammarAccess.getDDLStatementAccess().getRowKeyword_2_8_2()));
@@ -63,7 +65,9 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0.equals(syntax))
+			if(match_DDLStatement_AfterKeyword_2_4_1_q_or_BeforeKeyword_2_4_0_q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__.equals(syntax))
+				emit_DDLStatement_AfterKeyword_2_4_1_q_or_BeforeKeyword_2_4_0_q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0.equals(syntax))
 				emit_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__.equals(syntax))
 				emit_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -83,7 +87,15 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'delete' | 'update' | 'insert'
+	 *     'before'? | ('instead' 'of') | 'after'?
+	 */
+	protected void emit_DDLStatement_AfterKeyword_2_4_1_q_or_BeforeKeyword_2_4_0_q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'update' | 'insert' | 'delete'
 	 */
 	protected void emit_DDLStatement_DeleteKeyword_2_5_0_or_InsertKeyword_2_5_1_or_UpdateKeyword_2_5_2_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -91,7 +103,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('after' | 'before')? | ('instead' 'of')
+	 *     ('before' | 'after')? | ('instead' 'of')
 	 */
 	protected void emit_DDLStatement___AfterKeyword_2_4_1_or_BeforeKeyword_2_4_0__q_or___InsteadKeyword_2_4_2_0_OfKeyword_2_4_2_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -131,7 +143,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'replace' | 'insert'
+	 *     'insert' | 'replace'
 	 */
 	protected void emit_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
