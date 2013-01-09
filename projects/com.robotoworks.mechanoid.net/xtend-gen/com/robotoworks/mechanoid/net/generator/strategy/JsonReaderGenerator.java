@@ -325,6 +325,8 @@ public class JsonReaderGenerator {
     StringConcatenation _builder = new StringConcatenation();
     this.context.registerImport("java.util.List");
     _builder.newLineIfNotEmpty();
+    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    _builder.newLineIfNotEmpty();
     _builder.append("List<");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature, "");

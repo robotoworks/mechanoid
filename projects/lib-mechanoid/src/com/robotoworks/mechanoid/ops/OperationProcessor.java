@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.os.Process;
 
 public abstract class OperationProcessor {
 	
@@ -211,7 +212,7 @@ public abstract class OperationProcessor {
 		private List<Runnable> pendingRunnables = new ArrayList<Runnable>();
 		
 		public Worker() {
-			super("worker");
+			super("worker", Process.THREAD_PRIORITY_BACKGROUND);
 		}
 		
 		public void post(Runnable runnable) {
