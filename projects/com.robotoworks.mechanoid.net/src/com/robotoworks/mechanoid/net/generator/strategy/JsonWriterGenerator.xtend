@@ -79,6 +79,7 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
 			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("subject")»());

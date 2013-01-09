@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.sqlite.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sqlite.generator.ActiveRecordGenerator;
@@ -24,13 +25,11 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import java.util.Arrays;
-import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -45,7 +44,7 @@ public class SqliteModelGenerator implements IGenerator {
   private ContentProviderContractGenerator mContentProviderContractGenerator;
   
   @Inject
-  private SqliteDatabaseSnapshotBuilder mDbSnapshotBuilder;
+  private Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider;
   
   @Inject
   private ContentProviderGenerator mContentProviderGenerator;
@@ -59,16 +58,12 @@ public class SqliteModelGenerator implements IGenerator {
   @Inject
   private ActiveRecordGenerator mActiveRecordGenerator;
   
-  @Inject
-  private MechanoidOutputConfigurationProvider configProvider;
-  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    Set<OutputConfiguration> _outputConfigurations = this.configProvider.getOutputConfigurations();
-    final OutputConfiguration config = IterableExtensions.<OutputConfiguration>head(_outputConfigurations);
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);
-    Model _build = this.mDbSnapshotBuilder.build(model);
+    SqliteDatabaseSnapshotBuilder _get = this.mDbSnapshotBuilderProvider.get();
+    Model _build = _get.build(model);
     DatabaseBlock _database = _build.getDatabase();
     EList<MigrationBlock> _migrations = _database.getMigrations();
     final MigrationBlock snapshot = _migrations.get(0);
