@@ -270,6 +270,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createExprOrAdapter();
       }
       @Override
+      public Adapter caseNullCheckExpression(NullCheckExpression object)
+      {
+        return createNullCheckExpressionAdapter();
+      }
+      @Override
       public Adapter caseColumnLiteral(ColumnLiteral object)
       {
         return createColumnLiteralAdapter();
@@ -1042,6 +1047,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExprOrAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression <em>Null Check Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression
+   * @generated
+   */
+  public Adapter createNullCheckExpressionAdapter()
   {
     return null;
   }

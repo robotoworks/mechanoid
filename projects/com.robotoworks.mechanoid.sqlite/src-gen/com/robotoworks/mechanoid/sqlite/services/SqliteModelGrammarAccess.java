@@ -657,25 +657,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExprOrElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExprOr");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cNullCheckExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cExprOrLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Keyword cOpOrKeyword_1_1_0 = (Keyword)cOpAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightNullCheckExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//ExprOr returns Expression:
-		//	PrimaryExpression ({ExprOr.left=current} op="or" right=PrimaryExpression)*;
+		//	NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//PrimaryExpression ({ExprOr.left=current} op="or" right=PrimaryExpression)*
+		//NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*
 		public Group getGroup() { return cGroup; }
 
-		//PrimaryExpression
-		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
+		//NullCheckExpression
+		public RuleCall getNullCheckExpressionParserRuleCall_0() { return cNullCheckExpressionParserRuleCall_0; }
 
-		//({ExprOr.left=current} op="or" right=PrimaryExpression)*
+		//({ExprOr.left=current} op="or" right=NullCheckExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{ExprOr.left=current}
@@ -687,308 +687,316 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"or"
 		public Keyword getOpOrKeyword_1_1_0() { return cOpOrKeyword_1_1_0; }
 
-		//right=PrimaryExpression
+		//right=NullCheckExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 
+		//NullCheckExpression
+		public RuleCall getRightNullCheckExpressionParserRuleCall_1_2_0() { return cRightNullCheckExpressionParserRuleCall_1_2_0; }
+	}
+
+	public class NullCheckExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NullCheckExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Action cNullCheckExpressionLeftAction_1 = (Action)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cIsNullKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cNotNullKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Keyword cNotnullKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
+		
+		//NullCheckExpression returns Expression:
+		//	PrimaryExpression {NullCheckExpression.left=current} ("is null" | "not null" | "notnull")?;
+		public ParserRule getRule() { return rule; }
+
+		//PrimaryExpression {NullCheckExpression.left=current} ("is null" | "not null" | "notnull")?
+		public Group getGroup() { return cGroup; }
+
 		//PrimaryExpression
-		public RuleCall getRightPrimaryExpressionParserRuleCall_1_2_0() { return cRightPrimaryExpressionParserRuleCall_1_2_0; }
+		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
+
+		//{NullCheckExpression.left=current}
+		public Action getNullCheckExpressionLeftAction_1() { return cNullCheckExpressionLeftAction_1; }
+
+		//("is null" | "not null" | "notnull")?
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//"is null"
+		public Keyword getIsNullKeyword_2_0() { return cIsNullKeyword_2_0; }
+
+		//"not null"
+		public Keyword getNotNullKeyword_2_1() { return cNotNullKeyword_2_1; }
+
+		//"notnull"
+		public Keyword getNotnullKeyword_2_2() { return cNotnullKeyword_2_2; }
 	}
 
 	public class PrimaryExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PrimaryExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
-		private final Action cColumnLiteralAction_0_0_0 = (Action)cGroup_0_0.eContents().get(0);
-		private final Assignment cNameAssignment_0_0_1 = (Assignment)cGroup_0_0.eContents().get(1);
-		private final RuleCall cNameFQNParserRuleCall_0_0_1_0 = (RuleCall)cNameAssignment_0_0_1.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
-		private final Action cLiteralAction_0_1_0 = (Action)cGroup_0_1.eContents().get(0);
-		private final Assignment cLiteralValueAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cLiteralValueLiteralValueParserRuleCall_0_1_1_0 = (RuleCall)cLiteralValueAssignment_0_1_1.eContents().get(0);
-		private final Group cGroup_0_2 = (Group)cAlternatives_0.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
-		private final RuleCall cSqlExpressionParserRuleCall_0_2_1 = (RuleCall)cGroup_0_2.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
-		private final Group cGroup_0_3 = (Group)cAlternatives_0.eContents().get(3);
-		private final Action cSelectStatementExpressionAction_0_3_0 = (Action)cGroup_0_3.eContents().get(0);
-		private final Assignment cNotAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
-		private final Keyword cNotNotKeyword_0_3_1_0 = (Keyword)cNotAssignment_0_3_1.eContents().get(0);
-		private final Assignment cExistsAssignment_0_3_2 = (Assignment)cGroup_0_3.eContents().get(2);
-		private final Keyword cExistsExistsKeyword_0_3_2_0 = (Keyword)cExistsAssignment_0_3_2.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_3_3 = (Keyword)cGroup_0_3.eContents().get(3);
-		private final Assignment cSelectAssignment_0_3_4 = (Assignment)cGroup_0_3.eContents().get(4);
-		private final RuleCall cSelectSelectStatementParserRuleCall_0_3_4_0 = (RuleCall)cSelectAssignment_0_3_4.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_3_5 = (Keyword)cGroup_0_3.eContents().get(5);
-		private final Group cGroup_0_4 = (Group)cAlternatives_0.eContents().get(4);
-		private final Action cCaseExpressionAction_0_4_0 = (Action)cGroup_0_4.eContents().get(0);
-		private final Keyword cCaseKeyword_0_4_1 = (Keyword)cGroup_0_4.eContents().get(1);
-		private final Assignment cCaseExpressionAssignment_0_4_2 = (Assignment)cGroup_0_4.eContents().get(2);
-		private final RuleCall cCaseExpressionSqlExpressionParserRuleCall_0_4_2_0 = (RuleCall)cCaseExpressionAssignment_0_4_2.eContents().get(0);
-		private final Assignment cCasesAssignment_0_4_3 = (Assignment)cGroup_0_4.eContents().get(3);
-		private final RuleCall cCasesCaseParserRuleCall_0_4_3_0 = (RuleCall)cCasesAssignment_0_4_3.eContents().get(0);
-		private final Assignment cCasesAssignment_0_4_4 = (Assignment)cGroup_0_4.eContents().get(4);
-		private final RuleCall cCasesCaseParserRuleCall_0_4_4_0 = (RuleCall)cCasesAssignment_0_4_4.eContents().get(0);
-		private final Group cGroup_0_4_5 = (Group)cGroup_0_4.eContents().get(5);
-		private final Keyword cElseKeyword_0_4_5_0 = (Keyword)cGroup_0_4_5.eContents().get(0);
-		private final Assignment cElseExpressionAssignment_0_4_5_1 = (Assignment)cGroup_0_4_5.eContents().get(1);
-		private final RuleCall cElseExpressionSqlExpressionParserRuleCall_0_4_5_1_0 = (RuleCall)cElseExpressionAssignment_0_4_5_1.eContents().get(0);
-		private final Keyword cEndKeyword_0_4_6 = (Keyword)cGroup_0_4.eContents().get(6);
-		private final Group cGroup_0_5 = (Group)cAlternatives_0.eContents().get(5);
-		private final Action cFunctionAction_0_5_0 = (Action)cGroup_0_5.eContents().get(0);
-		private final Assignment cNameAssignment_0_5_1 = (Assignment)cGroup_0_5.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_0_5_1_0 = (RuleCall)cNameAssignment_0_5_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_5_2 = (Keyword)cGroup_0_5.eContents().get(2);
-		private final Alternatives cAlternatives_0_5_3 = (Alternatives)cGroup_0_5.eContents().get(3);
-		private final Assignment cAllAssignment_0_5_3_0 = (Assignment)cAlternatives_0_5_3.eContents().get(0);
-		private final Keyword cAllAsteriskKeyword_0_5_3_0_0 = (Keyword)cAllAssignment_0_5_3_0.eContents().get(0);
-		private final Group cGroup_0_5_3_1 = (Group)cAlternatives_0_5_3.eContents().get(1);
-		private final Assignment cArgumentsAssignment_0_5_3_1_0 = (Assignment)cGroup_0_5_3_1.eContents().get(0);
-		private final RuleCall cArgumentsSqlExpressionParserRuleCall_0_5_3_1_0_0 = (RuleCall)cArgumentsAssignment_0_5_3_1_0.eContents().get(0);
-		private final Group cGroup_0_5_3_1_1 = (Group)cGroup_0_5_3_1.eContents().get(1);
-		private final Keyword cCommaKeyword_0_5_3_1_1_0 = (Keyword)cGroup_0_5_3_1_1.eContents().get(0);
-		private final Assignment cArugmentsAssignment_0_5_3_1_1_1 = (Assignment)cGroup_0_5_3_1_1.eContents().get(1);
-		private final RuleCall cArugmentsSqlExpressionParserRuleCall_0_5_3_1_1_1_0 = (RuleCall)cArugmentsAssignment_0_5_3_1_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_5_4 = (Keyword)cGroup_0_5.eContents().get(4);
-		private final Group cGroup_0_6 = (Group)cAlternatives_0.eContents().get(6);
-		private final Action cCastExpressionAction_0_6_0 = (Action)cGroup_0_6.eContents().get(0);
-		private final Keyword cCastKeyword_0_6_1 = (Keyword)cGroup_0_6.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0_6_2 = (Keyword)cGroup_0_6.eContents().get(2);
-		private final Assignment cExpressionAssignment_0_6_3 = (Assignment)cGroup_0_6.eContents().get(3);
-		private final RuleCall cExpressionSqlExpressionParserRuleCall_0_6_3_0 = (RuleCall)cExpressionAssignment_0_6_3.eContents().get(0);
-		private final Keyword cAsKeyword_0_6_4 = (Keyword)cGroup_0_6.eContents().get(4);
-		private final Assignment cTypeAssignment_0_6_5 = (Assignment)cGroup_0_6.eContents().get(5);
-		private final RuleCall cTypeSqliteDataTypeEnumRuleCall_0_6_5_0 = (RuleCall)cTypeAssignment_0_6_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_0_6_6 = (Keyword)cGroup_0_6.eContents().get(6);
-		private final Assignment cIsnullAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cIsnullAlternatives_1_0 = (Alternatives)cIsnullAssignment_1.eContents().get(0);
-		private final Keyword cIsnullIsNullKeyword_1_0_0 = (Keyword)cIsnullAlternatives_1_0.eContents().get(0);
-		private final Keyword cIsnullNotNullKeyword_1_0_1 = (Keyword)cIsnullAlternatives_1_0.eContents().get(1);
-		private final Keyword cIsnullNotnullKeyword_1_0_2 = (Keyword)cIsnullAlternatives_1_0.eContents().get(2);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cColumnLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameFQNParserRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cLiteralValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cLiteralValueLiteralValueParserRuleCall_1_1_0 = (RuleCall)cLiteralValueAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cSqlExpressionParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cSelectStatementExpressionAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Assignment cNotAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final Keyword cNotNotKeyword_3_1_0 = (Keyword)cNotAssignment_3_1.eContents().get(0);
+		private final Assignment cExistsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final Keyword cExistsExistsKeyword_3_2_0 = (Keyword)cExistsAssignment_3_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
+		private final Assignment cSelectAssignment_3_4 = (Assignment)cGroup_3.eContents().get(4);
+		private final RuleCall cSelectSelectStatementParserRuleCall_3_4_0 = (RuleCall)cSelectAssignment_3_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_5 = (Keyword)cGroup_3.eContents().get(5);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cCaseExpressionAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cCaseKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cCaseExpressionAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cCaseExpressionSqlExpressionParserRuleCall_4_2_0 = (RuleCall)cCaseExpressionAssignment_4_2.eContents().get(0);
+		private final Assignment cCasesAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cCasesCaseParserRuleCall_4_3_0 = (RuleCall)cCasesAssignment_4_3.eContents().get(0);
+		private final Assignment cCasesAssignment_4_4 = (Assignment)cGroup_4.eContents().get(4);
+		private final RuleCall cCasesCaseParserRuleCall_4_4_0 = (RuleCall)cCasesAssignment_4_4.eContents().get(0);
+		private final Group cGroup_4_5 = (Group)cGroup_4.eContents().get(5);
+		private final Keyword cElseKeyword_4_5_0 = (Keyword)cGroup_4_5.eContents().get(0);
+		private final Assignment cElseExpressionAssignment_4_5_1 = (Assignment)cGroup_4_5.eContents().get(1);
+		private final RuleCall cElseExpressionSqlExpressionParserRuleCall_4_5_1_0 = (RuleCall)cElseExpressionAssignment_4_5_1.eContents().get(0);
+		private final Keyword cEndKeyword_4_6 = (Keyword)cGroup_4.eContents().get(6);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cFunctionAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Assignment cNameAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_5_1_0 = (RuleCall)cNameAssignment_5_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Alternatives cAlternatives_5_3 = (Alternatives)cGroup_5.eContents().get(3);
+		private final Assignment cAllAssignment_5_3_0 = (Assignment)cAlternatives_5_3.eContents().get(0);
+		private final Keyword cAllAsteriskKeyword_5_3_0_0 = (Keyword)cAllAssignment_5_3_0.eContents().get(0);
+		private final Group cGroup_5_3_1 = (Group)cAlternatives_5_3.eContents().get(1);
+		private final Assignment cArgumentsAssignment_5_3_1_0 = (Assignment)cGroup_5_3_1.eContents().get(0);
+		private final RuleCall cArgumentsSqlExpressionParserRuleCall_5_3_1_0_0 = (RuleCall)cArgumentsAssignment_5_3_1_0.eContents().get(0);
+		private final Group cGroup_5_3_1_1 = (Group)cGroup_5_3_1.eContents().get(1);
+		private final Keyword cCommaKeyword_5_3_1_1_0 = (Keyword)cGroup_5_3_1_1.eContents().get(0);
+		private final Assignment cArugmentsAssignment_5_3_1_1_1 = (Assignment)cGroup_5_3_1_1.eContents().get(1);
+		private final RuleCall cArugmentsSqlExpressionParserRuleCall_5_3_1_1_1_0 = (RuleCall)cArugmentsAssignment_5_3_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
+		private final Action cCastExpressionAction_6_0 = (Action)cGroup_6.eContents().get(0);
+		private final Keyword cCastKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Assignment cExpressionAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
+		private final RuleCall cExpressionSqlExpressionParserRuleCall_6_3_0 = (RuleCall)cExpressionAssignment_6_3.eContents().get(0);
+		private final Keyword cAsKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Assignment cTypeAssignment_6_5 = (Assignment)cGroup_6.eContents().get(5);
+		private final RuleCall cTypeSqliteDataTypeEnumRuleCall_6_5_0 = (RuleCall)cTypeAssignment_6_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6_6 = (Keyword)cGroup_6.eContents().get(6);
 		
 		//PrimaryExpression returns Expression:
-		//	({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
+		//	{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 		//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 		//	cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
 		//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
-		//	"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?;
+		//	"as" type=SqliteDataType ")";
 		public ParserRule getRule() { return rule; }
-
-		//({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
-		//not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
-		//cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
-		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
-		//"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?
-		public Group getGroup() { return cGroup; }
 
 		//{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 		//not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 		//cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
 		//arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
 		//"as" type=SqliteDataType ")"
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{ColumnLiteral} name=FQN
-		public Group getGroup_0_0() { return cGroup_0_0; }
+		public Group getGroup_0() { return cGroup_0; }
 
 		//{ColumnLiteral}
-		public Action getColumnLiteralAction_0_0_0() { return cColumnLiteralAction_0_0_0; }
+		public Action getColumnLiteralAction_0_0() { return cColumnLiteralAction_0_0; }
 
 		//name=FQN
-		public Assignment getNameAssignment_0_0_1() { return cNameAssignment_0_0_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 
 		//FQN
-		public RuleCall getNameFQNParserRuleCall_0_0_1_0() { return cNameFQNParserRuleCall_0_0_1_0; }
+		public RuleCall getNameFQNParserRuleCall_0_1_0() { return cNameFQNParserRuleCall_0_1_0; }
 
 		//{Literal} literalValue=LiteralValue
-		public Group getGroup_0_1() { return cGroup_0_1; }
+		public Group getGroup_1() { return cGroup_1; }
 
 		//{Literal}
-		public Action getLiteralAction_0_1_0() { return cLiteralAction_0_1_0; }
+		public Action getLiteralAction_1_0() { return cLiteralAction_1_0; }
 
 		//literalValue=LiteralValue
-		public Assignment getLiteralValueAssignment_0_1_1() { return cLiteralValueAssignment_0_1_1; }
+		public Assignment getLiteralValueAssignment_1_1() { return cLiteralValueAssignment_1_1; }
 
 		//LiteralValue
-		public RuleCall getLiteralValueLiteralValueParserRuleCall_0_1_1_0() { return cLiteralValueLiteralValueParserRuleCall_0_1_1_0; }
+		public RuleCall getLiteralValueLiteralValueParserRuleCall_1_1_0() { return cLiteralValueLiteralValueParserRuleCall_1_1_0; }
 
 		//"(" SqlExpression ")"
-		public Group getGroup_0_2() { return cGroup_0_2; }
+		public Group getGroup_2() { return cGroup_2; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_0_2_0() { return cLeftParenthesisKeyword_0_2_0; }
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
 		//SqlExpression
-		public RuleCall getSqlExpressionParserRuleCall_0_2_1() { return cSqlExpressionParserRuleCall_0_2_1; }
+		public RuleCall getSqlExpressionParserRuleCall_2_1() { return cSqlExpressionParserRuleCall_2_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_0_2_2() { return cRightParenthesisKeyword_0_2_2; }
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 
 		//{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")"
-		public Group getGroup_0_3() { return cGroup_0_3; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//{SelectStatementExpression}
-		public Action getSelectStatementExpressionAction_0_3_0() { return cSelectStatementExpressionAction_0_3_0; }
+		public Action getSelectStatementExpressionAction_3_0() { return cSelectStatementExpressionAction_3_0; }
 
 		//not?="not"?
-		public Assignment getNotAssignment_0_3_1() { return cNotAssignment_0_3_1; }
+		public Assignment getNotAssignment_3_1() { return cNotAssignment_3_1; }
 
 		//"not"
-		public Keyword getNotNotKeyword_0_3_1_0() { return cNotNotKeyword_0_3_1_0; }
+		public Keyword getNotNotKeyword_3_1_0() { return cNotNotKeyword_3_1_0; }
 
 		//exists?="exists"?
-		public Assignment getExistsAssignment_0_3_2() { return cExistsAssignment_0_3_2; }
+		public Assignment getExistsAssignment_3_2() { return cExistsAssignment_3_2; }
 
 		//"exists"
-		public Keyword getExistsExistsKeyword_0_3_2_0() { return cExistsExistsKeyword_0_3_2_0; }
+		public Keyword getExistsExistsKeyword_3_2_0() { return cExistsExistsKeyword_3_2_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_0_3_3() { return cLeftParenthesisKeyword_0_3_3; }
+		public Keyword getLeftParenthesisKeyword_3_3() { return cLeftParenthesisKeyword_3_3; }
 
 		//select=SelectStatement
-		public Assignment getSelectAssignment_0_3_4() { return cSelectAssignment_0_3_4; }
+		public Assignment getSelectAssignment_3_4() { return cSelectAssignment_3_4; }
 
 		//SelectStatement
-		public RuleCall getSelectSelectStatementParserRuleCall_0_3_4_0() { return cSelectSelectStatementParserRuleCall_0_3_4_0; }
+		public RuleCall getSelectSelectStatementParserRuleCall_3_4_0() { return cSelectSelectStatementParserRuleCall_3_4_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_0_3_5() { return cRightParenthesisKeyword_0_3_5; }
+		public Keyword getRightParenthesisKeyword_3_5() { return cRightParenthesisKeyword_3_5; }
 
 		//{CaseExpression} "case" caseExpression=SqlExpression? cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)?
 		//"end"
-		public Group getGroup_0_4() { return cGroup_0_4; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//{CaseExpression}
-		public Action getCaseExpressionAction_0_4_0() { return cCaseExpressionAction_0_4_0; }
+		public Action getCaseExpressionAction_4_0() { return cCaseExpressionAction_4_0; }
 
 		//"case"
-		public Keyword getCaseKeyword_0_4_1() { return cCaseKeyword_0_4_1; }
+		public Keyword getCaseKeyword_4_1() { return cCaseKeyword_4_1; }
 
 		//caseExpression=SqlExpression?
-		public Assignment getCaseExpressionAssignment_0_4_2() { return cCaseExpressionAssignment_0_4_2; }
+		public Assignment getCaseExpressionAssignment_4_2() { return cCaseExpressionAssignment_4_2; }
 
 		//SqlExpression
-		public RuleCall getCaseExpressionSqlExpressionParserRuleCall_0_4_2_0() { return cCaseExpressionSqlExpressionParserRuleCall_0_4_2_0; }
+		public RuleCall getCaseExpressionSqlExpressionParserRuleCall_4_2_0() { return cCaseExpressionSqlExpressionParserRuleCall_4_2_0; }
 
 		//cases+=Case
-		public Assignment getCasesAssignment_0_4_3() { return cCasesAssignment_0_4_3; }
+		public Assignment getCasesAssignment_4_3() { return cCasesAssignment_4_3; }
 
 		//Case
-		public RuleCall getCasesCaseParserRuleCall_0_4_3_0() { return cCasesCaseParserRuleCall_0_4_3_0; }
+		public RuleCall getCasesCaseParserRuleCall_4_3_0() { return cCasesCaseParserRuleCall_4_3_0; }
 
 		//cases+=Case*
-		public Assignment getCasesAssignment_0_4_4() { return cCasesAssignment_0_4_4; }
+		public Assignment getCasesAssignment_4_4() { return cCasesAssignment_4_4; }
 
 		//Case
-		public RuleCall getCasesCaseParserRuleCall_0_4_4_0() { return cCasesCaseParserRuleCall_0_4_4_0; }
+		public RuleCall getCasesCaseParserRuleCall_4_4_0() { return cCasesCaseParserRuleCall_4_4_0; }
 
 		//("else" elseExpression=SqlExpression)?
-		public Group getGroup_0_4_5() { return cGroup_0_4_5; }
+		public Group getGroup_4_5() { return cGroup_4_5; }
 
 		//"else"
-		public Keyword getElseKeyword_0_4_5_0() { return cElseKeyword_0_4_5_0; }
+		public Keyword getElseKeyword_4_5_0() { return cElseKeyword_4_5_0; }
 
 		//elseExpression=SqlExpression
-		public Assignment getElseExpressionAssignment_0_4_5_1() { return cElseExpressionAssignment_0_4_5_1; }
+		public Assignment getElseExpressionAssignment_4_5_1() { return cElseExpressionAssignment_4_5_1; }
 
 		//SqlExpression
-		public RuleCall getElseExpressionSqlExpressionParserRuleCall_0_4_5_1_0() { return cElseExpressionSqlExpressionParserRuleCall_0_4_5_1_0; }
+		public RuleCall getElseExpressionSqlExpressionParserRuleCall_4_5_1_0() { return cElseExpressionSqlExpressionParserRuleCall_4_5_1_0; }
 
 		//"end"
-		public Keyword getEndKeyword_0_4_6() { return cEndKeyword_0_4_6; }
+		public Keyword getEndKeyword_4_6() { return cEndKeyword_4_6; }
 
 		//{Function} name=ID "(" (all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")"
-		public Group getGroup_0_5() { return cGroup_0_5; }
+		public Group getGroup_5() { return cGroup_5; }
 
 		//{Function}
-		public Action getFunctionAction_0_5_0() { return cFunctionAction_0_5_0; }
+		public Action getFunctionAction_5_0() { return cFunctionAction_5_0; }
 
 		//name=ID
-		public Assignment getNameAssignment_0_5_1() { return cNameAssignment_0_5_1; }
+		public Assignment getNameAssignment_5_1() { return cNameAssignment_5_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_5_1_0() { return cNameIDTerminalRuleCall_0_5_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_5_1_0() { return cNameIDTerminalRuleCall_5_1_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_0_5_2() { return cLeftParenthesisKeyword_0_5_2; }
+		public Keyword getLeftParenthesisKeyword_5_2() { return cLeftParenthesisKeyword_5_2; }
 
 		//all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*
-		public Alternatives getAlternatives_0_5_3() { return cAlternatives_0_5_3; }
+		public Alternatives getAlternatives_5_3() { return cAlternatives_5_3; }
 
 		//all?="*"
-		public Assignment getAllAssignment_0_5_3_0() { return cAllAssignment_0_5_3_0; }
+		public Assignment getAllAssignment_5_3_0() { return cAllAssignment_5_3_0; }
 
 		//"*"
-		public Keyword getAllAsteriskKeyword_0_5_3_0_0() { return cAllAsteriskKeyword_0_5_3_0_0; }
+		public Keyword getAllAsteriskKeyword_5_3_0_0() { return cAllAsteriskKeyword_5_3_0_0; }
 
 		//arguments+=SqlExpression ("," arugments+=SqlExpression)*
-		public Group getGroup_0_5_3_1() { return cGroup_0_5_3_1; }
+		public Group getGroup_5_3_1() { return cGroup_5_3_1; }
 
 		//arguments+=SqlExpression
-		public Assignment getArgumentsAssignment_0_5_3_1_0() { return cArgumentsAssignment_0_5_3_1_0; }
+		public Assignment getArgumentsAssignment_5_3_1_0() { return cArgumentsAssignment_5_3_1_0; }
 
 		//SqlExpression
-		public RuleCall getArgumentsSqlExpressionParserRuleCall_0_5_3_1_0_0() { return cArgumentsSqlExpressionParserRuleCall_0_5_3_1_0_0; }
+		public RuleCall getArgumentsSqlExpressionParserRuleCall_5_3_1_0_0() { return cArgumentsSqlExpressionParserRuleCall_5_3_1_0_0; }
 
 		//("," arugments+=SqlExpression)*
-		public Group getGroup_0_5_3_1_1() { return cGroup_0_5_3_1_1; }
+		public Group getGroup_5_3_1_1() { return cGroup_5_3_1_1; }
 
 		//","
-		public Keyword getCommaKeyword_0_5_3_1_1_0() { return cCommaKeyword_0_5_3_1_1_0; }
+		public Keyword getCommaKeyword_5_3_1_1_0() { return cCommaKeyword_5_3_1_1_0; }
 
 		//arugments+=SqlExpression
-		public Assignment getArugmentsAssignment_0_5_3_1_1_1() { return cArugmentsAssignment_0_5_3_1_1_1; }
+		public Assignment getArugmentsAssignment_5_3_1_1_1() { return cArugmentsAssignment_5_3_1_1_1; }
 
 		//SqlExpression
-		public RuleCall getArugmentsSqlExpressionParserRuleCall_0_5_3_1_1_1_0() { return cArugmentsSqlExpressionParserRuleCall_0_5_3_1_1_1_0; }
+		public RuleCall getArugmentsSqlExpressionParserRuleCall_5_3_1_1_1_0() { return cArugmentsSqlExpressionParserRuleCall_5_3_1_1_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_0_5_4() { return cRightParenthesisKeyword_0_5_4; }
+		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
 
 		//{CastExpression} "cast" "(" expression=SqlExpression "as" type=SqliteDataType ")"
-		public Group getGroup_0_6() { return cGroup_0_6; }
+		public Group getGroup_6() { return cGroup_6; }
 
 		//{CastExpression}
-		public Action getCastExpressionAction_0_6_0() { return cCastExpressionAction_0_6_0; }
+		public Action getCastExpressionAction_6_0() { return cCastExpressionAction_6_0; }
 
 		//"cast"
-		public Keyword getCastKeyword_0_6_1() { return cCastKeyword_0_6_1; }
+		public Keyword getCastKeyword_6_1() { return cCastKeyword_6_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_0_6_2() { return cLeftParenthesisKeyword_0_6_2; }
+		public Keyword getLeftParenthesisKeyword_6_2() { return cLeftParenthesisKeyword_6_2; }
 
 		//expression=SqlExpression
-		public Assignment getExpressionAssignment_0_6_3() { return cExpressionAssignment_0_6_3; }
+		public Assignment getExpressionAssignment_6_3() { return cExpressionAssignment_6_3; }
 
 		//SqlExpression
-		public RuleCall getExpressionSqlExpressionParserRuleCall_0_6_3_0() { return cExpressionSqlExpressionParserRuleCall_0_6_3_0; }
+		public RuleCall getExpressionSqlExpressionParserRuleCall_6_3_0() { return cExpressionSqlExpressionParserRuleCall_6_3_0; }
 
 		//"as"
-		public Keyword getAsKeyword_0_6_4() { return cAsKeyword_0_6_4; }
+		public Keyword getAsKeyword_6_4() { return cAsKeyword_6_4; }
 
 		//type=SqliteDataType
-		public Assignment getTypeAssignment_0_6_5() { return cTypeAssignment_0_6_5; }
+		public Assignment getTypeAssignment_6_5() { return cTypeAssignment_6_5; }
 
 		//SqliteDataType
-		public RuleCall getTypeSqliteDataTypeEnumRuleCall_0_6_5_0() { return cTypeSqliteDataTypeEnumRuleCall_0_6_5_0; }
+		public RuleCall getTypeSqliteDataTypeEnumRuleCall_6_5_0() { return cTypeSqliteDataTypeEnumRuleCall_6_5_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_0_6_6() { return cRightParenthesisKeyword_0_6_6; }
-
-		//isnull?=("is null" | "not null" | "notnull")?
-		public Assignment getIsnullAssignment_1() { return cIsnullAssignment_1; }
-
-		//"is null" | "not null" | "notnull"
-		public Alternatives getIsnullAlternatives_1_0() { return cIsnullAlternatives_1_0; }
-
-		//"is null"
-		public Keyword getIsnullIsNullKeyword_1_0_0() { return cIsnullIsNullKeyword_1_0_0; }
-
-		//"not null"
-		public Keyword getIsnullNotNullKeyword_1_0_1() { return cIsnullNotNullKeyword_1_0_1; }
-
-		//"notnull"
-		public Keyword getIsnullNotnullKeyword_1_0_2() { return cIsnullNotnullKeyword_1_0_2; }
+		public Keyword getRightParenthesisKeyword_6_6() { return cRightParenthesisKeyword_6_6; }
 	}
 
 	public class CaseElements extends AbstractParserRuleElementFinder {
@@ -2027,10 +2035,9 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAutoincrementAutoincrementKeyword_0_4_0 = (Keyword)cAutoincrementAssignment_0_4.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cNotNullConstraintAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cNotKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Keyword cNullKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cConflictClauseAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cConflictClauseConflictClauseParserRuleCall_1_3_0 = (RuleCall)cConflictClauseAssignment_1_3.eContents().get(0);
+		private final Keyword cNotNullKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cConflictClauseAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cConflictClauseConflictClauseParserRuleCall_1_2_0 = (RuleCall)cConflictClauseAssignment_1_2.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cDefaultConstraintAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Keyword cDefaultKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
@@ -2039,13 +2046,12 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ColumnConstraint:
 		//	{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-		//	{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
+		//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
 		//	defaultValue=DefaultValue;
 		public ParserRule getRule() { return rule; }
 
 		//{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-		//{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
-		//defaultValue=DefaultValue
+		//{NotNullConstraint} "not null" conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"?
@@ -2081,23 +2087,20 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"autoincrement"
 		public Keyword getAutoincrementAutoincrementKeyword_0_4_0() { return cAutoincrementAutoincrementKeyword_0_4_0; }
 
-		//{NotNullConstraint} "not" "null" conflictClause=ConflictClause?
+		//{NotNullConstraint} "not null" conflictClause=ConflictClause?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{NotNullConstraint}
 		public Action getNotNullConstraintAction_1_0() { return cNotNullConstraintAction_1_0; }
 
-		//"not"
-		public Keyword getNotKeyword_1_1() { return cNotKeyword_1_1; }
-
-		//"null"
-		public Keyword getNullKeyword_1_2() { return cNullKeyword_1_2; }
+		//"not null"
+		public Keyword getNotNullKeyword_1_1() { return cNotNullKeyword_1_1; }
 
 		//conflictClause=ConflictClause?
-		public Assignment getConflictClauseAssignment_1_3() { return cConflictClauseAssignment_1_3; }
+		public Assignment getConflictClauseAssignment_1_2() { return cConflictClauseAssignment_1_2; }
 
 		//ConflictClause
-		public RuleCall getConflictClauseConflictClauseParserRuleCall_1_3_0() { return cConflictClauseConflictClauseParserRuleCall_1_3_0; }
+		public RuleCall getConflictClauseConflictClauseParserRuleCall_1_2_0() { return cConflictClauseConflictClauseParserRuleCall_1_2_0; }
 
 		//{DefaultConstraint} "default" defaultValue=DefaultValue
 		public Group getGroup_2() { return cGroup_2; }
@@ -3290,6 +3293,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private ExprEqualElements pExprEqual;
 	private ExprAndElements pExprAnd;
 	private ExprOrElements pExprOr;
+	private NullCheckExpressionElements pNullCheckExpression;
 	private PrimaryExpressionElements pPrimaryExpression;
 	private CaseElements pCase;
 	private DDLStatementElements pDDLStatement;
@@ -3497,7 +3501,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExprOr returns Expression:
-	//	PrimaryExpression ({ExprOr.left=current} op="or" right=PrimaryExpression)*;
+	//	NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*;
 	public ExprOrElements getExprOrAccess() {
 		return (pExprOr != null) ? pExprOr : (pExprOr = new ExprOrElements());
 	}
@@ -3506,12 +3510,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprOrAccess().getRule();
 	}
 
+	//NullCheckExpression returns Expression:
+	//	PrimaryExpression {NullCheckExpression.left=current} ("is null" | "not null" | "notnull")?;
+	public NullCheckExpressionElements getNullCheckExpressionAccess() {
+		return (pNullCheckExpression != null) ? pNullCheckExpression : (pNullCheckExpression = new NullCheckExpressionElements());
+	}
+	
+	public ParserRule getNullCheckExpressionRule() {
+		return getNullCheckExpressionAccess().getRule();
+	}
+
 	//PrimaryExpression returns Expression:
-	//	({ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
+	//	{ColumnLiteral} name=FQN | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" | {SelectStatementExpression}
 	//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
 	//	cases+=Case cases+=Case* ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
 	//	arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
-	//	"as" type=SqliteDataType ")") isnull?=("is null" | "not null" | "notnull")?;
+	//	"as" type=SqliteDataType ")";
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
 	}
@@ -3638,7 +3652,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ColumnConstraint:
 	//	{PrimaryKeyColumnConstraint} "primary" "key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-	//	{NotNullConstraint} "not" "null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
+	//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
 	//	defaultValue=DefaultValue;
 	public ColumnConstraintElements getColumnConstraintAccess() {
 		return (pColumnConstraint != null) ? pColumnConstraint : (pColumnConstraint = new ColumnConstraintElements());

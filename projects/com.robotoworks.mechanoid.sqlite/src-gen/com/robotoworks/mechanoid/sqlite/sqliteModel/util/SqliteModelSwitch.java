@@ -360,6 +360,14 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION:
+      {
+        NullCheckExpression nullCheckExpression = (NullCheckExpression)theEObject;
+        T result = caseNullCheckExpression(nullCheckExpression);
+        if (result == null) result = caseExpression(nullCheckExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.COLUMN_LITERAL:
       {
         ColumnLiteral columnLiteral = (ColumnLiteral)theEObject;
@@ -1256,6 +1264,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExprOr(ExprOr object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Null Check Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Null Check Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullCheckExpression(NullCheckExpression object)
   {
     return null;
   }
