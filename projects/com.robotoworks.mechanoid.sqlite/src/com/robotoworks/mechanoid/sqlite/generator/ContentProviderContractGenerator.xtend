@@ -26,6 +26,7 @@ class ContentProviderContractGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
+			import android.content.ContentProviderOperation;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -179,6 +180,34 @@ class ContentProviderContractGenerator {
 						 */						
 						public ContentValues getValues() {
 							return mValues;
+						}
+
+						/**
+						 * @see ContentProviderOperation.newInsert(Uri)
+						 */								
+						public ContentProviderOperation newInsertOperation() {
+							return ContentProviderOperation.newInsert(CONTENT_URI);
+						}
+						
+						/**
+						 * @see ContentProviderOperation.newUpdate(Uri)
+						 */
+						public ContentProviderOperation newUpdateOperation() {
+							return ContentProviderOperation.newUpdate(CONTENT_URI);
+						}
+						
+						/**
+						 * @see ContentProviderOperation.newDelete(Uri)
+						 */
+						public ContentProviderOperation newDeleteOperation() {
+							return ContentProviderOperation.newDelete(CONTENT_URI);
+						}
+						
+						/**
+						 * @see ContentProviderOperation.newAssertQuery(Uri)
+						 */
+						public ContentProviderOperation newAssertQueryOperation() {
+							return ContentProviderOperation.newAssertQuery(CONTENT_URI);
 						}
 					}
 				}
