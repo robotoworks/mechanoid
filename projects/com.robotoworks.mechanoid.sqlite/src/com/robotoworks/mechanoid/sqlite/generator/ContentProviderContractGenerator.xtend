@@ -95,9 +95,11 @@ class ContentProviderContractGenerator {
 					
 					/**
 					 * <p>Build and execute insert or update statements for «tbl.name.pascalize».</p>
+					 *
+					 * <p>Use {@link «tbl.name.pascalize»#newBuilder()} to create new builder</p>
 					 */
 					public static class Builder extends AbstractValuesBuilder {
-						protected Builder() {
+						private Builder() {
 							super(Mechanoid.getApplicationContext(), CONTENT_URI);
 						}
 						
@@ -107,8 +109,6 @@ class ContentProviderContractGenerator {
 							return this;
 						}
 						«ENDFOR»
-						
-						}
 					}
 				}
 				
