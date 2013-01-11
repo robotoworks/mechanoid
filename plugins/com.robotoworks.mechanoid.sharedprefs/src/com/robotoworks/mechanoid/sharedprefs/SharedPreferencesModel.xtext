@@ -1,0 +1,26 @@
+grammar com.robotoworks.mechanoid.sharedprefs.SharedPreferencesModel with org.eclipse.xtext.common.Terminals
+
+generate sharedPreferencesModel "http://www.robotoworks.com/mechanoid/sharedprefs/SharedPreferencesModel"
+
+Model:
+	'package' packageName=FQN
+	preferencesBlock=PreferencesBlock;
+
+PreferencesBlock:
+	'preferences' name=ID '{' (prefs+=Preference)* '}';
+
+Preference:
+	name=ID ':' type=PreferenceType
+;
+
+enum PreferenceType:
+	String='String' | 
+	Integer='int' | 
+	Boolean='boolean' | 
+	Float='float' |
+	Long='long'
+	;
+
+
+FQN:
+	ID (=>'.' ID)*;

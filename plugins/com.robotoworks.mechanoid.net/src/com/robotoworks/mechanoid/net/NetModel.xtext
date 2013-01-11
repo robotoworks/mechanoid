@@ -1,0 +1,154 @@
+grammar com.robotoworks.mechanoid.net.NetModel with org.eclipse.xtext.common.Terminals
+
+generate netModel "http://www.robotoworks.com/mechanoid/net/NetModel"
+
+Model:
+	"package" packageName=FQN
+	(declarations+=Declaration)*
+;
+
+Declaration:
+	UserTypeDeclaration | Client
+;
+
+Client:
+	'client' name=ID baseUrl=STRING? '{'
+	(headers = HeaderBlock)?
+	(params = ParamsBlock)?
+	(methods +=HttpMethod)* 
+	'}'
+;
+
+HeaderBlock:
+	'headers' headers+=Header (',' headers+=Header)*
+;
+
+Header:
+	name=STRING ':' value=STRING
+;
+
+HttpMethod:
+	HttpPost | HttpGet | HttpPut | HttpDelete
+;
+
+HttpPost:
+	'post' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
+;
+
+HttpPut:
+	'put' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (body=BodyBlock)? (response=ResponseBlock)? '}'
+;
+
+HttpGet:
+	'get' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (response=ResponseBlock)? '}'
+;
+
+HttpDelete:
+	'delete' name=ID path=STRING? '{' (headers = HeaderBlock)? (params=ParamsBlock)? (response=ResponseBlock)? '}'
+;
+
+//Path:
+//	{Path}
+//	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
+//;
+
+ParamsBlock:
+	{ParamsBlock}
+	'params' params+=SimpleMember* (',' params+=SimpleMember)*
+;
+
+BodyBlock:
+	'body' type=BlockType
+;
+
+ResponseBlock:
+	{ResponseBlock}
+	'response' ('extends' superType=[ComplexTypeDeclaration])? (type=BlockType)?
+;
+
+BlockType:
+	Type | ComplexTypeLiteral
+;
+
+Member:
+	(TypedMember | SkipMember) /*('=' defaultValue=Value)?  */
+;
+
+TypedMember:
+	name=(ID|STRING) ':' type=Type
+;
+
+SkipMember :
+	name=(ID|STRING) literal=ComplexTypeLiteral
+;
+
+SimpleMember:
+	name=(ID|STRING) ':' type=IntrinsicType
+;
+
+Type:
+	UserType | IntrinsicType | GenericListType
+;
+
+GenericListType:
+	elementType=(UserType|IntrinsicType) id='[]'
+;
+
+UserType:
+	declaration = [UserTypeDeclaration] 
+;
+
+UserTypeDeclaration:
+	ComplexTypeDeclaration | EnumTypeDeclaration
+;
+
+ComplexTypeDeclaration:
+	keyword='entity' (gen?='generate')? name=ID (literal=ComplexTypeLiteral)?
+;
+
+EnumTypeDeclaration:
+	keyword='enum' (gen?='generate')? name=ID ('extends' superType=IntegerType)? (literal=EnumTypeLiteral)?
+;
+
+EnumTypeLiteral:
+	('{' members+=EnumMember (',' members+=EnumMember)* '}')
+;
+
+EnumMember:
+	name=ID (assignment?='=' value=INT)?
+;
+
+ComplexTypeLiteral:
+	('{' members+=Member (',' members+=Member)* '}')
+;
+
+IntrinsicType:
+	StringType | BooleanType | NumericType
+;
+
+StringType:
+	id="String"
+;
+
+BooleanType:
+	id="boolean"
+;
+
+NumericType:
+	IntegerType | LongType | DoubleType
+;
+	
+IntegerType:
+	id="int"
+;
+
+LongType:
+	id="long"
+;
+
+DoubleType:
+	id="double"
+;
+
+FQN:
+	ID ("." ID)*;

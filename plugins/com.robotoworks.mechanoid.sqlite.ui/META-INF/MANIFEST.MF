@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Android Sqlite Generator DSL UI
+Bundle-Vendor: Robotoworks Limited
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: com.robotoworks.mechanoid.sqlite.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: com.robotoworks.mechanoid.sqlite;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.xbase.ui,
+ com.robotoworks.mechanoid.common;bundle-version="1.0.0",
+ org.eclipse.jdt;bundle-version="3.8.0",
+ org.eclipse.jdt.core;bundle-version="3.8.2"
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: com.robotoworks.mechanoid.sqlite.ui.contentassist,
+ com.robotoworks.mechanoid.sqlite.ui.contentassist.antlr,
+ com.robotoworks.mechanoid.sqlite.ui.internal
+Bundle-Activator: com.robotoworks.mechanoid.sqlite.ui.internal.SqliteModelActivator

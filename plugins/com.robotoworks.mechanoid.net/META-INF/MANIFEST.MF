@@ -1,0 +1,39 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.robotoworks.mechanoid.net
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: com.robotoworks.mechanoid.net; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.jdt.core;bundle-version="3.8.2"
+Import-Package: com.robotoworks.mechanoid.common.internal.util,
+ com.robotoworks.mechanoid.common.util,
+ com.robotoworks.mechanoid.common.xtext.generator,
+ org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: com.robotoworks.mechanoid.net,
+ com.robotoworks.mechanoid.net.services,
+ com.robotoworks.mechanoid.net.netModel,
+ com.robotoworks.mechanoid.net.netModel.impl,
+ com.robotoworks.mechanoid.net.netModel.util,
+ com.robotoworks.mechanoid.net.serializer,
+ com.robotoworks.mechanoid.net.parser.antlr,
+ com.robotoworks.mechanoid.net.parser.antlr.internal,
+ com.robotoworks.mechanoid.net.validation,
+ com.robotoworks.mechanoid.net.scoping,
+ com.robotoworks.mechanoid.net.generator,
+ com.robotoworks.mechanoid.net.formatting
+
