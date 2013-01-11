@@ -10,6 +10,6 @@
   </parent>
   <groupId>com.robotoworks.mechanoid.features</groupId>
   <artifactId>com.robotoworks.mechanoid.feature</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 </project>
