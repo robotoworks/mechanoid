@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Common
+Bundle-Name: com.robotoworks.mechanoid.common
 Bundle-SymbolicName: com.robotoworks.mechanoid.common;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: com.robotoworks.mechanoid.common.Activator

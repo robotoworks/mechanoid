@@ -16,7 +16,7 @@ Require-Bundle: com.robotoworks.mechanoid.sharedprefs;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- com.robotoworks.mechanoid.common;bundle-version="1.0.0"
+ com.robotoworks.mechanoid.common
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.sharedprefs.ui.contentassist,

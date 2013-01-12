@@ -6,9 +6,9 @@
     <artifactId>mechanoid</artifactId>
     <groupId>org.robotoworks.mechanoid</groupId>
     <relativePath>../../pom.xml</relativePath>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>com.robotoworks.mechanoid.updatesite</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 </project>

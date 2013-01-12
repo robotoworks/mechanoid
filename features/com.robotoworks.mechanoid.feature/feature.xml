@@ -91,12 +91,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <requires>
-      <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.editors" version="3.8.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.ide" version="3.8.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.resources" version="3.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
@@ -108,20 +103,20 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.xtext.builder"/>
       <import plugin="org.eclipse.xtext.common.types.ui"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
       <import plugin="org.eclipse.compare"/>
-      <import plugin="com.robotoworks.mechanoid.common" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui.editors" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.8.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.3.1" match="greaterOrEqual"/>
    </requires>
-
-   <plugin
-         id="com.robotoworks.mechanoid.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="com.robotoworks.mechanoid.net"
@@ -174,6 +169,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="com.robotoworks.mechanoid.sqlite.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.robotoworks.mechanoid.common"
          download-size="0"
          install-size="0"
          version="0.0.0"
