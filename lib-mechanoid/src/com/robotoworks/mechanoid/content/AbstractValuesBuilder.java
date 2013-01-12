@@ -94,30 +94,50 @@ public abstract class AbstractValuesBuilder {
 	}
 
 	/**
+	 * <p>Takes the values in this builder and creates a new 
+	 * {@link ContentProviderOperation} as an insert operation.</p>
+	 * 
 	 * @see ContentProviderOperation#newInsert(Uri)
 	 */								
-	public ContentProviderOperation.Builder newInsertOperationBuilder() {
-		return ContentProviderOperation.newInsert(mContentUri);
+	public ContentProviderOperation.Builder toInsertOperationBuilder() {
+		return ContentProviderOperation
+				.newInsert(mContentUri)
+				.withValues(mValues);
 	}
 	
 	/**
+	 * <p>Takes the values in this builder and creates a new 
+	 * {@link ContentProviderOperation} as an update operation.</p>
+	 * 
 	 * @see ContentProviderOperation#newUpdate(Uri)
 	 */
-	public ContentProviderOperation.Builder newUpdateOperationBuilder() {
-		return ContentProviderOperation.newUpdate(mContentUri);
+	public ContentProviderOperation.Builder toUpdateOperationBuilder() {
+		return ContentProviderOperation
+				.newUpdate(mContentUri)
+				.withValues(mValues);
 	}
 	
 	/**
+	 * <p>Takes the values in this builder and creates a new 
+	 * {@link ContentProviderOperation} as an delete operation.</p>
+	 * 
 	 * @see ContentProviderOperation#newDelete(Uri)
 	 */
-	public ContentProviderOperation.Builder newDeleteOperationBuilder() {
-		return ContentProviderOperation.newDelete(mContentUri);
+	public ContentProviderOperation.Builder toDeleteOperationBuilder() {
+		return ContentProviderOperation
+				.newDelete(mContentUri)
+				.withValues(mValues);
 	}
 	
 	/**
+	 * <p>Takes the values in this builder and creates a new 
+	 * {@link ContentProviderOperation} as an assert query operation.</p>
+	 * 
 	 * @see ContentProviderOperation#newAssertQuery(Uri)
 	 */
-	public ContentProviderOperation.Builder newAssertQueryOperationBuilder() {
-		return ContentProviderOperation.newAssertQuery(mContentUri);
+	public ContentProviderOperation.Builder toAssertQueryOperationBuilder() {
+		return ContentProviderOperation
+				.newAssertQuery(mContentUri)
+				.withValues(mValues);
 	}
 }
