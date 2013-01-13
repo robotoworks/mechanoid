@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Mechanoid Update Site" url="http://www.robotoworks.com/mechanoid/updates">
+      Mechanoid Plugins
+   </description>
+   <feature url="features/com.robotoworks.mechanoid.feature_0.1.0.qualifier.jar" id="com.robotoworks.mechanoid.feature" version="0.1.0.qualifier">
+      <category name="mechanoid"/>
+   </feature>
+   <category-def name="mechanoid" label="Mechanoid">
+      <description>
+         Mechanoid Plugins
+      </description>
+   </category-def>
+</site>

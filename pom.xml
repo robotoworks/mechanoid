@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.robotoworks.mechanoid</groupId>
+  <artifactId>mechanoid</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+   	<module>releng/com.robotoworks.mechanoid.updatesite</module>
+    <module>features/com.robotoworks.mechanoid.feature</module>
+    <module>plugins/com.robotoworks.mechanoid.common</module>
+   	<module>plugins/com.robotoworks.mechanoid.net</module>
+   	<module>plugins/com.robotoworks.mechanoid.net.ui</module>
+   	<module>plugins/com.robotoworks.mechanoid.ops</module>
+   	<module>plugins/com.robotoworks.mechanoid.ops.ui</module>
+   	<module>plugins/com.robotoworks.mechanoid.sharedprefs</module>
+   	<module>plugins/com.robotoworks.mechanoid.sharedprefs.ui</module>
+   	<module>plugins/com.robotoworks.mechanoid.sqlite</module>
+   	<module>plugins/com.robotoworks.mechanoid.sqlite.ui</module>
+
+<!--    	<module>tests/com.robotoworks.mechanoid.net.tests</module> -->
+<!--    	<module>tests/com.robotoworks.mechanoid.ops.tests</module> -->
+<!--    	<module>tests/com.robotoworks.mechanoid.sharedprefs.tests</module> -->
+<!--    	<module>tests/com.robotoworks.mechanoid.sqlite.tests</module> -->
+<!--    	<module>lib-mechanoid</module> -->
+  </modules>
+  
+  <properties>
+    <tycho-version>0.16.0</tycho-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+  </properties>
+  
+  <repositories>
+    <repository>
+      <id>juno</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/juno</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+	  <plugin>  
+	      <groupId>org.eclipse.tycho</groupId>  
+	      <artifactId>tycho-versions-plugin</artifactId>  
+	      <version>${tycho-version}</version>  
+	  </plugin>  
+	   <plugin>
+	    <groupId>org.eclipse.tycho</groupId>
+	    <artifactId>target-platform-configuration</artifactId>
+	    <version>${tycho-version}</version>
+	    <configuration>
+	     <environments>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+	     </environments>
+	    </configuration>
+	   </plugin>
+<!--       <plugin> -->
+<!--         <groupId>org.eclipse.tycho</groupId> -->
+<!--         <artifactId>tycho-p2-director-plugin</artifactId> -->
+<!--         <version>${tycho-version}</version> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <id>materialize-products</id> -->
+<!--             <goals> -->
+<!--               <goal>materialize-products</goal> -->
+<!--             </goals> -->
+<!--           </execution> -->
+<!--           <execution> -->
+<!--             <id>archive-products</id> -->
+<!--             <goals> -->
+<!--               <goal>archive-products</goal> -->
+<!--             </goals> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
+    </plugins>
+  </build>
+  <licenses>
+    <license>
+      <name>Eclipse Public License v1.0</name>
+      <comments>
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.htm
+</comments>
+    </license>
+  </licenses>
+  <url>
+http://www.robotoworks.com/mechanoid-plugin
+</url>
+  <description>
+      Mechanoid is a set of code generators from XText DSL's for the rapid development of Android applications.
+</description>
+  <inceptionYear>2012</inceptionYear>
+  <issueManagement>
+    <system>Github Issues</system>
+    <url>
+https://github.com/robotoworks/mechanoid/issues
+</url>
+  </issueManagement>
+  <organization>
+    <name>Robotoworks Limited</name>
+    <url>http://www.robotoworks.com/</url>
+  </organization>
+  <scm>
+    <developerConnection>https://github.com/robotoworks/mechanoid.git</developerConnection>
+    <url>https://github.com/robotoworks/mechanoid</url>
+    <connection>git://github.com/robotoworks/mechanoid.git</connection>
+  </scm>
+</project>
