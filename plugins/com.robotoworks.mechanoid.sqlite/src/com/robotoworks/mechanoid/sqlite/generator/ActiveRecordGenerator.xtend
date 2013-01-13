@@ -121,6 +121,7 @@ class ActiveRecordGenerator {
 					ÇENDFORÈ
 				}
 
+				@Override
 				protected void setPropertiesFromCursor(Cursor c) {
 					setId(c.getLong(Indices._ID));
 					ÇFOR col : stmt.columnDefs.filter([!it.name.equals("_id")])È

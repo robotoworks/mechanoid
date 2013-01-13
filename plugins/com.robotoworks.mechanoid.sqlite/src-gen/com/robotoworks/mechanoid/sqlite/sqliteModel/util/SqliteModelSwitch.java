@@ -288,14 +288,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ACTIVE_RECORD_REGISTRATION_STATEMENT:
-      {
-        ActiveRecordRegistrationStatement activeRecordRegistrationStatement = (ActiveRecordRegistrationStatement)theEObject;
-        T result = caseActiveRecordRegistrationStatement(activeRecordRegistrationStatement);
-        if (result == null) result = caseConfigurationStatement(activeRecordRegistrationStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.EXPR_CONCAT:
       {
         ExprConcat exprConcat = (ExprConcat)theEObject;
@@ -1120,22 +1112,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseActionStatement(ActionStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Active Record Registration Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Active Record Registration Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseActiveRecordRegistrationStatement(ActiveRecordRegistrationStatement object)
   {
     return null;
   }

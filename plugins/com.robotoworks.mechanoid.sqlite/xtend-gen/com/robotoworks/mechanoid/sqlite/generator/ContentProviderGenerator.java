@@ -188,7 +188,7 @@ public class ContentProviderGenerator {
             String _packageName_7 = model.getPackageName();
             _builder.append(_packageName_7, "");
             _builder.append(".actions.");
-            String _name_8 = a.getName();
+            String _name_8 = ((ActionStatement) a).getName();
             String _pascalize_8 = Strings.pascalize(_name_8);
             _builder.append(_pascalize_8, "");
             _builder.append("Actions;");
@@ -311,7 +311,7 @@ public class ContentProviderGenerator {
           for(final ConfigurationStatement a_1 : _filter_7) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_14 = a_1.getName();
+            String _name_14 = ((ActionStatement) a_1).getName();
             String _underscore_4 = Strings.underscore(_name_14);
             String _upperCase_4 = _underscore_4.toUpperCase();
             _builder.append(_upperCase_4, "	");
@@ -510,12 +510,12 @@ public class ContentProviderGenerator {
           for(final ConfigurationStatement a_2 : _filter_12) {
             _builder.append("\t\t");
             _builder.append("sActions[");
-            String _name_31 = a_2.getName();
+            String _name_31 = ((ActionStatement) a_2).getName();
             String _underscore_13 = Strings.underscore(_name_31);
             String _upperCase_13 = _underscore_13.toUpperCase();
             _builder.append(_upperCase_13, "		");
             _builder.append("] = ");
-            String _name_32 = a_2.getName();
+            String _name_32 = ((ActionStatement) a_2).getName();
             String _pascalize_18 = Strings.pascalize(_name_32);
             _builder.append(_pascalize_18, "		");
             _builder.append("Actions.class;");
@@ -647,7 +647,7 @@ public class ContentProviderGenerator {
             String _path = stmt.getPath();
             _builder.append(_path, "		");
             _builder.append("\", ");
-            String _name_42 = a_3.getName();
+            String _name_42 = ((ActionStatement) a_3).getName();
             String _underscore_18 = Strings.underscore(_name_42);
             String _upperCase_18 = _underscore_18.toUpperCase();
             _builder.append(_upperCase_18, "		");

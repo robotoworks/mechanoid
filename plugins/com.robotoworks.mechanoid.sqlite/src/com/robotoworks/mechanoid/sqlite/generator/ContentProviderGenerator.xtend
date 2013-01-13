@@ -55,7 +55,7 @@ class ContentProviderGenerator {
 			«IF model.database.config !=null»
 			
 			«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-			import «model.packageName».actions.«a.name.pascalize»Actions;
+			import «model.packageName».actions.«(a as ActionStatement).name.pascalize»Actions;
 			«ENDFOR»
 			
 			«ENDIF»
@@ -82,7 +82,7 @@ class ContentProviderGenerator {
 				
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-				private static final int «a.name.underscore.toUpperCase» = «counter=counter+1»;
+				private static final int «(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
@@ -122,7 +122,7 @@ class ContentProviderGenerator {
 					
 					«IF model.database.config !=null»
 					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-					sActions[«a.name.underscore.toUpperCase»] = «a.name.pascalize»Actions.class;
+					sActions[«(a as ActionStatement).name.underscore.toUpperCase»] = «(a as ActionStatement).name.pascalize»Actions.class;
 					«ENDFOR»
 					«ENDIF»
 					
@@ -152,7 +152,7 @@ class ContentProviderGenerator {
 					«IF model.database.config !=null»
 					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 					«var stmt = a as ActionStatement»
-					matcher.addURI(authority, "«stmt.path»", «a.name.underscore.toUpperCase»); 
+					matcher.addURI(authority, "«stmt.path»", «(a as ActionStatement).name.underscore.toUpperCase»); 
 					«ENDFOR»
 					«ENDIF»
 			        return matcher;

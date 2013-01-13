@@ -16,8 +16,7 @@ ConfigBlock:
 ;
 
 ConfigurationStatement:
-	{ActionStatement} 'action' name=ID path=STRING |
-	{ActiveRecordRegistrationStatement} 'active' name=ID
+	{ActionStatement} 'action' name=ID path=STRING
 ;
 
 MigrationBlock:

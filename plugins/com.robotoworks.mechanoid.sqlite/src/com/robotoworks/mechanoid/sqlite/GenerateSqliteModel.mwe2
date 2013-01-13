@@ -8,6 +8,7 @@ var grammarURI = "classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext"
 var file.extensions = "mechdb"
 var projectName = "com.robotoworks.mechanoid.sqlite"
 var runtimeProject = "../${projectName}"
+var testProject = "../../tests/${projectName}.tests"
 
 Workflow {
     bean = StandaloneSetup {
@@ -29,7 +30,7 @@ Workflow {
         component = Generator {
             pathRtProject = runtimeProject
             pathUiProject = "${runtimeProject}.ui"
-            pathTestProject = "${runtimeProject}.tests"
+            pathTestProject = "${testProject}"
             projectNameRt = projectName
             projectNameUi = "${projectName}.ui"
             language = {

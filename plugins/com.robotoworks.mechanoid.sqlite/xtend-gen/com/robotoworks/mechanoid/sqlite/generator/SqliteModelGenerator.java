@@ -15,7 +15,6 @@ import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshotBuilder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteOpenHelperGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -154,44 +153,18 @@ public class SqliteModelGenerator implements IGenerator {
           }
         };
       IterableExtensions.<ConfigurationStatement>forEach(_filter_2, _function_3);
-      DatabaseBlock _database_8 = model.getDatabase();
-      ConfigBlock _config_2 = _database_8.getConfig();
-      EList<ConfigurationStatement> _statements_3 = _config_2.getStatements();
-      final Function1<ConfigurationStatement,Boolean> _function_4 = new Function1<ConfigurationStatement,Boolean>() {
-          public Boolean apply(final ConfigurationStatement it) {
-            return Boolean.valueOf((it instanceof ActiveRecordRegistrationStatement));
+      EList<DDLStatement> _statements_3 = snapshot.getStatements();
+      Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_3, CreateTableStatement.class);
+      final Procedure1<CreateTableStatement> _function_4 = new Procedure1<CreateTableStatement>() {
+          public void apply(final CreateTableStatement statement) {
+            SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
           }
         };
-      Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_3, _function_4);
-      final Procedure1<ConfigurationStatement> _function_5 = new Procedure1<ConfigurationStatement>() {
-          public void apply(final ConfigurationStatement it) {
-            EList<DDLStatement> _statements = snapshot.getStatements();
-            final Function1<DDLStatement,Boolean> _function = new Function1<DDLStatement,Boolean>() {
-                public Boolean apply(final DDLStatement stmt) {
-                  boolean _and = false;
-                  if (!(stmt instanceof CreateTableStatement)) {
-                    _and = false;
-                  } else {
-                    String _name = ((CreateTableStatement) stmt).getName();
-                    String _name_1 = it.getName();
-                    boolean _equals = _name.equals(_name_1);
-                    _and = ((stmt instanceof CreateTableStatement) && _equals);
-                  }
-                  return Boolean.valueOf(_and);
-                }
-              };
-            DDLStatement statement = IterableExtensions.<DDLStatement>findFirst(_statements, _function);
-            boolean _notEquals = (!Objects.equal(statement, null));
-            if (_notEquals) {
-              SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
-            }
-          }
-        };
-      IterableExtensions.<ConfigurationStatement>forEach(_filter_3, _function_5);
+      IterableExtensions.<CreateTableStatement>forEach(_filter_3, _function_4);
     }
-    DatabaseBlock _database_9 = model.getDatabase();
-    EList<MigrationBlock> _migrations_1 = _database_9.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_6 = new Procedure2<MigrationBlock,Integer>() {
+    DatabaseBlock _database_8 = model.getDatabase();
+    EList<MigrationBlock> _migrations_1 = _database_8.getMigrations();
+    final Procedure2<MigrationBlock,Integer> _function_5 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -200,7 +173,7 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_6);
+    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_5);
   }
   
   public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {

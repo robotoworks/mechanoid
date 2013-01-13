@@ -132,12 +132,12 @@ class ContentProviderContractGenerator {
 				«IF model.database.config != null»
 				«FOR action : model.database.config.statements.filter([it instanceof ActionStatement])»
 				«var stmt = action as ActionStatement»
-				public static class «action.name.pascalize» {
+				public static class «stmt.name.pascalize» {
 				    public static final Uri CONTENT_URI = 
 							BASE_CONTENT_URI.buildUpon().appendPath("«stmt.path»").build();
 				
 				    public static final String CONTENT_TYPE =
-				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«action.name»";
+				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«stmt.name»";
 				}
 
 				«ENDFOR»

@@ -18,9 +18,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//ConfigurationStatement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationStatement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="MigrationBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//DDLStatement" containment="true"/>
@@ -157,9 +155,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="ActionStatement" eSuperTypes="#//ConfigurationStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActiveRecordRegistrationStatement" eSuperTypes="#//ConfigurationStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExprConcat" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>

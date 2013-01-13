@@ -225,11 +225,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createActionStatementAdapter();
       }
       @Override
-      public Adapter caseActiveRecordRegistrationStatement(ActiveRecordRegistrationStatement object)
-      {
-        return createActiveRecordRegistrationStatementAdapter();
-      }
-      @Override
       public Adapter caseExprConcat(ExprConcat object)
       {
         return createExprConcatAdapter();
@@ -912,21 +907,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createActionStatementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement <em>Active Record Registration Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement
-   * @generated
-   */
-  public Adapter createActiveRecordRegistrationStatementAdapter()
   {
     return null;
   }

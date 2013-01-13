@@ -293,15 +293,6 @@ public interface SqliteModelFactory extends EFactory
   ActionStatement createActionStatement();
 
   /**
-   * Returns a new object of class '<em>Active Record Registration Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Active Record Registration Statement</em>'.
-   * @generated
-   */
-  ActiveRecordRegistrationStatement createActiveRecordRegistrationStatement();
-
-  /**
    * Returns a new object of class '<em>Expr Concat</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

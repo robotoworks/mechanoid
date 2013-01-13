@@ -137,62 +137,38 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ConfigurationStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConfigurationStatement");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cActionStatementAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cActionKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cNameAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_0_2_0 = (RuleCall)cNameAssignment_0_2.eContents().get(0);
-		private final Assignment cPathAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final RuleCall cPathSTRINGTerminalRuleCall_0_3_0 = (RuleCall)cPathAssignment_0_3.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cActiveRecordRegistrationStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cActiveKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cActionKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPathSTRINGTerminalRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
 		
 		//ConfigurationStatement:
-		//	{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID;
+		//	{ActionStatement} "action" name=ID path=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID
-		public Alternatives getAlternatives() { return cAlternatives; }
-
 		//{ActionStatement} "action" name=ID path=STRING
-		public Group getGroup_0() { return cGroup_0; }
+		public Group getGroup() { return cGroup; }
 
 		//{ActionStatement}
-		public Action getActionStatementAction_0_0() { return cActionStatementAction_0_0; }
+		public Action getActionStatementAction_0() { return cActionStatementAction_0; }
 
 		//"action"
-		public Keyword getActionKeyword_0_1() { return cActionKeyword_0_1; }
+		public Keyword getActionKeyword_1() { return cActionKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_0_2() { return cNameAssignment_0_2; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_2_0() { return cNameIDTerminalRuleCall_0_2_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//path=STRING
-		public Assignment getPathAssignment_0_3() { return cPathAssignment_0_3; }
+		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
 
 		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_0_3_0() { return cPathSTRINGTerminalRuleCall_0_3_0; }
-
-		//{ActiveRecordRegistrationStatement} "active" name=ID
-		public Group getGroup_1() { return cGroup_1; }
-
-		//{ActiveRecordRegistrationStatement}
-		public Action getActiveRecordRegistrationStatementAction_1_0() { return cActiveRecordRegistrationStatementAction_1_0; }
-
-		//"active"
-		public Keyword getActiveKeyword_1_1() { return cActiveKeyword_1_1; }
-
-		//name=ID
-		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_2_0() { return cNameIDTerminalRuleCall_1_2_0; }
+		public RuleCall getPathSTRINGTerminalRuleCall_3_0() { return cPathSTRINGTerminalRuleCall_3_0; }
 	}
 
 	public class MigrationBlockElements extends AbstractParserRuleElementFinder {
@@ -3396,7 +3372,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConfigurationStatement:
-	//	{ActionStatement} "action" name=ID path=STRING | {ActiveRecordRegistrationStatement} "active" name=ID;
+	//	{ActionStatement} "action" name=ID path=STRING;
 	public ConfigurationStatementElements getConfigurationStatementAccess() {
 		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
 	}

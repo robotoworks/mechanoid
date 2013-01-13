@@ -1,29 +1,20 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
-import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ContentProviderActionGenerator {
   protected CharSequence _generate(final Model model, final CreateTableStatement tbl, final boolean forId) {
     StringConcatenation _builder = new StringConcatenation();
-    boolean hasActiveRecord = this.hasActiveRecord(model, tbl);
-    _builder.newLineIfNotEmpty();
     _builder.append("/*");
     _builder.newLine();
     _builder.append(" ");
@@ -62,7 +53,8 @@ public class ContentProviderActionGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      if (hasActiveRecord) {
+      boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl);
+      if (_hasAndroidPrimaryKey) {
         _builder.append("import ");
         String _packageName_1 = model.getPackageName();
         _builder.append(_packageName_1, "");
@@ -124,8 +116,8 @@ public class ContentProviderActionGenerator {
     {
       if (forId) {
         {
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl);
-          if (_hasAndroidPrimaryKey) {
+          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(tbl);
+          if (_hasAndroidPrimaryKey_1) {
             _builder.append("\t\t");
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
@@ -246,8 +238,8 @@ public class ContentProviderActionGenerator {
     {
       if (forId) {
         {
-          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(tbl);
-          if (_hasAndroidPrimaryKey_1) {
+          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(tbl);
+          if (_hasAndroidPrimaryKey_2) {
             _builder.append("\t\t");
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
@@ -318,8 +310,8 @@ public class ContentProviderActionGenerator {
     {
       if (forId) {
         {
-          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(tbl);
-          if (_hasAndroidPrimaryKey_2) {
+          boolean _hasAndroidPrimaryKey_3 = Extensions.hasAndroidPrimaryKey(tbl);
+          if (_hasAndroidPrimaryKey_3) {
             _builder.append("\t\t");
             _builder.append("final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();");
             _builder.newLine();
@@ -441,7 +433,8 @@ public class ContentProviderActionGenerator {
     _builder.append("    ");
     _builder.newLine();
     {
-      if (hasActiveRecord) {
+      boolean _hasAndroidPrimaryKey_4 = Extensions.hasAndroidPrimaryKey(tbl);
+      if (_hasAndroidPrimaryKey_4) {
         _builder.append("\t");
         _builder.append("@SuppressWarnings(\"unchecked\")");
         _builder.newLine();
@@ -852,38 +845,6 @@ public class ContentProviderActionGenerator {
     _builder.append("Actions {}");
     _builder.newLineIfNotEmpty();
     return _builder;
-  }
-  
-  public boolean hasActiveRecord(final Model model, final CreateTableStatement tbl) {
-    boolean _and = false;
-    DatabaseBlock _database = model.getDatabase();
-    ConfigBlock _config = _database.getConfig();
-    boolean _notEquals = (!Objects.equal(_config, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      DatabaseBlock _database_1 = model.getDatabase();
-      ConfigBlock _config_1 = _database_1.getConfig();
-      EList<ConfigurationStatement> _statements = _config_1.getStatements();
-      final Function1<ConfigurationStatement,Boolean> _function = new Function1<ConfigurationStatement,Boolean>() {
-          public Boolean apply(final ConfigurationStatement it) {
-            boolean _and = false;
-            if (!(it instanceof ActiveRecordRegistrationStatement)) {
-              _and = false;
-            } else {
-              String _name = it.getName();
-              String _name_1 = tbl.getName();
-              boolean _equals = _name.equals(_name_1);
-              _and = ((it instanceof ActiveRecordRegistrationStatement) && _equals);
-            }
-            return Boolean.valueOf(_and);
-          }
-        };
-      ConfigurationStatement _findFirst = IterableExtensions.<ConfigurationStatement>findFirst(_statements, _function);
-      boolean _notEquals_1 = (!Objects.equal(_findFirst, null));
-      _and = (_notEquals && _notEquals_1);
-    }
-    return _and;
   }
   
   public CharSequence generate(final Model model, final DDLStatement tbl, final boolean forId) {

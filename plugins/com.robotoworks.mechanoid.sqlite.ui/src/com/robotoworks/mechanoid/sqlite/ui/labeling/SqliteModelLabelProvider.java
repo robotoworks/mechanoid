@@ -14,7 +14,6 @@ import org.eclipse.xtext.util.Strings;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
@@ -91,9 +90,9 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	public String image(ActionStatement e) {
 		return "action.gif";
 	}
-	public String image(ActiveRecordRegistrationStatement e) {
-		return "active_record_obj.gif";
-	}
+//	public String image(ActiveRecordRegistrationStatement e) {
+//		return "active_record_obj.gif";
+//	}
 
 	public String image(DatabaseBlock e) {
 		return "database.gif";

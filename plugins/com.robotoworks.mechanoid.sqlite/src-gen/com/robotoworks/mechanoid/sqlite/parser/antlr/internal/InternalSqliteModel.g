@@ -283,21 +283,21 @@ ruleConfigurationStatement returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getConfigurationStatementAccess().getActionStatementAction_0_0(),
+            grammarAccess.getConfigurationStatementAccess().getActionStatementAction_0(),
             $current);
     }
 )	otherlv_1='action' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getConfigurationStatementAccess().getActionKeyword_0_1());
+    	newLeafNode(otherlv_1, grammarAccess.getConfigurationStatementAccess().getActionKeyword_1());
     }
 (
 (
 		lv_name_2_0=RULE_ID
 		{
-			newLeafNode(lv_name_2_0, grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_0_2_0()); 
+			newLeafNode(lv_name_2_0, grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -315,7 +315,7 @@ ruleConfigurationStatement returns [EObject current=null]
 (
 		lv_path_3_0=RULE_STRING
 		{
-			newLeafNode(lv_path_3_0, grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_0_3_0()); 
+			newLeafNode(lv_path_3_0, grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -330,35 +330,6 @@ ruleConfigurationStatement returns [EObject current=null]
 
 )
 ))
-    |((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getConfigurationStatementAccess().getActiveRecordRegistrationStatementAction_1_0(),
-            $current);
-    }
-)	otherlv_5='active' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getConfigurationStatementAccess().getActiveKeyword_1_1());
-    }
-(
-(
-		lv_name_6_0=RULE_ID
-		{
-			newLeafNode(lv_name_6_0, grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_1_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConfigurationStatementRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_6_0, 
-        		"ID");
-	    }
-
-)
-)))
 ;
 
 

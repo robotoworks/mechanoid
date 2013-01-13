@@ -503,6 +503,9 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("protected void setPropertiesFromCursor(Cursor c) {");
     _builder.newLine();
     _builder.append("\t\t");

@@ -596,7 +596,7 @@ public class ContentProviderContractGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("public static class ");
-            String _name_32 = action.getName();
+            String _name_32 = stmt.getName();
             String _pascalize_16 = Strings.pascalize(_name_32);
             _builder.append(_pascalize_16, "	");
             _builder.append(" {");
@@ -626,7 +626,7 @@ public class ContentProviderContractGenerator {
             String _lowerCase_8 = _name_33.toLowerCase();
             _builder.append(_lowerCase_8, "	            ");
             _builder.append(".");
-            String _name_34 = action.getName();
+            String _name_34 = stmt.getName();
             _builder.append(_name_34, "	            ");
             _builder.append("\";");
             _builder.newLineIfNotEmpty();

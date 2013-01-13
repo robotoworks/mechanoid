@@ -3,7 +3,6 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActiveRecordRegistrationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
@@ -307,13 +306,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass actionStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass activeRecordRegistrationStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -798,16 +790,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EClass getConfigurationStatement()
   {
     return configurationStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getConfigurationStatement_Name()
-  {
-    return (EAttribute)configurationStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1545,7 +1527,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getActionStatement_Path()
+  public EAttribute getActionStatement_Name()
   {
     return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -1555,9 +1537,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getActiveRecordRegistrationStatement()
+  public EAttribute getActionStatement_Path()
   {
-    return activeRecordRegistrationStatementEClass;
+    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2813,7 +2795,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(configBlockEClass, CONFIG_BLOCK__STATEMENTS);
 
     configurationStatementEClass = createEClass(CONFIGURATION_STATEMENT);
-    createEAttribute(configurationStatementEClass, CONFIGURATION_STATEMENT__NAME);
 
     migrationBlockEClass = createEClass(MIGRATION_BLOCK);
     createEReference(migrationBlockEClass, MIGRATION_BLOCK__STATEMENTS);
@@ -2913,9 +2894,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     literalValueEClass = createEClass(LITERAL_VALUE);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
+    createEAttribute(actionStatementEClass, ACTION_STATEMENT__NAME);
     createEAttribute(actionStatementEClass, ACTION_STATEMENT__PATH);
-
-    activeRecordRegistrationStatementEClass = createEClass(ACTIVE_RECORD_REGISTRATION_STATEMENT);
 
     exprConcatEClass = createEClass(EXPR_CONCAT);
     createEReference(exprConcatEClass, EXPR_CONCAT__LEFT);
@@ -3119,7 +3099,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     updateStatementEClass.getESuperTypes().add(this.getDMLStatement());
     selectStatementEClass.getESuperTypes().add(this.getDMLStatement());
     actionStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
-    activeRecordRegistrationStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
     exprConcatEClass.getESuperTypes().add(this.getExpression());
     exprMultEClass.getESuperTypes().add(this.getExpression());
     exprAddEClass.getESuperTypes().add(this.getExpression());
@@ -3178,7 +3157,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getConfigBlock_Statements(), this.getConfigurationStatement(), null, "statements", null, 0, -1, ConfigBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(configurationStatementEClass, ConfigurationStatement.class, "ConfigurationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getConfigurationStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConfigurationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(migrationBlockEClass, MigrationBlock.class, "MigrationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMigrationBlock_Statements(), this.getDDLStatement(), null, "statements", null, 0, -1, MigrationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3278,9 +3256,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getActionStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getActionStatement_Path(), ecorePackage.getEString(), "path", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(activeRecordRegistrationStatementEClass, ActiveRecordRegistrationStatement.class, "ActiveRecordRegistrationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(exprConcatEClass, ExprConcat.class, "ExprConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExprConcat_Left(), this.getExpression(), null, "left", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
