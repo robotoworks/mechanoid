@@ -10,6 +10,7 @@ import android.content.ContentResolver;
 import com.robotoworks.mechanoid.sqlite.SQuery;
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.MechanoidContentProvider;
+import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 
 public class RecipesDBContract  {
     public static final String CONTENT_AUTHORITY = "com.robotoworks.examples.recipes.content.recipesdb";
@@ -66,9 +67,13 @@ public class RecipesDBContract  {
 		
 		/**
 		 * <p>Build and execute insert or update statements for Recipes.</p>
+		 *
+		 * <p>Use {@link Recipes#newBuilder()} to create new builder</p>
 		 */
-		public static class Builder {
-			private ContentValues mValues = new ContentValues();
+		public static class Builder extends AbstractValuesBuilder {
+			private Builder() {
+				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+			}
 			
 			public Builder setTitle(String value) {
 				mValues.put(Recipes.TITLE, value);
@@ -77,80 +82,6 @@ public class RecipesDBContract  {
 			public Builder setDescription(String value) {
 				mValues.put(Recipes.DESCRIPTION, value);
 				return this;
-			}
-			
-			/**
-			 * <p>Insert into Recipes with the values set on this builder.</p>
-			 */								
-			public Uri insert() {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				return resolver.insert(CONTENT_URI, mValues);
-			}
-			
-			/**
-			 * <p>Insert into Recipes with the values set on this builder.</p>
-			 */								
-			public Uri insert(boolean notifyChange) {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				
-				Uri uri = CONTENT_URI.buildUpon()
-					.appendQueryParameter(
-						MechanoidContentProvider.PARAM_NOTIFY, 
-						String.valueOf(notifyChange)).build();
-				
-				return resolver.insert(uri, mValues);
-			}
-			
-			/**
-			 * <p>Update Recipes with the given query</p>
-			 */						
-			public int update(SQuery query) {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
-			}
-			
-			/**
-			 * <p>Update Recipes with the given query</p>
-			 */						
-			public int update(SQuery query, boolean notifyChange) {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				
-				Uri uri = CONTENT_URI.buildUpon()
-					.appendQueryParameter(
-						MechanoidContentProvider.PARAM_NOTIFY, 
-						String.valueOf(notifyChange)).build();
-
-				return resolver.update(uri, mValues, query.toString(), query.getArgsArray());
-			}
-			
-			/**
-			 * <p>Update Recipes with the given id</p>
-			 */
-			public int update(long id) {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
-			}
-			
-			/**
-			 * <p>Update Recipes with the given id</p>
-			 */
-			public int update(long id, boolean notifyChange) {
-				ContentResolver resolver = Mechanoid.getContentResolver();
-				
-				Uri uri = CONTENT_URI.buildUpon()
-					.appendPath(String.valueOf(id))
-					.appendQueryParameter(
-						MechanoidContentProvider.PARAM_NOTIFY, 
-						String.valueOf(notifyChange)).build();
-						
-				return resolver.update(uri, mValues, null, null);
-			}
-			
-			/**
-			 * <p>Get ContentValues built so far by this builder for Recipes.</p>
-			 */						
-			public ContentValues getValues() {
-				return mValues;
 			}
 		}
 	}
