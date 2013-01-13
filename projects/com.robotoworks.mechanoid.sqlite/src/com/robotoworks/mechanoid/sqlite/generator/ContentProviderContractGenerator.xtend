@@ -26,6 +26,7 @@ class ContentProviderContractGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
+			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
@@ -94,9 +95,13 @@ class ContentProviderContractGenerator {
 					
 					/**
 					 * <p>Build and execute insert or update statements for «tbl.name.pascalize».</p>
+					 *
+					 * <p>Use {@link «tbl.name.pascalize»#newBuilder()} to create new builder</p>
 					 */
-					public static class Builder {
-						private ContentValues mValues = new ContentValues();
+					public static class Builder extends AbstractValuesBuilder {
+						private Builder() {
+							super(Mechanoid.getApplicationContext(), CONTENT_URI);
+						}
 						
 						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
 						public Builder set«col.name.pascalize»(«col.type.toJavaTypeName» value) {
@@ -104,82 +109,6 @@ class ContentProviderContractGenerator {
 							return this;
 						}
 						«ENDFOR»
-						
-						/**
-						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
-						 */								
-						public Uri insert() {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							return resolver.insert(CONTENT_URI, mValues);
-						}
-						
-						/**
-						 * <p>Insert into «tbl.name.pascalize» with the values set on this builder.</p>
-						 */								
-						public Uri insert(boolean notifyChange) {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							
-							Uri uri = CONTENT_URI.buildUpon()
-								.appendQueryParameter(
-									MechanoidContentProvider.PARAM_NOTIFY, 
-									String.valueOf(notifyChange)).build();
-							
-							return resolver.insert(uri, mValues);
-						}
-						
-						/**
-						 * <p>Update «tbl.name.pascalize» with the given query</p>
-						 */						
-						public int update(SQuery query) {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							return resolver.update(CONTENT_URI, mValues, query.toString(), query.getArgsArray());
-						}
-						
-						/**
-						 * <p>Update «tbl.name.pascalize» with the given query</p>
-						 */						
-						public int update(SQuery query, boolean notifyChange) {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							
-							Uri uri = CONTENT_URI.buildUpon()
-								.appendQueryParameter(
-									MechanoidContentProvider.PARAM_NOTIFY, 
-									String.valueOf(notifyChange)).build();
-
-							return resolver.update(uri, mValues, query.toString(), query.getArgsArray());
-						}
-						
-						«IF tbl.hasAndroidPrimaryKey»
-						/**
-						 * <p>Update «tbl.name.pascalize» with the given id</p>
-						 */
-						public int update(long id) {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							return resolver.update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), mValues, null, null);
-						}
-						
-						/**
-						 * <p>Update «tbl.name.pascalize» with the given id</p>
-						 */
-						public int update(long id, boolean notifyChange) {
-							ContentResolver resolver = Mechanoid.getContentResolver();
-							
-							Uri uri = CONTENT_URI.buildUpon()
-								.appendPath(String.valueOf(id))
-								.appendQueryParameter(
-									MechanoidContentProvider.PARAM_NOTIFY, 
-									String.valueOf(notifyChange)).build();
-									
-							return resolver.update(uri, mValues, null, null);
-						}
-						
-						«ENDIF»
-						/**
-						 * <p>Get ContentValues built so far by this builder for «tbl.name.pascalize».</p>
-						 */						
-						public ContentValues getValues() {
-							return mValues;
-						}
 					}
 				}
 				

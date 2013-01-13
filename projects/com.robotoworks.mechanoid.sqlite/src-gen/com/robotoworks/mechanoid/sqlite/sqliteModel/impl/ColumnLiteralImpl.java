@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl#isIsnull <em>Isnull</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,26 +45,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean ISNULL_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected boolean isnull = ISNULL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,29 +95,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isIsnull()
-  {
-    return isnull;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIsnull(boolean newIsnull)
-  {
-    boolean oldIsnull = isnull;
-    isnull = newIsnull;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.COLUMN_LITERAL__ISNULL, oldIsnull, isnull));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -146,8 +102,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
     {
       case SqliteModelPackage.COLUMN_LITERAL__NAME:
         return getName();
-      case SqliteModelPackage.COLUMN_LITERAL__ISNULL:
-        return isIsnull();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,9 +118,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
     {
       case SqliteModelPackage.COLUMN_LITERAL__NAME:
         setName((String)newValue);
-        return;
-      case SqliteModelPackage.COLUMN_LITERAL__ISNULL:
-        setIsnull((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,9 +136,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
       case SqliteModelPackage.COLUMN_LITERAL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SqliteModelPackage.COLUMN_LITERAL__ISNULL:
-        setIsnull(ISNULL_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -204,8 +152,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
     {
       case SqliteModelPackage.COLUMN_LITERAL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SqliteModelPackage.COLUMN_LITERAL__ISNULL:
-        return isnull != ISNULL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -223,8 +169,6 @@ public class ColumnLiteralImpl extends ExpressionImpl implements ColumnLiteral
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", isnull: ");
-    result.append(isnull);
     result.append(')');
     return result.toString();
   }

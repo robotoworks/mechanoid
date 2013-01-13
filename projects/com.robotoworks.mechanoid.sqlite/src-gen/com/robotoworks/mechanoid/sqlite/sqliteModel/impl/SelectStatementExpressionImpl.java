@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl#isNot <em>Not</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl#isExists <em>Exists</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl#getSelect <em>Select</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl#isIsnull <em>Isnull</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,26 +80,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
    * @ordered
    */
   protected SelectStatement select;
-
-  /**
-   * The default value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean ISNULL_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected boolean isnull = ISNULL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -222,29 +201,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isIsnull()
-  {
-    return isnull;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIsnull(boolean newIsnull)
-  {
-    boolean oldIsnull = isnull;
-    isnull = newIsnull;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__ISNULL, oldIsnull, isnull));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -272,8 +228,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
         return isExists();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__SELECT:
         return getSelect();
-      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__ISNULL:
-        return isIsnull();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -296,9 +250,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
         return;
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__SELECT:
         setSelect((SelectStatement)newValue);
-        return;
-      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__ISNULL:
-        setIsnull((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -323,9 +274,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__SELECT:
         setSelect((SelectStatement)null);
         return;
-      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__ISNULL:
-        setIsnull(ISNULL_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -346,8 +294,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
         return exists != EXISTS_EDEFAULT;
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__SELECT:
         return select != null;
-      case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION__ISNULL:
-        return isnull != ISNULL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -367,8 +313,6 @@ public class SelectStatementExpressionImpl extends ExpressionImpl implements Sel
     result.append(not);
     result.append(", exists: ");
     result.append(exists);
-    result.append(", isnull: ");
-    result.append(isnull);
     result.append(')');
     return result.toString();
   }

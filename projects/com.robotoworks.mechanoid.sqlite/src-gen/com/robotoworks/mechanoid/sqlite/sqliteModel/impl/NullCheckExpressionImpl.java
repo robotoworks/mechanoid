@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Literal;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,35 +16,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal</b></em>'.
+ * An implementation of the model object '<em><b>Null Check Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.LiteralImpl#getLiteralValue <em>Literal Value</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NullCheckExpressionImpl#getLeft <em>Left</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LiteralImpl extends ExpressionImpl implements Literal
+public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheckExpression
 {
   /**
-   * The cached value of the '{@link #getLiteralValue() <em>Literal Value</em>}' containment reference.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLiteralValue()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected LiteralValue literalValue;
+  protected Expression left;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LiteralImpl()
+  protected NullCheckExpressionImpl()
   {
     super();
   }
@@ -57,7 +57,7 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.LITERAL;
+    return SqliteModelPackage.Literals.NULL_CHECK_EXPRESSION;
   }
 
   /**
@@ -65,9 +65,9 @@ public class LiteralImpl extends ExpressionImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public LiteralValue getLiteralValue()
+  public Expression getLeft()
   {
-    return literalValue;
+    return left;
   }
 
   /**
@@ -75,13 +75,13 @@ public class LiteralImpl extends ExpressionImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLiteralValue(LiteralValue newLiteralValue, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Expression newLeft, NotificationChain msgs)
   {
-    LiteralValue oldLiteralValue = literalValue;
-    literalValue = newLiteralValue;
+    Expression oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.LITERAL__LITERAL_VALUE, oldLiteralValue, newLiteralValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -92,20 +92,20 @@ public class LiteralImpl extends ExpressionImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLiteralValue(LiteralValue newLiteralValue)
+  public void setLeft(Expression newLeft)
   {
-    if (newLiteralValue != literalValue)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (literalValue != null)
-        msgs = ((InternalEObject)literalValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.LITERAL__LITERAL_VALUE, null, msgs);
-      if (newLiteralValue != null)
-        msgs = ((InternalEObject)newLiteralValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.LITERAL__LITERAL_VALUE, null, msgs);
-      msgs = basicSetLiteralValue(newLiteralValue, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.LITERAL__LITERAL_VALUE, newLiteralValue, newLiteralValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -118,8 +118,8 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   {
     switch (featureID)
     {
-      case SqliteModelPackage.LITERAL__LITERAL_VALUE:
-        return basicSetLiteralValue(null, msgs);
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
+        return basicSetLeft(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -134,8 +134,8 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   {
     switch (featureID)
     {
-      case SqliteModelPackage.LITERAL__LITERAL_VALUE:
-        return getLiteralValue();
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
+        return getLeft();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -150,8 +150,8 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   {
     switch (featureID)
     {
-      case SqliteModelPackage.LITERAL__LITERAL_VALUE:
-        setLiteralValue((LiteralValue)newValue);
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
+        setLeft((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -167,8 +167,8 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   {
     switch (featureID)
     {
-      case SqliteModelPackage.LITERAL__LITERAL_VALUE:
-        setLiteralValue((LiteralValue)null);
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
+        setLeft((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -184,10 +184,10 @@ public class LiteralImpl extends ExpressionImpl implements Literal
   {
     switch (featureID)
     {
-      case SqliteModelPackage.LITERAL__LITERAL_VALUE:
-        return literalValue != null;
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
+        return left != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //LiteralImpl
+} //NullCheckExpressionImpl

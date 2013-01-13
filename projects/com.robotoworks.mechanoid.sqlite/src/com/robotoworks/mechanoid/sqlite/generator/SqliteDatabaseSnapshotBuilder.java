@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.serializer.ISerializer;
 
 import com.google.inject.Inject;
