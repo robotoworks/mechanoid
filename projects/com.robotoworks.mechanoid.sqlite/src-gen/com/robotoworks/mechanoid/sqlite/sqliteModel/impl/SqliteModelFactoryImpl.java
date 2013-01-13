@@ -104,6 +104,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.EXPR_EQUAL: return createExprEqual();
       case SqliteModelPackage.EXPR_AND: return createExprAnd();
       case SqliteModelPackage.EXPR_OR: return createExprOr();
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION: return createNullCheckExpression();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
@@ -612,6 +613,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ExprOrImpl exprOr = new ExprOrImpl();
     return exprOr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NullCheckExpression createNullCheckExpression()
+  {
+    NullCheckExpressionImpl nullCheckExpression = new NullCheckExpressionImpl();
+    return nullCheckExpression;
   }
 
   /**

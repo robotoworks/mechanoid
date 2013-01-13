@@ -64,22 +64,26 @@ ExprAnd returns Expression:
 ;
 
 ExprOr returns Expression:
-	PrimaryExpression ({ExprOr.left=current} op='or' right=PrimaryExpression)*
+	NullCheckExpression ({ExprOr.left=current} op='or' right=NullCheckExpression)*
+;
+
+NullCheckExpression returns Expression:
+	PrimaryExpression {NullCheckExpression.left=current} ('is null'| 'not null' | 'notnull')?
 ;
 
 PrimaryExpression returns Expression:
-	(
-		{ColumnLiteral} name=FQN |
-		{Literal} literalValue=LiteralValue |
-		'(' SqlExpression ')' |
-		{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')'|
-		{CaseExpression} 'case' caseExpression=SqlExpression? 
-				cases+=Case cases+=Case*
-				('else' elseExpression=SqlExpression)? 'end' |
-		{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
-		{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
-	) isnull?=('is null'|'not null' | 'notnull')?
+	{ColumnLiteral} name=FQN |
+	{Literal} literalValue=LiteralValue |
+	'(' SqlExpression ')' |
+	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
+	{CaseExpression} 'case' caseExpression=SqlExpression? 
+			cases+=Case cases+=Case*
+			('else' elseExpression=SqlExpression)? 'end' |
+	{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
+	{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
 ;
+
+
 
 Case:
 'when' whenExpression=SqlExpression 'then' thenExpression=SqlExpression
@@ -144,7 +148,7 @@ ColumnDef:
 
 ColumnConstraint:
 	{PrimaryKeyColumnConstraint} 'primary' 'key' (asc?='asc'|desc?='desc')? autoincrement?='autoincrement'? |
-	{NotNullConstraint} 'not' 'null' conflictClause=ConflictClause? |
+	{NotNullConstraint} 'not null' conflictClause=ConflictClause? |
 	{DefaultConstraint} 'default' defaultValue=DefaultValue
 ;
 

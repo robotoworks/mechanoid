@@ -374,6 +374,15 @@ public interface SqliteModelFactory extends EFactory
   ExprOr createExprOr();
 
   /**
+   * Returns a new object of class '<em>Null Check Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Check Expression</em>'.
+   * @generated
+   */
+  NullCheckExpression createNullCheckExpression();
+
+  /**
    * Returns a new object of class '<em>Column Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -47,6 +47,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
@@ -123,44 +124,14 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.CASE_EXPRESSION:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (CaseExpression) semanticObject); 
 					return; 
 				}
 				else break;
 			case SqliteModelPackage.CAST_EXPRESSION:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (CastExpression) semanticObject); 
 					return; 
@@ -179,22 +150,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.COLUMN_LITERAL:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ColumnLiteral) semanticObject); 
 					return; 
@@ -404,22 +360,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.FUNCTION:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (Function) semanticObject); 
 					return; 
@@ -451,22 +392,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.LITERAL:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (Literal) semanticObject); 
 					return; 
@@ -493,6 +419,28 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case SqliteModelPackage.NOT_NULL_CONSTRAINT:
 				if(context == grammarAccess.getColumnConstraintRule()) {
 					sequence_ColumnConstraint(context, (NotNullConstraint) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.NULL_CHECK_EXPRESSION:
+				if(context == grammarAccess.getExprAddRule() ||
+				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
+				   context == grammarAccess.getExprAndRule() ||
+				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
+				   context == grammarAccess.getExprBitRule() ||
+				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
+				   context == grammarAccess.getExprConcatRule() ||
+				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
+				   context == grammarAccess.getExprEqualRule() ||
+				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
+				   context == grammarAccess.getExprMultRule() ||
+				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
+				   context == grammarAccess.getExprOrRule() ||
+				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
+				   context == grammarAccess.getExprRelateRule() ||
+				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				   context == grammarAccess.getNullCheckExpressionRule()) {
+					sequence_NullCheckExpression(context, (NullCheckExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -552,22 +500,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
 				   context == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (SelectStatementExpression) semanticObject); 
 					return; 
@@ -592,27 +525,9 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				}
 				else break;
 			case SqliteModelPackage.SQL_EXPRESSION:
-				if(context == grammarAccess.getExprAddRule() ||
-				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
-				   context == grammarAccess.getExprAndRule() ||
-				   context == grammarAccess.getExprAndAccess().getExprAndLeftAction_1_0() ||
-				   context == grammarAccess.getExprBitRule() ||
-				   context == grammarAccess.getExprBitAccess().getExprBitLeftAction_1_0() ||
-				   context == grammarAccess.getExprConcatRule() ||
-				   context == grammarAccess.getExprConcatAccess().getExprConcatLeftAction_1_0() ||
-				   context == grammarAccess.getExprEqualRule() ||
-				   context == grammarAccess.getExprEqualAccess().getExprEqualLeftAction_1_0() ||
-				   context == grammarAccess.getExprMultRule() ||
-				   context == grammarAccess.getExprMultAccess().getExprMultLeftAction_1_0() ||
-				   context == grammarAccess.getExprOrRule() ||
-				   context == grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0() ||
-				   context == grammarAccess.getExprRelateRule() ||
-				   context == grammarAccess.getExprRelateAccess().getExprRelateLeftAction_1_0() ||
-				   context == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression_SqlExpression(context, (SqlExpression) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getSqlExpressionRule()) {
+				if(context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1() ||
+				   context == grammarAccess.getPrimaryExpressionRule() ||
+				   context == grammarAccess.getSqlExpressionRule()) {
 					sequence_SqlExpression(context, (SqlExpression) semanticObject); 
 					return; 
 				}
@@ -1058,7 +973,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (left=ExprOr_ExprOr_1_0 op='or' right=PrimaryExpression)
+	 *     (left=ExprOr_ExprOr_1_0 op='or' right=NullCheckExpression)
 	 */
 	protected void sequence_ExprOr(EObject context, ExprOr semanticObject) {
 		if(errorAcceptor != null) {
@@ -1073,7 +988,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getExprOrAccess().getExprOrLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getExprOrAccess().getOpOrKeyword_1_1_0(), semanticObject.getOp());
-		feeder.accept(grammarAccess.getExprOrAccess().getRightPrimaryExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getExprOrAccess().getRightNullCheckExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -1254,6 +1169,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
+	 *     left=NullCheckExpression_NullCheckExpression_1
+	 */
+	protected void sequence_NullCheckExpression(EObject context, NullCheckExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.NULL_CHECK_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.NULL_CHECK_EXPRESSION__LEFT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1(), semanticObject.getLeft());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (expression=SqlExpression (asc?='asc' | desc?='desc')?)
 	 */
 	protected void sequence_OrderingTerm(EObject context, OrderingTerm semanticObject) {
@@ -1263,13 +1194,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         caseExpression=SqlExpression? 
-	 *         cases+=Case 
-	 *         cases+=Case* 
-	 *         elseExpression=SqlExpression? 
-	 *         (isnull?='is null' | isnull?='not null' | isnull?='notnull')?
-	 *     )
+	 *     (caseExpression=SqlExpression? cases+=Case cases+=Case* elseExpression=SqlExpression?)
 	 */
 	protected void sequence_PrimaryExpression(EObject context, CaseExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1278,25 +1203,42 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (expression=SqlExpression type=SqliteDataType (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
+	 *     (expression=SqlExpression type=SqliteDataType)
 	 */
 	protected void sequence_PrimaryExpression(EObject context, CastExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CAST_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CAST_EXPRESSION__EXPRESSION));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CAST_EXPRESSION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CAST_EXPRESSION__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_6_3_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getTypeSqliteDataTypeEnumRuleCall_6_5_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=FQN (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
+	 *     name=FQN
 	 */
 	protected void sequence_PrimaryExpression(EObject context, ColumnLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.COLUMN_LITERAL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.COLUMN_LITERAL__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getNameFQNParserRuleCall_0_1_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (all?='*' | (arguments+=SqlExpression arugments+=SqlExpression*)) (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
+	 *     (name=ID (all?='*' | (arguments+=SqlExpression arugments+=SqlExpression*)))
 	 */
 	protected void sequence_PrimaryExpression(EObject context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1305,27 +1247,25 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (literalValue=LiteralValue (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
+	 *     literalValue=LiteralValue
 	 */
 	protected void sequence_PrimaryExpression(EObject context, Literal semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.LITERAL__LITERAL_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.LITERAL__LITERAL_VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getLiteralValueLiteralValueParserRuleCall_1_1_0(), semanticObject.getLiteralValue());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (not?='not'? exists?='exists'? select=SelectStatement (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
+	 *     (not?='not'? exists?='exists'? select=SelectStatement)
 	 */
 	protected void sequence_PrimaryExpression(EObject context, SelectStatementExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (root=ExprConcat (isnull?='is null' | isnull?='not null' | isnull?='notnull')?)
-	 */
-	protected void sequence_PrimaryExpression_SqlExpression(EObject context, SqlExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1413,7 +1353,14 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     root=ExprConcat
 	 */
 	protected void sequence_SqlExpression(EObject context, SqlExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SQL_EXPRESSION__ROOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SQL_EXPRESSION__ROOT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSqlExpressionAccess().getRootExprConcatParserRuleCall_0(), semanticObject.getRoot());
+		feeder.finish();
 	}
 	
 	

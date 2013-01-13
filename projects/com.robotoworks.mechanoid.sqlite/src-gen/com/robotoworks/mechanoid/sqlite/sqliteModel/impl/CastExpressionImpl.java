@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CastExpressionImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CastExpressionImpl#getType <em>Type</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CastExpressionImpl#isIsnull <em>Isnull</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,26 +60,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * @ordered
    */
   protected SqliteDataType type = TYPE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean ISNULL_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected boolean isnull = ISNULL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -179,29 +158,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isIsnull()
-  {
-    return isnull;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIsnull(boolean newIsnull)
-  {
-    boolean oldIsnull = isnull;
-    isnull = newIsnull;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CAST_EXPRESSION__ISNULL, oldIsnull, isnull));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -227,8 +183,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
         return getExpression();
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         return getType();
-      case SqliteModelPackage.CAST_EXPRESSION__ISNULL:
-        return isIsnull();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -248,9 +202,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
         return;
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         setType((SqliteDataType)newValue);
-        return;
-      case SqliteModelPackage.CAST_EXPRESSION__ISNULL:
-        setIsnull((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -272,9 +223,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         setType(TYPE_EDEFAULT);
         return;
-      case SqliteModelPackage.CAST_EXPRESSION__ISNULL:
-        setIsnull(ISNULL_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -293,8 +241,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
         return expression != null;
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         return type != TYPE_EDEFAULT;
-      case SqliteModelPackage.CAST_EXPRESSION__ISNULL:
-        return isnull != ISNULL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -312,8 +258,6 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
-    result.append(", isnull: ");
-    result.append(isnull);
     result.append(')');
     return result.toString();
   }

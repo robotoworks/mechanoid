@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#getArguments <em>Arguments</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#getArugments <em>Arugments</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#isIsnull <em>Isnull</em>}</li>
  * </ul>
  * </p>
  *
@@ -99,26 +98,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * @ordered
    */
   protected EList<SqlExpression> arugments;
-
-  /**
-   * The default value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean ISNULL_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsnull() <em>Isnull</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsnull()
-   * @generated
-   * @ordered
-   */
-  protected boolean isnull = ISNULL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -220,29 +199,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isIsnull()
-  {
-    return isnull;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIsnull(boolean newIsnull)
-  {
-    boolean oldIsnull = isnull;
-    isnull = newIsnull;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__ISNULL, oldIsnull, isnull));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -274,8 +230,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         return getArguments();
       case SqliteModelPackage.FUNCTION__ARUGMENTS:
         return getArugments();
-      case SqliteModelPackage.FUNCTION__ISNULL:
-        return isIsnull();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -305,9 +259,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         getArugments().clear();
         getArugments().addAll((Collection<? extends SqlExpression>)newValue);
         return;
-      case SqliteModelPackage.FUNCTION__ISNULL:
-        setIsnull((Boolean)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -334,9 +285,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
       case SqliteModelPackage.FUNCTION__ARUGMENTS:
         getArugments().clear();
         return;
-      case SqliteModelPackage.FUNCTION__ISNULL:
-        setIsnull(ISNULL_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -359,8 +307,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         return arguments != null && !arguments.isEmpty();
       case SqliteModelPackage.FUNCTION__ARUGMENTS:
         return arugments != null && !arugments.isEmpty();
-      case SqliteModelPackage.FUNCTION__ISNULL:
-        return isnull != ISNULL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -380,8 +326,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
     result.append(name);
     result.append(", all: ");
     result.append(all);
-    result.append(", isnull: ");
-    result.append(isnull);
     result.append(')');
     return result.toString();
   }
