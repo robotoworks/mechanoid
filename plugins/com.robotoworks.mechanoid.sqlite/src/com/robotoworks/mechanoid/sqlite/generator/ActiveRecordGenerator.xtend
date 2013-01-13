@@ -15,19 +15,16 @@ class ActiveRecordGenerator {
 			package «model.packageName»;
 
 			import android.content.ContentResolver;
-			import android.content.ContentUris;
 			import android.database.Cursor;
-			import android.net.Uri;
 			import android.os.Parcel;
 			import android.os.Parcelable;
 			
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize»;
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize».Builder;
-			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 			import com.robotoworks.mechanoid.Mechanoid;
-			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
+			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
@@ -50,14 +47,24 @@ class ActiveRecordGenerator {
 			    }
 			    
 			    «generateFields(stmt)»
+			    
+			    @Override
+			    protected String[] _getProjection() {
+			    	return PROJECTION;
+			    }
+			    
 			    «generateAccessors(stmt)»
 			    
 			    public «stmt.name.pascalize»Record() {
+			    	super(«stmt.name.pascalize».CONTENT_URI);
 				}
 				
 				private «stmt.name.pascalize»Record(Parcel in) {
+			    	super(«stmt.name.pascalize».CONTENT_URI);
+			    	
+					setId(in.readLong());
 					«var counter=-1»
-					«FOR col : stmt.columnDefs»
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 					«IF col.type == ColumnType::BOOLEAN»
 					m«col.name.pascalize» = (in.readInt() > 0);
 					«ELSE»
@@ -67,7 +74,7 @@ class ActiveRecordGenerator {
 					
 					boolean[] dirtyFlags = new boolean[«stmt.columnDefs.size»];
 					in.readBooleanArray(dirtyFlags);
-					«FOR col : stmt.columnDefs»
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 					m«col.name.pascalize»Dirty = dirtyFlags[«counter = counter + 1»];
 					«ENDFOR»
 				}
@@ -79,7 +86,8 @@ class ActiveRecordGenerator {
 				
 				@Override
 				public void writeToParcel(Parcel dest, int flags) {
-					«FOR col : stmt.columnDefs»
+					dest.writeLong(getId());
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 					«IF col.type == ColumnType::BOOLEAN»
 					dest.writeInt(m«col.name.pascalize» ? 1 : 0);
 					«ELSE»
@@ -87,13 +95,14 @@ class ActiveRecordGenerator {
 					«ENDIF»
 					«ENDFOR»
 				    dest.writeBooleanArray(new boolean[] {
-						«FOR col : stmt.columnDefs SEPARATOR ","»
+						«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")]) SEPARATOR ","»
 						m«col.name.pascalize»Dirty
 						«ENDFOR»
 				    });
 				}
 				
-				private Builder createBuilder() {
+				@Override
+				protected AbstractValuesBuilder createBuilder() {
 					Builder builder = «stmt.name.pascalize».newBuilder();
 
 					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
@@ -104,121 +113,14 @@ class ActiveRecordGenerator {
 					
 					return builder;
 				}
-			    
-			    @Override
-				public long save(){
-					Builder builder = createBuilder();
-					
-					if(m_id > 0) {
-					    builder.update(m_id);
-					} else {
-					    Uri uri = builder.insert();
-					    m_id = ContentUris.parseId(uri);
-					}
-					
-					setDirty(false);
-					
-					return m_id;
-				}
 				
 			    @Override
-				public long save(boolean notifyChange){
-					Builder builder = createBuilder();
-					
-					if(m_id > 0) {
-					    builder.update(m_id, notifyChange);
-					} else {
-					    Uri uri = builder.insert(notifyChange);
-					    m_id = ContentUris.parseId(uri);
-					}
-					
-					setDirty(false);
-					
-					return m_id;
-				}
-				
-			    @Override
-				public int update(SQuery query){
-					Builder builder = createBuilder();
-					
-					int affected = builder.update(query);
-					
-					setDirty(false);
-					
-					return affected;
-				}
-				
-			    @Override
-				public int update(SQuery query, boolean notifyChange){
-					Builder builder = createBuilder();
-					
-					int affected = builder.update(query, notifyChange);
-					
-					setDirty(false);
-					
-					return affected;
-				}
-				
-			    @Override
-				public boolean delete(){
-					ContentResolver resolver = Mechanoid.getContentResolver();
-					
-					boolean result = resolver.delete(
-						«stmt.name.pascalize».CONTENT_URI.buildUpon()
-						.appendPath(String.valueOf(m_id)).build(), null, null) > 0;
-						
-					setDirty(false);
-					
-					return result;
-				}
-				
-			    @Override
-				public boolean delete(boolean notifyChange){
-					ContentResolver resolver = Mechanoid.getContentResolver();
-					
-					Uri uri = «stmt.name.pascalize».CONTENT_URI.buildUpon()
-						.appendPath(String.valueOf(m_id))
-						.appendQueryParameter(
-							MechanoidContentProvider.PARAM_NOTIFY, 
-							String.valueOf(notifyChange)).build();
-
-					boolean result = resolver.delete(uri, null, null) > 0;
-						
-					setDirty(false);
-					
-					return result;
-				}
-				
-			    @Override
-				public void setDirty(boolean dirty){
-					«FOR col : stmt.columnDefs»
+				public void makeDirty(boolean dirty){
+					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 					m«col.name.pascalize»Dirty = dirty;
 					«ENDFOR»
 				}
-				
-			    @Override
-				public void reload(){
-					if(m_id == 0) {
-						return;
-					}
-				    
-				    Cursor c = null;
-				    
-				    ContentResolver resolver = Mechanoid.getContentResolver();
-				    
-				    try {
-				        c = resolver.query(«stmt.name.pascalize».CONTENT_URI.buildUpon()
-						.appendPath(String.valueOf(m_id)).build(), PROJECTION, null, null, null);
-				        
-				        if(c.moveToFirst()) {
-				        	setPropertiesFromCursor(c);
-				        	setDirty(false);
-				        }
-				    } finally {
-				        Closeables.closeSilently(c);
-				    }
-				}
-				
+
 				protected void setPropertiesFromCursor(Cursor c) {
 					setId(c.getLong(Indices._ID));
 					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
@@ -235,7 +137,7 @@ class ActiveRecordGenerator {
 				    
 					item.setPropertiesFromCursor(c);
 					
-					item.setDirty(false);
+					item.makeDirty(false);
 					
 				    return item;
 				}
@@ -275,22 +177,13 @@ class ActiveRecordGenerator {
 		'''
 		
 		def generateFields(CreateTableStatement stmt) '''
-			«FOR col : stmt.columnDefs»
+			«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 			private «col.type.toJavaTypeName» m«col.name.pascalize»;
 			private boolean m«col.name.pascalize»Dirty;
 			«ENDFOR»
 		'''
 		
 		def generateAccessors(CreateTableStatement stmt) '''
-			public void setId (long id) {
-				m_id = id;
-				m_idDirty = true;
-			}
-			
-			public long getId() {
-				return m_id;
-			}
-			
 			«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 			public void set«col.name.pascalize»(«col.type.toJavaTypeName» «col.name.camelize») {
 				m«col.name.pascalize» = «col.name.camelize»;
