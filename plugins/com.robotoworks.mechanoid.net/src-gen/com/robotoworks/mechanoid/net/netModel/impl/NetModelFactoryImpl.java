@@ -5,6 +5,7 @@ package com.robotoworks.mechanoid.net.netModel.impl;
 import com.robotoworks.mechanoid.net.netModel.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -67,13 +68,11 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.MODEL: return createModel();
       case NetModelPackage.DECLARATION: return createDeclaration();
       case NetModelPackage.CLIENT: return createClient();
+      case NetModelPackage.CLIENT_BLOCK: return createClientBlock();
       case NetModelPackage.HEADER_BLOCK: return createHeaderBlock();
       case NetModelPackage.HEADER: return createHeader();
       case NetModelPackage.HTTP_METHOD: return createHttpMethod();
-      case NetModelPackage.HTTP_POST: return createHttpPost();
-      case NetModelPackage.HTTP_PUT: return createHttpPut();
-      case NetModelPackage.HTTP_GET: return createHttpGet();
-      case NetModelPackage.HTTP_DELETE: return createHttpDelete();
+      case NetModelPackage.HTTP_METHOD_BLOCK: return createHttpMethodBlock();
       case NetModelPackage.PARAMS_BLOCK: return createParamsBlock();
       case NetModelPackage.BODY_BLOCK: return createBodyBlock();
       case NetModelPackage.RESPONSE_BLOCK: return createResponseBlock();
@@ -100,6 +99,40 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.DOUBLE_TYPE: return createDoubleType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case NetModelPackage.HTTP_METHOD_TYPE:
+        return createHttpMethodTypeFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case NetModelPackage.HTTP_METHOD_TYPE:
+        return convertHttpMethodTypeToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -141,6 +174,17 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ClientBlock createClientBlock()
+  {
+    ClientBlockImpl clientBlock = new ClientBlockImpl();
+    return clientBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public HeaderBlock createHeaderBlock()
   {
     HeaderBlockImpl headerBlock = new HeaderBlockImpl();
@@ -174,43 +218,10 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public HttpPost createHttpPost()
+  public HttpMethodBlock createHttpMethodBlock()
   {
-    HttpPostImpl httpPost = new HttpPostImpl();
-    return httpPost;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public HttpPut createHttpPut()
-  {
-    HttpPutImpl httpPut = new HttpPutImpl();
-    return httpPut;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public HttpGet createHttpGet()
-  {
-    HttpGetImpl httpGet = new HttpGetImpl();
-    return httpGet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public HttpDelete createHttpDelete()
-  {
-    HttpDeleteImpl httpDelete = new HttpDeleteImpl();
-    return httpDelete;
+    HttpMethodBlockImpl httpMethodBlock = new HttpMethodBlockImpl();
+    return httpMethodBlock;
   }
 
   /**
@@ -475,6 +486,28 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     DoubleTypeImpl doubleType = new DoubleTypeImpl();
     return doubleType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HttpMethodType createHttpMethodTypeFromString(EDataType eDataType, String initialValue)
+  {
+    HttpMethodType result = HttpMethodType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertHttpMethodTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

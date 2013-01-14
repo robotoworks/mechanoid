@@ -14,10 +14,7 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
-import com.robotoworks.mechanoid.net.netModel.HttpGet;
-import com.robotoworks.mechanoid.net.netModel.HttpPost;
-import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Model;
@@ -51,7 +48,8 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == NetModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case NetModelPackage.BODY_BLOCK:
-				if(context == grammarAccess.getBodyBlockRule()) {
+				if(context == grammarAccess.getBodyBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule()) {
 					sequence_BodyBlock(context, (BodyBlock) semanticObject); 
 					return; 
 				}
@@ -132,36 +130,17 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case NetModelPackage.HEADER_BLOCK:
-				if(context == grammarAccess.getHeaderBlockRule()) {
+				if(context == grammarAccess.getClientBlockRule() ||
+				   context == grammarAccess.getHeaderBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule()) {
 					sequence_HeaderBlock(context, (HeaderBlock) semanticObject); 
 					return; 
 				}
 				else break;
-			case NetModelPackage.HTTP_DELETE:
-				if(context == grammarAccess.getHttpDeleteRule() ||
+			case NetModelPackage.HTTP_METHOD:
+				if(context == grammarAccess.getClientBlockRule() ||
 				   context == grammarAccess.getHttpMethodRule()) {
-					sequence_HttpDelete(context, (HttpDelete) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_GET:
-				if(context == grammarAccess.getHttpGetRule() ||
-				   context == grammarAccess.getHttpMethodRule()) {
-					sequence_HttpGet(context, (HttpGet) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_POST:
-				if(context == grammarAccess.getHttpMethodRule() ||
-				   context == grammarAccess.getHttpPostRule()) {
-					sequence_HttpPost(context, (HttpPost) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_PUT:
-				if(context == grammarAccess.getHttpMethodRule() ||
-				   context == grammarAccess.getHttpPutRule()) {
-					sequence_HttpPut(context, (HttpPut) semanticObject); 
+					sequence_HttpMethod(context, (HttpMethod) semanticObject); 
 					return; 
 				}
 				else break;
@@ -192,13 +171,16 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case NetModelPackage.PARAMS_BLOCK:
-				if(context == grammarAccess.getParamsBlockRule()) {
+				if(context == grammarAccess.getClientBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule() ||
+				   context == grammarAccess.getParamsBlockRule()) {
 					sequence_ParamsBlock(context, (ParamsBlock) semanticObject); 
 					return; 
 				}
 				else break;
 			case NetModelPackage.RESPONSE_BLOCK:
-				if(context == grammarAccess.getResponseBlockRule()) {
+				if(context == grammarAccess.getHttpMethodBlockRule() ||
+				   context == grammarAccess.getResponseBlockRule()) {
 					sequence_ResponseBlock(context, (ResponseBlock) semanticObject); 
 					return; 
 				}
@@ -278,7 +260,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID baseUrl=STRING? headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod*)
+	 *     (name=ID baseUrl=STRING? blocks+=ClientBlock*)
 	 */
 	protected void sequence_Client(EObject context, Client semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -385,50 +367,9 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID path=STRING? headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock?)
+	 *     (type=HttpMethodType name=ID path=STRING? blocks+=HttpMethodBlock*)
 	 */
-	protected void sequence_HttpDelete(EObject context, HttpDelete semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID path=STRING? headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock?)
-	 */
-	protected void sequence_HttpGet(EObject context, HttpGet semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         path=STRING? 
-	 *         headers=HeaderBlock? 
-	 *         params=ParamsBlock? 
-	 *         body=BodyBlock? 
-	 *         response=ResponseBlock?
-	 *     )
-	 */
-	protected void sequence_HttpPost(EObject context, HttpPost semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         path=STRING? 
-	 *         headers=HeaderBlock? 
-	 *         params=ParamsBlock? 
-	 *         body=BodyBlock? 
-	 *         response=ResponseBlock?
-	 *     )
-	 */
-	protected void sequence_HttpPut(EObject context, HttpPut semanticObject) {
+	protected void sequence_HttpMethod(EObject context, HttpMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

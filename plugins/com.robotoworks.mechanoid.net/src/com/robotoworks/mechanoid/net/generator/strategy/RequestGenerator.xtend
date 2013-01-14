@@ -75,15 +75,17 @@ class RequestGenerator {
 		«ENDFOR»
 		
 		«ENDIF»
-		«IF(method.params != null)»
-		«FOR param:method.params.params»
+		«var methodParams = method.paramsBlock»
+		«var clientParams = client.paramsBlock»
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
 		private «param.type.signature» «param.name.camelize»Param;
 		private boolean «param.name.camelize»ParamSet;
 		«ENDFOR»
 			
 		«ENDIF»
-		«IF(client.params != null)»
-		«FOR param:client.params.params»
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
 		private «param.type.signature» «param.name.camelize»Param;
 		private boolean «param.name.camelize»ParamSet;
 		«ENDFOR»
@@ -93,8 +95,8 @@ class RequestGenerator {
 			«generateFieldForType(method.body.type)»
 			«generateGetterSetterForType(method.body.type)»
 		«ENDIF»
-		«IF(method.params != null)»
-		«FOR param:method.params.params»
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
 		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
 			this.«param.name.camelize»Param = value;
 			this.«param.name.camelize»ParamSet = true;
@@ -107,8 +109,8 @@ class RequestGenerator {
 		«ENDFOR»
 			
 		«ENDIF»
-		«IF(client.params != null)»
-		«FOR param:client.params.params»
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
 		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
 			this.«param.name.camelize»Param = value;
 			this.«param.name.camelize»ParamSet = true;
@@ -122,8 +124,9 @@ class RequestGenerator {
 				
 		«ENDIF»
 		public «method.name.pascalize»Request(«generateRequestConstructorArgs(method.path, method.body)»){
-			«IF method.headers != null»
-			«FOR header : method.headers.headers»
+			«var methodHeaders = method.headerBlock»
+			«IF methodHeaders != null»
+			«FOR header : methodHeaders.headers»
 			headers.put("«header.name»","«header.value»");
 			«ENDFOR»
 			
@@ -155,8 +158,8 @@ class RequestGenerator {
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
 			«ENDIF»		
 				
-			«IF(method.params != null)»
-				«FOR param:method.params.params»
+			«IF(methodParams != null)»
+				«FOR param:methodParams.params»
 					if(«param.name.camelize»ParamSet){
 						«IF param.type instanceof StringType»
 						uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
@@ -167,8 +170,8 @@ class RequestGenerator {
 				«ENDFOR»
 				
 			«ENDIF»
-			«IF(client.params != null)»
-			«FOR param:client.params.params»
+			«IF(clientParams != null)»
+			«FOR param:clientParams.params»
 				if(«param.name.camelize»ParamSet){
 					«IF param.type instanceof StringType»
 					uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);

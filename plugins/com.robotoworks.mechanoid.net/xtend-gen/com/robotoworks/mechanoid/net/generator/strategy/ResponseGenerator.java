@@ -302,6 +302,8 @@ public class ResponseGenerator {
   
   public CharSequence generateResponseClass(final HttpMethod method, final Model module, final Client client) {
     StringConcatenation _builder = new StringConcatenation();
+    ResponseBlock responseBlock = ModelExtensions.getResponseBlock(method);
+    _builder.newLineIfNotEmpty();
     _builder.append("public class ");
     String _name = method.getName();
     String _pascalize = ModelExtensions.pascalize(_name);
@@ -309,20 +311,17 @@ public class ResponseGenerator {
     _builder.append("Result ");
     {
       boolean _and = false;
-      ResponseBlock _response = method.getResponse();
-      boolean _notEquals = (!Objects.equal(_response, null));
+      boolean _notEquals = (!Objects.equal(responseBlock, null));
       if (!_notEquals) {
         _and = false;
       } else {
-        ResponseBlock _response_1 = method.getResponse();
-        ComplexTypeDeclaration _superType = _response_1.getSuperType();
+        ComplexTypeDeclaration _superType = responseBlock.getSuperType();
         boolean _notEquals_1 = (!Objects.equal(_superType, null));
         _and = (_notEquals && _notEquals_1);
       }
       if (_and) {
         _builder.append("extends ");
-        ResponseBlock _response_2 = method.getResponse();
-        ComplexTypeDeclaration _superType_1 = _response_2.getSuperType();
+        ComplexTypeDeclaration _superType_1 = responseBlock.getSuperType();
         String _name_1 = _superType_1.getName();
         _builder.append(_name_1, "");
       }
@@ -330,20 +329,17 @@ public class ResponseGenerator {
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
     {
-      ResponseBlock _response_3 = method.getResponse();
-      BlockType _type = _response_3==null?(BlockType)null:_response_3.getType();
+      BlockType _type = responseBlock==null?(BlockType)null:responseBlock.getType();
       boolean _notEquals_2 = (!Objects.equal(_type, null));
       if (_notEquals_2) {
         _builder.append("\t");
-        ResponseBlock _response_4 = method.getResponse();
-        BlockType _type_1 = _response_4.getType();
+        BlockType _type_1 = responseBlock.getType();
         CharSequence _generateFieldForType = this.generateFieldForType(_type_1);
         _builder.append(_generateFieldForType, "	");
         _builder.append("\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        ResponseBlock _response_5 = method.getResponse();
-        BlockType _type_2 = _response_5.getType();
+        BlockType _type_2 = responseBlock.getType();
         CharSequence _generateGetterForType = this.generateGetterForType(_type_2);
         _builder.append(_generateGetterForType, "	");
         _builder.append("\t");
@@ -360,18 +356,15 @@ public class ResponseGenerator {
     _builder.append("Result(TransformerProvider provider, InputStream inStream) throws TransformException {");
     _builder.newLineIfNotEmpty();
     {
-      ResponseBlock _response_6 = method.getResponse();
-      boolean _notEquals_3 = (!Objects.equal(_response_6, null));
+      boolean _notEquals_3 = (!Objects.equal(responseBlock, null));
       if (_notEquals_3) {
         {
           boolean _or = false;
-          ResponseBlock _response_7 = method.getResponse();
-          BlockType _type_3 = _response_7.getType();
+          BlockType _type_3 = responseBlock.getType();
           if ((_type_3 instanceof ComplexTypeLiteral)) {
             _or = true;
           } else {
-            ResponseBlock _response_8 = method.getResponse();
-            ComplexTypeDeclaration _superType_2 = _response_8.getSuperType();
+            ComplexTypeDeclaration _superType_2 = responseBlock.getSuperType();
             boolean _notEquals_4 = (!Objects.equal(_superType_2, null));
             _or = ((_type_3 instanceof ComplexTypeLiteral) || _notEquals_4);
           }
@@ -391,10 +384,8 @@ public class ResponseGenerator {
             _builder.append("\t\t\t");
             _builder.newLine();
             _builder.append("\t\t\t");
-            ResponseBlock _response_9 = method.getResponse();
-            BlockType _type_4 = _response_9.getType();
-            ResponseBlock _response_10 = method.getResponse();
-            ComplexTypeDeclaration _superType_3 = _response_10.getSuperType();
+            BlockType _type_4 = responseBlock.getType();
+            ComplexTypeDeclaration _superType_3 = responseBlock.getSuperType();
             EList<Member> members = this.mergeMembers(((ComplexTypeLiteral) _type_4), _superType_3);
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -410,10 +401,8 @@ public class ResponseGenerator {
             _builder.newLineIfNotEmpty();
           } else {
             _builder.append("\t");
-            ResponseBlock _response_11 = method.getResponse();
-            ResponseBlock _response_12 = method.getResponse();
-            BlockType _type_5 = _response_12.getType();
-            CharSequence _generateDeserializationStatementForType = this.generateDeserializationStatementForType(_response_11, ((Type) _type_5));
+            BlockType _type_5 = responseBlock.getType();
+            CharSequence _generateDeserializationStatementForType = this.generateDeserializationStatementForType(responseBlock, ((Type) _type_5));
             _builder.append(_generateDeserializationStatementForType, "	");
             _builder.newLineIfNotEmpty();
           }

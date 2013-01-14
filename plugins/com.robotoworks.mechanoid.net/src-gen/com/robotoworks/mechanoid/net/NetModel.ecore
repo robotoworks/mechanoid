@@ -12,14 +12,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="#//Declaration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="headers" eType="#//HeaderBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" eType="#//ParamsBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
-        eType="#//HttpMethod" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blocks" upperBound="-1"
+        eType="#//ClientBlock" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HeaderBlock">
+  <eClassifiers xsi:type="ecore:EClass" name="ClientBlock"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HeaderBlock" eSuperTypes="#//ClientBlock #//HttpMethodBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="headers" upperBound="-1"
         eType="#//Header" containment="true"/>
   </eClassifiers>
@@ -27,35 +24,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HttpMethod">
+  <eClassifiers xsi:type="ecore:EClass" name="HttpMethod" eSuperTypes="#//ClientBlock">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//HttpMethodType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="headers" eType="#//HeaderBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" eType="#//ParamsBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="#//ResponseBlock"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blocks" upperBound="-1"
+        eType="#//HttpMethodBlock" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HttpPost" eSuperTypes="#//HttpMethod">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//BodyBlock"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HttpMethodBlock"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="HttpMethodType">
+    <eLiterals name="get" literal="get"/>
+    <eLiterals name="put" value="1" literal="put"/>
+    <eLiterals name="post" value="2" literal="post"/>
+    <eLiterals name="delete" value="3" literal="delete"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HttpPut" eSuperTypes="#//HttpMethod">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//BodyBlock"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HttpGet" eSuperTypes="#//HttpMethod"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HttpDelete" eSuperTypes="#//HttpMethod"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParamsBlock">
+  <eClassifiers xsi:type="ecore:EClass" name="ParamsBlock" eSuperTypes="#//ClientBlock #//HttpMethodBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//SimpleMember" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BodyBlock">
+  <eClassifiers xsi:type="ecore:EClass" name="BodyBlock" eSuperTypes="#//HttpMethodBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//BlockType"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResponseBlock">
+  <eClassifiers xsi:type="ecore:EClass" name="ResponseBlock" eSuperTypes="#//HttpMethodBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//ComplexTypeDeclaration"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//BlockType"
         containment="true"/>

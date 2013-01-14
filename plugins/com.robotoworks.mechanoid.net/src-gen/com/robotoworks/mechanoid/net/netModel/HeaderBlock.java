@@ -4,8 +4,6 @@ package com.robotoworks.mechanoid.net.netModel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Header Block</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface HeaderBlock extends EObject
+public interface HeaderBlock extends ClientBlock, HttpMethodBlock
 {
   /**
    * Returns the value of the '<em><b>Headers</b></em>' containment reference list.

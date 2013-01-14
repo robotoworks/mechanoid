@@ -94,10 +94,19 @@ public class NetModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case NetModelPackage.CLIENT_BLOCK:
+      {
+        ClientBlock clientBlock = (ClientBlock)theEObject;
+        T result = caseClientBlock(clientBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case NetModelPackage.HEADER_BLOCK:
       {
         HeaderBlock headerBlock = (HeaderBlock)theEObject;
         T result = caseHeaderBlock(headerBlock);
+        if (result == null) result = caseClientBlock(headerBlock);
+        if (result == null) result = caseHttpMethodBlock(headerBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,38 +121,14 @@ public class NetModelSwitch<T> extends Switch<T>
       {
         HttpMethod httpMethod = (HttpMethod)theEObject;
         T result = caseHttpMethod(httpMethod);
+        if (result == null) result = caseClientBlock(httpMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NetModelPackage.HTTP_POST:
+      case NetModelPackage.HTTP_METHOD_BLOCK:
       {
-        HttpPost httpPost = (HttpPost)theEObject;
-        T result = caseHttpPost(httpPost);
-        if (result == null) result = caseHttpMethod(httpPost);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.HTTP_PUT:
-      {
-        HttpPut httpPut = (HttpPut)theEObject;
-        T result = caseHttpPut(httpPut);
-        if (result == null) result = caseHttpMethod(httpPut);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.HTTP_GET:
-      {
-        HttpGet httpGet = (HttpGet)theEObject;
-        T result = caseHttpGet(httpGet);
-        if (result == null) result = caseHttpMethod(httpGet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case NetModelPackage.HTTP_DELETE:
-      {
-        HttpDelete httpDelete = (HttpDelete)theEObject;
-        T result = caseHttpDelete(httpDelete);
-        if (result == null) result = caseHttpMethod(httpDelete);
+        HttpMethodBlock httpMethodBlock = (HttpMethodBlock)theEObject;
+        T result = caseHttpMethodBlock(httpMethodBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -151,6 +136,8 @@ public class NetModelSwitch<T> extends Switch<T>
       {
         ParamsBlock paramsBlock = (ParamsBlock)theEObject;
         T result = caseParamsBlock(paramsBlock);
+        if (result == null) result = caseClientBlock(paramsBlock);
+        if (result == null) result = caseHttpMethodBlock(paramsBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -158,6 +145,7 @@ public class NetModelSwitch<T> extends Switch<T>
       {
         BodyBlock bodyBlock = (BodyBlock)theEObject;
         T result = caseBodyBlock(bodyBlock);
+        if (result == null) result = caseHttpMethodBlock(bodyBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -165,6 +153,7 @@ public class NetModelSwitch<T> extends Switch<T>
       {
         ResponseBlock responseBlock = (ResponseBlock)theEObject;
         T result = caseResponseBlock(responseBlock);
+        if (result == null) result = caseHttpMethodBlock(responseBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -404,6 +393,22 @@ public class NetModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Client Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Client Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClientBlock(ClientBlock object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Header Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -452,65 +457,17 @@ public class NetModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Http Post</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Http Method Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Http Post</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Http Method Block</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseHttpPost(HttpPost object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Http Put</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Http Put</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseHttpPut(HttpPut object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Http Get</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Http Get</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseHttpGet(HttpGet object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Http Delete</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Http Delete</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseHttpDelete(HttpDelete object)
+  public T caseHttpMethodBlock(HttpMethodBlock object)
   {
     return null;
   }

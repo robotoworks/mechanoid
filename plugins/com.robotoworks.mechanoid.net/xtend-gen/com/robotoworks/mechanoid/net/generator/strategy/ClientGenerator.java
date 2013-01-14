@@ -1,22 +1,20 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
-import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
-import com.robotoworks.mechanoid.net.netModel.HttpPost;
-import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
-import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -136,15 +134,14 @@ public class ClientGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
-    _builder.newLine();
+    ParamsBlock params = ModelExtensions.getParamsBlock(client);
+    _builder.newLineIfNotEmpty();
     {
-      ParamsBlock _params = client.getParams();
-      boolean _notEquals_1 = (!Objects.equal(_params, null));
+      boolean _notEquals_1 = (!Objects.equal(params, null));
       if (_notEquals_1) {
         {
-          ParamsBlock _params_1 = client.getParams();
-          EList<SimpleMember> _params_2 = _params_1.getParams();
-          for(final SimpleMember param : _params_2) {
+          EList<SimpleMember> _params = params.getParams();
+          for(final SimpleMember param : _params) {
             _builder.append("\t");
             _builder.append("private ");
             IntrinsicType _type = param.getType();
@@ -173,13 +170,11 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      ParamsBlock _params_3 = client.getParams();
-      boolean _notEquals_2 = (!Objects.equal(_params_3, null));
+      boolean _notEquals_2 = (!Objects.equal(params, null));
       if (_notEquals_2) {
         {
-          ParamsBlock _params_4 = client.getParams();
-          EList<SimpleMember> _params_5 = _params_4.getParams();
-          for(final SimpleMember param_1 : _params_5) {
+          EList<SimpleMember> _params_1 = params.getParams();
+          for(final SimpleMember param_1 : _params_1) {
             _builder.append("\t");
             _builder.append("public void set");
             String _name_4 = param_1.getName();
@@ -310,15 +305,14 @@ public class ClientGenerator {
     _builder.append("this.debug = debug;");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.newLine();
+    HeaderBlock headers = ModelExtensions.getHeaderBlock(client);
+    _builder.newLineIfNotEmpty();
     {
-      HeaderBlock _headers = client.getHeaders();
-      boolean _notEquals_4 = (!Objects.equal(_headers, null));
+      boolean _notEquals_4 = (!Objects.equal(headers, null));
       if (_notEquals_4) {
         {
-          HeaderBlock _headers_1 = client.getHeaders();
-          EList<Header> _headers_2 = _headers_1.getHeaders();
-          for(final Header header : _headers_2) {
+          EList<Header> _headers = headers.getHeaders();
+          for(final Header header : _headers) {
             _builder.append("\t\t");
             _builder.append("headers.put(\"");
             String _name_13 = header.getName();
@@ -349,8 +343,9 @@ public class ClientGenerator {
   public CharSequence generateClientMethods(final Client client, final Model model) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<HttpMethod> _methods = client.getMethods();
-      for(final HttpMethod method : _methods) {
+      EList<ClientBlock> _blocks = client.getBlocks();
+      Iterable<HttpMethod> _filter = Iterables.<HttpMethod>filter(_blocks, HttpMethod.class);
+      for(final HttpMethod method : _filter) {
         {
           boolean _and = false;
           boolean _hasBody = ModelExtensions.hasBody(method);
@@ -410,14 +405,15 @@ public class ClientGenerator {
         _builder.append("  ");
         _builder.append("throws ServiceException {");
         _builder.newLine();
+        _builder.append("  \t");
+        ParamsBlock params = ModelExtensions.getParamsBlock(client);
+        _builder.newLineIfNotEmpty();
         {
-          ParamsBlock _params = client.getParams();
-          boolean _notEquals = (!Objects.equal(_params, null));
+          boolean _notEquals = (!Objects.equal(params, null));
           if (_notEquals) {
             {
-              ParamsBlock _params_1 = client.getParams();
-              EList<SimpleMember> _params_2 = _params_1.getParams();
-              for(final SimpleMember param : _params_2) {
+              EList<SimpleMember> _params = params.getParams();
+              for(final SimpleMember param : _params) {
                 _builder.append("\t");
                 _builder.append("if(this.");
                 String _name_7 = param.getName();
@@ -497,7 +493,43 @@ public class ClientGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateServiceMethod(final HttpGet method) {
+  public CharSequence generateServiceMethod(final HttpMethod method) {
+    CharSequence _switchResult = null;
+    HttpMethodType _type = method.getType();
+    final HttpMethodType _switchValue = _type;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(_switchValue,HttpMethodType.GET)) {
+        _matched=true;
+        CharSequence _generateServiceGetMethod = this.generateServiceGetMethod(method);
+        _switchResult = _generateServiceGetMethod;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,HttpMethodType.PUT)) {
+        _matched=true;
+        CharSequence _generateServicePutMethod = this.generateServicePutMethod(method);
+        _switchResult = _generateServicePutMethod;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,HttpMethodType.POST)) {
+        _matched=true;
+        CharSequence _generateServicePostMethod = this.generateServicePostMethod(method);
+        _switchResult = _generateServicePostMethod;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,HttpMethodType.DELETE)) {
+        _matched=true;
+        CharSequence _generateServiceDeleteMethod = this.generateServiceDeleteMethod(method);
+        _switchResult = _generateServiceDeleteMethod;
+      }
+    }
+    return _switchResult;
+  }
+  
+  public CharSequence generateServiceGetMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("try {");
     _builder.newLine();
@@ -614,7 +646,7 @@ public class ClientGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateServiceMethod(final HttpPut method) {
+  public CharSequence generateServicePutMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("try {");
     _builder.newLine();
@@ -671,7 +703,7 @@ public class ClientGenerator {
     _builder.append("conn.connect()");
     _builder.newLine();
     {
-      BodyBlock _body = method.getBody();
+      BodyBlock _body = ModelExtensions.getBody(method);
       boolean _notEquals = (!Objects.equal(_body, null));
       if (_notEquals) {
         _builder.append("\t");
@@ -752,7 +784,7 @@ public class ClientGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateServiceMethod(final HttpPost method) {
+  public CharSequence generateServicePostMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("try {");
     _builder.newLine();
@@ -808,7 +840,7 @@ public class ClientGenerator {
     _builder.append("conn.connect();");
     _builder.newLine();
     {
-      BodyBlock _body = method.getBody();
+      BodyBlock _body = ModelExtensions.getBody(method);
       boolean _notEquals = (!Objects.equal(_body, null));
       if (_notEquals) {
         _builder.append("\t");
@@ -889,7 +921,7 @@ public class ClientGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateServiceMethod(final HttpDelete method) {
+  public CharSequence generateServiceDeleteMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\t");
     _builder.append("try {");
@@ -982,20 +1014,5 @@ public class ClientGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
-  }
-  
-  public CharSequence generateServiceMethod(final HttpMethod method) {
-    if (method instanceof HttpDelete) {
-      return _generateServiceMethod((HttpDelete)method);
-    } else if (method instanceof HttpGet) {
-      return _generateServiceMethod((HttpGet)method);
-    } else if (method instanceof HttpPost) {
-      return _generateServiceMethod((HttpPost)method);
-    } else if (method instanceof HttpPut) {
-      return _generateServiceMethod((HttpPut)method);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(method).toString());
-    }
   }
 }

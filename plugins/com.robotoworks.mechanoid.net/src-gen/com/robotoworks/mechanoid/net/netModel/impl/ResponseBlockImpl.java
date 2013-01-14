@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class ResponseBlockImpl extends MinimalEObjectImpl.Container implements ResponseBlock
+public class ResponseBlockImpl extends HttpMethodBlockImpl implements ResponseBlock
 {
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.

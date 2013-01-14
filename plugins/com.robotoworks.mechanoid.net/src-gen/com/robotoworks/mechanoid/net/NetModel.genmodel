@@ -7,6 +7,12 @@
     editorPluginID="com.robotoworks.mechanoid.net.editor" runtimeVersion="2.8">
   <genPackages prefix="NetModel" basePackage="com.robotoworks.mechanoid.net" disposableProviderFactory="true"
       ecorePackage="NetModel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="NetModel.ecore#//HttpMethodType">
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/get"/>
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/put"/>
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/post"/>
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/delete"/>
+    </genEnums>
     <genClasses ecoreClass="NetModel.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Model/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Model/declarations"/>
@@ -16,10 +22,9 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//Client">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Client/baseUrl"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/headers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/methods"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Client/blocks"/>
     </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//ClientBlock"/>
     <genClasses ecoreClass="NetModel.ecore#//HeaderBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HeaderBlock/headers"/>
     </genClasses>
@@ -28,20 +33,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Header/value"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//HttpMethod">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/path"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/headers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/response"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/blocks"/>
     </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//HttpPost">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpPost/body"/>
-    </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//HttpPut">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpPut/body"/>
-    </genClasses>
-    <genClasses ecoreClass="NetModel.ecore#//HttpGet"/>
-    <genClasses ecoreClass="NetModel.ecore#//HttpDelete"/>
+    <genClasses ecoreClass="NetModel.ecore#//HttpMethodBlock"/>
     <genClasses ecoreClass="NetModel.ecore#//ParamsBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ParamsBlock/params"/>
     </genClasses>

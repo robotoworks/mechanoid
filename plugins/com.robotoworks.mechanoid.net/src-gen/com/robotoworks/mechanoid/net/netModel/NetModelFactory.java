@@ -50,6 +50,15 @@ public interface NetModelFactory extends EFactory
   Client createClient();
 
   /**
+   * Returns a new object of class '<em>Client Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Client Block</em>'.
+   * @generated
+   */
+  ClientBlock createClientBlock();
+
+  /**
    * Returns a new object of class '<em>Header Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,40 +86,13 @@ public interface NetModelFactory extends EFactory
   HttpMethod createHttpMethod();
 
   /**
-   * Returns a new object of class '<em>Http Post</em>'.
+   * Returns a new object of class '<em>Http Method Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Post</em>'.
+   * @return a new object of class '<em>Http Method Block</em>'.
    * @generated
    */
-  HttpPost createHttpPost();
-
-  /**
-   * Returns a new object of class '<em>Http Put</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Put</em>'.
-   * @generated
-   */
-  HttpPut createHttpPut();
-
-  /**
-   * Returns a new object of class '<em>Http Get</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Get</em>'.
-   * @generated
-   */
-  HttpGet createHttpGet();
-
-  /**
-   * Returns a new object of class '<em>Http Delete</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Delete</em>'.
-   * @generated
-   */
-  HttpDelete createHttpDelete();
+  HttpMethodBlock createHttpMethodBlock();
 
   /**
    * Returns a new object of class '<em>Params Block</em>'.

@@ -208,10 +208,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:18:7: ( 'post' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:18:9: 'post'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:18:7: ( 'params' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:18:9: 'params'
             {
-            match("post"); 
+            match("params"); 
 
 
             }
@@ -229,10 +229,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:19:7: ( 'put' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:19:9: 'put'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:19:7: ( 'body' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:19:9: 'body'
             {
-            match("put"); 
+            match("body"); 
 
 
             }
@@ -250,10 +250,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:20:7: ( 'get' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:20:9: 'get'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:20:7: ( 'response' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:20:9: 'response'
             {
-            match("get"); 
+            match("response"); 
 
 
             }
@@ -271,10 +271,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:21:7: ( 'delete' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:21:9: 'delete'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:21:7: ( 'extends' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:21:9: 'extends'
             {
-            match("delete"); 
+            match("extends"); 
 
 
             }
@@ -292,10 +292,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:22:7: ( 'params' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:22:9: 'params'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:22:7: ( '[]' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:22:9: '[]'
             {
-            match("params"); 
+            match("[]"); 
 
 
             }
@@ -313,10 +313,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:23:7: ( 'body' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:23:9: 'body'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:23:7: ( 'entity' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:23:9: 'entity'
             {
-            match("body"); 
+            match("entity"); 
 
 
             }
@@ -334,10 +334,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:24:7: ( 'response' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:24:9: 'response'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:24:7: ( 'generate' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:24:9: 'generate'
             {
-            match("response"); 
+            match("generate"); 
 
 
             }
@@ -355,10 +355,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:25:7: ( 'extends' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:25:9: 'extends'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:25:7: ( 'enum' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:25:9: 'enum'
             {
-            match("extends"); 
+            match("enum"); 
 
 
             }
@@ -376,11 +376,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:26:7: ( '[]' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:26:9: '[]'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:26:7: ( '=' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:26:9: '='
             {
-            match("[]"); 
-
+            match('='); 
 
             }
 
@@ -397,10 +396,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:27:7: ( 'entity' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:27:9: 'entity'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:27:7: ( 'String' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:27:9: 'String'
             {
-            match("entity"); 
+            match("String"); 
 
 
             }
@@ -418,10 +417,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:28:7: ( 'generate' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:28:9: 'generate'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:28:7: ( 'boolean' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:28:9: 'boolean'
             {
-            match("generate"); 
+            match("boolean"); 
 
 
             }
@@ -439,10 +438,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:29:7: ( 'enum' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:29:9: 'enum'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:29:7: ( 'int' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:29:9: 'int'
             {
-            match("enum"); 
+            match("int"); 
 
 
             }
@@ -460,10 +459,11 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:30:7: ( '=' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:30:9: '='
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:30:7: ( 'long' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:30:9: 'long'
             {
-            match('='); 
+            match("long"); 
+
 
             }
 
@@ -480,10 +480,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:31:7: ( 'String' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:31:9: 'String'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:31:7: ( 'double' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:31:9: 'double'
             {
-            match("String"); 
+            match("double"); 
 
 
             }
@@ -501,11 +501,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:32:7: ( 'boolean' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:32:9: 'boolean'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:32:7: ( '.' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:32:9: '.'
             {
-            match("boolean"); 
-
+            match('.'); 
 
             }
 
@@ -522,10 +521,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:33:7: ( 'int' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:33:9: 'int'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:33:7: ( 'get' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:33:9: 'get'
             {
-            match("int"); 
+            match("get"); 
 
 
             }
@@ -543,10 +542,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:34:7: ( 'long' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:34:9: 'long'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:34:7: ( 'put' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:34:9: 'put'
             {
-            match("long"); 
+            match("put"); 
 
 
             }
@@ -564,10 +563,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:35:7: ( 'double' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:35:9: 'double'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:35:7: ( 'post' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:35:9: 'post'
             {
-            match("double"); 
+            match("post"); 
 
 
             }
@@ -585,10 +584,11 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:36:7: ( '.' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:36:9: '.'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:36:7: ( 'delete' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:36:9: 'delete'
             {
-            match('.'); 
+            match("delete"); 
+
 
             }
 
@@ -605,10 +605,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2420:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2420:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2039:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2039:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2420:11: ( '^' )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2039:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -617,7 +617,7 @@ public class InternalNetModelLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2420:11: '^'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2039:11: '^'
                     {
                     match('^'); 
 
@@ -635,7 +635,7 @@ public class InternalNetModelLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2420:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2039:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -684,10 +684,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2422:10: ( ( '0' .. '9' )+ )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2422:12: ( '0' .. '9' )+
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2041:10: ( ( '0' .. '9' )+ )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2041:12: ( '0' .. '9' )+
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2422:12: ( '0' .. '9' )+
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2041:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -701,7 +701,7 @@ public class InternalNetModelLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2422:13: '0' .. '9'
+            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2041:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -733,10 +733,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -754,10 +754,10 @@ public class InternalNetModelLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -773,7 +773,7 @@ public class InternalNetModelLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -789,7 +789,7 @@ public class InternalNetModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -814,10 +814,10 @@ public class InternalNetModelLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -833,7 +833,7 @@ public class InternalNetModelLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -849,7 +849,7 @@ public class InternalNetModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2424:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2043:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -892,12 +892,12 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2426:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2426:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2045:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2045:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2426:24: ( options {greedy=false; } : . )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2045:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -922,7 +922,7 @@ public class InternalNetModelLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2426:52: .
+            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2045:52: .
             	    {
             	    matchAny(); 
 
@@ -952,12 +952,12 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -970,7 +970,7 @@ public class InternalNetModelLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -990,7 +990,7 @@ public class InternalNetModelLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:40: ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -999,9 +999,9 @@ public class InternalNetModelLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:41: ( '\\r' )? '\\n'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:41: ( '\\r' )? '\\n'
                     {
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:41: ( '\\r' )?
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1010,7 +1010,7 @@ public class InternalNetModelLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2428:41: '\\r'
+                            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2047:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1042,10 +1042,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2430:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2430:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2049:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2049:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2430:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2049:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1099,8 +1099,8 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2432:16: ( . )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2432:18: .
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2051:16: ( . )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2051:18: .
             {
             matchAny(); 
 
@@ -1358,57 +1358,58 @@ public class InternalNetModelLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\2\36\2\uffff\1\36\2\uffff\5\36\1\32\1\uffff\3\36\1\uffff"+
-        "\1\32\2\uffff\3\32\2\uffff\3\36\1\uffff\1\36\2\uffff\1\36\2\uffff"+
-        "\7\36\2\uffff\3\36\6\uffff\3\36\1\115\2\36\1\120\12\36\1\133\3\36"+
-        "\1\137\1\uffff\2\36\1\uffff\3\36\1\145\4\36\1\152\1\36\1\uffff\1"+
-        "\154\2\36\1\uffff\5\36\1\uffff\4\36\1\uffff\1\36\1\uffff\1\36\1"+
-        "\172\1\173\2\36\1\176\1\177\3\36\1\u0083\1\u0084\1\u0085\2\uffff"+
-        "\1\u0086\1\36\2\uffff\1\u0088\1\36\1\u008a\4\uffff\1\u008b\1\uffff"+
-        "\1\u008c\3\uffff";
+        "\1\uffff\2\36\2\uffff\1\36\2\uffff\3\36\1\32\1\36\1\uffff\4\36\1"+
+        "\uffff\1\32\2\uffff\3\32\2\uffff\3\36\1\uffff\1\36\2\uffff\1\36"+
+        "\2\uffff\4\36\1\uffff\1\36\1\uffff\5\36\6\uffff\2\36\1\114\12\36"+
+        "\1\127\1\36\1\131\5\36\1\uffff\1\137\2\36\1\142\4\36\1\147\1\36"+
+        "\1\uffff\1\36\1\uffff\1\152\4\36\1\uffff\2\36\1\uffff\4\36\1\uffff"+
+        "\2\36\1\uffff\3\36\1\172\1\173\4\36\1\u0080\1\36\1\u0082\1\u0083"+
+        "\1\u0084\1\u0085\2\uffff\1\u0086\1\u0087\1\36\1\u0089\1\uffff\1"+
+        "\36\6\uffff\1\u008b\1\uffff\1\u008c\2\uffff";
     static final String DFA12_eofS =
         "\u008d\uffff";
     static final String DFA12_minS =
-        "\1\0\1\141\1\154\2\uffff\1\145\2\uffff\2\145\1\157\1\145\1\156\1"+
-        "\135\1\uffff\1\164\1\156\1\157\1\uffff\1\101\2\uffff\2\0\1\52\2"+
-        "\uffff\1\143\1\163\1\164\1\uffff\1\151\2\uffff\1\141\2\uffff\1\156"+
-        "\1\154\1\165\1\144\1\163\2\164\2\uffff\1\162\1\164\1\156\6\uffff"+
-        "\1\153\1\141\1\164\1\60\1\145\1\144\1\60\2\145\1\142\1\171\1\154"+
-        "\1\160\1\145\1\151\1\155\1\151\1\60\1\147\1\141\1\155\1\60\1\uffff"+
-        "\1\156\1\145\1\uffff\1\162\1\164\1\154\1\60\1\145\1\157\1\156\1"+
-        "\164\1\60\1\156\1\uffff\1\60\1\147\1\163\1\uffff\1\164\1\162\1\141"+
-        "\2\145\1\uffff\1\141\1\156\1\144\1\171\1\uffff\1\147\1\uffff\1\145"+
-        "\2\60\1\163\1\164\2\60\1\156\2\163\3\60\2\uffff\1\60\1\145\2\uffff"+
-        "\1\60\1\145\1\60\4\uffff\1\60\1\uffff\1\60\3\uffff";
+        "\1\0\1\141\1\154\2\uffff\1\145\2\uffff\1\157\1\145\1\156\1\135\1"+
+        "\145\1\uffff\1\164\1\156\1\157\1\145\1\uffff\1\101\2\uffff\2\0\1"+
+        "\52\2\uffff\1\143\1\164\1\163\1\uffff\1\151\2\uffff\1\141\2\uffff"+
+        "\1\144\1\163\2\164\1\uffff\1\156\1\uffff\1\162\1\164\1\156\1\165"+
+        "\1\154\6\uffff\1\153\1\141\1\60\1\164\1\145\1\144\1\171\1\154\1"+
+        "\160\1\145\1\151\1\155\1\145\1\60\1\151\1\60\1\147\1\142\1\145\1"+
+        "\141\1\155\1\uffff\1\60\1\156\1\145\1\60\1\145\1\157\1\156\1\164"+
+        "\1\60\1\162\1\uffff\1\156\1\uffff\1\60\1\154\1\164\1\147\1\163\1"+
+        "\uffff\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1\uffff\1\141"+
+        "\1\147\1\uffff\3\145\2\60\1\163\1\156\2\163\1\60\1\164\4\60\2\uffff"+
+        "\2\60\1\145\1\60\1\uffff\1\145\6\uffff\1\60\1\uffff\1\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\165\1\154\2\uffff\1\145\2\uffff\1\145\2\157\1\145\1\170"+
-        "\1\135\1\uffff\1\164\1\156\1\157\1\uffff\1\172\2\uffff\2\uffff\1"+
-        "\57\2\uffff\1\162\1\163\1\164\1\uffff\1\151\2\uffff\1\141\2\uffff"+
-        "\1\164\1\154\1\165\1\157\1\163\1\164\1\165\2\uffff\1\162\1\164\1"+
-        "\156\6\uffff\1\153\1\141\1\164\1\172\1\145\1\144\1\172\2\145\1\142"+
-        "\1\171\1\154\1\160\1\145\1\151\1\155\1\151\1\172\1\147\1\141\1\155"+
-        "\1\172\1\uffff\1\156\1\145\1\uffff\1\162\1\164\1\154\1\172\1\145"+
-        "\1\157\1\156\1\164\1\172\1\156\1\uffff\1\172\1\147\1\163\1\uffff"+
-        "\1\164\1\162\1\141\2\145\1\uffff\1\141\1\156\1\144\1\171\1\uffff"+
-        "\1\147\1\uffff\1\145\2\172\1\163\1\164\2\172\1\156\2\163\3\172\2"+
-        "\uffff\1\172\1\145\2\uffff\1\172\1\145\1\172\4\uffff\1\172\1\uffff"+
-        "\1\172\3\uffff";
+        "\1\uffff\1\165\1\154\2\uffff\1\145\2\uffff\1\157\1\145\1\170\1\135"+
+        "\1\145\1\uffff\1\164\1\156\2\157\1\uffff\1\172\2\uffff\2\uffff\1"+
+        "\57\2\uffff\1\162\1\164\1\163\1\uffff\1\151\2\uffff\1\141\2\uffff"+
+        "\1\157\1\163\1\164\1\165\1\uffff\1\164\1\uffff\1\162\1\164\1\156"+
+        "\1\165\1\154\6\uffff\1\153\1\141\1\172\1\164\1\145\1\144\1\171\1"+
+        "\154\1\160\1\145\1\151\1\155\1\145\1\172\1\151\1\172\1\147\1\142"+
+        "\1\145\1\141\1\155\1\uffff\1\172\1\156\1\145\1\172\1\145\1\157\1"+
+        "\156\1\164\1\172\1\162\1\uffff\1\156\1\uffff\1\172\1\154\1\164\1"+
+        "\147\1\163\1\uffff\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1"+
+        "\uffff\1\141\1\147\1\uffff\3\145\2\172\1\163\1\156\2\163\1\172\1"+
+        "\164\4\172\2\uffff\2\172\1\145\1\172\1\uffff\1\145\6\uffff\1\172"+
+        "\1\uffff\1\172\2\uffff";
     static final String DFA12_acceptS =
-        "\3\uffff\1\3\1\4\1\uffff\1\6\1\7\6\uffff\1\24\3\uffff\1\32\1\uffff"+
+        "\3\uffff\1\3\1\4\1\uffff\1\6\1\7\5\uffff\1\20\4\uffff\1\26\1\uffff"+
         "\1\33\1\34\3\uffff\1\40\1\41\3\uffff\1\33\1\uffff\1\3\1\4\1\uffff"+
-        "\1\6\1\7\7\uffff\1\20\1\24\3\uffff\1\32\1\34\1\35\1\36\1\37\1\40"+
-        "\26\uffff\1\11\2\uffff\1\12\12\uffff\1\27\3\uffff\1\10\5\uffff\1"+
-        "\15\4\uffff\1\23\1\uffff\1\30\15\uffff\1\14\1\2\2\uffff\1\13\1\31"+
-        "\3\uffff\1\21\1\25\1\1\1\5\1\uffff\1\26\1\uffff\1\17\1\22\1\16";
+        "\1\6\1\7\4\uffff\1\14\1\uffff\1\20\5\uffff\1\26\1\34\1\35\1\36\1"+
+        "\37\1\40\25\uffff\1\30\12\uffff\1\27\1\uffff\1\23\5\uffff\1\31\2"+
+        "\uffff\1\11\4\uffff\1\17\2\uffff\1\24\17\uffff\1\10\1\2\4\uffff"+
+        "\1\15\1\uffff\1\21\1\25\1\32\1\1\1\5\1\22\1\uffff\1\13\1\uffff\1"+
+        "\12\1\16";
     static final String DFA12_specialS =
-        "\1\2\25\uffff\1\0\1\1\165\uffff}>";
+        "\1\1\25\uffff\1\0\1\2\165\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\32\2\31\2\32\1\31\22\32\1\31\1\32\1\26\4\32\1\27\4\32\1"+
-            "\6\1\32\1\22\1\30\12\25\1\7\2\32\1\16\3\32\22\24\1\17\7\24\1"+
-            "\15\2\32\1\23\1\24\1\32\1\24\1\12\1\2\1\11\1\14\1\24\1\10\1"+
-            "\5\1\20\2\24\1\21\3\24\1\1\1\24\1\13\10\24\1\3\1\32\1\4\uff82"+
+            "\6\1\32\1\22\1\30\12\25\1\7\2\32\1\15\3\32\22\24\1\16\7\24\1"+
+            "\13\2\32\1\23\1\24\1\32\1\24\1\10\1\2\1\21\1\12\1\24\1\14\1"+
+            "\5\1\17\2\24\1\20\3\24\1\1\1\24\1\11\10\24\1\3\1\32\1\4\uff82"+
             "\32",
-            "\1\33\15\uffff\1\34\5\uffff\1\35",
+            "\1\33\15\uffff\1\35\5\uffff\1\34",
             "\1\37",
             "",
             "",
@@ -1416,15 +1417,15 @@ public class InternalNetModelLexer extends Lexer {
             "",
             "",
             "\1\45",
-            "\1\46\11\uffff\1\47",
-            "\1\50",
+            "\1\46",
+            "\1\50\11\uffff\1\47",
             "\1\51",
-            "\1\53\11\uffff\1\52",
-            "\1\54",
+            "\1\52",
             "",
+            "\1\54",
+            "\1\55",
             "\1\56",
-            "\1\57",
-            "\1\60",
+            "\1\60\11\uffff\1\57",
             "",
             "\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
@@ -1444,15 +1445,15 @@ public class InternalNetModelLexer extends Lexer {
             "\1\74",
             "",
             "",
-            "\1\76\5\uffff\1\75",
+            "\1\75\12\uffff\1\76",
             "\1\77",
             "\1\100",
-            "\1\101\12\uffff\1\102",
-            "\1\103",
-            "\1\104",
-            "\1\105\1\106",
+            "\1\101\1\102",
             "",
+            "\1\103\5\uffff\1\104",
             "",
+            "\1\105",
+            "\1\106",
             "\1\107",
             "\1\110",
             "\1\111",
@@ -1464,88 +1465,88 @@ public class InternalNetModelLexer extends Lexer {
             "",
             "\1\112",
             "\1\113",
-            "\1\114",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\115",
             "\1\116",
             "\1\117",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\120",
             "\1\121",
             "\1\122",
             "\1\123",
             "\1\124",
             "\1\125",
             "\1\126",
-            "\1\127",
-            "\1\130",
-            "\1\131",
-            "\1\132",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\130",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\132",
+            "\1\133",
             "\1\134",
             "\1\135",
             "\1\136",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\1\140",
             "\1\141",
-            "",
-            "\1\142",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\1\143",
             "\1\144",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\145",
             "\1\146",
-            "\1\147",
-            "\1\150",
-            "\1\151",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\153",
+            "\1\150",
+            "",
+            "\1\151",
             "",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\153",
+            "\1\154",
             "\1\155",
             "\1\156",
             "",
             "\1\157",
             "\1\160",
+            "",
             "\1\161",
             "\1\162",
             "\1\163",
-            "",
             "\1\164",
+            "",
             "\1\165",
             "\1\166",
+            "",
             "\1\167",
-            "",
             "\1\170",
-            "",
             "\1\171",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\1\174",
             "\1\175",
+            "\1\176",
+            "\1\177",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\u0080",
             "\1\u0081",
-            "\1\u0082",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
-            "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\u0087",
-            "",
-            "",
-            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "\1\u0089",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
             "",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "\1\u0088",
+            "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
+            "",
+            "\1\u008a",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
             "",
             "\12\36\7\uffff\32\36\4\uffff\1\36\1\uffff\32\36",
-            "",
             "",
             ""
     };
@@ -1597,16 +1598,6 @@ public class InternalNetModelLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_23 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 51;}
-
-                        else s = 26;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1624,25 +1615,25 @@ public class InternalNetModelLexer extends Lexer {
 
                         else if ( (LA12_0==':') ) {s = 7;}
 
-                        else if ( (LA12_0=='g') ) {s = 8;}
+                        else if ( (LA12_0=='b') ) {s = 8;}
 
-                        else if ( (LA12_0=='d') ) {s = 9;}
+                        else if ( (LA12_0=='r') ) {s = 9;}
 
-                        else if ( (LA12_0=='b') ) {s = 10;}
+                        else if ( (LA12_0=='e') ) {s = 10;}
 
-                        else if ( (LA12_0=='r') ) {s = 11;}
+                        else if ( (LA12_0=='[') ) {s = 11;}
 
-                        else if ( (LA12_0=='e') ) {s = 12;}
+                        else if ( (LA12_0=='g') ) {s = 12;}
 
-                        else if ( (LA12_0=='[') ) {s = 13;}
+                        else if ( (LA12_0=='=') ) {s = 13;}
 
-                        else if ( (LA12_0=='=') ) {s = 14;}
+                        else if ( (LA12_0=='S') ) {s = 14;}
 
-                        else if ( (LA12_0=='S') ) {s = 15;}
+                        else if ( (LA12_0=='i') ) {s = 15;}
 
-                        else if ( (LA12_0=='i') ) {s = 16;}
+                        else if ( (LA12_0=='l') ) {s = 16;}
 
-                        else if ( (LA12_0=='l') ) {s = 17;}
+                        else if ( (LA12_0=='d') ) {s = 17;}
 
                         else if ( (LA12_0=='.') ) {s = 18;}
 
@@ -1661,6 +1652,16 @@ public class InternalNetModelLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 25;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='+')||LA12_0=='-'||(LA12_0>=';' && LA12_0<='<')||(LA12_0>='>' && LA12_0<='@')||(LA12_0>='\\' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 26;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_23 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_23>='\u0000' && LA12_23<='\uFFFF')) ) {s = 51;}
+
+                        else s = 26;
 
                         if ( s>=0 ) return s;
                         break;

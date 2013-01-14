@@ -4,8 +4,6 @@ package com.robotoworks.mechanoid.net.netModel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Params Block</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ParamsBlock extends EObject
+public interface ParamsBlock extends ClientBlock, HttpMethodBlock
 {
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference list.

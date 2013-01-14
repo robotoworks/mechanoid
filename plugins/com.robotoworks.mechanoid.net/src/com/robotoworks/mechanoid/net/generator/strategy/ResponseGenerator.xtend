@@ -125,26 +125,27 @@ class ResponseGenerator {
 	
 	
 	def generateResponseClass(HttpMethod method, Model module, Client client) '''
-	public class «method.name.pascalize»Result «IF(method.response != null && method.response.superType != null)»extends «method.response.superType.name»«ENDIF» {
-		«IF (method.response?.type != null)»
-			«generateFieldForType(method.response.type)»	
-			«generateGetterForType(method.response.type)»	
+	«var responseBlock = method.responseBlock»
+	public class «method.name.pascalize»Result «IF(responseBlock != null && responseBlock.superType != null)»extends «responseBlock.superType.name»«ENDIF» {
+		«IF (responseBlock?.type != null)»
+			«generateFieldForType(responseBlock.type)»	
+			«generateGetterForType(responseBlock.type)»	
 		«ENDIF»
 		
 		public «method.name.pascalize»Result(TransformerProvider provider, InputStream inStream) throws TransformException {
-		«IF (method.response != null)»
-			«IF(method.response.type instanceof ComplexTypeLiteral || method.response.superType != null)»
+		«IF (responseBlock != null)»
+			«IF(responseBlock.type instanceof ComplexTypeLiteral || responseBlock.superType != null)»
 				«generateDeserializationStatementHeader(true)»
 				
 					«method.name.pascalize»Result subject = this;
 					
-					«var members = mergeMembers(method.response.type as ComplexTypeLiteral, method.response.superType)»
+					«var members = mergeMembers(responseBlock.type as ComplexTypeLiteral, responseBlock.superType)»
 				
 					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers(members)»
 		
 				«generateDeserializationStatementFooter(true)»
 			«ELSE»
-				«generateDeserializationStatementForType(method.response, method.response.type as Type)»
+				«generateDeserializationStatementForType(responseBlock, responseBlock.type as Type)»
 			«ENDIF»
 		«ELSE»
 		Closeables.closeSilently(inStream);

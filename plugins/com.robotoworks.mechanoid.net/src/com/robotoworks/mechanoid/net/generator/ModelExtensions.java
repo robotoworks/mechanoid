@@ -12,19 +12,21 @@ import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.common.internal.util.Inflector;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
+import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.DoubleType;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
-import com.robotoworks.mechanoid.net.netModel.HttpGet;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
-import com.robotoworks.mechanoid.net.netModel.HttpPost;
-import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Member;
+import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
@@ -151,27 +153,38 @@ public class ModelExtensions {
 	}
 	
 	public static boolean hasBody(HttpMethod method){
-		if(method instanceof HttpPut){
-			return ((HttpPut) method).getBody() == null ? false : true;
-		} else if(method instanceof HttpPost){
-			return ((HttpPost) method).getBody() == null ? false : true;
-		} else if(method instanceof HttpGet){
-			return false;			
-		} else if(method instanceof HttpDelete){
-			return false;						
-		} else {
-			return false;
-		}
+		
+		Iterable<BodyBlock> bodies = IterableExtensions.filter(method.getBlocks(), BodyBlock.class);
+		return IterableExtensions.size(bodies) > 0;
 	}
 	
 	public static BodyBlock getBody(HttpMethod method){
-		if(method instanceof HttpPut){
-			return ((HttpPut)method).getBody();
-		} else if(method instanceof HttpPost){
-			return ((HttpPost)method).getBody();
-		}
-		
-		return null;
+		Iterable<BodyBlock> bodies = IterableExtensions.filter(method.getBlocks(), BodyBlock.class);
+		return IterableExtensions.head(bodies);
+	}
+	
+	public static ParamsBlock getParamsBlock(Client client){
+		Iterable<ParamsBlock> blocks = IterableExtensions.filter(client.getBlocks(), ParamsBlock.class);
+		return IterableExtensions.head(blocks);
+	}
+	
+	public static HeaderBlock getHeaderBlock(Client client){
+		Iterable<HeaderBlock> blocks = IterableExtensions.filter(client.getBlocks(), HeaderBlock.class);
+		return IterableExtensions.head(blocks);
+	}
+	
+	public static ParamsBlock getParamsBlock(HttpMethod method){
+		Iterable<ParamsBlock> blocks = IterableExtensions.filter(method.getBlocks(), ParamsBlock.class);
+		return IterableExtensions.head(blocks);
+	}
+	
+	public static HeaderBlock getHeaderBlock(HttpMethod method){
+		Iterable<HeaderBlock> blocks = IterableExtensions.filter(method.getBlocks(), HeaderBlock.class);
+		return IterableExtensions.head(blocks);
+	}
+	public static ResponseBlock getResponseBlock(HttpMethod method){
+		Iterable<ResponseBlock> blocks = IterableExtensions.filter(method.getBlocks(), ResponseBlock.class);
+		return IterableExtensions.head(blocks);
 	}
 	
 	public static String generateEnumMembers(EnumTypeDeclaration decl){

@@ -24,6 +24,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -225,60 +226,74 @@ ruleClient returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getClientAccess().getHeadersHeaderBlockParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getClientAccess().getBlocksClientBlockParserRuleCall_4_0()); 
 	    }
-		lv_headers_4_0=ruleHeaderBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getClientRule());
-	        }
-       		set(
-       			$current, 
-       			"headers",
-        		lv_headers_4_0, 
-        		"HeaderBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getClientAccess().getParamsParamsBlockParserRuleCall_5_0()); 
-	    }
-		lv_params_5_0=ruleParamsBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getClientRule());
-	        }
-       		set(
-       			$current, 
-       			"params",
-        		lv_params_5_0, 
-        		"ParamsBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getClientAccess().getMethodsHttpMethodParserRuleCall_6_0()); 
-	    }
-		lv_methods_6_0=ruleHttpMethod		{
+		lv_blocks_4_0=ruleClientBlock		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getClientRule());
 	        }
        		add(
        			$current, 
-       			"methods",
-        		lv_methods_6_0, 
-        		"HttpMethod");
+       			"blocks",
+        		lv_blocks_4_0, 
+        		"ClientBlock");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_7='}' 
+)*	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getClientAccess().getRightCurlyBracketKeyword_7());
+    	newLeafNode(otherlv_5, grammarAccess.getClientAccess().getRightCurlyBracketKeyword_5());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleClientBlock
+entryRuleClientBlock returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getClientBlockRule()); }
+	 iv_ruleClientBlock=ruleClientBlock 
+	 { $current=$iv_ruleClientBlock.current; } 
+	 EOF 
+;
+
+// Rule ClientBlock
+ruleClientBlock returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getClientBlockAccess().getHeaderBlockParserRuleCall_0()); 
+    }
+    this_HeaderBlock_0=ruleHeaderBlock
+    { 
+        $current = $this_HeaderBlock_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getClientBlockAccess().getParamsBlockParserRuleCall_1()); 
+    }
+    this_ParamsBlock_1=ruleParamsBlock
+    { 
+        $current = $this_ParamsBlock_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getClientBlockAccess().getHttpMethodParserRuleCall_2()); 
+    }
+    this_HttpMethod_2=ruleHttpMethod
+    { 
+        $current = $this_HttpMethod_2.current; 
+        afterParserOrEnumRuleCall();
     }
 )
 ;
@@ -427,572 +442,145 @@ ruleHttpMethod returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getHttpMethodAccess().getTypeHttpMethodTypeEnumRuleCall_0_0()); 
+	    }
+		lv_type_0_0=ruleHttpMethodType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getHttpMethodRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_0_0, 
+        		"HttpMethodType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getHttpMethodAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getHttpMethodRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)(
+(
+		lv_path_2_0=RULE_STRING
+		{
+			newLeafNode(lv_path_2_0, grammarAccess.getHttpMethodAccess().getPathSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getHttpMethodRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"path",
+        		lv_path_2_0, 
+        		"STRING");
+	    }
+
+)
+)?	otherlv_3='{' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getHttpMethodAccess().getLeftCurlyBracketKeyword_3());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getHttpMethodAccess().getBlocksHttpMethodBlockParserRuleCall_4_0()); 
+	    }
+		lv_blocks_4_0=ruleHttpMethodBlock		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getHttpMethodRule());
+	        }
+       		add(
+       			$current, 
+       			"blocks",
+        		lv_blocks_4_0, 
+        		"HttpMethodBlock");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_5='}' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getHttpMethodAccess().getRightCurlyBracketKeyword_5());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleHttpMethodBlock
+entryRuleHttpMethodBlock returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getHttpMethodBlockRule()); }
+	 iv_ruleHttpMethodBlock=ruleHttpMethodBlock 
+	 { $current=$iv_ruleHttpMethodBlock.current; } 
+	 EOF 
+;
+
+// Rule HttpMethodBlock
+ruleHttpMethodBlock returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getHttpMethodAccess().getHttpPostParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getHttpMethodBlockAccess().getHeaderBlockParserRuleCall_0()); 
     }
-    this_HttpPost_0=ruleHttpPost
+    this_HeaderBlock_0=ruleHeaderBlock
     { 
-        $current = $this_HttpPost_0.current; 
+        $current = $this_HeaderBlock_0.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getHttpMethodAccess().getHttpGetParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getHttpMethodBlockAccess().getParamsBlockParserRuleCall_1()); 
     }
-    this_HttpGet_1=ruleHttpGet
+    this_ParamsBlock_1=ruleParamsBlock
     { 
-        $current = $this_HttpGet_1.current; 
+        $current = $this_ParamsBlock_1.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getHttpMethodAccess().getHttpPutParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getHttpMethodBlockAccess().getBodyBlockParserRuleCall_2()); 
     }
-    this_HttpPut_2=ruleHttpPut
+    this_BodyBlock_2=ruleBodyBlock
     { 
-        $current = $this_HttpPut_2.current; 
+        $current = $this_BodyBlock_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getHttpMethodAccess().getHttpDeleteParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getHttpMethodBlockAccess().getResponseBlockParserRuleCall_3()); 
     }
-    this_HttpDelete_3=ruleHttpDelete
+    this_ResponseBlock_3=ruleResponseBlock
     { 
-        $current = $this_HttpDelete_3.current; 
+        $current = $this_ResponseBlock_3.current; 
         afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleHttpPost
-entryRuleHttpPost returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHttpPostRule()); }
-	 iv_ruleHttpPost=ruleHttpPost 
-	 { $current=$iv_ruleHttpPost.current; } 
-	 EOF 
-;
-
-// Rule HttpPost
-ruleHttpPost returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='post' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getHttpPostAccess().getPostKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getHttpPostAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpPostRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)(
-(
-		lv_path_2_0=RULE_STRING
-		{
-			newLeafNode(lv_path_2_0, grammarAccess.getHttpPostAccess().getPathSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpPostRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"path",
-        		lv_path_2_0, 
-        		"STRING");
-	    }
-
-)
-)?	otherlv_3='{' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getHttpPostAccess().getLeftCurlyBracketKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPostAccess().getHeadersHeaderBlockParserRuleCall_4_0()); 
-	    }
-		lv_headers_4_0=ruleHeaderBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPostRule());
-	        }
-       		set(
-       			$current, 
-       			"headers",
-        		lv_headers_4_0, 
-        		"HeaderBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPostAccess().getParamsParamsBlockParserRuleCall_5_0()); 
-	    }
-		lv_params_5_0=ruleParamsBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPostRule());
-	        }
-       		set(
-       			$current, 
-       			"params",
-        		lv_params_5_0, 
-        		"ParamsBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPostAccess().getBodyBodyBlockParserRuleCall_6_0()); 
-	    }
-		lv_body_6_0=ruleBodyBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPostRule());
-	        }
-       		set(
-       			$current, 
-       			"body",
-        		lv_body_6_0, 
-        		"BodyBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPostAccess().getResponseResponseBlockParserRuleCall_7_0()); 
-	    }
-		lv_response_7_0=ruleResponseBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPostRule());
-	        }
-       		set(
-       			$current, 
-       			"response",
-        		lv_response_7_0, 
-        		"ResponseBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?	otherlv_8='}' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getHttpPostAccess().getRightCurlyBracketKeyword_8());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleHttpPut
-entryRuleHttpPut returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHttpPutRule()); }
-	 iv_ruleHttpPut=ruleHttpPut 
-	 { $current=$iv_ruleHttpPut.current; } 
-	 EOF 
-;
-
-// Rule HttpPut
-ruleHttpPut returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='put' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getHttpPutAccess().getPutKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getHttpPutAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpPutRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)(
-(
-		lv_path_2_0=RULE_STRING
-		{
-			newLeafNode(lv_path_2_0, grammarAccess.getHttpPutAccess().getPathSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpPutRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"path",
-        		lv_path_2_0, 
-        		"STRING");
-	    }
-
-)
-)?	otherlv_3='{' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getHttpPutAccess().getLeftCurlyBracketKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPutAccess().getHeadersHeaderBlockParserRuleCall_4_0()); 
-	    }
-		lv_headers_4_0=ruleHeaderBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPutRule());
-	        }
-       		set(
-       			$current, 
-       			"headers",
-        		lv_headers_4_0, 
-        		"HeaderBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPutAccess().getParamsParamsBlockParserRuleCall_5_0()); 
-	    }
-		lv_params_5_0=ruleParamsBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPutRule());
-	        }
-       		set(
-       			$current, 
-       			"params",
-        		lv_params_5_0, 
-        		"ParamsBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPutAccess().getBodyBodyBlockParserRuleCall_6_0()); 
-	    }
-		lv_body_6_0=ruleBodyBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPutRule());
-	        }
-       		set(
-       			$current, 
-       			"body",
-        		lv_body_6_0, 
-        		"BodyBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpPutAccess().getResponseResponseBlockParserRuleCall_7_0()); 
-	    }
-		lv_response_7_0=ruleResponseBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpPutRule());
-	        }
-       		set(
-       			$current, 
-       			"response",
-        		lv_response_7_0, 
-        		"ResponseBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?	otherlv_8='}' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getHttpPutAccess().getRightCurlyBracketKeyword_8());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleHttpGet
-entryRuleHttpGet returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHttpGetRule()); }
-	 iv_ruleHttpGet=ruleHttpGet 
-	 { $current=$iv_ruleHttpGet.current; } 
-	 EOF 
-;
-
-// Rule HttpGet
-ruleHttpGet returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='get' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getHttpGetAccess().getGetKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getHttpGetAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpGetRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)(
-(
-		lv_path_2_0=RULE_STRING
-		{
-			newLeafNode(lv_path_2_0, grammarAccess.getHttpGetAccess().getPathSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpGetRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"path",
-        		lv_path_2_0, 
-        		"STRING");
-	    }
-
-)
-)?	otherlv_3='{' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getHttpGetAccess().getLeftCurlyBracketKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpGetAccess().getHeadersHeaderBlockParserRuleCall_4_0()); 
-	    }
-		lv_headers_4_0=ruleHeaderBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpGetRule());
-	        }
-       		set(
-       			$current, 
-       			"headers",
-        		lv_headers_4_0, 
-        		"HeaderBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpGetAccess().getParamsParamsBlockParserRuleCall_5_0()); 
-	    }
-		lv_params_5_0=ruleParamsBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpGetRule());
-	        }
-       		set(
-       			$current, 
-       			"params",
-        		lv_params_5_0, 
-        		"ParamsBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpGetAccess().getResponseResponseBlockParserRuleCall_6_0()); 
-	    }
-		lv_response_6_0=ruleResponseBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpGetRule());
-	        }
-       		set(
-       			$current, 
-       			"response",
-        		lv_response_6_0, 
-        		"ResponseBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?	otherlv_7='}' 
-    {
-    	newLeafNode(otherlv_7, grammarAccess.getHttpGetAccess().getRightCurlyBracketKeyword_7());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleHttpDelete
-entryRuleHttpDelete returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHttpDeleteRule()); }
-	 iv_ruleHttpDelete=ruleHttpDelete 
-	 { $current=$iv_ruleHttpDelete.current; } 
-	 EOF 
-;
-
-// Rule HttpDelete
-ruleHttpDelete returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='delete' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getHttpDeleteAccess().getDeleteKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getHttpDeleteAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpDeleteRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)(
-(
-		lv_path_2_0=RULE_STRING
-		{
-			newLeafNode(lv_path_2_0, grammarAccess.getHttpDeleteAccess().getPathSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpDeleteRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"path",
-        		lv_path_2_0, 
-        		"STRING");
-	    }
-
-)
-)?	otherlv_3='{' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getHttpDeleteAccess().getLeftCurlyBracketKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpDeleteAccess().getHeadersHeaderBlockParserRuleCall_4_0()); 
-	    }
-		lv_headers_4_0=ruleHeaderBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpDeleteRule());
-	        }
-       		set(
-       			$current, 
-       			"headers",
-        		lv_headers_4_0, 
-        		"HeaderBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpDeleteAccess().getParamsParamsBlockParserRuleCall_5_0()); 
-	    }
-		lv_params_5_0=ruleParamsBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpDeleteRule());
-	        }
-       		set(
-       			$current, 
-       			"params",
-        		lv_params_5_0, 
-        		"ParamsBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getHttpDeleteAccess().getResponseResponseBlockParserRuleCall_6_0()); 
-	    }
-		lv_response_6_0=ruleResponseBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getHttpDeleteRule());
-	        }
-       		set(
-       			$current, 
-       			"response",
-        		lv_response_6_0, 
-        		"ResponseBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?	otherlv_7='}' 
-    {
-    	newLeafNode(otherlv_7, grammarAccess.getHttpDeleteAccess().getRightCurlyBracketKeyword_7());
     }
 )
 ;
@@ -2414,6 +2002,37 @@ ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     ;
 
 
+
+
+
+// Rule HttpMethodType
+ruleHttpMethodType returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='get' 
+	{
+        $current = grammarAccess.getHttpMethodTypeAccess().getGetEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getHttpMethodTypeAccess().getGetEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='put' 
+	{
+        $current = grammarAccess.getHttpMethodTypeAccess().getPutEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getHttpMethodTypeAccess().getPutEnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='post' 
+	{
+        $current = grammarAccess.getHttpMethodTypeAccess().getPostEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getHttpMethodTypeAccess().getPostEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='delete' 
+	{
+        $current = grammarAccess.getHttpMethodTypeAccess().getDeleteEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getHttpMethodTypeAccess().getDeleteEnumLiteralDeclaration_3()); 
+    }
+));
 
 
 

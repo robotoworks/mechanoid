@@ -163,14 +163,18 @@ public class RequestGenerator {
         _builder.newLine();
       }
     }
+    _builder.append("\t");
+    ParamsBlock methodParams = ModelExtensions.getParamsBlock(method);
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    ParamsBlock clientParams = ModelExtensions.getParamsBlock(client);
+    _builder.newLineIfNotEmpty();
     {
-      ParamsBlock _params = method.getParams();
-      boolean _notEquals = (!Objects.equal(_params, null));
+      boolean _notEquals = (!Objects.equal(methodParams, null));
       if (_notEquals) {
         {
-          ParamsBlock _params_1 = method.getParams();
-          EList<SimpleMember> _params_2 = _params_1.getParams();
-          for(final SimpleMember param : _params_2) {
+          EList<SimpleMember> _params = methodParams.getParams();
+          for(final SimpleMember param : _params) {
             _builder.append("\t");
             _builder.append("private ");
             IntrinsicType _type = param.getType();
@@ -197,13 +201,11 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_3 = client.getParams();
-      boolean _notEquals_1 = (!Objects.equal(_params_3, null));
+      boolean _notEquals_1 = (!Objects.equal(clientParams, null));
       if (_notEquals_1) {
         {
-          ParamsBlock _params_4 = client.getParams();
-          EList<SimpleMember> _params_5 = _params_4.getParams();
-          for(final SimpleMember param_1 : _params_5) {
+          EList<SimpleMember> _params_1 = clientParams.getParams();
+          for(final SimpleMember param_1 : _params_1) {
             _builder.append("\t");
             _builder.append("private ");
             IntrinsicType _type_1 = param_1.getType();
@@ -247,13 +249,11 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_6 = method.getParams();
-      boolean _notEquals_2 = (!Objects.equal(_params_6, null));
+      boolean _notEquals_2 = (!Objects.equal(methodParams, null));
       if (_notEquals_2) {
         {
-          ParamsBlock _params_7 = method.getParams();
-          EList<SimpleMember> _params_8 = _params_7.getParams();
-          for(final SimpleMember param_2 : _params_8) {
+          EList<SimpleMember> _params_2 = methodParams.getParams();
+          for(final SimpleMember param_2 : _params_2) {
             _builder.append("\t");
             _builder.append("public ");
             String _name_5 = method.getName();
@@ -320,13 +320,11 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_9 = client.getParams();
-      boolean _notEquals_3 = (!Objects.equal(_params_9, null));
+      boolean _notEquals_3 = (!Objects.equal(clientParams, null));
       if (_notEquals_3) {
         {
-          ParamsBlock _params_10 = client.getParams();
-          EList<SimpleMember> _params_11 = _params_10.getParams();
-          for(final SimpleMember param_3 : _params_11) {
+          EList<SimpleMember> _params_3 = clientParams.getParams();
+          for(final SimpleMember param_3 : _params_3) {
             _builder.append("\t");
             _builder.append("public ");
             String _name_11 = method.getName();
@@ -404,14 +402,15 @@ public class RequestGenerator {
     _builder.append(_generateRequestConstructorArgs, "	");
     _builder.append("){");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    HeaderBlock methodHeaders = ModelExtensions.getHeaderBlock(method);
+    _builder.newLineIfNotEmpty();
     {
-      HeaderBlock _headers = method.getHeaders();
-      boolean _notEquals_4 = (!Objects.equal(_headers, null));
+      boolean _notEquals_4 = (!Objects.equal(methodHeaders, null));
       if (_notEquals_4) {
         {
-          HeaderBlock _headers_1 = method.getHeaders();
-          EList<Header> _headers_2 = _headers_1.getHeaders();
-          for(final Header header : _headers_2) {
+          EList<Header> _headers = methodHeaders.getHeaders();
+          for(final Header header : _headers) {
             _builder.append("\t\t");
             _builder.append("headers.put(\"");
             String _name_18 = header.getName();
@@ -519,13 +518,11 @@ public class RequestGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     {
-      ParamsBlock _params_12 = method.getParams();
-      boolean _notEquals_5 = (!Objects.equal(_params_12, null));
+      boolean _notEquals_5 = (!Objects.equal(methodParams, null));
       if (_notEquals_5) {
         {
-          ParamsBlock _params_13 = method.getParams();
-          EList<SimpleMember> _params_14 = _params_13.getParams();
-          for(final SimpleMember param_4 : _params_14) {
+          EList<SimpleMember> _params_4 = methodParams.getParams();
+          for(final SimpleMember param_4 : _params_4) {
             _builder.append("\t\t");
             _builder.append("if(");
             String _name_19 = param_4.getName();
@@ -571,13 +568,11 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_15 = client.getParams();
-      boolean _notEquals_6 = (!Objects.equal(_params_15, null));
+      boolean _notEquals_6 = (!Objects.equal(clientParams, null));
       if (_notEquals_6) {
         {
-          ParamsBlock _params_16 = client.getParams();
-          EList<SimpleMember> _params_17 = _params_16.getParams();
-          for(final SimpleMember param_5 : _params_17) {
+          EList<SimpleMember> _params_5 = clientParams.getParams();
+          for(final SimpleMember param_5 : _params_5) {
             _builder.append("\t\t");
             _builder.append("if(");
             String _name_24 = param_5.getName();

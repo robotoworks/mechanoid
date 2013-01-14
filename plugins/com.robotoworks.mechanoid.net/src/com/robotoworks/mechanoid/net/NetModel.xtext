@@ -13,7 +13,7 @@ Declaration:
 
 Client:
 	'client' name=ID baseUrl=STRING? '{'
-		blocks+=ClientBlock?
+		blocks+=ClientBlock*
 	'}'
 ;
 
@@ -31,7 +31,7 @@ Header:
 
 HttpMethod:
 	type=HttpMethodType name=ID path=STRING? '{' 
-		blocks += HttpMethodBlock
+		blocks += HttpMethodBlock*
 	'}'
 ;
 
