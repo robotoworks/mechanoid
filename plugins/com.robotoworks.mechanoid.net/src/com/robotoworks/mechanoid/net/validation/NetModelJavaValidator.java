@@ -9,6 +9,8 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
+import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
@@ -16,9 +18,16 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
+import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
+import com.robotoworks.mechanoid.net.netModel.NumericType;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
+import com.robotoworks.mechanoid.net.netModel.StringType;
  
 
 public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
@@ -32,6 +41,38 @@ public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 		}
 		if(!pathPattern.matches(method.getPath())){
 			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
+		}
+	}
+	
+	@Check
+	public void checkValueAssignment(SimpleMemberAssignment assignment){
+		IntrinsicType type = assignment.getMember().getType();
+		Literal defaultValue = assignment.getDefaultValue();
+		
+		if(defaultValue == null) {
+			return;
+		}
+		
+		if(type instanceof StringType) {
+			
+			if(!(defaultValue instanceof StringLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}
+		} else if(type instanceof BooleanType) {
+			if(!(defaultValue instanceof BooleanLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}			
+		// TODO Check each numeric type (double, integer, long, etc)
+		} else if(type instanceof NumericType) {
+			if(!(defaultValue instanceof NumericLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}			
 		}
 	}
 	
