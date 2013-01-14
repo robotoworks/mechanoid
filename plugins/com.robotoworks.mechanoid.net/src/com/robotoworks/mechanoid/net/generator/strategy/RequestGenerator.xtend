@@ -72,7 +72,7 @@ class RequestGenerator {
 			return headers.get(key);
 		}
 	
-		«IF(method.path?.params.size > 0)»
+		«IF(method.path?.params?.size > 0)»
 		«FOR slug:method.path.params»
 		private final «slug.member.type.signature» «slug.member.name.camelize»Segment;
 		«ENDFOR»
@@ -134,7 +134,7 @@ class RequestGenerator {
 			«ENDFOR»
 			
 			«ENDIF»
-			«IF(method.path?.params.size > 0)»
+			«IF(method.path?.params?.size > 0)»
 				«FOR slug:method.path.params»
 				this.«slug.member.name.camelize»Segment = «slug.member.name.camelize»Segment;
 				«ENDFOR»	
@@ -155,7 +155,7 @@ class RequestGenerator {
 
 		«ENDIF»
 		public String createUrl(String baseUrl){
-			«IF(method.path?.params.size > 0)»
+			«IF(method.path?.params?.size > 0)»
 				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
 			«ELSE»
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
@@ -424,8 +424,10 @@ class RequestGenerator {
 	 */
 	def generateRequestConstructorArgs(Path path, BodyBlock body){
 		var args = new ArrayList<String>()
-		for(slug:path.params){
-			args.add(slug.member.type.signature + " " + slug.member.name.camelize + "Segment")
+		if(path?.params?.size > 0) {
+			for(slug:path.params){
+				args.add(slug.member.type.signature + " " + slug.member.name.camelize + "Segment")
+			}
 		}
 		
 		if(body != null) {
