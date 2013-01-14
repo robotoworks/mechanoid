@@ -118,7 +118,7 @@ class ClientGenerator {
 	
 	def generateClientMethods(Client client, Model model) '''
 		«FOR method:client.blocks.filter(typeof(HttpMethod))»
-		«IF !method.hasBody && method.argsFromPath.size == 0»
+		«IF !method.hasBody && (method.path == null || method.path.params.size == 0)»
 		public Response<«method.name.pascalize»Result> «method.name.camelize»()
 		  throws ServiceException {
 		  	return «method.name.camelize»(new «method.name.pascalize»Request());

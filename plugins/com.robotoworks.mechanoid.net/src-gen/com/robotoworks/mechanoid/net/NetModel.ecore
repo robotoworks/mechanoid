@@ -27,7 +27,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="HttpMethod" eSuperTypes="#//ClientBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//HttpMethodType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//Path" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="blocks" upperBound="-1"
         eType="#//HttpMethodBlock" containment="true"/>
   </eClassifiers>
@@ -37,6 +37,10 @@
     <eLiterals name="put" value="1" literal="put"/>
     <eLiterals name="post" value="2" literal="post"/>
     <eLiterals name="delete" value="3" literal="delete"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Path">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//SimpleMemberAssignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParamsBlock" eSuperTypes="#//ClientBlock #//HttpMethodBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"

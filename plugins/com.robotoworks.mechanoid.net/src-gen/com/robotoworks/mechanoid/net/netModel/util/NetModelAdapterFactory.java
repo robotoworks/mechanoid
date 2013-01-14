@@ -115,6 +115,11 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createHttpMethodBlockAdapter();
       }
       @Override
+      public Adapter casePath(Path object)
+      {
+        return createPathAdapter();
+      }
+      @Override
       public Adapter caseParamsBlock(ParamsBlock object)
       {
         return createParamsBlockAdapter();
@@ -397,6 +402,21 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createHttpMethodBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.Path <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.Path
+   * @generated
+   */
+  public Adapter createPathAdapter()
   {
     return null;
   }

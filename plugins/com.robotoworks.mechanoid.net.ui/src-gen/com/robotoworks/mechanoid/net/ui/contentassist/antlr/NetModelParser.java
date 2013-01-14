@@ -40,6 +40,8 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDeclarationAccess().getAlternatives(), "rule__Declaration__Alternatives");
 					put(grammarAccess.getClientBlockAccess().getAlternatives(), "rule__ClientBlock__Alternatives");
 					put(grammarAccess.getHttpMethodBlockAccess().getAlternatives(), "rule__HttpMethodBlock__Alternatives");
+					put(grammarAccess.getPathAccess().getAlternatives_2(), "rule__Path__Alternatives_2");
+					put(grammarAccess.getPathAccess().getAlternatives_3_1(), "rule__Path__Alternatives_3_1");
 					put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 					put(grammarAccess.getBlockTypeAccess().getAlternatives(), "rule__BlockType__Alternatives");
 					put(grammarAccess.getMemberAccess().getAlternatives(), "rule__Member__Alternatives");
@@ -59,6 +61,8 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHeaderBlockAccess().getGroup_2(), "rule__HeaderBlock__Group_2__0");
 					put(grammarAccess.getHeaderAccess().getGroup(), "rule__Header__Group__0");
 					put(grammarAccess.getHttpMethodAccess().getGroup(), "rule__HttpMethod__Group__0");
+					put(grammarAccess.getPathAccess().getGroup(), "rule__Path__Group__0");
+					put(grammarAccess.getPathAccess().getGroup_3(), "rule__Path__Group_3__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup(), "rule__ParamsBlock__Group__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup_3(), "rule__ParamsBlock__Group_3__0");
 					put(grammarAccess.getSimpleMemberAssignmentAccess().getGroup(), "rule__SimpleMemberAssignment__Group__0");
@@ -98,6 +102,8 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHttpMethodAccess().getNameAssignment_1(), "rule__HttpMethod__NameAssignment_1");
 					put(grammarAccess.getHttpMethodAccess().getPathAssignment_2(), "rule__HttpMethod__PathAssignment_2");
 					put(grammarAccess.getHttpMethodAccess().getBlocksAssignment_4(), "rule__HttpMethod__BlocksAssignment_4");
+					put(grammarAccess.getPathAccess().getParamsAssignment_2_1(), "rule__Path__ParamsAssignment_2_1");
+					put(grammarAccess.getPathAccess().getParamsAssignment_3_1_1(), "rule__Path__ParamsAssignment_3_1_1");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_2(), "rule__ParamsBlock__ParamsAssignment_2");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_3_1(), "rule__ParamsBlock__ParamsAssignment_3_1");
 					put(grammarAccess.getSimpleMemberAssignmentAccess().getMemberAssignment_0(), "rule__SimpleMemberAssignment__MemberAssignment_0");

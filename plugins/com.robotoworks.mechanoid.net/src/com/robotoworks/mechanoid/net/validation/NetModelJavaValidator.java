@@ -34,15 +34,15 @@ public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 
 	private RegularExpression pathPattern = RegEx.REUtil.createRegex("^(\\/)?(?:[^/]+)?(?:(?:\\/(?:[^/]+)?)+)?$", "");
 	
-	@Check
-	public void ensureValidMethodPath(HttpMethod method){
-		if(method.getPath() == null || method.getPath().length() == 0) {
-			return;
-		}
-		if(!pathPattern.matches(method.getPath())){
-			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
-		}
-	}
+//	@Check
+//	public void ensureValidMethodPath(HttpMethod method){
+//		if(method.getPath() == null || method.getPath().length() == 0) {
+//			return;
+//		}
+//		if(!pathPattern.matches(method.getPath())){
+//			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
+//		}
+//	}
 	
 	@Check
 	public void checkValueAssignment(SimpleMemberAssignment assignment){

@@ -22,6 +22,7 @@ import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
@@ -191,6 +192,12 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				   context == grammarAccess.getHttpMethodBlockRule() ||
 				   context == grammarAccess.getParamsBlockRule()) {
 					sequence_ParamsBlock(context, (ParamsBlock) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.PATH:
+				if(context == grammarAccess.getPathRule()) {
+					sequence_Path(context, (Path) semanticObject); 
 					return; 
 				}
 				else break;
@@ -395,7 +402,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (type=HttpMethodType name=ID path=STRING? blocks+=HttpMethodBlock*)
+	 *     (type=HttpMethodType name=ID path=Path? blocks+=HttpMethodBlock*)
 	 */
 	protected void sequence_HttpMethod(EObject context, HttpMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -496,6 +503,15 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (params+=SimpleMemberAssignment params+=SimpleMemberAssignment*)
 	 */
 	protected void sequence_ParamsBlock(EObject context, ParamsBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (params+=SimpleMemberAssignment? params+=SimpleMemberAssignment*)
+	 */
+	protected void sequence_Path(EObject context, Path semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

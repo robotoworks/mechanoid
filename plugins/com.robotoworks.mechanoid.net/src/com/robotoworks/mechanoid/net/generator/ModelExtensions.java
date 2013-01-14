@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.BigDecimalExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -417,17 +418,15 @@ public class ModelExtensions {
 		}
 	}
 	
-	public static String getPathAsFormatString(HttpMethod method){
+	public static String getPathAsFormatString(HttpMethod method, ISerializer serializer){
 		if(method.getPath() == null) {
 			return "";
 		}
 		
-		return method.getPath().replaceAll(":[^/\\.]+", "%s");
+		String path = serializer.serialize(method.getPath());
+		
+		return path.replaceAll("[\\^a-zA-Z_0-9]+:[a-zA-Z_0-9]+", "%s");
 	}	
-	
-	public static Iterable<String> getArgsFromPath(HttpMethod method) {
-		return getArgsFromPath(method.getPath());
-	}
 	
 	public static Iterable<String> getArgsFromPath(String path) {
 		if(path == null) {

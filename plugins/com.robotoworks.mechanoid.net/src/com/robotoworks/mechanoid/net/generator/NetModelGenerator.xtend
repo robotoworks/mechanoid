@@ -12,10 +12,9 @@ import com.robotoworks.mechanoid.net.generator.strategy.CodeGenerationStrategyFa
 
 class NetModelGenerator implements IGenerator {
 	@Inject CodeGenerationStrategyFactory codeGenerationStrategyFactory
-		
+	@Inject CodeGenerationContext codeGenContext
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		var cgContext = new CodeGenerationContext();
-		var strategy = codeGenerationStrategyFactory.create(cgContext, null);
+		var strategy = codeGenerationStrategyFactory.create(codeGenContext, null);
 		strategy.generate(fsa, resource.contents.head as Model);
 	}
 }

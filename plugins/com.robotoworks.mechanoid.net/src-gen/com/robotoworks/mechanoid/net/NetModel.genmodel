@@ -39,10 +39,13 @@
     <genClasses ecoreClass="NetModel.ecore#//HttpMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//HttpMethod/path"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/path"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//HttpMethod/blocks"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//HttpMethodBlock"/>
+    <genClasses ecoreClass="NetModel.ecore#//Path">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Path/params"/>
+    </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//ParamsBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ParamsBlock/params"/>
     </genClasses>

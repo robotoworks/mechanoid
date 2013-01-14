@@ -73,6 +73,7 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.HEADER: return createHeader();
       case NetModelPackage.HTTP_METHOD: return createHttpMethod();
       case NetModelPackage.HTTP_METHOD_BLOCK: return createHttpMethodBlock();
+      case NetModelPackage.PATH: return createPath();
       case NetModelPackage.PARAMS_BLOCK: return createParamsBlock();
       case NetModelPackage.SIMPLE_MEMBER_ASSIGNMENT: return createSimpleMemberAssignment();
       case NetModelPackage.LITERAL: return createLiteral();
@@ -231,6 +232,17 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     HttpMethodBlockImpl httpMethodBlock = new HttpMethodBlockImpl();
     return httpMethodBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Path createPath()
+  {
+    PathImpl path = new PathImpl();
+    return path;
   }
 
   /**

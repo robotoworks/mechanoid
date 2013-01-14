@@ -31,7 +31,7 @@ Header:
 ;
 
 HttpMethod:
-	type=HttpMethodType name=ID path=STRING? '{' 
+	type=HttpMethodType name=ID path=Path? '{' 
 		blocks += HttpMethodBlock*
 	'}'
 ;
@@ -44,10 +44,10 @@ enum HttpMethodType:
 	get | put | post | delete
 ;
 
-//Path:
-//	{Path}
-//	('/') (ID|params+=SimpleMemberAssignment) ('/' (ID|params+=SimpleMemberAssignment))*
-//;
+Path:
+	{Path}
+	'/' (ID|params+=SimpleMemberAssignment) ('/' (ID|params+=SimpleMemberAssignment))*
+;
 
 ParamsBlock:
 	{ParamsBlock}

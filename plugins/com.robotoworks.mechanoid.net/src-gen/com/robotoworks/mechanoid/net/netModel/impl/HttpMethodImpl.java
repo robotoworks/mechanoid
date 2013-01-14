@@ -6,6 +6,7 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.Path;
 
 import java.util.Collection;
 
@@ -81,24 +82,14 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+   * The cached value of the '{@link #getPath() <em>Path</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPath()
    * @generated
    * @ordered
    */
-  protected static final String PATH_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPath()
-   * @generated
-   * @ordered
-   */
-  protected String path = PATH_EDEFAULT;
+  protected Path path;
 
   /**
    * The cached value of the '{@link #getBlocks() <em>Blocks</em>}' containment reference list.
@@ -182,7 +173,7 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPath()
+  public Path getPath()
   {
     return path;
   }
@@ -192,12 +183,37 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPath(String newPath)
+  public NotificationChain basicSetPath(Path newPath, NotificationChain msgs)
   {
-    String oldPath = path;
+    Path oldPath = path;
     path = newPath;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__PATH, oldPath, path));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__PATH, oldPath, newPath);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPath(Path newPath)
+  {
+    if (newPath != path)
+    {
+      NotificationChain msgs = null;
+      if (path != null)
+        msgs = ((InternalEObject)path).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.HTTP_METHOD__PATH, null, msgs);
+      if (newPath != null)
+        msgs = ((InternalEObject)newPath).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.HTTP_METHOD__PATH, null, msgs);
+      msgs = basicSetPath(newPath, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.HTTP_METHOD__PATH, newPath, newPath));
   }
 
   /**
@@ -224,6 +240,8 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
   {
     switch (featureID)
     {
+      case NetModelPackage.HTTP_METHOD__PATH:
+        return basicSetPath(null, msgs);
       case NetModelPackage.HTTP_METHOD__BLOCKS:
         return ((InternalEList<?>)getBlocks()).basicRemove(otherEnd, msgs);
     }
@@ -270,7 +288,7 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
         setName((String)newValue);
         return;
       case NetModelPackage.HTTP_METHOD__PATH:
-        setPath((String)newValue);
+        setPath((Path)newValue);
         return;
       case NetModelPackage.HTTP_METHOD__BLOCKS:
         getBlocks().clear();
@@ -297,7 +315,7 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
         setName(NAME_EDEFAULT);
         return;
       case NetModelPackage.HTTP_METHOD__PATH:
-        setPath(PATH_EDEFAULT);
+        setPath((Path)null);
         return;
       case NetModelPackage.HTTP_METHOD__BLOCKS:
         getBlocks().clear();
@@ -321,7 +339,7 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
       case NetModelPackage.HTTP_METHOD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NetModelPackage.HTTP_METHOD__PATH:
-        return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+        return path != null;
       case NetModelPackage.HTTP_METHOD__BLOCKS:
         return blocks != null && !blocks.isEmpty();
     }
@@ -343,8 +361,6 @@ public class HttpMethodImpl extends ClientBlockImpl implements HttpMethod
     result.append(type);
     result.append(", name: ");
     result.append(name);
-    result.append(", path: ");
-    result.append(path);
     result.append(')');
     return result.toString();
   }

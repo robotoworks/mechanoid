@@ -18,6 +18,10 @@ import java.util.ArrayList
 import java.util.List
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import org.eclipse.xtext.serializer.ISerializer
+import com.google.inject.Inject
+import com.robotoworks.mechanoid.net.netModel.Path
+import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
 
 class RequestGenerator {
 	CodeGenerationContext context
@@ -52,7 +56,7 @@ class RequestGenerator {
 	def generateRequestClass(HttpMethod method, Model module, Client client) '''
 	public class «method.name.pascalize»Request {
 		
-		private static final String PATH="«method.pathAsFormatString»";
+		private static final String PATH="«method.getPathAsFormatString(context.serializer)»";
 		
 		private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 		
@@ -68,10 +72,9 @@ class RequestGenerator {
 			return headers.get(key);
 		}
 	
-		«var pathArgs = method.getArgsFromPath»
-		«IF(pathArgs.size > 0)»
-		«FOR segment:pathArgs»
-		private final String «segment.substring(1).camelize»Segment;
+		«IF(method.path?.params.size > 0)»
+		«FOR slug:method.path.params»
+		private final «slug.member.type.signature» «slug.member.name.camelize»Segment;
 		«ENDFOR»
 		
 		«ENDIF»
@@ -131,9 +134,9 @@ class RequestGenerator {
 			«ENDFOR»
 			
 			«ENDIF»
-			«IF(pathArgs.size > 0)»
-				«FOR segment:pathArgs»
-				this.«segment.substring(1).camelize»Segment = «segment.substring(1).camelize»Segment;
+			«IF(method.path?.params.size > 0)»
+				«FOR slug:method.path.params»
+				this.«slug.member.name.camelize»Segment = «slug.member.name.camelize»Segment;
 				«ENDFOR»	
 			«ENDIF»
 			«IF(method.hasBody)»
@@ -152,8 +155,8 @@ class RequestGenerator {
 
 		«ENDIF»
 		public String createUrl(String baseUrl){
-			«IF(method.path.hasArgs)»
-				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH«method.path.pathToStringFormatArgs»)).buildUpon();
+			«IF(method.path?.params.size > 0)»
+				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
 			«ELSE»
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
 			«ENDIF»		
@@ -419,10 +422,10 @@ class RequestGenerator {
 	 * Converts a path (eg:- /qux/:fooparam/:quxparam/bar
 	 * into constructor arguments
 	 */
-	def generateRequestConstructorArgs(String path, BodyBlock body){
+	def generateRequestConstructorArgs(Path path, BodyBlock body){
 		var args = new ArrayList<String>()
-		for(pathArg:path.getArgsFromPath){
-			args.add("	String " + pathArg.substring(1).camelize + "Segment")
+		for(slug:path.params){
+			args.add(slug.member.type.signature + " " + slug.member.name.camelize + "Segment")
 		}
 		
 		if(body != null) {

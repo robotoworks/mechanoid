@@ -223,17 +223,17 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
+		private final RuleCall cPathPathParserRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cBlocksAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cBlocksHttpMethodBlockParserRuleCall_4_0 = (RuleCall)cBlocksAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//HttpMethod:
-		//	type=HttpMethodType name=ID path=STRING? "{" blocks+=HttpMethodBlock* "}";
+		//	type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//type=HttpMethodType name=ID path=STRING? "{" blocks+=HttpMethodBlock* "}"
+		//type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}"
 		public Group getGroup() { return cGroup; }
 
 		//type=HttpMethodType
@@ -248,11 +248,11 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//path=STRING?
+		//path=Path?
 		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
 
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_2_0() { return cPathSTRINGTerminalRuleCall_2_0; }
+		//Path
+		public RuleCall getPathPathParserRuleCall_2_0() { return cPathPathParserRuleCall_2_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
@@ -295,6 +295,66 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getResponseBlockParserRuleCall_3() { return cResponseBlockParserRuleCall_3; }
 	}
 
+	public class PathElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Path");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPathAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final RuleCall cIDTerminalRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
+		private final Assignment cParamsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0 = (RuleCall)cParamsAssignment_3_1_1.eContents().get(0);
+		
+		//Path:
+		//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
+		public ParserRule getRule() { return rule; }
+
+		//{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*
+		public Group getGroup() { return cGroup; }
+
+		//{Path}
+		public Action getPathAction_0() { return cPathAction_0; }
+
+		//"/"
+		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
+
+		//ID | params+=SimpleMemberAssignment
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_2_0() { return cIDTerminalRuleCall_2_0; }
+
+		//params+=SimpleMemberAssignment
+		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
+
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_1_0; }
+
+		//("/" (ID | params+=SimpleMemberAssignment))*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"/"
+		public Keyword getSolidusKeyword_3_0() { return cSolidusKeyword_3_0; }
+
+		//ID | params+=SimpleMemberAssignment
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_3_1_0() { return cIDTerminalRuleCall_3_1_0; }
+
+		//params+=SimpleMemberAssignment
+		public Assignment getParamsAssignment_3_1_1() { return cParamsAssignment_3_1_1; }
+
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0; }
+	}
+
 	public class ParamsBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamsBlock");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -307,10 +367,6 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cParamsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
 		
-		////Path:
-		////	{Path}
-		////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
-		////;
 		//ParamsBlock:
 		//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 		public ParserRule getRule() { return rule; }
@@ -1257,6 +1313,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private HttpMethodElements pHttpMethod;
 	private HttpMethodBlockElements pHttpMethodBlock;
 	private HttpMethodTypeElements unknownRuleHttpMethodType;
+	private PathElements pPath;
 	private ParamsBlockElements pParamsBlock;
 	private SimpleMemberAssignmentElements pSimpleMemberAssignment;
 	private LiteralElements pLiteral;
@@ -1388,7 +1445,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpMethod:
-	//	type=HttpMethodType name=ID path=STRING? "{" blocks+=HttpMethodBlock* "}";
+	//	type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}";
 	public HttpMethodElements getHttpMethodAccess() {
 		return (pHttpMethod != null) ? pHttpMethod : (pHttpMethod = new HttpMethodElements());
 	}
@@ -1417,10 +1474,16 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getHttpMethodTypeAccess().getRule();
 	}
 
-	////Path:
-	////	{Path}
-	////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
-	////;
+	//Path:
+	//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
+	public PathElements getPathAccess() {
+		return (pPath != null) ? pPath : (pPath = new PathElements());
+	}
+	
+	public ParserRule getPathRule() {
+		return getPathAccess().getRule();
+	}
+
 	//ParamsBlock:
 	//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 	public ParamsBlockElements getParamsBlockAccess() {

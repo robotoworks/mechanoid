@@ -15,11 +15,11 @@ import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ClientGenerator {
@@ -381,10 +381,19 @@ public class ClientGenerator {
           if (!_not) {
             _and = false;
           } else {
-            Iterable<String> _argsFromPath = ModelExtensions.getArgsFromPath(method);
-            int _size = IterableExtensions.size(_argsFromPath);
-            boolean _equals = (_size == 0);
-            _and = (_not && _equals);
+            boolean _or = false;
+            Path _path = method.getPath();
+            boolean _equals = Objects.equal(_path, null);
+            if (_equals) {
+              _or = true;
+            } else {
+              Path _path_1 = method.getPath();
+              EList<SimpleMemberAssignment> _params = _path_1.getParams();
+              int _size = _params.size();
+              boolean _equals_1 = (_size == 0);
+              _or = (_equals || _equals_1);
+            }
+            _and = (_not && _or);
           }
           if (_and) {
             _builder.append("public Response<");
@@ -440,8 +449,8 @@ public class ClientGenerator {
           boolean _notEquals = (!Objects.equal(params, null));
           if (_notEquals) {
             {
-              EList<SimpleMemberAssignment> _params = params.getParams();
-              for(final SimpleMemberAssignment param : _params) {
+              EList<SimpleMemberAssignment> _params_1 = params.getParams();
+              for(final SimpleMemberAssignment param : _params_1) {
                 _builder.append("\t");
                 _builder.append("if(this.");
                 SimpleMember _member = param.getMember();

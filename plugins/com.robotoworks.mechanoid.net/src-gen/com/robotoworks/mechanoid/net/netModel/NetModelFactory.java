@@ -95,6 +95,15 @@ public interface NetModelFactory extends EFactory
   HttpMethodBlock createHttpMethodBlock();
 
   /**
+   * Returns a new object of class '<em>Path</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Path</em>'.
+   * @generated
+   */
+  Path createPath();
+
+  /**
    * Returns a new object of class '<em>Params Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

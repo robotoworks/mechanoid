@@ -480,19 +480,19 @@ ruleHttpMethod returns [EObject current=null]
 )
 )(
 (
-		lv_path_2_0=RULE_STRING
-		{
-			newLeafNode(lv_path_2_0, grammarAccess.getHttpMethodAccess().getPathSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getHttpMethodAccess().getPathPathParserRuleCall_2_0()); 
+	    }
+		lv_path_2_0=rulePath		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getHttpMethodRule());
+	            $current = createModelElementForParent(grammarAccess.getHttpMethodRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"path",
         		lv_path_2_0, 
-        		"STRING");
+        		"Path");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -583,6 +583,87 @@ ruleHttpMethodBlock returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRulePath
+entryRulePath returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getPathRule()); }
+	 iv_rulePath=rulePath 
+	 { $current=$iv_rulePath.current; } 
+	 EOF 
+;
+
+// Rule Path
+rulePath returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPathAccess().getPathAction_0(),
+            $current);
+    }
+)	otherlv_1='/' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getPathAccess().getSolidusKeyword_1());
+    }
+(this_ID_2=RULE_ID
+    { 
+    newLeafNode(this_ID_2, grammarAccess.getPathAccess().getIDTerminalRuleCall_2_0()); 
+    }
+
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_1_0()); 
+	    }
+		lv_params_3_0=ruleSimpleMemberAssignment		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPathRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_3_0, 
+        		"SimpleMemberAssignment");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))(	otherlv_4='/' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getPathAccess().getSolidusKeyword_3_0());
+    }
+(this_ID_5=RULE_ID
+    { 
+    newLeafNode(this_ID_5, grammarAccess.getPathAccess().getIDTerminalRuleCall_3_1_0()); 
+    }
+
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0()); 
+	    }
+		lv_params_6_0=ruleSimpleMemberAssignment		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPathRule());
+	        }
+       		add(
+       			$current, 
+       			"params",
+        		lv_params_6_0, 
+        		"SimpleMemberAssignment");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))*)
 ;
 
 

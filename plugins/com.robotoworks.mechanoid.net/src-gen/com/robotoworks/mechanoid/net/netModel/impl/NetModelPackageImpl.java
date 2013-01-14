@@ -33,6 +33,7 @@ import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.NumericType;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
 import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
@@ -115,6 +116,13 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass httpMethodBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pathEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -571,9 +579,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getHttpMethod_Path()
+  public EReference getHttpMethod_Path()
   {
-    return (EAttribute)httpMethodEClass.getEStructuralFeatures().get(2);
+    return (EReference)httpMethodEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -594,6 +602,26 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
   public EClass getHttpMethodBlock()
   {
     return httpMethodBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPath()
+  {
+    return pathEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPath_Params()
+  {
+    return (EReference)pathEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1239,10 +1267,13 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     httpMethodEClass = createEClass(HTTP_METHOD);
     createEAttribute(httpMethodEClass, HTTP_METHOD__TYPE);
     createEAttribute(httpMethodEClass, HTTP_METHOD__NAME);
-    createEAttribute(httpMethodEClass, HTTP_METHOD__PATH);
+    createEReference(httpMethodEClass, HTTP_METHOD__PATH);
     createEReference(httpMethodEClass, HTTP_METHOD__BLOCKS);
 
     httpMethodBlockEClass = createEClass(HTTP_METHOD_BLOCK);
+
+    pathEClass = createEClass(PATH);
+    createEReference(pathEClass, PATH__PARAMS);
 
     paramsBlockEClass = createEClass(PARAMS_BLOCK);
     createEReference(paramsBlockEClass, PARAMS_BLOCK__PARAMS);
@@ -1416,10 +1447,13 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEClass(httpMethodEClass, HttpMethod.class, "HttpMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getHttpMethod_Type(), this.getHttpMethodType(), "type", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHttpMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getHttpMethod_Path(), ecorePackage.getEString(), "path", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHttpMethod_Path(), this.getPath(), null, "path", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getHttpMethod_Blocks(), this.getHttpMethodBlock(), null, "blocks", null, 0, -1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(httpMethodBlockEClass, HttpMethodBlock.class, "HttpMethodBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPath_Params(), this.getSimpleMemberAssignment(), null, "params", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramsBlockEClass, ParamsBlock.class, "ParamsBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParamsBlock_Params(), this.getSimpleMemberAssignment(), null, "params", null, 0, -1, ParamsBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
