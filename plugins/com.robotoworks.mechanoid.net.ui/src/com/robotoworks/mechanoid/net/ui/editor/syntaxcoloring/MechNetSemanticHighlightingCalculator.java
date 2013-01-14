@@ -12,7 +12,6 @@ import com.robotoworks.mechanoid.net.netModel.Path;
 public class MechNetSemanticHighlightingCalculator implements
 		ISemanticHighlightingCalculator {
 
-	@Override
 	public void provideHighlightingFor(XtextResource resource,
 			IHighlightedPositionAcceptor acceptor) {
 		if (resource == null || resource.getParseResult() == null)
