@@ -8,6 +8,7 @@ var grammarURI = "classpath:/com/robotoworks/mechanoid/net/NetModel.xtext"
 var file.extensions = "mechnet"
 var projectName = "com.robotoworks.mechanoid.net"
 var runtimeProject = "../${projectName}"
+var testProject = "../../${projectName}.tests"
 
 Workflow {
     bean = StandaloneSetup {
@@ -29,7 +30,7 @@ Workflow {
         component = Generator {
             pathRtProject = runtimeProject
             pathUiProject = "${runtimeProject}.ui"
-            pathTestProject = "${runtimeProject}.tests"
+            pathTestProject = "${testProject}"
             projectNameRt = projectName
             projectNameUi = "${projectName}.ui"
             language = {
