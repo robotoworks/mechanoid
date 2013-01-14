@@ -153,15 +153,15 @@ public class SqliteModelGenerator implements IGenerator {
           }
         };
       IterableExtensions.<ConfigurationStatement>forEach(_filter_2, _function_3);
-      EList<DDLStatement> _statements_3 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_3, CreateTableStatement.class);
-      final Procedure1<CreateTableStatement> _function_4 = new Procedure1<CreateTableStatement>() {
-          public void apply(final CreateTableStatement statement) {
-            SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
-          }
-        };
-      IterableExtensions.<CreateTableStatement>forEach(_filter_3, _function_4);
     }
+    EList<DDLStatement> _statements_3 = snapshot.getStatements();
+    Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_3, CreateTableStatement.class);
+    final Procedure1<CreateTableStatement> _function_4 = new Procedure1<CreateTableStatement>() {
+        public void apply(final CreateTableStatement statement) {
+          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
+        }
+      };
+    IterableExtensions.<CreateTableStatement>forEach(_filter_3, _function_4);
     DatabaseBlock _database_8 = model.getDatabase();
     EList<MigrationBlock> _migrations_1 = _database_8.getMigrations();
     final Procedure2<MigrationBlock,Integer> _function_5 = new Procedure2<MigrationBlock,Integer>() {
