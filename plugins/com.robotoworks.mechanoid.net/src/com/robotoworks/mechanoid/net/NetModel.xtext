@@ -46,7 +46,7 @@ enum HttpMethodType:
 
 //Path:
 //	{Path}
-//	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
+//	('/') (ID|params+=SimpleMemberAssignment) ('/' (ID|params+=SimpleMemberAssignment))*
 //;
 
 ParamsBlock:

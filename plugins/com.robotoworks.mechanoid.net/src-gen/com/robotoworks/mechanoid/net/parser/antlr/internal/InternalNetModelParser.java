@@ -1492,7 +1492,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParamsBlock"
-    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:602:1: ruleParamsBlock returns [EObject current=null] : ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) )* (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* ) ;
+    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:602:1: ruleParamsBlock returns [EObject current=null] : ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* ) ;
     public final EObject ruleParamsBlock() throws RecognitionException {
         EObject current = null;
 
@@ -1506,11 +1506,11 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:605:28: ( ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) )* (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* ) )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:1: ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) )* (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:605:28: ( ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:1: ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* )
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:1: ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) )* (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:2: () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) )* (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:1: ( () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )* )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:2: () otherlv_1= 'params' ( (lv_params_2_0= ruleSimpleMemberAssignment ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )*
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:606:2: ()
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:607:5: 
@@ -1527,71 +1527,53 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getParamsBlockAccess().getParamsKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:616:1: ( (lv_params_2_0= ruleSimpleMemberAssignment ) )*
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:616:1: ( (lv_params_2_0= ruleSimpleMemberAssignment ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:617:1: (lv_params_2_0= ruleSimpleMemberAssignment )
+            {
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:617:1: (lv_params_2_0= ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:618:3: lv_params_2_0= ruleSimpleMemberAssignment
+            {
+             
+            	        newCompositeNode(grammarAccess.getParamsBlockAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_0()); 
+            	    
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1340);
+            lv_params_2_0=ruleSimpleMemberAssignment();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getParamsBlockRule());
+            	        }
+                   		add(
+                   			current, 
+                   			"params",
+                    		lv_params_2_0, 
+                    		"SimpleMemberAssignment");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:634:2: (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_STRING)) ) {
+                if ( (LA10_0==17) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:617:1: (lv_params_2_0= ruleSimpleMemberAssignment )
+            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:634:4: otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) )
             	    {
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:617:1: (lv_params_2_0= ruleSimpleMemberAssignment )
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:618:3: lv_params_2_0= ruleSimpleMemberAssignment
-            	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getParamsBlockAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1340);
-            	    lv_params_2_0=ruleSimpleMemberAssignment();
-
-            	    state._fsp--;
-
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getParamsBlockRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"params",
-            	            		lv_params_2_0, 
-            	            		"SimpleMemberAssignment");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop10;
-                }
-            } while (true);
-
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:634:3: (otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) ) )*
-            loop11:
-            do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
-
-                if ( (LA11_0==17) ) {
-                    alt11=1;
-                }
-
-
-                switch (alt11) {
-            	case 1 :
-            	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:634:5: otherlv_3= ',' ( (lv_params_4_0= ruleSimpleMemberAssignment ) )
-            	    {
-            	    otherlv_3=(Token)match(input,17,FOLLOW_17_in_ruleParamsBlock1354); 
+            	    otherlv_3=(Token)match(input,17,FOLLOW_17_in_ruleParamsBlock1353); 
 
             	        	newLeafNode(otherlv_3, grammarAccess.getParamsBlockAccess().getCommaKeyword_3_0());
             	        
@@ -1604,7 +1586,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	     
             	    	        newCompositeNode(grammarAccess.getParamsBlockAccess().getParamsSimpleMemberAssignmentParserRuleCall_3_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1375);
+            	    pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1374);
             	    lv_params_4_0=ruleSimpleMemberAssignment();
 
             	    state._fsp--;
@@ -1631,7 +1613,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop10;
                 }
             } while (true);
 
@@ -1668,13 +1650,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:666:2: iv_ruleSimpleMemberAssignment= ruleSimpleMemberAssignment EOF
             {
              newCompositeNode(grammarAccess.getSimpleMemberAssignmentRule()); 
-            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_entryRuleSimpleMemberAssignment1413);
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_entryRuleSimpleMemberAssignment1412);
             iv_ruleSimpleMemberAssignment=ruleSimpleMemberAssignment();
 
             state._fsp--;
 
              current =iv_ruleSimpleMemberAssignment; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleMemberAssignment1423); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleMemberAssignment1422); 
 
             }
 
@@ -1720,7 +1702,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getSimpleMemberAssignmentAccess().getMemberSimpleMemberParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleSimpleMember_in_ruleSimpleMemberAssignment1469);
+            pushFollow(FOLLOW_ruleSimpleMember_in_ruleSimpleMemberAssignment1468);
             lv_member_0_0=ruleSimpleMember();
 
             state._fsp--;
@@ -1743,17 +1725,17 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:695:2: (otherlv_1= '=' ( (lv_defaultValue_2_0= ruleLiteral ) ) )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA12_0==20) ) {
-                alt12=1;
+            if ( (LA11_0==20) ) {
+                alt11=1;
             }
-            switch (alt12) {
+            switch (alt11) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:695:4: otherlv_1= '=' ( (lv_defaultValue_2_0= ruleLiteral ) )
                     {
-                    otherlv_1=(Token)match(input,20,FOLLOW_20_in_ruleSimpleMemberAssignment1482); 
+                    otherlv_1=(Token)match(input,20,FOLLOW_20_in_ruleSimpleMemberAssignment1481); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getSimpleMemberAssignmentAccess().getEqualsSignKeyword_1_0());
                         
@@ -1766,7 +1748,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getSimpleMemberAssignmentAccess().getDefaultValueLiteralParserRuleCall_1_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleLiteral_in_ruleSimpleMemberAssignment1503);
+                    pushFollow(FOLLOW_ruleLiteral_in_ruleSimpleMemberAssignment1502);
                     lv_defaultValue_2_0=ruleLiteral();
 
                     state._fsp--;
@@ -1827,13 +1809,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:727:2: iv_ruleLiteral= ruleLiteral EOF
             {
              newCompositeNode(grammarAccess.getLiteralRule()); 
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral1541);
+            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral1540);
             iv_ruleLiteral=ruleLiteral();
 
             state._fsp--;
 
              current =iv_ruleLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral1551); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral1550); 
 
             }
 
@@ -1868,33 +1850,33 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:738:1: ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:738:1: ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) )
-            int alt13=3;
+            int alt12=3;
             switch ( input.LA(1) ) {
             case 39:
             case 40:
                 {
-                alt13=1;
+                alt12=1;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt13=2;
+                alt12=2;
                 }
                 break;
             case RULE_NUMBER:
             case 34:
                 {
-                alt13=3;
+                alt12=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 12, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt13) {
+            switch (alt12) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:738:2: ( () ( (lv_literal_1_0= ruleBooleanValue ) ) )
                     {
@@ -1921,7 +1903,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleBooleanValue_in_ruleLiteral1607);
+                    pushFollow(FOLLOW_ruleBooleanValue_in_ruleLiteral1606);
                     lv_literal_1_0=ruleBooleanValue();
 
                     state._fsp--;
@@ -1972,7 +1954,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:770:1: (lv_literal_3_0= RULE_STRING )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:771:3: lv_literal_3_0= RULE_STRING
                     {
-                    lv_literal_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLiteral1641); 
+                    lv_literal_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLiteral1640); 
 
                     			newLeafNode(lv_literal_3_0, grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
                     		
@@ -2024,7 +2006,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSignedNumber_in_ruleLiteral1684);
+                    pushFollow(FOLLOW_ruleSignedNumber_in_ruleLiteral1683);
                     lv_literal_5_0=ruleSignedNumber();
 
                     state._fsp--;
@@ -2085,13 +2067,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:822:2: iv_ruleBodyBlock= ruleBodyBlock EOF
             {
              newCompositeNode(grammarAccess.getBodyBlockRule()); 
-            pushFollow(FOLLOW_ruleBodyBlock_in_entryRuleBodyBlock1721);
+            pushFollow(FOLLOW_ruleBodyBlock_in_entryRuleBodyBlock1720);
             iv_ruleBodyBlock=ruleBodyBlock();
 
             state._fsp--;
 
              current =iv_ruleBodyBlock; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBodyBlock1731); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBodyBlock1730); 
 
             }
 
@@ -2126,7 +2108,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:833:1: (otherlv_0= 'body' ( (lv_type_1_0= ruleBlockType ) ) )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:833:3: otherlv_0= 'body' ( (lv_type_1_0= ruleBlockType ) )
             {
-            otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleBodyBlock1768); 
+            otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleBodyBlock1767); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getBodyBlockAccess().getBodyKeyword_0());
                 
@@ -2139,7 +2121,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getBodyBlockAccess().getTypeBlockTypeParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleBlockType_in_ruleBodyBlock1789);
+            pushFollow(FOLLOW_ruleBlockType_in_ruleBodyBlock1788);
             lv_type_1_0=ruleBlockType();
 
             state._fsp--;
@@ -2194,13 +2176,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:865:2: iv_ruleResponseBlock= ruleResponseBlock EOF
             {
              newCompositeNode(grammarAccess.getResponseBlockRule()); 
-            pushFollow(FOLLOW_ruleResponseBlock_in_entryRuleResponseBlock1825);
+            pushFollow(FOLLOW_ruleResponseBlock_in_entryRuleResponseBlock1824);
             iv_ruleResponseBlock=ruleResponseBlock();
 
             state._fsp--;
 
              current =iv_ruleResponseBlock; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleResponseBlock1835); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleResponseBlock1834); 
 
             }
 
@@ -2248,22 +2230,22 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleResponseBlock1881); 
+            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleResponseBlock1880); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getResponseBlockAccess().getResponseKeyword_1());
                 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:886:1: (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA14_0==23) ) {
-                alt14=1;
+            if ( (LA13_0==23) ) {
+                alt13=1;
             }
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:886:3: otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) )
                     {
-                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleResponseBlock1894); 
+                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleResponseBlock1893); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getResponseBlockAccess().getExtendsKeyword_2_0());
                         
@@ -2278,7 +2260,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     	            current = createModelElement(grammarAccess.getResponseBlockRule());
                     	        }
                             
-                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleResponseBlock1914); 
+                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleResponseBlock1913); 
 
                     		newLeafNode(otherlv_3, grammarAccess.getResponseBlockAccess().getSuperTypeComplexTypeDeclarationCrossReference_2_1_0()); 
                     	
@@ -2295,13 +2277,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:903:4: ( (lv_type_4_0= ruleBlockType ) )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA15_0==RULE_ID||LA15_0==14||(LA15_0>=28 && LA15_0<=32)) ) {
-                alt15=1;
+            if ( (LA14_0==RULE_ID||LA14_0==14||(LA14_0>=28 && LA14_0<=32)) ) {
+                alt14=1;
             }
-            switch (alt15) {
+            switch (alt14) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:904:1: (lv_type_4_0= ruleBlockType )
                     {
@@ -2311,7 +2293,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getResponseBlockAccess().getTypeBlockTypeParserRuleCall_3_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleBlockType_in_ruleResponseBlock1937);
+                    pushFollow(FOLLOW_ruleBlockType_in_ruleResponseBlock1936);
                     lv_type_4_0=ruleBlockType();
 
                     state._fsp--;
@@ -2369,13 +2351,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:931:2: iv_ruleBlockType= ruleBlockType EOF
             {
              newCompositeNode(grammarAccess.getBlockTypeRule()); 
-            pushFollow(FOLLOW_ruleBlockType_in_entryRuleBlockType1974);
+            pushFollow(FOLLOW_ruleBlockType_in_entryRuleBlockType1973);
             iv_ruleBlockType=ruleBlockType();
 
             state._fsp--;
 
              current =iv_ruleBlockType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBlockType1984); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBlockType1983); 
 
             }
 
@@ -2409,29 +2391,29 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:942:1: (this_Type_0= ruleType | this_ComplexTypeLiteral_1= ruleComplexTypeLiteral )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:942:1: (this_Type_0= ruleType | this_ComplexTypeLiteral_1= ruleComplexTypeLiteral )
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA16_0==RULE_ID||(LA16_0>=28 && LA16_0<=32)) ) {
-                alt16=1;
+            if ( (LA15_0==RULE_ID||(LA15_0>=28 && LA15_0<=32)) ) {
+                alt15=1;
             }
-            else if ( (LA16_0==14) ) {
-                alt16=2;
+            else if ( (LA15_0==14) ) {
+                alt15=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
-            switch (alt16) {
+            switch (alt15) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:943:5: this_Type_0= ruleType
                     {
                      
                             newCompositeNode(grammarAccess.getBlockTypeAccess().getTypeParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleType_in_ruleBlockType2031);
+                    pushFollow(FOLLOW_ruleType_in_ruleBlockType2030);
                     this_Type_0=ruleType();
 
                     state._fsp--;
@@ -2449,7 +2431,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getBlockTypeAccess().getComplexTypeLiteralParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleBlockType2058);
+                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleBlockType2057);
                     this_ComplexTypeLiteral_1=ruleComplexTypeLiteral();
 
                     state._fsp--;
@@ -2494,13 +2476,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:971:2: iv_ruleMember= ruleMember EOF
             {
              newCompositeNode(grammarAccess.getMemberRule()); 
-            pushFollow(FOLLOW_ruleMember_in_entryRuleMember2093);
+            pushFollow(FOLLOW_ruleMember_in_entryRuleMember2092);
             iv_ruleMember=ruleMember();
 
             state._fsp--;
 
              current =iv_ruleMember; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMember2103); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMember2102); 
 
             }
 
@@ -2534,55 +2516,55 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:982:1: (this_TypedMember_0= ruleTypedMember | this_SkipMember_1= ruleSkipMember )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:982:1: (this_TypedMember_0= ruleTypedMember | this_SkipMember_1= ruleSkipMember )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA17_0==RULE_ID) ) {
-                int LA17_1 = input.LA(2);
+            if ( (LA16_0==RULE_ID) ) {
+                int LA16_1 = input.LA(2);
 
-                if ( (LA17_1==18) ) {
-                    alt17=1;
+                if ( (LA16_1==14) ) {
+                    alt16=2;
                 }
-                else if ( (LA17_1==14) ) {
-                    alt17=2;
+                else if ( (LA16_1==18) ) {
+                    alt16=1;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 17, 1, input);
+                        new NoViableAltException("", 16, 1, input);
 
                     throw nvae;
                 }
             }
-            else if ( (LA17_0==RULE_STRING) ) {
-                int LA17_2 = input.LA(2);
+            else if ( (LA16_0==RULE_STRING) ) {
+                int LA16_2 = input.LA(2);
 
-                if ( (LA17_2==18) ) {
-                    alt17=1;
+                if ( (LA16_2==18) ) {
+                    alt16=1;
                 }
-                else if ( (LA17_2==14) ) {
-                    alt17=2;
+                else if ( (LA16_2==14) ) {
+                    alt16=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 17, 2, input);
+                        new NoViableAltException("", 16, 2, input);
 
                     throw nvae;
                 }
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:983:5: this_TypedMember_0= ruleTypedMember
                     {
                      
                             newCompositeNode(grammarAccess.getMemberAccess().getTypedMemberParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleTypedMember_in_ruleMember2150);
+                    pushFollow(FOLLOW_ruleTypedMember_in_ruleMember2149);
                     this_TypedMember_0=ruleTypedMember();
 
                     state._fsp--;
@@ -2600,7 +2582,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getMemberAccess().getSkipMemberParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleSkipMember_in_ruleMember2177);
+                    pushFollow(FOLLOW_ruleSkipMember_in_ruleMember2176);
                     this_SkipMember_1=ruleSkipMember();
 
                     state._fsp--;
@@ -2645,13 +2627,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1011:2: iv_ruleTypedMember= ruleTypedMember EOF
             {
              newCompositeNode(grammarAccess.getTypedMemberRule()); 
-            pushFollow(FOLLOW_ruleTypedMember_in_entryRuleTypedMember2212);
+            pushFollow(FOLLOW_ruleTypedMember_in_entryRuleTypedMember2211);
             iv_ruleTypedMember=ruleTypedMember();
 
             state._fsp--;
 
              current =iv_ruleTypedMember; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTypedMember2222); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypedMember2221); 
 
             }
 
@@ -2695,26 +2677,26 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1024:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1024:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA18_0==RULE_ID) ) {
-                alt18=1;
+            if ( (LA17_0==RULE_ID) ) {
+                alt17=1;
             }
-            else if ( (LA18_0==RULE_STRING) ) {
-                alt18=2;
+            else if ( (LA17_0==RULE_STRING) ) {
+                alt17=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
             }
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1025:3: lv_name_0_1= RULE_ID
                     {
-                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTypedMember2266); 
+                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTypedMember2265); 
 
                     			newLeafNode(lv_name_0_1, grammarAccess.getTypedMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
                     		
@@ -2734,7 +2716,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1040:8: lv_name_0_2= RULE_STRING
                     {
-                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTypedMember2286); 
+                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTypedMember2285); 
 
                     			newLeafNode(lv_name_0_2, grammarAccess.getTypedMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
                     		
@@ -2760,7 +2742,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleTypedMember2306); 
+            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleTypedMember2305); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getTypedMemberAccess().getColonKeyword_1());
                 
@@ -2773,7 +2755,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getTypedMemberAccess().getTypeTypeParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleType_in_ruleTypedMember2327);
+            pushFollow(FOLLOW_ruleType_in_ruleTypedMember2326);
             lv_type_2_0=ruleType();
 
             state._fsp--;
@@ -2828,13 +2810,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1090:2: iv_ruleSkipMember= ruleSkipMember EOF
             {
              newCompositeNode(grammarAccess.getSkipMemberRule()); 
-            pushFollow(FOLLOW_ruleSkipMember_in_entryRuleSkipMember2363);
+            pushFollow(FOLLOW_ruleSkipMember_in_entryRuleSkipMember2362);
             iv_ruleSkipMember=ruleSkipMember();
 
             state._fsp--;
 
              current =iv_ruleSkipMember; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSkipMember2373); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSkipMember2372); 
 
             }
 
@@ -2877,26 +2859,26 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1103:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1103:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA19_0==RULE_ID) ) {
-                alt19=1;
+            if ( (LA18_0==RULE_ID) ) {
+                alt18=1;
             }
-            else if ( (LA19_0==RULE_STRING) ) {
-                alt19=2;
+            else if ( (LA18_0==RULE_STRING) ) {
+                alt18=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt19) {
+            switch (alt18) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1104:3: lv_name_0_1= RULE_ID
                     {
-                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSkipMember2417); 
+                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSkipMember2416); 
 
                     			newLeafNode(lv_name_0_1, grammarAccess.getSkipMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
                     		
@@ -2916,7 +2898,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1119:8: lv_name_0_2= RULE_STRING
                     {
-                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSkipMember2437); 
+                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSkipMember2436); 
 
                     			newLeafNode(lv_name_0_2, grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
                     		
@@ -2951,7 +2933,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleSkipMember2466);
+            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleSkipMember2465);
             lv_literal_1_0=ruleComplexTypeLiteral();
 
             state._fsp--;
@@ -3006,13 +2988,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1165:2: iv_ruleSimpleMember= ruleSimpleMember EOF
             {
              newCompositeNode(grammarAccess.getSimpleMemberRule()); 
-            pushFollow(FOLLOW_ruleSimpleMember_in_entryRuleSimpleMember2502);
+            pushFollow(FOLLOW_ruleSimpleMember_in_entryRuleSimpleMember2501);
             iv_ruleSimpleMember=ruleSimpleMember();
 
             state._fsp--;
 
              current =iv_ruleSimpleMember; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleMember2512); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleMember2511); 
 
             }
 
@@ -3056,26 +3038,26 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1178:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1178:1: (lv_name_0_1= RULE_ID | lv_name_0_2= RULE_STRING )
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA20_0==RULE_ID) ) {
-                alt20=1;
+            if ( (LA19_0==RULE_ID) ) {
+                alt19=1;
             }
-            else if ( (LA20_0==RULE_STRING) ) {
-                alt20=2;
+            else if ( (LA19_0==RULE_STRING) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
-            switch (alt20) {
+            switch (alt19) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1179:3: lv_name_0_1= RULE_ID
                     {
-                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSimpleMember2556); 
+                    lv_name_0_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSimpleMember2555); 
 
                     			newLeafNode(lv_name_0_1, grammarAccess.getSimpleMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
                     		
@@ -3095,7 +3077,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1194:8: lv_name_0_2= RULE_STRING
                     {
-                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSimpleMember2576); 
+                    lv_name_0_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSimpleMember2575); 
 
                     			newLeafNode(lv_name_0_2, grammarAccess.getSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
                     		
@@ -3121,7 +3103,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleSimpleMember2596); 
+            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleSimpleMember2595); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getSimpleMemberAccess().getColonKeyword_1());
                 
@@ -3134,7 +3116,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleIntrinsicType_in_ruleSimpleMember2617);
+            pushFollow(FOLLOW_ruleIntrinsicType_in_ruleSimpleMember2616);
             lv_type_2_0=ruleIntrinsicType();
 
             state._fsp--;
@@ -3189,13 +3171,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1244:2: iv_ruleType= ruleType EOF
             {
              newCompositeNode(grammarAccess.getTypeRule()); 
-            pushFollow(FOLLOW_ruleType_in_entryRuleType2653);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType2652);
             iv_ruleType=ruleType();
 
             state._fsp--;
 
              current =iv_ruleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType2663); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType2662); 
 
             }
 
@@ -3231,16 +3213,16 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1255:1: (this_UserType_0= ruleUserType | this_IntrinsicType_1= ruleIntrinsicType | this_GenericListType_2= ruleGenericListType )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1255:1: (this_UserType_0= ruleUserType | this_IntrinsicType_1= ruleIntrinsicType | this_GenericListType_2= ruleGenericListType )
-            int alt21=3;
-            alt21 = dfa21.predict(input);
-            switch (alt21) {
+            int alt20=3;
+            alt20 = dfa20.predict(input);
+            switch (alt20) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1256:5: this_UserType_0= ruleUserType
                     {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getUserTypeParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleUserType_in_ruleType2710);
+                    pushFollow(FOLLOW_ruleUserType_in_ruleType2709);
                     this_UserType_0=ruleUserType();
 
                     state._fsp--;
@@ -3258,7 +3240,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getIntrinsicTypeParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleIntrinsicType_in_ruleType2737);
+                    pushFollow(FOLLOW_ruleIntrinsicType_in_ruleType2736);
                     this_IntrinsicType_1=ruleIntrinsicType();
 
                     state._fsp--;
@@ -3276,7 +3258,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getTypeAccess().getGenericListTypeParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleGenericListType_in_ruleType2764);
+                    pushFollow(FOLLOW_ruleGenericListType_in_ruleType2763);
                     this_GenericListType_2=ruleGenericListType();
 
                     state._fsp--;
@@ -3321,13 +3303,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1294:2: iv_ruleGenericListType= ruleGenericListType EOF
             {
              newCompositeNode(grammarAccess.getGenericListTypeRule()); 
-            pushFollow(FOLLOW_ruleGenericListType_in_entryRuleGenericListType2799);
+            pushFollow(FOLLOW_ruleGenericListType_in_entryRuleGenericListType2798);
             iv_ruleGenericListType=ruleGenericListType();
 
             state._fsp--;
 
              current =iv_ruleGenericListType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGenericListType2809); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGenericListType2808); 
 
             }
 
@@ -3371,29 +3353,29 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1307:1: (lv_elementType_0_1= ruleUserType | lv_elementType_0_2= ruleIntrinsicType )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1307:1: (lv_elementType_0_1= ruleUserType | lv_elementType_0_2= ruleIntrinsicType )
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA22_0==RULE_ID) ) {
-                alt22=1;
+            if ( (LA21_0==RULE_ID) ) {
+                alt21=1;
             }
-            else if ( ((LA22_0>=28 && LA22_0<=32)) ) {
-                alt22=2;
+            else if ( ((LA21_0>=28 && LA21_0<=32)) ) {
+                alt21=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
-            switch (alt22) {
+            switch (alt21) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1308:3: lv_elementType_0_1= ruleUserType
                     {
                      
                     	        newCompositeNode(grammarAccess.getGenericListTypeAccess().getElementTypeUserTypeParserRuleCall_0_0_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleUserType_in_ruleGenericListType2857);
+                    pushFollow(FOLLOW_ruleUserType_in_ruleGenericListType2856);
                     lv_elementType_0_1=ruleUserType();
 
                     state._fsp--;
@@ -3418,7 +3400,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getGenericListTypeAccess().getElementTypeIntrinsicTypeParserRuleCall_0_0_1()); 
                     	    
-                    pushFollow(FOLLOW_ruleIntrinsicType_in_ruleGenericListType2876);
+                    pushFollow(FOLLOW_ruleIntrinsicType_in_ruleGenericListType2875);
                     lv_elementType_0_2=ruleIntrinsicType();
 
                     state._fsp--;
@@ -3452,7 +3434,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1342:1: (lv_id_1_0= '[]' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1343:3: lv_id_1_0= '[]'
             {
-            lv_id_1_0=(Token)match(input,24,FOLLOW_24_in_ruleGenericListType2897); 
+            lv_id_1_0=(Token)match(input,24,FOLLOW_24_in_ruleGenericListType2896); 
 
                     newLeafNode(lv_id_1_0, grammarAccess.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0());
                 
@@ -3501,13 +3483,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1366:2: iv_ruleUserType= ruleUserType EOF
             {
              newCompositeNode(grammarAccess.getUserTypeRule()); 
-            pushFollow(FOLLOW_ruleUserType_in_entryRuleUserType2946);
+            pushFollow(FOLLOW_ruleUserType_in_entryRuleUserType2945);
             iv_ruleUserType=ruleUserType();
 
             state._fsp--;
 
              current =iv_ruleUserType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUserType2956); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUserType2955); 
 
             }
 
@@ -3548,7 +3530,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	            current = createModelElement(grammarAccess.getUserTypeRule());
             	        }
                     
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUserType3000); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUserType2999); 
 
             		newLeafNode(otherlv_0, grammarAccess.getUserTypeAccess().getDeclarationUserTypeDeclarationCrossReference_0()); 
             	
@@ -3588,13 +3570,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1400:2: iv_ruleUserTypeDeclaration= ruleUserTypeDeclaration EOF
             {
              newCompositeNode(grammarAccess.getUserTypeDeclarationRule()); 
-            pushFollow(FOLLOW_ruleUserTypeDeclaration_in_entryRuleUserTypeDeclaration3035);
+            pushFollow(FOLLOW_ruleUserTypeDeclaration_in_entryRuleUserTypeDeclaration3034);
             iv_ruleUserTypeDeclaration=ruleUserTypeDeclaration();
 
             state._fsp--;
 
              current =iv_ruleUserTypeDeclaration; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUserTypeDeclaration3045); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUserTypeDeclaration3044); 
 
             }
 
@@ -3628,29 +3610,29 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1411:1: (this_ComplexTypeDeclaration_0= ruleComplexTypeDeclaration | this_EnumTypeDeclaration_1= ruleEnumTypeDeclaration )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1411:1: (this_ComplexTypeDeclaration_0= ruleComplexTypeDeclaration | this_EnumTypeDeclaration_1= ruleEnumTypeDeclaration )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA23_0==25) ) {
-                alt23=1;
+            if ( (LA22_0==25) ) {
+                alt22=1;
             }
-            else if ( (LA23_0==27) ) {
-                alt23=2;
+            else if ( (LA22_0==27) ) {
+                alt22=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
-            switch (alt23) {
+            switch (alt22) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1412:5: this_ComplexTypeDeclaration_0= ruleComplexTypeDeclaration
                     {
                      
                             newCompositeNode(grammarAccess.getUserTypeDeclarationAccess().getComplexTypeDeclarationParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_ruleUserTypeDeclaration3092);
+                    pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_ruleUserTypeDeclaration3091);
                     this_ComplexTypeDeclaration_0=ruleComplexTypeDeclaration();
 
                     state._fsp--;
@@ -3668,7 +3650,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getUserTypeDeclarationAccess().getEnumTypeDeclarationParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_ruleUserTypeDeclaration3119);
+                    pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_ruleUserTypeDeclaration3118);
                     this_EnumTypeDeclaration_1=ruleEnumTypeDeclaration();
 
                     state._fsp--;
@@ -3713,13 +3695,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1440:2: iv_ruleComplexTypeDeclaration= ruleComplexTypeDeclaration EOF
             {
              newCompositeNode(grammarAccess.getComplexTypeDeclarationRule()); 
-            pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_entryRuleComplexTypeDeclaration3154);
+            pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_entryRuleComplexTypeDeclaration3153);
             iv_ruleComplexTypeDeclaration=ruleComplexTypeDeclaration();
 
             state._fsp--;
 
              current =iv_ruleComplexTypeDeclaration; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleComplexTypeDeclaration3164); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleComplexTypeDeclaration3163); 
 
             }
 
@@ -3762,7 +3744,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1452:1: (lv_keyword_0_0= 'entity' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1453:3: lv_keyword_0_0= 'entity'
             {
-            lv_keyword_0_0=(Token)match(input,25,FOLLOW_25_in_ruleComplexTypeDeclaration3207); 
+            lv_keyword_0_0=(Token)match(input,25,FOLLOW_25_in_ruleComplexTypeDeclaration3206); 
 
                     newLeafNode(lv_keyword_0_0, grammarAccess.getComplexTypeDeclarationAccess().getKeywordEntityKeyword_0_0());
                 
@@ -3779,20 +3761,20 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1466:2: ( (lv_gen_1_0= 'generate' ) )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA24_0==26) ) {
-                alt24=1;
+            if ( (LA23_0==26) ) {
+                alt23=1;
             }
-            switch (alt24) {
+            switch (alt23) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1467:1: (lv_gen_1_0= 'generate' )
                     {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1467:1: (lv_gen_1_0= 'generate' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1468:3: lv_gen_1_0= 'generate'
                     {
-                    lv_gen_1_0=(Token)match(input,26,FOLLOW_26_in_ruleComplexTypeDeclaration3238); 
+                    lv_gen_1_0=(Token)match(input,26,FOLLOW_26_in_ruleComplexTypeDeclaration3237); 
 
                             newLeafNode(lv_gen_1_0, grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0());
                         
@@ -3817,7 +3799,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1482:1: (lv_name_2_0= RULE_ID )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1483:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleComplexTypeDeclaration3269); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleComplexTypeDeclaration3268); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getComplexTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
             		
@@ -3838,13 +3820,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1499:2: ( (lv_literal_3_0= ruleComplexTypeLiteral ) )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA25_0==14) ) {
-                alt25=1;
+            if ( (LA24_0==14) ) {
+                alt24=1;
             }
-            switch (alt25) {
+            switch (alt24) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1500:1: (lv_literal_3_0= ruleComplexTypeLiteral )
                     {
@@ -3854,7 +3836,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getComplexTypeDeclarationAccess().getLiteralComplexTypeLiteralParserRuleCall_3_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleComplexTypeDeclaration3295);
+                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_ruleComplexTypeDeclaration3294);
                     lv_literal_3_0=ruleComplexTypeLiteral();
 
                     state._fsp--;
@@ -3912,13 +3894,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1527:2: iv_ruleEnumTypeDeclaration= ruleEnumTypeDeclaration EOF
             {
              newCompositeNode(grammarAccess.getEnumTypeDeclarationRule()); 
-            pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_entryRuleEnumTypeDeclaration3332);
+            pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_entryRuleEnumTypeDeclaration3331);
             iv_ruleEnumTypeDeclaration=ruleEnumTypeDeclaration();
 
             state._fsp--;
 
              current =iv_ruleEnumTypeDeclaration; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumTypeDeclaration3342); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumTypeDeclaration3341); 
 
             }
 
@@ -3964,7 +3946,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1539:1: (lv_keyword_0_0= 'enum' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1540:3: lv_keyword_0_0= 'enum'
             {
-            lv_keyword_0_0=(Token)match(input,27,FOLLOW_27_in_ruleEnumTypeDeclaration3385); 
+            lv_keyword_0_0=(Token)match(input,27,FOLLOW_27_in_ruleEnumTypeDeclaration3384); 
 
                     newLeafNode(lv_keyword_0_0, grammarAccess.getEnumTypeDeclarationAccess().getKeywordEnumKeyword_0_0());
                 
@@ -3981,20 +3963,20 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1553:2: ( (lv_gen_1_0= 'generate' ) )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA26_0==26) ) {
-                alt26=1;
+            if ( (LA25_0==26) ) {
+                alt25=1;
             }
-            switch (alt26) {
+            switch (alt25) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1554:1: (lv_gen_1_0= 'generate' )
                     {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1554:1: (lv_gen_1_0= 'generate' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1555:3: lv_gen_1_0= 'generate'
                     {
-                    lv_gen_1_0=(Token)match(input,26,FOLLOW_26_in_ruleEnumTypeDeclaration3416); 
+                    lv_gen_1_0=(Token)match(input,26,FOLLOW_26_in_ruleEnumTypeDeclaration3415); 
 
                             newLeafNode(lv_gen_1_0, grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0());
                         
@@ -4019,7 +4001,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1569:1: (lv_name_2_0= RULE_ID )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1570:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumTypeDeclaration3447); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumTypeDeclaration3446); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getEnumTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
             		
@@ -4040,17 +4022,17 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1586:2: (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA27_0==23) ) {
-                alt27=1;
+            if ( (LA26_0==23) ) {
+                alt26=1;
             }
-            switch (alt27) {
+            switch (alt26) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1586:4: otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) )
                     {
-                    otherlv_3=(Token)match(input,23,FOLLOW_23_in_ruleEnumTypeDeclaration3465); 
+                    otherlv_3=(Token)match(input,23,FOLLOW_23_in_ruleEnumTypeDeclaration3464); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getEnumTypeDeclarationAccess().getExtendsKeyword_3_0());
                         
@@ -4063,7 +4045,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getEnumTypeDeclarationAccess().getSuperTypeIntegerTypeParserRuleCall_3_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleIntegerType_in_ruleEnumTypeDeclaration3486);
+                    pushFollow(FOLLOW_ruleIntegerType_in_ruleEnumTypeDeclaration3485);
                     lv_superType_4_0=ruleIntegerType();
 
                     state._fsp--;
@@ -4092,13 +4074,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1608:4: ( (lv_literal_5_0= ruleEnumTypeLiteral ) )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA28_0==14) ) {
-                alt28=1;
+            if ( (LA27_0==14) ) {
+                alt27=1;
             }
-            switch (alt28) {
+            switch (alt27) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1609:1: (lv_literal_5_0= ruleEnumTypeLiteral )
                     {
@@ -4108,7 +4090,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                     	        newCompositeNode(grammarAccess.getEnumTypeDeclarationAccess().getLiteralEnumTypeLiteralParserRuleCall_4_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleEnumTypeLiteral_in_ruleEnumTypeDeclaration3509);
+                    pushFollow(FOLLOW_ruleEnumTypeLiteral_in_ruleEnumTypeDeclaration3508);
                     lv_literal_5_0=ruleEnumTypeLiteral();
 
                     state._fsp--;
@@ -4166,13 +4148,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1636:2: iv_ruleEnumTypeLiteral= ruleEnumTypeLiteral EOF
             {
              newCompositeNode(grammarAccess.getEnumTypeLiteralRule()); 
-            pushFollow(FOLLOW_ruleEnumTypeLiteral_in_entryRuleEnumTypeLiteral3546);
+            pushFollow(FOLLOW_ruleEnumTypeLiteral_in_entryRuleEnumTypeLiteral3545);
             iv_ruleEnumTypeLiteral=ruleEnumTypeLiteral();
 
             state._fsp--;
 
              current =iv_ruleEnumTypeLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumTypeLiteral3556); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumTypeLiteral3555); 
 
             }
 
@@ -4211,7 +4193,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1647:1: (otherlv_0= '{' ( (lv_members_1_0= ruleEnumMember ) ) (otherlv_2= ',' ( (lv_members_3_0= ruleEnumMember ) ) )* otherlv_4= '}' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1647:3: otherlv_0= '{' ( (lv_members_1_0= ruleEnumMember ) ) (otherlv_2= ',' ( (lv_members_3_0= ruleEnumMember ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleEnumTypeLiteral3593); 
+            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleEnumTypeLiteral3592); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getEnumTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
                 
@@ -4224,7 +4206,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getEnumTypeLiteralAccess().getMembersEnumMemberParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3614);
+            pushFollow(FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3613);
             lv_members_1_0=ruleEnumMember();
 
             state._fsp--;
@@ -4247,21 +4229,21 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1669:2: (otherlv_2= ',' ( (lv_members_3_0= ruleEnumMember ) ) )*
-            loop29:
+            loop28:
             do {
-                int alt29=2;
-                int LA29_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA29_0==17) ) {
-                    alt29=1;
+                if ( (LA28_0==17) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt29) {
+                switch (alt28) {
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1669:4: otherlv_2= ',' ( (lv_members_3_0= ruleEnumMember ) )
             	    {
-            	    otherlv_2=(Token)match(input,17,FOLLOW_17_in_ruleEnumTypeLiteral3627); 
+            	    otherlv_2=(Token)match(input,17,FOLLOW_17_in_ruleEnumTypeLiteral3626); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getEnumTypeLiteralAccess().getCommaKeyword_2_0());
             	        
@@ -4274,7 +4256,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	     
             	    	        newCompositeNode(grammarAccess.getEnumTypeLiteralAccess().getMembersEnumMemberParserRuleCall_2_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3648);
+            	    pushFollow(FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3647);
             	    lv_members_3_0=ruleEnumMember();
 
             	    state._fsp--;
@@ -4301,11 +4283,11 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop29;
+            	    break loop28;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleEnumTypeLiteral3662); 
+            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleEnumTypeLiteral3661); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3());
                 
@@ -4342,13 +4324,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1705:2: iv_ruleEnumMember= ruleEnumMember EOF
             {
              newCompositeNode(grammarAccess.getEnumMemberRule()); 
-            pushFollow(FOLLOW_ruleEnumMember_in_entryRuleEnumMember3698);
+            pushFollow(FOLLOW_ruleEnumMember_in_entryRuleEnumMember3697);
             iv_ruleEnumMember=ruleEnumMember();
 
             state._fsp--;
 
              current =iv_ruleEnumMember; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumMember3708); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumMember3707); 
 
             }
 
@@ -4389,7 +4371,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1717:1: (lv_name_0_0= RULE_ID )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1718:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumMember3750); 
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumMember3749); 
 
             			newLeafNode(lv_name_0_0, grammarAccess.getEnumMemberAccess().getNameIDTerminalRuleCall_0_0()); 
             		
@@ -4410,13 +4392,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1734:2: ( ( (lv_assignment_1_0= '=' ) ) ( (lv_value_2_0= RULE_INT ) ) )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA30_0==20) ) {
-                alt30=1;
+            if ( (LA29_0==20) ) {
+                alt29=1;
             }
-            switch (alt30) {
+            switch (alt29) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1734:3: ( (lv_assignment_1_0= '=' ) ) ( (lv_value_2_0= RULE_INT ) )
                     {
@@ -4426,7 +4408,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1735:1: (lv_assignment_1_0= '=' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1736:3: lv_assignment_1_0= '='
                     {
-                    lv_assignment_1_0=(Token)match(input,20,FOLLOW_20_in_ruleEnumMember3774); 
+                    lv_assignment_1_0=(Token)match(input,20,FOLLOW_20_in_ruleEnumMember3773); 
 
                             newLeafNode(lv_assignment_1_0, grammarAccess.getEnumMemberAccess().getAssignmentEqualsSignKeyword_1_0_0());
                         
@@ -4448,7 +4430,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1750:1: (lv_value_2_0= RULE_INT )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1751:3: lv_value_2_0= RULE_INT
                     {
-                    lv_value_2_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumMember3804); 
+                    lv_value_2_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumMember3803); 
 
                     			newLeafNode(lv_value_2_0, grammarAccess.getEnumMemberAccess().getValueINTTerminalRuleCall_1_1_0()); 
                     		
@@ -4507,13 +4489,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1777:2: iv_ruleComplexTypeLiteral= ruleComplexTypeLiteral EOF
             {
              newCompositeNode(grammarAccess.getComplexTypeLiteralRule()); 
-            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_entryRuleComplexTypeLiteral3847);
+            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_entryRuleComplexTypeLiteral3846);
             iv_ruleComplexTypeLiteral=ruleComplexTypeLiteral();
 
             state._fsp--;
 
              current =iv_ruleComplexTypeLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleComplexTypeLiteral3857); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleComplexTypeLiteral3856); 
 
             }
 
@@ -4552,7 +4534,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1788:1: (otherlv_0= '{' ( (lv_members_1_0= ruleMember ) ) (otherlv_2= ',' ( (lv_members_3_0= ruleMember ) ) )* otherlv_4= '}' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1788:3: otherlv_0= '{' ( (lv_members_1_0= ruleMember ) ) (otherlv_2= ',' ( (lv_members_3_0= ruleMember ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleComplexTypeLiteral3894); 
+            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleComplexTypeLiteral3893); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getComplexTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
                 
@@ -4565,7 +4547,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
              
             	        newCompositeNode(grammarAccess.getComplexTypeLiteralAccess().getMembersMemberParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleMember_in_ruleComplexTypeLiteral3915);
+            pushFollow(FOLLOW_ruleMember_in_ruleComplexTypeLiteral3914);
             lv_members_1_0=ruleMember();
 
             state._fsp--;
@@ -4588,21 +4570,21 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1810:2: (otherlv_2= ',' ( (lv_members_3_0= ruleMember ) ) )*
-            loop31:
+            loop30:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt30=2;
+                int LA30_0 = input.LA(1);
 
-                if ( (LA31_0==17) ) {
-                    alt31=1;
+                if ( (LA30_0==17) ) {
+                    alt30=1;
                 }
 
 
-                switch (alt31) {
+                switch (alt30) {
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1810:4: otherlv_2= ',' ( (lv_members_3_0= ruleMember ) )
             	    {
-            	    otherlv_2=(Token)match(input,17,FOLLOW_17_in_ruleComplexTypeLiteral3928); 
+            	    otherlv_2=(Token)match(input,17,FOLLOW_17_in_ruleComplexTypeLiteral3927); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getComplexTypeLiteralAccess().getCommaKeyword_2_0());
             	        
@@ -4615,7 +4597,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	     
             	    	        newCompositeNode(grammarAccess.getComplexTypeLiteralAccess().getMembersMemberParserRuleCall_2_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleMember_in_ruleComplexTypeLiteral3949);
+            	    pushFollow(FOLLOW_ruleMember_in_ruleComplexTypeLiteral3948);
             	    lv_members_3_0=ruleMember();
 
             	    state._fsp--;
@@ -4642,11 +4624,11 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop30;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleComplexTypeLiteral3963); 
+            otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleComplexTypeLiteral3962); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3());
                 
@@ -4683,13 +4665,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1846:2: iv_ruleIntrinsicType= ruleIntrinsicType EOF
             {
              newCompositeNode(grammarAccess.getIntrinsicTypeRule()); 
-            pushFollow(FOLLOW_ruleIntrinsicType_in_entryRuleIntrinsicType3999);
+            pushFollow(FOLLOW_ruleIntrinsicType_in_entryRuleIntrinsicType3998);
             iv_ruleIntrinsicType=ruleIntrinsicType();
 
             state._fsp--;
 
              current =iv_ruleIntrinsicType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntrinsicType4009); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntrinsicType4008); 
 
             }
 
@@ -4725,40 +4707,40 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1857:1: (this_StringType_0= ruleStringType | this_BooleanType_1= ruleBooleanType | this_NumericType_2= ruleNumericType )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1857:1: (this_StringType_0= ruleStringType | this_BooleanType_1= ruleBooleanType | this_NumericType_2= ruleNumericType )
-            int alt32=3;
+            int alt31=3;
             switch ( input.LA(1) ) {
             case 28:
                 {
-                alt32=1;
+                alt31=1;
                 }
                 break;
             case 29:
                 {
-                alt32=2;
+                alt31=2;
                 }
                 break;
             case 30:
             case 31:
             case 32:
                 {
-                alt32=3;
+                alt31=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 32, 0, input);
+                    new NoViableAltException("", 31, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt32) {
+            switch (alt31) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1858:5: this_StringType_0= ruleStringType
                     {
                      
                             newCompositeNode(grammarAccess.getIntrinsicTypeAccess().getStringTypeParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleStringType_in_ruleIntrinsicType4056);
+                    pushFollow(FOLLOW_ruleStringType_in_ruleIntrinsicType4055);
                     this_StringType_0=ruleStringType();
 
                     state._fsp--;
@@ -4776,7 +4758,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getIntrinsicTypeAccess().getBooleanTypeParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleBooleanType_in_ruleIntrinsicType4083);
+                    pushFollow(FOLLOW_ruleBooleanType_in_ruleIntrinsicType4082);
                     this_BooleanType_1=ruleBooleanType();
 
                     state._fsp--;
@@ -4794,7 +4776,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getIntrinsicTypeAccess().getNumericTypeParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleNumericType_in_ruleIntrinsicType4110);
+                    pushFollow(FOLLOW_ruleNumericType_in_ruleIntrinsicType4109);
                     this_NumericType_2=ruleNumericType();
 
                     state._fsp--;
@@ -4839,13 +4821,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1896:2: iv_ruleStringType= ruleStringType EOF
             {
              newCompositeNode(grammarAccess.getStringTypeRule()); 
-            pushFollow(FOLLOW_ruleStringType_in_entryRuleStringType4145);
+            pushFollow(FOLLOW_ruleStringType_in_entryRuleStringType4144);
             iv_ruleStringType=ruleStringType();
 
             state._fsp--;
 
              current =iv_ruleStringType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringType4155); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringType4154); 
 
             }
 
@@ -4881,7 +4863,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1908:1: (lv_id_0_0= 'String' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1909:3: lv_id_0_0= 'String'
             {
-            lv_id_0_0=(Token)match(input,28,FOLLOW_28_in_ruleStringType4197); 
+            lv_id_0_0=(Token)match(input,28,FOLLOW_28_in_ruleStringType4196); 
 
                     newLeafNode(lv_id_0_0, grammarAccess.getStringTypeAccess().getIdStringKeyword_0());
                 
@@ -4927,13 +4909,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1932:2: iv_ruleBooleanType= ruleBooleanType EOF
             {
              newCompositeNode(grammarAccess.getBooleanTypeRule()); 
-            pushFollow(FOLLOW_ruleBooleanType_in_entryRuleBooleanType4245);
+            pushFollow(FOLLOW_ruleBooleanType_in_entryRuleBooleanType4244);
             iv_ruleBooleanType=ruleBooleanType();
 
             state._fsp--;
 
              current =iv_ruleBooleanType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanType4255); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanType4254); 
 
             }
 
@@ -4969,7 +4951,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1944:1: (lv_id_0_0= 'boolean' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1945:3: lv_id_0_0= 'boolean'
             {
-            lv_id_0_0=(Token)match(input,29,FOLLOW_29_in_ruleBooleanType4297); 
+            lv_id_0_0=(Token)match(input,29,FOLLOW_29_in_ruleBooleanType4296); 
 
                     newLeafNode(lv_id_0_0, grammarAccess.getBooleanTypeAccess().getIdBooleanKeyword_0());
                 
@@ -5015,13 +4997,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1968:2: iv_ruleNumericType= ruleNumericType EOF
             {
              newCompositeNode(grammarAccess.getNumericTypeRule()); 
-            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType4345);
+            pushFollow(FOLLOW_ruleNumericType_in_entryRuleNumericType4344);
             iv_ruleNumericType=ruleNumericType();
 
             state._fsp--;
 
              current =iv_ruleNumericType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType4355); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumericType4354); 
 
             }
 
@@ -5057,38 +5039,38 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1979:1: (this_IntegerType_0= ruleIntegerType | this_LongType_1= ruleLongType | this_DoubleType_2= ruleDoubleType )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1979:1: (this_IntegerType_0= ruleIntegerType | this_LongType_1= ruleLongType | this_DoubleType_2= ruleDoubleType )
-            int alt33=3;
+            int alt32=3;
             switch ( input.LA(1) ) {
             case 30:
                 {
-                alt33=1;
+                alt32=1;
                 }
                 break;
             case 31:
                 {
-                alt33=2;
+                alt32=2;
                 }
                 break;
             case 32:
                 {
-                alt33=3;
+                alt32=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 33, 0, input);
+                    new NoViableAltException("", 32, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt33) {
+            switch (alt32) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1980:5: this_IntegerType_0= ruleIntegerType
                     {
                      
                             newCompositeNode(grammarAccess.getNumericTypeAccess().getIntegerTypeParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleIntegerType_in_ruleNumericType4402);
+                    pushFollow(FOLLOW_ruleIntegerType_in_ruleNumericType4401);
                     this_IntegerType_0=ruleIntegerType();
 
                     state._fsp--;
@@ -5106,7 +5088,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getNumericTypeAccess().getLongTypeParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleLongType_in_ruleNumericType4429);
+                    pushFollow(FOLLOW_ruleLongType_in_ruleNumericType4428);
                     this_LongType_1=ruleLongType();
 
                     state._fsp--;
@@ -5124,7 +5106,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                      
                             newCompositeNode(grammarAccess.getNumericTypeAccess().getDoubleTypeParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleDoubleType_in_ruleNumericType4456);
+                    pushFollow(FOLLOW_ruleDoubleType_in_ruleNumericType4455);
                     this_DoubleType_2=ruleDoubleType();
 
                     state._fsp--;
@@ -5169,13 +5151,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2018:2: iv_ruleIntegerType= ruleIntegerType EOF
             {
              newCompositeNode(grammarAccess.getIntegerTypeRule()); 
-            pushFollow(FOLLOW_ruleIntegerType_in_entryRuleIntegerType4491);
+            pushFollow(FOLLOW_ruleIntegerType_in_entryRuleIntegerType4490);
             iv_ruleIntegerType=ruleIntegerType();
 
             state._fsp--;
 
              current =iv_ruleIntegerType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerType4501); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerType4500); 
 
             }
 
@@ -5211,7 +5193,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2030:1: (lv_id_0_0= 'int' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2031:3: lv_id_0_0= 'int'
             {
-            lv_id_0_0=(Token)match(input,30,FOLLOW_30_in_ruleIntegerType4543); 
+            lv_id_0_0=(Token)match(input,30,FOLLOW_30_in_ruleIntegerType4542); 
 
                     newLeafNode(lv_id_0_0, grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0());
                 
@@ -5257,13 +5239,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2054:2: iv_ruleLongType= ruleLongType EOF
             {
              newCompositeNode(grammarAccess.getLongTypeRule()); 
-            pushFollow(FOLLOW_ruleLongType_in_entryRuleLongType4591);
+            pushFollow(FOLLOW_ruleLongType_in_entryRuleLongType4590);
             iv_ruleLongType=ruleLongType();
 
             state._fsp--;
 
              current =iv_ruleLongType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLongType4601); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLongType4600); 
 
             }
 
@@ -5299,7 +5281,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2066:1: (lv_id_0_0= 'long' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2067:3: lv_id_0_0= 'long'
             {
-            lv_id_0_0=(Token)match(input,31,FOLLOW_31_in_ruleLongType4643); 
+            lv_id_0_0=(Token)match(input,31,FOLLOW_31_in_ruleLongType4642); 
 
                     newLeafNode(lv_id_0_0, grammarAccess.getLongTypeAccess().getIdLongKeyword_0());
                 
@@ -5345,13 +5327,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2090:2: iv_ruleDoubleType= ruleDoubleType EOF
             {
              newCompositeNode(grammarAccess.getDoubleTypeRule()); 
-            pushFollow(FOLLOW_ruleDoubleType_in_entryRuleDoubleType4691);
+            pushFollow(FOLLOW_ruleDoubleType_in_entryRuleDoubleType4690);
             iv_ruleDoubleType=ruleDoubleType();
 
             state._fsp--;
 
              current =iv_ruleDoubleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleType4701); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleType4700); 
 
             }
 
@@ -5387,7 +5369,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2102:1: (lv_id_0_0= 'double' )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2103:3: lv_id_0_0= 'double'
             {
-            lv_id_0_0=(Token)match(input,32,FOLLOW_32_in_ruleDoubleType4743); 
+            lv_id_0_0=(Token)match(input,32,FOLLOW_32_in_ruleDoubleType4742); 
 
                     newLeafNode(lv_id_0_0, grammarAccess.getDoubleTypeAccess().getIdDoubleKeyword_0());
                 
@@ -5433,13 +5415,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2126:2: iv_ruleFQN= ruleFQN EOF
             {
              newCompositeNode(grammarAccess.getFQNRule()); 
-            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN4792);
+            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN4791);
             iv_ruleFQN=ruleFQN();
 
             state._fsp--;
 
              current =iv_ruleFQN.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN4803); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN4802); 
 
             }
 
@@ -5474,7 +5456,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2137:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2137:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN4843); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN4842); 
 
             		current.merge(this_ID_0);
                 
@@ -5482,26 +5464,26 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                 newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
                 
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2144:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop34:
+            loop33:
             do {
-                int alt34=2;
-                int LA34_0 = input.LA(1);
+                int alt33=2;
+                int LA33_0 = input.LA(1);
 
-                if ( (LA34_0==33) ) {
-                    alt34=1;
+                if ( (LA33_0==33) ) {
+                    alt33=1;
                 }
 
 
-                switch (alt34) {
+                switch (alt33) {
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2145:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,33,FOLLOW_33_in_ruleFQN4862); 
+            	    kw=(Token)match(input,33,FOLLOW_33_in_ruleFQN4861); 
 
             	            current.merge(kw);
             	            newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
             	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN4877); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN4876); 
 
             	    		current.merge(this_ID_2);
             	        
@@ -5513,7 +5495,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop34;
+            	    break loop33;
                 }
             } while (true);
 
@@ -5550,13 +5532,13 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2167:2: iv_ruleSignedNumber= ruleSignedNumber EOF
             {
              newCompositeNode(grammarAccess.getSignedNumberRule()); 
-            pushFollow(FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber4925);
+            pushFollow(FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber4924);
             iv_ruleSignedNumber=ruleSignedNumber();
 
             state._fsp--;
 
              current =iv_ruleSignedNumber.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSignedNumber4936); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSignedNumber4935); 
 
             }
 
@@ -5591,17 +5573,17 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2178:2: (kw= '-' )? this_NUMBER_1= RULE_NUMBER
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2178:2: (kw= '-' )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA35_0==34) ) {
-                alt35=1;
+            if ( (LA34_0==34) ) {
+                alt34=1;
             }
-            switch (alt35) {
+            switch (alt34) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2179:2: kw= '-'
                     {
-                    kw=(Token)match(input,34,FOLLOW_34_in_ruleSignedNumber4975); 
+                    kw=(Token)match(input,34,FOLLOW_34_in_ruleSignedNumber4974); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getSignedNumberAccess().getHyphenMinusKeyword_0()); 
@@ -5612,7 +5594,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_NUMBER_1=(Token)match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_ruleSignedNumber4992); 
+            this_NUMBER_1=(Token)match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_ruleSignedNumber4991); 
 
             		current.merge(this_NUMBER_1);
                 
@@ -5655,43 +5637,43 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2202:1: ( (enumLiteral_0= 'get' ) | (enumLiteral_1= 'put' ) | (enumLiteral_2= 'post' ) | (enumLiteral_3= 'delete' ) )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2202:1: ( (enumLiteral_0= 'get' ) | (enumLiteral_1= 'put' ) | (enumLiteral_2= 'post' ) | (enumLiteral_3= 'delete' ) )
-            int alt36=4;
+            int alt35=4;
             switch ( input.LA(1) ) {
             case 35:
                 {
-                alt36=1;
+                alt35=1;
                 }
                 break;
             case 36:
                 {
-                alt36=2;
+                alt35=2;
                 }
                 break;
             case 37:
                 {
-                alt36=3;
+                alt35=3;
                 }
                 break;
             case 38:
                 {
-                alt36=4;
+                alt35=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 36, 0, input);
+                    new NoViableAltException("", 35, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt36) {
+            switch (alt35) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2202:2: (enumLiteral_0= 'get' )
                     {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2202:2: (enumLiteral_0= 'get' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2202:4: enumLiteral_0= 'get'
                     {
-                    enumLiteral_0=(Token)match(input,35,FOLLOW_35_in_ruleHttpMethodType5051); 
+                    enumLiteral_0=(Token)match(input,35,FOLLOW_35_in_ruleHttpMethodType5050); 
 
                             current = grammarAccess.getHttpMethodTypeAccess().getGetEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getHttpMethodTypeAccess().getGetEnumLiteralDeclaration_0()); 
@@ -5708,7 +5690,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2208:6: (enumLiteral_1= 'put' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2208:8: enumLiteral_1= 'put'
                     {
-                    enumLiteral_1=(Token)match(input,36,FOLLOW_36_in_ruleHttpMethodType5068); 
+                    enumLiteral_1=(Token)match(input,36,FOLLOW_36_in_ruleHttpMethodType5067); 
 
                             current = grammarAccess.getHttpMethodTypeAccess().getPutEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getHttpMethodTypeAccess().getPutEnumLiteralDeclaration_1()); 
@@ -5725,7 +5707,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2214:6: (enumLiteral_2= 'post' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2214:8: enumLiteral_2= 'post'
                     {
-                    enumLiteral_2=(Token)match(input,37,FOLLOW_37_in_ruleHttpMethodType5085); 
+                    enumLiteral_2=(Token)match(input,37,FOLLOW_37_in_ruleHttpMethodType5084); 
 
                             current = grammarAccess.getHttpMethodTypeAccess().getPostEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getHttpMethodTypeAccess().getPostEnumLiteralDeclaration_2()); 
@@ -5742,7 +5724,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2220:6: (enumLiteral_3= 'delete' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2220:8: enumLiteral_3= 'delete'
                     {
-                    enumLiteral_3=(Token)match(input,38,FOLLOW_38_in_ruleHttpMethodType5102); 
+                    enumLiteral_3=(Token)match(input,38,FOLLOW_38_in_ruleHttpMethodType5101); 
 
                             current = grammarAccess.getHttpMethodTypeAccess().getDeleteEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getHttpMethodTypeAccess().getDeleteEnumLiteralDeclaration_3()); 
@@ -5787,29 +5769,29 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2233:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2233:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
-            int alt37=2;
-            int LA37_0 = input.LA(1);
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA37_0==39) ) {
-                alt37=1;
+            if ( (LA36_0==39) ) {
+                alt36=1;
             }
-            else if ( (LA37_0==40) ) {
-                alt37=2;
+            else if ( (LA36_0==40) ) {
+                alt36=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 37, 0, input);
+                    new NoViableAltException("", 36, 0, input);
 
                 throw nvae;
             }
-            switch (alt37) {
+            switch (alt36) {
                 case 1 :
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2233:2: (enumLiteral_0= 'true' )
                     {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2233:2: (enumLiteral_0= 'true' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2233:4: enumLiteral_0= 'true'
                     {
-                    enumLiteral_0=(Token)match(input,39,FOLLOW_39_in_ruleBooleanValue5147); 
+                    enumLiteral_0=(Token)match(input,39,FOLLOW_39_in_ruleBooleanValue5146); 
 
                             current = grammarAccess.getBooleanValueAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getBooleanValueAccess().getTrueEnumLiteralDeclaration_0()); 
@@ -5826,7 +5808,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2239:6: (enumLiteral_1= 'false' )
                     // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2239:8: enumLiteral_1= 'false'
                     {
-                    enumLiteral_1=(Token)match(input,40,FOLLOW_40_in_ruleBooleanValue5164); 
+                    enumLiteral_1=(Token)match(input,40,FOLLOW_40_in_ruleBooleanValue5163); 
 
                             current = grammarAccess.getBooleanValueAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getBooleanValueAccess().getFalseEnumLiteralDeclaration_1()); 
@@ -5859,60 +5841,60 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
     // Delegated rules
 
 
-    protected DFA21 dfa21 = new DFA21(this);
-    static final String DFA21_eotS =
+    protected DFA20 dfa20 = new DFA20(this);
+    static final String DFA20_eotS =
         "\12\uffff";
-    static final String DFA21_eofS =
-        "\1\uffff\1\7\5\11\3\uffff";
-    static final String DFA21_minS =
+    static final String DFA20_eofS =
+        "\1\uffff\1\10\5\11\3\uffff";
+    static final String DFA20_minS =
         "\1\4\6\17\3\uffff";
-    static final String DFA21_maxS =
+    static final String DFA20_maxS =
         "\1\40\6\30\3\uffff";
-    static final String DFA21_acceptS =
-        "\7\uffff\1\1\1\3\1\2";
-    static final String DFA21_specialS =
+    static final String DFA20_acceptS =
+        "\7\uffff\1\3\1\1\1\2";
+    static final String DFA20_specialS =
         "\12\uffff}>";
-    static final String[] DFA21_transitionS = {
+    static final String[] DFA20_transitionS = {
             "\1\1\27\uffff\1\2\1\3\1\4\1\5\1\6",
-            "\3\7\1\uffff\1\7\1\uffff\2\7\1\uffff\1\10",
-            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\10",
-            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\10",
-            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\10",
-            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\10",
-            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\10",
+            "\3\10\1\uffff\1\10\1\uffff\2\10\1\uffff\1\7",
+            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\7",
+            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\7",
+            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\7",
+            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\7",
+            "\3\11\1\uffff\1\11\1\uffff\2\11\1\uffff\1\7",
             "",
             "",
             ""
     };
 
-    static final short[] DFA21_eot = DFA.unpackEncodedString(DFA21_eotS);
-    static final short[] DFA21_eof = DFA.unpackEncodedString(DFA21_eofS);
-    static final char[] DFA21_min = DFA.unpackEncodedStringToUnsignedChars(DFA21_minS);
-    static final char[] DFA21_max = DFA.unpackEncodedStringToUnsignedChars(DFA21_maxS);
-    static final short[] DFA21_accept = DFA.unpackEncodedString(DFA21_acceptS);
-    static final short[] DFA21_special = DFA.unpackEncodedString(DFA21_specialS);
-    static final short[][] DFA21_transition;
+    static final short[] DFA20_eot = DFA.unpackEncodedString(DFA20_eotS);
+    static final short[] DFA20_eof = DFA.unpackEncodedString(DFA20_eofS);
+    static final char[] DFA20_min = DFA.unpackEncodedStringToUnsignedChars(DFA20_minS);
+    static final char[] DFA20_max = DFA.unpackEncodedStringToUnsignedChars(DFA20_maxS);
+    static final short[] DFA20_accept = DFA.unpackEncodedString(DFA20_acceptS);
+    static final short[] DFA20_special = DFA.unpackEncodedString(DFA20_specialS);
+    static final short[][] DFA20_transition;
 
     static {
-        int numStates = DFA21_transitionS.length;
-        DFA21_transition = new short[numStates][];
+        int numStates = DFA20_transitionS.length;
+        DFA20_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA21_transition[i] = DFA.unpackEncodedString(DFA21_transitionS[i]);
+            DFA20_transition[i] = DFA.unpackEncodedString(DFA20_transitionS[i]);
         }
     }
 
-    class DFA21 extends DFA {
+    class DFA20 extends DFA {
 
-        public DFA21(BaseRecognizer recognizer) {
+        public DFA20(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 21;
-            this.eot = DFA21_eot;
-            this.eof = DFA21_eof;
-            this.min = DFA21_min;
-            this.max = DFA21_max;
-            this.accept = DFA21_accept;
-            this.special = DFA21_special;
-            this.transition = DFA21_transition;
+            this.decisionNumber = 20;
+            this.eot = DFA20_eot;
+            this.eof = DFA20_eof;
+            this.min = DFA20_min;
+            this.max = DFA20_max;
+            this.accept = DFA20_accept;
+            this.special = DFA20_special;
+            this.transition = DFA20_transition;
         }
         public String getDescription() {
             return "1255:1: (this_UserType_0= ruleUserType | this_IntrinsicType_1= ruleIntrinsicType | this_GenericListType_2= ruleGenericListType )";
@@ -5969,144 +5951,144 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleResponseBlock_in_ruleHttpMethodBlock1228 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleParamsBlock_in_entryRuleParamsBlock1263 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleParamsBlock1273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_ruleParamsBlock1319 = new BitSet(new long[]{0x0000000000020032L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1340 = new BitSet(new long[]{0x0000000000020032L});
-    public static final BitSet FOLLOW_17_in_ruleParamsBlock1354 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1375 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_entryRuleSimpleMemberAssignment1413 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleMemberAssignment1423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMember_in_ruleSimpleMemberAssignment1469 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_20_in_ruleSimpleMemberAssignment1482 = new BitSet(new long[]{0x00000184000000A0L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleSimpleMemberAssignment1503 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral1541 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral1551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanValue_in_ruleLiteral1607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleLiteral1641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_ruleLiteral1684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBodyBlock_in_entryRuleBodyBlock1721 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBodyBlock1731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleBodyBlock1768 = new BitSet(new long[]{0x00000001F0004010L});
-    public static final BitSet FOLLOW_ruleBlockType_in_ruleBodyBlock1789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResponseBlock_in_entryRuleResponseBlock1825 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleResponseBlock1835 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleResponseBlock1881 = new BitSet(new long[]{0x00000001F0804012L});
-    public static final BitSet FOLLOW_23_in_ruleResponseBlock1894 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleResponseBlock1914 = new BitSet(new long[]{0x00000001F0004012L});
-    public static final BitSet FOLLOW_ruleBlockType_in_ruleResponseBlock1937 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBlockType_in_entryRuleBlockType1974 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBlockType1984 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleBlockType2031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleBlockType2058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMember_in_entryRuleMember2093 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMember2103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypedMember_in_ruleMember2150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSkipMember_in_ruleMember2177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypedMember_in_entryRuleTypedMember2212 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTypedMember2222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTypedMember2266 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleTypedMember2286 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleTypedMember2306 = new BitSet(new long[]{0x00000001F0000010L});
-    public static final BitSet FOLLOW_ruleType_in_ruleTypedMember2327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSkipMember_in_entryRuleSkipMember2363 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSkipMember2373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSkipMember2417 = new BitSet(new long[]{0x00000001F0004010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleSkipMember2437 = new BitSet(new long[]{0x00000001F0004010L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleSkipMember2466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMember_in_entryRuleSimpleMember2502 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleMember2512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSimpleMember2556 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleSimpleMember2576 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleSimpleMember2596 = new BitSet(new long[]{0x00000001F0000000L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleSimpleMember2617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType2653 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType2663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserType_in_ruleType2710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleType2737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenericListType_in_ruleType2764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenericListType_in_entryRuleGenericListType2799 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGenericListType2809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserType_in_ruleGenericListType2857 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleGenericListType2876 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleGenericListType2897 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserType_in_entryRuleUserType2946 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUserType2956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUserType3000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserTypeDeclaration_in_entryRuleUserTypeDeclaration3035 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUserTypeDeclaration3045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_ruleUserTypeDeclaration3092 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_ruleUserTypeDeclaration3119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_entryRuleComplexTypeDeclaration3154 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleComplexTypeDeclaration3164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleComplexTypeDeclaration3207 = new BitSet(new long[]{0x0000000004000010L});
-    public static final BitSet FOLLOW_26_in_ruleComplexTypeDeclaration3238 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleComplexTypeDeclaration3269 = new BitSet(new long[]{0x00000001F0004012L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleComplexTypeDeclaration3295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_entryRuleEnumTypeDeclaration3332 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeDeclaration3342 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleEnumTypeDeclaration3385 = new BitSet(new long[]{0x0000000004000010L});
-    public static final BitSet FOLLOW_26_in_ruleEnumTypeDeclaration3416 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumTypeDeclaration3447 = new BitSet(new long[]{0x0000000000804002L});
-    public static final BitSet FOLLOW_23_in_ruleEnumTypeDeclaration3465 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_ruleIntegerType_in_ruleEnumTypeDeclaration3486 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_ruleEnumTypeDeclaration3509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_entryRuleEnumTypeLiteral3546 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeLiteral3556 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleEnumTypeLiteral3593 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3614 = new BitSet(new long[]{0x0000000000028000L});
-    public static final BitSet FOLLOW_17_in_ruleEnumTypeLiteral3627 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3648 = new BitSet(new long[]{0x0000000000028000L});
-    public static final BitSet FOLLOW_15_in_ruleEnumTypeLiteral3662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumMember_in_entryRuleEnumMember3698 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumMember3708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumMember3750 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_20_in_ruleEnumMember3774 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumMember3804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_entryRuleComplexTypeLiteral3847 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleComplexTypeLiteral3857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleComplexTypeLiteral3894 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_ruleMember_in_ruleComplexTypeLiteral3915 = new BitSet(new long[]{0x0000000000028000L});
-    public static final BitSet FOLLOW_17_in_ruleComplexTypeLiteral3928 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_ruleMember_in_ruleComplexTypeLiteral3949 = new BitSet(new long[]{0x0000000000028000L});
-    public static final BitSet FOLLOW_15_in_ruleComplexTypeLiteral3963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_entryRuleIntrinsicType3999 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntrinsicType4009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringType_in_ruleIntrinsicType4056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleIntrinsicType4083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_ruleIntrinsicType4110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringType_in_entryRuleStringType4145 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringType4155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleStringType4197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_entryRuleBooleanType4245 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanType4255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleBooleanType4297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType4345 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType4355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerType_in_ruleNumericType4402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongType_in_ruleNumericType4429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleType_in_ruleNumericType4456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerType_in_entryRuleIntegerType4491 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerType4501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleIntegerType4543 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongType_in_entryRuleLongType4591 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLongType4601 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleLongType4643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleType_in_entryRuleDoubleType4691 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleType4701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleDoubleType4743 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN4792 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFQN4803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN4843 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_33_in_ruleFQN4862 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN4877 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber4925 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSignedNumber4936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_ruleSignedNumber4975 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_NUMBER_in_ruleSignedNumber4992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleHttpMethodType5051 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleHttpMethodType5068 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleHttpMethodType5085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleHttpMethodType5102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleBooleanValue5147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleBooleanValue5164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_ruleParamsBlock1319 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1340 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_17_in_ruleParamsBlock1353 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_ruleParamsBlock1374 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_entryRuleSimpleMemberAssignment1412 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleMemberAssignment1422 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMember_in_ruleSimpleMemberAssignment1468 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_20_in_ruleSimpleMemberAssignment1481 = new BitSet(new long[]{0x00000184000000A0L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleSimpleMemberAssignment1502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral1540 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral1550 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanValue_in_ruleLiteral1606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleLiteral1640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_ruleLiteral1683 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBodyBlock_in_entryRuleBodyBlock1720 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBodyBlock1730 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleBodyBlock1767 = new BitSet(new long[]{0x00000001F0004010L});
+    public static final BitSet FOLLOW_ruleBlockType_in_ruleBodyBlock1788 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResponseBlock_in_entryRuleResponseBlock1824 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleResponseBlock1834 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleResponseBlock1880 = new BitSet(new long[]{0x00000001F0804012L});
+    public static final BitSet FOLLOW_23_in_ruleResponseBlock1893 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleResponseBlock1913 = new BitSet(new long[]{0x00000001F0004012L});
+    public static final BitSet FOLLOW_ruleBlockType_in_ruleResponseBlock1936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBlockType_in_entryRuleBlockType1973 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBlockType1983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_ruleBlockType2030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleBlockType2057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMember_in_entryRuleMember2092 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMember2102 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedMember_in_ruleMember2149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSkipMember_in_ruleMember2176 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedMember_in_entryRuleTypedMember2211 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypedMember2221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleTypedMember2265 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleTypedMember2285 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleTypedMember2305 = new BitSet(new long[]{0x00000001F0000010L});
+    public static final BitSet FOLLOW_ruleType_in_ruleTypedMember2326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSkipMember_in_entryRuleSkipMember2362 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSkipMember2372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSkipMember2416 = new BitSet(new long[]{0x00000001F0004010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleSkipMember2436 = new BitSet(new long[]{0x00000001F0004010L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleSkipMember2465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMember_in_entryRuleSimpleMember2501 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleMember2511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSimpleMember2555 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleSimpleMember2575 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleSimpleMember2595 = new BitSet(new long[]{0x00000001F0000000L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleSimpleMember2616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType2652 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType2662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserType_in_ruleType2709 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleType2736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGenericListType_in_ruleType2763 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGenericListType_in_entryRuleGenericListType2798 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGenericListType2808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserType_in_ruleGenericListType2856 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_ruleGenericListType2875 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleGenericListType2896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserType_in_entryRuleUserType2945 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUserType2955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUserType2999 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserTypeDeclaration_in_entryRuleUserTypeDeclaration3034 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUserTypeDeclaration3044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_ruleUserTypeDeclaration3091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_ruleUserTypeDeclaration3118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_entryRuleComplexTypeDeclaration3153 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleComplexTypeDeclaration3163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleComplexTypeDeclaration3206 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_26_in_ruleComplexTypeDeclaration3237 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleComplexTypeDeclaration3268 = new BitSet(new long[]{0x00000001F0004012L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_ruleComplexTypeDeclaration3294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_entryRuleEnumTypeDeclaration3331 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeDeclaration3341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleEnumTypeDeclaration3384 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_26_in_ruleEnumTypeDeclaration3415 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumTypeDeclaration3446 = new BitSet(new long[]{0x0000000000804002L});
+    public static final BitSet FOLLOW_23_in_ruleEnumTypeDeclaration3464 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_ruleIntegerType_in_ruleEnumTypeDeclaration3485 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_ruleEnumTypeDeclaration3508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_entryRuleEnumTypeLiteral3545 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumTypeLiteral3555 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_ruleEnumTypeLiteral3592 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3613 = new BitSet(new long[]{0x0000000000028000L});
+    public static final BitSet FOLLOW_17_in_ruleEnumTypeLiteral3626 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleEnumMember_in_ruleEnumTypeLiteral3647 = new BitSet(new long[]{0x0000000000028000L});
+    public static final BitSet FOLLOW_15_in_ruleEnumTypeLiteral3661 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumMember_in_entryRuleEnumMember3697 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumMember3707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumMember3749 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_20_in_ruleEnumMember3773 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumMember3803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_entryRuleComplexTypeLiteral3846 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleComplexTypeLiteral3856 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_ruleComplexTypeLiteral3893 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleMember_in_ruleComplexTypeLiteral3914 = new BitSet(new long[]{0x0000000000028000L});
+    public static final BitSet FOLLOW_17_in_ruleComplexTypeLiteral3927 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleMember_in_ruleComplexTypeLiteral3948 = new BitSet(new long[]{0x0000000000028000L});
+    public static final BitSet FOLLOW_15_in_ruleComplexTypeLiteral3962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_entryRuleIntrinsicType3998 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntrinsicType4008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringType_in_ruleIntrinsicType4055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleIntrinsicType4082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_ruleIntrinsicType4109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringType_in_entryRuleStringType4144 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringType4154 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleStringType4196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_entryRuleBooleanType4244 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanType4254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleBooleanType4296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_entryRuleNumericType4344 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumericType4354 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerType_in_ruleNumericType4401 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongType_in_ruleNumericType4428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleType_in_ruleNumericType4455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerType_in_entryRuleIntegerType4490 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerType4500 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleIntegerType4542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongType_in_entryRuleLongType4590 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLongType4600 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleLongType4642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleType_in_entryRuleDoubleType4690 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleType4700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleDoubleType4742 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN4791 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFQN4802 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN4842 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_33_in_ruleFQN4861 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN4876 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber4924 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSignedNumber4935 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleSignedNumber4974 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_NUMBER_in_ruleSignedNumber4991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleHttpMethodType5050 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_ruleHttpMethodType5067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_ruleHttpMethodType5084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleHttpMethodType5101 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_ruleBooleanValue5146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleBooleanValue5163 = new BitSet(new long[]{0x0000000000000002L});
 
 }

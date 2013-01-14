@@ -312,10 +312,10 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
 		////;
 		//ParamsBlock:
-		//	{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*;
+		//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 		public ParserRule getRule() { return rule; }
 
-		//{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*
+		//{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*
 		public Group getGroup() { return cGroup; }
 
 		//{ParamsBlock}
@@ -324,7 +324,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"params"
 		public Keyword getParamsKeyword_1() { return cParamsKeyword_1; }
 
-		//params+=SimpleMemberAssignment*
+		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_2() { return cParamsAssignment_2; }
 
 		//SimpleMemberAssignment
@@ -1422,7 +1422,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
 	////;
 	//ParamsBlock:
-	//	{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*;
+	//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 	public ParamsBlockElements getParamsBlockAccess() {
 		return (pParamsBlock != null) ? pParamsBlock : (pParamsBlock = new ParamsBlockElements());
 	}

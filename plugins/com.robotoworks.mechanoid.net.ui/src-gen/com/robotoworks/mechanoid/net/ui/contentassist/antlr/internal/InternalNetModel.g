@@ -2323,7 +2323,7 @@ rule__ParamsBlock__Group__2__Impl
 :
 (
 { before(grammarAccess.getParamsBlockAccess().getParamsAssignment_2()); }
-(rule__ParamsBlock__ParamsAssignment_2)*
+(rule__ParamsBlock__ParamsAssignment_2)
 { after(grammarAccess.getParamsBlockAccess().getParamsAssignment_2()); }
 )
 

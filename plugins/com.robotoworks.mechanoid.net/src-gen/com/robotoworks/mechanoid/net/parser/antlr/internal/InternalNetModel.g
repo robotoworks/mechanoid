@@ -631,7 +631,7 @@ ruleParamsBlock returns [EObject current=null]
 	    }
 
 )
-)*(	otherlv_3=',' 
+)(	otherlv_3=',' 
     {
     	newLeafNode(otherlv_3, grammarAccess.getParamsBlockAccess().getCommaKeyword_3_0());
     }
