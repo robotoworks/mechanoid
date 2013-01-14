@@ -147,7 +147,7 @@ public class RequestGenerator {
     {
       Path _path = method.getPath();
       EList<SimpleMemberAssignment> _params = _path==null?(EList<SimpleMemberAssignment>)null:_path.getParams();
-      int _size = _params.size();
+      int _size = _params==null?0:_params.size();
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         {
@@ -495,7 +495,7 @@ public class RequestGenerator {
     {
       Path _path_3 = method.getPath();
       EList<SimpleMemberAssignment> _params_6 = _path_3==null?(EList<SimpleMemberAssignment>)null:_path_3.getParams();
-      int _size_1 = _params_6.size();
+      int _size_1 = _params_6==null?0:_params_6.size();
       boolean _greaterThan_1 = (_size_1 > 0);
       if (_greaterThan_1) {
         {
@@ -573,7 +573,7 @@ public class RequestGenerator {
     {
       Path _path_5 = method.getPath();
       EList<SimpleMemberAssignment> _params_8 = _path_5==null?(EList<SimpleMemberAssignment>)null:_path_5.getParams();
-      int _size_2 = _params_8.size();
+      int _size_2 = _params_8==null?0:_params_8.size();
       boolean _greaterThan_2 = (_size_2 > 0);
       if (_greaterThan_2) {
         _builder.append("\t\t");
@@ -1277,18 +1277,23 @@ public class RequestGenerator {
   public String generateRequestConstructorArgs(final Path path, final BodyBlock body) {
     ArrayList<String> _arrayList = new ArrayList<String>();
     ArrayList<String> args = _arrayList;
-    EList<SimpleMemberAssignment> _params = path.getParams();
-    for (final SimpleMemberAssignment slug : _params) {
-      SimpleMember _member = slug.getMember();
-      IntrinsicType _type = _member.getType();
-      String _signature = ModelExtensions.signature(_type);
-      String _plus = (_signature + " ");
-      SimpleMember _member_1 = slug.getMember();
-      String _name = _member_1.getName();
-      String _camelize = ModelExtensions.camelize(_name);
-      String _plus_1 = (_plus + _camelize);
-      String _plus_2 = (_plus_1 + "Segment");
-      args.add(_plus_2);
+    EList<SimpleMemberAssignment> _params = path==null?(EList<SimpleMemberAssignment>)null:path.getParams();
+    int _size = _params==null?0:_params.size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      EList<SimpleMemberAssignment> _params_1 = path.getParams();
+      for (final SimpleMemberAssignment slug : _params_1) {
+        SimpleMember _member = slug.getMember();
+        IntrinsicType _type = _member.getType();
+        String _signature = ModelExtensions.signature(_type);
+        String _plus = (_signature + " ");
+        SimpleMember _member_1 = slug.getMember();
+        String _name = _member_1.getName();
+        String _camelize = ModelExtensions.camelize(_name);
+        String _plus_1 = (_plus + _camelize);
+        String _plus_2 = (_plus_1 + "Segment");
+        args.add(_plus_2);
+      }
     }
     boolean _notEquals = (!Objects.equal(body, null));
     if (_notEquals) {
