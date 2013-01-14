@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.robotoworks.mechanoid.util.Closeables;
 
+import com.robotoworks.examples.recipes.content.RecipesRecord;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 			
@@ -85,4 +86,25 @@ public abstract class AbstractRecipesByIdActions extends ContentProviderActions 
     	return numValues;
     }
     
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
+		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+		
+		Cursor c = null;
+		
+		ArrayList<T> items = new ArrayList<T>();
+		
+		try {
+			c = db.query(Tables.RECIPES, RecipesRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
+		    
+		    while(c.moveToNext()) {
+		        items.add((T)RecipesRecord.fromCursor(c));
+	        }
+	    } finally {
+	        Closeables.closeSilently(c);
+	    }
+	    
+	    return items;
+	}
 }

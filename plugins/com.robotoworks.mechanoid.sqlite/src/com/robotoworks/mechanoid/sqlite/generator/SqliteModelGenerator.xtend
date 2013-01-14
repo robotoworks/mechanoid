@@ -82,11 +82,12 @@ class SqliteModelGenerator implements IGenerator {
 			];
 			
 			
-			snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
-				statement|
-				generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
-			];
 		}
+		
+		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
+			statement|
+			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
+		];
 		
 		model.database.migrations.forEach[
 			item,index|
