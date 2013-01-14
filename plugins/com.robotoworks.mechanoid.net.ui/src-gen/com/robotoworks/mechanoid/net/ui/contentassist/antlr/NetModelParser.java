@@ -40,6 +40,7 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDeclarationAccess().getAlternatives(), "rule__Declaration__Alternatives");
 					put(grammarAccess.getClientBlockAccess().getAlternatives(), "rule__ClientBlock__Alternatives");
 					put(grammarAccess.getHttpMethodBlockAccess().getAlternatives(), "rule__HttpMethodBlock__Alternatives");
+					put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 					put(grammarAccess.getBlockTypeAccess().getAlternatives(), "rule__BlockType__Alternatives");
 					put(grammarAccess.getMemberAccess().getAlternatives(), "rule__Member__Alternatives");
 					put(grammarAccess.getTypedMemberAccess().getNameAlternatives_0_0(), "rule__TypedMember__NameAlternatives_0_0");
@@ -51,6 +52,7 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIntrinsicTypeAccess().getAlternatives(), "rule__IntrinsicType__Alternatives");
 					put(grammarAccess.getNumericTypeAccess().getAlternatives(), "rule__NumericType__Alternatives");
 					put(grammarAccess.getHttpMethodTypeAccess().getAlternatives(), "rule__HttpMethodType__Alternatives");
+					put(grammarAccess.getBooleanValueAccess().getAlternatives(), "rule__BooleanValue__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getClientAccess().getGroup(), "rule__Client__Group__0");
 					put(grammarAccess.getHeaderBlockAccess().getGroup(), "rule__HeaderBlock__Group__0");
@@ -59,6 +61,11 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHttpMethodAccess().getGroup(), "rule__HttpMethod__Group__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup(), "rule__ParamsBlock__Group__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup_3(), "rule__ParamsBlock__Group_3__0");
+					put(grammarAccess.getSimpleMemberAssignmentAccess().getGroup(), "rule__SimpleMemberAssignment__Group__0");
+					put(grammarAccess.getSimpleMemberAssignmentAccess().getGroup_1(), "rule__SimpleMemberAssignment__Group_1__0");
+					put(grammarAccess.getLiteralAccess().getGroup_0(), "rule__Literal__Group_0__0");
+					put(grammarAccess.getLiteralAccess().getGroup_1(), "rule__Literal__Group_1__0");
+					put(grammarAccess.getLiteralAccess().getGroup_2(), "rule__Literal__Group_2__0");
 					put(grammarAccess.getBodyBlockAccess().getGroup(), "rule__BodyBlock__Group__0");
 					put(grammarAccess.getResponseBlockAccess().getGroup(), "rule__ResponseBlock__Group__0");
 					put(grammarAccess.getResponseBlockAccess().getGroup_2(), "rule__ResponseBlock__Group_2__0");
@@ -77,6 +84,7 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getComplexTypeLiteralAccess().getGroup_2(), "rule__ComplexTypeLiteral__Group_2__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
+					put(grammarAccess.getSignedNumberAccess().getGroup(), "rule__SignedNumber__Group__0");
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getDeclarationsAssignment_2(), "rule__Model__DeclarationsAssignment_2");
 					put(grammarAccess.getClientAccess().getNameAssignment_1(), "rule__Client__NameAssignment_1");
@@ -92,6 +100,11 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHttpMethodAccess().getBlocksAssignment_4(), "rule__HttpMethod__BlocksAssignment_4");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_2(), "rule__ParamsBlock__ParamsAssignment_2");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_3_1(), "rule__ParamsBlock__ParamsAssignment_3_1");
+					put(grammarAccess.getSimpleMemberAssignmentAccess().getMemberAssignment_0(), "rule__SimpleMemberAssignment__MemberAssignment_0");
+					put(grammarAccess.getSimpleMemberAssignmentAccess().getDefaultValueAssignment_1_1(), "rule__SimpleMemberAssignment__DefaultValueAssignment_1_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_0_1(), "rule__Literal__LiteralAssignment_0_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_1_1(), "rule__Literal__LiteralAssignment_1_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_2_1(), "rule__Literal__LiteralAssignment_2_1");
 					put(grammarAccess.getBodyBlockAccess().getTypeAssignment_1(), "rule__BodyBlock__TypeAssignment_1");
 					put(grammarAccess.getResponseBlockAccess().getSuperTypeAssignment_2_1(), "rule__ResponseBlock__SuperTypeAssignment_2_1");
 					put(grammarAccess.getResponseBlockAccess().getTypeAssignment_3(), "rule__ResponseBlock__TypeAssignment_3");

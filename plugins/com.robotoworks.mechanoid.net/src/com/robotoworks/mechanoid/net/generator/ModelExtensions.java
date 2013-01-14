@@ -5,12 +5,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.lib.BigDecimalExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.common.internal.util.Inflector;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ClientBlock;
@@ -23,10 +26,13 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Member;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
@@ -447,5 +453,19 @@ public class ModelExtensions {
 		}
 		
 		return "INVALID_TYPE";
+	}
+	
+	public static String convertToJavaLiteral(Literal literal) { 
+		if(literal instanceof StringLiteral) {
+			return "\"" + Strings.convertToJavaString(((StringLiteral) literal).getLiteral()) + "\"";
+			
+		} else if(literal instanceof BooleanLiteral) {
+			return ((BooleanLiteral)literal).getLiteral().getLiteral();
+			
+		} else if(literal instanceof NumericLiteral) {
+			return ((NumericLiteral)literal).getLiteral().toString();
+		}
+		
+		return "";
 	}
 }

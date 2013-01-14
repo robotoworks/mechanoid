@@ -104,6 +104,24 @@ public interface NetModelFactory extends EFactory
   ParamsBlock createParamsBlock();
 
   /**
+   * Returns a new object of class '<em>Simple Member Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Member Assignment</em>'.
+   * @generated
+   */
+  SimpleMemberAssignment createSimpleMemberAssignment();
+
+  /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
+
+  /**
    * Returns a new object of class '<em>Body Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -309,6 +327,33 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   DoubleType createDoubleType();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Numeric Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Numeric Literal</em>'.
+   * @generated
+   */
+  NumericLiteral createNumericLiteral();
 
   /**
    * Returns the package supported by this factory.

@@ -12,9 +12,11 @@ import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -140,25 +142,47 @@ public class ClientGenerator {
       boolean _notEquals_1 = (!Objects.equal(params, null));
       if (_notEquals_1) {
         {
-          EList<SimpleMember> _params = params.getParams();
-          for(final SimpleMember param : _params) {
+          EList<SimpleMemberAssignment> _params = params.getParams();
+          for(final SimpleMemberAssignment param : _params) {
             _builder.append("\t");
             _builder.append("private ");
-            IntrinsicType _type = param.getType();
+            SimpleMember _member = param.getMember();
+            IntrinsicType _type = _member.getType();
             String _signature = ModelExtensions.signature(_type);
             _builder.append(_signature, "	");
             _builder.append(" ");
-            String _name_2 = param.getName();
+            SimpleMember _member_1 = param.getMember();
+            String _name_2 = _member_1.getName();
             String _camelize = ModelExtensions.camelize(_name_2);
             _builder.append(_camelize, "	");
-            _builder.append("Param;");
+            _builder.append("Param");
+            {
+              Literal _defaultValue = param.getDefaultValue();
+              boolean _notEquals_2 = (!Objects.equal(_defaultValue, null));
+              if (_notEquals_2) {
+                _builder.append(" = ");
+                Literal _defaultValue_1 = param.getDefaultValue();
+                String _convertToJavaLiteral = ModelExtensions.convertToJavaLiteral(_defaultValue_1);
+                _builder.append(_convertToJavaLiteral, "	");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("private boolean ");
-            String _name_3 = param.getName();
+            SimpleMember _member_2 = param.getMember();
+            String _name_3 = _member_2.getName();
             String _camelize_1 = ModelExtensions.camelize(_name_3);
             _builder.append(_camelize_1, "	");
-            _builder.append("ParamSet;");
+            _builder.append("ParamSet");
+            {
+              Literal _defaultValue_2 = param.getDefaultValue();
+              boolean _notEquals_3 = (!Objects.equal(_defaultValue_2, null));
+              if (_notEquals_3) {
+                _builder.append(" = true");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -170,18 +194,20 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      boolean _notEquals_2 = (!Objects.equal(params, null));
-      if (_notEquals_2) {
+      boolean _notEquals_4 = (!Objects.equal(params, null));
+      if (_notEquals_4) {
         {
-          EList<SimpleMember> _params_1 = params.getParams();
-          for(final SimpleMember param_1 : _params_1) {
+          EList<SimpleMemberAssignment> _params_1 = params.getParams();
+          for(final SimpleMemberAssignment param_1 : _params_1) {
             _builder.append("\t");
             _builder.append("public void set");
-            String _name_4 = param_1.getName();
+            SimpleMember _member_3 = param_1.getMember();
+            String _name_4 = _member_3.getName();
             String _pascalize = ModelExtensions.pascalize(_name_4);
             _builder.append(_pascalize, "	");
             _builder.append("Param(");
-            IntrinsicType _type_1 = param_1.getType();
+            SimpleMember _member_4 = param_1.getMember();
+            IntrinsicType _type_1 = _member_4.getType();
             String _signature_1 = ModelExtensions.signature(_type_1);
             _builder.append(_signature_1, "	");
             _builder.append(" value) {");
@@ -189,7 +215,8 @@ public class ClientGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_5 = param_1.getName();
+            SimpleMember _member_5 = param_1.getMember();
+            String _name_5 = _member_5.getName();
             String _camelize_2 = ModelExtensions.camelize(_name_5);
             _builder.append(_camelize_2, "		");
             _builder.append("Param = value;");
@@ -197,7 +224,8 @@ public class ClientGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_6 = param_1.getName();
+            SimpleMember _member_6 = param_1.getMember();
+            String _name_6 = _member_6.getName();
             String _camelize_3 = ModelExtensions.camelize(_name_6);
             _builder.append(_camelize_3, "		");
             _builder.append("ParamSet = true;");
@@ -214,8 +242,8 @@ public class ClientGenerator {
     }
     {
       String _baseUrl_2 = client.getBaseUrl();
-      boolean _notEquals_3 = (!Objects.equal(_baseUrl_2, null));
-      if (_notEquals_3) {
+      boolean _notEquals_5 = (!Objects.equal(_baseUrl_2, null));
+      if (_notEquals_5) {
         _builder.append("\t");
         _builder.append("public ");
         String _name_7 = client.getName();
@@ -308,8 +336,8 @@ public class ClientGenerator {
     HeaderBlock headers = ModelExtensions.getHeaderBlock(client);
     _builder.newLineIfNotEmpty();
     {
-      boolean _notEquals_4 = (!Objects.equal(headers, null));
-      if (_notEquals_4) {
+      boolean _notEquals_6 = (!Objects.equal(headers, null));
+      if (_notEquals_6) {
         {
           EList<Header> _headers = headers.getHeaders();
           for(final Header header : _headers) {
@@ -412,15 +440,17 @@ public class ClientGenerator {
           boolean _notEquals = (!Objects.equal(params, null));
           if (_notEquals) {
             {
-              EList<SimpleMember> _params = params.getParams();
-              for(final SimpleMember param : _params) {
+              EList<SimpleMemberAssignment> _params = params.getParams();
+              for(final SimpleMemberAssignment param : _params) {
                 _builder.append("\t");
                 _builder.append("if(this.");
-                String _name_7 = param.getName();
+                SimpleMember _member = param.getMember();
+                String _name_7 = _member.getName();
                 String _camelize_3 = ModelExtensions.camelize(_name_7);
                 _builder.append(_camelize_3, "	");
                 _builder.append("ParamSet && !request.is");
-                String _name_8 = param.getName();
+                SimpleMember _member_1 = param.getMember();
+                String _name_8 = _member_1.getName();
                 String _pascalize_4 = ModelExtensions.pascalize(_name_8);
                 _builder.append(_pascalize_4, "	");
                 _builder.append("ParamSet()){");
@@ -428,11 +458,13 @@ public class ClientGenerator {
                 _builder.append("\t");
                 _builder.append("\t");
                 _builder.append("request.set");
-                String _name_9 = param.getName();
+                SimpleMember _member_2 = param.getMember();
+                String _name_9 = _member_2.getName();
                 String _pascalize_5 = ModelExtensions.pascalize(_name_9);
                 _builder.append(_pascalize_5, "		");
                 _builder.append("Param(this.");
-                String _name_10 = param.getName();
+                SimpleMember _member_3 = param.getMember();
+                String _name_10 = _member_3.getName();
                 String _camelize_4 = ModelExtensions.camelize(_name_10);
                 _builder.append(_camelize_4, "		");
                 _builder.append("Param);");

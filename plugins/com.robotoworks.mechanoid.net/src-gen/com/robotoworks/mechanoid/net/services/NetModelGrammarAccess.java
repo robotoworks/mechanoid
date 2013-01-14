@@ -301,21 +301,21 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cParamsBlockAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cParamsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cParamsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cParamsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
 		
 		////Path:
 		////	{Path}
 		////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
 		////;
 		//ParamsBlock:
-		//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
+		//	{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*;
 		public ParserRule getRule() { return rule; }
 
-		//{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*
+		//{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*
 		public Group getGroup() { return cGroup; }
 
 		//{ParamsBlock}
@@ -324,23 +324,119 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"params"
 		public Keyword getParamsKeyword_1() { return cParamsKeyword_1; }
 
-		//params+=SimpleMember*
+		//params+=SimpleMemberAssignment*
 		public Assignment getParamsAssignment_2() { return cParamsAssignment_2; }
 
-		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_2_0() { return cParamsSimpleMemberParserRuleCall_2_0; }
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_0; }
 
-		//("," params+=SimpleMember)*
+		//("," params+=SimpleMemberAssignment)*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//","
 		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
 
-		//params+=SimpleMember
+		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_3_1() { return cParamsAssignment_3_1; }
 
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_3_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_3_1_0; }
+	}
+
+	public class SimpleMemberAssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleMemberAssignment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cMemberAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cMemberSimpleMemberParserRuleCall_0_0 = (RuleCall)cMemberAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cDefaultValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cDefaultValueLiteralParserRuleCall_1_1_0 = (RuleCall)cDefaultValueAssignment_1_1.eContents().get(0);
+		
+		//SimpleMemberAssignment:
+		//	member=SimpleMember ("=" defaultValue=Literal)?;
+		public ParserRule getRule() { return rule; }
+
+		//member=SimpleMember ("=" defaultValue=Literal)?
+		public Group getGroup() { return cGroup; }
+
+		//member=SimpleMember
+		public Assignment getMemberAssignment_0() { return cMemberAssignment_0; }
+
 		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_3_1_0() { return cParamsSimpleMemberParserRuleCall_3_1_0; }
+		public RuleCall getMemberSimpleMemberParserRuleCall_0_0() { return cMemberSimpleMemberParserRuleCall_0_0; }
+
+		//("=" defaultValue=Literal)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_0() { return cEqualsSignKeyword_1_0; }
+
+		//defaultValue=Literal
+		public Assignment getDefaultValueAssignment_1_1() { return cDefaultValueAssignment_1_1; }
+
+		//Literal
+		public RuleCall getDefaultValueLiteralParserRuleCall_1_1_0() { return cDefaultValueLiteralParserRuleCall_1_1_0; }
+	}
+
+	public class LiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Literal");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cBooleanLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cLiteralAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cLiteralBooleanValueEnumRuleCall_0_1_0 = (RuleCall)cLiteralAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cStringLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cLiteralAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cLiteralSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cLiteralAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cNumericLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cLiteralAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cLiteralSignedNumberParserRuleCall_2_1_0 = (RuleCall)cLiteralAssignment_2_1.eContents().get(0);
+		
+		//Literal:
+		//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
+		public ParserRule getRule() { return rule; }
+
+		//{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//{BooleanLiteral} literal=BooleanValue
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{BooleanLiteral}
+		public Action getBooleanLiteralAction_0_0() { return cBooleanLiteralAction_0_0; }
+
+		//literal=BooleanValue
+		public Assignment getLiteralAssignment_0_1() { return cLiteralAssignment_0_1; }
+
+		//BooleanValue
+		public RuleCall getLiteralBooleanValueEnumRuleCall_0_1_0() { return cLiteralBooleanValueEnumRuleCall_0_1_0; }
+
+		//{StringLiteral} literal=STRING
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{StringLiteral}
+		public Action getStringLiteralAction_1_0() { return cStringLiteralAction_1_0; }
+
+		//literal=STRING
+		public Assignment getLiteralAssignment_1_1() { return cLiteralAssignment_1_1; }
+
+		//STRING
+		public RuleCall getLiteralSTRINGTerminalRuleCall_1_1_0() { return cLiteralSTRINGTerminalRuleCall_1_1_0; }
+
+		//{NumericLiteral} literal=SignedNumber
+		public Group getGroup_2() { return cGroup_2; }
+
+		//{NumericLiteral}
+		public Action getNumericLiteralAction_2_0() { return cNumericLiteralAction_2_0; }
+
+		//literal=SignedNumber
+		public Assignment getLiteralAssignment_2_1() { return cLiteralAssignment_2_1; }
+
+		//SignedNumber
+		public RuleCall getLiteralSignedNumberParserRuleCall_2_1_0() { return cLiteralSignedNumberParserRuleCall_2_1_0; }
 	}
 
 	public class BodyBlockElements extends AbstractParserRuleElementFinder {
@@ -1058,6 +1154,26 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
+
+	public class SignedNumberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SignedNumber");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cNUMBERTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//SignedNumber returns ecore::EBigDecimal:
+		//	"-"? NUMBER;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? NUMBER
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//NUMBER
+		public RuleCall getNUMBERTerminalRuleCall_1() { return cNUMBERTerminalRuleCall_1; }
+	}
 	
 	
 	public class HttpMethodTypeElements extends AbstractEnumRuleElementFinder {
@@ -1103,6 +1219,34 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"delete"
 		public Keyword getDeleteDeleteKeyword_3_0() { return cDeleteDeleteKeyword_3_0; }
 	}
+
+	public class BooleanValueElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTrueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTrueTrueKeyword_0_0 = (Keyword)cTrueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFalseEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFalseFalseKeyword_1_0 = (Keyword)cFalseEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum BooleanValue:
+		//	true | false;
+		public EnumRule getRule() { return rule; }
+
+		//true | false
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//true
+		public EnumLiteralDeclaration getTrueEnumLiteralDeclaration_0() { return cTrueEnumLiteralDeclaration_0; }
+
+		//"true"
+		public Keyword getTrueTrueKeyword_0_0() { return cTrueTrueKeyword_0_0; }
+
+		//false
+		public EnumLiteralDeclaration getFalseEnumLiteralDeclaration_1() { return cFalseEnumLiteralDeclaration_1; }
+
+		//"false"
+		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
+	}
 	
 	private ModelElements pModel;
 	private DeclarationElements pDeclaration;
@@ -1114,6 +1258,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private HttpMethodBlockElements pHttpMethodBlock;
 	private HttpMethodTypeElements unknownRuleHttpMethodType;
 	private ParamsBlockElements pParamsBlock;
+	private SimpleMemberAssignmentElements pSimpleMemberAssignment;
+	private LiteralElements pLiteral;
 	private BodyBlockElements pBodyBlock;
 	private ResponseBlockElements pResponseBlock;
 	private BlockTypeElements pBlockType;
@@ -1138,6 +1284,10 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private LongTypeElements pLongType;
 	private DoubleTypeElements pDoubleType;
 	private FQNElements pFQN;
+	private BooleanValueElements unknownRuleBooleanValue;
+	private SignedNumberElements pSignedNumber;
+	private TerminalRule tNUMBER;
+	private TerminalRule tINT;
 	
 	private final Grammar grammar;
 
@@ -1272,13 +1422,33 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	////	('/'|'?')? (ID|params+=SimpleMember) ('/' (ID|params+=SimpleMember))*
 	////;
 	//ParamsBlock:
-	//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
+	//	{ParamsBlock} "params" params+=SimpleMemberAssignment* ("," params+=SimpleMemberAssignment)*;
 	public ParamsBlockElements getParamsBlockAccess() {
 		return (pParamsBlock != null) ? pParamsBlock : (pParamsBlock = new ParamsBlockElements());
 	}
 	
 	public ParserRule getParamsBlockRule() {
 		return getParamsBlockAccess().getRule();
+	}
+
+	//SimpleMemberAssignment:
+	//	member=SimpleMember ("=" defaultValue=Literal)?;
+	public SimpleMemberAssignmentElements getSimpleMemberAssignmentAccess() {
+		return (pSimpleMemberAssignment != null) ? pSimpleMemberAssignment : (pSimpleMemberAssignment = new SimpleMemberAssignmentElements());
+	}
+	
+	public ParserRule getSimpleMemberAssignmentRule() {
+		return getSimpleMemberAssignmentAccess().getRule();
+	}
+
+	//Literal:
+	//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
+	public LiteralElements getLiteralAccess() {
+		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+	}
+	
+	public ParserRule getLiteralRule() {
+		return getLiteralAccess().getRule();
 	}
 
 	//BodyBlock:
@@ -1521,16 +1691,42 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getFQNAccess().getRule();
 	}
 
+	//enum BooleanValue:
+	//	true | false;
+	public BooleanValueElements getBooleanValueAccess() {
+		return (unknownRuleBooleanValue != null) ? unknownRuleBooleanValue : (unknownRuleBooleanValue = new BooleanValueElements());
+	}
+	
+	public EnumRule getBooleanValueRule() {
+		return getBooleanValueAccess().getRule();
+	}
+
+	//SignedNumber returns ecore::EBigDecimal:
+	//	"-"? NUMBER;
+	public SignedNumberElements getSignedNumberAccess() {
+		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
+	}
+	
+	public ParserRule getSignedNumberRule() {
+		return getSignedNumberAccess().getRule();
+	}
+
+	//terminal NUMBER returns ecore::EBigDecimal:
+	//	"0".."9"* ("." "0".."9"+)?;
+	public TerminalRule getNUMBERRule() {
+		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+	} 
+
+	//terminal INT returns ecore::EInt:
+	//	"$$$don\'t use this anymore$$$";
+	public TerminalRule getINTRule() {
+		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+	} 
+
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
-	} 
-
-	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
-	public TerminalRule getINTRule() {
-		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:

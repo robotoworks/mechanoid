@@ -355,6 +355,62 @@ public interface NetModelPackage extends EPackage
   int PARAMS_BLOCK_FEATURE_COUNT = CLIENT_BLOCK_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberAssignmentImpl <em>Simple Member Assignment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberAssignmentImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSimpleMemberAssignment()
+   * @generated
+   */
+  int SIMPLE_MEMBER_ASSIGNMENT = 9;
+
+  /**
+   * The feature id for the '<em><b>Member</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_MEMBER_ASSIGNMENT__MEMBER = 0;
+
+  /**
+   * The feature id for the '<em><b>Default Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Simple Member Assignment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_MEMBER_ASSIGNMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.LiteralImpl <em>Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.impl.LiteralImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getLiteral()
+   * @generated
+   */
+  int LITERAL = 10;
+
+  /**
+   * The number of structural features of the '<em>Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.BodyBlockImpl <em>Body Block</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -362,7 +418,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBodyBlock()
    * @generated
    */
-  int BODY_BLOCK = 9;
+  int BODY_BLOCK = 11;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -390,7 +446,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getResponseBlock()
    * @generated
    */
-  int RESPONSE_BLOCK = 10;
+  int RESPONSE_BLOCK = 12;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -427,7 +483,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBlockType()
    * @generated
    */
-  int BLOCK_TYPE = 11;
+  int BLOCK_TYPE = 13;
 
   /**
    * The number of structural features of the '<em>Block Type</em>' class.
@@ -446,7 +502,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getMember()
    * @generated
    */
-  int MEMBER = 12;
+  int MEMBER = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -474,7 +530,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getTypedMember()
    * @generated
    */
-  int TYPED_MEMBER = 13;
+  int TYPED_MEMBER = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -511,7 +567,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSkipMember()
    * @generated
    */
-  int SKIP_MEMBER = 14;
+  int SKIP_MEMBER = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -548,7 +604,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSimpleMember()
    * @generated
    */
-  int SIMPLE_MEMBER = 15;
+  int SIMPLE_MEMBER = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -585,7 +641,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getType()
    * @generated
    */
-  int TYPE = 16;
+  int TYPE = 18;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -604,7 +660,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getGenericListType()
    * @generated
    */
-  int GENERIC_LIST_TYPE = 17;
+  int GENERIC_LIST_TYPE = 19;
 
   /**
    * The feature id for the '<em><b>Element Type</b></em>' containment reference.
@@ -641,7 +697,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserType()
    * @generated
    */
-  int USER_TYPE = 18;
+  int USER_TYPE = 20;
 
   /**
    * The feature id for the '<em><b>Declaration</b></em>' reference.
@@ -669,7 +725,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getUserTypeDeclaration()
    * @generated
    */
-  int USER_TYPE_DECLARATION = 19;
+  int USER_TYPE_DECLARATION = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -715,7 +771,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeDeclaration()
    * @generated
    */
-  int COMPLEX_TYPE_DECLARATION = 20;
+  int COMPLEX_TYPE_DECLARATION = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -770,7 +826,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeDeclaration()
    * @generated
    */
-  int ENUM_TYPE_DECLARATION = 21;
+  int ENUM_TYPE_DECLARATION = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -834,7 +890,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumTypeLiteral()
    * @generated
    */
-  int ENUM_TYPE_LITERAL = 22;
+  int ENUM_TYPE_LITERAL = 24;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -862,7 +918,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getEnumMember()
    * @generated
    */
-  int ENUM_MEMBER = 23;
+  int ENUM_MEMBER = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -908,7 +964,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getComplexTypeLiteral()
    * @generated
    */
-  int COMPLEX_TYPE_LITERAL = 24;
+  int COMPLEX_TYPE_LITERAL = 26;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -936,7 +992,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntrinsicType()
    * @generated
    */
-  int INTRINSIC_TYPE = 25;
+  int INTRINSIC_TYPE = 27;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -964,7 +1020,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringType()
    * @generated
    */
-  int STRING_TYPE = 26;
+  int STRING_TYPE = 28;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -992,7 +1048,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 27;
+  int BOOLEAN_TYPE = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1020,7 +1076,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getNumericType()
    * @generated
    */
-  int NUMERIC_TYPE = 28;
+  int NUMERIC_TYPE = 30;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1048,7 +1104,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getIntegerType()
    * @generated
    */
-  int INTEGER_TYPE = 29;
+  int INTEGER_TYPE = 31;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1076,7 +1132,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getLongType()
    * @generated
    */
-  int LONG_TYPE = 30;
+  int LONG_TYPE = 32;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1104,7 +1160,7 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getDoubleType()
    * @generated
    */
-  int DOUBLE_TYPE = 31;
+  int DOUBLE_TYPE = 33;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1125,6 +1181,90 @@ public interface NetModelPackage extends EPackage
   int DOUBLE_TYPE_FEATURE_COUNT = NUMERIC_TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.impl.BooleanLiteralImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 34;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.impl.StringLiteralImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 35;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NumericLiteralImpl
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getNumericLiteral()
+   * @generated
+   */
+  int NUMERIC_LITERAL = 36;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Numeric Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethodType <em>Http Method Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1132,7 +1272,17 @@ public interface NetModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getHttpMethodType()
    * @generated
    */
-  int HTTP_METHOD_TYPE = 32;
+  int HTTP_METHOD_TYPE = 37;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.BooleanValue <em>Boolean Value</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.net.netModel.BooleanValue
+   * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanValue()
+   * @generated
+   */
+  int BOOLEAN_VALUE = 38;
 
 
   /**
@@ -1367,6 +1517,48 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EReference getParamsBlock_Params();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment <em>Simple Member Assignment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Simple Member Assignment</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment
+   * @generated
+   */
+  EClass getSimpleMemberAssignment();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment#getMember <em>Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Member</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment#getMember()
+   * @see #getSimpleMemberAssignment()
+   * @generated
+   */
+  EReference getSimpleMemberAssignment_Member();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment#getDefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Default Value</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment#getDefaultValue()
+   * @see #getSimpleMemberAssignment()
+   * @generated
+   */
+  EReference getSimpleMemberAssignment_DefaultValue();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.Literal
+   * @generated
+   */
+  EClass getLiteral();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.BodyBlock <em>Body Block</em>}'.
@@ -1841,6 +2033,69 @@ public interface NetModelPackage extends EPackage
   EClass getDoubleType();
 
   /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.BooleanLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.BooleanLiteral#getLiteral()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Literal();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.StringLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.StringLiteral#getLiteral()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Literal();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.net.netModel.NumericLiteral <em>Numeric Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Numeric Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.NumericLiteral
+   * @generated
+   */
+  EClass getNumericLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.net.netModel.NumericLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.NumericLiteral#getLiteral()
+   * @see #getNumericLiteral()
+   * @generated
+   */
+  EAttribute getNumericLiteral_Literal();
+
+  /**
    * Returns the meta object for enum '{@link com.robotoworks.mechanoid.net.netModel.HttpMethodType <em>Http Method Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1849,6 +2104,16 @@ public interface NetModelPackage extends EPackage
    * @generated
    */
   EEnum getHttpMethodType();
+
+  /**
+   * Returns the meta object for enum '{@link com.robotoworks.mechanoid.net.netModel.BooleanValue <em>Boolean Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Boolean Value</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.BooleanValue
+   * @generated
+   */
+  EEnum getBooleanValue();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2066,6 +2331,42 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EReference PARAMS_BLOCK__PARAMS = eINSTANCE.getParamsBlock_Params();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberAssignmentImpl <em>Simple Member Assignment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.impl.SimpleMemberAssignmentImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getSimpleMemberAssignment()
+     * @generated
+     */
+    EClass SIMPLE_MEMBER_ASSIGNMENT = eINSTANCE.getSimpleMemberAssignment();
+
+    /**
+     * The meta object literal for the '<em><b>Member</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_MEMBER_ASSIGNMENT__MEMBER = eINSTANCE.getSimpleMemberAssignment_Member();
+
+    /**
+     * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE = eINSTANCE.getSimpleMemberAssignment_DefaultValue();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.LiteralImpl <em>Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.impl.LiteralImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getLiteral()
+     * @generated
+     */
+    EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.BodyBlockImpl <em>Body Block</em>}' class.
@@ -2474,6 +2775,60 @@ public interface NetModelPackage extends EPackage
     EClass DOUBLE_TYPE = eINSTANCE.getDoubleType();
 
     /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.impl.BooleanLiteralImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__LITERAL = eINSTANCE.getBooleanLiteral_Literal();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.impl.StringLiteralImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__LITERAL = eINSTANCE.getStringLiteral_Literal();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NumericLiteralImpl
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getNumericLiteral()
+     * @generated
+     */
+    EClass NUMERIC_LITERAL = eINSTANCE.getNumericLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMERIC_LITERAL__LITERAL = eINSTANCE.getNumericLiteral_Literal();
+
+    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethodType <em>Http Method Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2482,6 +2837,16 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EEnum HTTP_METHOD_TYPE = eINSTANCE.getHttpMethodType();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.net.netModel.BooleanValue <em>Boolean Value</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.net.netModel.BooleanValue
+     * @see com.robotoworks.mechanoid.net.netModel.impl.NetModelPackageImpl#getBooleanValue()
+     * @generated
+     */
+    EEnum BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
 
   }
 

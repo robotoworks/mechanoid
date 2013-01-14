@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.net.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -19,10 +20,13 @@ import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
@@ -51,6 +55,12 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				if(context == grammarAccess.getBodyBlockRule() ||
 				   context == grammarAccess.getHttpMethodBlockRule()) {
 					sequence_BodyBlock(context, (BodyBlock) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.BOOLEAN_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -170,6 +180,12 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.NUMERIC_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (NumericLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.PARAMS_BLOCK:
 				if(context == grammarAccess.getClientBlockRule() ||
 				   context == grammarAccess.getHttpMethodBlockRule() ||
@@ -191,10 +207,22 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.SIMPLE_MEMBER_ASSIGNMENT:
+				if(context == grammarAccess.getSimpleMemberAssignmentRule()) {
+					sequence_SimpleMemberAssignment(context, (SimpleMemberAssignment) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.SKIP_MEMBER:
 				if(context == grammarAccess.getMemberRule() ||
 				   context == grammarAccess.getSkipMemberRule()) {
 					sequence_SkipMember(context, (SkipMember) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.STRING_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (StringLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -392,6 +420,54 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
+	 *     literal=BooleanValue
+	 */
+	protected void sequence_Literal(EObject context, BooleanLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.BOOLEAN_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.BOOLEAN_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=SignedNumber
+	 */
+	protected void sequence_Literal(EObject context, NumericLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.NUMERIC_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.NUMERIC_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=STRING
+	 */
+	protected void sequence_Literal(EObject context, StringLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.STRING_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.STRING_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     id='long'
 	 */
 	protected void sequence_LongType(EObject context, LongType semanticObject) {
@@ -417,7 +493,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (params+=SimpleMember* params+=SimpleMember*)
+	 *     (params+=SimpleMemberAssignment* params+=SimpleMemberAssignment*)
 	 */
 	protected void sequence_ParamsBlock(EObject context, ParamsBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -429,6 +505,15 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (superType=[ComplexTypeDeclaration|ID]? type=BlockType?)
 	 */
 	protected void sequence_ResponseBlock(EObject context, ResponseBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (member=SimpleMember defaultValue=Literal?)
+	 */
+	protected void sequence_SimpleMemberAssignment(EObject context, SimpleMemberAssignment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

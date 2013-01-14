@@ -79,15 +79,15 @@ class RequestGenerator {
 		«var clientParams = client.paramsBlock»
 		«IF(methodParams != null)»
 		«FOR param:methodParams.params»
-		private «param.type.signature» «param.name.camelize»Param;
-		private boolean «param.name.camelize»ParamSet;
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 		«ENDFOR»
 			
 		«ENDIF»
 		«IF(clientParams != null)»
 		«FOR param:clientParams.params»
-		private «param.type.signature» «param.name.camelize»Param;
-		private boolean «param.name.camelize»ParamSet;
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 		«ENDFOR»
 			
 		«ENDIF»
@@ -97,28 +97,28 @@ class RequestGenerator {
 		«ENDIF»
 		«IF(methodParams != null)»
 		«FOR param:methodParams.params»
-		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
-			this.«param.name.camelize»Param = value;
-			this.«param.name.camelize»ParamSet = true;
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean is«param.name.pascalize»ParamSet() {
-			return «param.name.camelize»ParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
 		«ENDFOR»
 			
 		«ENDIF»
 		«IF(clientParams != null)»
 		«FOR param:clientParams.params»
-		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
-			this.«param.name.camelize»Param = value;
-			this.«param.name.camelize»ParamSet = true;
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean is«param.name.pascalize»ParamSet() {
-			return «param.name.camelize»ParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
 		«ENDFOR»
 				
@@ -160,11 +160,11 @@ class RequestGenerator {
 				
 			«IF(methodParams != null)»
 				«FOR param:methodParams.params»
-					if(«param.name.camelize»ParamSet){
-						«IF param.type instanceof StringType»
-						uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+					if(«param.member.name.camelize»ParamSet){
+						«IF param.member.type instanceof StringType»
+						uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
 						«ELSE»
-						uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+						uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
 						«ENDIF»
 					}
 				«ENDFOR»
@@ -172,11 +172,11 @@ class RequestGenerator {
 			«ENDIF»
 			«IF(clientParams != null)»
 			«FOR param:clientParams.params»
-				if(«param.name.camelize»ParamSet){
-					«IF param.type instanceof StringType»
-					uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+				if(«param.member.name.camelize»ParamSet){
+					«IF param.member.type instanceof StringType»
+					uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
 					«ELSE»
-					uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+					uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
 					«ENDIF»
 				}
 			«ENDFOR»

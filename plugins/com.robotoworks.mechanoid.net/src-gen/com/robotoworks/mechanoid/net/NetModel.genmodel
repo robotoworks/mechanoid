@@ -13,6 +13,10 @@
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/post"/>
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/delete"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="NetModel.ecore#//BooleanValue">
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//BooleanValue/true"/>
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//BooleanValue/false"/>
+    </genEnums>
     <genClasses ecoreClass="NetModel.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Model/packageName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Model/declarations"/>
@@ -42,6 +46,11 @@
     <genClasses ecoreClass="NetModel.ecore#//ParamsBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ParamsBlock/params"/>
     </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//SimpleMemberAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SimpleMemberAssignment/member"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//SimpleMemberAssignment/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//Literal"/>
     <genClasses ecoreClass="NetModel.ecore#//BodyBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//BodyBlock/type"/>
     </genClasses>
@@ -102,5 +111,14 @@
     <genClasses ecoreClass="NetModel.ecore#//IntegerType"/>
     <genClasses ecoreClass="NetModel.ecore#//LongType"/>
     <genClasses ecoreClass="NetModel.ecore#//DoubleType"/>
+    <genClasses ecoreClass="NetModel.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//BooleanLiteral/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//StringLiteral/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="NetModel.ecore#//NumericLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//NumericLiteral/literal"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

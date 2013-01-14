@@ -74,6 +74,8 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.HTTP_METHOD: return createHttpMethod();
       case NetModelPackage.HTTP_METHOD_BLOCK: return createHttpMethodBlock();
       case NetModelPackage.PARAMS_BLOCK: return createParamsBlock();
+      case NetModelPackage.SIMPLE_MEMBER_ASSIGNMENT: return createSimpleMemberAssignment();
+      case NetModelPackage.LITERAL: return createLiteral();
       case NetModelPackage.BODY_BLOCK: return createBodyBlock();
       case NetModelPackage.RESPONSE_BLOCK: return createResponseBlock();
       case NetModelPackage.BLOCK_TYPE: return createBlockType();
@@ -97,6 +99,9 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
       case NetModelPackage.INTEGER_TYPE: return createIntegerType();
       case NetModelPackage.LONG_TYPE: return createLongType();
       case NetModelPackage.DOUBLE_TYPE: return createDoubleType();
+      case NetModelPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
+      case NetModelPackage.STRING_LITERAL: return createStringLiteral();
+      case NetModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -114,6 +119,8 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
     {
       case NetModelPackage.HTTP_METHOD_TYPE:
         return createHttpMethodTypeFromString(eDataType, initialValue);
+      case NetModelPackage.BOOLEAN_VALUE:
+        return createBooleanValueFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -131,6 +138,8 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
     {
       case NetModelPackage.HTTP_METHOD_TYPE:
         return convertHttpMethodTypeToString(eDataType, instanceValue);
+      case NetModelPackage.BOOLEAN_VALUE:
+        return convertBooleanValueToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -233,6 +242,28 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     ParamsBlockImpl paramsBlock = new ParamsBlockImpl();
     return paramsBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SimpleMemberAssignment createSimpleMemberAssignment()
+  {
+    SimpleMemberAssignmentImpl simpleMemberAssignment = new SimpleMemberAssignmentImpl();
+    return simpleMemberAssignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
   }
 
   /**
@@ -493,6 +524,39 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NumericLiteral createNumericLiteral()
+  {
+    NumericLiteralImpl numericLiteral = new NumericLiteralImpl();
+    return numericLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public HttpMethodType createHttpMethodTypeFromString(EDataType eDataType, String initialValue)
   {
     HttpMethodType result = HttpMethodType.get(initialValue);
@@ -506,6 +570,28 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
    * @generated
    */
   public String convertHttpMethodTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanValue createBooleanValueFromString(EDataType eDataType, String initialValue)
+  {
+    BooleanValue result = BooleanValue.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBooleanValueToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

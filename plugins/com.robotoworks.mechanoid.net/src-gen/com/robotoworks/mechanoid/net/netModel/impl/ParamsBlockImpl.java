@@ -4,7 +4,7 @@ package com.robotoworks.mechanoid.net.netModel.impl;
 
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
-import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 
 import java.util.Collection;
 
@@ -41,7 +41,7 @@ public class ParamsBlockImpl extends ClientBlockImpl implements ParamsBlock
    * @generated
    * @ordered
    */
-  protected EList<SimpleMember> params;
+  protected EList<SimpleMemberAssignment> params;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,11 +69,11 @@ public class ParamsBlockImpl extends ClientBlockImpl implements ParamsBlock
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SimpleMember> getParams()
+  public EList<SimpleMemberAssignment> getParams()
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<SimpleMember>(SimpleMember.class, this, NetModelPackage.PARAMS_BLOCK__PARAMS);
+      params = new EObjectContainmentEList<SimpleMemberAssignment>(SimpleMemberAssignment.class, this, NetModelPackage.PARAMS_BLOCK__PARAMS);
     }
     return params;
   }
@@ -123,7 +123,7 @@ public class ParamsBlockImpl extends ClientBlockImpl implements ParamsBlock
     {
       case NetModelPackage.PARAMS_BLOCK__PARAMS:
         getParams().clear();
-        getParams().addAll((Collection<? extends SimpleMember>)newValue);
+        getParams().addAll((Collection<? extends SimpleMemberAssignment>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

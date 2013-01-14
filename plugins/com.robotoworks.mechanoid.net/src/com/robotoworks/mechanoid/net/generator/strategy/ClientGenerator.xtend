@@ -7,6 +7,10 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethodType
 import com.robotoworks.mechanoid.net.netModel.Model
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment
+import com.robotoworks.mechanoid.net.netModel.StringLiteral
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral
 
 class ClientGenerator {
 	CodeGenerationContext context
@@ -59,17 +63,17 @@ class ClientGenerator {
 			«var params = client.paramsBlock»
 			«IF(params != null)»
 			«FOR param:params.params»
-			private «param.type.signature» «param.name.camelize»Param;
-			private boolean «param.name.camelize»ParamSet;
+			private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+			private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 			«ENDFOR»
 				
 			«ENDIF»
 			
 			«IF(params != null)»
 			«FOR param:params.params»
-			public void set«param.name.pascalize»Param(«param.type.signature» value) {
-				this.«param.name.camelize»Param = value;
-				this.«param.name.camelize»ParamSet = true;
+			public void set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+				this.«param.member.name.camelize»Param = value;
+				this.«param.member.name.camelize»ParamSet = true;
 			}
 			«ENDFOR»
 				
@@ -126,8 +130,8 @@ class ClientGenerator {
 		  	«var params = client.paramsBlock»
 			«IF(params != null)»
 			«FOR param:params.params»
-			if(this.«param.name.camelize»ParamSet && !request.is«param.name.pascalize»ParamSet()){
-				request.set«param.name.pascalize»Param(this.«param.name.camelize»Param);
+			if(this.«param.member.name.camelize»ParamSet && !request.is«param.member.name.pascalize»ParamSet()){
+				request.set«param.member.name.pascalize»Param(this.«param.member.name.camelize»Param);
 			}
 			«ENDFOR»
 			
