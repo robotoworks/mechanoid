@@ -2,7 +2,6 @@
  */
 package com.robotoworks.mechanoid.net.netModel;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ResponseBlock extends EObject
+public interface ResponseBlock extends HttpMethodBlock
 {
   /**
    * Returns the value of the '<em><b>Super Type</b></em>' reference.

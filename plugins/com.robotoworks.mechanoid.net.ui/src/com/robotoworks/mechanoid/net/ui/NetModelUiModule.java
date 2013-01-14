@@ -5,8 +5,12 @@ package com.robotoworks.mechanoid.net.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import com.google.inject.Binder;
 import com.robotoworks.mechanoid.common.MechanoidBuilderParticipant;
+import com.robotoworks.mechanoid.net.ui.editor.syntaxcoloring.MechNetSemanticHighlightingCalculator;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -14,6 +18,12 @@ import com.robotoworks.mechanoid.common.MechanoidBuilderParticipant;
 public class NetModelUiModule extends com.robotoworks.mechanoid.net.ui.AbstractNetModelUiModule {
 	public NetModelUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(ISemanticHighlightingCalculator.class).to(MechNetSemanticHighlightingCalculator.class);
 	}
 	
 	@Override

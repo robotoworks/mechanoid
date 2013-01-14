@@ -6,26 +6,139 @@ import java.util.Set;
 import org.eclipse.emf.ecore.xml.type.internal.RegEx;
 import org.eclipse.emf.ecore.xml.type.internal.RegEx.RegularExpression;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
+import com.robotoworks.mechanoid.net.netModel.BooleanType;
+import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
+import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
+import com.robotoworks.mechanoid.net.netModel.NumericType;
+import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
+import com.robotoworks.mechanoid.net.netModel.StringType;
  
 
 public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 
 	private RegularExpression pathPattern = RegEx.REUtil.createRegex("^(\\/)?(?:[^/]+)?(?:(?:\\/(?:[^/]+)?)+)?$", "");
 	
+//	@Check
+//	public void ensureValidMethodPath(HttpMethod method){
+//		if(method.getPath() == null || method.getPath().length() == 0) {
+//			return;
+//		}
+//		if(!pathPattern.matches(method.getPath())){
+//			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
+//		}
+//	}
+	
 	@Check
-	public void ensureValidMethodPath(HttpMethod method){
-		if(method.getPath() == null || method.getPath().length() == 0) {
+	public void checkValueAssignment(SimpleMemberAssignment assignment){
+		IntrinsicType type = assignment.getMember().getType();
+		Literal defaultValue = assignment.getDefaultValue();
+		
+		if(defaultValue == null) {
 			return;
 		}
-		if(!pathPattern.matches(method.getPath())){
-			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
+		
+		if(type instanceof StringType) {
+			
+			if(!(defaultValue instanceof StringLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}
+		} else if(type instanceof BooleanType) {
+			if(!(defaultValue instanceof BooleanLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}			
+		// TODO Check each numeric type (double, integer, long, etc)
+		} else if(type instanceof NumericType) {
+			if(!(defaultValue instanceof NumericLiteral)) {
+				error("Type mismatch", 
+						NetModelPackage.Literals.SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE
+						);
+			}			
+		}
+	}
+	
+	@Check
+	public void checkBodyIsValid(HttpMethod method){
+		Iterable<BodyBlock> bodyBlocks = IterableExtensions.filter(method.getBlocks(), BodyBlock.class);
+		int numBodyBlocks = IterableExtensions.size(bodyBlocks);
+		HttpMethodType methodType = method.getType();
+		
+		if(methodType == HttpMethodType.POST || methodType == HttpMethodType.PUT) {
+			if(numBodyBlocks > 1) {
+				BodyBlock lastBlock = IterableExtensions.last(bodyBlocks);
+				error("Body block already defined", 
+						method,
+						NetModelPackage.Literals.HTTP_METHOD__BLOCKS, 
+						method.getBlocks().indexOf(lastBlock));
+			}
+			
+			return;
+		}
+		
+		if(numBodyBlocks > 0) {
+			BodyBlock lastBlock = IterableExtensions.last(bodyBlocks);
+			error("body not valid for " + methodType.getLiteral() + " methods", 
+					method, 
+					NetModelPackage.Literals.HTTP_METHOD__BLOCKS, 
+					method.getBlocks().indexOf(lastBlock));
+		}
+	}
+	
+	@Check
+	public void checkBlockCardinality(HttpMethod method){
+		checkBlockCardinality(method, ParamsBlock.class, "params", 0, 1);
+		checkBlockCardinality(method, ResponseBlock.class, "response", 0, 1);
+		checkBlockCardinality(method, HeaderBlock.class, "headers", 0, 1);
+	}
+	
+	@Check
+	public void checkBlockCardinality(Client client){
+		checkBlockCardinality(client, ParamsBlock.class, "params", 0, 1);
+		checkBlockCardinality(client, HeaderBlock.class, "headers", 0, 1);
+	}
+	
+	private <T> void checkBlockCardinality(HttpMethod method, Class<T> blockClazz, String blockType, int min, int max) {
+		Iterable<T> blocks = IterableExtensions.filter(method.getBlocks(), blockClazz);
+		int numBlocks = IterableExtensions.size(blocks);
+		
+		if(numBlocks  < min || numBlocks  > max) {
+			T lastBlock = IterableExtensions.last(blocks);
+			error(blockType + " already defined", 
+					method,
+					NetModelPackage.Literals.HTTP_METHOD__BLOCKS, 
+					method.getBlocks().indexOf(lastBlock));
+		}
+	}
+	
+	private <T> void checkBlockCardinality(Client client, Class<T> blockClazz, String blockType, int min, int max) {
+		Iterable<T> blocks = IterableExtensions.filter(client.getBlocks(), blockClazz);
+		int numBlocks = IterableExtensions.size(blocks);
+		
+		if(numBlocks < min || numBlocks > max) {
+			T lastBlock = IterableExtensions.last(blocks);
+			error(blockType + " already defined", 
+					client,
+					NetModelPackage.Literals.CLIENT__BLOCKS, 
+					client.getBlocks().indexOf(lastBlock));
 		}
 	}
 		

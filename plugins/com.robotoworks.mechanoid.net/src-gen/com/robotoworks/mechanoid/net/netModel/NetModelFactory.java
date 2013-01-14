@@ -50,6 +50,15 @@ public interface NetModelFactory extends EFactory
   Client createClient();
 
   /**
+   * Returns a new object of class '<em>Client Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Client Block</em>'.
+   * @generated
+   */
+  ClientBlock createClientBlock();
+
+  /**
    * Returns a new object of class '<em>Header Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,40 +86,22 @@ public interface NetModelFactory extends EFactory
   HttpMethod createHttpMethod();
 
   /**
-   * Returns a new object of class '<em>Http Post</em>'.
+   * Returns a new object of class '<em>Http Method Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Post</em>'.
+   * @return a new object of class '<em>Http Method Block</em>'.
    * @generated
    */
-  HttpPost createHttpPost();
+  HttpMethodBlock createHttpMethodBlock();
 
   /**
-   * Returns a new object of class '<em>Http Put</em>'.
+   * Returns a new object of class '<em>Path</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Put</em>'.
+   * @return a new object of class '<em>Path</em>'.
    * @generated
    */
-  HttpPut createHttpPut();
-
-  /**
-   * Returns a new object of class '<em>Http Get</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Get</em>'.
-   * @generated
-   */
-  HttpGet createHttpGet();
-
-  /**
-   * Returns a new object of class '<em>Http Delete</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Http Delete</em>'.
-   * @generated
-   */
-  HttpDelete createHttpDelete();
+  Path createPath();
 
   /**
    * Returns a new object of class '<em>Params Block</em>'.
@@ -120,6 +111,24 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   ParamsBlock createParamsBlock();
+
+  /**
+   * Returns a new object of class '<em>Simple Member Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Member Assignment</em>'.
+   * @generated
+   */
+  SimpleMemberAssignment createSimpleMemberAssignment();
+
+  /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
 
   /**
    * Returns a new object of class '<em>Body Block</em>'.
@@ -327,6 +336,33 @@ public interface NetModelFactory extends EFactory
    * @generated
    */
   DoubleType createDoubleType();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Numeric Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Numeric Literal</em>'.
+   * @generated
+   */
+  NumericLiteral createNumericLiteral();
 
   /**
    * Returns the package supported by this factory.

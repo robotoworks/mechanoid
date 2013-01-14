@@ -4,7 +4,7 @@ package com.robotoworks.mechanoid.net.netModel.impl;
 
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
-import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 
 import java.util.Collection;
 
@@ -14,8 +14,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ParamsBlockImpl extends MinimalEObjectImpl.Container implements ParamsBlock
+public class ParamsBlockImpl extends ClientBlockImpl implements ParamsBlock
 {
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
@@ -43,7 +41,7 @@ public class ParamsBlockImpl extends MinimalEObjectImpl.Container implements Par
    * @generated
    * @ordered
    */
-  protected EList<SimpleMember> params;
+  protected EList<SimpleMemberAssignment> params;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +69,11 @@ public class ParamsBlockImpl extends MinimalEObjectImpl.Container implements Par
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SimpleMember> getParams()
+  public EList<SimpleMemberAssignment> getParams()
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<SimpleMember>(SimpleMember.class, this, NetModelPackage.PARAMS_BLOCK__PARAMS);
+      params = new EObjectContainmentEList<SimpleMemberAssignment>(SimpleMemberAssignment.class, this, NetModelPackage.PARAMS_BLOCK__PARAMS);
     }
     return params;
   }
@@ -125,7 +123,7 @@ public class ParamsBlockImpl extends MinimalEObjectImpl.Container implements Par
     {
       case NetModelPackage.PARAMS_BLOCK__PARAMS:
         getParams().clear();
-        getParams().addAll((Collection<? extends SimpleMember>)newValue);
+        getParams().addAll((Collection<? extends SimpleMemberAssignment>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

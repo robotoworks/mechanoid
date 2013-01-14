@@ -80,19 +80,15 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBaseUrlAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cBaseUrlSTRINGTerminalRuleCall_2_0 = (RuleCall)cBaseUrlAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
-		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
-		private final Assignment cMethodsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMethodsHttpMethodParserRuleCall_6_0 = (RuleCall)cMethodsAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cBlocksAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBlocksClientBlockParserRuleCall_4_0 = (RuleCall)cBlocksAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Client:
-		//	"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}";
+		//	"client" name=ID baseUrl=STRING? "{" blocks+=ClientBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}"
+		//"client" name=ID baseUrl=STRING? "{" blocks+=ClientBlock* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"client"
@@ -113,26 +109,38 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//headers=HeaderBlock?
-		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+		//blocks+=ClientBlock*
+		public Assignment getBlocksAssignment_4() { return cBlocksAssignment_4; }
 
-		//HeaderBlock
-		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
-
-		//params=ParamsBlock?
-		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
-
-		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
-
-		//methods+=HttpMethod*
-		public Assignment getMethodsAssignment_6() { return cMethodsAssignment_6; }
-
-		//HttpMethod
-		public RuleCall getMethodsHttpMethodParserRuleCall_6_0() { return cMethodsHttpMethodParserRuleCall_6_0; }
+		//ClientBlock
+		public RuleCall getBlocksClientBlockParserRuleCall_4_0() { return cBlocksClientBlockParserRuleCall_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class ClientBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ClientBlock");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cHeaderBlockParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cParamsBlockParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cHttpMethodParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//ClientBlock:
+		//	HeaderBlock | ParamsBlock | HttpMethod;
+		public ParserRule getRule() { return rule; }
+
+		//HeaderBlock | ParamsBlock | HttpMethod
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//HeaderBlock
+		public RuleCall getHeaderBlockParserRuleCall_0() { return cHeaderBlockParserRuleCall_0; }
+
+		//ParamsBlock
+		public RuleCall getParamsBlockParserRuleCall_1() { return cParamsBlockParserRuleCall_1; }
+
+		//HttpMethod
+		public RuleCall getHttpMethodParserRuleCall_2() { return cHttpMethodParserRuleCall_2; }
 	}
 
 	public class HeaderBlockElements extends AbstractParserRuleElementFinder {
@@ -209,302 +217,142 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class HttpMethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpMethod");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cHttpPostParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cHttpGetParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cHttpPutParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cHttpDeleteParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeHttpMethodTypeEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPathPathParserRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cBlocksAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cBlocksHttpMethodBlockParserRuleCall_4_0 = (RuleCall)cBlocksAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//HttpMethod:
-		//	HttpPost | HttpGet | HttpPut | HttpDelete;
+		//	type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//HttpPost | HttpGet | HttpPut | HttpDelete
+		//type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}"
+		public Group getGroup() { return cGroup; }
+
+		//type=HttpMethodType
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//HttpMethodType
+		public RuleCall getTypeHttpMethodTypeEnumRuleCall_0_0() { return cTypeHttpMethodTypeEnumRuleCall_0_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//path=Path?
+		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
+
+		//Path
+		public RuleCall getPathPathParserRuleCall_2_0() { return cPathPathParserRuleCall_2_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//blocks+=HttpMethodBlock*
+		public Assignment getBlocksAssignment_4() { return cBlocksAssignment_4; }
+
+		//HttpMethodBlock
+		public RuleCall getBlocksHttpMethodBlockParserRuleCall_4_0() { return cBlocksHttpMethodBlockParserRuleCall_4_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class HttpMethodBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpMethodBlock");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cHeaderBlockParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cParamsBlockParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBodyBlockParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cResponseBlockParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//HttpMethodBlock:
+		//	HeaderBlock | ParamsBlock | BodyBlock | ResponseBlock;
+		public ParserRule getRule() { return rule; }
+
+		//HeaderBlock | ParamsBlock | BodyBlock | ResponseBlock
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//HttpPost
-		public RuleCall getHttpPostParserRuleCall_0() { return cHttpPostParserRuleCall_0; }
-
-		//HttpGet
-		public RuleCall getHttpGetParserRuleCall_1() { return cHttpGetParserRuleCall_1; }
-
-		//HttpPut
-		public RuleCall getHttpPutParserRuleCall_2() { return cHttpPutParserRuleCall_2; }
-
-		//HttpDelete
-		public RuleCall getHttpDeleteParserRuleCall_3() { return cHttpDeleteParserRuleCall_3; }
-	}
-
-	public class HttpPostElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpPost");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPostKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
-		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
-		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cBodyBodyBlockParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
-		private final Assignment cResponseAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cResponseResponseBlockParserRuleCall_7_0 = (RuleCall)cResponseAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		
-		//HttpPost:
-		//	"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
-		public ParserRule getRule() { return rule; }
-
-		//"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
-		public Group getGroup() { return cGroup; }
-
-		//"post"
-		public Keyword getPostKeyword_0() { return cPostKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//path=STRING?
-		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
-
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_2_0() { return cPathSTRINGTerminalRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//headers=HeaderBlock?
-		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
-
 		//HeaderBlock
-		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
-
-		//params=ParamsBlock?
-		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
+		public RuleCall getHeaderBlockParserRuleCall_0() { return cHeaderBlockParserRuleCall_0; }
 
 		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
-
-		//body=BodyBlock?
-		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
+		public RuleCall getParamsBlockParserRuleCall_1() { return cParamsBlockParserRuleCall_1; }
 
 		//BodyBlock
-		public RuleCall getBodyBodyBlockParserRuleCall_6_0() { return cBodyBodyBlockParserRuleCall_6_0; }
-
-		//response=ResponseBlock?
-		public Assignment getResponseAssignment_7() { return cResponseAssignment_7; }
+		public RuleCall getBodyBlockParserRuleCall_2() { return cBodyBlockParserRuleCall_2; }
 
 		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_7_0() { return cResponseResponseBlockParserRuleCall_7_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public RuleCall getResponseBlockParserRuleCall_3() { return cResponseBlockParserRuleCall_3; }
 	}
 
-	public class HttpPutElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpPut");
+	public class PathElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Path");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPutKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
-		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
-		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cBodyBodyBlockParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
-		private final Assignment cResponseAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cResponseResponseBlockParserRuleCall_7_0 = (RuleCall)cResponseAssignment_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Action cPathAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final RuleCall cIDTerminalRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final Assignment cParamsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
+		private final Assignment cParamsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0 = (RuleCall)cParamsAssignment_3_1_1.eContents().get(0);
 		
-		//HttpPut:
-		//	"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
+		//Path:
+		//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
 		public ParserRule getRule() { return rule; }
 
-		//"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}"
+		//{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*
 		public Group getGroup() { return cGroup; }
 
-		//"put"
-		public Keyword getPutKeyword_0() { return cPutKeyword_0; }
+		//{Path}
+		public Action getPathAction_0() { return cPathAction_0; }
 
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//"/"
+		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
 
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//path=STRING?
-		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
-
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_2_0() { return cPathSTRINGTerminalRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//headers=HeaderBlock?
-		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
-
-		//HeaderBlock
-		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
-
-		//params=ParamsBlock?
-		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
-
-		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
-
-		//body=BodyBlock?
-		public Assignment getBodyAssignment_6() { return cBodyAssignment_6; }
-
-		//BodyBlock
-		public RuleCall getBodyBodyBlockParserRuleCall_6_0() { return cBodyBodyBlockParserRuleCall_6_0; }
-
-		//response=ResponseBlock?
-		public Assignment getResponseAssignment_7() { return cResponseAssignment_7; }
-
-		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_7_0() { return cResponseResponseBlockParserRuleCall_7_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
-	}
-
-	public class HttpGetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpGet");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGetKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
-		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
-		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//HttpGet:
-		//	"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
-		public ParserRule getRule() { return rule; }
-
-		//"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}"
-		public Group getGroup() { return cGroup; }
-
-		//"get"
-		public Keyword getGetKeyword_0() { return cGetKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//ID | params+=SimpleMemberAssignment
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getIDTerminalRuleCall_2_0() { return cIDTerminalRuleCall_2_0; }
 
-		//path=STRING?
-		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
+		//params+=SimpleMemberAssignment
+		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
 
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_2_0() { return cPathSTRINGTerminalRuleCall_2_0; }
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_1_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		//("/" (ID | params+=SimpleMemberAssignment))*
+		public Group getGroup_3() { return cGroup_3; }
 
-		//headers=HeaderBlock?
-		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
+		//"/"
+		public Keyword getSolidusKeyword_3_0() { return cSolidusKeyword_3_0; }
 
-		//HeaderBlock
-		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
-
-		//params=ParamsBlock?
-		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
-
-		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
-
-		//response=ResponseBlock?
-		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
-
-		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-
-	public class HttpDeleteElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HttpDelete");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDeleteKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPathAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPathSTRINGTerminalRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cHeadersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cHeadersHeaderBlockParserRuleCall_4_0 = (RuleCall)cHeadersAssignment_4.eContents().get(0);
-		private final Assignment cParamsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParamsParamsBlockParserRuleCall_5_0 = (RuleCall)cParamsAssignment_5.eContents().get(0);
-		private final Assignment cResponseAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cResponseResponseBlockParserRuleCall_6_0 = (RuleCall)cResponseAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//HttpDelete:
-		//	"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
-		public ParserRule getRule() { return rule; }
-
-		//"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}"
-		public Group getGroup() { return cGroup; }
-
-		//"delete"
-		public Keyword getDeleteKeyword_0() { return cDeleteKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//ID | params+=SimpleMemberAssignment
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getIDTerminalRuleCall_3_1_0() { return cIDTerminalRuleCall_3_1_0; }
 
-		//path=STRING?
-		public Assignment getPathAssignment_2() { return cPathAssignment_2; }
+		//params+=SimpleMemberAssignment
+		public Assignment getParamsAssignment_3_1_1() { return cParamsAssignment_3_1_1; }
 
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_2_0() { return cPathSTRINGTerminalRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//headers=HeaderBlock?
-		public Assignment getHeadersAssignment_4() { return cHeadersAssignment_4; }
-
-		//HeaderBlock
-		public RuleCall getHeadersHeaderBlockParserRuleCall_4_0() { return cHeadersHeaderBlockParserRuleCall_4_0; }
-
-		//params=ParamsBlock?
-		public Assignment getParamsAssignment_5() { return cParamsAssignment_5; }
-
-		//ParamsBlock
-		public RuleCall getParamsParamsBlockParserRuleCall_5_0() { return cParamsParamsBlockParserRuleCall_5_0; }
-
-		//response=ResponseBlock?
-		public Assignment getResponseAssignment_6() { return cResponseAssignment_6; }
-
-		//ResponseBlock
-		public RuleCall getResponseResponseBlockParserRuleCall_6_0() { return cResponseResponseBlockParserRuleCall_6_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0; }
 	}
 
 	public class ParamsBlockElements extends AbstractParserRuleElementFinder {
@@ -513,17 +361,17 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cParamsBlockAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cParamsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cParamsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cParamsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cParamsSimpleMemberParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
+		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
 		
 		//ParamsBlock:
-		//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
+		//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 		public ParserRule getRule() { return rule; }
 
-		//{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*
+		//{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*
 		public Group getGroup() { return cGroup; }
 
 		//{ParamsBlock}
@@ -532,23 +380,119 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"params"
 		public Keyword getParamsKeyword_1() { return cParamsKeyword_1; }
 
-		//params+=SimpleMember*
+		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_2() { return cParamsAssignment_2; }
 
-		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_2_0() { return cParamsSimpleMemberParserRuleCall_2_0; }
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_0; }
 
-		//("," params+=SimpleMember)*
+		//("," params+=SimpleMemberAssignment)*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//","
 		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
 
-		//params+=SimpleMember
+		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_3_1() { return cParamsAssignment_3_1; }
 
+		//SimpleMemberAssignment
+		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_3_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_3_1_0; }
+	}
+
+	public class SimpleMemberAssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleMemberAssignment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cMemberAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cMemberSimpleMemberParserRuleCall_0_0 = (RuleCall)cMemberAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cDefaultValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cDefaultValueLiteralParserRuleCall_1_1_0 = (RuleCall)cDefaultValueAssignment_1_1.eContents().get(0);
+		
+		//SimpleMemberAssignment:
+		//	member=SimpleMember ("=" defaultValue=Literal)?;
+		public ParserRule getRule() { return rule; }
+
+		//member=SimpleMember ("=" defaultValue=Literal)?
+		public Group getGroup() { return cGroup; }
+
+		//member=SimpleMember
+		public Assignment getMemberAssignment_0() { return cMemberAssignment_0; }
+
 		//SimpleMember
-		public RuleCall getParamsSimpleMemberParserRuleCall_3_1_0() { return cParamsSimpleMemberParserRuleCall_3_1_0; }
+		public RuleCall getMemberSimpleMemberParserRuleCall_0_0() { return cMemberSimpleMemberParserRuleCall_0_0; }
+
+		//("=" defaultValue=Literal)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_0() { return cEqualsSignKeyword_1_0; }
+
+		//defaultValue=Literal
+		public Assignment getDefaultValueAssignment_1_1() { return cDefaultValueAssignment_1_1; }
+
+		//Literal
+		public RuleCall getDefaultValueLiteralParserRuleCall_1_1_0() { return cDefaultValueLiteralParserRuleCall_1_1_0; }
+	}
+
+	public class LiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Literal");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cBooleanLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cLiteralAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cLiteralBooleanValueEnumRuleCall_0_1_0 = (RuleCall)cLiteralAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cStringLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cLiteralAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cLiteralSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cLiteralAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cNumericLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cLiteralAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cLiteralSignedNumberParserRuleCall_2_1_0 = (RuleCall)cLiteralAssignment_2_1.eContents().get(0);
+		
+		//Literal:
+		//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
+		public ParserRule getRule() { return rule; }
+
+		//{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//{BooleanLiteral} literal=BooleanValue
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{BooleanLiteral}
+		public Action getBooleanLiteralAction_0_0() { return cBooleanLiteralAction_0_0; }
+
+		//literal=BooleanValue
+		public Assignment getLiteralAssignment_0_1() { return cLiteralAssignment_0_1; }
+
+		//BooleanValue
+		public RuleCall getLiteralBooleanValueEnumRuleCall_0_1_0() { return cLiteralBooleanValueEnumRuleCall_0_1_0; }
+
+		//{StringLiteral} literal=STRING
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{StringLiteral}
+		public Action getStringLiteralAction_1_0() { return cStringLiteralAction_1_0; }
+
+		//literal=STRING
+		public Assignment getLiteralAssignment_1_1() { return cLiteralAssignment_1_1; }
+
+		//STRING
+		public RuleCall getLiteralSTRINGTerminalRuleCall_1_1_0() { return cLiteralSTRINGTerminalRuleCall_1_1_0; }
+
+		//{NumericLiteral} literal=SignedNumber
+		public Group getGroup_2() { return cGroup_2; }
+
+		//{NumericLiteral}
+		public Action getNumericLiteralAction_2_0() { return cNumericLiteralAction_2_0; }
+
+		//literal=SignedNumber
+		public Assignment getLiteralAssignment_2_1() { return cLiteralAssignment_2_1; }
+
+		//SignedNumber
+		public RuleCall getLiteralSignedNumberParserRuleCall_2_1_0() { return cLiteralSignedNumberParserRuleCall_2_1_0; }
 	}
 
 	public class BodyBlockElements extends AbstractParserRuleElementFinder {
@@ -1266,19 +1210,113 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
+
+	public class SignedNumberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SignedNumber");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cNUMBERTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//SignedNumber returns ecore::EBigDecimal:
+		//	"-"? NUMBER;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? NUMBER
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//NUMBER
+		public RuleCall getNUMBERTerminalRuleCall_1() { return cNUMBERTerminalRuleCall_1; }
+	}
 	
+	
+	public class HttpMethodTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "HttpMethodType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cGetEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cGetGetKeyword_0_0 = (Keyword)cGetEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cPutEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cPutPutKeyword_1_0 = (Keyword)cPutEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cPostEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cPostPostKeyword_2_0 = (Keyword)cPostEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cDeleteEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cDeleteDeleteKeyword_3_0 = (Keyword)cDeleteEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum HttpMethodType:
+		//	get | put | post | delete;
+		public EnumRule getRule() { return rule; }
+
+		//get | put | post | delete
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//get
+		public EnumLiteralDeclaration getGetEnumLiteralDeclaration_0() { return cGetEnumLiteralDeclaration_0; }
+
+		//"get"
+		public Keyword getGetGetKeyword_0_0() { return cGetGetKeyword_0_0; }
+
+		//put
+		public EnumLiteralDeclaration getPutEnumLiteralDeclaration_1() { return cPutEnumLiteralDeclaration_1; }
+
+		//"put"
+		public Keyword getPutPutKeyword_1_0() { return cPutPutKeyword_1_0; }
+
+		//post
+		public EnumLiteralDeclaration getPostEnumLiteralDeclaration_2() { return cPostEnumLiteralDeclaration_2; }
+
+		//"post"
+		public Keyword getPostPostKeyword_2_0() { return cPostPostKeyword_2_0; }
+
+		//delete
+		public EnumLiteralDeclaration getDeleteEnumLiteralDeclaration_3() { return cDeleteEnumLiteralDeclaration_3; }
+
+		//"delete"
+		public Keyword getDeleteDeleteKeyword_3_0() { return cDeleteDeleteKeyword_3_0; }
+	}
+
+	public class BooleanValueElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTrueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTrueTrueKeyword_0_0 = (Keyword)cTrueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFalseEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFalseFalseKeyword_1_0 = (Keyword)cFalseEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum BooleanValue:
+		//	true | false;
+		public EnumRule getRule() { return rule; }
+
+		//true | false
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//true
+		public EnumLiteralDeclaration getTrueEnumLiteralDeclaration_0() { return cTrueEnumLiteralDeclaration_0; }
+
+		//"true"
+		public Keyword getTrueTrueKeyword_0_0() { return cTrueTrueKeyword_0_0; }
+
+		//false
+		public EnumLiteralDeclaration getFalseEnumLiteralDeclaration_1() { return cFalseEnumLiteralDeclaration_1; }
+
+		//"false"
+		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
+	}
 	
 	private ModelElements pModel;
 	private DeclarationElements pDeclaration;
 	private ClientElements pClient;
+	private ClientBlockElements pClientBlock;
 	private HeaderBlockElements pHeaderBlock;
 	private HeaderElements pHeader;
 	private HttpMethodElements pHttpMethod;
-	private HttpPostElements pHttpPost;
-	private HttpPutElements pHttpPut;
-	private HttpGetElements pHttpGet;
-	private HttpDeleteElements pHttpDelete;
+	private HttpMethodBlockElements pHttpMethodBlock;
+	private HttpMethodTypeElements unknownRuleHttpMethodType;
+	private PathElements pPath;
 	private ParamsBlockElements pParamsBlock;
+	private SimpleMemberAssignmentElements pSimpleMemberAssignment;
+	private LiteralElements pLiteral;
 	private BodyBlockElements pBodyBlock;
 	private ResponseBlockElements pResponseBlock;
 	private BlockTypeElements pBlockType;
@@ -1303,6 +1341,10 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private LongTypeElements pLongType;
 	private DoubleTypeElements pDoubleType;
 	private FQNElements pFQN;
+	private BooleanValueElements unknownRuleBooleanValue;
+	private SignedNumberElements pSignedNumber;
+	private TerminalRule tNUMBER;
+	private TerminalRule tINT;
 	
 	private final Grammar grammar;
 
@@ -1363,13 +1405,23 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Client:
-	//	"client" name=ID baseUrl=STRING? "{" headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod* "}";
+	//	"client" name=ID baseUrl=STRING? "{" blocks+=ClientBlock* "}";
 	public ClientElements getClientAccess() {
 		return (pClient != null) ? pClient : (pClient = new ClientElements());
 	}
 	
 	public ParserRule getClientRule() {
 		return getClientAccess().getRule();
+	}
+
+	//ClientBlock:
+	//	HeaderBlock | ParamsBlock | HttpMethod;
+	public ClientBlockElements getClientBlockAccess() {
+		return (pClientBlock != null) ? pClientBlock : (pClientBlock = new ClientBlockElements());
+	}
+	
+	public ParserRule getClientBlockRule() {
+		return getClientBlockAccess().getRule();
 	}
 
 	//HeaderBlock:
@@ -1393,7 +1445,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//HttpMethod:
-	//	HttpPost | HttpGet | HttpPut | HttpDelete;
+	//	type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}";
 	public HttpMethodElements getHttpMethodAccess() {
 		return (pHttpMethod != null) ? pHttpMethod : (pHttpMethod = new HttpMethodElements());
 	}
@@ -1402,54 +1454,64 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getHttpMethodAccess().getRule();
 	}
 
-	//HttpPost:
-	//	"post" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
-	public HttpPostElements getHttpPostAccess() {
-		return (pHttpPost != null) ? pHttpPost : (pHttpPost = new HttpPostElements());
+	//HttpMethodBlock:
+	//	HeaderBlock | ParamsBlock | BodyBlock | ResponseBlock;
+	public HttpMethodBlockElements getHttpMethodBlockAccess() {
+		return (pHttpMethodBlock != null) ? pHttpMethodBlock : (pHttpMethodBlock = new HttpMethodBlockElements());
 	}
 	
-	public ParserRule getHttpPostRule() {
-		return getHttpPostAccess().getRule();
+	public ParserRule getHttpMethodBlockRule() {
+		return getHttpMethodBlockAccess().getRule();
 	}
 
-	//HttpPut:
-	//	"put" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? body=BodyBlock? response=ResponseBlock? "}";
-	public HttpPutElements getHttpPutAccess() {
-		return (pHttpPut != null) ? pHttpPut : (pHttpPut = new HttpPutElements());
+	//enum HttpMethodType:
+	//	get | put | post | delete;
+	public HttpMethodTypeElements getHttpMethodTypeAccess() {
+		return (unknownRuleHttpMethodType != null) ? unknownRuleHttpMethodType : (unknownRuleHttpMethodType = new HttpMethodTypeElements());
 	}
 	
-	public ParserRule getHttpPutRule() {
-		return getHttpPutAccess().getRule();
+	public EnumRule getHttpMethodTypeRule() {
+		return getHttpMethodTypeAccess().getRule();
 	}
 
-	//HttpGet:
-	//	"get" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
-	public HttpGetElements getHttpGetAccess() {
-		return (pHttpGet != null) ? pHttpGet : (pHttpGet = new HttpGetElements());
+	//Path:
+	//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
+	public PathElements getPathAccess() {
+		return (pPath != null) ? pPath : (pPath = new PathElements());
 	}
 	
-	public ParserRule getHttpGetRule() {
-		return getHttpGetAccess().getRule();
-	}
-
-	//HttpDelete:
-	//	"delete" name=ID path=STRING? "{" headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock? "}";
-	public HttpDeleteElements getHttpDeleteAccess() {
-		return (pHttpDelete != null) ? pHttpDelete : (pHttpDelete = new HttpDeleteElements());
-	}
-	
-	public ParserRule getHttpDeleteRule() {
-		return getHttpDeleteAccess().getRule();
+	public ParserRule getPathRule() {
+		return getPathAccess().getRule();
 	}
 
 	//ParamsBlock:
-	//	{ParamsBlock} "params" params+=SimpleMember* ("," params+=SimpleMember)*;
+	//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 	public ParamsBlockElements getParamsBlockAccess() {
 		return (pParamsBlock != null) ? pParamsBlock : (pParamsBlock = new ParamsBlockElements());
 	}
 	
 	public ParserRule getParamsBlockRule() {
 		return getParamsBlockAccess().getRule();
+	}
+
+	//SimpleMemberAssignment:
+	//	member=SimpleMember ("=" defaultValue=Literal)?;
+	public SimpleMemberAssignmentElements getSimpleMemberAssignmentAccess() {
+		return (pSimpleMemberAssignment != null) ? pSimpleMemberAssignment : (pSimpleMemberAssignment = new SimpleMemberAssignmentElements());
+	}
+	
+	public ParserRule getSimpleMemberAssignmentRule() {
+		return getSimpleMemberAssignmentAccess().getRule();
+	}
+
+	//Literal:
+	//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
+	public LiteralElements getLiteralAccess() {
+		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+	}
+	
+	public ParserRule getLiteralRule() {
+		return getLiteralAccess().getRule();
 	}
 
 	//BodyBlock:
@@ -1692,16 +1754,42 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getFQNAccess().getRule();
 	}
 
+	//enum BooleanValue:
+	//	true | false;
+	public BooleanValueElements getBooleanValueAccess() {
+		return (unknownRuleBooleanValue != null) ? unknownRuleBooleanValue : (unknownRuleBooleanValue = new BooleanValueElements());
+	}
+	
+	public EnumRule getBooleanValueRule() {
+		return getBooleanValueAccess().getRule();
+	}
+
+	//SignedNumber returns ecore::EBigDecimal:
+	//	"-"? NUMBER;
+	public SignedNumberElements getSignedNumberAccess() {
+		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
+	}
+	
+	public ParserRule getSignedNumberRule() {
+		return getSignedNumberAccess().getRule();
+	}
+
+	//terminal NUMBER returns ecore::EBigDecimal:
+	//	"0".."9"* ("." "0".."9"+)?;
+	public TerminalRule getNUMBERRule() {
+		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+	} 
+
+	//terminal INT returns ecore::EInt:
+	//	"$$$don\'t use this anymore$$$";
+	public TerminalRule getINTRule() {
+		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+	} 
+
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
-	} 
-
-	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
-	public TerminalRule getINTRule() {
-		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:

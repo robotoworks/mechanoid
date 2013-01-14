@@ -15,10 +15,13 @@ import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
@@ -98,7 +101,7 @@ public class RequestGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private static final String PATH=\"");
-    String _pathAsFormatString = ModelExtensions.getPathAsFormatString(method);
+    String _pathAsFormatString = ModelExtensions.getPathAsFormatString(method, this.context.serializer);
     _builder.append(_pathAsFormatString, "	");
     _builder.append("\";");
     _builder.newLineIfNotEmpty();
@@ -141,19 +144,26 @@ public class RequestGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("\t");
-    Iterable<String> pathArgs = ModelExtensions.getArgsFromPath(method);
-    _builder.newLineIfNotEmpty();
     {
-      int _size = IterableExtensions.size(pathArgs);
+      Path _path = method.getPath();
+      EList<SimpleMemberAssignment> _params = _path==null?(EList<SimpleMemberAssignment>)null:_path.getParams();
+      int _size = _params.size();
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         {
-          for(final String segment : pathArgs) {
+          Path _path_1 = method.getPath();
+          EList<SimpleMemberAssignment> _params_1 = _path_1.getParams();
+          for(final SimpleMemberAssignment slug : _params_1) {
             _builder.append("\t");
-            _builder.append("private final String ");
-            String _substring = segment.substring(1);
-            String _camelize = ModelExtensions.camelize(_substring);
+            _builder.append("private final ");
+            SimpleMember _member = slug.getMember();
+            IntrinsicType _type = _member.getType();
+            String _signature = ModelExtensions.signature(_type);
+            _builder.append(_signature, "	");
+            _builder.append(" ");
+            SimpleMember _member_1 = slug.getMember();
+            String _name_1 = _member_1.getName();
+            String _camelize = ModelExtensions.camelize(_name_1);
             _builder.append(_camelize, "	");
             _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
@@ -163,31 +173,57 @@ public class RequestGenerator {
         _builder.newLine();
       }
     }
+    _builder.append("\t");
+    ParamsBlock methodParams = ModelExtensions.getParamsBlock(method);
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    ParamsBlock clientParams = ModelExtensions.getParamsBlock(client);
+    _builder.newLineIfNotEmpty();
     {
-      ParamsBlock _params = method.getParams();
-      boolean _notEquals = (!Objects.equal(_params, null));
+      boolean _notEquals = (!Objects.equal(methodParams, null));
       if (_notEquals) {
         {
-          ParamsBlock _params_1 = method.getParams();
-          EList<SimpleMember> _params_2 = _params_1.getParams();
-          for(final SimpleMember param : _params_2) {
+          EList<SimpleMemberAssignment> _params_2 = methodParams.getParams();
+          for(final SimpleMemberAssignment param : _params_2) {
             _builder.append("\t");
             _builder.append("private ");
-            IntrinsicType _type = param.getType();
-            String _signature = ModelExtensions.signature(_type);
-            _builder.append(_signature, "	");
+            SimpleMember _member_2 = param.getMember();
+            IntrinsicType _type_1 = _member_2.getType();
+            String _signature_1 = ModelExtensions.signature(_type_1);
+            _builder.append(_signature_1, "	");
             _builder.append(" ");
-            String _name_1 = param.getName();
-            String _camelize_1 = ModelExtensions.camelize(_name_1);
+            SimpleMember _member_3 = param.getMember();
+            String _name_2 = _member_3.getName();
+            String _camelize_1 = ModelExtensions.camelize(_name_2);
             _builder.append(_camelize_1, "	");
-            _builder.append("Param;");
+            _builder.append("Param");
+            {
+              Literal _defaultValue = param.getDefaultValue();
+              boolean _notEquals_1 = (!Objects.equal(_defaultValue, null));
+              if (_notEquals_1) {
+                _builder.append(" = ");
+                Literal _defaultValue_1 = param.getDefaultValue();
+                String _convertToJavaLiteral = ModelExtensions.convertToJavaLiteral(_defaultValue_1);
+                _builder.append(_convertToJavaLiteral, "	");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("private boolean ");
-            String _name_2 = param.getName();
-            String _camelize_2 = ModelExtensions.camelize(_name_2);
+            SimpleMember _member_4 = param.getMember();
+            String _name_3 = _member_4.getName();
+            String _camelize_2 = ModelExtensions.camelize(_name_3);
             _builder.append(_camelize_2, "	");
-            _builder.append("ParamSet;");
+            _builder.append("ParamSet");
+            {
+              Literal _defaultValue_2 = param.getDefaultValue();
+              boolean _notEquals_2 = (!Objects.equal(_defaultValue_2, null));
+              if (_notEquals_2) {
+                _builder.append(" = true");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -197,30 +233,50 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_3 = client.getParams();
-      boolean _notEquals_1 = (!Objects.equal(_params_3, null));
-      if (_notEquals_1) {
+      boolean _notEquals_3 = (!Objects.equal(clientParams, null));
+      if (_notEquals_3) {
         {
-          ParamsBlock _params_4 = client.getParams();
-          EList<SimpleMember> _params_5 = _params_4.getParams();
-          for(final SimpleMember param_1 : _params_5) {
+          EList<SimpleMemberAssignment> _params_3 = clientParams.getParams();
+          for(final SimpleMemberAssignment param_1 : _params_3) {
             _builder.append("\t");
             _builder.append("private ");
-            IntrinsicType _type_1 = param_1.getType();
-            String _signature_1 = ModelExtensions.signature(_type_1);
-            _builder.append(_signature_1, "	");
+            SimpleMember _member_5 = param_1.getMember();
+            IntrinsicType _type_2 = _member_5.getType();
+            String _signature_2 = ModelExtensions.signature(_type_2);
+            _builder.append(_signature_2, "	");
             _builder.append(" ");
-            String _name_3 = param_1.getName();
-            String _camelize_3 = ModelExtensions.camelize(_name_3);
+            SimpleMember _member_6 = param_1.getMember();
+            String _name_4 = _member_6.getName();
+            String _camelize_3 = ModelExtensions.camelize(_name_4);
             _builder.append(_camelize_3, "	");
-            _builder.append("Param;");
+            _builder.append("Param");
+            {
+              Literal _defaultValue_3 = param_1.getDefaultValue();
+              boolean _notEquals_4 = (!Objects.equal(_defaultValue_3, null));
+              if (_notEquals_4) {
+                _builder.append(" = ");
+                Literal _defaultValue_4 = param_1.getDefaultValue();
+                String _convertToJavaLiteral_1 = ModelExtensions.convertToJavaLiteral(_defaultValue_4);
+                _builder.append(_convertToJavaLiteral_1, "	");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("private boolean ");
-            String _name_4 = param_1.getName();
-            String _camelize_4 = ModelExtensions.camelize(_name_4);
+            SimpleMember _member_7 = param_1.getMember();
+            String _name_5 = _member_7.getName();
+            String _camelize_4 = ModelExtensions.camelize(_name_5);
             _builder.append(_camelize_4, "	");
-            _builder.append("ParamSet;");
+            _builder.append("ParamSet");
+            {
+              Literal _defaultValue_5 = param_1.getDefaultValue();
+              boolean _notEquals_5 = (!Objects.equal(_defaultValue_5, null));
+              if (_notEquals_5) {
+                _builder.append(" = true");
+              }
+            }
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -234,54 +290,56 @@ public class RequestGenerator {
       if (_hasBody) {
         _builder.append("\t");
         BodyBlock _body = ModelExtensions.getBody(method);
-        BlockType _type_2 = _body.getType();
-        CharSequence _generateFieldForType = this.generateFieldForType(_type_2);
+        BlockType _type_3 = _body.getType();
+        CharSequence _generateFieldForType = this.generateFieldForType(_type_3);
         _builder.append(_generateFieldForType, "	");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         BodyBlock _body_1 = ModelExtensions.getBody(method);
-        BlockType _type_3 = _body_1.getType();
-        CharSequence _generateGetterSetterForType = this.generateGetterSetterForType(_type_3);
+        BlockType _type_4 = _body_1.getType();
+        CharSequence _generateGetterSetterForType = this.generateGetterSetterForType(_type_4);
         _builder.append(_generateGetterSetterForType, "	");
         _builder.newLineIfNotEmpty();
       }
     }
     {
-      ParamsBlock _params_6 = method.getParams();
-      boolean _notEquals_2 = (!Objects.equal(_params_6, null));
-      if (_notEquals_2) {
+      boolean _notEquals_6 = (!Objects.equal(methodParams, null));
+      if (_notEquals_6) {
         {
-          ParamsBlock _params_7 = method.getParams();
-          EList<SimpleMember> _params_8 = _params_7.getParams();
-          for(final SimpleMember param_2 : _params_8) {
+          EList<SimpleMemberAssignment> _params_4 = methodParams.getParams();
+          for(final SimpleMemberAssignment param_2 : _params_4) {
             _builder.append("\t");
             _builder.append("public ");
-            String _name_5 = method.getName();
-            String _pascalize_1 = ModelExtensions.pascalize(_name_5);
+            String _name_6 = method.getName();
+            String _pascalize_1 = ModelExtensions.pascalize(_name_6);
             _builder.append(_pascalize_1, "	");
             _builder.append("Request set");
-            String _name_6 = param_2.getName();
-            String _pascalize_2 = ModelExtensions.pascalize(_name_6);
+            SimpleMember _member_8 = param_2.getMember();
+            String _name_7 = _member_8.getName();
+            String _pascalize_2 = ModelExtensions.pascalize(_name_7);
             _builder.append(_pascalize_2, "	");
             _builder.append("Param(");
-            IntrinsicType _type_4 = param_2.getType();
-            String _signature_2 = ModelExtensions.signature(_type_4);
-            _builder.append(_signature_2, "	");
+            SimpleMember _member_9 = param_2.getMember();
+            IntrinsicType _type_5 = _member_9.getType();
+            String _signature_3 = ModelExtensions.signature(_type_5);
+            _builder.append(_signature_3, "	");
             _builder.append(" value) {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_7 = param_2.getName();
-            String _camelize_5 = ModelExtensions.camelize(_name_7);
+            SimpleMember _member_10 = param_2.getMember();
+            String _name_8 = _member_10.getName();
+            String _camelize_5 = ModelExtensions.camelize(_name_8);
             _builder.append(_camelize_5, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_8 = param_2.getName();
-            String _camelize_6 = ModelExtensions.camelize(_name_8);
+            SimpleMember _member_11 = param_2.getMember();
+            String _name_9 = _member_11.getName();
+            String _camelize_6 = ModelExtensions.camelize(_name_9);
             _builder.append(_camelize_6, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
@@ -296,16 +354,18 @@ public class RequestGenerator {
             _builder.newLine();
             _builder.append("\t");
             _builder.append("public boolean is");
-            String _name_9 = param_2.getName();
-            String _pascalize_3 = ModelExtensions.pascalize(_name_9);
+            SimpleMember _member_12 = param_2.getMember();
+            String _name_10 = _member_12.getName();
+            String _pascalize_3 = ModelExtensions.pascalize(_name_10);
             _builder.append(_pascalize_3, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return ");
-            String _name_10 = param_2.getName();
-            String _camelize_7 = ModelExtensions.camelize(_name_10);
+            SimpleMember _member_13 = param_2.getMember();
+            String _name_11 = _member_13.getName();
+            String _camelize_7 = ModelExtensions.camelize(_name_11);
             _builder.append(_camelize_7, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -320,41 +380,43 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_9 = client.getParams();
-      boolean _notEquals_3 = (!Objects.equal(_params_9, null));
-      if (_notEquals_3) {
+      boolean _notEquals_7 = (!Objects.equal(clientParams, null));
+      if (_notEquals_7) {
         {
-          ParamsBlock _params_10 = client.getParams();
-          EList<SimpleMember> _params_11 = _params_10.getParams();
-          for(final SimpleMember param_3 : _params_11) {
+          EList<SimpleMemberAssignment> _params_5 = clientParams.getParams();
+          for(final SimpleMemberAssignment param_3 : _params_5) {
             _builder.append("\t");
             _builder.append("public ");
-            String _name_11 = method.getName();
-            String _pascalize_4 = ModelExtensions.pascalize(_name_11);
+            String _name_12 = method.getName();
+            String _pascalize_4 = ModelExtensions.pascalize(_name_12);
             _builder.append(_pascalize_4, "	");
             _builder.append("Request set");
-            String _name_12 = param_3.getName();
-            String _pascalize_5 = ModelExtensions.pascalize(_name_12);
+            SimpleMember _member_14 = param_3.getMember();
+            String _name_13 = _member_14.getName();
+            String _pascalize_5 = ModelExtensions.pascalize(_name_13);
             _builder.append(_pascalize_5, "	");
             _builder.append("Param(");
-            IntrinsicType _type_5 = param_3.getType();
-            String _signature_3 = ModelExtensions.signature(_type_5);
-            _builder.append(_signature_3, "	");
+            SimpleMember _member_15 = param_3.getMember();
+            IntrinsicType _type_6 = _member_15.getType();
+            String _signature_4 = ModelExtensions.signature(_type_6);
+            _builder.append(_signature_4, "	");
             _builder.append(" value) {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_13 = param_3.getName();
-            String _camelize_8 = ModelExtensions.camelize(_name_13);
+            SimpleMember _member_16 = param_3.getMember();
+            String _name_14 = _member_16.getName();
+            String _camelize_8 = ModelExtensions.camelize(_name_14);
             _builder.append(_camelize_8, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("this.");
-            String _name_14 = param_3.getName();
-            String _camelize_9 = ModelExtensions.camelize(_name_14);
+            SimpleMember _member_17 = param_3.getMember();
+            String _name_15 = _member_17.getName();
+            String _camelize_9 = ModelExtensions.camelize(_name_15);
             _builder.append(_camelize_9, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
@@ -369,16 +431,18 @@ public class RequestGenerator {
             _builder.newLine();
             _builder.append("\t");
             _builder.append("public boolean is");
-            String _name_15 = param_3.getName();
-            String _pascalize_6 = ModelExtensions.pascalize(_name_15);
+            SimpleMember _member_18 = param_3.getMember();
+            String _name_16 = _member_18.getName();
+            String _pascalize_6 = ModelExtensions.pascalize(_name_16);
             _builder.append(_pascalize_6, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return ");
-            String _name_16 = param_3.getName();
-            String _camelize_10 = ModelExtensions.camelize(_name_16);
+            SimpleMember _member_19 = param_3.getMember();
+            String _name_17 = _member_19.getName();
+            String _camelize_10 = ModelExtensions.camelize(_name_17);
             _builder.append(_camelize_10, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -394,28 +458,29 @@ public class RequestGenerator {
     }
     _builder.append("\t");
     _builder.append("public ");
-    String _name_17 = method.getName();
-    String _pascalize_7 = ModelExtensions.pascalize(_name_17);
+    String _name_18 = method.getName();
+    String _pascalize_7 = ModelExtensions.pascalize(_name_18);
     _builder.append(_pascalize_7, "	");
     _builder.append("Request(");
-    String _path = method.getPath();
+    Path _path_2 = method.getPath();
     BodyBlock _body_2 = ModelExtensions.getBody(method);
-    String _generateRequestConstructorArgs = this.generateRequestConstructorArgs(_path, _body_2);
+    String _generateRequestConstructorArgs = this.generateRequestConstructorArgs(_path_2, _body_2);
     _builder.append(_generateRequestConstructorArgs, "	");
     _builder.append("){");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    HeaderBlock methodHeaders = ModelExtensions.getHeaderBlock(method);
+    _builder.newLineIfNotEmpty();
     {
-      HeaderBlock _headers = method.getHeaders();
-      boolean _notEquals_4 = (!Objects.equal(_headers, null));
-      if (_notEquals_4) {
+      boolean _notEquals_8 = (!Objects.equal(methodHeaders, null));
+      if (_notEquals_8) {
         {
-          HeaderBlock _headers_1 = method.getHeaders();
-          EList<Header> _headers_2 = _headers_1.getHeaders();
-          for(final Header header : _headers_2) {
+          EList<Header> _headers = methodHeaders.getHeaders();
+          for(final Header header : _headers) {
             _builder.append("\t\t");
             _builder.append("headers.put(\"");
-            String _name_18 = header.getName();
-            _builder.append(_name_18, "		");
+            String _name_19 = header.getName();
+            _builder.append(_name_19, "		");
             _builder.append("\",\"");
             String _value = header.getValue();
             _builder.append(_value, "		");
@@ -428,19 +493,25 @@ public class RequestGenerator {
       }
     }
     {
-      int _size_1 = IterableExtensions.size(pathArgs);
+      Path _path_3 = method.getPath();
+      EList<SimpleMemberAssignment> _params_6 = _path_3==null?(EList<SimpleMemberAssignment>)null:_path_3.getParams();
+      int _size_1 = _params_6.size();
       boolean _greaterThan_1 = (_size_1 > 0);
       if (_greaterThan_1) {
         {
-          for(final String segment_1 : pathArgs) {
+          Path _path_4 = method.getPath();
+          EList<SimpleMemberAssignment> _params_7 = _path_4.getParams();
+          for(final SimpleMemberAssignment slug_1 : _params_7) {
             _builder.append("\t\t");
             _builder.append("this.");
-            String _substring_1 = segment_1.substring(1);
-            String _camelize_11 = ModelExtensions.camelize(_substring_1);
+            SimpleMember _member_20 = slug_1.getMember();
+            String _name_20 = _member_20.getName();
+            String _camelize_11 = ModelExtensions.camelize(_name_20);
             _builder.append(_camelize_11, "		");
             _builder.append("Segment = ");
-            String _substring_2 = segment_1.substring(1);
-            String _camelize_12 = ModelExtensions.camelize(_substring_2);
+            SimpleMember _member_21 = slug_1.getMember();
+            String _name_21 = _member_21.getName();
+            String _camelize_12 = ModelExtensions.camelize(_name_21);
             _builder.append(_camelize_12, "		");
             _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
@@ -453,8 +524,8 @@ public class RequestGenerator {
       if (_hasBody_1) {
         _builder.append("\t\t");
         BodyBlock _body_3 = ModelExtensions.getBody(method);
-        BlockType _type_6 = _body_3.getType();
-        CharSequence _generateConstructorAssignmentForType = this.generateConstructorAssignmentForType(_type_6);
+        BlockType _type_7 = _body_3.getType();
+        CharSequence _generateConstructorAssignmentForType = this.generateConstructorAssignmentForType(_type_7);
         _builder.append(_generateConstructorAssignmentForType, "		");
         _builder.newLineIfNotEmpty();
       }
@@ -486,8 +557,8 @@ public class RequestGenerator {
         _builder.append("\t");
         BodyBlock _body_4 = ModelExtensions.getBody(method);
         BodyBlock _body_5 = ModelExtensions.getBody(method);
-        BlockType _type_7 = _body_5.getType();
-        CharSequence _generateSerializationStatementForType = this.generateSerializationStatementForType(method, _body_4, _type_7);
+        BlockType _type_8 = _body_5.getType();
+        CharSequence _generateSerializationStatementForType = this.generateSerializationStatementForType(method, _body_4, _type_8);
         _builder.append(_generateSerializationStatementForType, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -500,14 +571,30 @@ public class RequestGenerator {
     _builder.append("public String createUrl(String baseUrl){");
     _builder.newLine();
     {
-      String _path_1 = method.getPath();
-      boolean _hasArgs = this.hasArgs(_path_1);
-      if (_hasArgs) {
+      Path _path_5 = method.getPath();
+      EList<SimpleMemberAssignment> _params_8 = _path_5==null?(EList<SimpleMemberAssignment>)null:_path_5.getParams();
+      int _size_2 = _params_8.size();
+      boolean _greaterThan_2 = (_size_2 > 0);
+      if (_greaterThan_2) {
         _builder.append("\t\t");
-        _builder.append("Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH");
-        String _path_2 = method.getPath();
-        String _pathToStringFormatArgs = this.pathToStringFormatArgs(_path_2);
-        _builder.append(_pathToStringFormatArgs, "		");
+        _builder.append("Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, ");
+        {
+          Path _path_6 = method.getPath();
+          EList<SimpleMemberAssignment> _params_9 = _path_6.getParams();
+          boolean _hasElements = false;
+          for(final SimpleMemberAssignment slug_2 : _params_9) {
+            if (!_hasElements) {
+              _hasElements = true;
+            } else {
+              _builder.appendImmediate(", ", "		");
+            }
+            SimpleMember _member_22 = slug_2.getMember();
+            String _name_22 = _member_22.getName();
+            String _camelize_13 = ModelExtensions.camelize(_name_22);
+            _builder.append(_camelize_13, "		");
+            _builder.append("Segment");
+          }
+        }
         _builder.append(")).buildUpon();");
         _builder.newLineIfNotEmpty();
       } else {
@@ -519,44 +606,48 @@ public class RequestGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     {
-      ParamsBlock _params_12 = method.getParams();
-      boolean _notEquals_5 = (!Objects.equal(_params_12, null));
-      if (_notEquals_5) {
+      boolean _notEquals_9 = (!Objects.equal(methodParams, null));
+      if (_notEquals_9) {
         {
-          ParamsBlock _params_13 = method.getParams();
-          EList<SimpleMember> _params_14 = _params_13.getParams();
-          for(final SimpleMember param_4 : _params_14) {
+          EList<SimpleMemberAssignment> _params_10 = methodParams.getParams();
+          for(final SimpleMemberAssignment param_4 : _params_10) {
             _builder.append("\t\t");
             _builder.append("if(");
-            String _name_19 = param_4.getName();
-            String _camelize_13 = ModelExtensions.camelize(_name_19);
-            _builder.append(_camelize_13, "		");
+            SimpleMember _member_23 = param_4.getMember();
+            String _name_23 = _member_23.getName();
+            String _camelize_14 = ModelExtensions.camelize(_name_23);
+            _builder.append(_camelize_14, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
             {
-              IntrinsicType _type_8 = param_4.getType();
-              if ((_type_8 instanceof StringType)) {
+              SimpleMember _member_24 = param_4.getMember();
+              IntrinsicType _type_9 = _member_24.getType();
+              if ((_type_9 instanceof StringType)) {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_20 = param_4.getName();
-                _builder.append(_name_20, "			");
+                SimpleMember _member_25 = param_4.getMember();
+                String _name_24 = _member_25.getName();
+                _builder.append(_name_24, "			");
                 _builder.append("\", ");
-                String _name_21 = param_4.getName();
-                String _camelize_14 = ModelExtensions.camelize(_name_21);
-                _builder.append(_camelize_14, "			");
+                SimpleMember _member_26 = param_4.getMember();
+                String _name_25 = _member_26.getName();
+                String _camelize_15 = ModelExtensions.camelize(_name_25);
+                _builder.append(_camelize_15, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
               } else {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_22 = param_4.getName();
-                _builder.append(_name_22, "			");
+                SimpleMember _member_27 = param_4.getMember();
+                String _name_26 = _member_27.getName();
+                _builder.append(_name_26, "			");
                 _builder.append("\", String.valueOf(");
-                String _name_23 = param_4.getName();
-                String _camelize_15 = ModelExtensions.camelize(_name_23);
-                _builder.append(_camelize_15, "			");
+                SimpleMember _member_28 = param_4.getMember();
+                String _name_27 = _member_28.getName();
+                String _camelize_16 = ModelExtensions.camelize(_name_27);
+                _builder.append(_camelize_16, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
               }
@@ -571,44 +662,48 @@ public class RequestGenerator {
       }
     }
     {
-      ParamsBlock _params_15 = client.getParams();
-      boolean _notEquals_6 = (!Objects.equal(_params_15, null));
-      if (_notEquals_6) {
+      boolean _notEquals_10 = (!Objects.equal(clientParams, null));
+      if (_notEquals_10) {
         {
-          ParamsBlock _params_16 = client.getParams();
-          EList<SimpleMember> _params_17 = _params_16.getParams();
-          for(final SimpleMember param_5 : _params_17) {
+          EList<SimpleMemberAssignment> _params_11 = clientParams.getParams();
+          for(final SimpleMemberAssignment param_5 : _params_11) {
             _builder.append("\t\t");
             _builder.append("if(");
-            String _name_24 = param_5.getName();
-            String _camelize_16 = ModelExtensions.camelize(_name_24);
-            _builder.append(_camelize_16, "		");
+            SimpleMember _member_29 = param_5.getMember();
+            String _name_28 = _member_29.getName();
+            String _camelize_17 = ModelExtensions.camelize(_name_28);
+            _builder.append(_camelize_17, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
             {
-              IntrinsicType _type_9 = param_5.getType();
-              if ((_type_9 instanceof StringType)) {
+              SimpleMember _member_30 = param_5.getMember();
+              IntrinsicType _type_10 = _member_30.getType();
+              if ((_type_10 instanceof StringType)) {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_25 = param_5.getName();
-                _builder.append(_name_25, "			");
+                SimpleMember _member_31 = param_5.getMember();
+                String _name_29 = _member_31.getName();
+                _builder.append(_name_29, "			");
                 _builder.append("\", ");
-                String _name_26 = param_5.getName();
-                String _camelize_17 = ModelExtensions.camelize(_name_26);
-                _builder.append(_camelize_17, "			");
+                SimpleMember _member_32 = param_5.getMember();
+                String _name_30 = _member_32.getName();
+                String _camelize_18 = ModelExtensions.camelize(_name_30);
+                _builder.append(_camelize_18, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
               } else {
                 _builder.append("\t\t");
                 _builder.append("\t");
                 _builder.append("uriBuilder.appendQueryParameter(\"");
-                String _name_27 = param_5.getName();
-                _builder.append(_name_27, "			");
+                SimpleMember _member_33 = param_5.getMember();
+                String _name_31 = _member_33.getName();
+                _builder.append(_name_31, "			");
                 _builder.append("\", String.valueOf(");
-                String _name_28 = param_5.getName();
-                String _camelize_18 = ModelExtensions.camelize(_name_28);
-                _builder.append(_camelize_18, "			");
+                SimpleMember _member_34 = param_5.getMember();
+                String _name_32 = _member_34.getName();
+                String _camelize_19 = ModelExtensions.camelize(_name_32);
+                _builder.append(_camelize_19, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
               }
@@ -1179,21 +1274,26 @@ public class RequestGenerator {
    * Converts a path (eg:- /qux/:fooparam/:quxparam/bar
    * into constructor arguments
    */
-  public String generateRequestConstructorArgs(final String path, final BodyBlock body) {
+  public String generateRequestConstructorArgs(final Path path, final BodyBlock body) {
     ArrayList<String> _arrayList = new ArrayList<String>();
     ArrayList<String> args = _arrayList;
-    Iterable<String> _argsFromPath = ModelExtensions.getArgsFromPath(path);
-    for (final String pathArg : _argsFromPath) {
-      String _substring = pathArg.substring(1);
-      String _camelize = ModelExtensions.camelize(_substring);
-      String _plus = ("\tString " + _camelize);
-      String _plus_1 = (_plus + "Segment");
-      args.add(_plus_1);
+    EList<SimpleMemberAssignment> _params = path.getParams();
+    for (final SimpleMemberAssignment slug : _params) {
+      SimpleMember _member = slug.getMember();
+      IntrinsicType _type = _member.getType();
+      String _signature = ModelExtensions.signature(_type);
+      String _plus = (_signature + " ");
+      SimpleMember _member_1 = slug.getMember();
+      String _name = _member_1.getName();
+      String _camelize = ModelExtensions.camelize(_name);
+      String _plus_1 = (_plus + _camelize);
+      String _plus_2 = (_plus_1 + "Segment");
+      args.add(_plus_2);
     }
     boolean _notEquals = (!Objects.equal(body, null));
     if (_notEquals) {
-      BlockType _type = body.getType();
-      this.buildConstructorArgsForType(_type, args);
+      BlockType _type_1 = body.getType();
+      this.buildConstructorArgsForType(_type_1, args);
     }
     return IterableExtensions.join(args, ",\n");
   }

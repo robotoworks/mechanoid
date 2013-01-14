@@ -8,6 +8,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -15,17 +18,31 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class NetModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected NetModelGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Path___IDTerminalRuleCall_3_1_0_SolidusKeyword_3_0__a;
+	protected AbstractElementAlias match_Path___SolidusKeyword_3_0_IDTerminalRuleCall_3_1_0__a;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (NetModelGrammarAccess) access;
+		match_Path___IDTerminalRuleCall_3_1_0_SolidusKeyword_3_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getPathAccess().getIDTerminalRuleCall_3_1_0()), new TokenAlias(false, false, grammarAccess.getPathAccess().getSolidusKeyword_3_0()));
+		match_Path___SolidusKeyword_3_0_IDTerminalRuleCall_3_1_0__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getPathAccess().getSolidusKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getPathAccess().getIDTerminalRuleCall_3_1_0()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if(ruleCall.getRule() == grammarAccess.getIDRule())
+			return getIDToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+	 */
+	protected String getIDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -33,8 +50,28 @@ public class NetModelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if(match_Path___IDTerminalRuleCall_3_1_0_SolidusKeyword_3_0__a.equals(syntax))
+				emit_Path___IDTerminalRuleCall_3_1_0_SolidusKeyword_3_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Path___SolidusKeyword_3_0_IDTerminalRuleCall_3_1_0__a.equals(syntax))
+				emit_Path___SolidusKeyword_3_0_IDTerminalRuleCall_3_1_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     (ID '/')*
+	 */
+	protected void emit_Path___IDTerminalRuleCall_3_1_0_SolidusKeyword_3_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('/' ID)*
+	 */
+	protected void emit_Path___SolidusKeyword_3_0_IDTerminalRuleCall_3_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

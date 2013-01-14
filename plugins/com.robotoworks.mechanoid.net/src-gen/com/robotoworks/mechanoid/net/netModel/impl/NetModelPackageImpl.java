@@ -4,8 +4,11 @@ package com.robotoworks.mechanoid.net.netModel.impl;
 
 import com.robotoworks.mechanoid.net.netModel.BlockType;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
+import com.robotoworks.mechanoid.net.netModel.BooleanValue;
 import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.Declaration;
@@ -16,23 +19,26 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
-import com.robotoworks.mechanoid.net.netModel.HttpGet;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
-import com.robotoworks.mechanoid.net.netModel.HttpPost;
-import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodBlock;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Member;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelFactory;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.NumericType;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
@@ -41,6 +47,7 @@ import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -80,6 +87,13 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass clientBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass headerBlockEClass = null;
 
   /**
@@ -101,28 +115,14 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass httpPostEClass = null;
+  private EClass httpMethodBlockEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass httpPutEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass httpGetEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass httpDeleteEClass = null;
+  private EClass pathEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,6 +130,20 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * @generated
    */
   private EClass paramsBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass simpleMemberAssignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass literalEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -293,6 +307,41 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
   private EClass doubleTypeEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numericLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum httpMethodTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum booleanValueEEnum = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -430,7 +479,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClient_Headers()
+  public EReference getClient_Blocks()
   {
     return (EReference)clientEClass.getEStructuralFeatures().get(1);
   }
@@ -440,19 +489,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClient_Params()
+  public EClass getClientBlock()
   {
-    return (EReference)clientEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getClient_Methods()
-  {
-    return (EReference)clientEClass.getEStructuralFeatures().get(3);
+    return clientBlockEClass;
   }
 
   /**
@@ -520,7 +559,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getHttpMethod_Name()
+  public EAttribute getHttpMethod_Type()
   {
     return (EAttribute)httpMethodEClass.getEStructuralFeatures().get(0);
   }
@@ -530,7 +569,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getHttpMethod_Path()
+  public EAttribute getHttpMethod_Name()
   {
     return (EAttribute)httpMethodEClass.getEStructuralFeatures().get(1);
   }
@@ -540,7 +579,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpMethod_Headers()
+  public EReference getHttpMethod_Path()
   {
     return (EReference)httpMethodEClass.getEStructuralFeatures().get(2);
   }
@@ -550,7 +589,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpMethod_Params()
+  public EReference getHttpMethod_Blocks()
   {
     return (EReference)httpMethodEClass.getEStructuralFeatures().get(3);
   }
@@ -560,9 +599,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpMethod_Response()
+  public EClass getHttpMethodBlock()
   {
-    return (EReference)httpMethodEClass.getEStructuralFeatures().get(4);
+    return httpMethodBlockEClass;
   }
 
   /**
@@ -570,9 +609,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getHttpPost()
+  public EClass getPath()
   {
-    return httpPostEClass;
+    return pathEClass;
   }
 
   /**
@@ -580,49 +619,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getHttpPost_Body()
+  public EReference getPath_Params()
   {
-    return (EReference)httpPostEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getHttpPut()
-  {
-    return httpPutEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getHttpPut_Body()
-  {
-    return (EReference)httpPutEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getHttpGet()
-  {
-    return httpGetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getHttpDelete()
-  {
-    return httpDeleteEClass;
+    return (EReference)pathEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -643,6 +642,46 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
   public EReference getParamsBlock_Params()
   {
     return (EReference)paramsBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSimpleMemberAssignment()
+  {
+    return simpleMemberAssignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleMemberAssignment_Member()
+  {
+    return (EReference)simpleMemberAssignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleMemberAssignment_DefaultValue()
+  {
+    return (EReference)simpleMemberAssignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLiteral()
+  {
+    return literalEClass;
   }
 
   /**
@@ -1100,6 +1139,86 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getBooleanLiteral()
+  {
+    return booleanLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBooleanLiteral_Literal()
+  {
+    return (EAttribute)booleanLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStringLiteral()
+  {
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringLiteral_Literal()
+  {
+    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNumericLiteral()
+  {
+    return numericLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumericLiteral_Literal()
+  {
+    return (EAttribute)numericLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getHttpMethodType()
+  {
+    return httpMethodTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getBooleanValue()
+  {
+    return booleanValueEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public NetModelFactory getNetModelFactory()
   {
     return (NetModelFactory)getEFactoryInstance();
@@ -1134,9 +1253,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     clientEClass = createEClass(CLIENT);
     createEAttribute(clientEClass, CLIENT__BASE_URL);
-    createEReference(clientEClass, CLIENT__HEADERS);
-    createEReference(clientEClass, CLIENT__PARAMS);
-    createEReference(clientEClass, CLIENT__METHODS);
+    createEReference(clientEClass, CLIENT__BLOCKS);
+
+    clientBlockEClass = createEClass(CLIENT_BLOCK);
 
     headerBlockEClass = createEClass(HEADER_BLOCK);
     createEReference(headerBlockEClass, HEADER_BLOCK__HEADERS);
@@ -1146,24 +1265,24 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     createEAttribute(headerEClass, HEADER__VALUE);
 
     httpMethodEClass = createEClass(HTTP_METHOD);
+    createEAttribute(httpMethodEClass, HTTP_METHOD__TYPE);
     createEAttribute(httpMethodEClass, HTTP_METHOD__NAME);
-    createEAttribute(httpMethodEClass, HTTP_METHOD__PATH);
-    createEReference(httpMethodEClass, HTTP_METHOD__HEADERS);
-    createEReference(httpMethodEClass, HTTP_METHOD__PARAMS);
-    createEReference(httpMethodEClass, HTTP_METHOD__RESPONSE);
+    createEReference(httpMethodEClass, HTTP_METHOD__PATH);
+    createEReference(httpMethodEClass, HTTP_METHOD__BLOCKS);
 
-    httpPostEClass = createEClass(HTTP_POST);
-    createEReference(httpPostEClass, HTTP_POST__BODY);
+    httpMethodBlockEClass = createEClass(HTTP_METHOD_BLOCK);
 
-    httpPutEClass = createEClass(HTTP_PUT);
-    createEReference(httpPutEClass, HTTP_PUT__BODY);
-
-    httpGetEClass = createEClass(HTTP_GET);
-
-    httpDeleteEClass = createEClass(HTTP_DELETE);
+    pathEClass = createEClass(PATH);
+    createEReference(pathEClass, PATH__PARAMS);
 
     paramsBlockEClass = createEClass(PARAMS_BLOCK);
     createEReference(paramsBlockEClass, PARAMS_BLOCK__PARAMS);
+
+    simpleMemberAssignmentEClass = createEClass(SIMPLE_MEMBER_ASSIGNMENT);
+    createEReference(simpleMemberAssignmentEClass, SIMPLE_MEMBER_ASSIGNMENT__MEMBER);
+    createEReference(simpleMemberAssignmentEClass, SIMPLE_MEMBER_ASSIGNMENT__DEFAULT_VALUE);
+
+    literalEClass = createEClass(LITERAL);
 
     bodyBlockEClass = createEClass(BODY_BLOCK);
     createEReference(bodyBlockEClass, BODY_BLOCK__TYPE);
@@ -1232,6 +1351,19 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     longTypeEClass = createEClass(LONG_TYPE);
 
     doubleTypeEClass = createEClass(DOUBLE_TYPE);
+
+    booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+    createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__LITERAL);
+
+    stringLiteralEClass = createEClass(STRING_LITERAL);
+    createEAttribute(stringLiteralEClass, STRING_LITERAL__LITERAL);
+
+    numericLiteralEClass = createEClass(NUMERIC_LITERAL);
+    createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__LITERAL);
+
+    // Create enums
+    httpMethodTypeEEnum = createEEnum(HTTP_METHOD_TYPE);
+    booleanValueEEnum = createEEnum(BOOLEAN_VALUE);
   }
 
   /**
@@ -1264,10 +1396,13 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     // Add supertypes to classes
     clientEClass.getESuperTypes().add(this.getDeclaration());
-    httpPostEClass.getESuperTypes().add(this.getHttpMethod());
-    httpPutEClass.getESuperTypes().add(this.getHttpMethod());
-    httpGetEClass.getESuperTypes().add(this.getHttpMethod());
-    httpDeleteEClass.getESuperTypes().add(this.getHttpMethod());
+    headerBlockEClass.getESuperTypes().add(this.getClientBlock());
+    headerBlockEClass.getESuperTypes().add(this.getHttpMethodBlock());
+    httpMethodEClass.getESuperTypes().add(this.getClientBlock());
+    paramsBlockEClass.getESuperTypes().add(this.getClientBlock());
+    paramsBlockEClass.getESuperTypes().add(this.getHttpMethodBlock());
+    bodyBlockEClass.getESuperTypes().add(this.getHttpMethodBlock());
+    responseBlockEClass.getESuperTypes().add(this.getHttpMethodBlock());
     typedMemberEClass.getESuperTypes().add(this.getMember());
     skipMemberEClass.getESuperTypes().add(this.getMember());
     typeEClass.getESuperTypes().add(this.getBlockType());
@@ -1284,6 +1419,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     integerTypeEClass.getESuperTypes().add(this.getNumericType());
     longTypeEClass.getESuperTypes().add(this.getNumericType());
     doubleTypeEClass.getESuperTypes().add(this.getNumericType());
+    booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
+    stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+    numericLiteralEClass.getESuperTypes().add(this.getLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1295,9 +1433,9 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClient_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClient_Headers(), this.getHeaderBlock(), null, "headers", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClient_Params(), this.getParamsBlock(), null, "params", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClient_Methods(), this.getHttpMethod(), null, "methods", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClient_Blocks(), this.getClientBlock(), null, "blocks", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(clientBlockEClass, ClientBlock.class, "ClientBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(headerBlockEClass, HeaderBlock.class, "HeaderBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getHeaderBlock_Headers(), this.getHeader(), null, "headers", null, 0, -1, HeaderBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1307,24 +1445,24 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEAttribute(getHeader_Value(), ecorePackage.getEString(), "value", null, 0, 1, Header.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(httpMethodEClass, HttpMethod.class, "HttpMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHttpMethod_Type(), this.getHttpMethodType(), "type", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHttpMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getHttpMethod_Path(), ecorePackage.getEString(), "path", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getHttpMethod_Headers(), this.getHeaderBlock(), null, "headers", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getHttpMethod_Params(), this.getParamsBlock(), null, "params", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getHttpMethod_Response(), this.getResponseBlock(), null, "response", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHttpMethod_Path(), this.getPath(), null, "path", null, 0, 1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getHttpMethod_Blocks(), this.getHttpMethodBlock(), null, "blocks", null, 0, -1, HttpMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(httpPostEClass, HttpPost.class, "HttpPost", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getHttpPost_Body(), this.getBodyBlock(), null, "body", null, 0, 1, HttpPost.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(httpMethodBlockEClass, HttpMethodBlock.class, "HttpMethodBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(httpPutEClass, HttpPut.class, "HttpPut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getHttpPut_Body(), this.getBodyBlock(), null, "body", null, 0, 1, HttpPut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(httpGetEClass, HttpGet.class, "HttpGet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(httpDeleteEClass, HttpDelete.class, "HttpDelete", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPath_Params(), this.getSimpleMemberAssignment(), null, "params", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramsBlockEClass, ParamsBlock.class, "ParamsBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParamsBlock_Params(), this.getSimpleMember(), null, "params", null, 0, -1, ParamsBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParamsBlock_Params(), this.getSimpleMemberAssignment(), null, "params", null, 0, -1, ParamsBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(simpleMemberAssignmentEClass, SimpleMemberAssignment.class, "SimpleMemberAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSimpleMemberAssignment_Member(), this.getSimpleMember(), null, "member", null, 0, 1, SimpleMemberAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSimpleMemberAssignment_DefaultValue(), this.getLiteral(), null, "defaultValue", null, 0, 1, SimpleMemberAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(bodyBlockEClass, BodyBlock.class, "BodyBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBodyBlock_Type(), this.getBlockType(), null, "type", null, 0, 1, BodyBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1393,6 +1531,26 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEClass(longTypeEClass, LongType.class, "LongType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(doubleTypeEClass, DoubleType.class, "DoubleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanLiteral_Literal(), this.getBooleanValue(), "literal", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteral_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumericLiteral_Literal(), ecorePackage.getEBigDecimal(), "literal", null, 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(httpMethodTypeEEnum, HttpMethodType.class, "HttpMethodType");
+    addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.GET);
+    addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.PUT);
+    addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.POST);
+    addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.DELETE);
+
+    initEEnum(booleanValueEEnum, BooleanValue.class, "BooleanValue");
+    addEEnumLiteral(booleanValueEEnum, BooleanValue.TRUE);
+    addEEnumLiteral(booleanValueEEnum, BooleanValue.FALSE);
 
     // Create resource
     createResource(eNS_URI);
