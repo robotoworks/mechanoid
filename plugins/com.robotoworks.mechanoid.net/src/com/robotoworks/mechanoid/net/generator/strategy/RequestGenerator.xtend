@@ -18,6 +18,10 @@ import java.util.ArrayList
 import java.util.List
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import org.eclipse.xtext.serializer.ISerializer
+import com.google.inject.Inject
+import com.robotoworks.mechanoid.net.netModel.Path
+import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
 
 class RequestGenerator {
 	CodeGenerationContext context
@@ -52,7 +56,7 @@ class RequestGenerator {
 	def generateRequestClass(HttpMethod method, Model module, Client client) '''
 	public class «method.name.pascalize»Request {
 		
-		private static final String PATH="«method.pathAsFormatString»";
+		private static final String PATH="«method.getPathAsFormatString(context.serializer)»";
 		
 		private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 		
@@ -68,24 +72,25 @@ class RequestGenerator {
 			return headers.get(key);
 		}
 	
-		«var pathArgs = method.getArgsFromPath»
-		«IF(pathArgs.size > 0)»
-		«FOR segment:pathArgs»
-		private final String «segment.substring(1).camelize»Segment;
+		«IF(method.path?.params.size > 0)»
+		«FOR slug:method.path.params»
+		private final «slug.member.type.signature» «slug.member.name.camelize»Segment;
 		«ENDFOR»
 		
 		«ENDIF»
-		«IF(method.params != null)»
-		«FOR param:method.params.params»
-		private «param.type.signature» «param.name.camelize»Param;
-		private boolean «param.name.camelize»ParamSet;
+		«var methodParams = method.paramsBlock»
+		«var clientParams = client.paramsBlock»
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 		«ENDFOR»
 			
 		«ENDIF»
-		«IF(client.params != null)»
-		«FOR param:client.params.params»
-		private «param.type.signature» «param.name.camelize»Param;
-		private boolean «param.name.camelize»ParamSet;
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 		«ENDFOR»
 			
 		«ENDIF»
@@ -93,44 +98,45 @@ class RequestGenerator {
 			«generateFieldForType(method.body.type)»
 			«generateGetterSetterForType(method.body.type)»
 		«ENDIF»
-		«IF(method.params != null)»
-		«FOR param:method.params.params»
-		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
-			this.«param.name.camelize»Param = value;
-			this.«param.name.camelize»ParamSet = true;
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean is«param.name.pascalize»ParamSet() {
-			return «param.name.camelize»ParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
 		«ENDFOR»
 			
 		«ENDIF»
-		«IF(client.params != null)»
-		«FOR param:client.params.params»
-		public «method.name.pascalize»Request set«param.name.pascalize»Param(«param.type.signature» value) {
-			this.«param.name.camelize»Param = value;
-			this.«param.name.camelize»ParamSet = true;
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean is«param.name.pascalize»ParamSet() {
-			return «param.name.camelize»ParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
 		«ENDFOR»
 				
 		«ENDIF»
 		public «method.name.pascalize»Request(«generateRequestConstructorArgs(method.path, method.body)»){
-			«IF method.headers != null»
-			«FOR header : method.headers.headers»
+			«var methodHeaders = method.headerBlock»
+			«IF methodHeaders != null»
+			«FOR header : methodHeaders.headers»
 			headers.put("«header.name»","«header.value»");
 			«ENDFOR»
 			
 			«ENDIF»
-			«IF(pathArgs.size > 0)»
-				«FOR segment:pathArgs»
-				this.«segment.substring(1).camelize»Segment = «segment.substring(1).camelize»Segment;
+			«IF(method.path?.params.size > 0)»
+				«FOR slug:method.path.params»
+				this.«slug.member.name.camelize»Segment = «slug.member.name.camelize»Segment;
 				«ENDFOR»	
 			«ENDIF»
 			«IF(method.hasBody)»
@@ -149,31 +155,31 @@ class RequestGenerator {
 
 		«ENDIF»
 		public String createUrl(String baseUrl){
-			«IF(method.path.hasArgs)»
-				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH«method.path.pathToStringFormatArgs»)).buildUpon();
+			«IF(method.path?.params.size > 0)»
+				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
 			«ELSE»
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
 			«ENDIF»		
 				
-			«IF(method.params != null)»
-				«FOR param:method.params.params»
-					if(«param.name.camelize»ParamSet){
-						«IF param.type instanceof StringType»
-						uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+			«IF(methodParams != null)»
+				«FOR param:methodParams.params»
+					if(«param.member.name.camelize»ParamSet){
+						«IF param.member.type instanceof StringType»
+						uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
 						«ELSE»
-						uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+						uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
 						«ENDIF»
 					}
 				«ENDFOR»
 				
 			«ENDIF»
-			«IF(client.params != null)»
-			«FOR param:client.params.params»
-				if(«param.name.camelize»ParamSet){
-					«IF param.type instanceof StringType»
-					uriBuilder.appendQueryParameter("«param.name»", «param.name.camelize»Param);
+			«IF(clientParams != null)»
+			«FOR param:clientParams.params»
+				if(«param.member.name.camelize»ParamSet){
+					«IF param.member.type instanceof StringType»
+					uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
 					«ELSE»
-					uriBuilder.appendQueryParameter("«param.name»", String.valueOf(«param.name.camelize»Param));
+					uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
 					«ENDIF»
 				}
 			«ENDFOR»
@@ -416,10 +422,10 @@ class RequestGenerator {
 	 * Converts a path (eg:- /qux/:fooparam/:quxparam/bar
 	 * into constructor arguments
 	 */
-	def generateRequestConstructorArgs(String path, BodyBlock body){
+	def generateRequestConstructorArgs(Path path, BodyBlock body){
 		var args = new ArrayList<String>()
-		for(pathArg:path.getArgsFromPath){
-			args.add("	String " + pathArg.substring(1).camelize + "Segment")
+		for(slug:path.params){
+			args.add(slug.member.type.signature + " " + slug.member.name.camelize + "Segment")
 		}
 		
 		if(body != null) {

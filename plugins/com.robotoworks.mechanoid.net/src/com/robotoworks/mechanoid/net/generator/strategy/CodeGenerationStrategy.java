@@ -9,6 +9,7 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 public class CodeGenerationStrategy {
 	private ClientGenerator clientGenerator;
@@ -35,7 +36,7 @@ public class CodeGenerationStrategy {
 				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), client.getName()), getClientGenerator().generate(client, module));
 				
 				// Generate client methods for each client
-				for(HttpMethod method:client.getMethods()){
+				for(HttpMethod method:IterableExtensions.filter(client.getBlocks(), HttpMethod.class)){
 					String requestFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Request");
 					String responseFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Result");
 					fsa.generateFile(requestFileName, getRequestGenerator().generate(method, module, client));

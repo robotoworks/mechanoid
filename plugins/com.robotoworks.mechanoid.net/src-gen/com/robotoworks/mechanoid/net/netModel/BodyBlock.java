@@ -2,7 +2,6 @@
  */
 package com.robotoworks.mechanoid.net.netModel;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface BodyBlock extends EObject
+public interface BodyBlock extends HttpMethodBlock
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

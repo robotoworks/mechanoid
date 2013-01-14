@@ -17,10 +17,11 @@ public class NetModelGenerator implements IGenerator {
   @Inject
   private CodeGenerationStrategyFactory codeGenerationStrategyFactory;
   
+  @Inject
+  private CodeGenerationContext codeGenContext;
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    CodeGenerationContext _codeGenerationContext = new CodeGenerationContext();
-    CodeGenerationContext cgContext = _codeGenerationContext;
-    CodeGenerationStrategy strategy = this.codeGenerationStrategyFactory.create(cgContext, null);
+    CodeGenerationStrategy strategy = this.codeGenerationStrategyFactory.create(this.codeGenContext, null);
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     strategy.generate(fsa, ((Model) _head));

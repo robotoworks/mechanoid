@@ -90,6 +90,11 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createClientAdapter();
       }
       @Override
+      public Adapter caseClientBlock(ClientBlock object)
+      {
+        return createClientBlockAdapter();
+      }
+      @Override
       public Adapter caseHeaderBlock(HeaderBlock object)
       {
         return createHeaderBlockAdapter();
@@ -105,29 +110,29 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createHttpMethodAdapter();
       }
       @Override
-      public Adapter caseHttpPost(HttpPost object)
+      public Adapter caseHttpMethodBlock(HttpMethodBlock object)
       {
-        return createHttpPostAdapter();
+        return createHttpMethodBlockAdapter();
       }
       @Override
-      public Adapter caseHttpPut(HttpPut object)
+      public Adapter casePath(Path object)
       {
-        return createHttpPutAdapter();
-      }
-      @Override
-      public Adapter caseHttpGet(HttpGet object)
-      {
-        return createHttpGetAdapter();
-      }
-      @Override
-      public Adapter caseHttpDelete(HttpDelete object)
-      {
-        return createHttpDeleteAdapter();
+        return createPathAdapter();
       }
       @Override
       public Adapter caseParamsBlock(ParamsBlock object)
       {
         return createParamsBlockAdapter();
+      }
+      @Override
+      public Adapter caseSimpleMemberAssignment(SimpleMemberAssignment object)
+      {
+        return createSimpleMemberAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseLiteral(Literal object)
+      {
+        return createLiteralAdapter();
       }
       @Override
       public Adapter caseBodyBlock(BodyBlock object)
@@ -245,6 +250,21 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
         return createDoubleTypeAdapter();
       }
       @Override
+      public Adapter caseBooleanLiteral(BooleanLiteral object)
+      {
+        return createBooleanLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseNumericLiteral(NumericLiteral object)
+      {
+        return createNumericLiteralAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -312,6 +332,21 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.ClientBlock <em>Client Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.ClientBlock
+   * @generated
+   */
+  public Adapter createClientBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HeaderBlock <em>Header Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -357,61 +392,31 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HttpPost <em>Http Post</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HttpMethodBlock <em>Http Method Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.HttpPost
+   * @see com.robotoworks.mechanoid.net.netModel.HttpMethodBlock
    * @generated
    */
-  public Adapter createHttpPostAdapter()
+  public Adapter createHttpMethodBlockAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HttpPut <em>Http Put</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.Path <em>Path</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.HttpPut
+   * @see com.robotoworks.mechanoid.net.netModel.Path
    * @generated
    */
-  public Adapter createHttpPutAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HttpGet <em>Http Get</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.HttpGet
-   * @generated
-   */
-  public Adapter createHttpGetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.HttpDelete <em>Http Delete</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.net.netModel.HttpDelete
-   * @generated
-   */
-  public Adapter createHttpDeleteAdapter()
+  public Adapter createPathAdapter()
   {
     return null;
   }
@@ -427,6 +432,36 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createParamsBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment <em>Simple Member Assignment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment
+   * @generated
+   */
+  public Adapter createSimpleMemberAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.Literal
+   * @generated
+   */
+  public Adapter createLiteralAdapter()
   {
     return null;
   }
@@ -772,6 +807,51 @@ public class NetModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDoubleTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.BooleanLiteral
+   * @generated
+   */
+  public Adapter createBooleanLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.net.netModel.NumericLiteral <em>Numeric Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.net.netModel.NumericLiteral
+   * @generated
+   */
+  public Adapter createNumericLiteralAdapter()
   {
     return null;
   }

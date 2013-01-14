@@ -2,28 +2,30 @@
  */
 package com.robotoworks.mechanoid.net.netModel.impl;
 
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
+import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Http Delete</b></em>'.
+ * An implementation of the model object '<em><b>Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class HttpDeleteImpl extends HttpMethodImpl implements HttpDelete
+public class LiteralImpl extends MinimalEObjectImpl.Container implements Literal
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected HttpDeleteImpl()
+  protected LiteralImpl()
   {
     super();
   }
@@ -36,7 +38,7 @@ public class HttpDeleteImpl extends HttpMethodImpl implements HttpDelete
   @Override
   protected EClass eStaticClass()
   {
-    return NetModelPackage.Literals.HTTP_DELETE;
+    return NetModelPackage.Literals.LITERAL;
   }
 
-} //HttpDeleteImpl
+} //LiteralImpl

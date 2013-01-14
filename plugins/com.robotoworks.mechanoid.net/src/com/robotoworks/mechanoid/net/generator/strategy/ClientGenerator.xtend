@@ -1,13 +1,16 @@
 package com.robotoworks.mechanoid.net.generator.strategy
 
-import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import com.robotoworks.mechanoid.net.netModel.Client
-import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
-import com.robotoworks.mechanoid.net.netModel.HttpGet
-import com.robotoworks.mechanoid.net.netModel.HttpPut
-import com.robotoworks.mechanoid.net.netModel.HttpPost
-import com.robotoworks.mechanoid.net.netModel.HttpDelete
+import com.robotoworks.mechanoid.net.netModel.Client
+import com.robotoworks.mechanoid.net.netModel.HttpMethod
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType
+import com.robotoworks.mechanoid.net.netModel.Model
+
+import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment
+import com.robotoworks.mechanoid.net.netModel.StringLiteral
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral
 
 class ClientGenerator {
 	CodeGenerationContext context
@@ -57,20 +60,20 @@ class ClientGenerator {
 			public void setHeader(String field, String value) {
 				headers.put(field, value);
 			}
-			
-			«IF(client.params != null)»
-			«FOR param:client.params.params»
-			private «param.type.signature» «param.name.camelize»Param;
-			private boolean «param.name.camelize»ParamSet;
+			«var params = client.paramsBlock»
+			«IF(params != null)»
+			«FOR param:params.params»
+			private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+			private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 			«ENDFOR»
 				
 			«ENDIF»
 			
-			«IF(client.params != null)»
-			«FOR param:client.params.params»
-			public void set«param.name.pascalize»Param(«param.type.signature» value) {
-				this.«param.name.camelize»Param = value;
-				this.«param.name.camelize»ParamSet = true;
+			«IF(params != null)»
+			«FOR param:params.params»
+			public void set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+				this.«param.member.name.camelize»Param = value;
+				this.«param.member.name.camelize»ParamSet = true;
 			}
 			«ENDFOR»
 				
@@ -101,9 +104,9 @@ class ClientGenerator {
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
 				this.debug = debug;
-				
-				«IF client.headers != null»
-				«FOR header : client.headers.headers»
+				«var headers = client.headerBlock»
+				«IF headers != null»
+				«FOR header : headers.headers»
 				headers.put("«header.name»","«header.value»");
 				«ENDFOR»
 				«ENDIF»
@@ -114,8 +117,8 @@ class ClientGenerator {
 	'''
 	
 	def generateClientMethods(Client client, Model model) '''
-		«FOR method:client.methods»
-		«IF !method.hasBody && method.argsFromPath.size == 0»
+		«FOR method:client.blocks.filter(typeof(HttpMethod))»
+		«IF !method.hasBody && (method.path == null || method.path.params.size == 0)»
 		public Response<«method.name.pascalize»Result> «method.name.camelize»()
 		  throws ServiceException {
 		  	return «method.name.camelize»(new «method.name.pascalize»Request());
@@ -124,10 +127,11 @@ class ClientGenerator {
 		«ENDIF»
 		public Response<«method.name.pascalize»Result> «method.name.camelize»(«method.name.pascalize»Request request)
 		  throws ServiceException {
-			«IF(client.params != null)»
-			«FOR param:client.params.params»
-			if(this.«param.name.camelize»ParamSet && !request.is«param.name.pascalize»ParamSet()){
-				request.set«param.name.pascalize»Param(this.«param.name.camelize»Param);
+		  	«var params = client.paramsBlock»
+			«IF(params != null)»
+			«FOR param:params.params»
+			if(this.«param.member.name.camelize»ParamSet && !request.is«param.member.name.pascalize»ParamSet()){
+				request.set«param.member.name.pascalize»Param(this.«param.member.name.camelize»Param);
 			}
 			«ENDFOR»
 			
@@ -144,7 +148,22 @@ class ClientGenerator {
 		
 		«ENDFOR»
 	'''
-	def dispatch generateServiceMethod(HttpGet method) '''
+	def generateServiceMethod(HttpMethod method) { 
+		switch(method.type) {
+			case HttpMethodType::GET:
+				generateServiceGetMethod(method)
+			case HttpMethodType::PUT:
+				generateServicePutMethod(method)
+			case HttpMethodType::POST:
+				generateServicePostMethod(method)
+			case HttpMethodType::DELETE:
+				generateServiceDeleteMethod(method)
+				
+		}
+	}
+
+	
+	def generateServiceGetMethod(HttpMethod method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
@@ -189,7 +208,7 @@ class ClientGenerator {
 		}
 	'''
 
-	def dispatch generateServiceMethod(HttpPut method) '''
+	def generateServicePutMethod(HttpMethod method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
@@ -238,7 +257,7 @@ class ClientGenerator {
 			throw new ServiceException(e);
 		}
 	'''
-	def dispatch generateServiceMethod(HttpPost method) '''
+	def generateServicePostMethod(HttpMethod method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			
@@ -287,7 +306,7 @@ class ClientGenerator {
 			throw new ServiceException(e);
 		}	
 	'''
-	def dispatch generateServiceMethod(HttpDelete method) '''
+	def generateServiceDeleteMethod(HttpMethod method) '''
 		try {
 			URL url = new URL(request.createUrl(baseUrl));
 			

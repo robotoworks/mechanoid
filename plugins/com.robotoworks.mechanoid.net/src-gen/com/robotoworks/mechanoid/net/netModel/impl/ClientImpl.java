@@ -3,10 +3,8 @@
 package com.robotoworks.mechanoid.net.netModel.impl;
 
 import com.robotoworks.mechanoid.net.netModel.Client;
-import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
-import com.robotoworks.mechanoid.net.netModel.HttpMethod;
+import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
-import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
 
 import java.util.Collection;
 
@@ -31,9 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ClientImpl#getBaseUrl <em>Base Url</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ClientImpl#getHeaders <em>Headers</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ClientImpl#getParams <em>Params</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ClientImpl#getMethods <em>Methods</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.ClientImpl#getBlocks <em>Blocks</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,34 +58,14 @@ public class ClientImpl extends DeclarationImpl implements Client
   protected String baseUrl = BASE_URL_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getHeaders() <em>Headers</em>}' containment reference.
+   * The cached value of the '{@link #getBlocks() <em>Blocks</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHeaders()
+   * @see #getBlocks()
    * @generated
    * @ordered
    */
-  protected HeaderBlock headers;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected ParamsBlock params;
-
-  /**
-   * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMethods()
-   * @generated
-   * @ordered
-   */
-  protected EList<HttpMethod> methods;
+  protected EList<ClientBlock> blocks;
 
   /**
    * <!-- begin-user-doc -->
@@ -140,109 +116,13 @@ public class ClientImpl extends DeclarationImpl implements Client
    * <!-- end-user-doc -->
    * @generated
    */
-  public HeaderBlock getHeaders()
+  public EList<ClientBlock> getBlocks()
   {
-    return headers;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetHeaders(HeaderBlock newHeaders, NotificationChain msgs)
-  {
-    HeaderBlock oldHeaders = headers;
-    headers = newHeaders;
-    if (eNotificationRequired())
+    if (blocks == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.CLIENT__HEADERS, oldHeaders, newHeaders);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      blocks = new EObjectContainmentEList<ClientBlock>(ClientBlock.class, this, NetModelPackage.CLIENT__BLOCKS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHeaders(HeaderBlock newHeaders)
-  {
-    if (newHeaders != headers)
-    {
-      NotificationChain msgs = null;
-      if (headers != null)
-        msgs = ((InternalEObject)headers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.CLIENT__HEADERS, null, msgs);
-      if (newHeaders != null)
-        msgs = ((InternalEObject)newHeaders).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.CLIENT__HEADERS, null, msgs);
-      msgs = basicSetHeaders(newHeaders, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.CLIENT__HEADERS, newHeaders, newHeaders));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ParamsBlock getParams()
-  {
-    return params;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetParams(ParamsBlock newParams, NotificationChain msgs)
-  {
-    ParamsBlock oldParams = params;
-    params = newParams;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NetModelPackage.CLIENT__PARAMS, oldParams, newParams);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setParams(ParamsBlock newParams)
-  {
-    if (newParams != params)
-    {
-      NotificationChain msgs = null;
-      if (params != null)
-        msgs = ((InternalEObject)params).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.CLIENT__PARAMS, null, msgs);
-      if (newParams != null)
-        msgs = ((InternalEObject)newParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NetModelPackage.CLIENT__PARAMS, null, msgs);
-      msgs = basicSetParams(newParams, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.CLIENT__PARAMS, newParams, newParams));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<HttpMethod> getMethods()
-  {
-    if (methods == null)
-    {
-      methods = new EObjectContainmentEList<HttpMethod>(HttpMethod.class, this, NetModelPackage.CLIENT__METHODS);
-    }
-    return methods;
+    return blocks;
   }
 
   /**
@@ -255,12 +135,8 @@ public class ClientImpl extends DeclarationImpl implements Client
   {
     switch (featureID)
     {
-      case NetModelPackage.CLIENT__HEADERS:
-        return basicSetHeaders(null, msgs);
-      case NetModelPackage.CLIENT__PARAMS:
-        return basicSetParams(null, msgs);
-      case NetModelPackage.CLIENT__METHODS:
-        return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
+      case NetModelPackage.CLIENT__BLOCKS:
+        return ((InternalEList<?>)getBlocks()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -277,12 +153,8 @@ public class ClientImpl extends DeclarationImpl implements Client
     {
       case NetModelPackage.CLIENT__BASE_URL:
         return getBaseUrl();
-      case NetModelPackage.CLIENT__HEADERS:
-        return getHeaders();
-      case NetModelPackage.CLIENT__PARAMS:
-        return getParams();
-      case NetModelPackage.CLIENT__METHODS:
-        return getMethods();
+      case NetModelPackage.CLIENT__BLOCKS:
+        return getBlocks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -301,15 +173,9 @@ public class ClientImpl extends DeclarationImpl implements Client
       case NetModelPackage.CLIENT__BASE_URL:
         setBaseUrl((String)newValue);
         return;
-      case NetModelPackage.CLIENT__HEADERS:
-        setHeaders((HeaderBlock)newValue);
-        return;
-      case NetModelPackage.CLIENT__PARAMS:
-        setParams((ParamsBlock)newValue);
-        return;
-      case NetModelPackage.CLIENT__METHODS:
-        getMethods().clear();
-        getMethods().addAll((Collection<? extends HttpMethod>)newValue);
+      case NetModelPackage.CLIENT__BLOCKS:
+        getBlocks().clear();
+        getBlocks().addAll((Collection<? extends ClientBlock>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -328,14 +194,8 @@ public class ClientImpl extends DeclarationImpl implements Client
       case NetModelPackage.CLIENT__BASE_URL:
         setBaseUrl(BASE_URL_EDEFAULT);
         return;
-      case NetModelPackage.CLIENT__HEADERS:
-        setHeaders((HeaderBlock)null);
-        return;
-      case NetModelPackage.CLIENT__PARAMS:
-        setParams((ParamsBlock)null);
-        return;
-      case NetModelPackage.CLIENT__METHODS:
-        getMethods().clear();
+      case NetModelPackage.CLIENT__BLOCKS:
+        getBlocks().clear();
         return;
     }
     super.eUnset(featureID);
@@ -353,12 +213,8 @@ public class ClientImpl extends DeclarationImpl implements Client
     {
       case NetModelPackage.CLIENT__BASE_URL:
         return BASE_URL_EDEFAULT == null ? baseUrl != null : !BASE_URL_EDEFAULT.equals(baseUrl);
-      case NetModelPackage.CLIENT__HEADERS:
-        return headers != null;
-      case NetModelPackage.CLIENT__PARAMS:
-        return params != null;
-      case NetModelPackage.CLIENT__METHODS:
-        return methods != null && !methods.isEmpty();
+      case NetModelPackage.CLIENT__BLOCKS:
+        return blocks != null && !blocks.isEmpty();
     }
     return super.eIsSet(featureID);
   }

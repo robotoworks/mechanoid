@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.net.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
+import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -14,18 +15,19 @@ import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
-import com.robotoworks.mechanoid.net.netModel.HttpDelete;
-import com.robotoworks.mechanoid.net.netModel.HttpGet;
-import com.robotoworks.mechanoid.net.netModel.HttpPost;
-import com.robotoworks.mechanoid.net.netModel.HttpPut;
+import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.LongType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
+import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.ParamsBlock;
+import com.robotoworks.mechanoid.net.netModel.Path;
 import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMember;
+import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import com.robotoworks.mechanoid.net.netModel.SkipMember;
+import com.robotoworks.mechanoid.net.netModel.StringLiteral;
 import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
@@ -51,8 +53,15 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == NetModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case NetModelPackage.BODY_BLOCK:
-				if(context == grammarAccess.getBodyBlockRule()) {
+				if(context == grammarAccess.getBodyBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule()) {
 					sequence_BodyBlock(context, (BodyBlock) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.BOOLEAN_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -132,36 +141,17 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case NetModelPackage.HEADER_BLOCK:
-				if(context == grammarAccess.getHeaderBlockRule()) {
+				if(context == grammarAccess.getClientBlockRule() ||
+				   context == grammarAccess.getHeaderBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule()) {
 					sequence_HeaderBlock(context, (HeaderBlock) semanticObject); 
 					return; 
 				}
 				else break;
-			case NetModelPackage.HTTP_DELETE:
-				if(context == grammarAccess.getHttpDeleteRule() ||
+			case NetModelPackage.HTTP_METHOD:
+				if(context == grammarAccess.getClientBlockRule() ||
 				   context == grammarAccess.getHttpMethodRule()) {
-					sequence_HttpDelete(context, (HttpDelete) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_GET:
-				if(context == grammarAccess.getHttpGetRule() ||
-				   context == grammarAccess.getHttpMethodRule()) {
-					sequence_HttpGet(context, (HttpGet) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_POST:
-				if(context == grammarAccess.getHttpMethodRule() ||
-				   context == grammarAccess.getHttpPostRule()) {
-					sequence_HttpPost(context, (HttpPost) semanticObject); 
-					return; 
-				}
-				else break;
-			case NetModelPackage.HTTP_PUT:
-				if(context == grammarAccess.getHttpMethodRule() ||
-				   context == grammarAccess.getHttpPutRule()) {
-					sequence_HttpPut(context, (HttpPut) semanticObject); 
+					sequence_HttpMethod(context, (HttpMethod) semanticObject); 
 					return; 
 				}
 				else break;
@@ -191,14 +181,29 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.NUMERIC_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (NumericLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.PARAMS_BLOCK:
-				if(context == grammarAccess.getParamsBlockRule()) {
+				if(context == grammarAccess.getClientBlockRule() ||
+				   context == grammarAccess.getHttpMethodBlockRule() ||
+				   context == grammarAccess.getParamsBlockRule()) {
 					sequence_ParamsBlock(context, (ParamsBlock) semanticObject); 
 					return; 
 				}
 				else break;
+			case NetModelPackage.PATH:
+				if(context == grammarAccess.getPathRule()) {
+					sequence_Path(context, (Path) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.RESPONSE_BLOCK:
-				if(context == grammarAccess.getResponseBlockRule()) {
+				if(context == grammarAccess.getHttpMethodBlockRule() ||
+				   context == grammarAccess.getResponseBlockRule()) {
 					sequence_ResponseBlock(context, (ResponseBlock) semanticObject); 
 					return; 
 				}
@@ -209,10 +214,22 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case NetModelPackage.SIMPLE_MEMBER_ASSIGNMENT:
+				if(context == grammarAccess.getSimpleMemberAssignmentRule()) {
+					sequence_SimpleMemberAssignment(context, (SimpleMemberAssignment) semanticObject); 
+					return; 
+				}
+				else break;
 			case NetModelPackage.SKIP_MEMBER:
 				if(context == grammarAccess.getMemberRule() ||
 				   context == grammarAccess.getSkipMemberRule()) {
 					sequence_SkipMember(context, (SkipMember) semanticObject); 
+					return; 
+				}
+				else break;
+			case NetModelPackage.STRING_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (StringLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -278,7 +295,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID baseUrl=STRING? headers=HeaderBlock? params=ParamsBlock? methods+=HttpMethod*)
+	 *     (name=ID baseUrl=STRING? blocks+=ClientBlock*)
 	 */
 	protected void sequence_Client(EObject context, Client semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -385,50 +402,9 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID path=STRING? headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock?)
+	 *     (type=HttpMethodType name=ID path=Path? blocks+=HttpMethodBlock*)
 	 */
-	protected void sequence_HttpDelete(EObject context, HttpDelete semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID path=STRING? headers=HeaderBlock? params=ParamsBlock? response=ResponseBlock?)
-	 */
-	protected void sequence_HttpGet(EObject context, HttpGet semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         path=STRING? 
-	 *         headers=HeaderBlock? 
-	 *         params=ParamsBlock? 
-	 *         body=BodyBlock? 
-	 *         response=ResponseBlock?
-	 *     )
-	 */
-	protected void sequence_HttpPost(EObject context, HttpPost semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         path=STRING? 
-	 *         headers=HeaderBlock? 
-	 *         params=ParamsBlock? 
-	 *         body=BodyBlock? 
-	 *         response=ResponseBlock?
-	 *     )
-	 */
-	protected void sequence_HttpPut(EObject context, HttpPut semanticObject) {
+	protected void sequence_HttpMethod(EObject context, HttpMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -445,6 +421,54 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0(), semanticObject.getId());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=BooleanValue
+	 */
+	protected void sequence_Literal(EObject context, BooleanLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.BOOLEAN_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.BOOLEAN_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=SignedNumber
+	 */
+	protected void sequence_Literal(EObject context, NumericLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.NUMERIC_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.NUMERIC_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=STRING
+	 */
+	protected void sequence_Literal(EObject context, StringLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, NetModelPackage.Literals.STRING_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, NetModelPackage.Literals.STRING_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0(), semanticObject.getLiteral());
 		feeder.finish();
 	}
 	
@@ -476,9 +500,18 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (params+=SimpleMember* params+=SimpleMember*)
+	 *     (params+=SimpleMemberAssignment params+=SimpleMemberAssignment*)
 	 */
 	protected void sequence_ParamsBlock(EObject context, ParamsBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (params+=SimpleMemberAssignment? params+=SimpleMemberAssignment*)
+	 */
+	protected void sequence_Path(EObject context, Path semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -488,6 +521,15 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (superType=[ComplexTypeDeclaration|ID]? type=BlockType?)
 	 */
 	protected void sequence_ResponseBlock(EObject context, ResponseBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (member=SimpleMember defaultValue=Literal?)
+	 */
+	protected void sequence_SimpleMemberAssignment(EObject context, SimpleMemberAssignment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

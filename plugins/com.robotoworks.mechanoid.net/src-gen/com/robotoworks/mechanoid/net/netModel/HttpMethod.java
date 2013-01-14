@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.net.netModel;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,11 +12,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getType <em>Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getPath <em>Path</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getHeaders <em>Headers</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getParams <em>Params</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getResponse <em>Response</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getBlocks <em>Blocks</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,8 +23,37 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface HttpMethod extends EObject
+public interface HttpMethod extends ClientBlock
 {
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * The literals are from the enumeration {@link com.robotoworks.mechanoid.net.netModel.HttpMethodType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see com.robotoworks.mechanoid.net.netModel.HttpMethodType
+   * @see #setType(HttpMethodType)
+   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Type()
+   * @model
+   * @generated
+   */
+  HttpMethodType getType();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see com.robotoworks.mechanoid.net.netModel.HttpMethodType
+   * @see #getType()
+   * @generated
+   */
+  void setType(HttpMethodType value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -53,107 +81,45 @@ public interface HttpMethod extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Path</b></em>' attribute.
+   * Returns the value of the '<em><b>Path</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Path</em>' attribute isn't clear,
+   * If the meaning of the '<em>Path</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Path</em>' attribute.
-   * @see #setPath(String)
+   * @return the value of the '<em>Path</em>' containment reference.
+   * @see #setPath(Path)
    * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Path()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getPath();
+  Path getPath();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getPath <em>Path</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getPath <em>Path</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Path</em>' attribute.
+   * @param value the new value of the '<em>Path</em>' containment reference.
    * @see #getPath()
    * @generated
    */
-  void setPath(String value);
+  void setPath(Path value);
 
   /**
-   * Returns the value of the '<em><b>Headers</b></em>' containment reference.
+   * Returns the value of the '<em><b>Blocks</b></em>' containment reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.net.netModel.HttpMethodBlock}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Headers</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Blocks</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Headers</em>' containment reference.
-   * @see #setHeaders(HeaderBlock)
-   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Headers()
+   * @return the value of the '<em>Blocks</em>' containment reference list.
+   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Blocks()
    * @model containment="true"
    * @generated
    */
-  HeaderBlock getHeaders();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getHeaders <em>Headers</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Headers</em>' containment reference.
-   * @see #getHeaders()
-   * @generated
-   */
-  void setHeaders(HeaderBlock value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' containment reference.
-   * @see #setParams(ParamsBlock)
-   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Params()
-   * @model containment="true"
-   * @generated
-   */
-  ParamsBlock getParams();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getParams <em>Params</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Params</em>' containment reference.
-   * @see #getParams()
-   * @generated
-   */
-  void setParams(ParamsBlock value);
-
-  /**
-   * Returns the value of the '<em><b>Response</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Response</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Response</em>' containment reference.
-   * @see #setResponse(ResponseBlock)
-   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getHttpMethod_Response()
-   * @model containment="true"
-   * @generated
-   */
-  ResponseBlock getResponse();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.HttpMethod#getResponse <em>Response</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Response</em>' containment reference.
-   * @see #getResponse()
-   * @generated
-   */
-  void setResponse(ResponseBlock value);
+  EList<HttpMethodBlock> getBlocks();
 
 } // HttpMethod

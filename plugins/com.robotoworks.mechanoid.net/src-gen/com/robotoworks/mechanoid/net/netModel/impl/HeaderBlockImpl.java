@@ -15,8 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class HeaderBlockImpl extends MinimalEObjectImpl.Container implements HeaderBlock
+public class HeaderBlockImpl extends ClientBlockImpl implements HeaderBlock
 {
   /**
    * The cached value of the '{@link #getHeaders() <em>Headers</em>}' containment reference list.
