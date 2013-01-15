@@ -423,7 +423,7 @@ public class ModelExtensions {
 			return "";
 		}
 		
-		String path = serializer.serialize(method.getPath());
+		String path = serializer.serialize(method.getPath()).trim();
 		
 		return path.replaceAll("[\\^a-zA-Z_0-9]+:[a-zA-Z_0-9]+", "%s");
 	}	

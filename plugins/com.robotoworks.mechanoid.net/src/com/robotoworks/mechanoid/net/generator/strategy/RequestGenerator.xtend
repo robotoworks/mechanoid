@@ -156,7 +156,7 @@ class RequestGenerator {
 		«ENDIF»
 		public String createUrl(String baseUrl){
 			«IF(method.path?.params?.size > 0)»
-				Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
+				Uri.Builder uriBuilder = Uri.parse(baseUrl + String.format(PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
 			«ELSE»
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
 			«ENDIF»		
