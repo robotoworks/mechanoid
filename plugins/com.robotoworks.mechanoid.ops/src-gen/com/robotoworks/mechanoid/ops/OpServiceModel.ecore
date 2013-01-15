@@ -16,17 +16,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//OperationArg"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="unique" eType="#//WithUniqueBlock"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueClause" eType="#//UniqueClause"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationArg">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//OpArgType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WithUniqueBlock">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" upperBound="-1"
-        eType="#//OperationArg"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueClause"/>
   <eClassifiers xsi:type="ecore:EEnum" name="OpArgType">
     <eLiterals name="Boolean" literal="boolean"/>
     <eLiterals name="String" value="1" literal="String"/>
@@ -35,5 +32,10 @@
     <eLiterals name="Long" value="4" literal="long"/>
     <eLiterals name="Parcelable" value="5" literal="Parcelable"/>
     <eLiterals name="PendingIntent" value="6" literal="PendingIntent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotUnique" eSuperTypes="#//UniqueClause"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueDeclaration" eSuperTypes="#//UniqueClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" upperBound="-1"
+        eType="#//OperationArg"/>
   </eClassifiers>
 </ecore:EPackage>

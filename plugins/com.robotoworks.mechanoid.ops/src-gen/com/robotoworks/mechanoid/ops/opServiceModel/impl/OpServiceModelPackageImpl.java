@@ -3,13 +3,15 @@
 package com.robotoworks.mechanoid.ops.opServiceModel.impl;
 
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
+import com.robotoworks.mechanoid.ops.opServiceModel.NotUnique;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpArgType;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelFactory;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
-import com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -60,7 +62,21 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass withUniqueBlockEClass = null;
+  private EClass uniqueClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notUniqueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uniqueDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -227,7 +243,7 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_Unique()
+  public EReference getOperation_UniqueClause()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(2);
   }
@@ -267,9 +283,9 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWithUniqueBlock()
+  public EClass getUniqueClause()
   {
-    return withUniqueBlockEClass;
+    return uniqueClauseEClass;
   }
 
   /**
@@ -277,9 +293,29 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWithUniqueBlock_Args()
+  public EClass getNotUnique()
   {
-    return (EReference)withUniqueBlockEClass.getEStructuralFeatures().get(0);
+    return notUniqueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUniqueDeclaration()
+  {
+    return uniqueDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUniqueDeclaration_Args()
+  {
+    return (EReference)uniqueDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -333,14 +369,18 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
     operationEClass = createEClass(OPERATION);
     createEAttribute(operationEClass, OPERATION__NAME);
     createEReference(operationEClass, OPERATION__ARGS);
-    createEReference(operationEClass, OPERATION__UNIQUE);
+    createEReference(operationEClass, OPERATION__UNIQUE_CLAUSE);
 
     operationArgEClass = createEClass(OPERATION_ARG);
     createEAttribute(operationArgEClass, OPERATION_ARG__TYPE);
     createEAttribute(operationArgEClass, OPERATION_ARG__NAME);
 
-    withUniqueBlockEClass = createEClass(WITH_UNIQUE_BLOCK);
-    createEReference(withUniqueBlockEClass, WITH_UNIQUE_BLOCK__ARGS);
+    uniqueClauseEClass = createEClass(UNIQUE_CLAUSE);
+
+    notUniqueEClass = createEClass(NOT_UNIQUE);
+
+    uniqueDeclarationEClass = createEClass(UNIQUE_DECLARATION);
+    createEReference(uniqueDeclarationEClass, UNIQUE_DECLARATION__ARGS);
 
     // Create enums
     opArgTypeEEnum = createEEnum(OP_ARG_TYPE);
@@ -375,6 +415,8 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    notUniqueEClass.getESuperTypes().add(this.getUniqueClause());
+    uniqueDeclarationEClass.getESuperTypes().add(this.getUniqueClause());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -388,14 +430,18 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOperation_Name(), ecorePackage.getEString(), "name", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Args(), this.getOperationArg(), null, "args", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Unique(), this.getWithUniqueBlock(), null, "unique", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_UniqueClause(), this.getUniqueClause(), null, "uniqueClause", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operationArgEClass, OperationArg.class, "OperationArg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOperationArg_Type(), this.getOpArgType(), "type", null, 0, 1, OperationArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOperationArg_Name(), ecorePackage.getEString(), "name", null, 0, 1, OperationArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(withUniqueBlockEClass, WithUniqueBlock.class, "WithUniqueBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWithUniqueBlock_Args(), this.getOperationArg(), null, "args", null, 0, -1, WithUniqueBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(uniqueClauseEClass, UniqueClause.class, "UniqueClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(notUniqueEClass, NotUnique.class, "NotUnique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(uniqueDeclarationEClass, UniqueDeclaration.class, "UniqueDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUniqueDeclaration_Args(), this.getOperationArg(), null, "args", null, 0, -1, UniqueDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(opArgTypeEEnum, OpArgType.class, "OpArgType");

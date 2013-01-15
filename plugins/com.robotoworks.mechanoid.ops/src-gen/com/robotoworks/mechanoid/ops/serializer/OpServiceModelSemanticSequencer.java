@@ -3,11 +3,12 @@ package com.robotoworks.mechanoid.ops.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
+import com.robotoworks.mechanoid.ops.opServiceModel.NotUnique;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
-import com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration;
 import com.robotoworks.mechanoid.ops.services.OpServiceModelGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -35,6 +36,12 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 					return; 
 				}
 				else break;
+			case OpServiceModelPackage.NOT_UNIQUE:
+				if(context == grammarAccess.getUniqueClauseRule()) {
+					sequence_UniqueClause(context, (NotUnique) semanticObject); 
+					return; 
+				}
+				else break;
 			case OpServiceModelPackage.OPERATION:
 				if(context == grammarAccess.getOperationRule()) {
 					sequence_Operation(context, (Operation) semanticObject); 
@@ -53,9 +60,9 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 					return; 
 				}
 				else break;
-			case OpServiceModelPackage.WITH_UNIQUE_BLOCK:
-				if(context == grammarAccess.getWithUniqueBlockRule()) {
-					sequence_WithUniqueBlock(context, (WithUniqueBlock) semanticObject); 
+			case OpServiceModelPackage.UNIQUE_DECLARATION:
+				if(context == grammarAccess.getUniqueClauseRule()) {
+					sequence_UniqueClause(context, (UniqueDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -65,7 +72,7 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Constraint:
-	 *     (packageName=FQN service=ServiceBlock)
+	 *     (packageName=QualifiedName service=ServiceBlock)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		if(errorAcceptor != null) {
@@ -76,7 +83,7 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0(), semanticObject.getPackageName());
+		feeder.accept(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0(), semanticObject.getPackageName());
 		feeder.accept(grammarAccess.getModelAccess().getServiceServiceBlockParserRuleCall_2_0(), semanticObject.getService());
 		feeder.finish();
 	}
@@ -103,7 +110,7 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (args+=OperationArg args+=OperationArg*)? unique=WithUniqueBlock?)
+	 *     (name=ID (args+=OperationArg args+=OperationArg*)? uniqueClause=UniqueClause?)
 	 */
 	protected void sequence_Operation(EObject context, Operation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -121,9 +128,18 @@ public class OpServiceModelSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Constraint:
+	 *     {NotUnique}
+	 */
+	protected void sequence_UniqueClause(EObject context, NotUnique semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (args+=[OperationArg|ID] args+=[OperationArg|ID]*)
 	 */
-	protected void sequence_WithUniqueBlock(EObject context, WithUniqueBlock semanticObject) {
+	protected void sequence_UniqueClause(EObject context, UniqueDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

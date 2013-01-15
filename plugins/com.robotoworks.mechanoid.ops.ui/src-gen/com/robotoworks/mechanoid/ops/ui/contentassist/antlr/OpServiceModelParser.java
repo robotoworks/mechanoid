@@ -37,6 +37,7 @@ public class OpServiceModelParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getUniqueClauseAccess().getAlternatives(), "rule__UniqueClause__Alternatives");
 					put(grammarAccess.getOpArgTypeAccess().getAlternatives(), "rule__OpArgType__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getServiceBlockAccess().getGroup(), "rule__ServiceBlock__Group__0");
@@ -44,10 +45,11 @@ public class OpServiceModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOperationAccess().getGroup_3(), "rule__Operation__Group_3__0");
 					put(grammarAccess.getOperationAccess().getGroup_3_1(), "rule__Operation__Group_3_1__0");
 					put(grammarAccess.getOperationArgAccess().getGroup(), "rule__OperationArg__Group__0");
-					put(grammarAccess.getWithUniqueBlockAccess().getGroup(), "rule__WithUniqueBlock__Group__0");
-					put(grammarAccess.getWithUniqueBlockAccess().getGroup_4(), "rule__WithUniqueBlock__Group_4__0");
-					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
-					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
+					put(grammarAccess.getUniqueClauseAccess().getGroup_0(), "rule__UniqueClause__Group_0__0");
+					put(grammarAccess.getUniqueClauseAccess().getGroup_1(), "rule__UniqueClause__Group_1__0");
+					put(grammarAccess.getUniqueClauseAccess().getGroup_1_4(), "rule__UniqueClause__Group_1_4__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getServiceAssignment_2(), "rule__Model__ServiceAssignment_2");
 					put(grammarAccess.getServiceBlockAccess().getNameAssignment_1(), "rule__ServiceBlock__NameAssignment_1");
@@ -55,11 +57,11 @@ public class OpServiceModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOperationAccess().getNameAssignment_1(), "rule__Operation__NameAssignment_1");
 					put(grammarAccess.getOperationAccess().getArgsAssignment_3_0(), "rule__Operation__ArgsAssignment_3_0");
 					put(grammarAccess.getOperationAccess().getArgsAssignment_3_1_1(), "rule__Operation__ArgsAssignment_3_1_1");
-					put(grammarAccess.getOperationAccess().getUniqueAssignment_5(), "rule__Operation__UniqueAssignment_5");
+					put(grammarAccess.getOperationAccess().getUniqueClauseAssignment_5(), "rule__Operation__UniqueClauseAssignment_5");
 					put(grammarAccess.getOperationArgAccess().getTypeAssignment_0(), "rule__OperationArg__TypeAssignment_0");
 					put(grammarAccess.getOperationArgAccess().getNameAssignment_1(), "rule__OperationArg__NameAssignment_1");
-					put(grammarAccess.getWithUniqueBlockAccess().getArgsAssignment_3(), "rule__WithUniqueBlock__ArgsAssignment_3");
-					put(grammarAccess.getWithUniqueBlockAccess().getArgsAssignment_4_1(), "rule__WithUniqueBlock__ArgsAssignment_4_1");
+					put(grammarAccess.getUniqueClauseAccess().getArgsAssignment_1_3(), "rule__UniqueClause__ArgsAssignment_1_3");
+					put(grammarAccess.getUniqueClauseAccess().getArgsAssignment_1_4_1(), "rule__UniqueClause__ArgsAssignment_1_4_1");
 				}
 			};
 		}

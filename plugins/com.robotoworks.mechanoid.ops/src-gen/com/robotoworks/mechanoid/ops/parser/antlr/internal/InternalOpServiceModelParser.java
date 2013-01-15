@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'with'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'", "'PendingIntent'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'not'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'", "'PendingIntent'"
     };
     public static final int RULE_ID=4;
     public static final int T__28=28;
@@ -126,7 +126,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModel"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:77:1: ruleModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_service_2_0= ruleServiceBlock ) ) ) ;
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:77:1: ruleModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_service_2_0= ruleServiceBlock ) ) ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
@@ -139,27 +139,27 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:80:28: ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_service_2_0= ruleServiceBlock ) ) ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_service_2_0= ruleServiceBlock ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:80:28: ( (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_service_2_0= ruleServiceBlock ) ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_service_2_0= ruleServiceBlock ) ) )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_service_2_0= ruleServiceBlock ) ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:3: otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_service_2_0= ruleServiceBlock ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_service_2_0= ruleServiceBlock ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:81:3: otherlv_0= 'package' ( (lv_packageName_1_0= ruleQualifiedName ) ) ( (lv_service_2_0= ruleServiceBlock ) )
             {
             otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleModel122); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getModelAccess().getPackageKeyword_0());
                 
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:85:1: ( (lv_packageName_1_0= ruleFQN ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:86:1: (lv_packageName_1_0= ruleFQN )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:85:1: ( (lv_packageName_1_0= ruleQualifiedName ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:86:1: (lv_packageName_1_0= ruleQualifiedName )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:86:1: (lv_packageName_1_0= ruleFQN )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:87:3: lv_packageName_1_0= ruleFQN
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:86:1: (lv_packageName_1_0= ruleQualifiedName )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:87:3: lv_packageName_1_0= ruleQualifiedName
             {
              
-            	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0()); 
+            	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleFQN_in_ruleModel143);
-            lv_packageName_1_0=ruleFQN();
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleModel143);
+            lv_packageName_1_0=ruleQualifiedName();
 
             state._fsp--;
 
@@ -171,7 +171,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                    			current, 
                    			"packageName",
                     		lv_packageName_1_0, 
-                    		"FQN");
+                    		"QualifiedName");
             	        afterParserOrEnumRuleCall();
             	    
 
@@ -432,7 +432,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOperation"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:207:1: ruleOperation returns [EObject current=null] : (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_unique_7_0= ruleWithUniqueBlock ) )? ) ;
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:207:1: ruleOperation returns [EObject current=null] : (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_uniqueClause_7_0= ruleUniqueClause ) )? ) ;
     public final EObject ruleOperation() throws RecognitionException {
         EObject current = null;
 
@@ -445,17 +445,17 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
         EObject lv_args_5_0 = null;
 
-        EObject lv_unique_7_0 = null;
+        EObject lv_uniqueClause_7_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:210:28: ( (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_unique_7_0= ruleWithUniqueBlock ) )? ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:1: (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_unique_7_0= ruleWithUniqueBlock ) )? )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:210:28: ( (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_uniqueClause_7_0= ruleUniqueClause ) )? ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:1: (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_uniqueClause_7_0= ruleUniqueClause ) )? )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:1: (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_unique_7_0= ruleWithUniqueBlock ) )? )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:3: otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_unique_7_0= ruleWithUniqueBlock ) )?
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:1: (otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_uniqueClause_7_0= ruleUniqueClause ) )? )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:211:3: otherlv_0= 'operation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( (lv_args_3_0= ruleOperationArg ) ) (otherlv_4= ',' ( (lv_args_5_0= ruleOperationArg ) ) )* )? otherlv_6= ')' ( (lv_uniqueClause_7_0= ruleUniqueClause ) )?
             {
             otherlv_0=(Token)match(input,15,FOLLOW_15_in_ruleOperation398); 
 
@@ -602,25 +602,25 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_6, grammarAccess.getOperationAccess().getRightParenthesisKeyword_4());
                 
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:281:1: ( (lv_unique_7_0= ruleWithUniqueBlock ) )?
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:281:1: ( (lv_uniqueClause_7_0= ruleUniqueClause ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==19) ) {
+            if ( ((LA4_0>=19 && LA4_0<=20)) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:282:1: (lv_unique_7_0= ruleWithUniqueBlock )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:282:1: (lv_uniqueClause_7_0= ruleUniqueClause )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:282:1: (lv_unique_7_0= ruleWithUniqueBlock )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:283:3: lv_unique_7_0= ruleWithUniqueBlock
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:282:1: (lv_uniqueClause_7_0= ruleUniqueClause )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:283:3: lv_uniqueClause_7_0= ruleUniqueClause
                     {
                      
-                    	        newCompositeNode(grammarAccess.getOperationAccess().getUniqueWithUniqueBlockParserRuleCall_5_0()); 
+                    	        newCompositeNode(grammarAccess.getOperationAccess().getUniqueClauseUniqueClauseParserRuleCall_5_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleWithUniqueBlock_in_ruleOperation525);
-                    lv_unique_7_0=ruleWithUniqueBlock();
+                    pushFollow(FOLLOW_ruleUniqueClause_in_ruleOperation525);
+                    lv_uniqueClause_7_0=ruleUniqueClause();
 
                     state._fsp--;
 
@@ -630,9 +630,9 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     	        }
                            		set(
                            			current, 
-                           			"unique",
-                            		lv_unique_7_0, 
-                            		"WithUniqueBlock");
+                           			"uniqueClause",
+                            		lv_uniqueClause_7_0, 
+                            		"UniqueClause");
                     	        afterParserOrEnumRuleCall();
                     	    
 
@@ -795,26 +795,26 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleOperationArg"
 
 
-    // $ANTLR start "entryRuleWithUniqueBlock"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:364:1: entryRuleWithUniqueBlock returns [EObject current=null] : iv_ruleWithUniqueBlock= ruleWithUniqueBlock EOF ;
-    public final EObject entryRuleWithUniqueBlock() throws RecognitionException {
+    // $ANTLR start "entryRuleUniqueClause"
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:364:1: entryRuleUniqueClause returns [EObject current=null] : iv_ruleUniqueClause= ruleUniqueClause EOF ;
+    public final EObject entryRuleUniqueClause() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleWithUniqueBlock = null;
+        EObject iv_ruleUniqueClause = null;
 
 
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:365:2: (iv_ruleWithUniqueBlock= ruleWithUniqueBlock EOF )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:366:2: iv_ruleWithUniqueBlock= ruleWithUniqueBlock EOF
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:365:2: (iv_ruleUniqueClause= ruleUniqueClause EOF )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:366:2: iv_ruleUniqueClause= ruleUniqueClause EOF
             {
-             newCompositeNode(grammarAccess.getWithUniqueBlockRule()); 
-            pushFollow(FOLLOW_ruleWithUniqueBlock_in_entryRuleWithUniqueBlock676);
-            iv_ruleWithUniqueBlock=ruleWithUniqueBlock();
+             newCompositeNode(grammarAccess.getUniqueClauseRule()); 
+            pushFollow(FOLLOW_ruleUniqueClause_in_entryRuleUniqueClause676);
+            iv_ruleUniqueClause=ruleUniqueClause();
 
             state._fsp--;
 
-             current =iv_ruleWithUniqueBlock; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWithUniqueBlock686); 
+             current =iv_ruleUniqueClause; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUniqueClause686); 
 
             }
 
@@ -828,117 +828,182 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleWithUniqueBlock"
+    // $ANTLR end "entryRuleUniqueClause"
 
 
-    // $ANTLR start "ruleWithUniqueBlock"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:373:1: ruleWithUniqueBlock returns [EObject current=null] : (otherlv_0= 'with' otherlv_1= 'unique' otherlv_2= '(' ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* otherlv_6= ')' ) ;
-    public final EObject ruleWithUniqueBlock() throws RecognitionException {
+    // $ANTLR start "ruleUniqueClause"
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:373:1: ruleUniqueClause returns [EObject current=null] : ( ( () otherlv_1= 'not' otherlv_2= 'unique' ) | ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' ) ) ;
+    public final EObject ruleUniqueClause() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
         Token otherlv_1=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
         Token otherlv_4=null;
         Token otherlv_5=null;
         Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:376:28: ( (otherlv_0= 'with' otherlv_1= 'unique' otherlv_2= '(' ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* otherlv_6= ')' ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:1: (otherlv_0= 'with' otherlv_1= 'unique' otherlv_2= '(' ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* otherlv_6= ')' )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:376:28: ( ( ( () otherlv_1= 'not' otherlv_2= 'unique' ) | ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:1: ( ( () otherlv_1= 'not' otherlv_2= 'unique' ) | ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' ) )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:1: (otherlv_0= 'with' otherlv_1= 'unique' otherlv_2= '(' ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* otherlv_6= ')' )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:3: otherlv_0= 'with' otherlv_1= 'unique' otherlv_2= '(' ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* otherlv_6= ')'
-            {
-            otherlv_0=(Token)match(input,19,FOLLOW_19_in_ruleWithUniqueBlock723); 
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:1: ( ( () otherlv_1= 'not' otherlv_2= 'unique' ) | ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' ) )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-                	newLeafNode(otherlv_0, grammarAccess.getWithUniqueBlockAccess().getWithKeyword_0());
-                
-            otherlv_1=(Token)match(input,20,FOLLOW_20_in_ruleWithUniqueBlock735); 
-
-                	newLeafNode(otherlv_1, grammarAccess.getWithUniqueBlockAccess().getUniqueKeyword_1());
-                
-            otherlv_2=(Token)match(input,16,FOLLOW_16_in_ruleWithUniqueBlock747); 
-
-                	newLeafNode(otherlv_2, grammarAccess.getWithUniqueBlockAccess().getLeftParenthesisKeyword_2());
-                
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:389:1: ( (otherlv_3= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:390:1: (otherlv_3= RULE_ID )
-            {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:390:1: (otherlv_3= RULE_ID )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:391:3: otherlv_3= RULE_ID
-            {
-
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getWithUniqueBlockRule());
-            	        }
-                    
-            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWithUniqueBlock767); 
-
-            		newLeafNode(otherlv_3, grammarAccess.getWithUniqueBlockAccess().getArgsOperationArgCrossReference_3_0()); 
-            	
-
+            if ( (LA6_0==19) ) {
+                alt6=1;
             }
-
-
+            else if ( (LA6_0==20) ) {
+                alt6=2;
             }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 6, 0, input);
 
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:402:2: (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )*
-            loop5:
-            do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                throw nvae;
+            }
+            switch (alt6) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:2: ( () otherlv_1= 'not' otherlv_2= 'unique' )
+                    {
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:2: ( () otherlv_1= 'not' otherlv_2= 'unique' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:3: () otherlv_1= 'not' otherlv_2= 'unique'
+                    {
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:377:3: ()
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:378:5: 
+                    {
 
-                if ( (LA5_0==17) ) {
-                    alt5=1;
-                }
+                            current = forceCreateModelElement(
+                                grammarAccess.getUniqueClauseAccess().getNotUniqueAction_0_0(),
+                                current);
+                        
 
+                    }
 
-                switch (alt5) {
-            	case 1 :
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:402:4: otherlv_4= ',' ( (otherlv_5= RULE_ID ) )
-            	    {
-            	    otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleWithUniqueBlock780); 
+                    otherlv_1=(Token)match(input,19,FOLLOW_19_in_ruleUniqueClause733); 
 
-            	        	newLeafNode(otherlv_4, grammarAccess.getWithUniqueBlockAccess().getCommaKeyword_4_0());
-            	        
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:406:1: ( (otherlv_5= RULE_ID ) )
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:407:1: (otherlv_5= RULE_ID )
-            	    {
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:407:1: (otherlv_5= RULE_ID )
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:408:3: otherlv_5= RULE_ID
-            	    {
+                        	newLeafNode(otherlv_1, grammarAccess.getUniqueClauseAccess().getNotKeyword_0_1());
+                        
+                    otherlv_2=(Token)match(input,20,FOLLOW_20_in_ruleUniqueClause745); 
 
-            	    			if (current==null) {
-            	    	            current = createModelElement(grammarAccess.getWithUniqueBlockRule());
-            	    	        }
-            	            
-            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWithUniqueBlock800); 
+                        	newLeafNode(otherlv_2, grammarAccess.getUniqueClauseAccess().getUniqueKeyword_0_2());
+                        
 
-            	    		newLeafNode(otherlv_5, grammarAccess.getWithUniqueBlockAccess().getArgsOperationArgCrossReference_4_1_0()); 
-            	    	
-
-            	    }
+                    }
 
 
-            	    }
+                    }
+                    break;
+                case 2 :
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:392:6: ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' )
+                    {
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:392:6: ( () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:392:7: () otherlv_4= 'unique' otherlv_5= '(' ( (otherlv_6= RULE_ID ) ) (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )* otherlv_9= ')'
+                    {
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:392:7: ()
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:393:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getUniqueClauseAccess().getUniqueDeclarationAction_1_0(),
+                                current);
+                        
+
+                    }
+
+                    otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleUniqueClause774); 
+
+                        	newLeafNode(otherlv_4, grammarAccess.getUniqueClauseAccess().getUniqueKeyword_1_1());
+                        
+                    otherlv_5=(Token)match(input,16,FOLLOW_16_in_ruleUniqueClause786); 
+
+                        	newLeafNode(otherlv_5, grammarAccess.getUniqueClauseAccess().getLeftParenthesisKeyword_1_2());
+                        
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:406:1: ( (otherlv_6= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:407:1: (otherlv_6= RULE_ID )
+                    {
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:407:1: (otherlv_6= RULE_ID )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:408:3: otherlv_6= RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getUniqueClauseRule());
+                    	        }
+                            
+                    otherlv_6=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUniqueClause806); 
+
+                    		newLeafNode(otherlv_6, grammarAccess.getUniqueClauseAccess().getArgsOperationArgCrossReference_1_3_0()); 
+                    	
+
+                    }
 
 
-            	    }
-            	    break;
+                    }
 
-            	default :
-            	    break loop5;
-                }
-            } while (true);
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:419:2: (otherlv_7= ',' ( (otherlv_8= RULE_ID ) ) )*
+                    loop5:
+                    do {
+                        int alt5=2;
+                        int LA5_0 = input.LA(1);
 
-            otherlv_6=(Token)match(input,18,FOLLOW_18_in_ruleWithUniqueBlock814); 
+                        if ( (LA5_0==17) ) {
+                            alt5=1;
+                        }
 
-                	newLeafNode(otherlv_6, grammarAccess.getWithUniqueBlockAccess().getRightParenthesisKeyword_5());
-                
+
+                        switch (alt5) {
+                    	case 1 :
+                    	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:419:4: otherlv_7= ',' ( (otherlv_8= RULE_ID ) )
+                    	    {
+                    	    otherlv_7=(Token)match(input,17,FOLLOW_17_in_ruleUniqueClause819); 
+
+                    	        	newLeafNode(otherlv_7, grammarAccess.getUniqueClauseAccess().getCommaKeyword_1_4_0());
+                    	        
+                    	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:423:1: ( (otherlv_8= RULE_ID ) )
+                    	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:424:1: (otherlv_8= RULE_ID )
+                    	    {
+                    	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:424:1: (otherlv_8= RULE_ID )
+                    	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:425:3: otherlv_8= RULE_ID
+                    	    {
+
+                    	    			if (current==null) {
+                    	    	            current = createModelElement(grammarAccess.getUniqueClauseRule());
+                    	    	        }
+                    	            
+                    	    otherlv_8=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUniqueClause839); 
+
+                    	    		newLeafNode(otherlv_8, grammarAccess.getUniqueClauseAccess().getArgsOperationArgCrossReference_1_4_1_0()); 
+                    	    	
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop5;
+                        }
+                    } while (true);
+
+                    otherlv_9=(Token)match(input,18,FOLLOW_18_in_ruleUniqueClause853); 
+
+                        	newLeafNode(otherlv_9, grammarAccess.getUniqueClauseAccess().getRightParenthesisKeyword_1_5());
+                        
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -956,29 +1021,29 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleWithUniqueBlock"
+    // $ANTLR end "ruleUniqueClause"
 
 
-    // $ANTLR start "entryRuleFQN"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:431:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
-    public final String entryRuleFQN() throws RecognitionException {
+    // $ANTLR start "entryRuleQualifiedName"
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:448:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
-        AntlrDatatypeRuleToken iv_ruleFQN = null;
+        AntlrDatatypeRuleToken iv_ruleQualifiedName = null;
 
 
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:432:2: (iv_ruleFQN= ruleFQN EOF )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:433:2: iv_ruleFQN= ruleFQN EOF
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:449:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:450:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
-             newCompositeNode(grammarAccess.getFQNRule()); 
-            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN851);
-            iv_ruleFQN=ruleFQN();
+             newCompositeNode(grammarAccess.getQualifiedNameRule()); 
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName891);
+            iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
 
-             current =iv_ruleFQN.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN862); 
+             current =iv_ruleQualifiedName.getText(); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName902); 
 
             }
 
@@ -992,12 +1057,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleFQN"
+    // $ANTLR end "entryRuleQualifiedName"
 
 
-    // $ANTLR start "ruleFQN"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:440:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
-    public final AntlrDatatypeRuleToken ruleFQN() throws RecognitionException {
+    // $ANTLR start "ruleQualifiedName"
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:457:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token this_ID_0=null;
@@ -1007,52 +1072,52 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:443:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:444:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:460:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:461:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:444:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:444:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:461:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:461:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN902); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName942); 
 
             		current.merge(this_ID_0);
                 
              
-                newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
+                newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
                 
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:451:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop6:
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:468:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop7:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( (LA6_0==21) ) {
-                    alt6=1;
+                if ( (LA7_0==21) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt7) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:452:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:469:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,21,FOLLOW_21_in_ruleFQN921); 
+            	    kw=(Token)match(input,21,FOLLOW_21_in_ruleQualifiedName961); 
 
             	            current.merge(kw);
-            	            newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
+            	            newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN936); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName976); 
 
             	    		current.merge(this_ID_2);
             	        
             	     
-            	        newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
+            	        newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
             	        
 
             	    }
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop7;
                 }
             } while (true);
 
@@ -1073,11 +1138,11 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleFQN"
+    // $ANTLR end "ruleQualifiedName"
 
 
     // $ANTLR start "ruleOpArgType"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:472:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) ;
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:489:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) ;
     public final Enumerator ruleOpArgType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1091,62 +1156,62 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:474:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:475:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:491:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:475:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
-            int alt7=7;
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
+            int alt8=7;
             switch ( input.LA(1) ) {
             case 22:
                 {
-                alt7=1;
+                alt8=1;
                 }
                 break;
             case 23:
                 {
-                alt7=2;
+                alt8=2;
                 }
                 break;
             case 24:
                 {
-                alt7=3;
+                alt8=3;
                 }
                 break;
             case 25:
                 {
-                alt7=4;
+                alt8=4;
                 }
                 break;
             case 26:
                 {
-                alt7=5;
+                alt8=5;
                 }
                 break;
             case 27:
                 {
-                alt7=6;
+                alt8=6;
                 }
                 break;
             case 28:
                 {
-                alt7=7;
+                alt8=7;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:475:2: (enumLiteral_0= 'boolean' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:2: (enumLiteral_0= 'boolean' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:475:2: (enumLiteral_0= 'boolean' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:475:4: enumLiteral_0= 'boolean'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:2: (enumLiteral_0= 'boolean' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:4: enumLiteral_0= 'boolean'
                     {
-                    enumLiteral_0=(Token)match(input,22,FOLLOW_22_in_ruleOpArgType997); 
+                    enumLiteral_0=(Token)match(input,22,FOLLOW_22_in_ruleOpArgType1037); 
 
                             current = grammarAccess.getOpArgTypeAccess().getBooleanEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getOpArgTypeAccess().getBooleanEnumLiteralDeclaration_0()); 
@@ -1158,12 +1223,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:481:6: (enumLiteral_1= 'String' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:498:6: (enumLiteral_1= 'String' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:481:6: (enumLiteral_1= 'String' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:481:8: enumLiteral_1= 'String'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:498:6: (enumLiteral_1= 'String' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:498:8: enumLiteral_1= 'String'
                     {
-                    enumLiteral_1=(Token)match(input,23,FOLLOW_23_in_ruleOpArgType1014); 
+                    enumLiteral_1=(Token)match(input,23,FOLLOW_23_in_ruleOpArgType1054); 
 
                             current = grammarAccess.getOpArgTypeAccess().getStringEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getOpArgTypeAccess().getStringEnumLiteralDeclaration_1()); 
@@ -1175,12 +1240,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:487:6: (enumLiteral_2= 'int' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:504:6: (enumLiteral_2= 'int' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:487:6: (enumLiteral_2= 'int' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:487:8: enumLiteral_2= 'int'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:504:6: (enumLiteral_2= 'int' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:504:8: enumLiteral_2= 'int'
                     {
-                    enumLiteral_2=(Token)match(input,24,FOLLOW_24_in_ruleOpArgType1031); 
+                    enumLiteral_2=(Token)match(input,24,FOLLOW_24_in_ruleOpArgType1071); 
 
                             current = grammarAccess.getOpArgTypeAccess().getIntegerEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getOpArgTypeAccess().getIntegerEnumLiteralDeclaration_2()); 
@@ -1192,12 +1257,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:493:6: (enumLiteral_3= 'float' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:510:6: (enumLiteral_3= 'float' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:493:6: (enumLiteral_3= 'float' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:493:8: enumLiteral_3= 'float'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:510:6: (enumLiteral_3= 'float' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:510:8: enumLiteral_3= 'float'
                     {
-                    enumLiteral_3=(Token)match(input,25,FOLLOW_25_in_ruleOpArgType1048); 
+                    enumLiteral_3=(Token)match(input,25,FOLLOW_25_in_ruleOpArgType1088); 
 
                             current = grammarAccess.getOpArgTypeAccess().getFloatEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getOpArgTypeAccess().getFloatEnumLiteralDeclaration_3()); 
@@ -1209,12 +1274,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:499:6: (enumLiteral_4= 'long' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'long' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:499:6: (enumLiteral_4= 'long' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:499:8: enumLiteral_4= 'long'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'long' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:8: enumLiteral_4= 'long'
                     {
-                    enumLiteral_4=(Token)match(input,26,FOLLOW_26_in_ruleOpArgType1065); 
+                    enumLiteral_4=(Token)match(input,26,FOLLOW_26_in_ruleOpArgType1105); 
 
                             current = grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); 
@@ -1226,12 +1291,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:505:6: (enumLiteral_5= 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'Parcelable' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:505:6: (enumLiteral_5= 'Parcelable' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:505:8: enumLiteral_5= 'Parcelable'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:8: enumLiteral_5= 'Parcelable'
                     {
-                    enumLiteral_5=(Token)match(input,27,FOLLOW_27_in_ruleOpArgType1082); 
+                    enumLiteral_5=(Token)match(input,27,FOLLOW_27_in_ruleOpArgType1122); 
 
                             current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
@@ -1243,12 +1308,12 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:511:6: (enumLiteral_6= 'PendingIntent' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:511:6: (enumLiteral_6= 'PendingIntent' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:511:8: enumLiteral_6= 'PendingIntent'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:8: enumLiteral_6= 'PendingIntent'
                     {
-                    enumLiteral_6=(Token)match(input,28,FOLLOW_28_in_ruleOpArgType1099); 
+                    enumLiteral_6=(Token)match(input,28,FOLLOW_28_in_ruleOpArgType1139); 
 
                             current = grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
@@ -1286,7 +1351,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel85 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_11_in_ruleModel122 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleModel143 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleModel143 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_ruleServiceBlock_in_ruleModel164 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleServiceBlock_in_entryRuleServiceBlock200 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleServiceBlock210 = new BitSet(new long[]{0x0000000000000002L});
@@ -1303,32 +1368,33 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleOperationArg_in_ruleOperation454 = new BitSet(new long[]{0x0000000000060000L});
     public static final BitSet FOLLOW_17_in_ruleOperation467 = new BitSet(new long[]{0x000000001FC00000L});
     public static final BitSet FOLLOW_ruleOperationArg_in_ruleOperation488 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_18_in_ruleOperation504 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ruleWithUniqueBlock_in_ruleOperation525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_ruleOperation504 = new BitSet(new long[]{0x0000000000180002L});
+    public static final BitSet FOLLOW_ruleUniqueClause_in_ruleOperation525 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOperationArg_in_entryRuleOperationArg562 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOperationArg572 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpArgType_in_ruleOperationArg618 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleOperationArg635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWithUniqueBlock_in_entryRuleWithUniqueBlock676 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWithUniqueBlock686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_ruleWithUniqueBlock723 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleWithUniqueBlock735 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_ruleWithUniqueBlock747 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleWithUniqueBlock767 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_17_in_ruleWithUniqueBlock780 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleWithUniqueBlock800 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_18_in_ruleWithUniqueBlock814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN851 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFQN862 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN902 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_ruleFQN921 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN936 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_22_in_ruleOpArgType997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleOpArgType1014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleOpArgType1031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleOpArgType1048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleOpArgType1065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleOpArgType1082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleOpArgType1099 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUniqueClause_in_entryRuleUniqueClause676 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUniqueClause686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_ruleUniqueClause733 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_ruleUniqueClause745 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_ruleUniqueClause774 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleUniqueClause786 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUniqueClause806 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_17_in_ruleUniqueClause819 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUniqueClause839 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_18_in_ruleUniqueClause853 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName891 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName942 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleQualifiedName961 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName976 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_22_in_ruleOpArgType1037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleOpArgType1054 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleOpArgType1071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleOpArgType1088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ruleOpArgType1105 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleOpArgType1122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleOpArgType1139 = new BitSet(new long[]{0x0000000000000002L});
 
 }
