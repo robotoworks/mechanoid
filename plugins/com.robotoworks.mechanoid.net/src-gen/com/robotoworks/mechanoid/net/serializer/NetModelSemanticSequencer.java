@@ -491,7 +491,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (packageName=FQN declarations+=Declaration*)
+	 *     (packageName=QualifiedName declarations+=Declaration*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

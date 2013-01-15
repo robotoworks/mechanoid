@@ -24,25 +24,25 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPackageNameFQNParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
+		private final RuleCall cPackageNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cPackageNameAssignment_1.eContents().get(0);
 		private final Assignment cDeclarationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDeclarationsDeclarationParserRuleCall_2_0 = (RuleCall)cDeclarationsAssignment_2.eContents().get(0);
 		
 		//Model:
-		//	"package" packageName=FQN declarations+=Declaration*;
+		//	"package" packageName=QualifiedName declarations+=Declaration*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" packageName=FQN declarations+=Declaration*
+		//"package" packageName=QualifiedName declarations+=Declaration*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
-		//packageName=FQN
+		//packageName=QualifiedName
 		public Assignment getPackageNameAssignment_1() { return cPackageNameAssignment_1; }
 
-		//FQN
-		public RuleCall getPackageNameFQNParserRuleCall_1_0() { return cPackageNameFQNParserRuleCall_1_0; }
+		//QualifiedName
+		public RuleCall getPackageNameQualifiedNameParserRuleCall_1_0() { return cPackageNameQualifiedNameParserRuleCall_1_0; }
 
 		//declarations+=Declaration*
 		public Assignment getDeclarationsAssignment_2() { return cDeclarationsAssignment_2; }
@@ -301,21 +301,23 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cPathAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cIDTerminalRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final RuleCall cArbitraryPathSegmentParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
 		private final Assignment cParamsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cArbitraryPathSegmentParserRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
 		private final Assignment cParamsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
 		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0 = (RuleCall)cParamsAssignment_3_1_1.eContents().get(0);
 		
 		//Path:
-		//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
+		//	{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+		//	params+=SimpleMemberAssignment))*;
 		public ParserRule getRule() { return rule; }
 
-		//{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*
+		//{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+		//params+=SimpleMemberAssignment))*
 		public Group getGroup() { return cGroup; }
 
 		//{Path}
@@ -324,11 +326,11 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"/"
 		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
 
-		//ID | params+=SimpleMemberAssignment
+		//ArbitraryPathSegment | params+=SimpleMemberAssignment
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//ID
-		public RuleCall getIDTerminalRuleCall_2_0() { return cIDTerminalRuleCall_2_0; }
+		//ArbitraryPathSegment
+		public RuleCall getArbitraryPathSegmentParserRuleCall_2_0() { return cArbitraryPathSegmentParserRuleCall_2_0; }
 
 		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
@@ -336,23 +338,51 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//SimpleMemberAssignment
 		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_1_0; }
 
-		//("/" (ID | params+=SimpleMemberAssignment))*
+		//("/" (ArbitraryPathSegment | params+=SimpleMemberAssignment))*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"/"
 		public Keyword getSolidusKeyword_3_0() { return cSolidusKeyword_3_0; }
 
-		//ID | params+=SimpleMemberAssignment
+		//ArbitraryPathSegment | params+=SimpleMemberAssignment
 		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
 
-		//ID
-		public RuleCall getIDTerminalRuleCall_3_1_0() { return cIDTerminalRuleCall_3_1_0; }
+		//ArbitraryPathSegment
+		public RuleCall getArbitraryPathSegmentParserRuleCall_3_1_0() { return cArbitraryPathSegmentParserRuleCall_3_1_0; }
 
 		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_3_1_1() { return cParamsAssignment_3_1_1; }
 
 		//SimpleMemberAssignment
 		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0; }
+	}
+
+	public class ArbitraryPathSegmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ArbitraryPathSegment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cQualifiedNameParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//ArbitraryPathSegment:
+		//	QualifiedName ("-" QualifiedName)*;
+		public ParserRule getRule() { return rule; }
+
+		//QualifiedName ("-" QualifiedName)*
+		public Group getGroup() { return cGroup; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
+
+		//("-" QualifiedName)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_1_0() { return cHyphenMinusKeyword_1_0; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_1_1() { return cQualifiedNameParserRuleCall_1_1; }
 	}
 
 	public class ParamsBlockElements extends AbstractParserRuleElementFinder {
@@ -1183,15 +1213,15 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getIdDoubleKeyword_0() { return cIdDoubleKeyword_0; }
 	}
 
-	public class FQNElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FQN");
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//FQN:
+		//QualifiedName:
 		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1314,6 +1344,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private HttpMethodBlockElements pHttpMethodBlock;
 	private HttpMethodTypeElements unknownRuleHttpMethodType;
 	private PathElements pPath;
+	private ArbitraryPathSegmentElements pArbitraryPathSegment;
 	private ParamsBlockElements pParamsBlock;
 	private SimpleMemberAssignmentElements pSimpleMemberAssignment;
 	private LiteralElements pLiteral;
@@ -1340,7 +1371,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	private IntegerTypeElements pIntegerType;
 	private LongTypeElements pLongType;
 	private DoubleTypeElements pDoubleType;
-	private FQNElements pFQN;
+	private QualifiedNameElements pQualifiedName;
 	private BooleanValueElements unknownRuleBooleanValue;
 	private SignedNumberElements pSignedNumber;
 	private TerminalRule tNUMBER;
@@ -1385,7 +1416,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	"package" packageName=FQN declarations+=Declaration*;
+	//	"package" packageName=QualifiedName declarations+=Declaration*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -1475,13 +1506,24 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Path:
-	//	{Path} "/" (ID | params+=SimpleMemberAssignment) ("/" (ID | params+=SimpleMemberAssignment))*;
+	//	{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+	//	params+=SimpleMemberAssignment))*;
 	public PathElements getPathAccess() {
 		return (pPath != null) ? pPath : (pPath = new PathElements());
 	}
 	
 	public ParserRule getPathRule() {
 		return getPathAccess().getRule();
+	}
+
+	//ArbitraryPathSegment:
+	//	QualifiedName ("-" QualifiedName)*;
+	public ArbitraryPathSegmentElements getArbitraryPathSegmentAccess() {
+		return (pArbitraryPathSegment != null) ? pArbitraryPathSegment : (pArbitraryPathSegment = new ArbitraryPathSegmentElements());
+	}
+	
+	public ParserRule getArbitraryPathSegmentRule() {
+		return getArbitraryPathSegmentAccess().getRule();
 	}
 
 	//ParamsBlock:
@@ -1744,14 +1786,14 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDoubleTypeAccess().getRule();
 	}
 
-	//FQN:
+	//QualifiedName:
 	//	ID ("." ID)*;
-	public FQNElements getFQNAccess() {
-		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
 	}
 	
-	public ParserRule getFQNRule() {
-		return getFQNAccess().getRule();
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
 	}
 
 	//enum BooleanValue:

@@ -11,6 +11,7 @@ SyntaxHighlighter.brushes.MechNet = function()
 			{ regex: new RegExp('\\(\\*[\\s\\S]*?\\*\\)', 'gm'),   				css: 'comments' },
 			{ regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString, 	css: 'string' },
 			{ regex: new RegExp(this.getKeywords(keywords), 'gmi'),            	css: 'keyword' },
+			{ regex: /\/[^\{]+/g, css: 'string' },
 	];
 }
 
