@@ -63,6 +63,21 @@ public class ServiceBridgeGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("public Abstract");
+    String _name_3 = svc.getName();
+    String _pascalize_3 = Strings.pascalize(_name_3);
+    _builder.append(_pascalize_3, "	");
+    _builder.append("ServiceBridge(boolean enableLogging){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("super(enableLogging);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("protected Class<?> getServiceClass() {");
     _builder.newLine();
     _builder.append("\t\t");
@@ -79,9 +94,9 @@ public class ServiceBridgeGenerator {
       for(final Operation op : _ops) {
         _builder.append("\t");
         _builder.append("public int execute");
-        String _name_3 = op.getName();
-        String _pascalize_3 = Strings.pascalize(_name_3);
-        _builder.append(_pascalize_3, "	");
+        String _name_4 = op.getName();
+        String _pascalize_4 = Strings.pascalize(_name_4);
+        _builder.append(_pascalize_4, "	");
         _builder.append("Operation(");
         {
           EList<OperationArg> _args = op.getArgs();
@@ -96,8 +111,8 @@ public class ServiceBridgeGenerator {
             String _typeLiteral = Extensions.toTypeLiteral(_type);
             _builder.append(_typeLiteral, "	");
             _builder.append(" ");
-            String _name_4 = arg.getName();
-            String _camelize = Strings.camelize(_name_4);
+            String _name_5 = arg.getName();
+            String _camelize = Strings.camelize(_name_5);
             _builder.append(_camelize, "	");
           }
         }
@@ -106,13 +121,13 @@ public class ServiceBridgeGenerator {
         _builder.append("\t");
         _builder.append("\t");
         _builder.append("Intent intent = Abstract");
-        String _name_5 = op.getName();
-        String _pascalize_4 = Strings.pascalize(_name_5);
-        _builder.append(_pascalize_4, "		");
-        _builder.append("Operation.create");
         String _name_6 = op.getName();
         String _pascalize_5 = Strings.pascalize(_name_6);
         _builder.append(_pascalize_5, "		");
+        _builder.append("Operation.create");
+        String _name_7 = op.getName();
+        String _pascalize_6 = Strings.pascalize(_name_7);
+        _builder.append(_pascalize_6, "		");
         _builder.append("Intent(");
         {
           EList<OperationArg> _args_1 = op.getArgs();
@@ -123,8 +138,8 @@ public class ServiceBridgeGenerator {
             } else {
               _builder.appendImmediate(", ", "		");
             }
-            String _name_7 = arg_1.getName();
-            String _camelize_1 = Strings.camelize(_name_7);
+            String _name_8 = arg_1.getName();
+            String _camelize_1 = Strings.camelize(_name_8);
             _builder.append(_camelize_1, "		");
           }
         }
@@ -160,17 +175,17 @@ public class ServiceBridgeGenerator {
                 String _bundlePutMethodName = Extensions.toBundlePutMethodName(_type_1);
                 _builder.append(_bundlePutMethodName, "		");
                 _builder.append("(Abstract");
-                String _name_8 = op.getName();
-                String _pascalize_6 = Strings.pascalize(_name_8);
-                _builder.append(_pascalize_6, "		");
+                String _name_9 = op.getName();
+                String _pascalize_7 = Strings.pascalize(_name_9);
+                _builder.append(_pascalize_7, "		");
                 _builder.append("Operation.EXTRA_");
-                String _name_9 = uarg.getName();
-                String _underscore = Strings.underscore(_name_9);
+                String _name_10 = uarg.getName();
+                String _underscore = Strings.underscore(_name_10);
                 String _upperCase = _underscore.toUpperCase();
                 _builder.append(_upperCase, "		");
                 _builder.append(", ");
-                String _name_10 = uarg.getName();
-                String _camelize_2 = Strings.camelize(_name_10);
+                String _name_11 = uarg.getName();
+                String _camelize_2 = Strings.camelize(_name_11);
                 _builder.append(_camelize_2, "		");
                 _builder.append(");");
                 _builder.newLineIfNotEmpty();
@@ -179,12 +194,12 @@ public class ServiceBridgeGenerator {
             _builder.newLine();
             _builder.append("\t\t");
             _builder.append("Intent existingRequest = findPendingRequestByActionWithExtras(Abstract");
-            String _name_11 = op.getName();
-            String _pascalize_7 = Strings.pascalize(_name_11);
-            _builder.append(_pascalize_7, "		");
-            _builder.append("Operation.ACTION_");
             String _name_12 = op.getName();
-            String _underscore_1 = Strings.underscore(_name_12);
+            String _pascalize_8 = Strings.pascalize(_name_12);
+            _builder.append(_pascalize_8, "		");
+            _builder.append("Operation.ACTION_");
+            String _name_13 = op.getName();
+            String _underscore_1 = Strings.underscore(_name_13);
             String _upperCase_1 = _underscore_1.toUpperCase();
             _builder.append(_upperCase_1, "		");
             _builder.append(", matcher);");
@@ -193,12 +208,12 @@ public class ServiceBridgeGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("Intent existingRequest = findPendingRequestByActionWithExtras(Abstract");
-            String _name_13 = op.getName();
-            String _pascalize_8 = Strings.pascalize(_name_13);
-            _builder.append(_pascalize_8, "		");
-            _builder.append("Operation.ACTION_");
             String _name_14 = op.getName();
-            String _underscore_2 = Strings.underscore(_name_14);
+            String _pascalize_9 = Strings.pascalize(_name_14);
+            _builder.append(_pascalize_9, "		");
+            _builder.append("Operation.ACTION_");
+            String _name_15 = op.getName();
+            String _underscore_2 = Strings.underscore(_name_15);
             String _upperCase_2 = _underscore_2.toUpperCase();
             _builder.append(_upperCase_2, "		");
             _builder.append(", intent.getExtras());");
@@ -319,8 +334,14 @@ public class ServiceBridgeGenerator {
     String _name_5 = svc.getName();
     String _pascalize_5 = Strings.pascalize(_name_5);
     _builder.append(_pascalize_5, "	");
-    _builder.append("ServiceBridge(){}");
+    _builder.append("ServiceBridge(){");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("super(false);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
