@@ -63,6 +63,8 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHttpMethodAccess().getGroup(), "rule__HttpMethod__Group__0");
 					put(grammarAccess.getPathAccess().getGroup(), "rule__Path__Group__0");
 					put(grammarAccess.getPathAccess().getGroup_3(), "rule__Path__Group_3__0");
+					put(grammarAccess.getArbitraryPathSegmentAccess().getGroup(), "rule__ArbitraryPathSegment__Group__0");
+					put(grammarAccess.getArbitraryPathSegmentAccess().getGroup_1(), "rule__ArbitraryPathSegment__Group_1__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup(), "rule__ParamsBlock__Group__0");
 					put(grammarAccess.getParamsBlockAccess().getGroup_3(), "rule__ParamsBlock__Group_3__0");
 					put(grammarAccess.getSimpleMemberAssignmentAccess().getGroup(), "rule__SimpleMemberAssignment__Group__0");
@@ -86,8 +88,8 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumMemberAccess().getGroup_1(), "rule__EnumMember__Group_1__0");
 					put(grammarAccess.getComplexTypeLiteralAccess().getGroup(), "rule__ComplexTypeLiteral__Group__0");
 					put(grammarAccess.getComplexTypeLiteralAccess().getGroup_2(), "rule__ComplexTypeLiteral__Group_2__0");
-					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
-					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getSignedNumberAccess().getGroup(), "rule__SignedNumber__Group__0");
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getDeclarationsAssignment_2(), "rule__Model__DeclarationsAssignment_2");

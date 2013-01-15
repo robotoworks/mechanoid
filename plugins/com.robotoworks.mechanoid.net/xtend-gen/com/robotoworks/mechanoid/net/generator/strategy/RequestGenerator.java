@@ -577,7 +577,7 @@ public class RequestGenerator {
       boolean _greaterThan_2 = (_size_2 > 0);
       if (_greaterThan_2) {
         _builder.append("\t\t");
-        _builder.append("Uri.Builder uriBuilder = Uri.parse(String.format(baseUrl + PATH, ");
+        _builder.append("Uri.Builder uriBuilder = Uri.parse(baseUrl + String.format(PATH, ");
         {
           Path _path_6 = method.getPath();
           EList<SimpleMemberAssignment> _params_9 = _path_6.getParams();
