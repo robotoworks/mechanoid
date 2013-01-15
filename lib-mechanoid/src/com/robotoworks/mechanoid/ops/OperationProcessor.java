@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
+import android.util.Log;
 
 public abstract class OperationProcessor {
 	
@@ -35,15 +36,24 @@ public abstract class OperationProcessor {
 
 	private Operation currentOperation;
 	private Intent currentRequest;
+	
+	protected final String mLogTag;
+	protected final boolean mEnableLogging;
 		
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch(msg.what) {
 				case MSG_OPERATION_STARTING: {
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Starting] intent:%s", currentRequest));
+					}
 					service.onDataProcessorOperationStarting(currentRequest, msg.getData());
 					break;
 				}
 				case MSG_OPERATION_COMPLETE: {
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Complete] intent:%s", currentRequest));
+					}
 					currentOperation = null;
 					service.onDataProcessorOperationComplete(currentRequest, msg.getData());
 					
@@ -51,6 +61,9 @@ public abstract class OperationProcessor {
 					break;
 				}
 				case MSG_OPERATION_ABORTED: {
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Aborted] intent:%s", currentRequest));
+					}
 					currentOperation = null;
 					service.onDataProcessorOperationAborted(currentRequest, msg.arg1, msg.getData());
 					
@@ -58,6 +71,9 @@ public abstract class OperationProcessor {
 					break;					
 				}
 				case MSG_OPERATION_PROGRESS: {
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Progress] intent:%s", currentRequest));
+					}
 					service.onDataProcessorOperationProgress(currentRequest, msg.arg1, msg.getData());
 					break;
 				}
@@ -77,14 +93,19 @@ public abstract class OperationProcessor {
 		return requestQueue.size() > 0;
 	}
 	
-	public OperationProcessor(OperationService service) {
+	public OperationProcessor(OperationService service, boolean enableLogging) {
 		this.service = service;
-		
+		mLogTag = this.getClass().getSimpleName();
+		mEnableLogging = enableLogging;
 		worker.start();
 	}
 
 	public void execute(Intent intent) {
 
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Execute (Queue)] intent:%s", intent));
+		}
+		
 		if(intent.getAction().equals(OperationService.ACTION_ABORT)) {
 			
 			abortOperation(intent);
@@ -102,6 +123,10 @@ public abstract class OperationProcessor {
 	}
 
 	private void abortOperation(Intent intent) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Abort] intent:%s", intent));
+		}
+		
 		int abortRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 		int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 		
@@ -131,6 +156,10 @@ public abstract class OperationProcessor {
 	}
 	
 	private void executePendingOperations() {
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Executing Pending]");
+		}
+		
 		// pop a request
 		Intent request = requestQueue.poll();
 				
@@ -140,6 +169,11 @@ public abstract class OperationProcessor {
 	}
 
 	public void quit() {
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Quit]");
+		}
+		
 		Intent request = null;
 		
 		while((request = requestQueue.poll()) != null) {
@@ -151,16 +185,21 @@ public abstract class OperationProcessor {
 	}
 	
 	private void executeOperation(final Intent request) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Execute Operation] intent:%s", request));
+		}
 		
 		currentRequest = request;
 		currentOperation = createOperation(request.getAction());
+		
+		if(currentOperation == null) {
+			throw new RuntimeException(request.getAction() + " Not Implemented");
+		}
+
 		currentOperation.setContext(service.getApplicationContext());
 		currentOperation.setIntent(request);
 		currentOperation.setOperationProcessor(this);
 				
-		if(currentOperation == null) {
-			throw new RuntimeException(request.getAction() + " Not Implemented");
-		}
 		
 		worker.post(new OperationRunnable(handler, currentOperation));
 	}

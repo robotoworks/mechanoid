@@ -11,15 +11,16 @@ package com.robotoworks.mechanoid.ops;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import com.robotoworks.mechanoid.Mechanoid;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.util.Log;
 import android.util.SparseArray;
+
+import com.robotoworks.mechanoid.Mechanoid;
 
 public abstract class OperationServiceBridge {	
 	public static final int MSG_OPERATION_STARTING = 1;
@@ -28,7 +29,10 @@ public abstract class OperationServiceBridge {
 	public static final int MSG_OPERATION_ABORTED = 4;
 	
 	private int mRequestIdCounter = 1;
-		
+	
+	protected final String mLogTag;
+	protected final boolean mEnableLogging;
+	
 	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
 			
 	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
@@ -45,6 +49,7 @@ public abstract class OperationServiceBridge {
 		public void handleMessage(Message msg) {
 			switch(msg.what) {
 				case MSG_OPERATION_STARTING: {
+					
 					int id = msg.arg1;
 					Bundle data = msg.getData();
 					
@@ -76,6 +81,11 @@ public abstract class OperationServiceBridge {
 			}
 		}
 	});
+	
+	public OperationServiceBridge(boolean enableLogging) {
+		mLogTag = this.getClass().getSimpleName();
+		mEnableLogging = enableLogging;
+	}
 
 	protected abstract Class<?> getServiceClass();
 	
@@ -95,6 +105,7 @@ public abstract class OperationServiceBridge {
 		intent.setClass(context, getServiceClass());
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
 		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
+		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
 		
 		addPendingRequest(id, intent);
 		
@@ -102,6 +113,10 @@ public abstract class OperationServiceBridge {
 	}
 	
 	private void addPendingRequest(int requestId, Intent intent) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Added Request] " + intent.toString());
+		}
+		
 		mPendingRequests.put(requestId, intent);
 	}
 	
@@ -225,6 +240,9 @@ public abstract class OperationServiceBridge {
 	}
 	
 	protected void onOperationStarting(int requestId, Bundle data) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Starting] id:%s, data:%s", requestId, data));
+		}
 		
 		Intent intent = mPendingRequests.get(requestId);
 		
@@ -238,6 +256,10 @@ public abstract class OperationServiceBridge {
 	}
 
 	protected void onOperationComplete(int requestId, Bundle data) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Complete] id:%s, data:%s", requestId, data));
+		}
+		
 		Intent intent = removePendingRequestById(requestId);
 
 		if(intent != null) {
@@ -256,6 +278,10 @@ public abstract class OperationServiceBridge {
 	
 	protected void onOperationProgress(int requestId, int progress, Bundle data) {
 		
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Progress] id:%s, progress:%s, data:%s", requestId, progress, data));
+		}
+		
 		Intent intent = mPendingRequests.get(requestId);
 		
 		if(intent != null) {
@@ -271,6 +297,11 @@ public abstract class OperationServiceBridge {
 	}
 	
 	protected void onOperationAborted(int requestId, int reason, Bundle data) {
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Aborted] id:%s, reason:%s, data:%s", requestId, reason, data));
+		}
+		
 		Intent intent = removePendingRequestById(requestId);
 		
 		if(intent != null) {

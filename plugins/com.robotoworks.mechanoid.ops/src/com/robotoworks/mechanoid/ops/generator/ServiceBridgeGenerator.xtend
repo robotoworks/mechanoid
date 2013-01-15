@@ -21,7 +21,11 @@ class ServiceBridgeGenerator {
 			
 			public abstract class Abstract«svc.name.pascalize»ServiceBridge extends OperationServiceBridge {
 				private static final Class<?> SERVICE_CLASS = «svc.name.pascalize»Service.class;
-			
+
+				public Abstract«svc.name.pascalize»ServiceBridge(boolean enableLogging){
+					super(enableLogging);
+				}
+							
 				protected Class<?> getServiceClass() {
 					return SERVICE_CLASS;
 				}
@@ -73,7 +77,9 @@ class ServiceBridgeGenerator {
 					return instance;
 				}
 				
-				private «svc.name.pascalize»ServiceBridge(){}
+				private «svc.name.pascalize»ServiceBridge(){
+					super(false);
+				}
 			
 			}
 			
