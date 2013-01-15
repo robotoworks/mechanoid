@@ -9,9 +9,7 @@
 
 package com.robotoworks.mechanoid.ops;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,15 +25,15 @@ public abstract class OperationProcessor {
 	protected static final int MSG_OPERATION_COMPLETE = 2;
 	protected static final int MSG_OPERATION_PROGRESS = 3;
 	protected static final int MSG_OPERATION_ABORTED = 4;
-
+	protected static final int MSG_WORKER_READY = 5;
+	
 	private LinkedList<Intent> requestQueue = new LinkedList<Intent>();
 	
-	private Worker worker = new Worker();
-
-	private final OperationService service;
-
-	private Operation currentOperation;
-	private Intent currentRequest;
+	private Worker mWorker;
+	private boolean mWorkerReady;
+	private final OperationService mService;
+	private Operation mCurrentOperation;
+	private Intent mCurrentRequest;
 	
 	protected final String mLogTag;
 	protected final boolean mEnableLogging;
@@ -43,38 +41,42 @@ public abstract class OperationProcessor {
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch(msg.what) {
+				case MSG_WORKER_READY:
+					mWorkerReady = true;
+					executePendingOperations();
+					break;
 				case MSG_OPERATION_STARTING: {
 					if(mEnableLogging) {
-						Log.d(mLogTag, String.format("[Handle Operation Starting] intent:%s", currentRequest));
+						Log.d(mLogTag, String.format("[Handle Operation Starting] intent:%s", mCurrentRequest));
 					}
-					service.onDataProcessorOperationStarting(currentRequest, msg.getData());
+					mService.onDataProcessorOperationStarting(mCurrentRequest, msg.getData());
 					break;
 				}
 				case MSG_OPERATION_COMPLETE: {
 					if(mEnableLogging) {
-						Log.d(mLogTag, String.format("[Handle Operation Complete] intent:%s", currentRequest));
+						Log.d(mLogTag, String.format("[Handle Operation Complete] intent:%s", mCurrentRequest));
 					}
-					currentOperation = null;
-					service.onDataProcessorOperationComplete(currentRequest, msg.getData());
+					mCurrentOperation = null;
+					mService.onDataProcessorOperationComplete(mCurrentRequest, msg.getData());
 					
 					executePendingOperations();
 					break;
 				}
 				case MSG_OPERATION_ABORTED: {
 					if(mEnableLogging) {
-						Log.d(mLogTag, String.format("[Handle Operation Aborted] intent:%s", currentRequest));
+						Log.d(mLogTag, String.format("[Handle Operation Aborted] intent:%s", mCurrentRequest));
 					}
-					currentOperation = null;
-					service.onDataProcessorOperationAborted(currentRequest, msg.arg1, msg.getData());
+					mCurrentOperation = null;
+					mService.onDataProcessorOperationAborted(mCurrentRequest, msg.arg1, msg.getData());
 					
 					executePendingOperations();
 					break;					
 				}
 				case MSG_OPERATION_PROGRESS: {
 					if(mEnableLogging) {
-						Log.d(mLogTag, String.format("[Handle Operation Progress] intent:%s", currentRequest));
+						Log.d(mLogTag, String.format("[Handle Operation Progress] intent:%s", mCurrentRequest));
 					}
-					service.onDataProcessorOperationProgress(currentRequest, msg.arg1, msg.getData());
+					mService.onDataProcessorOperationProgress(mCurrentRequest, msg.arg1, msg.getData());
 					break;
 				}
 			}
@@ -94,10 +96,11 @@ public abstract class OperationProcessor {
 	}
 	
 	public OperationProcessor(OperationService service, boolean enableLogging) {
-		this.service = service;
+		this.mService = service;
 		mLogTag = this.getClass().getSimpleName();
 		mEnableLogging = enableLogging;
-		worker.start();
+		mWorker = new Worker(handler);
+		mWorker.start();
 	}
 
 	public void execute(Intent intent) {
@@ -116,8 +119,8 @@ public abstract class OperationProcessor {
 		// queue this one up
 		requestQueue.offer(intent);
 		
-		// make sure we are running ops
-		if(currentOperation == null) {
+		// make sure we are running ops if the worker is ready
+		if(mWorkerReady && mCurrentOperation == null) {
 			executePendingOperations();
 		}
 	}
@@ -131,12 +134,12 @@ public abstract class OperationProcessor {
 		int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 		
 		// Try to abort if its the current operation
-		if(currentOperation != null) {
+		if(mCurrentOperation != null) {
 			int currentRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 			
 			if(currentRequestId == abortRequestId) {
-				Message m = currentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
-				currentOperation.handler.sendMessage(m);
+				Message m = mCurrentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
+				mCurrentOperation.handler.sendMessage(m);
 				return;
 			}			
 		}
@@ -148,7 +151,7 @@ public abstract class OperationProcessor {
 			if(r.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0) == abortRequestId) {
 				requestQueue.remove(i);
 				
-				service.onDataProcessorOperationAborted(currentRequest, 0, null);
+				mService.onDataProcessorOperationAborted(mCurrentRequest, 0, null);
 				
 				break;
 			}
@@ -178,10 +181,10 @@ public abstract class OperationProcessor {
 		
 		while((request = requestQueue.poll()) != null) {
 			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
-			service.onDataProcessorOperationComplete(request, result);
+			mService.onDataProcessorOperationComplete(request, result);
 		}
 		
-		worker.quit();
+		mWorker.quit();
 	}
 	
 	private void executeOperation(final Intent request) {
@@ -189,19 +192,19 @@ public abstract class OperationProcessor {
 			Log.d(mLogTag, String.format("[Execute Operation] intent:%s", request));
 		}
 		
-		currentRequest = request;
-		currentOperation = createOperation(request.getAction());
+		mCurrentRequest = request;
+		mCurrentOperation = createOperation(request.getAction());
 		
-		if(currentOperation == null) {
+		if(mCurrentOperation == null) {
 			throw new RuntimeException(request.getAction() + " Not Implemented");
 		}
 
-		currentOperation.setContext(service.getApplicationContext());
-		currentOperation.setIntent(request);
-		currentOperation.setOperationProcessor(this);
+		mCurrentOperation.setContext(mService.getApplicationContext());
+		mCurrentOperation.setIntent(request);
+		mCurrentOperation.setOperationProcessor(this);
 				
 		
-		worker.post(new OperationRunnable(handler, currentOperation));
+		mWorker.post(new OperationRunnable(handler, mCurrentOperation));
 	}
 
 	protected abstract Operation createOperation(String action);
@@ -246,33 +249,23 @@ public abstract class OperationProcessor {
 	}
 	
 	static class Worker extends HandlerThread {
-		public Handler handler;
+		private Handler mWorkerHandler;
+		private Handler mProcessorHandler;
 		
-		private List<Runnable> pendingRunnables = new ArrayList<Runnable>();
-		
-		public Worker() {
+		public Worker(Handler processorHandler) {
 			super("worker", Process.THREAD_PRIORITY_BACKGROUND);
+			mProcessorHandler = processorHandler;
 		}
 		
 		public void post(Runnable runnable) {
-			if(handler == null) {
-				pendingRunnables.add(runnable);
-			} else {
-				handler.post(runnable);
-			}
-		}
-		
-		private void onHandlerPrepared() {
-			for(Runnable runnable : pendingRunnables) {
-				handler.post(runnable);
-			}
+			mWorkerHandler.post(runnable);
 		}
 		
 		@Override
 		protected void onLooperPrepared() {
 			super.onLooperPrepared();
-			this.handler = new Handler();
-			onHandlerPrepared();
+			this.mWorkerHandler = new Handler();
+			mProcessorHandler.sendEmptyMessage(MSG_WORKER_READY);
 		}
 	}
 }
