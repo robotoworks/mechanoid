@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.util.Log;
 
 public abstract class OperationService extends Service {
 	protected static final String ACTION_ABORT = "com.robotoworks.mechanoid.op.actions.ABORT";
@@ -25,6 +26,9 @@ public abstract class OperationService extends Service {
 	public static final String EXTRA_REQUEST_ID = "com.robotoworks.mechanoid.op.extras.REQUEST_ID";
 	public static final String EXTRA_ABORT_REASON = "com.robotoworks.mechanoid.op.extras.ABORT_REASON";
 	public static final String EXTRA_BRIDGE_MESSENGER = "com.robotoworks.mechanoid.op.extras.BRIDGE_MESSENGER";
+
+	protected final String mLogTag;
+	protected final boolean mEnableLogging;
 	
 	class LocalBinder extends Binder {
 		OperationService getService() {
@@ -42,8 +46,10 @@ public abstract class OperationService extends Service {
 		return mStopped;
 	}
 
-	public OperationService() {
+	public OperationService(boolean enableLogging) {
 		processor = createProcessor();
+		mLogTag = this.getClass().getSimpleName();
+		mEnableLogging = enableLogging;
 	}
 	
 	protected abstract OperationProcessor createProcessor();
@@ -55,6 +61,10 @@ public abstract class OperationService extends Service {
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Start Command] startId:%s, intent:%s", startId, intent));
+		}
 		
 		if(intent != null) {
 			intent.putExtra(EXTRA_START_ID, startId);
@@ -74,6 +84,9 @@ public abstract class OperationService extends Service {
 			int startId = request.getIntExtra(EXTRA_START_ID, 0);
 			
 			if(stopSelfResult(startId)) {
+				if(mEnableLogging) {
+					Log.d(mLogTag, String.format("[Stopping] startId:%s, intent: %s", startId, request));
+				}
 				mStopped = true;				
 			}
 		}
@@ -82,6 +95,11 @@ public abstract class OperationService extends Service {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Destroying]");
+		}
+		
 		processor.quit();				
 	}
 
@@ -89,7 +107,12 @@ public abstract class OperationService extends Service {
 		return true;
 	}
 
-	public void onDataProcessorOperationStarting(Intent request, Bundle data) {		
+	public void onDataProcessorOperationStarting(Intent request, Bundle data) {	
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Starting] request:%s, data:%s", request, data));
+		}
+		
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_STARTING;
@@ -104,6 +127,10 @@ public abstract class OperationService extends Service {
 	}
 
 	public void onDataProcessorOperationComplete(Intent request, Bundle data) {	
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Complete] request:%s, data:%s", request, data));
+		}
+		
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_COMPLETE;
@@ -120,6 +147,10 @@ public abstract class OperationService extends Service {
 	}
 	
 	public void onDataProcessorOperationAborted(Intent request, int reason, Bundle data) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Aborted] request:%s, reason%s, data:%s", request, reason, data));
+		}
+		
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_ABORTED;
@@ -136,7 +167,12 @@ public abstract class OperationService extends Service {
 		tryStopSelf(request);
 	}
 
-	public void onDataProcessorOperationProgress(Intent request, int progress, Bundle data) {		
+	public void onDataProcessorOperationProgress(Intent request, int progress, Bundle data) {	
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Operation Progress] request:%s, progress:%s, data:%s", request, progress, data));
+		}
+		
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_PROGRESS;

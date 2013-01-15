@@ -41,8 +41,8 @@ class OperationProcessorGenerator {
 						throw new OperationInstantiationException(x);
 					}
 				}
-				public Abstract«svc.name.pascalize»Processor(OperationService service) {
-					super(service);
+				public Abstract«svc.name.pascalize»Processor(OperationService service, boolean enableLogging) {
+					super(service, enableLogging);
 				}
 			}
 			'''
@@ -58,7 +58,7 @@ class OperationProcessorGenerator {
 			
 			public class «svc.name.pascalize»Processor extends Abstract«svc.name.pascalize»Processor {
 				public «svc.name.pascalize»Processor(OperationService service) {
-					super(service);
+					super(service, false);
 				}
 			}
 		'''

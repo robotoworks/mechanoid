@@ -110,10 +110,10 @@ public class OperationProcessorGenerator {
     String _name_3 = svc.getName();
     String _pascalize_3 = Strings.pascalize(_name_3);
     _builder.append(_pascalize_3, "	");
-    _builder.append("Processor(OperationService service) {");
+    _builder.append("Processor(OperationService service, boolean enableLogging) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("super(service);");
+    _builder.append("super(service, enableLogging);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -162,7 +162,7 @@ public class OperationProcessorGenerator {
     _builder.append("Processor(OperationService service) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("super(service);");
+    _builder.append("super(service, false);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");

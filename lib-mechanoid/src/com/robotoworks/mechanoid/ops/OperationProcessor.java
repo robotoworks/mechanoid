@@ -9,9 +9,7 @@
 
 package com.robotoworks.mechanoid.ops;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +17,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
+import android.util.Log;
 
 public abstract class OperationProcessor {
 	
@@ -26,39 +25,58 @@ public abstract class OperationProcessor {
 	protected static final int MSG_OPERATION_COMPLETE = 2;
 	protected static final int MSG_OPERATION_PROGRESS = 3;
 	protected static final int MSG_OPERATION_ABORTED = 4;
-
+	protected static final int MSG_WORKER_READY = 5;
+	
 	private LinkedList<Intent> requestQueue = new LinkedList<Intent>();
 	
-	private Worker worker = new Worker();
-
-	private final OperationService service;
-
-	private Operation currentOperation;
-	private Intent currentRequest;
+	private Worker mWorker;
+	private boolean mWorkerReady;
+	private final OperationService mService;
+	private Operation mCurrentOperation;
+	private Intent mCurrentRequest;
+	
+	protected final String mLogTag;
+	protected final boolean mEnableLogging;
 		
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch(msg.what) {
+				case MSG_WORKER_READY:
+					mWorkerReady = true;
+					executePendingOperations();
+					break;
 				case MSG_OPERATION_STARTING: {
-					service.onDataProcessorOperationStarting(currentRequest, msg.getData());
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Starting] intent:%s", mCurrentRequest));
+					}
+					mService.onDataProcessorOperationStarting(mCurrentRequest, msg.getData());
 					break;
 				}
 				case MSG_OPERATION_COMPLETE: {
-					currentOperation = null;
-					service.onDataProcessorOperationComplete(currentRequest, msg.getData());
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Complete] intent:%s", mCurrentRequest));
+					}
+					mCurrentOperation = null;
+					mService.onDataProcessorOperationComplete(mCurrentRequest, msg.getData());
 					
 					executePendingOperations();
 					break;
 				}
 				case MSG_OPERATION_ABORTED: {
-					currentOperation = null;
-					service.onDataProcessorOperationAborted(currentRequest, msg.arg1, msg.getData());
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Aborted] intent:%s", mCurrentRequest));
+					}
+					mCurrentOperation = null;
+					mService.onDataProcessorOperationAborted(mCurrentRequest, msg.arg1, msg.getData());
 					
 					executePendingOperations();
 					break;					
 				}
 				case MSG_OPERATION_PROGRESS: {
-					service.onDataProcessorOperationProgress(currentRequest, msg.arg1, msg.getData());
+					if(mEnableLogging) {
+						Log.d(mLogTag, String.format("[Handle Operation Progress] intent:%s", mCurrentRequest));
+					}
+					mService.onDataProcessorOperationProgress(mCurrentRequest, msg.arg1, msg.getData());
 					break;
 				}
 			}
@@ -77,14 +95,20 @@ public abstract class OperationProcessor {
 		return requestQueue.size() > 0;
 	}
 	
-	public OperationProcessor(OperationService service) {
-		this.service = service;
-		
-		worker.start();
+	public OperationProcessor(OperationService service, boolean enableLogging) {
+		this.mService = service;
+		mLogTag = this.getClass().getSimpleName();
+		mEnableLogging = enableLogging;
+		mWorker = new Worker(handler);
+		mWorker.start();
 	}
 
 	public void execute(Intent intent) {
 
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Execute (Queue)] intent:%s", intent));
+		}
+		
 		if(intent.getAction().equals(OperationService.ACTION_ABORT)) {
 			
 			abortOperation(intent);
@@ -95,23 +119,27 @@ public abstract class OperationProcessor {
 		// queue this one up
 		requestQueue.offer(intent);
 		
-		// make sure we are running ops
-		if(currentOperation == null) {
+		// make sure we are running ops if the worker is ready
+		if(mWorkerReady && mCurrentOperation == null) {
 			executePendingOperations();
 		}
 	}
 
 	private void abortOperation(Intent intent) {
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Abort] intent:%s", intent));
+		}
+		
 		int abortRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 		int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 		
 		// Try to abort if its the current operation
-		if(currentOperation != null) {
+		if(mCurrentOperation != null) {
 			int currentRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 			
 			if(currentRequestId == abortRequestId) {
-				Message m = currentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
-				currentOperation.handler.sendMessage(m);
+				Message m = mCurrentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
+				mCurrentOperation.handler.sendMessage(m);
 				return;
 			}			
 		}
@@ -123,7 +151,7 @@ public abstract class OperationProcessor {
 			if(r.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0) == abortRequestId) {
 				requestQueue.remove(i);
 				
-				service.onDataProcessorOperationAborted(currentRequest, 0, null);
+				mService.onDataProcessorOperationAborted(mCurrentRequest, 0, null);
 				
 				break;
 			}
@@ -131,6 +159,10 @@ public abstract class OperationProcessor {
 	}
 	
 	private void executePendingOperations() {
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Executing Pending]");
+		}
+		
 		// pop a request
 		Intent request = requestQueue.poll();
 				
@@ -140,29 +172,39 @@ public abstract class OperationProcessor {
 	}
 
 	public void quit() {
+		
+		if(mEnableLogging) {
+			Log.d(mLogTag, "[Quit]");
+		}
+		
 		Intent request = null;
 		
 		while((request = requestQueue.poll()) != null) {
 			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
-			service.onDataProcessorOperationComplete(request, result);
+			mService.onDataProcessorOperationComplete(request, result);
 		}
 		
-		worker.quit();
+		mWorker.quit();
 	}
 	
 	private void executeOperation(final Intent request) {
-		
-		currentRequest = request;
-		currentOperation = createOperation(request.getAction());
-		currentOperation.setContext(service.getApplicationContext());
-		currentOperation.setIntent(request);
-		currentOperation.setOperationProcessor(this);
-				
-		if(currentOperation == null) {
-			throw new RuntimeException(request.getAction() + " Not Implemented");
+		if(mEnableLogging) {
+			Log.d(mLogTag, String.format("[Execute Operation] intent:%s", request));
 		}
 		
-		worker.post(new OperationRunnable(handler, currentOperation));
+		mCurrentRequest = request;
+		mCurrentOperation = createOperation(request.getAction());
+		
+		if(mCurrentOperation == null) {
+			throw new RuntimeException(request.getAction() + " Not Implemented");
+		}
+
+		mCurrentOperation.setContext(mService.getApplicationContext());
+		mCurrentOperation.setIntent(request);
+		mCurrentOperation.setOperationProcessor(this);
+				
+		
+		mWorker.post(new OperationRunnable(handler, mCurrentOperation));
 	}
 
 	protected abstract Operation createOperation(String action);
@@ -207,33 +249,23 @@ public abstract class OperationProcessor {
 	}
 	
 	static class Worker extends HandlerThread {
-		public Handler handler;
+		private Handler mWorkerHandler;
+		private Handler mProcessorHandler;
 		
-		private List<Runnable> pendingRunnables = new ArrayList<Runnable>();
-		
-		public Worker() {
+		public Worker(Handler processorHandler) {
 			super("worker", Process.THREAD_PRIORITY_BACKGROUND);
+			mProcessorHandler = processorHandler;
 		}
 		
 		public void post(Runnable runnable) {
-			if(handler == null) {
-				pendingRunnables.add(runnable);
-			} else {
-				handler.post(runnable);
-			}
-		}
-		
-		private void onHandlerPrepared() {
-			for(Runnable runnable : pendingRunnables) {
-				handler.post(runnable);
-			}
+			mWorkerHandler.post(runnable);
 		}
 		
 		@Override
 		protected void onLooperPrepared() {
 			super.onLooperPrepared();
-			this.handler = new Handler();
-			onHandlerPrepared();
+			this.mWorkerHandler = new Handler();
+			mProcessorHandler.sendEmptyMessage(MSG_WORKER_READY);
 		}
 	}
 }

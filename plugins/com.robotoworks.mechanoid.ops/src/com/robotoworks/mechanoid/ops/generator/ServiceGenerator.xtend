@@ -23,6 +23,10 @@ class ServiceGenerator {
 				protected OperationProcessor createProcessor() {
 					return new «svc.name.pascalize»Processor(this);
 				}
+				
+				public Abstract«svc.name.pascalize»Service(boolean enableLogging) {
+					super(enableLogging);
+				}
 			}
 			'''
 			
@@ -36,7 +40,9 @@ class ServiceGenerator {
 			import «model.packageName».Abstract«svc.name.pascalize»Service;
 			
 			public class «svc.name.pascalize»Service extends Abstract«svc.name.pascalize»Service {
-			
+				public «svc.name.pascalize»Service() {
+					super(false);
+				}
 			}
 		'''
 }
