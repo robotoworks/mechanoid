@@ -182,6 +182,10 @@ public abstract class Operation {
 		return request;
 	}
 	
+	public static int getOperationRequestId(Intent intent) {
+		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, -1);
+	}
+	
 	public static Throwable getResultError(Bundle bundle) {
 		Throwable t = (Throwable) bundle.getSerializable(KEY_RESULT_ERROR);
 		return t;
