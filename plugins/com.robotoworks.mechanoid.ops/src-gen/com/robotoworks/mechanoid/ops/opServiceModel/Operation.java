@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getArgs <em>Args</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUnique <em>Unique</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUniqueClause <em>Unique Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,29 +69,29 @@ public interface Operation extends EObject
   EList<OperationArg> getArgs();
 
   /**
-   * Returns the value of the '<em><b>Unique</b></em>' containment reference.
+   * Returns the value of the '<em><b>Unique Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Unique</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Unique Clause</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Unique</em>' containment reference.
-   * @see #setUnique(WithUniqueBlock)
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getOperation_Unique()
+   * @return the value of the '<em>Unique Clause</em>' containment reference.
+   * @see #setUniqueClause(UniqueClause)
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getOperation_UniqueClause()
    * @model containment="true"
    * @generated
    */
-  WithUniqueBlock getUnique();
+  UniqueClause getUniqueClause();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUnique <em>Unique</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUniqueClause <em>Unique Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Unique</em>' containment reference.
-   * @see #getUnique()
+   * @param value the new value of the '<em>Unique Clause</em>' containment reference.
+   * @see #getUniqueClause()
    * @generated
    */
-  void setUnique(WithUniqueBlock value);
+  void setUniqueClause(UniqueClause value);
 
 } // Operation

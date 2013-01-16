@@ -5,7 +5,7 @@ package com.robotoworks.mechanoid.ops.opServiceModel.impl;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
-import com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause;
 
 import java.util.Collection;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.OperationImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.OperationImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.OperationImpl#getUnique <em>Unique</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.OperationImpl#getUniqueClause <em>Unique Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,14 +71,14 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
   protected EList<OperationArg> args;
 
   /**
-   * The cached value of the '{@link #getUnique() <em>Unique</em>}' containment reference.
+   * The cached value of the '{@link #getUniqueClause() <em>Unique Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getUnique()
+   * @see #getUniqueClause()
    * @generated
    * @ordered
    */
-  protected WithUniqueBlock unique;
+  protected UniqueClause uniqueClause;
 
   /**
    * <!-- begin-user-doc -->
@@ -143,9 +143,9 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
    * <!-- end-user-doc -->
    * @generated
    */
-  public WithUniqueBlock getUnique()
+  public UniqueClause getUniqueClause()
   {
-    return unique;
+    return uniqueClause;
   }
 
   /**
@@ -153,13 +153,13 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetUnique(WithUniqueBlock newUnique, NotificationChain msgs)
+  public NotificationChain basicSetUniqueClause(UniqueClause newUniqueClause, NotificationChain msgs)
   {
-    WithUniqueBlock oldUnique = unique;
-    unique = newUnique;
+    UniqueClause oldUniqueClause = uniqueClause;
+    uniqueClause = newUniqueClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OpServiceModelPackage.OPERATION__UNIQUE, oldUnique, newUnique);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE, oldUniqueClause, newUniqueClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -170,20 +170,20 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUnique(WithUniqueBlock newUnique)
+  public void setUniqueClause(UniqueClause newUniqueClause)
   {
-    if (newUnique != unique)
+    if (newUniqueClause != uniqueClause)
     {
       NotificationChain msgs = null;
-      if (unique != null)
-        msgs = ((InternalEObject)unique).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OpServiceModelPackage.OPERATION__UNIQUE, null, msgs);
-      if (newUnique != null)
-        msgs = ((InternalEObject)newUnique).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OpServiceModelPackage.OPERATION__UNIQUE, null, msgs);
-      msgs = basicSetUnique(newUnique, msgs);
+      if (uniqueClause != null)
+        msgs = ((InternalEObject)uniqueClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE, null, msgs);
+      if (newUniqueClause != null)
+        msgs = ((InternalEObject)newUniqueClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE, null, msgs);
+      msgs = basicSetUniqueClause(newUniqueClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OpServiceModelPackage.OPERATION__UNIQUE, newUnique, newUnique));
+      eNotify(new ENotificationImpl(this, Notification.SET, OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE, newUniqueClause, newUniqueClause));
   }
 
   /**
@@ -198,8 +198,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
     {
       case OpServiceModelPackage.OPERATION__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-      case OpServiceModelPackage.OPERATION__UNIQUE:
-        return basicSetUnique(null, msgs);
+      case OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE:
+        return basicSetUniqueClause(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -218,8 +218,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
         return getName();
       case OpServiceModelPackage.OPERATION__ARGS:
         return getArgs();
-      case OpServiceModelPackage.OPERATION__UNIQUE:
-        return getUnique();
+      case OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE:
+        return getUniqueClause();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -242,8 +242,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
         getArgs().clear();
         getArgs().addAll((Collection<? extends OperationArg>)newValue);
         return;
-      case OpServiceModelPackage.OPERATION__UNIQUE:
-        setUnique((WithUniqueBlock)newValue);
+      case OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE:
+        setUniqueClause((UniqueClause)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -265,8 +265,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
       case OpServiceModelPackage.OPERATION__ARGS:
         getArgs().clear();
         return;
-      case OpServiceModelPackage.OPERATION__UNIQUE:
-        setUnique((WithUniqueBlock)null);
+      case OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE:
+        setUniqueClause((UniqueClause)null);
         return;
     }
     super.eUnset(featureID);
@@ -286,8 +286,8 @@ public class OperationImpl extends MinimalEObjectImpl.Container implements Opera
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case OpServiceModelPackage.OPERATION__ARGS:
         return args != null && !args.isEmpty();
-      case OpServiceModelPackage.OPERATION__UNIQUE:
-        return unique != null;
+      case OpServiceModelPackage.OPERATION__UNIQUE_CLAUSE:
+        return uniqueClause != null;
     }
     return super.eIsSet(featureID);
   }

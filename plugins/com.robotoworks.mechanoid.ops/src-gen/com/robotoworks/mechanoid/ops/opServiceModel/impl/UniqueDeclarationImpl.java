@@ -4,7 +4,7 @@ package com.robotoworks.mechanoid.ops.opServiceModel.impl;
 
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage;
 import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
-import com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration;
 
 import java.util.Collection;
 
@@ -12,24 +12,22 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>With Unique Block</b></em>'.
+ * An implementation of the model object '<em><b>Unique Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.WithUniqueBlockImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueDeclarationImpl#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements WithUniqueBlock
+public class UniqueDeclarationImpl extends UniqueClauseImpl implements UniqueDeclaration
 {
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' reference list.
@@ -46,7 +44,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WithUniqueBlockImpl()
+  protected UniqueDeclarationImpl()
   {
     super();
   }
@@ -59,7 +57,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return OpServiceModelPackage.Literals.WITH_UNIQUE_BLOCK;
+    return OpServiceModelPackage.Literals.UNIQUE_DECLARATION;
   }
 
   /**
@@ -71,7 +69,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   {
     if (args == null)
     {
-      args = new EObjectResolvingEList<OperationArg>(OperationArg.class, this, OpServiceModelPackage.WITH_UNIQUE_BLOCK__ARGS);
+      args = new EObjectResolvingEList<OperationArg>(OperationArg.class, this, OpServiceModelPackage.UNIQUE_DECLARATION__ARGS);
     }
     return args;
   }
@@ -86,7 +84,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK__ARGS:
+      case OpServiceModelPackage.UNIQUE_DECLARATION__ARGS:
         return getArgs();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -103,7 +101,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK__ARGS:
+      case OpServiceModelPackage.UNIQUE_DECLARATION__ARGS:
         getArgs().clear();
         getArgs().addAll((Collection<? extends OperationArg>)newValue);
         return;
@@ -121,7 +119,7 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK__ARGS:
+      case OpServiceModelPackage.UNIQUE_DECLARATION__ARGS:
         getArgs().clear();
         return;
     }
@@ -138,10 +136,10 @@ public class WithUniqueBlockImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK__ARGS:
+      case OpServiceModelPackage.UNIQUE_DECLARATION__ARGS:
         return args != null && !args.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //WithUniqueBlockImpl
+} //UniqueDeclarationImpl

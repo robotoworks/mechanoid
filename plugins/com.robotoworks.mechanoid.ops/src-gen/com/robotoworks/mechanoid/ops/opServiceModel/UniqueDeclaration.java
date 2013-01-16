@@ -4,25 +4,23 @@ package com.robotoworks.mechanoid.ops.opServiceModel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>With Unique Block</b></em>'.
+ * A representation of the model object '<em><b>Unique Declaration</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock#getArgs <em>Args</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getWithUniqueBlock()
+ * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getUniqueDeclaration()
  * @model
  * @generated
  */
-public interface WithUniqueBlock extends EObject
+public interface UniqueDeclaration extends UniqueClause
 {
   /**
    * Returns the value of the '<em><b>Args</b></em>' reference list.
@@ -34,10 +32,10 @@ public interface WithUniqueBlock extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Args</em>' reference list.
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getWithUniqueBlock_Args()
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage#getUniqueDeclaration_Args()
    * @model
    * @generated
    */
   EList<OperationArg> getArgs();
 
-} // WithUniqueBlock
+} // UniqueDeclaration

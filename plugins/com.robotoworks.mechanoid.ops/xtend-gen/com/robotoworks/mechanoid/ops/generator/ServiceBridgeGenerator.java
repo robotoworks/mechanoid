@@ -8,7 +8,8 @@ import com.robotoworks.mechanoid.ops.opServiceModel.OpArgType;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
-import com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause;
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
@@ -149,92 +150,115 @@ public class ServiceBridgeGenerator {
         _builder.append("\t");
         _builder.newLine();
         {
-          boolean _and = false;
-          WithUniqueBlock _unique = op.getUnique();
-          boolean _notEquals = (!Objects.equal(_unique, null));
-          if (!_notEquals) {
-            _and = false;
-          } else {
-            WithUniqueBlock _unique_1 = op.getUnique();
-            EList<OperationArg> _args_2 = _unique_1.getArgs();
-            int _size = _args_2.size();
-            boolean _greaterThan = (_size > 0);
-            _and = (_notEquals && _greaterThan);
-          }
-          if (_and) {
-            _builder.append("\t\t");
-            _builder.append("android.os.Bundle matcher = new android.os.Bundle();");
-            _builder.newLine();
-            {
-              WithUniqueBlock _unique_2 = op.getUnique();
-              EList<OperationArg> _args_3 = _unique_2.getArgs();
-              for(final OperationArg uarg : _args_3) {
-                _builder.append("\t\t");
-                _builder.append("matcher.");
-                OpArgType _type_1 = uarg.getType();
-                String _bundlePutMethodName = Extensions.toBundlePutMethodName(_type_1);
-                _builder.append(_bundlePutMethodName, "		");
-                _builder.append("(Abstract");
-                String _name_9 = op.getName();
-                String _pascalize_7 = Strings.pascalize(_name_9);
-                _builder.append(_pascalize_7, "		");
-                _builder.append("Operation.EXTRA_");
-                String _name_10 = uarg.getName();
-                String _underscore = Strings.underscore(_name_10);
-                String _upperCase = _underscore.toUpperCase();
-                _builder.append(_upperCase, "		");
-                _builder.append(", ");
-                String _name_11 = uarg.getName();
-                String _camelize_2 = Strings.camelize(_name_11);
-                _builder.append(_camelize_2, "		");
-                _builder.append(");");
-                _builder.newLineIfNotEmpty();
-              }
-            }
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("Intent existingRequest = findPendingRequestByActionWithExtras(Abstract");
-            String _name_12 = op.getName();
-            String _pascalize_8 = Strings.pascalize(_name_12);
-            _builder.append(_pascalize_8, "		");
-            _builder.append("Operation.ACTION_");
-            String _name_13 = op.getName();
-            String _underscore_1 = Strings.underscore(_name_13);
-            String _upperCase_1 = _underscore_1.toUpperCase();
-            _builder.append(_upperCase_1, "		");
-            _builder.append(", matcher);");
-            _builder.newLineIfNotEmpty();
-          } else {
+          UniqueClause _uniqueClause = op.getUniqueClause();
+          boolean _equals = Objects.equal(_uniqueClause, null);
+          if (_equals) {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("Intent existingRequest = findPendingRequestByActionWithExtras(Abstract");
-            String _name_14 = op.getName();
-            String _pascalize_9 = Strings.pascalize(_name_14);
-            _builder.append(_pascalize_9, "		");
+            String _name_9 = op.getName();
+            String _pascalize_7 = Strings.pascalize(_name_9);
+            _builder.append(_pascalize_7, "		");
             _builder.append("Operation.ACTION_");
-            String _name_15 = op.getName();
-            String _underscore_2 = Strings.underscore(_name_15);
-            String _upperCase_2 = _underscore_2.toUpperCase();
-            _builder.append(_upperCase_2, "		");
+            String _name_10 = op.getName();
+            String _underscore = Strings.underscore(_name_10);
+            String _upperCase = _underscore.toUpperCase();
+            _builder.append(_upperCase, "		");
             _builder.append(", intent.getExtras());");
             _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("if(existingRequest != null) {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("return extractRequestId(existingRequest);");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.newLine();
+          } else {
+            UniqueClause _uniqueClause_1 = op.getUniqueClause();
+            if ((_uniqueClause_1 instanceof UniqueDeclaration)) {
+              _builder.append("\t");
+              _builder.append("\t");
+              UniqueClause _uniqueClause_2 = op.getUniqueClause();
+              UniqueDeclaration uniqueDecl = ((UniqueDeclaration) _uniqueClause_2);
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("android.os.Bundle matcher = new android.os.Bundle();");
+              _builder.newLine();
+              {
+                EList<OperationArg> _args_2 = uniqueDecl.getArgs();
+                for(final OperationArg uarg : _args_2) {
+                  _builder.append("\t");
+                  _builder.append("\t");
+                  _builder.append("matcher.");
+                  OpArgType _type_1 = uarg.getType();
+                  String _bundlePutMethodName = Extensions.toBundlePutMethodName(_type_1);
+                  _builder.append(_bundlePutMethodName, "		");
+                  _builder.append("(Abstract");
+                  String _name_11 = op.getName();
+                  String _pascalize_8 = Strings.pascalize(_name_11);
+                  _builder.append(_pascalize_8, "		");
+                  _builder.append("Operation.EXTRA_");
+                  String _name_12 = uarg.getName();
+                  String _underscore_1 = Strings.underscore(_name_12);
+                  String _upperCase_1 = _underscore_1.toUpperCase();
+                  _builder.append(_upperCase_1, "		");
+                  _builder.append(", ");
+                  String _name_13 = uarg.getName();
+                  String _camelize_2 = Strings.camelize(_name_13);
+                  _builder.append(_camelize_2, "		");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                }
+              }
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("Intent existingRequest = findPendingRequestByActionWithExtras(Abstract");
+              String _name_14 = op.getName();
+              String _pascalize_9 = Strings.pascalize(_name_14);
+              _builder.append(_pascalize_9, "		");
+              _builder.append("Operation.ACTION_");
+              String _name_15 = op.getName();
+              String _underscore_2 = Strings.underscore(_name_15);
+              String _upperCase_2 = _underscore_2.toUpperCase();
+              _builder.append(_upperCase_2, "		");
+              _builder.append(", matcher);");
+              _builder.newLineIfNotEmpty();
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("if(existingRequest != null) {");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("return extractRequestId(existingRequest);");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("}");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.newLine();
+            }
           }
         }
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("if(existingRequest != null) {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("return extractRequestId(existingRequest);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
         _builder.append("int requestId = createServiceRequest(intent);");

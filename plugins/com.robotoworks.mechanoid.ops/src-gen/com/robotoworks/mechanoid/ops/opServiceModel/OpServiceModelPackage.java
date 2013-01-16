@@ -160,13 +160,13 @@ public interface OpServiceModelPackage extends EPackage
   int OPERATION__ARGS = 1;
 
   /**
-   * The feature id for the '<em><b>Unique</b></em>' containment reference.
+   * The feature id for the '<em><b>Unique Clause</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__UNIQUE = 2;
+  int OPERATION__UNIQUE_CLAUSE = 2;
 
   /**
    * The number of structural features of the '<em>Operation</em>' class.
@@ -215,14 +215,52 @@ public interface OpServiceModelPackage extends EPackage
   int OPERATION_ARG_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.WithUniqueBlockImpl <em>With Unique Block</em>}' class.
+   * The meta object id for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueClauseImpl <em>Unique Clause</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.WithUniqueBlockImpl
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getWithUniqueBlock()
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueClauseImpl
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getUniqueClause()
    * @generated
    */
-  int WITH_UNIQUE_BLOCK = 4;
+  int UNIQUE_CLAUSE = 4;
+
+  /**
+   * The number of structural features of the '<em>Unique Clause</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE_CLAUSE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.NotUniqueImpl <em>Not Unique</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.NotUniqueImpl
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getNotUnique()
+   * @generated
+   */
+  int NOT_UNIQUE = 5;
+
+  /**
+   * The number of structural features of the '<em>Not Unique</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_UNIQUE_FEATURE_COUNT = UNIQUE_CLAUSE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueDeclarationImpl <em>Unique Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueDeclarationImpl
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getUniqueDeclaration()
+   * @generated
+   */
+  int UNIQUE_DECLARATION = 6;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' reference list.
@@ -231,16 +269,16 @@ public interface OpServiceModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WITH_UNIQUE_BLOCK__ARGS = 0;
+  int UNIQUE_DECLARATION__ARGS = UNIQUE_CLAUSE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>With Unique Block</em>' class.
+   * The number of structural features of the '<em>Unique Declaration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WITH_UNIQUE_BLOCK_FEATURE_COUNT = 1;
+  int UNIQUE_DECLARATION_FEATURE_COUNT = UNIQUE_CLAUSE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.OpArgType <em>Op Arg Type</em>}' enum.
@@ -250,7 +288,7 @@ public interface OpServiceModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getOpArgType()
    * @generated
    */
-  int OP_ARG_TYPE = 5;
+  int OP_ARG_TYPE = 7;
 
 
   /**
@@ -350,15 +388,15 @@ public interface OpServiceModelPackage extends EPackage
   EReference getOperation_Args();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUnique <em>Unique</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUniqueClause <em>Unique Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Unique</em>'.
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUnique()
+   * @return the meta object for the containment reference '<em>Unique Clause</em>'.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.Operation#getUniqueClause()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_Unique();
+  EReference getOperation_UniqueClause();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.ops.opServiceModel.OperationArg <em>Operation Arg</em>}'.
@@ -393,25 +431,45 @@ public interface OpServiceModelPackage extends EPackage
   EAttribute getOperationArg_Name();
 
   /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock <em>With Unique Block</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause <em>Unique Clause</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>With Unique Block</em>'.
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock
+   * @return the meta object for class '<em>Unique Clause</em>'.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause
    * @generated
    */
-  EClass getWithUniqueBlock();
+  EClass getUniqueClause();
 
   /**
-   * Returns the meta object for the reference list '{@link com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock#getArgs <em>Args</em>}'.
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.ops.opServiceModel.NotUnique <em>Not Unique</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not Unique</em>'.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.NotUnique
+   * @generated
+   */
+  EClass getNotUnique();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration <em>Unique Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Unique Declaration</em>'.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration
+   * @generated
+   */
+  EClass getUniqueDeclaration();
+
+  /**
+   * Returns the meta object for the reference list '{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Args</em>'.
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock#getArgs()
-   * @see #getWithUniqueBlock()
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration#getArgs()
+   * @see #getUniqueDeclaration()
    * @generated
    */
-  EReference getWithUniqueBlock_Args();
+  EReference getUniqueDeclaration_Args();
 
   /**
    * Returns the meta object for enum '{@link com.robotoworks.mechanoid.ops.opServiceModel.OpArgType <em>Op Arg Type</em>}'.
@@ -525,12 +583,12 @@ public interface OpServiceModelPackage extends EPackage
     EReference OPERATION__ARGS = eINSTANCE.getOperation_Args();
 
     /**
-     * The meta object literal for the '<em><b>Unique</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Unique Clause</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__UNIQUE = eINSTANCE.getOperation_Unique();
+    EReference OPERATION__UNIQUE_CLAUSE = eINSTANCE.getOperation_UniqueClause();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.OperationArgImpl <em>Operation Arg</em>}' class.
@@ -559,14 +617,34 @@ public interface OpServiceModelPackage extends EPackage
     EAttribute OPERATION_ARG__NAME = eINSTANCE.getOperationArg_Name();
 
     /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.WithUniqueBlockImpl <em>With Unique Block</em>}' class.
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueClauseImpl <em>Unique Clause</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.WithUniqueBlockImpl
-     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getWithUniqueBlock()
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueClauseImpl
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getUniqueClause()
      * @generated
      */
-    EClass WITH_UNIQUE_BLOCK = eINSTANCE.getWithUniqueBlock();
+    EClass UNIQUE_CLAUSE = eINSTANCE.getUniqueClause();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.NotUniqueImpl <em>Not Unique</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.NotUniqueImpl
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getNotUnique()
+     * @generated
+     */
+    EClass NOT_UNIQUE = eINSTANCE.getNotUnique();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueDeclarationImpl <em>Unique Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.UniqueDeclarationImpl
+     * @see com.robotoworks.mechanoid.ops.opServiceModel.impl.OpServiceModelPackageImpl#getUniqueDeclaration()
+     * @generated
+     */
+    EClass UNIQUE_DECLARATION = eINSTANCE.getUniqueDeclaration();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' reference list feature.
@@ -574,7 +652,7 @@ public interface OpServiceModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WITH_UNIQUE_BLOCK__ARGS = eINSTANCE.getWithUniqueBlock_Args();
+    EReference UNIQUE_DECLARATION__ARGS = eINSTANCE.getUniqueDeclaration_Args();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.ops.opServiceModel.OpArgType <em>Op Arg Type</em>}' enum.

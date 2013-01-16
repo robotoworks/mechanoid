@@ -3,22 +3,23 @@ grammar com.robotoworks.mechanoid.ops.OpServiceModel with org.eclipse.xtext.comm
 generate opServiceModel "http://www.robotoworks.com/mechanoid/ops/OpServiceModel"
 
 Model:
-	'package' packageName=FQN
+	'package' packageName=QualifiedName
 	service=ServiceBlock;
 
 ServiceBlock:
 	'service' name=ID '{' (ops+=Operation)* '}';
 
 Operation:
-	'operation' name=ID '(' (args+=OperationArg (',' args+=OperationArg)*)? ')' unique=WithUniqueBlock?
+	'operation' name=ID '(' (args+=OperationArg (',' args+=OperationArg)*)? ')' uniqueClause=UniqueClause?
 ;
 
 OperationArg:
 	type=OpArgType name=ID
 ;
 
-WithUniqueBlock:
-	'with' 'unique' '(' args+=[OperationArg] (',' args+=[OperationArg])* ')'
+UniqueClause:
+	{NotUnique} 'not' 'unique' |
+	{UniqueDeclaration} 'unique' '(' args+=[OperationArg] (',' args+=[OperationArg])* ')'
 ;
 
 
@@ -33,5 +34,5 @@ enum OpArgType:
 	;
 
 
-FQN:
+QualifiedName:
 	ID ("." ID)*;
