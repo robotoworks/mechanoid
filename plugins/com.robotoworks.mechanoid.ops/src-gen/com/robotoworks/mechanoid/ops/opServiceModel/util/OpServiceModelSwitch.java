@@ -100,10 +100,26 @@ public class OpServiceModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK:
+      case OpServiceModelPackage.UNIQUE_CLAUSE:
       {
-        WithUniqueBlock withUniqueBlock = (WithUniqueBlock)theEObject;
-        T result = caseWithUniqueBlock(withUniqueBlock);
+        UniqueClause uniqueClause = (UniqueClause)theEObject;
+        T result = caseUniqueClause(uniqueClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case OpServiceModelPackage.NOT_UNIQUE:
+      {
+        NotUnique notUnique = (NotUnique)theEObject;
+        T result = caseNotUnique(notUnique);
+        if (result == null) result = caseUniqueClause(notUnique);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case OpServiceModelPackage.UNIQUE_DECLARATION:
+      {
+        UniqueDeclaration uniqueDeclaration = (UniqueDeclaration)theEObject;
+        T result = caseUniqueDeclaration(uniqueDeclaration);
+        if (result == null) result = caseUniqueClause(uniqueDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -176,17 +192,49 @@ public class OpServiceModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>With Unique Block</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Unique Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>With Unique Block</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Unique Clause</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWithUniqueBlock(WithUniqueBlock object)
+  public T caseUniqueClause(UniqueClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Not Unique</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Not Unique</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNotUnique(NotUnique object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unique Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unique Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUniqueDeclaration(UniqueDeclaration object)
   {
     return null;
   }

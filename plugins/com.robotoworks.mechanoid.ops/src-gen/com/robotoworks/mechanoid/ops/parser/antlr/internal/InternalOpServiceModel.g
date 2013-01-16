@@ -85,9 +85,9 @@ ruleModel returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
 	    }
-		lv_packageName_1_0=ruleFQN		{
+		lv_packageName_1_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModelRule());
 	        }
@@ -95,7 +95,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"packageName",
         		lv_packageName_1_0, 
-        		"FQN");
+        		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -281,17 +281,17 @@ ruleOperation returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getOperationAccess().getUniqueWithUniqueBlockParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getOperationAccess().getUniqueClauseUniqueClauseParserRuleCall_5_0()); 
 	    }
-		lv_unique_7_0=ruleWithUniqueBlock		{
+		lv_uniqueClause_7_0=ruleUniqueClause		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getOperationRule());
 	        }
        		set(
        			$current, 
-       			"unique",
-        		lv_unique_7_0, 
-        		"WithUniqueBlock");
+       			"uniqueClause",
+        		lv_uniqueClause_7_0, 
+        		"UniqueClause");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -360,84 +360,101 @@ ruleOperationArg returns [EObject current=null]
 
 
 
-// Entry rule entryRuleWithUniqueBlock
-entryRuleWithUniqueBlock returns [EObject current=null] 
+// Entry rule entryRuleUniqueClause
+entryRuleUniqueClause returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getWithUniqueBlockRule()); }
-	 iv_ruleWithUniqueBlock=ruleWithUniqueBlock 
-	 { $current=$iv_ruleWithUniqueBlock.current; } 
+	{ newCompositeNode(grammarAccess.getUniqueClauseRule()); }
+	 iv_ruleUniqueClause=ruleUniqueClause 
+	 { $current=$iv_ruleUniqueClause.current; } 
 	 EOF 
 ;
 
-// Rule WithUniqueBlock
-ruleWithUniqueBlock returns [EObject current=null] 
+// Rule UniqueClause
+ruleUniqueClause returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='with' 
+(((
     {
-    	newLeafNode(otherlv_0, grammarAccess.getWithUniqueBlockAccess().getWithKeyword_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getUniqueClauseAccess().getNotUniqueAction_0_0(),
+            $current);
     }
-	otherlv_1='unique' 
+)	otherlv_1='not' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getWithUniqueBlockAccess().getUniqueKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getUniqueClauseAccess().getNotKeyword_0_1());
     }
-	otherlv_2='(' 
+	otherlv_2='unique' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getWithUniqueBlockAccess().getLeftParenthesisKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getUniqueClauseAccess().getUniqueKeyword_0_2());
+    }
+)
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getUniqueClauseAccess().getUniqueDeclarationAction_1_0(),
+            $current);
+    }
+)	otherlv_4='unique' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getUniqueClauseAccess().getUniqueKeyword_1_1());
+    }
+	otherlv_5='(' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getUniqueClauseAccess().getLeftParenthesisKeyword_1_2());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getWithUniqueBlockRule());
+	            $current = createModelElement(grammarAccess.getUniqueClauseRule());
 	        }
         }
-	otherlv_3=RULE_ID
+	otherlv_6=RULE_ID
 	{
-		newLeafNode(otherlv_3, grammarAccess.getWithUniqueBlockAccess().getArgsOperationArgCrossReference_3_0()); 
+		newLeafNode(otherlv_6, grammarAccess.getUniqueClauseAccess().getArgsOperationArgCrossReference_1_3_0()); 
 	}
 
 )
-)(	otherlv_4=',' 
+)(	otherlv_7=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getWithUniqueBlockAccess().getCommaKeyword_4_0());
+    	newLeafNode(otherlv_7, grammarAccess.getUniqueClauseAccess().getCommaKeyword_1_4_0());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getWithUniqueBlockRule());
+	            $current = createModelElement(grammarAccess.getUniqueClauseRule());
 	        }
         }
-	otherlv_5=RULE_ID
+	otherlv_8=RULE_ID
 	{
-		newLeafNode(otherlv_5, grammarAccess.getWithUniqueBlockAccess().getArgsOperationArgCrossReference_4_1_0()); 
+		newLeafNode(otherlv_8, grammarAccess.getUniqueClauseAccess().getArgsOperationArgCrossReference_1_4_1_0()); 
 	}
 
 )
-))*	otherlv_6=')' 
+))*	otherlv_9=')' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getWithUniqueBlockAccess().getRightParenthesisKeyword_5());
+    	newLeafNode(otherlv_9, grammarAccess.getUniqueClauseAccess().getRightParenthesisKeyword_1_5());
     }
-)
+))
 ;
 
 
 
 
 
-// Entry rule entryRuleFQN
-entryRuleFQN returns [String current=null] 
+// Entry rule entryRuleQualifiedName
+entryRuleQualifiedName returns [String current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFQNRule()); } 
-	 iv_ruleFQN=ruleFQN 
-	 { $current=$iv_ruleFQN.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getQualifiedNameRule()); } 
+	 iv_ruleQualifiedName=ruleQualifiedName 
+	 { $current=$iv_ruleQualifiedName.current.getText(); }  
 	 EOF 
 ;
 
-// Rule FQN
-ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule QualifiedName
+ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -446,20 +463,20 @@ ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
 
     { 
-    newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
+    newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
     }
 (
 	kw='.' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
+        newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
     }
     this_ID_2=RULE_ID    {
 		$current.merge(this_ID_2);
     }
 
     { 
-    newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
+    newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
     }
 )*)
     ;

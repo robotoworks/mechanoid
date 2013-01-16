@@ -27,14 +27,16 @@
     <genClasses ecoreClass="OpServiceModel.ecore#//Operation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OpServiceModel.ecore#//Operation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OpServiceModel.ecore#//Operation/args"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OpServiceModel.ecore#//Operation/unique"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OpServiceModel.ecore#//Operation/uniqueClause"/>
     </genClasses>
     <genClasses ecoreClass="OpServiceModel.ecore#//OperationArg">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OpServiceModel.ecore#//OperationArg/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OpServiceModel.ecore#//OperationArg/name"/>
     </genClasses>
-    <genClasses ecoreClass="OpServiceModel.ecore#//WithUniqueBlock">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OpServiceModel.ecore#//WithUniqueBlock/args"/>
+    <genClasses ecoreClass="OpServiceModel.ecore#//UniqueClause"/>
+    <genClasses ecoreClass="OpServiceModel.ecore#//NotUnique"/>
+    <genClasses ecoreClass="OpServiceModel.ecore#//UniqueDeclaration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OpServiceModel.ecore#//UniqueDeclaration/args"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

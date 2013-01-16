@@ -56,7 +56,7 @@
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="unique" operator="=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="uniqueClause" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
         </elements>
       </alternatives>
@@ -74,24 +74,28 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="WithUniqueBlock">
+    <rules xsi:type="xtext:ParserRule" name="UniqueClause">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//WithUniqueBlock"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//UniqueClause"/>
       </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="with"/>
-        <elements xsi:type="xtext:Keyword" value="unique"/>
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Assignment" feature="args" operator="+=">
-          <terminal xsi:type="xtext:CrossReference">
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//OperationArg"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//NotUnique"/>
             </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </terminal>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="not"/>
+          <elements xsi:type="xtext:Keyword" value="unique"/>
         </elements>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Action">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//UniqueDeclaration"/>
+            </type>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="unique"/>
+          <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="args" operator="+=">
             <terminal xsi:type="xtext:CrossReference">
               <type metamodel="/0/@metamodelDeclarations.0">
@@ -100,8 +104,19 @@
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
             </terminal>
           </elements>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Keyword" value=","/>
+            <elements xsi:type="xtext:Assignment" feature="args" operator="+=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//OperationArg"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="OpArgType">
@@ -139,7 +154,7 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="FQN">
+    <rules xsi:type="xtext:ParserRule" name="QualifiedName">
       <type metamodel="/1/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>

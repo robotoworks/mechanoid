@@ -69,7 +69,9 @@ public class OpServiceModelFactoryImpl extends EFactoryImpl implements OpService
       case OpServiceModelPackage.SERVICE_BLOCK: return createServiceBlock();
       case OpServiceModelPackage.OPERATION: return createOperation();
       case OpServiceModelPackage.OPERATION_ARG: return createOperationArg();
-      case OpServiceModelPackage.WITH_UNIQUE_BLOCK: return createWithUniqueBlock();
+      case OpServiceModelPackage.UNIQUE_CLAUSE: return createUniqueClause();
+      case OpServiceModelPackage.NOT_UNIQUE: return createNotUnique();
+      case OpServiceModelPackage.UNIQUE_DECLARATION: return createUniqueDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -158,10 +160,32 @@ public class OpServiceModelFactoryImpl extends EFactoryImpl implements OpService
    * <!-- end-user-doc -->
    * @generated
    */
-  public WithUniqueBlock createWithUniqueBlock()
+  public UniqueClause createUniqueClause()
   {
-    WithUniqueBlockImpl withUniqueBlock = new WithUniqueBlockImpl();
-    return withUniqueBlock;
+    UniqueClauseImpl uniqueClause = new UniqueClauseImpl();
+    return uniqueClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotUnique createNotUnique()
+  {
+    NotUniqueImpl notUnique = new NotUniqueImpl();
+    return notUnique;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniqueDeclaration createUniqueDeclaration()
+  {
+    UniqueDeclarationImpl uniqueDeclaration = new UniqueDeclarationImpl();
+    return uniqueDeclaration;
   }
 
   /**

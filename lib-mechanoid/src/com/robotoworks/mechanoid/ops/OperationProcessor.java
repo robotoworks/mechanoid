@@ -49,7 +49,7 @@ public abstract class OperationProcessor {
 					if(mEnableLogging) {
 						Log.d(mLogTag, String.format("[Handle Operation Starting] intent:%s", mCurrentRequest));
 					}
-					mService.onDataProcessorOperationStarting(mCurrentRequest, msg.getData());
+					mService.onOperationStarting(mCurrentRequest, msg.getData());
 					break;
 				}
 				case MSG_OPERATION_COMPLETE: {
@@ -57,7 +57,7 @@ public abstract class OperationProcessor {
 						Log.d(mLogTag, String.format("[Handle Operation Complete] intent:%s", mCurrentRequest));
 					}
 					mCurrentOperation = null;
-					mService.onDataProcessorOperationComplete(mCurrentRequest, msg.getData());
+					mService.onOperationComplete(mCurrentRequest, msg.getData());
 					
 					executePendingOperations();
 					break;
@@ -67,7 +67,7 @@ public abstract class OperationProcessor {
 						Log.d(mLogTag, String.format("[Handle Operation Aborted] intent:%s", mCurrentRequest));
 					}
 					mCurrentOperation = null;
-					mService.onDataProcessorOperationAborted(mCurrentRequest, msg.arg1, msg.getData());
+					mService.onOperationAborted(mCurrentRequest, msg.arg1, msg.getData());
 					
 					executePendingOperations();
 					break;					
@@ -76,7 +76,7 @@ public abstract class OperationProcessor {
 					if(mEnableLogging) {
 						Log.d(mLogTag, String.format("[Handle Operation Progress] intent:%s", mCurrentRequest));
 					}
-					mService.onDataProcessorOperationProgress(mCurrentRequest, msg.arg1, msg.getData());
+					mService.onOperationProgress(mCurrentRequest, msg.arg1, msg.getData());
 					break;
 				}
 			}
@@ -110,8 +110,10 @@ public abstract class OperationProcessor {
 		}
 		
 		if(intent.getAction().equals(OperationService.ACTION_ABORT)) {
+			int abortRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
+			int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 			
-			abortOperation(intent);
+			abortOperation(abortRequestId, abortReason);
 			
 			return;
 		}
@@ -125,17 +127,14 @@ public abstract class OperationProcessor {
 		}
 	}
 
-	private void abortOperation(Intent intent) {
+	private void abortOperation(int abortRequestId, int abortReason) {
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Abort] intent:%s", intent));
+			Log.d(mLogTag, String.format("[Aborting] id:%s, reason:%s", abortRequestId, abortReason));
 		}
-		
-		int abortRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
-		int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 		
 		// Try to abort if its the current operation
 		if(mCurrentOperation != null) {
-			int currentRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
+			int currentRequestId = Operation.getOperationRequestId(mCurrentRequest);
 			
 			if(currentRequestId == abortRequestId) {
 				Message m = mCurrentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
@@ -144,15 +143,18 @@ public abstract class OperationProcessor {
 			}			
 		}
 		
-		// If its not the currrent operation then try to find the operation
+		// If its not the current operation then try to find the operation
+		// and flag it as aborted
+		tryFlagQueuedOperationAsAborted(abortRequestId, abortReason);
+	}
+
+	private void tryFlagQueuedOperationAsAborted(int abortRequestId, int abortReason) {
 		for(int i=0; i < requestQueue.size(); i++) {
-			Intent r = requestQueue.get(i);
+			Intent queuedRequest = requestQueue.get(i);
 			
-			if(r.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0) == abortRequestId) {
-				requestQueue.remove(i);
-				
-				mService.onDataProcessorOperationAborted(mCurrentRequest, 0, null);
-				
+			if(Operation.getOperationRequestId(queuedRequest) == abortRequestId) {
+				queuedRequest.putExtra(OperationService.EXTRA_IS_ABORTED, true);
+				queuedRequest.putExtra(OperationService.EXTRA_ABORT_REASON, abortReason);
 				break;
 			}
 		}
@@ -181,7 +183,7 @@ public abstract class OperationProcessor {
 		
 		while((request = requestQueue.poll()) != null) {
 			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
-			mService.onDataProcessorOperationComplete(request, result);
+			mService.onOperationComplete(request, result);
 		}
 		
 		mWorker.quit();
@@ -190,6 +192,16 @@ public abstract class OperationProcessor {
 	private void executeOperation(final Intent request) {
 		if(mEnableLogging) {
 			Log.d(mLogTag, String.format("[Execute Operation] intent:%s", request));
+		}
+		
+		//
+		// Do not execute this operation if its been marked as aborted
+		//
+		if(request.getBooleanExtra(OperationService.EXTRA_IS_ABORTED, false)) {
+			int abortReason = request.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
+			mService.onOperationAborted(request, abortReason, new Bundle());
+			executePendingOperations();
+			return;
 		}
 		
 		mCurrentRequest = request;

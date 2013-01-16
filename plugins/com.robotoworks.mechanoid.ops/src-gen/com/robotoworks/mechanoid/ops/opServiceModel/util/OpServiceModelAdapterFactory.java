@@ -95,9 +95,19 @@ public class OpServiceModelAdapterFactory extends AdapterFactoryImpl
         return createOperationArgAdapter();
       }
       @Override
-      public Adapter caseWithUniqueBlock(WithUniqueBlock object)
+      public Adapter caseUniqueClause(UniqueClause object)
       {
-        return createWithUniqueBlockAdapter();
+        return createUniqueClauseAdapter();
+      }
+      @Override
+      public Adapter caseNotUnique(NotUnique object)
+      {
+        return createNotUniqueAdapter();
+      }
+      @Override
+      public Adapter caseUniqueDeclaration(UniqueDeclaration object)
+      {
+        return createUniqueDeclarationAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -182,16 +192,46 @@ public class OpServiceModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock <em>With Unique Block</em>}'.
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause <em>Unique Clause</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.robotoworks.mechanoid.ops.opServiceModel.WithUniqueBlock
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause
    * @generated
    */
-  public Adapter createWithUniqueBlockAdapter()
+  public Adapter createUniqueClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.ops.opServiceModel.NotUnique <em>Not Unique</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.NotUnique
+   * @generated
+   */
+  public Adapter createNotUniqueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration <em>Unique Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration
+   * @generated
+   */
+  public Adapter createUniqueDeclarationAdapter()
   {
     return null;
   }

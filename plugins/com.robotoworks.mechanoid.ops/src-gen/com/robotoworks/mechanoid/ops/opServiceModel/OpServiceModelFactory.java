@@ -59,13 +59,31 @@ public interface OpServiceModelFactory extends EFactory
   OperationArg createOperationArg();
 
   /**
-   * Returns a new object of class '<em>With Unique Block</em>'.
+   * Returns a new object of class '<em>Unique Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>With Unique Block</em>'.
+   * @return a new object of class '<em>Unique Clause</em>'.
    * @generated
    */
-  WithUniqueBlock createWithUniqueBlock();
+  UniqueClause createUniqueClause();
+
+  /**
+   * Returns a new object of class '<em>Not Unique</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not Unique</em>'.
+   * @generated
+   */
+  NotUnique createNotUnique();
+
+  /**
+   * Returns a new object of class '<em>Unique Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unique Declaration</em>'.
+   * @generated
+   */
+  UniqueDeclaration createUniqueDeclaration();
 
   /**
    * Returns the package supported by this factory.
