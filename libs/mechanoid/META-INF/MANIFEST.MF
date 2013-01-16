@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.robotoworks.mechanoid.lib
+Bundle-SymbolicName: com.robotoworks.mechanoid.lib
+Bundle-Version: 0.1.0.qualifier
+Export-Package: com.robotoworks.mechanoid,
+ com.robotoworks.mechanoid.content,
+ com.robotoworks.mechanoid.internal.util,
+ com.robotoworks.mechanoid.net,
+ com.robotoworks.mechanoid.ops,
+ com.robotoworks.mechanoid.sqlite,
+ com.robotoworks.mechanoid.util
+
