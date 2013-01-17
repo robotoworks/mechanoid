@@ -7,10 +7,6 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethodType
 import com.robotoworks.mechanoid.net.netModel.Model
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment
-import com.robotoworks.mechanoid.net.netModel.StringLiteral
-import com.robotoworks.mechanoid.net.netModel.BooleanLiteral
-import com.robotoworks.mechanoid.net.netModel.NumericLiteral
 
 class ClientGenerator {
 	CodeGenerationContext context
