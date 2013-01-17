@@ -8,14 +8,16 @@ import android.database.sqlite.SQLiteDatabase;
 import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
 
+import com.robotoworks.examples.recipes.content.migrations.RecipesDBMigrationV2;
 
 public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHelper {
 	public static final String DATABASE_NAME = "RecipesDB.db";
 
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 
 	public interface Tables {
 		String RECIPES = "recipes";
+		String AUTHORS = "authors";
 	}
 
 	public AbstractRecipesDBOpenHelper(Context context) {
@@ -29,12 +31,24 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 			"_id integer primary key autoincrement " +
 			", title text " +
 			", description text " +
+			", author_id integer " +
+			") "
+		);
+		db.execSQL(
+			"create table authors ( " +
+			"_id integer primary key autoincrement " +
+			", name text " +
 			") "
 		);
 	}
 
 	@Override
 	protected SQLiteMigration createMigration(int version) {
-		throw new IllegalStateException("No migrations for any version");
+		switch(version) {
+			case 2:
+				return new RecipesDBMigrationV2();
+			default:
+				throw new IllegalStateException("No migration for version " + version);
+		}
 	}
 }

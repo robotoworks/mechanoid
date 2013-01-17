@@ -8,4 +8,13 @@ database RecipesDB {
 			description text
 		);
 	}
+	
+	migration {
+		alter table recipes add column author_id integer;
+		
+		create table authors (
+			_id integer primary key autoincrement,
+			name text
+		);
+	}
 }

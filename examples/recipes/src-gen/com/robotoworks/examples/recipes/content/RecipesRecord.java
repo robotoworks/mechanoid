@@ -30,19 +30,23 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
     public static String[] PROJECTION = {
     	Recipes._ID,
     	Recipes.TITLE,
-    	Recipes.DESCRIPTION
+    	Recipes.DESCRIPTION,
+    	Recipes.AUTHOR_ID
     };
     
     public interface Indices {
     	int _ID = 0;
     	int TITLE = 1;
     	int DESCRIPTION = 2;
+    	int AUTHOR_ID = 3;
     }
     
     private String mTitle;
     private boolean mTitleDirty;
     private String mDescription;
     private boolean mDescriptionDirty;
+    private long mAuthorId;
+    private boolean mAuthorIdDirty;
     
     @Override
     protected String[] _getProjection() {
@@ -67,6 +71,15 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
     	return mDescription;
     }
     
+    public void setAuthorId(long authorId) {
+    	mAuthorId = authorId;
+    	mAuthorIdDirty = true;
+    }
+    
+    public long getAuthorId() {
+    	return mAuthorId;
+    }
+    
     
     public RecipesRecord() {
     	super(Recipes.CONTENT_URI);
@@ -78,11 +91,13 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		setId(in.readLong());
 		mTitle = in.readString();
 		mDescription = in.readString();
+		mAuthorId = in.readLong();
 		
-		boolean[] dirtyFlags = new boolean[3];
+		boolean[] dirtyFlags = new boolean[4];
 		in.readBooleanArray(dirtyFlags);
 		mTitleDirty = dirtyFlags[0];
 		mDescriptionDirty = dirtyFlags[1];
+		mAuthorIdDirty = dirtyFlags[2];
 	}
 	
 	@Override
@@ -95,9 +110,11 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		dest.writeLong(getId());
 		dest.writeString(mTitle);
 		dest.writeString(mDescription);
+		dest.writeLong(mAuthorId);
 	    dest.writeBooleanArray(new boolean[] {
 			mTitleDirty,
-			mDescriptionDirty
+			mDescriptionDirty,
+			mAuthorIdDirty
 	    });
 	}
 	
@@ -111,6 +128,9 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		if(mDescriptionDirty) {
 			builder.setDescription(mDescription);
 		}
+		if(mAuthorIdDirty) {
+			builder.setAuthorId(mAuthorId);
+		}
 		
 		return builder;
 	}
@@ -119,6 +139,7 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 	public void makeDirty(boolean dirty){
 		mTitleDirty = dirty;
 		mDescriptionDirty = dirty;
+		mAuthorIdDirty = dirty;
 	}
 
 	@Override
@@ -126,6 +147,7 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		setId(c.getLong(Indices._ID));
 		setTitle(c.getString(Indices.TITLE));
 		setDescription(c.getString(Indices.DESCRIPTION));
+		setAuthorId(c.getLong(Indices.AUTHOR_ID));
 	}
 	
 	public static RecipesRecord fromCursor(Cursor c) {
