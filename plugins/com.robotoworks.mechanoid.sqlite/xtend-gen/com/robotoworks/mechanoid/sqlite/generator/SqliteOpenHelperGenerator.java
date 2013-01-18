@@ -185,7 +185,8 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t");
             _builder.append("\"");
             String _trim_1 = line.trim();
-            _builder.append(_trim_1, "			");
+            String _replaceAll = _trim_1.replaceAll("\\\"", "\\\\\"");
+            _builder.append(_replaceAll, "			");
             _builder.append(" \"");
             _builder.newLineIfNotEmpty();
           }
@@ -217,7 +218,8 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t");
             _builder.append("\"");
             String _trim_3 = line_1.trim();
-            _builder.append(_trim_3, "			");
+            String _replaceAll_1 = _trim_3.replaceAll("\\\"", "\\\\\"");
+            _builder.append(_replaceAll_1, "			");
             _builder.append(" \"");
             _builder.newLineIfNotEmpty();
           }
@@ -251,7 +253,8 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t");
             _builder.append("\"");
             String _trim_5 = line_2.trim();
-            _builder.append(_trim_5, "			");
+            String _replaceAll_2 = _trim_5.replaceAll("\\\"", "\\\\\"");
+            _builder.append(_replaceAll_2, "			");
             _builder.append(" \"");
             _builder.newLineIfNotEmpty();
           }

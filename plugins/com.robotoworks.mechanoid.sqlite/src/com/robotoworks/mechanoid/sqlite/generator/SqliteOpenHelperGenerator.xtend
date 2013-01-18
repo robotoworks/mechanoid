@@ -55,14 +55,14 @@ class SqliteOpenHelperGenerator {
 						«FOR table : snapshot.statements.filter(typeof(CreateTableStatement))»
 						db.execSQL(
 							«FOR line : table.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim» "
+							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
 							«ENDFOR»
 						);
 						«ENDFOR»
 						«FOR view : snapshot.statements.filter(typeof(CreateViewStatement))»
 						db.execSQL(
 							«FOR line : view.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim» "
+							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
 							«ENDFOR»
 						);
 						
@@ -70,7 +70,7 @@ class SqliteOpenHelperGenerator {
 						«FOR trigger : snapshot.statements.filter(typeof(CreateTriggerStatement))»
 						db.execSQL(
 							«FOR line : trigger.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim» "
+							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
 							«ENDFOR»
 						);
 						

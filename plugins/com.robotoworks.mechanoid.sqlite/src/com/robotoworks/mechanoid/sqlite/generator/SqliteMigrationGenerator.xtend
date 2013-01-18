@@ -7,6 +7,8 @@ import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import com.google.inject.Inject
 import org.eclipse.xtext.serializer.ISerializer
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import org.eclipse.internal.xtend.util.StringHelper
+import org.eclipse.xtext.util.Strings
 
 class SqliteMigrationGenerator {
 	
@@ -27,7 +29,7 @@ class SqliteMigrationGenerator {
 					«FOR stmt : migration.statements»
 					db.execSQL(
 						«FOR line : stmt.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-						"«line.trim» "
+						"«line.trim.replaceAll('\\\"', '\\\\\"')»"
 						«ENDFOR»
 					);
 					«ENDFOR»

@@ -30,7 +30,7 @@ public class RecipesWithAuthorListFragment extends ListFragment {
     class RecipesCursorAdapter extends SimpleCursorAdapter {
         public RecipesCursorAdapter(Context context) {
             super(context, 
-                    R.layout.item_recipe, null,
+                    R.layout.item_recipe_with_authors, null,
                     new String[] {
                         RecipesWithAuthors.RECIPE_TITLE,
                         RecipesWithAuthors.RECIPE_DESCRIPTION,
