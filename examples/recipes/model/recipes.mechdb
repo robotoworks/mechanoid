@@ -9,7 +9,7 @@ database RecipesDB {
 		);
 	}
 	
-	migration {
+	migration { 
 		alter table recipes add column author_id integer;
 		
 		create table authors (
@@ -27,7 +27,5 @@ database RecipesDB {
 			from recipes as r
 			left join authors as a
 			on r.author_id = a._id;
-			
-		create table qux (_id integer);
 	}
 }

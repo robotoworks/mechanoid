@@ -19,7 +19,16 @@ public abstract class AbstractRecipesDBMigrationV2 extends SQLiteMigration {
 			") "
 		);
 		db.execSQL(
-			"create table qux (_id integer) "
+			"create view recipes_with_authors as " +
+			"select " +
+			"r._id as _id, " +
+			"r.title as recipe_title, " +
+			"r.description as recipe_description, " +
+			"r.author_id as author_id, " +
+			"r.name as author_name " +
+			"from recipes as r " +
+			"left join authors as a " +
+			"on r.author_id = a._id "
 		);
 	}
 }

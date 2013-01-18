@@ -65,7 +65,7 @@ public class SqliteDatabaseSnapshotBuilder {
 					
 					CreateViewStatement createViewStmt = (CreateViewStatement) statement;
 					
-					mViews.put(createViewStmt.getName(), createViewStmt);
+					mViews.put(createViewStmt.getName(), EcoreUtil.copy(createViewStmt));
 					
 				} else if(statement instanceof AlterTableStatement) {
 					
@@ -89,7 +89,7 @@ public class SqliteDatabaseSnapshotBuilder {
 				} else if (statement instanceof CreateTriggerStatement) {
 					CreateTriggerStatement createTriggerStmt = (CreateTriggerStatement) statement;
 					
-					mTriggers.put(createTriggerStmt.getName(), createTriggerStmt);
+					mTriggers.put(createTriggerStmt.getName(), EcoreUtil.copy(createTriggerStmt));
 					
 				} else if (statement instanceof DropTableStatement) {
 					DropTableStatement dropTableStmt = (DropTableStatement) statement;

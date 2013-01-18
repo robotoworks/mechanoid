@@ -25,7 +25,7 @@ class SqliteModelGenerator implements IGenerator {
 	@Inject ContentProviderContractGenerator mContentProviderContractGenerator
 	@Inject Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider
 	@Inject ContentProviderGenerator mContentProviderGenerator
-	@Inject SqliteMigrationGenerator mMigrationGenerator
+	@Inject Provider<SqliteMigrationGenerator> mMigrationGenerator
 	@Inject ContentProviderActionGenerator mActionGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
 	
@@ -178,13 +178,15 @@ class SqliteModelGenerator implements IGenerator {
 		var genFileName = model.packageName.concat(".migrations").resolveFileName("Abstract".concat(model.database.name.pascalize).concat("MigrationV").concat(String::valueOf(version)))
 		var genStubFileName = model.packageName.concat(".migrations").resolveFileName(model.database.name.pascalize.concat("MigrationV").concat(String::valueOf(version)))
 			
+		var generator = mMigrationGenerator.get()
+		
 		fsa.generateFile(genFileName, 
-			mMigrationGenerator.generate(model, migration, version)
+			generator.generate(model, migration, version)
 		)
 		
 		fsa.generateFile(genStubFileName, 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
-			mMigrationGenerator.generateStub(model, migration, version)
+			generator.generateStub(model, migration, version)
 		)
 	}
 

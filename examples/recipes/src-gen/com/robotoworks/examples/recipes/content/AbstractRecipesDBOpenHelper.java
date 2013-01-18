@@ -18,7 +18,6 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 	public interface Tables {
 		String RECIPES = "recipes";
 		String AUTHORS = "authors";
-		String QUX = "qux";
 		String RECIPES_WITH_AUTHORS = "recipes_with_authors";
 	}
 
@@ -43,21 +42,10 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 			") "
 		);
 		db.execSQL(
-			"create table qux ( " +
-			"_id integer " +
-			") "
-		);
-		db.execSQL(
-			"create view recipes_with_authors as " +
-			"select " +
-			"r._id as _id, " +
-			"r.title as recipe_title, " +
-			"r.description as recipe_description, " +
-			"r.author_id as author_id, " +
-			"r.name as author_name " +
-			"from recipes as r " +
-			"left join authors as a " +
-			"on r.author_id = a._id "
+			"create view recipes_with_authors as select r._id as _id , r.title as " +
+			"recipe_title , r.description as recipe_description , r.author_id as author_id , " +
+			"r.name as author_name from recipes as r left join authors as a on r.author_id = " +
+			"a._id "
 		);
 		
 	}
