@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NullCheckExpressionImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NullCheckExpressionImpl#getNullClause <em>Null Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +39,26 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
    * @ordered
    */
   protected Expression left;
+
+  /**
+   * The default value of the '{@link #getNullClause() <em>Null Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNullClause()
+   * @generated
+   * @ordered
+   */
+  protected static final String NULL_CLAUSE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getNullClause() <em>Null Clause</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNullClause()
+   * @generated
+   * @ordered
+   */
+  protected String nullClause = NULL_CLAUSE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,6 +134,29 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getNullClause()
+  {
+    return nullClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNullClause(String newNullClause)
+  {
+    String oldNullClause = nullClause;
+    nullClause = newNullClause;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NULL_CHECK_EXPRESSION__NULL_CLAUSE, oldNullClause, nullClause));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -136,6 +180,8 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
     {
       case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
         return getLeft();
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__NULL_CLAUSE:
+        return getNullClause();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,6 +198,9 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
     {
       case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
         setLeft((Expression)newValue);
+        return;
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__NULL_CLAUSE:
+        setNullClause((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,6 +219,9 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
       case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
         setLeft((Expression)null);
         return;
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__NULL_CLAUSE:
+        setNullClause(NULL_CLAUSE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -186,8 +238,27 @@ public class NullCheckExpressionImpl extends ExpressionImpl implements NullCheck
     {
       case SqliteModelPackage.NULL_CHECK_EXPRESSION__LEFT:
         return left != null;
+      case SqliteModelPackage.NULL_CHECK_EXPRESSION__NULL_CLAUSE:
+        return NULL_CLAUSE_EDEFAULT == null ? nullClause != null : !NULL_CLAUSE_EDEFAULT.equals(nullClause);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (nullClause: ");
+    result.append(nullClause);
+    result.append(')');
+    return result.toString();
   }
 
 } //NullCheckExpressionImpl

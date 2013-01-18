@@ -30,8 +30,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getWhen <em>When</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getEventType <em>Event Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getUpdateColumnNames <em>Update Column Names</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getForEachRow <em>For Each Row</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getWhenExpression <em>When Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateTriggerStatementImpl#getStatements <em>Statements</em>}</li>
  * </ul>
@@ -41,6 +44,46 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CreateTriggerStatementImpl extends DDLStatementImpl implements CreateTriggerStatement
 {
+  /**
+   * The default value of the '{@link #getWhen() <em>When</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWhen()
+   * @generated
+   * @ordered
+   */
+  protected static final String WHEN_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getWhen() <em>When</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWhen()
+   * @generated
+   * @ordered
+   */
+  protected String when = WHEN_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEventType()
+   * @generated
+   * @ordered
+   */
+  protected static final String EVENT_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEventType() <em>Event Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEventType()
+   * @generated
+   * @ordered
+   */
+  protected String eventType = EVENT_TYPE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getUpdateColumnNames() <em>Update Column Names</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -70,6 +113,26 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * @ordered
    */
   protected String tableName = TABLE_NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getForEachRow() <em>For Each Row</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getForEachRow()
+   * @generated
+   * @ordered
+   */
+  protected static final String FOR_EACH_ROW_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getForEachRow() <em>For Each Row</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getForEachRow()
+   * @generated
+   * @ordered
+   */
+  protected String forEachRow = FOR_EACH_ROW_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getWhenExpression() <em>When Expression</em>}' containment reference.
@@ -117,6 +180,52 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getWhen()
+  {
+    return when;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWhen(String newWhen)
+  {
+    String oldWhen = when;
+    when = newWhen;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN, oldWhen, when));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEventType()
+  {
+    return eventType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEventType(String newEventType)
+  {
+    String oldEventType = eventType;
+    eventType = newEventType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__EVENT_TYPE, oldEventType, eventType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getUpdateColumnNames()
   {
     if (updateColumnNames == null)
@@ -147,6 +256,29 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
     tableName = newTableName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE_NAME, oldTableName, tableName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getForEachRow()
+  {
+    return forEachRow;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setForEachRow(String newForEachRow)
+  {
+    String oldForEachRow = forEachRow;
+    forEachRow = newForEachRow;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW, oldForEachRow, forEachRow));
   }
 
   /**
@@ -239,10 +371,16 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
+        return getWhen();
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__EVENT_TYPE:
+        return getEventType();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES:
         return getUpdateColumnNames();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE_NAME:
         return getTableName();
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
+        return getForEachRow();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
         return getWhenExpression();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__STATEMENTS:
@@ -262,12 +400,21 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
+        setWhen((String)newValue);
+        return;
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__EVENT_TYPE:
+        setEventType((String)newValue);
+        return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES:
         getUpdateColumnNames().clear();
         getUpdateColumnNames().addAll((Collection<? extends String>)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE_NAME:
         setTableName((String)newValue);
+        return;
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
+        setForEachRow((String)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
         setWhenExpression((SqlExpression)newValue);
@@ -290,11 +437,20 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
+        setWhen(WHEN_EDEFAULT);
+        return;
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__EVENT_TYPE:
+        setEventType(EVENT_TYPE_EDEFAULT);
+        return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES:
         getUpdateColumnNames().clear();
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE_NAME:
         setTableName(TABLE_NAME_EDEFAULT);
+        return;
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
+        setForEachRow(FOR_EACH_ROW_EDEFAULT);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
         setWhenExpression((SqlExpression)null);
@@ -316,10 +472,16 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
+        return WHEN_EDEFAULT == null ? when != null : !WHEN_EDEFAULT.equals(when);
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__EVENT_TYPE:
+        return EVENT_TYPE_EDEFAULT == null ? eventType != null : !EVENT_TYPE_EDEFAULT.equals(eventType);
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES:
         return updateColumnNames != null && !updateColumnNames.isEmpty();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE_NAME:
         return TABLE_NAME_EDEFAULT == null ? tableName != null : !TABLE_NAME_EDEFAULT.equals(tableName);
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
+        return FOR_EACH_ROW_EDEFAULT == null ? forEachRow != null : !FOR_EACH_ROW_EDEFAULT.equals(forEachRow);
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
         return whenExpression != null;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__STATEMENTS:
@@ -339,10 +501,16 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (updateColumnNames: ");
+    result.append(" (when: ");
+    result.append(when);
+    result.append(", eventType: ");
+    result.append(eventType);
+    result.append(", updateColumnNames: ");
     result.append(updateColumnNames);
     result.append(", tableName: ");
     result.append(tableName);
+    result.append(", forEachRow: ");
+    result.append(forEachRow);
     result.append(')');
     return result.toString();
   }

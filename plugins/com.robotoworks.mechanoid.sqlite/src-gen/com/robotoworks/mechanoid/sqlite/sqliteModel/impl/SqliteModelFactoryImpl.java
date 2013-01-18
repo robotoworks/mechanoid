@@ -80,6 +80,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.UPDATE_STATEMENT: return createUpdateStatement();
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION: return createUpdateColumnExpression();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
+      case SqliteModelPackage.SELECT_CORE_EXPRESSION: return createSelectCoreExpression();
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
@@ -87,7 +88,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
-      case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
       case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
       case SqliteModelPackage.JOIN_STATEMENT: return createJoinStatement();
@@ -117,6 +117,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
       case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
+      case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
       case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
@@ -159,6 +160,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
         return createSqliteDataTypeFromString(eDataType, initialValue);
       case SqliteModelPackage.CONFLICT_RESOLUTION:
         return createConflictResolutionFromString(eDataType, initialValue);
+      case SqliteModelPackage.COMPOUND_OPERATOR:
+        return createCompoundOperatorFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -180,6 +183,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
         return convertSqliteDataTypeToString(eDataType, instanceValue);
       case SqliteModelPackage.CONFLICT_RESOLUTION:
         return convertConflictResolutionToString(eDataType, instanceValue);
+      case SqliteModelPackage.COMPOUND_OPERATOR:
+        return convertCompoundOperatorToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -355,6 +360,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SelectCoreExpression createSelectCoreExpression()
+  {
+    SelectCoreExpressionImpl selectCoreExpression = new SelectCoreExpressionImpl();
+    return selectCoreExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AlterTableClause createAlterTableClause()
   {
     AlterTableClauseImpl alterTableClause = new AlterTableClauseImpl();
@@ -425,17 +441,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     OrderingTermImpl orderingTerm = new OrderingTermImpl();
     return orderingTerm;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SelectCore createSelectCore()
-  {
-    SelectCoreImpl selectCore = new SelectCoreImpl();
-    return selectCore;
   }
 
   /**
@@ -762,6 +767,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SelectCore createSelectCore()
+  {
+    SelectCoreImpl selectCore = new SelectCoreImpl();
+    return selectCore;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AlterTableRenameClause createAlterTableRenameClause()
   {
     AlterTableRenameClauseImpl alterTableRenameClause = new AlterTableRenameClauseImpl();
@@ -1050,6 +1066,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * @generated
    */
   public String convertConflictResolutionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompoundOperator createCompoundOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    CompoundOperator result = CompoundOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertCompoundOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

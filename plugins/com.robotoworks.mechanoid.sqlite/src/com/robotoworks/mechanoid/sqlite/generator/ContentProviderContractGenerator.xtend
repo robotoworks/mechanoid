@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) { 
@@ -44,7 +45,7 @@ class ContentProviderContractGenerator {
 
 				«FOR vw :  snapshot.statements.filter(typeof(CreateViewStatement))»
 				interface «vw.name.pascalize»Columns {
-					«FOR col : vw.selectStatement.coreStatements.get(0).resultColumns»
+					«FOR col : vw.getViewResultColumns»
 					«generateInterfaceMemberForResultColumn(col)»
 					«ENDFOR»
 				}

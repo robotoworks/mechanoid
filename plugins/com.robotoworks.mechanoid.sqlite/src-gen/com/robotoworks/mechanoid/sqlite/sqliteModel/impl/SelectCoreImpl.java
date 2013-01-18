@@ -2,27 +2,18 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,109 +22,55 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#isDistinct <em>Distinct</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#isAll <em>All</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getResultColumns <em>Result Columns</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getSource <em>Source</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getWhereExpression <em>Where Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getHavingExpression <em>Having Expression</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SelectCoreImpl extends MinimalEObjectImpl.Container implements SelectCore
+public class SelectCoreImpl extends SelectCoreExpressionImpl implements SelectCore
 {
   /**
-   * The default value of the '{@link #isDistinct() <em>Distinct</em>}' attribute.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isDistinct()
+   * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected static final boolean DISTINCT_EDEFAULT = false;
+  protected SelectCoreExpression left;
 
   /**
-   * The cached value of the '{@link #isDistinct() <em>Distinct</em>}' attribute.
+   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isDistinct()
+   * @see #getOp()
    * @generated
    * @ordered
    */
-  protected boolean distinct = DISTINCT_EDEFAULT;
+  protected static final CompoundOperator OP_EDEFAULT = CompoundOperator.UNIONALL;
 
   /**
-   * The default value of the '{@link #isAll() <em>All</em>}' attribute.
+   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isAll()
+   * @see #getOp()
    * @generated
    * @ordered
    */
-  protected static final boolean ALL_EDEFAULT = false;
+  protected CompoundOperator op = OP_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #isAll() <em>All</em>}' attribute.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isAll()
+   * @see #getRight()
    * @generated
    * @ordered
    */
-  protected boolean all = ALL_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getResultColumns() <em>Result Columns</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getResultColumns()
-   * @generated
-   * @ordered
-   */
-  protected EList<ResultColumn> resultColumns;
-
-  /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSource()
-   * @generated
-   * @ordered
-   */
-  protected JoinSource source;
-
-  /**
-   * The cached value of the '{@link #getWhereExpression() <em>Where Expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWhereExpression()
-   * @generated
-   * @ordered
-   */
-  protected SqlExpression whereExpression;
-
-  /**
-   * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGroupByExpressions()
-   * @generated
-   * @ordered
-   */
-  protected EList<SqlExpression> groupByExpressions;
-
-  /**
-   * The cached value of the '{@link #getHavingExpression() <em>Having Expression</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHavingExpression()
-   * @generated
-   * @ordered
-   */
-  protected SqlExpression havingExpression;
+  protected SelectCoreExpression right;
 
   /**
    * <!-- begin-user-doc -->
@@ -161,9 +98,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isDistinct()
+  public SelectCoreExpression getLeft()
   {
-    return distinct;
+    return left;
   }
 
   /**
@@ -171,73 +108,13 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDistinct(boolean newDistinct)
+  public NotificationChain basicSetLeft(SelectCoreExpression newLeft, NotificationChain msgs)
   {
-    boolean oldDistinct = distinct;
-    distinct = newDistinct;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__DISTINCT, oldDistinct, distinct));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean isAll()
-  {
-    return all;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAll(boolean newAll)
-  {
-    boolean oldAll = all;
-    all = newAll;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__ALL, oldAll, all));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<ResultColumn> getResultColumns()
-  {
-    if (resultColumns == null)
-    {
-      resultColumns = new EObjectContainmentEList<ResultColumn>(ResultColumn.class, this, SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS);
-    }
-    return resultColumns;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JoinSource getSource()
-  {
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSource(JoinSource newSource, NotificationChain msgs)
-  {
-    JoinSource oldSource = source;
-    source = newSource;
+    SelectCoreExpression oldLeft = left;
+    left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__SOURCE, oldSource, newSource);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -248,20 +125,20 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(JoinSource newSource)
+  public void setLeft(SelectCoreExpression newLeft)
   {
-    if (newSource != source)
+    if (newLeft != left)
     {
       NotificationChain msgs = null;
-      if (source != null)
-        msgs = ((InternalEObject)source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__SOURCE, null, msgs);
-      if (newSource != null)
-        msgs = ((InternalEObject)newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__SOURCE, null, msgs);
-      msgs = basicSetSource(newSource, msgs);
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__SOURCE, newSource, newSource));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -269,9 +146,9 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getWhereExpression()
+  public CompoundOperator getOp()
   {
-    return whereExpression;
+    return op;
   }
 
   /**
@@ -279,13 +156,36 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhereExpression(SqlExpression newWhereExpression, NotificationChain msgs)
+  public void setOp(CompoundOperator newOp)
   {
-    SqlExpression oldWhereExpression = whereExpression;
-    whereExpression = newWhereExpression;
+    CompoundOperator oldOp = op;
+    op = newOp == null ? OP_EDEFAULT : newOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__OP, oldOp, op));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectCoreExpression getRight()
+  {
+    return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRight(SelectCoreExpression newRight, NotificationChain msgs)
+  {
+    SelectCoreExpression oldRight = right;
+    right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, oldWhereExpression, newWhereExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -296,82 +196,20 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhereExpression(SqlExpression newWhereExpression)
+  public void setRight(SelectCoreExpression newRight)
   {
-    if (newWhereExpression != whereExpression)
+    if (newRight != right)
     {
       NotificationChain msgs = null;
-      if (whereExpression != null)
-        msgs = ((InternalEObject)whereExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, null, msgs);
-      if (newWhereExpression != null)
-        msgs = ((InternalEObject)newWhereExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, null, msgs);
-      msgs = basicSetWhereExpression(newWhereExpression, msgs);
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION, newWhereExpression, newWhereExpression));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<SqlExpression> getGroupByExpressions()
-  {
-    if (groupByExpressions == null)
-    {
-      groupByExpressions = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS);
-    }
-    return groupByExpressions;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SqlExpression getHavingExpression()
-  {
-    return havingExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetHavingExpression(SqlExpression newHavingExpression, NotificationChain msgs)
-  {
-    SqlExpression oldHavingExpression = havingExpression;
-    havingExpression = newHavingExpression;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, oldHavingExpression, newHavingExpression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHavingExpression(SqlExpression newHavingExpression)
-  {
-    if (newHavingExpression != havingExpression)
-    {
-      NotificationChain msgs = null;
-      if (havingExpression != null)
-        msgs = ((InternalEObject)havingExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, null, msgs);
-      if (newHavingExpression != null)
-        msgs = ((InternalEObject)newHavingExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, null, msgs);
-      msgs = basicSetHavingExpression(newHavingExpression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION, newHavingExpression, newHavingExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_CORE__RIGHT, newRight, newRight));
   }
 
   /**
@@ -384,16 +222,10 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS:
-        return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.SELECT_CORE__SOURCE:
-        return basicSetSource(null, msgs);
-      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
-        return basicSetWhereExpression(null, msgs);
-      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
-        return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
-        return basicSetHavingExpression(null, msgs);
+      case SqliteModelPackage.SELECT_CORE__LEFT:
+        return basicSetLeft(null, msgs);
+      case SqliteModelPackage.SELECT_CORE__RIGHT:
+        return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -408,20 +240,12 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_CORE__DISTINCT:
-        return isDistinct();
-      case SqliteModelPackage.SELECT_CORE__ALL:
-        return isAll();
-      case SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS:
-        return getResultColumns();
-      case SqliteModelPackage.SELECT_CORE__SOURCE:
-        return getSource();
-      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
-        return getWhereExpression();
-      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
-        return getGroupByExpressions();
-      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
-        return getHavingExpression();
+      case SqliteModelPackage.SELECT_CORE__LEFT:
+        return getLeft();
+      case SqliteModelPackage.SELECT_CORE__OP:
+        return getOp();
+      case SqliteModelPackage.SELECT_CORE__RIGHT:
+        return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -431,34 +255,19 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_CORE__DISTINCT:
-        setDistinct((Boolean)newValue);
+      case SqliteModelPackage.SELECT_CORE__LEFT:
+        setLeft((SelectCoreExpression)newValue);
         return;
-      case SqliteModelPackage.SELECT_CORE__ALL:
-        setAll((Boolean)newValue);
+      case SqliteModelPackage.SELECT_CORE__OP:
+        setOp((CompoundOperator)newValue);
         return;
-      case SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS:
-        getResultColumns().clear();
-        getResultColumns().addAll((Collection<? extends ResultColumn>)newValue);
-        return;
-      case SqliteModelPackage.SELECT_CORE__SOURCE:
-        setSource((JoinSource)newValue);
-        return;
-      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)newValue);
-        return;
-      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
-        getGroupByExpressions().clear();
-        getGroupByExpressions().addAll((Collection<? extends SqlExpression>)newValue);
-        return;
-      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
-        setHavingExpression((SqlExpression)newValue);
+      case SqliteModelPackage.SELECT_CORE__RIGHT:
+        setRight((SelectCoreExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -474,26 +283,14 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_CORE__DISTINCT:
-        setDistinct(DISTINCT_EDEFAULT);
+      case SqliteModelPackage.SELECT_CORE__LEFT:
+        setLeft((SelectCoreExpression)null);
         return;
-      case SqliteModelPackage.SELECT_CORE__ALL:
-        setAll(ALL_EDEFAULT);
+      case SqliteModelPackage.SELECT_CORE__OP:
+        setOp(OP_EDEFAULT);
         return;
-      case SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS:
-        getResultColumns().clear();
-        return;
-      case SqliteModelPackage.SELECT_CORE__SOURCE:
-        setSource((JoinSource)null);
-        return;
-      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)null);
-        return;
-      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
-        getGroupByExpressions().clear();
-        return;
-      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
-        setHavingExpression((SqlExpression)null);
+      case SqliteModelPackage.SELECT_CORE__RIGHT:
+        setRight((SelectCoreExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -509,20 +306,12 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_CORE__DISTINCT:
-        return distinct != DISTINCT_EDEFAULT;
-      case SqliteModelPackage.SELECT_CORE__ALL:
-        return all != ALL_EDEFAULT;
-      case SqliteModelPackage.SELECT_CORE__RESULT_COLUMNS:
-        return resultColumns != null && !resultColumns.isEmpty();
-      case SqliteModelPackage.SELECT_CORE__SOURCE:
-        return source != null;
-      case SqliteModelPackage.SELECT_CORE__WHERE_EXPRESSION:
-        return whereExpression != null;
-      case SqliteModelPackage.SELECT_CORE__GROUP_BY_EXPRESSIONS:
-        return groupByExpressions != null && !groupByExpressions.isEmpty();
-      case SqliteModelPackage.SELECT_CORE__HAVING_EXPRESSION:
-        return havingExpression != null;
+      case SqliteModelPackage.SELECT_CORE__LEFT:
+        return left != null;
+      case SqliteModelPackage.SELECT_CORE__OP:
+        return op != OP_EDEFAULT;
+      case SqliteModelPackage.SELECT_CORE__RIGHT:
+        return right != null;
     }
     return super.eIsSet(featureID);
   }
@@ -538,10 +327,8 @@ public class SelectCoreImpl extends MinimalEObjectImpl.Container implements Sele
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (distinct: ");
-    result.append(distinct);
-    result.append(", all: ");
-    result.append(all);
+    result.append(" (op: ");
+    result.append(op);
     result.append(')');
     return result.toString();
   }

@@ -182,6 +182,13 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.SELECT_CORE_EXPRESSION:
+      {
+        SelectCoreExpression selectCoreExpression = (SelectCoreExpression)theEObject;
+        T result = caseSelectCoreExpression(selectCoreExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.ALTER_TABLE_CLAUSE:
       {
         AlterTableClause alterTableClause = (AlterTableClause)theEObject;
@@ -228,13 +235,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         OrderingTerm orderingTerm = (OrderingTerm)theEObject;
         T result = caseOrderingTerm(orderingTerm);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SELECT_CORE:
-      {
-        SelectCore selectCore = (SelectCore)theEObject;
-        T result = caseSelectCore(selectCore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -461,6 +461,14 @@ public class SqliteModelSwitch<T> extends Switch<T>
         DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
         T result = caseDropViewStatement(dropViewStatement);
         if (result == null) result = caseDDLStatement(dropViewStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SELECT_CORE:
+      {
+        SelectCore selectCore = (SelectCore)theEObject;
+        T result = caseSelectCore(selectCore);
+        if (result == null) result = caseSelectCoreExpression(selectCore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -877,6 +885,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectCoreExpression(SelectCoreExpression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -984,22 +1008,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOrderingTerm(OrderingTerm object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select Core</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select Core</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelectCore(SelectCore object)
   {
     return null;
   }
@@ -1464,6 +1472,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDropViewStatement(DropViewStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Core</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Core</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectCore(SelectCore object)
   {
     return null;
   }

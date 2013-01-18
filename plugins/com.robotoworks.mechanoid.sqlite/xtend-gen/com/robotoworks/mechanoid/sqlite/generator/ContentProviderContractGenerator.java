@@ -18,8 +18,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -141,11 +139,8 @@ public class ContentProviderContractGenerator {
         _builder.append("Columns {");
         _builder.newLineIfNotEmpty();
         {
-          SelectStatement _selectStatement = vw.getSelectStatement();
-          EList<SelectCore> _coreStatements = _selectStatement.getCoreStatements();
-          SelectCore _get = _coreStatements.get(0);
-          EList<ResultColumn> _resultColumns = _get.getResultColumns();
-          for(final ResultColumn col_1 : _resultColumns) {
+          EList<ResultColumn> _viewResultColumns = Extensions.getViewResultColumns(vw);
+          for(final ResultColumn col_1 : _viewResultColumns) {
             _builder.append("\t");
             _builder.append("\t");
             CharSequence _generateInterfaceMemberForResultColumn = this.generateInterfaceMemberForResultColumn(col_1);

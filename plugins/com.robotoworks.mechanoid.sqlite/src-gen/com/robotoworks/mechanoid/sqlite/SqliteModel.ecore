@@ -67,10 +67,24 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectStatement" eSuperTypes="#//DMLStatement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="coreStatements" upperBound="-1"
-        eType="#//SelectCore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="core" eType="#//SelectCoreExpression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderingTerms" upperBound="-1"
         eType="#//OrderingTerm" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCoreExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
+        eType="#//ResultColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//JoinSource"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//SqlExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
+        eType="#//SqlExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//SqlExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnDef">
@@ -111,25 +125,17 @@
     <eLiterals name="ignore" value="3" literal="ignore"/>
     <eLiterals name="replace" value="4" literal="replace"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CompoundOperator">
+    <eLiterals name="unionall" literal="union all"/>
+    <eLiterals name="union" value="1" literal="union"/>
+    <eLiterals name="intersect" value="2" literal="intersect"/>
+    <eLiterals name="except" value="3" literal="except"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderingTerm">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//SqlExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="asc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectCore">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
-        eType="#//ResultColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//JoinSource"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//SqlExpression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
-        eType="#//SqlExpression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//SqlExpression"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinSource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SingleSource"
@@ -217,6 +223,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="NullCheckExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullClause" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnLiteral" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -263,9 +270,12 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateTriggerStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateColumnNames" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forEachRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whenExpression" eType="#//SqlExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
@@ -275,9 +285,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//AlterTableClause"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//DDLStatement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DropTriggerStatement" eSuperTypes="#//DDLStatement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//DDLStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DropTriggerStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCore" eSuperTypes="#//SelectCoreExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//SelectCoreExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="#//CompoundOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectCoreExpression"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableRenameClause" eSuperTypes="#//AlterTableClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

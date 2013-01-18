@@ -158,6 +158,15 @@ public interface SqliteModelFactory extends EFactory
   SelectStatement createSelectStatement();
 
   /**
+   * Returns a new object of class '<em>Select Core Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Core Expression</em>'.
+   * @generated
+   */
+  SelectCoreExpression createSelectCoreExpression();
+
+  /**
    * Returns a new object of class '<em>Alter Table Clause</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -219,15 +228,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   OrderingTerm createOrderingTerm();
-
-  /**
-   * Returns a new object of class '<em>Select Core</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select Core</em>'.
-   * @generated
-   */
-  SelectCore createSelectCore();
 
   /**
    * Returns a new object of class '<em>Join Source</em>'.
@@ -489,6 +489,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   DropViewStatement createDropViewStatement();
+
+  /**
+   * Returns a new object of class '<em>Select Core</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Core</em>'.
+   * @generated
+   */
+  SelectCore createSelectCore();
 
   /**
    * Returns a new object of class '<em>Alter Table Rename Clause</em>'.
