@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.util.Strings;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
@@ -33,7 +34,7 @@ public class Extensions {
 		for(ResultColumn col : resultColumns) {
 			if(col instanceof ResultColumnExpression) {
 				ResultColumnExpression expr = (ResultColumnExpression) col;
-				if(expr.getAlias()!= null && !expr.getAlias().equals("") && expr.getAlias().equals("_id")) {
+				if(!Strings.isEmpty(expr.getName()) && expr.getName().equals("_id")) {
 					return true;
 				}
 			}

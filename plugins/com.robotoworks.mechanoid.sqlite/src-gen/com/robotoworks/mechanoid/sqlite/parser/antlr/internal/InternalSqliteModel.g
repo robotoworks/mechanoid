@@ -85,9 +85,9 @@ ruleModel returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
 	    }
-		lv_packageName_1_0=ruleFQN		{
+		lv_packageName_1_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModelRule());
 	        }
@@ -95,7 +95,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"packageName",
         		lv_packageName_1_0, 
-        		"FQN");
+        		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1326,9 +1326,9 @@ rulePrimaryExpression returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getNameFQNParserRuleCall_0_1_0()); 
+	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getNameQualifiedNameParserRuleCall_0_1_0()); 
 	    }
-		lv_name_1_0=ruleFQN		{
+		lv_name_1_0=ruleQualifiedName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPrimaryExpressionRule());
 	        }
@@ -1336,7 +1336,7 @@ rulePrimaryExpression returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"FQN");
+        		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4108,9 +4108,9 @@ ruleSingleSource returns [EObject current=null]
     }
 (
 (
-		lv_alias_3_0=RULE_ID
+		lv_name_3_0=RULE_ID
 		{
-			newLeafNode(lv_alias_3_0, grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_0_2_1_0()); 
+			newLeafNode(lv_name_3_0, grammarAccess.getSingleSourceAccess().getNameIDTerminalRuleCall_0_2_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4118,8 +4118,8 @@ ruleSingleSource returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"alias",
-        		lv_alias_3_0, 
+       			"name",
+        		lv_name_3_0, 
         		"ID");
 	    }
 
@@ -4163,9 +4163,9 @@ ruleSingleSource returns [EObject current=null]
     }
 (
 (
-		lv_alias_9_0=RULE_ID
+		lv_name_9_0=RULE_ID
 		{
-			newLeafNode(lv_alias_9_0, grammarAccess.getSingleSourceAccess().getAliasIDTerminalRuleCall_1_4_1_0()); 
+			newLeafNode(lv_name_9_0, grammarAccess.getSingleSourceAccess().getNameIDTerminalRuleCall_1_4_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4173,8 +4173,8 @@ ruleSingleSource returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"alias",
-        		lv_alias_9_0, 
+       			"name",
+        		lv_name_9_0, 
         		"ID");
 	    }
 
@@ -4387,11 +4387,11 @@ ruleResultColumn returns [EObject current=null]
             grammarAccess.getResultColumnAccess().getResultColumnAllAction_0_0(),
             $current);
     }
-)(
+)((
 (
-		lv_table_1_0=RULE_ID
+		lv_source_1_0=RULE_ID
 		{
-			newLeafNode(lv_table_1_0, grammarAccess.getResultColumnAccess().getTableIDTerminalRuleCall_0_1_0()); 
+			newLeafNode(lv_source_1_0, grammarAccess.getResultColumnAccess().getSourceIDTerminalRuleCall_0_1_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4399,15 +4399,19 @@ ruleResultColumn returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"table",
-        		lv_table_1_0, 
+       			"source",
+        		lv_source_1_0, 
         		"ID");
 	    }
 
 )
-)?	otherlv_2='*' 
+)	otherlv_2='.' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_2());
+    	newLeafNode(otherlv_2, grammarAccess.getResultColumnAccess().getFullStopKeyword_0_1_1());
+    }
+)?	otherlv_3='*' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_2());
     }
 )
     |((
@@ -4421,28 +4425,28 @@ ruleResultColumn returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getResultColumnAccess().getExpressionSqlExpressionParserRuleCall_1_1_0()); 
 	    }
-		lv_expression_4_0=ruleSqlExpression		{
+		lv_expression_5_0=ruleSqlExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getResultColumnRule());
 	        }
        		set(
        			$current, 
        			"expression",
-        		lv_expression_4_0, 
+        		lv_expression_5_0, 
         		"SqlExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_5='as' 
+)(	otherlv_6='as' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getResultColumnAccess().getAsKeyword_1_2_0());
+    	newLeafNode(otherlv_6, grammarAccess.getResultColumnAccess().getAsKeyword_1_2_0());
     }
 (
 (
-		lv_alias_6_0=RULE_ID
+		lv_name_7_0=RULE_ID
 		{
-			newLeafNode(lv_alias_6_0, grammarAccess.getResultColumnAccess().getAliasIDTerminalRuleCall_1_2_1_0()); 
+			newLeafNode(lv_name_7_0, grammarAccess.getResultColumnAccess().getNameIDTerminalRuleCall_1_2_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4450,8 +4454,8 @@ ruleResultColumn returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"alias",
-        		lv_alias_6_0, 
+       			"name",
+        		lv_name_7_0, 
         		"ID");
 	    }
 
@@ -4702,17 +4706,17 @@ ruleSignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
 
 
 
-// Entry rule entryRuleFQN
-entryRuleFQN returns [String current=null] 
+// Entry rule entryRuleQualifiedName
+entryRuleQualifiedName returns [String current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFQNRule()); } 
-	 iv_ruleFQN=ruleFQN 
-	 { $current=$iv_ruleFQN.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getQualifiedNameRule()); } 
+	 iv_ruleQualifiedName=ruleQualifiedName 
+	 { $current=$iv_ruleQualifiedName.current.getText(); }  
 	 EOF 
 ;
 
-// Rule FQN
-ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule QualifiedName
+ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -4721,20 +4725,20 @@ ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
 
     { 
-    newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
+    newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
     }
 (
 	kw='.' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
+        newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
     }
     this_ID_2=RULE_ID    {
 		$current.merge(this_ID_2);
     }
 
     { 
-    newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
+    newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
     }
 )*)
     ;

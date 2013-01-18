@@ -1127,7 +1127,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (packageName=FQN database=DatabaseBlock)
+	 *     (packageName=QualifiedName database=DatabaseBlock)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		if(errorAcceptor != null) {
@@ -1138,7 +1138,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getModelAccess().getPackageNameFQNParserRuleCall_1_0(), semanticObject.getPackageName());
+		feeder.accept(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0(), semanticObject.getPackageName());
 		feeder.accept(grammarAccess.getModelAccess().getDatabaseDatabaseBlockParserRuleCall_2_0(), semanticObject.getDatabase());
 		feeder.finish();
 	}
@@ -1199,7 +1199,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     name=FQN
+	 *     name=QualifiedName
 	 */
 	protected void sequence_PrimaryExpression(EObject context, ColumnLiteral semanticObject) {
 		if(errorAcceptor != null) {
@@ -1208,7 +1208,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getNameFQNParserRuleCall_0_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getNameQualifiedNameParserRuleCall_0_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1249,7 +1249,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (table=ID?)
+	 *     (source=ID?)
 	 */
 	protected void sequence_ResultColumn(EObject context, ResultColumnAll semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1258,7 +1258,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (expression=SqlExpression alias=ID?)
+	 *     (expression=SqlExpression name=ID?)
 	 */
 	protected void sequence_ResultColumn(EObject context, ResultColumnExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1309,7 +1309,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (selectStatement=SelectStatement alias=ID?)
+	 *     (selectStatement=SelectStatement name=ID?)
 	 */
 	protected void sequence_SingleSource(EObject context, SingleSourceSelectStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1318,7 +1318,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (table=ID alias=ID?)
+	 *     (table=ID name=ID?)
 	 */
 	protected void sequence_SingleSource(EObject context, SingleSourceTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

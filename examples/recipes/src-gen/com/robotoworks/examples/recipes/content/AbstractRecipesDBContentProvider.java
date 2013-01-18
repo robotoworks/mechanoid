@@ -21,11 +21,18 @@ import com.robotoworks.mechanoid.sqlite.SQuery;
 
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Qux;
+import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
+
 
 import com.robotoworks.examples.recipes.content.actions.RecipesActions;
 import com.robotoworks.examples.recipes.content.actions.RecipesByIdActions;
 import com.robotoworks.examples.recipes.content.actions.AuthorsActions;
 import com.robotoworks.examples.recipes.content.actions.AuthorsByIdActions;
+import com.robotoworks.examples.recipes.content.actions.QuxActions;
+import com.robotoworks.examples.recipes.content.actions.QuxByIdActions;
+import com.robotoworks.examples.recipes.content.actions.RecipesWithAuthorsActions;
+import com.robotoworks.examples.recipes.content.actions.RecipesWithAuthorsByIdActions;
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
 
     private static final UriMatcher sUriMatcher;
@@ -36,9 +43,13 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 	private static final int RECIPES_ID = 1;
 	private static final int AUTHORS = 2;
 	private static final int AUTHORS_ID = 3;
+	private static final int QUX = 4;
+	private static final int QUX_ID = 5;
 
+	private static final int RECIPES_WITH_AUTHORS = 6;
+	private static final int RECIPES_WITH_AUTHORS_ID = 7;
 	
-	public static final int NUM_URI_MATCHERS = 4;
+	public static final int NUM_URI_MATCHERS = 8;
 
 	static {
 		sUriMatcher = buildUriMatcher();
@@ -49,6 +60,10 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 		sContentTypes[RECIPES_ID] = Recipes.ITEM_CONTENT_TYPE;
 		sContentTypes[AUTHORS] = Authors.CONTENT_TYPE;
 		sContentTypes[AUTHORS_ID] = Authors.ITEM_CONTENT_TYPE;
+		sContentTypes[QUX] = Qux.CONTENT_TYPE;
+		sContentTypes[QUX_ID] = Qux.ITEM_CONTENT_TYPE;
+		sContentTypes[RECIPES_WITH_AUTHORS] = RecipesWithAuthors.CONTENT_TYPE;
+		sContentTypes[RECIPES_WITH_AUTHORS_ID] = RecipesWithAuthors.ITEM_CONTENT_TYPE;
 		
 		sActions = new Class<?>[NUM_URI_MATCHERS];
 
@@ -56,6 +71,10 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 		sActions[RECIPES_ID] = RecipesByIdActions.class;
 		sActions[AUTHORS] = AuthorsActions.class;
 		sActions[AUTHORS_ID] = AuthorsByIdActions.class;
+		sActions[QUX] = QuxActions.class;
+		sActions[QUX_ID] = QuxByIdActions.class;
+		sActions[RECIPES_WITH_AUTHORS] = RecipesWithAuthorsActions.class;
+		sActions[RECIPES_WITH_AUTHORS_ID] = RecipesWithAuthorsByIdActions.class;
 		
 		
 	}
@@ -69,8 +88,12 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 		matcher.addURI(authority, "recipes/#", RECIPES_ID);
 		matcher.addURI(authority, "authors", AUTHORS);
 		matcher.addURI(authority, "authors/#", AUTHORS_ID);
+		matcher.addURI(authority, "qux", QUX);
+		matcher.addURI(authority, "qux/#", QUX_ID);
 
 		// Views
+		matcher.addURI(authority, "recipes_with_authors", RECIPES_WITH_AUTHORS);
+		matcher.addURI(authority, "recipes_with_authors/#", RECIPES_WITH_AUTHORS_ID);
 
 		// User Actions
         return matcher;

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllImpl#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,24 +27,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColumnAll
 {
   /**
-   * The default value of the '{@link #getTable() <em>Table</em>}' attribute.
+   * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTable()
+   * @see #getSource()
    * @generated
    * @ordered
    */
-  protected static final String TABLE_EDEFAULT = null;
+  protected static final String SOURCE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+   * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTable()
+   * @see #getSource()
    * @generated
    * @ordered
    */
-  protected String table = TABLE_EDEFAULT;
+  protected String source = SOURCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,9 +72,9 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTable()
+  public String getSource()
   {
-    return table;
+    return source;
   }
 
   /**
@@ -82,12 +82,12 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTable(String newTable)
+  public void setSource(String newSource)
   {
-    String oldTable = table;
-    table = newTable;
+    String oldSource = source;
+    source = newSource;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__TABLE, oldTable, table));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE, oldSource, source));
   }
 
   /**
@@ -100,8 +100,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        return getTable();
+      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
+        return getSource();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +116,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        setTable((String)newValue);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
+        setSource((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +133,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        setTable(TABLE_EDEFAULT);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
+        setSource(SOURCE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -150,8 +150,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__TABLE:
-        return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
+        return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
     }
     return super.eIsSet(featureID);
   }
@@ -167,8 +167,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (table: ");
-    result.append(table);
+    result.append(" (source: ");
+    result.append(source);
     result.append(')');
     return result.toString();
   }

@@ -15,7 +15,7 @@ public class SqliteMigrationGenerator {
   @Inject
   private ISerializer _iSerializer;
   
-  public CharSequence generate(final Model model, final MigrationBlock snapshot, final int version) {
+  public CharSequence generate(final Model model, final MigrationBlock migration, final int version) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -52,7 +52,7 @@ public class SqliteMigrationGenerator {
     _builder.append("public void up(SQLiteDatabase db) {");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements = snapshot.getStatements();
+      EList<DDLStatement> _statements = migration.getStatements();
       for(final DDLStatement stmt : _statements) {
         _builder.append("\t\t");
         _builder.append("db.execSQL(");

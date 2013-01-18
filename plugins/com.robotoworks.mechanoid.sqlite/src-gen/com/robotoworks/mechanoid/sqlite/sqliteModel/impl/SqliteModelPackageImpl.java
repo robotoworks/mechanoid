@@ -2497,7 +2497,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleSourceTable_Alias()
+  public EAttribute getSingleSourceTable_Name()
   {
     return (EAttribute)singleSourceTableEClass.getEStructuralFeatures().get(1);
   }
@@ -2527,7 +2527,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleSourceSelectStatement_Alias()
+  public EAttribute getSingleSourceSelectStatement_Name()
   {
     return (EAttribute)singleSourceSelectStatementEClass.getEStructuralFeatures().get(1);
   }
@@ -2567,7 +2567,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getResultColumnAll_Table()
+  public EAttribute getResultColumnAll_Source()
   {
     return (EAttribute)resultColumnAllEClass.getEStructuralFeatures().get(0);
   }
@@ -2597,7 +2597,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getResultColumnExpression_Alias()
+  public EAttribute getResultColumnExpression_Name()
   {
     return (EAttribute)resultColumnExpressionEClass.getEStructuralFeatures().get(1);
   }
@@ -3024,21 +3024,21 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     singleSourceTableEClass = createEClass(SINGLE_SOURCE_TABLE);
     createEAttribute(singleSourceTableEClass, SINGLE_SOURCE_TABLE__TABLE);
-    createEAttribute(singleSourceTableEClass, SINGLE_SOURCE_TABLE__ALIAS);
+    createEAttribute(singleSourceTableEClass, SINGLE_SOURCE_TABLE__NAME);
 
     singleSourceSelectStatementEClass = createEClass(SINGLE_SOURCE_SELECT_STATEMENT);
     createEReference(singleSourceSelectStatementEClass, SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT);
-    createEAttribute(singleSourceSelectStatementEClass, SINGLE_SOURCE_SELECT_STATEMENT__ALIAS);
+    createEAttribute(singleSourceSelectStatementEClass, SINGLE_SOURCE_SELECT_STATEMENT__NAME);
 
     singleSourceJoinEClass = createEClass(SINGLE_SOURCE_JOIN);
     createEReference(singleSourceJoinEClass, SINGLE_SOURCE_JOIN__JOIN_SOURCE);
 
     resultColumnAllEClass = createEClass(RESULT_COLUMN_ALL);
-    createEAttribute(resultColumnAllEClass, RESULT_COLUMN_ALL__TABLE);
+    createEAttribute(resultColumnAllEClass, RESULT_COLUMN_ALL__SOURCE);
 
     resultColumnExpressionEClass = createEClass(RESULT_COLUMN_EXPRESSION);
     createEReference(resultColumnExpressionEClass, RESULT_COLUMN_EXPRESSION__EXPRESSION);
-    createEAttribute(resultColumnExpressionEClass, RESULT_COLUMN_EXPRESSION__ALIAS);
+    createEAttribute(resultColumnExpressionEClass, RESULT_COLUMN_EXPRESSION__NAME);
 
     numericLiteralEClass = createEClass(NUMERIC_LITERAL);
     createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__NUMBER);
@@ -3386,21 +3386,21 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(singleSourceTableEClass, SingleSourceTable.class, "SingleSourceTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSingleSourceTable_Table(), ecorePackage.getEString(), "table", null, 0, 1, SingleSourceTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleSourceTable_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, SingleSourceTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSingleSourceTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleSourceTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(singleSourceSelectStatementEClass, SingleSourceSelectStatement.class, "SingleSourceSelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSingleSourceSelectStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, SingleSourceSelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleSourceSelectStatement_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, SingleSourceSelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSingleSourceSelectStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleSourceSelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(singleSourceJoinEClass, SingleSourceJoin.class, "SingleSourceJoin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSingleSourceJoin_JoinSource(), this.getJoinSource(), null, "joinSource", null, 0, 1, SingleSourceJoin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resultColumnAllEClass, ResultColumnAll.class, "ResultColumnAll", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getResultColumnAll_Table(), ecorePackage.getEString(), "table", null, 0, 1, ResultColumnAll.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getResultColumnAll_Source(), ecorePackage.getEString(), "source", null, 0, 1, ResultColumnAll.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resultColumnExpressionEClass, ResultColumnExpression.class, "ResultColumnExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getResultColumnExpression_Expression(), this.getSqlExpression(), null, "expression", null, 0, 1, ResultColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getResultColumnExpression_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, ResultColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getResultColumnExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResultColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNumericLiteral_Number(), ecorePackage.getEBigDecimal(), "number", null, 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

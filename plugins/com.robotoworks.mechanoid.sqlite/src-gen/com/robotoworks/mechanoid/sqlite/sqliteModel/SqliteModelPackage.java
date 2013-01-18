@@ -2389,13 +2389,13 @@ public interface SqliteModelPackage extends EPackage
   int SINGLE_SOURCE_TABLE__TABLE = SINGLE_SOURCE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SOURCE_TABLE__ALIAS = SINGLE_SOURCE_FEATURE_COUNT + 1;
+  int SINGLE_SOURCE_TABLE__NAME = SINGLE_SOURCE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Single Source Table</em>' class.
@@ -2426,13 +2426,13 @@ public interface SqliteModelPackage extends EPackage
   int SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT = SINGLE_SOURCE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SOURCE_SELECT_STATEMENT__ALIAS = SINGLE_SOURCE_FEATURE_COUNT + 1;
+  int SINGLE_SOURCE_SELECT_STATEMENT__NAME = SINGLE_SOURCE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Single Source Select Statement</em>' class.
@@ -2482,13 +2482,13 @@ public interface SqliteModelPackage extends EPackage
   int RESULT_COLUMN_ALL = 65;
 
   /**
-   * The feature id for the '<em><b>Table</b></em>' attribute.
+   * The feature id for the '<em><b>Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESULT_COLUMN_ALL__TABLE = RESULT_COLUMN_FEATURE_COUNT + 0;
+  int RESULT_COLUMN_ALL__SOURCE = RESULT_COLUMN_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Result Column All</em>' class.
@@ -2519,13 +2519,13 @@ public interface SqliteModelPackage extends EPackage
   int RESULT_COLUMN_EXPRESSION__EXPRESSION = RESULT_COLUMN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESULT_COLUMN_EXPRESSION__ALIAS = RESULT_COLUMN_FEATURE_COUNT + 1;
+  int RESULT_COLUMN_EXPRESSION__NAME = RESULT_COLUMN_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Result Column Expression</em>' class.
@@ -4653,15 +4653,15 @@ public interface SqliteModelPackage extends EPackage
   EAttribute getSingleSourceTable_Table();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName()
    * @see #getSingleSourceTable()
    * @generated
    */
-  EAttribute getSingleSourceTable_Alias();
+  EAttribute getSingleSourceTable_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement <em>Single Source Select Statement</em>}'.
@@ -4685,15 +4685,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getSingleSourceSelectStatement_SelectStatement();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getName()
    * @see #getSingleSourceSelectStatement()
    * @generated
    */
-  EAttribute getSingleSourceSelectStatement_Alias();
+  EAttribute getSingleSourceSelectStatement_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin <em>Single Source Join</em>}'.
@@ -4727,15 +4727,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getResultColumnAll();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Table</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable()
+   * @return the meta object for the attribute '<em>Source</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource()
    * @see #getResultColumnAll()
    * @generated
    */
-  EAttribute getResultColumnAll_Table();
+  EAttribute getResultColumnAll_Source();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression <em>Result Column Expression</em>}'.
@@ -4759,15 +4759,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getResultColumnExpression_Expression();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName()
    * @see #getResultColumnExpression()
    * @generated
    */
-  EAttribute getResultColumnExpression_Alias();
+  EAttribute getResultColumnExpression_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral <em>Numeric Literal</em>}'.
@@ -6515,12 +6515,12 @@ public interface SqliteModelPackage extends EPackage
     EAttribute SINGLE_SOURCE_TABLE__TABLE = eINSTANCE.getSingleSourceTable_Table();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_SOURCE_TABLE__ALIAS = eINSTANCE.getSingleSourceTable_Alias();
+    EAttribute SINGLE_SOURCE_TABLE__NAME = eINSTANCE.getSingleSourceTable_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceSelectStatementImpl <em>Single Source Select Statement</em>}' class.
@@ -6541,12 +6541,12 @@ public interface SqliteModelPackage extends EPackage
     EReference SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT = eINSTANCE.getSingleSourceSelectStatement_SelectStatement();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_SOURCE_SELECT_STATEMENT__ALIAS = eINSTANCE.getSingleSourceSelectStatement_Alias();
+    EAttribute SINGLE_SOURCE_SELECT_STATEMENT__NAME = eINSTANCE.getSingleSourceSelectStatement_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceJoinImpl <em>Single Source Join</em>}' class.
@@ -6577,12 +6577,12 @@ public interface SqliteModelPackage extends EPackage
     EClass RESULT_COLUMN_ALL = eINSTANCE.getResultColumnAll();
 
     /**
-     * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESULT_COLUMN_ALL__TABLE = eINSTANCE.getResultColumnAll_Table();
+    EAttribute RESULT_COLUMN_ALL__SOURCE = eINSTANCE.getResultColumnAll_Source();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl <em>Result Column Expression</em>}' class.
@@ -6603,12 +6603,12 @@ public interface SqliteModelPackage extends EPackage
     EReference RESULT_COLUMN_EXPRESSION__EXPRESSION = eINSTANCE.getResultColumnExpression_Expression();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESULT_COLUMN_EXPRESSION__ALIAS = eINSTANCE.getResultColumnExpression_Alias();
+    EAttribute RESULT_COLUMN_EXPRESSION__NAME = eINSTANCE.getResultColumnExpression_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.

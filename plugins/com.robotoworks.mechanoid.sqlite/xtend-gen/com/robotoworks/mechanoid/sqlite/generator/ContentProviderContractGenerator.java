@@ -688,38 +688,38 @@ public class ContentProviderContractGenerator {
     return null;
   }
   
-  protected CharSequence _generateInterfaceMemberForResultColumn(final ResultColumnExpression column) {
+  protected CharSequence _generateInterfaceMemberForResultColumn(final ResultColumnExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _and = false;
       boolean _and_1 = false;
-      String _alias = column.getAlias();
-      boolean _notEquals = (!Objects.equal(_alias, null));
+      String _name = expr.getName();
+      boolean _notEquals = (!Objects.equal(_name, null));
       if (!_notEquals) {
         _and_1 = false;
       } else {
-        String _alias_1 = column.getAlias();
-        boolean _equals = _alias_1.equals("");
+        String _name_1 = expr.getName();
+        boolean _equals = _name_1.equals("");
         boolean _not = (!_equals);
         _and_1 = (_notEquals && _not);
       }
       if (!_and_1) {
         _and = false;
       } else {
-        String _alias_2 = column.getAlias();
-        boolean _equals_1 = _alias_2.equals("_id");
+        String _name_2 = expr.getName();
+        boolean _equals_1 = _name_2.equals("_id");
         boolean _not_1 = (!_equals_1);
         _and = (_and_1 && _not_1);
       }
       if (_and) {
         _builder.append("String ");
-        String _alias_3 = column.getAlias();
-        String _underscore = Strings.underscore(_alias_3);
+        String _name_3 = expr.getName();
+        String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "");
         _builder.append(" = \"");
-        String _alias_4 = column.getAlias();
-        _builder.append(_alias_4, "");
+        String _name_4 = expr.getName();
+        _builder.append(_name_4, "");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }

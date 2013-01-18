@@ -4,7 +4,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate sqliteModel "http://www.robotoworks.com/mechanoid/sqlite/SqliteModel"
 
 Model:
-	'package' packageName=FQN
+	'package' packageName=QualifiedName
 	database=DatabaseBlock;
 
 DatabaseBlock:
@@ -71,7 +71,7 @@ NullCheckExpression returns Expression:
 ;
 
 PrimaryExpression returns Expression:
-	{ColumnLiteral} name=FQN |
+	{ColumnLiteral} name=QualifiedName |
 	{Literal} literalValue=LiteralValue |
 	'(' SqlExpression ')' |
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
@@ -194,8 +194,8 @@ JoinSource:
 ;
 
 SingleSource:
-	{SingleSourceTable} table=ID ('as' alias=ID)? |
-	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' alias=ID)? |
+	{SingleSourceTable} table=ID ('as' name=ID)? |
+	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' name=ID)? |
 	{SingleSourceJoin} '(' joinSource=JoinSource ')'
 ;
 
@@ -204,8 +204,8 @@ JoinStatement:
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 ResultColumn:
-	{ResultColumnAll} (table=ID)? '*' |
-	{ResultColumnExpression} expression=SqlExpression ('as' alias=ID)?
+	{ResultColumnAll} (source=ID '.')? '*' |
+	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
 ;
 
 ConflictClause:
@@ -236,5 +236,5 @@ terminal STRING	:
 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
 		; 
 
-FQN:
+QualifiedName:
 	ID ("." ID)*;

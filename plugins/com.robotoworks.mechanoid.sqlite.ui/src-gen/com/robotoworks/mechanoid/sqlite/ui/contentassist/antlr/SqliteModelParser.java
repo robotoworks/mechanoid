@@ -176,6 +176,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJoinStatementAccess().getGroup(), "rule__JoinStatement__Group__0");
 					put(grammarAccess.getJoinStatementAccess().getGroup_2_0(), "rule__JoinStatement__Group_2_0__0");
 					put(grammarAccess.getResultColumnAccess().getGroup_0(), "rule__ResultColumn__Group_0__0");
+					put(grammarAccess.getResultColumnAccess().getGroup_0_1(), "rule__ResultColumn__Group_0_1__0");
 					put(grammarAccess.getResultColumnAccess().getGroup_1(), "rule__ResultColumn__Group_1__0");
 					put(grammarAccess.getResultColumnAccess().getGroup_1_2(), "rule__ResultColumn__Group_1_2__0");
 					put(grammarAccess.getConflictClauseAccess().getGroup(), "rule__ConflictClause__Group__0");
@@ -186,8 +187,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralValueAccess().getGroup_4(), "rule__LiteralValue__Group_4__0");
 					put(grammarAccess.getLiteralValueAccess().getGroup_5(), "rule__LiteralValue__Group_5__0");
 					put(grammarAccess.getSignedNumberAccess().getGroup(), "rule__SignedNumber__Group__0");
-					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
-					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
 					put(grammarAccess.getModelAccess().getDatabaseAssignment_2(), "rule__Model__DatabaseAssignment_2");
 					put(grammarAccess.getDatabaseBlockAccess().getNameAssignment_1(), "rule__DatabaseBlock__NameAssignment_1");
@@ -310,9 +311,9 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJoinSourceAccess().getSourceAssignment_0(), "rule__JoinSource__SourceAssignment_0");
 					put(grammarAccess.getJoinSourceAccess().getJoinStatementsAssignment_1(), "rule__JoinSource__JoinStatementsAssignment_1");
 					put(grammarAccess.getSingleSourceAccess().getTableAssignment_0_1(), "rule__SingleSource__TableAssignment_0_1");
-					put(grammarAccess.getSingleSourceAccess().getAliasAssignment_0_2_1(), "rule__SingleSource__AliasAssignment_0_2_1");
+					put(grammarAccess.getSingleSourceAccess().getNameAssignment_0_2_1(), "rule__SingleSource__NameAssignment_0_2_1");
 					put(grammarAccess.getSingleSourceAccess().getSelectStatementAssignment_1_2(), "rule__SingleSource__SelectStatementAssignment_1_2");
-					put(grammarAccess.getSingleSourceAccess().getAliasAssignment_1_4_1(), "rule__SingleSource__AliasAssignment_1_4_1");
+					put(grammarAccess.getSingleSourceAccess().getNameAssignment_1_4_1(), "rule__SingleSource__NameAssignment_1_4_1");
 					put(grammarAccess.getSingleSourceAccess().getJoinSourceAssignment_2_2(), "rule__SingleSource__JoinSourceAssignment_2_2");
 					put(grammarAccess.getJoinStatementAccess().getNaturalAssignment_1(), "rule__JoinStatement__NaturalAssignment_1");
 					put(grammarAccess.getJoinStatementAccess().getLeftAssignment_2_0_0(), "rule__JoinStatement__LeftAssignment_2_0_0");
@@ -321,9 +322,9 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJoinStatementAccess().getCrossAssignment_2_2(), "rule__JoinStatement__CrossAssignment_2_2");
 					put(grammarAccess.getJoinStatementAccess().getSingleSourceAssignment_4(), "rule__JoinStatement__SingleSourceAssignment_4");
 					put(grammarAccess.getJoinStatementAccess().getExpressionAssignment_6(), "rule__JoinStatement__ExpressionAssignment_6");
-					put(grammarAccess.getResultColumnAccess().getTableAssignment_0_1(), "rule__ResultColumn__TableAssignment_0_1");
+					put(grammarAccess.getResultColumnAccess().getSourceAssignment_0_1_0(), "rule__ResultColumn__SourceAssignment_0_1_0");
 					put(grammarAccess.getResultColumnAccess().getExpressionAssignment_1_1(), "rule__ResultColumn__ExpressionAssignment_1_1");
-					put(grammarAccess.getResultColumnAccess().getAliasAssignment_1_2_1(), "rule__ResultColumn__AliasAssignment_1_2_1");
+					put(grammarAccess.getResultColumnAccess().getNameAssignment_1_2_1(), "rule__ResultColumn__NameAssignment_1_2_1");
 					put(grammarAccess.getConflictClauseAccess().getResolutionAssignment_2(), "rule__ConflictClause__ResolutionAssignment_2");
 					put(grammarAccess.getLiteralValueAccess().getNumberAssignment_0_1(), "rule__LiteralValue__NumberAssignment_0_1");
 					put(grammarAccess.getLiteralValueAccess().getLiteralAssignment_1_1(), "rule__LiteralValue__LiteralAssignment_1_1");

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl#getAlias <em>Alias</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,24 +41,24 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
   protected SqlExpression expression;
 
   /**
-   * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAlias()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String ALIAS_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAlias()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String alias = ALIAS_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,9 +134,9 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAlias()
+  public String getName()
   {
-    return alias;
+    return name;
   }
 
   /**
@@ -144,12 +144,12 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAlias(String newAlias)
+  public void setName(String newName)
   {
-    String oldAlias = alias;
-    alias = newAlias;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_EXPRESSION__ALIAS, oldAlias, alias));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME, oldName, name));
   }
 
   /**
@@ -180,8 +180,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         return getExpression();
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__ALIAS:
-        return getAlias();
+      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -199,8 +199,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((SqlExpression)newValue);
         return;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__ALIAS:
-        setAlias((String)newValue);
+      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -219,8 +219,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((SqlExpression)null);
         return;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__ALIAS:
-        setAlias(ALIAS_EDEFAULT);
+      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -238,8 +238,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         return expression != null;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__ALIAS:
-        return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
+      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -255,8 +255,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (alias: ");
-    result.append(alias);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

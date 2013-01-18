@@ -259,21 +259,21 @@
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceTable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/table"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/alias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceSelectStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceSelectStatement/selectStatement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceSelectStatement/alias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceSelectStatement/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceJoin">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceJoin/joinSource"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnAll">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnAll/table"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnAll/source"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ResultColumnExpression/expression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnExpression/alias"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnExpression/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//NumericLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//NumericLiteral/number"/>

@@ -18,5 +18,8 @@ public abstract class AbstractRecipesDBMigrationV2 extends SQLiteMigration {
 			"name text " +
 			") "
 		);
+		db.execSQL(
+			"create table qux (_id integer) "
+		);
 	}
 }
