@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement;
@@ -99,7 +99,7 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
    * @generated
    * @ordered
    */
-  protected SqlExpression whereExpression;
+  protected Expression whereExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -187,7 +187,7 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getWhereExpression()
+  public Expression getWhereExpression()
   {
     return whereExpression;
   }
@@ -197,9 +197,9 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhereExpression(SqlExpression newWhereExpression, NotificationChain msgs)
+  public NotificationChain basicSetWhereExpression(Expression newWhereExpression, NotificationChain msgs)
   {
-    SqlExpression oldWhereExpression = whereExpression;
+    Expression oldWhereExpression = whereExpression;
     whereExpression = newWhereExpression;
     if (eNotificationRequired())
     {
@@ -214,7 +214,7 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhereExpression(SqlExpression newWhereExpression)
+  public void setWhereExpression(Expression newWhereExpression)
   {
     if (newWhereExpression != whereExpression)
     {
@@ -292,7 +292,7 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
         getUpdateColumnExpressions().addAll((Collection<? extends UpdateColumnExpression>)newValue);
         return;
       case SqliteModelPackage.UPDATE_STATEMENT__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)newValue);
+        setWhereExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -318,7 +318,7 @@ public class UpdateStatementImpl extends DMLStatementImpl implements UpdateState
         getUpdateColumnExpressions().clear();
         return;
       case SqliteModelPackage.UPDATE_STATEMENT__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)null);
+        setWhereExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

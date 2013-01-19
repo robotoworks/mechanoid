@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.util.Strings;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
@@ -8,6 +9,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
 
 
 public class Extensions {	
@@ -29,17 +32,27 @@ public class Extensions {
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateViewStatement stmt) {
-		EList<ResultColumn> resultColumns = stmt.getSelectStatement().getCoreStatements().get(0).getResultColumns();
+		EList<ResultColumn> resultColumns = getViewResultColumns(stmt);
 		for(ResultColumn col : resultColumns) {
 			if(col instanceof ResultColumnExpression) {
 				ResultColumnExpression expr = (ResultColumnExpression) col;
-				if(expr.getAlias()!= null && !expr.getAlias().equals("") && expr.getAlias().equals("_id")) {
+				if(!Strings.isEmpty(expr.getName()) && expr.getName().equals("_id")) {
 					return true;
 				}
 			}
 		}
 		
 		return false;
+	}
+	
+	public static EList<ResultColumn> getViewResultColumns(CreateViewStatement stmt) {
+		SelectCoreExpression coreExpr = stmt.getSelectStatement().getCore();
+		if(coreExpr instanceof SelectCore) {
+			SelectCore core = (SelectCore) coreExpr;
+			return core.getRight().getResultColumns();
+		} else {
+			return coreExpr.getResultColumns();
+		}
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateTableStatement stmt) {

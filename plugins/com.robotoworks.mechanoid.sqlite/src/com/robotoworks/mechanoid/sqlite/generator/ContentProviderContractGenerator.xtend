@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) { 
@@ -44,7 +45,7 @@ class ContentProviderContractGenerator {
 
 				«FOR vw :  snapshot.statements.filter(typeof(CreateViewStatement))»
 				interface «vw.name.pascalize»Columns {
-					«FOR col : vw.selectStatement.coreStatements.get(0).resultColumns»
+					«FOR col : vw.getViewResultColumns»
 					«generateInterfaceMemberForResultColumn(col)»
 					«ENDFOR»
 				}
@@ -155,10 +156,10 @@ class ContentProviderContractGenerator {
 	def dispatch generateInterfaceMemberForResultColumn(ResultColumnAll column) { 
 	}
 	
-	def dispatch generateInterfaceMemberForResultColumn(ResultColumnExpression column) { 
+	def dispatch generateInterfaceMemberForResultColumn(ResultColumnExpression expr) { 
 		'''
-		«IF column.alias != null && !column.alias.equals("") && !column.alias.equals("_id")»
-		String «column.alias.underscore.toUpperCase» = "«column.alias»";
+		«IF expr.name != null && !expr.name.equals("") && !expr.name.equals("_id")»
+		String «expr.name.underscore.toUpperCase» = "«expr.name»";
 		«ENDIF»
 		'''		
 	}

@@ -32,12 +32,12 @@ public interface Case extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>When Expression</em>' containment reference.
-   * @see #setWhenExpression(SqlExpression)
+   * @see #setWhenExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCase_WhenExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getWhenExpression();
+  Expression getWhenExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Case#getWhenExpression <em>When Expression</em>}' containment reference.
@@ -47,7 +47,7 @@ public interface Case extends EObject
    * @see #getWhenExpression()
    * @generated
    */
-  void setWhenExpression(SqlExpression value);
+  void setWhenExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Then Expression</b></em>' containment reference.
@@ -58,12 +58,12 @@ public interface Case extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Then Expression</em>' containment reference.
-   * @see #setThenExpression(SqlExpression)
+   * @see #setThenExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCase_ThenExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getThenExpression();
+  Expression getThenExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Case#getThenExpression <em>Then Expression</em>}' containment reference.
@@ -73,6 +73,6 @@ public interface Case extends EObject
    * @see #getThenExpression()
    * @generated
    */
-  void setThenExpression(SqlExpression value);
+  void setThenExpression(Expression value);
 
 } // Case

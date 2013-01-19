@@ -49,7 +49,7 @@ public class SqliteModelGenerator implements IGenerator {
   private ContentProviderGenerator mContentProviderGenerator;
   
   @Inject
-  private SqliteMigrationGenerator mMigrationGenerator;
+  private Provider<SqliteMigrationGenerator> mMigrationGenerator;
   
   @Inject
   private ContentProviderActionGenerator mActionGenerator;
@@ -328,9 +328,10 @@ public class SqliteModelGenerator implements IGenerator {
     String _valueOf_1 = String.valueOf(version);
     String _concat_6 = _concat_5.concat(_valueOf_1);
     String genStubFileName = Strings.resolveFileName(_concat_4, _concat_6);
-    CharSequence _generate = this.mMigrationGenerator.generate(model, migration, version);
+    SqliteMigrationGenerator generator = this.mMigrationGenerator.get();
+    CharSequence _generate = generator.generate(model, migration, version);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = this.mMigrationGenerator.generateStub(model, migration, version);
+    CharSequence _generateStub = generator.generateStub(model, migration, version);
     fsa.generateFile(genStubFileName, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }

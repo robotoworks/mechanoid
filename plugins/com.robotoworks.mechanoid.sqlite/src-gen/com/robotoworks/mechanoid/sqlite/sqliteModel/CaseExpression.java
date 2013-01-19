@@ -33,12 +33,12 @@ public interface CaseExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Case Expression</em>' containment reference.
-   * @see #setCaseExpression(SqlExpression)
+   * @see #setCaseExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCaseExpression_CaseExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getCaseExpression();
+  Expression getCaseExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression#getCaseExpression <em>Case Expression</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface CaseExpression extends Expression
    * @see #getCaseExpression()
    * @generated
    */
-  void setCaseExpression(SqlExpression value);
+  void setCaseExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Cases</b></em>' containment reference list.
@@ -75,12 +75,12 @@ public interface CaseExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Else Expression</em>' containment reference.
-   * @see #setElseExpression(SqlExpression)
+   * @see #setElseExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCaseExpression_ElseExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getElseExpression();
+  Expression getElseExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression#getElseExpression <em>Else Expression</em>}' containment reference.
@@ -90,6 +90,6 @@ public interface CaseExpression extends Expression
    * @see #getElseExpression()
    * @generated
    */
-  void setElseExpression(SqlExpression value);
+  void setElseExpression(Expression value);
 
 } // CaseExpression

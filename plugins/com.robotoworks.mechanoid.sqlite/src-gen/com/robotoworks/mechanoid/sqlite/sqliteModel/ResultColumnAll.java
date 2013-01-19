@@ -11,7 +11,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +22,29 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface ResultColumnAll extends ResultColumn
 {
   /**
-   * Returns the value of the '<em><b>Table</b></em>' attribute.
+   * Returns the value of the '<em><b>Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table</em>' attribute isn't clear,
+   * If the meaning of the '<em>Source</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table</em>' attribute.
-   * @see #setTable(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Table()
+   * @return the value of the '<em>Source</em>' attribute.
+   * @see #setSource(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Source()
    * @model
    * @generated
    */
-  String getTable();
+  String getSource();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table</em>' attribute.
-   * @see #getTable()
+   * @param value the new value of the '<em>Source</em>' attribute.
+   * @see #getSource()
    * @generated
    */
-  void setTable(String value);
+  void setSource(String value);
 
 } // ResultColumnAll

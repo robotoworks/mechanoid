@@ -31,12 +31,12 @@ public interface CastExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(SqlExpression)
+   * @see #setExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCastExpression_Expression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getExpression();
+  Expression getExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression#getExpression <em>Expression</em>}' containment reference.
@@ -46,7 +46,7 @@ public interface CastExpression extends Expression
    * @see #getExpression()
    * @generated
    */
-  void setExpression(SqlExpression value);
+  void setExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.

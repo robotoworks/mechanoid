@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -58,7 +58,7 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,7 +109,7 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -119,9 +119,9 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -136,7 +136,7 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -200,7 +200,7 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
         setTableName((String)newValue);
         return;
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,7 +220,7 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
         setTableName(TABLE_NAME_EDEFAULT);
         return;
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);
