@@ -4,9 +4,12 @@
 package com.robotoworks.mechanoid.sqlite;
 
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
 import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.sqlite.naming.SqliteQualifiedNameProvider;
 import com.robotoworks.mechanoid.sqlite.scoping.XSqliteModelScopeProvider;
 import com.google.inject.Binder;
 
@@ -25,5 +28,10 @@ public class SqliteModelRuntimeModule extends com.robotoworks.mechanoid.sqlite.A
 	@Override
 	public Class<? extends IScopeProvider> bindIScopeProvider() {
 		return XSqliteModelScopeProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SqliteQualifiedNameProvider.class;
 	}
 }

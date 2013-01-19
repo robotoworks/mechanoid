@@ -21,12 +21,46 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
 		SqliteModelGrammarAccess g = (SqliteModelGrammarAccess) getGrammarAccess();
+		
 
 		c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
 		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
 				
-		c.setLinewrap().after(g.getDDLStatementAccess().getLeftParenthesisKeyword_0_4());
-		c.setLinewrap().after(g.getColumnDefRule());
+		c.setLinewrap().before(g.getDatabaseBlockRule());
+		c.setLinewrap().after(g.getDatabaseBlockAccess().getLeftCurlyBracketKeyword_2());
+		c.setLinewrap().before(g.getDatabaseBlockAccess().getRightCurlyBracketKeyword_5());
+		
+		c.setIndentationIncrement().before(g.getMigrationBlockRule());
+		c.setLinewrap(2).before(g.getMigrationBlockRule());
+		c.setLinewrap().after(g.getMigrationBlockAccess().getLeftCurlyBracketKeyword_2());		
+		c.setLinewrap().before(g.getMigrationBlockAccess().getRightCurlyBracketKeyword_4());		
+		c.setIndentationDecrement().after(g.getMigrationBlockRule());
+		
+		c.setIndentationIncrement().before(g.getDDLStatementRule());
+		c.setIndentationDecrement().after(g.getDDLStatementRule());
+		
+		c.setLinewrap(2).before(g.getDDLStatementRule());
+		c.setLinewrap().before(g.getDDLStatementAccess().getRightParenthesisKeyword_0_8());
+		c.setLinewrap().before(g.getColumnDefRule());
+		
+		c.setLinewrap().before(g.getDMLStatementRule());
+		c.setLinewrap().before(g.getResultColumnRule());
+		
+		c.setLinewrap().before(g.getSelectCoreOperandAccess().getSelectKeyword_0());
+		c.setLinewrap().before(g.getSelectCoreOperandAccess().getFromKeyword_4_0());
+		c.setLinewrap().before(g.getSelectCoreOperandAccess().getWhereKeyword_5_0());
+		c.setLinewrap().before(g.getSelectCoreOperandAccess().getGroupByKeyword_6_0());
+		c.setLinewrap().before(g.getSelectCoreOperandAccess().getHavingKeyword_7_0());
+		c.setLinewrap().before(g.getSelectStatementAccess().getOrderByKeyword_1_0());
+		c.setLinewrap().before(g.getJoinStatementRule());
+		
+		c.setLinewrap().before(g.getCompoundOperatorRule());
+		c.setLinewrap().before(g.getDDLStatementAccess().getWhenExpressionAssignment_2_9_1());
+		
+		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());
+		c.setLinewrap().after(g.getExprOrAccess().getOpOrKeyword_1_1_0());
+		c.setLinewrap().after(g.getCaseRule());
+		
 	}
 }

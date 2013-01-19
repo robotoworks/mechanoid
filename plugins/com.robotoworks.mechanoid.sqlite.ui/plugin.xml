@@ -18,6 +18,7 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="mechdb"
+            icon="icons/mechdb_file.png"
             id="com.robotoworks.mechanoid.sqlite.SqliteModel"
             name="SqliteModel Editor">
         </editor>

@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,7 +39,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * @generated
    * @ordered
    */
-  protected SqlExpression whenExpression;
+  protected Expression whenExpression;
 
   /**
    * The cached value of the '{@link #getThenExpression() <em>Then Expression</em>}' containment reference.
@@ -49,7 +49,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * @generated
    * @ordered
    */
-  protected SqlExpression thenExpression;
+  protected Expression thenExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,7 +77,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getWhenExpression()
+  public Expression getWhenExpression()
   {
     return whenExpression;
   }
@@ -87,9 +87,9 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhenExpression(SqlExpression newWhenExpression, NotificationChain msgs)
+  public NotificationChain basicSetWhenExpression(Expression newWhenExpression, NotificationChain msgs)
   {
-    SqlExpression oldWhenExpression = whenExpression;
+    Expression oldWhenExpression = whenExpression;
     whenExpression = newWhenExpression;
     if (eNotificationRequired())
     {
@@ -104,7 +104,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhenExpression(SqlExpression newWhenExpression)
+  public void setWhenExpression(Expression newWhenExpression)
   {
     if (newWhenExpression != whenExpression)
     {
@@ -125,7 +125,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getThenExpression()
+  public Expression getThenExpression()
   {
     return thenExpression;
   }
@@ -135,9 +135,9 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetThenExpression(SqlExpression newThenExpression, NotificationChain msgs)
+  public NotificationChain basicSetThenExpression(Expression newThenExpression, NotificationChain msgs)
   {
-    SqlExpression oldThenExpression = thenExpression;
+    Expression oldThenExpression = thenExpression;
     thenExpression = newThenExpression;
     if (eNotificationRequired())
     {
@@ -152,7 +152,7 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setThenExpression(SqlExpression newThenExpression)
+  public void setThenExpression(Expression newThenExpression)
   {
     if (newThenExpression != thenExpression)
     {
@@ -215,10 +215,10 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
     switch (featureID)
     {
       case SqliteModelPackage.CASE__WHEN_EXPRESSION:
-        setWhenExpression((SqlExpression)newValue);
+        setWhenExpression((Expression)newValue);
         return;
       case SqliteModelPackage.CASE__THEN_EXPRESSION:
-        setThenExpression((SqlExpression)newValue);
+        setThenExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -235,10 +235,10 @@ public class CaseImpl extends MinimalEObjectImpl.Container implements Case
     switch (featureID)
     {
       case SqliteModelPackage.CASE__WHEN_EXPRESSION:
-        setWhenExpression((SqlExpression)null);
+        setWhenExpression((Expression)null);
         return;
       case SqliteModelPackage.CASE__THEN_EXPRESSION:
-        setThenExpression((SqlExpression)null);
+        setThenExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

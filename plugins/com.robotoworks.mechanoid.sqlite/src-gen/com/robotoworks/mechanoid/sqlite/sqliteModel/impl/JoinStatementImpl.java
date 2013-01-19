@@ -2,9 +2,9 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -155,7 +155,7 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -346,7 +346,7 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -356,9 +356,9 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -373,7 +373,7 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -464,7 +464,7 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
         setSingleSource((SingleSource)newValue);
         return;
       case SqliteModelPackage.JOIN_STATEMENT__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -499,7 +499,7 @@ public class JoinStatementImpl extends MinimalEObjectImpl.Container implements J
         setSingleSource((SingleSource)null);
         return;
       case SqliteModelPackage.JOIN_STATEMENT__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

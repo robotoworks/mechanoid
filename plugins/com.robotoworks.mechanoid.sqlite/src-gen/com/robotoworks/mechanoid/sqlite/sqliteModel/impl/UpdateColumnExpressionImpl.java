@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression;
 
@@ -59,7 +59,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -110,7 +110,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -120,9 +120,9 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -137,7 +137,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -201,7 +201,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
         setColumnName((String)newValue);
         return;
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,7 +221,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
         setColumnName(COLUMN_NAME_EDEFAULT);
         return;
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

@@ -105,12 +105,12 @@ public interface UpdateStatement extends DMLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Where Expression</em>' containment reference.
-   * @see #setWhereExpression(SqlExpression)
+   * @see #setWhereExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUpdateStatement_WhereExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getWhereExpression();
+  Expression getWhereExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement#getWhereExpression <em>Where Expression</em>}' containment reference.
@@ -120,6 +120,6 @@ public interface UpdateStatement extends DMLStatement
    * @see #getWhereExpression()
    * @generated
    */
-  void setWhereExpression(SqlExpression value);
+  void setWhereExpression(Expression value);
 
 } // UpdateStatement

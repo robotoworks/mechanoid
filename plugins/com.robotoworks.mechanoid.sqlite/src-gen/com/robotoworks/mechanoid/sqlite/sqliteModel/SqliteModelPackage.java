@@ -223,7 +223,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 6;
+  int EXPRESSION = 5;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -235,34 +235,6 @@ public interface SqliteModelPackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqlExpressionImpl <em>Sql Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqlExpressionImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSqlExpression()
-   * @generated
-   */
-  int SQL_EXPRESSION = 5;
-
-  /**
-   * The feature id for the '<em><b>Root</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SQL_EXPRESSION__ROOT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Sql Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SQL_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CaseImpl <em>Case</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -270,7 +242,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCase()
    * @generated
    */
-  int CASE = 7;
+  int CASE = 6;
 
   /**
    * The feature id for the '<em><b>When Expression</b></em>' containment reference.
@@ -307,7 +279,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDDLStatement()
    * @generated
    */
-  int DDL_STATEMENT = 8;
+  int DDL_STATEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -335,7 +307,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDMLStatement()
    * @generated
    */
-  int DML_STATEMENT = 9;
+  int DML_STATEMENT = 8;
 
   /**
    * The number of structural features of the '<em>DML Statement</em>' class.
@@ -354,7 +326,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDeleteStatement()
    * @generated
    */
-  int DELETE_STATEMENT = 10;
+  int DELETE_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Table Name</b></em>' attribute.
@@ -391,7 +363,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getInsertStatement()
    * @generated
    */
-  int INSERT_STATEMENT = 11;
+  int INSERT_STATEMENT = 10;
 
   /**
    * The feature id for the '<em><b>Conflict Resolution</b></em>' attribute.
@@ -455,7 +427,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getUpdateStatement()
    * @generated
    */
-  int UPDATE_STATEMENT = 12;
+  int UPDATE_STATEMENT = 11;
 
   /**
    * The feature id for the '<em><b>Conflict Resolution</b></em>' attribute.
@@ -510,7 +482,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getUpdateColumnExpression()
    * @generated
    */
-  int UPDATE_COLUMN_EXPRESSION = 13;
+  int UPDATE_COLUMN_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Column Name</b></em>' attribute.
@@ -547,16 +519,16 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectStatement()
    * @generated
    */
-  int SELECT_STATEMENT = 14;
+  int SELECT_STATEMENT = 13;
 
   /**
-   * The feature id for the '<em><b>Core Statements</b></em>' containment reference list.
+   * The feature id for the '<em><b>Core</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT__CORE_STATEMENTS = DML_STATEMENT_FEATURE_COUNT + 0;
+  int SELECT_STATEMENT__CORE = DML_STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Ordering Terms</b></em>' containment reference list.
@@ -575,6 +547,88 @@ public interface SqliteModelPackage extends EPackage
    * @ordered
    */
   int SELECT_STATEMENT_FEATURE_COUNT = DML_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreExpressionImpl <em>Select Core Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreExpressionImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCoreExpression()
+   * @generated
+   */
+  int SELECT_CORE_EXPRESSION = 14;
+
+  /**
+   * The feature id for the '<em><b>Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__DISTINCT = 0;
+
+  /**
+   * The feature id for the '<em><b>All</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__ALL = 1;
+
+  /**
+   * The feature id for the '<em><b>Result Columns</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__RESULT_COLUMNS = 2;
+
+  /**
+   * The feature id for the '<em><b>Source</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__SOURCE = 3;
+
+  /**
+   * The feature id for the '<em><b>Where Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__WHERE_EXPRESSION = 4;
+
+  /**
+   * The feature id for the '<em><b>Group By Expressions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS = 5;
+
+  /**
+   * The feature id for the '<em><b>Having Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION__HAVING_EXPRESSION = 6;
+
+  /**
+   * The number of structural features of the '<em>Select Core Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_EXPRESSION_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableClauseImpl <em>Alter Table Clause</em>}' class.
@@ -800,88 +854,6 @@ public interface SqliteModelPackage extends EPackage
   int ORDERING_TERM_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl <em>Select Core</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCore()
-   * @generated
-   */
-  int SELECT_CORE = 22;
-
-  /**
-   * The feature id for the '<em><b>Distinct</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__DISTINCT = 0;
-
-  /**
-   * The feature id for the '<em><b>All</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__ALL = 1;
-
-  /**
-   * The feature id for the '<em><b>Result Columns</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__RESULT_COLUMNS = 2;
-
-  /**
-   * The feature id for the '<em><b>Source</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__SOURCE = 3;
-
-  /**
-   * The feature id for the '<em><b>Where Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__WHERE_EXPRESSION = 4;
-
-  /**
-   * The feature id for the '<em><b>Group By Expressions</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__GROUP_BY_EXPRESSIONS = 5;
-
-  /**
-   * The feature id for the '<em><b>Having Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE__HAVING_EXPRESSION = 6;
-
-  /**
-   * The number of structural features of the '<em>Select Core</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_CORE_FEATURE_COUNT = 7;
-
-  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.JoinSourceImpl <em>Join Source</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -889,7 +861,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getJoinSource()
    * @generated
    */
-  int JOIN_SOURCE = 23;
+  int JOIN_SOURCE = 22;
 
   /**
    * The feature id for the '<em><b>Source</b></em>' containment reference.
@@ -926,7 +898,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSource()
    * @generated
    */
-  int SINGLE_SOURCE = 24;
+  int SINGLE_SOURCE = 23;
 
   /**
    * The number of structural features of the '<em>Single Source</em>' class.
@@ -945,7 +917,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getJoinStatement()
    * @generated
    */
-  int JOIN_STATEMENT = 25;
+  int JOIN_STATEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Natural</b></em>' attribute.
@@ -1027,7 +999,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getResultColumn()
    * @generated
    */
-  int RESULT_COLUMN = 26;
+  int RESULT_COLUMN = 25;
 
   /**
    * The number of structural features of the '<em>Result Column</em>' class.
@@ -1046,7 +1018,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getConflictClause()
    * @generated
    */
-  int CONFLICT_CLAUSE = 27;
+  int CONFLICT_CLAUSE = 26;
 
   /**
    * The feature id for the '<em><b>Resolution</b></em>' attribute.
@@ -1074,7 +1046,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getLiteralValue()
    * @generated
    */
-  int LITERAL_VALUE = 28;
+  int LITERAL_VALUE = 27;
 
   /**
    * The number of structural features of the '<em>Literal Value</em>' class.
@@ -1093,7 +1065,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getActionStatement()
    * @generated
    */
-  int ACTION_STATEMENT = 29;
+  int ACTION_STATEMENT = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1130,7 +1102,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprConcat()
    * @generated
    */
-  int EXPR_CONCAT = 30;
+  int EXPR_CONCAT = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1176,7 +1148,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprMult()
    * @generated
    */
-  int EXPR_MULT = 31;
+  int EXPR_MULT = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1222,7 +1194,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAdd()
    * @generated
    */
-  int EXPR_ADD = 32;
+  int EXPR_ADD = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1268,7 +1240,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprBit()
    * @generated
    */
-  int EXPR_BIT = 33;
+  int EXPR_BIT = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1314,7 +1286,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprRelate()
    * @generated
    */
-  int EXPR_RELATE = 34;
+  int EXPR_RELATE = 33;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1360,7 +1332,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprEqual()
    * @generated
    */
-  int EXPR_EQUAL = 35;
+  int EXPR_EQUAL = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1406,7 +1378,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprAnd()
    * @generated
    */
-  int EXPR_AND = 36;
+  int EXPR_AND = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1452,7 +1424,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExprOr()
    * @generated
    */
-  int EXPR_OR = 37;
+  int EXPR_OR = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1498,7 +1470,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNullCheckExpression()
    * @generated
    */
-  int NULL_CHECK_EXPRESSION = 38;
+  int NULL_CHECK_EXPRESSION = 37;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1510,13 +1482,60 @@ public interface SqliteModelPackage extends EPackage
   int NULL_CHECK_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL_CHECK_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Null Check Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NULL_CHECK_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int NULL_CHECK_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IsNullImpl <em>Is Null</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IsNullImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getIsNull()
+   * @generated
+   */
+  int IS_NULL = 38;
+
+  /**
+   * The number of structural features of the '<em>Is Null</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IS_NULL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NotNullImpl <em>Not Null</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NotNullImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNotNull()
+   * @generated
+   */
+  int NOT_NULL = 39;
+
+  /**
+   * The number of structural features of the '<em>Not Null</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_NULL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl <em>Column Literal</em>}' class.
@@ -1526,7 +1545,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getColumnLiteral()
    * @generated
    */
-  int COLUMN_LITERAL = 39;
+  int COLUMN_LITERAL = 40;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1554,7 +1573,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 40;
+  int LITERAL = 41;
 
   /**
    * The feature id for the '<em><b>Literal Value</b></em>' containment reference.
@@ -1582,7 +1601,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectStatementExpression()
    * @generated
    */
-  int SELECT_STATEMENT_EXPRESSION = 41;
+  int SELECT_STATEMENT_EXPRESSION = 42;
 
   /**
    * The feature id for the '<em><b>Not</b></em>' attribute.
@@ -1628,7 +1647,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCaseExpression()
    * @generated
    */
-  int CASE_EXPRESSION = 42;
+  int CASE_EXPRESSION = 43;
 
   /**
    * The feature id for the '<em><b>Case Expression</b></em>' containment reference.
@@ -1674,7 +1693,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 43;
+  int FUNCTION = 44;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1729,7 +1748,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCastExpression()
    * @generated
    */
-  int CAST_EXPRESSION = 44;
+  int CAST_EXPRESSION = 45;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1766,7 +1785,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateTableStatement()
    * @generated
    */
-  int CREATE_TABLE_STATEMENT = 45;
+  int CREATE_TABLE_STATEMENT = 46;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1812,7 +1831,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateViewStatement()
    * @generated
    */
-  int CREATE_VIEW_STATEMENT = 46;
+  int CREATE_VIEW_STATEMENT = 47;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1849,7 +1868,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateTriggerStatement()
    * @generated
    */
-  int CREATE_TRIGGER_STATEMENT = 47;
+  int CREATE_TRIGGER_STATEMENT = 48;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1861,13 +1880,31 @@ public interface SqliteModelPackage extends EPackage
   int CREATE_TRIGGER_STATEMENT__NAME = DDL_STATEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>When</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CREATE_TRIGGER_STATEMENT__WHEN = DDL_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Event Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CREATE_TRIGGER_STATEMENT__EVENT_TYPE = DDL_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Update Column Names</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES = DDL_STATEMENT_FEATURE_COUNT + 0;
+  int CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES = DDL_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Table Name</b></em>' attribute.
@@ -1876,7 +1913,16 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TRIGGER_STATEMENT__TABLE_NAME = DDL_STATEMENT_FEATURE_COUNT + 1;
+  int CREATE_TRIGGER_STATEMENT__TABLE_NAME = DDL_STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>For Each Row</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW = DDL_STATEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>When Expression</b></em>' containment reference.
@@ -1885,7 +1931,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION = DDL_STATEMENT_FEATURE_COUNT + 2;
+  int CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION = DDL_STATEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -1894,7 +1940,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TRIGGER_STATEMENT__STATEMENTS = DDL_STATEMENT_FEATURE_COUNT + 3;
+  int CREATE_TRIGGER_STATEMENT__STATEMENTS = DDL_STATEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Create Trigger Statement</em>' class.
@@ -1903,7 +1949,7 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CREATE_TRIGGER_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 4;
+  int CREATE_TRIGGER_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableStatementImpl <em>Alter Table Statement</em>}' class.
@@ -1913,7 +1959,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableStatement()
    * @generated
    */
-  int ALTER_TABLE_STATEMENT = 48;
+  int ALTER_TABLE_STATEMENT = 49;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1950,7 +1996,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropTableStatement()
    * @generated
    */
-  int DROP_TABLE_STATEMENT = 49;
+  int DROP_TABLE_STATEMENT = 50;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1962,13 +2008,22 @@ public interface SqliteModelPackage extends EPackage
   int DROP_TABLE_STATEMENT__NAME = DDL_STATEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>If Exists</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DROP_TABLE_STATEMENT__IF_EXISTS = DDL_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Drop Table Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DROP_TABLE_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 0;
+  int DROP_TABLE_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTriggerStatementImpl <em>Drop Trigger Statement</em>}' class.
@@ -1978,7 +2033,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropTriggerStatement()
    * @generated
    */
-  int DROP_TRIGGER_STATEMENT = 50;
+  int DROP_TRIGGER_STATEMENT = 51;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1990,13 +2045,22 @@ public interface SqliteModelPackage extends EPackage
   int DROP_TRIGGER_STATEMENT__NAME = DDL_STATEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>If Exists</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DROP_TRIGGER_STATEMENT__IF_EXISTS = DDL_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Drop Trigger Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DROP_TRIGGER_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 0;
+  int DROP_TRIGGER_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropViewStatementImpl <em>Drop View Statement</em>}' class.
@@ -2006,7 +2070,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropViewStatement()
    * @generated
    */
-  int DROP_VIEW_STATEMENT = 51;
+  int DROP_VIEW_STATEMENT = 52;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2018,13 +2082,131 @@ public interface SqliteModelPackage extends EPackage
   int DROP_VIEW_STATEMENT__NAME = DDL_STATEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>If Exists</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DROP_VIEW_STATEMENT__IF_EXISTS = DDL_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Drop View Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DROP_VIEW_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 0;
+  int DROP_VIEW_STATEMENT_FEATURE_COUNT = DDL_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl <em>Select Core</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCore()
+   * @generated
+   */
+  int SELECT_CORE = 53;
+
+  /**
+   * The feature id for the '<em><b>Distinct</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__DISTINCT = SELECT_CORE_EXPRESSION__DISTINCT;
+
+  /**
+   * The feature id for the '<em><b>All</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__ALL = SELECT_CORE_EXPRESSION__ALL;
+
+  /**
+   * The feature id for the '<em><b>Result Columns</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__RESULT_COLUMNS = SELECT_CORE_EXPRESSION__RESULT_COLUMNS;
+
+  /**
+   * The feature id for the '<em><b>Source</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__SOURCE = SELECT_CORE_EXPRESSION__SOURCE;
+
+  /**
+   * The feature id for the '<em><b>Where Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__WHERE_EXPRESSION = SELECT_CORE_EXPRESSION__WHERE_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Group By Expressions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__GROUP_BY_EXPRESSIONS = SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS;
+
+  /**
+   * The feature id for the '<em><b>Having Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__HAVING_EXPRESSION = SELECT_CORE_EXPRESSION__HAVING_EXPRESSION;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__LEFT = SELECT_CORE_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__OP = SELECT_CORE_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE__RIGHT = SELECT_CORE_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Select Core</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_CORE_FEATURE_COUNT = SELECT_CORE_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableRenameClauseImpl <em>Alter Table Rename Clause</em>}' class.
@@ -2034,7 +2216,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableRenameClause()
    * @generated
    */
-  int ALTER_TABLE_RENAME_CLAUSE = 52;
+  int ALTER_TABLE_RENAME_CLAUSE = 54;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2062,7 +2244,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableAddColumnClause()
    * @generated
    */
-  int ALTER_TABLE_ADD_COLUMN_CLAUSE = 53;
+  int ALTER_TABLE_ADD_COLUMN_CLAUSE = 55;
 
   /**
    * The feature id for the '<em><b>Column Def</b></em>' containment reference.
@@ -2090,7 +2272,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryKeyColumnConstraint()
    * @generated
    */
-  int PRIMARY_KEY_COLUMN_CONSTRAINT = 54;
+  int PRIMARY_KEY_COLUMN_CONSTRAINT = 56;
 
   /**
    * The feature id for the '<em><b>Asc</b></em>' attribute.
@@ -2136,7 +2318,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNotNullConstraint()
    * @generated
    */
-  int NOT_NULL_CONSTRAINT = 55;
+  int NOT_NULL_CONSTRAINT = 57;
 
   /**
    * The feature id for the '<em><b>Conflict Clause</b></em>' containment reference.
@@ -2164,7 +2346,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDefaultConstraint()
    * @generated
    */
-  int DEFAULT_CONSTRAINT = 56;
+  int DEFAULT_CONSTRAINT = 58;
 
   /**
    * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -2192,7 +2374,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getLiteralDefaultValue()
    * @generated
    */
-  int LITERAL_DEFAULT_VALUE = 57;
+  int LITERAL_DEFAULT_VALUE = 59;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' containment reference.
@@ -2220,7 +2402,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExpressionDefaultValue()
    * @generated
    */
-  int EXPRESSION_DEFAULT_VALUE = 58;
+  int EXPRESSION_DEFAULT_VALUE = 60;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2248,7 +2430,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getUniqueTableContraint()
    * @generated
    */
-  int UNIQUE_TABLE_CONTRAINT = 59;
+  int UNIQUE_TABLE_CONTRAINT = 61;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2294,7 +2476,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryContraint()
    * @generated
    */
-  int PRIMARY_CONTRAINT = 60;
+  int PRIMARY_CONTRAINT = 62;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2340,7 +2522,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCheckTableConstraint()
    * @generated
    */
-  int CHECK_TABLE_CONSTRAINT = 61;
+  int CHECK_TABLE_CONSTRAINT = 63;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2377,7 +2559,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceTable()
    * @generated
    */
-  int SINGLE_SOURCE_TABLE = 62;
+  int SINGLE_SOURCE_TABLE = 64;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' attribute.
@@ -2389,13 +2571,13 @@ public interface SqliteModelPackage extends EPackage
   int SINGLE_SOURCE_TABLE__TABLE = SINGLE_SOURCE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SOURCE_TABLE__ALIAS = SINGLE_SOURCE_FEATURE_COUNT + 1;
+  int SINGLE_SOURCE_TABLE__NAME = SINGLE_SOURCE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Single Source Table</em>' class.
@@ -2414,7 +2596,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceSelectStatement()
    * @generated
    */
-  int SINGLE_SOURCE_SELECT_STATEMENT = 63;
+  int SINGLE_SOURCE_SELECT_STATEMENT = 65;
 
   /**
    * The feature id for the '<em><b>Select Statement</b></em>' containment reference.
@@ -2426,13 +2608,13 @@ public interface SqliteModelPackage extends EPackage
   int SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT = SINGLE_SOURCE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SOURCE_SELECT_STATEMENT__ALIAS = SINGLE_SOURCE_FEATURE_COUNT + 1;
+  int SINGLE_SOURCE_SELECT_STATEMENT__NAME = SINGLE_SOURCE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Single Source Select Statement</em>' class.
@@ -2451,7 +2633,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceJoin()
    * @generated
    */
-  int SINGLE_SOURCE_JOIN = 64;
+  int SINGLE_SOURCE_JOIN = 66;
 
   /**
    * The feature id for the '<em><b>Join Source</b></em>' containment reference.
@@ -2479,16 +2661,16 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getResultColumnAll()
    * @generated
    */
-  int RESULT_COLUMN_ALL = 65;
+  int RESULT_COLUMN_ALL = 67;
 
   /**
-   * The feature id for the '<em><b>Table</b></em>' attribute.
+   * The feature id for the '<em><b>Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESULT_COLUMN_ALL__TABLE = RESULT_COLUMN_FEATURE_COUNT + 0;
+  int RESULT_COLUMN_ALL__SOURCE = RESULT_COLUMN_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Result Column All</em>' class.
@@ -2507,7 +2689,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getResultColumnExpression()
    * @generated
    */
-  int RESULT_COLUMN_EXPRESSION = 66;
+  int RESULT_COLUMN_EXPRESSION = 68;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2519,13 +2701,13 @@ public interface SqliteModelPackage extends EPackage
   int RESULT_COLUMN_EXPRESSION__EXPRESSION = RESULT_COLUMN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Alias</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESULT_COLUMN_EXPRESSION__ALIAS = RESULT_COLUMN_FEATURE_COUNT + 1;
+  int RESULT_COLUMN_EXPRESSION__NAME = RESULT_COLUMN_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Result Column Expression</em>' class.
@@ -2544,7 +2726,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 67;
+  int NUMERIC_LITERAL = 69;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -2572,7 +2754,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 68;
+  int STRING_LITERAL = 70;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2600,7 +2782,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 69;
+  int NULL_LITERAL = 71;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2628,7 +2810,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentTimeLiteral()
    * @generated
    */
-  int CURRENT_TIME_LITERAL = 70;
+  int CURRENT_TIME_LITERAL = 72;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2656,7 +2838,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentDateLiteral()
    * @generated
    */
-  int CURRENT_DATE_LITERAL = 71;
+  int CURRENT_DATE_LITERAL = 73;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2684,7 +2866,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentTimeStampLiteral()
    * @generated
    */
-  int CURRENT_TIME_STAMP_LITERAL = 72;
+  int CURRENT_TIME_STAMP_LITERAL = 74;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2712,7 +2894,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getColumnType()
    * @generated
    */
-  int COLUMN_TYPE = 73;
+  int COLUMN_TYPE = 75;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteDataType <em>Sqlite Data Type</em>}' enum.
@@ -2722,7 +2904,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSqliteDataType()
    * @generated
    */
-  int SQLITE_DATA_TYPE = 74;
+  int SQLITE_DATA_TYPE = 76;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution <em>Conflict Resolution</em>}' enum.
@@ -2732,7 +2914,17 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getConflictResolution()
    * @generated
    */
-  int CONFLICT_RESOLUTION = 75;
+  int CONFLICT_RESOLUTION = 77;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator <em>Compound Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCompoundOperator()
+   * @generated
+   */
+  int COMPOUND_OPERATOR = 78;
 
 
   /**
@@ -2861,27 +3053,6 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EReference getMigrationBlock_Statements();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression <em>Sql Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Sql Expression</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression
-   * @generated
-   */
-  EClass getSqlExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression#getRoot <em>Root</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Root</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression#getRoot()
-   * @see #getSqlExpression()
-   * @generated
-   */
-  EReference getSqlExpression_Root();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression <em>Expression</em>}'.
@@ -3150,15 +3321,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getSelectStatement();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCoreStatements <em>Core Statements</em>}'.
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCore <em>Core</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Core Statements</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCoreStatements()
+   * @return the meta object for the containment reference '<em>Core</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCore()
    * @see #getSelectStatement()
    * @generated
    */
-  EReference getSelectStatement_CoreStatements();
+  EReference getSelectStatement_Core();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getOrderingTerms <em>Ordering Terms</em>}'.
@@ -3170,6 +3341,93 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EReference getSelectStatement_OrderingTerms();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression <em>Select Core Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Select Core Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression
+   * @generated
+   */
+  EClass getSelectCoreExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#isDistinct <em>Distinct</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Distinct</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#isDistinct()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EAttribute getSelectCoreExpression_Distinct();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#isAll <em>All</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>All</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#isAll()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EAttribute getSelectCoreExpression_All();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getResultColumns <em>Result Columns</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Result Columns</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getResultColumns()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EReference getSelectCoreExpression_ResultColumns();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getSource <em>Source</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Source</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getSource()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EReference getSelectCoreExpression_Source();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getWhereExpression <em>Where Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Where Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getWhereExpression()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EReference getSelectCoreExpression_WhereExpression();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getGroupByExpressions <em>Group By Expressions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Group By Expressions</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getGroupByExpressions()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EReference getSelectCoreExpression_GroupByExpressions();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getHavingExpression <em>Having Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Having Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getHavingExpression()
+   * @see #getSelectCoreExpression()
+   * @generated
+   */
+  EReference getSelectCoreExpression_HavingExpression();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause <em>Alter Table Clause</em>}'.
@@ -3350,93 +3608,6 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EAttribute getOrderingTerm_Desc();
-
-  /**
-   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore <em>Select Core</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Select Core</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
-   * @generated
-   */
-  EClass getSelectCore();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isDistinct <em>Distinct</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Distinct</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isDistinct()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EAttribute getSelectCore_Distinct();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isAll <em>All</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>All</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#isAll()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EAttribute getSelectCore_All();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getResultColumns <em>Result Columns</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Result Columns</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getResultColumns()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EReference getSelectCore_ResultColumns();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getSource <em>Source</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Source</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getSource()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EReference getSelectCore_Source();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getWhereExpression <em>Where Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Where Expression</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getWhereExpression()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EReference getSelectCore_WhereExpression();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getGroupByExpressions <em>Group By Expressions</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Group By Expressions</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getGroupByExpressions()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EReference getSelectCore_GroupByExpressions();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression <em>Having Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Having Expression</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getHavingExpression()
-   * @see #getSelectCore()
-   * @generated
-   */
-  EReference getSelectCore_HavingExpression();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource <em>Join Source</em>}'.
@@ -4006,6 +4177,37 @@ public interface SqliteModelPackage extends EPackage
   EReference getNullCheckExpression_Left();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getRight()
+   * @see #getNullCheckExpression()
+   * @generated
+   */
+  EReference getNullCheckExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull <em>Is Null</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Is Null</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull
+   * @generated
+   */
+  EClass getIsNull();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull <em>Not Null</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not Null</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull
+   * @generated
+   */
+  EClass getNotNull();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral <em>Column Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4283,6 +4485,28 @@ public interface SqliteModelPackage extends EPackage
   EClass getCreateTriggerStatement();
 
   /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhen <em>When</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>When</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhen()
+   * @see #getCreateTriggerStatement()
+   * @generated
+   */
+  EAttribute getCreateTriggerStatement_When();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getEventType <em>Event Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Event Type</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getEventType()
+   * @see #getCreateTriggerStatement()
+   * @generated
+   */
+  EAttribute getCreateTriggerStatement_EventType();
+
+  /**
    * Returns the meta object for the attribute list '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getUpdateColumnNames <em>Update Column Names</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4303,6 +4527,17 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EAttribute getCreateTriggerStatement_TableName();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getForEachRow <em>For Each Row</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>For Each Row</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getForEachRow()
+   * @see #getCreateTriggerStatement()
+   * @generated
+   */
+  EAttribute getCreateTriggerStatement_ForEachRow();
 
   /**
    * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhenExpression <em>When Expression</em>}'.
@@ -4358,6 +4593,17 @@ public interface SqliteModelPackage extends EPackage
   EClass getDropTableStatement();
 
   /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement#isIfExists <em>If Exists</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>If Exists</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement#isIfExists()
+   * @see #getDropTableStatement()
+   * @generated
+   */
+  EAttribute getDropTableStatement_IfExists();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement <em>Drop Trigger Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4368,6 +4614,17 @@ public interface SqliteModelPackage extends EPackage
   EClass getDropTriggerStatement();
 
   /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement#isIfExists <em>If Exists</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>If Exists</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement#isIfExists()
+   * @see #getDropTriggerStatement()
+   * @generated
+   */
+  EAttribute getDropTriggerStatement_IfExists();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement <em>Drop View Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4376,6 +4633,60 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EClass getDropViewStatement();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement#isIfExists <em>If Exists</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>If Exists</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement#isIfExists()
+   * @see #getDropViewStatement()
+   * @generated
+   */
+  EAttribute getDropViewStatement_IfExists();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore <em>Select Core</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Select Core</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
+   * @generated
+   */
+  EClass getSelectCore();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getLeft()
+   * @see #getSelectCore()
+   * @generated
+   */
+  EReference getSelectCore_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getOp()
+   * @see #getSelectCore()
+   * @generated
+   */
+  EAttribute getSelectCore_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore#getRight()
+   * @see #getSelectCore()
+   * @generated
+   */
+  EReference getSelectCore_Right();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause <em>Alter Table Rename Clause</em>}'.
@@ -4653,15 +4964,15 @@ public interface SqliteModelPackage extends EPackage
   EAttribute getSingleSourceTable_Table();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName()
    * @see #getSingleSourceTable()
    * @generated
    */
-  EAttribute getSingleSourceTable_Alias();
+  EAttribute getSingleSourceTable_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement <em>Single Source Select Statement</em>}'.
@@ -4685,15 +4996,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getSingleSourceSelectStatement_SelectStatement();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement#getName()
    * @see #getSingleSourceSelectStatement()
    * @generated
    */
-  EAttribute getSingleSourceSelectStatement_Alias();
+  EAttribute getSingleSourceSelectStatement_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin <em>Single Source Join</em>}'.
@@ -4727,15 +5038,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getResultColumnAll();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable <em>Table</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Table</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getTable()
+   * @return the meta object for the attribute '<em>Source</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource()
    * @see #getResultColumnAll()
    * @generated
    */
-  EAttribute getResultColumnAll_Table();
+  EAttribute getResultColumnAll_Source();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression <em>Result Column Expression</em>}'.
@@ -4759,15 +5070,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getResultColumnExpression_Expression();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias <em>Alias</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Alias</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName()
    * @see #getResultColumnExpression()
    * @generated
    */
-  EAttribute getResultColumnExpression_Alias();
+  EAttribute getResultColumnExpression_Name();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral <em>Numeric Literal</em>}'.
@@ -4926,6 +5237,16 @@ public interface SqliteModelPackage extends EPackage
   EEnum getConflictResolution();
 
   /**
+   * Returns the meta object for enum '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator <em>Compound Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Compound Operator</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator
+   * @generated
+   */
+  EEnum getCompoundOperator();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5053,24 +5374,6 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference MIGRATION_BLOCK__STATEMENTS = eINSTANCE.getMigrationBlock_Statements();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqlExpressionImpl <em>Sql Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqlExpressionImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSqlExpression()
-     * @generated
-     */
-    EClass SQL_EXPRESSION = eINSTANCE.getSqlExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SQL_EXPRESSION__ROOT = eINSTANCE.getSqlExpression_Root();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -5291,12 +5594,12 @@ public interface SqliteModelPackage extends EPackage
     EClass SELECT_STATEMENT = eINSTANCE.getSelectStatement();
 
     /**
-     * The meta object literal for the '<em><b>Core Statements</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Core</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SELECT_STATEMENT__CORE_STATEMENTS = eINSTANCE.getSelectStatement_CoreStatements();
+    EReference SELECT_STATEMENT__CORE = eINSTANCE.getSelectStatement_Core();
 
     /**
      * The meta object literal for the '<em><b>Ordering Terms</b></em>' containment reference list feature.
@@ -5305,6 +5608,72 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference SELECT_STATEMENT__ORDERING_TERMS = eINSTANCE.getSelectStatement_OrderingTerms();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreExpressionImpl <em>Select Core Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreExpressionImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCoreExpression()
+     * @generated
+     */
+    EClass SELECT_CORE_EXPRESSION = eINSTANCE.getSelectCoreExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Distinct</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SELECT_CORE_EXPRESSION__DISTINCT = eINSTANCE.getSelectCoreExpression_Distinct();
+
+    /**
+     * The meta object literal for the '<em><b>All</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SELECT_CORE_EXPRESSION__ALL = eINSTANCE.getSelectCoreExpression_All();
+
+    /**
+     * The meta object literal for the '<em><b>Result Columns</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE_EXPRESSION__RESULT_COLUMNS = eINSTANCE.getSelectCoreExpression_ResultColumns();
+
+    /**
+     * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE_EXPRESSION__SOURCE = eINSTANCE.getSelectCoreExpression_Source();
+
+    /**
+     * The meta object literal for the '<em><b>Where Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE_EXPRESSION__WHERE_EXPRESSION = eINSTANCE.getSelectCoreExpression_WhereExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Group By Expressions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS = eINSTANCE.getSelectCoreExpression_GroupByExpressions();
+
+    /**
+     * The meta object literal for the '<em><b>Having Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE_EXPRESSION__HAVING_EXPRESSION = eINSTANCE.getSelectCoreExpression_HavingExpression();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableClauseImpl <em>Alter Table Clause</em>}' class.
@@ -5455,72 +5824,6 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EAttribute ORDERING_TERM__DESC = eINSTANCE.getOrderingTerm_Desc();
-
-    /**
-     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl <em>Select Core</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl
-     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCore()
-     * @generated
-     */
-    EClass SELECT_CORE = eINSTANCE.getSelectCore();
-
-    /**
-     * The meta object literal for the '<em><b>Distinct</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELECT_CORE__DISTINCT = eINSTANCE.getSelectCore_Distinct();
-
-    /**
-     * The meta object literal for the '<em><b>All</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELECT_CORE__ALL = eINSTANCE.getSelectCore_All();
-
-    /**
-     * The meta object literal for the '<em><b>Result Columns</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT_CORE__RESULT_COLUMNS = eINSTANCE.getSelectCore_ResultColumns();
-
-    /**
-     * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT_CORE__SOURCE = eINSTANCE.getSelectCore_Source();
-
-    /**
-     * The meta object literal for the '<em><b>Where Expression</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT_CORE__WHERE_EXPRESSION = eINSTANCE.getSelectCore_WhereExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Group By Expressions</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT_CORE__GROUP_BY_EXPRESSIONS = eINSTANCE.getSelectCore_GroupByExpressions();
-
-    /**
-     * The meta object literal for the '<em><b>Having Expression</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT_CORE__HAVING_EXPRESSION = eINSTANCE.getSelectCore_HavingExpression();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.JoinSourceImpl <em>Join Source</em>}' class.
@@ -5979,6 +6282,34 @@ public interface SqliteModelPackage extends EPackage
     EReference NULL_CHECK_EXPRESSION__LEFT = eINSTANCE.getNullCheckExpression_Left();
 
     /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NULL_CHECK_EXPRESSION__RIGHT = eINSTANCE.getNullCheckExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IsNullImpl <em>Is Null</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IsNullImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getIsNull()
+     * @generated
+     */
+    EClass IS_NULL = eINSTANCE.getIsNull();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NotNullImpl <em>Not Null</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NotNullImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNotNull()
+     * @generated
+     */
+    EClass NOT_NULL = eINSTANCE.getNotNull();
+
+    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnLiteralImpl <em>Column Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6205,6 +6536,22 @@ public interface SqliteModelPackage extends EPackage
     EClass CREATE_TRIGGER_STATEMENT = eINSTANCE.getCreateTriggerStatement();
 
     /**
+     * The meta object literal for the '<em><b>When</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CREATE_TRIGGER_STATEMENT__WHEN = eINSTANCE.getCreateTriggerStatement_When();
+
+    /**
+     * The meta object literal for the '<em><b>Event Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CREATE_TRIGGER_STATEMENT__EVENT_TYPE = eINSTANCE.getCreateTriggerStatement_EventType();
+
+    /**
      * The meta object literal for the '<em><b>Update Column Names</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6219,6 +6566,14 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EAttribute CREATE_TRIGGER_STATEMENT__TABLE_NAME = eINSTANCE.getCreateTriggerStatement_TableName();
+
+    /**
+     * The meta object literal for the '<em><b>For Each Row</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW = eINSTANCE.getCreateTriggerStatement_ForEachRow();
 
     /**
      * The meta object literal for the '<em><b>When Expression</b></em>' containment reference feature.
@@ -6265,6 +6620,14 @@ public interface SqliteModelPackage extends EPackage
     EClass DROP_TABLE_STATEMENT = eINSTANCE.getDropTableStatement();
 
     /**
+     * The meta object literal for the '<em><b>If Exists</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DROP_TABLE_STATEMENT__IF_EXISTS = eINSTANCE.getDropTableStatement_IfExists();
+
+    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTriggerStatementImpl <em>Drop Trigger Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6275,6 +6638,14 @@ public interface SqliteModelPackage extends EPackage
     EClass DROP_TRIGGER_STATEMENT = eINSTANCE.getDropTriggerStatement();
 
     /**
+     * The meta object literal for the '<em><b>If Exists</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DROP_TRIGGER_STATEMENT__IF_EXISTS = eINSTANCE.getDropTriggerStatement_IfExists();
+
+    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropViewStatementImpl <em>Drop View Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6283,6 +6654,48 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EClass DROP_VIEW_STATEMENT = eINSTANCE.getDropViewStatement();
+
+    /**
+     * The meta object literal for the '<em><b>If Exists</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DROP_VIEW_STATEMENT__IF_EXISTS = eINSTANCE.getDropViewStatement_IfExists();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl <em>Select Core</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectCoreImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCore()
+     * @generated
+     */
+    EClass SELECT_CORE = eINSTANCE.getSelectCore();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE__LEFT = eINSTANCE.getSelectCore_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SELECT_CORE__OP = eINSTANCE.getSelectCore_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_CORE__RIGHT = eINSTANCE.getSelectCore_Right();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableRenameClauseImpl <em>Alter Table Rename Clause</em>}' class.
@@ -6515,12 +6928,12 @@ public interface SqliteModelPackage extends EPackage
     EAttribute SINGLE_SOURCE_TABLE__TABLE = eINSTANCE.getSingleSourceTable_Table();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_SOURCE_TABLE__ALIAS = eINSTANCE.getSingleSourceTable_Alias();
+    EAttribute SINGLE_SOURCE_TABLE__NAME = eINSTANCE.getSingleSourceTable_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceSelectStatementImpl <em>Single Source Select Statement</em>}' class.
@@ -6541,12 +6954,12 @@ public interface SqliteModelPackage extends EPackage
     EReference SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT = eINSTANCE.getSingleSourceSelectStatement_SelectStatement();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_SOURCE_SELECT_STATEMENT__ALIAS = eINSTANCE.getSingleSourceSelectStatement_Alias();
+    EAttribute SINGLE_SOURCE_SELECT_STATEMENT__NAME = eINSTANCE.getSingleSourceSelectStatement_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceJoinImpl <em>Single Source Join</em>}' class.
@@ -6577,12 +6990,12 @@ public interface SqliteModelPackage extends EPackage
     EClass RESULT_COLUMN_ALL = eINSTANCE.getResultColumnAll();
 
     /**
-     * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESULT_COLUMN_ALL__TABLE = eINSTANCE.getResultColumnAll_Table();
+    EAttribute RESULT_COLUMN_ALL__SOURCE = eINSTANCE.getResultColumnAll_Source();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl <em>Result Column Expression</em>}' class.
@@ -6603,12 +7016,12 @@ public interface SqliteModelPackage extends EPackage
     EReference RESULT_COLUMN_EXPRESSION__EXPRESSION = eINSTANCE.getResultColumnExpression_Expression();
 
     /**
-     * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESULT_COLUMN_EXPRESSION__ALIAS = eINSTANCE.getResultColumnExpression_Alias();
+    EAttribute RESULT_COLUMN_EXPRESSION__NAME = eINSTANCE.getResultColumnExpression_Name();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
@@ -6747,6 +7160,16 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EEnum CONFLICT_RESOLUTION = eINSTANCE.getConflictResolution();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator <em>Compound Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCompoundOperator()
+     * @generated
+     */
+    EEnum COMPOUND_OPERATOR = eINSTANCE.getCompoundOperator();
 
   }
 

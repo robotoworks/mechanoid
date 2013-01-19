@@ -4,7 +4,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -47,7 +47,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * @generated
    * @ordered
    */
-  protected SqlExpression caseExpression;
+  protected Expression caseExpression;
 
   /**
    * The cached value of the '{@link #getCases() <em>Cases</em>}' containment reference list.
@@ -67,7 +67,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * @generated
    * @ordered
    */
-  protected SqlExpression elseExpression;
+  protected Expression elseExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getCaseExpression()
+  public Expression getCaseExpression()
   {
     return caseExpression;
   }
@@ -105,9 +105,9 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCaseExpression(SqlExpression newCaseExpression, NotificationChain msgs)
+  public NotificationChain basicSetCaseExpression(Expression newCaseExpression, NotificationChain msgs)
   {
-    SqlExpression oldCaseExpression = caseExpression;
+    Expression oldCaseExpression = caseExpression;
     caseExpression = newCaseExpression;
     if (eNotificationRequired())
     {
@@ -122,7 +122,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCaseExpression(SqlExpression newCaseExpression)
+  public void setCaseExpression(Expression newCaseExpression)
   {
     if (newCaseExpression != caseExpression)
     {
@@ -157,7 +157,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getElseExpression()
+  public Expression getElseExpression()
   {
     return elseExpression;
   }
@@ -167,9 +167,9 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetElseExpression(SqlExpression newElseExpression, NotificationChain msgs)
+  public NotificationChain basicSetElseExpression(Expression newElseExpression, NotificationChain msgs)
   {
-    SqlExpression oldElseExpression = elseExpression;
+    Expression oldElseExpression = elseExpression;
     elseExpression = newElseExpression;
     if (eNotificationRequired())
     {
@@ -184,7 +184,7 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElseExpression(SqlExpression newElseExpression)
+  public void setElseExpression(Expression newElseExpression)
   {
     if (newElseExpression != elseExpression)
     {
@@ -252,14 +252,14 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
     switch (featureID)
     {
       case SqliteModelPackage.CASE_EXPRESSION__CASE_EXPRESSION:
-        setCaseExpression((SqlExpression)newValue);
+        setCaseExpression((Expression)newValue);
         return;
       case SqliteModelPackage.CASE_EXPRESSION__CASES:
         getCases().clear();
         getCases().addAll((Collection<? extends Case>)newValue);
         return;
       case SqliteModelPackage.CASE_EXPRESSION__ELSE_EXPRESSION:
-        setElseExpression((SqlExpression)newValue);
+        setElseExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -276,13 +276,13 @@ public class CaseExpressionImpl extends ExpressionImpl implements CaseExpression
     switch (featureID)
     {
       case SqliteModelPackage.CASE_EXPRESSION__CASE_EXPRESSION:
-        setCaseExpression((SqlExpression)null);
+        setCaseExpression((Expression)null);
         return;
       case SqliteModelPackage.CASE_EXPRESSION__CASES:
         getCases().clear();
         return;
       case SqliteModelPackage.CASE_EXPRESSION__ELSE_EXPRESSION:
-        setElseExpression((SqlExpression)null);
+        setElseExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

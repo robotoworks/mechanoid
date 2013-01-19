@@ -12,7 +12,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getExpression <em>Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias <em>Alias</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,12 +31,12 @@ public interface ResultColumnExpression extends ResultColumn
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(SqlExpression)
+   * @see #setExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnExpression_Expression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getExpression();
+  Expression getExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getExpression <em>Expression</em>}' containment reference.
@@ -46,32 +46,32 @@ public interface ResultColumnExpression extends ResultColumn
    * @see #getExpression()
    * @generated
    */
-  void setExpression(SqlExpression value);
+  void setExpression(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Alias</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Alias</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Alias</em>' attribute.
-   * @see #setAlias(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnExpression_Alias()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnExpression_Name()
    * @model
    * @generated
    */
-  String getAlias();
+  String getName();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getAlias <em>Alias</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Alias</em>' attribute.
-   * @see #getAlias()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setAlias(String value);
+  void setName(String value);
 
 } // ResultColumnExpression

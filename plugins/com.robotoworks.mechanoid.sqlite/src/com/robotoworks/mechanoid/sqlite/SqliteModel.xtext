@@ -4,7 +4,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate sqliteModel "http://www.robotoworks.com/mechanoid/sqlite/SqliteModel"
 
 Model:
-	'package' packageName=FQN
+	'package' packageName=QualifiedName
 	database=DatabaseBlock;
 
 DatabaseBlock:
@@ -21,14 +21,14 @@ ConfigurationStatement:
 
 MigrationBlock:
 	{MigrationBlock}
-	'migration' '{' (statements+=DDLStatement ';' (statements+=DDLStatement ';')*)? '}';
+	'migration' '{' (statements+=DDLStatement ';')* '}';
 	
 /*
  * Expressions
  */
 
-SqlExpression:
-	root=ExprConcat
+SqlExpression returns Expression:
+	ExprConcat
 ;
 
 ExprConcat returns Expression:
@@ -67,16 +67,21 @@ ExprOr returns Expression:
 ;
 
 NullCheckExpression returns Expression:
-	PrimaryExpression {NullCheckExpression.left=current} ('is null'| 'not null' | 'notnull')?
+	PrimaryExpression ({NullCheckExpression.left=current} right=NullExpression)?
+;
+
+NullExpression returns Expression:
+	{IsNull} 'is null' |
+	{NotNull} ('not null'|'notnull')
 ;
 
 PrimaryExpression returns Expression:
-	{ColumnLiteral} name=FQN |
-	{Literal} literalValue=LiteralValue |
-	'(' SqlExpression ')' |
+	{ColumnLiteral} name=QualifiedName|
+	{Literal} literalValue=LiteralValue|
+	'(' SqlExpression ')'|
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
 	{CaseExpression} 'case' caseExpression=SqlExpression? 
-			cases+=Case cases+=Case*
+			cases+=Case+
 			('else' elseExpression=SqlExpression)? 'end' |
 	{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
 	{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
@@ -95,14 +100,14 @@ Case:
 DDLStatement:
 	{CreateTableStatement} 'create' 'table' name=ID '(' columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* (',' constraints+=TableConstraint)* ')'
 	| {CreateViewStatement} 'create' 'view' name=ID 'as' selectStatement=SelectStatement
-	| {CreateTriggerStatement} 'create' 'trigger' name=ID ('before'|'after'|'instead' 'of')?
-	  ('delete'|'insert'|'update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
-	  'on' tableName=ID ('for' 'each' 'row')? ('when' whenExpression=SqlExpression)?
+	| {CreateTriggerStatement} 'create' 'trigger' name=ID when=('before'|'after'|'instead of')?
+	  (eventType='delete'|eventType='insert'|eventType='update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
+	  'on' tableName=ID forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
 	  'begin' (statements+=DMLStatement ';' (statements+=DMLStatement ';')*)? 'end'
 	| {AlterTableStatement} 'alter' 'table' name=ID clause=AlterTableClause
-	| {DropTableStatement} 'drop' 'table' ('if' 'exists')? name=ID
-	| {DropTriggerStatement} 'drop' 'trigger' ('if' 'exists')? name=ID
-	| {DropViewStatement} 'drop' 'view' ('if' 'exists')? name=ID
+	| {DropTableStatement} 'drop' 'table' ifExists?=('if exists')? name=ID
+	| {DropTriggerStatement} 'drop' 'trigger' ifExists?=('if exists')? name=ID
+	| {DropViewStatement} 'drop' 'view' ifExists?=('if exists')? name=ID
 ;
 
 DMLStatement:
@@ -134,8 +139,20 @@ UpdateColumnExpression:
 
 
 SelectStatement:
-	coreStatements+=SelectCore (CompoundOperator coreStatements+=SelectCore)*
-	('order' 'by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+	core=SelectCore
+	('order by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+;
+
+SelectCore returns SelectCoreExpression:
+	SelectCoreOperand ({SelectCore.left = current} op=CompoundOperator right=SelectCoreOperand)*
+;
+
+SelectCoreOperand returns SelectCoreExpression:
+	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
+	('from' source=JoinSource)?
+	('where' whereExpression=SqlExpression)?
+	('group by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
+	('having' havingExpression=SqlExpression)?
 ;
 
 AlterTableClause:
@@ -146,7 +163,7 @@ ColumnDef:
 	name=ID type=ColumnType constraints+=ColumnConstraint*;
 
 ColumnConstraint:
-	{PrimaryKeyColumnConstraint} 'primary' 'key' (asc?='asc'|desc?='desc')? autoincrement?='autoincrement'? |
+	{PrimaryKeyColumnConstraint} 'primary key' (asc?='asc'|desc?='desc')? autoincrement?='autoincrement'? |
 	{NotNullConstraint} 'not null' conflictClause=ConflictClause? |
 	{DefaultConstraint} 'default' defaultValue=DefaultValue
 ;
@@ -173,29 +190,23 @@ enum ConflictResolution:
 	rollback | abort | fail | ignore | replace;
 
 
-CompoundOperator:
-	'union all' | 'union' | 'intersect' | 'except'
+enum CompoundOperator:
+	unionall='union all' | union='union' | intersect='intersect' | except='except'
 ;
 
 OrderingTerm:
 	expression=SqlExpression (asc?='asc'|desc?='desc')?
 ;
 
-SelectCore:
-	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
-	('from' source=JoinSource)?
-	('where' whereExpression=SqlExpression)?
-	('group' 'by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
-	('having' havingExpression=SqlExpression)?
-;
+
 
 JoinSource:
 	source=SingleSource joinStatements+=JoinStatement*
 ;
 
 SingleSource:
-	{SingleSourceTable} table=ID ('as' alias=ID)? |
-	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' alias=ID)? |
+	{SingleSourceTable} table=ID ('as' name=ID)? |
+	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' name=ID)? |
 	{SingleSourceJoin} '(' joinSource=JoinSource ')'
 ;
 
@@ -204,8 +215,8 @@ JoinStatement:
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 ResultColumn:
-	{ResultColumnAll} (table=ID)? '*' |
-	{ResultColumnExpression} expression=SqlExpression ('as' alias=ID)?
+	{ResultColumnAll} (source=ID '.')? '*' |
+	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
 ;
 
 ConflictClause:
@@ -236,5 +247,5 @@ terminal STRING	:
 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
 		; 
 
-FQN:
+QualifiedName:
 	ID ("." ID)*;

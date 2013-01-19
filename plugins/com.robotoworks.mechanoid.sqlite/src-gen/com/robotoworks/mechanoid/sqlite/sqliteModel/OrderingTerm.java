@@ -33,12 +33,12 @@ public interface OrderingTerm extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
-   * @see #setExpression(SqlExpression)
+   * @see #setExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOrderingTerm_Expression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getExpression();
+  Expression getExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm#getExpression <em>Expression</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface OrderingTerm extends EObject
    * @see #getExpression()
    * @generated
    */
-  void setExpression(SqlExpression value);
+  void setExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Asc</b></em>' attribute.

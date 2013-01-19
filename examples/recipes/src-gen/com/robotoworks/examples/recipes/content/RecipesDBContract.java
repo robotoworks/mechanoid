@@ -20,9 +20,21 @@ public class RecipesDBContract  {
 	interface RecipesColumns {
 		String TITLE = "title";
 		String DESCRIPTION = "description";
+		String AUTHOR_ID = "author_id";
+	}
+	
+	interface AuthorsColumns {
+		String NAME = "name";
 	}
 	
 
+	interface RecipesWithAuthorsColumns {
+		String RECIPE_TITLE = "recipe_title";
+		String RECIPE_DESCRIPTION = "recipe_description";
+		String AUTHOR_ID = "author_id";
+		String AUTHOR_NAME = "author_name";
+	}
+	
 			
 	/**
 	 * <p>Column definitions and helper methods to work with the Recipes table.</p>
@@ -83,9 +95,81 @@ public class RecipesDBContract  {
 				mValues.put(Recipes.DESCRIPTION, value);
 				return this;
 			}
+			public Builder setAuthorId(long value) {
+				mValues.put(Recipes.AUTHOR_ID, value);
+				return this;
+			}
 		}
 	}
 	
+	/**
+	 * <p>Column definitions and helper methods to work with the Authors table.</p>
+	 */
+	public static class Authors implements AuthorsColumns, BaseColumns {
+	    public static final Uri CONTENT_URI = 
+				BASE_CONTENT_URI.buildUpon().appendPath("authors").build();
+	
+		/**
+		 * <p>The content type for a cursor that contains many Authors table rows.</p>
+		 */
+	    public static final String CONTENT_TYPE =
+	            "vnd.android.cursor.dir/vnd.recipesdb.authors";
+		/**
+		 * <p>The content type for a cursor that contains a single Authors table row.</p>
+		 */
+	    public static final String ITEM_CONTENT_TYPE =
+	            "vnd.android.cursor.item/vnd.recipesdb.authors";
+	
+		/**
+		 * <p>Builds a Uri with appended id for a row in the Authors table, 
+		 * eg:- content://com.robotoworks.examples.recipes.content.recipesdb/authors/123.</p>
+		 */
+	    public static Uri buildUriWithId(long id) {
+	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
+	    }
+	
+		public static int delete() {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+		}
+		
+		public static int delete(String where, String[] selectionArgs) {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+		}
+		
+		/**
+		 * <p>Create a new Builder for Authors</p>
+		 */
+		public static Builder newBuilder() {
+			return new Builder();
+		}
+		
+		/**
+		 * <p>Build and execute insert or update statements for Authors.</p>
+		 *
+		 * <p>Use {@link Authors#newBuilder()} to create new builder</p>
+		 */
+		public static class Builder extends AbstractValuesBuilder {
+			private Builder() {
+				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+			}
+			
+			public Builder setName(String value) {
+				mValues.put(Authors.NAME, value);
+				return this;
+			}
+		}
+	}
+	
+
+	public static class RecipesWithAuthors implements RecipesWithAuthorsColumns, BaseColumns {
+	    public static final Uri CONTENT_URI = 
+				BASE_CONTENT_URI.buildUpon().appendPath("recipes_with_authors").build();
+	
+	    public static final String CONTENT_TYPE =
+	            "vnd.android.cursor.dir/vnd.recipesdb.recipes_with_authors";
+		public static final String ITEM_CONTENT_TYPE =
+			"vnd.android.cursor.item/vnd.recipesdb.recipes_with_authors";
+	}
 
 	
 
