@@ -29,7 +29,7 @@ class SqliteMigrationGenerator {
 					«FOR stmt : migration.statements»
 					db.execSQL(
 						«FOR line : stmt.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-						"«line.trim.replaceAll('\\\"', '\\\\\"')»"
+						"«line.trim.replaceAll('\\\"', '\\\\\"')» "
 						«ENDFOR»
 					);
 					«ENDFOR»

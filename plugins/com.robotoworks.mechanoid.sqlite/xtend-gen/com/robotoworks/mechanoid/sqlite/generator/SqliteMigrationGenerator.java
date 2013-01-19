@@ -74,7 +74,7 @@ public class SqliteMigrationGenerator {
             String _trim_1 = line.trim();
             String _replaceAll = _trim_1.replaceAll("\\\"", "\\\\\"");
             _builder.append(_replaceAll, "			");
-            _builder.append("\"");
+            _builder.append(" \"");
             _builder.newLineIfNotEmpty();
           }
         }
