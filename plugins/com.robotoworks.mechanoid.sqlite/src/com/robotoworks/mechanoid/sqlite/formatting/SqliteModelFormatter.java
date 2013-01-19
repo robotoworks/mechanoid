@@ -58,6 +58,8 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().before(g.getCompoundOperatorRule());
 		c.setLinewrap().before(g.getDDLStatementAccess().getWhenExpressionAssignment_2_9_1());
 		
+		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());
+		c.setLinewrap().after(g.getExprOrAccess().getOpOrKeyword_1_1_0());
 		c.setLinewrap().after(g.getCaseRule());
 		
 	}
