@@ -12,7 +12,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getLeft <em>Left</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getNullClause <em>Null Clause</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface NullCheckExpression extends Expression
   void setLeft(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Null Clause</b></em>' attribute.
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Null Clause</em>' attribute isn't clear,
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Null Clause</em>' attribute.
-   * @see #setNullClause(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getNullCheckExpression_NullClause()
-   * @model
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(Expression)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getNullCheckExpression_Right()
+   * @model containment="true"
    * @generated
    */
-  String getNullClause();
+  Expression getRight();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getNullClause <em>Null Clause</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Null Clause</em>' attribute.
-   * @see #getNullClause()
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
    * @generated
    */
-  void setNullClause(String value);
+  void setRight(Expression value);
 
 } // NullCheckExpression

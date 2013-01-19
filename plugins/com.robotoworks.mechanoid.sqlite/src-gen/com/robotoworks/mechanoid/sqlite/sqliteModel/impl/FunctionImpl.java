@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Function;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -87,7 +87,7 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * @generated
    * @ordered
    */
-  protected EList<SqlExpression> arguments;
+  protected EList<Expression> arguments;
 
   /**
    * The cached value of the '{@link #getArugments() <em>Arugments</em>}' containment reference list.
@@ -97,7 +97,7 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * @generated
    * @ordered
    */
-  protected EList<SqlExpression> arugments;
+  protected EList<Expression> arugments;
 
   /**
    * <!-- begin-user-doc -->
@@ -171,11 +171,11 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SqlExpression> getArguments()
+  public EList<Expression> getArguments()
   {
     if (arguments == null)
     {
-      arguments = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.FUNCTION__ARGUMENTS);
+      arguments = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.FUNCTION__ARGUMENTS);
     }
     return arguments;
   }
@@ -185,11 +185,11 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SqlExpression> getArugments()
+  public EList<Expression> getArugments()
   {
     if (arugments == null)
     {
-      arugments = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.FUNCTION__ARUGMENTS);
+      arugments = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.FUNCTION__ARUGMENTS);
     }
     return arugments;
   }
@@ -253,11 +253,11 @@ public class FunctionImpl extends ExpressionImpl implements Function
         return;
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         getArguments().clear();
-        getArguments().addAll((Collection<? extends SqlExpression>)newValue);
+        getArguments().addAll((Collection<? extends Expression>)newValue);
         return;
       case SqliteModelPackage.FUNCTION__ARUGMENTS:
         getArugments().clear();
-        getArugments().addAll((Collection<? extends SqlExpression>)newValue);
+        getArugments().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

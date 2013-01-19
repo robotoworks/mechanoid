@@ -2,10 +2,10 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -113,7 +113,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected SqlExpression whereExpression;
+  protected Expression whereExpression;
 
   /**
    * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
@@ -123,7 +123,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected EList<SqlExpression> groupByExpressions;
+  protected EList<Expression> groupByExpressions;
 
   /**
    * The cached value of the '{@link #getHavingExpression() <em>Having Expression</em>}' containment reference.
@@ -133,7 +133,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected SqlExpression havingExpression;
+  protected Expression havingExpression;
 
   /**
    * <!-- begin-user-doc -->
@@ -269,7 +269,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getWhereExpression()
+  public Expression getWhereExpression()
   {
     return whereExpression;
   }
@@ -279,9 +279,9 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhereExpression(SqlExpression newWhereExpression, NotificationChain msgs)
+  public NotificationChain basicSetWhereExpression(Expression newWhereExpression, NotificationChain msgs)
   {
-    SqlExpression oldWhereExpression = whereExpression;
+    Expression oldWhereExpression = whereExpression;
     whereExpression = newWhereExpression;
     if (eNotificationRequired())
     {
@@ -296,7 +296,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhereExpression(SqlExpression newWhereExpression)
+  public void setWhereExpression(Expression newWhereExpression)
   {
     if (newWhereExpression != whereExpression)
     {
@@ -317,11 +317,11 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SqlExpression> getGroupByExpressions()
+  public EList<Expression> getGroupByExpressions()
   {
     if (groupByExpressions == null)
     {
-      groupByExpressions = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS);
+      groupByExpressions = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS);
     }
     return groupByExpressions;
   }
@@ -331,7 +331,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getHavingExpression()
+  public Expression getHavingExpression()
   {
     return havingExpression;
   }
@@ -341,9 +341,9 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetHavingExpression(SqlExpression newHavingExpression, NotificationChain msgs)
+  public NotificationChain basicSetHavingExpression(Expression newHavingExpression, NotificationChain msgs)
   {
-    SqlExpression oldHavingExpression = havingExpression;
+    Expression oldHavingExpression = havingExpression;
     havingExpression = newHavingExpression;
     if (eNotificationRequired())
     {
@@ -358,7 +358,7 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHavingExpression(SqlExpression newHavingExpression)
+  public void setHavingExpression(Expression newHavingExpression)
   {
     if (newHavingExpression != havingExpression)
     {
@@ -451,14 +451,14 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
         setSource((JoinSource)newValue);
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)newValue);
+        setWhereExpression((Expression)newValue);
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS:
         getGroupByExpressions().clear();
-        getGroupByExpressions().addAll((Collection<? extends SqlExpression>)newValue);
+        getGroupByExpressions().addAll((Collection<? extends Expression>)newValue);
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__HAVING_EXPRESSION:
-        setHavingExpression((SqlExpression)newValue);
+        setHavingExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -487,13 +487,13 @@ public class SelectCoreExpressionImpl extends MinimalEObjectImpl.Container imple
         setSource((JoinSource)null);
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__WHERE_EXPRESSION:
-        setWhereExpression((SqlExpression)null);
+        setWhereExpression((Expression)null);
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS:
         getGroupByExpressions().clear();
         return;
       case SqliteModelPackage.SELECT_CORE_EXPRESSION__HAVING_EXPRESSION:
-        setHavingExpression((SqlExpression)null);
+        setHavingExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);

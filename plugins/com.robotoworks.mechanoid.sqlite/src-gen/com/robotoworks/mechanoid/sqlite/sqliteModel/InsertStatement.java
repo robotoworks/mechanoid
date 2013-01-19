@@ -99,7 +99,7 @@ public interface InsertStatement extends DMLStatement
 
   /**
    * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Expressions</em>' containment reference list isn't clear,
@@ -111,7 +111,7 @@ public interface InsertStatement extends DMLStatement
    * @model containment="true"
    * @generated
    */
-  EList<SqlExpression> getExpressions();
+  EList<Expression> getExpressions();
 
   /**
    * Returns the value of the '<em><b>Select Statement</b></em>' containment reference.

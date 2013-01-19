@@ -68,15 +68,6 @@ public interface SqliteModelFactory extends EFactory
   MigrationBlock createMigrationBlock();
 
   /**
-   * Returns a new object of class '<em>Sql Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sql Expression</em>'.
-   * @generated
-   */
-  SqlExpression createSqlExpression();
-
-  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -372,6 +363,24 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   NullCheckExpression createNullCheckExpression();
+
+  /**
+   * Returns a new object of class '<em>Is Null</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Is Null</em>'.
+   * @generated
+   */
+  IsNull createIsNull();
+
+  /**
+   * Returns a new object of class '<em>Not Null</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not Null</em>'.
+   * @generated
+   */
+  NotNull createNotNull();
 
   /**
    * Returns a new object of class '<em>Column Literal</em>'.

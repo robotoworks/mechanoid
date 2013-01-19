@@ -157,12 +157,12 @@ public interface CreateTriggerStatement extends DDLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>When Expression</em>' containment reference.
-   * @see #setWhenExpression(SqlExpression)
+   * @see #setWhenExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_WhenExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getWhenExpression();
+  Expression getWhenExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhenExpression <em>When Expression</em>}' containment reference.
@@ -172,7 +172,7 @@ public interface CreateTriggerStatement extends DDLStatement
    * @see #getWhenExpression()
    * @generated
    */
-  void setWhenExpression(SqlExpression value);
+  void setWhenExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Statements</b></em>' containment reference list.

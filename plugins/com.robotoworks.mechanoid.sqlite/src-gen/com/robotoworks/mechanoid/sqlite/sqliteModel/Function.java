@@ -79,7 +79,7 @@ public interface Function extends Expression
 
   /**
    * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Arguments</em>' containment reference list isn't clear,
@@ -91,11 +91,11 @@ public interface Function extends Expression
    * @model containment="true"
    * @generated
    */
-  EList<SqlExpression> getArguments();
+  EList<Expression> getArguments();
 
   /**
    * Returns the value of the '<em><b>Arugments</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Arugments</em>' containment reference list isn't clear,
@@ -107,6 +107,6 @@ public interface Function extends Expression
    * @model containment="true"
    * @generated
    */
-  EList<SqlExpression> getArugments();
+  EList<Expression> getArugments();
 
 } // Function

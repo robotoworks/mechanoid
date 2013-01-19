@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteDataType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
@@ -39,7 +39,7 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -87,7 +87,7 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -97,9 +97,9 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -114,7 +114,7 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -198,7 +198,7 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
     switch (featureID)
     {
       case SqliteModelPackage.CAST_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         setType((SqliteDataType)newValue);
@@ -218,7 +218,7 @@ public class CastExpressionImpl extends ExpressionImpl implements CastExpression
     switch (featureID)
     {
       case SqliteModelPackage.CAST_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
       case SqliteModelPackage.CAST_EXPRESSION__TYPE:
         setType(TYPE_EDEFAULT);

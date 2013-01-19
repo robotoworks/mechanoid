@@ -51,9 +51,6 @@
     <genClasses ecoreClass="SqliteModel.ecore#//MigrationBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//MigrationBlock/statements"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//SqlExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SqlExpression/root"/>
-    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//Expression"/>
     <genClasses ecoreClass="SqliteModel.ecore#//Case">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Case/whenExpression"/>
@@ -183,8 +180,10 @@
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//NullCheckExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//NullCheckExpression/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//NullCheckExpression/nullClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//NullCheckExpression/right"/>
     </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//IsNull"/>
+    <genClasses ecoreClass="SqliteModel.ecore#//NotNull"/>
     <genClasses ecoreClass="SqliteModel.ecore#//ColumnLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ColumnLiteral/name"/>
     </genClasses>

@@ -70,7 +70,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CONFIG_BLOCK: return createConfigBlock();
       case SqliteModelPackage.CONFIGURATION_STATEMENT: return createConfigurationStatement();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
-      case SqliteModelPackage.SQL_EXPRESSION: return createSqlExpression();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
@@ -104,6 +103,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.EXPR_AND: return createExprAnd();
       case SqliteModelPackage.EXPR_OR: return createExprOr();
       case SqliteModelPackage.NULL_CHECK_EXPRESSION: return createNullCheckExpression();
+      case SqliteModelPackage.IS_NULL: return createIsNull();
+      case SqliteModelPackage.NOT_NULL: return createNotNull();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
@@ -243,17 +244,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     MigrationBlockImpl migrationBlock = new MigrationBlockImpl();
     return migrationBlock;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SqlExpression createSqlExpression()
-  {
-    SqlExpressionImpl sqlExpression = new SqlExpressionImpl();
-    return sqlExpression;
   }
 
   /**
@@ -617,6 +607,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     NullCheckExpressionImpl nullCheckExpression = new NullCheckExpressionImpl();
     return nullCheckExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IsNull createIsNull()
+  {
+    IsNullImpl isNull = new IsNullImpl();
+    return isNull;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotNull createNotNull()
+  {
+    NotNullImpl notNull = new NotNullImpl();
+    return notNull;
   }
 
   /**

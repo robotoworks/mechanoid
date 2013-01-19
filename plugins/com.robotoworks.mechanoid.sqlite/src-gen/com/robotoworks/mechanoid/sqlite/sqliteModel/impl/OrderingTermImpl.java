@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -40,7 +40,7 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * The default value of the '{@link #isAsc() <em>Asc</em>}' attribute.
@@ -108,7 +108,7 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -118,9 +118,9 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -135,7 +135,7 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -244,7 +244,7 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
     switch (featureID)
     {
       case SqliteModelPackage.ORDERING_TERM__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
       case SqliteModelPackage.ORDERING_TERM__ASC:
         setAsc((Boolean)newValue);
@@ -267,7 +267,7 @@ public class OrderingTermImpl extends MinimalEObjectImpl.Container implements Or
     switch (featureID)
     {
       case SqliteModelPackage.ORDERING_TERM__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
       case SqliteModelPackage.ORDERING_TERM__ASC:
         setAsc(ASC_EDEFAULT);

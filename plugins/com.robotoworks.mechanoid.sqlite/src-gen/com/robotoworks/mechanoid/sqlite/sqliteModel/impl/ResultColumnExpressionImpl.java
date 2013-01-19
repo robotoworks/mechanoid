@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -38,7 +38,7 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * @generated
    * @ordered
    */
-  protected SqlExpression expression;
+  protected Expression expression;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -86,7 +86,7 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getExpression()
+  public Expression getExpression()
   {
     return expression;
   }
@@ -96,9 +96,9 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetExpression(SqlExpression newExpression, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    SqlExpression oldExpression = expression;
+    Expression oldExpression = expression;
     expression = newExpression;
     if (eNotificationRequired())
     {
@@ -113,7 +113,7 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpression(SqlExpression newExpression)
+  public void setExpression(Expression newExpression)
   {
     if (newExpression != expression)
     {
@@ -197,7 +197,7 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)newValue);
+        setExpression((Expression)newValue);
         return;
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
         setName((String)newValue);
@@ -217,7 +217,7 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     switch (featureID)
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
-        setExpression((SqlExpression)null);
+        setExpression((Expression)null);
         return;
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
         setName(NAME_EDEFAULT);

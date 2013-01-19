@@ -107,14 +107,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.SQL_EXPRESSION:
-      {
-        SqlExpression sqlExpression = (SqlExpression)theEObject;
-        T result = caseSqlExpression(sqlExpression);
-        if (result == null) result = caseExpression(sqlExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.EXPRESSION:
       {
         Expression expression = (Expression)theEObject;
@@ -357,6 +349,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
         NullCheckExpression nullCheckExpression = (NullCheckExpression)theEObject;
         T result = caseNullCheckExpression(nullCheckExpression);
         if (result == null) result = caseExpression(nullCheckExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.IS_NULL:
+      {
+        IsNull isNull = (IsNull)theEObject;
+        T result = caseIsNull(isNull);
+        if (result == null) result = caseExpression(isNull);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.NOT_NULL:
+      {
+        NotNull notNull = (NotNull)theEObject;
+        T result = caseNotNull(notNull);
+        if (result == null) result = caseExpression(notNull);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -720,22 +728,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMigrationBlock(MigrationBlock object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sql Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sql Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSqlExpression(SqlExpression object)
   {
     return null;
   }
@@ -1264,6 +1256,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNullCheckExpression(NullCheckExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Is Null</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Is Null</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIsNull(IsNull object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Not Null</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Not Null</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNotNull(NotNull object)
   {
     return null;
   }

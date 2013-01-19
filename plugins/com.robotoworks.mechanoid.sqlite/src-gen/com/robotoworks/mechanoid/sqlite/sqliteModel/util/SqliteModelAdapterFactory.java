@@ -100,11 +100,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createMigrationBlockAdapter();
       }
       @Override
-      public Adapter caseSqlExpression(SqlExpression object)
-      {
-        return createSqlExpressionAdapter();
-      }
-      @Override
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
@@ -268,6 +263,16 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNullCheckExpression(NullCheckExpression object)
       {
         return createNullCheckExpressionAdapter();
+      }
+      @Override
+      public Adapter caseIsNull(IsNull object)
+      {
+        return createIsNullAdapter();
+      }
+      @Override
+      public Adapter caseNotNull(NotNull object)
+      {
+        return createNotNullAdapter();
       }
       @Override
       public Adapter caseColumnLiteral(ColumnLiteral object)
@@ -537,21 +542,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMigrationBlockAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression <em>Sql Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression
-   * @generated
-   */
-  public Adapter createSqlExpressionAdapter()
   {
     return null;
   }
@@ -1047,6 +1037,36 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNullCheckExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull <em>Is Null</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull
+   * @generated
+   */
+  public Adapter createIsNullAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull <em>Not Null</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull
+   * @generated
+   */
+  public Adapter createNotNullAdapter()
   {
     return null;
   }

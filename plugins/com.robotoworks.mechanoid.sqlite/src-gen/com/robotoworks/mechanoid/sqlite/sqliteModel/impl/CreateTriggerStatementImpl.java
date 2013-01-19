@@ -4,7 +4,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -142,7 +142,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * @generated
    * @ordered
    */
-  protected SqlExpression whenExpression;
+  protected Expression whenExpression;
 
   /**
    * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
@@ -286,7 +286,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public SqlExpression getWhenExpression()
+  public Expression getWhenExpression()
   {
     return whenExpression;
   }
@@ -296,9 +296,9 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhenExpression(SqlExpression newWhenExpression, NotificationChain msgs)
+  public NotificationChain basicSetWhenExpression(Expression newWhenExpression, NotificationChain msgs)
   {
-    SqlExpression oldWhenExpression = whenExpression;
+    Expression oldWhenExpression = whenExpression;
     whenExpression = newWhenExpression;
     if (eNotificationRequired())
     {
@@ -313,7 +313,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhenExpression(SqlExpression newWhenExpression)
+  public void setWhenExpression(Expression newWhenExpression)
   {
     if (newWhenExpression != whenExpression)
     {
@@ -417,7 +417,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
         setForEachRow((String)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
-        setWhenExpression((SqlExpression)newValue);
+        setWhenExpression((Expression)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__STATEMENTS:
         getStatements().clear();
@@ -453,7 +453,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
         setForEachRow(FOR_EACH_ROW_EDEFAULT);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION:
-        setWhenExpression((SqlExpression)null);
+        setWhenExpression((Expression)null);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__STATEMENTS:
         getStatements().clear();

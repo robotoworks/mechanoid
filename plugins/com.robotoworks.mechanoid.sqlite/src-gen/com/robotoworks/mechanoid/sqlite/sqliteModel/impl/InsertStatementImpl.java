@@ -3,9 +3,9 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -101,7 +101,7 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
    * @generated
    * @ordered
    */
-  protected EList<SqlExpression> expressions;
+  protected EList<Expression> expressions;
 
   /**
    * The cached value of the '{@link #getSelectStatement() <em>Select Statement</em>}' containment reference.
@@ -199,11 +199,11 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SqlExpression> getExpressions()
+  public EList<Expression> getExpressions()
   {
     if (expressions == null)
     {
-      expressions = new EObjectContainmentEList<SqlExpression>(SqlExpression.class, this, SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS);
+      expressions = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS);
     }
     return expressions;
   }
@@ -321,7 +321,7 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
         return;
       case SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS:
         getExpressions().clear();
-        getExpressions().addAll((Collection<? extends SqlExpression>)newValue);
+        getExpressions().addAll((Collection<? extends Expression>)newValue);
         return;
       case SqliteModelPackage.INSERT_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)newValue);

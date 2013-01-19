@@ -133,12 +133,12 @@ public interface SelectCoreExpression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Where Expression</em>' containment reference.
-   * @see #setWhereExpression(SqlExpression)
+   * @see #setWhereExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectCoreExpression_WhereExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getWhereExpression();
+  Expression getWhereExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getWhereExpression <em>Where Expression</em>}' containment reference.
@@ -148,11 +148,11 @@ public interface SelectCoreExpression extends EObject
    * @see #getWhereExpression()
    * @generated
    */
-  void setWhereExpression(SqlExpression value);
+  void setWhereExpression(Expression value);
 
   /**
    * Returns the value of the '<em><b>Group By Expressions</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqlExpression}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Group By Expressions</em>' containment reference list isn't clear,
@@ -164,7 +164,7 @@ public interface SelectCoreExpression extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<SqlExpression> getGroupByExpressions();
+  EList<Expression> getGroupByExpressions();
 
   /**
    * Returns the value of the '<em><b>Having Expression</b></em>' containment reference.
@@ -175,12 +175,12 @@ public interface SelectCoreExpression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Having Expression</em>' containment reference.
-   * @see #setHavingExpression(SqlExpression)
+   * @see #setHavingExpression(Expression)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectCoreExpression_HavingExpression()
    * @model containment="true"
    * @generated
    */
-  SqlExpression getHavingExpression();
+  Expression getHavingExpression();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression#getHavingExpression <em>Having Expression</em>}' containment reference.
@@ -190,6 +190,6 @@ public interface SelectCoreExpression extends EObject
    * @see #getHavingExpression()
    * @generated
    */
-  void setHavingExpression(SqlExpression value);
+  void setHavingExpression(Expression value);
 
 } // SelectCoreExpression
