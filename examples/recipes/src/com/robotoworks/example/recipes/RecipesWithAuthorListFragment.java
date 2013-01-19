@@ -1,9 +1,5 @@
 package com.robotoworks.example.recipes;
 
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
-import com.robotoworks.mechanoid.sqlite.SQuery;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,6 +8,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
+import com.robotoworks.mechanoid.sqlite.SQuery;
 
 public class RecipesWithAuthorListFragment extends ListFragment {
 
