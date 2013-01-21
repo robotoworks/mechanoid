@@ -15,39 +15,40 @@ import java.util.ArrayList;
 import java.util.List;
 import com.robotoworks.mechanoid.util.Closeables;
 
-import com.robotoworks.examples.recipes.content.RecipesRecord;
+import com.robotoworks.examples.recipes.content.AuthorsRecord;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
 			
-public abstract class AbstractRecipesByIdActions extends ContentProviderActions {
+public class DefaultAuthorsActions extends ContentProviderActions {
 	@Override
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		
 		
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-		
-		int affected = SQuery.newQuery()
-		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
-		.append(selection, selectionArgs)
-		.delete(db, Tables.RECIPES);
-		
-		return affected;
+
+		return db.delete(Tables.AUTHORS, selection, selectionArgs);
 	}
 	
 	@Override
 	public Uri insert(MechanoidContentProvider provider, Uri uri, ContentValues values){
-		return null; // Cannot insert on _id
+		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+
+		long id = db.insertOrThrow(Tables.AUTHORS, null, values);
+		
+		if(id > -1) {
+			return Authors.buildUriWithId(id);
+		}
+		
+		return null;
+		
 	}
 	
 	@Override
 	public int update(MechanoidContentProvider provider, Uri uri, ContentValues values, String selection, String[] selectionArgs){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		int affected = SQuery.newQuery()
-		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
-		.append(selection, selectionArgs)
-		.update(db, Tables.RECIPES, values);
-		
+		int affected = db.update(Tables.AUTHORS, values, selection, selectionArgs);
+
 		return affected;
 	}
 
@@ -55,10 +56,7 @@ public abstract class AbstractRecipesByIdActions extends ContentProviderActions 
 	public Cursor query(MechanoidContentProvider provider, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		return SQuery.newQuery()
-		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
-		.append(selection, selectionArgs)
-		.query(db, Tables.RECIPES, projection, sortOrder);
+		return db.query(Tables.AUTHORS, projection, selection, selectionArgs, null, null, sortOrder);
 	}
 	
 	@Override
@@ -73,7 +71,7 @@ public abstract class AbstractRecipesByIdActions extends ContentProviderActions 
 	    	db.beginTransaction();
 	    	
 	        for (int i = 0; i < numValues; i++) {
-	        	db.insertOrThrow(Tables.RECIPES, null, values[i]);
+	        	db.insertOrThrow(Tables.AUTHORS, null, values[i]);
 	        }
 			
 			db.setTransactionSuccessful();
@@ -96,10 +94,10 @@ public abstract class AbstractRecipesByIdActions extends ContentProviderActions 
 		ArrayList<T> items = new ArrayList<T>();
 		
 		try {
-			c = db.query(Tables.RECIPES, RecipesRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
+			c = db.query(Tables.AUTHORS, AuthorsRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
 		    
 		    while(c.moveToNext()) {
-		        items.add((T)RecipesRecord.fromCursor(c));
+		        items.add((T)AuthorsRecord.fromCursor(c));
 	        }
 	    } finally {
 	        Closeables.closeSilently(c);

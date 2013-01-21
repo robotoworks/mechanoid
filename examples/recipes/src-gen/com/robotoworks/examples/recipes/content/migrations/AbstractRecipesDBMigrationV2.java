@@ -12,12 +12,14 @@ public abstract class AbstractRecipesDBMigrationV2 extends SQLiteMigration {
 		db.execSQL(
 			"alter table recipes add column author_id integer "
 		);
+		
 		db.execSQL(
 			"create table authors ( " +
 			"_id integer primary key autoincrement, " +
 			"name text " +
 			") "
 		);
+		
 		db.execSQL(
 			"create view recipes_with_authors as " +
 			"select " +
@@ -30,5 +32,6 @@ public abstract class AbstractRecipesDBMigrationV2 extends SQLiteMigration {
 			"left join authors as a " +
 			"on r.author_id = a._id "
 		);
+		
 	}
 }

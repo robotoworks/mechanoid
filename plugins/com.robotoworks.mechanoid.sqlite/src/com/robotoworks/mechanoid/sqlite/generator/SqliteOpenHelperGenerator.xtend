@@ -2,17 +2,15 @@ package com.robotoworks.mechanoid.sqlite.generator
 
 import com.google.inject.Inject
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
-import org.eclipse.xtext.serializer.ISerializer
 
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement
 
 class SqliteOpenHelperGenerator {
-		@Inject extension ISerializer
+		@Inject extension SqliteDatabaseStatementGenerator
 		
 		def CharSequence generate(Model model, MigrationBlock snapshot) '''
 				/*
@@ -52,29 +50,9 @@ class SqliteOpenHelperGenerator {
 				
 					@Override
 					public void onCreate(SQLiteDatabase db) {
-						«FOR table : snapshot.statements.filter(typeof(CreateTableStatement))»
-						db.execSQL(
-							«FOR line : table.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
-							«ENDFOR»
-						);
-						«ENDFOR»
-						«FOR view : snapshot.statements.filter(typeof(CreateViewStatement))»
-						db.execSQL(
-							«FOR line : view.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
-							«ENDFOR»
-						);
-						
-						«ENDFOR»
-						«FOR trigger : snapshot.statements.filter(typeof(CreateTriggerStatement))»
-						db.execSQL(
-							«FOR line : trigger.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-							"«line.trim.replaceAll('\\\"', '\\\\\"')» "
-							«ENDFOR»
-						);
-						
-						«ENDFOR»
+						«snapshot.statements.filter([it instanceof CreateTableStatement]).generateStatements»
+						«snapshot.statements.filter([it instanceof CreateViewStatement]).generateStatements»
+						«snapshot.statements.filter([it instanceof CreateTriggerStatement]).generateStatements»
 					}
 				
 					@Override

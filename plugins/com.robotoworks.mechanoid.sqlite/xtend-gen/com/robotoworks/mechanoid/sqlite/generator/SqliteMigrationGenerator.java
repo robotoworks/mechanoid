@@ -2,18 +2,18 @@ package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
+import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseStatementGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.serializer.ISerializer;
 
 @SuppressWarnings("all")
 public class SqliteMigrationGenerator {
   @Inject
-  private ISerializer _iSerializer;
+  private SqliteDatabaseStatementGenerator _sqliteDatabaseStatementGenerator;
   
   public CharSequence generate(final Model model, final MigrationBlock migration, final int version) {
     StringConcatenation _builder = new StringConcatenation();
@@ -51,38 +51,11 @@ public class SqliteMigrationGenerator {
     _builder.append("\t");
     _builder.append("public void up(SQLiteDatabase db) {");
     _builder.newLine();
-    {
-      EList<DDLStatement> _statements = migration.getStatements();
-      for(final DDLStatement stmt : _statements) {
-        _builder.append("\t\t");
-        _builder.append("db.execSQL(");
-        _builder.newLine();
-        {
-          String _serialize = this._iSerializer.serialize(stmt);
-          String _trim = _serialize.trim();
-          String[] _split = _trim.split("\\r?\\n");
-          boolean _hasElements = false;
-          for(final String line : _split) {
-            if (!_hasElements) {
-              _hasElements = true;
-            } else {
-              _builder.appendImmediate(" +", "			");
-            }
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("\"");
-            String _trim_1 = line.trim();
-            String _replaceAll = _trim_1.replaceAll("\\\"", "\\\\\"");
-            _builder.append(_replaceAll, "			");
-            _builder.append(" \"");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        _builder.append("\t\t");
-        _builder.append(");");
-        _builder.newLine();
-      }
-    }
+    _builder.append("\t\t");
+    EList<DDLStatement> _statements = migration.getStatements();
+    CharSequence _generateStatements = this._sqliteDatabaseStatementGenerator.generateStatements(_statements);
+    _builder.append(_generateStatements, "		");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
