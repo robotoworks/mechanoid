@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.content;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentUris;
@@ -10,14 +11,22 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
 import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.util.Closeables;
 
 public class DefaultContentProviderActions extends ContentProviderActions {
 	
 	private String mSource;
+	private ActiveRecordFactory<?> mRecordFactory;
 
 	public DefaultContentProviderActions(String source) {
+		this(source, null);
+	}
+	
+	public <T extends ActiveRecord> DefaultContentProviderActions(String source, ActiveRecordFactory<T> recordFactory) {
 		mSource = source;
+		mRecordFactory = recordFactory;
 	}
 	
 	@Override
@@ -41,7 +50,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	@Override
 	public Uri insert(MechanoidContentProvider provider, Uri uri, ContentValues values){
 		if(ContentUris.parseId(uri) == -1) {
-			return null; // Cannot insert on _id
+			return null; // Cannot insert on _id (or should we?)
 		}
 		
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
@@ -116,24 +125,26 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
-//		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-//		
-//		Cursor c = null;
-//		
-//		ArrayList<T> items = new ArrayList<T>();
-//		
-//		try {
-//			c = db.query(mSource, BasketItemAccessoriesRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
-//		    
-//		    while(c.moveToNext()) {
-//		        items.add((T)BasketItemAccessoriesRecord.fromCursor(c));
-//	        }
-//	    } finally {
-//	        Closeables.closeSilently(c);
-//	    }
-//	    
-//	    return items;
+		if(mRecordFactory == null) {
+			return null;
+		}
 		
-		return null;
+		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+		
+		Cursor c = null;
+		
+		ArrayList<T> items = new ArrayList<T>();
+		
+		try {
+			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
+		    
+		    while(c.moveToNext()) {
+		        items.add((T)mRecordFactory.create(c));
+	        }
+	    } finally {
+	        Closeables.closeSilently(c);
+	    }
+	    
+	    return items;
 	}
 }

@@ -4,21 +4,16 @@
 package com.robotoworks.mechanoid.sqlite.generator
 
 import com.google.inject.Inject
+import com.google.inject.Provider
+import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
-import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator
-
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
-import com.google.inject.Provider
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -26,7 +21,6 @@ class SqliteModelGenerator implements IGenerator {
 	@Inject Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject Provider<SqliteMigrationGenerator> mMigrationGenerator
-	@Inject ContentProviderActionGenerator mActionGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
@@ -61,30 +55,6 @@ class SqliteModelGenerator implements IGenerator {
 		);
 		
 		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
-			item|
-			generateAction(resource, fsa, item, false)
-			if(item.hasAndroidPrimaryKey) {
-				generateAction(resource, fsa, item, true)
-			}
-		];
-
-		snapshot.statements.filter(typeof(CreateViewStatement)).forEach[
-			item|
-			generateAction(resource, fsa, item, false)
-			if(item.hasAndroidPrimaryKey) {
-				generateAction(resource, fsa, item, true)
-			}
-		];
-		
-		if(model.database.config != null) {
-			model.database.config.statements.filter([it instanceof ActionStatement]).forEach[
-				item|generateAction(resource, fsa, item as ActionStatement)
-			];
-			
-			
-		}
-		
-		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
 			statement|
 			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
 		];
@@ -106,48 +76,6 @@ class SqliteModelGenerator implements IGenerator {
 		)		
 	}
 
-	
-	def void generateAction(Resource resource, IFileSystemAccess fsa, ActionStatement action) { 
-		val model = resource.contents.head as Model
-		var genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(action.name.pascalize).concat("Actions"))
-	
-		fsa.generateFile(genFileName, 
-			mActionGenerator.generate(model, action)
-		)
-	}
-
-	
-	def dispatch void generateAction(Resource resource, IFileSystemAccess fsa, CreateTableStatement stmt, boolean forId) { 
-		val model = resource.contents.head as Model
-		
-		var genFileName = "";
-		if(forId) {
-			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("ByIdActions"))
-		} else {			
-			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("Actions"))
-		}
-		
-		fsa.generateFile(genFileName, 
-			mActionGenerator.generate(model, stmt, forId)
-		)
-	}
-
-	def dispatch void generateAction(Resource resource, IFileSystemAccess fsa, CreateViewStatement stmt, boolean forId) { 
-		var model = resource.contents.head as Model
-		
-		var genFileName = "";
-		if(forId) {
-			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("ByIdActions"))
-		} else {			
-			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("Actions"))
-		}
-		
-		fsa.generateFile(genFileName, 
-			mActionGenerator.generate(model, stmt, forId)
-		)
-	}
-
-	
 	def void generateMigration(Resource resource, IFileSystemAccess fsa, MigrationBlock migration, int version) { 
 		
 		var model = resource.contents.head as Model;

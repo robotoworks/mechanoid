@@ -9,7 +9,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
-public abstract class ContentProviderActions {
+public class ContentProviderActions {
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		return -1;
 	}
