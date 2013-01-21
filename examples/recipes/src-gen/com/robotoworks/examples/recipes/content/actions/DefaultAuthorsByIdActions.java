@@ -19,36 +19,35 @@ import com.robotoworks.examples.recipes.content.AuthorsRecord;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
 			
-public abstract class AbstractAuthorsActions extends ContentProviderActions {
+public class DefaultAuthorsByIdActions extends ContentProviderActions {
 	@Override
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		
 		
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-
-		return db.delete(Tables.AUTHORS, selection, selectionArgs);
+		
+		int affected = SQuery.newQuery()
+		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.append(selection, selectionArgs)
+		.delete(db, Tables.AUTHORS);
+		
+		return affected;
 	}
 	
 	@Override
 	public Uri insert(MechanoidContentProvider provider, Uri uri, ContentValues values){
-		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
-
-		long id = db.insertOrThrow(Tables.AUTHORS, null, values);
-		
-		if(id > -1) {
-			return Authors.buildUriWithId(id);
-		}
-		
-		return null;
-		
+		return null; // Cannot insert on _id
 	}
 	
 	@Override
 	public int update(MechanoidContentProvider provider, Uri uri, ContentValues values, String selection, String[] selectionArgs){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		int affected = db.update(Tables.AUTHORS, values, selection, selectionArgs);
-
+		int affected = SQuery.newQuery()
+		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.append(selection, selectionArgs)
+		.update(db, Tables.AUTHORS, values);
+		
 		return affected;
 	}
 
@@ -56,7 +55,10 @@ public abstract class AbstractAuthorsActions extends ContentProviderActions {
 	public Cursor query(MechanoidContentProvider provider, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		return db.query(Tables.AUTHORS, projection, selection, selectionArgs, null, null, sortOrder);
+		return SQuery.newQuery()
+		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.append(selection, selectionArgs)
+		.query(db, Tables.AUTHORS, projection, sortOrder);
 	}
 	
 	@Override

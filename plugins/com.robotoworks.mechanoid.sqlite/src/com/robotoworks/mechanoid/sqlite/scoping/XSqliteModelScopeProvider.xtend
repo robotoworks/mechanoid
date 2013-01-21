@@ -1,6 +1,20 @@
 package com.robotoworks.mechanoid.sqlite.scoping
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.Scopes
+
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
+	
+//	def IScope scope_SingleSourceTable_table(SingleSourceTable context, EReference reference) {
+//		
+//		var tableSources = EcoreUtil::getRootContainer(context).eAllContents.filter(typeof(CreateTableStatement))
+//
+//		return Scopes::scopeFor(tableSources.toIterable)
+//	}
 	
 //	def IScope scope_ResultColumn_table(ResultColumn context, EReference reference) {
 //		

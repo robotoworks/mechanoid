@@ -109,17 +109,11 @@ class SqliteModelGenerator implements IGenerator {
 	
 	def void generateAction(Resource resource, IFileSystemAccess fsa, ActionStatement action) { 
 		val model = resource.contents.head as Model
-		var genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(action.name.pascalize).concat("Actions"))
-		var genStubFileName = model.packageName.concat(".actions").resolveFileName(action.name.pascalize.concat("Actions"))			
+		var genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(action.name.pascalize).concat("Actions"))
 	
 		fsa.generateFile(genFileName, 
 			mActionGenerator.generate(model, action)
 		)
-		
-		fsa.generateFile(genStubFileName, 
-			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
-			mActionGenerator.generateStub(model, action)
-		)	
 	}
 
 	
@@ -127,46 +121,29 @@ class SqliteModelGenerator implements IGenerator {
 		val model = resource.contents.head as Model
 		
 		var genFileName = "";
-		var genStubFileName = "";
 		if(forId) {
-			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("ByIdActions"))
-			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("ByIdActions"))			
+			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("ByIdActions"))
 		} else {			
-			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("Actions"))
-			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("Actions"))
+			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("Actions"))
 		}
 		
 		fsa.generateFile(genFileName, 
 			mActionGenerator.generate(model, stmt, forId)
 		)
-		
-		fsa.generateFile(genStubFileName, 
-			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
-			mActionGenerator.generateStub(model, stmt, forId)
-		)
-		
 	}
 
 	def dispatch void generateAction(Resource resource, IFileSystemAccess fsa, CreateViewStatement stmt, boolean forId) { 
 		var model = resource.contents.head as Model
 		
 		var genFileName = "";
-		var genStubFileName = "";
 		if(forId) {
-			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("ByIdActions"))
-			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("ByIdActions"))			
+			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("ByIdActions"))
 		} else {			
-			genFileName = model.packageName.concat(".actions").resolveFileName("Abstract".concat(stmt.name.pascalize).concat("Actions"))
-			genStubFileName = model.packageName.concat(".actions").resolveFileName(stmt.name.pascalize.concat("Actions"))
+			genFileName = model.packageName.concat(".actions").resolveFileName("Default".concat(stmt.name.pascalize).concat("Actions"))
 		}
 		
 		fsa.generateFile(genFileName, 
 			mActionGenerator.generate(model, stmt, forId)
-		)
-		
-		fsa.generateFile(genStubFileName, 
-			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
-			mActionGenerator.generateStub(model, stmt, forId)
 		)
 	}
 

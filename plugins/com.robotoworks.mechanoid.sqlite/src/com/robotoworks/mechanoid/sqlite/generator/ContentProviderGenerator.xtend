@@ -31,6 +31,7 @@ class ContentProviderGenerator {
 			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
+			import com.robotoworks.mechanoid.content.ContentProviderActions;
 			
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
@@ -41,21 +42,21 @@ class ContentProviderGenerator {
 			«ENDFOR»
 			
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-			import «model.packageName».actions.«tbl.name.pascalize»Actions;
+			import «model.packageName».actions.Default«tbl.name.pascalize»Actions;
 			«IF tbl.hasAndroidPrimaryKey»
-			import «model.packageName».actions.«tbl.name.pascalize»ByIdActions;
+			import «model.packageName».actions.Default«tbl.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
 			«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-			import «model.packageName».actions.«vw.name.pascalize»Actions;
+			import «model.packageName».actions.Default«vw.name.pascalize»Actions;
 			«IF vw.hasAndroidPrimaryKey»
-			import «model.packageName».actions.«vw.name.pascalize»ByIdActions;
+			import «model.packageName».actions.Default«vw.name.pascalize»ByIdActions;
 			«ENDIF»
 			«ENDFOR»
 			«IF model.database.config !=null»
 			
 			«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-			import «model.packageName».actions.«(a as ActionStatement).name.pascalize»Actions;
+			import «model.packageName».actions.Default«(a as ActionStatement).name.pascalize»Actions;
 			«ENDFOR»
 			
 			«ENDIF»
@@ -63,7 +64,6 @@ class ContentProviderGenerator {
 			
 			    private static final UriMatcher sUriMatcher;
 				private static final String[] sContentTypes;
-				private static final Class<?>[] sActions;
 			    
 				«var counter=-1»
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
@@ -103,29 +103,7 @@ class ContentProviderGenerator {
 					«IF vw.hasAndroidPrimaryKey»
 					sContentTypes[«vw.name.underscore.toUpperCase»_ID] = «vw.name.pascalize».ITEM_CONTENT_TYPE;
 					«ENDIF»
-					«ENDFOR»
-					
-					sActions = new Class<?>[NUM_URI_MATCHERS];
-
-					«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-					sActions[«tbl.name.underscore.toUpperCase»] = «tbl.name.pascalize»Actions.class;
-					«IF tbl.hasAndroidPrimaryKey»
-					sActions[«tbl.name.underscore.toUpperCase»_ID] = «tbl.name.pascalize»ByIdActions.class;
-					«ENDIF»
-					«ENDFOR»
-					«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-					sActions[«vw.name.underscore.toUpperCase»] = «vw.name.pascalize»Actions.class;
-					«IF vw.hasAndroidPrimaryKey»
-					sActions[«vw.name.underscore.toUpperCase»_ID] = «vw.name.pascalize»ByIdActions.class;
-					«ENDIF»
-					«ENDFOR»
-					
-					«IF model.database.config !=null»
-					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-					sActions[«(a as ActionStatement).name.underscore.toUpperCase»] = «(a as ActionStatement).name.pascalize»Actions.class;
-					«ENDFOR»
-					«ENDIF»
-					
+					«ENDFOR»					
 				}
 				
 			    private static UriMatcher buildUriMatcher() {
@@ -177,7 +155,7 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					int affected = createActions(sActions[match]).delete(this, uri, selection, selectionArgs);
+					int affected = createActions(match).delete(this, uri, selection, selectionArgs);
 					
 					if(affected > 0) {
 						tryNotifyChange(uri);
@@ -195,7 +173,7 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					Uri newUri = createActions(sActions[match]).insert(this, uri, values);
+					Uri newUri = createActions(match).insert(this, uri, values);
 					
 					if(newUri != null) {
 						tryNotifyChange(uri);
@@ -213,7 +191,7 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					int affected = createActions(sActions[match]).bulkInsert(this, uri, values);
+					int affected = createActions(match).bulkInsert(this, uri, values);
 					
 					if(affected > 0) {
 						tryNotifyChange(uri);
@@ -235,7 +213,7 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					Cursor cursor = createActions(sActions[match]).query(this, uri, projection, selection, selectionArgs, sortOrder);
+					Cursor cursor = createActions(match).query(this, uri, projection, selection, selectionArgs, sortOrder);
 			
 					trySetNotificationUri(cursor, uri);
 					
@@ -250,7 +228,7 @@ class ContentProviderGenerator {
 						throw new UnsupportedOperationException("Unknown uri: " + uri);
 					}
 					
-					int affected = createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
+					int affected = createActions(match).update(this, uri, values, selection, selectionArgs);
 
 					if(affected > 0) {
 						tryNotifyChange(uri);
@@ -266,7 +244,7 @@ class ContentProviderGenerator {
 			            throw new UnsupportedOperationException("Unknown uri: " + uri);
 			        }
 			        
-			        return createActions(sActions[match]).selectRecords(this, uri, sQuery, sortOrder);
+			        return createActions(match).selectRecords(this, uri, sQuery, sortOrder);
 			    }
 			    
 			    @Override
@@ -287,7 +265,68 @@ class ContentProviderGenerator {
 			        }
 			    }
 			    
-
+			    @Override
+			    protected ContentProviderActions createActions(int id) {
+			    	switch(id) {
+						«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
+						case «tbl.name.underscore.toUpperCase»: 
+							return create«tbl.name.pascalize»Actions();
+						«IF tbl.hasAndroidPrimaryKey»
+						case «tbl.name.underscore.toUpperCase»_ID:
+							return create«tbl.name.pascalize»ByIdActions();
+						«ENDIF»
+						«ENDFOR»
+						«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
+						case «vw.name.underscore.toUpperCase»:
+							return create«vw.name.pascalize»Actions();
+						«IF vw.hasAndroidPrimaryKey»
+						case «vw.name.underscore.toUpperCase»_ID: 
+							return create«vw.name.pascalize»ByIdActions();
+						«ENDIF»
+						«ENDFOR»
+						«IF model.database.config !=null»
+						«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
+						case «(a as ActionStatement).name.underscore.toUpperCase»:
+							return create«(a as ActionStatement).name.pascalize»Actions();
+						«ENDFOR»
+						«ENDIF»
+						default:
+							throw new UnsupportedOperationException("Unknown id: " + id);
+			    	}
+			    }
+			    
+			    «FOR tbl:snapshot.statements.filter(typeof(CreateTableStatement))»
+			    «IF tbl.hasAndroidPrimaryKey»
+			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
+			    	return new Default«tbl.name.pascalize»ByIdActions();
+			    }
+			    
+			    «ENDIF»
+			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
+			    	return new Default«tbl.name.pascalize»Actions();
+			    }
+			    
+			    «ENDFOR»
+			    «FOR view:snapshot.statements.filter(typeof(CreateViewStatement))»
+			    «IF view.hasAndroidPrimaryKey»
+			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
+			    	return new Default«view.name.pascalize»ByIdActions();
+			    }
+			    
+			    «ENDIF»
+			    protected ContentProviderActions create«view.name.pascalize»Actions() {
+			    	return new Default«view.name.pascalize»Actions();
+			    }
+			    
+			    «ENDFOR»
+				«IF model.database.config !=null»
+				«FOR a : model.database.config.statements.filter(typeof(ActionStatement))»
+				protected ContentProviderActions create«a.name.pascalize»Actions() {
+					return new Default«a.name.pascalize»Actions();
+				}
+				
+				«ENDFOR»
+				«ENDIF»
 			}
 			'''
 			

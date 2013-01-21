@@ -18,23 +18,23 @@ import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.content.ContentProviderActions;
 
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
 
 
-import com.robotoworks.examples.recipes.content.actions.RecipesActions;
-import com.robotoworks.examples.recipes.content.actions.RecipesByIdActions;
-import com.robotoworks.examples.recipes.content.actions.AuthorsActions;
-import com.robotoworks.examples.recipes.content.actions.AuthorsByIdActions;
-import com.robotoworks.examples.recipes.content.actions.RecipesWithAuthorsActions;
-import com.robotoworks.examples.recipes.content.actions.RecipesWithAuthorsByIdActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultRecipesActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultRecipesByIdActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultAuthorsActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultAuthorsByIdActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultRecipesWithAuthorsActions;
+import com.robotoworks.examples.recipes.content.actions.DefaultRecipesWithAuthorsByIdActions;
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
 
     private static final UriMatcher sUriMatcher;
 	private static final String[] sContentTypes;
-	private static final Class<?>[] sActions;
     
 	private static final int RECIPES = 0;
 	private static final int RECIPES_ID = 1;
@@ -57,17 +57,6 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 		sContentTypes[AUTHORS_ID] = Authors.ITEM_CONTENT_TYPE;
 		sContentTypes[RECIPES_WITH_AUTHORS] = RecipesWithAuthors.CONTENT_TYPE;
 		sContentTypes[RECIPES_WITH_AUTHORS_ID] = RecipesWithAuthors.ITEM_CONTENT_TYPE;
-		
-		sActions = new Class<?>[NUM_URI_MATCHERS];
-
-		sActions[RECIPES] = RecipesActions.class;
-		sActions[RECIPES_ID] = RecipesByIdActions.class;
-		sActions[AUTHORS] = AuthorsActions.class;
-		sActions[AUTHORS_ID] = AuthorsByIdActions.class;
-		sActions[RECIPES_WITH_AUTHORS] = RecipesWithAuthorsActions.class;
-		sActions[RECIPES_WITH_AUTHORS_ID] = RecipesWithAuthorsByIdActions.class;
-		
-		
 	}
 	
     private static UriMatcher buildUriMatcher() {
@@ -107,7 +96,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
 		
-		int affected = createActions(sActions[match]).delete(this, uri, selection, selectionArgs);
+		int affected = createActions(match).delete(this, uri, selection, selectionArgs);
 		
 		if(affected > 0) {
 			tryNotifyChange(uri);
@@ -125,7 +114,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
 		
-		Uri newUri = createActions(sActions[match]).insert(this, uri, values);
+		Uri newUri = createActions(match).insert(this, uri, values);
 		
 		if(newUri != null) {
 			tryNotifyChange(uri);
@@ -143,7 +132,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
 		
-		int affected = createActions(sActions[match]).bulkInsert(this, uri, values);
+		int affected = createActions(match).bulkInsert(this, uri, values);
 		
 		if(affected > 0) {
 			tryNotifyChange(uri);
@@ -165,7 +154,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
 		
-		Cursor cursor = createActions(sActions[match]).query(this, uri, projection, selection, selectionArgs, sortOrder);
+		Cursor cursor = createActions(match).query(this, uri, projection, selection, selectionArgs, sortOrder);
 
 		trySetNotificationUri(cursor, uri);
 		
@@ -180,7 +169,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
 		
-		int affected = createActions(sActions[match]).update(this, uri, values, selection, selectionArgs);
+		int affected = createActions(match).update(this, uri, values, selection, selectionArgs);
 
 		if(affected > 0) {
 			tryNotifyChange(uri);
@@ -196,7 +185,7 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
             throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
         
-        return createActions(sActions[match]).selectRecords(this, uri, sQuery, sortOrder);
+        return createActions(match).selectRecords(this, uri, sQuery, sortOrder);
     }
     
     @Override
@@ -217,5 +206,48 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
         }
     }
     
-
+    @Override
+    protected ContentProviderActions createActions(int id) {
+    	switch(id) {
+			case RECIPES: 
+				return createRecipesActions();
+			case RECIPES_ID:
+				return createRecipesByIdActions();
+			case AUTHORS: 
+				return createAuthorsActions();
+			case AUTHORS_ID:
+				return createAuthorsByIdActions();
+			case RECIPES_WITH_AUTHORS:
+				return createRecipesWithAuthorsActions();
+			case RECIPES_WITH_AUTHORS_ID: 
+				return createRecipesWithAuthorsByIdActions();
+			default:
+				throw new UnsupportedOperationException("Unknown id: " + id);
+    	}
+    }
+    
+    protected ContentProviderActions createRecipesByIdActions() {
+    	return new DefaultRecipesByIdActions();
+    }
+    
+    protected ContentProviderActions createRecipesActions() {
+    	return new DefaultRecipesActions();
+    }
+    
+    protected ContentProviderActions createAuthorsByIdActions() {
+    	return new DefaultAuthorsByIdActions();
+    }
+    
+    protected ContentProviderActions createAuthorsActions() {
+    	return new DefaultAuthorsActions();
+    }
+    
+    protected ContentProviderActions createRecipesWithAuthorsByIdActions() {
+    	return new DefaultRecipesWithAuthorsByIdActions();
+    }
+    
+    protected ContentProviderActions createRecipesWithAuthorsActions() {
+    	return new DefaultRecipesWithAuthorsActions();
+    }
+    
 }

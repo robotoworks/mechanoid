@@ -29,13 +29,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 		return true;
 	}
 	
-	protected ContentProviderActions createActions(Class<?> clazz) {
-		try {
-			return (ContentProviderActions) clazz.newInstance();
-		} catch (Exception e) {
-			throw new RuntimeException("Unable to create actions", e);
-		}
-	}
+	protected abstract ContentProviderActions createActions(int id);
 
 	protected abstract MechanoidSQLiteOpenHelper createOpenHelper(Context context);
 

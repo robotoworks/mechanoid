@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import com.robotoworks.mechanoid.util.Closeables;
 
-import com.robotoworks.examples.recipes.content.AuthorsRecord;
+import com.robotoworks.examples.recipes.content.RecipesRecord;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 			
-public abstract class AbstractAuthorsByIdActions extends ContentProviderActions {
+public class DefaultRecipesByIdActions extends ContentProviderActions {
 	@Override
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		
@@ -27,9 +27,9 @@ public abstract class AbstractAuthorsByIdActions extends ContentProviderActions 
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
 		int affected = SQuery.newQuery()
-		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 		.append(selection, selectionArgs)
-		.delete(db, Tables.AUTHORS);
+		.delete(db, Tables.RECIPES);
 		
 		return affected;
 	}
@@ -44,9 +44,9 @@ public abstract class AbstractAuthorsByIdActions extends ContentProviderActions 
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
 		int affected = SQuery.newQuery()
-		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 		.append(selection, selectionArgs)
-		.update(db, Tables.AUTHORS, values);
+		.update(db, Tables.RECIPES, values);
 		
 		return affected;
 	}
@@ -56,9 +56,9 @@ public abstract class AbstractAuthorsByIdActions extends ContentProviderActions 
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
 		return SQuery.newQuery()
-		.expr(Authors._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
+		.expr(Recipes._ID, SQuery.Op.EQ, uri.getPathSegments().get(1))
 		.append(selection, selectionArgs)
-		.query(db, Tables.AUTHORS, projection, sortOrder);
+		.query(db, Tables.RECIPES, projection, sortOrder);
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public abstract class AbstractAuthorsByIdActions extends ContentProviderActions 
 	    	db.beginTransaction();
 	    	
 	        for (int i = 0; i < numValues; i++) {
-	        	db.insertOrThrow(Tables.AUTHORS, null, values[i]);
+	        	db.insertOrThrow(Tables.RECIPES, null, values[i]);
 	        }
 			
 			db.setTransactionSuccessful();
@@ -96,10 +96,10 @@ public abstract class AbstractAuthorsByIdActions extends ContentProviderActions 
 		ArrayList<T> items = new ArrayList<T>();
 		
 		try {
-			c = db.query(Tables.AUTHORS, AuthorsRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
+			c = db.query(Tables.RECIPES, RecipesRecord.PROJECTION, sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
 		    
 		    while(c.moveToNext()) {
-		        items.add((T)AuthorsRecord.fromCursor(c));
+		        items.add((T)RecipesRecord.fromCursor(c));
 	        }
 	    } finally {
 	        Closeables.closeSilently(c);
