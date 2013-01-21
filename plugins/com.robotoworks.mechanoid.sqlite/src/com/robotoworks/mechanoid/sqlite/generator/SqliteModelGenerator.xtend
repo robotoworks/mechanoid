@@ -152,18 +152,12 @@ class SqliteModelGenerator implements IGenerator {
 		
 		var model = resource.contents.head as Model;
 		
-		var genFileName = model.packageName.concat(".migrations").resolveFileName("Abstract".concat(model.database.name.pascalize).concat("MigrationV").concat(String::valueOf(version)))
-		var genStubFileName = model.packageName.concat(".migrations").resolveFileName(model.database.name.pascalize.concat("MigrationV").concat(String::valueOf(version)))
+		var genFileName = model.packageName.concat(".migrations").resolveFileName("Default".concat(model.database.name.pascalize).concat("MigrationV").concat(String::valueOf(version)))
 			
 		var generator = mMigrationGenerator.get()
 		
 		fsa.generateFile(genFileName, 
 			generator.generate(model, migration, version)
-		)
-		
-		fsa.generateFile(genStubFileName, 
-			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT, 
-			generator.generateStub(model, migration, version)
 		)
 	}
 

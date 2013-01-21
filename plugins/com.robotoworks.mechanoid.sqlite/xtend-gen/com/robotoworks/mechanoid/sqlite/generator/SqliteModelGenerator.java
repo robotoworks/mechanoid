@@ -269,26 +269,14 @@ public class SqliteModelGenerator implements IGenerator {
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);
-    String _concat_1 = "Abstract".concat(_pascalize);
+    String _concat_1 = "Default".concat(_pascalize);
     String _concat_2 = _concat_1.concat("MigrationV");
     String _valueOf = String.valueOf(version);
     String _concat_3 = _concat_2.concat(_valueOf);
     String genFileName = Strings.resolveFileName(_concat, _concat_3);
-    String _packageName_1 = model.getPackageName();
-    String _concat_4 = _packageName_1.concat(".migrations");
-    DatabaseBlock _database_1 = model.getDatabase();
-    String _name_1 = _database_1.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_5 = _pascalize_1.concat("MigrationV");
-    String _valueOf_1 = String.valueOf(version);
-    String _concat_6 = _concat_5.concat(_valueOf_1);
-    String genStubFileName = Strings.resolveFileName(_concat_4, _concat_6);
     SqliteMigrationGenerator generator = this.mMigrationGenerator.get();
     CharSequence _generate = generator.generate(model, migration, version);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = generator.generateStub(model, migration, version);
-    fsa.generateFile(genStubFileName, 
-      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   public void generateAction(final Resource resource, final IFileSystemAccess fsa, final DDLStatement stmt, final boolean forId) {
