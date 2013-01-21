@@ -62,7 +62,7 @@ public class SqliteOpenHelperGenerator {
             _builder.append("import ");
             String _packageName_1 = model.getPackageName();
             _builder.append(_packageName_1, "");
-            _builder.append(".migrations.");
+            _builder.append(".migrations.Default");
             DatabaseBlock _database_2 = model.getDatabase();
             String _name = _database_2.getName();
             String _pascalize = Strings.pascalize(_name);
@@ -235,7 +235,7 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("\t");
-            _builder.append("return new ");
+            _builder.append("return create");
             DatabaseBlock _database_9 = model.getDatabase();
             String _name_8 = _database_9.getName();
             String _pascalize_3 = Strings.pascalize(_name_8);
@@ -266,6 +266,52 @@ public class SqliteOpenHelperGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    {
+      DatabaseBlock _database_10 = model.getDatabase();
+      EList<MigrationBlock> _migrations_5 = _database_10.getMigrations();
+      int _size_3 = _migrations_5.size();
+      boolean _greaterThan_2 = (_size_3 > 1);
+      if (_greaterThan_2) {
+        _builder.append("\t");
+        int version_2 = 1;
+        _builder.newLineIfNotEmpty();
+        {
+          DatabaseBlock _database_11 = model.getDatabase();
+          EList<MigrationBlock> _migrations_6 = _database_11.getMigrations();
+          Iterable<MigrationBlock> _drop_2 = IterableExtensions.<MigrationBlock>drop(_migrations_6, 1);
+          for(final MigrationBlock migration_2 : _drop_2) {
+            _builder.append("\t");
+            _builder.append("protected SQLiteMigration create");
+            DatabaseBlock _database_12 = model.getDatabase();
+            String _name_9 = _database_12.getName();
+            String _pascalize_4 = Strings.pascalize(_name_9);
+            _builder.append(_pascalize_4, "	");
+            _builder.append("MigrationV");
+            int _plus_2 = (version_2 + 1);
+            int _version_2 = version_2 = _plus_2;
+            _builder.append(_version_2, "	");
+            _builder.append("() {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("return new Default");
+            DatabaseBlock _database_13 = model.getDatabase();
+            String _name_10 = _database_13.getName();
+            String _pascalize_5 = Strings.pascalize(_name_10);
+            _builder.append(_pascalize_5, "		");
+            _builder.append("MigrationV");
+            _builder.append(version_2, "		");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+          }
+        }
+      }
+    }
     _builder.append("}");
     _builder.newLine();
     return _builder;

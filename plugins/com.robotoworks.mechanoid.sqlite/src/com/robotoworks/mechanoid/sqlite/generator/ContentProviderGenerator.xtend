@@ -31,35 +31,19 @@ class ContentProviderGenerator {
 			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 			import com.robotoworks.mechanoid.sqlite.SQuery;
+			import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
 			import com.robotoworks.mechanoid.content.ContentProviderActions;
-			
+			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
 			«ENDFOR»
 			«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«vw.name.pascalize»;
-			
 			«ENDFOR»
-			
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
-			import «model.packageName».actions.Default«tbl.name.pascalize»Actions;
-			«IF tbl.hasAndroidPrimaryKey»
-			import «model.packageName».actions.Default«tbl.name.pascalize»ByIdActions;
-			«ENDIF»
-			«ENDFOR»
-			«FOR vw : snapshot.statements.filter(typeof(CreateViewStatement))»
-			import «model.packageName».actions.Default«vw.name.pascalize»Actions;
-			«IF vw.hasAndroidPrimaryKey»
-			import «model.packageName».actions.Default«vw.name.pascalize»ByIdActions;
-			«ENDIF»
-			«ENDFOR»
-			«IF model.database.config !=null»
+			import «model.packageName».«tbl.name.pascalize»Record;
+			«ENDFOR»			
 			
-			«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-			import «model.packageName».actions.Default«(a as ActionStatement).name.pascalize»Actions;
-			«ENDFOR»
-			
-			«ENDIF»
 			public abstract class Abstract«model.database.name.pascalize»ContentProvider extends MechanoidContentProvider {
 			
 			    private static final UriMatcher sUriMatcher;
@@ -298,31 +282,31 @@ class ContentProviderGenerator {
 			    «FOR tbl:snapshot.statements.filter(typeof(CreateTableStatement))»
 			    «IF tbl.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
-			    	return new Default«tbl.name.pascalize»ByIdActions();
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», true, «tbl.name.pascalize»Record.getFactory());
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
-			    	return new Default«tbl.name.pascalize»Actions();
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», false, «tbl.name.pascalize»Record.getFactory());
 			    }
 			    
 			    «ENDFOR»
 			    «FOR view:snapshot.statements.filter(typeof(CreateViewStatement))»
 			    «IF view.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
-			    	return new Default«view.name.pascalize»ByIdActions();
+			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», true);
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«view.name.pascalize»Actions() {
-			    	return new Default«view.name.pascalize»Actions();
+			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», false);
 			    }
 			    
 			    «ENDFOR»
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter(typeof(ActionStatement))»
 				protected ContentProviderActions create«a.name.pascalize»Actions() {
-					return new Default«a.name.pascalize»Actions();
+					return new ContentProviderActions();
 				}
 				
 				«ENDFOR»

@@ -1,35 +1,26 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sqlite.generator.ActiveRecordGenerator;
-import com.robotoworks.mechanoid.sqlite.generator.ContentProviderActionGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderContractGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderGenerator;
-import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshotBuilder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteOpenHelperGenerator;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
@@ -50,9 +41,6 @@ public class SqliteModelGenerator implements IGenerator {
   
   @Inject
   private Provider<SqliteMigrationGenerator> mMigrationGenerator;
-  
-  @Inject
-  private ContentProviderActionGenerator mActionGenerator;
   
   @Inject
   private ActiveRecordGenerator mActiveRecordGenerator;
@@ -113,58 +101,14 @@ public class SqliteModelGenerator implements IGenerator {
     EList<DDLStatement> _statements = snapshot.getStatements();
     Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
     final Procedure1<CreateTableStatement> _function = new Procedure1<CreateTableStatement>() {
-        public void apply(final CreateTableStatement item) {
-          SqliteModelGenerator.this.generateAction(resource, fsa, item, false);
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(item);
-          if (_hasAndroidPrimaryKey) {
-            SqliteModelGenerator.this.generateAction(resource, fsa, item, true);
-          }
-        }
-      };
-    IterableExtensions.<CreateTableStatement>forEach(_filter, _function);
-    EList<DDLStatement> _statements_1 = snapshot.getStatements();
-    Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
-    final Procedure1<CreateViewStatement> _function_1 = new Procedure1<CreateViewStatement>() {
-        public void apply(final CreateViewStatement item) {
-          SqliteModelGenerator.this.generateAction(resource, fsa, item, false);
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(item);
-          if (_hasAndroidPrimaryKey) {
-            SqliteModelGenerator.this.generateAction(resource, fsa, item, true);
-          }
-        }
-      };
-    IterableExtensions.<CreateViewStatement>forEach(_filter_1, _function_1);
-    DatabaseBlock _database_6 = model.getDatabase();
-    ConfigBlock _config = _database_6.getConfig();
-    boolean _notEquals = (!Objects.equal(_config, null));
-    if (_notEquals) {
-      DatabaseBlock _database_7 = model.getDatabase();
-      ConfigBlock _config_1 = _database_7.getConfig();
-      EList<ConfigurationStatement> _statements_2 = _config_1.getStatements();
-      final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
-          public Boolean apply(final ConfigurationStatement it) {
-            return Boolean.valueOf((it instanceof ActionStatement));
-          }
-        };
-      Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_2);
-      final Procedure1<ConfigurationStatement> _function_3 = new Procedure1<ConfigurationStatement>() {
-          public void apply(final ConfigurationStatement item) {
-            SqliteModelGenerator.this.generateAction(resource, fsa, ((ActionStatement) item));
-          }
-        };
-      IterableExtensions.<ConfigurationStatement>forEach(_filter_2, _function_3);
-    }
-    EList<DDLStatement> _statements_3 = snapshot.getStatements();
-    Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_3, CreateTableStatement.class);
-    final Procedure1<CreateTableStatement> _function_4 = new Procedure1<CreateTableStatement>() {
         public void apply(final CreateTableStatement statement) {
           SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
         }
       };
-    IterableExtensions.<CreateTableStatement>forEach(_filter_3, _function_4);
-    DatabaseBlock _database_8 = model.getDatabase();
-    EList<MigrationBlock> _migrations_1 = _database_8.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_5 = new Procedure2<MigrationBlock,Integer>() {
+    IterableExtensions.<CreateTableStatement>forEach(_filter, _function);
+    DatabaseBlock _database_6 = model.getDatabase();
+    EList<MigrationBlock> _migrations_1 = _database_6.getMigrations();
+    final Procedure2<MigrationBlock,Integer> _function_1 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -173,7 +117,7 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_5);
+    IterableExtensions.<MigrationBlock>forEach(_migrations_1, _function_1);
   }
   
   public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {
@@ -189,77 +133,6 @@ public class SqliteModelGenerator implements IGenerator {
     fsa.generateFile(genFileName, _generate);
   }
   
-  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final ActionStatement action) {
-    EList<EObject> _contents = resource.getContents();
-    EObject _head = IterableExtensions.<EObject>head(_contents);
-    final Model model = ((Model) _head);
-    String _packageName = model.getPackageName();
-    String _concat = _packageName.concat(".actions");
-    String _name = action.getName();
-    String _pascalize = Strings.pascalize(_name);
-    String _concat_1 = "Default".concat(_pascalize);
-    String _concat_2 = _concat_1.concat("Actions");
-    String genFileName = Strings.resolveFileName(_concat, _concat_2);
-    CharSequence _generate = this.mActionGenerator.generate(model, action);
-    fsa.generateFile(genFileName, _generate);
-  }
-  
-  protected void _generateAction(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement stmt, final boolean forId) {
-    EList<EObject> _contents = resource.getContents();
-    EObject _head = IterableExtensions.<EObject>head(_contents);
-    final Model model = ((Model) _head);
-    String genFileName = "";
-    if (forId) {
-      String _packageName = model.getPackageName();
-      String _concat = _packageName.concat(".actions");
-      String _name = stmt.getName();
-      String _pascalize = Strings.pascalize(_name);
-      String _concat_1 = "Default".concat(_pascalize);
-      String _concat_2 = _concat_1.concat("ByIdActions");
-      String _resolveFileName = Strings.resolveFileName(_concat, _concat_2);
-      genFileName = _resolveFileName;
-    } else {
-      String _packageName_1 = model.getPackageName();
-      String _concat_3 = _packageName_1.concat(".actions");
-      String _name_1 = stmt.getName();
-      String _pascalize_1 = Strings.pascalize(_name_1);
-      String _concat_4 = "Default".concat(_pascalize_1);
-      String _concat_5 = _concat_4.concat("Actions");
-      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_5);
-      genFileName = _resolveFileName_1;
-    }
-    CharSequence _generate = this.mActionGenerator.generate(model, stmt, forId);
-    fsa.generateFile(genFileName, _generate);
-  }
-  
-  protected void _generateAction(final Resource resource, final IFileSystemAccess fsa, final CreateViewStatement stmt, final boolean forId) {
-    EList<EObject> _contents = resource.getContents();
-    EObject _head = IterableExtensions.<EObject>head(_contents);
-    Model model = ((Model) _head);
-    String genFileName = "";
-    if (forId) {
-      String _packageName = model.getPackageName();
-      String _concat = _packageName.concat(".actions");
-      String _name = stmt.getName();
-      String _pascalize = Strings.pascalize(_name);
-      String _concat_1 = "Default".concat(_pascalize);
-      String _concat_2 = _concat_1.concat("ByIdActions");
-      String _resolveFileName = Strings.resolveFileName(_concat, _concat_2);
-      genFileName = _resolveFileName;
-    } else {
-      String _packageName_1 = model.getPackageName();
-      String _concat_3 = _packageName_1.concat(".actions");
-      String _name_1 = stmt.getName();
-      String _pascalize_1 = Strings.pascalize(_name_1);
-      String _concat_4 = "Default".concat(_pascalize_1);
-      String _concat_5 = _concat_4.concat("Actions");
-      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_5);
-      genFileName = _resolveFileName_1;
-    }
-    CharSequence _generate = this.mActionGenerator.generate(model, stmt, forId);
-    fsa.generateFile(genFileName, _generate);
-  }
-  
   public void generateMigration(final Resource resource, final IFileSystemAccess fsa, final MigrationBlock migration, final int version) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
@@ -269,38 +142,13 @@ public class SqliteModelGenerator implements IGenerator {
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);
-    String _concat_1 = "Abstract".concat(_pascalize);
+    String _concat_1 = "Default".concat(_pascalize);
     String _concat_2 = _concat_1.concat("MigrationV");
     String _valueOf = String.valueOf(version);
     String _concat_3 = _concat_2.concat(_valueOf);
     String genFileName = Strings.resolveFileName(_concat, _concat_3);
-    String _packageName_1 = model.getPackageName();
-    String _concat_4 = _packageName_1.concat(".migrations");
-    DatabaseBlock _database_1 = model.getDatabase();
-    String _name_1 = _database_1.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_5 = _pascalize_1.concat("MigrationV");
-    String _valueOf_1 = String.valueOf(version);
-    String _concat_6 = _concat_5.concat(_valueOf_1);
-    String genStubFileName = Strings.resolveFileName(_concat_4, _concat_6);
     SqliteMigrationGenerator generator = this.mMigrationGenerator.get();
     CharSequence _generate = generator.generate(model, migration, version);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = generator.generateStub(model, migration, version);
-    fsa.generateFile(genStubFileName, 
-      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
-  }
-  
-  public void generateAction(final Resource resource, final IFileSystemAccess fsa, final DDLStatement stmt, final boolean forId) {
-    if (stmt instanceof CreateTableStatement) {
-      _generateAction(resource, fsa, (CreateTableStatement)stmt, forId);
-      return;
-    } else if (stmt instanceof CreateViewStatement) {
-      _generateAction(resource, fsa, (CreateViewStatement)stmt, forId);
-      return;
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(resource, fsa, stmt, forId).toString());
-    }
   }
 }

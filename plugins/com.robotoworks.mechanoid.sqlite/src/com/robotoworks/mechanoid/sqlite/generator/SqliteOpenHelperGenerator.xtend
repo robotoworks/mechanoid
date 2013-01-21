@@ -26,7 +26,7 @@ class SqliteOpenHelperGenerator {
 				«IF model.database.migrations.size > 1»
 				«var version = 1»
 				«FOR migration : model.database.migrations.drop(1)»
-				import «model.packageName».migrations.«model.database.name.pascalize»MigrationV«version=version+1»;
+				import «model.packageName».migrations.Default«model.database.name.pascalize»MigrationV«version=version+1»;
 				«ENDFOR»
 				«ENDIF»
 				
@@ -62,7 +62,7 @@ class SqliteOpenHelperGenerator {
 						switch(version) {
 							«FOR migration : model.database.migrations.drop(1)»
 							case «version=version+1»:
-								return new «model.database.name.pascalize»MigrationV«version»();
+								return create«model.database.name.pascalize»MigrationV«version»();
 							«ENDFOR»
 							default:
 								throw new IllegalStateException("No migration for version " + version);
@@ -71,6 +71,15 @@ class SqliteOpenHelperGenerator {
 						throw new IllegalStateException("No migrations for any version");
 						«ENDIF»
 					}
+					
+					«IF model.database.migrations.size > 1»
+					«var version = 1»
+					«FOR migration : model.database.migrations.drop(1)»
+					protected SQLiteMigration create«model.database.name.pascalize»MigrationV«version=version+1»() {
+						return new Default«model.database.name.pascalize»MigrationV«version»();
+					}
+					«ENDFOR»
+					«ENDIF»
 				}
 		'''
 			
