@@ -33,7 +33,7 @@ class ContentProviderGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
 			import com.robotoworks.mechanoid.content.ContentProviderActions;
-			import com.example.app1.db.Abstract«model.database.name.pascalize»OpenHelper.Tables;
+			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
 			«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
 			import «model.packageName».«model.database.name.pascalize»Contract.«tbl.name.pascalize»;
 			«ENDFOR»

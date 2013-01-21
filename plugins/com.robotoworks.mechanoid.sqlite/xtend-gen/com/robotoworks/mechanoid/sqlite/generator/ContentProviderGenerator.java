@@ -70,7 +70,10 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.ContentProviderActions;");
     _builder.newLine();
-    _builder.append("import com.example.app1.db.Abstract");
+    _builder.append("import ");
+    String _packageName_1 = model.getPackageName();
+    _builder.append(_packageName_1, "");
+    _builder.append(".Abstract");
     DatabaseBlock _database = model.getDatabase();
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);
@@ -82,8 +85,8 @@ public class ContentProviderGenerator {
       Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
       for(final CreateTableStatement tbl : _filter) {
         _builder.append("import ");
-        String _packageName_1 = model.getPackageName();
-        _builder.append(_packageName_1, "");
+        String _packageName_2 = model.getPackageName();
+        _builder.append(_packageName_2, "");
         _builder.append(".");
         DatabaseBlock _database_1 = model.getDatabase();
         String _name_1 = _database_1.getName();
@@ -102,8 +105,8 @@ public class ContentProviderGenerator {
       Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
       for(final CreateViewStatement vw : _filter_1) {
         _builder.append("import ");
-        String _packageName_2 = model.getPackageName();
-        _builder.append(_packageName_2, "");
+        String _packageName_3 = model.getPackageName();
+        _builder.append(_packageName_3, "");
         _builder.append(".");
         DatabaseBlock _database_2 = model.getDatabase();
         String _name_3 = _database_2.getName();
@@ -122,8 +125,8 @@ public class ContentProviderGenerator {
       Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
       for(final CreateTableStatement tbl_1 : _filter_2) {
         _builder.append("import ");
-        String _packageName_3 = model.getPackageName();
-        _builder.append(_packageName_3, "");
+        String _packageName_4 = model.getPackageName();
+        _builder.append(_packageName_4, "");
         _builder.append(".");
         String _name_5 = tbl_1.getName();
         String _pascalize_5 = Strings.pascalize(_name_5);
