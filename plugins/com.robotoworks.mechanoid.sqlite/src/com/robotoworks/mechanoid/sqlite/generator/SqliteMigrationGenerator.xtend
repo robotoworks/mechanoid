@@ -1,18 +1,14 @@
 package com.robotoworks.mechanoid.sqlite.generator
 
+import com.google.inject.Inject
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
-import com.google.inject.Inject
-import org.eclipse.xtext.serializer.ISerializer
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import org.eclipse.internal.xtend.util.StringHelper
-import org.eclipse.xtext.util.Strings
 
 class SqliteMigrationGenerator {
 	
-		@Inject extension ISerializer
+		@Inject extension SqliteDatabaseStatementGenerator
 		
 		def CharSequence generate(Model model, MigrationBlock migration, int version) '''
 			/*
@@ -26,13 +22,7 @@ class SqliteMigrationGenerator {
 			public abstract class Abstract«model.database.name.pascalize»MigrationV«version» extends SQLiteMigration {
 				@Override
 				public void up(SQLiteDatabase db) {
-					«FOR stmt : migration.statements»
-					db.execSQL(
-						«FOR line : stmt.serialize.trim.split("\\r?\\n") SEPARATOR " +"»
-						"«line.trim.replaceAll('\\\"', '\\\\\"')» "
-						«ENDFOR»
-					);
-					«ENDFOR»
+					«migration.statements.generateStatements»
 				}
 			}
 			'''

@@ -15,7 +15,7 @@ import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
 			
-public abstract class AbstractRecipesWithAuthorsByIdActions extends ContentProviderActions {
+public class DefaultRecipesWithAuthorsByIdActions extends ContentProviderActions {
 	@Override
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		return -1;

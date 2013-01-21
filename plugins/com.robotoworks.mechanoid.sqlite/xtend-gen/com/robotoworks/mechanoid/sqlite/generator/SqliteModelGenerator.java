@@ -197,20 +197,11 @@ public class SqliteModelGenerator implements IGenerator {
     String _concat = _packageName.concat(".actions");
     String _name = action.getName();
     String _pascalize = Strings.pascalize(_name);
-    String _concat_1 = "Abstract".concat(_pascalize);
+    String _concat_1 = "Default".concat(_pascalize);
     String _concat_2 = _concat_1.concat("Actions");
     String genFileName = Strings.resolveFileName(_concat, _concat_2);
-    String _packageName_1 = model.getPackageName();
-    String _concat_3 = _packageName_1.concat(".actions");
-    String _name_1 = action.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_4 = _pascalize_1.concat("Actions");
-    String genStubFileName = Strings.resolveFileName(_concat_3, _concat_4);
     CharSequence _generate = this.mActionGenerator.generate(model, action);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = this.mActionGenerator.generateStub(model, action);
-    fsa.generateFile(genStubFileName, 
-      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   protected void _generateAction(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement stmt, final boolean forId) {
@@ -218,45 +209,27 @@ public class SqliteModelGenerator implements IGenerator {
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Model model = ((Model) _head);
     String genFileName = "";
-    String genStubFileName = "";
     if (forId) {
       String _packageName = model.getPackageName();
       String _concat = _packageName.concat(".actions");
       String _name = stmt.getName();
       String _pascalize = Strings.pascalize(_name);
-      String _concat_1 = "Abstract".concat(_pascalize);
+      String _concat_1 = "Default".concat(_pascalize);
       String _concat_2 = _concat_1.concat("ByIdActions");
       String _resolveFileName = Strings.resolveFileName(_concat, _concat_2);
       genFileName = _resolveFileName;
+    } else {
       String _packageName_1 = model.getPackageName();
       String _concat_3 = _packageName_1.concat(".actions");
       String _name_1 = stmt.getName();
       String _pascalize_1 = Strings.pascalize(_name_1);
-      String _concat_4 = _pascalize_1.concat("ByIdActions");
-      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_4);
-      genStubFileName = _resolveFileName_1;
-    } else {
-      String _packageName_2 = model.getPackageName();
-      String _concat_5 = _packageName_2.concat(".actions");
-      String _name_2 = stmt.getName();
-      String _pascalize_2 = Strings.pascalize(_name_2);
-      String _concat_6 = "Abstract".concat(_pascalize_2);
-      String _concat_7 = _concat_6.concat("Actions");
-      String _resolveFileName_2 = Strings.resolveFileName(_concat_5, _concat_7);
-      genFileName = _resolveFileName_2;
-      String _packageName_3 = model.getPackageName();
-      String _concat_8 = _packageName_3.concat(".actions");
-      String _name_3 = stmt.getName();
-      String _pascalize_3 = Strings.pascalize(_name_3);
-      String _concat_9 = _pascalize_3.concat("Actions");
-      String _resolveFileName_3 = Strings.resolveFileName(_concat_8, _concat_9);
-      genStubFileName = _resolveFileName_3;
+      String _concat_4 = "Default".concat(_pascalize_1);
+      String _concat_5 = _concat_4.concat("Actions");
+      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_5);
+      genFileName = _resolveFileName_1;
     }
     CharSequence _generate = this.mActionGenerator.generate(model, stmt, forId);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = this.mActionGenerator.generateStub(model, stmt, forId);
-    fsa.generateFile(genStubFileName, 
-      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   protected void _generateAction(final Resource resource, final IFileSystemAccess fsa, final CreateViewStatement stmt, final boolean forId) {
@@ -264,45 +237,27 @@ public class SqliteModelGenerator implements IGenerator {
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);
     String genFileName = "";
-    String genStubFileName = "";
     if (forId) {
       String _packageName = model.getPackageName();
       String _concat = _packageName.concat(".actions");
       String _name = stmt.getName();
       String _pascalize = Strings.pascalize(_name);
-      String _concat_1 = "Abstract".concat(_pascalize);
+      String _concat_1 = "Default".concat(_pascalize);
       String _concat_2 = _concat_1.concat("ByIdActions");
       String _resolveFileName = Strings.resolveFileName(_concat, _concat_2);
       genFileName = _resolveFileName;
+    } else {
       String _packageName_1 = model.getPackageName();
       String _concat_3 = _packageName_1.concat(".actions");
       String _name_1 = stmt.getName();
       String _pascalize_1 = Strings.pascalize(_name_1);
-      String _concat_4 = _pascalize_1.concat("ByIdActions");
-      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_4);
-      genStubFileName = _resolveFileName_1;
-    } else {
-      String _packageName_2 = model.getPackageName();
-      String _concat_5 = _packageName_2.concat(".actions");
-      String _name_2 = stmt.getName();
-      String _pascalize_2 = Strings.pascalize(_name_2);
-      String _concat_6 = "Abstract".concat(_pascalize_2);
-      String _concat_7 = _concat_6.concat("Actions");
-      String _resolveFileName_2 = Strings.resolveFileName(_concat_5, _concat_7);
-      genFileName = _resolveFileName_2;
-      String _packageName_3 = model.getPackageName();
-      String _concat_8 = _packageName_3.concat(".actions");
-      String _name_3 = stmt.getName();
-      String _pascalize_3 = Strings.pascalize(_name_3);
-      String _concat_9 = _pascalize_3.concat("Actions");
-      String _resolveFileName_3 = Strings.resolveFileName(_concat_8, _concat_9);
-      genStubFileName = _resolveFileName_3;
+      String _concat_4 = "Default".concat(_pascalize_1);
+      String _concat_5 = _concat_4.concat("Actions");
+      String _resolveFileName_1 = Strings.resolveFileName(_concat_3, _concat_5);
+      genFileName = _resolveFileName_1;
     }
     CharSequence _generate = this.mActionGenerator.generate(model, stmt, forId);
     fsa.generateFile(genFileName, _generate);
-    CharSequence _generateStub = this.mActionGenerator.generateStub(model, stmt, forId);
-    fsa.generateFile(genStubFileName, 
-      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   public void generateMigration(final Resource resource, final IFileSystemAccess fsa, final MigrationBlock migration, final int version) {

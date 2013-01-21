@@ -35,12 +35,14 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 			"author_id integer " +
 			") "
 		);
+		
 		db.execSQL(
 			"create table authors ( " +
 			"_id integer primary key autoincrement , " +
 			"name text " +
 			") "
 		);
+		
 		db.execSQL(
 			"create view recipes_with_authors as " +
 			"select " +

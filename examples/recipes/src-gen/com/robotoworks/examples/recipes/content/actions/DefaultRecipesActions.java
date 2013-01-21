@@ -19,7 +19,7 @@ import com.robotoworks.examples.recipes.content.RecipesRecord;
 import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 			
-public abstract class AbstractRecipesActions extends ContentProviderActions {
+public class DefaultRecipesActions extends ContentProviderActions {
 	@Override
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		
