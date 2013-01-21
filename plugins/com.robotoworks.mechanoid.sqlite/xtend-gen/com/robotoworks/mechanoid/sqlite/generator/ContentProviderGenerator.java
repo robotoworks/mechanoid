@@ -993,7 +993,7 @@ public class ContentProviderGenerator {
             String _underscore_19 = Strings.underscore(_name_42);
             String _upperCase_19 = _underscore_19.toUpperCase();
             _builder.append(_upperCase_19, "    	");
-            _builder.append(", ");
+            _builder.append(", true, ");
             String _name_43 = tbl_6.getName();
             String _pascalize_19 = Strings.pascalize(_name_43);
             _builder.append(_pascalize_19, "    	");
@@ -1020,7 +1020,7 @@ public class ContentProviderGenerator {
         String _underscore_20 = Strings.underscore(_name_45);
         String _upperCase_20 = _underscore_20.toUpperCase();
         _builder.append(_upperCase_20, "    	");
-        _builder.append(", ");
+        _builder.append(", false, ");
         String _name_46 = tbl_6.getName();
         String _pascalize_21 = Strings.pascalize(_name_46);
         _builder.append(_pascalize_21, "    	");
@@ -1054,7 +1054,7 @@ public class ContentProviderGenerator {
             String _underscore_21 = Strings.underscore(_name_48);
             String _upperCase_21 = _underscore_21.toUpperCase();
             _builder.append(_upperCase_21, "    	");
-            _builder.append(");");
+            _builder.append(", true);");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("}");
@@ -1077,7 +1077,7 @@ public class ContentProviderGenerator {
         String _underscore_22 = Strings.underscore(_name_50);
         String _upperCase_22 = _underscore_22.toUpperCase();
         _builder.append(_upperCase_22, "    	");
-        _builder.append(");");
+        _builder.append(", false);");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("}");

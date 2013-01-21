@@ -282,24 +282,24 @@ class ContentProviderGenerator {
 			    «FOR tbl:snapshot.statements.filter(typeof(CreateTableStatement))»
 			    «IF tbl.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», «tbl.name.pascalize»Record.getFactory());
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», true, «tbl.name.pascalize»Record.getFactory());
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», «tbl.name.pascalize»Record.getFactory());
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», false, «tbl.name.pascalize»Record.getFactory());
 			    }
 			    
 			    «ENDFOR»
 			    «FOR view:snapshot.statements.filter(typeof(CreateViewStatement))»
 			    «IF view.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
-			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase»);
+			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», true);
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«view.name.pascalize»Actions() {
-			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase»);
+			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», false);
 			    }
 			    
 			    «ENDFOR»

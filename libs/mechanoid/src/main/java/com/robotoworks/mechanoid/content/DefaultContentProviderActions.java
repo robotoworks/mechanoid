@@ -15,17 +15,47 @@ import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
 import com.robotoworks.mechanoid.sqlite.SQuery;
 import com.robotoworks.mechanoid.util.Closeables;
 
+/**
+ * <p>Provides default implementation for CRUD content provider actions</p>
+ * 
+ * <p>Has two operating modes, one with URI's containing ID's, enabled by
+ * setting forUrisWithId to true during construction, or URI's without ID's,
+ * by setting forUrisWithId to false.
+ * </p>
+ * 
+ * <p>Since content providers delegate all queries to actions, including active record queries,
+ * this class requires an ActiveRecordFactory during construction so it knows how
+ * to create ActiveRecord instances.</p>
+ *
+ * @see ContentProviderActions
+ */
 public class DefaultContentProviderActions extends ContentProviderActions {
 	
 	private String mSource;
 	private ActiveRecordFactory<?> mRecordFactory;
+	private boolean mForUrisWithId;
 
-	public DefaultContentProviderActions(String source) {
-		this(source, null);
+	/**
+	 * <p>Create new default actions</p>
+	 * @param source The source table or view name
+	 * @param forUrisWithId Wether expected URI's have appended id's, if so
+	 * then ids will be parsed and used in all CRUD actions
+	 */
+	public DefaultContentProviderActions(String source, boolean forUrisWithId) {
+		this(source, forUrisWithId, null);
 	}
 	
-	public <T extends ActiveRecord> DefaultContentProviderActions(String source, ActiveRecordFactory<T> recordFactory) {
+	/**
+	 * <p>Create new default actions</p>
+	 * @param source The source table or view name
+	 * @param forUrisWithId Wether expected URI's have appended id's, if so
+	 * then ids will be parsed and used in all CRUD actions
+	 * @param recordFactory A factory for creating ActiveRecord's, factories will be generated for
+	 * each generated ActiveRecord
+	 */
+	public <T extends ActiveRecord> DefaultContentProviderActions(String source, boolean forUrisWithId, ActiveRecordFactory<T> recordFactory) {
 		mSource = source;
+		mForUrisWithId = forUrisWithId;
 		mRecordFactory = recordFactory;
 	}
 	
@@ -33,24 +63,25 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	public int delete(MechanoidContentProvider provider, Uri uri, String selection, String[] selectionArgs){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		long id = ContentUris.parseId(uri);
-		
-		if(id == -1) {
+		if(mForUrisWithId) {
+			long id = ContentUris.parseId(uri);
+
+			int affected = SQuery.newQuery()
+					.expr(BaseColumns._ID, SQuery.Op.EQ, id)
+					.append(selection, selectionArgs)
+					.delete(db, mSource);
+			
+			return affected;
+			
+		} else {
 			return db.delete(mSource, selection, selectionArgs);
 		}
-		
-		int affected = SQuery.newQuery()
-				.expr(BaseColumns._ID, SQuery.Op.EQ, id)
-				.append(selection, selectionArgs)
-				.delete(db, mSource);
-		
-		return affected;
 	}
 	
 	@Override
 	public Uri insert(MechanoidContentProvider provider, Uri uri, ContentValues values){
-		if(ContentUris.parseId(uri) == -1) {
-			return null; // Cannot insert on _id (or should we?)
+		if(mForUrisWithId) {
+			return null; // Not applicable for uris with id
 		}
 		
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
@@ -68,33 +99,35 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	public int update(MechanoidContentProvider provider, Uri uri, ContentValues values, String selection, String[] selectionArgs){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		long id = ContentUris.parseId(uri);
+		if(mForUrisWithId) {
+			long id = ContentUris.parseId(uri);
 		
-		SQuery query = SQuery.newQuery();
+			int affected = SQuery.newQuery()
+					.expr(BaseColumns._ID, SQuery.Op.EQ, id)
+					.append(selection, selectionArgs)
+					.update(db, mSource, values);
 		
-		if(id > -1) {
-			query.expr(BaseColumns._ID, SQuery.Op.EQ, id);
+			return affected;
 		}
-		
-		int affected = query.append(selection, selectionArgs).update(db, mSource, values);
-		
-		return affected;
+		else {
+			return db.update(mSource, values, selection, selectionArgs);
+		}
 	}
 
 	@Override
 	public Cursor query(MechanoidContentProvider provider, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
-		long id = ContentUris.parseId(uri);
+		if(mForUrisWithId) {
+			long id = ContentUris.parseId(uri);
 		
-		SQuery query = SQuery.newQuery();
-		
-		if(id > -1) {
-			query.expr(BaseColumns._ID, SQuery.Op.EQ, id);
-		}
-		
-		return query.append(selection, selectionArgs)
+			return SQuery.newQuery()
+				.expr(BaseColumns._ID, SQuery.Op.EQ, id)
+				.append(selection, selectionArgs)
 				.query(db, mSource, projection, sortOrder);
+		} else {
+			return db.query(mSource, projection, selection, selectionArgs, null, null, sortOrder);
+		}
 	}
 	
 	@Override
