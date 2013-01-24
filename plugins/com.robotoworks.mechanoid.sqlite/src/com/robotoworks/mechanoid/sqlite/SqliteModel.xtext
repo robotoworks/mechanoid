@@ -78,7 +78,7 @@ NullExpression returns Expression:
 PrimaryExpression returns Expression:
 	{ColumnLiteral} name=QualifiedName|
 	{Literal} literalValue=LiteralValue|
-	'(' SqlExpression ')'|
+	{NestedExpression} '(' expression=SqlExpression ')'|
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
 	{CaseExpression} 'case' caseExpression=SqlExpression? 
 			cases+=Case+

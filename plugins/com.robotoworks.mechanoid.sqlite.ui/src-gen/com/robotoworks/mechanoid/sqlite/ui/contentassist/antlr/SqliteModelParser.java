@@ -216,6 +216,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNullCheckExpressionAccess().getRightAssignment_1_1(), "rule__NullCheckExpression__RightAssignment_1_1");
 					put(grammarAccess.getPrimaryExpressionAccess().getNameAssignment_0_1(), "rule__PrimaryExpression__NameAssignment_0_1");
 					put(grammarAccess.getPrimaryExpressionAccess().getLiteralValueAssignment_1_1(), "rule__PrimaryExpression__LiteralValueAssignment_1_1");
+					put(grammarAccess.getPrimaryExpressionAccess().getExpressionAssignment_2_2(), "rule__PrimaryExpression__ExpressionAssignment_2_2");
 					put(grammarAccess.getPrimaryExpressionAccess().getNotAssignment_3_1(), "rule__PrimaryExpression__NotAssignment_3_1");
 					put(grammarAccess.getPrimaryExpressionAccess().getExistsAssignment_3_2(), "rule__PrimaryExpression__ExistsAssignment_3_2");
 					put(grammarAccess.getPrimaryExpressionAccess().getSelectAssignment_3_4(), "rule__PrimaryExpression__SelectAssignment_3_4");

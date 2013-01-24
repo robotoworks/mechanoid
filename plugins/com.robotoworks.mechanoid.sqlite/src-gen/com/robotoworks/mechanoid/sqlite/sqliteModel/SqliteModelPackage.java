@@ -1594,6 +1594,34 @@ public interface SqliteModelPackage extends EPackage
   int LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NestedExpressionImpl <em>Nested Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NestedExpressionImpl
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNestedExpression()
+   * @generated
+   */
+  int NESTED_EXPRESSION = 42;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NESTED_EXPRESSION__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Nested Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NESTED_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl <em>Select Statement Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1601,7 +1629,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectStatementExpression()
    * @generated
    */
-  int SELECT_STATEMENT_EXPRESSION = 42;
+  int SELECT_STATEMENT_EXPRESSION = 43;
 
   /**
    * The feature id for the '<em><b>Not</b></em>' attribute.
@@ -1647,7 +1675,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCaseExpression()
    * @generated
    */
-  int CASE_EXPRESSION = 43;
+  int CASE_EXPRESSION = 44;
 
   /**
    * The feature id for the '<em><b>Case Expression</b></em>' containment reference.
@@ -1693,7 +1721,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 44;
+  int FUNCTION = 45;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1748,7 +1776,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCastExpression()
    * @generated
    */
-  int CAST_EXPRESSION = 45;
+  int CAST_EXPRESSION = 46;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1785,7 +1813,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateTableStatement()
    * @generated
    */
-  int CREATE_TABLE_STATEMENT = 46;
+  int CREATE_TABLE_STATEMENT = 47;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1831,7 +1859,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateViewStatement()
    * @generated
    */
-  int CREATE_VIEW_STATEMENT = 47;
+  int CREATE_VIEW_STATEMENT = 48;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1868,7 +1896,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCreateTriggerStatement()
    * @generated
    */
-  int CREATE_TRIGGER_STATEMENT = 48;
+  int CREATE_TRIGGER_STATEMENT = 49;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1959,7 +1987,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableStatement()
    * @generated
    */
-  int ALTER_TABLE_STATEMENT = 49;
+  int ALTER_TABLE_STATEMENT = 50;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1996,7 +2024,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropTableStatement()
    * @generated
    */
-  int DROP_TABLE_STATEMENT = 50;
+  int DROP_TABLE_STATEMENT = 51;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2033,7 +2061,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropTriggerStatement()
    * @generated
    */
-  int DROP_TRIGGER_STATEMENT = 51;
+  int DROP_TRIGGER_STATEMENT = 52;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2070,7 +2098,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDropViewStatement()
    * @generated
    */
-  int DROP_VIEW_STATEMENT = 52;
+  int DROP_VIEW_STATEMENT = 53;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2107,7 +2135,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSelectCore()
    * @generated
    */
-  int SELECT_CORE = 53;
+  int SELECT_CORE = 54;
 
   /**
    * The feature id for the '<em><b>Distinct</b></em>' attribute.
@@ -2216,7 +2244,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableRenameClause()
    * @generated
    */
-  int ALTER_TABLE_RENAME_CLAUSE = 54;
+  int ALTER_TABLE_RENAME_CLAUSE = 55;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2244,7 +2272,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getAlterTableAddColumnClause()
    * @generated
    */
-  int ALTER_TABLE_ADD_COLUMN_CLAUSE = 55;
+  int ALTER_TABLE_ADD_COLUMN_CLAUSE = 56;
 
   /**
    * The feature id for the '<em><b>Column Def</b></em>' containment reference.
@@ -2272,7 +2300,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryKeyColumnConstraint()
    * @generated
    */
-  int PRIMARY_KEY_COLUMN_CONSTRAINT = 56;
+  int PRIMARY_KEY_COLUMN_CONSTRAINT = 57;
 
   /**
    * The feature id for the '<em><b>Asc</b></em>' attribute.
@@ -2318,7 +2346,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNotNullConstraint()
    * @generated
    */
-  int NOT_NULL_CONSTRAINT = 57;
+  int NOT_NULL_CONSTRAINT = 58;
 
   /**
    * The feature id for the '<em><b>Conflict Clause</b></em>' containment reference.
@@ -2346,7 +2374,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getDefaultConstraint()
    * @generated
    */
-  int DEFAULT_CONSTRAINT = 58;
+  int DEFAULT_CONSTRAINT = 59;
 
   /**
    * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -2374,7 +2402,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getLiteralDefaultValue()
    * @generated
    */
-  int LITERAL_DEFAULT_VALUE = 59;
+  int LITERAL_DEFAULT_VALUE = 60;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' containment reference.
@@ -2402,7 +2430,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getExpressionDefaultValue()
    * @generated
    */
-  int EXPRESSION_DEFAULT_VALUE = 60;
+  int EXPRESSION_DEFAULT_VALUE = 61;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2430,7 +2458,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getUniqueTableContraint()
    * @generated
    */
-  int UNIQUE_TABLE_CONTRAINT = 61;
+  int UNIQUE_TABLE_CONTRAINT = 62;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2476,7 +2504,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getPrimaryContraint()
    * @generated
    */
-  int PRIMARY_CONTRAINT = 62;
+  int PRIMARY_CONTRAINT = 63;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2522,7 +2550,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCheckTableConstraint()
    * @generated
    */
-  int CHECK_TABLE_CONSTRAINT = 63;
+  int CHECK_TABLE_CONSTRAINT = 64;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2559,7 +2587,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceTable()
    * @generated
    */
-  int SINGLE_SOURCE_TABLE = 64;
+  int SINGLE_SOURCE_TABLE = 65;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' attribute.
@@ -2596,7 +2624,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceSelectStatement()
    * @generated
    */
-  int SINGLE_SOURCE_SELECT_STATEMENT = 65;
+  int SINGLE_SOURCE_SELECT_STATEMENT = 66;
 
   /**
    * The feature id for the '<em><b>Select Statement</b></em>' containment reference.
@@ -2633,7 +2661,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSingleSourceJoin()
    * @generated
    */
-  int SINGLE_SOURCE_JOIN = 66;
+  int SINGLE_SOURCE_JOIN = 67;
 
   /**
    * The feature id for the '<em><b>Join Source</b></em>' containment reference.
@@ -2661,7 +2689,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getResultColumnAll()
    * @generated
    */
-  int RESULT_COLUMN_ALL = 67;
+  int RESULT_COLUMN_ALL = 68;
 
   /**
    * The feature id for the '<em><b>Source</b></em>' attribute.
@@ -2689,7 +2717,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getResultColumnExpression()
    * @generated
    */
-  int RESULT_COLUMN_EXPRESSION = 68;
+  int RESULT_COLUMN_EXPRESSION = 69;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2726,7 +2754,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 69;
+  int NUMERIC_LITERAL = 70;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -2754,7 +2782,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 70;
+  int STRING_LITERAL = 71;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2782,7 +2810,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 71;
+  int NULL_LITERAL = 72;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2810,7 +2838,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentTimeLiteral()
    * @generated
    */
-  int CURRENT_TIME_LITERAL = 72;
+  int CURRENT_TIME_LITERAL = 73;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2838,7 +2866,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentDateLiteral()
    * @generated
    */
-  int CURRENT_DATE_LITERAL = 73;
+  int CURRENT_DATE_LITERAL = 74;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2866,7 +2894,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCurrentTimeStampLiteral()
    * @generated
    */
-  int CURRENT_TIME_STAMP_LITERAL = 74;
+  int CURRENT_TIME_STAMP_LITERAL = 75;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' attribute.
@@ -2894,7 +2922,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getColumnType()
    * @generated
    */
-  int COLUMN_TYPE = 75;
+  int COLUMN_TYPE = 76;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteDataType <em>Sqlite Data Type</em>}' enum.
@@ -2904,7 +2932,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getSqliteDataType()
    * @generated
    */
-  int SQLITE_DATA_TYPE = 76;
+  int SQLITE_DATA_TYPE = 77;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution <em>Conflict Resolution</em>}' enum.
@@ -2914,7 +2942,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getConflictResolution()
    * @generated
    */
-  int CONFLICT_RESOLUTION = 77;
+  int CONFLICT_RESOLUTION = 78;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator <em>Compound Operator</em>}' enum.
@@ -2924,7 +2952,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getCompoundOperator()
    * @generated
    */
-  int COMPOUND_OPERATOR = 78;
+  int COMPOUND_OPERATOR = 79;
 
 
   /**
@@ -4248,6 +4276,27 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EReference getLiteral_LiteralValue();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression <em>Nested Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Nested Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression
+   * @generated
+   */
+  EClass getNestedExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression#getExpression()
+   * @see #getNestedExpression()
+   * @generated
+   */
+  EReference getNestedExpression_Expression();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression <em>Select Statement Expression</em>}'.
@@ -6344,6 +6393,24 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference LITERAL__LITERAL_VALUE = eINSTANCE.getLiteral_LiteralValue();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NestedExpressionImpl <em>Nested Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NestedExpressionImpl
+     * @see com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SqliteModelPackageImpl#getNestedExpression()
+     * @generated
+     */
+    EClass NESTED_EXPRESSION = eINSTANCE.getNestedExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NESTED_EXPRESSION__EXPRESSION = eINSTANCE.getNestedExpression_Expression();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementExpressionImpl <em>Select Statement Expression</em>}' class.

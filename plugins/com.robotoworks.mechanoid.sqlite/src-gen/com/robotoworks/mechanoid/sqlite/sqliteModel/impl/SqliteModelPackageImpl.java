@@ -56,6 +56,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
@@ -393,6 +394,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass literalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nestedExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1961,6 +1969,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getNestedExpression()
+  {
+    return nestedExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNestedExpression_Expression()
+  {
+    return (EReference)nestedExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getSelectStatementExpression()
   {
     return selectStatementExpressionEClass;
@@ -3092,6 +3120,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     literalEClass = createEClass(LITERAL);
     createEReference(literalEClass, LITERAL__LITERAL_VALUE);
 
+    nestedExpressionEClass = createEClass(NESTED_EXPRESSION);
+    createEReference(nestedExpressionEClass, NESTED_EXPRESSION__EXPRESSION);
+
     selectStatementExpressionEClass = createEClass(SELECT_STATEMENT_EXPRESSION);
     createEAttribute(selectStatementExpressionEClass, SELECT_STATEMENT_EXPRESSION__NOT);
     createEAttribute(selectStatementExpressionEClass, SELECT_STATEMENT_EXPRESSION__EXISTS);
@@ -3269,6 +3300,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     notNullEClass.getESuperTypes().add(this.getExpression());
     columnLiteralEClass.getESuperTypes().add(this.getExpression());
     literalEClass.getESuperTypes().add(this.getExpression());
+    nestedExpressionEClass.getESuperTypes().add(this.getExpression());
     selectStatementExpressionEClass.getESuperTypes().add(this.getExpression());
     caseExpressionEClass.getESuperTypes().add(this.getExpression());
     functionEClass.getESuperTypes().add(this.getExpression());
@@ -3469,6 +3501,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteral_LiteralValue(), this.getLiteralValue(), null, "literalValue", null, 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nestedExpressionEClass, NestedExpression.class, "NestedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNestedExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, NestedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectStatementExpressionEClass, SelectStatementExpression.class, "SelectStatementExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelectStatementExpression_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, SelectStatementExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
