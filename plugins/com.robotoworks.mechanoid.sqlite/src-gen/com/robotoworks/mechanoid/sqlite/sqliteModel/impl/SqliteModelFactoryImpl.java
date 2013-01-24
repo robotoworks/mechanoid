@@ -107,6 +107,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NOT_NULL: return createNotNull();
       case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
       case SqliteModelPackage.LITERAL: return createLiteral();
+      case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
       case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
       case SqliteModelPackage.FUNCTION: return createFunction();
@@ -651,6 +652,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     LiteralImpl literal = new LiteralImpl();
     return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NestedExpression createNestedExpression()
+  {
+    NestedExpressionImpl nestedExpression = new NestedExpressionImpl();
+    return nestedExpression;
   }
 
   /**

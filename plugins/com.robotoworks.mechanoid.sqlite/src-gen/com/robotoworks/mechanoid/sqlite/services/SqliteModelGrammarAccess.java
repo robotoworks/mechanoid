@@ -736,9 +736,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLiteralValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cLiteralValueLiteralValueParserRuleCall_1_1_0 = (RuleCall)cLiteralValueAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final RuleCall cSqlExpressionParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Action cNestedExpressionAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cExpressionAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cExpressionSqlExpressionParserRuleCall_2_2_0 = (RuleCall)cExpressionAssignment_2_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
 		private final Action cSelectStatementExpressionAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cNotAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
@@ -789,18 +791,18 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_6_6 = (Keyword)cGroup_6.eContents().get(6);
 		
 		//PrimaryExpression returns Expression:
-		//	{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" |
-		//	{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case"
-		//	caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
-		//	(all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
-		//	expression=SqlExpression "as" type=SqliteDataType ")";
+		//	{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | {NestedExpression} "("
+		//	expression=SqlExpression ")" | {SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement
+		//	")" | {CaseExpression} "case" caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end"
+		//	| {Function} name=ID "(" (all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression}
+		//	"cast" "(" expression=SqlExpression "as" type=SqliteDataType ")";
 		public ParserRule getRule() { return rule; }
 
-		//{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" |
-		//{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case"
-		//caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
-		//(all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
-		//expression=SqlExpression "as" type=SqliteDataType ")"
+		//{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | {NestedExpression} "("
+		//expression=SqlExpression ")" | {SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")"
+		//| {CaseExpression} "case" caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" |
+		//{Function} name=ID "(" (all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression}
+		//"cast" "(" expression=SqlExpression "as" type=SqliteDataType ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{ColumnLiteral} name=QualifiedName
@@ -827,17 +829,23 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//LiteralValue
 		public RuleCall getLiteralValueLiteralValueParserRuleCall_1_1_0() { return cLiteralValueLiteralValueParserRuleCall_1_1_0; }
 
-		//"(" SqlExpression ")"
+		//{NestedExpression} "(" expression=SqlExpression ")"
 		public Group getGroup_2() { return cGroup_2; }
 
+		//{NestedExpression}
+		public Action getNestedExpressionAction_2_0() { return cNestedExpressionAction_2_0; }
+
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		public Keyword getLeftParenthesisKeyword_2_1() { return cLeftParenthesisKeyword_2_1; }
+
+		//expression=SqlExpression
+		public Assignment getExpressionAssignment_2_2() { return cExpressionAssignment_2_2; }
 
 		//SqlExpression
-		public RuleCall getSqlExpressionParserRuleCall_2_1() { return cSqlExpressionParserRuleCall_2_1; }
+		public RuleCall getExpressionSqlExpressionParserRuleCall_2_2_0() { return cExpressionSqlExpressionParserRuleCall_2_2_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
 
 		//{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")"
 		public Group getGroup_3() { return cGroup_3; }
@@ -3537,11 +3545,11 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PrimaryExpression returns Expression:
-	//	{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | "(" SqlExpression ")" |
-	//	{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case"
-	//	caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
-	//	(all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
-	//	expression=SqlExpression "as" type=SqliteDataType ")";
+	//	{ColumnLiteral} name=QualifiedName | {Literal} literalValue=LiteralValue | {NestedExpression} "("
+	//	expression=SqlExpression ")" | {SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement
+	//	")" | {CaseExpression} "case" caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end"
+	//	| {Function} name=ID "(" (all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression}
+	//	"cast" "(" expression=SqlExpression "as" type=SqliteDataType ")";
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
 	}

@@ -401,6 +401,15 @@ public interface SqliteModelFactory extends EFactory
   Literal createLiteral();
 
   /**
+   * Returns a new object of class '<em>Nested Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Nested Expression</em>'.
+   * @generated
+   */
+  NestedExpression createNestedExpression();
+
+  /**
    * Returns a new object of class '<em>Select Statement Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
