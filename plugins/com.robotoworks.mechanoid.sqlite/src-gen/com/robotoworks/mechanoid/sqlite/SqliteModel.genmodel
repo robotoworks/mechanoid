@@ -190,6 +190,9 @@
     <genClasses ecoreClass="SqliteModel.ecore#//Literal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//Literal/literalValue"/>
     </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//NestedExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//NestedExpression/expression"/>
+    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SelectStatementExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SelectStatementExpression/not"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SelectStatementExpression/exists"/>
