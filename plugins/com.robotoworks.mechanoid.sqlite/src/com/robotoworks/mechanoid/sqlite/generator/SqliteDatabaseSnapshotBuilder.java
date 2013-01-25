@@ -6,11 +6,11 @@ import java.util.LinkedHashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.resource.SaveOptions;
-import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.resource.IResourceFactory;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
@@ -19,8 +19,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
@@ -29,16 +29,18 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 
 public class SqliteDatabaseSnapshotBuilder {
-	@Inject private ISerializer serializer;
+	
+	@Inject XtextResourceSet mSnapshotResourceSet;
 	
 	public LinkedHashMap<String, CreateTableStatement> mTables = new LinkedHashMap<String, CreateTableStatement>();
 	public LinkedHashMap<String, CreateViewStatement> mViews = new LinkedHashMap<String, CreateViewStatement>();
 	public LinkedHashMap<String, CreateTriggerStatement> mTriggers = new LinkedHashMap<String, CreateTriggerStatement>();
-	public String mPackageName;
-	
 	private Model mSnapshotModel;
+
+	private Model mSourceModel;
 		
 	public Model build(Model model) {
+		mSourceModel = model;
 		
 		buildSnapshot(model);
 				
@@ -58,7 +60,7 @@ public class SqliteDatabaseSnapshotBuilder {
 					
 					CreateTableStatement createTableStmt = (CreateTableStatement) statement;
 					
-					CreateTableStatement copy = EcoreUtil.copy(createTableStmt);
+					CreateTableStatement copy = EcoreUtil2.copy(createTableStmt);
 					mTables.put(createTableStmt.getName(), copy);
 					
 				} else if (statement instanceof CreateViewStatement) {
@@ -106,24 +108,20 @@ public class SqliteDatabaseSnapshotBuilder {
 	}
 
 	private void buildSnapshotModel() {
-		ResourceSet set = new ResourceSetImpl();
-		URI uri = URI.createFileURI("temp.mechdb");
-		Resource res = set.createResource(uri);
+		XtextResource resource = (XtextResource) mSnapshotResourceSet.createResource(URI.createURI("platform:/resource/app1/temp.mechdb"));
 		
 		mSnapshotModel = (Model) SqliteModelFactory.eINSTANCE.createModel();
-		mSnapshotModel.setPackageName("hello.world");
+		mSnapshotModel.setPackageName(mSourceModel.getPackageName());
+		
+		resource.getContents().add(mSnapshotModel);
 		
 		DatabaseBlock database = (DatabaseBlock) SqliteModelFactory.eINSTANCE.createDatabaseBlock();
-		database.setName("MyDatabase");
+		database.setName(mSourceModel.getDatabase().getName());
+		mSnapshotModel.setDatabase(database);
 		
 		MigrationBlock migration = (MigrationBlock) SqliteModelFactory.eINSTANCE.createMigrationBlock();
 		database.getMigrations().add(migration);
-		
-		mSnapshotModel.setDatabase(database);
-		
-		
-		res.getContents().add(mSnapshotModel);
-		
+				
 		for(CreateTableStatement stmt : mTables.values()) {
 			migration.getStatements().add(stmt);
 		}
@@ -136,6 +134,8 @@ public class SqliteDatabaseSnapshotBuilder {
 			migration.getStatements().add(stmt);
 		}
 		
+		EcoreUtil2.resolveAll(mSnapshotResourceSet);
+				
 //		String text = serializer.serialize(mSnapshotModel, SaveOptions.newBuilder().noValidation().getOptions());
 //		
 //		text = null;

@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.sqlite.generator;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
+import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseStatementGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
@@ -12,13 +13,13 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class SqliteOpenHelperGenerator {
   @Inject
-  private ISerializer _iSerializer;
+  private SqliteDatabaseStatementGenerator _sqliteDatabaseStatementGenerator;
   
   public CharSequence generate(final Model model, final MigrationBlock snapshot) {
     StringConcatenation _builder = new StringConcatenation();
@@ -61,7 +62,7 @@ public class SqliteOpenHelperGenerator {
             _builder.append("import ");
             String _packageName_1 = model.getPackageName();
             _builder.append(_packageName_1, "");
-            _builder.append(".migrations.");
+            _builder.append(".migrations.Default");
             DatabaseBlock _database_2 = model.getDatabase();
             String _name = _database_2.getName();
             String _pascalize = Strings.pascalize(_name);
@@ -163,109 +164,39 @@ public class SqliteOpenHelperGenerator {
     _builder.append("\t");
     _builder.append("public void onCreate(SQLiteDatabase db) {");
     _builder.newLine();
-    {
-      EList<DDLStatement> _statements_2 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
-      for(final CreateTableStatement table_1 : _filter_2) {
-        _builder.append("\t\t");
-        _builder.append("db.execSQL(");
-        _builder.newLine();
-        {
-          String _serialize = this._iSerializer.serialize(table_1);
-          String _trim = _serialize.trim();
-          String[] _split = _trim.split("\\r?\\n");
-          boolean _hasElements = false;
-          for(final String line : _split) {
-            if (!_hasElements) {
-              _hasElements = true;
-            } else {
-              _builder.appendImmediate(" +", "			");
-            }
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("\"");
-            String _trim_1 = line.trim();
-            String _replaceAll = _trim_1.replaceAll("\\\"", "\\\\\"");
-            _builder.append(_replaceAll, "			");
-            _builder.append(" \"");
-            _builder.newLineIfNotEmpty();
-          }
+    _builder.append("\t\t");
+    EList<DDLStatement> _statements_2 = snapshot.getStatements();
+    final Function1<DDLStatement,Boolean> _function = new Function1<DDLStatement,Boolean>() {
+        public Boolean apply(final DDLStatement it) {
+          return Boolean.valueOf((it instanceof CreateTableStatement));
         }
-        _builder.append("\t\t");
-        _builder.append(");");
-        _builder.newLine();
-      }
-    }
-    {
-      EList<DDLStatement> _statements_3 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_3 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
-      for(final CreateViewStatement view_1 : _filter_3) {
-        _builder.append("\t\t");
-        _builder.append("db.execSQL(");
-        _builder.newLine();
-        {
-          String _serialize_1 = this._iSerializer.serialize(view_1);
-          String _trim_2 = _serialize_1.trim();
-          String[] _split_1 = _trim_2.split("\\r?\\n");
-          boolean _hasElements_1 = false;
-          for(final String line_1 : _split_1) {
-            if (!_hasElements_1) {
-              _hasElements_1 = true;
-            } else {
-              _builder.appendImmediate(" +", "			");
-            }
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("\"");
-            String _trim_3 = line_1.trim();
-            String _replaceAll_1 = _trim_3.replaceAll("\\\"", "\\\\\"");
-            _builder.append(_replaceAll_1, "			");
-            _builder.append(" \"");
-            _builder.newLineIfNotEmpty();
-          }
+      };
+    Iterable<DDLStatement> _filter_2 = IterableExtensions.<DDLStatement>filter(_statements_2, _function);
+    CharSequence _generateStatements = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_2);
+    _builder.append(_generateStatements, "		");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    EList<DDLStatement> _statements_3 = snapshot.getStatements();
+    final Function1<DDLStatement,Boolean> _function_1 = new Function1<DDLStatement,Boolean>() {
+        public Boolean apply(final DDLStatement it) {
+          return Boolean.valueOf((it instanceof CreateViewStatement));
         }
-        _builder.append("\t\t");
-        _builder.append(");");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.newLine();
-      }
-    }
-    {
-      EList<DDLStatement> _statements_4 = snapshot.getStatements();
-      Iterable<CreateTriggerStatement> _filter_4 = Iterables.<CreateTriggerStatement>filter(_statements_4, CreateTriggerStatement.class);
-      for(final CreateTriggerStatement trigger : _filter_4) {
-        _builder.append("\t\t");
-        _builder.append("db.execSQL(");
-        _builder.newLine();
-        {
-          String _serialize_2 = this._iSerializer.serialize(trigger);
-          String _trim_4 = _serialize_2.trim();
-          String[] _split_2 = _trim_4.split("\\r?\\n");
-          boolean _hasElements_2 = false;
-          for(final String line_2 : _split_2) {
-            if (!_hasElements_2) {
-              _hasElements_2 = true;
-            } else {
-              _builder.appendImmediate(" +", "			");
-            }
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("\"");
-            String _trim_5 = line_2.trim();
-            String _replaceAll_2 = _trim_5.replaceAll("\\\"", "\\\\\"");
-            _builder.append(_replaceAll_2, "			");
-            _builder.append(" \"");
-            _builder.newLineIfNotEmpty();
-          }
+      };
+    Iterable<DDLStatement> _filter_3 = IterableExtensions.<DDLStatement>filter(_statements_3, _function_1);
+    CharSequence _generateStatements_1 = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_3);
+    _builder.append(_generateStatements_1, "		");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    EList<DDLStatement> _statements_4 = snapshot.getStatements();
+    final Function1<DDLStatement,Boolean> _function_2 = new Function1<DDLStatement,Boolean>() {
+        public Boolean apply(final DDLStatement it) {
+          return Boolean.valueOf((it instanceof CreateTriggerStatement));
         }
-        _builder.append("\t\t");
-        _builder.append(");");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.newLine();
-      }
-    }
+      };
+    Iterable<DDLStatement> _filter_4 = IterableExtensions.<DDLStatement>filter(_statements_4, _function_2);
+    CharSequence _generateStatements_2 = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_4);
+    _builder.append(_generateStatements_2, "		");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -304,7 +235,7 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("\t");
-            _builder.append("return new ");
+            _builder.append("return create");
             DatabaseBlock _database_9 = model.getDatabase();
             String _name_8 = _database_9.getName();
             String _pascalize_3 = Strings.pascalize(_name_8);
@@ -335,6 +266,52 @@ public class SqliteOpenHelperGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    {
+      DatabaseBlock _database_10 = model.getDatabase();
+      EList<MigrationBlock> _migrations_5 = _database_10.getMigrations();
+      int _size_3 = _migrations_5.size();
+      boolean _greaterThan_2 = (_size_3 > 1);
+      if (_greaterThan_2) {
+        _builder.append("\t");
+        int version_2 = 1;
+        _builder.newLineIfNotEmpty();
+        {
+          DatabaseBlock _database_11 = model.getDatabase();
+          EList<MigrationBlock> _migrations_6 = _database_11.getMigrations();
+          Iterable<MigrationBlock> _drop_2 = IterableExtensions.<MigrationBlock>drop(_migrations_6, 1);
+          for(final MigrationBlock migration_2 : _drop_2) {
+            _builder.append("\t");
+            _builder.append("protected SQLiteMigration create");
+            DatabaseBlock _database_12 = model.getDatabase();
+            String _name_9 = _database_12.getName();
+            String _pascalize_4 = Strings.pascalize(_name_9);
+            _builder.append(_pascalize_4, "	");
+            _builder.append("MigrationV");
+            int _plus_2 = (version_2 + 1);
+            int _version_2 = version_2 = _plus_2;
+            _builder.append(_version_2, "	");
+            _builder.append("() {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("return new Default");
+            DatabaseBlock _database_13 = model.getDatabase();
+            String _name_10 = _database_13.getName();
+            String _pascalize_5 = Strings.pascalize(_name_10);
+            _builder.append(_pascalize_5, "		");
+            _builder.append("MigrationV");
+            _builder.append(version_2, "		");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+          }
+        }
+      }
+    }
     _builder.append("}");
     _builder.newLine();
     return _builder;

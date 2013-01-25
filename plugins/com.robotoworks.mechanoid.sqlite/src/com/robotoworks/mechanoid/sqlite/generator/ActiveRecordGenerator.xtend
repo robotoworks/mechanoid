@@ -23,10 +23,28 @@ class ActiveRecordGenerator {
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize».Builder;
 			import com.robotoworks.mechanoid.util.Closeables;
 			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+			import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
+
+				private static ActiveRecordFactory<«stmt.name.pascalize»Record> sFactory = new ActiveRecordFactory<«stmt.name.pascalize»Record>() {
+					@Override
+					public «stmt.name.pascalize»Record create(Cursor c) {
+						return fromCursor(c);
+					}
+					
+					@Override
+					public String[] getProjection() {
+						return PROJECTION;
+					}
+				};
+				
+				public static ActiveRecordFactory<«stmt.name.pascalize»Record> getFactory() {
+					return sFactory;
+				}
+
 			    public static final Parcelable.Creator<«stmt.name.pascalize»Record> CREATOR 
 			    	= new Parcelable.Creator<«stmt.name.pascalize»Record>() {
 			        public «stmt.name.pascalize»Record createFromParcel(Parcel in) {

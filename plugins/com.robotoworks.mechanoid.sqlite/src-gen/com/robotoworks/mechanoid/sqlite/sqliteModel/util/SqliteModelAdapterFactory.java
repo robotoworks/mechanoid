@@ -285,6 +285,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createLiteralAdapter();
       }
       @Override
+      public Adapter caseNestedExpression(NestedExpression object)
+      {
+        return createNestedExpressionAdapter();
+      }
+      @Override
       public Adapter caseSelectStatementExpression(SelectStatementExpression object)
       {
         return createSelectStatementExpressionAdapter();
@@ -1097,6 +1102,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression <em>Nested Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression
+   * @generated
+   */
+  public Adapter createNestedExpressionAdapter()
   {
     return null;
   }
