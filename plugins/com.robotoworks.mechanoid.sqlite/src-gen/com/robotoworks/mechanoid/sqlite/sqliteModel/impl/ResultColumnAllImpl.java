@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllImpl#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,24 +27,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColumnAll
 {
   /**
-   * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
+   * The default value of the '{@link #getReference() <em>Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSource()
+   * @see #getReference()
    * @generated
    * @ordered
    */
-  protected static final String SOURCE_EDEFAULT = null;
+  protected static final String REFERENCE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSource()
+   * @see #getReference()
    * @generated
    * @ordered
    */
-  protected String source = SOURCE_EDEFAULT;
+  protected String reference = REFERENCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,9 +72,9 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSource()
+  public String getReference()
   {
-    return source;
+    return reference;
   }
 
   /**
@@ -82,12 +82,12 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(String newSource)
+  public void setReference(String newReference)
   {
-    String oldSource = source;
-    source = newSource;
+    String oldReference = reference;
+    reference = newReference;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE, oldSource, source));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE, oldReference, reference));
   }
 
   /**
@@ -100,8 +100,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
-        return getSource();
+      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
+        return getReference();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +116,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
-        setSource((String)newValue);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
+        setReference((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +133,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
-        setSource(SOURCE_EDEFAULT);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
+        setReference(REFERENCE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -150,8 +150,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__SOURCE:
-        return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
+      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
+        return REFERENCE_EDEFAULT == null ? reference != null : !REFERENCE_EDEFAULT.equals(reference);
     }
     return super.eIsSet(featureID);
   }
@@ -167,8 +167,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (source: ");
-    result.append(source);
+    result.append(" (reference: ");
+    result.append(reference);
     result.append(')');
     return result.toString();
   }

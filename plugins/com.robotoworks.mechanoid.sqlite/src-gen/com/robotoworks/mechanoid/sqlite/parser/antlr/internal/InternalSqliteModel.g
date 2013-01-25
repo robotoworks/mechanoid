@@ -4170,20 +4170,15 @@ ruleSingleSource returns [EObject current=null]
     }
 )(
 (
-		lv_table_1_0=RULE_ID
 		{
-			newLeafNode(lv_table_1_0, grammarAccess.getSingleSourceAccess().getTableIDTerminalRuleCall_0_1_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getSingleSourceRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"table",
-        		lv_table_1_0, 
-        		"ID");
-	    }
+        }
+	otherlv_1=RULE_ID
+	{
+		newLeafNode(otherlv_1, grammarAccess.getSingleSourceAccess().getTableReferenceCreateTableStatementCrossReference_0_1_0()); 
+	}
 
 )
 )(	otherlv_2='as' 
@@ -4471,11 +4466,11 @@ ruleResultColumn returns [EObject current=null]
             grammarAccess.getResultColumnAccess().getResultColumnAllAction_0_0(),
             $current);
     }
-)((
+)(((
 (
-		lv_source_1_0=RULE_ID
+		lv_reference_1_0=RULE_ID
 		{
-			newLeafNode(lv_source_1_0, grammarAccess.getResultColumnAccess().getSourceIDTerminalRuleCall_0_1_0_0()); 
+			newLeafNode(lv_reference_1_0, grammarAccess.getResultColumnAccess().getReferenceIDTerminalRuleCall_0_1_0_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -4483,21 +4478,22 @@ ruleResultColumn returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"source",
-        		lv_source_1_0, 
+       			"reference",
+        		lv_reference_1_0, 
         		"ID");
 	    }
 
 )
-)	otherlv_2='.' 
+)	otherlv_2='.*' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getResultColumnAccess().getFullStopKeyword_0_1_1());
+    	newLeafNode(otherlv_2, grammarAccess.getResultColumnAccess().getFullStopAsteriskKeyword_0_1_0_1());
     }
-)?	otherlv_3='*' 
+)?
+    |	otherlv_3='*' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_2());
+    	newLeafNode(otherlv_3, grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_1_1());
     }
-)
+))
     |((
     {
         $current = forceCreateModelElement(

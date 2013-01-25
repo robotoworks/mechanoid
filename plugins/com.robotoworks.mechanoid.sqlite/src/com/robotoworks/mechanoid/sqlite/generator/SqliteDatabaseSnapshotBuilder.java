@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,8 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
@@ -26,6 +29,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 
 public class SqliteDatabaseSnapshotBuilder {
@@ -127,10 +132,12 @@ public class SqliteDatabaseSnapshotBuilder {
 		}
 		
 		for(CreateViewStatement stmt : mViews.values()) {
+			resolveViewReferences(stmt);
 			migration.getStatements().add(stmt);
 		}
 		
 		for(CreateTriggerStatement stmt : mTriggers.values()) {
+			resolveViewReferences(stmt);
 			migration.getStatements().add(stmt);
 		}
 		
@@ -139,5 +146,14 @@ public class SqliteDatabaseSnapshotBuilder {
 //		String text = serializer.serialize(mSnapshotModel, SaveOptions.newBuilder().noValidation().getOptions());
 //		
 //		text = null;
+	}
+
+	private void resolveViewReferences(DDLStatement stmt) {
+		Iterator<SingleSourceTable> sources = IteratorExtensions.filter(stmt.eAllContents(), SingleSourceTable.class);
+		IteratorExtensions.forEach(sources, new Procedure1<SingleSourceTable>(){
+			@Override
+			public void apply(SingleSourceTable p) {
+				p.setTableReference(mTables.get(p.getTableReference().getName()));
+			}});
 	}
 }
