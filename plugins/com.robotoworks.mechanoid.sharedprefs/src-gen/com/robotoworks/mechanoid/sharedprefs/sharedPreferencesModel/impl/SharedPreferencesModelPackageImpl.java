@@ -2,12 +2,17 @@
  */
 package com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl;
 
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferencesBlock;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelFactory;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -51,7 +56,42 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass literalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numericLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum preferenceTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum booleanValueEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -211,9 +251,99 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getPreference_DefaultValue()
+  {
+    return (EReference)preferenceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLiteral()
+  {
+    return literalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBooleanLiteral()
+  {
+    return booleanLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBooleanLiteral_Literal()
+  {
+    return (EAttribute)booleanLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStringLiteral()
+  {
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringLiteral_Literal()
+  {
+    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNumericLiteral()
+  {
+    return numericLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumericLiteral_Literal()
+  {
+    return (EAttribute)numericLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getPreferenceType()
   {
     return preferenceTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getBooleanValue()
+  {
+    return booleanValueEEnum;
   }
 
   /**
@@ -257,9 +387,22 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
     preferenceEClass = createEClass(PREFERENCE);
     createEAttribute(preferenceEClass, PREFERENCE__NAME);
     createEAttribute(preferenceEClass, PREFERENCE__TYPE);
+    createEReference(preferenceEClass, PREFERENCE__DEFAULT_VALUE);
+
+    literalEClass = createEClass(LITERAL);
+
+    booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+    createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__LITERAL);
+
+    stringLiteralEClass = createEClass(STRING_LITERAL);
+    createEAttribute(stringLiteralEClass, STRING_LITERAL__LITERAL);
+
+    numericLiteralEClass = createEClass(NUMERIC_LITERAL);
+    createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__LITERAL);
 
     // Create enums
     preferenceTypeEEnum = createEEnum(PREFERENCE_TYPE);
+    booleanValueEEnum = createEEnum(BOOLEAN_VALUE);
   }
 
   /**
@@ -291,6 +434,9 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
+    stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+    numericLiteralEClass.getESuperTypes().add(this.getLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -304,6 +450,18 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
     initEClass(preferenceEClass, Preference.class, "Preference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPreference_Name(), ecorePackage.getEString(), "name", null, 0, 1, Preference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPreference_Type(), this.getPreferenceType(), "type", null, 0, 1, Preference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPreference_DefaultValue(), this.getLiteral(), null, "defaultValue", null, 0, 1, Preference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanLiteral_Literal(), this.getBooleanValue(), "literal", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteral_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumericLiteral_Literal(), ecorePackage.getEBigDecimal(), "literal", null, 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(preferenceTypeEEnum, PreferenceType.class, "PreferenceType");
@@ -312,6 +470,10 @@ public class SharedPreferencesModelPackageImpl extends EPackageImpl implements S
     addEEnumLiteral(preferenceTypeEEnum, PreferenceType.BOOLEAN);
     addEEnumLiteral(preferenceTypeEEnum, PreferenceType.FLOAT);
     addEEnumLiteral(preferenceTypeEEnum, PreferenceType.LONG);
+
+    initEEnum(booleanValueEEnum, BooleanValue.class, "BooleanValue");
+    addEEnumLiteral(booleanValueEEnum, BooleanValue.TRUE);
+    addEEnumLiteral(booleanValueEEnum, BooleanValue.FALSE);
 
     // Create resource
     createResource(eNS_URI);
