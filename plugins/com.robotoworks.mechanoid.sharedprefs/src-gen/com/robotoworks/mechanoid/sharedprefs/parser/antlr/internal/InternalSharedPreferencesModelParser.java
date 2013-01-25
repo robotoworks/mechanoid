@@ -23,27 +23,32 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'preferences'", "'{'", "'}'", "':'", "'.'", "'String'", "'int'", "'boolean'", "'float'", "'long'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'preferences'", "'{'", "'}'", "':'", "'='", "'-'", "'.'", "'String'", "'int'", "'boolean'", "'float'", "'long'", "'true'", "'false'"
     };
     public static final int RULE_ID=4;
-    public static final int RULE_ANY_OTHER=10;
+    public static final int T__26=26;
+    public static final int T__25=25;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=11;
     public static final int T__21=21;
     public static final int T__20=20;
+    public static final int RULE_SL_COMMENT=9;
     public static final int EOF=-1;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int RULE_ML_COMMENT=7;
+    public static final int RULE_ML_COMMENT=8;
     public static final int T__19=19;
-    public static final int RULE_STRING=6;
+    public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
     public static final int T__17=17;
+    public static final int RULE_NUMBER=6;
     public static final int T__12=12;
-    public static final int T__11=11;
     public static final int T__14=14;
     public static final int T__13=13;
-    public static final int RULE_INT=5;
-    public static final int RULE_WS=9;
+    public static final int RULE_INT=7;
+    public static final int RULE_WS=10;
 
     // delegates
     // delegators
@@ -143,7 +148,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:81:1: (otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_preferencesBlock_2_0= rulePreferencesBlock ) ) )
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:81:3: otherlv_0= 'package' ( (lv_packageName_1_0= ruleFQN ) ) ( (lv_preferencesBlock_2_0= rulePreferencesBlock ) )
             {
-            otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleModel122); if (state.failed) return current;
+            otherlv_0=(Token)match(input,12,FOLLOW_12_in_ruleModel122); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getModelAccess().getPackageKeyword_0());
@@ -302,7 +307,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:142:1: (otherlv_0= 'preferences' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_prefs_3_0= rulePreference ) )* otherlv_4= '}' )
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:142:3: otherlv_0= 'preferences' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_prefs_3_0= rulePreference ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,12,FOLLOW_12_in_rulePreferencesBlock247); if (state.failed) return current;
+            otherlv_0=(Token)match(input,13,FOLLOW_13_in_rulePreferencesBlock247); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getPreferencesBlockAccess().getPreferencesKeyword_0());
@@ -338,7 +343,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
             }
 
-            otherlv_2=(Token)match(input,13,FOLLOW_13_in_rulePreferencesBlock281); if (state.failed) return current;
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_rulePreferencesBlock281); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getPreferencesBlockAccess().getLeftCurlyBracketKeyword_2());
@@ -397,7 +402,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,14,FOLLOW_14_in_rulePreferencesBlock315); if (state.failed) return current;
+            otherlv_4=(Token)match(input,15,FOLLOW_15_in_rulePreferencesBlock315); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getPreferencesBlockAccess().getRightCurlyBracketKeyword_4());
@@ -466,23 +471,26 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "rulePreference"
-    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:207:1: rulePreference returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) ) ;
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:207:1: rulePreference returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )? ) ;
     public final EObject rulePreference() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_0_0=null;
         Token otherlv_1=null;
+        Token otherlv_3=null;
         Enumerator lv_type_2_0 = null;
+
+        EObject lv_defaultValue_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:210:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) ) )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:210:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )? )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_type_2_0= rulePreferenceType ) ) (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )?
             {
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:211:2: ( (lv_name_0_0= RULE_ID ) )
             // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:212:1: (lv_name_0_0= RULE_ID )
@@ -514,7 +522,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
             }
 
-            otherlv_1=(Token)match(input,15,FOLLOW_15_in_rulePreference420); if (state.failed) return current;
+            otherlv_1=(Token)match(input,16,FOLLOW_16_in_rulePreference420); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getPreferenceAccess().getColonKeyword_1());
@@ -555,6 +563,64 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
             }
 
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:251:2: (otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) ) )?
+            int alt2=2;
+            int LA2_0 = input.LA(1);
+
+            if ( (LA2_0==17) ) {
+                alt2=1;
+            }
+            switch (alt2) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:251:4: otherlv_3= '=' ( (lv_defaultValue_4_0= ruleLiteral ) )
+                    {
+                    otherlv_3=(Token)match(input,17,FOLLOW_17_in_rulePreference454); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getPreferenceAccess().getEqualsSignKeyword_3_0());
+                          
+                    }
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:255:1: ( (lv_defaultValue_4_0= ruleLiteral ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:256:1: (lv_defaultValue_4_0= ruleLiteral )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:256:1: (lv_defaultValue_4_0= ruleLiteral )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:257:3: lv_defaultValue_4_0= ruleLiteral
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getPreferenceAccess().getDefaultValueLiteralParserRuleCall_3_1_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleLiteral_in_rulePreference475);
+                    lv_defaultValue_4_0=ruleLiteral();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getPreferenceRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"defaultValue",
+                              		lv_defaultValue_4_0, 
+                              		"Literal");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -577,8 +643,405 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
     // $ANTLR end "rulePreference"
 
 
+    // $ANTLR start "entryRuleLiteral"
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:281:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    public final EObject entryRuleLiteral() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleLiteral = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:282:2: (iv_ruleLiteral= ruleLiteral EOF )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:283:2: iv_ruleLiteral= ruleLiteral EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getLiteralRule()); 
+            }
+            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral513);
+            iv_ruleLiteral=ruleLiteral();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleLiteral; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral523); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleLiteral"
+
+
+    // $ANTLR start "ruleLiteral"
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:290:1: ruleLiteral returns [EObject current=null] : ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) ) ;
+    public final EObject ruleLiteral() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_literal_3_0=null;
+        Enumerator lv_literal_1_0 = null;
+
+        AntlrDatatypeRuleToken lv_literal_5_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:293:28: ( ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:1: ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) )
+            {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:1: ( ( () ( (lv_literal_1_0= ruleBooleanValue ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= ruleSignedNumber ) ) ) )
+            int alt3=3;
+            switch ( input.LA(1) ) {
+            case 25:
+            case 26:
+                {
+                alt3=1;
+                }
+                break;
+            case RULE_STRING:
+                {
+                alt3=2;
+                }
+                break;
+            case RULE_NUMBER:
+            case 18:
+                {
+                alt3=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 3, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt3) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:2: ( () ( (lv_literal_1_0= ruleBooleanValue ) ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:2: ( () ( (lv_literal_1_0= ruleBooleanValue ) ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:3: () ( (lv_literal_1_0= ruleBooleanValue ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:294:3: ()
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:295:5: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getBooleanLiteralAction_0_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:300:2: ( (lv_literal_1_0= ruleBooleanValue ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:301:1: (lv_literal_1_0= ruleBooleanValue )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:301:1: (lv_literal_1_0= ruleBooleanValue )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:302:3: lv_literal_1_0= ruleBooleanValue
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleBooleanValue_in_ruleLiteral579);
+                    lv_literal_1_0=ruleBooleanValue();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getLiteralRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"literal",
+                              		lv_literal_1_0, 
+                              		"BooleanValue");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:319:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:319:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:319:7: () ( (lv_literal_3_0= RULE_STRING ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:319:7: ()
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:320:5: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getStringLiteralAction_1_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:325:2: ( (lv_literal_3_0= RULE_STRING ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:326:1: (lv_literal_3_0= RULE_STRING )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:326:1: (lv_literal_3_0= RULE_STRING )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:327:3: lv_literal_3_0= RULE_STRING
+                    {
+                    lv_literal_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLiteral613); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			newLeafNode(lv_literal_3_0, grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(
+                             			current, 
+                             			"literal",
+                              		lv_literal_3_0, 
+                              		"STRING");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:344:6: ( () ( (lv_literal_5_0= ruleSignedNumber ) ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:344:6: ( () ( (lv_literal_5_0= ruleSignedNumber ) ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:344:7: () ( (lv_literal_5_0= ruleSignedNumber ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:344:7: ()
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:345:5: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getNumericLiteralAction_2_0(),
+                                  current);
+                          
+                    }
+
+                    }
+
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:350:2: ( (lv_literal_5_0= ruleSignedNumber ) )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:351:1: (lv_literal_5_0= ruleSignedNumber )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:351:1: (lv_literal_5_0= ruleSignedNumber )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:352:3: lv_literal_5_0= ruleSignedNumber
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleSignedNumber_in_ruleLiteral656);
+                    lv_literal_5_0=ruleSignedNumber();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getLiteralRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"literal",
+                              		lv_literal_5_0, 
+                              		"SignedNumber");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleLiteral"
+
+
+    // $ANTLR start "entryRuleSignedNumber"
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:376:1: entryRuleSignedNumber returns [String current=null] : iv_ruleSignedNumber= ruleSignedNumber EOF ;
+    public final String entryRuleSignedNumber() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleSignedNumber = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:377:2: (iv_ruleSignedNumber= ruleSignedNumber EOF )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:378:2: iv_ruleSignedNumber= ruleSignedNumber EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getSignedNumberRule()); 
+            }
+            pushFollow(FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber694);
+            iv_ruleSignedNumber=ruleSignedNumber();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleSignedNumber.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSignedNumber705); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSignedNumber"
+
+
+    // $ANTLR start "ruleSignedNumber"
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:385:1: ruleSignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) ;
+    public final AntlrDatatypeRuleToken ruleSignedNumber() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+        Token this_NUMBER_1=null;
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:388:28: ( ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:389:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
+            {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:389:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:389:2: (kw= '-' )? this_NUMBER_1= RULE_NUMBER
+            {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:389:2: (kw= '-' )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==18) ) {
+                alt4=1;
+            }
+            switch (alt4) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:390:2: kw= '-'
+                    {
+                    kw=(Token)match(input,18,FOLLOW_18_in_ruleSignedNumber744); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getSignedNumberAccess().getHyphenMinusKeyword_0()); 
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            this_NUMBER_1=(Token)match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_ruleSignedNumber761); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              		current.merge(this_NUMBER_1);
+                  
+            }
+            if ( state.backtracking==0 ) {
+               
+                  newLeafNode(this_NUMBER_1, grammarAccess.getSignedNumberAccess().getNUMBERTerminalRuleCall_1()); 
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSignedNumber"
+
+
     // $ANTLR start "entryRuleFQN"
-    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:259:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:410:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
     public final String entryRuleFQN() throws RecognitionException {
         String current = null;
 
@@ -586,13 +1049,13 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
 
         try {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:260:2: (iv_ruleFQN= ruleFQN EOF )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:261:2: iv_ruleFQN= ruleFQN EOF
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:411:2: (iv_ruleFQN= ruleFQN EOF )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:412:2: iv_ruleFQN= ruleFQN EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFQNRule()); 
             }
-            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN478);
+            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN807);
             iv_ruleFQN=ruleFQN();
 
             state._fsp--;
@@ -600,7 +1063,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
             if ( state.backtracking==0 ) {
                current =iv_ruleFQN.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN489); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN818); if (state.failed) return current;
 
             }
 
@@ -618,7 +1081,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "ruleFQN"
-    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:268:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) ;
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:419:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleFQN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -629,13 +1092,13 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:271:28: ( (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:272:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:422:28: ( (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:423:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
             {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:272:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:272:6: this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:423:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:423:6: this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN529); if (state.failed) return current;
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN858); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_ID_0);
@@ -646,25 +1109,25 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                   newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
                   
             }
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:279:1: ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
-            loop2:
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:430:1: ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
+            loop5:
             do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( (LA2_0==16) && (synpred1_InternalSharedPreferencesModel())) {
-                    alt2=1;
+                if ( (LA5_0==19) && (synpred1_InternalSharedPreferencesModel())) {
+                    alt5=1;
                 }
 
 
-                switch (alt2) {
+                switch (alt5) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:279:2: ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID
+            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:430:2: ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID
             	    {
-            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:279:2: ( ( '.' )=>kw= '.' )
-            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:279:3: ( '.' )=>kw= '.'
+            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:430:2: ( ( '.' )=>kw= '.' )
+            	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:430:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,16,FOLLOW_16_in_ruleFQN557); if (state.failed) return current;
+            	    kw=(Token)match(input,19,FOLLOW_19_in_ruleFQN886); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -674,7 +1137,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
             	    }
 
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN573); if (state.failed) return current;
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN902); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      		current.merge(this_ID_2);
@@ -690,7 +1153,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
             	    break;
 
             	default :
-            	    break loop2;
+            	    break loop5;
                 }
             } while (true);
 
@@ -717,7 +1180,7 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "rulePreferenceType"
-    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:302:1: rulePreferenceType returns [Enumerator current=null] : ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) ) ;
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:453:1: rulePreferenceType returns [Enumerator current=null] : ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) ) ;
     public final Enumerator rulePreferenceType() throws RecognitionException {
         Enumerator current = null;
 
@@ -729,53 +1192,53 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:304:28: ( ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) ) )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:305:1: ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:455:28: ( ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:456:1: ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) )
             {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:305:1: ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) )
-            int alt3=5;
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:456:1: ( (enumLiteral_0= 'String' ) | (enumLiteral_1= 'int' ) | (enumLiteral_2= 'boolean' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) )
+            int alt6=5;
             switch ( input.LA(1) ) {
-            case 17:
-                {
-                alt3=1;
-                }
-                break;
-            case 18:
-                {
-                alt3=2;
-                }
-                break;
-            case 19:
-                {
-                alt3=3;
-                }
-                break;
             case 20:
                 {
-                alt3=4;
+                alt6=1;
                 }
                 break;
             case 21:
                 {
-                alt3=5;
+                alt6=2;
+                }
+                break;
+            case 22:
+                {
+                alt6=3;
+                }
+                break;
+            case 23:
+                {
+                alt6=4;
+                }
+                break;
+            case 24:
+                {
+                alt6=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt3) {
+            switch (alt6) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:305:2: (enumLiteral_0= 'String' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:456:2: (enumLiteral_0= 'String' )
                     {
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:305:2: (enumLiteral_0= 'String' )
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:305:4: enumLiteral_0= 'String'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:456:2: (enumLiteral_0= 'String' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:456:4: enumLiteral_0= 'String'
                     {
-                    enumLiteral_0=(Token)match(input,17,FOLLOW_17_in_rulePreferenceType634); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,20,FOLLOW_20_in_rulePreferenceType963); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getPreferenceTypeAccess().getStringEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -789,12 +1252,12 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:311:6: (enumLiteral_1= 'int' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:462:6: (enumLiteral_1= 'int' )
                     {
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:311:6: (enumLiteral_1= 'int' )
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:311:8: enumLiteral_1= 'int'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:462:6: (enumLiteral_1= 'int' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:462:8: enumLiteral_1= 'int'
                     {
-                    enumLiteral_1=(Token)match(input,18,FOLLOW_18_in_rulePreferenceType651); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,21,FOLLOW_21_in_rulePreferenceType980); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getPreferenceTypeAccess().getIntegerEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -808,12 +1271,12 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:317:6: (enumLiteral_2= 'boolean' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:468:6: (enumLiteral_2= 'boolean' )
                     {
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:317:6: (enumLiteral_2= 'boolean' )
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:317:8: enumLiteral_2= 'boolean'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:468:6: (enumLiteral_2= 'boolean' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:468:8: enumLiteral_2= 'boolean'
                     {
-                    enumLiteral_2=(Token)match(input,19,FOLLOW_19_in_rulePreferenceType668); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,22,FOLLOW_22_in_rulePreferenceType997); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getPreferenceTypeAccess().getBooleanEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -827,12 +1290,12 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:323:6: (enumLiteral_3= 'float' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:474:6: (enumLiteral_3= 'float' )
                     {
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:323:6: (enumLiteral_3= 'float' )
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:323:8: enumLiteral_3= 'float'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:474:6: (enumLiteral_3= 'float' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:474:8: enumLiteral_3= 'float'
                     {
-                    enumLiteral_3=(Token)match(input,20,FOLLOW_20_in_rulePreferenceType685); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,23,FOLLOW_23_in_rulePreferenceType1014); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getPreferenceTypeAccess().getFloatEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -846,12 +1309,12 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:329:6: (enumLiteral_4= 'long' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:480:6: (enumLiteral_4= 'long' )
                     {
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:329:6: (enumLiteral_4= 'long' )
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:329:8: enumLiteral_4= 'long'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:480:6: (enumLiteral_4= 'long' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:480:8: enumLiteral_4= 'long'
                     {
-                    enumLiteral_4=(Token)match(input,21,FOLLOW_21_in_rulePreferenceType702); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,24,FOLLOW_24_in_rulePreferenceType1031); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getPreferenceTypeAccess().getLongEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -885,12 +1348,103 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
     }
     // $ANTLR end "rulePreferenceType"
 
+
+    // $ANTLR start "ruleBooleanValue"
+    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:490:1: ruleBooleanValue returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
+    public final Enumerator ruleBooleanValue() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+         enterRule(); 
+        try {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:492:28: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:493:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            {
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:493:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==25) ) {
+                alt7=1;
+            }
+            else if ( (LA7_0==26) ) {
+                alt7=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 7, 0, input);
+
+                throw nvae;
+            }
+            switch (alt7) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:493:2: (enumLiteral_0= 'true' )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:493:2: (enumLiteral_0= 'true' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:493:4: enumLiteral_0= 'true'
+                    {
+                    enumLiteral_0=(Token)match(input,25,FOLLOW_25_in_ruleBooleanValue1076); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBooleanValueAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_0, grammarAccess.getBooleanValueAccess().getTrueEnumLiteralDeclaration_0()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:499:6: (enumLiteral_1= 'false' )
+                    {
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:499:6: (enumLiteral_1= 'false' )
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:499:8: enumLiteral_1= 'false'
+                    {
+                    enumLiteral_1=(Token)match(input,26,FOLLOW_26_in_ruleBooleanValue1093); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBooleanValueAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_1, grammarAccess.getBooleanValueAccess().getFalseEnumLiteralDeclaration_1()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBooleanValue"
+
     // $ANTLR start synpred1_InternalSharedPreferencesModel
     public final void synpred1_InternalSharedPreferencesModel_fragment() throws RecognitionException {   
-        // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:279:3: ( '.' )
-        // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:280:2: '.'
+        // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:430:3: ( '.' )
+        // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:431:2: '.'
         {
-        match(input,16,FOLLOW_16_in_synpred1_InternalSharedPreferencesModel548); if (state.failed) return ;
+        match(input,19,FOLLOW_19_in_synpred1_InternalSharedPreferencesModel877); if (state.failed) return ;
 
         }
     }
@@ -918,31 +1472,44 @@ public class InternalSharedPreferencesModelParser extends AbstractInternalAntlrP
 
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleModel122 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleModel143 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleModel122 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleModel143 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_rulePreferencesBlock_in_ruleModel164 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePreferencesBlock_in_entryRulePreferencesBlock200 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePreferencesBlock210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rulePreferencesBlock247 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePreferencesBlock264 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_rulePreferencesBlock281 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_rulePreference_in_rulePreferencesBlock302 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_14_in_rulePreferencesBlock315 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rulePreferencesBlock247 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePreferencesBlock264 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_rulePreferencesBlock281 = new BitSet(new long[]{0x0000000000008010L});
+    public static final BitSet FOLLOW_rulePreference_in_rulePreferencesBlock302 = new BitSet(new long[]{0x0000000000008010L});
+    public static final BitSet FOLLOW_15_in_rulePreferencesBlock315 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePreference_in_entryRulePreference351 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePreference361 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePreference403 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_rulePreference420 = new BitSet(new long[]{0x00000000003E0000L});
-    public static final BitSet FOLLOW_rulePreferenceType_in_rulePreference441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN478 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFQN489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN529 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_16_in_ruleFQN557 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN573 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_17_in_rulePreferenceType634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rulePreferenceType651 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rulePreferenceType668 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rulePreferenceType685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rulePreferenceType702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_synpred1_InternalSharedPreferencesModel548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePreference403 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_rulePreference420 = new BitSet(new long[]{0x0000000001F00000L});
+    public static final BitSet FOLLOW_rulePreferenceType_in_rulePreference441 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_17_in_rulePreference454 = new BitSet(new long[]{0x0000000006040060L});
+    public static final BitSet FOLLOW_ruleLiteral_in_rulePreference475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral513 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanValue_in_ruleLiteral579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleLiteral613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_ruleLiteral656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber694 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSignedNumber705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_ruleSignedNumber744 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_NUMBER_in_ruleSignedNumber761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN807 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFQN818 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN858 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_19_in_ruleFQN886 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN902 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_20_in_rulePreferenceType963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rulePreferenceType980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rulePreferenceType997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rulePreferenceType1014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rulePreferenceType1031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleBooleanValue1076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ruleBooleanValue1093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_synpred1_InternalSharedPreferencesModel877 = new BitSet(new long[]{0x0000000000000002L});
 
 }

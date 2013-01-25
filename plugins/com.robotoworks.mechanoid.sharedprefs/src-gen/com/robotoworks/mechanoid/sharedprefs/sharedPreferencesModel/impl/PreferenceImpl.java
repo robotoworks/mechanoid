@@ -2,13 +2,16 @@
  */
 package com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl;
 
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.PreferenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.PreferenceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.PreferenceImpl#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +72,16 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
    * @ordered
    */
   protected PreferenceType type = TYPE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDefaultValue()
+   * @generated
+   * @ordered
+   */
+  protected Literal defaultValue;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,6 +155,70 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
    * <!-- end-user-doc -->
    * @generated
    */
+  public Literal getDefaultValue()
+  {
+    return defaultValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDefaultValue(Literal newDefaultValue, NotificationChain msgs)
+  {
+    Literal oldDefaultValue = defaultValue;
+    defaultValue = newDefaultValue;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDefaultValue(Literal newDefaultValue)
+  {
+    if (newDefaultValue != defaultValue)
+    {
+      NotificationChain msgs = null;
+      if (defaultValue != null)
+        msgs = ((InternalEObject)defaultValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE, null, msgs);
+      if (newDefaultValue != null)
+        msgs = ((InternalEObject)newDefaultValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE, null, msgs);
+      msgs = basicSetDefaultValue(newDefaultValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE, newDefaultValue, newDefaultValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE:
+        return basicSetDefaultValue(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -150,6 +228,8 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
         return getName();
       case SharedPreferencesModelPackage.PREFERENCE__TYPE:
         return getType();
+      case SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE:
+        return getDefaultValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -169,6 +249,9 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
         return;
       case SharedPreferencesModelPackage.PREFERENCE__TYPE:
         setType((PreferenceType)newValue);
+        return;
+      case SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE:
+        setDefaultValue((Literal)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -190,6 +273,9 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
       case SharedPreferencesModelPackage.PREFERENCE__TYPE:
         setType(TYPE_EDEFAULT);
         return;
+      case SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE:
+        setDefaultValue((Literal)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -208,6 +294,8 @@ public class PreferenceImpl extends MinimalEObjectImpl.Container implements Pref
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SharedPreferencesModelPackage.PREFERENCE__TYPE:
         return type != TYPE_EDEFAULT;
+      case SharedPreferencesModelPackage.PREFERENCE__DEFAULT_VALUE:
+        return defaultValue != null;
     }
     return super.eIsSet(featureID);
   }

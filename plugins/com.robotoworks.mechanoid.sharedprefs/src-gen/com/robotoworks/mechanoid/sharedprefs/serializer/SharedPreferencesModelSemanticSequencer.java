@@ -3,10 +3,13 @@ package com.robotoworks.mechanoid.sharedprefs.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.sharedprefs.services.SharedPreferencesModelGrammarAccess;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferencesBlock;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
@@ -27,9 +30,21 @@ public class SharedPreferencesModelSemanticSequencer extends AbstractDelegatingS
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SharedPreferencesModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case SharedPreferencesModelPackage.BOOLEAN_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (BooleanLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			case SharedPreferencesModelPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
+					return; 
+				}
+				else break;
+			case SharedPreferencesModelPackage.NUMERIC_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (NumericLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -45,9 +60,63 @@ public class SharedPreferencesModelSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
+			case SharedPreferencesModelPackage.STRING_LITERAL:
+				if(context == grammarAccess.getLiteralRule()) {
+					sequence_Literal(context, (StringLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     literal=BooleanValue
+	 */
+	protected void sequence_Literal(EObject context, BooleanLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SharedPreferencesModelPackage.Literals.BOOLEAN_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SharedPreferencesModelPackage.Literals.BOOLEAN_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=SignedNumber
+	 */
+	protected void sequence_Literal(EObject context, NumericLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SharedPreferencesModelPackage.Literals.NUMERIC_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SharedPreferencesModelPackage.Literals.NUMERIC_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     literal=STRING
+	 */
+	protected void sequence_Literal(EObject context, StringLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SharedPreferencesModelPackage.Literals.STRING_LITERAL__LITERAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SharedPreferencesModelPackage.Literals.STRING_LITERAL__LITERAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0(), semanticObject.getLiteral());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Constraint:
@@ -70,20 +139,10 @@ public class SharedPreferencesModelSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (name=ID type=PreferenceType)
+	 *     (name=ID type=PreferenceType defaultValue=Literal?)
 	 */
 	protected void sequence_Preference(EObject context, Preference semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SharedPreferencesModelPackage.Literals.PREFERENCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SharedPreferencesModelPackage.Literals.PREFERENCE__NAME));
-			if(transientValues.isValueTransient(semanticObject, SharedPreferencesModelPackage.Literals.PREFERENCE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SharedPreferencesModelPackage.Literals.PREFERENCE__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPreferenceAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getPreferenceAccess().getTypePreferenceTypeEnumRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
