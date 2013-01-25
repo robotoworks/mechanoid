@@ -37,10 +37,17 @@ public class SharedPreferencesModelParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
 					put(grammarAccess.getPreferenceTypeAccess().getAlternatives(), "rule__PreferenceType__Alternatives");
+					put(grammarAccess.getBooleanValueAccess().getAlternatives(), "rule__BooleanValue__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getPreferencesBlockAccess().getGroup(), "rule__PreferencesBlock__Group__0");
 					put(grammarAccess.getPreferenceAccess().getGroup(), "rule__Preference__Group__0");
+					put(grammarAccess.getPreferenceAccess().getGroup_3(), "rule__Preference__Group_3__0");
+					put(grammarAccess.getLiteralAccess().getGroup_0(), "rule__Literal__Group_0__0");
+					put(grammarAccess.getLiteralAccess().getGroup_1(), "rule__Literal__Group_1__0");
+					put(grammarAccess.getLiteralAccess().getGroup_2(), "rule__Literal__Group_2__0");
+					put(grammarAccess.getSignedNumberAccess().getGroup(), "rule__SignedNumber__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 					put(grammarAccess.getModelAccess().getPackageNameAssignment_1(), "rule__Model__PackageNameAssignment_1");
@@ -49,6 +56,10 @@ public class SharedPreferencesModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPreferencesBlockAccess().getPrefsAssignment_3(), "rule__PreferencesBlock__PrefsAssignment_3");
 					put(grammarAccess.getPreferenceAccess().getNameAssignment_0(), "rule__Preference__NameAssignment_0");
 					put(grammarAccess.getPreferenceAccess().getTypeAssignment_2(), "rule__Preference__TypeAssignment_2");
+					put(grammarAccess.getPreferenceAccess().getDefaultValueAssignment_3_1(), "rule__Preference__DefaultValueAssignment_3_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_0_1(), "rule__Literal__LiteralAssignment_0_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_1_1(), "rule__Literal__LiteralAssignment_1_1");
+					put(grammarAccess.getLiteralAccess().getLiteralAssignment_2_1(), "rule__Literal__LiteralAssignment_2_1");
 				}
 			};
 		}

@@ -160,13 +160,125 @@ public interface SharedPreferencesModelPackage extends EPackage
   int PREFERENCE__TYPE = 1;
 
   /**
+   * The feature id for the '<em><b>Default Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PREFERENCE__DEFAULT_VALUE = 2;
+
+  /**
    * The number of structural features of the '<em>Preference</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PREFERENCE_FEATURE_COUNT = 2;
+  int PREFERENCE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.LiteralImpl <em>Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.LiteralImpl
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getLiteral()
+   * @generated
+   */
+  int LITERAL = 3;
+
+  /**
+   * The number of structural features of the '<em>Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.BooleanLiteralImpl
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 4;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.StringLiteralImpl
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 5;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.NumericLiteralImpl
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getNumericLiteral()
+   * @generated
+   */
+  int NUMERIC_LITERAL = 6;
+
+  /**
+   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL__LITERAL = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Numeric Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType <em>Preference Type</em>}' enum.
@@ -176,7 +288,17 @@ public interface SharedPreferencesModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getPreferenceType()
    * @generated
    */
-  int PREFERENCE_TYPE = 3;
+  int PREFERENCE_TYPE = 7;
+
+  /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue <em>Boolean Value</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getBooleanValue()
+   * @generated
+   */
+  int BOOLEAN_VALUE = 8;
 
 
   /**
@@ -276,6 +398,90 @@ public interface SharedPreferencesModelPackage extends EPackage
   EAttribute getPreference_Type();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference#getDefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Default Value</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference#getDefaultValue()
+   * @see #getPreference()
+   * @generated
+   */
+  EReference getPreference_DefaultValue();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal
+   * @generated
+   */
+  EClass getLiteral();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral#getLiteral()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Literal();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral#getLiteral()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Literal();
+
+  /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral <em>Numeric Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Numeric Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral
+   * @generated
+   */
+  EClass getNumericLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Literal</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral#getLiteral()
+   * @see #getNumericLiteral()
+   * @generated
+   */
+  EAttribute getNumericLiteral_Literal();
+
+  /**
    * Returns the meta object for enum '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType <em>Preference Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -284,6 +490,16 @@ public interface SharedPreferencesModelPackage extends EPackage
    * @generated
    */
   EEnum getPreferenceType();
+
+  /**
+   * Returns the meta object for enum '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue <em>Boolean Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Boolean Value</em>'.
+   * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue
+   * @generated
+   */
+  EEnum getBooleanValue();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -387,6 +603,78 @@ public interface SharedPreferencesModelPackage extends EPackage
     EAttribute PREFERENCE__TYPE = eINSTANCE.getPreference_Type();
 
     /**
+     * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PREFERENCE__DEFAULT_VALUE = eINSTANCE.getPreference_DefaultValue();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.LiteralImpl <em>Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.LiteralImpl
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getLiteral()
+     * @generated
+     */
+    EClass LITERAL = eINSTANCE.getLiteral();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.BooleanLiteralImpl
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__LITERAL = eINSTANCE.getBooleanLiteral_Literal();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.StringLiteralImpl
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__LITERAL = eINSTANCE.getStringLiteral_Literal();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.NumericLiteralImpl
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getNumericLiteral()
+     * @generated
+     */
+    EClass NUMERIC_LITERAL = eINSTANCE.getNumericLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMERIC_LITERAL__LITERAL = eINSTANCE.getNumericLiteral_Literal();
+
+    /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType <em>Preference Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -395,6 +683,16 @@ public interface SharedPreferencesModelPackage extends EPackage
      * @generated
      */
     EEnum PREFERENCE_TYPE = eINSTANCE.getPreferenceType();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue <em>Boolean Value</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanValue
+     * @see com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.impl.SharedPreferencesModelPackageImpl#getBooleanValue()
+     * @generated
+     */
+    EEnum BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
 
   }
 
