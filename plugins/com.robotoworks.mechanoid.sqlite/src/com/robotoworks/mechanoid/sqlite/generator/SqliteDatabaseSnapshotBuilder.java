@@ -151,7 +151,6 @@ public class SqliteDatabaseSnapshotBuilder {
 	private void resolveViewReferences(DDLStatement stmt) {
 		Iterator<SingleSourceTable> sources = IteratorExtensions.filter(stmt.eAllContents(), SingleSourceTable.class);
 		IteratorExtensions.forEach(sources, new Procedure1<SingleSourceTable>(){
-			@Override
 			public void apply(SingleSourceTable p) {
 				p.setTableReference(mTables.get(p.getTableReference().getName()));
 			}});
