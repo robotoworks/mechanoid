@@ -281,7 +281,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CheckTableConstraint/expression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceTable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/table"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceTable/tableReference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//SingleSourceTable/name"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//SingleSourceSelectStatement">
@@ -292,7 +292,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SingleSourceJoin/joinSource"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnAll">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnAll/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ResultColumnAll/reference"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ResultColumnExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ResultColumnExpression/expression"/>

@@ -1425,7 +1425,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (source=ID?)
+	 *     (reference=ID?)
 	 */
 	protected void sequence_ResultColumn(EObject context, ResultColumnAll semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1503,7 +1503,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (table=ID name=ID?)
+	 *     (tableReference=[CreateTableStatement|ID] name=ID?)
 	 */
 	protected void sequence_SingleSource(EObject context, SingleSourceTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
