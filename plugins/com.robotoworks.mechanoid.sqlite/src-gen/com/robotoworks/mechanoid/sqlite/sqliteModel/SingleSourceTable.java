@@ -11,7 +11,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable <em>Table</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -23,30 +23,30 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface SingleSourceTable extends SingleSource
 {
   /**
-   * Returns the value of the '<em><b>Table</b></em>' attribute.
+   * Returns the value of the '<em><b>Table Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table</em>' attribute isn't clear,
+   * If the meaning of the '<em>Table Reference</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table</em>' attribute.
-   * @see #setTable(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Table()
+   * @return the value of the '<em>Table Reference</em>' reference.
+   * @see #setTableReference(CreateTableStatement)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_TableReference()
    * @model
    * @generated
    */
-  String getTable();
+  CreateTableStatement getTableReference();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable <em>Table</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table</em>' attribute.
-   * @see #getTable()
+   * @param value the new value of the '<em>Table Reference</em>' reference.
+   * @see #getTableReference()
    * @generated
    */
-  void setTable(String value);
+  void setTableReference(CreateTableStatement value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

@@ -205,7 +205,7 @@ JoinSource:
 ;
 
 SingleSource:
-	{SingleSourceTable} table=ID ('as' name=ID)? |
+	{SingleSourceTable} tableReference=[CreateTableStatement|ID] ('as' name=ID)? |
 	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' name=ID)? |
 	{SingleSourceJoin} '(' joinSource=JoinSource ')'
 ;
@@ -214,8 +214,9 @@ JoinStatement:
 	{JoinStatement}
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
+
 ResultColumn:
-	{ResultColumnAll} (source=ID '.')? '*' |
+	{ResultColumnAll} ((reference=ID '.*')? | '*') |
 	{ResultColumnExpression} expression=SqlExpression ('as' name=ID)?
 ;
 
@@ -246,6 +247,6 @@ terminal STRING	:
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
 		; 
-
+	
 QualifiedName:
 	ID ("." ID)*;

@@ -11,7 +11,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +22,29 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface ResultColumnAll extends ResultColumn
 {
   /**
-   * Returns the value of the '<em><b>Source</b></em>' attribute.
+   * Returns the value of the '<em><b>Reference</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Source</em>' attribute isn't clear,
+   * If the meaning of the '<em>Reference</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Source</em>' attribute.
-   * @see #setSource(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Source()
+   * @return the value of the '<em>Reference</em>' attribute.
+   * @see #setReference(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Reference()
    * @model
    * @generated
    */
-  String getSource();
+  String getReference();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference <em>Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Source</em>' attribute.
-   * @see #getSource()
+   * @param value the new value of the '<em>Reference</em>' attribute.
+   * @see #getReference()
    * @generated
    */
-  void setSource(String value);
+  void setReference(String value);
 
 } // ResultColumnAll

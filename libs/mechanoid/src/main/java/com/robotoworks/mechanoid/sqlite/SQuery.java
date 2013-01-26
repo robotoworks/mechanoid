@@ -11,12 +11,14 @@ package com.robotoworks.mechanoid.sqlite;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.TargetApi;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.MechanoidContentProvider;
@@ -622,22 +624,40 @@ public class SQuery {
 		return select(uri, projection, null, enableNotifications);
 	}
 	
+	@TargetApi(11)
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
+		
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	@TargetApi(11)
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
 		
 		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
 		
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
-		
+	
+	@TargetApi(11)	
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
+		
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
-
+	
+	@TargetApi(11)
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, boolean enableNotifications) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
 		
 		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
 		

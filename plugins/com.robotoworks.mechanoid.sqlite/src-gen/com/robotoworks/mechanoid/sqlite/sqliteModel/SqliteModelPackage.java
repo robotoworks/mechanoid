@@ -2590,13 +2590,13 @@ public interface SqliteModelPackage extends EPackage
   int SINGLE_SOURCE_TABLE = 65;
 
   /**
-   * The feature id for the '<em><b>Table</b></em>' attribute.
+   * The feature id for the '<em><b>Table Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SOURCE_TABLE__TABLE = SINGLE_SOURCE_FEATURE_COUNT + 0;
+  int SINGLE_SOURCE_TABLE__TABLE_REFERENCE = SINGLE_SOURCE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2692,13 +2692,13 @@ public interface SqliteModelPackage extends EPackage
   int RESULT_COLUMN_ALL = 68;
 
   /**
-   * The feature id for the '<em><b>Source</b></em>' attribute.
+   * The feature id for the '<em><b>Reference</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESULT_COLUMN_ALL__SOURCE = RESULT_COLUMN_FEATURE_COUNT + 0;
+  int RESULT_COLUMN_ALL__REFERENCE = RESULT_COLUMN_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Result Column All</em>' class.
@@ -5002,15 +5002,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getSingleSourceTable();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable <em>Table</em>}'.
+   * Returns the meta object for the reference '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Table</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTable()
+   * @return the meta object for the reference '<em>Table Reference</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference()
    * @see #getSingleSourceTable()
    * @generated
    */
-  EAttribute getSingleSourceTable_Table();
+  EReference getSingleSourceTable_TableReference();
 
   /**
    * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}'.
@@ -5087,15 +5087,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getResultColumnAll();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource <em>Source</em>}'.
+   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Source</em>'.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getSource()
+   * @return the meta object for the attribute '<em>Reference</em>'.
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference()
    * @see #getResultColumnAll()
    * @generated
    */
-  EAttribute getResultColumnAll_Source();
+  EAttribute getResultColumnAll_Reference();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression <em>Result Column Expression</em>}'.
@@ -6987,12 +6987,12 @@ public interface SqliteModelPackage extends EPackage
     EClass SINGLE_SOURCE_TABLE = eINSTANCE.getSingleSourceTable();
 
     /**
-     * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Table Reference</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SINGLE_SOURCE_TABLE__TABLE = eINSTANCE.getSingleSourceTable_Table();
+    EReference SINGLE_SOURCE_TABLE__TABLE_REFERENCE = eINSTANCE.getSingleSourceTable_TableReference();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -7057,12 +7057,12 @@ public interface SqliteModelPackage extends EPackage
     EClass RESULT_COLUMN_ALL = eINSTANCE.getResultColumnAll();
 
     /**
-     * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Reference</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RESULT_COLUMN_ALL__SOURCE = eINSTANCE.getResultColumnAll_Source();
+    EAttribute RESULT_COLUMN_ALL__REFERENCE = eINSTANCE.getResultColumnAll_Reference();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl <em>Result Column Expression</em>}' class.
