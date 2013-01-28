@@ -55,12 +55,12 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin;
@@ -68,7 +68,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.StringLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement;
 import org.eclipse.emf.ecore.EObject;
@@ -654,10 +654,10 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.PRIMARY_CONTRAINT:
-				if(context == grammarAccess.getPrimaryContraintRule() ||
+			case SqliteModelPackage.PRIMARY_CONSTRAINT:
+				if(context == grammarAccess.getPrimaryConstraintRule() ||
 				   context == grammarAccess.getTableConstraintRule()) {
-					sequence_PrimaryContraint(context, (PrimaryContraint) semanticObject); 
+					sequence_PrimaryConstraint(context, (PrimaryConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -688,11 +688,11 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.SELECT_CORE_EXPRESSION:
+			case SqliteModelPackage.SELECT_EXPRESSION:
 				if(context == grammarAccess.getSelectCoreRule() ||
-				   context == grammarAccess.getSelectCoreOperandRule() ||
-				   context == grammarAccess.getSelectCoreAccess().getSelectCoreLeftAction_1_0()) {
-					sequence_SelectCoreOperand(context, (SelectCoreExpression) semanticObject); 
+				   context == grammarAccess.getSelectCoreAccess().getSelectCoreLeftAction_1_0() ||
+				   context == grammarAccess.getSelectExpressionRule()) {
+					sequence_SelectExpression(context, (SelectExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -755,10 +755,10 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
+			case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT:
 				if(context == grammarAccess.getTableConstraintRule() ||
-				   context == grammarAccess.getUniqueTableContraintRule()) {
-					sequence_UniqueTableContraint(context, (UniqueTableContraint) semanticObject); 
+				   context == grammarAccess.getUniqueTableConstraintRule()) {
+					sequence_UniqueTableConstraint(context, (UniqueTableConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1409,7 +1409,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (name=ID? columns+=IndexedColumn columns+=IndexedColumn* conflictClause=ConflictClause)
 	 */
-	protected void sequence_PrimaryContraint(EObject context, PrimaryContraint semanticObject) {
+	protected void sequence_PrimaryConstraint(EObject context, PrimaryConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1553,6 +1553,28 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
+	 *     (left=SelectCore_SelectCore_1_0 op=CompoundOperator right=SelectExpression)
+	 */
+	protected void sequence_SelectCore(EObject context, SelectCore semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__LEFT));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__OP));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.SELECT_CORE__RIGHT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSelectCoreAccess().getSelectCoreLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getSelectCoreAccess().getOpCompoundOperatorEnumRuleCall_1_1_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getSelectCoreAccess().getRightSelectExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         (distinct?='distinct' | all?='all')? 
 	 *         resultColumns+=ResultColumn 
@@ -1563,16 +1585,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *         havingExpression=SqlExpression?
 	 *     )
 	 */
-	protected void sequence_SelectCoreOperand(EObject context, SelectCoreExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (left=SelectCore_SelectCore_1_0 op=CompoundOperator right=SelectCoreOperand)
-	 */
-	protected void sequence_SelectCore(EObject context, SelectCore semanticObject) {
+	protected void sequence_SelectExpression(EObject context, SelectExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1624,7 +1637,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (name=ID? columns+=IndexedColumn columns+=IndexedColumn* conflictClause=ConflictClause)
 	 */
-	protected void sequence_UniqueTableContraint(EObject context, UniqueTableContraint semanticObject) {
+	protected void sequence_UniqueTableConstraint(EObject context, UniqueTableConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -5,7 +5,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint;
 
 import java.util.Collection;
 
@@ -24,19 +24,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unique Table Contraint</b></em>'.
+ * An implementation of the model object '<em><b>Unique Table Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.UniqueTableContraintImpl#getColumns <em>Columns</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.UniqueTableContraintImpl#getConflictClause <em>Conflict Clause</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.UniqueTableConstraintImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.UniqueTableConstraintImpl#getConflictClause <em>Conflict Clause</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class UniqueTableContraintImpl extends TableConstraintImpl implements UniqueTableContraint
+public class UniqueTableConstraintImpl extends TableConstraintImpl implements UniqueTableConstraint
 {
   /**
    * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
@@ -63,7 +63,7 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
    * <!-- end-user-doc -->
    * @generated
    */
-  protected UniqueTableContraintImpl()
+  protected UniqueTableConstraintImpl()
   {
     super();
   }
@@ -76,7 +76,7 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.UNIQUE_TABLE_CONTRAINT;
+    return SqliteModelPackage.Literals.UNIQUE_TABLE_CONSTRAINT;
   }
 
   /**
@@ -88,7 +88,7 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     if (columns == null)
     {
-      columns = new EObjectContainmentEList<IndexedColumn>(IndexedColumn.class, this, SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS);
+      columns = new EObjectContainmentEList<IndexedColumn>(IndexedColumn.class, this, SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS);
     }
     return columns;
   }
@@ -114,7 +114,7 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
     conflictClause = newConflictClause;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE, oldConflictClause, newConflictClause);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE, oldConflictClause, newConflictClause);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -131,14 +131,14 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
     {
       NotificationChain msgs = null;
       if (conflictClause != null)
-        msgs = ((InternalEObject)conflictClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE, null, msgs);
+        msgs = ((InternalEObject)conflictClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE, null, msgs);
       if (newConflictClause != null)
-        msgs = ((InternalEObject)newConflictClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE, null, msgs);
+        msgs = ((InternalEObject)newConflictClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE, null, msgs);
       msgs = basicSetConflictClause(newConflictClause, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE, newConflictClause, newConflictClause));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE, newConflictClause, newConflictClause));
   }
 
   /**
@@ -151,9 +151,9 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     switch (featureID)
     {
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS:
         return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE:
         return basicSetConflictClause(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -169,9 +169,9 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     switch (featureID)
     {
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS:
         return getColumns();
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE:
         return getConflictClause();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -188,11 +188,11 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     switch (featureID)
     {
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS:
         getColumns().clear();
         getColumns().addAll((Collection<? extends IndexedColumn>)newValue);
         return;
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE:
         setConflictClause((ConflictClause)newValue);
         return;
     }
@@ -209,10 +209,10 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     switch (featureID)
     {
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS:
         getColumns().clear();
         return;
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE:
         setConflictClause((ConflictClause)null);
         return;
     }
@@ -229,12 +229,12 @@ public class UniqueTableContraintImpl extends TableConstraintImpl implements Uni
   {
     switch (featureID)
     {
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__COLUMNS:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__COLUMNS:
         return columns != null && !columns.isEmpty();
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT__CONFLICT_CLAUSE:
         return conflictClause != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //UniqueTableContraintImpl
+} //UniqueTableConstraintImpl

@@ -50,11 +50,11 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().before(g.getDMLStatementRule());
 		c.setLinewrap().before(g.getResultColumnRule());
 		
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getSelectKeyword_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getFromKeyword_4_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getWhereKeyword_5_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getGroupByKeyword_6_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getHavingKeyword_7_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getSelectKeyword_1());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getFromKeyword_5_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getWhereKeyword_6_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getGroupByKeyword_7_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getHavingKeyword_8_0());
 		c.setLinewrap().before(g.getSelectStatementAccess().getOrderByKeyword_1_0());
 		c.setLinewrap().before(g.getJoinStatementRule());
 		

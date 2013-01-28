@@ -288,19 +288,19 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT:
       {
-        UniqueTableContraint uniqueTableContraint = (UniqueTableContraint)theEObject;
-        T result = caseUniqueTableContraint(uniqueTableContraint);
-        if (result == null) result = caseTableConstraint(uniqueTableContraint);
+        UniqueTableConstraint uniqueTableConstraint = (UniqueTableConstraint)theEObject;
+        T result = caseUniqueTableConstraint(uniqueTableConstraint);
+        if (result == null) result = caseTableConstraint(uniqueTableConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.PRIMARY_CONTRAINT:
+      case SqliteModelPackage.PRIMARY_CONSTRAINT:
       {
-        PrimaryContraint primaryContraint = (PrimaryContraint)theEObject;
-        T result = casePrimaryContraint(primaryContraint);
-        if (result == null) result = caseTableConstraint(primaryContraint);
+        PrimaryConstraint primaryConstraint = (PrimaryConstraint)theEObject;
+        T result = casePrimaryConstraint(primaryConstraint);
+        if (result == null) result = caseTableConstraint(primaryConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -536,6 +536,14 @@ public class SqliteModelSwitch<T> extends Switch<T>
         SelectCore selectCore = (SelectCore)theEObject;
         T result = caseSelectCore(selectCore);
         if (result == null) result = caseSelectCoreExpression(selectCore);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SELECT_EXPRESSION:
+      {
+        SelectExpression selectExpression = (SelectExpression)theEObject;
+        T result = caseSelectExpression(selectExpression);
+        if (result == null) result = caseSelectCoreExpression(selectExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1162,33 +1170,33 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Unique Table Constraint</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Unique Table Constraint</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseUniqueTableContraint(UniqueTableContraint object)
+  public T caseUniqueTableConstraint(UniqueTableConstraint object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Primary Constraint</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Primary Constraint</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePrimaryContraint(PrimaryContraint object)
+  public T casePrimaryConstraint(PrimaryConstraint object)
   {
     return null;
   }
@@ -1669,6 +1677,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectCore(SelectCore object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectExpression(SelectExpression object)
   {
     return null;
   }

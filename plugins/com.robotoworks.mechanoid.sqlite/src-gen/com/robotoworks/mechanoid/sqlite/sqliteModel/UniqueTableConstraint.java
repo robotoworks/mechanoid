@@ -6,22 +6,22 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Unique Table Contraint</b></em>'.
+ * A representation of the model object '<em><b>Unique Table Constraint</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint#getColumns <em>Columns</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint#getConflictClause <em>Conflict Clause</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint#getColumns <em>Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint#getConflictClause <em>Conflict Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableContraint()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableConstraint()
  * @model
  * @generated
  */
-public interface UniqueTableContraint extends TableConstraint
+public interface UniqueTableConstraint extends TableConstraint
 {
   /**
    * Returns the value of the '<em><b>Columns</b></em>' containment reference list.
@@ -33,7 +33,7 @@ public interface UniqueTableContraint extends TableConstraint
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Columns</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableContraint_Columns()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableConstraint_Columns()
    * @model containment="true"
    * @generated
    */
@@ -49,14 +49,14 @@ public interface UniqueTableContraint extends TableConstraint
    * <!-- end-user-doc -->
    * @return the value of the '<em>Conflict Clause</em>' containment reference.
    * @see #setConflictClause(ConflictClause)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableContraint_ConflictClause()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUniqueTableConstraint_ConflictClause()
    * @model containment="true"
    * @generated
    */
   ConflictClause getConflictClause();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableContraint#getConflictClause <em>Conflict Clause</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint#getConflictClause <em>Conflict Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Conflict Clause</em>' containment reference.
@@ -65,4 +65,4 @@ public interface UniqueTableContraint extends TableConstraint
    */
   void setConflictClause(ConflictClause value);
 
-} // UniqueTableContraint
+} // UniqueTableConstraint

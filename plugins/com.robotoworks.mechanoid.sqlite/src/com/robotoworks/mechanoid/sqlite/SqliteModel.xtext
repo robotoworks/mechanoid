@@ -105,10 +105,11 @@ SelectStatement:
 ;
 
 SelectCore returns SelectCoreExpression:
-	SelectCoreOperand ({SelectCore.left = current} op=CompoundOperator right=SelectCoreOperand)*
+	SelectExpression ({SelectCore.left = current} op=CompoundOperator right=SelectExpression)*
 ;
 
-SelectCoreOperand returns SelectCoreExpression:
+SelectExpression returns SelectCoreExpression:
+	{SelectExpression}
 	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
 	('from' source=JoinSource)?
 	('where' whereExpression=SqlExpression)?
@@ -228,14 +229,14 @@ ColumnConstraint:
 ;
 
 TableConstraint:
-	UniqueTableContraint | PrimaryContraint | CheckTableConstraint
+	UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint
 ;
 
-UniqueTableContraint: 
+UniqueTableConstraint: 
 	('constraint' name=ID)? 'unique' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause
 ;
 
-PrimaryContraint: 
+PrimaryConstraint: 
 	('constraint' name=ID)? 'primary key' '(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')' conflictClause=ConflictClause
 ;
 

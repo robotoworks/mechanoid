@@ -6,22 +6,22 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Primary Contraint</b></em>'.
+ * A representation of the model object '<em><b>Primary Constraint</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint#getColumns <em>Columns</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint#getConflictClause <em>Conflict Clause</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint#getColumns <em>Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint#getConflictClause <em>Conflict Clause</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryContraint()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryConstraint()
  * @model
  * @generated
  */
-public interface PrimaryContraint extends TableConstraint
+public interface PrimaryConstraint extends TableConstraint
 {
   /**
    * Returns the value of the '<em><b>Columns</b></em>' containment reference list.
@@ -33,7 +33,7 @@ public interface PrimaryContraint extends TableConstraint
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Columns</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryContraint_Columns()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryConstraint_Columns()
    * @model containment="true"
    * @generated
    */
@@ -49,14 +49,14 @@ public interface PrimaryContraint extends TableConstraint
    * <!-- end-user-doc -->
    * @return the value of the '<em>Conflict Clause</em>' containment reference.
    * @see #setConflictClause(ConflictClause)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryContraint_ConflictClause()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getPrimaryConstraint_ConflictClause()
    * @model containment="true"
    * @generated
    */
   ConflictClause getConflictClause();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint#getConflictClause <em>Conflict Clause</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint#getConflictClause <em>Conflict Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Conflict Clause</em>' containment reference.
@@ -65,4 +65,4 @@ public interface PrimaryContraint extends TableConstraint
    */
   void setConflictClause(ConflictClause value);
 
-} // PrimaryContraint
+} // PrimaryConstraint

@@ -12,6 +12,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
 
 
 public class Extensions {	
@@ -50,9 +51,9 @@ public class Extensions {
 		SelectCoreExpression coreExpr = stmt.getSelectStatement().getCore();
 		if(coreExpr instanceof SelectCore) {
 			SelectCore core = (SelectCore) coreExpr;
-			return core.getRight().getResultColumns();
+			return ((SelectExpression)core.getRight()).getResultColumns();
 		} else {
-			return coreExpr.getResultColumns();
+			return ((SelectExpression)coreExpr).getResultColumns();
 		}
 	}
 	

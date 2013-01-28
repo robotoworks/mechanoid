@@ -36,20 +36,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderingTerms" upperBound="-1"
         eType="#//OrderingTerm" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectCoreExpression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
-        eType="#//ResultColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//JoinSource"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCoreExpression"/>
   <eClassifiers xsi:type="ecore:EEnum" name="CompoundOperator">
     <eLiterals name="unionall" literal="union all"/>
     <eLiterals name="union" value="1" literal="union"/>
@@ -140,13 +127,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="TableConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UniqueTableContraint" eSuperTypes="#//TableConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueTableConstraint" eSuperTypes="#//TableConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
         eType="#//IndexedColumn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PrimaryContraint" eSuperTypes="#//TableConstraint">
+  <eClassifiers xsi:type="ecore:EClass" name="PrimaryConstraint" eSuperTypes="#//TableConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
         eType="#//IndexedColumn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
@@ -322,6 +309,20 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="#//CompoundOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//SelectCoreExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectExpression" eSuperTypes="#//SelectCoreExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
+        eType="#//ResultColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//JoinSource"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceTable" eSuperTypes="#//SelectSource">

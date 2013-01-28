@@ -576,11 +576,16 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="SelectCoreOperand">
+    <rules xsi:type="xtext:ParserRule" name="SelectExpression">
       <type metamodel="/0/@metamodelDeclarations.1">
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectCoreExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectExpression"/>
+          </type>
+        </elements>
         <elements xsi:type="xtext:Keyword" value="select"/>
         <elements xsi:type="xtext:Alternatives" cardinality="?">
           <elements xsi:type="xtext:Assignment" feature="distinct" operator="?=">
@@ -1252,9 +1257,9 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="UniqueTableContraint">
+    <rules xsi:type="xtext:ParserRule" name="UniqueTableConstraint">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//UniqueTableContraint"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//UniqueTableConstraint"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Group" cardinality="?">
@@ -1280,9 +1285,9 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="PrimaryContraint">
+    <rules xsi:type="xtext:ParserRule" name="PrimaryConstraint">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//PrimaryContraint"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//PrimaryConstraint"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Group" cardinality="?">

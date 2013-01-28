@@ -94,8 +94,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
-      case SqliteModelPackage.PRIMARY_CONTRAINT: return createPrimaryContraint();
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT: return createUniqueTableConstraint();
+      case SqliteModelPackage.PRIMARY_CONSTRAINT: return createPrimaryConstraint();
       case SqliteModelPackage.CHECK_TABLE_CONSTRAINT: return createCheckTableConstraint();
       case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
       case SqliteModelPackage.DEFAULT_VALUE: return createDefaultValue();
@@ -126,6 +126,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CAST_EXPRESSION: return createCastExpression();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
+      case SqliteModelPackage.SELECT_EXPRESSION: return createSelectExpression();
       case SqliteModelPackage.SINGLE_SOURCE_TABLE: return createSingleSourceTable();
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION: return createResultColumnExpression();
@@ -519,10 +520,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public UniqueTableContraint createUniqueTableContraint()
+  public UniqueTableConstraint createUniqueTableConstraint()
   {
-    UniqueTableContraintImpl uniqueTableContraint = new UniqueTableContraintImpl();
-    return uniqueTableContraint;
+    UniqueTableConstraintImpl uniqueTableConstraint = new UniqueTableConstraintImpl();
+    return uniqueTableConstraint;
   }
 
   /**
@@ -530,10 +531,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PrimaryContraint createPrimaryContraint()
+  public PrimaryConstraint createPrimaryConstraint()
   {
-    PrimaryContraintImpl primaryContraint = new PrimaryContraintImpl();
-    return primaryContraint;
+    PrimaryConstraintImpl primaryConstraint = new PrimaryConstraintImpl();
+    return primaryConstraint;
   }
 
   /**
@@ -864,6 +865,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     SelectCoreImpl selectCore = new SelectCoreImpl();
     return selectCore;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectExpression createSelectExpression()
+  {
+    SelectExpressionImpl selectExpression = new SelectExpressionImpl();
+    return selectExpression;
   }
 
   /**

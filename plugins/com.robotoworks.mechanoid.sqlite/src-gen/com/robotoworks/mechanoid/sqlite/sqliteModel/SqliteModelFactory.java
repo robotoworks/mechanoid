@@ -284,22 +284,22 @@ public interface SqliteModelFactory extends EFactory
   TableConstraint createTableConstraint();
 
   /**
-   * Returns a new object of class '<em>Unique Table Contraint</em>'.
+   * Returns a new object of class '<em>Unique Table Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Unique Table Contraint</em>'.
+   * @return a new object of class '<em>Unique Table Constraint</em>'.
    * @generated
    */
-  UniqueTableContraint createUniqueTableContraint();
+  UniqueTableConstraint createUniqueTableConstraint();
 
   /**
-   * Returns a new object of class '<em>Primary Contraint</em>'.
+   * Returns a new object of class '<em>Primary Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary Contraint</em>'.
+   * @return a new object of class '<em>Primary Constraint</em>'.
    * @generated
    */
-  PrimaryContraint createPrimaryContraint();
+  PrimaryConstraint createPrimaryConstraint();
 
   /**
    * Returns a new object of class '<em>Check Table Constraint</em>'.
@@ -570,6 +570,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   SelectCore createSelectCore();
+
+  /**
+   * Returns a new object of class '<em>Select Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Expression</em>'.
+   * @generated
+   */
+  SelectExpression createSelectExpression();
 
   /**
    * Returns a new object of class '<em>Single Source Table</em>'.

@@ -1171,25 +1171,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class SelectCoreElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SelectCore");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cSelectCoreOperandParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cSelectExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cSelectCoreLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cOpCompoundOperatorEnumRuleCall_1_1_0 = (RuleCall)cOpAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightSelectCoreOperandParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightSelectExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//SelectCore returns SelectCoreExpression:
-		//	SelectCoreOperand ({SelectCore.left=current} op=CompoundOperator right=SelectCoreOperand)*;
+		//	SelectExpression ({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//SelectCoreOperand ({SelectCore.left=current} op=CompoundOperator right=SelectCoreOperand)*
+		//SelectExpression ({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*
 		public Group getGroup() { return cGroup; }
 
-		//SelectCoreOperand
-		public RuleCall getSelectCoreOperandParserRuleCall_0() { return cSelectCoreOperandParserRuleCall_0; }
+		//SelectExpression
+		public RuleCall getSelectExpressionParserRuleCall_0() { return cSelectExpressionParserRuleCall_0; }
 
-		//({SelectCore.left=current} op=CompoundOperator right=SelectCoreOperand)*
+		//({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{SelectCore.left=current}
@@ -1201,155 +1201,160 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//CompoundOperator
 		public RuleCall getOpCompoundOperatorEnumRuleCall_1_1_0() { return cOpCompoundOperatorEnumRuleCall_1_1_0; }
 
-		//right=SelectCoreOperand
+		//right=SelectExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 
-		//SelectCoreOperand
-		public RuleCall getRightSelectCoreOperandParserRuleCall_1_2_0() { return cRightSelectCoreOperandParserRuleCall_1_2_0; }
+		//SelectExpression
+		public RuleCall getRightSelectExpressionParserRuleCall_1_2_0() { return cRightSelectExpressionParserRuleCall_1_2_0; }
 	}
 
-	public class SelectCoreOperandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SelectCoreOperand");
+	public class SelectExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SelectExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSelectKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cDistinctAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final Keyword cDistinctDistinctKeyword_1_0_0 = (Keyword)cDistinctAssignment_1_0.eContents().get(0);
-		private final Assignment cAllAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final Keyword cAllAllKeyword_1_1_0 = (Keyword)cAllAssignment_1_1.eContents().get(0);
-		private final Assignment cResultColumnsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cResultColumnsResultColumnParserRuleCall_2_0 = (RuleCall)cResultColumnsAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cResultColumnsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cResultColumnsResultColumnParserRuleCall_3_1_0 = (RuleCall)cResultColumnsAssignment_3_1.eContents().get(0);
+		private final Action cSelectExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSelectKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cDistinctAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cDistinctDistinctKeyword_2_0_0 = (Keyword)cDistinctAssignment_2_0.eContents().get(0);
+		private final Assignment cAllAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final Keyword cAllAllKeyword_2_1_0 = (Keyword)cAllAssignment_2_1.eContents().get(0);
+		private final Assignment cResultColumnsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cResultColumnsResultColumnParserRuleCall_3_0 = (RuleCall)cResultColumnsAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cFromKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cSourceAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cSourceJoinSourceParserRuleCall_4_1_0 = (RuleCall)cSourceAssignment_4_1.eContents().get(0);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cResultColumnsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cResultColumnsResultColumnParserRuleCall_4_1_0 = (RuleCall)cResultColumnsAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cWhereKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cWhereExpressionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cWhereExpressionSqlExpressionParserRuleCall_5_1_0 = (RuleCall)cWhereExpressionAssignment_5_1.eContents().get(0);
+		private final Keyword cFromKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cSourceAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cSourceJoinSourceParserRuleCall_5_1_0 = (RuleCall)cSourceAssignment_5_1.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cGroupByKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cGroupByExpressionsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cGroupByExpressionsSqlExpressionParserRuleCall_6_1_0 = (RuleCall)cGroupByExpressionsAssignment_6_1.eContents().get(0);
-		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
-		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
-		private final Assignment cGroupByExpressionsAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
-		private final RuleCall cGroupByExpressionsSqlExpressionParserRuleCall_6_2_1_0 = (RuleCall)cGroupByExpressionsAssignment_6_2_1.eContents().get(0);
+		private final Keyword cWhereKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cWhereExpressionAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cWhereExpressionSqlExpressionParserRuleCall_6_1_0 = (RuleCall)cWhereExpressionAssignment_6_1.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cHavingKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cHavingExpressionAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cHavingExpressionSqlExpressionParserRuleCall_7_1_0 = (RuleCall)cHavingExpressionAssignment_7_1.eContents().get(0);
+		private final Keyword cGroupByKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cGroupByExpressionsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cGroupByExpressionsSqlExpressionParserRuleCall_7_1_0 = (RuleCall)cGroupByExpressionsAssignment_7_1.eContents().get(0);
+		private final Group cGroup_7_2 = (Group)cGroup_7.eContents().get(2);
+		private final Keyword cCommaKeyword_7_2_0 = (Keyword)cGroup_7_2.eContents().get(0);
+		private final Assignment cGroupByExpressionsAssignment_7_2_1 = (Assignment)cGroup_7_2.eContents().get(1);
+		private final RuleCall cGroupByExpressionsSqlExpressionParserRuleCall_7_2_1_0 = (RuleCall)cGroupByExpressionsAssignment_7_2_1.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cHavingKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cHavingExpressionAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cHavingExpressionSqlExpressionParserRuleCall_8_1_0 = (RuleCall)cHavingExpressionAssignment_8_1.eContents().get(0);
 		
-		//SelectCoreOperand returns SelectCoreExpression:
-		//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-		//	source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group by" groupByExpressions+=SqlExpression (","
-		//	groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?;
+		//SelectExpression returns SelectCoreExpression:
+		//	{SelectExpression} "select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn (","
+		//	resultColumns+=ResultColumn)* ("from" source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group by"
+		//	groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*)? ("having"
+		//	havingExpression=SqlExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-		//source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group by" groupByExpressions+=SqlExpression (","
-		//groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?
+		//{SelectExpression} "select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn (","
+		//resultColumns+=ResultColumn)* ("from" source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group by"
+		//groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?
 		public Group getGroup() { return cGroup; }
 
+		//{SelectExpression}
+		public Action getSelectExpressionAction_0() { return cSelectExpressionAction_0; }
+
 		//"select"
-		public Keyword getSelectKeyword_0() { return cSelectKeyword_0; }
+		public Keyword getSelectKeyword_1() { return cSelectKeyword_1; }
 
 		//(distinct?="distinct" | all?="all")?
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//distinct?="distinct"
-		public Assignment getDistinctAssignment_1_0() { return cDistinctAssignment_1_0; }
+		public Assignment getDistinctAssignment_2_0() { return cDistinctAssignment_2_0; }
 
 		//"distinct"
-		public Keyword getDistinctDistinctKeyword_1_0_0() { return cDistinctDistinctKeyword_1_0_0; }
+		public Keyword getDistinctDistinctKeyword_2_0_0() { return cDistinctDistinctKeyword_2_0_0; }
 
 		//all?="all"
-		public Assignment getAllAssignment_1_1() { return cAllAssignment_1_1; }
+		public Assignment getAllAssignment_2_1() { return cAllAssignment_2_1; }
 
 		//"all"
-		public Keyword getAllAllKeyword_1_1_0() { return cAllAllKeyword_1_1_0; }
+		public Keyword getAllAllKeyword_2_1_0() { return cAllAllKeyword_2_1_0; }
 
 		//resultColumns+=ResultColumn
-		public Assignment getResultColumnsAssignment_2() { return cResultColumnsAssignment_2; }
+		public Assignment getResultColumnsAssignment_3() { return cResultColumnsAssignment_3; }
 
 		//ResultColumn
-		public RuleCall getResultColumnsResultColumnParserRuleCall_2_0() { return cResultColumnsResultColumnParserRuleCall_2_0; }
+		public RuleCall getResultColumnsResultColumnParserRuleCall_3_0() { return cResultColumnsResultColumnParserRuleCall_3_0; }
 
 		//("," resultColumns+=ResultColumn)*
-		public Group getGroup_3() { return cGroup_3; }
-
-		//","
-		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
-
-		//resultColumns+=ResultColumn
-		public Assignment getResultColumnsAssignment_3_1() { return cResultColumnsAssignment_3_1; }
-
-		//ResultColumn
-		public RuleCall getResultColumnsResultColumnParserRuleCall_3_1_0() { return cResultColumnsResultColumnParserRuleCall_3_1_0; }
-
-		//("from" source=JoinSource)?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"from"
-		public Keyword getFromKeyword_4_0() { return cFromKeyword_4_0; }
+		//","
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
-		//source=JoinSource
-		public Assignment getSourceAssignment_4_1() { return cSourceAssignment_4_1; }
+		//resultColumns+=ResultColumn
+		public Assignment getResultColumnsAssignment_4_1() { return cResultColumnsAssignment_4_1; }
 
-		//JoinSource
-		public RuleCall getSourceJoinSourceParserRuleCall_4_1_0() { return cSourceJoinSourceParserRuleCall_4_1_0; }
+		//ResultColumn
+		public RuleCall getResultColumnsResultColumnParserRuleCall_4_1_0() { return cResultColumnsResultColumnParserRuleCall_4_1_0; }
 
-		//("where" whereExpression=SqlExpression)?
+		//("from" source=JoinSource)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"where"
-		public Keyword getWhereKeyword_5_0() { return cWhereKeyword_5_0; }
+		//"from"
+		public Keyword getFromKeyword_5_0() { return cFromKeyword_5_0; }
 
-		//whereExpression=SqlExpression
-		public Assignment getWhereExpressionAssignment_5_1() { return cWhereExpressionAssignment_5_1; }
+		//source=JoinSource
+		public Assignment getSourceAssignment_5_1() { return cSourceAssignment_5_1; }
 
-		//SqlExpression
-		public RuleCall getWhereExpressionSqlExpressionParserRuleCall_5_1_0() { return cWhereExpressionSqlExpressionParserRuleCall_5_1_0; }
+		//JoinSource
+		public RuleCall getSourceJoinSourceParserRuleCall_5_1_0() { return cSourceJoinSourceParserRuleCall_5_1_0; }
 
-		//("group by" groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*)?
+		//("where" whereExpression=SqlExpression)?
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"group by"
-		public Keyword getGroupByKeyword_6_0() { return cGroupByKeyword_6_0; }
+		//"where"
+		public Keyword getWhereKeyword_6_0() { return cWhereKeyword_6_0; }
 
-		//groupByExpressions+=SqlExpression
-		public Assignment getGroupByExpressionsAssignment_6_1() { return cGroupByExpressionsAssignment_6_1; }
-
-		//SqlExpression
-		public RuleCall getGroupByExpressionsSqlExpressionParserRuleCall_6_1_0() { return cGroupByExpressionsSqlExpressionParserRuleCall_6_1_0; }
-
-		//("," groupByExpressions+=SqlExpression)*
-		public Group getGroup_6_2() { return cGroup_6_2; }
-
-		//","
-		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
-
-		//groupByExpressions+=SqlExpression
-		public Assignment getGroupByExpressionsAssignment_6_2_1() { return cGroupByExpressionsAssignment_6_2_1; }
+		//whereExpression=SqlExpression
+		public Assignment getWhereExpressionAssignment_6_1() { return cWhereExpressionAssignment_6_1; }
 
 		//SqlExpression
-		public RuleCall getGroupByExpressionsSqlExpressionParserRuleCall_6_2_1_0() { return cGroupByExpressionsSqlExpressionParserRuleCall_6_2_1_0; }
+		public RuleCall getWhereExpressionSqlExpressionParserRuleCall_6_1_0() { return cWhereExpressionSqlExpressionParserRuleCall_6_1_0; }
 
-		//("having" havingExpression=SqlExpression)?
+		//("group by" groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*)?
 		public Group getGroup_7() { return cGroup_7; }
 
-		//"having"
-		public Keyword getHavingKeyword_7_0() { return cHavingKeyword_7_0; }
+		//"group by"
+		public Keyword getGroupByKeyword_7_0() { return cGroupByKeyword_7_0; }
 
-		//havingExpression=SqlExpression
-		public Assignment getHavingExpressionAssignment_7_1() { return cHavingExpressionAssignment_7_1; }
+		//groupByExpressions+=SqlExpression
+		public Assignment getGroupByExpressionsAssignment_7_1() { return cGroupByExpressionsAssignment_7_1; }
 
 		//SqlExpression
-		public RuleCall getHavingExpressionSqlExpressionParserRuleCall_7_1_0() { return cHavingExpressionSqlExpressionParserRuleCall_7_1_0; }
+		public RuleCall getGroupByExpressionsSqlExpressionParserRuleCall_7_1_0() { return cGroupByExpressionsSqlExpressionParserRuleCall_7_1_0; }
+
+		//("," groupByExpressions+=SqlExpression)*
+		public Group getGroup_7_2() { return cGroup_7_2; }
+
+		//","
+		public Keyword getCommaKeyword_7_2_0() { return cCommaKeyword_7_2_0; }
+
+		//groupByExpressions+=SqlExpression
+		public Assignment getGroupByExpressionsAssignment_7_2_1() { return cGroupByExpressionsAssignment_7_2_1; }
+
+		//SqlExpression
+		public RuleCall getGroupByExpressionsSqlExpressionParserRuleCall_7_2_1_0() { return cGroupByExpressionsSqlExpressionParserRuleCall_7_2_1_0; }
+
+		//("having" havingExpression=SqlExpression)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//"having"
+		public Keyword getHavingKeyword_8_0() { return cHavingKeyword_8_0; }
+
+		//havingExpression=SqlExpression
+		public Assignment getHavingExpressionAssignment_8_1() { return cHavingExpressionAssignment_8_1; }
+
+		//SqlExpression
+		public RuleCall getHavingExpressionSqlExpressionParserRuleCall_8_1_0() { return cHavingExpressionSqlExpressionParserRuleCall_8_1_0; }
 	}
 
 	public class OrderingTermElements extends AbstractParserRuleElementFinder {
@@ -2566,29 +2571,29 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class TableConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TableConstraint");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cUniqueTableContraintParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPrimaryContraintParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cUniqueTableConstraintParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPrimaryConstraintParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCheckTableConstraintParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//TableConstraint:
-		//	UniqueTableContraint | PrimaryContraint | CheckTableConstraint;
+		//	UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint;
 		public ParserRule getRule() { return rule; }
 
-		//UniqueTableContraint | PrimaryContraint | CheckTableConstraint
+		//UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//UniqueTableContraint
-		public RuleCall getUniqueTableContraintParserRuleCall_0() { return cUniqueTableContraintParserRuleCall_0; }
+		//UniqueTableConstraint
+		public RuleCall getUniqueTableConstraintParserRuleCall_0() { return cUniqueTableConstraintParserRuleCall_0; }
 
-		//PrimaryContraint
-		public RuleCall getPrimaryContraintParserRuleCall_1() { return cPrimaryContraintParserRuleCall_1; }
+		//PrimaryConstraint
+		public RuleCall getPrimaryConstraintParserRuleCall_1() { return cPrimaryConstraintParserRuleCall_1; }
 
 		//CheckTableConstraint
 		public RuleCall getCheckTableConstraintParserRuleCall_2() { return cCheckTableConstraintParserRuleCall_2; }
 	}
 
-	public class UniqueTableContraintElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UniqueTableContraint");
+	public class UniqueTableConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UniqueTableConstraint");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Keyword cConstraintKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
@@ -2606,7 +2611,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cConflictClauseAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cConflictClauseConflictClauseParserRuleCall_6_0 = (RuleCall)cConflictClauseAssignment_6.eContents().get(0);
 		
-		//UniqueTableContraint:
+		//UniqueTableConstraint:
 		//	("constraint" name=ID)? "unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//	conflictClause=ConflictClause;
 		public ParserRule getRule() { return rule; }
@@ -2661,8 +2666,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getConflictClauseConflictClauseParserRuleCall_6_0() { return cConflictClauseConflictClauseParserRuleCall_6_0; }
 	}
 
-	public class PrimaryContraintElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PrimaryContraint");
+	public class PrimaryConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PrimaryConstraint");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Keyword cConstraintKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
@@ -2680,7 +2685,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cConflictClauseAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cConflictClauseConflictClauseParserRuleCall_6_0 = (RuleCall)cConflictClauseAssignment_6.eContents().get(0);
 		
-		//PrimaryContraint:
+		//PrimaryConstraint:
 		//	("constraint" name=ID)? "primary key" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//	conflictClause=ConflictClause;
 		public ParserRule getRule() { return rule; }
@@ -2848,34 +2853,34 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=SqlExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{LiteralDefaultValue} literal=LiteralValue
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_0() { return cGroup_0; }
 
-		//{LiteralDefaultValue}
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Action getLiteralDefaultValueAction_0_0() { return cLiteralDefaultValueAction_0_0; }
 
-		//literal=LiteralValue
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getLiteralAssignment_0_1() { return cLiteralAssignment_0_1; }
 
-		//LiteralValue
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getLiteralLiteralValueParserRuleCall_0_1_0() { return cLiteralLiteralValueParserRuleCall_0_1_0; }
 
-		//{ExpressionDefaultValue} "(" expression=SqlExpression ")"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_1() { return cGroup_1; }
 
-		//{ExpressionDefaultValue}
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Action getExpressionDefaultValueAction_1_0() { return cExpressionDefaultValueAction_1_0; }
 
-		//"("
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 
-		//expression=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getExpressionSqlExpressionParserRuleCall_1_2_0() { return cExpressionSqlExpressionParserRuleCall_1_2_0; }
 
-		//")"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
 	}
 
@@ -2887,23 +2892,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cResolutionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cResolutionConflictResolutionEnumRuleCall_2_0 = (RuleCall)cResolutionAssignment_2.eContents().get(0);
 		
-		//ConflictClause:
-		//	"on" "conflict" resolution=ConflictResolution;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//"on" "conflict" resolution=ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//"on"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getOnKeyword_0() { return cOnKeyword_0; }
 
-		//"conflict"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getConflictKeyword_1() { return cConflictKeyword_1; }
 
-		//resolution=ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getResolutionAssignment_2() { return cResolutionAssignment_2; }
 
-		//ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getResolutionConflictResolutionEnumRuleCall_2_0() { return cResolutionConflictResolutionEnumRuleCall_2_0; }
 	}
 
@@ -2915,27 +2919,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpdateStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDeleteStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		/// ***********************************************************************
-		// *                                                                     *
-		// * DML                                                                 *
-		// *                                                                     *
-		// *********************************************************************** / DMLStatement:
-		//	SelectStatement | InsertStatement | UpdateStatement | DeleteStatement;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//SelectStatement | InsertStatement | UpdateStatement | DeleteStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//SelectStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getSelectStatementParserRuleCall_0() { return cSelectStatementParserRuleCall_0; }
 
-		//InsertStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getInsertStatementParserRuleCall_1() { return cInsertStatementParserRuleCall_1; }
 
-		//UpdateStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getUpdateStatementParserRuleCall_2() { return cUpdateStatementParserRuleCall_2; }
 
-		//DeleteStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getDeleteStatementParserRuleCall_3() { return cDeleteStatementParserRuleCall_3; }
 	}
 
@@ -2951,35 +2950,34 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cExpressionSqlExpressionParserRuleCall_3_1_0 = (RuleCall)cExpressionAssignment_3_1.eContents().get(0);
 		
-		//DeleteStatement:
-		//	"delete" "from" tableName=ID ("where" expression=SqlExpression)?;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//"delete" "from" tableName=ID ("where" expression=SqlExpression)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//"delete"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getDeleteKeyword_0() { return cDeleteKeyword_0; }
 
-		//"from"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getFromKeyword_1() { return cFromKeyword_1; }
 
-		//tableName=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getTableNameAssignment_2() { return cTableNameAssignment_2; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getTableNameIDTerminalRuleCall_2_0() { return cTableNameIDTerminalRuleCall_2_0; }
 
-		//("where" expression=SqlExpression)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"where"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getWhereKeyword_3_0() { return cWhereKeyword_3_0; }
 
-		//expression=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getExpressionAssignment_3_1() { return cExpressionAssignment_3_1; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getExpressionSqlExpressionParserRuleCall_3_1_0() { return cExpressionSqlExpressionParserRuleCall_3_1_0; }
 	}
 
@@ -3024,127 +3022,121 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDefaultKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Keyword cValuesKeyword_4_1_1 = (Keyword)cGroup_4_1.eContents().get(1);
 		
-		//InsertStatement:
-		//	("insert" ("or" conflictResolution=ConflictResolution)? | "replace") "into" tableName=ID ("(" columnNames+=ID (","
-		//	columnNames+=ID)* ")")? (("values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")" |
-		//	selectStatement=SelectStatement) | "default" "values");
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//("insert" ("or" conflictResolution=ConflictResolution)? | "replace") "into" tableName=ID ("(" columnNames+=ID (","
-		//columnNames+=ID)* ")")? (("values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")" |
-		//selectStatement=SelectStatement) | "default" "values")
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//"insert" ("or" conflictResolution=ConflictResolution)? | "replace"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
-		//"insert" ("or" conflictResolution=ConflictResolution)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_0_0() { return cGroup_0_0; }
 
-		//"insert"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getInsertKeyword_0_0_0() { return cInsertKeyword_0_0_0; }
 
-		//("or" conflictResolution=ConflictResolution)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_0_0_1() { return cGroup_0_0_1; }
 
-		//"or"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getOrKeyword_0_0_1_0() { return cOrKeyword_0_0_1_0; }
 
-		//conflictResolution=ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getConflictResolutionAssignment_0_0_1_1() { return cConflictResolutionAssignment_0_0_1_1; }
 
-		//ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getConflictResolutionConflictResolutionEnumRuleCall_0_0_1_1_0() { return cConflictResolutionConflictResolutionEnumRuleCall_0_0_1_1_0; }
 
-		//"replace"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getReplaceKeyword_0_1() { return cReplaceKeyword_0_1; }
 
-		//"into"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getIntoKeyword_1() { return cIntoKeyword_1; }
 
-		//tableName=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getTableNameAssignment_2() { return cTableNameAssignment_2; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getTableNameIDTerminalRuleCall_2_0() { return cTableNameIDTerminalRuleCall_2_0; }
 
-		//("(" columnNames+=ID ("," columnNames+=ID)* ")")?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"("
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 
-		//columnNames+=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getColumnNamesAssignment_3_1() { return cColumnNamesAssignment_3_1; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getColumnNamesIDTerminalRuleCall_3_1_0() { return cColumnNamesIDTerminalRuleCall_3_1_0; }
 
-		//("," columnNames+=ID)*
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//","
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
 
-		//columnNames+=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getColumnNamesAssignment_3_2_1() { return cColumnNamesAssignment_3_2_1; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getColumnNamesIDTerminalRuleCall_3_2_1_0() { return cColumnNamesIDTerminalRuleCall_3_2_1_0; }
 
-		//")"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
 
-		//("values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")" | selectStatement=SelectStatement) |
-		//"default" "values"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
-		//"values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")" | selectStatement=SelectStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives_4_0() { return cAlternatives_4_0; }
 
-		//"values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_4_0_0() { return cGroup_4_0_0; }
 
-		//"values"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getValuesKeyword_4_0_0_0() { return cValuesKeyword_4_0_0_0; }
 
-		//"("
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getLeftParenthesisKeyword_4_0_0_1() { return cLeftParenthesisKeyword_4_0_0_1; }
 
-		//expressions+=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getExpressionsAssignment_4_0_0_2() { return cExpressionsAssignment_4_0_0_2; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getExpressionsSqlExpressionParserRuleCall_4_0_0_2_0() { return cExpressionsSqlExpressionParserRuleCall_4_0_0_2_0; }
 
-		//("," expressions+=SqlExpression)*
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_4_0_0_3() { return cGroup_4_0_0_3; }
 
-		//","
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getCommaKeyword_4_0_0_3_0() { return cCommaKeyword_4_0_0_3_0; }
 
-		//expressions+=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getExpressionsAssignment_4_0_0_3_1() { return cExpressionsAssignment_4_0_0_3_1; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getExpressionsSqlExpressionParserRuleCall_4_0_0_3_1_0() { return cExpressionsSqlExpressionParserRuleCall_4_0_0_3_1_0; }
 
-		//")"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRightParenthesisKeyword_4_0_0_4() { return cRightParenthesisKeyword_4_0_0_4; }
 
-		//selectStatement=SelectStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getSelectStatementAssignment_4_0_1() { return cSelectStatementAssignment_4_0_1; }
 
-		//SelectStatement
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getSelectStatementSelectStatementParserRuleCall_4_0_1_0() { return cSelectStatementSelectStatementParserRuleCall_4_0_1_0; }
 
-		//"default" "values"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"default"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getDefaultKeyword_4_1_0() { return cDefaultKeyword_4_1_0; }
 
-		//"values"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getValuesKeyword_4_1_1() { return cValuesKeyword_4_1_1; }
 	}
 
@@ -3170,69 +3162,64 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cWhereExpressionAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cWhereExpressionSqlExpressionParserRuleCall_6_1_0 = (RuleCall)cWhereExpressionAssignment_6_1.eContents().get(0);
 		
-		//UpdateStatement:
-		//	"update" ("or" conflictResolution=ConflictResolution)? tableName=ID "set"
-		//	updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
-		//	whereExpression=SqlExpression)?;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//"update" ("or" conflictResolution=ConflictResolution)? tableName=ID "set"
-		//updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
-		//whereExpression=SqlExpression)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//"update"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getUpdateKeyword_0() { return cUpdateKeyword_0; }
 
-		//("or" conflictResolution=ConflictResolution)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"or"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getOrKeyword_1_0() { return cOrKeyword_1_0; }
 
-		//conflictResolution=ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getConflictResolutionAssignment_1_1() { return cConflictResolutionAssignment_1_1; }
 
-		//ConflictResolution
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getConflictResolutionConflictResolutionEnumRuleCall_1_1_0() { return cConflictResolutionConflictResolutionEnumRuleCall_1_1_0; }
 
-		//tableName=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getTableNameAssignment_2() { return cTableNameAssignment_2; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getTableNameIDTerminalRuleCall_2_0() { return cTableNameIDTerminalRuleCall_2_0; }
 
-		//"set"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getSetKeyword_3() { return cSetKeyword_3; }
 
-		//updateColumnExpressions+=UpdateColumnExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getUpdateColumnExpressionsAssignment_4() { return cUpdateColumnExpressionsAssignment_4; }
 
-		//UpdateColumnExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_4_0() { return cUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_4_0; }
 
-		//("," updateColumnExpressions+=UpdateColumnExpression)*
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_5() { return cGroup_5; }
 
-		//","
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
 
-		//updateColumnExpressions+=UpdateColumnExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getUpdateColumnExpressionsAssignment_5_1() { return cUpdateColumnExpressionsAssignment_5_1; }
 
-		//UpdateColumnExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_5_1_0() { return cUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_5_1_0; }
 
-		//("where" whereExpression=SqlExpression)?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"where"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getWhereKeyword_6_0() { return cWhereKeyword_6_0; }
 
-		//whereExpression=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getWhereExpressionAssignment_6_1() { return cWhereExpressionAssignment_6_1; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getWhereExpressionSqlExpressionParserRuleCall_6_1_0() { return cWhereExpressionSqlExpressionParserRuleCall_6_1_0; }
 	}
 
@@ -3245,26 +3232,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cExpressionSqlExpressionParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
-		//UpdateColumnExpression:
-		//	columnName=ID "=" expression=SqlExpression;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//columnName=ID "=" expression=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//columnName=ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getColumnNameAssignment_0() { return cColumnNameAssignment_0; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getColumnNameIDTerminalRuleCall_0_0() { return cColumnNameIDTerminalRuleCall_0_0; }
 
-		//"="
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//expression=SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 
-		//SqlExpression
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getExpressionSqlExpressionParserRuleCall_2_0() { return cExpressionSqlExpressionParserRuleCall_2_0; }
 	}
 
@@ -3274,21 +3260,16 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cNUMBERTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
-		/// ***********************************************************************
-		// *                                                                     *
-		// * DATATYPE & TERMINAL RULES                                           *
-		// *                                                                     *
-		// *********************************************************************** / SignedNumber returns ecore::EBigDecimal:
-		//	"-"? NUMBER;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//"-"? NUMBER
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//"-"?
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//NUMBER
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getNUMBERTerminalRuleCall_1() { return cNUMBERTerminalRuleCall_1; }
 	}
 
@@ -3300,23 +3281,22 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName:
-		//	ID ("." ID)*;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup() { return cGroup; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//ID
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 	
@@ -3333,35 +3313,34 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cExceptEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cExceptExceptKeyword_3_0 = (Keyword)cExceptEnumLiteralDeclaration_3.eContents().get(0);
 		
-		//enum CompoundOperator:
-		//	unionall="union all" | union | intersect | except;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumRule getRule() { return rule; }
 
-		//unionall="union all" | union | intersect | except
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//unionall="union all"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getUnionallEnumLiteralDeclaration_0() { return cUnionallEnumLiteralDeclaration_0; }
 
-		//"union all"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getUnionallUnionAllKeyword_0_0() { return cUnionallUnionAllKeyword_0_0; }
 
-		//union
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getUnionEnumLiteralDeclaration_1() { return cUnionEnumLiteralDeclaration_1; }
 
-		//"union"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getUnionUnionKeyword_1_0() { return cUnionUnionKeyword_1_0; }
 
-		//intersect
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getIntersectEnumLiteralDeclaration_2() { return cIntersectEnumLiteralDeclaration_2; }
 
-		//"intersect"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getIntersectIntersectKeyword_2_0() { return cIntersectIntersectKeyword_2_0; }
 
-		//except
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getExceptEnumLiteralDeclaration_3() { return cExceptEnumLiteralDeclaration_3; }
 
-		//"except"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getExceptExceptKeyword_3_0() { return cExceptExceptKeyword_3_0; }
 	}
 
@@ -3381,47 +3360,46 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cNumericEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
 		private final Keyword cNumericNumericKeyword_5_0 = (Keyword)cNumericEnumLiteralDeclaration_5.eContents().get(0);
 		
-		//enum SqliteDataType:
-		//	text | integer | real | blob | none | numeric;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumRule getRule() { return rule; }
 
-		//text | integer | real | blob | none | numeric
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//text
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getTextEnumLiteralDeclaration_0() { return cTextEnumLiteralDeclaration_0; }
 
-		//"text"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getTextTextKeyword_0_0() { return cTextTextKeyword_0_0; }
 
-		//integer
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getIntegerEnumLiteralDeclaration_1() { return cIntegerEnumLiteralDeclaration_1; }
 
-		//"integer"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getIntegerIntegerKeyword_1_0() { return cIntegerIntegerKeyword_1_0; }
 
-		//real
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getRealEnumLiteralDeclaration_2() { return cRealEnumLiteralDeclaration_2; }
 
-		//"real"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRealRealKeyword_2_0() { return cRealRealKeyword_2_0; }
 
-		//blob
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getBlobEnumLiteralDeclaration_3() { return cBlobEnumLiteralDeclaration_3; }
 
-		//"blob"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getBlobBlobKeyword_3_0() { return cBlobBlobKeyword_3_0; }
 
-		//none
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getNoneEnumLiteralDeclaration_4() { return cNoneEnumLiteralDeclaration_4; }
 
-		//"none"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getNoneNoneKeyword_4_0() { return cNoneNoneKeyword_4_0; }
 
-		//numeric
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getNumericEnumLiteralDeclaration_5() { return cNumericEnumLiteralDeclaration_5; }
 
-		//"numeric"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getNumericNumericKeyword_5_0() { return cNumericNumericKeyword_5_0; }
 	}
 
@@ -3439,41 +3417,40 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cBooleanEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cBooleanBooleanKeyword_4_0 = (Keyword)cBooleanEnumLiteralDeclaration_4.eContents().get(0);
 		
-		//enum ColumnType:
-		//	text | integer | real | blob | boolean;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumRule getRule() { return rule; }
 
-		//text | integer | real | blob | boolean
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//text
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getTextEnumLiteralDeclaration_0() { return cTextEnumLiteralDeclaration_0; }
 
-		//"text"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getTextTextKeyword_0_0() { return cTextTextKeyword_0_0; }
 
-		//integer
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getIntegerEnumLiteralDeclaration_1() { return cIntegerEnumLiteralDeclaration_1; }
 
-		//"integer"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getIntegerIntegerKeyword_1_0() { return cIntegerIntegerKeyword_1_0; }
 
-		//real
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getRealEnumLiteralDeclaration_2() { return cRealEnumLiteralDeclaration_2; }
 
-		//"real"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRealRealKeyword_2_0() { return cRealRealKeyword_2_0; }
 
-		//blob
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getBlobEnumLiteralDeclaration_3() { return cBlobEnumLiteralDeclaration_3; }
 
-		//"blob"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getBlobBlobKeyword_3_0() { return cBlobBlobKeyword_3_0; }
 
-		//boolean
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getBooleanEnumLiteralDeclaration_4() { return cBooleanEnumLiteralDeclaration_4; }
 
-		//"boolean"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getBooleanBooleanKeyword_4_0() { return cBooleanBooleanKeyword_4_0; }
 	}
 
@@ -3491,41 +3468,40 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cReplaceEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cReplaceReplaceKeyword_4_0 = (Keyword)cReplaceEnumLiteralDeclaration_4.eContents().get(0);
 		
-		//enum ConflictResolution:
-		//	rollback | abort | fail | ignore | replace;
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumRule getRule() { return rule; }
 
-		//rollback | abort | fail | ignore | replace
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//rollback
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getRollbackEnumLiteralDeclaration_0() { return cRollbackEnumLiteralDeclaration_0; }
 
-		//"rollback"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getRollbackRollbackKeyword_0_0() { return cRollbackRollbackKeyword_0_0; }
 
-		//abort
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getAbortEnumLiteralDeclaration_1() { return cAbortEnumLiteralDeclaration_1; }
 
-		//"abort"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getAbortAbortKeyword_1_0() { return cAbortAbortKeyword_1_0; }
 
-		//fail
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getFailEnumLiteralDeclaration_2() { return cFailEnumLiteralDeclaration_2; }
 
-		//"fail"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getFailFailKeyword_2_0() { return cFailFailKeyword_2_0; }
 
-		//ignore
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getIgnoreEnumLiteralDeclaration_3() { return cIgnoreEnumLiteralDeclaration_3; }
 
-		//"ignore"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getIgnoreIgnoreKeyword_3_0() { return cIgnoreIgnoreKeyword_3_0; }
 
-		//replace
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public EnumLiteralDeclaration getReplaceEnumLiteralDeclaration_4() { return cReplaceEnumLiteralDeclaration_4; }
 
-		//"replace"
+		//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 		public Keyword getReplaceReplaceKeyword_4_0() { return cReplaceReplaceKeyword_4_0; }
 	}
 	
@@ -3549,7 +3525,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private CaseElements pCase;
 	private SelectStatementElements pSelectStatement;
 	private SelectCoreElements pSelectCore;
-	private SelectCoreOperandElements pSelectCoreOperand;
+	private SelectExpressionElements pSelectExpression;
 	private CompoundOperatorElements unknownRuleCompoundOperator;
 	private OrderingTermElements pOrderingTerm;
 	private JoinSourceElements pJoinSource;
@@ -3575,8 +3551,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private ColumnDefElements pColumnDef;
 	private ColumnConstraintElements pColumnConstraint;
 	private TableConstraintElements pTableConstraint;
-	private UniqueTableContraintElements pUniqueTableContraint;
-	private PrimaryContraintElements pPrimaryContraint;
+	private UniqueTableConstraintElements pUniqueTableConstraint;
+	private PrimaryConstraintElements pPrimaryConstraint;
 	private CheckTableConstraintElements pCheckTableConstraint;
 	private IndexedColumnElements pIndexedColumn;
 	private DefaultValueElements pDefaultValue;
@@ -3632,12 +3608,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	/// ***********************************************************************
-	// *                                                                     *
-	// * CORE                                                                *
-	// *                                                                     *
-	// *********************************************************************** / Model:
-	//	"package" packageName=QualifiedName database=DatabaseBlock;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -3646,8 +3617,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 
-	//DatabaseBlock:
-	//	"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* "}";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DatabaseBlockElements getDatabaseBlockAccess() {
 		return (pDatabaseBlock != null) ? pDatabaseBlock : (pDatabaseBlock = new DatabaseBlockElements());
 	}
@@ -3656,8 +3626,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDatabaseBlockAccess().getRule();
 	}
 
-	//ConfigBlock:
-	//	{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ConfigBlockElements getConfigBlockAccess() {
 		return (pConfigBlock != null) ? pConfigBlock : (pConfigBlock = new ConfigBlockElements());
 	}
@@ -3666,8 +3635,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getConfigBlockAccess().getRule();
 	}
 
-	//ConfigurationStatement:
-	//	{ActionStatement} "action" name=ID path=STRING;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ConfigurationStatementElements getConfigurationStatementAccess() {
 		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
 	}
@@ -3676,8 +3644,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getConfigurationStatementAccess().getRule();
 	}
 
-	//MigrationBlock:
-	//	{MigrationBlock} "migration" "{" (statements+=DDLStatement ";")* "}";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public MigrationBlockElements getMigrationBlockAccess() {
 		return (pMigrationBlock != null) ? pMigrationBlock : (pMigrationBlock = new MigrationBlockElements());
 	}
@@ -3686,12 +3653,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getMigrationBlockAccess().getRule();
 	}
 
-	/// ***********************************************************************
-	// *                                                                     *
-	// * EXPRESSIONS                                                         *
-	// *                                                                     *
-	// *********************************************************************** / SqlExpression returns Expression:
-	//	ExprConcat;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SqlExpressionElements getSqlExpressionAccess() {
 		return (pSqlExpression != null) ? pSqlExpression : (pSqlExpression = new SqlExpressionElements());
 	}
@@ -3700,8 +3662,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSqlExpressionAccess().getRule();
 	}
 
-	//ExprConcat returns Expression:
-	//	ExprMult ({ExprConcat.left=current} op="||" right=ExprMult)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprConcatElements getExprConcatAccess() {
 		return (pExprConcat != null) ? pExprConcat : (pExprConcat = new ExprConcatElements());
 	}
@@ -3710,8 +3671,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprConcatAccess().getRule();
 	}
 
-	//ExprMult returns Expression:
-	//	ExprAdd ({ExprMult.left=current} op=("*" | "/" | "%") right=ExprAdd)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprMultElements getExprMultAccess() {
 		return (pExprMult != null) ? pExprMult : (pExprMult = new ExprMultElements());
 	}
@@ -3720,8 +3680,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprMultAccess().getRule();
 	}
 
-	//ExprAdd returns Expression:
-	//	ExprBit ({ExprAdd.left=current} op=("+" | "-") right=ExprBit)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprAddElements getExprAddAccess() {
 		return (pExprAdd != null) ? pExprAdd : (pExprAdd = new ExprAddElements());
 	}
@@ -3730,8 +3689,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprAddAccess().getRule();
 	}
 
-	//ExprBit returns Expression:
-	//	ExprRelate ({ExprBit.left=current} op=("<<" | ">>" | "&" | "|") right=ExprRelate)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprBitElements getExprBitAccess() {
 		return (pExprBit != null) ? pExprBit : (pExprBit = new ExprBitElements());
 	}
@@ -3740,8 +3698,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprBitAccess().getRule();
 	}
 
-	//ExprRelate returns Expression:
-	//	ExprEqual ({ExprRelate.left=current} op=("<" | "<=" | ">" | ">=") right=ExprEqual)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprRelateElements getExprRelateAccess() {
 		return (pExprRelate != null) ? pExprRelate : (pExprRelate = new ExprRelateElements());
 	}
@@ -3750,9 +3707,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprRelateAccess().getRule();
 	}
 
-	//ExprEqual returns Expression:
-	//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" |
-	//	"regexp") right=ExprAnd)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprEqualElements getExprEqualAccess() {
 		return (pExprEqual != null) ? pExprEqual : (pExprEqual = new ExprEqualElements());
 	}
@@ -3761,8 +3716,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprEqualAccess().getRule();
 	}
 
-	//ExprAnd returns Expression:
-	//	ExprOr ({ExprAnd.left=current} op="and" right=ExprOr)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprAndElements getExprAndAccess() {
 		return (pExprAnd != null) ? pExprAnd : (pExprAnd = new ExprAndElements());
 	}
@@ -3771,8 +3725,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprAndAccess().getRule();
 	}
 
-	//ExprOr returns Expression:
-	//	NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ExprOrElements getExprOrAccess() {
 		return (pExprOr != null) ? pExprOr : (pExprOr = new ExprOrElements());
 	}
@@ -3781,8 +3734,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprOrAccess().getRule();
 	}
 
-	//NullCheckExpression returns Expression:
-	//	PrimaryExpression ({NullCheckExpression.left=current} right=NullExpression)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public NullCheckExpressionElements getNullCheckExpressionAccess() {
 		return (pNullCheckExpression != null) ? pNullCheckExpression : (pNullCheckExpression = new NullCheckExpressionElements());
 	}
@@ -3791,8 +3743,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getNullCheckExpressionAccess().getRule();
 	}
 
-	//NullExpression returns Expression:
-	//	{IsNull} "is null" | {NotNull} ("not null" | "notnull");
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public NullExpressionElements getNullExpressionAccess() {
 		return (pNullExpression != null) ? pNullExpression : (pNullExpression = new NullExpressionElements());
 	}
@@ -3801,13 +3752,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getNullExpressionAccess().getRule();
 	}
 
-	//PrimaryExpression returns Expression:
-	//	{NewColumnSource} "new" "." column=[ColumnSource] | {OldColumnSource} "old" "." column=[ColumnSource] | {ColumnSource}
-	//	(source=[SelectSource] ".")? column=[ColumnSource] | {Literal} literalValue=LiteralValue | {NestedExpression} "("
-	//	expression=SqlExpression ")" | {SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement
-	//	")" | {CaseExpression} "case" caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end"
-	//	| {Function} name=ID "(" (all?="*" | arguments+=SqlExpression ("," arugments+=SqlExpression)*) ")" | {CastExpression}
-	//	"cast" "(" expression=SqlExpression "as" type=SqliteDataType ")";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
 	}
@@ -3816,8 +3761,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getPrimaryExpressionAccess().getRule();
 	}
 
-	//Case:
-	//	"when" whenExpression=SqlExpression "then" thenExpression=SqlExpression;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CaseElements getCaseAccess() {
 		return (pCase != null) ? pCase : (pCase = new CaseElements());
 	}
@@ -3826,8 +3770,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCaseAccess().getRule();
 	}
 
-	//SelectStatement:
-	//	core=SelectCore ("order by" orderingTerms+=OrderingTerm ("," orderingTerms+=OrderingTerm)*)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SelectStatementElements getSelectStatementAccess() {
 		return (pSelectStatement != null) ? pSelectStatement : (pSelectStatement = new SelectStatementElements());
 	}
@@ -3836,8 +3779,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSelectStatementAccess().getRule();
 	}
 
-	//SelectCore returns SelectCoreExpression:
-	//	SelectCoreOperand ({SelectCore.left=current} op=CompoundOperator right=SelectCoreOperand)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SelectCoreElements getSelectCoreAccess() {
 		return (pSelectCore != null) ? pSelectCore : (pSelectCore = new SelectCoreElements());
 	}
@@ -3846,20 +3788,16 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSelectCoreAccess().getRule();
 	}
 
-	//SelectCoreOperand returns SelectCoreExpression:
-	//	"select" (distinct?="distinct" | all?="all")? resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)* ("from"
-	//	source=JoinSource)? ("where" whereExpression=SqlExpression)? ("group by" groupByExpressions+=SqlExpression (","
-	//	groupByExpressions+=SqlExpression)*)? ("having" havingExpression=SqlExpression)?;
-	public SelectCoreOperandElements getSelectCoreOperandAccess() {
-		return (pSelectCoreOperand != null) ? pSelectCoreOperand : (pSelectCoreOperand = new SelectCoreOperandElements());
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
+	public SelectExpressionElements getSelectExpressionAccess() {
+		return (pSelectExpression != null) ? pSelectExpression : (pSelectExpression = new SelectExpressionElements());
 	}
 	
-	public ParserRule getSelectCoreOperandRule() {
-		return getSelectCoreOperandAccess().getRule();
+	public ParserRule getSelectExpressionRule() {
+		return getSelectExpressionAccess().getRule();
 	}
 
-	//enum CompoundOperator:
-	//	unionall="union all" | union | intersect | except;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CompoundOperatorElements getCompoundOperatorAccess() {
 		return (unknownRuleCompoundOperator != null) ? unknownRuleCompoundOperator : (unknownRuleCompoundOperator = new CompoundOperatorElements());
 	}
@@ -3868,8 +3806,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCompoundOperatorAccess().getRule();
 	}
 
-	//OrderingTerm:
-	//	expression=SqlExpression (asc?="asc" | desc?="desc")?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public OrderingTermElements getOrderingTermAccess() {
 		return (pOrderingTerm != null) ? pOrderingTerm : (pOrderingTerm = new OrderingTermElements());
 	}
@@ -3878,8 +3815,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getOrderingTermAccess().getRule();
 	}
 
-	//JoinSource:
-	//	source=SingleSource joinStatements+=JoinStatement*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public JoinSourceElements getJoinSourceAccess() {
 		return (pJoinSource != null) ? pJoinSource : (pJoinSource = new JoinSourceElements());
 	}
@@ -3888,8 +3824,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getJoinSourceAccess().getRule();
 	}
 
-	//SingleSource:
-	//	SingleSourceTable | SingleSourceSelectStatement | SingleSourceJoin;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SingleSourceElements getSingleSourceAccess() {
 		return (pSingleSource != null) ? pSingleSource : (pSingleSource = new SingleSourceElements());
 	}
@@ -3898,8 +3833,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSingleSourceAccess().getRule();
 	}
 
-	//SingleSourceTable returns SelectSource:
-	//	{SingleSourceTable} tableReference=[CreateTableStatement] ("as" name=ID)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SingleSourceTableElements getSingleSourceTableAccess() {
 		return (pSingleSourceTable != null) ? pSingleSourceTable : (pSingleSourceTable = new SingleSourceTableElements());
 	}
@@ -3908,8 +3842,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSingleSourceTableAccess().getRule();
 	}
 
-	//SingleSourceSelectStatement returns SelectSource:
-	//	{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" ("as" name=ID)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SingleSourceSelectStatementElements getSingleSourceSelectStatementAccess() {
 		return (pSingleSourceSelectStatement != null) ? pSingleSourceSelectStatement : (pSingleSourceSelectStatement = new SingleSourceSelectStatementElements());
 	}
@@ -3918,8 +3851,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSingleSourceSelectStatementAccess().getRule();
 	}
 
-	//SingleSourceJoin:
-	//	"(" joinSource=JoinSource ")";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SingleSourceJoinElements getSingleSourceJoinAccess() {
 		return (pSingleSourceJoin != null) ? pSingleSourceJoin : (pSingleSourceJoin = new SingleSourceJoinElements());
 	}
@@ -3928,9 +3860,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSingleSourceJoinAccess().getRule();
 	}
 
-	//JoinStatement:
-	//	{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
-	//	singleSource=SingleSource "on" expression=SqlExpression;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public JoinStatementElements getJoinStatementAccess() {
 		return (pJoinStatement != null) ? pJoinStatement : (pJoinStatement = new JoinStatementElements());
 	}
@@ -3939,8 +3869,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getJoinStatementAccess().getRule();
 	}
 
-	//ResultColumn:
-	//	ResultColumnAll | ResultColumnExpression;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ResultColumnElements getResultColumnAccess() {
 		return (pResultColumn != null) ? pResultColumn : (pResultColumn = new ResultColumnElements());
 	}
@@ -3949,8 +3878,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getResultColumnAccess().getRule();
 	}
 
-	//ResultColumnAll:
-	//	{ResultColumnAll} ((reference=[SelectSource] ".*")? | "*");
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ResultColumnAllElements getResultColumnAllAccess() {
 		return (pResultColumnAll != null) ? pResultColumnAll : (pResultColumnAll = new ResultColumnAllElements());
 	}
@@ -3959,8 +3887,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getResultColumnAllAccess().getRule();
 	}
 
-	//ResultColumnExpression returns ColumnSource:
-	//	{ResultColumnExpression} expression=SqlExpression ("as" name=ID)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ResultColumnExpressionElements getResultColumnExpressionAccess() {
 		return (pResultColumnExpression != null) ? pResultColumnExpression : (pResultColumnExpression = new ResultColumnExpressionElements());
 	}
@@ -3969,10 +3896,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getResultColumnExpressionAccess().getRule();
 	}
 
-	//LiteralValue:
-	//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
-	//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-	//	literal="current_time_stamp";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public LiteralValueElements getLiteralValueAccess() {
 		return (pLiteralValue != null) ? pLiteralValue : (pLiteralValue = new LiteralValueElements());
 	}
@@ -3981,8 +3905,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getLiteralValueAccess().getRule();
 	}
 
-	//enum SqliteDataType:
-	//	text | integer | real | blob | none | numeric;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SqliteDataTypeElements getSqliteDataTypeAccess() {
 		return (unknownRuleSqliteDataType != null) ? unknownRuleSqliteDataType : (unknownRuleSqliteDataType = new SqliteDataTypeElements());
 	}
@@ -3991,13 +3914,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSqliteDataTypeAccess().getRule();
 	}
 
-	/// ***********************************************************************
-	// *                                                                     *
-	// * DDL                                                                 *
-	// *                                                                     *
-	// *********************************************************************** / DDLStatement:
-	//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | AlterTableStatement | DropTableStatement |
-	//	DropTriggerStatement | DropViewStatement;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DDLStatementElements getDDLStatementAccess() {
 		return (pDDLStatement != null) ? pDDLStatement : (pDDLStatement = new DDLStatementElements());
 	}
@@ -4006,9 +3923,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDDLStatementAccess().getRule();
 	}
 
-	//CreateTableStatement returns SelectSource:
-	//	{CreateTableStatement} "create" "table" name=ID "(" columnDefs+=ColumnDef ("," columnDefs+=ColumnDef)* (","
-	//	constraints+=TableConstraint)* ")";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CreateTableStatementElements getCreateTableStatementAccess() {
 		return (pCreateTableStatement != null) ? pCreateTableStatement : (pCreateTableStatement = new CreateTableStatementElements());
 	}
@@ -4017,8 +3932,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateTableStatementAccess().getRule();
 	}
 
-	//CreateViewStatement:
-	//	"create" "view" name=ID "as" selectStatement=SelectStatement;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CreateViewStatementElements getCreateViewStatementAccess() {
 		return (pCreateViewStatement != null) ? pCreateViewStatement : (pCreateViewStatement = new CreateViewStatementElements());
 	}
@@ -4027,11 +3941,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateViewStatementAccess().getRule();
 	}
 
-	//CreateTriggerStatement:
-	//	"create" "trigger" name=ID when=("before" | "after" | "instead of")? (eventType="delete" | eventType="insert" |
-	//	eventType="update" ("of" updateColumnNames+=ID ("," updateColumnNames+=ID)*)?) "on" tableName=ID
-	//	forEachRow="for each row"? ("when" whenExpression=SqlExpression)? "begin" (statements+=DMLStatement ";"
-	//	(statements+=DMLStatement ";")*)? "end";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CreateTriggerStatementElements getCreateTriggerStatementAccess() {
 		return (pCreateTriggerStatement != null) ? pCreateTriggerStatement : (pCreateTriggerStatement = new CreateTriggerStatementElements());
 	}
@@ -4040,8 +3950,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateTriggerStatementAccess().getRule();
 	}
 
-	//AlterTableStatement:
-	//	"alter" "table" name=ID clause=AlterTableClause;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public AlterTableStatementElements getAlterTableStatementAccess() {
 		return (pAlterTableStatement != null) ? pAlterTableStatement : (pAlterTableStatement = new AlterTableStatementElements());
 	}
@@ -4050,8 +3959,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getAlterTableStatementAccess().getRule();
 	}
 
-	//DropTableStatement:
-	//	"drop" "table" ifExists?="if exists"? name=ID;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DropTableStatementElements getDropTableStatementAccess() {
 		return (pDropTableStatement != null) ? pDropTableStatement : (pDropTableStatement = new DropTableStatementElements());
 	}
@@ -4060,8 +3968,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDropTableStatementAccess().getRule();
 	}
 
-	//DropTriggerStatement:
-	//	"drop" "trigger" ifExists?="if exists"? name=ID;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DropTriggerStatementElements getDropTriggerStatementAccess() {
 		return (pDropTriggerStatement != null) ? pDropTriggerStatement : (pDropTriggerStatement = new DropTriggerStatementElements());
 	}
@@ -4070,8 +3977,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDropTriggerStatementAccess().getRule();
 	}
 
-	//DropViewStatement:
-	//	"drop" "view" ifExists?="if exists"? name=ID;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DropViewStatementElements getDropViewStatementAccess() {
 		return (pDropViewStatement != null) ? pDropViewStatement : (pDropViewStatement = new DropViewStatementElements());
 	}
@@ -4080,8 +3986,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDropViewStatementAccess().getRule();
 	}
 
-	//AlterTableClause:
-	//	{AlterTableRenameClause} "rename to" name=ID | {AlterTableAddColumnClause} "add column" columnDef=ColumnDef;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public AlterTableClauseElements getAlterTableClauseAccess() {
 		return (pAlterTableClause != null) ? pAlterTableClause : (pAlterTableClause = new AlterTableClauseElements());
 	}
@@ -4090,8 +3995,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getAlterTableClauseAccess().getRule();
 	}
 
-	//ColumnDef returns ColumnSource:
-	//	{ColumnDef} name=ID type=ColumnType constraints+=ColumnConstraint*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ColumnDefElements getColumnDefAccess() {
 		return (pColumnDef != null) ? pColumnDef : (pColumnDef = new ColumnDefElements());
 	}
@@ -4100,10 +4004,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getColumnDefAccess().getRule();
 	}
 
-	//ColumnConstraint:
-	//	{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
-	//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {DefaultConstraint} "default"
-	//	defaultValue=DefaultValue;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ColumnConstraintElements getColumnConstraintAccess() {
 		return (pColumnConstraint != null) ? pColumnConstraint : (pColumnConstraint = new ColumnConstraintElements());
 	}
@@ -4112,8 +4013,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getColumnConstraintAccess().getRule();
 	}
 
-	//TableConstraint:
-	//	UniqueTableContraint | PrimaryContraint | CheckTableConstraint;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public TableConstraintElements getTableConstraintAccess() {
 		return (pTableConstraint != null) ? pTableConstraint : (pTableConstraint = new TableConstraintElements());
 	}
@@ -4122,30 +4022,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getTableConstraintAccess().getRule();
 	}
 
-	//UniqueTableContraint:
-	//	("constraint" name=ID)? "unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
-	//	conflictClause=ConflictClause;
-	public UniqueTableContraintElements getUniqueTableContraintAccess() {
-		return (pUniqueTableContraint != null) ? pUniqueTableContraint : (pUniqueTableContraint = new UniqueTableContraintElements());
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
+	public UniqueTableConstraintElements getUniqueTableConstraintAccess() {
+		return (pUniqueTableConstraint != null) ? pUniqueTableConstraint : (pUniqueTableConstraint = new UniqueTableConstraintElements());
 	}
 	
-	public ParserRule getUniqueTableContraintRule() {
-		return getUniqueTableContraintAccess().getRule();
+	public ParserRule getUniqueTableConstraintRule() {
+		return getUniqueTableConstraintAccess().getRule();
 	}
 
-	//PrimaryContraint:
-	//	("constraint" name=ID)? "primary key" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
-	//	conflictClause=ConflictClause;
-	public PrimaryContraintElements getPrimaryContraintAccess() {
-		return (pPrimaryContraint != null) ? pPrimaryContraint : (pPrimaryContraint = new PrimaryContraintElements());
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
+	public PrimaryConstraintElements getPrimaryConstraintAccess() {
+		return (pPrimaryConstraint != null) ? pPrimaryConstraint : (pPrimaryConstraint = new PrimaryConstraintElements());
 	}
 	
-	public ParserRule getPrimaryContraintRule() {
-		return getPrimaryContraintAccess().getRule();
+	public ParserRule getPrimaryConstraintRule() {
+		return getPrimaryConstraintAccess().getRule();
 	}
 
-	//CheckTableConstraint:
-	//	("constraint" name=ID)? "check" "(" expression=SqlExpression ")";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public CheckTableConstraintElements getCheckTableConstraintAccess() {
 		return (pCheckTableConstraint != null) ? pCheckTableConstraint : (pCheckTableConstraint = new CheckTableConstraintElements());
 	}
@@ -4154,8 +4049,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCheckTableConstraintAccess().getRule();
 	}
 
-	//IndexedColumn:
-	//	columnReference=[ColumnDef] (asc?="asc" | desc?="desc")?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public IndexedColumnElements getIndexedColumnAccess() {
 		return (pIndexedColumn != null) ? pIndexedColumn : (pIndexedColumn = new IndexedColumnElements());
 	}
@@ -4164,8 +4058,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getIndexedColumnAccess().getRule();
 	}
 
-	//DefaultValue:
-	//	{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=SqlExpression ")";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DefaultValueElements getDefaultValueAccess() {
 		return (pDefaultValue != null) ? pDefaultValue : (pDefaultValue = new DefaultValueElements());
 	}
@@ -4174,8 +4067,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDefaultValueAccess().getRule();
 	}
 
-	//ConflictClause:
-	//	"on" "conflict" resolution=ConflictResolution;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ConflictClauseElements getConflictClauseAccess() {
 		return (pConflictClause != null) ? pConflictClause : (pConflictClause = new ConflictClauseElements());
 	}
@@ -4184,8 +4076,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getConflictClauseAccess().getRule();
 	}
 
-	//enum ColumnType:
-	//	text | integer | real | blob | boolean;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ColumnTypeElements getColumnTypeAccess() {
 		return (unknownRuleColumnType != null) ? unknownRuleColumnType : (unknownRuleColumnType = new ColumnTypeElements());
 	}
@@ -4194,8 +4085,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getColumnTypeAccess().getRule();
 	}
 
-	//enum ConflictResolution:
-	//	rollback | abort | fail | ignore | replace;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public ConflictResolutionElements getConflictResolutionAccess() {
 		return (unknownRuleConflictResolution != null) ? unknownRuleConflictResolution : (unknownRuleConflictResolution = new ConflictResolutionElements());
 	}
@@ -4204,12 +4094,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getConflictResolutionAccess().getRule();
 	}
 
-	/// ***********************************************************************
-	// *                                                                     *
-	// * DML                                                                 *
-	// *                                                                     *
-	// *********************************************************************** / DMLStatement:
-	//	SelectStatement | InsertStatement | UpdateStatement | DeleteStatement;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DMLStatementElements getDMLStatementAccess() {
 		return (pDMLStatement != null) ? pDMLStatement : (pDMLStatement = new DMLStatementElements());
 	}
@@ -4218,8 +4103,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDMLStatementAccess().getRule();
 	}
 
-	//DeleteStatement:
-	//	"delete" "from" tableName=ID ("where" expression=SqlExpression)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public DeleteStatementElements getDeleteStatementAccess() {
 		return (pDeleteStatement != null) ? pDeleteStatement : (pDeleteStatement = new DeleteStatementElements());
 	}
@@ -4228,10 +4112,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDeleteStatementAccess().getRule();
 	}
 
-	//InsertStatement:
-	//	("insert" ("or" conflictResolution=ConflictResolution)? | "replace") "into" tableName=ID ("(" columnNames+=ID (","
-	//	columnNames+=ID)* ")")? (("values" "(" expressions+=SqlExpression ("," expressions+=SqlExpression)* ")" |
-	//	selectStatement=SelectStatement) | "default" "values");
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public InsertStatementElements getInsertStatementAccess() {
 		return (pInsertStatement != null) ? pInsertStatement : (pInsertStatement = new InsertStatementElements());
 	}
@@ -4240,10 +4121,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getInsertStatementAccess().getRule();
 	}
 
-	//UpdateStatement:
-	//	"update" ("or" conflictResolution=ConflictResolution)? tableName=ID "set"
-	//	updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
-	//	whereExpression=SqlExpression)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public UpdateStatementElements getUpdateStatementAccess() {
 		return (pUpdateStatement != null) ? pUpdateStatement : (pUpdateStatement = new UpdateStatementElements());
 	}
@@ -4252,8 +4130,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getUpdateStatementAccess().getRule();
 	}
 
-	//UpdateColumnExpression:
-	//	columnName=ID "=" expression=SqlExpression;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public UpdateColumnExpressionElements getUpdateColumnExpressionAccess() {
 		return (pUpdateColumnExpression != null) ? pUpdateColumnExpression : (pUpdateColumnExpression = new UpdateColumnExpressionElements());
 	}
@@ -4262,12 +4139,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getUpdateColumnExpressionAccess().getRule();
 	}
 
-	/// ***********************************************************************
-	// *                                                                     *
-	// * DATATYPE & TERMINAL RULES                                           *
-	// *                                                                     *
-	// *********************************************************************** / SignedNumber returns ecore::EBigDecimal:
-	//	"-"? NUMBER;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public SignedNumberElements getSignedNumberAccess() {
 		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
 	}
@@ -4276,8 +4148,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getSignedNumberAccess().getRule();
 	}
 
-	//QualifiedName:
-	//	ID ("." ID)*;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public QualifiedNameElements getQualifiedNameAccess() {
 		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
 	}
@@ -4286,21 +4157,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//terminal NUMBER returns ecore::EBigDecimal:
-	//	"0".."9"* ("." "0".."9"+)?;
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public TerminalRule getNUMBERRule() {
 		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
 	} 
 
-	//terminal INT returns ecore::EInt:
-	//	"$$$don\'t use this anymore$$$";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public TerminalRule getINTRule() {
 		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
 	} 
 
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//org.eclipse.xtext.resource.ClasspathUriResolutionException: java.lang.IllegalStateException: Couldn't find resource on classpath. URI was 'classpath:/com/robotoworks/mechanoid/sqlite/SqliteModel.xtext'
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
 	} 
