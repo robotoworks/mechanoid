@@ -41,11 +41,11 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setIndentationDecrement().after(g.getDDLStatementRule());
 		
 		c.setLinewrap(2).before(g.getDDLStatementRule());
-		c.setLinewrap().before(g.getDDLStatementAccess().getRightParenthesisKeyword_0_8());
+		c.setLinewrap().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
 		c.setLinewrap().before(g.getColumnDefRule());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_0_6_0());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_0_7_0());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_2_5_2_1_2_0());
+		c.setNoSpace().before(g.getCreateTableStatementAccess().getCommaKeyword_6_0());
+		//c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_0_7_0());
+		//c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_2_5_2_1_2_0());
 		
 		c.setLinewrap().before(g.getDMLStatementRule());
 		c.setLinewrap().before(g.getResultColumnRule());
@@ -59,13 +59,13 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().before(g.getJoinStatementRule());
 		
 		c.setLinewrap().before(g.getCompoundOperatorRule());
-		c.setLinewrap().before(g.getDDLStatementAccess().getWhenExpressionAssignment_2_9_1());
+		c.setLinewrap().before(g.getCreateTriggerStatementAccess().getWhenExpressionAssignment_8_1());
 		
 		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());
 		c.setLinewrap().after(g.getExprOrAccess().getOpOrKeyword_1_1_0());
 		c.setLinewrap().after(g.getCaseRule());
-		c.setNoSpace().after(g.getResultColumnAccess().getReferenceAssignment_0_1_0_0());
-		c.setNoSpace().before(g.getResultColumnAccess().getAsteriskKeyword_0_1_1());
+		c.setNoSpace().after(g.getResultColumnAllAccess().getReferenceAssignment_1_0_0());
+		c.setNoSpace().before(g.getResultColumnAllAccess().getAsteriskKeyword_1_1());
 		
 	}
 }

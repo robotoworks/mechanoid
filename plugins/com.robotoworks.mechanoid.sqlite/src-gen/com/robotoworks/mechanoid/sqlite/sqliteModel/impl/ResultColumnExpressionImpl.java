@@ -22,13 +22,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnExpressionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ResultColumnExpressionImpl extends ResultColumnImpl implements ResultColumnExpression
+public class ResultColumnExpressionImpl extends ColumnSourceImpl implements ResultColumnExpression
 {
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -39,26 +38,6 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * @ordered
    */
   protected Expression expression;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,29 +113,6 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -180,8 +136,6 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         return getExpression();
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
-        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -198,9 +152,6 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((Expression)newValue);
-        return;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
-        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -219,9 +170,6 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((Expression)null);
         return;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -238,27 +186,8 @@ public class ResultColumnExpressionImpl extends ResultColumnImpl implements Resu
     {
       case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__EXPRESSION:
         return expression != null;
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ResultColumnExpressionImpl

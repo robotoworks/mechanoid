@@ -4,6 +4,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.util.Strings;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
@@ -56,8 +57,8 @@ public class Extensions {
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateTableStatement stmt) {
-		EList<ColumnDef> columns = stmt.getColumnDefs();
-		for(ColumnDef col : columns) {
+		EList<ColumnSource> columns = stmt.getColumnDefs();
+		for(ColumnSource col : columns) {
 			if(col.getName().equals("_id")) {
 				return true;
 			}

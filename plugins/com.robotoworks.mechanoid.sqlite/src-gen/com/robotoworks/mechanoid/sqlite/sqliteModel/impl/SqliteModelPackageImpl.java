@@ -13,7 +13,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
@@ -57,11 +57,13 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryContraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
@@ -70,6 +72,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
@@ -155,7 +158,196 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass selectStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass selectCoreExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orderingTermEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass joinSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass singleSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass selectSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass singleSourceJoinEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass joinStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass resultColumnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass resultColumnAllEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass columnSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass literalValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass ddlStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass createViewStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass createTriggerStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass alterTableStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dropTableStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dropTriggerStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dropViewStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass alterTableClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass columnConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tableConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uniqueTableContraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass primaryContraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass checkTableConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass indexedColumnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conflictClauseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -191,111 +383,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass updateColumnExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass selectStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass selectCoreExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass alterTableClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass columnDefEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass columnConstraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass defaultValueEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass tableConstraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass indexedColumnEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass orderingTermEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass joinSourceEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass singleSourceEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass joinStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass resultColumnEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conflictClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass literalValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -386,7 +473,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass columnLiteralEClass = null;
+  private EClass newColumnSourceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass oldColumnSourceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -435,126 +529,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass createTableStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass createViewStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass createTriggerStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass alterTableStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dropTableStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dropTriggerStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dropViewStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass selectCoreEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass alterTableRenameClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass alterTableAddColumnClauseEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass primaryKeyColumnConstraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass notNullConstraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass defaultConstraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass literalDefaultValueEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expressionDefaultValueEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass uniqueTableContraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass primaryContraintEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass checkTableConstraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -569,20 +544,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass singleSourceSelectStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass singleSourceJoinEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass resultColumnAllEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -638,7 +599,70 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum columnTypeEEnum = null;
+  private EClass createTableStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass alterTableRenameClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass alterTableAddColumnClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass columnDefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass primaryKeyColumnConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notNullConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass literalDefaultValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionDefaultValueEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum compoundOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -652,14 +676,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum conflictResolutionEEnum = null;
+  private EEnum columnTypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum compoundOperatorEEnum = null;
+  private EEnum conflictResolutionEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -889,6 +913,386 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSelectStatement()
+  {
+    return selectStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectStatement_Core()
+  {
+    return (EReference)selectStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectStatement_OrderingTerms()
+  {
+    return (EReference)selectStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSelectCoreExpression()
+  {
+    return selectCoreExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSelectCoreExpression_Distinct()
+  {
+    return (EAttribute)selectCoreExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSelectCoreExpression_All()
+  {
+    return (EAttribute)selectCoreExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCoreExpression_ResultColumns()
+  {
+    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCoreExpression_Source()
+  {
+    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCoreExpression_WhereExpression()
+  {
+    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCoreExpression_GroupByExpressions()
+  {
+    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectCoreExpression_HavingExpression()
+  {
+    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOrderingTerm()
+  {
+    return orderingTermEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOrderingTerm_Expression()
+  {
+    return (EReference)orderingTermEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOrderingTerm_Asc()
+  {
+    return (EAttribute)orderingTermEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOrderingTerm_Desc()
+  {
+    return (EAttribute)orderingTermEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJoinSource()
+  {
+    return joinSourceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getJoinSource_Source()
+  {
+    return (EReference)joinSourceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getJoinSource_JoinStatements()
+  {
+    return (EReference)joinSourceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSingleSource()
+  {
+    return singleSourceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSelectSource()
+  {
+    return selectSourceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSingleSourceJoin()
+  {
+    return singleSourceJoinEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSingleSourceJoin_JoinSource()
+  {
+    return (EReference)singleSourceJoinEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJoinStatement()
+  {
+    return joinStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJoinStatement_Natural()
+  {
+    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJoinStatement_Left()
+  {
+    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJoinStatement_Outer()
+  {
+    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJoinStatement_Inner()
+  {
+    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJoinStatement_Cross()
+  {
+    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getJoinStatement_SingleSource()
+  {
+    return (EReference)joinStatementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getJoinStatement_Expression()
+  {
+    return (EReference)joinStatementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getResultColumn()
+  {
+    return resultColumnEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getResultColumnAll()
+  {
+    return resultColumnAllEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getResultColumnAll_Reference()
+  {
+    return (EReference)resultColumnAllEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColumnSource()
+  {
+    return columnSourceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getColumnSource_Source()
+  {
+    return (EReference)columnSourceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getColumnSource_Column()
+  {
+    return (EReference)columnSourceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColumnSource_Name()
+  {
+    return (EAttribute)columnSourceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLiteralValue()
+  {
+    return literalValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDDLStatement()
   {
     return ddlStatementEClass;
@@ -902,6 +1306,376 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EAttribute getDDLStatement_Name()
   {
     return (EAttribute)ddlStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCreateViewStatement()
+  {
+    return createViewStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateViewStatement_SelectStatement()
+  {
+    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCreateTriggerStatement()
+  {
+    return createTriggerStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateTriggerStatement_When()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateTriggerStatement_EventType()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateTriggerStatement_UpdateColumnNames()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateTriggerStatement_TableName()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateTriggerStatement_ForEachRow()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateTriggerStatement_WhenExpression()
+  {
+    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateTriggerStatement_Statements()
+  {
+    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlterTableStatement()
+  {
+    return alterTableStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAlterTableStatement_Clause()
+  {
+    return (EReference)alterTableStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDropTableStatement()
+  {
+    return dropTableStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDropTableStatement_IfExists()
+  {
+    return (EAttribute)dropTableStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDropTriggerStatement()
+  {
+    return dropTriggerStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDropTriggerStatement_IfExists()
+  {
+    return (EAttribute)dropTriggerStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDropViewStatement()
+  {
+    return dropViewStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDropViewStatement_IfExists()
+  {
+    return (EAttribute)dropViewStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlterTableClause()
+  {
+    return alterTableClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColumnConstraint()
+  {
+    return columnConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTableConstraint()
+  {
+    return tableConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableConstraint_Name()
+  {
+    return (EAttribute)tableConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUniqueTableContraint()
+  {
+    return uniqueTableContraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUniqueTableContraint_Columns()
+  {
+    return (EReference)uniqueTableContraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUniqueTableContraint_ConflictClause()
+  {
+    return (EReference)uniqueTableContraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPrimaryContraint()
+  {
+    return primaryContraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPrimaryContraint_Columns()
+  {
+    return (EReference)primaryContraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPrimaryContraint_ConflictClause()
+  {
+    return (EReference)primaryContraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCheckTableConstraint()
+  {
+    return checkTableConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCheckTableConstraint_Expression()
+  {
+    return (EReference)checkTableConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIndexedColumn()
+  {
+    return indexedColumnEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIndexedColumn_ColumnReference()
+  {
+    return (EReference)indexedColumnEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIndexedColumn_Asc()
+  {
+    return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIndexedColumn_Desc()
+  {
+    return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDefaultValue()
+  {
+    return defaultValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConflictClause()
+  {
+    return conflictClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConflictClause_Resolution()
+  {
+    return (EAttribute)conflictClauseEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1082,446 +1856,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EReference getUpdateColumnExpression_Expression()
   {
     return (EReference)updateColumnExpressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSelectStatement()
-  {
-    return selectStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectStatement_Core()
-  {
-    return (EReference)selectStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectStatement_OrderingTerms()
-  {
-    return (EReference)selectStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSelectCoreExpression()
-  {
-    return selectCoreExpressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSelectCoreExpression_Distinct()
-  {
-    return (EAttribute)selectCoreExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSelectCoreExpression_All()
-  {
-    return (EAttribute)selectCoreExpressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectCoreExpression_ResultColumns()
-  {
-    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectCoreExpression_Source()
-  {
-    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectCoreExpression_WhereExpression()
-  {
-    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectCoreExpression_GroupByExpressions()
-  {
-    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSelectCoreExpression_HavingExpression()
-  {
-    return (EReference)selectCoreExpressionEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAlterTableClause()
-  {
-    return alterTableClauseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getColumnDef()
-  {
-    return columnDefEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getColumnDef_Name()
-  {
-    return (EAttribute)columnDefEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getColumnDef_Type()
-  {
-    return (EAttribute)columnDefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getColumnDef_Constraints()
-  {
-    return (EReference)columnDefEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getColumnConstraint()
-  {
-    return columnConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDefaultValue()
-  {
-    return defaultValueEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTableConstraint()
-  {
-    return tableConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTableConstraint_Name()
-  {
-    return (EAttribute)tableConstraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIndexedColumn()
-  {
-    return indexedColumnEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIndexedColumn_Name()
-  {
-    return (EReference)indexedColumnEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIndexedColumn_Asc()
-  {
-    return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIndexedColumn_Desc()
-  {
-    return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getOrderingTerm()
-  {
-    return orderingTermEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOrderingTerm_Expression()
-  {
-    return (EReference)orderingTermEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOrderingTerm_Asc()
-  {
-    return (EAttribute)orderingTermEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOrderingTerm_Desc()
-  {
-    return (EAttribute)orderingTermEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getJoinSource()
-  {
-    return joinSourceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getJoinSource_Source()
-  {
-    return (EReference)joinSourceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getJoinSource_JoinStatements()
-  {
-    return (EReference)joinSourceEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSingleSource()
-  {
-    return singleSourceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getJoinStatement()
-  {
-    return joinStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getJoinStatement_Natural()
-  {
-    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getJoinStatement_Left()
-  {
-    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getJoinStatement_Outer()
-  {
-    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getJoinStatement_Inner()
-  {
-    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getJoinStatement_Cross()
-  {
-    return (EAttribute)joinStatementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getJoinStatement_SingleSource()
-  {
-    return (EReference)joinStatementEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getJoinStatement_Expression()
-  {
-    return (EReference)joinStatementEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getResultColumn()
-  {
-    return resultColumnEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getConflictClause()
-  {
-    return conflictClauseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getConflictClause_Resolution()
-  {
-    return (EAttribute)conflictClauseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLiteralValue()
-  {
-    return literalValueEClass;
   }
 
   /**
@@ -1929,9 +2263,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getColumnLiteral()
+  public EClass getNewColumnSource()
   {
-    return columnLiteralEClass;
+    return newColumnSourceEClass;
   }
 
   /**
@@ -1939,9 +2273,29 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getColumnLiteral_Name()
+  public EReference getNewColumnSource_Column()
   {
-    return (EAttribute)columnLiteralEClass.getEStructuralFeatures().get(0);
+    return (EReference)newColumnSourceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOldColumnSource()
+  {
+    return oldColumnSourceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOldColumnSource_Column()
+  {
+    return (EReference)oldColumnSourceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2149,216 +2503,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCreateTableStatement()
-  {
-    return createTableStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateTableStatement_ColumnDefs()
-  {
-    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateTableStatement_Constraints()
-  {
-    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCreateViewStatement()
-  {
-    return createViewStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateViewStatement_SelectStatement()
-  {
-    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCreateTriggerStatement()
-  {
-    return createTriggerStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateTriggerStatement_When()
-  {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateTriggerStatement_EventType()
-  {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateTriggerStatement_UpdateColumnNames()
-  {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateTriggerStatement_TableName()
-  {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateTriggerStatement_ForEachRow()
-  {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateTriggerStatement_WhenExpression()
-  {
-    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateTriggerStatement_Statements()
-  {
-    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAlterTableStatement()
-  {
-    return alterTableStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAlterTableStatement_Clause()
-  {
-    return (EReference)alterTableStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDropTableStatement()
-  {
-    return dropTableStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDropTableStatement_IfExists()
-  {
-    return (EAttribute)dropTableStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDropTriggerStatement()
-  {
-    return dropTriggerStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDropTriggerStatement_IfExists()
-  {
-    return (EAttribute)dropTriggerStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDropViewStatement()
-  {
-    return dropViewStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDropViewStatement_IfExists()
-  {
-    return (EAttribute)dropViewStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSelectCore()
   {
     return selectCoreEClass;
@@ -2399,246 +2543,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAlterTableRenameClause()
-  {
-    return alterTableRenameClauseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getAlterTableRenameClause_Name()
-  {
-    return (EAttribute)alterTableRenameClauseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAlterTableAddColumnClause()
-  {
-    return alterTableAddColumnClauseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAlterTableAddColumnClause_ColumnDef()
-  {
-    return (EReference)alterTableAddColumnClauseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getPrimaryKeyColumnConstraint()
-  {
-    return primaryKeyColumnConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getPrimaryKeyColumnConstraint_Asc()
-  {
-    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getPrimaryKeyColumnConstraint_Desc()
-  {
-    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getPrimaryKeyColumnConstraint_Autoincrement()
-  {
-    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getNotNullConstraint()
-  {
-    return notNullConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getNotNullConstraint_ConflictClause()
-  {
-    return (EReference)notNullConstraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDefaultConstraint()
-  {
-    return defaultConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDefaultConstraint_DefaultValue()
-  {
-    return (EReference)defaultConstraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLiteralDefaultValue()
-  {
-    return literalDefaultValueEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLiteralDefaultValue_Literal()
-  {
-    return (EReference)literalDefaultValueEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getExpressionDefaultValue()
-  {
-    return expressionDefaultValueEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getExpressionDefaultValue_Expression()
-  {
-    return (EReference)expressionDefaultValueEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getUniqueTableContraint()
-  {
-    return uniqueTableContraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getUniqueTableContraint_Columns()
-  {
-    return (EReference)uniqueTableContraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getUniqueTableContraint_ConflictClause()
-  {
-    return (EReference)uniqueTableContraintEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getPrimaryContraint()
-  {
-    return primaryContraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPrimaryContraint_Columns()
-  {
-    return (EReference)primaryContraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPrimaryContraint_ConflictClause()
-  {
-    return (EReference)primaryContraintEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCheckTableConstraint()
-  {
-    return checkTableConstraintEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCheckTableConstraint_Expression()
-  {
-    return (EReference)checkTableConstraintEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSingleSourceTable()
   {
     return singleSourceTableEClass;
@@ -2652,16 +2556,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EReference getSingleSourceTable_TableReference()
   {
     return (EReference)singleSourceTableEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSingleSourceTable_Name()
-  {
-    return (EAttribute)singleSourceTableEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2689,56 +2583,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleSourceSelectStatement_Name()
-  {
-    return (EAttribute)singleSourceSelectStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSingleSourceJoin()
-  {
-    return singleSourceJoinEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSingleSourceJoin_JoinSource()
-  {
-    return (EReference)singleSourceJoinEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getResultColumnAll()
-  {
-    return resultColumnAllEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getResultColumnAll_Reference()
-  {
-    return (EAttribute)resultColumnAllEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getResultColumnExpression()
   {
     return resultColumnExpressionEClass;
@@ -2752,16 +2596,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EReference getResultColumnExpression_Expression()
   {
     return (EReference)resultColumnExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getResultColumnExpression_Name()
-  {
-    return (EAttribute)resultColumnExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2889,9 +2723,229 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getColumnType()
+  public EClass getCreateTableStatement()
   {
-    return columnTypeEEnum;
+    return createTableStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateTableStatement_ColumnDefs()
+  {
+    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateTableStatement_Constraints()
+  {
+    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlterTableRenameClause()
+  {
+    return alterTableRenameClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAlterTableRenameClause_Name()
+  {
+    return (EAttribute)alterTableRenameClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlterTableAddColumnClause()
+  {
+    return alterTableAddColumnClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAlterTableAddColumnClause_ColumnDef()
+  {
+    return (EReference)alterTableAddColumnClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColumnDef()
+  {
+    return columnDefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColumnDef_Type()
+  {
+    return (EAttribute)columnDefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getColumnDef_Constraints()
+  {
+    return (EReference)columnDefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPrimaryKeyColumnConstraint()
+  {
+    return primaryKeyColumnConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPrimaryKeyColumnConstraint_Asc()
+  {
+    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPrimaryKeyColumnConstraint_Desc()
+  {
+    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPrimaryKeyColumnConstraint_Autoincrement()
+  {
+    return (EAttribute)primaryKeyColumnConstraintEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNotNullConstraint()
+  {
+    return notNullConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNotNullConstraint_ConflictClause()
+  {
+    return (EReference)notNullConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDefaultConstraint()
+  {
+    return defaultConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDefaultConstraint_DefaultValue()
+  {
+    return (EReference)defaultConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLiteralDefaultValue()
+  {
+    return literalDefaultValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLiteralDefaultValue_Literal()
+  {
+    return (EReference)literalDefaultValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExpressionDefaultValue()
+  {
+    return expressionDefaultValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpressionDefaultValue_Expression()
+  {
+    return (EReference)expressionDefaultValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getCompoundOperator()
+  {
+    return compoundOperatorEEnum;
   }
 
   /**
@@ -2909,9 +2963,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getConflictResolution()
+  public EEnum getColumnType()
   {
-    return conflictResolutionEEnum;
+    return columnTypeEEnum;
   }
 
   /**
@@ -2919,9 +2973,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getCompoundOperator()
+  public EEnum getConflictResolution()
   {
-    return compoundOperatorEEnum;
+    return conflictResolutionEEnum;
   }
 
   /**
@@ -2977,8 +3031,110 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(caseEClass, CASE__WHEN_EXPRESSION);
     createEReference(caseEClass, CASE__THEN_EXPRESSION);
 
+    selectStatementEClass = createEClass(SELECT_STATEMENT);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__CORE);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__ORDERING_TERMS);
+
+    selectCoreExpressionEClass = createEClass(SELECT_CORE_EXPRESSION);
+    createEAttribute(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__DISTINCT);
+    createEAttribute(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__ALL);
+    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__RESULT_COLUMNS);
+    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__SOURCE);
+    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__WHERE_EXPRESSION);
+    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS);
+    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__HAVING_EXPRESSION);
+
+    orderingTermEClass = createEClass(ORDERING_TERM);
+    createEReference(orderingTermEClass, ORDERING_TERM__EXPRESSION);
+    createEAttribute(orderingTermEClass, ORDERING_TERM__ASC);
+    createEAttribute(orderingTermEClass, ORDERING_TERM__DESC);
+
+    joinSourceEClass = createEClass(JOIN_SOURCE);
+    createEReference(joinSourceEClass, JOIN_SOURCE__SOURCE);
+    createEReference(joinSourceEClass, JOIN_SOURCE__JOIN_STATEMENTS);
+
+    singleSourceEClass = createEClass(SINGLE_SOURCE);
+
+    selectSourceEClass = createEClass(SELECT_SOURCE);
+
+    singleSourceJoinEClass = createEClass(SINGLE_SOURCE_JOIN);
+    createEReference(singleSourceJoinEClass, SINGLE_SOURCE_JOIN__JOIN_SOURCE);
+
+    joinStatementEClass = createEClass(JOIN_STATEMENT);
+    createEAttribute(joinStatementEClass, JOIN_STATEMENT__NATURAL);
+    createEAttribute(joinStatementEClass, JOIN_STATEMENT__LEFT);
+    createEAttribute(joinStatementEClass, JOIN_STATEMENT__OUTER);
+    createEAttribute(joinStatementEClass, JOIN_STATEMENT__INNER);
+    createEAttribute(joinStatementEClass, JOIN_STATEMENT__CROSS);
+    createEReference(joinStatementEClass, JOIN_STATEMENT__SINGLE_SOURCE);
+    createEReference(joinStatementEClass, JOIN_STATEMENT__EXPRESSION);
+
+    resultColumnEClass = createEClass(RESULT_COLUMN);
+
+    resultColumnAllEClass = createEClass(RESULT_COLUMN_ALL);
+    createEReference(resultColumnAllEClass, RESULT_COLUMN_ALL__REFERENCE);
+
+    columnSourceEClass = createEClass(COLUMN_SOURCE);
+    createEReference(columnSourceEClass, COLUMN_SOURCE__SOURCE);
+    createEReference(columnSourceEClass, COLUMN_SOURCE__COLUMN);
+    createEAttribute(columnSourceEClass, COLUMN_SOURCE__NAME);
+
+    literalValueEClass = createEClass(LITERAL_VALUE);
+
     ddlStatementEClass = createEClass(DDL_STATEMENT);
     createEAttribute(ddlStatementEClass, DDL_STATEMENT__NAME);
+
+    createViewStatementEClass = createEClass(CREATE_VIEW_STATEMENT);
+    createEReference(createViewStatementEClass, CREATE_VIEW_STATEMENT__SELECT_STATEMENT);
+
+    createTriggerStatementEClass = createEClass(CREATE_TRIGGER_STATEMENT);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__EVENT_TYPE);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__TABLE_NAME);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW);
+    createEReference(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION);
+    createEReference(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__STATEMENTS);
+
+    alterTableStatementEClass = createEClass(ALTER_TABLE_STATEMENT);
+    createEReference(alterTableStatementEClass, ALTER_TABLE_STATEMENT__CLAUSE);
+
+    dropTableStatementEClass = createEClass(DROP_TABLE_STATEMENT);
+    createEAttribute(dropTableStatementEClass, DROP_TABLE_STATEMENT__IF_EXISTS);
+
+    dropTriggerStatementEClass = createEClass(DROP_TRIGGER_STATEMENT);
+    createEAttribute(dropTriggerStatementEClass, DROP_TRIGGER_STATEMENT__IF_EXISTS);
+
+    dropViewStatementEClass = createEClass(DROP_VIEW_STATEMENT);
+    createEAttribute(dropViewStatementEClass, DROP_VIEW_STATEMENT__IF_EXISTS);
+
+    alterTableClauseEClass = createEClass(ALTER_TABLE_CLAUSE);
+
+    columnConstraintEClass = createEClass(COLUMN_CONSTRAINT);
+
+    tableConstraintEClass = createEClass(TABLE_CONSTRAINT);
+    createEAttribute(tableConstraintEClass, TABLE_CONSTRAINT__NAME);
+
+    uniqueTableContraintEClass = createEClass(UNIQUE_TABLE_CONTRAINT);
+    createEReference(uniqueTableContraintEClass, UNIQUE_TABLE_CONTRAINT__COLUMNS);
+    createEReference(uniqueTableContraintEClass, UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE);
+
+    primaryContraintEClass = createEClass(PRIMARY_CONTRAINT);
+    createEReference(primaryContraintEClass, PRIMARY_CONTRAINT__COLUMNS);
+    createEReference(primaryContraintEClass, PRIMARY_CONTRAINT__CONFLICT_CLAUSE);
+
+    checkTableConstraintEClass = createEClass(CHECK_TABLE_CONSTRAINT);
+    createEReference(checkTableConstraintEClass, CHECK_TABLE_CONSTRAINT__EXPRESSION);
+
+    indexedColumnEClass = createEClass(INDEXED_COLUMN);
+    createEReference(indexedColumnEClass, INDEXED_COLUMN__COLUMN_REFERENCE);
+    createEAttribute(indexedColumnEClass, INDEXED_COLUMN__ASC);
+    createEAttribute(indexedColumnEClass, INDEXED_COLUMN__DESC);
+
+    defaultValueEClass = createEClass(DEFAULT_VALUE);
+
+    conflictClauseEClass = createEClass(CONFLICT_CLAUSE);
+    createEAttribute(conflictClauseEClass, CONFLICT_CLAUSE__RESOLUTION);
 
     dmlStatementEClass = createEClass(DML_STATEMENT);
 
@@ -3002,65 +3158,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     updateColumnExpressionEClass = createEClass(UPDATE_COLUMN_EXPRESSION);
     createEAttribute(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__COLUMN_NAME);
     createEReference(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__EXPRESSION);
-
-    selectStatementEClass = createEClass(SELECT_STATEMENT);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__CORE);
-    createEReference(selectStatementEClass, SELECT_STATEMENT__ORDERING_TERMS);
-
-    selectCoreExpressionEClass = createEClass(SELECT_CORE_EXPRESSION);
-    createEAttribute(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__DISTINCT);
-    createEAttribute(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__ALL);
-    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__RESULT_COLUMNS);
-    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__SOURCE);
-    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__WHERE_EXPRESSION);
-    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__GROUP_BY_EXPRESSIONS);
-    createEReference(selectCoreExpressionEClass, SELECT_CORE_EXPRESSION__HAVING_EXPRESSION);
-
-    alterTableClauseEClass = createEClass(ALTER_TABLE_CLAUSE);
-
-    columnDefEClass = createEClass(COLUMN_DEF);
-    createEAttribute(columnDefEClass, COLUMN_DEF__NAME);
-    createEAttribute(columnDefEClass, COLUMN_DEF__TYPE);
-    createEReference(columnDefEClass, COLUMN_DEF__CONSTRAINTS);
-
-    columnConstraintEClass = createEClass(COLUMN_CONSTRAINT);
-
-    defaultValueEClass = createEClass(DEFAULT_VALUE);
-
-    tableConstraintEClass = createEClass(TABLE_CONSTRAINT);
-    createEAttribute(tableConstraintEClass, TABLE_CONSTRAINT__NAME);
-
-    indexedColumnEClass = createEClass(INDEXED_COLUMN);
-    createEReference(indexedColumnEClass, INDEXED_COLUMN__NAME);
-    createEAttribute(indexedColumnEClass, INDEXED_COLUMN__ASC);
-    createEAttribute(indexedColumnEClass, INDEXED_COLUMN__DESC);
-
-    orderingTermEClass = createEClass(ORDERING_TERM);
-    createEReference(orderingTermEClass, ORDERING_TERM__EXPRESSION);
-    createEAttribute(orderingTermEClass, ORDERING_TERM__ASC);
-    createEAttribute(orderingTermEClass, ORDERING_TERM__DESC);
-
-    joinSourceEClass = createEClass(JOIN_SOURCE);
-    createEReference(joinSourceEClass, JOIN_SOURCE__SOURCE);
-    createEReference(joinSourceEClass, JOIN_SOURCE__JOIN_STATEMENTS);
-
-    singleSourceEClass = createEClass(SINGLE_SOURCE);
-
-    joinStatementEClass = createEClass(JOIN_STATEMENT);
-    createEAttribute(joinStatementEClass, JOIN_STATEMENT__NATURAL);
-    createEAttribute(joinStatementEClass, JOIN_STATEMENT__LEFT);
-    createEAttribute(joinStatementEClass, JOIN_STATEMENT__OUTER);
-    createEAttribute(joinStatementEClass, JOIN_STATEMENT__INNER);
-    createEAttribute(joinStatementEClass, JOIN_STATEMENT__CROSS);
-    createEReference(joinStatementEClass, JOIN_STATEMENT__SINGLE_SOURCE);
-    createEReference(joinStatementEClass, JOIN_STATEMENT__EXPRESSION);
-
-    resultColumnEClass = createEClass(RESULT_COLUMN);
-
-    conflictClauseEClass = createEClass(CONFLICT_CLAUSE);
-    createEAttribute(conflictClauseEClass, CONFLICT_CLAUSE__RESOLUTION);
-
-    literalValueEClass = createEClass(LITERAL_VALUE);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
     createEAttribute(actionStatementEClass, ACTION_STATEMENT__NAME);
@@ -3114,8 +3211,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     notNullEClass = createEClass(NOT_NULL);
 
-    columnLiteralEClass = createEClass(COLUMN_LITERAL);
-    createEAttribute(columnLiteralEClass, COLUMN_LITERAL__NAME);
+    newColumnSourceEClass = createEClass(NEW_COLUMN_SOURCE);
+    createEReference(newColumnSourceEClass, NEW_COLUMN_SOURCE__COLUMN);
+
+    oldColumnSourceEClass = createEClass(OLD_COLUMN_SOURCE);
+    createEReference(oldColumnSourceEClass, OLD_COLUMN_SOURCE__COLUMN);
 
     literalEClass = createEClass(LITERAL);
     createEReference(literalEClass, LITERAL__LITERAL_VALUE);
@@ -3143,90 +3243,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(castExpressionEClass, CAST_EXPRESSION__EXPRESSION);
     createEAttribute(castExpressionEClass, CAST_EXPRESSION__TYPE);
 
-    createTableStatementEClass = createEClass(CREATE_TABLE_STATEMENT);
-    createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__COLUMN_DEFS);
-    createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__CONSTRAINTS);
-
-    createViewStatementEClass = createEClass(CREATE_VIEW_STATEMENT);
-    createEReference(createViewStatementEClass, CREATE_VIEW_STATEMENT__SELECT_STATEMENT);
-
-    createTriggerStatementEClass = createEClass(CREATE_TRIGGER_STATEMENT);
-    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN);
-    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__EVENT_TYPE);
-    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__UPDATE_COLUMN_NAMES);
-    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__TABLE_NAME);
-    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW);
-    createEReference(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN_EXPRESSION);
-    createEReference(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__STATEMENTS);
-
-    alterTableStatementEClass = createEClass(ALTER_TABLE_STATEMENT);
-    createEReference(alterTableStatementEClass, ALTER_TABLE_STATEMENT__CLAUSE);
-
-    dropTableStatementEClass = createEClass(DROP_TABLE_STATEMENT);
-    createEAttribute(dropTableStatementEClass, DROP_TABLE_STATEMENT__IF_EXISTS);
-
-    dropTriggerStatementEClass = createEClass(DROP_TRIGGER_STATEMENT);
-    createEAttribute(dropTriggerStatementEClass, DROP_TRIGGER_STATEMENT__IF_EXISTS);
-
-    dropViewStatementEClass = createEClass(DROP_VIEW_STATEMENT);
-    createEAttribute(dropViewStatementEClass, DROP_VIEW_STATEMENT__IF_EXISTS);
-
     selectCoreEClass = createEClass(SELECT_CORE);
     createEReference(selectCoreEClass, SELECT_CORE__LEFT);
     createEAttribute(selectCoreEClass, SELECT_CORE__OP);
     createEReference(selectCoreEClass, SELECT_CORE__RIGHT);
 
-    alterTableRenameClauseEClass = createEClass(ALTER_TABLE_RENAME_CLAUSE);
-    createEAttribute(alterTableRenameClauseEClass, ALTER_TABLE_RENAME_CLAUSE__NAME);
-
-    alterTableAddColumnClauseEClass = createEClass(ALTER_TABLE_ADD_COLUMN_CLAUSE);
-    createEReference(alterTableAddColumnClauseEClass, ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF);
-
-    primaryKeyColumnConstraintEClass = createEClass(PRIMARY_KEY_COLUMN_CONSTRAINT);
-    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__ASC);
-    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__DESC);
-    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__AUTOINCREMENT);
-
-    notNullConstraintEClass = createEClass(NOT_NULL_CONSTRAINT);
-    createEReference(notNullConstraintEClass, NOT_NULL_CONSTRAINT__CONFLICT_CLAUSE);
-
-    defaultConstraintEClass = createEClass(DEFAULT_CONSTRAINT);
-    createEReference(defaultConstraintEClass, DEFAULT_CONSTRAINT__DEFAULT_VALUE);
-
-    literalDefaultValueEClass = createEClass(LITERAL_DEFAULT_VALUE);
-    createEReference(literalDefaultValueEClass, LITERAL_DEFAULT_VALUE__LITERAL);
-
-    expressionDefaultValueEClass = createEClass(EXPRESSION_DEFAULT_VALUE);
-    createEReference(expressionDefaultValueEClass, EXPRESSION_DEFAULT_VALUE__EXPRESSION);
-
-    uniqueTableContraintEClass = createEClass(UNIQUE_TABLE_CONTRAINT);
-    createEReference(uniqueTableContraintEClass, UNIQUE_TABLE_CONTRAINT__COLUMNS);
-    createEReference(uniqueTableContraintEClass, UNIQUE_TABLE_CONTRAINT__CONFLICT_CLAUSE);
-
-    primaryContraintEClass = createEClass(PRIMARY_CONTRAINT);
-    createEReference(primaryContraintEClass, PRIMARY_CONTRAINT__COLUMNS);
-    createEReference(primaryContraintEClass, PRIMARY_CONTRAINT__CONFLICT_CLAUSE);
-
-    checkTableConstraintEClass = createEClass(CHECK_TABLE_CONSTRAINT);
-    createEReference(checkTableConstraintEClass, CHECK_TABLE_CONSTRAINT__EXPRESSION);
-
     singleSourceTableEClass = createEClass(SINGLE_SOURCE_TABLE);
     createEReference(singleSourceTableEClass, SINGLE_SOURCE_TABLE__TABLE_REFERENCE);
-    createEAttribute(singleSourceTableEClass, SINGLE_SOURCE_TABLE__NAME);
 
     singleSourceSelectStatementEClass = createEClass(SINGLE_SOURCE_SELECT_STATEMENT);
     createEReference(singleSourceSelectStatementEClass, SINGLE_SOURCE_SELECT_STATEMENT__SELECT_STATEMENT);
-    createEAttribute(singleSourceSelectStatementEClass, SINGLE_SOURCE_SELECT_STATEMENT__NAME);
-
-    singleSourceJoinEClass = createEClass(SINGLE_SOURCE_JOIN);
-    createEReference(singleSourceJoinEClass, SINGLE_SOURCE_JOIN__JOIN_SOURCE);
-
-    resultColumnAllEClass = createEClass(RESULT_COLUMN_ALL);
-    createEAttribute(resultColumnAllEClass, RESULT_COLUMN_ALL__REFERENCE);
 
     resultColumnExpressionEClass = createEClass(RESULT_COLUMN_EXPRESSION);
     createEReference(resultColumnExpressionEClass, RESULT_COLUMN_EXPRESSION__EXPRESSION);
-    createEAttribute(resultColumnExpressionEClass, RESULT_COLUMN_EXPRESSION__NAME);
 
     numericLiteralEClass = createEClass(NUMERIC_LITERAL);
     createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__NUMBER);
@@ -3246,11 +3275,42 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     currentTimeStampLiteralEClass = createEClass(CURRENT_TIME_STAMP_LITERAL);
     createEAttribute(currentTimeStampLiteralEClass, CURRENT_TIME_STAMP_LITERAL__LITERAL);
 
+    createTableStatementEClass = createEClass(CREATE_TABLE_STATEMENT);
+    createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__COLUMN_DEFS);
+    createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__CONSTRAINTS);
+
+    alterTableRenameClauseEClass = createEClass(ALTER_TABLE_RENAME_CLAUSE);
+    createEAttribute(alterTableRenameClauseEClass, ALTER_TABLE_RENAME_CLAUSE__NAME);
+
+    alterTableAddColumnClauseEClass = createEClass(ALTER_TABLE_ADD_COLUMN_CLAUSE);
+    createEReference(alterTableAddColumnClauseEClass, ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF);
+
+    columnDefEClass = createEClass(COLUMN_DEF);
+    createEAttribute(columnDefEClass, COLUMN_DEF__TYPE);
+    createEReference(columnDefEClass, COLUMN_DEF__CONSTRAINTS);
+
+    primaryKeyColumnConstraintEClass = createEClass(PRIMARY_KEY_COLUMN_CONSTRAINT);
+    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__ASC);
+    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__DESC);
+    createEAttribute(primaryKeyColumnConstraintEClass, PRIMARY_KEY_COLUMN_CONSTRAINT__AUTOINCREMENT);
+
+    notNullConstraintEClass = createEClass(NOT_NULL_CONSTRAINT);
+    createEReference(notNullConstraintEClass, NOT_NULL_CONSTRAINT__CONFLICT_CLAUSE);
+
+    defaultConstraintEClass = createEClass(DEFAULT_CONSTRAINT);
+    createEReference(defaultConstraintEClass, DEFAULT_CONSTRAINT__DEFAULT_VALUE);
+
+    literalDefaultValueEClass = createEClass(LITERAL_DEFAULT_VALUE);
+    createEReference(literalDefaultValueEClass, LITERAL_DEFAULT_VALUE__LITERAL);
+
+    expressionDefaultValueEClass = createEClass(EXPRESSION_DEFAULT_VALUE);
+    createEReference(expressionDefaultValueEClass, EXPRESSION_DEFAULT_VALUE__EXPRESSION);
+
     // Create enums
-    columnTypeEEnum = createEEnum(COLUMN_TYPE);
-    sqliteDataTypeEEnum = createEEnum(SQLITE_DATA_TYPE);
-    conflictResolutionEEnum = createEEnum(CONFLICT_RESOLUTION);
     compoundOperatorEEnum = createEEnum(COMPOUND_OPERATOR);
+    sqliteDataTypeEEnum = createEEnum(SQLITE_DATA_TYPE);
+    columnTypeEEnum = createEEnum(COLUMN_TYPE);
+    conflictResolutionEEnum = createEEnum(CONFLICT_RESOLUTION);
   }
 
   /**
@@ -3282,10 +3342,25 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    selectStatementEClass.getESuperTypes().add(this.getDMLStatement());
+    selectSourceEClass.getESuperTypes().add(this.getSingleSource());
+    selectSourceEClass.getESuperTypes().add(this.getDDLStatement());
+    singleSourceJoinEClass.getESuperTypes().add(this.getSingleSource());
+    resultColumnAllEClass.getESuperTypes().add(this.getResultColumn());
+    columnSourceEClass.getESuperTypes().add(this.getExpression());
+    columnSourceEClass.getESuperTypes().add(this.getResultColumn());
+    createViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    createTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    alterTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    dropTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    dropTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    dropViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    uniqueTableContraintEClass.getESuperTypes().add(this.getTableConstraint());
+    primaryContraintEClass.getESuperTypes().add(this.getTableConstraint());
+    checkTableConstraintEClass.getESuperTypes().add(this.getTableConstraint());
     deleteStatementEClass.getESuperTypes().add(this.getDMLStatement());
     insertStatementEClass.getESuperTypes().add(this.getDMLStatement());
     updateStatementEClass.getESuperTypes().add(this.getDMLStatement());
-    selectStatementEClass.getESuperTypes().add(this.getDMLStatement());
     actionStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
     exprConcatEClass.getESuperTypes().add(this.getExpression());
     exprMultEClass.getESuperTypes().add(this.getExpression());
@@ -3298,42 +3373,33 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     nullCheckExpressionEClass.getESuperTypes().add(this.getExpression());
     isNullEClass.getESuperTypes().add(this.getExpression());
     notNullEClass.getESuperTypes().add(this.getExpression());
-    columnLiteralEClass.getESuperTypes().add(this.getExpression());
+    newColumnSourceEClass.getESuperTypes().add(this.getExpression());
+    oldColumnSourceEClass.getESuperTypes().add(this.getExpression());
     literalEClass.getESuperTypes().add(this.getExpression());
     nestedExpressionEClass.getESuperTypes().add(this.getExpression());
     selectStatementExpressionEClass.getESuperTypes().add(this.getExpression());
     caseExpressionEClass.getESuperTypes().add(this.getExpression());
     functionEClass.getESuperTypes().add(this.getExpression());
     castExpressionEClass.getESuperTypes().add(this.getExpression());
-    createTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    createViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    createTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    alterTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    dropTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    dropTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
-    dropViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
     selectCoreEClass.getESuperTypes().add(this.getSelectCoreExpression());
-    alterTableRenameClauseEClass.getESuperTypes().add(this.getAlterTableClause());
-    alterTableAddColumnClauseEClass.getESuperTypes().add(this.getAlterTableClause());
-    primaryKeyColumnConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
-    notNullConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
-    defaultConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
-    literalDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
-    expressionDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
-    uniqueTableContraintEClass.getESuperTypes().add(this.getTableConstraint());
-    primaryContraintEClass.getESuperTypes().add(this.getTableConstraint());
-    checkTableConstraintEClass.getESuperTypes().add(this.getTableConstraint());
-    singleSourceTableEClass.getESuperTypes().add(this.getSingleSource());
-    singleSourceSelectStatementEClass.getESuperTypes().add(this.getSingleSource());
-    singleSourceJoinEClass.getESuperTypes().add(this.getSingleSource());
-    resultColumnAllEClass.getESuperTypes().add(this.getResultColumn());
-    resultColumnExpressionEClass.getESuperTypes().add(this.getResultColumn());
+    singleSourceTableEClass.getESuperTypes().add(this.getSelectSource());
+    singleSourceSelectStatementEClass.getESuperTypes().add(this.getSelectSource());
+    resultColumnExpressionEClass.getESuperTypes().add(this.getColumnSource());
     numericLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     stringLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     nullLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     currentTimeLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     currentDateLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     currentTimeStampLiteralEClass.getESuperTypes().add(this.getLiteralValue());
+    createTableStatementEClass.getESuperTypes().add(this.getSelectSource());
+    alterTableRenameClauseEClass.getESuperTypes().add(this.getAlterTableClause());
+    alterTableAddColumnClauseEClass.getESuperTypes().add(this.getAlterTableClause());
+    columnDefEClass.getESuperTypes().add(this.getColumnSource());
+    primaryKeyColumnConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
+    notNullConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
+    defaultConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
+    literalDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
+    expressionDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3359,8 +3425,110 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getCase_WhenExpression(), this.getExpression(), null, "whenExpression", null, 0, 1, Case.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCase_ThenExpression(), this.getExpression(), null, "thenExpression", null, 0, 1, Case.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(selectStatementEClass, SelectStatement.class, "SelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSelectStatement_Core(), this.getSelectCoreExpression(), null, "core", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_OrderingTerms(), this.getOrderingTerm(), null, "orderingTerms", null, 0, -1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(selectCoreExpressionEClass, SelectCoreExpression.class, "SelectCoreExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSelectCoreExpression_Distinct(), ecorePackage.getEBoolean(), "distinct", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSelectCoreExpression_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCoreExpression_ResultColumns(), this.getResultColumn(), null, "resultColumns", null, 0, -1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCoreExpression_Source(), this.getJoinSource(), null, "source", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCoreExpression_WhereExpression(), this.getExpression(), null, "whereExpression", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCoreExpression_GroupByExpressions(), this.getExpression(), null, "groupByExpressions", null, 0, -1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectCoreExpression_HavingExpression(), this.getExpression(), null, "havingExpression", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(orderingTermEClass, OrderingTerm.class, "OrderingTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrderingTerm_Expression(), this.getExpression(), null, "expression", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOrderingTerm_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOrderingTerm_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(joinSourceEClass, JoinSource.class, "JoinSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getJoinSource_Source(), this.getSingleSource(), null, "source", null, 0, 1, JoinSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJoinSource_JoinStatements(), this.getJoinStatement(), null, "joinStatements", null, 0, -1, JoinSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(singleSourceEClass, SingleSource.class, "SingleSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(selectSourceEClass, SelectSource.class, "SelectSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(singleSourceJoinEClass, SingleSourceJoin.class, "SingleSourceJoin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSingleSourceJoin_JoinSource(), this.getJoinSource(), null, "joinSource", null, 0, 1, SingleSourceJoin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(joinStatementEClass, JoinStatement.class, "JoinStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJoinStatement_Natural(), ecorePackage.getEBoolean(), "natural", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJoinStatement_Left(), ecorePackage.getEBoolean(), "left", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJoinStatement_Outer(), ecorePackage.getEBoolean(), "outer", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJoinStatement_Inner(), ecorePackage.getEBoolean(), "inner", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJoinStatement_Cross(), ecorePackage.getEBoolean(), "cross", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJoinStatement_SingleSource(), this.getSingleSource(), null, "singleSource", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJoinStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(resultColumnEClass, ResultColumn.class, "ResultColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(resultColumnAllEClass, ResultColumnAll.class, "ResultColumnAll", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getResultColumnAll_Reference(), this.getSelectSource(), null, "reference", null, 0, 1, ResultColumnAll.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(columnSourceEClass, ColumnSource.class, "ColumnSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getColumnSource_Source(), this.getSelectSource(), null, "source", null, 0, 1, ColumnSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getColumnSource_Column(), this.getColumnSource(), null, "column", null, 0, 1, ColumnSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColumnSource_Name(), ecorePackage.getEString(), "name", null, 0, 1, ColumnSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(ddlStatementEClass, DDLStatement.class, "DDLStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDDLStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, DDLStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(createViewStatementEClass, CreateViewStatement.class, "CreateViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCreateViewStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(createTriggerStatementEClass, CreateTriggerStatement.class, "CreateTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCreateTriggerStatement_When(), ecorePackage.getEString(), "when", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCreateTriggerStatement_EventType(), ecorePackage.getEString(), "eventType", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCreateTriggerStatement_UpdateColumnNames(), ecorePackage.getEString(), "updateColumnNames", null, 0, -1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCreateTriggerStatement_TableName(), ecorePackage.getEString(), "tableName", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCreateTriggerStatement_ForEachRow(), ecorePackage.getEString(), "forEachRow", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCreateTriggerStatement_WhenExpression(), this.getExpression(), null, "whenExpression", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCreateTriggerStatement_Statements(), this.getDMLStatement(), null, "statements", null, 0, -1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(alterTableStatementEClass, AlterTableStatement.class, "AlterTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAlterTableStatement_Clause(), this.getAlterTableClause(), null, "clause", null, 0, 1, AlterTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dropTableStatementEClass, DropTableStatement.class, "DropTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDropTableStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dropTriggerStatementEClass, DropTriggerStatement.class, "DropTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDropTriggerStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dropViewStatementEClass, DropViewStatement.class, "DropViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDropViewStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(alterTableClauseEClass, AlterTableClause.class, "AlterTableClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(columnConstraintEClass, ColumnConstraint.class, "ColumnConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(tableConstraintEClass, TableConstraint.class, "TableConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTableConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(uniqueTableContraintEClass, UniqueTableContraint.class, "UniqueTableContraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUniqueTableContraint_Columns(), this.getIndexedColumn(), null, "columns", null, 0, -1, UniqueTableContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUniqueTableContraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, UniqueTableContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(primaryContraintEClass, PrimaryContraint.class, "PrimaryContraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPrimaryContraint_Columns(), this.getIndexedColumn(), null, "columns", null, 0, -1, PrimaryContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPrimaryContraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, PrimaryContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(checkTableConstraintEClass, CheckTableConstraint.class, "CheckTableConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCheckTableConstraint_Expression(), this.getExpression(), null, "expression", null, 0, 1, CheckTableConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(indexedColumnEClass, IndexedColumn.class, "IndexedColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIndexedColumn_ColumnReference(), this.getColumnDef(), null, "columnReference", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIndexedColumn_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIndexedColumn_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultValueEClass, DefaultValue.class, "DefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(conflictClauseEClass, ConflictClause.class, "ConflictClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConflictClause_Resolution(), this.getConflictResolution(), "resolution", null, 0, 1, ConflictClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dmlStatementEClass, DMLStatement.class, "DMLStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3384,65 +3552,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(updateColumnExpressionEClass, UpdateColumnExpression.class, "UpdateColumnExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUpdateColumnExpression_ColumnName(), ecorePackage.getEString(), "columnName", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUpdateColumnExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(selectStatementEClass, SelectStatement.class, "SelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSelectStatement_Core(), this.getSelectCoreExpression(), null, "core", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectStatement_OrderingTerms(), this.getOrderingTerm(), null, "orderingTerms", null, 0, -1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(selectCoreExpressionEClass, SelectCoreExpression.class, "SelectCoreExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSelectCoreExpression_Distinct(), ecorePackage.getEBoolean(), "distinct", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSelectCoreExpression_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectCoreExpression_ResultColumns(), this.getResultColumn(), null, "resultColumns", null, 0, -1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectCoreExpression_Source(), this.getJoinSource(), null, "source", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectCoreExpression_WhereExpression(), this.getExpression(), null, "whereExpression", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectCoreExpression_GroupByExpressions(), this.getExpression(), null, "groupByExpressions", null, 0, -1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelectCoreExpression_HavingExpression(), this.getExpression(), null, "havingExpression", null, 0, 1, SelectCoreExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(alterTableClauseEClass, AlterTableClause.class, "AlterTableClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(columnDefEClass, ColumnDef.class, "ColumnDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getColumnDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, ColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getColumnDef_Type(), this.getColumnType(), "type", null, 0, 1, ColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getColumnDef_Constraints(), this.getColumnConstraint(), null, "constraints", null, 0, -1, ColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(columnConstraintEClass, ColumnConstraint.class, "ColumnConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(defaultValueEClass, DefaultValue.class, "DefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(tableConstraintEClass, TableConstraint.class, "TableConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTableConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(indexedColumnEClass, IndexedColumn.class, "IndexedColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIndexedColumn_Name(), this.getColumnDef(), null, "name", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIndexedColumn_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIndexedColumn_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(orderingTermEClass, OrderingTerm.class, "OrderingTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOrderingTerm_Expression(), this.getExpression(), null, "expression", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOrderingTerm_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOrderingTerm_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, OrderingTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(joinSourceEClass, JoinSource.class, "JoinSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getJoinSource_Source(), this.getSingleSource(), null, "source", null, 0, 1, JoinSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJoinSource_JoinStatements(), this.getJoinStatement(), null, "joinStatements", null, 0, -1, JoinSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(singleSourceEClass, SingleSource.class, "SingleSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(joinStatementEClass, JoinStatement.class, "JoinStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJoinStatement_Natural(), ecorePackage.getEBoolean(), "natural", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJoinStatement_Left(), ecorePackage.getEBoolean(), "left", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJoinStatement_Outer(), ecorePackage.getEBoolean(), "outer", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJoinStatement_Inner(), ecorePackage.getEBoolean(), "inner", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJoinStatement_Cross(), ecorePackage.getEBoolean(), "cross", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJoinStatement_SingleSource(), this.getSingleSource(), null, "singleSource", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJoinStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, JoinStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(resultColumnEClass, ResultColumn.class, "ResultColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(conflictClauseEClass, ConflictClause.class, "ConflictClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getConflictClause_Resolution(), this.getConflictResolution(), "resolution", null, 0, 1, ConflictClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getActionStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3496,8 +3605,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(notNullEClass, NotNull.class, "NotNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(columnLiteralEClass, ColumnLiteral.class, "ColumnLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getColumnLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, ColumnLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(newColumnSourceEClass, NewColumnSource.class, "NewColumnSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNewColumnSource_Column(), this.getColumnSource(), null, "column", null, 0, 1, NewColumnSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(oldColumnSourceEClass, OldColumnSource.class, "OldColumnSource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOldColumnSource_Column(), this.getColumnSource(), null, "column", null, 0, 1, OldColumnSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteral_LiteralValue(), this.getLiteralValue(), null, "literalValue", null, 0, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3525,90 +3637,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getCastExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCastExpression_Type(), this.getSqliteDataType(), "type", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(createTableStatementEClass, CreateTableStatement.class, "CreateTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCreateTableStatement_ColumnDefs(), this.getColumnDef(), null, "columnDefs", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCreateTableStatement_Constraints(), this.getTableConstraint(), null, "constraints", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(createViewStatementEClass, CreateViewStatement.class, "CreateViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCreateViewStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(createTriggerStatementEClass, CreateTriggerStatement.class, "CreateTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCreateTriggerStatement_When(), ecorePackage.getEString(), "when", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCreateTriggerStatement_EventType(), ecorePackage.getEString(), "eventType", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCreateTriggerStatement_UpdateColumnNames(), ecorePackage.getEString(), "updateColumnNames", null, 0, -1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCreateTriggerStatement_TableName(), ecorePackage.getEString(), "tableName", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCreateTriggerStatement_ForEachRow(), ecorePackage.getEString(), "forEachRow", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCreateTriggerStatement_WhenExpression(), this.getExpression(), null, "whenExpression", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCreateTriggerStatement_Statements(), this.getDMLStatement(), null, "statements", null, 0, -1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(alterTableStatementEClass, AlterTableStatement.class, "AlterTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAlterTableStatement_Clause(), this.getAlterTableClause(), null, "clause", null, 0, 1, AlterTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dropTableStatementEClass, DropTableStatement.class, "DropTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDropTableStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dropTriggerStatementEClass, DropTriggerStatement.class, "DropTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDropTriggerStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dropViewStatementEClass, DropViewStatement.class, "DropViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDropViewStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(selectCoreEClass, SelectCore.class, "SelectCore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSelectCore_Left(), this.getSelectCoreExpression(), null, "left", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSelectCore_Op(), this.getCompoundOperator(), "op", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectCore_Right(), this.getSelectCoreExpression(), null, "right", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(alterTableRenameClauseEClass, AlterTableRenameClause.class, "AlterTableRenameClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAlterTableRenameClause_Name(), ecorePackage.getEString(), "name", null, 0, 1, AlterTableRenameClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(alterTableAddColumnClauseEClass, AlterTableAddColumnClause.class, "AlterTableAddColumnClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAlterTableAddColumnClause_ColumnDef(), this.getColumnDef(), null, "columnDef", null, 0, 1, AlterTableAddColumnClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(primaryKeyColumnConstraintEClass, PrimaryKeyColumnConstraint.class, "PrimaryKeyColumnConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPrimaryKeyColumnConstraint_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPrimaryKeyColumnConstraint_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPrimaryKeyColumnConstraint_Autoincrement(), ecorePackage.getEBoolean(), "autoincrement", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(notNullConstraintEClass, NotNullConstraint.class, "NotNullConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNotNullConstraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, NotNullConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(defaultConstraintEClass, DefaultConstraint.class, "DefaultConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDefaultConstraint_DefaultValue(), this.getDefaultValue(), null, "defaultValue", null, 0, 1, DefaultConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(literalDefaultValueEClass, LiteralDefaultValue.class, "LiteralDefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLiteralDefaultValue_Literal(), this.getLiteralValue(), null, "literal", null, 0, 1, LiteralDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expressionDefaultValueEClass, ExpressionDefaultValue.class, "ExpressionDefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExpressionDefaultValue_Expression(), this.getExpression(), null, "expression", null, 0, 1, ExpressionDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(uniqueTableContraintEClass, UniqueTableContraint.class, "UniqueTableContraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getUniqueTableContraint_Columns(), this.getIndexedColumn(), null, "columns", null, 0, -1, UniqueTableContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUniqueTableContraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, UniqueTableContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(primaryContraintEClass, PrimaryContraint.class, "PrimaryContraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPrimaryContraint_Columns(), this.getIndexedColumn(), null, "columns", null, 0, -1, PrimaryContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPrimaryContraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, PrimaryContraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(checkTableConstraintEClass, CheckTableConstraint.class, "CheckTableConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCheckTableConstraint_Expression(), this.getExpression(), null, "expression", null, 0, 1, CheckTableConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(singleSourceTableEClass, SingleSourceTable.class, "SingleSourceTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSingleSourceTable_TableReference(), this.getCreateTableStatement(), null, "tableReference", null, 0, 1, SingleSourceTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleSourceTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleSourceTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(singleSourceSelectStatementEClass, SingleSourceSelectStatement.class, "SingleSourceSelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSingleSourceSelectStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, SingleSourceSelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSingleSourceSelectStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleSourceSelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(singleSourceJoinEClass, SingleSourceJoin.class, "SingleSourceJoin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSingleSourceJoin_JoinSource(), this.getJoinSource(), null, "joinSource", null, 0, 1, SingleSourceJoin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(resultColumnAllEClass, ResultColumnAll.class, "ResultColumnAll", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getResultColumnAll_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, ResultColumnAll.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resultColumnExpressionEClass, ResultColumnExpression.class, "ResultColumnExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getResultColumnExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, ResultColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getResultColumnExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, ResultColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNumericLiteral_Number(), ecorePackage.getEBigDecimal(), "number", null, 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3628,13 +3669,43 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(currentTimeStampLiteralEClass, CurrentTimeStampLiteral.class, "CurrentTimeStampLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCurrentTimeStampLiteral_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, CurrentTimeStampLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(createTableStatementEClass, CreateTableStatement.class, "CreateTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCreateTableStatement_ColumnDefs(), this.getColumnSource(), null, "columnDefs", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCreateTableStatement_Constraints(), this.getTableConstraint(), null, "constraints", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(alterTableRenameClauseEClass, AlterTableRenameClause.class, "AlterTableRenameClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAlterTableRenameClause_Name(), ecorePackage.getEString(), "name", null, 0, 1, AlterTableRenameClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(alterTableAddColumnClauseEClass, AlterTableAddColumnClause.class, "AlterTableAddColumnClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAlterTableAddColumnClause_ColumnDef(), this.getColumnSource(), null, "columnDef", null, 0, 1, AlterTableAddColumnClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(columnDefEClass, ColumnDef.class, "ColumnDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getColumnDef_Type(), this.getColumnType(), "type", null, 0, 1, ColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getColumnDef_Constraints(), this.getColumnConstraint(), null, "constraints", null, 0, -1, ColumnDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(primaryKeyColumnConstraintEClass, PrimaryKeyColumnConstraint.class, "PrimaryKeyColumnConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrimaryKeyColumnConstraint_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPrimaryKeyColumnConstraint_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPrimaryKeyColumnConstraint_Autoincrement(), ecorePackage.getEBoolean(), "autoincrement", null, 0, 1, PrimaryKeyColumnConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(notNullConstraintEClass, NotNullConstraint.class, "NotNullConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNotNullConstraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, NotNullConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultConstraintEClass, DefaultConstraint.class, "DefaultConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDefaultConstraint_DefaultValue(), this.getDefaultValue(), null, "defaultValue", null, 0, 1, DefaultConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(literalDefaultValueEClass, LiteralDefaultValue.class, "LiteralDefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLiteralDefaultValue_Literal(), this.getLiteralValue(), null, "literal", null, 0, 1, LiteralDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionDefaultValueEClass, ExpressionDefaultValue.class, "ExpressionDefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpressionDefaultValue_Expression(), this.getExpression(), null, "expression", null, 0, 1, ExpressionDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     // Initialize enums and add enum literals
-    initEEnum(columnTypeEEnum, ColumnType.class, "ColumnType");
-    addEEnumLiteral(columnTypeEEnum, ColumnType.TEXT);
-    addEEnumLiteral(columnTypeEEnum, ColumnType.INTEGER);
-    addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
-    addEEnumLiteral(columnTypeEEnum, ColumnType.BLOB);
-    addEEnumLiteral(columnTypeEEnum, ColumnType.BOOLEAN);
+    initEEnum(compoundOperatorEEnum, CompoundOperator.class, "CompoundOperator");
+    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.UNIONALL);
+    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.UNION);
+    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.INTERSECT);
+    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.EXCEPT);
 
     initEEnum(sqliteDataTypeEEnum, SqliteDataType.class, "SqliteDataType");
     addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.TEXT);
@@ -3644,18 +3715,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.NONE);
     addEEnumLiteral(sqliteDataTypeEEnum, SqliteDataType.NUMERIC);
 
+    initEEnum(columnTypeEEnum, ColumnType.class, "ColumnType");
+    addEEnumLiteral(columnTypeEEnum, ColumnType.TEXT);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.INTEGER);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.REAL);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.BLOB);
+    addEEnumLiteral(columnTypeEEnum, ColumnType.BOOLEAN);
+
     initEEnum(conflictResolutionEEnum, ConflictResolution.class, "ConflictResolution");
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.ROLLBACK);
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.ABORT);
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.FAIL);
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.IGNORE);
     addEEnumLiteral(conflictResolutionEEnum, ConflictResolution.REPLACE);
-
-    initEEnum(compoundOperatorEEnum, CompoundOperator.class, "CompoundOperator");
-    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.UNIONALL);
-    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.UNION);
-    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.INTERSECT);
-    addEEnumLiteral(compoundOperatorEEnum, CompoundOperator.EXCEPT);
 
     // Create resource
     createResource(eNS_URI);

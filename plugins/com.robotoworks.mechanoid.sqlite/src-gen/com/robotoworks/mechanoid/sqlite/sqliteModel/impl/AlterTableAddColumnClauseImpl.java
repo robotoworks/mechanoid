@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +37,7 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
    * @generated
    * @ordered
    */
-  protected ColumnDef columnDef;
+  protected ColumnSource columnDef;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnDef getColumnDef()
+  public ColumnSource getColumnDef()
   {
     return columnDef;
   }
@@ -75,9 +75,9 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetColumnDef(ColumnDef newColumnDef, NotificationChain msgs)
+  public NotificationChain basicSetColumnDef(ColumnSource newColumnDef, NotificationChain msgs)
   {
-    ColumnDef oldColumnDef = columnDef;
+    ColumnSource oldColumnDef = columnDef;
     columnDef = newColumnDef;
     if (eNotificationRequired())
     {
@@ -92,7 +92,7 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setColumnDef(ColumnDef newColumnDef)
+  public void setColumnDef(ColumnSource newColumnDef)
   {
     if (newColumnDef != columnDef)
     {
@@ -151,7 +151,7 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
     switch (featureID)
     {
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF:
-        setColumnDef((ColumnDef)newValue);
+        setColumnDef((ColumnSource)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,7 +168,7 @@ public class AlterTableAddColumnClauseImpl extends AlterTableClauseImpl implemen
     switch (featureID)
     {
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF:
-        setColumnDef((ColumnDef)null);
+        setColumnDef((ColumnSource)null);
         return;
     }
     super.eUnset(featureID);

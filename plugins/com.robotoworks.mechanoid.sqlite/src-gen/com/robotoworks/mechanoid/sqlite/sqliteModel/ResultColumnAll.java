@@ -22,29 +22,29 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface ResultColumnAll extends ResultColumn
 {
   /**
-   * Returns the value of the '<em><b>Reference</b></em>' attribute.
+   * Returns the value of the '<em><b>Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reference</em>' attribute isn't clear,
+   * If the meaning of the '<em>Reference</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference</em>' attribute.
-   * @see #setReference(String)
+   * @return the value of the '<em>Reference</em>' reference.
+   * @see #setReference(SelectSource)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getResultColumnAll_Reference()
    * @model
    * @generated
    */
-  String getReference();
+  SelectSource getReference();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference <em>Reference</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll#getReference <em>Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Reference</em>' attribute.
+   * @param value the new value of the '<em>Reference</em>' reference.
    * @see #getReference()
    * @generated
    */
-  void setReference(String value);
+  void setReference(SelectSource value);
 
 } // ResultColumnAll

@@ -121,10 +121,215 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.SELECT_STATEMENT:
+      {
+        SelectStatement selectStatement = (SelectStatement)theEObject;
+        T result = caseSelectStatement(selectStatement);
+        if (result == null) result = caseDMLStatement(selectStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SELECT_CORE_EXPRESSION:
+      {
+        SelectCoreExpression selectCoreExpression = (SelectCoreExpression)theEObject;
+        T result = caseSelectCoreExpression(selectCoreExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ORDERING_TERM:
+      {
+        OrderingTerm orderingTerm = (OrderingTerm)theEObject;
+        T result = caseOrderingTerm(orderingTerm);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.JOIN_SOURCE:
+      {
+        JoinSource joinSource = (JoinSource)theEObject;
+        T result = caseJoinSource(joinSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SINGLE_SOURCE:
+      {
+        SingleSource singleSource = (SingleSource)theEObject;
+        T result = caseSingleSource(singleSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SELECT_SOURCE:
+      {
+        SelectSource selectSource = (SelectSource)theEObject;
+        T result = caseSelectSource(selectSource);
+        if (result == null) result = caseSingleSource(selectSource);
+        if (result == null) result = caseDDLStatement(selectSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.SINGLE_SOURCE_JOIN:
+      {
+        SingleSourceJoin singleSourceJoin = (SingleSourceJoin)theEObject;
+        T result = caseSingleSourceJoin(singleSourceJoin);
+        if (result == null) result = caseSingleSource(singleSourceJoin);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.JOIN_STATEMENT:
+      {
+        JoinStatement joinStatement = (JoinStatement)theEObject;
+        T result = caseJoinStatement(joinStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.RESULT_COLUMN:
+      {
+        ResultColumn resultColumn = (ResultColumn)theEObject;
+        T result = caseResultColumn(resultColumn);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.RESULT_COLUMN_ALL:
+      {
+        ResultColumnAll resultColumnAll = (ResultColumnAll)theEObject;
+        T result = caseResultColumnAll(resultColumnAll);
+        if (result == null) result = caseResultColumn(resultColumnAll);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.COLUMN_SOURCE:
+      {
+        ColumnSource columnSource = (ColumnSource)theEObject;
+        T result = caseColumnSource(columnSource);
+        if (result == null) result = caseExpression(columnSource);
+        if (result == null) result = caseResultColumn(columnSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.LITERAL_VALUE:
+      {
+        LiteralValue literalValue = (LiteralValue)theEObject;
+        T result = caseLiteralValue(literalValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.DDL_STATEMENT:
       {
         DDLStatement ddlStatement = (DDLStatement)theEObject;
         T result = caseDDLStatement(ddlStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT:
+      {
+        CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
+        T result = caseCreateViewStatement(createViewStatement);
+        if (result == null) result = caseDDLStatement(createViewStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT:
+      {
+        CreateTriggerStatement createTriggerStatement = (CreateTriggerStatement)theEObject;
+        T result = caseCreateTriggerStatement(createTriggerStatement);
+        if (result == null) result = caseDDLStatement(createTriggerStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT:
+      {
+        AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
+        T result = caseAlterTableStatement(alterTableStatement);
+        if (result == null) result = caseDDLStatement(alterTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_TABLE_STATEMENT:
+      {
+        DropTableStatement dropTableStatement = (DropTableStatement)theEObject;
+        T result = caseDropTableStatement(dropTableStatement);
+        if (result == null) result = caseDDLStatement(dropTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT:
+      {
+        DropTriggerStatement dropTriggerStatement = (DropTriggerStatement)theEObject;
+        T result = caseDropTriggerStatement(dropTriggerStatement);
+        if (result == null) result = caseDDLStatement(dropTriggerStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_VIEW_STATEMENT:
+      {
+        DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
+        T result = caseDropViewStatement(dropViewStatement);
+        if (result == null) result = caseDDLStatement(dropViewStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALTER_TABLE_CLAUSE:
+      {
+        AlterTableClause alterTableClause = (AlterTableClause)theEObject;
+        T result = caseAlterTableClause(alterTableClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.COLUMN_CONSTRAINT:
+      {
+        ColumnConstraint columnConstraint = (ColumnConstraint)theEObject;
+        T result = caseColumnConstraint(columnConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.TABLE_CONSTRAINT:
+      {
+        TableConstraint tableConstraint = (TableConstraint)theEObject;
+        T result = caseTableConstraint(tableConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
+      {
+        UniqueTableContraint uniqueTableContraint = (UniqueTableContraint)theEObject;
+        T result = caseUniqueTableContraint(uniqueTableContraint);
+        if (result == null) result = caseTableConstraint(uniqueTableContraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.PRIMARY_CONTRAINT:
+      {
+        PrimaryContraint primaryContraint = (PrimaryContraint)theEObject;
+        T result = casePrimaryContraint(primaryContraint);
+        if (result == null) result = caseTableConstraint(primaryContraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT:
+      {
+        CheckTableConstraint checkTableConstraint = (CheckTableConstraint)theEObject;
+        T result = caseCheckTableConstraint(checkTableConstraint);
+        if (result == null) result = caseTableConstraint(checkTableConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.INDEXED_COLUMN:
+      {
+        IndexedColumn indexedColumn = (IndexedColumn)theEObject;
+        T result = caseIndexedColumn(indexedColumn);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DEFAULT_VALUE:
+      {
+        DefaultValue defaultValue = (DefaultValue)theEObject;
+        T result = caseDefaultValue(defaultValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CONFLICT_CLAUSE:
+      {
+        ConflictClause conflictClause = (ConflictClause)theEObject;
+        T result = caseConflictClause(conflictClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,112 +368,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         UpdateColumnExpression updateColumnExpression = (UpdateColumnExpression)theEObject;
         T result = caseUpdateColumnExpression(updateColumnExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SELECT_STATEMENT:
-      {
-        SelectStatement selectStatement = (SelectStatement)theEObject;
-        T result = caseSelectStatement(selectStatement);
-        if (result == null) result = caseDMLStatement(selectStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SELECT_CORE_EXPRESSION:
-      {
-        SelectCoreExpression selectCoreExpression = (SelectCoreExpression)theEObject;
-        T result = caseSelectCoreExpression(selectCoreExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ALTER_TABLE_CLAUSE:
-      {
-        AlterTableClause alterTableClause = (AlterTableClause)theEObject;
-        T result = caseAlterTableClause(alterTableClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.COLUMN_DEF:
-      {
-        ColumnDef columnDef = (ColumnDef)theEObject;
-        T result = caseColumnDef(columnDef);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.COLUMN_CONSTRAINT:
-      {
-        ColumnConstraint columnConstraint = (ColumnConstraint)theEObject;
-        T result = caseColumnConstraint(columnConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.DEFAULT_VALUE:
-      {
-        DefaultValue defaultValue = (DefaultValue)theEObject;
-        T result = caseDefaultValue(defaultValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.TABLE_CONSTRAINT:
-      {
-        TableConstraint tableConstraint = (TableConstraint)theEObject;
-        T result = caseTableConstraint(tableConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.INDEXED_COLUMN:
-      {
-        IndexedColumn indexedColumn = (IndexedColumn)theEObject;
-        T result = caseIndexedColumn(indexedColumn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ORDERING_TERM:
-      {
-        OrderingTerm orderingTerm = (OrderingTerm)theEObject;
-        T result = caseOrderingTerm(orderingTerm);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.JOIN_SOURCE:
-      {
-        JoinSource joinSource = (JoinSource)theEObject;
-        T result = caseJoinSource(joinSource);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SINGLE_SOURCE:
-      {
-        SingleSource singleSource = (SingleSource)theEObject;
-        T result = caseSingleSource(singleSource);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.JOIN_STATEMENT:
-      {
-        JoinStatement joinStatement = (JoinStatement)theEObject;
-        T result = caseJoinStatement(joinStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.RESULT_COLUMN:
-      {
-        ResultColumn resultColumn = (ResultColumn)theEObject;
-        T result = caseResultColumn(resultColumn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.CONFLICT_CLAUSE:
-      {
-        ConflictClause conflictClause = (ConflictClause)theEObject;
-        T result = caseConflictClause(conflictClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.LITERAL_VALUE:
-      {
-        LiteralValue literalValue = (LiteralValue)theEObject;
-        T result = caseLiteralValue(literalValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -368,11 +467,19 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.COLUMN_LITERAL:
+      case SqliteModelPackage.NEW_COLUMN_SOURCE:
       {
-        ColumnLiteral columnLiteral = (ColumnLiteral)theEObject;
-        T result = caseColumnLiteral(columnLiteral);
-        if (result == null) result = caseExpression(columnLiteral);
+        NewColumnSource newColumnSource = (NewColumnSource)theEObject;
+        T result = caseNewColumnSource(newColumnSource);
+        if (result == null) result = caseExpression(newColumnSource);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.OLD_COLUMN_SOURCE:
+      {
+        OldColumnSource oldColumnSource = (OldColumnSource)theEObject;
+        T result = caseOldColumnSource(oldColumnSource);
+        if (result == null) result = caseExpression(oldColumnSource);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -424,62 +531,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.CREATE_TABLE_STATEMENT:
-      {
-        CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
-        T result = caseCreateTableStatement(createTableStatement);
-        if (result == null) result = caseDDLStatement(createTableStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.CREATE_VIEW_STATEMENT:
-      {
-        CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
-        T result = caseCreateViewStatement(createViewStatement);
-        if (result == null) result = caseDDLStatement(createViewStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT:
-      {
-        CreateTriggerStatement createTriggerStatement = (CreateTriggerStatement)theEObject;
-        T result = caseCreateTriggerStatement(createTriggerStatement);
-        if (result == null) result = caseDDLStatement(createTriggerStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT:
-      {
-        AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
-        T result = caseAlterTableStatement(alterTableStatement);
-        if (result == null) result = caseDDLStatement(alterTableStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.DROP_TABLE_STATEMENT:
-      {
-        DropTableStatement dropTableStatement = (DropTableStatement)theEObject;
-        T result = caseDropTableStatement(dropTableStatement);
-        if (result == null) result = caseDDLStatement(dropTableStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.DROP_TRIGGER_STATEMENT:
-      {
-        DropTriggerStatement dropTriggerStatement = (DropTriggerStatement)theEObject;
-        T result = caseDropTriggerStatement(dropTriggerStatement);
-        if (result == null) result = caseDDLStatement(dropTriggerStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.DROP_VIEW_STATEMENT:
-      {
-        DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
-        T result = caseDropViewStatement(dropViewStatement);
-        if (result == null) result = caseDDLStatement(dropViewStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.SELECT_CORE:
       {
         SelectCore selectCore = (SelectCore)theEObject;
@@ -488,91 +539,13 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE:
-      {
-        AlterTableRenameClause alterTableRenameClause = (AlterTableRenameClause)theEObject;
-        T result = caseAlterTableRenameClause(alterTableRenameClause);
-        if (result == null) result = caseAlterTableClause(alterTableRenameClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE:
-      {
-        AlterTableAddColumnClause alterTableAddColumnClause = (AlterTableAddColumnClause)theEObject;
-        T result = caseAlterTableAddColumnClause(alterTableAddColumnClause);
-        if (result == null) result = caseAlterTableClause(alterTableAddColumnClause);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT:
-      {
-        PrimaryKeyColumnConstraint primaryKeyColumnConstraint = (PrimaryKeyColumnConstraint)theEObject;
-        T result = casePrimaryKeyColumnConstraint(primaryKeyColumnConstraint);
-        if (result == null) result = caseColumnConstraint(primaryKeyColumnConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.NOT_NULL_CONSTRAINT:
-      {
-        NotNullConstraint notNullConstraint = (NotNullConstraint)theEObject;
-        T result = caseNotNullConstraint(notNullConstraint);
-        if (result == null) result = caseColumnConstraint(notNullConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.DEFAULT_CONSTRAINT:
-      {
-        DefaultConstraint defaultConstraint = (DefaultConstraint)theEObject;
-        T result = caseDefaultConstraint(defaultConstraint);
-        if (result == null) result = caseColumnConstraint(defaultConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.LITERAL_DEFAULT_VALUE:
-      {
-        LiteralDefaultValue literalDefaultValue = (LiteralDefaultValue)theEObject;
-        T result = caseLiteralDefaultValue(literalDefaultValue);
-        if (result == null) result = caseDefaultValue(literalDefaultValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE:
-      {
-        ExpressionDefaultValue expressionDefaultValue = (ExpressionDefaultValue)theEObject;
-        T result = caseExpressionDefaultValue(expressionDefaultValue);
-        if (result == null) result = caseDefaultValue(expressionDefaultValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT:
-      {
-        UniqueTableContraint uniqueTableContraint = (UniqueTableContraint)theEObject;
-        T result = caseUniqueTableContraint(uniqueTableContraint);
-        if (result == null) result = caseTableConstraint(uniqueTableContraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.PRIMARY_CONTRAINT:
-      {
-        PrimaryContraint primaryContraint = (PrimaryContraint)theEObject;
-        T result = casePrimaryContraint(primaryContraint);
-        if (result == null) result = caseTableConstraint(primaryContraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT:
-      {
-        CheckTableConstraint checkTableConstraint = (CheckTableConstraint)theEObject;
-        T result = caseCheckTableConstraint(checkTableConstraint);
-        if (result == null) result = caseTableConstraint(checkTableConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.SINGLE_SOURCE_TABLE:
       {
         SingleSourceTable singleSourceTable = (SingleSourceTable)theEObject;
         T result = caseSingleSourceTable(singleSourceTable);
+        if (result == null) result = caseSelectSource(singleSourceTable);
         if (result == null) result = caseSingleSource(singleSourceTable);
+        if (result == null) result = caseDDLStatement(singleSourceTable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -580,23 +553,9 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         SingleSourceSelectStatement singleSourceSelectStatement = (SingleSourceSelectStatement)theEObject;
         T result = caseSingleSourceSelectStatement(singleSourceSelectStatement);
+        if (result == null) result = caseSelectSource(singleSourceSelectStatement);
         if (result == null) result = caseSingleSource(singleSourceSelectStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.SINGLE_SOURCE_JOIN:
-      {
-        SingleSourceJoin singleSourceJoin = (SingleSourceJoin)theEObject;
-        T result = caseSingleSourceJoin(singleSourceJoin);
-        if (result == null) result = caseSingleSource(singleSourceJoin);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.RESULT_COLUMN_ALL:
-      {
-        ResultColumnAll resultColumnAll = (ResultColumnAll)theEObject;
-        T result = caseResultColumnAll(resultColumnAll);
-        if (result == null) result = caseResultColumn(resultColumnAll);
+        if (result == null) result = caseDDLStatement(singleSourceSelectStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -604,6 +563,8 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         ResultColumnExpression resultColumnExpression = (ResultColumnExpression)theEObject;
         T result = caseResultColumnExpression(resultColumnExpression);
+        if (result == null) result = caseColumnSource(resultColumnExpression);
+        if (result == null) result = caseExpression(resultColumnExpression);
         if (result == null) result = caseResultColumn(resultColumnExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -653,6 +614,82 @@ public class SqliteModelSwitch<T> extends Switch<T>
         CurrentTimeStampLiteral currentTimeStampLiteral = (CurrentTimeStampLiteral)theEObject;
         T result = caseCurrentTimeStampLiteral(currentTimeStampLiteral);
         if (result == null) result = caseLiteralValue(currentTimeStampLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CREATE_TABLE_STATEMENT:
+      {
+        CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
+        T result = caseCreateTableStatement(createTableStatement);
+        if (result == null) result = caseSelectSource(createTableStatement);
+        if (result == null) result = caseSingleSource(createTableStatement);
+        if (result == null) result = caseDDLStatement(createTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE:
+      {
+        AlterTableRenameClause alterTableRenameClause = (AlterTableRenameClause)theEObject;
+        T result = caseAlterTableRenameClause(alterTableRenameClause);
+        if (result == null) result = caseAlterTableClause(alterTableRenameClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE:
+      {
+        AlterTableAddColumnClause alterTableAddColumnClause = (AlterTableAddColumnClause)theEObject;
+        T result = caseAlterTableAddColumnClause(alterTableAddColumnClause);
+        if (result == null) result = caseAlterTableClause(alterTableAddColumnClause);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.COLUMN_DEF:
+      {
+        ColumnDef columnDef = (ColumnDef)theEObject;
+        T result = caseColumnDef(columnDef);
+        if (result == null) result = caseColumnSource(columnDef);
+        if (result == null) result = caseExpression(columnDef);
+        if (result == null) result = caseResultColumn(columnDef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT:
+      {
+        PrimaryKeyColumnConstraint primaryKeyColumnConstraint = (PrimaryKeyColumnConstraint)theEObject;
+        T result = casePrimaryKeyColumnConstraint(primaryKeyColumnConstraint);
+        if (result == null) result = caseColumnConstraint(primaryKeyColumnConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.NOT_NULL_CONSTRAINT:
+      {
+        NotNullConstraint notNullConstraint = (NotNullConstraint)theEObject;
+        T result = caseNotNullConstraint(notNullConstraint);
+        if (result == null) result = caseColumnConstraint(notNullConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DEFAULT_CONSTRAINT:
+      {
+        DefaultConstraint defaultConstraint = (DefaultConstraint)theEObject;
+        T result = caseDefaultConstraint(defaultConstraint);
+        if (result == null) result = caseColumnConstraint(defaultConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.LITERAL_DEFAULT_VALUE:
+      {
+        LiteralDefaultValue literalDefaultValue = (LiteralDefaultValue)theEObject;
+        T result = caseLiteralDefaultValue(literalDefaultValue);
+        if (result == null) result = caseDefaultValue(literalDefaultValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE:
+      {
+        ExpressionDefaultValue expressionDefaultValue = (ExpressionDefaultValue)theEObject;
+        T result = caseExpressionDefaultValue(expressionDefaultValue);
+        if (result == null) result = caseDefaultValue(expressionDefaultValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -773,6 +810,198 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectStatement(SelectStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectCoreExpression(SelectCoreExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Ordering Term</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ordering Term</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrderingTerm(OrderingTerm object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Join Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Join Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJoinSource(JoinSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Single Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Single Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSingleSource(SingleSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Select Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Select Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelectSource(SelectSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Single Source Join</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Single Source Join</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSingleSourceJoin(SingleSourceJoin object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Join Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Join Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJoinStatement(JoinStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Result Column</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Result Column</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseResultColumn(ResultColumn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Result Column All</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Result Column All</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseResultColumnAll(ResultColumnAll object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Column Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Column Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColumnSource(ColumnSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteralValue(LiteralValue object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>DDL Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -784,6 +1013,246 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDDLStatement(DDLStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateViewStatement(CreateViewStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateTriggerStatement(CreateTriggerStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlterTableStatement(AlterTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropTableStatement(DropTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropTriggerStatement(DropTriggerStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropViewStatement(DropViewStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlterTableClause(AlterTableClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Column Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Column Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColumnConstraint(ColumnConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Table Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTableConstraint(TableConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUniqueTableContraint(UniqueTableContraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrimaryContraint(PrimaryContraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckTableConstraint(CheckTableConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Indexed Column</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Indexed Column</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIndexedColumn(IndexedColumn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Default Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDefaultValue(DefaultValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conflict Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conflict Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConflictClause(ConflictClause object)
   {
     return null;
   }
@@ -864,246 +1333,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUpdateColumnExpression(UpdateColumnExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelectStatement(SelectStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelectCoreExpression(SelectCoreExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableClause(AlterTableClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Column Def</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Column Def</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseColumnDef(ColumnDef object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Column Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Column Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseColumnConstraint(ColumnConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Default Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDefaultValue(DefaultValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Table Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Table Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTableConstraint(TableConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Indexed Column</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Indexed Column</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIndexedColumn(IndexedColumn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Ordering Term</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Ordering Term</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOrderingTerm(OrderingTerm object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Join Source</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Join Source</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseJoinSource(JoinSource object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Single Source</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Single Source</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSingleSource(SingleSource object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Join Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Join Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseJoinStatement(JoinStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultColumn(ResultColumn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Conflict Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Conflict Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseConflictClause(ConflictClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Literal Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Literal Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLiteralValue(LiteralValue object)
   {
     return null;
   }
@@ -1301,17 +1530,33 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Column Literal</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>New Column Source</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Column Literal</em>'.
+   * @return the result of interpreting the object as an instance of '<em>New Column Source</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseColumnLiteral(ColumnLiteral object)
+  public T caseNewColumnSource(NewColumnSource object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Old Column Source</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Old Column Source</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOldColumnSource(OldColumnSource object)
   {
     return null;
   }
@@ -1413,118 +1658,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCreateTableStatement(CreateTableStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCreateViewStatement(CreateViewStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Create Trigger Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCreateTriggerStatement(CreateTriggerStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableStatement(AlterTableStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Drop Table Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDropTableStatement(DropTableStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Drop Trigger Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDropTriggerStatement(DropTriggerStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Drop View Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDropViewStatement(DropViewStatement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Select Core</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1536,166 +1669,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectCore(SelectCore object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableRenameClause(AlterTableRenameClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableAddColumnClause(AlterTableAddColumnClause object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary Key Column Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary Key Column Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePrimaryKeyColumnConstraint(PrimaryKeyColumnConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Not Null Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Not Null Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNotNullConstraint(NotNullConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Default Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Default Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDefaultConstraint(DefaultConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Literal Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Literal Default Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLiteralDefaultValue(LiteralDefaultValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Expression Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expression Default Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpressionDefaultValue(ExpressionDefaultValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Unique Table Contraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseUniqueTableContraint(UniqueTableContraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary Contraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePrimaryContraint(PrimaryContraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Check Table Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCheckTableConstraint(CheckTableConstraint object)
   {
     return null;
   }
@@ -1728,38 +1701,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSingleSourceSelectStatement(SingleSourceSelectStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Single Source Join</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Single Source Join</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSingleSourceJoin(SingleSourceJoin object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column All</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column All</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultColumnAll(ResultColumnAll object)
   {
     return null;
   }
@@ -1872,6 +1813,150 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCurrentTimeStampLiteral(CurrentTimeStampLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateTableStatement(CreateTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlterTableRenameClause(AlterTableRenameClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlterTableAddColumnClause(AlterTableAddColumnClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Column Def</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Column Def</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColumnDef(ColumnDef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Primary Key Column Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Primary Key Column Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrimaryKeyColumnConstraint(PrimaryKeyColumnConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Not Null Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Not Null Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNotNullConstraint(NotNullConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Default Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Default Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDefaultConstraint(DefaultConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal Default Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteralDefaultValue(LiteralDefaultValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression Default Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpressionDefaultValue(ExpressionDefaultValue object)
   {
     return null;
   }

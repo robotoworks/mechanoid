@@ -30,12 +30,12 @@ public interface AlterTableAddColumnClause extends AlterTableClause
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Column Def</em>' containment reference.
-   * @see #setColumnDef(ColumnDef)
+   * @see #setColumnDef(ColumnSource)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getAlterTableAddColumnClause_ColumnDef()
    * @model containment="true"
    * @generated
    */
-  ColumnDef getColumnDef();
+  ColumnSource getColumnDef();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause#getColumnDef <em>Column Def</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface AlterTableAddColumnClause extends AlterTableClause
    * @see #getColumnDef()
    * @generated
    */
-  void setColumnDef(ColumnDef value);
+  void setColumnDef(ColumnSource value);
 
 } // AlterTableAddColumnClause

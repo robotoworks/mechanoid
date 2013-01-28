@@ -6,6 +6,7 @@ import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
@@ -94,17 +95,17 @@ public class ContentProviderContractGenerator {
         _builder.append("Columns {");
         _builder.newLineIfNotEmpty();
         {
-          EList<ColumnDef> _columnDefs = tbl.getColumnDefs();
-          final Function1<ColumnDef,Boolean> _function = new Function1<ColumnDef,Boolean>() {
-              public Boolean apply(final ColumnDef it) {
+          EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
+          final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+              public Boolean apply(final ColumnSource it) {
                 String _name = it.getName();
                 boolean _equals = _name.equals("_id");
                 boolean _not = (!_equals);
                 return Boolean.valueOf(_not);
               }
             };
-          Iterable<ColumnDef> _filter_1 = IterableExtensions.<ColumnDef>filter(_columnDefs, _function);
-          for(final ColumnDef col : _filter_1) {
+          Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+          for(final ColumnSource col : _filter_1) {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("String ");
@@ -429,17 +430,21 @@ public class ContentProviderContractGenerator {
         _builder.append("\t\t");
         _builder.newLine();
         {
-          EList<ColumnDef> _columnDefs_1 = tbl_1.getColumnDefs();
-          final Function1<ColumnDef,Boolean> _function_1 = new Function1<ColumnDef,Boolean>() {
-              public Boolean apply(final ColumnDef it) {
+          EList<ColumnSource> _columnDefs_1 = tbl_1.getColumnDefs();
+          final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
+              public Boolean apply(final ColumnSource it) {
                 String _name = it.getName();
                 boolean _equals = _name.equals("_id");
                 boolean _not = (!_equals);
                 return Boolean.valueOf(_not);
               }
             };
-          Iterable<ColumnDef> _filter_4 = IterableExtensions.<ColumnDef>filter(_columnDefs_1, _function_1);
-          for(final ColumnDef col_2 : _filter_4) {
+          Iterable<ColumnSource> _filter_4 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
+          for(final ColumnSource item : _filter_4) {
+            _builder.append("\t");
+            _builder.append("\t\t");
+            ColumnDef col_2 = ((ColumnDef) item);
+            _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t\t");
             _builder.append("public Builder set");
@@ -650,23 +655,24 @@ public class ContentProviderContractGenerator {
   public CharSequence createMethodArgsFromColumns(final CreateTableStatement tbl) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<ColumnDef> _columnDefs = tbl.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter = IterableExtensions.<ColumnDef>filter(_columnDefs, _function);
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       boolean _hasElements = false;
-      for(final ColumnDef col : _filter) {
+      for(final ColumnSource item : _filter) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
           _builder.appendImmediate(", ", "");
         }
+        ColumnDef col = ((ColumnDef) item);
         ColumnType _type = col.getType();
         String _javaTypeName = Extensions.toJavaTypeName(_type);
         _builder.append(_javaTypeName, "");
@@ -722,14 +728,14 @@ public class ContentProviderContractGenerator {
     return _builder;
   }
   
-  public CharSequence generateInterfaceMemberForResultColumn(final ResultColumn column) {
-    if (column instanceof ResultColumnAll) {
-      return _generateInterfaceMemberForResultColumn((ResultColumnAll)column);
-    } else if (column instanceof ResultColumnExpression) {
-      return _generateInterfaceMemberForResultColumn((ResultColumnExpression)column);
+  public CharSequence generateInterfaceMemberForResultColumn(final ResultColumn expr) {
+    if (expr instanceof ResultColumnExpression) {
+      return _generateInterfaceMemberForResultColumn((ResultColumnExpression)expr);
+    } else if (expr instanceof ResultColumnAll) {
+      return _generateInterfaceMemberForResultColumn((ResultColumnAll)expr);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(column).toString());
+        Arrays.<Object>asList(expr).toString());
     }
   }
 }

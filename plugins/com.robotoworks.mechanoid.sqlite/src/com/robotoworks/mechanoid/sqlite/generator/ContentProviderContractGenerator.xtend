@@ -11,6 +11,7 @@ import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) { 
@@ -104,7 +105,8 @@ class ContentProviderContractGenerator {
 							super(Mechanoid.getApplicationContext(), CONTENT_URI);
 						}
 						
-						«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
+						«FOR item : tbl.columnDefs.filter([!name.equals("_id")])»
+						«var col = item as ColumnDef»
 						public Builder set«col.name.pascalize»(«col.type.toJavaTypeName» value) {
 							mValues.put(«tbl.name.pascalize».«col.name.underscore.toUpperCase», value);
 							return this;
@@ -150,7 +152,7 @@ class ContentProviderContractGenerator {
 	}
 	
 	def createMethodArgsFromColumns(CreateTableStatement tbl) {
-		'''«FOR col : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»«col.type.toJavaTypeName()» «col.name.camelize»«ENDFOR»'''
+		'''«FOR item : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»«var col = item as ColumnDef»«col.type.toJavaTypeName()» «col.name.camelize»«ENDFOR»'''
 	}
 	
 	def dispatch generateInterfaceMemberForResultColumn(ResultColumnAll column) { 
