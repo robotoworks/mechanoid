@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>New Column Source</b></em>'.
+ * An implementation of the model object '<em><b>Old Column Source Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NewColumnSourceImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OldColumnSourceRefImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSource
+public class OldColumnSourceRefImpl extends ExpressionImpl implements OldColumnSourceRef
 {
   /**
    * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
@@ -43,7 +43,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NewColumnSourceImpl()
+  protected OldColumnSourceRefImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.NEW_COLUMN_SOURCE;
+    return SqliteModelPackage.Literals.OLD_COLUMN_SOURCE_REF;
   }
 
   /**
@@ -73,7 +73,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
       if (column != oldColumn)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN, oldColumn, column));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
       }
     }
     return column;
@@ -99,7 +99,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
     ColumnSource oldColumn = column;
     column = newColumn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN, oldColumn, column));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
   }
 
   /**
@@ -112,7 +112,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN:
         if (resolve) return getColumn();
         return basicGetColumn();
     }
@@ -129,7 +129,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)newValue);
         return;
     }
@@ -146,7 +146,7 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)null);
         return;
     }
@@ -163,10 +163,10 @@ public class NewColumnSourceImpl extends ExpressionImpl implements NewColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF__COLUMN:
         return column != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //NewColumnSourceImpl
+} //OldColumnSourceRefImpl

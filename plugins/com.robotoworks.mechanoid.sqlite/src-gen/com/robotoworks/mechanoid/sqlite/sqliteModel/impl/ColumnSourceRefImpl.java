@@ -3,7 +3,8 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,19 +16,30 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Old Column Source</b></em>'.
+ * An implementation of the model object '<em><b>Column Source Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OldColumnSourceImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceRefImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceRefImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSource
+public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceRef
 {
+  /**
+   * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSource()
+   * @generated
+   * @ordered
+   */
+  protected SelectSource source;
+
   /**
    * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
    * <!-- begin-user-doc -->
@@ -43,7 +55,7 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OldColumnSourceImpl()
+  protected ColumnSourceRefImpl()
   {
     super();
   }
@@ -56,7 +68,50 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.OLD_COLUMN_SOURCE;
+    return SqliteModelPackage.Literals.COLUMN_SOURCE_REF;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectSource getSource()
+  {
+    if (source != null && source.eIsProxy())
+    {
+      InternalEObject oldSource = (InternalEObject)source;
+      source = (SelectSource)eResolveProxy(oldSource);
+      if (source != oldSource)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE, oldSource, source));
+      }
+    }
+    return source;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectSource basicGetSource()
+  {
+    return source;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSource(SelectSource newSource)
+  {
+    SelectSource oldSource = source;
+    source = newSource;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE, oldSource, source));
   }
 
   /**
@@ -73,7 +128,7 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
       if (column != oldColumn)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN, oldColumn, column));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
       }
     }
     return column;
@@ -99,7 +154,7 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
     ColumnSource oldColumn = column;
     column = newColumn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN, oldColumn, column));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
   }
 
   /**
@@ -112,7 +167,10 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
+        if (resolve) return getSource();
+        return basicGetSource();
+      case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         if (resolve) return getColumn();
         return basicGetColumn();
     }
@@ -129,7 +187,10 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
+        setSource((SelectSource)newValue);
+        return;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)newValue);
         return;
     }
@@ -146,7 +207,10 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
+        setSource((SelectSource)null);
+        return;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)null);
         return;
     }
@@ -163,10 +227,12 @@ public class OldColumnSourceImpl extends ExpressionImpl implements OldColumnSour
   {
     switch (featureID)
     {
-      case SqliteModelPackage.OLD_COLUMN_SOURCE__COLUMN:
+      case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
+        return source != null;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         return column != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //OldColumnSourceImpl
+} //ColumnSourceRefImpl

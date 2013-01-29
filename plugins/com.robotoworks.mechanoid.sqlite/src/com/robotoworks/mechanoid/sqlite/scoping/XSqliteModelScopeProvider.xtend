@@ -1,16 +1,23 @@
 package com.robotoworks.mechanoid.sqlite.scoping
 
+import com.google.common.collect.Lists
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable
+import java.util.ArrayList
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource
+import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.xtext.EcoreUtil2
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList
+import org.eclipse.emf.ecore.EClass
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -20,24 +27,68 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return Scopes::scopeFor(inScope.toIterable)
 	}
 	
-//	def IScope scope_ColumnSource_column(ResultColumnExpression context, EReference reference) {
-//		
-//		var select = context.eContainer as SelectExpression
-//		val columnSource = reference.eContainer as ColumnSource
-//		
-//		select.source.eAllContents.filter(typeof(SingleSource)).forEach([
-//			if(it instanceof SingleSourceTable) {
-//				if(columnSource.source != null && columnSource.source.name) {
-//					
-//				}
-//				var tableSource = it as SingleSourceTable
-//				tableSource.tableReference
-//			}
-//		])
-//		
-//		var inScope = context.eAllContents.filter(typeof(ColumnDef))
-//		return Scopes::scopeFor(inScope.toIterable)
-//	}
+	def IScope scope_ColumnSourceRef_column(ColumnSourceRef context, EReference reference) {
+		
+		if(context.source == null) {
+			var expr = findOuterSelectExpression(context)
+			if(expr != null) {
+				val ArrayList<EObject> items = Lists::newArrayList()
+
+				expr.findAllSingleSources.filter([item|
+					if(item instanceof SingleSourceTable) {
+						return (item as SingleSourceTable).name == null
+					}
+					return false
+				]).forEach([item|
+					var source = item as SingleSourceTable
+					
+					items.addAll(source.tableReference.columnDefs)
+				])
+				
+				return Scopes::scopeFor(items)
+				
+			}
+		} else {
+			if(context.source instanceof SingleSourceTable) {
+				var tableSource = context.source as SingleSourceTable
+				
+				return Scopes::scopeFor(tableSource.tableReference.columnDefs)
+			}
+		}
+		
+		return IScope::NULLSCOPE;
+	}
+	
+	def IScope scope_ColumnSourceRef_source(ColumnSourceRef context, EReference reference) {
+		val expr = findOuterSelectExpression(context)
+		
+		return Scopes::scopeFor(expr.findAllSingleSources)
+	}
+	
+	def ArrayList<SingleSource> findAllSingleSources(SelectExpression expr) {
+		val ArrayList<SingleSource> items = Lists::newArrayList()
+		
+		items.add(expr.source.source)
+		
+		for(join : expr.source.joinStatements) {
+			items.add(join.singleSource)
+		}
+		
+		return items
+	}
+	
+	def SelectExpression findOuterSelectExpression(EObject obj) {
+		var temp = obj as EObject;
+		while(temp.eContainer != null) {
+			temp = temp.eContainer
+			
+			if(temp instanceof SelectExpression) {
+				return temp as SelectExpression
+			}
+		}
+		
+		return null
+	}
 	
 //	def IScope scope_ResultColumn_table(ResultColumn context, EReference reference) {
 //		

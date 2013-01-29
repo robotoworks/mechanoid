@@ -4,8 +4,8 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#isAll <em>All</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getResultColumns <em>Result Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getSelectList <em>Select List</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getWhereExpression <em>Where Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
@@ -85,14 +85,14 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
   protected boolean all = ALL_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getResultColumns() <em>Result Columns</em>}' containment reference list.
+   * The cached value of the '{@link #getSelectList() <em>Select List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getResultColumns()
+   * @see #getSelectList()
    * @generated
    * @ordered
    */
-  protected EList<ResultColumn> resultColumns;
+  protected SelectList selectList;
 
   /**
    * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
@@ -206,13 +206,47 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ResultColumn> getResultColumns()
+  public SelectList getSelectList()
   {
-    if (resultColumns == null)
+    return selectList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSelectList(SelectList newSelectList, NotificationChain msgs)
+  {
+    SelectList oldSelectList = selectList;
+    selectList = newSelectList;
+    if (eNotificationRequired())
     {
-      resultColumns = new EObjectContainmentEList<ResultColumn>(ResultColumn.class, this, SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST, oldSelectList, newSelectList);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return resultColumns;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSelectList(SelectList newSelectList)
+  {
+    if (newSelectList != selectList)
+    {
+      NotificationChain msgs = null;
+      if (selectList != null)
+        msgs = ((InternalEObject)selectList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST, null, msgs);
+      if (newSelectList != null)
+        msgs = ((InternalEObject)newSelectList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST, null, msgs);
+      msgs = basicSetSelectList(newSelectList, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST, newSelectList, newSelectList));
   }
 
   /**
@@ -383,8 +417,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS:
-        return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
+        return basicSetSelectList(null, msgs);
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return basicSetSource(null, msgs);
       case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
@@ -411,8 +445,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
         return isDistinct();
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         return isAll();
-      case SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS:
-        return getResultColumns();
+      case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
+        return getSelectList();
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return getSource();
       case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
@@ -442,9 +476,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         setAll((Boolean)newValue);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS:
-        getResultColumns().clear();
-        getResultColumns().addAll((Collection<? extends ResultColumn>)newValue);
+      case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
+        setSelectList((SelectList)newValue);
         return;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         setSource((JoinSource)newValue);
@@ -479,8 +512,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         setAll(ALL_EDEFAULT);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS:
-        getResultColumns().clear();
+      case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
+        setSelectList((SelectList)null);
         return;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         setSource((JoinSource)null);
@@ -512,8 +545,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
         return distinct != DISTINCT_EDEFAULT;
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         return all != ALL_EDEFAULT;
-      case SqliteModelPackage.SELECT_EXPRESSION__RESULT_COLUMNS:
-        return resultColumns != null && !resultColumns.isEmpty();
+      case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
+        return selectList != null;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return source != null;
       case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:

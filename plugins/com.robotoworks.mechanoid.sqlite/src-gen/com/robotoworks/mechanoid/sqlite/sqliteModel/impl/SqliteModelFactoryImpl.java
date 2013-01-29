@@ -74,6 +74,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CASE: return createCase();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
       case SqliteModelPackage.SELECT_CORE_EXPRESSION: return createSelectCoreExpression();
+      case SqliteModelPackage.SELECT_LIST: return createSelectList();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
       case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
@@ -85,6 +86,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.COLUMN_SOURCE: return createColumnSource();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
+      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
@@ -117,8 +119,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NULL_CHECK_EXPRESSION: return createNullCheckExpression();
       case SqliteModelPackage.IS_NULL: return createIsNull();
       case SqliteModelPackage.NOT_NULL: return createNotNull();
-      case SqliteModelPackage.NEW_COLUMN_SOURCE: return createNewColumnSource();
-      case SqliteModelPackage.OLD_COLUMN_SOURCE: return createOldColumnSource();
+      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF: return createNewColumnSourceRef();
+      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF: return createOldColumnSourceRef();
+      case SqliteModelPackage.COLUMN_SOURCE_REF: return createColumnSourceRef();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
@@ -136,7 +139,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CURRENT_TIME_LITERAL: return createCurrentTimeLiteral();
       case SqliteModelPackage.CURRENT_DATE_LITERAL: return createCurrentDateLiteral();
       case SqliteModelPackage.CURRENT_TIME_STAMP_LITERAL: return createCurrentTimeStampLiteral();
-      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
       case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
@@ -300,6 +302,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SelectList createSelectList()
+  {
+    SelectListImpl selectList = new SelectListImpl();
+    return selectList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public OrderingTerm createOrderingTerm()
   {
     OrderingTermImpl orderingTerm = new OrderingTermImpl();
@@ -414,6 +427,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     DDLStatementImpl ddlStatement = new DDLStatementImpl();
     return ddlStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTableStatement createCreateTableStatement()
+  {
+    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
+    return createTableStatement;
   }
 
   /**
@@ -773,10 +797,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public NewColumnSource createNewColumnSource()
+  public NewColumnSourceRef createNewColumnSourceRef()
   {
-    NewColumnSourceImpl newColumnSource = new NewColumnSourceImpl();
-    return newColumnSource;
+    NewColumnSourceRefImpl newColumnSourceRef = new NewColumnSourceRefImpl();
+    return newColumnSourceRef;
   }
 
   /**
@@ -784,10 +808,21 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public OldColumnSource createOldColumnSource()
+  public OldColumnSourceRef createOldColumnSourceRef()
   {
-    OldColumnSourceImpl oldColumnSource = new OldColumnSourceImpl();
-    return oldColumnSource;
+    OldColumnSourceRefImpl oldColumnSourceRef = new OldColumnSourceRefImpl();
+    return oldColumnSourceRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnSourceRef createColumnSourceRef()
+  {
+    ColumnSourceRefImpl columnSourceRef = new ColumnSourceRefImpl();
+    return columnSourceRef;
   }
 
   /**
@@ -975,17 +1010,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     CurrentTimeStampLiteralImpl currentTimeStampLiteral = new CurrentTimeStampLiteralImpl();
     return currentTimeStampLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CreateTableStatement createCreateTableStatement()
-  {
-    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
-    return createTableStatement;
   }
 
   /**

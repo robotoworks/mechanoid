@@ -104,6 +104,15 @@ public interface SqliteModelFactory extends EFactory
   SelectCoreExpression createSelectCoreExpression();
 
   /**
+   * Returns a new object of class '<em>Select List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select List</em>'.
+   * @generated
+   */
+  SelectList createSelectList();
+
+  /**
    * Returns a new object of class '<em>Ordering Term</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -201,6 +210,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   DDLStatement createDDLStatement();
+
+  /**
+   * Returns a new object of class '<em>Create Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create Table Statement</em>'.
+   * @generated
+   */
+  CreateTableStatement createCreateTableStatement();
 
   /**
    * Returns a new object of class '<em>Create View Statement</em>'.
@@ -491,22 +509,31 @@ public interface SqliteModelFactory extends EFactory
   NotNull createNotNull();
 
   /**
-   * Returns a new object of class '<em>New Column Source</em>'.
+   * Returns a new object of class '<em>New Column Source Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>New Column Source</em>'.
+   * @return a new object of class '<em>New Column Source Ref</em>'.
    * @generated
    */
-  NewColumnSource createNewColumnSource();
+  NewColumnSourceRef createNewColumnSourceRef();
 
   /**
-   * Returns a new object of class '<em>Old Column Source</em>'.
+   * Returns a new object of class '<em>Old Column Source Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Old Column Source</em>'.
+   * @return a new object of class '<em>Old Column Source Ref</em>'.
    * @generated
    */
-  OldColumnSource createOldColumnSource();
+  OldColumnSourceRef createOldColumnSourceRef();
+
+  /**
+   * Returns a new object of class '<em>Column Source Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Source Ref</em>'.
+   * @generated
+   */
+  ColumnSourceRef createColumnSourceRef();
 
   /**
    * Returns a new object of class '<em>Literal</em>'.
@@ -660,15 +687,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   CurrentTimeStampLiteral createCurrentTimeStampLiteral();
-
-  /**
-   * Returns a new object of class '<em>Create Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create Table Statement</em>'.
-   * @generated
-   */
-  CreateTableStatement createCreateTableStatement();
 
   /**
    * Returns a new object of class '<em>Alter Table Rename Clause</em>'.

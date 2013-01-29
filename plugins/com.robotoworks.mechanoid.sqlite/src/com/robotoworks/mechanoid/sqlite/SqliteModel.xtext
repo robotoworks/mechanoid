@@ -82,9 +82,9 @@ NullExpression returns Expression:
 ;
 
 PrimaryExpression returns Expression:
-	{NewColumnSource} 'new' '.' column=[ColumnSource] |
-	{OldColumnSource} 'old' '.' column=[ColumnSource] |
-	{ColumnSource} (source=[SelectSource] '.')? column=[ColumnSource] |
+	{NewColumnSourceRef} 'new' '.' column=[ColumnSource] |
+	{OldColumnSourceRef} 'old' '.' column=[ColumnSource] |
+	{ColumnSourceRef} (source=[SelectSource] '.')? column=[ColumnSource] |
 	{Literal} literalValue=LiteralValue|
 	{NestedExpression} '(' expression=SqlExpression ')'|
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
@@ -110,12 +110,17 @@ SelectCore returns SelectCoreExpression:
 
 SelectExpression returns SelectCoreExpression:
 	{SelectExpression}
-	'select' (distinct?='distinct'|all?='all')? resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
+	'select' (distinct?='distinct'|all?='all')? selectList=SelectList
 	('from' source=JoinSource)?
 	('where' whereExpression=SqlExpression)?
 	('group by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
 	('having' havingExpression=SqlExpression)?
 ;
+
+SelectList:
+	resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
+;
+
 
 enum CompoundOperator:
 	unionall='union all' | union='union' | intersect='intersect' | except='except'
@@ -134,10 +139,12 @@ SingleSource:
 ;
 
 SingleSourceTable returns SelectSource:
-	 {SingleSourceTable} tableReference=[CreateTableStatement|ID] ('as' name=ID)?;
+	 {SingleSourceTable} 
+	 tableReference=[CreateTableStatement|ID] ('as' name=ID)?;
 	 
 SingleSourceSelectStatement returns SelectSource: 
-	{SingleSourceSelectStatement} '(' selectStatement=SelectStatement ')' ('as' name=ID)?
+	{SingleSourceSelectStatement} 
+	'(' selectStatement=SelectStatement ')' ('as' name=ID)?
 ;
 
 SingleSourceJoin: 
@@ -190,13 +197,14 @@ DDLStatement:
 	| DropViewStatement
 ;
 
-CreateTableStatement returns SelectSource: 
+CreateTableStatement: 
 	{CreateTableStatement} 'create' 'table' name=ID '(' 
 		columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* 
 		(',' constraints+=TableConstraint)* 
 	')';
 
 CreateViewStatement: 
+	{CreateViewStatement}
 	'create' 'view' name=ID 'as' selectStatement=SelectStatement;
 	
 CreateTriggerStatement: 

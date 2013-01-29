@@ -1340,7 +1340,7 @@ rulePrimaryExpression returns [EObject current=null]
 (((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getPrimaryExpressionAccess().getNewColumnSourceAction_0_0(),
+            grammarAccess.getPrimaryExpressionAccess().getNewColumnSourceRefAction_0_0(),
             $current);
     }
 )	otherlv_1='new' 
@@ -1368,7 +1368,7 @@ rulePrimaryExpression returns [EObject current=null]
     |((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getPrimaryExpressionAccess().getOldColumnSourceAction_1_0(),
+            grammarAccess.getPrimaryExpressionAccess().getOldColumnSourceRefAction_1_0(),
             $current);
     }
 )	otherlv_5='old' 
@@ -1396,7 +1396,7 @@ rulePrimaryExpression returns [EObject current=null]
     |((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getPrimaryExpressionAccess().getColumnSourceAction_2_0(),
+            grammarAccess.getPrimaryExpressionAccess().getColumnSourceRefAction_2_0(),
             $current);
     }
 )((
@@ -2056,95 +2056,95 @@ ruleSelectExpression returns [EObject current=null]
 ))?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getResultColumnsResultColumnParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSelectListSelectListParserRuleCall_3_0()); 
 	    }
-		lv_resultColumns_4_0=ruleResultColumn		{
+		lv_selectList_4_0=ruleSelectList		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
 	        }
-       		add(
+       		set(
        			$current, 
-       			"resultColumns",
-        		lv_resultColumns_4_0, 
-        		"ResultColumn");
+       			"selectList",
+        		lv_selectList_4_0, 
+        		"SelectList");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_5=',' 
+)(	otherlv_5='from' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getSelectExpressionAccess().getCommaKeyword_4_0());
+    	newLeafNode(otherlv_5, grammarAccess.getSelectExpressionAccess().getFromKeyword_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getResultColumnsResultColumnParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSourceJoinSourceParserRuleCall_4_1_0()); 
 	    }
-		lv_resultColumns_6_0=ruleResultColumn		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
-	        }
-       		add(
-       			$current, 
-       			"resultColumns",
-        		lv_resultColumns_6_0, 
-        		"ResultColumn");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))*(	otherlv_7='from' 
-    {
-    	newLeafNode(otherlv_7, grammarAccess.getSelectExpressionAccess().getFromKeyword_5_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSourceJoinSourceParserRuleCall_5_1_0()); 
-	    }
-		lv_source_8_0=ruleJoinSource		{
+		lv_source_6_0=ruleJoinSource		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
 	        }
        		set(
        			$current, 
        			"source",
-        		lv_source_8_0, 
+        		lv_source_6_0, 
         		"JoinSource");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(	otherlv_9='where' 
+))?(	otherlv_7='where' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getSelectExpressionAccess().getWhereKeyword_6_0());
+    	newLeafNode(otherlv_7, grammarAccess.getSelectExpressionAccess().getWhereKeyword_5_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getWhereExpressionSqlExpressionParserRuleCall_6_1_0()); 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getWhereExpressionSqlExpressionParserRuleCall_5_1_0()); 
 	    }
-		lv_whereExpression_10_0=ruleSqlExpression		{
+		lv_whereExpression_8_0=ruleSqlExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
 	        }
        		set(
        			$current, 
        			"whereExpression",
-        		lv_whereExpression_10_0, 
+        		lv_whereExpression_8_0, 
         		"SqlExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(	otherlv_11='group by' 
+))?(	otherlv_9='group by' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getSelectExpressionAccess().getGroupByKeyword_7_0());
+    	newLeafNode(otherlv_9, grammarAccess.getSelectExpressionAccess().getGroupByKeyword_6_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_7_1_0()); 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_1_0()); 
+	    }
+		lv_groupByExpressions_10_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
+	        }
+       		add(
+       			$current, 
+       			"groupByExpressions",
+        		lv_groupByExpressions_10_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_11=',' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getSelectExpressionAccess().getCommaKeyword_6_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_2_1_0()); 
 	    }
 		lv_groupByExpressions_12_0=ruleSqlExpression		{
 	        if ($current==null) {
@@ -2159,51 +2159,90 @@ ruleSelectExpression returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_13=',' 
+))*)?(	otherlv_13='having' 
     {
-    	newLeafNode(otherlv_13, grammarAccess.getSelectExpressionAccess().getCommaKeyword_7_2_0());
+    	newLeafNode(otherlv_13, grammarAccess.getSelectExpressionAccess().getHavingKeyword_7_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_7_2_1_0()); 
+	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); 
 	    }
-		lv_groupByExpressions_14_0=ruleSqlExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
-	        }
-       		add(
-       			$current, 
-       			"groupByExpressions",
-        		lv_groupByExpressions_14_0, 
-        		"SqlExpression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))*)?(	otherlv_15='having' 
-    {
-    	newLeafNode(otherlv_15, grammarAccess.getSelectExpressionAccess().getHavingKeyword_8_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getHavingExpressionSqlExpressionParserRuleCall_8_1_0()); 
-	    }
-		lv_havingExpression_16_0=ruleSqlExpression		{
+		lv_havingExpression_14_0=ruleSqlExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
 	        }
        		set(
        			$current, 
        			"havingExpression",
-        		lv_havingExpression_16_0, 
+        		lv_havingExpression_14_0, 
         		"SqlExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 ))?)
+;
+
+
+
+
+
+// Entry rule entryRuleSelectList
+entryRuleSelectList returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getSelectListRule()); }
+	 iv_ruleSelectList=ruleSelectList 
+	 { $current=$iv_ruleSelectList.current; } 
+	 EOF 
+;
+
+// Rule SelectList
+ruleSelectList returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectListAccess().getResultColumnsResultColumnParserRuleCall_0_0()); 
+	    }
+		lv_resultColumns_0_0=ruleResultColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectListRule());
+	        }
+       		add(
+       			$current, 
+       			"resultColumns",
+        		lv_resultColumns_0_0, 
+        		"ResultColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_1=',' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getSelectListAccess().getCommaKeyword_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectListAccess().getResultColumnsResultColumnParserRuleCall_1_1_0()); 
+	    }
+		lv_resultColumns_2_0=ruleResultColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectListRule());
+	        }
+       		add(
+       			$current, 
+       			"resultColumns",
+        		lv_resultColumns_2_0, 
+        		"ResultColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*)
 ;
 
 
@@ -3260,19 +3299,25 @@ ruleCreateViewStatement returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='create' 
+((
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCreateViewStatementAccess().getCreateKeyword_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getCreateViewStatementAccess().getCreateViewStatementAction_0(),
+            $current);
     }
-	otherlv_1='view' 
+)	otherlv_1='create' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getCreateViewStatementAccess().getViewKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getCreateViewStatementAccess().getCreateKeyword_1());
+    }
+	otherlv_2='view' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCreateViewStatementAccess().getViewKeyword_2());
     }
 (
 (
-		lv_name_2_0=RULE_ID
+		lv_name_3_0=RULE_ID
 		{
-			newLeafNode(lv_name_2_0, grammarAccess.getCreateViewStatementAccess().getNameIDTerminalRuleCall_2_0()); 
+			newLeafNode(lv_name_3_0, grammarAccess.getCreateViewStatementAccess().getNameIDTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -3281,28 +3326,28 @@ ruleCreateViewStatement returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_2_0, 
+        		lv_name_3_0, 
         		"ID");
 	    }
 
 )
-)	otherlv_3='as' 
+)	otherlv_4='as' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getCreateViewStatementAccess().getAsKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getCreateViewStatementAccess().getAsKeyword_4());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCreateViewStatementAccess().getSelectStatementSelectStatementParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getCreateViewStatementAccess().getSelectStatementSelectStatementParserRuleCall_5_0()); 
 	    }
-		lv_selectStatement_4_0=ruleSelectStatement		{
+		lv_selectStatement_5_0=ruleSelectStatement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCreateViewStatementRule());
 	        }
        		set(
        			$current, 
        			"selectStatement",
-        		lv_selectStatement_4_0, 
+        		lv_selectStatement_5_0, 
         		"SelectStatement");
 	        afterParserOrEnumRuleCall();
 	    }

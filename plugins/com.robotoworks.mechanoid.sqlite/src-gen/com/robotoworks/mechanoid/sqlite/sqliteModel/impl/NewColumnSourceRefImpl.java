@@ -3,55 +3,47 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Column Source</b></em>'.
+ * An implementation of the model object '<em><b>New Column Source Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NewColumnSourceRefImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
+public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnSourceRef
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getColumn()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected ColumnSource column;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ColumnSourceImpl()
+  protected NewColumnSourceRefImpl()
   {
     super();
   }
@@ -64,7 +56,7 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.COLUMN_SOURCE;
+    return SqliteModelPackage.Literals.NEW_COLUMN_SOURCE_REF;
   }
 
   /**
@@ -72,9 +64,19 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public ColumnSource getColumn()
   {
-    return name;
+    if (column != null && column.eIsProxy())
+    {
+      InternalEObject oldColumn = (InternalEObject)column;
+      column = (ColumnSource)eResolveProxy(oldColumn);
+      if (column != oldColumn)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
+      }
+    }
+    return column;
   }
 
   /**
@@ -82,12 +84,22 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public ColumnSource basicGetColumn()
   {
-    String oldName = name;
-    name = newName;
+    return column;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColumn(ColumnSource newColumn)
+  {
+    ColumnSource oldColumn = column;
+    column = newColumn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.COLUMN_SOURCE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
   }
 
   /**
@@ -100,8 +112,9 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
   {
     switch (featureID)
     {
-      case SqliteModelPackage.COLUMN_SOURCE__NAME:
-        return getName();
+      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+        if (resolve) return getColumn();
+        return basicGetColumn();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +129,8 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
   {
     switch (featureID)
     {
-      case SqliteModelPackage.COLUMN_SOURCE__NAME:
-        setName((String)newValue);
+      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+        setColumn((ColumnSource)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +146,8 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
   {
     switch (featureID)
     {
-      case SqliteModelPackage.COLUMN_SOURCE__NAME:
-        setName(NAME_EDEFAULT);
+      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+        setColumn((ColumnSource)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +163,10 @@ public class ColumnSourceImpl extends ResultColumnImpl implements ColumnSource
   {
     switch (featureID)
     {
-      case SqliteModelPackage.COLUMN_SOURCE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+        return column != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
-
-} //ColumnSourceImpl
+} //NewColumnSourceRefImpl

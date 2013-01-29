@@ -12,7 +12,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -47,13 +47,13 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
@@ -61,6 +61,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin;
@@ -185,7 +186,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.COLUMN_SOURCE:
+			case SqliteModelPackage.COLUMN_SOURCE_REF:
 				if(context == grammarAccess.getExprAddRule() ||
 				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
 				   context == grammarAccess.getExprAndRule() ||
@@ -206,7 +207,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSqlExpressionRule()) {
-					sequence_PrimaryExpression(context, (ColumnSource) semanticObject); 
+					sequence_PrimaryExpression(context, (ColumnSourceRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -551,7 +552,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.NEW_COLUMN_SOURCE:
+			case SqliteModelPackage.NEW_COLUMN_SOURCE_REF:
 				if(context == grammarAccess.getExprAddRule() ||
 				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
 				   context == grammarAccess.getExprAndRule() ||
@@ -572,7 +573,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSqlExpressionRule()) {
-					sequence_PrimaryExpression(context, (NewColumnSource) semanticObject); 
+					sequence_PrimaryExpression(context, (NewColumnSourceRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -623,7 +624,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.OLD_COLUMN_SOURCE:
+			case SqliteModelPackage.OLD_COLUMN_SOURCE_REF:
 				if(context == grammarAccess.getExprAddRule() ||
 				   context == grammarAccess.getExprAddAccess().getExprAddLeftAction_1_0() ||
 				   context == grammarAccess.getExprAndRule() ||
@@ -644,7 +645,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getNullCheckExpressionAccess().getNullCheckExpressionLeftAction_1_0() ||
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSqlExpressionRule()) {
-					sequence_PrimaryExpression(context, (OldColumnSource) semanticObject); 
+					sequence_PrimaryExpression(context, (OldColumnSourceRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -693,6 +694,12 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getSelectCoreAccess().getSelectCoreLeftAction_1_0() ||
 				   context == grammarAccess.getSelectExpressionRule()) {
 					sequence_SelectExpression(context, (SelectExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.SELECT_LIST:
+				if(context == grammarAccess.getSelectListRule()) {
+					sequence_SelectList(context, (SelectList) semanticObject); 
 					return; 
 				}
 				else break;
@@ -984,8 +991,8 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCreateViewStatementAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getCreateViewStatementAccess().getSelectStatementSelectStatementParserRuleCall_4_0(), semanticObject.getSelectStatement());
+		feeder.accept(grammarAccess.getCreateViewStatementAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCreateViewStatementAccess().getSelectStatementSelectStatementParserRuleCall_5_0(), semanticObject.getSelectStatement());
 		feeder.finish();
 	}
 	
@@ -1446,7 +1453,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (source=[SelectSource|ID]? column=[ColumnSource|ID])
 	 */
-	protected void sequence_PrimaryExpression(EObject context, ColumnSource semanticObject) {
+	protected void sequence_PrimaryExpression(EObject context, ColumnSourceRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1496,10 +1503,10 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     column=[ColumnSource|ID]
 	 */
-	protected void sequence_PrimaryExpression(EObject context, NewColumnSource semanticObject) {
+	protected void sequence_PrimaryExpression(EObject context, NewColumnSourceRef semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.NEW_COLUMN_SOURCE__COLUMN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.NEW_COLUMN_SOURCE__COLUMN));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.NEW_COLUMN_SOURCE_REF__COLUMN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.NEW_COLUMN_SOURCE_REF__COLUMN));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1512,10 +1519,10 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     column=[ColumnSource|ID]
 	 */
-	protected void sequence_PrimaryExpression(EObject context, OldColumnSource semanticObject) {
+	protected void sequence_PrimaryExpression(EObject context, OldColumnSourceRef semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OLD_COLUMN_SOURCE__COLUMN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OLD_COLUMN_SOURCE__COLUMN));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.OLD_COLUMN_SOURCE_REF__COLUMN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.OLD_COLUMN_SOURCE_REF__COLUMN));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1577,8 +1584,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (
 	 *         (distinct?='distinct' | all?='all')? 
-	 *         resultColumns+=ResultColumn 
-	 *         resultColumns+=ResultColumn* 
+	 *         selectList=SelectList 
 	 *         source=JoinSource? 
 	 *         whereExpression=SqlExpression? 
 	 *         (groupByExpressions+=SqlExpression groupByExpressions+=SqlExpression*)? 
@@ -1586,6 +1592,15 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     )
 	 */
 	protected void sequence_SelectExpression(EObject context, SelectExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (resultColumns+=ResultColumn resultColumns+=ResultColumn*)
+	 */
+	protected void sequence_SelectList(EObject context, SelectList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

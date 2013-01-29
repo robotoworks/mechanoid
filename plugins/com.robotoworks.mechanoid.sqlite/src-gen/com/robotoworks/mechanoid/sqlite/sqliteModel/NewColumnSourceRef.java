@@ -5,21 +5,21 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Old Column Source</b></em>'.
+ * A representation of the model object '<em><b>New Column Source Ref</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource#getColumn <em>Column</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSourceRef#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumnSource()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getNewColumnSourceRef()
  * @model
  * @generated
  */
-public interface OldColumnSource extends Expression
+public interface NewColumnSourceRef extends Expression
 {
   /**
    * Returns the value of the '<em><b>Column</b></em>' reference.
@@ -31,14 +31,14 @@ public interface OldColumnSource extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Column</em>' reference.
    * @see #setColumn(ColumnSource)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumnSource_Column()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getNewColumnSourceRef_Column()
    * @model
    * @generated
    */
   ColumnSource getColumn();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSource#getColumn <em>Column</em>}' reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSourceRef#getColumn <em>Column</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Column</em>' reference.
@@ -47,4 +47,4 @@ public interface OldColumnSource extends Expression
    */
   void setColumn(ColumnSource value);
 
-} // OldColumnSource
+} // NewColumnSourceRef

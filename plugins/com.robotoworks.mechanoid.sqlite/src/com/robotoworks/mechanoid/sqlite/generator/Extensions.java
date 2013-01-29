@@ -51,9 +51,9 @@ public class Extensions {
 		SelectCoreExpression coreExpr = stmt.getSelectStatement().getCore();
 		if(coreExpr instanceof SelectCore) {
 			SelectCore core = (SelectCore) coreExpr;
-			return ((SelectExpression)core.getRight()).getResultColumns();
+			return ((SelectExpression)core.getRight()).getSelectList().getResultColumns();
 		} else {
-			return ((SelectExpression)coreExpr).getResultColumns();
+			return ((SelectExpression)coreExpr).getSelectList().getResultColumns();
 		}
 	}
 	

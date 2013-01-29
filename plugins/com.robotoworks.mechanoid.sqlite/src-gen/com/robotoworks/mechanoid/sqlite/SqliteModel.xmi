@@ -14,7 +14,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="package"/>
         <elements xsi:type="xtext:Assignment" feature="packageName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="database" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
@@ -73,7 +73,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="path" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.63"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.64"/>
         </elements>
       </alternatives>
     </rules>
@@ -91,7 +91,7 @@
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Assignment" feature="statements" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value=";"/>
         </elements>
@@ -353,7 +353,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//NewColumnSource"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//NewColumnSourceRef"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="new"/>
@@ -370,7 +370,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//OldColumnSource"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//OldColumnSourceRef"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Keyword" value="old"/>
@@ -387,7 +387,7 @@
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Action">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSource"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSourceRef"/>
             </type>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
@@ -417,7 +417,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="literalValue" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -512,7 +512,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value="as"/>
           <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
@@ -544,12 +544,12 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="order by"/>
           <elements xsi:type="xtext:Assignment" feature="orderingTerms" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Keyword" value=","/>
             <elements xsi:type="xtext:Assignment" feature="orderingTerms" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
             </elements>
           </elements>
         </elements>
@@ -568,7 +568,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="op" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="right" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
@@ -595,19 +595,13 @@
             <terminal xsi:type="xtext:Keyword" value="all"/>
           </elements>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="resultColumns" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value=","/>
-          <elements xsi:type="xtext:Assignment" feature="resultColumns" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-          </elements>
+        <elements xsi:type="xtext:Assignment" feature="selectList" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="from"/>
           <elements xsi:type="xtext:Assignment" feature="source" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
@@ -632,6 +626,22 @@
           <elements xsi:type="xtext:Keyword" value="having"/>
           <elements xsi:type="xtext:Assignment" feature="havingExpression" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SelectList">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectList"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="resultColumns" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="resultColumns" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
           </elements>
         </elements>
       </alternatives>
@@ -683,10 +693,10 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="source" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="joinStatements" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
         </elements>
       </alternatives>
     </rules>
@@ -695,9 +705,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SingleSource"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="SingleSourceTable">
@@ -756,7 +766,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="("/>
         <elements xsi:type="xtext:Assignment" feature="joinSource" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
       </alternatives>
@@ -792,7 +802,7 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="join"/>
         <elements xsi:type="xtext:Assignment" feature="singleSource" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="on"/>
         <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
@@ -805,8 +815,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ResultColumn"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ResultColumnAll">
@@ -868,7 +878,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="number" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -878,7 +888,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.63"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.64"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -959,18 +969,18 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//DDLStatement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CreateTableStatement">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectSource"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -985,18 +995,18 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="("/>
         <elements xsi:type="xtext:Assignment" feature="columnDefs" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="columnDefs" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="constraints" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
@@ -1007,6 +1017,11 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateViewStatement"/>
       </type>
       <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateViewStatement"/>
+          </type>
+        </elements>
         <elements xsi:type="xtext:Keyword" value="create"/>
         <elements xsi:type="xtext:Keyword" value="view"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -1076,12 +1091,12 @@
         <elements xsi:type="xtext:Keyword" value="begin"/>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Assignment" feature="statements" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value=";"/>
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Assignment" feature="statements" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
             </elements>
             <elements xsi:type="xtext:Keyword" value=";"/>
           </elements>
@@ -1100,7 +1115,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="clause" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
         </elements>
       </alternatives>
     </rules>
@@ -1173,7 +1188,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value="add column"/>
           <elements xsi:type="xtext:Assignment" feature="columnDef" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
           </elements>
         </elements>
       </alternatives>
@@ -1192,10 +1207,10 @@
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="constraints" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
         </elements>
       </alternatives>
     </rules>
@@ -1231,7 +1246,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value="not null"/>
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="conflictClause" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -1242,7 +1257,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value="default"/>
           <elements xsi:type="xtext:Assignment" feature="defaultValue" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
           </elements>
         </elements>
       </alternatives>
@@ -1252,9 +1267,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableConstraint"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="UniqueTableConstraint">
@@ -1271,17 +1286,17 @@
         <elements xsi:type="xtext:Keyword" value="unique"/>
         <elements xsi:type="xtext:Keyword" value="("/>
         <elements xsi:type="xtext:Assignment" feature="columns" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="columns" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
         <elements xsi:type="xtext:Assignment" feature="conflictClause" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
         </elements>
       </alternatives>
     </rules>
@@ -1299,17 +1314,17 @@
         <elements xsi:type="xtext:Keyword" value="primary key"/>
         <elements xsi:type="xtext:Keyword" value="("/>
         <elements xsi:type="xtext:Assignment" feature="columns" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="columns" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
         <elements xsi:type="xtext:Assignment" feature="conflictClause" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.51"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
         </elements>
       </alternatives>
     </rules>
@@ -1367,7 +1382,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -1392,7 +1407,7 @@
         <elements xsi:type="xtext:Keyword" value="on"/>
         <elements xsi:type="xtext:Keyword" value="conflict"/>
         <elements xsi:type="xtext:Assignment" feature="resolution" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
         </elements>
       </alternatives>
     </rules>
@@ -1456,9 +1471,9 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.57"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="DeleteStatement">
@@ -1490,7 +1505,7 @@
             <elements xsi:type="xtext:Group" cardinality="?">
               <elements xsi:type="xtext:Keyword" value="or"/>
               <elements xsi:type="xtext:Assignment" feature="conflictResolution" operator="=">
-                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
               </elements>
             </elements>
           </elements>
@@ -1549,7 +1564,7 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="or"/>
           <elements xsi:type="xtext:Assignment" feature="conflictResolution" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="tableName" operator="=">
@@ -1557,12 +1572,12 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="set"/>
         <elements xsi:type="xtext:Assignment" feature="updateColumnExpressions" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="updateColumnExpressions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
@@ -1593,7 +1608,7 @@
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" cardinality="?" value="-"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.62"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="QualifiedName">
