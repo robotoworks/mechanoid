@@ -6,7 +6,7 @@ package com.robotoworks.examples.recipes.content.migrations;
 import android.database.sqlite.SQLiteDatabase;
 import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
 
-public abstract class AbstractRecipesDBMigrationV2 extends SQLiteMigration {
+public class DefaultRecipesDBMigrationV2 extends SQLiteMigration {
 	@Override
 	public void up(SQLiteDatabase db) {
 		db.execSQL(
