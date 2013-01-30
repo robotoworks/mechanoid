@@ -172,6 +172,8 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
+    this.context.registerImport("java.util.List");
+    _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
     String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
@@ -207,6 +209,8 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
+    this.context.registerImport("java.util.List");
+    _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
     String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
