@@ -29,10 +29,31 @@ class ContentProviderContractGenerator {
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
+			import java.lang.reflect.Field;
 			
 			public class «model.database.name.pascalize»Contract  {
-			    public static final String CONTENT_AUTHORITY = "«model.packageName».«model.database.name.toLowerCase»";
+			    public static final String CONTENT_AUTHORITY = initAuthority();
+
+				private static String initAuthority() {
+					String authority = "«model.packageName».«model.database.name.toLowerCase»";
 			
+					try {
+			    		
+			    		ClassLoader loader = «model.database.name.pascalize»Contract.class.getClassLoader();
+			    		
+						Class<?> clz = loader.loadClass("com.justeat.app.data.«model.database.name.pascalize»ContentProviderAuthority");
+						Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
+						
+						authority = declaredField.get(null).toString();
+					} catch (ClassNotFoundException e) {} 
+			    	catch (NoSuchFieldException e) {} 
+			    	catch (IllegalArgumentException e) {
+					} catch (IllegalAccessException e) {
+					}
+					
+					return authority;
+				}
+				
 			    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 			
 				«FOR tbl : snapshot.statements.filter(typeof(CreateTableStatement))»
