@@ -551,7 +551,7 @@ public class RequestGenerator {
         this.context.registerImport("java.io.OutputStream");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        _builder.append("void writeBody(TransformerProvider transformerProvider, OutputStream stream) throws TransformException {");
+        _builder.append("void writeBody(TransformerProvider provider, OutputStream stream) throws TransformException {");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
@@ -1135,7 +1135,7 @@ public class RequestGenerator {
     _builder.append(_generateSerializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("transformerProvider.get(");
+    _builder.append("provider.get(");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
     _builder.append("Transformer.class).transformOut(");
@@ -1214,7 +1214,7 @@ public class RequestGenerator {
     _builder.append(_generateSerializationStatementHeader, "");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("transformerProvider.get(");
+    _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
     _builder.append("Transformer.class).transformOut(");

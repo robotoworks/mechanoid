@@ -149,7 +149,7 @@ class RequestGenerator {
 		«context.registerImport("com.robotoworks.mechanoid.net.TransformException")»
 		«context.registerImport("com.robotoworks.mechanoid.util.Closeables")»
 		«context.registerImport("java.io.OutputStream")»
-		void writeBody(TransformerProvider transformerProvider, OutputStream stream) throws TransformException {
+		void writeBody(TransformerProvider provider, OutputStream stream) throws TransformException {
 			«generateSerializationStatementForType(method, method.body, method.body.type)»
 		}
 
@@ -347,7 +347,7 @@ class RequestGenerator {
 		UserType type,
 		ComplexTypeDeclaration declaration) '''
 			«generateSerializationStatementHeader(true)»
-				transformerProvider.get(«type.signature»Transformer.class).transformOut(«type.signature.camelize», target);
+				provider.get(«type.signature»Transformer.class).transformOut(«type.signature.camelize», target);
 			«generateSerializationStatementFooter(true)»
 		'''
 	
@@ -395,7 +395,7 @@ class RequestGenerator {
 	) '''
 		«context.registerImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
-			transformerProvider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
 		«generateSerializationStatementFooter(true)»
 	'''
 
