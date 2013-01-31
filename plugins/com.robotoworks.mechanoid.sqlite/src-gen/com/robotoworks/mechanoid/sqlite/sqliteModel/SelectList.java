@@ -26,7 +26,7 @@ public interface SelectList extends EObject
 {
   /**
    * Returns the value of the '<em><b>Result Columns</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Result Columns</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface SelectList extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ResultColumn> getResultColumns();
+  EList<ColumnSource> getResultColumns();
 
 } // SelectList

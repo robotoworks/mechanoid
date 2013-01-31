@@ -2,26 +2,21 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.GroupByExpressions;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.HavingExpressions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-
-import java.util.Collection;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.WhereExpressions;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,11 +27,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#isAll <em>All</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#isAllColumns <em>All Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getSelectList <em>Select List</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getSource <em>Source</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getWhereExpression <em>Where Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getHavingExpression <em>Having Expression</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getWhere <em>Where</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getGroupBy <em>Group By</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectExpressionImpl#getHaving <em>Having</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,6 +81,26 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
   protected boolean all = ALL_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isAllColumns() <em>All Columns</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAllColumns()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ALL_COLUMNS_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isAllColumns() <em>All Columns</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAllColumns()
+   * @generated
+   * @ordered
+   */
+  protected boolean allColumns = ALL_COLUMNS_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getSelectList() <em>Select List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -105,34 +121,34 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
   protected JoinSource source;
 
   /**
-   * The cached value of the '{@link #getWhereExpression() <em>Where Expression</em>}' containment reference.
+   * The cached value of the '{@link #getWhere() <em>Where</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWhereExpression()
+   * @see #getWhere()
    * @generated
    * @ordered
    */
-  protected Expression whereExpression;
+  protected WhereExpressions where;
 
   /**
-   * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
+   * The cached value of the '{@link #getGroupBy() <em>Group By</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGroupByExpressions()
+   * @see #getGroupBy()
    * @generated
    * @ordered
    */
-  protected EList<Expression> groupByExpressions;
+  protected GroupByExpressions groupBy;
 
   /**
-   * The cached value of the '{@link #getHavingExpression() <em>Having Expression</em>}' containment reference.
+   * The cached value of the '{@link #getHaving() <em>Having</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHavingExpression()
+   * @see #getHaving()
    * @generated
    * @ordered
    */
-  protected Expression havingExpression;
+  protected HavingExpressions having;
 
   /**
    * <!-- begin-user-doc -->
@@ -199,6 +215,29 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
     all = newAll;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__ALL, oldAll, all));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isAllColumns()
+  {
+    return allColumns;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAllColumns(boolean newAllColumns)
+  {
+    boolean oldAllColumns = allColumns;
+    allColumns = newAllColumns;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__ALL_COLUMNS, oldAllColumns, allColumns));
   }
 
   /**
@@ -302,9 +341,9 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getWhereExpression()
+  public WhereExpressions getWhere()
   {
-    return whereExpression;
+    return where;
   }
 
   /**
@@ -312,13 +351,13 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWhereExpression(Expression newWhereExpression, NotificationChain msgs)
+  public NotificationChain basicSetWhere(WhereExpressions newWhere, NotificationChain msgs)
   {
-    Expression oldWhereExpression = whereExpression;
-    whereExpression = newWhereExpression;
+    WhereExpressions oldWhere = where;
+    where = newWhere;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION, oldWhereExpression, newWhereExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__WHERE, oldWhere, newWhere);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -329,20 +368,20 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWhereExpression(Expression newWhereExpression)
+  public void setWhere(WhereExpressions newWhere)
   {
-    if (newWhereExpression != whereExpression)
+    if (newWhere != where)
     {
       NotificationChain msgs = null;
-      if (whereExpression != null)
-        msgs = ((InternalEObject)whereExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION, null, msgs);
-      if (newWhereExpression != null)
-        msgs = ((InternalEObject)newWhereExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION, null, msgs);
-      msgs = basicSetWhereExpression(newWhereExpression, msgs);
+      if (where != null)
+        msgs = ((InternalEObject)where).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__WHERE, null, msgs);
+      if (newWhere != null)
+        msgs = ((InternalEObject)newWhere).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__WHERE, null, msgs);
+      msgs = basicSetWhere(newWhere, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION, newWhereExpression, newWhereExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__WHERE, newWhere, newWhere));
   }
 
   /**
@@ -350,13 +389,9 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getGroupByExpressions()
+  public GroupByExpressions getGroupBy()
   {
-    if (groupByExpressions == null)
-    {
-      groupByExpressions = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS);
-    }
-    return groupByExpressions;
+    return groupBy;
   }
 
   /**
@@ -364,23 +399,13 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getHavingExpression()
+  public NotificationChain basicSetGroupBy(GroupByExpressions newGroupBy, NotificationChain msgs)
   {
-    return havingExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetHavingExpression(Expression newHavingExpression, NotificationChain msgs)
-  {
-    Expression oldHavingExpression = havingExpression;
-    havingExpression = newHavingExpression;
+    GroupByExpressions oldGroupBy = groupBy;
+    groupBy = newGroupBy;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION, oldHavingExpression, newHavingExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY, oldGroupBy, newGroupBy);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -391,20 +416,68 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHavingExpression(Expression newHavingExpression)
+  public void setGroupBy(GroupByExpressions newGroupBy)
   {
-    if (newHavingExpression != havingExpression)
+    if (newGroupBy != groupBy)
     {
       NotificationChain msgs = null;
-      if (havingExpression != null)
-        msgs = ((InternalEObject)havingExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION, null, msgs);
-      if (newHavingExpression != null)
-        msgs = ((InternalEObject)newHavingExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION, null, msgs);
-      msgs = basicSetHavingExpression(newHavingExpression, msgs);
+      if (groupBy != null)
+        msgs = ((InternalEObject)groupBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY, null, msgs);
+      if (newGroupBy != null)
+        msgs = ((InternalEObject)newGroupBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY, null, msgs);
+      msgs = basicSetGroupBy(newGroupBy, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION, newHavingExpression, newHavingExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY, newGroupBy, newGroupBy));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HavingExpressions getHaving()
+  {
+    return having;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHaving(HavingExpressions newHaving, NotificationChain msgs)
+  {
+    HavingExpressions oldHaving = having;
+    having = newHaving;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__HAVING, oldHaving, newHaving);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHaving(HavingExpressions newHaving)
+  {
+    if (newHaving != having)
+    {
+      NotificationChain msgs = null;
+      if (having != null)
+        msgs = ((InternalEObject)having).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__HAVING, null, msgs);
+      if (newHaving != null)
+        msgs = ((InternalEObject)newHaving).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_EXPRESSION__HAVING, null, msgs);
+      msgs = basicSetHaving(newHaving, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_EXPRESSION__HAVING, newHaving, newHaving));
   }
 
   /**
@@ -421,12 +494,12 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
         return basicSetSelectList(null, msgs);
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return basicSetSource(null, msgs);
-      case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
-        return basicSetWhereExpression(null, msgs);
-      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS:
-        return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION:
-        return basicSetHavingExpression(null, msgs);
+      case SqliteModelPackage.SELECT_EXPRESSION__WHERE:
+        return basicSetWhere(null, msgs);
+      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY:
+        return basicSetGroupBy(null, msgs);
+      case SqliteModelPackage.SELECT_EXPRESSION__HAVING:
+        return basicSetHaving(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -445,16 +518,18 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
         return isDistinct();
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         return isAll();
+      case SqliteModelPackage.SELECT_EXPRESSION__ALL_COLUMNS:
+        return isAllColumns();
       case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
         return getSelectList();
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return getSource();
-      case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
-        return getWhereExpression();
-      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS:
-        return getGroupByExpressions();
-      case SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION:
-        return getHavingExpression();
+      case SqliteModelPackage.SELECT_EXPRESSION__WHERE:
+        return getWhere();
+      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY:
+        return getGroupBy();
+      case SqliteModelPackage.SELECT_EXPRESSION__HAVING:
+        return getHaving();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -464,7 +539,6 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -476,21 +550,23 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         setAll((Boolean)newValue);
         return;
+      case SqliteModelPackage.SELECT_EXPRESSION__ALL_COLUMNS:
+        setAllColumns((Boolean)newValue);
+        return;
       case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
         setSelectList((SelectList)newValue);
         return;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         setSource((JoinSource)newValue);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
-        setWhereExpression((Expression)newValue);
+      case SqliteModelPackage.SELECT_EXPRESSION__WHERE:
+        setWhere((WhereExpressions)newValue);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS:
-        getGroupByExpressions().clear();
-        getGroupByExpressions().addAll((Collection<? extends Expression>)newValue);
+      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY:
+        setGroupBy((GroupByExpressions)newValue);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION:
-        setHavingExpression((Expression)newValue);
+      case SqliteModelPackage.SELECT_EXPRESSION__HAVING:
+        setHaving((HavingExpressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -512,20 +588,23 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         setAll(ALL_EDEFAULT);
         return;
+      case SqliteModelPackage.SELECT_EXPRESSION__ALL_COLUMNS:
+        setAllColumns(ALL_COLUMNS_EDEFAULT);
+        return;
       case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
         setSelectList((SelectList)null);
         return;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         setSource((JoinSource)null);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
-        setWhereExpression((Expression)null);
+      case SqliteModelPackage.SELECT_EXPRESSION__WHERE:
+        setWhere((WhereExpressions)null);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS:
-        getGroupByExpressions().clear();
+      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY:
+        setGroupBy((GroupByExpressions)null);
         return;
-      case SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION:
-        setHavingExpression((Expression)null);
+      case SqliteModelPackage.SELECT_EXPRESSION__HAVING:
+        setHaving((HavingExpressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -545,16 +624,18 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
         return distinct != DISTINCT_EDEFAULT;
       case SqliteModelPackage.SELECT_EXPRESSION__ALL:
         return all != ALL_EDEFAULT;
+      case SqliteModelPackage.SELECT_EXPRESSION__ALL_COLUMNS:
+        return allColumns != ALL_COLUMNS_EDEFAULT;
       case SqliteModelPackage.SELECT_EXPRESSION__SELECT_LIST:
         return selectList != null;
       case SqliteModelPackage.SELECT_EXPRESSION__SOURCE:
         return source != null;
-      case SqliteModelPackage.SELECT_EXPRESSION__WHERE_EXPRESSION:
-        return whereExpression != null;
-      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY_EXPRESSIONS:
-        return groupByExpressions != null && !groupByExpressions.isEmpty();
-      case SqliteModelPackage.SELECT_EXPRESSION__HAVING_EXPRESSION:
-        return havingExpression != null;
+      case SqliteModelPackage.SELECT_EXPRESSION__WHERE:
+        return where != null;
+      case SqliteModelPackage.SELECT_EXPRESSION__GROUP_BY:
+        return groupBy != null;
+      case SqliteModelPackage.SELECT_EXPRESSION__HAVING:
+        return having != null;
     }
     return super.eIsSet(featureID);
   }
@@ -574,6 +655,8 @@ public class SelectExpressionImpl extends SelectCoreExpressionImpl implements Se
     result.append(distinct);
     result.append(", all: ");
     result.append(all);
+    result.append(", allColumns: ");
+    result.append(allColumns);
     result.append(')');
     return result.toString();
   }

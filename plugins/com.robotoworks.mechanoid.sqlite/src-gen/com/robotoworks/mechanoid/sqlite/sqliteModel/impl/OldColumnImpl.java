@@ -3,7 +3,7 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumnSourceRef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>New Column Source Ref</b></em>'.
+ * An implementation of the model object '<em><b>Old Column</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NewColumnSourceRefImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OldColumnImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnSourceRef
+public class OldColumnImpl extends ExpressionImpl implements OldColumn
 {
   /**
    * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
@@ -43,7 +43,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NewColumnSourceRefImpl()
+  protected OldColumnImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.NEW_COLUMN_SOURCE_REF;
+    return SqliteModelPackage.Literals.OLD_COLUMN;
   }
 
   /**
@@ -73,7 +73,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
       if (column != oldColumn)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.OLD_COLUMN__COLUMN, oldColumn, column));
       }
     }
     return column;
@@ -99,7 +99,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
     ColumnSource oldColumn = column;
     column = newColumn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN, oldColumn, column));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.OLD_COLUMN__COLUMN, oldColumn, column));
   }
 
   /**
@@ -112,7 +112,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN__COLUMN:
         if (resolve) return getColumn();
         return basicGetColumn();
     }
@@ -129,7 +129,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN__COLUMN:
         setColumn((ColumnSource)newValue);
         return;
     }
@@ -146,7 +146,7 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN__COLUMN:
         setColumn((ColumnSource)null);
         return;
     }
@@ -163,10 +163,10 @@ public class NewColumnSourceRefImpl extends ExpressionImpl implements NewColumnS
   {
     switch (featureID)
     {
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF__COLUMN:
+      case SqliteModelPackage.OLD_COLUMN__COLUMN:
         return column != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //NewColumnSourceRefImpl
+} //OldColumnImpl

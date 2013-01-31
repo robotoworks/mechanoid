@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateViewStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.CreateViewStatementImpl#getSelectStatement <em>Select Statement</em>}</li>
  * </ul>
  * </p>
@@ -29,6 +30,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class CreateViewStatementImpl extends DDLStatementImpl implements CreateViewStatement
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getSelectStatement() <em>Select Statement</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -58,6 +79,29 @@ public class CreateViewStatementImpl extends DDLStatementImpl implements CreateV
   protected EClass eStaticClass()
   {
     return SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_VIEW_STATEMENT__NAME, oldName, name));
   }
 
   /**
@@ -134,6 +178,8 @@ public class CreateViewStatementImpl extends DDLStatementImpl implements CreateV
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__NAME:
+        return getName();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         return getSelectStatement();
     }
@@ -150,6 +196,9 @@ public class CreateViewStatementImpl extends DDLStatementImpl implements CreateV
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__NAME:
+        setName((String)newValue);
+        return;
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)newValue);
         return;
@@ -167,6 +216,9 @@ public class CreateViewStatementImpl extends DDLStatementImpl implements CreateV
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)null);
         return;
@@ -184,10 +236,29 @@ public class CreateViewStatementImpl extends DDLStatementImpl implements CreateV
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         return selectStatement != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //CreateViewStatementImpl

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "'migration'", "';'", "'||'", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'and'", "'or'", "'is null'", "'not null'", "'notnull'", "'new'", "'.'", "'old'", "'('", "')'", "'not'", "'exists'", "'case'", "'else'", "'end'", "','", "'cast'", "'as'", "'when'", "'then'", "'order by'", "'select'", "'distinct'", "'all'", "'from'", "'where'", "'group by'", "'having'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'join'", "'on'", "'.*'", "'null'", "'current_time'", "'current_date'", "'current_time_stamp'", "'create'", "'table'", "'view'", "'trigger'", "'before'", "'after'", "'instead of'", "'delete'", "'insert'", "'update'", "'of'", "'for each row'", "'begin'", "'alter'", "'drop'", "'if exists'", "'rename to'", "'add column'", "'primary key'", "'autoincrement'", "'default'", "'constraint'", "'unique'", "'check'", "'conflict'", "'replace'", "'into'", "'values'", "'set'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "'migration'", "';'", "'||'", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'and'", "'or'", "'is null'", "'not null'", "'notnull'", "'new.'", "'old.'", "'.'", "'('", "')'", "'not'", "'exists'", "'case'", "'else'", "'end'", "','", "'cast'", "'as'", "'when'", "'then'", "'order by'", "'select'", "'distinct'", "'all'", "'from'", "'where'", "'group by'", "'having'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'join'", "'on'", "'null'", "'current_time'", "'current_date'", "'current_time_stamp'", "'create'", "'table'", "'view'", "'trigger'", "'before'", "'after'", "'instead of'", "'delete'", "'insert'", "'update'", "'of'", "'for each row'", "'begin'", "'alter'", "'drop'", "'if exists'", "'rename to'", "'add column'", "'primary key'", "'autoincrement'", "'default'", "'constraint'", "'unique'", "'check'", "'conflict'", "'replace'", "'into'", "'values'", "'set'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -77,7 +77,6 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final int T__70=70;
     public static final int T__76=76;
     public static final int T__75=75;
-    public static final int T__130=130;
     public static final int T__74=74;
     public static final int T__73=73;
     public static final int T__79=79;
@@ -912,7 +911,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==87||(LA4_0>=100 && LA4_0<=101)) ) {
+                if ( (LA4_0==86||(LA4_0>=99 && LA4_0<=100)) ) {
                     alt4=1;
                 }
 
@@ -3376,80 +3375,81 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimaryExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1336:1: rulePrimaryExpression returns [EObject current=null] : ( ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) | ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) ) | ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) ) | ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) ) | ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' ) | ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' ) | ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' ) | ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' ) | ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1336:1: rulePrimaryExpression returns [EObject current=null] : ( ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) ) | ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' ) | ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) ) | ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) ) | ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' ) | ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' ) | ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' ) | ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' ) | ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' ) ) ;
     public final EObject rulePrimaryExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
+        Token otherlv_4=null;
         Token otherlv_5=null;
-        Token otherlv_6=null;
         Token otherlv_7=null;
+        Token otherlv_8=null;
         Token otherlv_9=null;
-        Token otherlv_10=null;
         Token otherlv_11=null;
-        Token otherlv_15=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
         Token otherlv_17=null;
-        Token lv_not_19_0=null;
-        Token lv_exists_20_0=null;
-        Token otherlv_21=null;
+        Token otherlv_19=null;
+        Token lv_not_21_0=null;
+        Token lv_exists_22_0=null;
         Token otherlv_23=null;
         Token otherlv_25=null;
-        Token otherlv_28=null;
+        Token otherlv_27=null;
         Token otherlv_30=null;
-        Token lv_name_32_0=null;
-        Token otherlv_33=null;
-        Token lv_all_34_0=null;
-        Token otherlv_36=null;
+        Token otherlv_32=null;
+        Token lv_name_34_0=null;
+        Token otherlv_35=null;
+        Token lv_all_36_0=null;
         Token otherlv_38=null;
         Token otherlv_40=null;
-        Token otherlv_41=null;
+        Token otherlv_42=null;
         Token otherlv_43=null;
         Token otherlv_45=null;
-        EObject lv_literalValue_13_0 = null;
+        Token otherlv_47=null;
+        EObject lv_literalValue_15_0 = null;
 
-        EObject lv_expression_16_0 = null;
+        EObject lv_expression_18_0 = null;
 
-        EObject lv_select_22_0 = null;
+        EObject lv_select_24_0 = null;
 
-        EObject lv_caseExpression_26_0 = null;
+        EObject lv_caseExpression_28_0 = null;
 
-        EObject lv_cases_27_0 = null;
+        EObject lv_cases_29_0 = null;
 
-        EObject lv_elseExpression_29_0 = null;
+        EObject lv_elseExpression_31_0 = null;
 
-        EObject lv_arguments_35_0 = null;
+        EObject lv_arguments_37_0 = null;
 
-        EObject lv_arugments_37_0 = null;
+        EObject lv_arguments_39_0 = null;
 
-        EObject lv_expression_42_0 = null;
+        EObject lv_expression_44_0 = null;
 
-        Enumerator lv_type_44_0 = null;
+        Enumerator lv_type_46_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1339:28: ( ( ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) | ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) ) | ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) ) | ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) ) | ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' ) | ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' ) | ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' ) | ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' ) | ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:1: ( ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) | ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) ) | ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) ) | ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) ) | ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' ) | ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' ) | ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' ) | ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' ) | ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1339:28: ( ( ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) ) | ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' ) | ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) ) | ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) ) | ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' ) | ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' ) | ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' ) | ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' ) | ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:1: ( ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) ) | ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' ) | ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) ) | ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) ) | ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' ) | ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' ) | ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' ) | ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' ) | ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:1: ( ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) | ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) ) | ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) ) | ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) ) | ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' ) | ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' ) | ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' ) | ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' ) | ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' ) )
-            int alt29=9;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:1: ( ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) ) | ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' ) | ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) ) | ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) ) | ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' ) | ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' ) | ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' ) | ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' ) | ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' ) )
+            int alt29=10;
             alt29 = dfa29.predict(input);
             switch (alt29) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:2: ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:2: ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:2: ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:3: () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:2: ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:3: () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) )
                     {
                     // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1340:3: ()
                     // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1341:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getNewColumnSourceRefAction_0_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getNewColumnAction_0_0(),
                                 current);
                         
 
@@ -3459,24 +3459,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                         	newLeafNode(otherlv_1, grammarAccess.getPrimaryExpressionAccess().getNewKeyword_0_1());
                         
-                    otherlv_2=(Token)match(input,51,FOLLOW_51_in_rulePrimaryExpression3050); 
-
-                        	newLeafNode(otherlv_2, grammarAccess.getPrimaryExpressionAccess().getFullStopKeyword_0_2());
-                        
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1354:1: ( (otherlv_3= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1355:1: (otherlv_3= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1350:1: ( (otherlv_2= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1351:1: (otherlv_2= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1355:1: (otherlv_3= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1356:3: otherlv_3= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1351:1: (otherlv_2= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1352:3: otherlv_2= RULE_ID
                     {
 
                     			if (current==null) {
                     	            current = createModelElement(grammarAccess.getPrimaryExpressionRule());
                     	        }
                             
-                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3070); 
+                    otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3058); 
 
-                    		newLeafNode(otherlv_3, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_0_3_0()); 
+                    		newLeafNode(otherlv_2, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_0_2_0()); 
                     	
 
                     }
@@ -3491,44 +3487,40 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1368:6: ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1364:6: ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1368:6: ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1368:7: () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1364:6: ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1364:7: () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1368:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1369:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1364:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1365:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getOldColumnSourceRefAction_1_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getOldColumnAction_1_0(),
                                 current);
                         
 
                     }
 
-                    otherlv_5=(Token)match(input,52,FOLLOW_52_in_rulePrimaryExpression3099); 
+                    otherlv_4=(Token)match(input,51,FOLLOW_51_in_rulePrimaryExpression3087); 
 
-                        	newLeafNode(otherlv_5, grammarAccess.getPrimaryExpressionAccess().getOldKeyword_1_1());
+                        	newLeafNode(otherlv_4, grammarAccess.getPrimaryExpressionAccess().getOldKeyword_1_1());
                         
-                    otherlv_6=(Token)match(input,51,FOLLOW_51_in_rulePrimaryExpression3111); 
-
-                        	newLeafNode(otherlv_6, grammarAccess.getPrimaryExpressionAccess().getFullStopKeyword_1_2());
-                        
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1382:1: ( (otherlv_7= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1383:1: (otherlv_7= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1374:1: ( (otherlv_5= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1375:1: (otherlv_5= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1383:1: (otherlv_7= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1384:3: otherlv_7= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1375:1: (otherlv_5= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1376:3: otherlv_5= RULE_ID
                     {
 
                     			if (current==null) {
                     	            current = createModelElement(grammarAccess.getPrimaryExpressionRule());
                     	        }
                             
-                    otherlv_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3131); 
+                    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3107); 
 
-                    		newLeafNode(otherlv_7, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_1_3_0()); 
+                    		newLeafNode(otherlv_5, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_1_2_0()); 
                     	
 
                     }
@@ -3543,51 +3535,103 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1396:6: ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1388:6: ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1396:6: ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1396:7: () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1388:6: ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1388:7: () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1396:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1397:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1388:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1389:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getColumnSourceRefAction_2_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getAllColumnsAction_2_0(),
                                 current);
                         
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1402:2: ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1394:2: ( (otherlv_7= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1395:1: (otherlv_7= RULE_ID )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1395:1: (otherlv_7= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1396:3: otherlv_7= RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getPrimaryExpressionRule());
+                    	        }
+                            
+                    otherlv_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3144); 
+
+                    		newLeafNode(otherlv_7, grammarAccess.getPrimaryExpressionAccess().getSourceSelectSourceCrossReference_2_1_0()); 
+                    	
+
+                    }
+
+
+                    }
+
+                    otherlv_8=(Token)match(input,52,FOLLOW_52_in_rulePrimaryExpression3156); 
+
+                        	newLeafNode(otherlv_8, grammarAccess.getPrimaryExpressionAccess().getFullStopKeyword_2_2());
+                        
+                    otherlv_9=(Token)match(input,21,FOLLOW_21_in_rulePrimaryExpression3168); 
+
+                        	newLeafNode(otherlv_9, grammarAccess.getPrimaryExpressionAccess().getAsteriskKeyword_2_3());
+                        
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1416:6: ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1416:6: ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1416:7: () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1416:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1417:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getPrimaryExpressionAccess().getColumnSourceRefAction_3_0(),
+                                current);
+                        
+
+                    }
+
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1422:2: ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )?
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
                     if ( (LA21_0==RULE_ID) ) {
                         int LA21_1 = input.LA(2);
 
-                        if ( (LA21_1==51) ) {
+                        if ( (LA21_1==52) ) {
                             alt21=1;
                         }
                     }
                     switch (alt21) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1402:3: ( (otherlv_9= RULE_ID ) ) otherlv_10= '.'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1422:3: ( (otherlv_11= RULE_ID ) ) otherlv_12= '.'
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1402:3: ( (otherlv_9= RULE_ID ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1403:1: (otherlv_9= RULE_ID )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1422:3: ( (otherlv_11= RULE_ID ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1423:1: (otherlv_11= RULE_ID )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1403:1: (otherlv_9= RULE_ID )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1404:3: otherlv_9= RULE_ID
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1423:1: (otherlv_11= RULE_ID )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1424:3: otherlv_11= RULE_ID
                             {
 
                             			if (current==null) {
                             	            current = createModelElement(grammarAccess.getPrimaryExpressionRule());
                             	        }
                                     
-                            otherlv_9=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3169); 
+                            otherlv_11=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3206); 
 
-                            		newLeafNode(otherlv_9, grammarAccess.getPrimaryExpressionAccess().getSourceSelectSourceCrossReference_2_1_0_0()); 
+                            		newLeafNode(otherlv_11, grammarAccess.getPrimaryExpressionAccess().getSourceSelectSourceCrossReference_3_1_0_0()); 
                             	
 
                             }
@@ -3595,9 +3639,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_10=(Token)match(input,51,FOLLOW_51_in_rulePrimaryExpression3181); 
+                            otherlv_12=(Token)match(input,52,FOLLOW_52_in_rulePrimaryExpression3218); 
 
-                                	newLeafNode(otherlv_10, grammarAccess.getPrimaryExpressionAccess().getFullStopKeyword_2_1_1());
+                                	newLeafNode(otherlv_12, grammarAccess.getPrimaryExpressionAccess().getFullStopKeyword_3_1_1());
                                 
 
                             }
@@ -3605,20 +3649,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1419:3: ( (otherlv_11= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1420:1: (otherlv_11= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1439:3: ( (otherlv_13= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1440:1: (otherlv_13= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1420:1: (otherlv_11= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1421:3: otherlv_11= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1440:1: (otherlv_13= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1441:3: otherlv_13= RULE_ID
                     {
 
                     			if (current==null) {
                     	            current = createModelElement(grammarAccess.getPrimaryExpressionRule());
                     	        }
                             
-                    otherlv_11=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3203); 
+                    otherlv_13=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3240); 
 
-                    		newLeafNode(otherlv_11, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_2_2_0()); 
+                    		newLeafNode(otherlv_13, grammarAccess.getPrimaryExpressionAccess().getColumnColumnSourceCrossReference_3_2_0()); 
                     	
 
                     }
@@ -3632,34 +3676,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1433:6: ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) )
+                case 5 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1453:6: ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1433:6: ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1433:7: () ( (lv_literalValue_13_0= ruleLiteralValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1453:6: ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1453:7: () ( (lv_literalValue_15_0= ruleLiteralValue ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1433:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1434:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1453:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1454:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getLiteralAction_3_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getLiteralAction_4_0(),
                                 current);
                         
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1439:2: ( (lv_literalValue_13_0= ruleLiteralValue ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1440:1: (lv_literalValue_13_0= ruleLiteralValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1459:2: ( (lv_literalValue_15_0= ruleLiteralValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1460:1: (lv_literalValue_15_0= ruleLiteralValue )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1440:1: (lv_literalValue_13_0= ruleLiteralValue )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1441:3: lv_literalValue_13_0= ruleLiteralValue
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1460:1: (lv_literalValue_15_0= ruleLiteralValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1461:3: lv_literalValue_15_0= ruleLiteralValue
                     {
                      
-                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getLiteralValueLiteralValueParserRuleCall_3_1_0()); 
+                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getLiteralValueLiteralValueParserRuleCall_4_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleLiteralValue_in_rulePrimaryExpression3241);
-                    lv_literalValue_13_0=ruleLiteralValue();
+                    pushFollow(FOLLOW_ruleLiteralValue_in_rulePrimaryExpression3278);
+                    lv_literalValue_15_0=ruleLiteralValue();
 
                     state._fsp--;
 
@@ -3670,7 +3714,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"literalValue",
-                            		lv_literalValue_13_0, 
+                            		lv_literalValue_15_0, 
                             		"LiteralValue");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -3686,38 +3730,38 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1458:6: ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' )
+                case 6 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1478:6: ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1458:6: ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1458:7: () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1478:6: ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1478:7: () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1458:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1459:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1478:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1479:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getNestedExpressionAction_4_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getNestedExpressionAction_5_0(),
                                 current);
                         
 
                     }
 
-                    otherlv_15=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3270); 
+                    otherlv_17=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3307); 
 
-                        	newLeafNode(otherlv_15, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_4_1());
+                        	newLeafNode(otherlv_17, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1468:1: ( (lv_expression_16_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1469:1: (lv_expression_16_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1488:1: ( (lv_expression_18_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1489:1: (lv_expression_18_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1469:1: (lv_expression_16_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1470:3: lv_expression_16_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1489:1: (lv_expression_18_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1490:3: lv_expression_18_0= ruleSqlExpression
                     {
                      
-                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_4_2_0()); 
+                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_5_2_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3291);
-                    lv_expression_16_0=ruleSqlExpression();
+                    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3328);
+                    lv_expression_18_0=ruleSqlExpression();
 
                     state._fsp--;
 
@@ -3728,7 +3772,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"expression",
-                            		lv_expression_16_0, 
+                            		lv_expression_18_0, 
                             		"SqlExpression");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -3738,9 +3782,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_17=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3303); 
+                    otherlv_19=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3340); 
 
-                        	newLeafNode(otherlv_17, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_4_3());
+                        	newLeafNode(otherlv_19, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_5_3());
                         
 
                     }
@@ -3748,24 +3792,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 6 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1491:6: ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' )
+                case 7 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1511:6: ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1491:6: ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1491:7: () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1511:6: ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1511:7: () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1491:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1492:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1511:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1512:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getSelectStatementExpressionAction_5_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getSelectStatementExpressionAction_6_0(),
                                 current);
                         
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1497:2: ( (lv_not_19_0= 'not' ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1517:2: ( (lv_not_21_0= 'not' ) )?
                     int alt22=2;
                     int LA22_0 = input.LA(1);
 
@@ -3774,14 +3818,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt22) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1498:1: (lv_not_19_0= 'not' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1518:1: (lv_not_21_0= 'not' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1498:1: (lv_not_19_0= 'not' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1499:3: lv_not_19_0= 'not'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1518:1: (lv_not_21_0= 'not' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1519:3: lv_not_21_0= 'not'
                             {
-                            lv_not_19_0=(Token)match(input,55,FOLLOW_55_in_rulePrimaryExpression3338); 
+                            lv_not_21_0=(Token)match(input,55,FOLLOW_55_in_rulePrimaryExpression3375); 
 
-                                    newLeafNode(lv_not_19_0, grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_5_1_0());
+                                    newLeafNode(lv_not_21_0, grammarAccess.getPrimaryExpressionAccess().getNotNotKeyword_6_1_0());
                                 
 
                             	        if (current==null) {
@@ -3798,7 +3842,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1512:3: ( (lv_exists_20_0= 'exists' ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1532:3: ( (lv_exists_22_0= 'exists' ) )?
                     int alt23=2;
                     int LA23_0 = input.LA(1);
 
@@ -3807,14 +3851,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt23) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1513:1: (lv_exists_20_0= 'exists' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1533:1: (lv_exists_22_0= 'exists' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1513:1: (lv_exists_20_0= 'exists' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1514:3: lv_exists_20_0= 'exists'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1533:1: (lv_exists_22_0= 'exists' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1534:3: lv_exists_22_0= 'exists'
                             {
-                            lv_exists_20_0=(Token)match(input,56,FOLLOW_56_in_rulePrimaryExpression3370); 
+                            lv_exists_22_0=(Token)match(input,56,FOLLOW_56_in_rulePrimaryExpression3407); 
 
-                                    newLeafNode(lv_exists_20_0, grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_5_2_0());
+                                    newLeafNode(lv_exists_22_0, grammarAccess.getPrimaryExpressionAccess().getExistsExistsKeyword_6_2_0());
                                 
 
                             	        if (current==null) {
@@ -3831,21 +3875,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_21=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3396); 
+                    otherlv_23=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3433); 
 
-                        	newLeafNode(otherlv_21, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_3());
+                        	newLeafNode(otherlv_23, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_6_3());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1531:1: ( (lv_select_22_0= ruleSelectStatement ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1532:1: (lv_select_22_0= ruleSelectStatement )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1551:1: ( (lv_select_24_0= ruleSelectStatement ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1552:1: (lv_select_24_0= ruleSelectStatement )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1532:1: (lv_select_22_0= ruleSelectStatement )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1533:3: lv_select_22_0= ruleSelectStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1552:1: (lv_select_24_0= ruleSelectStatement )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1553:3: lv_select_24_0= ruleSelectStatement
                     {
                      
-                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getSelectSelectStatementParserRuleCall_5_4_0()); 
+                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getSelectSelectStatementParserRuleCall_6_4_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSelectStatement_in_rulePrimaryExpression3417);
-                    lv_select_22_0=ruleSelectStatement();
+                    pushFollow(FOLLOW_ruleSelectStatement_in_rulePrimaryExpression3454);
+                    lv_select_24_0=ruleSelectStatement();
 
                     state._fsp--;
 
@@ -3856,7 +3900,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"select",
-                            		lv_select_22_0, 
+                            		lv_select_24_0, 
                             		"SelectStatement");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -3866,9 +3910,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_23=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3429); 
+                    otherlv_25=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3466); 
 
-                        	newLeafNode(otherlv_23, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_5_5());
+                        	newLeafNode(otherlv_25, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_6_5());
                         
 
                     }
@@ -3876,46 +3920,46 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 7 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1554:6: ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' )
+                case 8 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1574:6: ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1554:6: ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1554:7: () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1574:6: ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1574:7: () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1554:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1555:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1574:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1575:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getCaseExpressionAction_6_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getCaseExpressionAction_7_0(),
                                 current);
                         
 
                     }
 
-                    otherlv_25=(Token)match(input,57,FOLLOW_57_in_rulePrimaryExpression3458); 
+                    otherlv_27=(Token)match(input,57,FOLLOW_57_in_rulePrimaryExpression3495); 
 
-                        	newLeafNode(otherlv_25, grammarAccess.getPrimaryExpressionAccess().getCaseKeyword_6_1());
+                        	newLeafNode(otherlv_27, grammarAccess.getPrimaryExpressionAccess().getCaseKeyword_7_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1564:1: ( (lv_caseExpression_26_0= ruleSqlExpression ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1584:1: ( (lv_caseExpression_28_0= ruleSqlExpression ) )?
                     int alt24=2;
                     int LA24_0 = input.LA(1);
 
-                    if ( ((LA24_0>=RULE_ID && LA24_0<=RULE_NUMBER)||LA24_0==25||LA24_0==50||(LA24_0>=52 && LA24_0<=53)||(LA24_0>=55 && LA24_0<=57)||LA24_0==61||(LA24_0>=83 && LA24_0<=86)) ) {
+                    if ( ((LA24_0>=RULE_ID && LA24_0<=RULE_NUMBER)||LA24_0==25||(LA24_0>=50 && LA24_0<=51)||LA24_0==53||(LA24_0>=55 && LA24_0<=57)||LA24_0==61||(LA24_0>=82 && LA24_0<=85)) ) {
                         alt24=1;
                     }
                     switch (alt24) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1565:1: (lv_caseExpression_26_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1585:1: (lv_caseExpression_28_0= ruleSqlExpression )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1565:1: (lv_caseExpression_26_0= ruleSqlExpression )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1566:3: lv_caseExpression_26_0= ruleSqlExpression
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1585:1: (lv_caseExpression_28_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1586:3: lv_caseExpression_28_0= ruleSqlExpression
                             {
                              
-                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getCaseExpressionSqlExpressionParserRuleCall_6_2_0()); 
+                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getCaseExpressionSqlExpressionParserRuleCall_7_2_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3479);
-                            lv_caseExpression_26_0=ruleSqlExpression();
+                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3516);
+                            lv_caseExpression_28_0=ruleSqlExpression();
 
                             state._fsp--;
 
@@ -3926,7 +3970,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                                    		set(
                                    			current, 
                                    			"caseExpression",
-                                    		lv_caseExpression_26_0, 
+                                    		lv_caseExpression_28_0, 
                                     		"SqlExpression");
                             	        afterParserOrEnumRuleCall();
                             	    
@@ -3939,7 +3983,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1582:3: ( (lv_cases_27_0= ruleCase ) )+
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1602:3: ( (lv_cases_29_0= ruleCase ) )+
                     int cnt25=0;
                     loop25:
                     do {
@@ -3953,16 +3997,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                         switch (alt25) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1583:1: (lv_cases_27_0= ruleCase )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1603:1: (lv_cases_29_0= ruleCase )
                     	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1583:1: (lv_cases_27_0= ruleCase )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1584:3: lv_cases_27_0= ruleCase
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1603:1: (lv_cases_29_0= ruleCase )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1604:3: lv_cases_29_0= ruleCase
                     	    {
                     	     
-                    	    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getCasesCaseParserRuleCall_6_3_0()); 
+                    	    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getCasesCaseParserRuleCall_7_3_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleCase_in_rulePrimaryExpression3501);
-                    	    lv_cases_27_0=ruleCase();
+                    	    pushFollow(FOLLOW_ruleCase_in_rulePrimaryExpression3538);
+                    	    lv_cases_29_0=ruleCase();
 
                     	    state._fsp--;
 
@@ -3973,7 +4017,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	           		add(
                     	           			current, 
                     	           			"cases",
-                    	            		lv_cases_27_0, 
+                    	            		lv_cases_29_0, 
                     	            		"Case");
                     	    	        afterParserOrEnumRuleCall();
                     	    	    
@@ -3993,7 +4037,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                         cnt25++;
                     } while (true);
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1600:3: (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1620:3: (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )?
                     int alt26=2;
                     int LA26_0 = input.LA(1);
 
@@ -4002,23 +4046,23 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt26) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1600:5: otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1620:5: otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) )
                             {
-                            otherlv_28=(Token)match(input,58,FOLLOW_58_in_rulePrimaryExpression3515); 
+                            otherlv_30=(Token)match(input,58,FOLLOW_58_in_rulePrimaryExpression3552); 
 
-                                	newLeafNode(otherlv_28, grammarAccess.getPrimaryExpressionAccess().getElseKeyword_6_4_0());
+                                	newLeafNode(otherlv_30, grammarAccess.getPrimaryExpressionAccess().getElseKeyword_7_4_0());
                                 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1604:1: ( (lv_elseExpression_29_0= ruleSqlExpression ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1605:1: (lv_elseExpression_29_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1624:1: ( (lv_elseExpression_31_0= ruleSqlExpression ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1625:1: (lv_elseExpression_31_0= ruleSqlExpression )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1605:1: (lv_elseExpression_29_0= ruleSqlExpression )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1606:3: lv_elseExpression_29_0= ruleSqlExpression
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1625:1: (lv_elseExpression_31_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1626:3: lv_elseExpression_31_0= ruleSqlExpression
                             {
                              
-                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getElseExpressionSqlExpressionParserRuleCall_6_4_1_0()); 
+                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getElseExpressionSqlExpressionParserRuleCall_7_4_1_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3536);
-                            lv_elseExpression_29_0=ruleSqlExpression();
+                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3573);
+                            lv_elseExpression_31_0=ruleSqlExpression();
 
                             state._fsp--;
 
@@ -4029,7 +4073,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                                    		set(
                                    			current, 
                                    			"elseExpression",
-                                    		lv_elseExpression_29_0, 
+                                    		lv_elseExpression_31_0, 
                                     		"SqlExpression");
                             	        afterParserOrEnumRuleCall();
                             	    
@@ -4045,9 +4089,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_30=(Token)match(input,59,FOLLOW_59_in_rulePrimaryExpression3550); 
+                    otherlv_32=(Token)match(input,59,FOLLOW_59_in_rulePrimaryExpression3587); 
 
-                        	newLeafNode(otherlv_30, grammarAccess.getPrimaryExpressionAccess().getEndKeyword_6_5());
+                        	newLeafNode(otherlv_32, grammarAccess.getPrimaryExpressionAccess().getEndKeyword_7_5());
                         
 
                     }
@@ -4055,32 +4099,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 8 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1627:6: ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' )
+                case 9 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1647:6: ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1627:6: ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1627:7: () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1647:6: ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1647:7: () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1627:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1628:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1647:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1648:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getFunctionAction_7_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getFunctionAction_8_0(),
                                 current);
                         
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1633:2: ( (lv_name_32_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1634:1: (lv_name_32_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1653:2: ( (lv_name_34_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1654:1: (lv_name_34_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1634:1: (lv_name_32_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1635:3: lv_name_32_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1654:1: (lv_name_34_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1655:3: lv_name_34_0= RULE_ID
                     {
-                    lv_name_32_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3584); 
+                    lv_name_34_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryExpression3621); 
 
-                    			newLeafNode(lv_name_32_0, grammarAccess.getPrimaryExpressionAccess().getNameIDTerminalRuleCall_7_1_0()); 
+                    			newLeafNode(lv_name_34_0, grammarAccess.getPrimaryExpressionAccess().getNameIDTerminalRuleCall_8_1_0()); 
                     		
 
                     	        if (current==null) {
@@ -4089,7 +4133,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		setWithLastConsumed(
                            			current, 
                            			"name",
-                            		lv_name_32_0, 
+                            		lv_name_34_0, 
                             		"ID");
                     	    
 
@@ -4098,18 +4142,18 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_33=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3601); 
+                    otherlv_35=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3638); 
 
-                        	newLeafNode(otherlv_33, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_7_2());
+                        	newLeafNode(otherlv_35, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_8_2());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1655:1: ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1675:1: ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) )
                     int alt28=2;
                     int LA28_0 = input.LA(1);
 
                     if ( (LA28_0==21) ) {
                         alt28=1;
                     }
-                    else if ( ((LA28_0>=RULE_ID && LA28_0<=RULE_NUMBER)||LA28_0==25||LA28_0==50||(LA28_0>=52 && LA28_0<=53)||(LA28_0>=55 && LA28_0<=57)||LA28_0==61||(LA28_0>=83 && LA28_0<=86)) ) {
+                    else if ( ((LA28_0>=RULE_ID && LA28_0<=RULE_NUMBER)||LA28_0==25||(LA28_0>=50 && LA28_0<=51)||LA28_0==53||(LA28_0>=55 && LA28_0<=57)||LA28_0==61||(LA28_0>=82 && LA28_0<=85)) ) {
                         alt28=2;
                     }
                     else {
@@ -4120,17 +4164,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt28) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1655:2: ( (lv_all_34_0= '*' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1675:2: ( (lv_all_36_0= '*' ) )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1655:2: ( (lv_all_34_0= '*' ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1656:1: (lv_all_34_0= '*' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1675:2: ( (lv_all_36_0= '*' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1676:1: (lv_all_36_0= '*' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1656:1: (lv_all_34_0= '*' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1657:3: lv_all_34_0= '*'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1676:1: (lv_all_36_0= '*' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1677:3: lv_all_36_0= '*'
                             {
-                            lv_all_34_0=(Token)match(input,21,FOLLOW_21_in_rulePrimaryExpression3620); 
+                            lv_all_36_0=(Token)match(input,21,FOLLOW_21_in_rulePrimaryExpression3657); 
 
-                                    newLeafNode(lv_all_34_0, grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_7_3_0_0());
+                                    newLeafNode(lv_all_36_0, grammarAccess.getPrimaryExpressionAccess().getAllAsteriskKeyword_8_3_0_0());
                                 
 
                             	        if (current==null) {
@@ -4148,22 +4192,22 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1671:6: ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1691:6: ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1671:6: ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1671:7: ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )*
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1691:6: ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1691:7: ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )*
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1671:7: ( (lv_arguments_35_0= ruleSqlExpression ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1672:1: (lv_arguments_35_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1691:7: ( (lv_arguments_37_0= ruleSqlExpression ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1692:1: (lv_arguments_37_0= ruleSqlExpression )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1672:1: (lv_arguments_35_0= ruleSqlExpression )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1673:3: lv_arguments_35_0= ruleSqlExpression
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1692:1: (lv_arguments_37_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1693:3: lv_arguments_37_0= ruleSqlExpression
                             {
                              
-                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getArgumentsSqlExpressionParserRuleCall_7_3_1_0_0()); 
+                            	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getArgumentsSqlExpressionParserRuleCall_8_3_1_0_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3661);
-                            lv_arguments_35_0=ruleSqlExpression();
+                            pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3698);
+                            lv_arguments_37_0=ruleSqlExpression();
 
                             state._fsp--;
 
@@ -4174,7 +4218,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                                    		add(
                                    			current, 
                                    			"arguments",
-                                    		lv_arguments_35_0, 
+                                    		lv_arguments_37_0, 
                                     		"SqlExpression");
                             	        afterParserOrEnumRuleCall();
                             	    
@@ -4184,7 +4228,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1689:2: (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )*
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1709:2: (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )*
                             loop27:
                             do {
                                 int alt27=2;
@@ -4197,23 +4241,23 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                                 switch (alt27) {
                             	case 1 :
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1689:4: otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1709:4: otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) )
                             	    {
-                            	    otherlv_36=(Token)match(input,60,FOLLOW_60_in_rulePrimaryExpression3674); 
+                            	    otherlv_38=(Token)match(input,60,FOLLOW_60_in_rulePrimaryExpression3711); 
 
-                            	        	newLeafNode(otherlv_36, grammarAccess.getPrimaryExpressionAccess().getCommaKeyword_7_3_1_1_0());
+                            	        	newLeafNode(otherlv_38, grammarAccess.getPrimaryExpressionAccess().getCommaKeyword_8_3_1_1_0());
                             	        
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1693:1: ( (lv_arugments_37_0= ruleSqlExpression ) )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1694:1: (lv_arugments_37_0= ruleSqlExpression )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1713:1: ( (lv_arguments_39_0= ruleSqlExpression ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1714:1: (lv_arguments_39_0= ruleSqlExpression )
                             	    {
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1694:1: (lv_arugments_37_0= ruleSqlExpression )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1695:3: lv_arugments_37_0= ruleSqlExpression
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1714:1: (lv_arguments_39_0= ruleSqlExpression )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1715:3: lv_arguments_39_0= ruleSqlExpression
                             	    {
                             	     
-                            	    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getArugmentsSqlExpressionParserRuleCall_7_3_1_1_1_0()); 
+                            	    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getArgumentsSqlExpressionParserRuleCall_8_3_1_1_1_0()); 
                             	    	    
-                            	    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3695);
-                            	    lv_arugments_37_0=ruleSqlExpression();
+                            	    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3732);
+                            	    lv_arguments_39_0=ruleSqlExpression();
 
                             	    state._fsp--;
 
@@ -4223,8 +4267,8 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             	    	        }
                             	           		add(
                             	           			current, 
-                            	           			"arugments",
-                            	            		lv_arugments_37_0, 
+                            	           			"arguments",
+                            	            		lv_arguments_39_0, 
                             	            		"SqlExpression");
                             	    	        afterParserOrEnumRuleCall();
                             	    	    
@@ -4252,9 +4296,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_38=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3711); 
+                    otherlv_40=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3748); 
 
-                        	newLeafNode(otherlv_38, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_7_4());
+                        	newLeafNode(otherlv_40, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_8_4());
                         
 
                     }
@@ -4262,42 +4306,42 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 9 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1716:6: ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' )
+                case 10 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1736:6: ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1716:6: ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1716:7: () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1736:6: ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1736:7: () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1716:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1717:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1736:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1737:5: 
                     {
 
                             current = forceCreateModelElement(
-                                grammarAccess.getPrimaryExpressionAccess().getCastExpressionAction_8_0(),
+                                grammarAccess.getPrimaryExpressionAccess().getCastExpressionAction_9_0(),
                                 current);
                         
 
                     }
 
-                    otherlv_40=(Token)match(input,61,FOLLOW_61_in_rulePrimaryExpression3740); 
+                    otherlv_42=(Token)match(input,61,FOLLOW_61_in_rulePrimaryExpression3777); 
 
-                        	newLeafNode(otherlv_40, grammarAccess.getPrimaryExpressionAccess().getCastKeyword_8_1());
+                        	newLeafNode(otherlv_42, grammarAccess.getPrimaryExpressionAccess().getCastKeyword_9_1());
                         
-                    otherlv_41=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3752); 
+                    otherlv_43=(Token)match(input,53,FOLLOW_53_in_rulePrimaryExpression3789); 
 
-                        	newLeafNode(otherlv_41, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_8_2());
+                        	newLeafNode(otherlv_43, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_9_2());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1730:1: ( (lv_expression_42_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1731:1: (lv_expression_42_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1750:1: ( (lv_expression_44_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1751:1: (lv_expression_44_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1731:1: (lv_expression_42_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1732:3: lv_expression_42_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1751:1: (lv_expression_44_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1752:3: lv_expression_44_0= ruleSqlExpression
                     {
                      
-                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_8_3_0()); 
+                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionSqlExpressionParserRuleCall_9_3_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3773);
-                    lv_expression_42_0=ruleSqlExpression();
+                    pushFollow(FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3810);
+                    lv_expression_44_0=ruleSqlExpression();
 
                     state._fsp--;
 
@@ -4308,7 +4352,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"expression",
-                            		lv_expression_42_0, 
+                            		lv_expression_44_0, 
                             		"SqlExpression");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -4318,21 +4362,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_43=(Token)match(input,62,FOLLOW_62_in_rulePrimaryExpression3785); 
+                    otherlv_45=(Token)match(input,62,FOLLOW_62_in_rulePrimaryExpression3822); 
 
-                        	newLeafNode(otherlv_43, grammarAccess.getPrimaryExpressionAccess().getAsKeyword_8_4());
+                        	newLeafNode(otherlv_45, grammarAccess.getPrimaryExpressionAccess().getAsKeyword_9_4());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1752:1: ( (lv_type_44_0= ruleSqliteDataType ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1753:1: (lv_type_44_0= ruleSqliteDataType )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1772:1: ( (lv_type_46_0= ruleSqliteDataType ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1773:1: (lv_type_46_0= ruleSqliteDataType )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1753:1: (lv_type_44_0= ruleSqliteDataType )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1754:3: lv_type_44_0= ruleSqliteDataType
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1773:1: (lv_type_46_0= ruleSqliteDataType )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1774:3: lv_type_46_0= ruleSqliteDataType
                     {
                      
-                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getTypeSqliteDataTypeEnumRuleCall_8_5_0()); 
+                    	        newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getTypeSqliteDataTypeEnumRuleCall_9_5_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqliteDataType_in_rulePrimaryExpression3806);
-                    lv_type_44_0=ruleSqliteDataType();
+                    pushFollow(FOLLOW_ruleSqliteDataType_in_rulePrimaryExpression3843);
+                    lv_type_46_0=ruleSqliteDataType();
 
                     state._fsp--;
 
@@ -4343,7 +4387,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"type",
-                            		lv_type_44_0, 
+                            		lv_type_46_0, 
                             		"SqliteDataType");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -4353,9 +4397,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_45=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3818); 
+                    otherlv_47=(Token)match(input,54,FOLLOW_54_in_rulePrimaryExpression3855); 
 
-                        	newLeafNode(otherlv_45, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_8_6());
+                        	newLeafNode(otherlv_47, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_9_6());
                         
 
                     }
@@ -4384,7 +4428,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCase"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1782:1: entryRuleCase returns [EObject current=null] : iv_ruleCase= ruleCase EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1802:1: entryRuleCase returns [EObject current=null] : iv_ruleCase= ruleCase EOF ;
     public final EObject entryRuleCase() throws RecognitionException {
         EObject current = null;
 
@@ -4392,17 +4436,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1783:2: (iv_ruleCase= ruleCase EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1784:2: iv_ruleCase= ruleCase EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1803:2: (iv_ruleCase= ruleCase EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1804:2: iv_ruleCase= ruleCase EOF
             {
              newCompositeNode(grammarAccess.getCaseRule()); 
-            pushFollow(FOLLOW_ruleCase_in_entryRuleCase3855);
+            pushFollow(FOLLOW_ruleCase_in_entryRuleCase3892);
             iv_ruleCase=ruleCase();
 
             state._fsp--;
 
              current =iv_ruleCase; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCase3865); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCase3902); 
 
             }
 
@@ -4420,7 +4464,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCase"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1791:1: ruleCase returns [EObject current=null] : (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1811:1: ruleCase returns [EObject current=null] : (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) ) ;
     public final EObject ruleCase() throws RecognitionException {
         EObject current = null;
 
@@ -4434,26 +4478,26 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1794:28: ( (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1795:1: (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1814:28: ( (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1815:1: (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1795:1: (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1795:3: otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1815:1: (otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1815:3: otherlv_0= 'when' ( (lv_whenExpression_1_0= ruleSqlExpression ) ) otherlv_2= 'then' ( (lv_thenExpression_3_0= ruleSqlExpression ) )
             {
-            otherlv_0=(Token)match(input,63,FOLLOW_63_in_ruleCase3902); 
+            otherlv_0=(Token)match(input,63,FOLLOW_63_in_ruleCase3939); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCaseAccess().getWhenKeyword_0());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1799:1: ( (lv_whenExpression_1_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1800:1: (lv_whenExpression_1_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1819:1: ( (lv_whenExpression_1_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1820:1: (lv_whenExpression_1_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1800:1: (lv_whenExpression_1_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1801:3: lv_whenExpression_1_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1820:1: (lv_whenExpression_1_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1821:3: lv_whenExpression_1_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getCaseAccess().getWhenExpressionSqlExpressionParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCase3923);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCase3960);
             lv_whenExpression_1_0=ruleSqlExpression();
 
             state._fsp--;
@@ -4475,20 +4519,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,64,FOLLOW_64_in_ruleCase3935); 
+            otherlv_2=(Token)match(input,64,FOLLOW_64_in_ruleCase3972); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCaseAccess().getThenKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1821:1: ( (lv_thenExpression_3_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1822:1: (lv_thenExpression_3_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1841:1: ( (lv_thenExpression_3_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1842:1: (lv_thenExpression_3_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1822:1: (lv_thenExpression_3_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1823:3: lv_thenExpression_3_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1842:1: (lv_thenExpression_3_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1843:3: lv_thenExpression_3_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getCaseAccess().getThenExpressionSqlExpressionParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCase3956);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCase3993);
             lv_thenExpression_3_0=ruleSqlExpression();
 
             state._fsp--;
@@ -4531,7 +4575,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1847:1: entryRuleSelectStatement returns [EObject current=null] : iv_ruleSelectStatement= ruleSelectStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1867:1: entryRuleSelectStatement returns [EObject current=null] : iv_ruleSelectStatement= ruleSelectStatement EOF ;
     public final EObject entryRuleSelectStatement() throws RecognitionException {
         EObject current = null;
 
@@ -4539,17 +4583,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1848:2: (iv_ruleSelectStatement= ruleSelectStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1849:2: iv_ruleSelectStatement= ruleSelectStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1868:2: (iv_ruleSelectStatement= ruleSelectStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1869:2: iv_ruleSelectStatement= ruleSelectStatement EOF
             {
              newCompositeNode(grammarAccess.getSelectStatementRule()); 
-            pushFollow(FOLLOW_ruleSelectStatement_in_entryRuleSelectStatement3992);
+            pushFollow(FOLLOW_ruleSelectStatement_in_entryRuleSelectStatement4029);
             iv_ruleSelectStatement=ruleSelectStatement();
 
             state._fsp--;
 
              current =iv_ruleSelectStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectStatement4002); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectStatement4039); 
 
             }
 
@@ -4567,38 +4611,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1856:1: ruleSelectStatement returns [EObject current=null] : ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1876:1: ruleSelectStatement returns [EObject current=null] : ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )? ) ;
     public final EObject ruleSelectStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_3=null;
         EObject lv_core_0_0 = null;
 
-        EObject lv_orderingTerms_2_0 = null;
-
-        EObject lv_orderingTerms_4_0 = null;
+        EObject lv_orderby_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1859:28: ( ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1860:1: ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1879:28: ( ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1880:1: ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1860:1: ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1860:2: ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1880:1: ( ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1880:2: ( (lv_core_0_0= ruleSelectCore ) ) (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1860:2: ( (lv_core_0_0= ruleSelectCore ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1861:1: (lv_core_0_0= ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1880:2: ( (lv_core_0_0= ruleSelectCore ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1881:1: (lv_core_0_0= ruleSelectCore )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1861:1: (lv_core_0_0= ruleSelectCore )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1862:3: lv_core_0_0= ruleSelectCore
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1881:1: (lv_core_0_0= ruleSelectCore )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1882:3: lv_core_0_0= ruleSelectCore
             {
              
             	        newCompositeNode(grammarAccess.getSelectStatementAccess().getCoreSelectCoreParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleSelectCore_in_ruleSelectStatement4048);
+            pushFollow(FOLLOW_ruleSelectCore_in_ruleSelectStatement4085);
             lv_core_0_0=ruleSelectCore();
 
             state._fsp--;
@@ -4620,32 +4661,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1878:2: (otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )* )?
-            int alt31=2;
-            int LA31_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1898:2: (otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) ) )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA31_0==65) ) {
-                alt31=1;
+            if ( (LA30_0==65) ) {
+                alt30=1;
             }
-            switch (alt31) {
+            switch (alt30) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1878:4: otherlv_1= 'order by' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )*
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1898:4: otherlv_1= 'order by' ( (lv_orderby_2_0= ruleOrderingTermList ) )
                     {
-                    otherlv_1=(Token)match(input,65,FOLLOW_65_in_ruleSelectStatement4061); 
+                    otherlv_1=(Token)match(input,65,FOLLOW_65_in_ruleSelectStatement4098); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getSelectStatementAccess().getOrderByKeyword_1_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1882:1: ( (lv_orderingTerms_2_0= ruleOrderingTerm ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1883:1: (lv_orderingTerms_2_0= ruleOrderingTerm )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1902:1: ( (lv_orderby_2_0= ruleOrderingTermList ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1903:1: (lv_orderby_2_0= ruleOrderingTermList )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1883:1: (lv_orderingTerms_2_0= ruleOrderingTerm )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1884:3: lv_orderingTerms_2_0= ruleOrderingTerm
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1903:1: (lv_orderby_2_0= ruleOrderingTermList )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1904:3: lv_orderby_2_0= ruleOrderingTermList
                     {
                      
-                    	        newCompositeNode(grammarAccess.getSelectStatementAccess().getOrderingTermsOrderingTermParserRuleCall_1_1_0()); 
+                    	        newCompositeNode(grammarAccess.getSelectStatementAccess().getOrderbyOrderingTermListParserRuleCall_1_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleOrderingTerm_in_ruleSelectStatement4082);
-                    lv_orderingTerms_2_0=ruleOrderingTerm();
+                    pushFollow(FOLLOW_ruleOrderingTermList_in_ruleSelectStatement4119);
+                    lv_orderby_2_0=ruleOrderingTermList();
 
                     state._fsp--;
 
@@ -4653,11 +4694,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	        if (current==null) {
                     	            current = createModelElementForParent(grammarAccess.getSelectStatementRule());
                     	        }
-                           		add(
+                           		set(
                            			current, 
-                           			"orderingTerms",
-                            		lv_orderingTerms_2_0, 
-                            		"OrderingTerm");
+                           			"orderby",
+                            		lv_orderby_2_0, 
+                            		"OrderingTermList");
                     	        afterParserOrEnumRuleCall();
                     	    
 
@@ -4665,65 +4706,6 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
                     }
-
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1900:2: (otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) ) )*
-                    loop30:
-                    do {
-                        int alt30=2;
-                        int LA30_0 = input.LA(1);
-
-                        if ( (LA30_0==60) ) {
-                            alt30=1;
-                        }
-
-
-                        switch (alt30) {
-                    	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1900:4: otherlv_3= ',' ( (lv_orderingTerms_4_0= ruleOrderingTerm ) )
-                    	    {
-                    	    otherlv_3=(Token)match(input,60,FOLLOW_60_in_ruleSelectStatement4095); 
-
-                    	        	newLeafNode(otherlv_3, grammarAccess.getSelectStatementAccess().getCommaKeyword_1_2_0());
-                    	        
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1904:1: ( (lv_orderingTerms_4_0= ruleOrderingTerm ) )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1905:1: (lv_orderingTerms_4_0= ruleOrderingTerm )
-                    	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1905:1: (lv_orderingTerms_4_0= ruleOrderingTerm )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1906:3: lv_orderingTerms_4_0= ruleOrderingTerm
-                    	    {
-                    	     
-                    	    	        newCompositeNode(grammarAccess.getSelectStatementAccess().getOrderingTermsOrderingTermParserRuleCall_1_2_1_0()); 
-                    	    	    
-                    	    pushFollow(FOLLOW_ruleOrderingTerm_in_ruleSelectStatement4116);
-                    	    lv_orderingTerms_4_0=ruleOrderingTerm();
-
-                    	    state._fsp--;
-
-
-                    	    	        if (current==null) {
-                    	    	            current = createModelElementForParent(grammarAccess.getSelectStatementRule());
-                    	    	        }
-                    	           		add(
-                    	           			current, 
-                    	           			"orderingTerms",
-                    	            		lv_orderingTerms_4_0, 
-                    	            		"OrderingTerm");
-                    	    	        afterParserOrEnumRuleCall();
-                    	    	    
-
-                    	    }
-
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop30;
-                        }
-                    } while (true);
 
 
                     }
@@ -4751,8 +4733,174 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSelectStatement"
 
 
+    // $ANTLR start "entryRuleOrderingTermList"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1928:1: entryRuleOrderingTermList returns [EObject current=null] : iv_ruleOrderingTermList= ruleOrderingTermList EOF ;
+    public final EObject entryRuleOrderingTermList() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleOrderingTermList = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1929:2: (iv_ruleOrderingTermList= ruleOrderingTermList EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1930:2: iv_ruleOrderingTermList= ruleOrderingTermList EOF
+            {
+             newCompositeNode(grammarAccess.getOrderingTermListRule()); 
+            pushFollow(FOLLOW_ruleOrderingTermList_in_entryRuleOrderingTermList4157);
+            iv_ruleOrderingTermList=ruleOrderingTermList();
+
+            state._fsp--;
+
+             current =iv_ruleOrderingTermList; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOrderingTermList4167); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleOrderingTermList"
+
+
+    // $ANTLR start "ruleOrderingTermList"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1937:1: ruleOrderingTermList returns [EObject current=null] : ( ( (lv_orderingTerms_0_0= ruleOrderingTerm ) ) (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )* ) ;
+    public final EObject ruleOrderingTermList() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        EObject lv_orderingTerms_0_0 = null;
+
+        EObject lv_orderingTerms_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1940:28: ( ( ( (lv_orderingTerms_0_0= ruleOrderingTerm ) ) (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1941:1: ( ( (lv_orderingTerms_0_0= ruleOrderingTerm ) ) (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )* )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1941:1: ( ( (lv_orderingTerms_0_0= ruleOrderingTerm ) ) (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1941:2: ( (lv_orderingTerms_0_0= ruleOrderingTerm ) ) (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )*
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1941:2: ( (lv_orderingTerms_0_0= ruleOrderingTerm ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1942:1: (lv_orderingTerms_0_0= ruleOrderingTerm )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1942:1: (lv_orderingTerms_0_0= ruleOrderingTerm )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1943:3: lv_orderingTerms_0_0= ruleOrderingTerm
+            {
+             
+            	        newCompositeNode(grammarAccess.getOrderingTermListAccess().getOrderingTermsOrderingTermParserRuleCall_0_0()); 
+            	    
+            pushFollow(FOLLOW_ruleOrderingTerm_in_ruleOrderingTermList4213);
+            lv_orderingTerms_0_0=ruleOrderingTerm();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getOrderingTermListRule());
+            	        }
+                   		add(
+                   			current, 
+                   			"orderingTerms",
+                    		lv_orderingTerms_0_0, 
+                    		"OrderingTerm");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1959:2: (otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) ) )*
+            loop31:
+            do {
+                int alt31=2;
+                int LA31_0 = input.LA(1);
+
+                if ( (LA31_0==60) ) {
+                    alt31=1;
+                }
+
+
+                switch (alt31) {
+            	case 1 :
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1959:4: otherlv_1= ',' ( (lv_orderingTerms_2_0= ruleOrderingTerm ) )
+            	    {
+            	    otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleOrderingTermList4226); 
+
+            	        	newLeafNode(otherlv_1, grammarAccess.getOrderingTermListAccess().getCommaKeyword_1_0());
+            	        
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1963:1: ( (lv_orderingTerms_2_0= ruleOrderingTerm ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1964:1: (lv_orderingTerms_2_0= ruleOrderingTerm )
+            	    {
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1964:1: (lv_orderingTerms_2_0= ruleOrderingTerm )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1965:3: lv_orderingTerms_2_0= ruleOrderingTerm
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getOrderingTermListAccess().getOrderingTermsOrderingTermParserRuleCall_1_1_0()); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleOrderingTerm_in_ruleOrderingTermList4247);
+            	    lv_orderingTerms_2_0=ruleOrderingTerm();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getOrderingTermListRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"orderingTerms",
+            	            		lv_orderingTerms_2_0, 
+            	            		"OrderingTerm");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop31;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleOrderingTermList"
+
+
     // $ANTLR start "entryRuleSelectCore"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1930:1: entryRuleSelectCore returns [EObject current=null] : iv_ruleSelectCore= ruleSelectCore EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1989:1: entryRuleSelectCore returns [EObject current=null] : iv_ruleSelectCore= ruleSelectCore EOF ;
     public final EObject entryRuleSelectCore() throws RecognitionException {
         EObject current = null;
 
@@ -4760,17 +4908,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1931:2: (iv_ruleSelectCore= ruleSelectCore EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1932:2: iv_ruleSelectCore= ruleSelectCore EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1990:2: (iv_ruleSelectCore= ruleSelectCore EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1991:2: iv_ruleSelectCore= ruleSelectCore EOF
             {
              newCompositeNode(grammarAccess.getSelectCoreRule()); 
-            pushFollow(FOLLOW_ruleSelectCore_in_entryRuleSelectCore4156);
+            pushFollow(FOLLOW_ruleSelectCore_in_entryRuleSelectCore4285);
             iv_ruleSelectCore=ruleSelectCore();
 
             state._fsp--;
 
              current =iv_ruleSelectCore; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectCore4166); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectCore4295); 
 
             }
 
@@ -4788,7 +4936,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectCore"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1939:1: ruleSelectCore returns [EObject current=null] : (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1998:1: ruleSelectCore returns [EObject current=null] : (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* ) ;
     public final EObject ruleSelectCore() throws RecognitionException {
         EObject current = null;
 
@@ -4802,16 +4950,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1942:28: ( (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1943:1: (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2001:28: ( (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2002:1: (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1943:1: (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1944:5: this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2002:1: (this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2003:5: this_SelectExpression_0= ruleSelectExpression ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )*
             {
              
                     newCompositeNode(grammarAccess.getSelectCoreAccess().getSelectExpressionParserRuleCall_0()); 
                 
-            pushFollow(FOLLOW_ruleSelectExpression_in_ruleSelectCore4213);
+            pushFollow(FOLLOW_ruleSelectExpression_in_ruleSelectCore4342);
             this_SelectExpression_0=ruleSelectExpression();
 
             state._fsp--;
@@ -4820,23 +4968,23 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     current = this_SelectExpression_0; 
                     afterParserOrEnumRuleCall();
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1952:1: ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2011:1: ( () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) ) )*
             loop32:
             do {
                 int alt32=2;
                 int LA32_0 = input.LA(1);
 
-                if ( ((LA32_0>=116 && LA32_0<=119)) ) {
+                if ( ((LA32_0>=115 && LA32_0<=118)) ) {
                     alt32=1;
                 }
 
 
                 switch (alt32) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1952:2: () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2011:2: () ( (lv_op_2_0= ruleCompoundOperator ) ) ( (lv_right_3_0= ruleSelectExpression ) )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1952:2: ()
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1953:5: 
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2011:2: ()
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2012:5: 
             	    {
 
             	            current = forceCreateModelElementAndSet(
@@ -4846,16 +4994,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1958:2: ( (lv_op_2_0= ruleCompoundOperator ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1959:1: (lv_op_2_0= ruleCompoundOperator )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2017:2: ( (lv_op_2_0= ruleCompoundOperator ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2018:1: (lv_op_2_0= ruleCompoundOperator )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1959:1: (lv_op_2_0= ruleCompoundOperator )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1960:3: lv_op_2_0= ruleCompoundOperator
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2018:1: (lv_op_2_0= ruleCompoundOperator )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2019:3: lv_op_2_0= ruleCompoundOperator
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getSelectCoreAccess().getOpCompoundOperatorEnumRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleCompoundOperator_in_ruleSelectCore4243);
+            	    pushFollow(FOLLOW_ruleCompoundOperator_in_ruleSelectCore4372);
             	    lv_op_2_0=ruleCompoundOperator();
 
             	    state._fsp--;
@@ -4877,16 +5025,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1976:2: ( (lv_right_3_0= ruleSelectExpression ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1977:1: (lv_right_3_0= ruleSelectExpression )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2035:2: ( (lv_right_3_0= ruleSelectExpression ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2036:1: (lv_right_3_0= ruleSelectExpression )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1977:1: (lv_right_3_0= ruleSelectExpression )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:1978:3: lv_right_3_0= ruleSelectExpression
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2036:1: (lv_right_3_0= ruleSelectExpression )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2037:3: lv_right_3_0= ruleSelectExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getSelectCoreAccess().getRightSelectExpressionParserRuleCall_1_2_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleSelectExpression_in_ruleSelectCore4264);
+            	    pushFollow(FOLLOW_ruleSelectExpression_in_ruleSelectCore4393);
             	    lv_right_3_0=ruleSelectExpression();
 
             	    state._fsp--;
@@ -4938,7 +5086,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2002:1: entryRuleSelectExpression returns [EObject current=null] : iv_ruleSelectExpression= ruleSelectExpression EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2061:1: entryRuleSelectExpression returns [EObject current=null] : iv_ruleSelectExpression= ruleSelectExpression EOF ;
     public final EObject entryRuleSelectExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4946,17 +5094,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2003:2: (iv_ruleSelectExpression= ruleSelectExpression EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2004:2: iv_ruleSelectExpression= ruleSelectExpression EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2062:2: (iv_ruleSelectExpression= ruleSelectExpression EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2063:2: iv_ruleSelectExpression= ruleSelectExpression EOF
             {
              newCompositeNode(grammarAccess.getSelectExpressionRule()); 
-            pushFollow(FOLLOW_ruleSelectExpression_in_entryRuleSelectExpression4302);
+            pushFollow(FOLLOW_ruleSelectExpression_in_entryRuleSelectExpression4431);
             iv_ruleSelectExpression=ruleSelectExpression();
 
             state._fsp--;
 
              current =iv_ruleSelectExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectExpression4312); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectExpression4441); 
 
             }
 
@@ -4974,42 +5122,40 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2011:1: ruleSelectExpression returns [EObject current=null] : ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( (lv_selectList_4_0= ruleSelectList ) ) (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )? (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )? (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )? (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2070:1: ruleSelectExpression returns [EObject current=null] : ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) ) (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )? (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )? (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )? (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )? ) ;
     public final EObject ruleSelectExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token lv_distinct_2_0=null;
         Token lv_all_3_0=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
-        Token otherlv_9=null;
-        Token otherlv_11=null;
-        Token otherlv_13=null;
-        EObject lv_selectList_4_0 = null;
+        Token lv_allColumns_4_0=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
+        Token otherlv_10=null;
+        Token otherlv_12=null;
+        EObject lv_selectList_5_0 = null;
 
-        EObject lv_source_6_0 = null;
+        EObject lv_source_7_0 = null;
 
-        EObject lv_whereExpression_8_0 = null;
+        EObject lv_where_9_0 = null;
 
-        EObject lv_groupByExpressions_10_0 = null;
+        EObject lv_groupBy_11_0 = null;
 
-        EObject lv_groupByExpressions_12_0 = null;
-
-        EObject lv_havingExpression_14_0 = null;
+        EObject lv_having_13_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2014:28: ( ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( (lv_selectList_4_0= ruleSelectList ) ) (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )? (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )? (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )? (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2015:1: ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( (lv_selectList_4_0= ruleSelectList ) ) (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )? (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )? (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )? (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2073:28: ( ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) ) (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )? (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )? (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )? (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:1: ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) ) (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )? (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )? (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )? (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2015:1: ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( (lv_selectList_4_0= ruleSelectList ) ) (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )? (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )? (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )? (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2015:2: () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( (lv_selectList_4_0= ruleSelectList ) ) (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )? (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )? (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )? (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:1: ( () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) ) (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )? (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )? (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )? (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:2: () otherlv_1= 'select' ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )? ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) ) (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )? (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )? (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )? (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2015:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2016:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2075:5: 
             {
 
                     current = forceCreateModelElement(
@@ -5019,11 +5165,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,66,FOLLOW_66_in_ruleSelectExpression4358); 
+            otherlv_1=(Token)match(input,66,FOLLOW_66_in_ruleSelectExpression4487); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getSelectExpressionAccess().getSelectKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2025:1: ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2084:1: ( ( (lv_distinct_2_0= 'distinct' ) ) | ( (lv_all_3_0= 'all' ) ) )?
             int alt33=3;
             int LA33_0 = input.LA(1);
 
@@ -5035,15 +5181,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt33) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2025:2: ( (lv_distinct_2_0= 'distinct' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2084:2: ( (lv_distinct_2_0= 'distinct' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2025:2: ( (lv_distinct_2_0= 'distinct' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2026:1: (lv_distinct_2_0= 'distinct' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2084:2: ( (lv_distinct_2_0= 'distinct' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2085:1: (lv_distinct_2_0= 'distinct' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2026:1: (lv_distinct_2_0= 'distinct' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2027:3: lv_distinct_2_0= 'distinct'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2085:1: (lv_distinct_2_0= 'distinct' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2086:3: lv_distinct_2_0= 'distinct'
                     {
-                    lv_distinct_2_0=(Token)match(input,67,FOLLOW_67_in_ruleSelectExpression4377); 
+                    lv_distinct_2_0=(Token)match(input,67,FOLLOW_67_in_ruleSelectExpression4506); 
 
                             newLeafNode(lv_distinct_2_0, grammarAccess.getSelectExpressionAccess().getDistinctDistinctKeyword_2_0_0());
                         
@@ -5063,15 +5209,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2041:6: ( (lv_all_3_0= 'all' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2100:6: ( (lv_all_3_0= 'all' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2041:6: ( (lv_all_3_0= 'all' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2042:1: (lv_all_3_0= 'all' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2100:6: ( (lv_all_3_0= 'all' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2101:1: (lv_all_3_0= 'all' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2042:1: (lv_all_3_0= 'all' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2043:3: lv_all_3_0= 'all'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2101:1: (lv_all_3_0= 'all' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2102:3: lv_all_3_0= 'all'
                     {
-                    lv_all_3_0=(Token)match(input,68,FOLLOW_68_in_ruleSelectExpression4414); 
+                    lv_all_3_0=(Token)match(input,68,FOLLOW_68_in_ruleSelectExpression4543); 
 
                             newLeafNode(lv_all_3_0, grammarAccess.getSelectExpressionAccess().getAllAllKeyword_2_1_0());
                         
@@ -5093,63 +5239,117 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2056:4: ( (lv_selectList_4_0= ruleSelectList ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2057:1: (lv_selectList_4_0= ruleSelectList )
-            {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2057:1: (lv_selectList_4_0= ruleSelectList )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2058:3: lv_selectList_4_0= ruleSelectList
-            {
-             
-            	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSelectListSelectListParserRuleCall_3_0()); 
-            	    
-            pushFollow(FOLLOW_ruleSelectList_in_ruleSelectExpression4450);
-            lv_selectList_4_0=ruleSelectList();
-
-            state._fsp--;
-
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"selectList",
-                    		lv_selectList_4_0, 
-                    		"SelectList");
-            	        afterParserOrEnumRuleCall();
-            	    
-
-            }
-
-
-            }
-
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:2: (otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2115:4: ( ( (lv_allColumns_4_0= '*' ) ) | ( (lv_selectList_5_0= ruleSelectList ) ) )
             int alt34=2;
             int LA34_0 = input.LA(1);
 
-            if ( (LA34_0==69) ) {
+            if ( (LA34_0==21) ) {
                 alt34=1;
+            }
+            else if ( ((LA34_0>=RULE_ID && LA34_0<=RULE_NUMBER)||LA34_0==25||(LA34_0>=50 && LA34_0<=51)||LA34_0==53||(LA34_0>=55 && LA34_0<=57)||LA34_0==61||(LA34_0>=82 && LA34_0<=85)) ) {
+                alt34=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 34, 0, input);
+
+                throw nvae;
             }
             switch (alt34) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2074:4: otherlv_5= 'from' ( (lv_source_6_0= ruleJoinSource ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2115:5: ( (lv_allColumns_4_0= '*' ) )
                     {
-                    otherlv_5=(Token)match(input,69,FOLLOW_69_in_ruleSelectExpression4463); 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2115:5: ( (lv_allColumns_4_0= '*' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2116:1: (lv_allColumns_4_0= '*' )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2116:1: (lv_allColumns_4_0= '*' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2117:3: lv_allColumns_4_0= '*'
+                    {
+                    lv_allColumns_4_0=(Token)match(input,21,FOLLOW_21_in_ruleSelectExpression4577); 
 
-                        	newLeafNode(otherlv_5, grammarAccess.getSelectExpressionAccess().getFromKeyword_4_0());
+                            newLeafNode(lv_allColumns_4_0, grammarAccess.getSelectExpressionAccess().getAllColumnsAsteriskKeyword_3_0_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2078:1: ( (lv_source_6_0= ruleJoinSource ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2079:1: (lv_source_6_0= ruleJoinSource )
+
+                    	        if (current==null) {
+                    	            current = createModelElement(grammarAccess.getSelectExpressionRule());
+                    	        }
+                           		setWithLastConsumed(current, "allColumns", true, "*");
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2131:6: ( (lv_selectList_5_0= ruleSelectList ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2079:1: (lv_source_6_0= ruleJoinSource )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2080:3: lv_source_6_0= ruleJoinSource
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2131:6: ( (lv_selectList_5_0= ruleSelectList ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2132:1: (lv_selectList_5_0= ruleSelectList )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2132:1: (lv_selectList_5_0= ruleSelectList )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2133:3: lv_selectList_5_0= ruleSelectList
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSelectListSelectListParserRuleCall_3_1_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleSelectList_in_ruleSelectExpression4617);
+                    lv_selectList_5_0=ruleSelectList();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"selectList",
+                            		lv_selectList_5_0, 
+                            		"SelectList");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2149:3: (otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) ) )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
+
+            if ( (LA35_0==69) ) {
+                alt35=1;
+            }
+            switch (alt35) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2149:5: otherlv_6= 'from' ( (lv_source_7_0= ruleJoinSource ) )
+                    {
+                    otherlv_6=(Token)match(input,69,FOLLOW_69_in_ruleSelectExpression4631); 
+
+                        	newLeafNode(otherlv_6, grammarAccess.getSelectExpressionAccess().getFromKeyword_4_0());
+                        
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2153:1: ( (lv_source_7_0= ruleJoinSource ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2154:1: (lv_source_7_0= ruleJoinSource )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2154:1: (lv_source_7_0= ruleJoinSource )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2155:3: lv_source_7_0= ruleJoinSource
                     {
                      
                     	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getSourceJoinSourceParserRuleCall_4_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleJoinSource_in_ruleSelectExpression4484);
-                    lv_source_6_0=ruleJoinSource();
+                    pushFollow(FOLLOW_ruleJoinSource_in_ruleSelectExpression4652);
+                    lv_source_7_0=ruleJoinSource();
 
                     state._fsp--;
 
@@ -5160,7 +5360,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                            		set(
                            			current, 
                            			"source",
-                            		lv_source_6_0, 
+                            		lv_source_7_0, 
                             		"JoinSource");
                     	        afterParserOrEnumRuleCall();
                     	    
@@ -5176,32 +5376,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2096:4: (otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) ) )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2171:4: (otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) ) )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA35_0==70) ) {
-                alt35=1;
+            if ( (LA36_0==70) ) {
+                alt36=1;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2096:6: otherlv_7= 'where' ( (lv_whereExpression_8_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2171:6: otherlv_8= 'where' ( (lv_where_9_0= ruleWhereExpressions ) )
                     {
-                    otherlv_7=(Token)match(input,70,FOLLOW_70_in_ruleSelectExpression4499); 
+                    otherlv_8=(Token)match(input,70,FOLLOW_70_in_ruleSelectExpression4667); 
 
-                        	newLeafNode(otherlv_7, grammarAccess.getSelectExpressionAccess().getWhereKeyword_5_0());
+                        	newLeafNode(otherlv_8, grammarAccess.getSelectExpressionAccess().getWhereKeyword_5_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2100:1: ( (lv_whereExpression_8_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2101:1: (lv_whereExpression_8_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2175:1: ( (lv_where_9_0= ruleWhereExpressions ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2176:1: (lv_where_9_0= ruleWhereExpressions )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2101:1: (lv_whereExpression_8_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2102:3: lv_whereExpression_8_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2176:1: (lv_where_9_0= ruleWhereExpressions )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2177:3: lv_where_9_0= ruleWhereExpressions
                     {
                      
-                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getWhereExpressionSqlExpressionParserRuleCall_5_1_0()); 
+                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getWhereWhereExpressionsParserRuleCall_5_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleSelectExpression4520);
-                    lv_whereExpression_8_0=ruleSqlExpression();
+                    pushFollow(FOLLOW_ruleWhereExpressions_in_ruleSelectExpression4688);
+                    lv_where_9_0=ruleWhereExpressions();
 
                     state._fsp--;
 
@@ -5211,9 +5411,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	        }
                            		set(
                            			current, 
-                           			"whereExpression",
-                            		lv_whereExpression_8_0, 
-                            		"SqlExpression");
+                           			"where",
+                            		lv_where_9_0, 
+                            		"WhereExpressions");
                     	        afterParserOrEnumRuleCall();
                     	    
 
@@ -5228,7 +5428,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2118:4: (otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )* )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2193:4: (otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) ) )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
@@ -5237,134 +5437,23 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt37) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2118:6: otherlv_9= 'group by' ( (lv_groupByExpressions_10_0= ruleSqlExpression ) ) (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )*
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2193:6: otherlv_10= 'group by' ( (lv_groupBy_11_0= ruleGroupByExpressions ) )
                     {
-                    otherlv_9=(Token)match(input,71,FOLLOW_71_in_ruleSelectExpression4535); 
+                    otherlv_10=(Token)match(input,71,FOLLOW_71_in_ruleSelectExpression4703); 
 
-                        	newLeafNode(otherlv_9, grammarAccess.getSelectExpressionAccess().getGroupByKeyword_6_0());
+                        	newLeafNode(otherlv_10, grammarAccess.getSelectExpressionAccess().getGroupByKeyword_6_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2122:1: ( (lv_groupByExpressions_10_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2123:1: (lv_groupByExpressions_10_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2197:1: ( (lv_groupBy_11_0= ruleGroupByExpressions ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2198:1: (lv_groupBy_11_0= ruleGroupByExpressions )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2123:1: (lv_groupByExpressions_10_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2124:3: lv_groupByExpressions_10_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2198:1: (lv_groupBy_11_0= ruleGroupByExpressions )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2199:3: lv_groupBy_11_0= ruleGroupByExpressions
                     {
                      
-                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_1_0()); 
+                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByGroupByExpressionsParserRuleCall_6_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleSelectExpression4556);
-                    lv_groupByExpressions_10_0=ruleSqlExpression();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
-                    	        }
-                           		add(
-                           			current, 
-                           			"groupByExpressions",
-                            		lv_groupByExpressions_10_0, 
-                            		"SqlExpression");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2140:2: (otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) ) )*
-                    loop36:
-                    do {
-                        int alt36=2;
-                        int LA36_0 = input.LA(1);
-
-                        if ( (LA36_0==60) ) {
-                            alt36=1;
-                        }
-
-
-                        switch (alt36) {
-                    	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2140:4: otherlv_11= ',' ( (lv_groupByExpressions_12_0= ruleSqlExpression ) )
-                    	    {
-                    	    otherlv_11=(Token)match(input,60,FOLLOW_60_in_ruleSelectExpression4569); 
-
-                    	        	newLeafNode(otherlv_11, grammarAccess.getSelectExpressionAccess().getCommaKeyword_6_2_0());
-                    	        
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2144:1: ( (lv_groupByExpressions_12_0= ruleSqlExpression ) )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2145:1: (lv_groupByExpressions_12_0= ruleSqlExpression )
-                    	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2145:1: (lv_groupByExpressions_12_0= ruleSqlExpression )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2146:3: lv_groupByExpressions_12_0= ruleSqlExpression
-                    	    {
-                    	     
-                    	    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getGroupByExpressionsSqlExpressionParserRuleCall_6_2_1_0()); 
-                    	    	    
-                    	    pushFollow(FOLLOW_ruleSqlExpression_in_ruleSelectExpression4590);
-                    	    lv_groupByExpressions_12_0=ruleSqlExpression();
-
-                    	    state._fsp--;
-
-
-                    	    	        if (current==null) {
-                    	    	            current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
-                    	    	        }
-                    	           		add(
-                    	           			current, 
-                    	           			"groupByExpressions",
-                    	            		lv_groupByExpressions_12_0, 
-                    	            		"SqlExpression");
-                    	    	        afterParserOrEnumRuleCall();
-                    	    	    
-
-                    	    }
-
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop36;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-
-            }
-
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2162:6: (otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) ) )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
-
-            if ( (LA38_0==72) ) {
-                alt38=1;
-            }
-            switch (alt38) {
-                case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2162:8: otherlv_13= 'having' ( (lv_havingExpression_14_0= ruleSqlExpression ) )
-                    {
-                    otherlv_13=(Token)match(input,72,FOLLOW_72_in_ruleSelectExpression4607); 
-
-                        	newLeafNode(otherlv_13, grammarAccess.getSelectExpressionAccess().getHavingKeyword_7_0());
-                        
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2166:1: ( (lv_havingExpression_14_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2167:1: (lv_havingExpression_14_0= ruleSqlExpression )
-                    {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2167:1: (lv_havingExpression_14_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2168:3: lv_havingExpression_14_0= ruleSqlExpression
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getHavingExpressionSqlExpressionParserRuleCall_7_1_0()); 
-                    	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleSelectExpression4628);
-                    lv_havingExpression_14_0=ruleSqlExpression();
+                    pushFollow(FOLLOW_ruleGroupByExpressions_in_ruleSelectExpression4724);
+                    lv_groupBy_11_0=ruleGroupByExpressions();
 
                     state._fsp--;
 
@@ -5374,9 +5463,61 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	        }
                            		set(
                            			current, 
-                           			"havingExpression",
-                            		lv_havingExpression_14_0, 
-                            		"SqlExpression");
+                           			"groupBy",
+                            		lv_groupBy_11_0, 
+                            		"GroupByExpressions");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2215:4: (otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) ) )?
+            int alt38=2;
+            int LA38_0 = input.LA(1);
+
+            if ( (LA38_0==72) ) {
+                alt38=1;
+            }
+            switch (alt38) {
+                case 1 :
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2215:6: otherlv_12= 'having' ( (lv_having_13_0= ruleHavingExpressions ) )
+                    {
+                    otherlv_12=(Token)match(input,72,FOLLOW_72_in_ruleSelectExpression4739); 
+
+                        	newLeafNode(otherlv_12, grammarAccess.getSelectExpressionAccess().getHavingKeyword_7_0());
+                        
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2219:1: ( (lv_having_13_0= ruleHavingExpressions ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2220:1: (lv_having_13_0= ruleHavingExpressions )
+                    {
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2220:1: (lv_having_13_0= ruleHavingExpressions )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2221:3: lv_having_13_0= ruleHavingExpressions
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getSelectExpressionAccess().getHavingHavingExpressionsParserRuleCall_7_1_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleHavingExpressions_in_ruleSelectExpression4760);
+                    lv_having_13_0=ruleHavingExpressions();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getSelectExpressionRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"having",
+                            		lv_having_13_0, 
+                            		"HavingExpressions");
                     	        afterParserOrEnumRuleCall();
                     	    
 
@@ -5412,7 +5553,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSelectList"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2192:1: entryRuleSelectList returns [EObject current=null] : iv_ruleSelectList= ruleSelectList EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2245:1: entryRuleSelectList returns [EObject current=null] : iv_ruleSelectList= ruleSelectList EOF ;
     public final EObject entryRuleSelectList() throws RecognitionException {
         EObject current = null;
 
@@ -5420,17 +5561,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2193:2: (iv_ruleSelectList= ruleSelectList EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2194:2: iv_ruleSelectList= ruleSelectList EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2246:2: (iv_ruleSelectList= ruleSelectList EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2247:2: iv_ruleSelectList= ruleSelectList EOF
             {
              newCompositeNode(grammarAccess.getSelectListRule()); 
-            pushFollow(FOLLOW_ruleSelectList_in_entryRuleSelectList4666);
+            pushFollow(FOLLOW_ruleSelectList_in_entryRuleSelectList4798);
             iv_ruleSelectList=ruleSelectList();
 
             state._fsp--;
 
              current =iv_ruleSelectList; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectList4676); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSelectList4808); 
 
             }
 
@@ -5448,7 +5589,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSelectList"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2201:1: ruleSelectList returns [EObject current=null] : ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2254:1: ruleSelectList returns [EObject current=null] : ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* ) ;
     public final EObject ruleSelectList() throws RecognitionException {
         EObject current = null;
 
@@ -5461,22 +5602,22 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2204:28: ( ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2205:1: ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2257:28: ( ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2258:1: ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2205:1: ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2205:2: ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2258:1: ( ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2258:2: ( (lv_resultColumns_0_0= ruleResultColumn ) ) (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )*
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2205:2: ( (lv_resultColumns_0_0= ruleResultColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2206:1: (lv_resultColumns_0_0= ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2258:2: ( (lv_resultColumns_0_0= ruleResultColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2259:1: (lv_resultColumns_0_0= ruleResultColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2206:1: (lv_resultColumns_0_0= ruleResultColumn )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2207:3: lv_resultColumns_0_0= ruleResultColumn
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2259:1: (lv_resultColumns_0_0= ruleResultColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2260:3: lv_resultColumns_0_0= ruleResultColumn
             {
              
             	        newCompositeNode(grammarAccess.getSelectListAccess().getResultColumnsResultColumnParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleResultColumn_in_ruleSelectList4722);
+            pushFollow(FOLLOW_ruleResultColumn_in_ruleSelectList4854);
             lv_resultColumns_0_0=ruleResultColumn();
 
             state._fsp--;
@@ -5498,7 +5639,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2223:2: (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2276:2: (otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) ) )*
             loop39:
             do {
                 int alt39=2;
@@ -5511,22 +5652,22 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                 switch (alt39) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2223:4: otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2276:4: otherlv_1= ',' ( (lv_resultColumns_2_0= ruleResultColumn ) )
             	    {
-            	    otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleSelectList4735); 
+            	    otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleSelectList4867); 
 
             	        	newLeafNode(otherlv_1, grammarAccess.getSelectListAccess().getCommaKeyword_1_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2227:1: ( (lv_resultColumns_2_0= ruleResultColumn ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2228:1: (lv_resultColumns_2_0= ruleResultColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2280:1: ( (lv_resultColumns_2_0= ruleResultColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2281:1: (lv_resultColumns_2_0= ruleResultColumn )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2228:1: (lv_resultColumns_2_0= ruleResultColumn )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2229:3: lv_resultColumns_2_0= ruleResultColumn
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2281:1: (lv_resultColumns_2_0= ruleResultColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2282:3: lv_resultColumns_2_0= ruleResultColumn
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getSelectListAccess().getResultColumnsResultColumnParserRuleCall_1_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleResultColumn_in_ruleSelectList4756);
+            	    pushFollow(FOLLOW_ruleResultColumn_in_ruleSelectList4888);
             	    lv_resultColumns_2_0=ruleResultColumn();
 
             	    state._fsp--;
@@ -5577,8 +5718,370 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSelectList"
 
 
+    // $ANTLR start "entryRuleWhereExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2306:1: entryRuleWhereExpressions returns [EObject current=null] : iv_ruleWhereExpressions= ruleWhereExpressions EOF ;
+    public final EObject entryRuleWhereExpressions() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleWhereExpressions = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2307:2: (iv_ruleWhereExpressions= ruleWhereExpressions EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2308:2: iv_ruleWhereExpressions= ruleWhereExpressions EOF
+            {
+             newCompositeNode(grammarAccess.getWhereExpressionsRule()); 
+            pushFollow(FOLLOW_ruleWhereExpressions_in_entryRuleWhereExpressions4926);
+            iv_ruleWhereExpressions=ruleWhereExpressions();
+
+            state._fsp--;
+
+             current =iv_ruleWhereExpressions; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWhereExpressions4936); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleWhereExpressions"
+
+
+    // $ANTLR start "ruleWhereExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2315:1: ruleWhereExpressions returns [EObject current=null] : ( (lv_expression_0_0= ruleSqlExpression ) ) ;
+    public final EObject ruleWhereExpressions() throws RecognitionException {
+        EObject current = null;
+
+        EObject lv_expression_0_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2318:28: ( ( (lv_expression_0_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2319:1: ( (lv_expression_0_0= ruleSqlExpression ) )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2319:1: ( (lv_expression_0_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2320:1: (lv_expression_0_0= ruleSqlExpression )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2320:1: (lv_expression_0_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2321:3: lv_expression_0_0= ruleSqlExpression
+            {
+             
+            	        newCompositeNode(grammarAccess.getWhereExpressionsAccess().getExpressionSqlExpressionParserRuleCall_0()); 
+            	    
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleWhereExpressions4981);
+            lv_expression_0_0=ruleSqlExpression();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getWhereExpressionsRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"expression",
+                    		lv_expression_0_0, 
+                    		"SqlExpression");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleWhereExpressions"
+
+
+    // $ANTLR start "entryRuleGroupByExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2345:1: entryRuleGroupByExpressions returns [EObject current=null] : iv_ruleGroupByExpressions= ruleGroupByExpressions EOF ;
+    public final EObject entryRuleGroupByExpressions() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleGroupByExpressions = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2346:2: (iv_ruleGroupByExpressions= ruleGroupByExpressions EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2347:2: iv_ruleGroupByExpressions= ruleGroupByExpressions EOF
+            {
+             newCompositeNode(grammarAccess.getGroupByExpressionsRule()); 
+            pushFollow(FOLLOW_ruleGroupByExpressions_in_entryRuleGroupByExpressions5016);
+            iv_ruleGroupByExpressions=ruleGroupByExpressions();
+
+            state._fsp--;
+
+             current =iv_ruleGroupByExpressions; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGroupByExpressions5026); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleGroupByExpressions"
+
+
+    // $ANTLR start "ruleGroupByExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2354:1: ruleGroupByExpressions returns [EObject current=null] : ( ( (lv_groupByExpressions_0_0= ruleSqlExpression ) ) (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )* ) ;
+    public final EObject ruleGroupByExpressions() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        EObject lv_groupByExpressions_0_0 = null;
+
+        EObject lv_groupByExpressions_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2357:28: ( ( ( (lv_groupByExpressions_0_0= ruleSqlExpression ) ) (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2358:1: ( ( (lv_groupByExpressions_0_0= ruleSqlExpression ) ) (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )* )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2358:1: ( ( (lv_groupByExpressions_0_0= ruleSqlExpression ) ) (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2358:2: ( (lv_groupByExpressions_0_0= ruleSqlExpression ) ) (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )*
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2358:2: ( (lv_groupByExpressions_0_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2359:1: (lv_groupByExpressions_0_0= ruleSqlExpression )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2359:1: (lv_groupByExpressions_0_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2360:3: lv_groupByExpressions_0_0= ruleSqlExpression
+            {
+             
+            	        newCompositeNode(grammarAccess.getGroupByExpressionsAccess().getGroupByExpressionsSqlExpressionParserRuleCall_0_0()); 
+            	    
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleGroupByExpressions5072);
+            lv_groupByExpressions_0_0=ruleSqlExpression();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getGroupByExpressionsRule());
+            	        }
+                   		add(
+                   			current, 
+                   			"groupByExpressions",
+                    		lv_groupByExpressions_0_0, 
+                    		"SqlExpression");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2376:2: (otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) ) )*
+            loop40:
+            do {
+                int alt40=2;
+                int LA40_0 = input.LA(1);
+
+                if ( (LA40_0==60) ) {
+                    alt40=1;
+                }
+
+
+                switch (alt40) {
+            	case 1 :
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2376:4: otherlv_1= ',' ( (lv_groupByExpressions_2_0= ruleSqlExpression ) )
+            	    {
+            	    otherlv_1=(Token)match(input,60,FOLLOW_60_in_ruleGroupByExpressions5085); 
+
+            	        	newLeafNode(otherlv_1, grammarAccess.getGroupByExpressionsAccess().getCommaKeyword_1_0());
+            	        
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2380:1: ( (lv_groupByExpressions_2_0= ruleSqlExpression ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2381:1: (lv_groupByExpressions_2_0= ruleSqlExpression )
+            	    {
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2381:1: (lv_groupByExpressions_2_0= ruleSqlExpression )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2382:3: lv_groupByExpressions_2_0= ruleSqlExpression
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getGroupByExpressionsAccess().getGroupByExpressionsSqlExpressionParserRuleCall_1_1_0()); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleSqlExpression_in_ruleGroupByExpressions5106);
+            	    lv_groupByExpressions_2_0=ruleSqlExpression();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getGroupByExpressionsRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"groupByExpressions",
+            	            		lv_groupByExpressions_2_0, 
+            	            		"SqlExpression");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop40;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleGroupByExpressions"
+
+
+    // $ANTLR start "entryRuleHavingExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2406:1: entryRuleHavingExpressions returns [EObject current=null] : iv_ruleHavingExpressions= ruleHavingExpressions EOF ;
+    public final EObject entryRuleHavingExpressions() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleHavingExpressions = null;
+
+
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2407:2: (iv_ruleHavingExpressions= ruleHavingExpressions EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2408:2: iv_ruleHavingExpressions= ruleHavingExpressions EOF
+            {
+             newCompositeNode(grammarAccess.getHavingExpressionsRule()); 
+            pushFollow(FOLLOW_ruleHavingExpressions_in_entryRuleHavingExpressions5144);
+            iv_ruleHavingExpressions=ruleHavingExpressions();
+
+            state._fsp--;
+
+             current =iv_ruleHavingExpressions; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleHavingExpressions5154); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleHavingExpressions"
+
+
+    // $ANTLR start "ruleHavingExpressions"
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2415:1: ruleHavingExpressions returns [EObject current=null] : ( (lv_expression_0_0= ruleSqlExpression ) ) ;
+    public final EObject ruleHavingExpressions() throws RecognitionException {
+        EObject current = null;
+
+        EObject lv_expression_0_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2418:28: ( ( (lv_expression_0_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2419:1: ( (lv_expression_0_0= ruleSqlExpression ) )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2419:1: ( (lv_expression_0_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2420:1: (lv_expression_0_0= ruleSqlExpression )
+            {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2420:1: (lv_expression_0_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2421:3: lv_expression_0_0= ruleSqlExpression
+            {
+             
+            	        newCompositeNode(grammarAccess.getHavingExpressionsAccess().getExpressionSqlExpressionParserRuleCall_0()); 
+            	    
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleHavingExpressions5199);
+            lv_expression_0_0=ruleSqlExpression();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getHavingExpressionsRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"expression",
+                    		lv_expression_0_0, 
+                    		"SqlExpression");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleHavingExpressions"
+
+
     // $ANTLR start "entryRuleOrderingTerm"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2253:1: entryRuleOrderingTerm returns [EObject current=null] : iv_ruleOrderingTerm= ruleOrderingTerm EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2445:1: entryRuleOrderingTerm returns [EObject current=null] : iv_ruleOrderingTerm= ruleOrderingTerm EOF ;
     public final EObject entryRuleOrderingTerm() throws RecognitionException {
         EObject current = null;
 
@@ -5586,17 +6089,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2254:2: (iv_ruleOrderingTerm= ruleOrderingTerm EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2255:2: iv_ruleOrderingTerm= ruleOrderingTerm EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2446:2: (iv_ruleOrderingTerm= ruleOrderingTerm EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2447:2: iv_ruleOrderingTerm= ruleOrderingTerm EOF
             {
              newCompositeNode(grammarAccess.getOrderingTermRule()); 
-            pushFollow(FOLLOW_ruleOrderingTerm_in_entryRuleOrderingTerm4794);
+            pushFollow(FOLLOW_ruleOrderingTerm_in_entryRuleOrderingTerm5234);
             iv_ruleOrderingTerm=ruleOrderingTerm();
 
             state._fsp--;
 
              current =iv_ruleOrderingTerm; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOrderingTerm4804); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOrderingTerm5244); 
 
             }
 
@@ -5614,7 +6117,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrderingTerm"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2262:1: ruleOrderingTerm returns [EObject current=null] : ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2454:1: ruleOrderingTerm returns [EObject current=null] : ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) ;
     public final EObject ruleOrderingTerm() throws RecognitionException {
         EObject current = null;
 
@@ -5626,22 +6129,22 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2265:28: ( ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2266:1: ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2457:28: ( ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2458:1: ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2266:1: ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2266:2: ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2458:1: ( ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2458:2: ( (lv_expression_0_0= ruleSqlExpression ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2266:2: ( (lv_expression_0_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2267:1: (lv_expression_0_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2458:2: ( (lv_expression_0_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2459:1: (lv_expression_0_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2267:1: (lv_expression_0_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2268:3: lv_expression_0_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2459:1: (lv_expression_0_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2460:3: lv_expression_0_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getOrderingTermAccess().getExpressionSqlExpressionParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleOrderingTerm4850);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleOrderingTerm5290);
             lv_expression_0_0=ruleSqlExpression();
 
             state._fsp--;
@@ -5663,27 +6166,27 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2284:2: ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
-            int alt40=3;
-            int LA40_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2476:2: ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
+            int alt41=3;
+            int LA41_0 = input.LA(1);
 
-            if ( (LA40_0==73) ) {
-                alt40=1;
+            if ( (LA41_0==73) ) {
+                alt41=1;
             }
-            else if ( (LA40_0==74) ) {
-                alt40=2;
+            else if ( (LA41_0==74) ) {
+                alt41=2;
             }
-            switch (alt40) {
+            switch (alt41) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2284:3: ( (lv_asc_1_0= 'asc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2476:3: ( (lv_asc_1_0= 'asc' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2284:3: ( (lv_asc_1_0= 'asc' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2285:1: (lv_asc_1_0= 'asc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2476:3: ( (lv_asc_1_0= 'asc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2477:1: (lv_asc_1_0= 'asc' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2285:1: (lv_asc_1_0= 'asc' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2286:3: lv_asc_1_0= 'asc'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2477:1: (lv_asc_1_0= 'asc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2478:3: lv_asc_1_0= 'asc'
                     {
-                    lv_asc_1_0=(Token)match(input,73,FOLLOW_73_in_ruleOrderingTerm4869); 
+                    lv_asc_1_0=(Token)match(input,73,FOLLOW_73_in_ruleOrderingTerm5309); 
 
                             newLeafNode(lv_asc_1_0, grammarAccess.getOrderingTermAccess().getAscAscKeyword_1_0_0());
                         
@@ -5703,15 +6206,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2300:6: ( (lv_desc_2_0= 'desc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2492:6: ( (lv_desc_2_0= 'desc' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2300:6: ( (lv_desc_2_0= 'desc' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2301:1: (lv_desc_2_0= 'desc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2492:6: ( (lv_desc_2_0= 'desc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2493:1: (lv_desc_2_0= 'desc' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2301:1: (lv_desc_2_0= 'desc' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2302:3: lv_desc_2_0= 'desc'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2493:1: (lv_desc_2_0= 'desc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2494:3: lv_desc_2_0= 'desc'
                     {
-                    lv_desc_2_0=(Token)match(input,74,FOLLOW_74_in_ruleOrderingTerm4906); 
+                    lv_desc_2_0=(Token)match(input,74,FOLLOW_74_in_ruleOrderingTerm5346); 
 
                             newLeafNode(lv_desc_2_0, grammarAccess.getOrderingTermAccess().getDescDescKeyword_1_1_0());
                         
@@ -5754,7 +6257,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJoinSource"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2323:1: entryRuleJoinSource returns [EObject current=null] : iv_ruleJoinSource= ruleJoinSource EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2515:1: entryRuleJoinSource returns [EObject current=null] : iv_ruleJoinSource= ruleJoinSource EOF ;
     public final EObject entryRuleJoinSource() throws RecognitionException {
         EObject current = null;
 
@@ -5762,17 +6265,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2324:2: (iv_ruleJoinSource= ruleJoinSource EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2325:2: iv_ruleJoinSource= ruleJoinSource EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2516:2: (iv_ruleJoinSource= ruleJoinSource EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2517:2: iv_ruleJoinSource= ruleJoinSource EOF
             {
              newCompositeNode(grammarAccess.getJoinSourceRule()); 
-            pushFollow(FOLLOW_ruleJoinSource_in_entryRuleJoinSource4957);
+            pushFollow(FOLLOW_ruleJoinSource_in_entryRuleJoinSource5397);
             iv_ruleJoinSource=ruleJoinSource();
 
             state._fsp--;
 
              current =iv_ruleJoinSource; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJoinSource4967); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJoinSource5407); 
 
             }
 
@@ -5790,7 +6293,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJoinSource"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2332:1: ruleJoinSource returns [EObject current=null] : ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2524:1: ruleJoinSource returns [EObject current=null] : ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* ) ;
     public final EObject ruleJoinSource() throws RecognitionException {
         EObject current = null;
 
@@ -5802,22 +6305,22 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2335:28: ( ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2336:1: ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2527:28: ( ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2528:1: ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2336:1: ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2336:2: ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2528:1: ( ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2528:2: ( (lv_source_0_0= ruleSingleSource ) ) ( (lv_joinStatements_1_0= ruleJoinStatement ) )*
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2336:2: ( (lv_source_0_0= ruleSingleSource ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2337:1: (lv_source_0_0= ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2528:2: ( (lv_source_0_0= ruleSingleSource ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2529:1: (lv_source_0_0= ruleSingleSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2337:1: (lv_source_0_0= ruleSingleSource )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2338:3: lv_source_0_0= ruleSingleSource
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2529:1: (lv_source_0_0= ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2530:3: lv_source_0_0= ruleSingleSource
             {
              
             	        newCompositeNode(grammarAccess.getJoinSourceAccess().getSourceSingleSourceParserRuleCall_0_0()); 
             	    
-            pushFollow(FOLLOW_ruleSingleSource_in_ruleJoinSource5013);
+            pushFollow(FOLLOW_ruleSingleSource_in_ruleJoinSource5453);
             lv_source_0_0=ruleSingleSource();
 
             state._fsp--;
@@ -5839,28 +6342,28 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2354:2: ( (lv_joinStatements_1_0= ruleJoinStatement ) )*
-            loop41:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2546:2: ( (lv_joinStatements_1_0= ruleJoinStatement ) )*
+            loop42:
             do {
-                int alt41=2;
-                int LA41_0 = input.LA(1);
+                int alt42=2;
+                int LA42_0 = input.LA(1);
 
-                if ( ((LA41_0>=75 && LA41_0<=76)||(LA41_0>=78 && LA41_0<=80)) ) {
-                    alt41=1;
+                if ( ((LA42_0>=75 && LA42_0<=76)||(LA42_0>=78 && LA42_0<=80)) ) {
+                    alt42=1;
                 }
 
 
-                switch (alt41) {
+                switch (alt42) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2355:1: (lv_joinStatements_1_0= ruleJoinStatement )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2547:1: (lv_joinStatements_1_0= ruleJoinStatement )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2355:1: (lv_joinStatements_1_0= ruleJoinStatement )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2356:3: lv_joinStatements_1_0= ruleJoinStatement
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2547:1: (lv_joinStatements_1_0= ruleJoinStatement )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2548:3: lv_joinStatements_1_0= ruleJoinStatement
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getJoinSourceAccess().getJoinStatementsJoinStatementParserRuleCall_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleJoinStatement_in_ruleJoinSource5034);
+            	    pushFollow(FOLLOW_ruleJoinStatement_in_ruleJoinSource5474);
             	    lv_joinStatements_1_0=ruleJoinStatement();
 
             	    state._fsp--;
@@ -5884,7 +6387,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop41;
+            	    break loop42;
                 }
             } while (true);
 
@@ -5909,7 +6412,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSingleSource"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2380:1: entryRuleSingleSource returns [EObject current=null] : iv_ruleSingleSource= ruleSingleSource EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2572:1: entryRuleSingleSource returns [EObject current=null] : iv_ruleSingleSource= ruleSingleSource EOF ;
     public final EObject entryRuleSingleSource() throws RecognitionException {
         EObject current = null;
 
@@ -5917,17 +6420,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2381:2: (iv_ruleSingleSource= ruleSingleSource EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2382:2: iv_ruleSingleSource= ruleSingleSource EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2573:2: (iv_ruleSingleSource= ruleSingleSource EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2574:2: iv_ruleSingleSource= ruleSingleSource EOF
             {
              newCompositeNode(grammarAccess.getSingleSourceRule()); 
-            pushFollow(FOLLOW_ruleSingleSource_in_entryRuleSingleSource5071);
+            pushFollow(FOLLOW_ruleSingleSource_in_entryRuleSingleSource5511);
             iv_ruleSingleSource=ruleSingleSource();
 
             state._fsp--;
 
              current =iv_ruleSingleSource; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSource5081); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSource5521); 
 
             }
 
@@ -5945,7 +6448,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSingleSource"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2389:1: ruleSingleSource returns [EObject current=null] : (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2581:1: ruleSingleSource returns [EObject current=null] : (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin ) ;
     public final EObject ruleSingleSource() throws RecognitionException {
         EObject current = null;
 
@@ -5959,46 +6462,46 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2392:28: ( (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2393:1: (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2584:28: ( (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2585:1: (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2393:1: (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin )
-            int alt42=3;
-            int LA42_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2585:1: (this_SingleSourceTable_0= ruleSingleSourceTable | this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement | this_SingleSourceJoin_2= ruleSingleSourceJoin )
+            int alt43=3;
+            int LA43_0 = input.LA(1);
 
-            if ( (LA42_0==RULE_ID) ) {
-                alt42=1;
+            if ( (LA43_0==RULE_ID) ) {
+                alt43=1;
             }
-            else if ( (LA42_0==53) ) {
-                int LA42_2 = input.LA(2);
+            else if ( (LA43_0==53) ) {
+                int LA43_2 = input.LA(2);
 
-                if ( (LA42_2==66) ) {
-                    alt42=2;
+                if ( (LA43_2==RULE_ID||LA43_2==53) ) {
+                    alt43=3;
                 }
-                else if ( (LA42_2==RULE_ID||LA42_2==53) ) {
-                    alt42=3;
+                else if ( (LA43_2==66) ) {
+                    alt43=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 42, 2, input);
+                        new NoViableAltException("", 43, 2, input);
 
                     throw nvae;
                 }
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 42, 0, input);
+                    new NoViableAltException("", 43, 0, input);
 
                 throw nvae;
             }
-            switch (alt42) {
+            switch (alt43) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2394:5: this_SingleSourceTable_0= ruleSingleSourceTable
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2586:5: this_SingleSourceTable_0= ruleSingleSourceTable
                     {
                      
                             newCompositeNode(grammarAccess.getSingleSourceAccess().getSingleSourceTableParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleSingleSourceTable_in_ruleSingleSource5128);
+                    pushFollow(FOLLOW_ruleSingleSourceTable_in_ruleSingleSource5568);
                     this_SingleSourceTable_0=ruleSingleSourceTable();
 
                     state._fsp--;
@@ -6011,12 +6514,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2404:5: this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2596:5: this_SingleSourceSelectStatement_1= ruleSingleSourceSelectStatement
                     {
                      
                             newCompositeNode(grammarAccess.getSingleSourceAccess().getSingleSourceSelectStatementParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleSingleSourceSelectStatement_in_ruleSingleSource5155);
+                    pushFollow(FOLLOW_ruleSingleSourceSelectStatement_in_ruleSingleSource5595);
                     this_SingleSourceSelectStatement_1=ruleSingleSourceSelectStatement();
 
                     state._fsp--;
@@ -6029,12 +6532,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2414:5: this_SingleSourceJoin_2= ruleSingleSourceJoin
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2606:5: this_SingleSourceJoin_2= ruleSingleSourceJoin
                     {
                      
                             newCompositeNode(grammarAccess.getSingleSourceAccess().getSingleSourceJoinParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleSingleSourceJoin_in_ruleSingleSource5182);
+                    pushFollow(FOLLOW_ruleSingleSourceJoin_in_ruleSingleSource5622);
                     this_SingleSourceJoin_2=ruleSingleSourceJoin();
 
                     state._fsp--;
@@ -6067,7 +6570,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSingleSourceTable"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2430:1: entryRuleSingleSourceTable returns [EObject current=null] : iv_ruleSingleSourceTable= ruleSingleSourceTable EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2622:1: entryRuleSingleSourceTable returns [EObject current=null] : iv_ruleSingleSourceTable= ruleSingleSourceTable EOF ;
     public final EObject entryRuleSingleSourceTable() throws RecognitionException {
         EObject current = null;
 
@@ -6075,17 +6578,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2431:2: (iv_ruleSingleSourceTable= ruleSingleSourceTable EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2432:2: iv_ruleSingleSourceTable= ruleSingleSourceTable EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2623:2: (iv_ruleSingleSourceTable= ruleSingleSourceTable EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2624:2: iv_ruleSingleSourceTable= ruleSingleSourceTable EOF
             {
              newCompositeNode(grammarAccess.getSingleSourceTableRule()); 
-            pushFollow(FOLLOW_ruleSingleSourceTable_in_entryRuleSingleSourceTable5217);
+            pushFollow(FOLLOW_ruleSingleSourceTable_in_entryRuleSingleSourceTable5657);
             iv_ruleSingleSourceTable=ruleSingleSourceTable();
 
             state._fsp--;
 
              current =iv_ruleSingleSourceTable; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceTable5227); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceTable5667); 
 
             }
 
@@ -6103,7 +6606,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSingleSourceTable"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2439:1: ruleSingleSourceTable returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2631:1: ruleSingleSourceTable returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) ;
     public final EObject ruleSingleSourceTable() throws RecognitionException {
         EObject current = null;
 
@@ -6114,14 +6617,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2442:28: ( ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2443:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2634:28: ( ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2635:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2443:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2443:2: () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2635:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2635:2: () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2443:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2444:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2635:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2636:5: 
             {
 
                     current = forceCreateModelElement(
@@ -6131,18 +6634,18 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2449:2: ( (otherlv_1= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2450:1: (otherlv_1= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2641:2: ( (otherlv_1= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2642:1: (otherlv_1= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2450:1: (otherlv_1= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2451:3: otherlv_1= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2642:1: (otherlv_1= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2643:3: otherlv_1= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getSingleSourceTableRule());
             	        }
                     
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceTable5281); 
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceTable5721); 
 
             		newLeafNode(otherlv_1, grammarAccess.getSingleSourceTableAccess().getTableReferenceCreateTableStatementCrossReference_1_0()); 
             	
@@ -6152,28 +6655,28 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2462:2: (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
-            int alt43=2;
-            int LA43_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2654:2: (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
+            int alt44=2;
+            int LA44_0 = input.LA(1);
 
-            if ( (LA43_0==62) ) {
-                alt43=1;
+            if ( (LA44_0==62) ) {
+                alt44=1;
             }
-            switch (alt43) {
+            switch (alt44) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2462:4: otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2654:4: otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) )
                     {
-                    otherlv_2=(Token)match(input,62,FOLLOW_62_in_ruleSingleSourceTable5294); 
+                    otherlv_2=(Token)match(input,62,FOLLOW_62_in_ruleSingleSourceTable5734); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getSingleSourceTableAccess().getAsKeyword_2_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2466:1: ( (lv_name_3_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2467:1: (lv_name_3_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2658:1: ( (lv_name_3_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2659:1: (lv_name_3_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2467:1: (lv_name_3_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2468:3: lv_name_3_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2659:1: (lv_name_3_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2660:3: lv_name_3_0= RULE_ID
                     {
-                    lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceTable5311); 
+                    lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceTable5751); 
 
                     			newLeafNode(lv_name_3_0, grammarAccess.getSingleSourceTableAccess().getNameIDTerminalRuleCall_2_1_0()); 
                     		
@@ -6220,7 +6723,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSingleSourceSelectStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2492:1: entryRuleSingleSourceSelectStatement returns [EObject current=null] : iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2684:1: entryRuleSingleSourceSelectStatement returns [EObject current=null] : iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF ;
     public final EObject entryRuleSingleSourceSelectStatement() throws RecognitionException {
         EObject current = null;
 
@@ -6228,17 +6731,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2493:2: (iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2494:2: iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2685:2: (iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2686:2: iv_ruleSingleSourceSelectStatement= ruleSingleSourceSelectStatement EOF
             {
              newCompositeNode(grammarAccess.getSingleSourceSelectStatementRule()); 
-            pushFollow(FOLLOW_ruleSingleSourceSelectStatement_in_entryRuleSingleSourceSelectStatement5354);
+            pushFollow(FOLLOW_ruleSingleSourceSelectStatement_in_entryRuleSingleSourceSelectStatement5794);
             iv_ruleSingleSourceSelectStatement=ruleSingleSourceSelectStatement();
 
             state._fsp--;
 
              current =iv_ruleSingleSourceSelectStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceSelectStatement5364); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceSelectStatement5804); 
 
             }
 
@@ -6256,7 +6759,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSingleSourceSelectStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2501:1: ruleSingleSourceSelectStatement returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2693:1: ruleSingleSourceSelectStatement returns [EObject current=null] : ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? ) ;
     public final EObject ruleSingleSourceSelectStatement() throws RecognitionException {
         EObject current = null;
 
@@ -6270,14 +6773,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2504:28: ( ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2505:1: ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2696:28: ( ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2697:1: ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2505:1: ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2505:2: () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2697:1: ( () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2697:2: () otherlv_1= '(' ( (lv_selectStatement_2_0= ruleSelectStatement ) ) otherlv_3= ')' (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2505:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2506:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2697:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2698:5: 
             {
 
                     current = forceCreateModelElement(
@@ -6287,20 +6790,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,53,FOLLOW_53_in_ruleSingleSourceSelectStatement5410); 
+            otherlv_1=(Token)match(input,53,FOLLOW_53_in_ruleSingleSourceSelectStatement5850); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getSingleSourceSelectStatementAccess().getLeftParenthesisKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2515:1: ( (lv_selectStatement_2_0= ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2516:1: (lv_selectStatement_2_0= ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2707:1: ( (lv_selectStatement_2_0= ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2708:1: (lv_selectStatement_2_0= ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2516:1: (lv_selectStatement_2_0= ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2517:3: lv_selectStatement_2_0= ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2708:1: (lv_selectStatement_2_0= ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2709:3: lv_selectStatement_2_0= ruleSelectStatement
             {
              
             	        newCompositeNode(grammarAccess.getSingleSourceSelectStatementAccess().getSelectStatementSelectStatementParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleSelectStatement_in_ruleSingleSourceSelectStatement5431);
+            pushFollow(FOLLOW_ruleSelectStatement_in_ruleSingleSourceSelectStatement5871);
             lv_selectStatement_2_0=ruleSelectStatement();
 
             state._fsp--;
@@ -6322,32 +6825,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,54,FOLLOW_54_in_ruleSingleSourceSelectStatement5443); 
+            otherlv_3=(Token)match(input,54,FOLLOW_54_in_ruleSingleSourceSelectStatement5883); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getSingleSourceSelectStatementAccess().getRightParenthesisKeyword_3());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2537:1: (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )?
-            int alt44=2;
-            int LA44_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2729:1: (otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) )?
+            int alt45=2;
+            int LA45_0 = input.LA(1);
 
-            if ( (LA44_0==62) ) {
-                alt44=1;
+            if ( (LA45_0==62) ) {
+                alt45=1;
             }
-            switch (alt44) {
+            switch (alt45) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2537:3: otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2729:3: otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) )
                     {
-                    otherlv_4=(Token)match(input,62,FOLLOW_62_in_ruleSingleSourceSelectStatement5456); 
+                    otherlv_4=(Token)match(input,62,FOLLOW_62_in_ruleSingleSourceSelectStatement5896); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getSingleSourceSelectStatementAccess().getAsKeyword_4_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2541:1: ( (lv_name_5_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2542:1: (lv_name_5_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2733:1: ( (lv_name_5_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2734:1: (lv_name_5_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2542:1: (lv_name_5_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2543:3: lv_name_5_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2734:1: (lv_name_5_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2735:3: lv_name_5_0= RULE_ID
                     {
-                    lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceSelectStatement5473); 
+                    lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSingleSourceSelectStatement5913); 
 
                     			newLeafNode(lv_name_5_0, grammarAccess.getSingleSourceSelectStatementAccess().getNameIDTerminalRuleCall_4_1_0()); 
                     		
@@ -6394,7 +6897,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSingleSourceJoin"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2567:1: entryRuleSingleSourceJoin returns [EObject current=null] : iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2759:1: entryRuleSingleSourceJoin returns [EObject current=null] : iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF ;
     public final EObject entryRuleSingleSourceJoin() throws RecognitionException {
         EObject current = null;
 
@@ -6402,17 +6905,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2568:2: (iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2569:2: iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2760:2: (iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2761:2: iv_ruleSingleSourceJoin= ruleSingleSourceJoin EOF
             {
              newCompositeNode(grammarAccess.getSingleSourceJoinRule()); 
-            pushFollow(FOLLOW_ruleSingleSourceJoin_in_entryRuleSingleSourceJoin5516);
+            pushFollow(FOLLOW_ruleSingleSourceJoin_in_entryRuleSingleSourceJoin5956);
             iv_ruleSingleSourceJoin=ruleSingleSourceJoin();
 
             state._fsp--;
 
              current =iv_ruleSingleSourceJoin; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceJoin5526); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSingleSourceJoin5966); 
 
             }
 
@@ -6430,7 +6933,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSingleSourceJoin"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2576:1: ruleSingleSourceJoin returns [EObject current=null] : (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2768:1: ruleSingleSourceJoin returns [EObject current=null] : (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' ) ;
     public final EObject ruleSingleSourceJoin() throws RecognitionException {
         EObject current = null;
 
@@ -6442,26 +6945,26 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2579:28: ( (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2580:1: (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2771:28: ( (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2772:1: (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2580:1: (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2580:3: otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2772:1: (otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2772:3: otherlv_0= '(' ( (lv_joinSource_1_0= ruleJoinSource ) ) otherlv_2= ')'
             {
-            otherlv_0=(Token)match(input,53,FOLLOW_53_in_ruleSingleSourceJoin5563); 
+            otherlv_0=(Token)match(input,53,FOLLOW_53_in_ruleSingleSourceJoin6003); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSingleSourceJoinAccess().getLeftParenthesisKeyword_0());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2584:1: ( (lv_joinSource_1_0= ruleJoinSource ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2585:1: (lv_joinSource_1_0= ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2776:1: ( (lv_joinSource_1_0= ruleJoinSource ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2777:1: (lv_joinSource_1_0= ruleJoinSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2585:1: (lv_joinSource_1_0= ruleJoinSource )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2586:3: lv_joinSource_1_0= ruleJoinSource
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2777:1: (lv_joinSource_1_0= ruleJoinSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2778:3: lv_joinSource_1_0= ruleJoinSource
             {
              
             	        newCompositeNode(grammarAccess.getSingleSourceJoinAccess().getJoinSourceJoinSourceParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleJoinSource_in_ruleSingleSourceJoin5584);
+            pushFollow(FOLLOW_ruleJoinSource_in_ruleSingleSourceJoin6024);
             lv_joinSource_1_0=ruleJoinSource();
 
             state._fsp--;
@@ -6483,7 +6986,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,54,FOLLOW_54_in_ruleSingleSourceJoin5596); 
+            otherlv_2=(Token)match(input,54,FOLLOW_54_in_ruleSingleSourceJoin6036); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getSingleSourceJoinAccess().getRightParenthesisKeyword_2());
                 
@@ -6508,7 +7011,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJoinStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2614:1: entryRuleJoinStatement returns [EObject current=null] : iv_ruleJoinStatement= ruleJoinStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2806:1: entryRuleJoinStatement returns [EObject current=null] : iv_ruleJoinStatement= ruleJoinStatement EOF ;
     public final EObject entryRuleJoinStatement() throws RecognitionException {
         EObject current = null;
 
@@ -6516,17 +7019,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2615:2: (iv_ruleJoinStatement= ruleJoinStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2616:2: iv_ruleJoinStatement= ruleJoinStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2807:2: (iv_ruleJoinStatement= ruleJoinStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2808:2: iv_ruleJoinStatement= ruleJoinStatement EOF
             {
              newCompositeNode(grammarAccess.getJoinStatementRule()); 
-            pushFollow(FOLLOW_ruleJoinStatement_in_entryRuleJoinStatement5632);
+            pushFollow(FOLLOW_ruleJoinStatement_in_entryRuleJoinStatement6072);
             iv_ruleJoinStatement=ruleJoinStatement();
 
             state._fsp--;
 
              current =iv_ruleJoinStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJoinStatement5642); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJoinStatement6082); 
 
             }
 
@@ -6544,7 +7047,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJoinStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2623:1: ruleJoinStatement returns [EObject current=null] : ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2815:1: ruleJoinStatement returns [EObject current=null] : ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) ) ;
     public final EObject ruleJoinStatement() throws RecognitionException {
         EObject current = null;
 
@@ -6563,14 +7066,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2626:28: ( ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2627:1: ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2818:28: ( ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2819:1: ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2627:1: ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2627:2: () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2819:1: ( () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2819:2: () ( (lv_natural_1_0= 'natural' ) )? ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )? otherlv_6= 'join' ( (lv_singleSource_7_0= ruleSingleSource ) ) otherlv_8= 'on' ( (lv_expression_9_0= ruleSqlExpression ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2627:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2628:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2819:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2820:5: 
             {
 
                     current = forceCreateModelElement(
@@ -6580,21 +7083,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2633:2: ( (lv_natural_1_0= 'natural' ) )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2825:2: ( (lv_natural_1_0= 'natural' ) )?
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==75) ) {
-                alt45=1;
+            if ( (LA46_0==75) ) {
+                alt46=1;
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2634:1: (lv_natural_1_0= 'natural' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2826:1: (lv_natural_1_0= 'natural' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2634:1: (lv_natural_1_0= 'natural' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2635:3: lv_natural_1_0= 'natural'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2826:1: (lv_natural_1_0= 'natural' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2827:3: lv_natural_1_0= 'natural'
                     {
-                    lv_natural_1_0=(Token)match(input,75,FOLLOW_75_in_ruleJoinStatement5694); 
+                    lv_natural_1_0=(Token)match(input,75,FOLLOW_75_in_ruleJoinStatement6134); 
 
                             newLeafNode(lv_natural_1_0, grammarAccess.getJoinStatementAccess().getNaturalNaturalKeyword_1_0());
                         
@@ -6613,40 +7116,40 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2648:3: ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )?
-            int alt47=4;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2840:3: ( ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? ) | ( (lv_inner_4_0= 'inner' ) ) | ( (lv_cross_5_0= 'cross' ) ) )?
+            int alt48=4;
             switch ( input.LA(1) ) {
                 case 76:
                     {
-                    alt47=1;
+                    alt48=1;
                     }
                     break;
                 case 78:
                     {
-                    alt47=2;
+                    alt48=2;
                     }
                     break;
                 case 79:
                     {
-                    alt47=3;
+                    alt48=3;
                     }
                     break;
             }
 
-            switch (alt47) {
+            switch (alt48) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2648:4: ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2840:4: ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2648:4: ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2648:5: ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2840:4: ( ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2840:5: ( (lv_left_2_0= 'left' ) ) ( (lv_outer_3_0= 'outer' ) )?
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2648:5: ( (lv_left_2_0= 'left' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2649:1: (lv_left_2_0= 'left' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2840:5: ( (lv_left_2_0= 'left' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2841:1: (lv_left_2_0= 'left' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2649:1: (lv_left_2_0= 'left' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2650:3: lv_left_2_0= 'left'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2841:1: (lv_left_2_0= 'left' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2842:3: lv_left_2_0= 'left'
                     {
-                    lv_left_2_0=(Token)match(input,76,FOLLOW_76_in_ruleJoinStatement5728); 
+                    lv_left_2_0=(Token)match(input,76,FOLLOW_76_in_ruleJoinStatement6168); 
 
                             newLeafNode(lv_left_2_0, grammarAccess.getJoinStatementAccess().getLeftLeftKeyword_2_0_0_0());
                         
@@ -6662,21 +7165,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2663:2: ( (lv_outer_3_0= 'outer' ) )?
-                    int alt46=2;
-                    int LA46_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2855:2: ( (lv_outer_3_0= 'outer' ) )?
+                    int alt47=2;
+                    int LA47_0 = input.LA(1);
 
-                    if ( (LA46_0==77) ) {
-                        alt46=1;
+                    if ( (LA47_0==77) ) {
+                        alt47=1;
                     }
-                    switch (alt46) {
+                    switch (alt47) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2664:1: (lv_outer_3_0= 'outer' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2856:1: (lv_outer_3_0= 'outer' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2664:1: (lv_outer_3_0= 'outer' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2665:3: lv_outer_3_0= 'outer'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2856:1: (lv_outer_3_0= 'outer' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2857:3: lv_outer_3_0= 'outer'
                             {
-                            lv_outer_3_0=(Token)match(input,77,FOLLOW_77_in_ruleJoinStatement5759); 
+                            lv_outer_3_0=(Token)match(input,77,FOLLOW_77_in_ruleJoinStatement6199); 
 
                                     newLeafNode(lv_outer_3_0, grammarAccess.getJoinStatementAccess().getOuterOuterKeyword_2_0_1_0());
                                 
@@ -6702,15 +7205,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2679:6: ( (lv_inner_4_0= 'inner' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2871:6: ( (lv_inner_4_0= 'inner' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2679:6: ( (lv_inner_4_0= 'inner' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2680:1: (lv_inner_4_0= 'inner' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2871:6: ( (lv_inner_4_0= 'inner' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2872:1: (lv_inner_4_0= 'inner' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2680:1: (lv_inner_4_0= 'inner' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2681:3: lv_inner_4_0= 'inner'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2872:1: (lv_inner_4_0= 'inner' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2873:3: lv_inner_4_0= 'inner'
                     {
-                    lv_inner_4_0=(Token)match(input,78,FOLLOW_78_in_ruleJoinStatement5798); 
+                    lv_inner_4_0=(Token)match(input,78,FOLLOW_78_in_ruleJoinStatement6238); 
 
                             newLeafNode(lv_inner_4_0, grammarAccess.getJoinStatementAccess().getInnerInnerKeyword_2_1_0());
                         
@@ -6730,15 +7233,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2695:6: ( (lv_cross_5_0= 'cross' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2887:6: ( (lv_cross_5_0= 'cross' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2695:6: ( (lv_cross_5_0= 'cross' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2696:1: (lv_cross_5_0= 'cross' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2887:6: ( (lv_cross_5_0= 'cross' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2888:1: (lv_cross_5_0= 'cross' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2696:1: (lv_cross_5_0= 'cross' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2697:3: lv_cross_5_0= 'cross'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2888:1: (lv_cross_5_0= 'cross' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2889:3: lv_cross_5_0= 'cross'
                     {
-                    lv_cross_5_0=(Token)match(input,79,FOLLOW_79_in_ruleJoinStatement5835); 
+                    lv_cross_5_0=(Token)match(input,79,FOLLOW_79_in_ruleJoinStatement6275); 
 
                             newLeafNode(lv_cross_5_0, grammarAccess.getJoinStatementAccess().getCrossCrossKeyword_2_2_0());
                         
@@ -6760,20 +7263,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,80,FOLLOW_80_in_ruleJoinStatement5862); 
+            otherlv_6=(Token)match(input,80,FOLLOW_80_in_ruleJoinStatement6302); 
 
                 	newLeafNode(otherlv_6, grammarAccess.getJoinStatementAccess().getJoinKeyword_3());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2714:1: ( (lv_singleSource_7_0= ruleSingleSource ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2715:1: (lv_singleSource_7_0= ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2906:1: ( (lv_singleSource_7_0= ruleSingleSource ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2907:1: (lv_singleSource_7_0= ruleSingleSource )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2715:1: (lv_singleSource_7_0= ruleSingleSource )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2716:3: lv_singleSource_7_0= ruleSingleSource
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2907:1: (lv_singleSource_7_0= ruleSingleSource )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2908:3: lv_singleSource_7_0= ruleSingleSource
             {
              
             	        newCompositeNode(grammarAccess.getJoinStatementAccess().getSingleSourceSingleSourceParserRuleCall_4_0()); 
             	    
-            pushFollow(FOLLOW_ruleSingleSource_in_ruleJoinStatement5883);
+            pushFollow(FOLLOW_ruleSingleSource_in_ruleJoinStatement6323);
             lv_singleSource_7_0=ruleSingleSource();
 
             state._fsp--;
@@ -6795,20 +7298,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,81,FOLLOW_81_in_ruleJoinStatement5895); 
+            otherlv_8=(Token)match(input,81,FOLLOW_81_in_ruleJoinStatement6335); 
 
                 	newLeafNode(otherlv_8, grammarAccess.getJoinStatementAccess().getOnKeyword_5());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2736:1: ( (lv_expression_9_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2737:1: (lv_expression_9_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2928:1: ( (lv_expression_9_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2929:1: (lv_expression_9_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2737:1: (lv_expression_9_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2738:3: lv_expression_9_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2929:1: (lv_expression_9_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2930:3: lv_expression_9_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getJoinStatementAccess().getExpressionSqlExpressionParserRuleCall_6_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleJoinStatement5916);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleJoinStatement6356);
             lv_expression_9_0=ruleSqlExpression();
 
             state._fsp--;
@@ -6851,7 +7354,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleResultColumn"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2762:1: entryRuleResultColumn returns [EObject current=null] : iv_ruleResultColumn= ruleResultColumn EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2954:1: entryRuleResultColumn returns [EObject current=null] : iv_ruleResultColumn= ruleResultColumn EOF ;
     public final EObject entryRuleResultColumn() throws RecognitionException {
         EObject current = null;
 
@@ -6859,17 +7362,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2763:2: (iv_ruleResultColumn= ruleResultColumn EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2764:2: iv_ruleResultColumn= ruleResultColumn EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2955:2: (iv_ruleResultColumn= ruleResultColumn EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2956:2: iv_ruleResultColumn= ruleResultColumn EOF
             {
              newCompositeNode(grammarAccess.getResultColumnRule()); 
-            pushFollow(FOLLOW_ruleResultColumn_in_entryRuleResultColumn5952);
+            pushFollow(FOLLOW_ruleResultColumn_in_entryRuleResultColumn6392);
             iv_ruleResultColumn=ruleResultColumn();
 
             state._fsp--;
 
              current =iv_ruleResultColumn; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleResultColumn5962); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleResultColumn6402); 
 
             }
 
@@ -6887,344 +7390,8 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResultColumn"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2771:1: ruleResultColumn returns [EObject current=null] : (this_ResultColumnAll_0= ruleResultColumnAll | this_ResultColumnExpression_1= ruleResultColumnExpression ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2963:1: ruleResultColumn returns [EObject current=null] : ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) ;
     public final EObject ruleResultColumn() throws RecognitionException {
-        EObject current = null;
-
-        EObject this_ResultColumnAll_0 = null;
-
-        EObject this_ResultColumnExpression_1 = null;
-
-
-         enterRule(); 
-            
-        try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2774:28: ( (this_ResultColumnAll_0= ruleResultColumnAll | this_ResultColumnExpression_1= ruleResultColumnExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2775:1: (this_ResultColumnAll_0= ruleResultColumnAll | this_ResultColumnExpression_1= ruleResultColumnExpression )
-            {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2775:1: (this_ResultColumnAll_0= ruleResultColumnAll | this_ResultColumnExpression_1= ruleResultColumnExpression )
-            int alt48=2;
-            switch ( input.LA(1) ) {
-            case RULE_ID:
-                {
-                int LA48_1 = input.LA(2);
-
-                if ( (LA48_1==82) ) {
-                    alt48=1;
-                }
-                else if ( (LA48_1==EOF||(LA48_1>=19 && LA48_1<=49)||LA48_1==51||(LA48_1>=53 && LA48_1<=54)||LA48_1==60||LA48_1==62||LA48_1==65||(LA48_1>=69 && LA48_1<=72)||(LA48_1>=116 && LA48_1<=119)) ) {
-                    alt48=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 48, 1, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case EOF:
-            case 19:
-            case 21:
-            case 54:
-            case 60:
-            case 65:
-            case 69:
-            case 70:
-            case 71:
-            case 72:
-            case 116:
-            case 117:
-            case 118:
-            case 119:
-                {
-                alt48=1;
-                }
-                break;
-            case RULE_STRING:
-            case RULE_NUMBER:
-            case 25:
-            case 50:
-            case 52:
-            case 53:
-            case 55:
-            case 56:
-            case 57:
-            case 61:
-            case 83:
-            case 84:
-            case 85:
-            case 86:
-                {
-                alt48=2;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 48, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt48) {
-                case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2776:5: this_ResultColumnAll_0= ruleResultColumnAll
-                    {
-                     
-                            newCompositeNode(grammarAccess.getResultColumnAccess().getResultColumnAllParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleResultColumnAll_in_ruleResultColumn6009);
-                    this_ResultColumnAll_0=ruleResultColumnAll();
-
-                    state._fsp--;
-
-                     
-                            current = this_ResultColumnAll_0; 
-                            afterParserOrEnumRuleCall();
-                        
-
-                    }
-                    break;
-                case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2786:5: this_ResultColumnExpression_1= ruleResultColumnExpression
-                    {
-                     
-                            newCompositeNode(grammarAccess.getResultColumnAccess().getResultColumnExpressionParserRuleCall_1()); 
-                        
-                    pushFollow(FOLLOW_ruleResultColumnExpression_in_ruleResultColumn6036);
-                    this_ResultColumnExpression_1=ruleResultColumnExpression();
-
-                    state._fsp--;
-
-                     
-                            current = this_ResultColumnExpression_1; 
-                            afterParserOrEnumRuleCall();
-                        
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-             leaveRule(); 
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleResultColumn"
-
-
-    // $ANTLR start "entryRuleResultColumnAll"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2802:1: entryRuleResultColumnAll returns [EObject current=null] : iv_ruleResultColumnAll= ruleResultColumnAll EOF ;
-    public final EObject entryRuleResultColumnAll() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleResultColumnAll = null;
-
-
-        try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2803:2: (iv_ruleResultColumnAll= ruleResultColumnAll EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2804:2: iv_ruleResultColumnAll= ruleResultColumnAll EOF
-            {
-             newCompositeNode(grammarAccess.getResultColumnAllRule()); 
-            pushFollow(FOLLOW_ruleResultColumnAll_in_entryRuleResultColumnAll6071);
-            iv_ruleResultColumnAll=ruleResultColumnAll();
-
-            state._fsp--;
-
-             current =iv_ruleResultColumnAll; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleResultColumnAll6081); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleResultColumnAll"
-
-
-    // $ANTLR start "ruleResultColumnAll"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2811:1: ruleResultColumnAll returns [EObject current=null] : ( () ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' ) ) ;
-    public final EObject ruleResultColumnAll() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_1=null;
-        Token otherlv_2=null;
-        Token otherlv_3=null;
-
-         enterRule(); 
-            
-        try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2814:28: ( ( () ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2815:1: ( () ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' ) )
-            {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2815:1: ( () ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2815:2: () ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' )
-            {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2815:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2816:5: 
-            {
-
-                    current = forceCreateModelElement(
-                        grammarAccess.getResultColumnAllAccess().getResultColumnAllAction_0(),
-                        current);
-                
-
-            }
-
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2821:2: ( ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )? | otherlv_3= '*' )
-            int alt50=2;
-            int LA50_0 = input.LA(1);
-
-            if ( (LA50_0==EOF||LA50_0==RULE_ID||LA50_0==19||LA50_0==54||LA50_0==60||LA50_0==65||(LA50_0>=69 && LA50_0<=72)||(LA50_0>=116 && LA50_0<=119)) ) {
-                alt50=1;
-            }
-            else if ( (LA50_0==21) ) {
-                alt50=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 50, 0, input);
-
-                throw nvae;
-            }
-            switch (alt50) {
-                case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2821:3: ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )?
-                    {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2821:3: ( ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*' )?
-                    int alt49=2;
-                    int LA49_0 = input.LA(1);
-
-                    if ( (LA49_0==RULE_ID) ) {
-                        alt49=1;
-                    }
-                    switch (alt49) {
-                        case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2821:4: ( (otherlv_1= RULE_ID ) ) otherlv_2= '.*'
-                            {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2821:4: ( (otherlv_1= RULE_ID ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2822:1: (otherlv_1= RULE_ID )
-                            {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2822:1: (otherlv_1= RULE_ID )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2823:3: otherlv_1= RULE_ID
-                            {
-
-                            			if (current==null) {
-                            	            current = createModelElement(grammarAccess.getResultColumnAllRule());
-                            	        }
-                                    
-                            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleResultColumnAll6137); 
-
-                            		newLeafNode(otherlv_1, grammarAccess.getResultColumnAllAccess().getReferenceSelectSourceCrossReference_1_0_0_0()); 
-                            	
-
-                            }
-
-
-                            }
-
-                            otherlv_2=(Token)match(input,82,FOLLOW_82_in_ruleResultColumnAll6149); 
-
-                                	newLeafNode(otherlv_2, grammarAccess.getResultColumnAllAccess().getFullStopAsteriskKeyword_1_0_1());
-                                
-
-                            }
-                            break;
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2839:7: otherlv_3= '*'
-                    {
-                    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleResultColumnAll6169); 
-
-                        	newLeafNode(otherlv_3, grammarAccess.getResultColumnAllAccess().getAsteriskKeyword_1_1());
-                        
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            }
-
-             leaveRule(); 
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleResultColumnAll"
-
-
-    // $ANTLR start "entryRuleResultColumnExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2851:1: entryRuleResultColumnExpression returns [EObject current=null] : iv_ruleResultColumnExpression= ruleResultColumnExpression EOF ;
-    public final EObject entryRuleResultColumnExpression() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleResultColumnExpression = null;
-
-
-        try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2852:2: (iv_ruleResultColumnExpression= ruleResultColumnExpression EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2853:2: iv_ruleResultColumnExpression= ruleResultColumnExpression EOF
-            {
-             newCompositeNode(grammarAccess.getResultColumnExpressionRule()); 
-            pushFollow(FOLLOW_ruleResultColumnExpression_in_entryRuleResultColumnExpression6206);
-            iv_ruleResultColumnExpression=ruleResultColumnExpression();
-
-            state._fsp--;
-
-             current =iv_ruleResultColumnExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleResultColumnExpression6216); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleResultColumnExpression"
-
-
-    // $ANTLR start "ruleResultColumnExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2860:1: ruleResultColumnExpression returns [EObject current=null] : ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) ;
-    public final EObject ruleResultColumnExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_2=null;
@@ -7235,40 +7402,40 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2863:28: ( ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2864:1: ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2966:28: ( ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2967:1: ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2864:1: ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2864:2: () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2967:1: ( () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2967:2: () ( (lv_expression_1_0= ruleSqlExpression ) ) (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2864:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2865:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2967:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2968:5: 
             {
 
                     current = forceCreateModelElement(
-                        grammarAccess.getResultColumnExpressionAccess().getResultColumnExpressionAction_0(),
+                        grammarAccess.getResultColumnAccess().getResultColumnAction_0(),
                         current);
                 
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2870:2: ( (lv_expression_1_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2871:1: (lv_expression_1_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2973:2: ( (lv_expression_1_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2974:1: (lv_expression_1_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2871:1: (lv_expression_1_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2872:3: lv_expression_1_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2974:1: (lv_expression_1_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2975:3: lv_expression_1_0= ruleSqlExpression
             {
              
-            	        newCompositeNode(grammarAccess.getResultColumnExpressionAccess().getExpressionSqlExpressionParserRuleCall_1_0()); 
+            	        newCompositeNode(grammarAccess.getResultColumnAccess().getExpressionSqlExpressionParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleResultColumnExpression6271);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleResultColumn6457);
             lv_expression_1_0=ruleSqlExpression();
 
             state._fsp--;
 
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getResultColumnExpressionRule());
+            	            current = createModelElementForParent(grammarAccess.getResultColumnRule());
             	        }
                    		set(
                    			current, 
@@ -7283,34 +7450,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2888:2: (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
-            int alt51=2;
-            int LA51_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2991:2: (otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) ) )?
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA51_0==62) ) {
-                alt51=1;
+            if ( (LA49_0==62) ) {
+                alt49=1;
             }
-            switch (alt51) {
+            switch (alt49) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2888:4: otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2991:4: otherlv_2= 'as' ( (lv_name_3_0= RULE_ID ) )
                     {
-                    otherlv_2=(Token)match(input,62,FOLLOW_62_in_ruleResultColumnExpression6284); 
+                    otherlv_2=(Token)match(input,62,FOLLOW_62_in_ruleResultColumn6470); 
 
-                        	newLeafNode(otherlv_2, grammarAccess.getResultColumnExpressionAccess().getAsKeyword_2_0());
+                        	newLeafNode(otherlv_2, grammarAccess.getResultColumnAccess().getAsKeyword_2_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2892:1: ( (lv_name_3_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2893:1: (lv_name_3_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2995:1: ( (lv_name_3_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2996:1: (lv_name_3_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2893:1: (lv_name_3_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2894:3: lv_name_3_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2996:1: (lv_name_3_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2997:3: lv_name_3_0= RULE_ID
                     {
-                    lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleResultColumnExpression6301); 
+                    lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleResultColumn6487); 
 
-                    			newLeafNode(lv_name_3_0, grammarAccess.getResultColumnExpressionAccess().getNameIDTerminalRuleCall_2_1_0()); 
+                    			newLeafNode(lv_name_3_0, grammarAccess.getResultColumnAccess().getNameIDTerminalRuleCall_2_1_0()); 
                     		
 
                     	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getResultColumnExpressionRule());
+                    	            current = createModelElement(grammarAccess.getResultColumnRule());
                     	        }
                            		setWithLastConsumed(
                            			current, 
@@ -7347,11 +7514,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleResultColumnExpression"
+    // $ANTLR end "ruleResultColumn"
 
 
     // $ANTLR start "entryRuleLiteralValue"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2918:1: entryRuleLiteralValue returns [EObject current=null] : iv_ruleLiteralValue= ruleLiteralValue EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3021:1: entryRuleLiteralValue returns [EObject current=null] : iv_ruleLiteralValue= ruleLiteralValue EOF ;
     public final EObject entryRuleLiteralValue() throws RecognitionException {
         EObject current = null;
 
@@ -7359,17 +7526,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2919:2: (iv_ruleLiteralValue= ruleLiteralValue EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2920:2: iv_ruleLiteralValue= ruleLiteralValue EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3022:2: (iv_ruleLiteralValue= ruleLiteralValue EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3023:2: iv_ruleLiteralValue= ruleLiteralValue EOF
             {
              newCompositeNode(grammarAccess.getLiteralValueRule()); 
-            pushFollow(FOLLOW_ruleLiteralValue_in_entryRuleLiteralValue6344);
+            pushFollow(FOLLOW_ruleLiteralValue_in_entryRuleLiteralValue6530);
             iv_ruleLiteralValue=ruleLiteralValue();
 
             state._fsp--;
 
              current =iv_ruleLiteralValue; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteralValue6354); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteralValue6540); 
 
             }
 
@@ -7387,7 +7554,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralValue"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2927:1: ruleLiteralValue returns [EObject current=null] : ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3030:1: ruleLiteralValue returns [EObject current=null] : ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) ) ;
     public final EObject ruleLiteralValue() throws RecognitionException {
         EObject current = null;
 
@@ -7402,59 +7569,59 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2930:28: ( ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:1: ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3033:28: ( ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:1: ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:1: ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) )
-            int alt52=6;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:1: ( ( () ( (lv_number_1_0= ruleSignedNumber ) ) ) | ( () ( (lv_literal_3_0= RULE_STRING ) ) ) | ( () ( (lv_literal_5_0= 'null' ) ) ) | ( () ( (lv_literal_7_0= 'current_time' ) ) ) | ( () ( (lv_literal_9_0= 'current_date' ) ) ) | ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) ) )
+            int alt50=6;
             switch ( input.LA(1) ) {
             case RULE_NUMBER:
             case 25:
                 {
-                alt52=1;
+                alt50=1;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt52=2;
+                alt50=2;
+                }
+                break;
+            case 82:
+                {
+                alt50=3;
                 }
                 break;
             case 83:
                 {
-                alt52=3;
+                alt50=4;
                 }
                 break;
             case 84:
                 {
-                alt52=4;
+                alt50=5;
                 }
                 break;
             case 85:
                 {
-                alt52=5;
-                }
-                break;
-            case 86:
-                {
-                alt52=6;
+                alt50=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 52, 0, input);
+                    new NoViableAltException("", 50, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt52) {
+            switch (alt50) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:2: ( () ( (lv_number_1_0= ruleSignedNumber ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:2: ( () ( (lv_number_1_0= ruleSignedNumber ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:2: ( () ( (lv_number_1_0= ruleSignedNumber ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:3: () ( (lv_number_1_0= ruleSignedNumber ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:2: ( () ( (lv_number_1_0= ruleSignedNumber ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:3: () ( (lv_number_1_0= ruleSignedNumber ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2931:3: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2932:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3034:3: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3035:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7464,16 +7631,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2937:2: ( (lv_number_1_0= ruleSignedNumber ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2938:1: (lv_number_1_0= ruleSignedNumber )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3040:2: ( (lv_number_1_0= ruleSignedNumber ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3041:1: (lv_number_1_0= ruleSignedNumber )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2938:1: (lv_number_1_0= ruleSignedNumber )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2939:3: lv_number_1_0= ruleSignedNumber
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3041:1: (lv_number_1_0= ruleSignedNumber )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3042:3: lv_number_1_0= ruleSignedNumber
                     {
                      
                     	        newCompositeNode(grammarAccess.getLiteralValueAccess().getNumberSignedNumberParserRuleCall_0_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSignedNumber_in_ruleLiteralValue6410);
+                    pushFollow(FOLLOW_ruleSignedNumber_in_ruleLiteralValue6596);
                     lv_number_1_0=ruleSignedNumber();
 
                     state._fsp--;
@@ -7502,13 +7669,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2956:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3059:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2956:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2956:7: () ( (lv_literal_3_0= RULE_STRING ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3059:6: ( () ( (lv_literal_3_0= RULE_STRING ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3059:7: () ( (lv_literal_3_0= RULE_STRING ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2956:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2957:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3059:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3060:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7518,13 +7685,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2962:2: ( (lv_literal_3_0= RULE_STRING ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2963:1: (lv_literal_3_0= RULE_STRING )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3065:2: ( (lv_literal_3_0= RULE_STRING ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3066:1: (lv_literal_3_0= RULE_STRING )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2963:1: (lv_literal_3_0= RULE_STRING )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2964:3: lv_literal_3_0= RULE_STRING
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3066:1: (lv_literal_3_0= RULE_STRING )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3067:3: lv_literal_3_0= RULE_STRING
                     {
-                    lv_literal_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLiteralValue6444); 
+                    lv_literal_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLiteralValue6630); 
 
                     			newLeafNode(lv_literal_3_0, grammarAccess.getLiteralValueAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
                     		
@@ -7551,13 +7718,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2981:6: ( () ( (lv_literal_5_0= 'null' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3084:6: ( () ( (lv_literal_5_0= 'null' ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2981:6: ( () ( (lv_literal_5_0= 'null' ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2981:7: () ( (lv_literal_5_0= 'null' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3084:6: ( () ( (lv_literal_5_0= 'null' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3084:7: () ( (lv_literal_5_0= 'null' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2981:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2982:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3084:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3085:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7567,13 +7734,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2987:2: ( (lv_literal_5_0= 'null' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2988:1: (lv_literal_5_0= 'null' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3090:2: ( (lv_literal_5_0= 'null' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3091:1: (lv_literal_5_0= 'null' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2988:1: (lv_literal_5_0= 'null' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:2989:3: lv_literal_5_0= 'null'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3091:1: (lv_literal_5_0= 'null' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3092:3: lv_literal_5_0= 'null'
                     {
-                    lv_literal_5_0=(Token)match(input,83,FOLLOW_83_in_ruleLiteralValue6484); 
+                    lv_literal_5_0=(Token)match(input,82,FOLLOW_82_in_ruleLiteralValue6670); 
 
                             newLeafNode(lv_literal_5_0, grammarAccess.getLiteralValueAccess().getLiteralNullKeyword_2_1_0());
                         
@@ -7596,13 +7763,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3003:6: ( () ( (lv_literal_7_0= 'current_time' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3106:6: ( () ( (lv_literal_7_0= 'current_time' ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3003:6: ( () ( (lv_literal_7_0= 'current_time' ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3003:7: () ( (lv_literal_7_0= 'current_time' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3106:6: ( () ( (lv_literal_7_0= 'current_time' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3106:7: () ( (lv_literal_7_0= 'current_time' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3003:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3004:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3106:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3107:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7612,13 +7779,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3009:2: ( (lv_literal_7_0= 'current_time' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3010:1: (lv_literal_7_0= 'current_time' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3112:2: ( (lv_literal_7_0= 'current_time' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3113:1: (lv_literal_7_0= 'current_time' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3010:1: (lv_literal_7_0= 'current_time' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3011:3: lv_literal_7_0= 'current_time'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3113:1: (lv_literal_7_0= 'current_time' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3114:3: lv_literal_7_0= 'current_time'
                     {
-                    lv_literal_7_0=(Token)match(input,84,FOLLOW_84_in_ruleLiteralValue6532); 
+                    lv_literal_7_0=(Token)match(input,83,FOLLOW_83_in_ruleLiteralValue6718); 
 
                             newLeafNode(lv_literal_7_0, grammarAccess.getLiteralValueAccess().getLiteralCurrent_timeKeyword_3_1_0());
                         
@@ -7641,13 +7808,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3025:6: ( () ( (lv_literal_9_0= 'current_date' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3128:6: ( () ( (lv_literal_9_0= 'current_date' ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3025:6: ( () ( (lv_literal_9_0= 'current_date' ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3025:7: () ( (lv_literal_9_0= 'current_date' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3128:6: ( () ( (lv_literal_9_0= 'current_date' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3128:7: () ( (lv_literal_9_0= 'current_date' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3025:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3026:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3128:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3129:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7657,13 +7824,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3031:2: ( (lv_literal_9_0= 'current_date' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3032:1: (lv_literal_9_0= 'current_date' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3134:2: ( (lv_literal_9_0= 'current_date' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3135:1: (lv_literal_9_0= 'current_date' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3032:1: (lv_literal_9_0= 'current_date' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3033:3: lv_literal_9_0= 'current_date'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3135:1: (lv_literal_9_0= 'current_date' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3136:3: lv_literal_9_0= 'current_date'
                     {
-                    lv_literal_9_0=(Token)match(input,85,FOLLOW_85_in_ruleLiteralValue6580); 
+                    lv_literal_9_0=(Token)match(input,84,FOLLOW_84_in_ruleLiteralValue6766); 
 
                             newLeafNode(lv_literal_9_0, grammarAccess.getLiteralValueAccess().getLiteralCurrent_dateKeyword_4_1_0());
                         
@@ -7686,13 +7853,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3047:6: ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3150:6: ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3047:6: ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3047:7: () ( (lv_literal_11_0= 'current_time_stamp' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3150:6: ( () ( (lv_literal_11_0= 'current_time_stamp' ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3150:7: () ( (lv_literal_11_0= 'current_time_stamp' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3047:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3048:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3150:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3151:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -7702,13 +7869,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3053:2: ( (lv_literal_11_0= 'current_time_stamp' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3054:1: (lv_literal_11_0= 'current_time_stamp' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3156:2: ( (lv_literal_11_0= 'current_time_stamp' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3157:1: (lv_literal_11_0= 'current_time_stamp' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3054:1: (lv_literal_11_0= 'current_time_stamp' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3055:3: lv_literal_11_0= 'current_time_stamp'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3157:1: (lv_literal_11_0= 'current_time_stamp' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3158:3: lv_literal_11_0= 'current_time_stamp'
                     {
-                    lv_literal_11_0=(Token)match(input,86,FOLLOW_86_in_ruleLiteralValue6628); 
+                    lv_literal_11_0=(Token)match(input,85,FOLLOW_85_in_ruleLiteralValue6814); 
 
                             newLeafNode(lv_literal_11_0, grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0());
                         
@@ -7751,7 +7918,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDDLStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3076:1: entryRuleDDLStatement returns [EObject current=null] : iv_ruleDDLStatement= ruleDDLStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3179:1: entryRuleDDLStatement returns [EObject current=null] : iv_ruleDDLStatement= ruleDDLStatement EOF ;
     public final EObject entryRuleDDLStatement() throws RecognitionException {
         EObject current = null;
 
@@ -7759,17 +7926,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3077:2: (iv_ruleDDLStatement= ruleDDLStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3078:2: iv_ruleDDLStatement= ruleDDLStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3180:2: (iv_ruleDDLStatement= ruleDDLStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3181:2: iv_ruleDDLStatement= ruleDDLStatement EOF
             {
              newCompositeNode(grammarAccess.getDDLStatementRule()); 
-            pushFollow(FOLLOW_ruleDDLStatement_in_entryRuleDDLStatement6678);
+            pushFollow(FOLLOW_ruleDDLStatement_in_entryRuleDDLStatement6864);
             iv_ruleDDLStatement=ruleDDLStatement();
 
             state._fsp--;
 
              current =iv_ruleDDLStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDDLStatement6688); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDDLStatement6874); 
 
             }
 
@@ -7787,7 +7954,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDDLStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3085:1: ruleDDLStatement returns [EObject current=null] : (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3188:1: ruleDDLStatement returns [EObject current=null] : (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement ) ;
     public final EObject ruleDDLStatement() throws RecognitionException {
         EObject current = null;
 
@@ -7809,20 +7976,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3088:28: ( (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3089:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3191:28: ( (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3192:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3089:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )
-            int alt53=7;
-            alt53 = dfa53.predict(input);
-            switch (alt53) {
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3192:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )
+            int alt51=7;
+            alt51 = dfa51.predict(input);
+            switch (alt51) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3090:5: this_CreateTableStatement_0= ruleCreateTableStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3193:5: this_CreateTableStatement_0= ruleCreateTableStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getCreateTableStatementParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleCreateTableStatement_in_ruleDDLStatement6735);
+                    pushFollow(FOLLOW_ruleCreateTableStatement_in_ruleDDLStatement6921);
                     this_CreateTableStatement_0=ruleCreateTableStatement();
 
                     state._fsp--;
@@ -7835,12 +8002,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3100:5: this_CreateViewStatement_1= ruleCreateViewStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3203:5: this_CreateViewStatement_1= ruleCreateViewStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getCreateViewStatementParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleCreateViewStatement_in_ruleDDLStatement6762);
+                    pushFollow(FOLLOW_ruleCreateViewStatement_in_ruleDDLStatement6948);
                     this_CreateViewStatement_1=ruleCreateViewStatement();
 
                     state._fsp--;
@@ -7853,12 +8020,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3110:5: this_CreateTriggerStatement_2= ruleCreateTriggerStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3213:5: this_CreateTriggerStatement_2= ruleCreateTriggerStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getCreateTriggerStatementParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleCreateTriggerStatement_in_ruleDDLStatement6789);
+                    pushFollow(FOLLOW_ruleCreateTriggerStatement_in_ruleDDLStatement6975);
                     this_CreateTriggerStatement_2=ruleCreateTriggerStatement();
 
                     state._fsp--;
@@ -7871,12 +8038,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3120:5: this_AlterTableStatement_3= ruleAlterTableStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3223:5: this_AlterTableStatement_3= ruleAlterTableStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableStatementParserRuleCall_3()); 
                         
-                    pushFollow(FOLLOW_ruleAlterTableStatement_in_ruleDDLStatement6816);
+                    pushFollow(FOLLOW_ruleAlterTableStatement_in_ruleDDLStatement7002);
                     this_AlterTableStatement_3=ruleAlterTableStatement();
 
                     state._fsp--;
@@ -7889,12 +8056,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3130:5: this_DropTableStatement_4= ruleDropTableStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3233:5: this_DropTableStatement_4= ruleDropTableStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTableStatementParserRuleCall_4()); 
                         
-                    pushFollow(FOLLOW_ruleDropTableStatement_in_ruleDDLStatement6843);
+                    pushFollow(FOLLOW_ruleDropTableStatement_in_ruleDDLStatement7029);
                     this_DropTableStatement_4=ruleDropTableStatement();
 
                     state._fsp--;
@@ -7907,12 +8074,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3140:5: this_DropTriggerStatement_5= ruleDropTriggerStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3243:5: this_DropTriggerStatement_5= ruleDropTriggerStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTriggerStatementParserRuleCall_5()); 
                         
-                    pushFollow(FOLLOW_ruleDropTriggerStatement_in_ruleDDLStatement6870);
+                    pushFollow(FOLLOW_ruleDropTriggerStatement_in_ruleDDLStatement7056);
                     this_DropTriggerStatement_5=ruleDropTriggerStatement();
 
                     state._fsp--;
@@ -7925,12 +8092,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3150:5: this_DropViewStatement_6= ruleDropViewStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3253:5: this_DropViewStatement_6= ruleDropViewStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDDLStatementAccess().getDropViewStatementParserRuleCall_6()); 
                         
-                    pushFollow(FOLLOW_ruleDropViewStatement_in_ruleDDLStatement6897);
+                    pushFollow(FOLLOW_ruleDropViewStatement_in_ruleDDLStatement7083);
                     this_DropViewStatement_6=ruleDropViewStatement();
 
                     state._fsp--;
@@ -7963,7 +8130,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCreateTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3166:1: entryRuleCreateTableStatement returns [EObject current=null] : iv_ruleCreateTableStatement= ruleCreateTableStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3269:1: entryRuleCreateTableStatement returns [EObject current=null] : iv_ruleCreateTableStatement= ruleCreateTableStatement EOF ;
     public final EObject entryRuleCreateTableStatement() throws RecognitionException {
         EObject current = null;
 
@@ -7971,17 +8138,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3167:2: (iv_ruleCreateTableStatement= ruleCreateTableStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3168:2: iv_ruleCreateTableStatement= ruleCreateTableStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3270:2: (iv_ruleCreateTableStatement= ruleCreateTableStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3271:2: iv_ruleCreateTableStatement= ruleCreateTableStatement EOF
             {
              newCompositeNode(grammarAccess.getCreateTableStatementRule()); 
-            pushFollow(FOLLOW_ruleCreateTableStatement_in_entryRuleCreateTableStatement6932);
+            pushFollow(FOLLOW_ruleCreateTableStatement_in_entryRuleCreateTableStatement7118);
             iv_ruleCreateTableStatement=ruleCreateTableStatement();
 
             state._fsp--;
 
              current =iv_ruleCreateTableStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateTableStatement6942); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateTableStatement7128); 
 
             }
 
@@ -7999,7 +8166,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCreateTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3175:1: ruleCreateTableStatement returns [EObject current=null] : ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3278:1: ruleCreateTableStatement returns [EObject current=null] : ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' ) ;
     public final EObject ruleCreateTableStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8020,14 +8187,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3178:28: ( ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3179:1: ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3281:28: ( ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3282:1: ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3179:1: ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3179:2: () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3282:1: ( () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3282:2: () otherlv_1= 'create' otherlv_2= 'table' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= '(' ( (lv_columnDefs_5_0= ruleColumnDef ) ) (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )* (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )* otherlv_10= ')'
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3179:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3180:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3282:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3283:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8037,21 +8204,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleCreateTableStatement6988); 
+            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleCreateTableStatement7174); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCreateTableStatementAccess().getCreateKeyword_1());
                 
-            otherlv_2=(Token)match(input,88,FOLLOW_88_in_ruleCreateTableStatement7000); 
+            otherlv_2=(Token)match(input,87,FOLLOW_87_in_ruleCreateTableStatement7186); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCreateTableStatementAccess().getTableKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3193:1: ( (lv_name_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3194:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3296:1: ( (lv_name_3_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3297:1: (lv_name_3_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3194:1: (lv_name_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3195:3: lv_name_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3297:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3298:3: lv_name_3_0= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTableStatement7017); 
+            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTableStatement7203); 
 
             			newLeafNode(lv_name_3_0, grammarAccess.getCreateTableStatementAccess().getNameIDTerminalRuleCall_3_0()); 
             		
@@ -8071,20 +8238,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,53,FOLLOW_53_in_ruleCreateTableStatement7034); 
+            otherlv_4=(Token)match(input,53,FOLLOW_53_in_ruleCreateTableStatement7220); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getCreateTableStatementAccess().getLeftParenthesisKeyword_4());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3215:1: ( (lv_columnDefs_5_0= ruleColumnDef ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3216:1: (lv_columnDefs_5_0= ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3318:1: ( (lv_columnDefs_5_0= ruleColumnDef ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3319:1: (lv_columnDefs_5_0= ruleColumnDef )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3216:1: (lv_columnDefs_5_0= ruleColumnDef )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3217:3: lv_columnDefs_5_0= ruleColumnDef
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3319:1: (lv_columnDefs_5_0= ruleColumnDef )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3320:3: lv_columnDefs_5_0= ruleColumnDef
             {
              
             	        newCompositeNode(grammarAccess.getCreateTableStatementAccess().getColumnDefsColumnDefParserRuleCall_5_0()); 
             	    
-            pushFollow(FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7055);
+            pushFollow(FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7241);
             lv_columnDefs_5_0=ruleColumnDef();
 
             state._fsp--;
@@ -8106,41 +8273,41 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3233:2: (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )*
-            loop54:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3336:2: (otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) ) )*
+            loop52:
             do {
-                int alt54=2;
-                int LA54_0 = input.LA(1);
+                int alt52=2;
+                int LA52_0 = input.LA(1);
 
-                if ( (LA54_0==60) ) {
-                    int LA54_1 = input.LA(2);
+                if ( (LA52_0==60) ) {
+                    int LA52_1 = input.LA(2);
 
-                    if ( (LA54_1==RULE_ID) ) {
-                        alt54=1;
+                    if ( (LA52_1==RULE_ID) ) {
+                        alt52=1;
                     }
 
 
                 }
 
 
-                switch (alt54) {
+                switch (alt52) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3233:4: otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3336:4: otherlv_6= ',' ( (lv_columnDefs_7_0= ruleColumnDef ) )
             	    {
-            	    otherlv_6=(Token)match(input,60,FOLLOW_60_in_ruleCreateTableStatement7068); 
+            	    otherlv_6=(Token)match(input,60,FOLLOW_60_in_ruleCreateTableStatement7254); 
 
             	        	newLeafNode(otherlv_6, grammarAccess.getCreateTableStatementAccess().getCommaKeyword_6_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3237:1: ( (lv_columnDefs_7_0= ruleColumnDef ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3238:1: (lv_columnDefs_7_0= ruleColumnDef )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3340:1: ( (lv_columnDefs_7_0= ruleColumnDef ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3341:1: (lv_columnDefs_7_0= ruleColumnDef )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3238:1: (lv_columnDefs_7_0= ruleColumnDef )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3239:3: lv_columnDefs_7_0= ruleColumnDef
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3341:1: (lv_columnDefs_7_0= ruleColumnDef )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3342:3: lv_columnDefs_7_0= ruleColumnDef
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getCreateTableStatementAccess().getColumnDefsColumnDefParserRuleCall_6_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7089);
+            	    pushFollow(FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7275);
             	    lv_columnDefs_7_0=ruleColumnDef();
 
             	    state._fsp--;
@@ -8167,39 +8334,39 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop54;
+            	    break loop52;
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3255:4: (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )*
-            loop55:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3358:4: (otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) ) )*
+            loop53:
             do {
-                int alt55=2;
-                int LA55_0 = input.LA(1);
+                int alt53=2;
+                int LA53_0 = input.LA(1);
 
-                if ( (LA55_0==60) ) {
-                    alt55=1;
+                if ( (LA53_0==60) ) {
+                    alt53=1;
                 }
 
 
-                switch (alt55) {
+                switch (alt53) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3255:6: otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3358:6: otherlv_8= ',' ( (lv_constraints_9_0= ruleTableConstraint ) )
             	    {
-            	    otherlv_8=(Token)match(input,60,FOLLOW_60_in_ruleCreateTableStatement7104); 
+            	    otherlv_8=(Token)match(input,60,FOLLOW_60_in_ruleCreateTableStatement7290); 
 
             	        	newLeafNode(otherlv_8, grammarAccess.getCreateTableStatementAccess().getCommaKeyword_7_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3259:1: ( (lv_constraints_9_0= ruleTableConstraint ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3260:1: (lv_constraints_9_0= ruleTableConstraint )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3362:1: ( (lv_constraints_9_0= ruleTableConstraint ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3363:1: (lv_constraints_9_0= ruleTableConstraint )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3260:1: (lv_constraints_9_0= ruleTableConstraint )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3261:3: lv_constraints_9_0= ruleTableConstraint
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3363:1: (lv_constraints_9_0= ruleTableConstraint )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3364:3: lv_constraints_9_0= ruleTableConstraint
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getCreateTableStatementAccess().getConstraintsTableConstraintParserRuleCall_7_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleTableConstraint_in_ruleCreateTableStatement7125);
+            	    pushFollow(FOLLOW_ruleTableConstraint_in_ruleCreateTableStatement7311);
             	    lv_constraints_9_0=ruleTableConstraint();
 
             	    state._fsp--;
@@ -8226,11 +8393,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop55;
+            	    break loop53;
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,54,FOLLOW_54_in_ruleCreateTableStatement7139); 
+            otherlv_10=(Token)match(input,54,FOLLOW_54_in_ruleCreateTableStatement7325); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
                 
@@ -8255,7 +8422,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCreateViewStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3289:1: entryRuleCreateViewStatement returns [EObject current=null] : iv_ruleCreateViewStatement= ruleCreateViewStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3392:1: entryRuleCreateViewStatement returns [EObject current=null] : iv_ruleCreateViewStatement= ruleCreateViewStatement EOF ;
     public final EObject entryRuleCreateViewStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8263,17 +8430,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3290:2: (iv_ruleCreateViewStatement= ruleCreateViewStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3291:2: iv_ruleCreateViewStatement= ruleCreateViewStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3393:2: (iv_ruleCreateViewStatement= ruleCreateViewStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3394:2: iv_ruleCreateViewStatement= ruleCreateViewStatement EOF
             {
              newCompositeNode(grammarAccess.getCreateViewStatementRule()); 
-            pushFollow(FOLLOW_ruleCreateViewStatement_in_entryRuleCreateViewStatement7175);
+            pushFollow(FOLLOW_ruleCreateViewStatement_in_entryRuleCreateViewStatement7361);
             iv_ruleCreateViewStatement=ruleCreateViewStatement();
 
             state._fsp--;
 
              current =iv_ruleCreateViewStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateViewStatement7185); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateViewStatement7371); 
 
             }
 
@@ -8291,7 +8458,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCreateViewStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3298:1: ruleCreateViewStatement returns [EObject current=null] : ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3401:1: ruleCreateViewStatement returns [EObject current=null] : ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) ) ;
     public final EObject ruleCreateViewStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8305,14 +8472,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3301:28: ( ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3302:1: ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3404:28: ( ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:1: ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3302:1: ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3302:2: () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:1: ( () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:2: () otherlv_1= 'create' otherlv_2= 'view' ( (lv_name_3_0= RULE_ID ) ) otherlv_4= 'as' ( (lv_selectStatement_5_0= ruleSelectStatement ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3302:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3303:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3406:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8322,21 +8489,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleCreateViewStatement7231); 
+            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleCreateViewStatement7417); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCreateViewStatementAccess().getCreateKeyword_1());
                 
-            otherlv_2=(Token)match(input,89,FOLLOW_89_in_ruleCreateViewStatement7243); 
+            otherlv_2=(Token)match(input,88,FOLLOW_88_in_ruleCreateViewStatement7429); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCreateViewStatementAccess().getViewKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3316:1: ( (lv_name_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3317:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3419:1: ( (lv_name_3_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3420:1: (lv_name_3_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3317:1: (lv_name_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3318:3: lv_name_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3420:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3421:3: lv_name_3_0= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateViewStatement7260); 
+            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateViewStatement7446); 
 
             			newLeafNode(lv_name_3_0, grammarAccess.getCreateViewStatementAccess().getNameIDTerminalRuleCall_3_0()); 
             		
@@ -8356,20 +8523,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,62,FOLLOW_62_in_ruleCreateViewStatement7277); 
+            otherlv_4=(Token)match(input,62,FOLLOW_62_in_ruleCreateViewStatement7463); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getCreateViewStatementAccess().getAsKeyword_4());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3338:1: ( (lv_selectStatement_5_0= ruleSelectStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3339:1: (lv_selectStatement_5_0= ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3441:1: ( (lv_selectStatement_5_0= ruleSelectStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3442:1: (lv_selectStatement_5_0= ruleSelectStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3339:1: (lv_selectStatement_5_0= ruleSelectStatement )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3340:3: lv_selectStatement_5_0= ruleSelectStatement
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3442:1: (lv_selectStatement_5_0= ruleSelectStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3443:3: lv_selectStatement_5_0= ruleSelectStatement
             {
              
             	        newCompositeNode(grammarAccess.getCreateViewStatementAccess().getSelectStatementSelectStatementParserRuleCall_5_0()); 
             	    
-            pushFollow(FOLLOW_ruleSelectStatement_in_ruleCreateViewStatement7298);
+            pushFollow(FOLLOW_ruleSelectStatement_in_ruleCreateViewStatement7484);
             lv_selectStatement_5_0=ruleSelectStatement();
 
             state._fsp--;
@@ -8412,7 +8579,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCreateTriggerStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3364:1: entryRuleCreateTriggerStatement returns [EObject current=null] : iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3467:1: entryRuleCreateTriggerStatement returns [EObject current=null] : iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF ;
     public final EObject entryRuleCreateTriggerStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8420,17 +8587,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3365:2: (iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3366:2: iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3468:2: (iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3469:2: iv_ruleCreateTriggerStatement= ruleCreateTriggerStatement EOF
             {
              newCompositeNode(grammarAccess.getCreateTriggerStatementRule()); 
-            pushFollow(FOLLOW_ruleCreateTriggerStatement_in_entryRuleCreateTriggerStatement7334);
+            pushFollow(FOLLOW_ruleCreateTriggerStatement_in_entryRuleCreateTriggerStatement7520);
             iv_ruleCreateTriggerStatement=ruleCreateTriggerStatement();
 
             state._fsp--;
 
              current =iv_ruleCreateTriggerStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateTriggerStatement7344); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCreateTriggerStatement7530); 
 
             }
 
@@ -8448,7 +8615,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCreateTriggerStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3373:1: ruleCreateTriggerStatement returns [EObject current=null] : (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (lv_tableName_12_0= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3476:1: ruleCreateTriggerStatement returns [EObject current=null] : (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (otherlv_12= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' ) ;
     public final EObject ruleCreateTriggerStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8466,7 +8633,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
         Token otherlv_9=null;
         Token lv_updateColumnNames_10_0=null;
         Token otherlv_11=null;
-        Token lv_tableName_12_0=null;
+        Token otherlv_12=null;
         Token lv_forEachRow_13_0=null;
         Token otherlv_14=null;
         Token otherlv_16=null;
@@ -8483,27 +8650,27 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3376:28: ( (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (lv_tableName_12_0= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3377:1: (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (lv_tableName_12_0= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3479:28: ( (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (otherlv_12= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3480:1: (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (otherlv_12= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3377:1: (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (lv_tableName_12_0= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3377:3: otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (lv_tableName_12_0= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3480:1: (otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (otherlv_12= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3480:3: otherlv_0= 'create' otherlv_1= 'trigger' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )? ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) ) otherlv_11= 'on' ( (otherlv_12= RULE_ID ) ) ( (lv_forEachRow_13_0= 'for each row' ) )? (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )? otherlv_16= 'begin' ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )? otherlv_21= 'end'
             {
-            otherlv_0=(Token)match(input,87,FOLLOW_87_in_ruleCreateTriggerStatement7381); 
+            otherlv_0=(Token)match(input,86,FOLLOW_86_in_ruleCreateTriggerStatement7567); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCreateTriggerStatementAccess().getCreateKeyword_0());
                 
-            otherlv_1=(Token)match(input,90,FOLLOW_90_in_ruleCreateTriggerStatement7393); 
+            otherlv_1=(Token)match(input,89,FOLLOW_89_in_ruleCreateTriggerStatement7579); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getCreateTriggerStatementAccess().getTriggerKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3385:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3386:1: (lv_name_2_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3488:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3489:1: (lv_name_2_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3386:1: (lv_name_2_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3387:3: lv_name_2_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3489:1: (lv_name_2_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3490:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7410); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7596); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getCreateTriggerStatementAccess().getNameIDTerminalRuleCall_2_0()); 
             		
@@ -8523,50 +8690,50 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3403:2: ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )?
-            int alt57=2;
-            int LA57_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3506:2: ( ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) ) )?
+            int alt55=2;
+            int LA55_0 = input.LA(1);
 
-            if ( ((LA57_0>=91 && LA57_0<=93)) ) {
-                alt57=1;
+            if ( ((LA55_0>=90 && LA55_0<=92)) ) {
+                alt55=1;
             }
-            switch (alt57) {
+            switch (alt55) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3404:1: ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3507:1: ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3404:1: ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:1: (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3507:1: ( (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3508:1: (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3405:1: (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' )
-                    int alt56=3;
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3508:1: (lv_when_3_1= 'before' | lv_when_3_2= 'after' | lv_when_3_3= 'instead of' )
+                    int alt54=3;
                     switch ( input.LA(1) ) {
+                    case 90:
+                        {
+                        alt54=1;
+                        }
+                        break;
                     case 91:
                         {
-                        alt56=1;
+                        alt54=2;
                         }
                         break;
                     case 92:
                         {
-                        alt56=2;
-                        }
-                        break;
-                    case 93:
-                        {
-                        alt56=3;
+                        alt54=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 56, 0, input);
+                            new NoViableAltException("", 54, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt56) {
+                    switch (alt54) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3406:3: lv_when_3_1= 'before'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3509:3: lv_when_3_1= 'before'
                             {
-                            lv_when_3_1=(Token)match(input,91,FOLLOW_91_in_ruleCreateTriggerStatement7435); 
+                            lv_when_3_1=(Token)match(input,90,FOLLOW_90_in_ruleCreateTriggerStatement7621); 
 
                                     newLeafNode(lv_when_3_1, grammarAccess.getCreateTriggerStatementAccess().getWhenBeforeKeyword_3_0_0());
                                 
@@ -8580,9 +8747,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3418:8: lv_when_3_2= 'after'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3521:8: lv_when_3_2= 'after'
                             {
-                            lv_when_3_2=(Token)match(input,92,FOLLOW_92_in_ruleCreateTriggerStatement7464); 
+                            lv_when_3_2=(Token)match(input,91,FOLLOW_91_in_ruleCreateTriggerStatement7650); 
 
                                     newLeafNode(lv_when_3_2, grammarAccess.getCreateTriggerStatementAccess().getWhenAfterKeyword_3_0_1());
                                 
@@ -8596,9 +8763,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3430:8: lv_when_3_3= 'instead of'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3533:8: lv_when_3_3= 'instead of'
                             {
-                            lv_when_3_3=(Token)match(input,93,FOLLOW_93_in_ruleCreateTriggerStatement7493); 
+                            lv_when_3_3=(Token)match(input,92,FOLLOW_92_in_ruleCreateTriggerStatement7679); 
 
                                     newLeafNode(lv_when_3_3, grammarAccess.getCreateTriggerStatementAccess().getWhenInsteadOfKeyword_3_0_2());
                                 
@@ -8623,42 +8790,42 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3445:3: ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) )
-            int alt60=3;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3548:3: ( ( (lv_eventType_4_0= 'delete' ) ) | ( (lv_eventType_5_0= 'insert' ) ) | ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? ) )
+            int alt58=3;
             switch ( input.LA(1) ) {
+            case 93:
+                {
+                alt58=1;
+                }
+                break;
             case 94:
                 {
-                alt60=1;
+                alt58=2;
                 }
                 break;
             case 95:
                 {
-                alt60=2;
-                }
-                break;
-            case 96:
-                {
-                alt60=3;
+                alt58=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 60, 0, input);
+                    new NoViableAltException("", 58, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt60) {
+            switch (alt58) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3445:4: ( (lv_eventType_4_0= 'delete' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3548:4: ( (lv_eventType_4_0= 'delete' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3445:4: ( (lv_eventType_4_0= 'delete' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3446:1: (lv_eventType_4_0= 'delete' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3548:4: ( (lv_eventType_4_0= 'delete' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3549:1: (lv_eventType_4_0= 'delete' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3446:1: (lv_eventType_4_0= 'delete' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3447:3: lv_eventType_4_0= 'delete'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3549:1: (lv_eventType_4_0= 'delete' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3550:3: lv_eventType_4_0= 'delete'
                     {
-                    lv_eventType_4_0=(Token)match(input,94,FOLLOW_94_in_ruleCreateTriggerStatement7529); 
+                    lv_eventType_4_0=(Token)match(input,93,FOLLOW_93_in_ruleCreateTriggerStatement7715); 
 
                             newLeafNode(lv_eventType_4_0, grammarAccess.getCreateTriggerStatementAccess().getEventTypeDeleteKeyword_4_0_0());
                         
@@ -8678,15 +8845,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3461:6: ( (lv_eventType_5_0= 'insert' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3564:6: ( (lv_eventType_5_0= 'insert' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3461:6: ( (lv_eventType_5_0= 'insert' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3462:1: (lv_eventType_5_0= 'insert' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3564:6: ( (lv_eventType_5_0= 'insert' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3565:1: (lv_eventType_5_0= 'insert' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3462:1: (lv_eventType_5_0= 'insert' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3463:3: lv_eventType_5_0= 'insert'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3565:1: (lv_eventType_5_0= 'insert' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3566:3: lv_eventType_5_0= 'insert'
                     {
-                    lv_eventType_5_0=(Token)match(input,95,FOLLOW_95_in_ruleCreateTriggerStatement7566); 
+                    lv_eventType_5_0=(Token)match(input,94,FOLLOW_94_in_ruleCreateTriggerStatement7752); 
 
                             newLeafNode(lv_eventType_5_0, grammarAccess.getCreateTriggerStatementAccess().getEventTypeInsertKeyword_4_1_0());
                         
@@ -8706,18 +8873,18 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3477:6: ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3580:6: ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3477:6: ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3477:7: ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3580:6: ( ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3580:7: ( (lv_eventType_6_0= 'update' ) ) (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )?
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3477:7: ( (lv_eventType_6_0= 'update' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3478:1: (lv_eventType_6_0= 'update' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3580:7: ( (lv_eventType_6_0= 'update' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3581:1: (lv_eventType_6_0= 'update' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3478:1: (lv_eventType_6_0= 'update' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3479:3: lv_eventType_6_0= 'update'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3581:1: (lv_eventType_6_0= 'update' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3582:3: lv_eventType_6_0= 'update'
                     {
-                    lv_eventType_6_0=(Token)match(input,96,FOLLOW_96_in_ruleCreateTriggerStatement7604); 
+                    lv_eventType_6_0=(Token)match(input,95,FOLLOW_95_in_ruleCreateTriggerStatement7790); 
 
                             newLeafNode(lv_eventType_6_0, grammarAccess.getCreateTriggerStatementAccess().getEventTypeUpdateKeyword_4_2_0_0());
                         
@@ -8733,28 +8900,28 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3492:2: (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )?
-                    int alt59=2;
-                    int LA59_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3595:2: (otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )* )?
+                    int alt57=2;
+                    int LA57_0 = input.LA(1);
 
-                    if ( (LA59_0==97) ) {
-                        alt59=1;
+                    if ( (LA57_0==96) ) {
+                        alt57=1;
                     }
-                    switch (alt59) {
+                    switch (alt57) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3492:4: otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )*
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3595:4: otherlv_7= 'of' ( (lv_updateColumnNames_8_0= RULE_ID ) ) (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )*
                             {
-                            otherlv_7=(Token)match(input,97,FOLLOW_97_in_ruleCreateTriggerStatement7630); 
+                            otherlv_7=(Token)match(input,96,FOLLOW_96_in_ruleCreateTriggerStatement7816); 
 
                                 	newLeafNode(otherlv_7, grammarAccess.getCreateTriggerStatementAccess().getOfKeyword_4_2_1_0());
                                 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3496:1: ( (lv_updateColumnNames_8_0= RULE_ID ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3497:1: (lv_updateColumnNames_8_0= RULE_ID )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3599:1: ( (lv_updateColumnNames_8_0= RULE_ID ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3600:1: (lv_updateColumnNames_8_0= RULE_ID )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3497:1: (lv_updateColumnNames_8_0= RULE_ID )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3498:3: lv_updateColumnNames_8_0= RULE_ID
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3600:1: (lv_updateColumnNames_8_0= RULE_ID )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3601:3: lv_updateColumnNames_8_0= RULE_ID
                             {
-                            lv_updateColumnNames_8_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7647); 
+                            lv_updateColumnNames_8_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7833); 
 
                             			newLeafNode(lv_updateColumnNames_8_0, grammarAccess.getCreateTriggerStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_4_2_1_1_0()); 
                             		
@@ -8774,32 +8941,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3514:2: (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )*
-                            loop58:
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3617:2: (otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) ) )*
+                            loop56:
                             do {
-                                int alt58=2;
-                                int LA58_0 = input.LA(1);
+                                int alt56=2;
+                                int LA56_0 = input.LA(1);
 
-                                if ( (LA58_0==60) ) {
-                                    alt58=1;
+                                if ( (LA56_0==60) ) {
+                                    alt56=1;
                                 }
 
 
-                                switch (alt58) {
+                                switch (alt56) {
                             	case 1 :
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3514:4: otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3617:4: otherlv_9= ',' ( (lv_updateColumnNames_10_0= RULE_ID ) )
                             	    {
-                            	    otherlv_9=(Token)match(input,60,FOLLOW_60_in_ruleCreateTriggerStatement7665); 
+                            	    otherlv_9=(Token)match(input,60,FOLLOW_60_in_ruleCreateTriggerStatement7851); 
 
                             	        	newLeafNode(otherlv_9, grammarAccess.getCreateTriggerStatementAccess().getCommaKeyword_4_2_1_2_0());
                             	        
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3518:1: ( (lv_updateColumnNames_10_0= RULE_ID ) )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3519:1: (lv_updateColumnNames_10_0= RULE_ID )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3621:1: ( (lv_updateColumnNames_10_0= RULE_ID ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3622:1: (lv_updateColumnNames_10_0= RULE_ID )
                             	    {
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3519:1: (lv_updateColumnNames_10_0= RULE_ID )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3520:3: lv_updateColumnNames_10_0= RULE_ID
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3622:1: (lv_updateColumnNames_10_0= RULE_ID )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3623:3: lv_updateColumnNames_10_0= RULE_ID
                             	    {
-                            	    lv_updateColumnNames_10_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7682); 
+                            	    lv_updateColumnNames_10_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7868); 
 
                             	    			newLeafNode(lv_updateColumnNames_10_0, grammarAccess.getCreateTriggerStatementAccess().getUpdateColumnNamesIDTerminalRuleCall_4_2_1_2_1_0()); 
                             	    		
@@ -8824,7 +8991,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop58;
+                            	    break loop56;
                                 }
                             } while (true);
 
@@ -8843,51 +9010,46 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,81,FOLLOW_81_in_ruleCreateTriggerStatement7705); 
+            otherlv_11=(Token)match(input,81,FOLLOW_81_in_ruleCreateTriggerStatement7891); 
 
                 	newLeafNode(otherlv_11, grammarAccess.getCreateTriggerStatementAccess().getOnKeyword_5());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3540:1: ( (lv_tableName_12_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3541:1: (lv_tableName_12_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3643:1: ( (otherlv_12= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3644:1: (otherlv_12= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3541:1: (lv_tableName_12_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3542:3: lv_tableName_12_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3644:1: (otherlv_12= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3645:3: otherlv_12= RULE_ID
             {
-            lv_tableName_12_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7722); 
 
-            			newLeafNode(lv_tableName_12_0, grammarAccess.getCreateTriggerStatementAccess().getTableNameIDTerminalRuleCall_6_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getCreateTriggerStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"tableName",
-                    		lv_tableName_12_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_12=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7911); 
+
+            		newLeafNode(otherlv_12, grammarAccess.getCreateTriggerStatementAccess().getTableCreateTableStatementCrossReference_6_0()); 
+            	
 
             }
 
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3558:2: ( (lv_forEachRow_13_0= 'for each row' ) )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3656:2: ( (lv_forEachRow_13_0= 'for each row' ) )?
+            int alt59=2;
+            int LA59_0 = input.LA(1);
 
-            if ( (LA61_0==98) ) {
-                alt61=1;
+            if ( (LA59_0==97) ) {
+                alt59=1;
             }
-            switch (alt61) {
+            switch (alt59) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3559:1: (lv_forEachRow_13_0= 'for each row' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3657:1: (lv_forEachRow_13_0= 'for each row' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3559:1: (lv_forEachRow_13_0= 'for each row' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3560:3: lv_forEachRow_13_0= 'for each row'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3657:1: (lv_forEachRow_13_0= 'for each row' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3658:3: lv_forEachRow_13_0= 'for each row'
                     {
-                    lv_forEachRow_13_0=(Token)match(input,98,FOLLOW_98_in_ruleCreateTriggerStatement7745); 
+                    lv_forEachRow_13_0=(Token)match(input,97,FOLLOW_97_in_ruleCreateTriggerStatement7929); 
 
                             newLeafNode(lv_forEachRow_13_0, grammarAccess.getCreateTriggerStatementAccess().getForEachRowForEachRowKeyword_7_0());
                         
@@ -8906,31 +9068,31 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3573:3: (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )?
-            int alt62=2;
-            int LA62_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3671:3: (otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) ) )?
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA62_0==63) ) {
-                alt62=1;
+            if ( (LA60_0==63) ) {
+                alt60=1;
             }
-            switch (alt62) {
+            switch (alt60) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3573:5: otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3671:5: otherlv_14= 'when' ( (lv_whenExpression_15_0= ruleSqlExpression ) )
                     {
-                    otherlv_14=(Token)match(input,63,FOLLOW_63_in_ruleCreateTriggerStatement7772); 
+                    otherlv_14=(Token)match(input,63,FOLLOW_63_in_ruleCreateTriggerStatement7956); 
 
                         	newLeafNode(otherlv_14, grammarAccess.getCreateTriggerStatementAccess().getWhenKeyword_8_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3577:1: ( (lv_whenExpression_15_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3578:1: (lv_whenExpression_15_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3675:1: ( (lv_whenExpression_15_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3676:1: (lv_whenExpression_15_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3578:1: (lv_whenExpression_15_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3579:3: lv_whenExpression_15_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3676:1: (lv_whenExpression_15_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3677:3: lv_whenExpression_15_0= ruleSqlExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getCreateTriggerStatementAccess().getWhenExpressionSqlExpressionParserRuleCall_8_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleCreateTriggerStatement7793);
+                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleCreateTriggerStatement7977);
                     lv_whenExpression_15_0=ruleSqlExpression();
 
                     state._fsp--;
@@ -8958,31 +9120,31 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_16=(Token)match(input,99,FOLLOW_99_in_ruleCreateTriggerStatement7807); 
+            otherlv_16=(Token)match(input,98,FOLLOW_98_in_ruleCreateTriggerStatement7991); 
 
                 	newLeafNode(otherlv_16, grammarAccess.getCreateTriggerStatementAccess().getBeginKeyword_9());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3599:1: ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )?
-            int alt64=2;
-            int LA64_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3697:1: ( ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )* )?
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( (LA64_0==66||(LA64_0>=94 && LA64_0<=96)||LA64_0==112) ) {
-                alt64=1;
+            if ( (LA62_0==66||(LA62_0>=93 && LA62_0<=95)||LA62_0==111) ) {
+                alt62=1;
             }
-            switch (alt64) {
+            switch (alt62) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3599:2: ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )*
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3697:2: ( (lv_statements_17_0= ruleDMLStatement ) ) otherlv_18= ';' ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )*
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3599:2: ( (lv_statements_17_0= ruleDMLStatement ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3600:1: (lv_statements_17_0= ruleDMLStatement )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3697:2: ( (lv_statements_17_0= ruleDMLStatement ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3698:1: (lv_statements_17_0= ruleDMLStatement )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3600:1: (lv_statements_17_0= ruleDMLStatement )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3601:3: lv_statements_17_0= ruleDMLStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3698:1: (lv_statements_17_0= ruleDMLStatement )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3699:3: lv_statements_17_0= ruleDMLStatement
                     {
                      
                     	        newCompositeNode(grammarAccess.getCreateTriggerStatementAccess().getStatementsDMLStatementParserRuleCall_10_0_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement7829);
+                    pushFollow(FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement8013);
                     lv_statements_17_0=ruleDMLStatement();
 
                     state._fsp--;
@@ -9004,35 +9166,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_18=(Token)match(input,19,FOLLOW_19_in_ruleCreateTriggerStatement7841); 
+                    otherlv_18=(Token)match(input,19,FOLLOW_19_in_ruleCreateTriggerStatement8025); 
 
                         	newLeafNode(otherlv_18, grammarAccess.getCreateTriggerStatementAccess().getSemicolonKeyword_10_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3621:1: ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )*
-                    loop63:
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3719:1: ( ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';' )*
+                    loop61:
                     do {
-                        int alt63=2;
-                        int LA63_0 = input.LA(1);
+                        int alt61=2;
+                        int LA61_0 = input.LA(1);
 
-                        if ( (LA63_0==66||(LA63_0>=94 && LA63_0<=96)||LA63_0==112) ) {
-                            alt63=1;
+                        if ( (LA61_0==66||(LA61_0>=93 && LA61_0<=95)||LA61_0==111) ) {
+                            alt61=1;
                         }
 
 
-                        switch (alt63) {
+                        switch (alt61) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3621:2: ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';'
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3719:2: ( (lv_statements_19_0= ruleDMLStatement ) ) otherlv_20= ';'
                     	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3621:2: ( (lv_statements_19_0= ruleDMLStatement ) )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3622:1: (lv_statements_19_0= ruleDMLStatement )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3719:2: ( (lv_statements_19_0= ruleDMLStatement ) )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3720:1: (lv_statements_19_0= ruleDMLStatement )
                     	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3622:1: (lv_statements_19_0= ruleDMLStatement )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3623:3: lv_statements_19_0= ruleDMLStatement
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3720:1: (lv_statements_19_0= ruleDMLStatement )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3721:3: lv_statements_19_0= ruleDMLStatement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getCreateTriggerStatementAccess().getStatementsDMLStatementParserRuleCall_10_2_0_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement7863);
+                    	    pushFollow(FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement8047);
                     	    lv_statements_19_0=ruleDMLStatement();
 
                     	    state._fsp--;
@@ -9054,7 +9216,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_20=(Token)match(input,19,FOLLOW_19_in_ruleCreateTriggerStatement7875); 
+                    	    otherlv_20=(Token)match(input,19,FOLLOW_19_in_ruleCreateTriggerStatement8059); 
 
                     	        	newLeafNode(otherlv_20, grammarAccess.getCreateTriggerStatementAccess().getSemicolonKeyword_10_2_1());
                     	        
@@ -9063,7 +9225,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop63;
+                    	    break loop61;
                         }
                     } while (true);
 
@@ -9073,7 +9235,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_21=(Token)match(input,59,FOLLOW_59_in_ruleCreateTriggerStatement7891); 
+            otherlv_21=(Token)match(input,59,FOLLOW_59_in_ruleCreateTriggerStatement8075); 
 
                 	newLeafNode(otherlv_21, grammarAccess.getCreateTriggerStatementAccess().getEndKeyword_11());
                 
@@ -9098,7 +9260,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAlterTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3655:1: entryRuleAlterTableStatement returns [EObject current=null] : iv_ruleAlterTableStatement= ruleAlterTableStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3753:1: entryRuleAlterTableStatement returns [EObject current=null] : iv_ruleAlterTableStatement= ruleAlterTableStatement EOF ;
     public final EObject entryRuleAlterTableStatement() throws RecognitionException {
         EObject current = null;
 
@@ -9106,17 +9268,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3656:2: (iv_ruleAlterTableStatement= ruleAlterTableStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3657:2: iv_ruleAlterTableStatement= ruleAlterTableStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3754:2: (iv_ruleAlterTableStatement= ruleAlterTableStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3755:2: iv_ruleAlterTableStatement= ruleAlterTableStatement EOF
             {
              newCompositeNode(grammarAccess.getAlterTableStatementRule()); 
-            pushFollow(FOLLOW_ruleAlterTableStatement_in_entryRuleAlterTableStatement7927);
+            pushFollow(FOLLOW_ruleAlterTableStatement_in_entryRuleAlterTableStatement8111);
             iv_ruleAlterTableStatement=ruleAlterTableStatement();
 
             state._fsp--;
 
              current =iv_ruleAlterTableStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAlterTableStatement7937); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAlterTableStatement8121); 
 
             }
 
@@ -9134,69 +9296,64 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAlterTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3664:1: ruleAlterTableStatement returns [EObject current=null] : (otherlv_0= 'alter' otherlv_1= 'table' ( (lv_name_2_0= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3762:1: ruleAlterTableStatement returns [EObject current=null] : (otherlv_0= 'alter' otherlv_1= 'table' ( (otherlv_2= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) ) ;
     public final EObject ruleAlterTableStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token lv_name_2_0=null;
+        Token otherlv_2=null;
         EObject lv_clause_3_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3667:28: ( (otherlv_0= 'alter' otherlv_1= 'table' ( (lv_name_2_0= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3668:1: (otherlv_0= 'alter' otherlv_1= 'table' ( (lv_name_2_0= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3765:28: ( (otherlv_0= 'alter' otherlv_1= 'table' ( (otherlv_2= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3766:1: (otherlv_0= 'alter' otherlv_1= 'table' ( (otherlv_2= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3668:1: (otherlv_0= 'alter' otherlv_1= 'table' ( (lv_name_2_0= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3668:3: otherlv_0= 'alter' otherlv_1= 'table' ( (lv_name_2_0= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3766:1: (otherlv_0= 'alter' otherlv_1= 'table' ( (otherlv_2= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3766:3: otherlv_0= 'alter' otherlv_1= 'table' ( (otherlv_2= RULE_ID ) ) ( (lv_clause_3_0= ruleAlterTableClause ) )
             {
-            otherlv_0=(Token)match(input,100,FOLLOW_100_in_ruleAlterTableStatement7974); 
+            otherlv_0=(Token)match(input,99,FOLLOW_99_in_ruleAlterTableStatement8158); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getAlterTableStatementAccess().getAlterKeyword_0());
                 
-            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleAlterTableStatement7986); 
+            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleAlterTableStatement8170); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getAlterTableStatementAccess().getTableKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3676:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3677:1: (lv_name_2_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3774:1: ( (otherlv_2= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3775:1: (otherlv_2= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3677:1: (lv_name_2_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3678:3: lv_name_2_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3775:1: (otherlv_2= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3776:3: otherlv_2= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAlterTableStatement8003); 
 
-            			newLeafNode(lv_name_2_0, grammarAccess.getAlterTableStatementAccess().getNameIDTerminalRuleCall_2_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getAlterTableStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_2_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAlterTableStatement8190); 
+
+            		newLeafNode(otherlv_2, grammarAccess.getAlterTableStatementAccess().getTableCreateTableStatementCrossReference_2_0()); 
+            	
 
             }
 
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3694:2: ( (lv_clause_3_0= ruleAlterTableClause ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3695:1: (lv_clause_3_0= ruleAlterTableClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3787:2: ( (lv_clause_3_0= ruleAlterTableClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3788:1: (lv_clause_3_0= ruleAlterTableClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3695:1: (lv_clause_3_0= ruleAlterTableClause )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3696:3: lv_clause_3_0= ruleAlterTableClause
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3788:1: (lv_clause_3_0= ruleAlterTableClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3789:3: lv_clause_3_0= ruleAlterTableClause
             {
              
             	        newCompositeNode(grammarAccess.getAlterTableStatementAccess().getClauseAlterTableClauseParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleAlterTableClause_in_ruleAlterTableStatement8029);
+            pushFollow(FOLLOW_ruleAlterTableClause_in_ruleAlterTableStatement8211);
             lv_clause_3_0=ruleAlterTableClause();
 
             state._fsp--;
@@ -9239,7 +9396,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDropTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3720:1: entryRuleDropTableStatement returns [EObject current=null] : iv_ruleDropTableStatement= ruleDropTableStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3813:1: entryRuleDropTableStatement returns [EObject current=null] : iv_ruleDropTableStatement= ruleDropTableStatement EOF ;
     public final EObject entryRuleDropTableStatement() throws RecognitionException {
         EObject current = null;
 
@@ -9247,17 +9404,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3721:2: (iv_ruleDropTableStatement= ruleDropTableStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3722:2: iv_ruleDropTableStatement= ruleDropTableStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3814:2: (iv_ruleDropTableStatement= ruleDropTableStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3815:2: iv_ruleDropTableStatement= ruleDropTableStatement EOF
             {
              newCompositeNode(grammarAccess.getDropTableStatementRule()); 
-            pushFollow(FOLLOW_ruleDropTableStatement_in_entryRuleDropTableStatement8065);
+            pushFollow(FOLLOW_ruleDropTableStatement_in_entryRuleDropTableStatement8247);
             iv_ruleDropTableStatement=ruleDropTableStatement();
 
             state._fsp--;
 
              current =iv_ruleDropTableStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDropTableStatement8075); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDropTableStatement8257); 
 
             }
 
@@ -9275,47 +9432,47 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDropTableStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3729:1: ruleDropTableStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3822:1: ruleDropTableStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) ;
     public final EObject ruleDropTableStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token lv_ifExists_2_0=null;
-        Token lv_name_3_0=null;
+        Token otherlv_3=null;
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3732:28: ( (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3733:1: (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3825:28: ( (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3826:1: (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3733:1: (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3733:3: otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3826:1: (otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3826:3: otherlv_0= 'drop' otherlv_1= 'table' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,101,FOLLOW_101_in_ruleDropTableStatement8112); 
+            otherlv_0=(Token)match(input,100,FOLLOW_100_in_ruleDropTableStatement8294); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDropTableStatementAccess().getDropKeyword_0());
                 
-            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleDropTableStatement8124); 
+            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleDropTableStatement8306); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDropTableStatementAccess().getTableKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3741:1: ( (lv_ifExists_2_0= 'if exists' ) )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3834:1: ( (lv_ifExists_2_0= 'if exists' ) )?
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA65_0==102) ) {
-                alt65=1;
+            if ( (LA63_0==101) ) {
+                alt63=1;
             }
-            switch (alt65) {
+            switch (alt63) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3742:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3835:1: (lv_ifExists_2_0= 'if exists' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3742:1: (lv_ifExists_2_0= 'if exists' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3743:3: lv_ifExists_2_0= 'if exists'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3835:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3836:3: lv_ifExists_2_0= 'if exists'
                     {
-                    lv_ifExists_2_0=(Token)match(input,102,FOLLOW_102_in_ruleDropTableStatement8142); 
+                    lv_ifExists_2_0=(Token)match(input,101,FOLLOW_101_in_ruleDropTableStatement8324); 
 
                             newLeafNode(lv_ifExists_2_0, grammarAccess.getDropTableStatementAccess().getIfExistsIfExistsKeyword_2_0());
                         
@@ -9334,26 +9491,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3756:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3757:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3849:3: ( (otherlv_3= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3850:1: (otherlv_3= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3757:1: (lv_name_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3758:3: lv_name_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3850:1: (otherlv_3= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3851:3: otherlv_3= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropTableStatement8173); 
 
-            			newLeafNode(lv_name_3_0, grammarAccess.getDropTableStatementAccess().getNameIDTerminalRuleCall_3_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getDropTableStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_3_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropTableStatement8358); 
+
+            		newLeafNode(otherlv_3, grammarAccess.getDropTableStatementAccess().getTableCreateTableStatementCrossReference_3_0()); 
+            	
 
             }
 
@@ -9381,7 +9533,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDropTriggerStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3782:1: entryRuleDropTriggerStatement returns [EObject current=null] : iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3870:1: entryRuleDropTriggerStatement returns [EObject current=null] : iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF ;
     public final EObject entryRuleDropTriggerStatement() throws RecognitionException {
         EObject current = null;
 
@@ -9389,17 +9541,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3783:2: (iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3784:2: iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3871:2: (iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3872:2: iv_ruleDropTriggerStatement= ruleDropTriggerStatement EOF
             {
              newCompositeNode(grammarAccess.getDropTriggerStatementRule()); 
-            pushFollow(FOLLOW_ruleDropTriggerStatement_in_entryRuleDropTriggerStatement8214);
+            pushFollow(FOLLOW_ruleDropTriggerStatement_in_entryRuleDropTriggerStatement8394);
             iv_ruleDropTriggerStatement=ruleDropTriggerStatement();
 
             state._fsp--;
 
              current =iv_ruleDropTriggerStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDropTriggerStatement8224); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDropTriggerStatement8404); 
 
             }
 
@@ -9417,47 +9569,47 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDropTriggerStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3791:1: ruleDropTriggerStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3879:1: ruleDropTriggerStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) ;
     public final EObject ruleDropTriggerStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token lv_ifExists_2_0=null;
-        Token lv_name_3_0=null;
+        Token otherlv_3=null;
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3794:28: ( (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3795:1: (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3882:28: ( (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3883:1: (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3795:1: (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3795:3: otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3883:1: (otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3883:3: otherlv_0= 'drop' otherlv_1= 'trigger' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,101,FOLLOW_101_in_ruleDropTriggerStatement8261); 
+            otherlv_0=(Token)match(input,100,FOLLOW_100_in_ruleDropTriggerStatement8441); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDropTriggerStatementAccess().getDropKeyword_0());
                 
-            otherlv_1=(Token)match(input,90,FOLLOW_90_in_ruleDropTriggerStatement8273); 
+            otherlv_1=(Token)match(input,89,FOLLOW_89_in_ruleDropTriggerStatement8453); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDropTriggerStatementAccess().getTriggerKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3803:1: ( (lv_ifExists_2_0= 'if exists' ) )?
-            int alt66=2;
-            int LA66_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3891:1: ( (lv_ifExists_2_0= 'if exists' ) )?
+            int alt64=2;
+            int LA64_0 = input.LA(1);
 
-            if ( (LA66_0==102) ) {
-                alt66=1;
+            if ( (LA64_0==101) ) {
+                alt64=1;
             }
-            switch (alt66) {
+            switch (alt64) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3804:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3892:1: (lv_ifExists_2_0= 'if exists' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3804:1: (lv_ifExists_2_0= 'if exists' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3805:3: lv_ifExists_2_0= 'if exists'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3892:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3893:3: lv_ifExists_2_0= 'if exists'
                     {
-                    lv_ifExists_2_0=(Token)match(input,102,FOLLOW_102_in_ruleDropTriggerStatement8291); 
+                    lv_ifExists_2_0=(Token)match(input,101,FOLLOW_101_in_ruleDropTriggerStatement8471); 
 
                             newLeafNode(lv_ifExists_2_0, grammarAccess.getDropTriggerStatementAccess().getIfExistsIfExistsKeyword_2_0());
                         
@@ -9476,26 +9628,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3818:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3819:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3906:3: ( (otherlv_3= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3907:1: (otherlv_3= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3819:1: (lv_name_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3820:3: lv_name_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3907:1: (otherlv_3= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3908:3: otherlv_3= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropTriggerStatement8322); 
 
-            			newLeafNode(lv_name_3_0, grammarAccess.getDropTriggerStatementAccess().getNameIDTerminalRuleCall_3_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getDropTriggerStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_3_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropTriggerStatement8505); 
+
+            		newLeafNode(otherlv_3, grammarAccess.getDropTriggerStatementAccess().getTriggerCreateTriggerStatementCrossReference_3_0()); 
+            	
 
             }
 
@@ -9523,7 +9670,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDropViewStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3844:1: entryRuleDropViewStatement returns [EObject current=null] : iv_ruleDropViewStatement= ruleDropViewStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3927:1: entryRuleDropViewStatement returns [EObject current=null] : iv_ruleDropViewStatement= ruleDropViewStatement EOF ;
     public final EObject entryRuleDropViewStatement() throws RecognitionException {
         EObject current = null;
 
@@ -9531,17 +9678,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3845:2: (iv_ruleDropViewStatement= ruleDropViewStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3846:2: iv_ruleDropViewStatement= ruleDropViewStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3928:2: (iv_ruleDropViewStatement= ruleDropViewStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3929:2: iv_ruleDropViewStatement= ruleDropViewStatement EOF
             {
              newCompositeNode(grammarAccess.getDropViewStatementRule()); 
-            pushFollow(FOLLOW_ruleDropViewStatement_in_entryRuleDropViewStatement8363);
+            pushFollow(FOLLOW_ruleDropViewStatement_in_entryRuleDropViewStatement8541);
             iv_ruleDropViewStatement=ruleDropViewStatement();
 
             state._fsp--;
 
              current =iv_ruleDropViewStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDropViewStatement8373); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDropViewStatement8551); 
 
             }
 
@@ -9559,47 +9706,47 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDropViewStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3853:1: ruleDropViewStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3936:1: ruleDropViewStatement returns [EObject current=null] : (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) ;
     public final EObject ruleDropViewStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token lv_ifExists_2_0=null;
-        Token lv_name_3_0=null;
+        Token otherlv_3=null;
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3856:28: ( (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3857:1: (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3939:28: ( (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3940:1: (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3857:1: (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3857:3: otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (lv_name_3_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3940:1: (otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3940:3: otherlv_0= 'drop' otherlv_1= 'view' ( (lv_ifExists_2_0= 'if exists' ) )? ( (otherlv_3= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,101,FOLLOW_101_in_ruleDropViewStatement8410); 
+            otherlv_0=(Token)match(input,100,FOLLOW_100_in_ruleDropViewStatement8588); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDropViewStatementAccess().getDropKeyword_0());
                 
-            otherlv_1=(Token)match(input,89,FOLLOW_89_in_ruleDropViewStatement8422); 
+            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleDropViewStatement8600); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDropViewStatementAccess().getViewKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3865:1: ( (lv_ifExists_2_0= 'if exists' ) )?
-            int alt67=2;
-            int LA67_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3948:1: ( (lv_ifExists_2_0= 'if exists' ) )?
+            int alt65=2;
+            int LA65_0 = input.LA(1);
 
-            if ( (LA67_0==102) ) {
-                alt67=1;
+            if ( (LA65_0==101) ) {
+                alt65=1;
             }
-            switch (alt67) {
+            switch (alt65) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3866:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3949:1: (lv_ifExists_2_0= 'if exists' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3866:1: (lv_ifExists_2_0= 'if exists' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3867:3: lv_ifExists_2_0= 'if exists'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3949:1: (lv_ifExists_2_0= 'if exists' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3950:3: lv_ifExists_2_0= 'if exists'
                     {
-                    lv_ifExists_2_0=(Token)match(input,102,FOLLOW_102_in_ruleDropViewStatement8440); 
+                    lv_ifExists_2_0=(Token)match(input,101,FOLLOW_101_in_ruleDropViewStatement8618); 
 
                             newLeafNode(lv_ifExists_2_0, grammarAccess.getDropViewStatementAccess().getIfExistsIfExistsKeyword_2_0());
                         
@@ -9618,26 +9765,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3880:3: ( (lv_name_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3881:1: (lv_name_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3963:3: ( (otherlv_3= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3964:1: (otherlv_3= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3881:1: (lv_name_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3882:3: lv_name_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3964:1: (otherlv_3= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3965:3: otherlv_3= RULE_ID
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropViewStatement8471); 
 
-            			newLeafNode(lv_name_3_0, grammarAccess.getDropViewStatementAccess().getNameIDTerminalRuleCall_3_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getDropViewStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_3_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDropViewStatement8652); 
+
+            		newLeafNode(otherlv_3, grammarAccess.getDropViewStatementAccess().getViewCreateViewStatementCrossReference_3_0()); 
+            	
 
             }
 
@@ -9665,7 +9807,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAlterTableClause"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3906:1: entryRuleAlterTableClause returns [EObject current=null] : iv_ruleAlterTableClause= ruleAlterTableClause EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:1: entryRuleAlterTableClause returns [EObject current=null] : iv_ruleAlterTableClause= ruleAlterTableClause EOF ;
     public final EObject entryRuleAlterTableClause() throws RecognitionException {
         EObject current = null;
 
@@ -9673,17 +9815,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3907:2: (iv_ruleAlterTableClause= ruleAlterTableClause EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3908:2: iv_ruleAlterTableClause= ruleAlterTableClause EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3985:2: (iv_ruleAlterTableClause= ruleAlterTableClause EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3986:2: iv_ruleAlterTableClause= ruleAlterTableClause EOF
             {
              newCompositeNode(grammarAccess.getAlterTableClauseRule()); 
-            pushFollow(FOLLOW_ruleAlterTableClause_in_entryRuleAlterTableClause8512);
+            pushFollow(FOLLOW_ruleAlterTableClause_in_entryRuleAlterTableClause8688);
             iv_ruleAlterTableClause=ruleAlterTableClause();
 
             state._fsp--;
 
              current =iv_ruleAlterTableClause; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAlterTableClause8522); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAlterTableClause8698); 
 
             }
 
@@ -9701,7 +9843,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAlterTableClause"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3915:1: ruleAlterTableClause returns [EObject current=null] : ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3993:1: ruleAlterTableClause returns [EObject current=null] : ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) ) ;
     public final EObject ruleAlterTableClause() throws RecognitionException {
         EObject current = null;
 
@@ -9714,34 +9856,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3918:28: ( ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:1: ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3996:28: ( ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:1: ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:1: ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) )
-            int alt68=2;
-            int LA68_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:1: ( ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) ) | ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) ) )
+            int alt66=2;
+            int LA66_0 = input.LA(1);
 
-            if ( (LA68_0==103) ) {
-                alt68=1;
+            if ( (LA66_0==102) ) {
+                alt66=1;
             }
-            else if ( (LA68_0==104) ) {
-                alt68=2;
+            else if ( (LA66_0==103) ) {
+                alt66=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 68, 0, input);
+                    new NoViableAltException("", 66, 0, input);
 
                 throw nvae;
             }
-            switch (alt68) {
+            switch (alt66) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:2: ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:2: ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:2: ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:3: () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:2: ( () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:3: () otherlv_1= 'rename to' ( (lv_name_2_0= RULE_ID ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3919:3: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3920:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:3: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3998:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -9751,17 +9893,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,103,FOLLOW_103_in_ruleAlterTableClause8569); 
+                    otherlv_1=(Token)match(input,102,FOLLOW_102_in_ruleAlterTableClause8745); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getAlterTableClauseAccess().getRenameToKeyword_0_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3929:1: ( (lv_name_2_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3930:1: (lv_name_2_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4007:1: ( (lv_name_2_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4008:1: (lv_name_2_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3930:1: (lv_name_2_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3931:3: lv_name_2_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4008:1: (lv_name_2_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4009:3: lv_name_2_0= RULE_ID
                     {
-                    lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAlterTableClause8586); 
+                    lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAlterTableClause8762); 
 
                     			newLeafNode(lv_name_2_0, grammarAccess.getAlterTableClauseAccess().getNameIDTerminalRuleCall_0_2_0()); 
                     		
@@ -9788,13 +9930,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3948:6: ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4026:6: ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3948:6: ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3948:7: () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4026:6: ( () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4026:7: () otherlv_4= 'add column' ( (lv_columnDef_5_0= ruleColumnDef ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3948:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3949:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4026:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4027:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -9804,20 +9946,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,104,FOLLOW_104_in_ruleAlterTableClause8620); 
+                    otherlv_4=(Token)match(input,103,FOLLOW_103_in_ruleAlterTableClause8796); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getAlterTableClauseAccess().getAddColumnKeyword_1_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3958:1: ( (lv_columnDef_5_0= ruleColumnDef ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3959:1: (lv_columnDef_5_0= ruleColumnDef )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4036:1: ( (lv_columnDef_5_0= ruleColumnDef ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4037:1: (lv_columnDef_5_0= ruleColumnDef )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3959:1: (lv_columnDef_5_0= ruleColumnDef )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3960:3: lv_columnDef_5_0= ruleColumnDef
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4037:1: (lv_columnDef_5_0= ruleColumnDef )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4038:3: lv_columnDef_5_0= ruleColumnDef
                     {
                      
                     	        newCompositeNode(grammarAccess.getAlterTableClauseAccess().getColumnDefColumnDefParserRuleCall_1_2_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleColumnDef_in_ruleAlterTableClause8641);
+                    pushFollow(FOLLOW_ruleColumnDef_in_ruleAlterTableClause8817);
                     lv_columnDef_5_0=ruleColumnDef();
 
                     state._fsp--;
@@ -9866,7 +10008,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleColumnDef"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3984:1: entryRuleColumnDef returns [EObject current=null] : iv_ruleColumnDef= ruleColumnDef EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4062:1: entryRuleColumnDef returns [EObject current=null] : iv_ruleColumnDef= ruleColumnDef EOF ;
     public final EObject entryRuleColumnDef() throws RecognitionException {
         EObject current = null;
 
@@ -9874,17 +10016,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3985:2: (iv_ruleColumnDef= ruleColumnDef EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3986:2: iv_ruleColumnDef= ruleColumnDef EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4063:2: (iv_ruleColumnDef= ruleColumnDef EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4064:2: iv_ruleColumnDef= ruleColumnDef EOF
             {
              newCompositeNode(grammarAccess.getColumnDefRule()); 
-            pushFollow(FOLLOW_ruleColumnDef_in_entryRuleColumnDef8678);
+            pushFollow(FOLLOW_ruleColumnDef_in_entryRuleColumnDef8854);
             iv_ruleColumnDef=ruleColumnDef();
 
             state._fsp--;
 
              current =iv_ruleColumnDef; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleColumnDef8688); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleColumnDef8864); 
 
             }
 
@@ -9902,7 +10044,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColumnDef"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3993:1: ruleColumnDef returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4071:1: ruleColumnDef returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* ) ;
     public final EObject ruleColumnDef() throws RecognitionException {
         EObject current = null;
 
@@ -9915,14 +10057,14 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3996:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:1: ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4074:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4075:1: ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:1: ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:2: () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4075:1: ( () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4075:2: () ( (lv_name_1_0= RULE_ID ) ) ( (lv_type_2_0= ruleColumnType ) ) ( (lv_constraints_3_0= ruleColumnConstraint ) )*
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3997:2: ()
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:3998:5: 
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4075:2: ()
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4076:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9932,13 +10074,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4003:2: ( (lv_name_1_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4004:1: (lv_name_1_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4081:2: ( (lv_name_1_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:1: (lv_name_1_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4004:1: (lv_name_1_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4005:3: lv_name_1_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4082:1: (lv_name_1_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4083:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleColumnDef8739); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleColumnDef8915); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getColumnDefAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -9958,16 +10100,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4021:2: ( (lv_type_2_0= ruleColumnType ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4022:1: (lv_type_2_0= ruleColumnType )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4099:2: ( (lv_type_2_0= ruleColumnType ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4100:1: (lv_type_2_0= ruleColumnType )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4022:1: (lv_type_2_0= ruleColumnType )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4023:3: lv_type_2_0= ruleColumnType
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4100:1: (lv_type_2_0= ruleColumnType )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4101:3: lv_type_2_0= ruleColumnType
             {
              
             	        newCompositeNode(grammarAccess.getColumnDefAccess().getTypeColumnTypeEnumRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleColumnType_in_ruleColumnDef8765);
+            pushFollow(FOLLOW_ruleColumnType_in_ruleColumnDef8941);
             lv_type_2_0=ruleColumnType();
 
             state._fsp--;
@@ -9989,28 +10131,28 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4039:2: ( (lv_constraints_3_0= ruleColumnConstraint ) )*
-            loop69:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4117:2: ( (lv_constraints_3_0= ruleColumnConstraint ) )*
+            loop67:
             do {
-                int alt69=2;
-                int LA69_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( (LA69_0==48||LA69_0==105||LA69_0==107) ) {
-                    alt69=1;
+                if ( (LA67_0==48||LA67_0==104||LA67_0==106) ) {
+                    alt67=1;
                 }
 
 
-                switch (alt69) {
+                switch (alt67) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4040:1: (lv_constraints_3_0= ruleColumnConstraint )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4118:1: (lv_constraints_3_0= ruleColumnConstraint )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4040:1: (lv_constraints_3_0= ruleColumnConstraint )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4041:3: lv_constraints_3_0= ruleColumnConstraint
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4118:1: (lv_constraints_3_0= ruleColumnConstraint )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4119:3: lv_constraints_3_0= ruleColumnConstraint
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getColumnDefAccess().getConstraintsColumnConstraintParserRuleCall_3_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleColumnConstraint_in_ruleColumnDef8786);
+            	    pushFollow(FOLLOW_ruleColumnConstraint_in_ruleColumnDef8962);
             	    lv_constraints_3_0=ruleColumnConstraint();
 
             	    state._fsp--;
@@ -10034,7 +10176,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop69;
+            	    break loop67;
                 }
             } while (true);
 
@@ -10059,7 +10201,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleColumnConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4065:1: entryRuleColumnConstraint returns [EObject current=null] : iv_ruleColumnConstraint= ruleColumnConstraint EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4143:1: entryRuleColumnConstraint returns [EObject current=null] : iv_ruleColumnConstraint= ruleColumnConstraint EOF ;
     public final EObject entryRuleColumnConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10067,17 +10209,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4066:2: (iv_ruleColumnConstraint= ruleColumnConstraint EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4067:2: iv_ruleColumnConstraint= ruleColumnConstraint EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4144:2: (iv_ruleColumnConstraint= ruleColumnConstraint EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4145:2: iv_ruleColumnConstraint= ruleColumnConstraint EOF
             {
              newCompositeNode(grammarAccess.getColumnConstraintRule()); 
-            pushFollow(FOLLOW_ruleColumnConstraint_in_entryRuleColumnConstraint8823);
+            pushFollow(FOLLOW_ruleColumnConstraint_in_entryRuleColumnConstraint8999);
             iv_ruleColumnConstraint=ruleColumnConstraint();
 
             state._fsp--;
 
              current =iv_ruleColumnConstraint; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleColumnConstraint8833); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleColumnConstraint9009); 
 
             }
 
@@ -10095,7 +10237,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColumnConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4074:1: ruleColumnConstraint returns [EObject current=null] : ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4152:1: ruleColumnConstraint returns [EObject current=null] : ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) ) ;
     public final EObject ruleColumnConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10113,43 +10255,43 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4077:28: ( ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:1: ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4155:28: ( ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:1: ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:1: ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) )
-            int alt73=3;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:1: ( ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? ) | ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? ) | ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) ) )
+            int alt71=3;
             switch ( input.LA(1) ) {
-            case 105:
+            case 104:
                 {
-                alt73=1;
+                alt71=1;
                 }
                 break;
             case 48:
                 {
-                alt73=2;
+                alt71=2;
                 }
                 break;
-            case 107:
+            case 106:
                 {
-                alt73=3;
+                alt71=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 73, 0, input);
+                    new NoViableAltException("", 71, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt73) {
+            switch (alt71) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:2: ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:2: ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:2: ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:3: () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:2: ( () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:3: () otherlv_1= 'primary key' ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )? ( (lv_autoincrement_4_0= 'autoincrement' ) )?
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4078:3: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4079:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4156:3: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4157:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -10159,31 +10301,31 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,105,FOLLOW_105_in_ruleColumnConstraint8880); 
+                    otherlv_1=(Token)match(input,104,FOLLOW_104_in_ruleColumnConstraint9056); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getColumnConstraintAccess().getPrimaryKeyKeyword_0_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:1: ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )?
-                    int alt70=3;
-                    int LA70_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4166:1: ( ( (lv_asc_2_0= 'asc' ) ) | ( (lv_desc_3_0= 'desc' ) ) )?
+                    int alt68=3;
+                    int LA68_0 = input.LA(1);
 
-                    if ( (LA70_0==73) ) {
-                        alt70=1;
+                    if ( (LA68_0==73) ) {
+                        alt68=1;
                     }
-                    else if ( (LA70_0==74) ) {
-                        alt70=2;
+                    else if ( (LA68_0==74) ) {
+                        alt68=2;
                     }
-                    switch (alt70) {
+                    switch (alt68) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:2: ( (lv_asc_2_0= 'asc' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4166:2: ( (lv_asc_2_0= 'asc' ) )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4088:2: ( (lv_asc_2_0= 'asc' ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4089:1: (lv_asc_2_0= 'asc' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4166:2: ( (lv_asc_2_0= 'asc' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4167:1: (lv_asc_2_0= 'asc' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4089:1: (lv_asc_2_0= 'asc' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4090:3: lv_asc_2_0= 'asc'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4167:1: (lv_asc_2_0= 'asc' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4168:3: lv_asc_2_0= 'asc'
                             {
-                            lv_asc_2_0=(Token)match(input,73,FOLLOW_73_in_ruleColumnConstraint8899); 
+                            lv_asc_2_0=(Token)match(input,73,FOLLOW_73_in_ruleColumnConstraint9075); 
 
                                     newLeafNode(lv_asc_2_0, grammarAccess.getColumnConstraintAccess().getAscAscKeyword_0_2_0_0());
                                 
@@ -10203,15 +10345,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4104:6: ( (lv_desc_3_0= 'desc' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4182:6: ( (lv_desc_3_0= 'desc' ) )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4104:6: ( (lv_desc_3_0= 'desc' ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4105:1: (lv_desc_3_0= 'desc' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4182:6: ( (lv_desc_3_0= 'desc' ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4183:1: (lv_desc_3_0= 'desc' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4105:1: (lv_desc_3_0= 'desc' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4106:3: lv_desc_3_0= 'desc'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4183:1: (lv_desc_3_0= 'desc' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4184:3: lv_desc_3_0= 'desc'
                             {
-                            lv_desc_3_0=(Token)match(input,74,FOLLOW_74_in_ruleColumnConstraint8936); 
+                            lv_desc_3_0=(Token)match(input,74,FOLLOW_74_in_ruleColumnConstraint9112); 
 
                                     newLeafNode(lv_desc_3_0, grammarAccess.getColumnConstraintAccess().getDescDescKeyword_0_2_1_0());
                                 
@@ -10233,21 +10375,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4119:4: ( (lv_autoincrement_4_0= 'autoincrement' ) )?
-                    int alt71=2;
-                    int LA71_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4197:4: ( (lv_autoincrement_4_0= 'autoincrement' ) )?
+                    int alt69=2;
+                    int LA69_0 = input.LA(1);
 
-                    if ( (LA71_0==106) ) {
-                        alt71=1;
+                    if ( (LA69_0==105) ) {
+                        alt69=1;
                     }
-                    switch (alt71) {
+                    switch (alt69) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4120:1: (lv_autoincrement_4_0= 'autoincrement' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4198:1: (lv_autoincrement_4_0= 'autoincrement' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4120:1: (lv_autoincrement_4_0= 'autoincrement' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4121:3: lv_autoincrement_4_0= 'autoincrement'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4198:1: (lv_autoincrement_4_0= 'autoincrement' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4199:3: lv_autoincrement_4_0= 'autoincrement'
                             {
-                            lv_autoincrement_4_0=(Token)match(input,106,FOLLOW_106_in_ruleColumnConstraint8969); 
+                            lv_autoincrement_4_0=(Token)match(input,105,FOLLOW_105_in_ruleColumnConstraint9145); 
 
                                     newLeafNode(lv_autoincrement_4_0, grammarAccess.getColumnConstraintAccess().getAutoincrementAutoincrementKeyword_0_3_0());
                                 
@@ -10273,13 +10415,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4135:6: ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:6: ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4135:6: ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4135:7: () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:6: ( () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:7: () otherlv_6= 'not null' ( (lv_conflictClause_7_0= ruleConflictClause ) )?
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4135:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4136:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4214:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -10289,28 +10431,28 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,48,FOLLOW_48_in_ruleColumnConstraint9012); 
+                    otherlv_6=(Token)match(input,48,FOLLOW_48_in_ruleColumnConstraint9188); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getColumnConstraintAccess().getNotNullKeyword_1_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4145:1: ( (lv_conflictClause_7_0= ruleConflictClause ) )?
-                    int alt72=2;
-                    int LA72_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4223:1: ( (lv_conflictClause_7_0= ruleConflictClause ) )?
+                    int alt70=2;
+                    int LA70_0 = input.LA(1);
 
-                    if ( (LA72_0==81) ) {
-                        alt72=1;
+                    if ( (LA70_0==81) ) {
+                        alt70=1;
                     }
-                    switch (alt72) {
+                    switch (alt70) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4146:1: (lv_conflictClause_7_0= ruleConflictClause )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4224:1: (lv_conflictClause_7_0= ruleConflictClause )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4146:1: (lv_conflictClause_7_0= ruleConflictClause )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4147:3: lv_conflictClause_7_0= ruleConflictClause
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4224:1: (lv_conflictClause_7_0= ruleConflictClause )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4225:3: lv_conflictClause_7_0= ruleConflictClause
                             {
                              
                             	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getConflictClauseConflictClauseParserRuleCall_1_2_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleConflictClause_in_ruleColumnConstraint9033);
+                            pushFollow(FOLLOW_ruleConflictClause_in_ruleColumnConstraint9209);
                             lv_conflictClause_7_0=ruleConflictClause();
 
                             state._fsp--;
@@ -10342,13 +10484,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4164:6: ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4242:6: ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4164:6: ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4164:7: () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4242:6: ( () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4242:7: () otherlv_9= 'default' ( (lv_defaultValue_10_0= ruleDefaultValue ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4164:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4165:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4242:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4243:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -10358,20 +10500,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_9=(Token)match(input,107,FOLLOW_107_in_ruleColumnConstraint9063); 
+                    otherlv_9=(Token)match(input,106,FOLLOW_106_in_ruleColumnConstraint9239); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getColumnConstraintAccess().getDefaultKeyword_2_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4174:1: ( (lv_defaultValue_10_0= ruleDefaultValue ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4175:1: (lv_defaultValue_10_0= ruleDefaultValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4252:1: ( (lv_defaultValue_10_0= ruleDefaultValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4253:1: (lv_defaultValue_10_0= ruleDefaultValue )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4175:1: (lv_defaultValue_10_0= ruleDefaultValue )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4176:3: lv_defaultValue_10_0= ruleDefaultValue
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4253:1: (lv_defaultValue_10_0= ruleDefaultValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4254:3: lv_defaultValue_10_0= ruleDefaultValue
                     {
                      
                     	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_2_2_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleDefaultValue_in_ruleColumnConstraint9084);
+                    pushFollow(FOLLOW_ruleDefaultValue_in_ruleColumnConstraint9260);
                     lv_defaultValue_10_0=ruleDefaultValue();
 
                     state._fsp--;
@@ -10420,7 +10562,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4200:1: entryRuleTableConstraint returns [EObject current=null] : iv_ruleTableConstraint= ruleTableConstraint EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4278:1: entryRuleTableConstraint returns [EObject current=null] : iv_ruleTableConstraint= ruleTableConstraint EOF ;
     public final EObject entryRuleTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10428,17 +10570,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4201:2: (iv_ruleTableConstraint= ruleTableConstraint EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4202:2: iv_ruleTableConstraint= ruleTableConstraint EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4279:2: (iv_ruleTableConstraint= ruleTableConstraint EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4280:2: iv_ruleTableConstraint= ruleTableConstraint EOF
             {
              newCompositeNode(grammarAccess.getTableConstraintRule()); 
-            pushFollow(FOLLOW_ruleTableConstraint_in_entryRuleTableConstraint9121);
+            pushFollow(FOLLOW_ruleTableConstraint_in_entryRuleTableConstraint9297);
             iv_ruleTableConstraint=ruleTableConstraint();
 
             state._fsp--;
 
              current =iv_ruleTableConstraint; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTableConstraint9131); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTableConstraint9307); 
 
             }
 
@@ -10456,7 +10598,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4209:1: ruleTableConstraint returns [EObject current=null] : (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4287:1: ruleTableConstraint returns [EObject current=null] : (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint ) ;
     public final EObject ruleTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10470,36 +10612,36 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4212:28: ( (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:1: (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4290:28: ( (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4291:1: (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4213:1: (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint )
-            int alt74=3;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4291:1: (this_UniqueTableConstraint_0= ruleUniqueTableConstraint | this_PrimaryConstraint_1= rulePrimaryConstraint | this_CheckTableConstraint_2= ruleCheckTableConstraint )
+            int alt72=3;
             switch ( input.LA(1) ) {
-            case 108:
+            case 107:
                 {
-                int LA74_1 = input.LA(2);
+                int LA72_1 = input.LA(2);
 
-                if ( (LA74_1==RULE_ID) ) {
+                if ( (LA72_1==RULE_ID) ) {
                     switch ( input.LA(3) ) {
-                    case 110:
-                        {
-                        alt74=3;
-                        }
-                        break;
-                    case 105:
-                        {
-                        alt74=2;
-                        }
-                        break;
                     case 109:
                         {
-                        alt74=1;
+                        alt72=3;
+                        }
+                        break;
+                    case 108:
+                        {
+                        alt72=1;
+                        }
+                        break;
+                    case 104:
+                        {
+                        alt72=2;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 74, 5, input);
+                            new NoViableAltException("", 72, 5, input);
 
                         throw nvae;
                     }
@@ -10507,42 +10649,42 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 74, 1, input);
+                        new NoViableAltException("", 72, 1, input);
 
                     throw nvae;
                 }
                 }
                 break;
+            case 108:
+                {
+                alt72=1;
+                }
+                break;
+            case 104:
+                {
+                alt72=2;
+                }
+                break;
             case 109:
                 {
-                alt74=1;
-                }
-                break;
-            case 105:
-                {
-                alt74=2;
-                }
-                break;
-            case 110:
-                {
-                alt74=3;
+                alt72=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 74, 0, input);
+                    new NoViableAltException("", 72, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt74) {
+            switch (alt72) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4214:5: this_UniqueTableConstraint_0= ruleUniqueTableConstraint
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4292:5: this_UniqueTableConstraint_0= ruleUniqueTableConstraint
                     {
                      
                             newCompositeNode(grammarAccess.getTableConstraintAccess().getUniqueTableConstraintParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleUniqueTableConstraint_in_ruleTableConstraint9178);
+                    pushFollow(FOLLOW_ruleUniqueTableConstraint_in_ruleTableConstraint9354);
                     this_UniqueTableConstraint_0=ruleUniqueTableConstraint();
 
                     state._fsp--;
@@ -10555,12 +10697,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4224:5: this_PrimaryConstraint_1= rulePrimaryConstraint
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4302:5: this_PrimaryConstraint_1= rulePrimaryConstraint
                     {
                      
                             newCompositeNode(grammarAccess.getTableConstraintAccess().getPrimaryConstraintParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_rulePrimaryConstraint_in_ruleTableConstraint9205);
+                    pushFollow(FOLLOW_rulePrimaryConstraint_in_ruleTableConstraint9381);
                     this_PrimaryConstraint_1=rulePrimaryConstraint();
 
                     state._fsp--;
@@ -10573,12 +10715,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4234:5: this_CheckTableConstraint_2= ruleCheckTableConstraint
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4312:5: this_CheckTableConstraint_2= ruleCheckTableConstraint
                     {
                      
                             newCompositeNode(grammarAccess.getTableConstraintAccess().getCheckTableConstraintParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleCheckTableConstraint_in_ruleTableConstraint9232);
+                    pushFollow(FOLLOW_ruleCheckTableConstraint_in_ruleTableConstraint9408);
                     this_CheckTableConstraint_2=ruleCheckTableConstraint();
 
                     state._fsp--;
@@ -10611,7 +10753,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUniqueTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4250:1: entryRuleUniqueTableConstraint returns [EObject current=null] : iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4328:1: entryRuleUniqueTableConstraint returns [EObject current=null] : iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF ;
     public final EObject entryRuleUniqueTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10619,17 +10761,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4251:2: (iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4252:2: iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4329:2: (iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4330:2: iv_ruleUniqueTableConstraint= ruleUniqueTableConstraint EOF
             {
              newCompositeNode(grammarAccess.getUniqueTableConstraintRule()); 
-            pushFollow(FOLLOW_ruleUniqueTableConstraint_in_entryRuleUniqueTableConstraint9267);
+            pushFollow(FOLLOW_ruleUniqueTableConstraint_in_entryRuleUniqueTableConstraint9443);
             iv_ruleUniqueTableConstraint=ruleUniqueTableConstraint();
 
             state._fsp--;
 
              current =iv_ruleUniqueTableConstraint; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUniqueTableConstraint9277); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUniqueTableConstraint9453); 
 
             }
 
@@ -10647,7 +10789,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUniqueTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4259:1: ruleUniqueTableConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4337:1: ruleUniqueTableConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) ;
     public final EObject ruleUniqueTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10667,34 +10809,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4262:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4263:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4340:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4341:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4263:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4263:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4341:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4341:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'unique' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4263:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
-            int alt75=2;
-            int LA75_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4341:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
+            int alt73=2;
+            int LA73_0 = input.LA(1);
 
-            if ( (LA75_0==108) ) {
-                alt75=1;
+            if ( (LA73_0==107) ) {
+                alt73=1;
             }
-            switch (alt75) {
+            switch (alt73) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4263:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4341:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
                     {
-                    otherlv_0=(Token)match(input,108,FOLLOW_108_in_ruleUniqueTableConstraint9315); 
+                    otherlv_0=(Token)match(input,107,FOLLOW_107_in_ruleUniqueTableConstraint9491); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getUniqueTableConstraintAccess().getConstraintKeyword_0_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4267:1: ( (lv_name_1_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4268:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4345:1: ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4346:1: (lv_name_1_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4268:1: (lv_name_1_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4269:3: lv_name_1_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4346:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4347:3: lv_name_1_0= RULE_ID
                     {
-                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUniqueTableConstraint9332); 
+                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUniqueTableConstraint9508); 
 
                     			newLeafNode(lv_name_1_0, grammarAccess.getUniqueTableConstraintAccess().getNameIDTerminalRuleCall_0_1_0()); 
                     		
@@ -10720,24 +10862,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,109,FOLLOW_109_in_ruleUniqueTableConstraint9351); 
+            otherlv_2=(Token)match(input,108,FOLLOW_108_in_ruleUniqueTableConstraint9527); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getUniqueTableConstraintAccess().getUniqueKeyword_1());
                 
-            otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleUniqueTableConstraint9363); 
+            otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleUniqueTableConstraint9539); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getUniqueTableConstraintAccess().getLeftParenthesisKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4293:1: ( (lv_columns_4_0= ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4294:1: (lv_columns_4_0= ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4371:1: ( (lv_columns_4_0= ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4372:1: (lv_columns_4_0= ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4294:1: (lv_columns_4_0= ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4295:3: lv_columns_4_0= ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4372:1: (lv_columns_4_0= ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4373:3: lv_columns_4_0= ruleIndexedColumn
             {
              
             	        newCompositeNode(grammarAccess.getUniqueTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9384);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9560);
             lv_columns_4_0=ruleIndexedColumn();
 
             state._fsp--;
@@ -10759,35 +10901,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4311:2: (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )*
-            loop76:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4389:2: (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )*
+            loop74:
             do {
-                int alt76=2;
-                int LA76_0 = input.LA(1);
+                int alt74=2;
+                int LA74_0 = input.LA(1);
 
-                if ( (LA76_0==60) ) {
-                    alt76=1;
+                if ( (LA74_0==60) ) {
+                    alt74=1;
                 }
 
 
-                switch (alt76) {
+                switch (alt74) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4311:4: otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4389:4: otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) )
             	    {
-            	    otherlv_5=(Token)match(input,60,FOLLOW_60_in_ruleUniqueTableConstraint9397); 
+            	    otherlv_5=(Token)match(input,60,FOLLOW_60_in_ruleUniqueTableConstraint9573); 
 
             	        	newLeafNode(otherlv_5, grammarAccess.getUniqueTableConstraintAccess().getCommaKeyword_4_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4315:1: ( (lv_columns_6_0= ruleIndexedColumn ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4316:1: (lv_columns_6_0= ruleIndexedColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4393:1: ( (lv_columns_6_0= ruleIndexedColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4394:1: (lv_columns_6_0= ruleIndexedColumn )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4316:1: (lv_columns_6_0= ruleIndexedColumn )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4317:3: lv_columns_6_0= ruleIndexedColumn
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4394:1: (lv_columns_6_0= ruleIndexedColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4395:3: lv_columns_6_0= ruleIndexedColumn
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getUniqueTableConstraintAccess().getColumnsIndexedColumnParserRuleCall_4_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9418);
+            	    pushFollow(FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9594);
             	    lv_columns_6_0=ruleIndexedColumn();
 
             	    state._fsp--;
@@ -10814,24 +10956,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop76;
+            	    break loop74;
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,54,FOLLOW_54_in_ruleUniqueTableConstraint9432); 
+            otherlv_7=(Token)match(input,54,FOLLOW_54_in_ruleUniqueTableConstraint9608); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getUniqueTableConstraintAccess().getRightParenthesisKeyword_5());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4337:1: ( (lv_conflictClause_8_0= ruleConflictClause ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4338:1: (lv_conflictClause_8_0= ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4415:1: ( (lv_conflictClause_8_0= ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4416:1: (lv_conflictClause_8_0= ruleConflictClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4338:1: (lv_conflictClause_8_0= ruleConflictClause )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4339:3: lv_conflictClause_8_0= ruleConflictClause
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4416:1: (lv_conflictClause_8_0= ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4417:3: lv_conflictClause_8_0= ruleConflictClause
             {
              
             	        newCompositeNode(grammarAccess.getUniqueTableConstraintAccess().getConflictClauseConflictClauseParserRuleCall_6_0()); 
             	    
-            pushFollow(FOLLOW_ruleConflictClause_in_ruleUniqueTableConstraint9453);
+            pushFollow(FOLLOW_ruleConflictClause_in_ruleUniqueTableConstraint9629);
             lv_conflictClause_8_0=ruleConflictClause();
 
             state._fsp--;
@@ -10874,7 +11016,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimaryConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4363:1: entryRulePrimaryConstraint returns [EObject current=null] : iv_rulePrimaryConstraint= rulePrimaryConstraint EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4441:1: entryRulePrimaryConstraint returns [EObject current=null] : iv_rulePrimaryConstraint= rulePrimaryConstraint EOF ;
     public final EObject entryRulePrimaryConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10882,17 +11024,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4364:2: (iv_rulePrimaryConstraint= rulePrimaryConstraint EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4365:2: iv_rulePrimaryConstraint= rulePrimaryConstraint EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4442:2: (iv_rulePrimaryConstraint= rulePrimaryConstraint EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4443:2: iv_rulePrimaryConstraint= rulePrimaryConstraint EOF
             {
              newCompositeNode(grammarAccess.getPrimaryConstraintRule()); 
-            pushFollow(FOLLOW_rulePrimaryConstraint_in_entryRulePrimaryConstraint9489);
+            pushFollow(FOLLOW_rulePrimaryConstraint_in_entryRulePrimaryConstraint9665);
             iv_rulePrimaryConstraint=rulePrimaryConstraint();
 
             state._fsp--;
 
              current =iv_rulePrimaryConstraint; 
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimaryConstraint9499); 
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimaryConstraint9675); 
 
             }
 
@@ -10910,7 +11052,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimaryConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4372:1: rulePrimaryConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4450:1: rulePrimaryConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) ;
     public final EObject rulePrimaryConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -10930,34 +11072,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4375:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4376:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4453:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4454:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4376:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4376:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4454:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4454:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'primary key' otherlv_3= '(' ( (lv_columns_4_0= ruleIndexedColumn ) ) (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )* otherlv_7= ')' ( (lv_conflictClause_8_0= ruleConflictClause ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4376:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4454:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-            if ( (LA77_0==108) ) {
-                alt77=1;
+            if ( (LA75_0==107) ) {
+                alt75=1;
             }
-            switch (alt77) {
+            switch (alt75) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4376:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4454:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
                     {
-                    otherlv_0=(Token)match(input,108,FOLLOW_108_in_rulePrimaryConstraint9537); 
+                    otherlv_0=(Token)match(input,107,FOLLOW_107_in_rulePrimaryConstraint9713); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getPrimaryConstraintAccess().getConstraintKeyword_0_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4380:1: ( (lv_name_1_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4381:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4458:1: ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4459:1: (lv_name_1_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4381:1: (lv_name_1_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4382:3: lv_name_1_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4459:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4460:3: lv_name_1_0= RULE_ID
                     {
-                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryConstraint9554); 
+                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePrimaryConstraint9730); 
 
                     			newLeafNode(lv_name_1_0, grammarAccess.getPrimaryConstraintAccess().getNameIDTerminalRuleCall_0_1_0()); 
                     		
@@ -10983,24 +11125,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,105,FOLLOW_105_in_rulePrimaryConstraint9573); 
+            otherlv_2=(Token)match(input,104,FOLLOW_104_in_rulePrimaryConstraint9749); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getPrimaryConstraintAccess().getPrimaryKeyKeyword_1());
                 
-            otherlv_3=(Token)match(input,53,FOLLOW_53_in_rulePrimaryConstraint9585); 
+            otherlv_3=(Token)match(input,53,FOLLOW_53_in_rulePrimaryConstraint9761); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getPrimaryConstraintAccess().getLeftParenthesisKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4406:1: ( (lv_columns_4_0= ruleIndexedColumn ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4407:1: (lv_columns_4_0= ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4484:1: ( (lv_columns_4_0= ruleIndexedColumn ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4485:1: (lv_columns_4_0= ruleIndexedColumn )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4407:1: (lv_columns_4_0= ruleIndexedColumn )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4408:3: lv_columns_4_0= ruleIndexedColumn
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4485:1: (lv_columns_4_0= ruleIndexedColumn )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4486:3: lv_columns_4_0= ruleIndexedColumn
             {
              
             	        newCompositeNode(grammarAccess.getPrimaryConstraintAccess().getColumnsIndexedColumnParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9606);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9782);
             lv_columns_4_0=ruleIndexedColumn();
 
             state._fsp--;
@@ -11022,35 +11164,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4424:2: (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )*
-            loop78:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4502:2: (otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) ) )*
+            loop76:
             do {
-                int alt78=2;
-                int LA78_0 = input.LA(1);
+                int alt76=2;
+                int LA76_0 = input.LA(1);
 
-                if ( (LA78_0==60) ) {
-                    alt78=1;
+                if ( (LA76_0==60) ) {
+                    alt76=1;
                 }
 
 
-                switch (alt78) {
+                switch (alt76) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4424:4: otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4502:4: otherlv_5= ',' ( (lv_columns_6_0= ruleIndexedColumn ) )
             	    {
-            	    otherlv_5=(Token)match(input,60,FOLLOW_60_in_rulePrimaryConstraint9619); 
+            	    otherlv_5=(Token)match(input,60,FOLLOW_60_in_rulePrimaryConstraint9795); 
 
             	        	newLeafNode(otherlv_5, grammarAccess.getPrimaryConstraintAccess().getCommaKeyword_4_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4428:1: ( (lv_columns_6_0= ruleIndexedColumn ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4429:1: (lv_columns_6_0= ruleIndexedColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4506:1: ( (lv_columns_6_0= ruleIndexedColumn ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4507:1: (lv_columns_6_0= ruleIndexedColumn )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4429:1: (lv_columns_6_0= ruleIndexedColumn )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4430:3: lv_columns_6_0= ruleIndexedColumn
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4507:1: (lv_columns_6_0= ruleIndexedColumn )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4508:3: lv_columns_6_0= ruleIndexedColumn
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getPrimaryConstraintAccess().getColumnsIndexedColumnParserRuleCall_4_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9640);
+            	    pushFollow(FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9816);
             	    lv_columns_6_0=ruleIndexedColumn();
 
             	    state._fsp--;
@@ -11077,24 +11219,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop78;
+            	    break loop76;
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,54,FOLLOW_54_in_rulePrimaryConstraint9654); 
+            otherlv_7=(Token)match(input,54,FOLLOW_54_in_rulePrimaryConstraint9830); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getPrimaryConstraintAccess().getRightParenthesisKeyword_5());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4450:1: ( (lv_conflictClause_8_0= ruleConflictClause ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4451:1: (lv_conflictClause_8_0= ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4528:1: ( (lv_conflictClause_8_0= ruleConflictClause ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4529:1: (lv_conflictClause_8_0= ruleConflictClause )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4451:1: (lv_conflictClause_8_0= ruleConflictClause )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4452:3: lv_conflictClause_8_0= ruleConflictClause
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4529:1: (lv_conflictClause_8_0= ruleConflictClause )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4530:3: lv_conflictClause_8_0= ruleConflictClause
             {
              
             	        newCompositeNode(grammarAccess.getPrimaryConstraintAccess().getConflictClauseConflictClauseParserRuleCall_6_0()); 
             	    
-            pushFollow(FOLLOW_ruleConflictClause_in_rulePrimaryConstraint9675);
+            pushFollow(FOLLOW_ruleConflictClause_in_rulePrimaryConstraint9851);
             lv_conflictClause_8_0=ruleConflictClause();
 
             state._fsp--;
@@ -11137,7 +11279,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCheckTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4476:1: entryRuleCheckTableConstraint returns [EObject current=null] : iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4554:1: entryRuleCheckTableConstraint returns [EObject current=null] : iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF ;
     public final EObject entryRuleCheckTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -11145,17 +11287,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4477:2: (iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4478:2: iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4555:2: (iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4556:2: iv_ruleCheckTableConstraint= ruleCheckTableConstraint EOF
             {
              newCompositeNode(grammarAccess.getCheckTableConstraintRule()); 
-            pushFollow(FOLLOW_ruleCheckTableConstraint_in_entryRuleCheckTableConstraint9711);
+            pushFollow(FOLLOW_ruleCheckTableConstraint_in_entryRuleCheckTableConstraint9887);
             iv_ruleCheckTableConstraint=ruleCheckTableConstraint();
 
             state._fsp--;
 
              current =iv_ruleCheckTableConstraint; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCheckTableConstraint9721); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCheckTableConstraint9897); 
 
             }
 
@@ -11173,7 +11315,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCheckTableConstraint"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4485:1: ruleCheckTableConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4563:1: ruleCheckTableConstraint returns [EObject current=null] : ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ;
     public final EObject ruleCheckTableConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -11188,34 +11330,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4488:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4489:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4566:28: ( ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4567:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4489:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4489:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')'
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4567:1: ( (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4567:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )? otherlv_2= 'check' otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')'
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4489:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
-            int alt79=2;
-            int LA79_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4567:2: (otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) ) )?
+            int alt77=2;
+            int LA77_0 = input.LA(1);
 
-            if ( (LA79_0==108) ) {
-                alt79=1;
+            if ( (LA77_0==107) ) {
+                alt77=1;
             }
-            switch (alt79) {
+            switch (alt77) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4489:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4567:4: otherlv_0= 'constraint' ( (lv_name_1_0= RULE_ID ) )
                     {
-                    otherlv_0=(Token)match(input,108,FOLLOW_108_in_ruleCheckTableConstraint9759); 
+                    otherlv_0=(Token)match(input,107,FOLLOW_107_in_ruleCheckTableConstraint9935); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getCheckTableConstraintAccess().getConstraintKeyword_0_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4493:1: ( (lv_name_1_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4494:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4571:1: ( (lv_name_1_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4572:1: (lv_name_1_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4494:1: (lv_name_1_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4495:3: lv_name_1_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4572:1: (lv_name_1_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4573:3: lv_name_1_0= RULE_ID
                     {
-                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCheckTableConstraint9776); 
+                    lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCheckTableConstraint9952); 
 
                     			newLeafNode(lv_name_1_0, grammarAccess.getCheckTableConstraintAccess().getNameIDTerminalRuleCall_0_1_0()); 
                     		
@@ -11241,24 +11383,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,110,FOLLOW_110_in_ruleCheckTableConstraint9795); 
+            otherlv_2=(Token)match(input,109,FOLLOW_109_in_ruleCheckTableConstraint9971); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getCheckTableConstraintAccess().getCheckKeyword_1());
                 
-            otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleCheckTableConstraint9807); 
+            otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleCheckTableConstraint9983); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getCheckTableConstraintAccess().getLeftParenthesisKeyword_2());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4519:1: ( (lv_expression_4_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4520:1: (lv_expression_4_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4597:1: ( (lv_expression_4_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4598:1: (lv_expression_4_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4520:1: (lv_expression_4_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4521:3: lv_expression_4_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4598:1: (lv_expression_4_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4599:3: lv_expression_4_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getCheckTableConstraintAccess().getExpressionSqlExpressionParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCheckTableConstraint9828);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleCheckTableConstraint10004);
             lv_expression_4_0=ruleSqlExpression();
 
             state._fsp--;
@@ -11280,7 +11422,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,54,FOLLOW_54_in_ruleCheckTableConstraint9840); 
+            otherlv_5=(Token)match(input,54,FOLLOW_54_in_ruleCheckTableConstraint10016); 
 
                 	newLeafNode(otherlv_5, grammarAccess.getCheckTableConstraintAccess().getRightParenthesisKeyword_4());
                 
@@ -11305,7 +11447,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIndexedColumn"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4549:1: entryRuleIndexedColumn returns [EObject current=null] : iv_ruleIndexedColumn= ruleIndexedColumn EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:1: entryRuleIndexedColumn returns [EObject current=null] : iv_ruleIndexedColumn= ruleIndexedColumn EOF ;
     public final EObject entryRuleIndexedColumn() throws RecognitionException {
         EObject current = null;
 
@@ -11313,17 +11455,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4550:2: (iv_ruleIndexedColumn= ruleIndexedColumn EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4551:2: iv_ruleIndexedColumn= ruleIndexedColumn EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4628:2: (iv_ruleIndexedColumn= ruleIndexedColumn EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4629:2: iv_ruleIndexedColumn= ruleIndexedColumn EOF
             {
              newCompositeNode(grammarAccess.getIndexedColumnRule()); 
-            pushFollow(FOLLOW_ruleIndexedColumn_in_entryRuleIndexedColumn9876);
+            pushFollow(FOLLOW_ruleIndexedColumn_in_entryRuleIndexedColumn10052);
             iv_ruleIndexedColumn=ruleIndexedColumn();
 
             state._fsp--;
 
              current =iv_ruleIndexedColumn; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIndexedColumn9886); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIndexedColumn10062); 
 
             }
 
@@ -11341,7 +11483,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIndexedColumn"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4558:1: ruleIndexedColumn returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4636:1: ruleIndexedColumn returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) ;
     public final EObject ruleIndexedColumn() throws RecognitionException {
         EObject current = null;
 
@@ -11352,24 +11494,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4561:28: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4562:1: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4639:28: ( ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4640:1: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4562:1: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4562:2: ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4640:1: ( ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4640:2: ( (otherlv_0= RULE_ID ) ) ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4562:2: ( (otherlv_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4563:1: (otherlv_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4640:2: ( (otherlv_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4641:1: (otherlv_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4563:1: (otherlv_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4564:3: otherlv_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4641:1: (otherlv_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4642:3: otherlv_0= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getIndexedColumnRule());
             	        }
                     
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleIndexedColumn9931); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleIndexedColumn10107); 
 
             		newLeafNode(otherlv_0, grammarAccess.getIndexedColumnAccess().getColumnReferenceColumnDefCrossReference_0_0()); 
             	
@@ -11379,27 +11521,27 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4575:2: ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
-            int alt80=3;
-            int LA80_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4653:2: ( ( (lv_asc_1_0= 'asc' ) ) | ( (lv_desc_2_0= 'desc' ) ) )?
+            int alt78=3;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA80_0==73) ) {
-                alt80=1;
+            if ( (LA78_0==73) ) {
+                alt78=1;
             }
-            else if ( (LA80_0==74) ) {
-                alt80=2;
+            else if ( (LA78_0==74) ) {
+                alt78=2;
             }
-            switch (alt80) {
+            switch (alt78) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4575:3: ( (lv_asc_1_0= 'asc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4653:3: ( (lv_asc_1_0= 'asc' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4575:3: ( (lv_asc_1_0= 'asc' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4576:1: (lv_asc_1_0= 'asc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4653:3: ( (lv_asc_1_0= 'asc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4654:1: (lv_asc_1_0= 'asc' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4576:1: (lv_asc_1_0= 'asc' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4577:3: lv_asc_1_0= 'asc'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4654:1: (lv_asc_1_0= 'asc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4655:3: lv_asc_1_0= 'asc'
                     {
-                    lv_asc_1_0=(Token)match(input,73,FOLLOW_73_in_ruleIndexedColumn9950); 
+                    lv_asc_1_0=(Token)match(input,73,FOLLOW_73_in_ruleIndexedColumn10126); 
 
                             newLeafNode(lv_asc_1_0, grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0());
                         
@@ -11419,15 +11561,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4591:6: ( (lv_desc_2_0= 'desc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4669:6: ( (lv_desc_2_0= 'desc' ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4591:6: ( (lv_desc_2_0= 'desc' ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4592:1: (lv_desc_2_0= 'desc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4669:6: ( (lv_desc_2_0= 'desc' ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4670:1: (lv_desc_2_0= 'desc' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4592:1: (lv_desc_2_0= 'desc' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4593:3: lv_desc_2_0= 'desc'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4670:1: (lv_desc_2_0= 'desc' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4671:3: lv_desc_2_0= 'desc'
                     {
-                    lv_desc_2_0=(Token)match(input,74,FOLLOW_74_in_ruleIndexedColumn9987); 
+                    lv_desc_2_0=(Token)match(input,74,FOLLOW_74_in_ruleIndexedColumn10163); 
 
                             newLeafNode(lv_desc_2_0, grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0());
                         
@@ -11470,7 +11612,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDefaultValue"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4614:1: entryRuleDefaultValue returns [EObject current=null] : iv_ruleDefaultValue= ruleDefaultValue EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4692:1: entryRuleDefaultValue returns [EObject current=null] : iv_ruleDefaultValue= ruleDefaultValue EOF ;
     public final EObject entryRuleDefaultValue() throws RecognitionException {
         EObject current = null;
 
@@ -11478,17 +11620,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4615:2: (iv_ruleDefaultValue= ruleDefaultValue EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4616:2: iv_ruleDefaultValue= ruleDefaultValue EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4693:2: (iv_ruleDefaultValue= ruleDefaultValue EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4694:2: iv_ruleDefaultValue= ruleDefaultValue EOF
             {
              newCompositeNode(grammarAccess.getDefaultValueRule()); 
-            pushFollow(FOLLOW_ruleDefaultValue_in_entryRuleDefaultValue10038);
+            pushFollow(FOLLOW_ruleDefaultValue_in_entryRuleDefaultValue10214);
             iv_ruleDefaultValue=ruleDefaultValue();
 
             state._fsp--;
 
              current =iv_ruleDefaultValue; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultValue10048); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDefaultValue10224); 
 
             }
 
@@ -11506,7 +11648,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDefaultValue"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4623:1: ruleDefaultValue returns [EObject current=null] : ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4701:1: ruleDefaultValue returns [EObject current=null] : ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ) ;
     public final EObject ruleDefaultValue() throws RecognitionException {
         EObject current = null;
 
@@ -11520,34 +11662,34 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4626:28: ( ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:1: ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4704:28: ( ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:1: ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:1: ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
-            int alt81=2;
-            int LA81_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:1: ( ( () ( (lv_literal_1_0= ruleLiteralValue ) ) ) | ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' ) )
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( ((LA81_0>=RULE_STRING && LA81_0<=RULE_NUMBER)||LA81_0==25||(LA81_0>=83 && LA81_0<=86)) ) {
-                alt81=1;
+            if ( ((LA79_0>=RULE_STRING && LA79_0<=RULE_NUMBER)||LA79_0==25||(LA79_0>=82 && LA79_0<=85)) ) {
+                alt79=1;
             }
-            else if ( (LA81_0==53) ) {
-                alt81=2;
+            else if ( (LA79_0==53) ) {
+                alt79=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 81, 0, input);
+                    new NoViableAltException("", 79, 0, input);
 
                 throw nvae;
             }
-            switch (alt81) {
+            switch (alt79) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:2: ( () ( (lv_literal_1_0= ruleLiteralValue ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:2: ( () ( (lv_literal_1_0= ruleLiteralValue ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:2: ( () ( (lv_literal_1_0= ruleLiteralValue ) ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:3: () ( (lv_literal_1_0= ruleLiteralValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:2: ( () ( (lv_literal_1_0= ruleLiteralValue ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:3: () ( (lv_literal_1_0= ruleLiteralValue ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4627:3: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4628:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:3: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4706:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -11557,16 +11699,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4633:2: ( (lv_literal_1_0= ruleLiteralValue ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4634:1: (lv_literal_1_0= ruleLiteralValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4711:2: ( (lv_literal_1_0= ruleLiteralValue ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4712:1: (lv_literal_1_0= ruleLiteralValue )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4634:1: (lv_literal_1_0= ruleLiteralValue )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4635:3: lv_literal_1_0= ruleLiteralValue
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4712:1: (lv_literal_1_0= ruleLiteralValue )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4713:3: lv_literal_1_0= ruleLiteralValue
                     {
                      
                     	        newCompositeNode(grammarAccess.getDefaultValueAccess().getLiteralLiteralValueParserRuleCall_0_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleLiteralValue_in_ruleDefaultValue10104);
+                    pushFollow(FOLLOW_ruleLiteralValue_in_ruleDefaultValue10280);
                     lv_literal_1_0=ruleLiteralValue();
 
                     state._fsp--;
@@ -11595,13 +11737,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4652:6: ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4730:6: ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4652:6: ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4652:7: () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4730:6: ( () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4730:7: () otherlv_3= '(' ( (lv_expression_4_0= ruleSqlExpression ) ) otherlv_5= ')'
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4652:7: ()
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4653:5: 
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4730:7: ()
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4731:5: 
                     {
 
                             current = forceCreateModelElement(
@@ -11611,20 +11753,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleDefaultValue10133); 
+                    otherlv_3=(Token)match(input,53,FOLLOW_53_in_ruleDefaultValue10309); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getDefaultValueAccess().getLeftParenthesisKeyword_1_1());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4662:1: ( (lv_expression_4_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4663:1: (lv_expression_4_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4740:1: ( (lv_expression_4_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4741:1: (lv_expression_4_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4663:1: (lv_expression_4_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4664:3: lv_expression_4_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4741:1: (lv_expression_4_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4742:3: lv_expression_4_0= ruleSqlExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getDefaultValueAccess().getExpressionSqlExpressionParserRuleCall_1_2_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleDefaultValue10154);
+                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleDefaultValue10330);
                     lv_expression_4_0=ruleSqlExpression();
 
                     state._fsp--;
@@ -11646,7 +11788,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,54,FOLLOW_54_in_ruleDefaultValue10166); 
+                    otherlv_5=(Token)match(input,54,FOLLOW_54_in_ruleDefaultValue10342); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getDefaultValueAccess().getRightParenthesisKeyword_1_3());
                         
@@ -11677,7 +11819,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConflictClause"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4692:1: entryRuleConflictClause returns [EObject current=null] : iv_ruleConflictClause= ruleConflictClause EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4770:1: entryRuleConflictClause returns [EObject current=null] : iv_ruleConflictClause= ruleConflictClause EOF ;
     public final EObject entryRuleConflictClause() throws RecognitionException {
         EObject current = null;
 
@@ -11685,17 +11827,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4693:2: (iv_ruleConflictClause= ruleConflictClause EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4694:2: iv_ruleConflictClause= ruleConflictClause EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4771:2: (iv_ruleConflictClause= ruleConflictClause EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4772:2: iv_ruleConflictClause= ruleConflictClause EOF
             {
              newCompositeNode(grammarAccess.getConflictClauseRule()); 
-            pushFollow(FOLLOW_ruleConflictClause_in_entryRuleConflictClause10203);
+            pushFollow(FOLLOW_ruleConflictClause_in_entryRuleConflictClause10379);
             iv_ruleConflictClause=ruleConflictClause();
 
             state._fsp--;
 
              current =iv_ruleConflictClause; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConflictClause10213); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConflictClause10389); 
 
             }
 
@@ -11713,7 +11855,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConflictClause"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4701:1: ruleConflictClause returns [EObject current=null] : (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4779:1: ruleConflictClause returns [EObject current=null] : (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) ) ;
     public final EObject ruleConflictClause() throws RecognitionException {
         EObject current = null;
 
@@ -11725,30 +11867,30 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4704:28: ( (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:1: (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4782:28: ( (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4783:1: (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:1: (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4705:3: otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4783:1: (otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4783:3: otherlv_0= 'on' otherlv_1= 'conflict' ( (lv_resolution_2_0= ruleConflictResolution ) )
             {
-            otherlv_0=(Token)match(input,81,FOLLOW_81_in_ruleConflictClause10250); 
+            otherlv_0=(Token)match(input,81,FOLLOW_81_in_ruleConflictClause10426); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getConflictClauseAccess().getOnKeyword_0());
                 
-            otherlv_1=(Token)match(input,111,FOLLOW_111_in_ruleConflictClause10262); 
+            otherlv_1=(Token)match(input,110,FOLLOW_110_in_ruleConflictClause10438); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getConflictClauseAccess().getConflictKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4713:1: ( (lv_resolution_2_0= ruleConflictResolution ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4714:1: (lv_resolution_2_0= ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4791:1: ( (lv_resolution_2_0= ruleConflictResolution ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4792:1: (lv_resolution_2_0= ruleConflictResolution )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4714:1: (lv_resolution_2_0= ruleConflictResolution )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4715:3: lv_resolution_2_0= ruleConflictResolution
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4792:1: (lv_resolution_2_0= ruleConflictResolution )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4793:3: lv_resolution_2_0= ruleConflictResolution
             {
              
             	        newCompositeNode(grammarAccess.getConflictClauseAccess().getResolutionConflictResolutionEnumRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleConflictResolution_in_ruleConflictClause10283);
+            pushFollow(FOLLOW_ruleConflictResolution_in_ruleConflictClause10459);
             lv_resolution_2_0=ruleConflictResolution();
 
             state._fsp--;
@@ -11791,7 +11933,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDMLStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4739:1: entryRuleDMLStatement returns [EObject current=null] : iv_ruleDMLStatement= ruleDMLStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4817:1: entryRuleDMLStatement returns [EObject current=null] : iv_ruleDMLStatement= ruleDMLStatement EOF ;
     public final EObject entryRuleDMLStatement() throws RecognitionException {
         EObject current = null;
 
@@ -11799,17 +11941,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4740:2: (iv_ruleDMLStatement= ruleDMLStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4741:2: iv_ruleDMLStatement= ruleDMLStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4818:2: (iv_ruleDMLStatement= ruleDMLStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4819:2: iv_ruleDMLStatement= ruleDMLStatement EOF
             {
              newCompositeNode(grammarAccess.getDMLStatementRule()); 
-            pushFollow(FOLLOW_ruleDMLStatement_in_entryRuleDMLStatement10319);
+            pushFollow(FOLLOW_ruleDMLStatement_in_entryRuleDMLStatement10495);
             iv_ruleDMLStatement=ruleDMLStatement();
 
             state._fsp--;
 
              current =iv_ruleDMLStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDMLStatement10329); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDMLStatement10505); 
 
             }
 
@@ -11827,7 +11969,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDMLStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4748:1: ruleDMLStatement returns [EObject current=null] : (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4826:1: ruleDMLStatement returns [EObject current=null] : (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement ) ;
     public final EObject ruleDMLStatement() throws RecognitionException {
         EObject current = null;
 
@@ -11843,48 +11985,48 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4751:28: ( (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4752:1: (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4829:28: ( (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4830:1: (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4752:1: (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement )
-            int alt82=4;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4830:1: (this_SelectStatement_0= ruleSelectStatement | this_InsertStatement_1= ruleInsertStatement | this_UpdateStatement_2= ruleUpdateStatement | this_DeleteStatement_3= ruleDeleteStatement )
+            int alt80=4;
             switch ( input.LA(1) ) {
             case 66:
                 {
-                alt82=1;
-                }
-                break;
-            case 95:
-            case 112:
-                {
-                alt82=2;
-                }
-                break;
-            case 96:
-                {
-                alt82=3;
+                alt80=1;
                 }
                 break;
             case 94:
+            case 111:
                 {
-                alt82=4;
+                alt80=2;
+                }
+                break;
+            case 95:
+                {
+                alt80=3;
+                }
+                break;
+            case 93:
+                {
+                alt80=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 82, 0, input);
+                    new NoViableAltException("", 80, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt82) {
+            switch (alt80) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4753:5: this_SelectStatement_0= ruleSelectStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4831:5: this_SelectStatement_0= ruleSelectStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDMLStatementAccess().getSelectStatementParserRuleCall_0()); 
                         
-                    pushFollow(FOLLOW_ruleSelectStatement_in_ruleDMLStatement10376);
+                    pushFollow(FOLLOW_ruleSelectStatement_in_ruleDMLStatement10552);
                     this_SelectStatement_0=ruleSelectStatement();
 
                     state._fsp--;
@@ -11897,12 +12039,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4763:5: this_InsertStatement_1= ruleInsertStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4841:5: this_InsertStatement_1= ruleInsertStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDMLStatementAccess().getInsertStatementParserRuleCall_1()); 
                         
-                    pushFollow(FOLLOW_ruleInsertStatement_in_ruleDMLStatement10403);
+                    pushFollow(FOLLOW_ruleInsertStatement_in_ruleDMLStatement10579);
                     this_InsertStatement_1=ruleInsertStatement();
 
                     state._fsp--;
@@ -11915,12 +12057,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4773:5: this_UpdateStatement_2= ruleUpdateStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4851:5: this_UpdateStatement_2= ruleUpdateStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDMLStatementAccess().getUpdateStatementParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleUpdateStatement_in_ruleDMLStatement10430);
+                    pushFollow(FOLLOW_ruleUpdateStatement_in_ruleDMLStatement10606);
                     this_UpdateStatement_2=ruleUpdateStatement();
 
                     state._fsp--;
@@ -11933,12 +12075,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4783:5: this_DeleteStatement_3= ruleDeleteStatement
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4861:5: this_DeleteStatement_3= ruleDeleteStatement
                     {
                      
                             newCompositeNode(grammarAccess.getDMLStatementAccess().getDeleteStatementParserRuleCall_3()); 
                         
-                    pushFollow(FOLLOW_ruleDeleteStatement_in_ruleDMLStatement10457);
+                    pushFollow(FOLLOW_ruleDeleteStatement_in_ruleDMLStatement10633);
                     this_DeleteStatement_3=ruleDeleteStatement();
 
                     state._fsp--;
@@ -11971,7 +12113,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDeleteStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4799:1: entryRuleDeleteStatement returns [EObject current=null] : iv_ruleDeleteStatement= ruleDeleteStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4877:1: entryRuleDeleteStatement returns [EObject current=null] : iv_ruleDeleteStatement= ruleDeleteStatement EOF ;
     public final EObject entryRuleDeleteStatement() throws RecognitionException {
         EObject current = null;
 
@@ -11979,17 +12121,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4800:2: (iv_ruleDeleteStatement= ruleDeleteStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4801:2: iv_ruleDeleteStatement= ruleDeleteStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4878:2: (iv_ruleDeleteStatement= ruleDeleteStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4879:2: iv_ruleDeleteStatement= ruleDeleteStatement EOF
             {
              newCompositeNode(grammarAccess.getDeleteStatementRule()); 
-            pushFollow(FOLLOW_ruleDeleteStatement_in_entryRuleDeleteStatement10492);
+            pushFollow(FOLLOW_ruleDeleteStatement_in_entryRuleDeleteStatement10668);
             iv_ruleDeleteStatement=ruleDeleteStatement();
 
             state._fsp--;
 
              current =iv_ruleDeleteStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDeleteStatement10502); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDeleteStatement10678); 
 
             }
 
@@ -12007,13 +12149,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDeleteStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4808:1: ruleDeleteStatement returns [EObject current=null] : (otherlv_0= 'delete' otherlv_1= 'from' ( (lv_tableName_2_0= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4886:1: ruleDeleteStatement returns [EObject current=null] : (otherlv_0= 'delete' otherlv_1= 'from' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? ) ;
     public final EObject ruleDeleteStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token lv_tableName_2_0=null;
+        Token otherlv_2=null;
         Token otherlv_3=null;
         EObject lv_expression_4_0 = null;
 
@@ -12021,71 +12163,66 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4811:28: ( (otherlv_0= 'delete' otherlv_1= 'from' ( (lv_tableName_2_0= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4812:1: (otherlv_0= 'delete' otherlv_1= 'from' ( (lv_tableName_2_0= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4889:28: ( (otherlv_0= 'delete' otherlv_1= 'from' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4890:1: (otherlv_0= 'delete' otherlv_1= 'from' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4812:1: (otherlv_0= 'delete' otherlv_1= 'from' ( (lv_tableName_2_0= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4812:3: otherlv_0= 'delete' otherlv_1= 'from' ( (lv_tableName_2_0= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4890:1: (otherlv_0= 'delete' otherlv_1= 'from' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4890:3: otherlv_0= 'delete' otherlv_1= 'from' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )?
             {
-            otherlv_0=(Token)match(input,94,FOLLOW_94_in_ruleDeleteStatement10539); 
+            otherlv_0=(Token)match(input,93,FOLLOW_93_in_ruleDeleteStatement10715); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDeleteStatementAccess().getDeleteKeyword_0());
                 
-            otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleDeleteStatement10551); 
+            otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleDeleteStatement10727); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getDeleteStatementAccess().getFromKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4820:1: ( (lv_tableName_2_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4821:1: (lv_tableName_2_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4898:1: ( (otherlv_2= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4899:1: (otherlv_2= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4821:1: (lv_tableName_2_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4822:3: lv_tableName_2_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4899:1: (otherlv_2= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4900:3: otherlv_2= RULE_ID
             {
-            lv_tableName_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDeleteStatement10568); 
 
-            			newLeafNode(lv_tableName_2_0, grammarAccess.getDeleteStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getDeleteStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"tableName",
-                    		lv_tableName_2_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDeleteStatement10747); 
+
+            		newLeafNode(otherlv_2, grammarAccess.getDeleteStatementAccess().getTableCreateTableStatementCrossReference_2_0()); 
+            	
 
             }
 
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4838:2: (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )?
-            int alt83=2;
-            int LA83_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4911:2: (otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) ) )?
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA83_0==70) ) {
-                alt83=1;
+            if ( (LA81_0==70) ) {
+                alt81=1;
             }
-            switch (alt83) {
+            switch (alt81) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4838:4: otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4911:4: otherlv_3= 'where' ( (lv_expression_4_0= ruleSqlExpression ) )
                     {
-                    otherlv_3=(Token)match(input,70,FOLLOW_70_in_ruleDeleteStatement10586); 
+                    otherlv_3=(Token)match(input,70,FOLLOW_70_in_ruleDeleteStatement10760); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getDeleteStatementAccess().getWhereKeyword_3_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4842:1: ( (lv_expression_4_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4843:1: (lv_expression_4_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4915:1: ( (lv_expression_4_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4916:1: (lv_expression_4_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4843:1: (lv_expression_4_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4844:3: lv_expression_4_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4916:1: (lv_expression_4_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4917:3: lv_expression_4_0= ruleSqlExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getDeleteStatementAccess().getExpressionSqlExpressionParserRuleCall_3_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleDeleteStatement10607);
+                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleDeleteStatement10781);
                     lv_expression_4_0=ruleSqlExpression();
 
                     state._fsp--;
@@ -12134,7 +12271,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInsertStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4868:1: entryRuleInsertStatement returns [EObject current=null] : iv_ruleInsertStatement= ruleInsertStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4941:1: entryRuleInsertStatement returns [EObject current=null] : iv_ruleInsertStatement= ruleInsertStatement EOF ;
     public final EObject entryRuleInsertStatement() throws RecognitionException {
         EObject current = null;
 
@@ -12142,17 +12279,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4869:2: (iv_ruleInsertStatement= ruleInsertStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4870:2: iv_ruleInsertStatement= ruleInsertStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4942:2: (iv_ruleInsertStatement= ruleInsertStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4943:2: iv_ruleInsertStatement= ruleInsertStatement EOF
             {
              newCompositeNode(grammarAccess.getInsertStatementRule()); 
-            pushFollow(FOLLOW_ruleInsertStatement_in_entryRuleInsertStatement10645);
+            pushFollow(FOLLOW_ruleInsertStatement_in_entryRuleInsertStatement10819);
             iv_ruleInsertStatement=ruleInsertStatement();
 
             state._fsp--;
 
              current =iv_ruleInsertStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInsertStatement10655); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInsertStatement10829); 
 
             }
 
@@ -12170,7 +12307,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInsertStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4877:1: ruleInsertStatement returns [EObject current=null] : ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (lv_tableName_5_0= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4950:1: ruleInsertStatement returns [EObject current=null] : ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) ) ;
     public final EObject ruleInsertStatement() throws RecognitionException {
         EObject current = null;
 
@@ -12178,7 +12315,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
         Token otherlv_1=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
-        Token lv_tableName_5_0=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
         Token lv_columnNames_7_0=null;
         Token otherlv_8=null;
@@ -12202,64 +12339,64 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4880:28: ( ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (lv_tableName_5_0= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:1: ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (lv_tableName_5_0= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4953:28: ( ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:1: ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:1: ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (lv_tableName_5_0= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:2: ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (lv_tableName_5_0= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:1: ( ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:2: ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' ) otherlv_4= 'into' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )? ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:2: ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' )
-            int alt85=2;
-            int LA85_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:2: ( (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ) | otherlv_3= 'replace' )
+            int alt83=2;
+            int LA83_0 = input.LA(1);
 
-            if ( (LA85_0==95) ) {
-                alt85=1;
+            if ( (LA83_0==94) ) {
+                alt83=1;
             }
-            else if ( (LA85_0==112) ) {
-                alt85=2;
+            else if ( (LA83_0==111) ) {
+                alt83=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 85, 0, input);
+                    new NoViableAltException("", 83, 0, input);
 
                 throw nvae;
             }
-            switch (alt85) {
+            switch (alt83) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:3: (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:3: (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:3: (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4881:5: otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:3: (otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4954:5: otherlv_0= 'insert' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
                     {
-                    otherlv_0=(Token)match(input,95,FOLLOW_95_in_ruleInsertStatement10694); 
+                    otherlv_0=(Token)match(input,94,FOLLOW_94_in_ruleInsertStatement10868); 
 
                         	newLeafNode(otherlv_0, grammarAccess.getInsertStatementAccess().getInsertKeyword_0_0_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4885:1: (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
-                    int alt84=2;
-                    int LA84_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4958:1: (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
+                    int alt82=2;
+                    int LA82_0 = input.LA(1);
 
-                    if ( (LA84_0==46) ) {
-                        alt84=1;
+                    if ( (LA82_0==46) ) {
+                        alt82=1;
                     }
-                    switch (alt84) {
+                    switch (alt82) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4885:3: otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4958:3: otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
                             {
-                            otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleInsertStatement10707); 
+                            otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleInsertStatement10881); 
 
                                 	newLeafNode(otherlv_1, grammarAccess.getInsertStatementAccess().getOrKeyword_0_0_1_0());
                                 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4889:1: ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4890:1: (lv_conflictResolution_2_0= ruleConflictResolution )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4962:1: ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4963:1: (lv_conflictResolution_2_0= ruleConflictResolution )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4890:1: (lv_conflictResolution_2_0= ruleConflictResolution )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4891:3: lv_conflictResolution_2_0= ruleConflictResolution
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4963:1: (lv_conflictResolution_2_0= ruleConflictResolution )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4964:3: lv_conflictResolution_2_0= ruleConflictResolution
                             {
                              
                             	        newCompositeNode(grammarAccess.getInsertStatementAccess().getConflictResolutionConflictResolutionEnumRuleCall_0_0_1_1_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleConflictResolution_in_ruleInsertStatement10728);
+                            pushFollow(FOLLOW_ruleConflictResolution_in_ruleInsertStatement10902);
                             lv_conflictResolution_2_0=ruleConflictResolution();
 
                             state._fsp--;
@@ -12294,9 +12431,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4908:7: otherlv_3= 'replace'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4981:7: otherlv_3= 'replace'
                     {
-                    otherlv_3=(Token)match(input,112,FOLLOW_112_in_ruleInsertStatement10749); 
+                    otherlv_3=(Token)match(input,111,FOLLOW_111_in_ruleInsertStatement10923); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getInsertStatementAccess().getReplaceKeyword_0_1());
                         
@@ -12306,58 +12443,53 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,113,FOLLOW_113_in_ruleInsertStatement10762); 
+            otherlv_4=(Token)match(input,112,FOLLOW_112_in_ruleInsertStatement10936); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getInsertStatementAccess().getIntoKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4916:1: ( (lv_tableName_5_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4917:1: (lv_tableName_5_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4989:1: ( (otherlv_5= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4990:1: (otherlv_5= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4917:1: (lv_tableName_5_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4918:3: lv_tableName_5_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4990:1: (otherlv_5= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4991:3: otherlv_5= RULE_ID
             {
-            lv_tableName_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement10779); 
 
-            			newLeafNode(lv_tableName_5_0, grammarAccess.getInsertStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getInsertStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"tableName",
-                    		lv_tableName_5_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement10956); 
+
+            		newLeafNode(otherlv_5, grammarAccess.getInsertStatementAccess().getTableCreateTableStatementCrossReference_2_0()); 
+            	
 
             }
 
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4934:2: (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )?
-            int alt87=2;
-            int LA87_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5002:2: (otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')' )?
+            int alt85=2;
+            int LA85_0 = input.LA(1);
 
-            if ( (LA87_0==53) ) {
-                alt87=1;
+            if ( (LA85_0==53) ) {
+                alt85=1;
             }
-            switch (alt87) {
+            switch (alt85) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4934:4: otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5002:4: otherlv_6= '(' ( (lv_columnNames_7_0= RULE_ID ) ) (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )* otherlv_10= ')'
                     {
-                    otherlv_6=(Token)match(input,53,FOLLOW_53_in_ruleInsertStatement10797); 
+                    otherlv_6=(Token)match(input,53,FOLLOW_53_in_ruleInsertStatement10969); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getInsertStatementAccess().getLeftParenthesisKeyword_3_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4938:1: ( (lv_columnNames_7_0= RULE_ID ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4939:1: (lv_columnNames_7_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5006:1: ( (lv_columnNames_7_0= RULE_ID ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5007:1: (lv_columnNames_7_0= RULE_ID )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4939:1: (lv_columnNames_7_0= RULE_ID )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4940:3: lv_columnNames_7_0= RULE_ID
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5007:1: (lv_columnNames_7_0= RULE_ID )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5008:3: lv_columnNames_7_0= RULE_ID
                     {
-                    lv_columnNames_7_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement10814); 
+                    lv_columnNames_7_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement10986); 
 
                     			newLeafNode(lv_columnNames_7_0, grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); 
                     		
@@ -12377,32 +12509,32 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4956:2: (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )*
-                    loop86:
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5024:2: (otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) ) )*
+                    loop84:
                     do {
-                        int alt86=2;
-                        int LA86_0 = input.LA(1);
+                        int alt84=2;
+                        int LA84_0 = input.LA(1);
 
-                        if ( (LA86_0==60) ) {
-                            alt86=1;
+                        if ( (LA84_0==60) ) {
+                            alt84=1;
                         }
 
 
-                        switch (alt86) {
+                        switch (alt84) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4956:4: otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5024:4: otherlv_8= ',' ( (lv_columnNames_9_0= RULE_ID ) )
                     	    {
-                    	    otherlv_8=(Token)match(input,60,FOLLOW_60_in_ruleInsertStatement10832); 
+                    	    otherlv_8=(Token)match(input,60,FOLLOW_60_in_ruleInsertStatement11004); 
 
                     	        	newLeafNode(otherlv_8, grammarAccess.getInsertStatementAccess().getCommaKeyword_3_2_0());
                     	        
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4960:1: ( (lv_columnNames_9_0= RULE_ID ) )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4961:1: (lv_columnNames_9_0= RULE_ID )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5028:1: ( (lv_columnNames_9_0= RULE_ID ) )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5029:1: (lv_columnNames_9_0= RULE_ID )
                     	    {
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4961:1: (lv_columnNames_9_0= RULE_ID )
-                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4962:3: lv_columnNames_9_0= RULE_ID
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5029:1: (lv_columnNames_9_0= RULE_ID )
+                    	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5030:3: lv_columnNames_9_0= RULE_ID
                     	    {
-                    	    lv_columnNames_9_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement10849); 
+                    	    lv_columnNames_9_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInsertStatement11021); 
 
                     	    			newLeafNode(lv_columnNames_9_0, grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); 
                     	    		
@@ -12427,11 +12559,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop86;
+                    	    break loop84;
                         }
                     } while (true);
 
-                    otherlv_10=(Token)match(input,54,FOLLOW_54_in_ruleInsertStatement10868); 
+                    otherlv_10=(Token)match(input,54,FOLLOW_54_in_ruleInsertStatement11040); 
 
                         	newLeafNode(otherlv_10, grammarAccess.getInsertStatementAccess().getRightParenthesisKeyword_3_3());
                         
@@ -12441,67 +12573,67 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:3: ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) )
-            int alt90=2;
-            int LA90_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:3: ( ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) ) | (otherlv_18= 'default' otherlv_19= 'values' ) )
+            int alt88=2;
+            int LA88_0 = input.LA(1);
 
-            if ( (LA90_0==66||LA90_0==114) ) {
-                alt90=1;
+            if ( (LA88_0==66||LA88_0==113) ) {
+                alt88=1;
             }
-            else if ( (LA90_0==107) ) {
-                alt90=2;
+            else if ( (LA88_0==106) ) {
+                alt88=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 88, 0, input);
 
                 throw nvae;
             }
-            switch (alt90) {
+            switch (alt88) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:4: ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:4: ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:4: ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) )
-                    int alt89=2;
-                    int LA89_0 = input.LA(1);
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:4: ( (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' ) | ( (lv_selectStatement_17_0= ruleSelectStatement ) ) )
+                    int alt87=2;
+                    int LA87_0 = input.LA(1);
 
-                    if ( (LA89_0==114) ) {
-                        alt89=1;
+                    if ( (LA87_0==113) ) {
+                        alt87=1;
                     }
-                    else if ( (LA89_0==66) ) {
-                        alt89=2;
+                    else if ( (LA87_0==66) ) {
+                        alt87=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 89, 0, input);
+                            new NoViableAltException("", 87, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt89) {
+                    switch (alt87) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:5: (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:5: (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:5: (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4982:7: otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')'
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:5: (otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')' )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5050:7: otherlv_11= 'values' otherlv_12= '(' ( (lv_expressions_13_0= ruleSqlExpression ) ) (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )* otherlv_16= ')'
                             {
-                            otherlv_11=(Token)match(input,114,FOLLOW_114_in_ruleInsertStatement10885); 
+                            otherlv_11=(Token)match(input,113,FOLLOW_113_in_ruleInsertStatement11057); 
 
                                 	newLeafNode(otherlv_11, grammarAccess.getInsertStatementAccess().getValuesKeyword_4_0_0_0());
                                 
-                            otherlv_12=(Token)match(input,53,FOLLOW_53_in_ruleInsertStatement10897); 
+                            otherlv_12=(Token)match(input,53,FOLLOW_53_in_ruleInsertStatement11069); 
 
                                 	newLeafNode(otherlv_12, grammarAccess.getInsertStatementAccess().getLeftParenthesisKeyword_4_0_0_1());
                                 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4990:1: ( (lv_expressions_13_0= ruleSqlExpression ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4991:1: (lv_expressions_13_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5058:1: ( (lv_expressions_13_0= ruleSqlExpression ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5059:1: (lv_expressions_13_0= ruleSqlExpression )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4991:1: (lv_expressions_13_0= ruleSqlExpression )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:4992:3: lv_expressions_13_0= ruleSqlExpression
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5059:1: (lv_expressions_13_0= ruleSqlExpression )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5060:3: lv_expressions_13_0= ruleSqlExpression
                             {
                              
                             	        newCompositeNode(grammarAccess.getInsertStatementAccess().getExpressionsSqlExpressionParserRuleCall_4_0_0_2_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleSqlExpression_in_ruleInsertStatement10918);
+                            pushFollow(FOLLOW_ruleSqlExpression_in_ruleInsertStatement11090);
                             lv_expressions_13_0=ruleSqlExpression();
 
                             state._fsp--;
@@ -12523,35 +12655,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5008:2: (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )*
-                            loop88:
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5076:2: (otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) ) )*
+                            loop86:
                             do {
-                                int alt88=2;
-                                int LA88_0 = input.LA(1);
+                                int alt86=2;
+                                int LA86_0 = input.LA(1);
 
-                                if ( (LA88_0==60) ) {
-                                    alt88=1;
+                                if ( (LA86_0==60) ) {
+                                    alt86=1;
                                 }
 
 
-                                switch (alt88) {
+                                switch (alt86) {
                             	case 1 :
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5008:4: otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5076:4: otherlv_14= ',' ( (lv_expressions_15_0= ruleSqlExpression ) )
                             	    {
-                            	    otherlv_14=(Token)match(input,60,FOLLOW_60_in_ruleInsertStatement10931); 
+                            	    otherlv_14=(Token)match(input,60,FOLLOW_60_in_ruleInsertStatement11103); 
 
                             	        	newLeafNode(otherlv_14, grammarAccess.getInsertStatementAccess().getCommaKeyword_4_0_0_3_0());
                             	        
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5012:1: ( (lv_expressions_15_0= ruleSqlExpression ) )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5013:1: (lv_expressions_15_0= ruleSqlExpression )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5080:1: ( (lv_expressions_15_0= ruleSqlExpression ) )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5081:1: (lv_expressions_15_0= ruleSqlExpression )
                             	    {
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5013:1: (lv_expressions_15_0= ruleSqlExpression )
-                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5014:3: lv_expressions_15_0= ruleSqlExpression
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5081:1: (lv_expressions_15_0= ruleSqlExpression )
+                            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5082:3: lv_expressions_15_0= ruleSqlExpression
                             	    {
                             	     
                             	    	        newCompositeNode(grammarAccess.getInsertStatementAccess().getExpressionsSqlExpressionParserRuleCall_4_0_0_3_1_0()); 
                             	    	    
-                            	    pushFollow(FOLLOW_ruleSqlExpression_in_ruleInsertStatement10952);
+                            	    pushFollow(FOLLOW_ruleSqlExpression_in_ruleInsertStatement11124);
                             	    lv_expressions_15_0=ruleSqlExpression();
 
                             	    state._fsp--;
@@ -12578,11 +12710,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop88;
+                            	    break loop86;
                                 }
                             } while (true);
 
-                            otherlv_16=(Token)match(input,54,FOLLOW_54_in_ruleInsertStatement10966); 
+                            otherlv_16=(Token)match(input,54,FOLLOW_54_in_ruleInsertStatement11138); 
 
                                 	newLeafNode(otherlv_16, grammarAccess.getInsertStatementAccess().getRightParenthesisKeyword_4_0_0_4());
                                 
@@ -12593,18 +12725,18 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5035:6: ( (lv_selectStatement_17_0= ruleSelectStatement ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5103:6: ( (lv_selectStatement_17_0= ruleSelectStatement ) )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5035:6: ( (lv_selectStatement_17_0= ruleSelectStatement ) )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5036:1: (lv_selectStatement_17_0= ruleSelectStatement )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5103:6: ( (lv_selectStatement_17_0= ruleSelectStatement ) )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5104:1: (lv_selectStatement_17_0= ruleSelectStatement )
                             {
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5036:1: (lv_selectStatement_17_0= ruleSelectStatement )
-                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5037:3: lv_selectStatement_17_0= ruleSelectStatement
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5104:1: (lv_selectStatement_17_0= ruleSelectStatement )
+                            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5105:3: lv_selectStatement_17_0= ruleSelectStatement
                             {
                              
                             	        newCompositeNode(grammarAccess.getInsertStatementAccess().getSelectStatementSelectStatementParserRuleCall_4_0_1_0()); 
                             	    
-                            pushFollow(FOLLOW_ruleSelectStatement_in_ruleInsertStatement10994);
+                            pushFollow(FOLLOW_ruleSelectStatement_in_ruleInsertStatement11166);
                             lv_selectStatement_17_0=ruleSelectStatement();
 
                             state._fsp--;
@@ -12636,16 +12768,16 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5054:6: (otherlv_18= 'default' otherlv_19= 'values' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5122:6: (otherlv_18= 'default' otherlv_19= 'values' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5054:6: (otherlv_18= 'default' otherlv_19= 'values' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5054:8: otherlv_18= 'default' otherlv_19= 'values'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5122:6: (otherlv_18= 'default' otherlv_19= 'values' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5122:8: otherlv_18= 'default' otherlv_19= 'values'
                     {
-                    otherlv_18=(Token)match(input,107,FOLLOW_107_in_ruleInsertStatement11014); 
+                    otherlv_18=(Token)match(input,106,FOLLOW_106_in_ruleInsertStatement11186); 
 
                         	newLeafNode(otherlv_18, grammarAccess.getInsertStatementAccess().getDefaultKeyword_4_1_0());
                         
-                    otherlv_19=(Token)match(input,114,FOLLOW_114_in_ruleInsertStatement11026); 
+                    otherlv_19=(Token)match(input,113,FOLLOW_113_in_ruleInsertStatement11198); 
 
                         	newLeafNode(otherlv_19, grammarAccess.getInsertStatementAccess().getValuesKeyword_4_1_1());
                         
@@ -12679,7 +12811,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUpdateStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5070:1: entryRuleUpdateStatement returns [EObject current=null] : iv_ruleUpdateStatement= ruleUpdateStatement EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5138:1: entryRuleUpdateStatement returns [EObject current=null] : iv_ruleUpdateStatement= ruleUpdateStatement EOF ;
     public final EObject entryRuleUpdateStatement() throws RecognitionException {
         EObject current = null;
 
@@ -12687,17 +12819,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5071:2: (iv_ruleUpdateStatement= ruleUpdateStatement EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5072:2: iv_ruleUpdateStatement= ruleUpdateStatement EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5139:2: (iv_ruleUpdateStatement= ruleUpdateStatement EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5140:2: iv_ruleUpdateStatement= ruleUpdateStatement EOF
             {
              newCompositeNode(grammarAccess.getUpdateStatementRule()); 
-            pushFollow(FOLLOW_ruleUpdateStatement_in_entryRuleUpdateStatement11064);
+            pushFollow(FOLLOW_ruleUpdateStatement_in_entryRuleUpdateStatement11236);
             iv_ruleUpdateStatement=ruleUpdateStatement();
 
             state._fsp--;
 
              current =iv_ruleUpdateStatement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUpdateStatement11074); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUpdateStatement11246); 
 
             }
 
@@ -12715,13 +12847,13 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUpdateStatement"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5079:1: ruleUpdateStatement returns [EObject current=null] : (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (lv_tableName_3_0= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5147:1: ruleUpdateStatement returns [EObject current=null] : (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (otherlv_3= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? ) ;
     public final EObject ruleUpdateStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token lv_tableName_3_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
@@ -12737,41 +12869,41 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5082:28: ( (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (lv_tableName_3_0= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5083:1: (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (lv_tableName_3_0= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5150:28: ( (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (otherlv_3= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5151:1: (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (otherlv_3= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5083:1: (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (lv_tableName_3_0= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5083:3: otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (lv_tableName_3_0= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )?
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5151:1: (otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (otherlv_3= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )? )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5151:3: otherlv_0= 'update' (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )? ( (otherlv_3= RULE_ID ) ) otherlv_4= 'set' ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) ) (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )* (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )?
             {
-            otherlv_0=(Token)match(input,96,FOLLOW_96_in_ruleUpdateStatement11111); 
+            otherlv_0=(Token)match(input,95,FOLLOW_95_in_ruleUpdateStatement11283); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getUpdateStatementAccess().getUpdateKeyword_0());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5087:1: (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
-            int alt91=2;
-            int LA91_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5155:1: (otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) ) )?
+            int alt89=2;
+            int LA89_0 = input.LA(1);
 
-            if ( (LA91_0==46) ) {
-                alt91=1;
+            if ( (LA89_0==46) ) {
+                alt89=1;
             }
-            switch (alt91) {
+            switch (alt89) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5087:3: otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5155:3: otherlv_1= 'or' ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
                     {
-                    otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleUpdateStatement11124); 
+                    otherlv_1=(Token)match(input,46,FOLLOW_46_in_ruleUpdateStatement11296); 
 
                         	newLeafNode(otherlv_1, grammarAccess.getUpdateStatementAccess().getOrKeyword_1_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5091:1: ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5092:1: (lv_conflictResolution_2_0= ruleConflictResolution )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5159:1: ( (lv_conflictResolution_2_0= ruleConflictResolution ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5160:1: (lv_conflictResolution_2_0= ruleConflictResolution )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5092:1: (lv_conflictResolution_2_0= ruleConflictResolution )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5093:3: lv_conflictResolution_2_0= ruleConflictResolution
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5160:1: (lv_conflictResolution_2_0= ruleConflictResolution )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5161:3: lv_conflictResolution_2_0= ruleConflictResolution
                     {
                      
                     	        newCompositeNode(grammarAccess.getUpdateStatementAccess().getConflictResolutionConflictResolutionEnumRuleCall_1_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleConflictResolution_in_ruleUpdateStatement11145);
+                    pushFollow(FOLLOW_ruleConflictResolution_in_ruleUpdateStatement11317);
                     lv_conflictResolution_2_0=ruleConflictResolution();
 
                     state._fsp--;
@@ -12799,46 +12931,41 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5109:4: ( (lv_tableName_3_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5110:1: (lv_tableName_3_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5177:4: ( (otherlv_3= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5178:1: (otherlv_3= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5110:1: (lv_tableName_3_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5111:3: lv_tableName_3_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5178:1: (otherlv_3= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5179:3: otherlv_3= RULE_ID
             {
-            lv_tableName_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUpdateStatement11164); 
 
-            			newLeafNode(lv_tableName_3_0, grammarAccess.getUpdateStatementAccess().getTableNameIDTerminalRuleCall_2_0()); 
-            		
-
-            	        if (current==null) {
+            			if (current==null) {
             	            current = createModelElement(grammarAccess.getUpdateStatementRule());
             	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"tableName",
-                    		lv_tableName_3_0, 
-                    		"ID");
-            	    
+                    
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUpdateStatement11339); 
+
+            		newLeafNode(otherlv_3, grammarAccess.getUpdateStatementAccess().getTableCreateTableStatementCrossReference_2_0()); 
+            	
 
             }
 
 
             }
 
-            otherlv_4=(Token)match(input,115,FOLLOW_115_in_ruleUpdateStatement11181); 
+            otherlv_4=(Token)match(input,114,FOLLOW_114_in_ruleUpdateStatement11351); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getUpdateStatementAccess().getSetKeyword_3());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5131:1: ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5132:1: (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5194:1: ( (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5195:1: (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5132:1: (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5133:3: lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5195:1: (lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5196:3: lv_updateColumnExpressions_5_0= ruleUpdateColumnExpression
             {
              
             	        newCompositeNode(grammarAccess.getUpdateStatementAccess().getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_4_0()); 
             	    
-            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11202);
+            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11372);
             lv_updateColumnExpressions_5_0=ruleUpdateColumnExpression();
 
             state._fsp--;
@@ -12860,35 +12987,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5149:2: (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )*
-            loop92:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5212:2: (otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) ) )*
+            loop90:
             do {
-                int alt92=2;
-                int LA92_0 = input.LA(1);
+                int alt90=2;
+                int LA90_0 = input.LA(1);
 
-                if ( (LA92_0==60) ) {
-                    alt92=1;
+                if ( (LA90_0==60) ) {
+                    alt90=1;
                 }
 
 
-                switch (alt92) {
+                switch (alt90) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5149:4: otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5212:4: otherlv_6= ',' ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) )
             	    {
-            	    otherlv_6=(Token)match(input,60,FOLLOW_60_in_ruleUpdateStatement11215); 
+            	    otherlv_6=(Token)match(input,60,FOLLOW_60_in_ruleUpdateStatement11385); 
 
             	        	newLeafNode(otherlv_6, grammarAccess.getUpdateStatementAccess().getCommaKeyword_5_0());
             	        
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5153:1: ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5154:1: (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5216:1: ( (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression ) )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5217:1: (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression )
             	    {
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5154:1: (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression )
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5155:3: lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5217:1: (lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression )
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5218:3: lv_updateColumnExpressions_7_0= ruleUpdateColumnExpression
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getUpdateStatementAccess().getUpdateColumnExpressionsUpdateColumnExpressionParserRuleCall_5_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11236);
+            	    pushFollow(FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11406);
             	    lv_updateColumnExpressions_7_0=ruleUpdateColumnExpression();
 
             	    state._fsp--;
@@ -12915,35 +13042,35 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop92;
+            	    break loop90;
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5171:4: (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )?
-            int alt93=2;
-            int LA93_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5234:4: (otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) ) )?
+            int alt91=2;
+            int LA91_0 = input.LA(1);
 
-            if ( (LA93_0==70) ) {
-                alt93=1;
+            if ( (LA91_0==70) ) {
+                alt91=1;
             }
-            switch (alt93) {
+            switch (alt91) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5171:6: otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5234:6: otherlv_8= 'where' ( (lv_whereExpression_9_0= ruleSqlExpression ) )
                     {
-                    otherlv_8=(Token)match(input,70,FOLLOW_70_in_ruleUpdateStatement11251); 
+                    otherlv_8=(Token)match(input,70,FOLLOW_70_in_ruleUpdateStatement11421); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getUpdateStatementAccess().getWhereKeyword_6_0());
                         
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5175:1: ( (lv_whereExpression_9_0= ruleSqlExpression ) )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5176:1: (lv_whereExpression_9_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5238:1: ( (lv_whereExpression_9_0= ruleSqlExpression ) )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5239:1: (lv_whereExpression_9_0= ruleSqlExpression )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5176:1: (lv_whereExpression_9_0= ruleSqlExpression )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5177:3: lv_whereExpression_9_0= ruleSqlExpression
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5239:1: (lv_whereExpression_9_0= ruleSqlExpression )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5240:3: lv_whereExpression_9_0= ruleSqlExpression
                     {
                      
                     	        newCompositeNode(grammarAccess.getUpdateStatementAccess().getWhereExpressionSqlExpressionParserRuleCall_6_1_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleUpdateStatement11272);
+                    pushFollow(FOLLOW_ruleSqlExpression_in_ruleUpdateStatement11442);
                     lv_whereExpression_9_0=ruleSqlExpression();
 
                     state._fsp--;
@@ -12992,7 +13119,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUpdateColumnExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5201:1: entryRuleUpdateColumnExpression returns [EObject current=null] : iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5264:1: entryRuleUpdateColumnExpression returns [EObject current=null] : iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF ;
     public final EObject entryRuleUpdateColumnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13000,17 +13127,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5202:2: (iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5203:2: iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5265:2: (iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5266:2: iv_ruleUpdateColumnExpression= ruleUpdateColumnExpression EOF
             {
              newCompositeNode(grammarAccess.getUpdateColumnExpressionRule()); 
-            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_entryRuleUpdateColumnExpression11310);
+            pushFollow(FOLLOW_ruleUpdateColumnExpression_in_entryRuleUpdateColumnExpression11480);
             iv_ruleUpdateColumnExpression=ruleUpdateColumnExpression();
 
             state._fsp--;
 
              current =iv_ruleUpdateColumnExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleUpdateColumnExpression11320); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleUpdateColumnExpression11490); 
 
             }
 
@@ -13028,7 +13155,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUpdateColumnExpression"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5210:1: ruleUpdateColumnExpression returns [EObject current=null] : ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5273:1: ruleUpdateColumnExpression returns [EObject current=null] : ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) ) ;
     public final EObject ruleUpdateColumnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13040,19 +13167,19 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5213:28: ( ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5214:1: ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5276:28: ( ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5277:1: ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5214:1: ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5214:2: ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5277:1: ( ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5277:2: ( (lv_columnName_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_expression_2_0= ruleSqlExpression ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5214:2: ( (lv_columnName_0_0= RULE_ID ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5215:1: (lv_columnName_0_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5277:2: ( (lv_columnName_0_0= RULE_ID ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5278:1: (lv_columnName_0_0= RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5215:1: (lv_columnName_0_0= RULE_ID )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5216:3: lv_columnName_0_0= RULE_ID
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5278:1: (lv_columnName_0_0= RULE_ID )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5279:3: lv_columnName_0_0= RULE_ID
             {
-            lv_columnName_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUpdateColumnExpression11362); 
+            lv_columnName_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUpdateColumnExpression11532); 
 
             			newLeafNode(lv_columnName_0_0, grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); 
             		
@@ -13072,20 +13199,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,34,FOLLOW_34_in_ruleUpdateColumnExpression11379); 
+            otherlv_1=(Token)match(input,34,FOLLOW_34_in_ruleUpdateColumnExpression11549); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getUpdateColumnExpressionAccess().getEqualsSignKeyword_1());
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5236:1: ( (lv_expression_2_0= ruleSqlExpression ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5237:1: (lv_expression_2_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5299:1: ( (lv_expression_2_0= ruleSqlExpression ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5300:1: (lv_expression_2_0= ruleSqlExpression )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5237:1: (lv_expression_2_0= ruleSqlExpression )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5238:3: lv_expression_2_0= ruleSqlExpression
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5300:1: (lv_expression_2_0= ruleSqlExpression )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5301:3: lv_expression_2_0= ruleSqlExpression
             {
              
             	        newCompositeNode(grammarAccess.getUpdateColumnExpressionAccess().getExpressionSqlExpressionParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleSqlExpression_in_ruleUpdateColumnExpression11400);
+            pushFollow(FOLLOW_ruleSqlExpression_in_ruleUpdateColumnExpression11570);
             lv_expression_2_0=ruleSqlExpression();
 
             state._fsp--;
@@ -13128,7 +13255,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSignedNumber"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5262:1: entryRuleSignedNumber returns [String current=null] : iv_ruleSignedNumber= ruleSignedNumber EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5325:1: entryRuleSignedNumber returns [String current=null] : iv_ruleSignedNumber= ruleSignedNumber EOF ;
     public final String entryRuleSignedNumber() throws RecognitionException {
         String current = null;
 
@@ -13136,17 +13263,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5263:2: (iv_ruleSignedNumber= ruleSignedNumber EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5264:2: iv_ruleSignedNumber= ruleSignedNumber EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5326:2: (iv_ruleSignedNumber= ruleSignedNumber EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5327:2: iv_ruleSignedNumber= ruleSignedNumber EOF
             {
              newCompositeNode(grammarAccess.getSignedNumberRule()); 
-            pushFollow(FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber11437);
+            pushFollow(FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber11607);
             iv_ruleSignedNumber=ruleSignedNumber();
 
             state._fsp--;
 
              current =iv_ruleSignedNumber.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSignedNumber11448); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSignedNumber11618); 
 
             }
 
@@ -13164,7 +13291,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSignedNumber"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5271:1: ruleSignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5334:1: ruleSignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) ;
     public final AntlrDatatypeRuleToken ruleSignedNumber() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -13174,24 +13301,24 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5274:28: ( ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5275:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5337:28: ( ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5338:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5275:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5275:2: (kw= '-' )? this_NUMBER_1= RULE_NUMBER
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5338:1: ( (kw= '-' )? this_NUMBER_1= RULE_NUMBER )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5338:2: (kw= '-' )? this_NUMBER_1= RULE_NUMBER
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5275:2: (kw= '-' )?
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5338:2: (kw= '-' )?
+            int alt92=2;
+            int LA92_0 = input.LA(1);
 
-            if ( (LA94_0==25) ) {
-                alt94=1;
+            if ( (LA92_0==25) ) {
+                alt92=1;
             }
-            switch (alt94) {
+            switch (alt92) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5276:2: kw= '-'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5339:2: kw= '-'
                     {
-                    kw=(Token)match(input,25,FOLLOW_25_in_ruleSignedNumber11487); 
+                    kw=(Token)match(input,25,FOLLOW_25_in_ruleSignedNumber11657); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getSignedNumberAccess().getHyphenMinusKeyword_0()); 
@@ -13202,7 +13329,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_NUMBER_1=(Token)match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_ruleSignedNumber11504); 
+            this_NUMBER_1=(Token)match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_ruleSignedNumber11674); 
 
             		current.merge(this_NUMBER_1);
                 
@@ -13230,7 +13357,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5296:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5359:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -13238,17 +13365,17 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5297:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5298:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5360:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5361:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
              newCompositeNode(grammarAccess.getQualifiedNameRule()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11550);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11720);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
 
              current =iv_ruleQualifiedName.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName11561); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName11731); 
 
             }
 
@@ -13266,7 +13393,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5305:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5368:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -13277,40 +13404,40 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5308:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5309:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5372:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5309:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5309:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5372:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5372:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName11601); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName11771); 
 
             		current.merge(this_ID_0);
                 
              
                 newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
                 
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5316:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop95:
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5379:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop93:
             do {
-                int alt95=2;
-                int LA95_0 = input.LA(1);
+                int alt93=2;
+                int LA93_0 = input.LA(1);
 
-                if ( (LA95_0==51) ) {
-                    alt95=1;
+                if ( (LA93_0==52) ) {
+                    alt93=1;
                 }
 
 
-                switch (alt95) {
+                switch (alt93) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5317:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5380:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,51,FOLLOW_51_in_ruleQualifiedName11620); 
+            	    kw=(Token)match(input,52,FOLLOW_52_in_ruleQualifiedName11790); 
 
             	            current.merge(kw);
             	            newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName11635); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName11805); 
 
             	    		current.merge(this_ID_2);
             	        
@@ -13322,7 +13449,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop95;
+            	    break loop93;
                 }
             } while (true);
 
@@ -13347,7 +13474,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompoundOperator"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5337:1: ruleCompoundOperator returns [Enumerator current=null] : ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5400:1: ruleCompoundOperator returns [Enumerator current=null] : ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) ) ;
     public final Enumerator ruleCompoundOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -13358,47 +13485,47 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5339:28: ( ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5340:1: ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5402:28: ( ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5403:1: ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5340:1: ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) )
-            int alt96=4;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5403:1: ( (enumLiteral_0= 'union all' ) | (enumLiteral_1= 'union' ) | (enumLiteral_2= 'intersect' ) | (enumLiteral_3= 'except' ) )
+            int alt94=4;
             switch ( input.LA(1) ) {
+            case 115:
+                {
+                alt94=1;
+                }
+                break;
             case 116:
                 {
-                alt96=1;
+                alt94=2;
                 }
                 break;
             case 117:
                 {
-                alt96=2;
+                alt94=3;
                 }
                 break;
             case 118:
                 {
-                alt96=3;
-                }
-                break;
-            case 119:
-                {
-                alt96=4;
+                alt94=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 96, 0, input);
+                    new NoViableAltException("", 94, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt96) {
+            switch (alt94) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5340:2: (enumLiteral_0= 'union all' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5403:2: (enumLiteral_0= 'union all' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5340:2: (enumLiteral_0= 'union all' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5340:4: enumLiteral_0= 'union all'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5403:2: (enumLiteral_0= 'union all' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5403:4: enumLiteral_0= 'union all'
                     {
-                    enumLiteral_0=(Token)match(input,116,FOLLOW_116_in_ruleCompoundOperator11696); 
+                    enumLiteral_0=(Token)match(input,115,FOLLOW_115_in_ruleCompoundOperator11866); 
 
                             current = grammarAccess.getCompoundOperatorAccess().getUnionallEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getCompoundOperatorAccess().getUnionallEnumLiteralDeclaration_0()); 
@@ -13410,12 +13537,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5346:6: (enumLiteral_1= 'union' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5409:6: (enumLiteral_1= 'union' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5346:6: (enumLiteral_1= 'union' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5346:8: enumLiteral_1= 'union'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5409:6: (enumLiteral_1= 'union' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5409:8: enumLiteral_1= 'union'
                     {
-                    enumLiteral_1=(Token)match(input,117,FOLLOW_117_in_ruleCompoundOperator11713); 
+                    enumLiteral_1=(Token)match(input,116,FOLLOW_116_in_ruleCompoundOperator11883); 
 
                             current = grammarAccess.getCompoundOperatorAccess().getUnionEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getCompoundOperatorAccess().getUnionEnumLiteralDeclaration_1()); 
@@ -13427,12 +13554,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5352:6: (enumLiteral_2= 'intersect' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5415:6: (enumLiteral_2= 'intersect' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5352:6: (enumLiteral_2= 'intersect' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5352:8: enumLiteral_2= 'intersect'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5415:6: (enumLiteral_2= 'intersect' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5415:8: enumLiteral_2= 'intersect'
                     {
-                    enumLiteral_2=(Token)match(input,118,FOLLOW_118_in_ruleCompoundOperator11730); 
+                    enumLiteral_2=(Token)match(input,117,FOLLOW_117_in_ruleCompoundOperator11900); 
 
                             current = grammarAccess.getCompoundOperatorAccess().getIntersectEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getCompoundOperatorAccess().getIntersectEnumLiteralDeclaration_2()); 
@@ -13444,12 +13571,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5358:6: (enumLiteral_3= 'except' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5421:6: (enumLiteral_3= 'except' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5358:6: (enumLiteral_3= 'except' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5358:8: enumLiteral_3= 'except'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5421:6: (enumLiteral_3= 'except' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5421:8: enumLiteral_3= 'except'
                     {
-                    enumLiteral_3=(Token)match(input,119,FOLLOW_119_in_ruleCompoundOperator11747); 
+                    enumLiteral_3=(Token)match(input,118,FOLLOW_118_in_ruleCompoundOperator11917); 
 
                             current = grammarAccess.getCompoundOperatorAccess().getExceptEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getCompoundOperatorAccess().getExceptEnumLiteralDeclaration_3()); 
@@ -13481,7 +13608,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSqliteDataType"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5368:1: ruleSqliteDataType returns [Enumerator current=null] : ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5431:1: ruleSqliteDataType returns [Enumerator current=null] : ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) ) ;
     public final Enumerator ruleSqliteDataType() throws RecognitionException {
         Enumerator current = null;
 
@@ -13494,57 +13621,57 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5370:28: ( ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5433:28: ( ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5434:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) )
-            int alt97=6;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5434:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'none' ) | (enumLiteral_5= 'numeric' ) )
+            int alt95=6;
             switch ( input.LA(1) ) {
+            case 119:
+                {
+                alt95=1;
+                }
+                break;
             case 120:
                 {
-                alt97=1;
+                alt95=2;
                 }
                 break;
             case 121:
                 {
-                alt97=2;
+                alt95=3;
                 }
                 break;
             case 122:
                 {
-                alt97=3;
+                alt95=4;
                 }
                 break;
             case 123:
                 {
-                alt97=4;
+                alt95=5;
                 }
                 break;
             case 124:
                 {
-                alt97=5;
-                }
-                break;
-            case 125:
-                {
-                alt97=6;
+                alt95=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 97, 0, input);
+                    new NoViableAltException("", 95, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt97) {
+            switch (alt95) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:2: (enumLiteral_0= 'text' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5434:2: (enumLiteral_0= 'text' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:2: (enumLiteral_0= 'text' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5371:4: enumLiteral_0= 'text'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5434:2: (enumLiteral_0= 'text' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5434:4: enumLiteral_0= 'text'
                     {
-                    enumLiteral_0=(Token)match(input,120,FOLLOW_120_in_ruleSqliteDataType11792); 
+                    enumLiteral_0=(Token)match(input,119,FOLLOW_119_in_ruleSqliteDataType11962); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getTextEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getSqliteDataTypeAccess().getTextEnumLiteralDeclaration_0()); 
@@ -13556,12 +13683,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5377:6: (enumLiteral_1= 'integer' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5440:6: (enumLiteral_1= 'integer' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5377:6: (enumLiteral_1= 'integer' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5377:8: enumLiteral_1= 'integer'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5440:6: (enumLiteral_1= 'integer' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5440:8: enumLiteral_1= 'integer'
                     {
-                    enumLiteral_1=(Token)match(input,121,FOLLOW_121_in_ruleSqliteDataType11809); 
+                    enumLiteral_1=(Token)match(input,120,FOLLOW_120_in_ruleSqliteDataType11979); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getIntegerEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getSqliteDataTypeAccess().getIntegerEnumLiteralDeclaration_1()); 
@@ -13573,12 +13700,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5383:6: (enumLiteral_2= 'real' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5446:6: (enumLiteral_2= 'real' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5383:6: (enumLiteral_2= 'real' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5383:8: enumLiteral_2= 'real'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5446:6: (enumLiteral_2= 'real' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5446:8: enumLiteral_2= 'real'
                     {
-                    enumLiteral_2=(Token)match(input,122,FOLLOW_122_in_ruleSqliteDataType11826); 
+                    enumLiteral_2=(Token)match(input,121,FOLLOW_121_in_ruleSqliteDataType11996); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getRealEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getSqliteDataTypeAccess().getRealEnumLiteralDeclaration_2()); 
@@ -13590,12 +13717,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5389:6: (enumLiteral_3= 'blob' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5452:6: (enumLiteral_3= 'blob' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5389:6: (enumLiteral_3= 'blob' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5389:8: enumLiteral_3= 'blob'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5452:6: (enumLiteral_3= 'blob' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5452:8: enumLiteral_3= 'blob'
                     {
-                    enumLiteral_3=(Token)match(input,123,FOLLOW_123_in_ruleSqliteDataType11843); 
+                    enumLiteral_3=(Token)match(input,122,FOLLOW_122_in_ruleSqliteDataType12013); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getBlobEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getSqliteDataTypeAccess().getBlobEnumLiteralDeclaration_3()); 
@@ -13607,12 +13734,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5395:6: (enumLiteral_4= 'none' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5458:6: (enumLiteral_4= 'none' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5395:6: (enumLiteral_4= 'none' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5395:8: enumLiteral_4= 'none'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5458:6: (enumLiteral_4= 'none' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5458:8: enumLiteral_4= 'none'
                     {
-                    enumLiteral_4=(Token)match(input,124,FOLLOW_124_in_ruleSqliteDataType11860); 
+                    enumLiteral_4=(Token)match(input,123,FOLLOW_123_in_ruleSqliteDataType12030); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getNoneEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getSqliteDataTypeAccess().getNoneEnumLiteralDeclaration_4()); 
@@ -13624,12 +13751,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5401:6: (enumLiteral_5= 'numeric' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5464:6: (enumLiteral_5= 'numeric' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5401:6: (enumLiteral_5= 'numeric' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5401:8: enumLiteral_5= 'numeric'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5464:6: (enumLiteral_5= 'numeric' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5464:8: enumLiteral_5= 'numeric'
                     {
-                    enumLiteral_5=(Token)match(input,125,FOLLOW_125_in_ruleSqliteDataType11877); 
+                    enumLiteral_5=(Token)match(input,124,FOLLOW_124_in_ruleSqliteDataType12047); 
 
                             current = grammarAccess.getSqliteDataTypeAccess().getNumericEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_5, grammarAccess.getSqliteDataTypeAccess().getNumericEnumLiteralDeclaration_5()); 
@@ -13661,7 +13788,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleColumnType"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5411:1: ruleColumnType returns [Enumerator current=null] : ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5474:1: ruleColumnType returns [Enumerator current=null] : ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) ) ;
     public final Enumerator ruleColumnType() throws RecognitionException {
         Enumerator current = null;
 
@@ -13673,52 +13800,52 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5413:28: ( ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5414:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5476:28: ( ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5477:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5414:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) )
-            int alt98=5;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5477:1: ( (enumLiteral_0= 'text' ) | (enumLiteral_1= 'integer' ) | (enumLiteral_2= 'real' ) | (enumLiteral_3= 'blob' ) | (enumLiteral_4= 'boolean' ) )
+            int alt96=5;
             switch ( input.LA(1) ) {
+            case 119:
+                {
+                alt96=1;
+                }
+                break;
             case 120:
                 {
-                alt98=1;
+                alt96=2;
                 }
                 break;
             case 121:
                 {
-                alt98=2;
+                alt96=3;
                 }
                 break;
             case 122:
                 {
-                alt98=3;
+                alt96=4;
                 }
                 break;
-            case 123:
+            case 125:
                 {
-                alt98=4;
-                }
-                break;
-            case 126:
-                {
-                alt98=5;
+                alt96=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 98, 0, input);
+                    new NoViableAltException("", 96, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt98) {
+            switch (alt96) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5414:2: (enumLiteral_0= 'text' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5477:2: (enumLiteral_0= 'text' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5414:2: (enumLiteral_0= 'text' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5414:4: enumLiteral_0= 'text'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5477:2: (enumLiteral_0= 'text' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5477:4: enumLiteral_0= 'text'
                     {
-                    enumLiteral_0=(Token)match(input,120,FOLLOW_120_in_ruleColumnType11922); 
+                    enumLiteral_0=(Token)match(input,119,FOLLOW_119_in_ruleColumnType12092); 
 
                             current = grammarAccess.getColumnTypeAccess().getTextEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getColumnTypeAccess().getTextEnumLiteralDeclaration_0()); 
@@ -13730,12 +13857,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5420:6: (enumLiteral_1= 'integer' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5483:6: (enumLiteral_1= 'integer' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5420:6: (enumLiteral_1= 'integer' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5420:8: enumLiteral_1= 'integer'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5483:6: (enumLiteral_1= 'integer' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5483:8: enumLiteral_1= 'integer'
                     {
-                    enumLiteral_1=(Token)match(input,121,FOLLOW_121_in_ruleColumnType11939); 
+                    enumLiteral_1=(Token)match(input,120,FOLLOW_120_in_ruleColumnType12109); 
 
                             current = grammarAccess.getColumnTypeAccess().getIntegerEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getColumnTypeAccess().getIntegerEnumLiteralDeclaration_1()); 
@@ -13747,12 +13874,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5426:6: (enumLiteral_2= 'real' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5489:6: (enumLiteral_2= 'real' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5426:6: (enumLiteral_2= 'real' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5426:8: enumLiteral_2= 'real'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5489:6: (enumLiteral_2= 'real' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5489:8: enumLiteral_2= 'real'
                     {
-                    enumLiteral_2=(Token)match(input,122,FOLLOW_122_in_ruleColumnType11956); 
+                    enumLiteral_2=(Token)match(input,121,FOLLOW_121_in_ruleColumnType12126); 
 
                             current = grammarAccess.getColumnTypeAccess().getRealEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getColumnTypeAccess().getRealEnumLiteralDeclaration_2()); 
@@ -13764,12 +13891,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5432:6: (enumLiteral_3= 'blob' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5495:6: (enumLiteral_3= 'blob' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5432:6: (enumLiteral_3= 'blob' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5432:8: enumLiteral_3= 'blob'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5495:6: (enumLiteral_3= 'blob' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5495:8: enumLiteral_3= 'blob'
                     {
-                    enumLiteral_3=(Token)match(input,123,FOLLOW_123_in_ruleColumnType11973); 
+                    enumLiteral_3=(Token)match(input,122,FOLLOW_122_in_ruleColumnType12143); 
 
                             current = grammarAccess.getColumnTypeAccess().getBlobEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getColumnTypeAccess().getBlobEnumLiteralDeclaration_3()); 
@@ -13781,12 +13908,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5438:6: (enumLiteral_4= 'boolean' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5501:6: (enumLiteral_4= 'boolean' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5438:6: (enumLiteral_4= 'boolean' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5438:8: enumLiteral_4= 'boolean'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5501:6: (enumLiteral_4= 'boolean' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5501:8: enumLiteral_4= 'boolean'
                     {
-                    enumLiteral_4=(Token)match(input,126,FOLLOW_126_in_ruleColumnType11990); 
+                    enumLiteral_4=(Token)match(input,125,FOLLOW_125_in_ruleColumnType12160); 
 
                             current = grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getColumnTypeAccess().getBooleanEnumLiteralDeclaration_4()); 
@@ -13818,7 +13945,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConflictResolution"
-    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5448:1: ruleConflictResolution returns [Enumerator current=null] : ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) ) ;
+    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5511:1: ruleConflictResolution returns [Enumerator current=null] : ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) ) ;
     public final Enumerator ruleConflictResolution() throws RecognitionException {
         Enumerator current = null;
 
@@ -13830,52 +13957,52 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5450:28: ( ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) ) )
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5451:1: ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5513:28: ( ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) ) )
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5514:1: ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) )
             {
-            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5451:1: ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) )
-            int alt99=5;
+            // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5514:1: ( (enumLiteral_0= 'rollback' ) | (enumLiteral_1= 'abort' ) | (enumLiteral_2= 'fail' ) | (enumLiteral_3= 'ignore' ) | (enumLiteral_4= 'replace' ) )
+            int alt97=5;
             switch ( input.LA(1) ) {
+            case 126:
+                {
+                alt97=1;
+                }
+                break;
             case 127:
                 {
-                alt99=1;
+                alt97=2;
                 }
                 break;
             case 128:
                 {
-                alt99=2;
+                alt97=3;
                 }
                 break;
             case 129:
                 {
-                alt99=3;
+                alt97=4;
                 }
                 break;
-            case 130:
+            case 111:
                 {
-                alt99=4;
-                }
-                break;
-            case 112:
-                {
-                alt99=5;
+                alt97=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 99, 0, input);
+                    new NoViableAltException("", 97, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt99) {
+            switch (alt97) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5451:2: (enumLiteral_0= 'rollback' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5514:2: (enumLiteral_0= 'rollback' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5451:2: (enumLiteral_0= 'rollback' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5451:4: enumLiteral_0= 'rollback'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5514:2: (enumLiteral_0= 'rollback' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5514:4: enumLiteral_0= 'rollback'
                     {
-                    enumLiteral_0=(Token)match(input,127,FOLLOW_127_in_ruleConflictResolution12035); 
+                    enumLiteral_0=(Token)match(input,126,FOLLOW_126_in_ruleConflictResolution12205); 
 
                             current = grammarAccess.getConflictResolutionAccess().getRollbackEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getConflictResolutionAccess().getRollbackEnumLiteralDeclaration_0()); 
@@ -13887,12 +14014,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5457:6: (enumLiteral_1= 'abort' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5520:6: (enumLiteral_1= 'abort' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5457:6: (enumLiteral_1= 'abort' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5457:8: enumLiteral_1= 'abort'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5520:6: (enumLiteral_1= 'abort' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5520:8: enumLiteral_1= 'abort'
                     {
-                    enumLiteral_1=(Token)match(input,128,FOLLOW_128_in_ruleConflictResolution12052); 
+                    enumLiteral_1=(Token)match(input,127,FOLLOW_127_in_ruleConflictResolution12222); 
 
                             current = grammarAccess.getConflictResolutionAccess().getAbortEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getConflictResolutionAccess().getAbortEnumLiteralDeclaration_1()); 
@@ -13904,12 +14031,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5463:6: (enumLiteral_2= 'fail' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5526:6: (enumLiteral_2= 'fail' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5463:6: (enumLiteral_2= 'fail' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5463:8: enumLiteral_2= 'fail'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5526:6: (enumLiteral_2= 'fail' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5526:8: enumLiteral_2= 'fail'
                     {
-                    enumLiteral_2=(Token)match(input,129,FOLLOW_129_in_ruleConflictResolution12069); 
+                    enumLiteral_2=(Token)match(input,128,FOLLOW_128_in_ruleConflictResolution12239); 
 
                             current = grammarAccess.getConflictResolutionAccess().getFailEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getConflictResolutionAccess().getFailEnumLiteralDeclaration_2()); 
@@ -13921,12 +14048,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5469:6: (enumLiteral_3= 'ignore' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5532:6: (enumLiteral_3= 'ignore' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5469:6: (enumLiteral_3= 'ignore' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5469:8: enumLiteral_3= 'ignore'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5532:6: (enumLiteral_3= 'ignore' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5532:8: enumLiteral_3= 'ignore'
                     {
-                    enumLiteral_3=(Token)match(input,130,FOLLOW_130_in_ruleConflictResolution12086); 
+                    enumLiteral_3=(Token)match(input,129,FOLLOW_129_in_ruleConflictResolution12256); 
 
                             current = grammarAccess.getConflictResolutionAccess().getIgnoreEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getConflictResolutionAccess().getIgnoreEnumLiteralDeclaration_3()); 
@@ -13938,12 +14065,12 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5475:6: (enumLiteral_4= 'replace' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5538:6: (enumLiteral_4= 'replace' )
                     {
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5475:6: (enumLiteral_4= 'replace' )
-                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5475:8: enumLiteral_4= 'replace'
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5538:6: (enumLiteral_4= 'replace' )
+                    // ../com.robotoworks.mechanoid.sqlite/src-gen/com/robotoworks/mechanoid/sqlite/parser/antlr/internal/InternalSqliteModel.g:5538:8: enumLiteral_4= 'replace'
                     {
-                    enumLiteral_4=(Token)match(input,112,FOLLOW_112_in_ruleConflictResolution12103); 
+                    enumLiteral_4=(Token)match(input,111,FOLLOW_111_in_ruleConflictResolution12273); 
 
                             current = grammarAccess.getConflictResolutionAccess().getReplaceEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getConflictResolutionAccess().getReplaceEnumLiteralDeclaration_4()); 
@@ -13977,33 +14104,36 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     protected DFA29 dfa29 = new DFA29(this);
-    protected DFA53 dfa53 = new DFA53(this);
+    protected DFA51 dfa51 = new DFA51(this);
     static final String DFA29_eotS =
-        "\14\uffff";
+        "\16\uffff";
     static final String DFA29_eofS =
-        "\3\uffff\1\12\10\uffff";
+        "\3\uffff\1\12\12\uffff";
     static final String DFA29_minS =
-        "\1\4\2\uffff\1\23\1\uffff\1\4\6\uffff";
+        "\1\4\2\uffff\1\23\1\uffff\1\4\5\uffff\1\4\2\uffff";
     static final String DFA29_maxS =
-        "\1\126\2\uffff\1\167\1\uffff\1\126\6\uffff";
+        "\1\125\2\uffff\1\166\1\uffff\1\125\5\uffff\1\25\2\uffff";
     static final String DFA29_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\11\1\10\1\3\1\5";
+        "\1\uffff\1\1\1\2\1\uffff\1\5\1\uffff\1\7\1\10\1\12\1\11\1\4\1\uffff"+
+        "\1\6\1\3";
     static final String DFA29_specialS =
-        "\14\uffff}>";
+        "\16\uffff}>";
     static final String[] DFA29_transitionS = {
-            "\1\3\2\4\22\uffff\1\4\30\uffff\1\1\1\uffff\1\2\1\5\1\uffff\2"+
-            "\6\1\7\3\uffff\1\10\25\uffff\4\4",
+            "\1\3\2\4\22\uffff\1\4\30\uffff\1\1\1\2\1\uffff\1\5\1\uffff\2"+
+            "\6\1\7\3\uffff\1\10\24\uffff\4\4",
             "",
             "",
-            "\37\12\1\uffff\1\12\1\uffff\1\11\1\12\3\uffff\3\12\1\uffff"+
-            "\4\12\3\uffff\10\12\1\uffff\3\12\22\uffff\1\12\20\uffff\4\12",
+            "\37\12\2\uffff\1\13\1\11\1\12\3\uffff\3\12\1\uffff\4\12\3\uffff"+
+            "\10\12\1\uffff\3\12\21\uffff\1\12\20\uffff\4\12",
             "",
-            "\3\13\22\uffff\1\13\30\uffff\1\13\1\uffff\2\13\1\uffff\3\13"+
-            "\3\uffff\1\13\4\uffff\1\6\20\uffff\4\13",
-            "",
-            "",
+            "\3\14\22\uffff\1\14\30\uffff\2\14\1\uffff\1\14\1\uffff\3\14"+
+            "\3\uffff\1\14\4\uffff\1\6\17\uffff\4\14",
             "",
             "",
+            "",
+            "",
+            "",
+            "\1\12\20\uffff\1\15",
             "",
             ""
     };
@@ -14038,26 +14168,26 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             this.transition = DFA29_transition;
         }
         public String getDescription() {
-            return "1340:1: ( ( () otherlv_1= 'new' otherlv_2= '.' ( (otherlv_3= RULE_ID ) ) ) | ( () otherlv_5= 'old' otherlv_6= '.' ( (otherlv_7= RULE_ID ) ) ) | ( () ( ( (otherlv_9= RULE_ID ) ) otherlv_10= '.' )? ( (otherlv_11= RULE_ID ) ) ) | ( () ( (lv_literalValue_13_0= ruleLiteralValue ) ) ) | ( () otherlv_15= '(' ( (lv_expression_16_0= ruleSqlExpression ) ) otherlv_17= ')' ) | ( () ( (lv_not_19_0= 'not' ) )? ( (lv_exists_20_0= 'exists' ) )? otherlv_21= '(' ( (lv_select_22_0= ruleSelectStatement ) ) otherlv_23= ')' ) | ( () otherlv_25= 'case' ( (lv_caseExpression_26_0= ruleSqlExpression ) )? ( (lv_cases_27_0= ruleCase ) )+ (otherlv_28= 'else' ( (lv_elseExpression_29_0= ruleSqlExpression ) ) )? otherlv_30= 'end' ) | ( () ( (lv_name_32_0= RULE_ID ) ) otherlv_33= '(' ( ( (lv_all_34_0= '*' ) ) | ( ( (lv_arguments_35_0= ruleSqlExpression ) ) (otherlv_36= ',' ( (lv_arugments_37_0= ruleSqlExpression ) ) )* ) ) otherlv_38= ')' ) | ( () otherlv_40= 'cast' otherlv_41= '(' ( (lv_expression_42_0= ruleSqlExpression ) ) otherlv_43= 'as' ( (lv_type_44_0= ruleSqliteDataType ) ) otherlv_45= ')' ) )";
+            return "1340:1: ( ( () otherlv_1= 'new.' ( (otherlv_2= RULE_ID ) ) ) | ( () otherlv_4= 'old.' ( (otherlv_5= RULE_ID ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '.' otherlv_9= '*' ) | ( () ( ( (otherlv_11= RULE_ID ) ) otherlv_12= '.' )? ( (otherlv_13= RULE_ID ) ) ) | ( () ( (lv_literalValue_15_0= ruleLiteralValue ) ) ) | ( () otherlv_17= '(' ( (lv_expression_18_0= ruleSqlExpression ) ) otherlv_19= ')' ) | ( () ( (lv_not_21_0= 'not' ) )? ( (lv_exists_22_0= 'exists' ) )? otherlv_23= '(' ( (lv_select_24_0= ruleSelectStatement ) ) otherlv_25= ')' ) | ( () otherlv_27= 'case' ( (lv_caseExpression_28_0= ruleSqlExpression ) )? ( (lv_cases_29_0= ruleCase ) )+ (otherlv_30= 'else' ( (lv_elseExpression_31_0= ruleSqlExpression ) ) )? otherlv_32= 'end' ) | ( () ( (lv_name_34_0= RULE_ID ) ) otherlv_35= '(' ( ( (lv_all_36_0= '*' ) ) | ( ( (lv_arguments_37_0= ruleSqlExpression ) ) (otherlv_38= ',' ( (lv_arguments_39_0= ruleSqlExpression ) ) )* ) ) otherlv_40= ')' ) | ( () otherlv_42= 'cast' otherlv_43= '(' ( (lv_expression_44_0= ruleSqlExpression ) ) otherlv_45= 'as' ( (lv_type_46_0= ruleSqliteDataType ) ) otherlv_47= ')' ) )";
         }
     }
-    static final String DFA53_eotS =
+    static final String DFA51_eotS =
         "\12\uffff";
-    static final String DFA53_eofS =
+    static final String DFA51_eofS =
         "\12\uffff";
-    static final String DFA53_minS =
-        "\1\127\1\130\1\uffff\1\130\6\uffff";
-    static final String DFA53_maxS =
-        "\1\145\1\132\1\uffff\1\132\6\uffff";
-    static final String DFA53_acceptS =
-        "\2\uffff\1\4\1\uffff\1\1\1\3\1\2\1\6\1\5\1\7";
-    static final String DFA53_specialS =
+    static final String DFA51_minS =
+        "\1\126\1\127\1\uffff\1\127\6\uffff";
+    static final String DFA51_maxS =
+        "\1\144\1\131\1\uffff\1\131\6\uffff";
+    static final String DFA51_acceptS =
+        "\2\uffff\1\4\1\uffff\1\2\1\1\1\3\1\7\1\6\1\5";
+    static final String DFA51_specialS =
         "\12\uffff}>";
-    static final String[] DFA53_transitionS = {
+    static final String[] DFA51_transitionS = {
             "\1\1\14\uffff\1\2\1\3",
-            "\1\4\1\6\1\5",
+            "\1\5\1\4\1\6",
             "",
-            "\1\10\1\11\1\7",
+            "\1\11\1\7\1\10",
             "",
             "",
             "",
@@ -14066,37 +14196,37 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA53_eot = DFA.unpackEncodedString(DFA53_eotS);
-    static final short[] DFA53_eof = DFA.unpackEncodedString(DFA53_eofS);
-    static final char[] DFA53_min = DFA.unpackEncodedStringToUnsignedChars(DFA53_minS);
-    static final char[] DFA53_max = DFA.unpackEncodedStringToUnsignedChars(DFA53_maxS);
-    static final short[] DFA53_accept = DFA.unpackEncodedString(DFA53_acceptS);
-    static final short[] DFA53_special = DFA.unpackEncodedString(DFA53_specialS);
-    static final short[][] DFA53_transition;
+    static final short[] DFA51_eot = DFA.unpackEncodedString(DFA51_eotS);
+    static final short[] DFA51_eof = DFA.unpackEncodedString(DFA51_eofS);
+    static final char[] DFA51_min = DFA.unpackEncodedStringToUnsignedChars(DFA51_minS);
+    static final char[] DFA51_max = DFA.unpackEncodedStringToUnsignedChars(DFA51_maxS);
+    static final short[] DFA51_accept = DFA.unpackEncodedString(DFA51_acceptS);
+    static final short[] DFA51_special = DFA.unpackEncodedString(DFA51_specialS);
+    static final short[][] DFA51_transition;
 
     static {
-        int numStates = DFA53_transitionS.length;
-        DFA53_transition = new short[numStates][];
+        int numStates = DFA51_transitionS.length;
+        DFA51_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA53_transition[i] = DFA.unpackEncodedString(DFA53_transitionS[i]);
+            DFA51_transition[i] = DFA.unpackEncodedString(DFA51_transitionS[i]);
         }
     }
 
-    class DFA53 extends DFA {
+    class DFA51 extends DFA {
 
-        public DFA53(BaseRecognizer recognizer) {
+        public DFA51(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 53;
-            this.eot = DFA53_eot;
-            this.eof = DFA53_eof;
-            this.min = DFA53_min;
-            this.max = DFA53_max;
-            this.accept = DFA53_accept;
-            this.special = DFA53_special;
-            this.transition = DFA53_transition;
+            this.decisionNumber = 51;
+            this.eot = DFA51_eot;
+            this.eof = DFA51_eof;
+            this.min = DFA51_min;
+            this.max = DFA51_max;
+            this.accept = DFA51_accept;
+            this.special = DFA51_special;
+            this.transition = DFA51_transition;
         }
         public String getDescription() {
-            return "3089:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )";
+            return "3192:1: (this_CreateTableStatement_0= ruleCreateTableStatement | this_CreateViewStatement_1= ruleCreateViewStatement | this_CreateTriggerStatement_2= ruleCreateTriggerStatement | this_AlterTableStatement_3= ruleAlterTableStatement | this_DropTableStatement_4= ruleDropTableStatement | this_DropTriggerStatement_5= ruleDropTriggerStatement | this_DropViewStatement_6= ruleDropViewStatement )";
         }
     }
  
@@ -14128,9 +14258,9 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleMigrationBlock_in_entryRuleMigrationBlock647 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMigrationBlock657 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleMigrationBlock703 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleMigrationBlock715 = new BitSet(new long[]{0x0000000000008000L,0x0000003000800000L});
+    public static final BitSet FOLLOW_14_in_ruleMigrationBlock715 = new BitSet(new long[]{0x0000000000008000L,0x0000001800400000L});
     public static final BitSet FOLLOW_ruleDDLStatement_in_ruleMigrationBlock737 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_ruleMigrationBlock749 = new BitSet(new long[]{0x0000000000008000L,0x0000003000800000L});
+    public static final BitSet FOLLOW_19_in_ruleMigrationBlock749 = new BitSet(new long[]{0x0000000000008000L,0x0000001800400000L});
     public static final BitSet FOLLOW_15_in_ruleMigrationBlock763 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSqlExpression_in_entryRuleSqlExpression799 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSqlExpression809 = new BitSet(new long[]{0x0000000000000002L});
@@ -14138,61 +14268,61 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleExprConcat_in_entryRuleExprConcat889 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprConcat899 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprMult_in_ruleExprConcat946 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_20_in_ruleExprConcat973 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_20_in_ruleExprConcat973 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprMult_in_ruleExprConcat1007 = new BitSet(new long[]{0x0000000000100002L});
     public static final BitSet FOLLOW_ruleExprMult_in_entryRuleExprMult1045 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprMult1055 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprAdd_in_ruleExprMult1102 = new BitSet(new long[]{0x0000000000E00002L});
-    public static final BitSet FOLLOW_21_in_ruleExprMult1131 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_22_in_ruleExprMult1160 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_23_in_ruleExprMult1189 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_21_in_ruleExprMult1131 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_22_in_ruleExprMult1160 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_23_in_ruleExprMult1189 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprAdd_in_ruleExprMult1226 = new BitSet(new long[]{0x0000000000E00002L});
     public static final BitSet FOLLOW_ruleExprAdd_in_entryRuleExprAdd1264 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprAdd1274 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprBit_in_ruleExprAdd1321 = new BitSet(new long[]{0x0000000003000002L});
-    public static final BitSet FOLLOW_24_in_ruleExprAdd1350 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_25_in_ruleExprAdd1379 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_24_in_ruleExprAdd1350 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_25_in_ruleExprAdd1379 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprBit_in_ruleExprAdd1416 = new BitSet(new long[]{0x0000000003000002L});
     public static final BitSet FOLLOW_ruleExprBit_in_entryRuleExprBit1454 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprBit1464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprRelate_in_ruleExprBit1511 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_26_in_ruleExprBit1540 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_27_in_ruleExprBit1569 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_28_in_ruleExprBit1598 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_29_in_ruleExprBit1627 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_26_in_ruleExprBit1540 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_27_in_ruleExprBit1569 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_28_in_ruleExprBit1598 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_29_in_ruleExprBit1627 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprRelate_in_ruleExprBit1664 = new BitSet(new long[]{0x000000003C000002L});
     public static final BitSet FOLLOW_ruleExprRelate_in_entryRuleExprRelate1702 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprRelate1712 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprEqual_in_ruleExprRelate1759 = new BitSet(new long[]{0x00000003C0000002L});
-    public static final BitSet FOLLOW_30_in_ruleExprRelate1788 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_31_in_ruleExprRelate1817 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_32_in_ruleExprRelate1846 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_33_in_ruleExprRelate1875 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_30_in_ruleExprRelate1788 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_31_in_ruleExprRelate1817 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_32_in_ruleExprRelate1846 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_33_in_ruleExprRelate1875 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprEqual_in_ruleExprRelate1912 = new BitSet(new long[]{0x00000003C0000002L});
     public static final BitSet FOLLOW_ruleExprEqual_in_entryRuleExprEqual1950 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprEqual1960 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprAnd_in_ruleExprEqual2007 = new BitSet(new long[]{0x00001FFC00000002L});
-    public static final BitSet FOLLOW_34_in_ruleExprEqual2036 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_35_in_ruleExprEqual2065 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_36_in_ruleExprEqual2094 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_37_in_ruleExprEqual2123 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_38_in_ruleExprEqual2152 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_39_in_ruleExprEqual2181 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_40_in_ruleExprEqual2210 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_41_in_ruleExprEqual2239 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_42_in_ruleExprEqual2268 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_43_in_ruleExprEqual2297 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_44_in_ruleExprEqual2326 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_34_in_ruleExprEqual2036 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_35_in_ruleExprEqual2065 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_36_in_ruleExprEqual2094 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_37_in_ruleExprEqual2123 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_38_in_ruleExprEqual2152 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_39_in_ruleExprEqual2181 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_40_in_ruleExprEqual2210 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_41_in_ruleExprEqual2239 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_42_in_ruleExprEqual2268 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_43_in_ruleExprEqual2297 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_44_in_ruleExprEqual2326 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprAnd_in_ruleExprEqual2363 = new BitSet(new long[]{0x00001FFC00000002L});
     public static final BitSet FOLLOW_ruleExprAnd_in_entryRuleExprAnd2401 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprAnd2411 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExprOr_in_ruleExprAnd2458 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_45_in_ruleExprAnd2485 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_45_in_ruleExprAnd2485 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleExprOr_in_ruleExprAnd2519 = new BitSet(new long[]{0x0000200000000002L});
     public static final BitSet FOLLOW_ruleExprOr_in_entryRuleExprOr2557 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExprOr2567 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNullCheckExpression_in_ruleExprOr2614 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_46_in_ruleExprOr2641 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
+    public static final BitSet FOLLOW_46_in_ruleExprOr2641 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
     public static final BitSet FOLLOW_ruleNullCheckExpression_in_ruleExprOr2675 = new BitSet(new long[]{0x0000400000000002L});
     public static final BitSet FOLLOW_ruleNullCheckExpression_in_entryRuleNullCheckExpression2713 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNullCheckExpression2723 = new BitSet(new long[]{0x0000000000000002L});
@@ -14205,376 +14335,381 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_49_in_ruleNullExpression2943 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePrimaryExpression_in_entryRulePrimaryExpression2981 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePrimaryExpression2991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rulePrimaryExpression3038 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_rulePrimaryExpression3050 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3070 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_rulePrimaryExpression3099 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_rulePrimaryExpression3111 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3169 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_rulePrimaryExpression3181 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteralValue_in_rulePrimaryExpression3241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3270 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3291 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3303 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_rulePrimaryExpression3338 = new BitSet(new long[]{0x0120000000000000L});
-    public static final BitSet FOLLOW_56_in_rulePrimaryExpression3370 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3396 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_rulePrimaryExpression3417 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_rulePrimaryExpression3458 = new BitSet(new long[]{0xA3B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3479 = new BitSet(new long[]{0xA3B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleCase_in_rulePrimaryExpression3501 = new BitSet(new long[]{0xAFB4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_58_in_rulePrimaryExpression3515 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3536 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_59_in_rulePrimaryExpression3550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3584 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3601 = new BitSet(new long[]{0x23B4000002200070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_21_in_rulePrimaryExpression3620 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3661 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_rulePrimaryExpression3674 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3695 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3711 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_rulePrimaryExpression3740 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3752 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3773 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_62_in_rulePrimaryExpression3785 = new BitSet(new long[]{0x0000000000000000L,0x3F00000000000000L});
-    public static final BitSet FOLLOW_ruleSqliteDataType_in_rulePrimaryExpression3806 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCase_in_entryRuleCase3855 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCase3865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleCase3902 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCase3923 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_64_in_ruleCase3935 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCase3956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_entryRuleSelectStatement3992 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSelectStatement4002 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectCore_in_ruleSelectStatement4048 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_ruleSelectStatement4061 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleOrderingTerm_in_ruleSelectStatement4082 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_60_in_ruleSelectStatement4095 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleOrderingTerm_in_ruleSelectStatement4116 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectCore_in_entryRuleSelectCore4156 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSelectCore4166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectExpression_in_ruleSelectCore4213 = new BitSet(new long[]{0x0000000000000002L,0x00F0000000000000L});
-    public static final BitSet FOLLOW_ruleCompoundOperator_in_ruleSelectCore4243 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_ruleSelectExpression_in_ruleSelectCore4264 = new BitSet(new long[]{0x0000000000000002L,0x00F0000000000000L});
-    public static final BitSet FOLLOW_ruleSelectExpression_in_entryRuleSelectExpression4302 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSelectExpression4312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_66_in_ruleSelectExpression4358 = new BitSet(new long[]{0x23B4000002200070L,0x0000000000780018L});
-    public static final BitSet FOLLOW_67_in_ruleSelectExpression4377 = new BitSet(new long[]{0x23B4000002200070L,0x0000000000780018L});
-    public static final BitSet FOLLOW_68_in_ruleSelectExpression4414 = new BitSet(new long[]{0x23B4000002200070L,0x0000000000780018L});
-    public static final BitSet FOLLOW_ruleSelectList_in_ruleSelectExpression4450 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001E0L});
-    public static final BitSet FOLLOW_69_in_ruleSelectExpression4463 = new BitSet(new long[]{0x0020000000000010L});
-    public static final BitSet FOLLOW_ruleJoinSource_in_ruleSelectExpression4484 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001C0L});
-    public static final BitSet FOLLOW_70_in_ruleSelectExpression4499 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleSelectExpression4520 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000180L});
-    public static final BitSet FOLLOW_71_in_ruleSelectExpression4535 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleSelectExpression4556 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_60_in_ruleSelectExpression4569 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleSelectExpression4590 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleSelectExpression4607 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleSelectExpression4628 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectList_in_entryRuleSelectList4666 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSelectList4676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumn_in_ruleSelectList4722 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_60_in_ruleSelectList4735 = new BitSet(new long[]{0x23B4000002200070L,0x0000000000780018L});
-    public static final BitSet FOLLOW_ruleResultColumn_in_ruleSelectList4756 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_ruleOrderingTerm_in_entryRuleOrderingTerm4794 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOrderingTerm4804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleOrderingTerm4850 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
-    public static final BitSet FOLLOW_73_in_ruleOrderingTerm4869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_ruleOrderingTerm4906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJoinSource_in_entryRuleJoinSource4957 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJoinSource4967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSource_in_ruleJoinSource5013 = new BitSet(new long[]{0x0000000000000002L,0x000000000001D800L});
-    public static final BitSet FOLLOW_ruleJoinStatement_in_ruleJoinSource5034 = new BitSet(new long[]{0x0000000000000002L,0x000000000001D800L});
-    public static final BitSet FOLLOW_ruleSingleSource_in_entryRuleSingleSource5071 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSource5081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceTable_in_ruleSingleSource5128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceSelectStatement_in_ruleSingleSource5155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceJoin_in_ruleSingleSource5182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceTable_in_entryRuleSingleSourceTable5217 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceTable5227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceTable5281 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_62_in_ruleSingleSourceTable5294 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceTable5311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceSelectStatement_in_entryRuleSingleSourceSelectStatement5354 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceSelectStatement5364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleSingleSourceSelectStatement5410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleSingleSourceSelectStatement5431 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleSingleSourceSelectStatement5443 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_62_in_ruleSingleSourceSelectStatement5456 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceSelectStatement5473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSingleSourceJoin_in_entryRuleSingleSourceJoin5516 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceJoin5526 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleSingleSourceJoin5563 = new BitSet(new long[]{0x0020000000000010L});
-    public static final BitSet FOLLOW_ruleJoinSource_in_ruleSingleSourceJoin5584 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleSingleSourceJoin5596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJoinStatement_in_entryRuleJoinStatement5632 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJoinStatement5642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_75_in_ruleJoinStatement5694 = new BitSet(new long[]{0x0000000000000000L,0x000000000001D000L});
-    public static final BitSet FOLLOW_76_in_ruleJoinStatement5728 = new BitSet(new long[]{0x0000000000000000L,0x0000000000012000L});
-    public static final BitSet FOLLOW_77_in_ruleJoinStatement5759 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_78_in_ruleJoinStatement5798 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_79_in_ruleJoinStatement5835 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_80_in_ruleJoinStatement5862 = new BitSet(new long[]{0x0020000000000010L});
-    public static final BitSet FOLLOW_ruleSingleSource_in_ruleJoinStatement5883 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_81_in_ruleJoinStatement5895 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleJoinStatement5916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumn_in_entryRuleResultColumn5952 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleResultColumn5962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumnAll_in_ruleResultColumn6009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumnExpression_in_ruleResultColumn6036 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumnAll_in_entryRuleResultColumnAll6071 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleResultColumnAll6081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleResultColumnAll6137 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_82_in_ruleResultColumnAll6149 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleResultColumnAll6169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleResultColumnExpression_in_entryRuleResultColumnExpression6206 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleResultColumnExpression6216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleResultColumnExpression6271 = new BitSet(new long[]{0x4000000000000002L});
-    public static final BitSet FOLLOW_62_in_ruleResultColumnExpression6284 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleResultColumnExpression6301 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteralValue_in_entryRuleLiteralValue6344 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteralValue6354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_ruleLiteralValue6410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleLiteralValue6444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_83_in_ruleLiteralValue6484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_84_in_ruleLiteralValue6532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_ruleLiteralValue6580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_ruleLiteralValue6628 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDDLStatement_in_entryRuleDDLStatement6678 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDDLStatement6688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateTableStatement_in_ruleDDLStatement6735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateViewStatement_in_ruleDDLStatement6762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateTriggerStatement_in_ruleDDLStatement6789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlterTableStatement_in_ruleDDLStatement6816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropTableStatement_in_ruleDDLStatement6843 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropTriggerStatement_in_ruleDDLStatement6870 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropViewStatement_in_ruleDDLStatement6897 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateTableStatement_in_entryRuleCreateTableStatement6932 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCreateTableStatement6942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_87_in_ruleCreateTableStatement6988 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_88_in_ruleCreateTableStatement7000 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTableStatement7017 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleCreateTableStatement7034 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7055 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleCreateTableStatement7068 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7089 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleCreateTableStatement7104 = new BitSet(new long[]{0x0000000000000000L,0x0000720000000000L});
-    public static final BitSet FOLLOW_ruleTableConstraint_in_ruleCreateTableStatement7125 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleCreateTableStatement7139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateViewStatement_in_entryRuleCreateViewStatement7175 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCreateViewStatement7185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_87_in_ruleCreateViewStatement7231 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_ruleCreateViewStatement7243 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateViewStatement7260 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_62_in_ruleCreateViewStatement7277 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleCreateViewStatement7298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCreateTriggerStatement_in_entryRuleCreateTriggerStatement7334 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCreateTriggerStatement7344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_87_in_ruleCreateTriggerStatement7381 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_ruleCreateTriggerStatement7393 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7410 = new BitSet(new long[]{0x0000000000000000L,0x00000001F8000000L});
-    public static final BitSet FOLLOW_91_in_ruleCreateTriggerStatement7435 = new BitSet(new long[]{0x0000000000000000L,0x00000001C0000000L});
-    public static final BitSet FOLLOW_92_in_ruleCreateTriggerStatement7464 = new BitSet(new long[]{0x0000000000000000L,0x00000001C0000000L});
-    public static final BitSet FOLLOW_93_in_ruleCreateTriggerStatement7493 = new BitSet(new long[]{0x0000000000000000L,0x00000001C0000000L});
-    public static final BitSet FOLLOW_94_in_ruleCreateTriggerStatement7529 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_95_in_ruleCreateTriggerStatement7566 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_96_in_ruleCreateTriggerStatement7604 = new BitSet(new long[]{0x0000000000000000L,0x0000000200020000L});
-    public static final BitSet FOLLOW_97_in_ruleCreateTriggerStatement7630 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7647 = new BitSet(new long[]{0x1000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_60_in_ruleCreateTriggerStatement7665 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7682 = new BitSet(new long[]{0x1000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_81_in_ruleCreateTriggerStatement7705 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7722 = new BitSet(new long[]{0x8000000000000000L,0x0000000C00000000L});
-    public static final BitSet FOLLOW_98_in_ruleCreateTriggerStatement7745 = new BitSet(new long[]{0x8000000000000000L,0x0000000800000000L});
-    public static final BitSet FOLLOW_63_in_ruleCreateTriggerStatement7772 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCreateTriggerStatement7793 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
-    public static final BitSet FOLLOW_99_in_ruleCreateTriggerStatement7807 = new BitSet(new long[]{0x0800000000000000L,0x00010001C0000004L});
-    public static final BitSet FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement7829 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_ruleCreateTriggerStatement7841 = new BitSet(new long[]{0x0800000000000000L,0x00010001C0000004L});
-    public static final BitSet FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement7863 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_ruleCreateTriggerStatement7875 = new BitSet(new long[]{0x0800000000000000L,0x00010001C0000004L});
-    public static final BitSet FOLLOW_59_in_ruleCreateTriggerStatement7891 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlterTableStatement_in_entryRuleAlterTableStatement7927 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAlterTableStatement7937 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_100_in_ruleAlterTableStatement7974 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_88_in_ruleAlterTableStatement7986 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAlterTableStatement8003 = new BitSet(new long[]{0x0000000000000000L,0x0000018000000000L});
-    public static final BitSet FOLLOW_ruleAlterTableClause_in_ruleAlterTableStatement8029 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropTableStatement_in_entryRuleDropTableStatement8065 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDropTableStatement8075 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_101_in_ruleDropTableStatement8112 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_88_in_ruleDropTableStatement8124 = new BitSet(new long[]{0x0000000000000010L,0x0000004000000000L});
-    public static final BitSet FOLLOW_102_in_ruleDropTableStatement8142 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDropTableStatement8173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropTriggerStatement_in_entryRuleDropTriggerStatement8214 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDropTriggerStatement8224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_101_in_ruleDropTriggerStatement8261 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_90_in_ruleDropTriggerStatement8273 = new BitSet(new long[]{0x0000000000000010L,0x0000004000000000L});
-    public static final BitSet FOLLOW_102_in_ruleDropTriggerStatement8291 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDropTriggerStatement8322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDropViewStatement_in_entryRuleDropViewStatement8363 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDropViewStatement8373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_101_in_ruleDropViewStatement8410 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
-    public static final BitSet FOLLOW_89_in_ruleDropViewStatement8422 = new BitSet(new long[]{0x0000000000000010L,0x0000004000000000L});
-    public static final BitSet FOLLOW_102_in_ruleDropViewStatement8440 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDropViewStatement8471 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlterTableClause_in_entryRuleAlterTableClause8512 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAlterTableClause8522 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_103_in_ruleAlterTableClause8569 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAlterTableClause8586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_104_in_ruleAlterTableClause8620 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_ruleAlterTableClause8641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleColumnDef_in_entryRuleColumnDef8678 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleColumnDef8688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleColumnDef8739 = new BitSet(new long[]{0x0000000000000000L,0x4F00000000000000L});
-    public static final BitSet FOLLOW_ruleColumnType_in_ruleColumnDef8765 = new BitSet(new long[]{0x0001000000000002L,0x00000A0000000000L});
-    public static final BitSet FOLLOW_ruleColumnConstraint_in_ruleColumnDef8786 = new BitSet(new long[]{0x0001000000000002L,0x00000A0000000000L});
-    public static final BitSet FOLLOW_ruleColumnConstraint_in_entryRuleColumnConstraint8823 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleColumnConstraint8833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_105_in_ruleColumnConstraint8880 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000600L});
-    public static final BitSet FOLLOW_73_in_ruleColumnConstraint8899 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000000L});
-    public static final BitSet FOLLOW_74_in_ruleColumnConstraint8936 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000000L});
-    public static final BitSet FOLLOW_106_in_ruleColumnConstraint8969 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleColumnConstraint9012 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_ruleColumnConstraint9033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_ruleColumnConstraint9063 = new BitSet(new long[]{0x0020000002000060L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleDefaultValue_in_ruleColumnConstraint9084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTableConstraint_in_entryRuleTableConstraint9121 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTableConstraint9131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUniqueTableConstraint_in_ruleTableConstraint9178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimaryConstraint_in_ruleTableConstraint9205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCheckTableConstraint_in_ruleTableConstraint9232 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUniqueTableConstraint_in_entryRuleUniqueTableConstraint9267 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUniqueTableConstraint9277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_108_in_ruleUniqueTableConstraint9315 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUniqueTableConstraint9332 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
-    public static final BitSet FOLLOW_109_in_ruleUniqueTableConstraint9351 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleUniqueTableConstraint9363 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9384 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleUniqueTableConstraint9397 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9418 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleUniqueTableConstraint9432 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_ruleUniqueTableConstraint9453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimaryConstraint_in_entryRulePrimaryConstraint9489 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimaryConstraint9499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_108_in_rulePrimaryConstraint9537 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryConstraint9554 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-    public static final BitSet FOLLOW_105_in_rulePrimaryConstraint9573 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_rulePrimaryConstraint9585 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9606 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_rulePrimaryConstraint9619 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9640 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_rulePrimaryConstraint9654 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_rulePrimaryConstraint9675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCheckTableConstraint_in_entryRuleCheckTableConstraint9711 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCheckTableConstraint9721 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_108_in_ruleCheckTableConstraint9759 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleCheckTableConstraint9776 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_110_in_ruleCheckTableConstraint9795 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleCheckTableConstraint9807 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCheckTableConstraint9828 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleCheckTableConstraint9840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIndexedColumn_in_entryRuleIndexedColumn9876 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIndexedColumn9886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleIndexedColumn9931 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
-    public static final BitSet FOLLOW_73_in_ruleIndexedColumn9950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_74_in_ruleIndexedColumn9987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefaultValue_in_entryRuleDefaultValue10038 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultValue10048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteralValue_in_ruleDefaultValue10104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleDefaultValue10133 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleDefaultValue10154 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleDefaultValue10166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConflictClause_in_entryRuleConflictClause10203 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConflictClause10213 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_81_in_ruleConflictClause10250 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
-    public static final BitSet FOLLOW_111_in_ruleConflictClause10262 = new BitSet(new long[]{0x0000000000000000L,0x8001000000000000L,0x0000000000000007L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleConflictClause10283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDMLStatement_in_entryRuleDMLStatement10319 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDMLStatement10329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleDMLStatement10376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInsertStatement_in_ruleDMLStatement10403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUpdateStatement_in_ruleDMLStatement10430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDeleteStatement_in_ruleDMLStatement10457 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDeleteStatement_in_entryRuleDeleteStatement10492 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDeleteStatement10502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_94_in_ruleDeleteStatement10539 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_69_in_ruleDeleteStatement10551 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDeleteStatement10568 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleDeleteStatement10586 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleDeleteStatement10607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInsertStatement_in_entryRuleInsertStatement10645 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInsertStatement10655 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_95_in_ruleInsertStatement10694 = new BitSet(new long[]{0x0000400000000000L,0x0002000000000000L});
-    public static final BitSet FOLLOW_46_in_ruleInsertStatement10707 = new BitSet(new long[]{0x0000000000000000L,0x8001000000000000L,0x0000000000000007L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleInsertStatement10728 = new BitSet(new long[]{0x0000000000000000L,0x0002000000000000L});
-    public static final BitSet FOLLOW_112_in_ruleInsertStatement10749 = new BitSet(new long[]{0x0000000000000000L,0x0002000000000000L});
-    public static final BitSet FOLLOW_113_in_ruleInsertStatement10762 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement10779 = new BitSet(new long[]{0x0020000000000000L,0x0004080000000004L});
-    public static final BitSet FOLLOW_53_in_ruleInsertStatement10797 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement10814 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleInsertStatement10832 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement10849 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleInsertStatement10868 = new BitSet(new long[]{0x0000000000000000L,0x0004080000000004L});
-    public static final BitSet FOLLOW_114_in_ruleInsertStatement10885 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleInsertStatement10897 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleInsertStatement10918 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleInsertStatement10931 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleInsertStatement10952 = new BitSet(new long[]{0x1040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleInsertStatement10966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleInsertStatement10994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_107_in_ruleInsertStatement11014 = new BitSet(new long[]{0x0000000000000000L,0x0004000000000000L});
-    public static final BitSet FOLLOW_114_in_ruleInsertStatement11026 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUpdateStatement_in_entryRuleUpdateStatement11064 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUpdateStatement11074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_96_in_ruleUpdateStatement11111 = new BitSet(new long[]{0x0000400000000010L});
-    public static final BitSet FOLLOW_46_in_ruleUpdateStatement11124 = new BitSet(new long[]{0x0000000000000000L,0x8001000000000000L,0x0000000000000007L});
-    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleUpdateStatement11145 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUpdateStatement11164 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000000L});
-    public static final BitSet FOLLOW_115_in_ruleUpdateStatement11181 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11202 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_60_in_ruleUpdateStatement11215 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11236 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleUpdateStatement11251 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleUpdateStatement11272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_entryRuleUpdateColumnExpression11310 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleUpdateColumnExpression11320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUpdateColumnExpression11362 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleUpdateColumnExpression11379 = new BitSet(new long[]{0x23B4000002000070L,0x0000000000780000L});
-    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleUpdateColumnExpression11400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber11437 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSignedNumber11448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleSignedNumber11487 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_NUMBER_in_ruleSignedNumber11504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11550 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName11561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName11601 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleQualifiedName11620 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName11635 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_116_in_ruleCompoundOperator11696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_117_in_ruleCompoundOperator11713 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_118_in_ruleCompoundOperator11730 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_119_in_ruleCompoundOperator11747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_120_in_ruleSqliteDataType11792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_121_in_ruleSqliteDataType11809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_122_in_ruleSqliteDataType11826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_123_in_ruleSqliteDataType11843 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_124_in_ruleSqliteDataType11860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_125_in_ruleSqliteDataType11877 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_120_in_ruleColumnType11922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_121_in_ruleColumnType11939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_122_in_ruleColumnType11956 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_123_in_ruleColumnType11973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_126_in_ruleColumnType11990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_127_in_ruleConflictResolution12035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_128_in_ruleConflictResolution12052 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_129_in_ruleConflictResolution12069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_130_in_ruleConflictResolution12086 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_112_in_ruleConflictResolution12103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rulePrimaryExpression3038 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_rulePrimaryExpression3087 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3144 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_rulePrimaryExpression3156 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_rulePrimaryExpression3168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3206 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_rulePrimaryExpression3218 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3240 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteralValue_in_rulePrimaryExpression3278 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3307 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3328 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_rulePrimaryExpression3375 = new BitSet(new long[]{0x0120000000000000L});
+    public static final BitSet FOLLOW_56_in_rulePrimaryExpression3407 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3433 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_rulePrimaryExpression3454 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3466 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_rulePrimaryExpression3495 = new BitSet(new long[]{0xA3AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3516 = new BitSet(new long[]{0xA3AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleCase_in_rulePrimaryExpression3538 = new BitSet(new long[]{0xAFAC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_58_in_rulePrimaryExpression3552 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3573 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_59_in_rulePrimaryExpression3587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryExpression3621 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3638 = new BitSet(new long[]{0x23AC000002200070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_21_in_rulePrimaryExpression3657 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3698 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_rulePrimaryExpression3711 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3732 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_rulePrimaryExpression3777 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_rulePrimaryExpression3789 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_rulePrimaryExpression3810 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_62_in_rulePrimaryExpression3822 = new BitSet(new long[]{0x0000000000000000L,0x1F80000000000000L});
+    public static final BitSet FOLLOW_ruleSqliteDataType_in_rulePrimaryExpression3843 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_rulePrimaryExpression3855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCase_in_entryRuleCase3892 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCase3902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleCase3939 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCase3960 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleCase3972 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCase3993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_entryRuleSelectStatement4029 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSelectStatement4039 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectCore_in_ruleSelectStatement4085 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleSelectStatement4098 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleOrderingTermList_in_ruleSelectStatement4119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrderingTermList_in_entryRuleOrderingTermList4157 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOrderingTermList4167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrderingTerm_in_ruleOrderingTermList4213 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleOrderingTermList4226 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleOrderingTerm_in_ruleOrderingTermList4247 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectCore_in_entryRuleSelectCore4285 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSelectCore4295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectExpression_in_ruleSelectCore4342 = new BitSet(new long[]{0x0000000000000002L,0x0078000000000000L});
+    public static final BitSet FOLLOW_ruleCompoundOperator_in_ruleSelectCore4372 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_ruleSelectExpression_in_ruleSelectCore4393 = new BitSet(new long[]{0x0000000000000002L,0x0078000000000000L});
+    public static final BitSet FOLLOW_ruleSelectExpression_in_entryRuleSelectExpression4431 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSelectExpression4441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_66_in_ruleSelectExpression4487 = new BitSet(new long[]{0x23AC000002200070L,0x00000000003C0018L});
+    public static final BitSet FOLLOW_67_in_ruleSelectExpression4506 = new BitSet(new long[]{0x23AC000002200070L,0x00000000003C0018L});
+    public static final BitSet FOLLOW_68_in_ruleSelectExpression4543 = new BitSet(new long[]{0x23AC000002200070L,0x00000000003C0018L});
+    public static final BitSet FOLLOW_21_in_ruleSelectExpression4577 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001E0L});
+    public static final BitSet FOLLOW_ruleSelectList_in_ruleSelectExpression4617 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001E0L});
+    public static final BitSet FOLLOW_69_in_ruleSelectExpression4631 = new BitSet(new long[]{0x0020000000000010L});
+    public static final BitSet FOLLOW_ruleJoinSource_in_ruleSelectExpression4652 = new BitSet(new long[]{0x0000000000000002L,0x00000000000001C0L});
+    public static final BitSet FOLLOW_70_in_ruleSelectExpression4667 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleWhereExpressions_in_ruleSelectExpression4688 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000180L});
+    public static final BitSet FOLLOW_71_in_ruleSelectExpression4703 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleGroupByExpressions_in_ruleSelectExpression4724 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleSelectExpression4739 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleHavingExpressions_in_ruleSelectExpression4760 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectList_in_entryRuleSelectList4798 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSelectList4808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResultColumn_in_ruleSelectList4854 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleSelectList4867 = new BitSet(new long[]{0x23AC000002200070L,0x00000000003C0018L});
+    public static final BitSet FOLLOW_ruleResultColumn_in_ruleSelectList4888 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_ruleWhereExpressions_in_entryRuleWhereExpressions4926 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWhereExpressions4936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleWhereExpressions4981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGroupByExpressions_in_entryRuleGroupByExpressions5016 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGroupByExpressions5026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleGroupByExpressions5072 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleGroupByExpressions5085 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleGroupByExpressions5106 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_ruleHavingExpressions_in_entryRuleHavingExpressions5144 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleHavingExpressions5154 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleHavingExpressions5199 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrderingTerm_in_entryRuleOrderingTerm5234 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOrderingTerm5244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleOrderingTerm5290 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_73_in_ruleOrderingTerm5309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_ruleOrderingTerm5346 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJoinSource_in_entryRuleJoinSource5397 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJoinSource5407 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSource_in_ruleJoinSource5453 = new BitSet(new long[]{0x0000000000000002L,0x000000000001D800L});
+    public static final BitSet FOLLOW_ruleJoinStatement_in_ruleJoinSource5474 = new BitSet(new long[]{0x0000000000000002L,0x000000000001D800L});
+    public static final BitSet FOLLOW_ruleSingleSource_in_entryRuleSingleSource5511 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSource5521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceTable_in_ruleSingleSource5568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceSelectStatement_in_ruleSingleSource5595 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceJoin_in_ruleSingleSource5622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceTable_in_entryRuleSingleSourceTable5657 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceTable5667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceTable5721 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleSingleSourceTable5734 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceTable5751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceSelectStatement_in_entryRuleSingleSourceSelectStatement5794 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceSelectStatement5804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleSingleSourceSelectStatement5850 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleSingleSourceSelectStatement5871 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleSingleSourceSelectStatement5883 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleSingleSourceSelectStatement5896 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSingleSourceSelectStatement5913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSingleSourceJoin_in_entryRuleSingleSourceJoin5956 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSingleSourceJoin5966 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleSingleSourceJoin6003 = new BitSet(new long[]{0x0020000000000010L});
+    public static final BitSet FOLLOW_ruleJoinSource_in_ruleSingleSourceJoin6024 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleSingleSourceJoin6036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJoinStatement_in_entryRuleJoinStatement6072 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJoinStatement6082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_75_in_ruleJoinStatement6134 = new BitSet(new long[]{0x0000000000000000L,0x000000000001D000L});
+    public static final BitSet FOLLOW_76_in_ruleJoinStatement6168 = new BitSet(new long[]{0x0000000000000000L,0x0000000000012000L});
+    public static final BitSet FOLLOW_77_in_ruleJoinStatement6199 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_78_in_ruleJoinStatement6238 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_79_in_ruleJoinStatement6275 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_80_in_ruleJoinStatement6302 = new BitSet(new long[]{0x0020000000000010L});
+    public static final BitSet FOLLOW_ruleSingleSource_in_ruleJoinStatement6323 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_81_in_ruleJoinStatement6335 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleJoinStatement6356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleResultColumn_in_entryRuleResultColumn6392 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleResultColumn6402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleResultColumn6457 = new BitSet(new long[]{0x4000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleResultColumn6470 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleResultColumn6487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteralValue_in_entryRuleLiteralValue6530 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteralValue6540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_ruleLiteralValue6596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleLiteralValue6630 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_82_in_ruleLiteralValue6670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_83_in_ruleLiteralValue6718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_84_in_ruleLiteralValue6766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_85_in_ruleLiteralValue6814 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDDLStatement_in_entryRuleDDLStatement6864 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDDLStatement6874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateTableStatement_in_ruleDDLStatement6921 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateViewStatement_in_ruleDDLStatement6948 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateTriggerStatement_in_ruleDDLStatement6975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlterTableStatement_in_ruleDDLStatement7002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropTableStatement_in_ruleDDLStatement7029 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropTriggerStatement_in_ruleDDLStatement7056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropViewStatement_in_ruleDDLStatement7083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateTableStatement_in_entryRuleCreateTableStatement7118 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCreateTableStatement7128 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleCreateTableStatement7174 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_ruleCreateTableStatement7186 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTableStatement7203 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleCreateTableStatement7220 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7241 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleCreateTableStatement7254 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_ruleCreateTableStatement7275 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleCreateTableStatement7290 = new BitSet(new long[]{0x0000000000000000L,0x0000390000000000L});
+    public static final BitSet FOLLOW_ruleTableConstraint_in_ruleCreateTableStatement7311 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleCreateTableStatement7325 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateViewStatement_in_entryRuleCreateViewStatement7361 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCreateViewStatement7371 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleCreateViewStatement7417 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_88_in_ruleCreateViewStatement7429 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateViewStatement7446 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_62_in_ruleCreateViewStatement7463 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleCreateViewStatement7484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCreateTriggerStatement_in_entryRuleCreateTriggerStatement7520 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCreateTriggerStatement7530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleCreateTriggerStatement7567 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+    public static final BitSet FOLLOW_89_in_ruleCreateTriggerStatement7579 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7596 = new BitSet(new long[]{0x0000000000000000L,0x00000000FC000000L});
+    public static final BitSet FOLLOW_90_in_ruleCreateTriggerStatement7621 = new BitSet(new long[]{0x0000000000000000L,0x00000000E0000000L});
+    public static final BitSet FOLLOW_91_in_ruleCreateTriggerStatement7650 = new BitSet(new long[]{0x0000000000000000L,0x00000000E0000000L});
+    public static final BitSet FOLLOW_92_in_ruleCreateTriggerStatement7679 = new BitSet(new long[]{0x0000000000000000L,0x00000000E0000000L});
+    public static final BitSet FOLLOW_93_in_ruleCreateTriggerStatement7715 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_94_in_ruleCreateTriggerStatement7752 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_95_in_ruleCreateTriggerStatement7790 = new BitSet(new long[]{0x0000000000000000L,0x0000000100020000L});
+    public static final BitSet FOLLOW_96_in_ruleCreateTriggerStatement7816 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7833 = new BitSet(new long[]{0x1000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_60_in_ruleCreateTriggerStatement7851 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7868 = new BitSet(new long[]{0x1000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_81_in_ruleCreateTriggerStatement7891 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCreateTriggerStatement7911 = new BitSet(new long[]{0x8000000000000000L,0x0000000600000000L});
+    public static final BitSet FOLLOW_97_in_ruleCreateTriggerStatement7929 = new BitSet(new long[]{0x8000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_63_in_ruleCreateTriggerStatement7956 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCreateTriggerStatement7977 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_98_in_ruleCreateTriggerStatement7991 = new BitSet(new long[]{0x0800000000000000L,0x00008000E0000004L});
+    public static final BitSet FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement8013 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_ruleCreateTriggerStatement8025 = new BitSet(new long[]{0x0800000000000000L,0x00008000E0000004L});
+    public static final BitSet FOLLOW_ruleDMLStatement_in_ruleCreateTriggerStatement8047 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_ruleCreateTriggerStatement8059 = new BitSet(new long[]{0x0800000000000000L,0x00008000E0000004L});
+    public static final BitSet FOLLOW_59_in_ruleCreateTriggerStatement8075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlterTableStatement_in_entryRuleAlterTableStatement8111 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAlterTableStatement8121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_99_in_ruleAlterTableStatement8158 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_ruleAlterTableStatement8170 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAlterTableStatement8190 = new BitSet(new long[]{0x0000000000000000L,0x000000C000000000L});
+    public static final BitSet FOLLOW_ruleAlterTableClause_in_ruleAlterTableStatement8211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropTableStatement_in_entryRuleDropTableStatement8247 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDropTableStatement8257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_ruleDropTableStatement8294 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_87_in_ruleDropTableStatement8306 = new BitSet(new long[]{0x0000000000000010L,0x0000002000000000L});
+    public static final BitSet FOLLOW_101_in_ruleDropTableStatement8324 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDropTableStatement8358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropTriggerStatement_in_entryRuleDropTriggerStatement8394 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDropTriggerStatement8404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_ruleDropTriggerStatement8441 = new BitSet(new long[]{0x0000000000000000L,0x0000000002000000L});
+    public static final BitSet FOLLOW_89_in_ruleDropTriggerStatement8453 = new BitSet(new long[]{0x0000000000000010L,0x0000002000000000L});
+    public static final BitSet FOLLOW_101_in_ruleDropTriggerStatement8471 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDropTriggerStatement8505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDropViewStatement_in_entryRuleDropViewStatement8541 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDropViewStatement8551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_ruleDropViewStatement8588 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_88_in_ruleDropViewStatement8600 = new BitSet(new long[]{0x0000000000000010L,0x0000002000000000L});
+    public static final BitSet FOLLOW_101_in_ruleDropViewStatement8618 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDropViewStatement8652 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlterTableClause_in_entryRuleAlterTableClause8688 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAlterTableClause8698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_102_in_ruleAlterTableClause8745 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAlterTableClause8762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_103_in_ruleAlterTableClause8796 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_ruleAlterTableClause8817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleColumnDef_in_entryRuleColumnDef8854 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleColumnDef8864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleColumnDef8915 = new BitSet(new long[]{0x0000000000000000L,0x2780000000000000L});
+    public static final BitSet FOLLOW_ruleColumnType_in_ruleColumnDef8941 = new BitSet(new long[]{0x0001000000000002L,0x0000050000000000L});
+    public static final BitSet FOLLOW_ruleColumnConstraint_in_ruleColumnDef8962 = new BitSet(new long[]{0x0001000000000002L,0x0000050000000000L});
+    public static final BitSet FOLLOW_ruleColumnConstraint_in_entryRuleColumnConstraint8999 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleColumnConstraint9009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_104_in_ruleColumnConstraint9056 = new BitSet(new long[]{0x0000000000000002L,0x0000020000000600L});
+    public static final BitSet FOLLOW_73_in_ruleColumnConstraint9075 = new BitSet(new long[]{0x0000000000000002L,0x0000020000000000L});
+    public static final BitSet FOLLOW_74_in_ruleColumnConstraint9112 = new BitSet(new long[]{0x0000000000000002L,0x0000020000000000L});
+    public static final BitSet FOLLOW_105_in_ruleColumnConstraint9145 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleColumnConstraint9188 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_ruleColumnConstraint9209 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleColumnConstraint9239 = new BitSet(new long[]{0x0020000002000060L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleDefaultValue_in_ruleColumnConstraint9260 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTableConstraint_in_entryRuleTableConstraint9297 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTableConstraint9307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUniqueTableConstraint_in_ruleTableConstraint9354 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimaryConstraint_in_ruleTableConstraint9381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCheckTableConstraint_in_ruleTableConstraint9408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUniqueTableConstraint_in_entryRuleUniqueTableConstraint9443 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUniqueTableConstraint9453 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_ruleUniqueTableConstraint9491 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUniqueTableConstraint9508 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_108_in_ruleUniqueTableConstraint9527 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleUniqueTableConstraint9539 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9560 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleUniqueTableConstraint9573 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_ruleUniqueTableConstraint9594 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleUniqueTableConstraint9608 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_ruleUniqueTableConstraint9629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimaryConstraint_in_entryRulePrimaryConstraint9665 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimaryConstraint9675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_rulePrimaryConstraint9713 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_rulePrimaryConstraint9730 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+    public static final BitSet FOLLOW_104_in_rulePrimaryConstraint9749 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_rulePrimaryConstraint9761 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9782 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_rulePrimaryConstraint9795 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_rulePrimaryConstraint9816 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_rulePrimaryConstraint9830 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_rulePrimaryConstraint9851 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCheckTableConstraint_in_entryRuleCheckTableConstraint9887 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCheckTableConstraint9897 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_107_in_ruleCheckTableConstraint9935 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleCheckTableConstraint9952 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
+    public static final BitSet FOLLOW_109_in_ruleCheckTableConstraint9971 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleCheckTableConstraint9983 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleCheckTableConstraint10004 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleCheckTableConstraint10016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIndexedColumn_in_entryRuleIndexedColumn10052 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIndexedColumn10062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleIndexedColumn10107 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_73_in_ruleIndexedColumn10126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_74_in_ruleIndexedColumn10163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefaultValue_in_entryRuleDefaultValue10214 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDefaultValue10224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteralValue_in_ruleDefaultValue10280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleDefaultValue10309 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleDefaultValue10330 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleDefaultValue10342 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConflictClause_in_entryRuleConflictClause10379 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConflictClause10389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_81_in_ruleConflictClause10426 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_110_in_ruleConflictClause10438 = new BitSet(new long[]{0x0000000000000000L,0xC000800000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleConflictClause10459 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDMLStatement_in_entryRuleDMLStatement10495 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDMLStatement10505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleDMLStatement10552 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInsertStatement_in_ruleDMLStatement10579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUpdateStatement_in_ruleDMLStatement10606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDeleteStatement_in_ruleDMLStatement10633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDeleteStatement_in_entryRuleDeleteStatement10668 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDeleteStatement10678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_93_in_ruleDeleteStatement10715 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_69_in_ruleDeleteStatement10727 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDeleteStatement10747 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleDeleteStatement10760 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleDeleteStatement10781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInsertStatement_in_entryRuleInsertStatement10819 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInsertStatement10829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_ruleInsertStatement10868 = new BitSet(new long[]{0x0000400000000000L,0x0001000000000000L});
+    public static final BitSet FOLLOW_46_in_ruleInsertStatement10881 = new BitSet(new long[]{0x0000000000000000L,0xC000800000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleInsertStatement10902 = new BitSet(new long[]{0x0000000000000000L,0x0001000000000000L});
+    public static final BitSet FOLLOW_111_in_ruleInsertStatement10923 = new BitSet(new long[]{0x0000000000000000L,0x0001000000000000L});
+    public static final BitSet FOLLOW_112_in_ruleInsertStatement10936 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement10956 = new BitSet(new long[]{0x0020000000000000L,0x0002040000000004L});
+    public static final BitSet FOLLOW_53_in_ruleInsertStatement10969 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement10986 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleInsertStatement11004 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInsertStatement11021 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleInsertStatement11040 = new BitSet(new long[]{0x0000000000000000L,0x0002040000000004L});
+    public static final BitSet FOLLOW_113_in_ruleInsertStatement11057 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_ruleInsertStatement11069 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleInsertStatement11090 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleInsertStatement11103 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleInsertStatement11124 = new BitSet(new long[]{0x1040000000000000L});
+    public static final BitSet FOLLOW_54_in_ruleInsertStatement11138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSelectStatement_in_ruleInsertStatement11166 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleInsertStatement11186 = new BitSet(new long[]{0x0000000000000000L,0x0002000000000000L});
+    public static final BitSet FOLLOW_113_in_ruleInsertStatement11198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUpdateStatement_in_entryRuleUpdateStatement11236 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUpdateStatement11246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_95_in_ruleUpdateStatement11283 = new BitSet(new long[]{0x0000400000000010L});
+    public static final BitSet FOLLOW_46_in_ruleUpdateStatement11296 = new BitSet(new long[]{0x0000000000000000L,0xC000800000000000L,0x0000000000000003L});
+    public static final BitSet FOLLOW_ruleConflictResolution_in_ruleUpdateStatement11317 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUpdateStatement11339 = new BitSet(new long[]{0x0000000000000000L,0x0004000000000000L});
+    public static final BitSet FOLLOW_114_in_ruleUpdateStatement11351 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11372 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_60_in_ruleUpdateStatement11385 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_ruleUpdateStatement11406 = new BitSet(new long[]{0x1000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleUpdateStatement11421 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleUpdateStatement11442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUpdateColumnExpression_in_entryRuleUpdateColumnExpression11480 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleUpdateColumnExpression11490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUpdateColumnExpression11532 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleUpdateColumnExpression11549 = new BitSet(new long[]{0x23AC000002000070L,0x00000000003C0000L});
+    public static final BitSet FOLLOW_ruleSqlExpression_in_ruleUpdateColumnExpression11570 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_entryRuleSignedNumber11607 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSignedNumber11618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleSignedNumber11657 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_NUMBER_in_ruleSignedNumber11674 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11720 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName11731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName11771 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleQualifiedName11790 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName11805 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_115_in_ruleCompoundOperator11866 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_116_in_ruleCompoundOperator11883 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_117_in_ruleCompoundOperator11900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_118_in_ruleCompoundOperator11917 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_119_in_ruleSqliteDataType11962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_120_in_ruleSqliteDataType11979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_ruleSqliteDataType11996 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_122_in_ruleSqliteDataType12013 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_123_in_ruleSqliteDataType12030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_124_in_ruleSqliteDataType12047 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_119_in_ruleColumnType12092 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_120_in_ruleColumnType12109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_ruleColumnType12126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_122_in_ruleColumnType12143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_125_in_ruleColumnType12160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_126_in_ruleConflictResolution12205 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_127_in_ruleConflictResolution12222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_128_in_ruleConflictResolution12239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_129_in_ruleConflictResolution12256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_111_in_ruleConflictResolution12273 = new BitSet(new long[]{0x0000000000000002L});
 
 }

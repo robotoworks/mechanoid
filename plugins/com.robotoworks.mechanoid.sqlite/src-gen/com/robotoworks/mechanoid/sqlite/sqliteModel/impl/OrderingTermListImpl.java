@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTermList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -22,35 +22,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Select List</b></em>'.
+ * An implementation of the model object '<em><b>Ordering Term List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectListImpl#getResultColumns <em>Result Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.OrderingTermListImpl#getOrderingTerms <em>Ordering Terms</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SelectListImpl extends MinimalEObjectImpl.Container implements SelectList
+public class OrderingTermListImpl extends MinimalEObjectImpl.Container implements OrderingTermList
 {
   /**
-   * The cached value of the '{@link #getResultColumns() <em>Result Columns</em>}' containment reference list.
+   * The cached value of the '{@link #getOrderingTerms() <em>Ordering Terms</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getResultColumns()
+   * @see #getOrderingTerms()
    * @generated
    * @ordered
    */
-  protected EList<ColumnSource> resultColumns;
+  protected EList<OrderingTerm> orderingTerms;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SelectListImpl()
+  protected OrderingTermListImpl()
   {
     super();
   }
@@ -63,7 +63,7 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.SELECT_LIST;
+    return SqliteModelPackage.Literals.ORDERING_TERM_LIST;
   }
 
   /**
@@ -71,13 +71,13 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ColumnSource> getResultColumns()
+  public EList<OrderingTerm> getOrderingTerms()
   {
-    if (resultColumns == null)
+    if (orderingTerms == null)
     {
-      resultColumns = new EObjectContainmentEList<ColumnSource>(ColumnSource.class, this, SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS);
+      orderingTerms = new EObjectContainmentEList<OrderingTerm>(OrderingTerm.class, this, SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS);
     }
-    return resultColumns;
+    return orderingTerms;
   }
 
   /**
@@ -90,8 +90,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS:
+        return ((InternalEList<?>)getOrderingTerms()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +106,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return getResultColumns();
+      case SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS:
+        return getOrderingTerms();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +123,9 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        getResultColumns().clear();
-        getResultColumns().addAll((Collection<? extends ColumnSource>)newValue);
+      case SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS:
+        getOrderingTerms().clear();
+        getOrderingTerms().addAll((Collection<? extends OrderingTerm>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +141,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        getResultColumns().clear();
+      case SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS:
+        getOrderingTerms().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,10 +158,10 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return resultColumns != null && !resultColumns.isEmpty();
+      case SqliteModelPackage.ORDERING_TERM_LIST__ORDERING_TERMS:
+        return orderingTerms != null && !orderingTerms.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //SelectListImpl
+} //OrderingTermListImpl

@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +20,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * @model
  * @generated
  */
-public interface ColumnSource extends ResultColumn
+public interface ColumnSource extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

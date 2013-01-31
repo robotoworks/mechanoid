@@ -33,13 +33,29 @@
   <eClassifiers xsi:type="ecore:EClass" name="SelectStatement" eSuperTypes="#//DMLStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="core" eType="#//SelectCoreExpression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderby" eType="#//OrderingTermList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderingTermList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderingTerms" upperBound="-1"
         eType="#//OrderingTerm" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectCoreExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="SelectList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultColumns" upperBound="-1"
-        eType="#//ResultColumn" containment="true"/>
+        eType="#//ColumnSource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhereExpressions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupByExpressions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HavingExpressions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CompoundOperator">
     <eLiterals name="unionall" literal="union all"/>
@@ -78,11 +94,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultColumn"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultColumnAll" eSuperTypes="#//ResultColumn">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//SelectSource"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ColumnSource" eSuperTypes="#//ResultColumn">
+  <eClassifiers xsi:type="ecore:EClass" name="ColumnSource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralValue"/>
@@ -94,25 +106,26 @@
     <eLiterals name="none" value="4" literal="none"/>
     <eLiterals name="numeric" value="5" literal="numeric"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DDLStatement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DDLStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="CreateTableStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="columnDefs" upperBound="-1"
         eType="#//ColumnSource" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
         eType="#//TableConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateViewStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateTriggerStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateColumnNames" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="forEachRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whenExpression" eType="#//Expression"
         containment="true"/>
@@ -120,17 +133,21 @@
         eType="#//DMLStatement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//AlterTableClause"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropTriggerStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//CreateTriggerStatement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropViewStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="view" eType="#//CreateViewStatement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AlterTableClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnConstraint"/>
@@ -178,13 +195,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DMLStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DeleteStatement" eSuperTypes="#//DMLStatement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InsertStatement" eSuperTypes="#//DMLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflictResolution" eType="#//ConflictResolution"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnNames" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
@@ -194,7 +211,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateStatement" eSuperTypes="#//DMLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflictResolution" eType="#//ConflictResolution"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="updateColumnExpressions"
         upperBound="-1" eType="#//UpdateColumnExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//Expression"
@@ -273,11 +290,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IsNull" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="NotNull" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NewColumnSourceRef" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="NewColumn" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//ColumnSource"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OldColumnSourceRef" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="OldColumn" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//ColumnSource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AllColumns" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SelectSource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnSourceRef" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SelectSource"/>
@@ -310,8 +330,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
         eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arugments" upperBound="-1"
-        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CastExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
@@ -328,15 +346,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="SelectExpression" eSuperTypes="#//SelectCoreExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distinct" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allColumns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectList" eType="#//SelectList"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//JoinSource"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="where" eType="#//WhereExpressions"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groupByExpressions" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="havingExpression" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupBy" eType="#//GroupByExpressions"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="having" eType="#//HavingExpressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceTable" eSuperTypes="#//SelectSource">
@@ -346,7 +365,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultColumnExpression" eSuperTypes="#//ColumnSource">
+  <eClassifiers xsi:type="ecore:EClass" name="ResultColumn" eSuperTypes="#//ColumnSource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

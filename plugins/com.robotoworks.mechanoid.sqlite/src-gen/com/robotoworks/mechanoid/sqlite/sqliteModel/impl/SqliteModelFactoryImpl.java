@@ -73,16 +73,18 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
       case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
+      case SqliteModelPackage.ORDERING_TERM_LIST: return createOrderingTermList();
       case SqliteModelPackage.SELECT_CORE_EXPRESSION: return createSelectCoreExpression();
       case SqliteModelPackage.SELECT_LIST: return createSelectList();
+      case SqliteModelPackage.WHERE_EXPRESSIONS: return createWhereExpressions();
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS: return createGroupByExpressions();
+      case SqliteModelPackage.HAVING_EXPRESSIONS: return createHavingExpressions();
       case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
       case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
       case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
       case SqliteModelPackage.SELECT_SOURCE: return createSelectSource();
       case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
       case SqliteModelPackage.JOIN_STATEMENT: return createJoinStatement();
-      case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
-      case SqliteModelPackage.RESULT_COLUMN_ALL: return createResultColumnAll();
       case SqliteModelPackage.COLUMN_SOURCE: return createColumnSource();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
@@ -119,8 +121,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NULL_CHECK_EXPRESSION: return createNullCheckExpression();
       case SqliteModelPackage.IS_NULL: return createIsNull();
       case SqliteModelPackage.NOT_NULL: return createNotNull();
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF: return createNewColumnSourceRef();
-      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF: return createOldColumnSourceRef();
+      case SqliteModelPackage.NEW_COLUMN: return createNewColumn();
+      case SqliteModelPackage.OLD_COLUMN: return createOldColumn();
+      case SqliteModelPackage.ALL_COLUMNS: return createAllColumns();
       case SqliteModelPackage.COLUMN_SOURCE_REF: return createColumnSourceRef();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
@@ -132,7 +135,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.SELECT_EXPRESSION: return createSelectExpression();
       case SqliteModelPackage.SINGLE_SOURCE_TABLE: return createSingleSourceTable();
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION: return createResultColumnExpression();
+      case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       case SqliteModelPackage.STRING_LITERAL: return createStringLiteral();
       case SqliteModelPackage.NULL_LITERAL: return createNullLiteral();
@@ -291,6 +294,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public OrderingTermList createOrderingTermList()
+  {
+    OrderingTermListImpl orderingTermList = new OrderingTermListImpl();
+    return orderingTermList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SelectCoreExpression createSelectCoreExpression()
   {
     SelectCoreExpressionImpl selectCoreExpression = new SelectCoreExpressionImpl();
@@ -306,6 +320,39 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     SelectListImpl selectList = new SelectListImpl();
     return selectList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WhereExpressions createWhereExpressions()
+  {
+    WhereExpressionsImpl whereExpressions = new WhereExpressionsImpl();
+    return whereExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroupByExpressions createGroupByExpressions()
+  {
+    GroupByExpressionsImpl groupByExpressions = new GroupByExpressionsImpl();
+    return groupByExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HavingExpressions createHavingExpressions()
+  {
+    HavingExpressionsImpl havingExpressions = new HavingExpressionsImpl();
+    return havingExpressions;
   }
 
   /**
@@ -372,28 +419,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     JoinStatementImpl joinStatement = new JoinStatementImpl();
     return joinStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumn createResultColumn()
-  {
-    ResultColumnImpl resultColumn = new ResultColumnImpl();
-    return resultColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumnAll createResultColumnAll()
-  {
-    ResultColumnAllImpl resultColumnAll = new ResultColumnAllImpl();
-    return resultColumnAll;
   }
 
   /**
@@ -797,10 +822,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public NewColumnSourceRef createNewColumnSourceRef()
+  public NewColumn createNewColumn()
   {
-    NewColumnSourceRefImpl newColumnSourceRef = new NewColumnSourceRefImpl();
-    return newColumnSourceRef;
+    NewColumnImpl newColumn = new NewColumnImpl();
+    return newColumn;
   }
 
   /**
@@ -808,10 +833,21 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public OldColumnSourceRef createOldColumnSourceRef()
+  public OldColumn createOldColumn()
   {
-    OldColumnSourceRefImpl oldColumnSourceRef = new OldColumnSourceRefImpl();
-    return oldColumnSourceRef;
+    OldColumnImpl oldColumn = new OldColumnImpl();
+    return oldColumn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AllColumns createAllColumns()
+  {
+    AllColumnsImpl allColumns = new AllColumnsImpl();
+    return allColumns;
   }
 
   /**
@@ -940,10 +976,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ResultColumnExpression createResultColumnExpression()
+  public ResultColumn createResultColumn()
   {
-    ResultColumnExpressionImpl resultColumnExpression = new ResultColumnExpressionImpl();
-    return resultColumnExpression;
+    ResultColumnImpl resultColumn = new ResultColumnImpl();
+    return resultColumn;
   }
 
   /**

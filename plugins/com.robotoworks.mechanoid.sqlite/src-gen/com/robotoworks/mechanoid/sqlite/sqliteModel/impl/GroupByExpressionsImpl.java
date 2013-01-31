@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.GroupByExpressions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -22,35 +22,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Select List</b></em>'.
+ * An implementation of the model object '<em><b>Group By Expressions</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectListImpl#getResultColumns <em>Result Columns</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.GroupByExpressionsImpl#getGroupByExpressions <em>Group By Expressions</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SelectListImpl extends MinimalEObjectImpl.Container implements SelectList
+public class GroupByExpressionsImpl extends MinimalEObjectImpl.Container implements GroupByExpressions
 {
   /**
-   * The cached value of the '{@link #getResultColumns() <em>Result Columns</em>}' containment reference list.
+   * The cached value of the '{@link #getGroupByExpressions() <em>Group By Expressions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getResultColumns()
+   * @see #getGroupByExpressions()
    * @generated
    * @ordered
    */
-  protected EList<ColumnSource> resultColumns;
+  protected EList<Expression> groupByExpressions;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SelectListImpl()
+  protected GroupByExpressionsImpl()
   {
     super();
   }
@@ -63,7 +63,7 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.SELECT_LIST;
+    return SqliteModelPackage.Literals.GROUP_BY_EXPRESSIONS;
   }
 
   /**
@@ -71,13 +71,13 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ColumnSource> getResultColumns()
+  public EList<Expression> getGroupByExpressions()
   {
-    if (resultColumns == null)
+    if (groupByExpressions == null)
     {
-      resultColumns = new EObjectContainmentEList<ColumnSource>(ColumnSource.class, this, SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS);
+      groupByExpressions = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS);
     }
-    return resultColumns;
+    return groupByExpressions;
   }
 
   /**
@@ -90,8 +90,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return ((InternalEList<?>)getResultColumns()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS:
+        return ((InternalEList<?>)getGroupByExpressions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +106,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return getResultColumns();
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS:
+        return getGroupByExpressions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +123,9 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        getResultColumns().clear();
-        getResultColumns().addAll((Collection<? extends ColumnSource>)newValue);
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS:
+        getGroupByExpressions().clear();
+        getGroupByExpressions().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +141,8 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        getResultColumns().clear();
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS:
+        getGroupByExpressions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,10 +158,10 @@ public class SelectListImpl extends MinimalEObjectImpl.Container implements Sele
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SELECT_LIST__RESULT_COLUMNS:
-        return resultColumns != null && !resultColumns.isEmpty();
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS__GROUP_BY_EXPRESSIONS:
+        return groupByExpressions != null && !groupByExpressions.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //SelectListImpl
+} //GroupByExpressionsImpl

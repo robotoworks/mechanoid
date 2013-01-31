@@ -95,6 +95,15 @@ public interface SqliteModelFactory extends EFactory
   SelectStatement createSelectStatement();
 
   /**
+   * Returns a new object of class '<em>Ordering Term List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ordering Term List</em>'.
+   * @generated
+   */
+  OrderingTermList createOrderingTermList();
+
+  /**
    * Returns a new object of class '<em>Select Core Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +120,33 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   SelectList createSelectList();
+
+  /**
+   * Returns a new object of class '<em>Where Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Where Expressions</em>'.
+   * @generated
+   */
+  WhereExpressions createWhereExpressions();
+
+  /**
+   * Returns a new object of class '<em>Group By Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group By Expressions</em>'.
+   * @generated
+   */
+  GroupByExpressions createGroupByExpressions();
+
+  /**
+   * Returns a new object of class '<em>Having Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Having Expressions</em>'.
+   * @generated
+   */
+  HavingExpressions createHavingExpressions();
 
   /**
    * Returns a new object of class '<em>Ordering Term</em>'.
@@ -165,24 +201,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   JoinStatement createJoinStatement();
-
-  /**
-   * Returns a new object of class '<em>Result Column</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column</em>'.
-   * @generated
-   */
-  ResultColumn createResultColumn();
-
-  /**
-   * Returns a new object of class '<em>Result Column All</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column All</em>'.
-   * @generated
-   */
-  ResultColumnAll createResultColumnAll();
 
   /**
    * Returns a new object of class '<em>Column Source</em>'.
@@ -509,22 +527,31 @@ public interface SqliteModelFactory extends EFactory
   NotNull createNotNull();
 
   /**
-   * Returns a new object of class '<em>New Column Source Ref</em>'.
+   * Returns a new object of class '<em>New Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>New Column Source Ref</em>'.
+   * @return a new object of class '<em>New Column</em>'.
    * @generated
    */
-  NewColumnSourceRef createNewColumnSourceRef();
+  NewColumn createNewColumn();
 
   /**
-   * Returns a new object of class '<em>Old Column Source Ref</em>'.
+   * Returns a new object of class '<em>Old Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Old Column Source Ref</em>'.
+   * @return a new object of class '<em>Old Column</em>'.
    * @generated
    */
-  OldColumnSourceRef createOldColumnSourceRef();
+  OldColumn createOldColumn();
+
+  /**
+   * Returns a new object of class '<em>All Columns</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>All Columns</em>'.
+   * @generated
+   */
+  AllColumns createAllColumns();
 
   /**
    * Returns a new object of class '<em>Column Source Ref</em>'.
@@ -626,13 +653,13 @@ public interface SqliteModelFactory extends EFactory
   SingleSourceSelectStatement createSingleSourceSelectStatement();
 
   /**
-   * Returns a new object of class '<em>Result Column Expression</em>'.
+   * Returns a new object of class '<em>Result Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column Expression</em>'.
+   * @return a new object of class '<em>Result Column</em>'.
    * @generated
    */
-  ResultColumnExpression createResultColumnExpression();
+  ResultColumn createResultColumn();
 
   /**
    * Returns a new object of class '<em>Numeric Literal</em>'.

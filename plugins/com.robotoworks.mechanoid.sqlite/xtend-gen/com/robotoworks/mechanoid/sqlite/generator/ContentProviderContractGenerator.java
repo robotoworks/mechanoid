@@ -16,10 +16,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
-import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -205,8 +201,8 @@ public class ContentProviderContractGenerator {
         _builder.append("Columns {");
         _builder.newLineIfNotEmpty();
         {
-          EList<ResultColumn> _viewResultColumns = Extensions.getViewResultColumns(vw);
-          for(final ResultColumn col_1 : _viewResultColumns) {
+          EList<ColumnSource> _viewResultColumns = Extensions.getViewResultColumns(vw);
+          for(final ColumnSource col_1 : _viewResultColumns) {
             _builder.append("\t");
             _builder.append("\t");
             CharSequence _generateInterfaceMemberForResultColumn = this.generateInterfaceMemberForResultColumn(col_1);
@@ -750,11 +746,7 @@ public class ContentProviderContractGenerator {
     return _builder;
   }
   
-  protected CharSequence _generateInterfaceMemberForResultColumn(final ResultColumnAll column) {
-    return null;
-  }
-  
-  protected CharSequence _generateInterfaceMemberForResultColumn(final ResultColumnExpression expr) {
+  public CharSequence generateInterfaceMemberForResultColumn(final ColumnSource expr) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _and = false;
@@ -791,16 +783,5 @@ public class ContentProviderContractGenerator {
       }
     }
     return _builder;
-  }
-  
-  public CharSequence generateInterfaceMemberForResultColumn(final ResultColumn expr) {
-    if (expr instanceof ResultColumnExpression) {
-      return _generateInterfaceMemberForResultColumn((ResultColumnExpression)expr);
-    } else if (expr instanceof ResultColumnAll) {
-      return _generateInterfaceMemberForResultColumn((ResultColumnAll)expr);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(expr).toString());
-    }
   }
 }

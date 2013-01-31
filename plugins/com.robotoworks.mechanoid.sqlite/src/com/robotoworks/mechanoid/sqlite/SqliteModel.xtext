@@ -82,8 +82,9 @@ NullExpression returns Expression:
 ;
 
 PrimaryExpression returns Expression:
-	{NewColumnSourceRef} 'new' '.' column=[ColumnSource] |
-	{OldColumnSourceRef} 'old' '.' column=[ColumnSource] |
+	{NewColumn} 'new.' column=[ColumnSource] |
+	{OldColumn} 'old.' column=[ColumnSource] |
+	{AllColumns} source=[SelectSource] '.' '*' |
 	{ColumnSourceRef} (source=[SelectSource] '.')? column=[ColumnSource] |
 	{Literal} literalValue=LiteralValue|
 	{NestedExpression} '(' expression=SqlExpression ')'|
@@ -91,7 +92,7 @@ PrimaryExpression returns Expression:
 	{CaseExpression} 'case' caseExpression=SqlExpression? 
 			cases+=Case+
 			('else' elseExpression=SqlExpression)? 'end' |
-	{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arugments+=SqlExpression)*) ')' |
+	{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arguments+=SqlExpression)*) ')' |
 	{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
 ;
 
@@ -101,8 +102,13 @@ Case:
 
 SelectStatement:
 	core=SelectCore
-	('order by'  orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*)?
+	('order by'  orderby=OrderingTermList)?
 ;
+
+OrderingTermList:
+	orderingTerms+=OrderingTerm (',' orderingTerms+=OrderingTerm)*
+;
+
 
 SelectCore returns SelectCoreExpression:
 	SelectExpression ({SelectCore.left = current} op=CompoundOperator right=SelectExpression)*
@@ -110,15 +116,27 @@ SelectCore returns SelectCoreExpression:
 
 SelectExpression returns SelectCoreExpression:
 	{SelectExpression}
-	'select' (distinct?='distinct'|all?='all')? selectList=SelectList
+	'select' (distinct?='distinct'|all?='all')? (allColumns?='*'|selectList=SelectList)
 	('from' source=JoinSource)?
-	('where' whereExpression=SqlExpression)?
-	('group by'  groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*)?
-	('having' havingExpression=SqlExpression)?
+	('where' where=WhereExpressions)?
+	('group by' groupBy=GroupByExpressions)?
+	('having' having=HavingExpressions)?
 ;
 
 SelectList:
 	resultColumns+=ResultColumn (',' resultColumns+=ResultColumn)*
+;
+
+WhereExpressions:
+	expression=SqlExpression
+;
+
+GroupByExpressions:
+	groupByExpressions+=SqlExpression (',' groupByExpressions+=SqlExpression)*
+;
+
+HavingExpressions:
+	expression=SqlExpression
 ;
 
 
@@ -155,17 +173,8 @@ JoinStatement:
 	natural?='natural'? ((left?='left' outer?='outer'?) | inner?='inner' | cross?='cross')? 'join' singleSource=SingleSource 'on' expression=SqlExpression;
 	
 
-ResultColumn:
-	ResultColumnAll | ResultColumnExpression
-;
-
-ResultColumnAll: 
-	{ResultColumnAll}
-	((reference=[SelectSource] '.*')? | '*')
-;
-
-ResultColumnExpression returns ColumnSource: 
-	{ResultColumnExpression}
+ResultColumn returns ColumnSource:
+	{ResultColumn}
 	expression=SqlExpression ('as' name=ID)?
 ;
 	
@@ -210,17 +219,20 @@ CreateViewStatement:
 CreateTriggerStatement: 
 	'create' 'trigger' name=ID when=('before'|'after'|'instead of')?
 	  (eventType='delete'|eventType='insert'|eventType='update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
-	  'on' tableName=ID forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
+	  'on' table=[CreateTableStatement|ID] forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
 	  'begin' (statements+=DMLStatement ';' (statements+=DMLStatement ';')*)? 'end';
 	  
 AlterTableStatement: 
-	'alter' 'table' name=ID clause=AlterTableClause;
+	'alter' 'table' table=[CreateTableStatement|ID] clause=AlterTableClause;
 	
 DropTableStatement: 
-	'drop' 'table' ifExists?=('if exists')? name=ID;
+	'drop' 'table' ifExists?=('if exists')? table=[CreateTableStatement|ID];
 	
-DropTriggerStatement: 'drop' 'trigger' ifExists?=('if exists')? name=ID;
-DropViewStatement: 'drop' 'view' ifExists?=('if exists')? name=ID;
+DropTriggerStatement: 
+	'drop' 'trigger' ifExists?=('if exists')? trigger=[CreateTriggerStatement|ID];
+
+DropViewStatement: 
+	'drop' 'view' ifExists?=('if exists')? view=[CreateViewStatement|ID];
 
 AlterTableClause:
 	{AlterTableRenameClause} 'rename to' name=ID |
@@ -283,11 +295,11 @@ DMLStatement:
 ;
 
 DeleteStatement:
-	'delete' 'from' tableName=ID ('where' expression=SqlExpression)?	
+	'delete' 'from' table=[CreateTableStatement|ID] ('where' expression=SqlExpression)?	
 ;
 
 InsertStatement:
-	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' tableName=ID
+	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' table=[CreateTableStatement|ID]
 	('(' columnNames+=ID (',' columnNames+=ID)* ')')? 
 	(('values' 
 		'(' expressions+=SqlExpression (',' expressions+=SqlExpression)* ')'
@@ -296,7 +308,7 @@ InsertStatement:
 ;
 
 UpdateStatement:
-	'update' ('or' (conflictResolution=ConflictResolution))? tableName=ID
+	'update' ('or' (conflictResolution=ConflictResolution))? table=[CreateTableStatement|ID]
 	'set' updateColumnExpressions+=UpdateColumnExpression (',' updateColumnExpressions+=UpdateColumnExpression)*
 	('where' whereExpression=SqlExpression)?
 ;

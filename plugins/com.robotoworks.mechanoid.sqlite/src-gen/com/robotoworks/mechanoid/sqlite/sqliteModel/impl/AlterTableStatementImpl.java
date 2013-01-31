@@ -4,6 +4,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableStatementImpl#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableStatementImpl#getClause <em>Clause</em>}</li>
  * </ul>
  * </p>
@@ -29,6 +31,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTableStatement
 {
+  /**
+   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTable()
+   * @generated
+   * @ordered
+   */
+  protected CreateTableStatement table;
+
   /**
    * The cached value of the '{@link #getClause() <em>Clause</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -58,6 +70,49 @@ public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTa
   protected EClass eStaticClass()
   {
     return SqliteModelPackage.Literals.ALTER_TABLE_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTableStatement getTable()
+  {
+    if (table != null && table.eIsProxy())
+    {
+      InternalEObject oldTable = (InternalEObject)table;
+      table = (CreateTableStatement)eResolveProxy(oldTable);
+      if (table != oldTable)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE, oldTable, table));
+      }
+    }
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTableStatement basicGetTable()
+  {
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTable(CreateTableStatement newTable)
+  {
+    CreateTableStatement oldTable = table;
+    table = newTable;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE, oldTable, table));
   }
 
   /**
@@ -134,6 +189,9 @@ public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTa
   {
     switch (featureID)
     {
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE:
+        if (resolve) return getTable();
+        return basicGetTable();
       case SqliteModelPackage.ALTER_TABLE_STATEMENT__CLAUSE:
         return getClause();
     }
@@ -150,6 +208,9 @@ public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTa
   {
     switch (featureID)
     {
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE:
+        setTable((CreateTableStatement)newValue);
+        return;
       case SqliteModelPackage.ALTER_TABLE_STATEMENT__CLAUSE:
         setClause((AlterTableClause)newValue);
         return;
@@ -167,6 +228,9 @@ public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTa
   {
     switch (featureID)
     {
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE:
+        setTable((CreateTableStatement)null);
+        return;
       case SqliteModelPackage.ALTER_TABLE_STATEMENT__CLAUSE:
         setClause((AlterTableClause)null);
         return;
@@ -184,6 +248,8 @@ public class AlterTableStatementImpl extends DDLStatementImpl implements AlterTa
   {
     switch (featureID)
     {
+      case SqliteModelPackage.ALTER_TABLE_STATEMENT__TABLE:
+        return table != null;
       case SqliteModelPackage.ALTER_TABLE_STATEMENT__CLAUSE:
         return clause != null;
     }

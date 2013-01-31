@@ -2,7 +2,6 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,11 +13,12 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#isAll <em>All</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#isAllColumns <em>All Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getSelectList <em>Select List</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getSource <em>Source</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getWhereExpression <em>Where Expression</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getGroupByExpressions <em>Group By Expressions</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getHavingExpression <em>Having Expression</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getWhere <em>Where</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getGroupBy <em>Group By</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getHaving <em>Having</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,6 +81,32 @@ public interface SelectExpression extends SelectCoreExpression
   void setAll(boolean value);
 
   /**
+   * Returns the value of the '<em><b>All Columns</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>All Columns</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>All Columns</em>' attribute.
+   * @see #setAllColumns(boolean)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_AllColumns()
+   * @model
+   * @generated
+   */
+  boolean isAllColumns();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#isAllColumns <em>All Columns</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>All Columns</em>' attribute.
+   * @see #isAllColumns()
+   * @generated
+   */
+  void setAllColumns(boolean value);
+
+  /**
    * Returns the value of the '<em><b>Select List</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -133,71 +159,81 @@ public interface SelectExpression extends SelectCoreExpression
   void setSource(JoinSource value);
 
   /**
-   * Returns the value of the '<em><b>Where Expression</b></em>' containment reference.
+   * Returns the value of the '<em><b>Where</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Where Expression</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Where</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Where Expression</em>' containment reference.
-   * @see #setWhereExpression(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_WhereExpression()
+   * @return the value of the '<em>Where</em>' containment reference.
+   * @see #setWhere(WhereExpressions)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_Where()
    * @model containment="true"
    * @generated
    */
-  Expression getWhereExpression();
+  WhereExpressions getWhere();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getWhereExpression <em>Where Expression</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getWhere <em>Where</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Where Expression</em>' containment reference.
-   * @see #getWhereExpression()
+   * @param value the new value of the '<em>Where</em>' containment reference.
+   * @see #getWhere()
    * @generated
    */
-  void setWhereExpression(Expression value);
+  void setWhere(WhereExpressions value);
 
   /**
-   * Returns the value of the '<em><b>Group By Expressions</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
+   * Returns the value of the '<em><b>Group By</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Group By Expressions</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Group By</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Group By Expressions</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_GroupByExpressions()
+   * @return the value of the '<em>Group By</em>' containment reference.
+   * @see #setGroupBy(GroupByExpressions)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_GroupBy()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getGroupByExpressions();
+  GroupByExpressions getGroupBy();
 
   /**
-   * Returns the value of the '<em><b>Having Expression</b></em>' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getGroupBy <em>Group By</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Group By</em>' containment reference.
+   * @see #getGroupBy()
+   * @generated
+   */
+  void setGroupBy(GroupByExpressions value);
+
+  /**
+   * Returns the value of the '<em><b>Having</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Having Expression</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Having</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Having Expression</em>' containment reference.
-   * @see #setHavingExpression(Expression)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_HavingExpression()
+   * @return the value of the '<em>Having</em>' containment reference.
+   * @see #setHaving(HavingExpressions)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectExpression_Having()
    * @model containment="true"
    * @generated
    */
-  Expression getHavingExpression();
+  HavingExpressions getHaving();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getHavingExpression <em>Having Expression</em>}' containment reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression#getHaving <em>Having</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Having Expression</em>' containment reference.
-   * @see #getHavingExpression()
+   * @param value the new value of the '<em>Having</em>' containment reference.
+   * @see #getHaving()
    * @generated
    */
-  void setHavingExpression(Expression value);
+  void setHaving(HavingExpressions value);
 
 } // SelectExpression

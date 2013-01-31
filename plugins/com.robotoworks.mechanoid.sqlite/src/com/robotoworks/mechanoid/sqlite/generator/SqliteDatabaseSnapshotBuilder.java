@@ -78,7 +78,7 @@ public class SqliteDatabaseSnapshotBuilder {
 					
 					AlterTableStatement alter = (AlterTableStatement) statement;
 					
-					CreateTableStatement tableToAlter = mTables.get(alter.getName());
+					CreateTableStatement tableToAlter = mTables.get(alter.getTable().getName());
 					
 					if(alter.getClause() instanceof AlterTableRenameClause) {
 						
@@ -86,7 +86,7 @@ public class SqliteDatabaseSnapshotBuilder {
 						tableToAlter.setName(renameClause.getName());
 						
 						mTables.put(renameClause.getName(), tableToAlter);
-						mTables.remove(alter.getName());
+						mTables.remove(alter.getTable().getName());
 						
 					} else if(alter.getClause() instanceof AlterTableAddColumnClause) {
 						
@@ -100,13 +100,13 @@ public class SqliteDatabaseSnapshotBuilder {
 					
 				} else if (statement instanceof DropTableStatement) {
 					DropTableStatement dropTableStmt = (DropTableStatement) statement;
-					mTables.remove(dropTableStmt.getName());
+					mTables.remove(dropTableStmt.getTable().getName());
 				} else if (statement instanceof DropViewStatement) {
 					DropViewStatement dropViewStmt = (DropViewStatement) statement;
-					mViews.remove(dropViewStmt.getName());
+					mViews.remove(dropViewStmt.getView().getName());
 				} else if (statement instanceof DropTriggerStatement) {
 					DropTriggerStatement dropTriggerStmt = (DropTriggerStatement) statement;
-					mTriggers.remove(dropTriggerStmt.getName());					
+					mTriggers.remove(dropTriggerStmt.getTrigger().getName());					
 				}
 			}
 		}

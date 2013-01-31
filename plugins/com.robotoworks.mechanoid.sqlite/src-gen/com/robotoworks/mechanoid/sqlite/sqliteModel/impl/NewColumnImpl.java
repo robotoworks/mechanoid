@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,35 +15,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Result Column All</b></em>'.
+ * An implementation of the model object '<em><b>New Column</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ResultColumnAllImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.NewColumnImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColumnAll
+public class NewColumnImpl extends ExpressionImpl implements NewColumn
 {
   /**
-   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+   * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReference()
+   * @see #getColumn()
    * @generated
    * @ordered
    */
-  protected SelectSource reference;
+  protected ColumnSource column;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ResultColumnAllImpl()
+  protected NewColumnImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.RESULT_COLUMN_ALL;
+    return SqliteModelPackage.Literals.NEW_COLUMN;
   }
 
   /**
@@ -64,19 +64,19 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectSource getReference()
+  public ColumnSource getColumn()
   {
-    if (reference != null && reference.eIsProxy())
+    if (column != null && column.eIsProxy())
     {
-      InternalEObject oldReference = (InternalEObject)reference;
-      reference = (SelectSource)eResolveProxy(oldReference);
-      if (reference != oldReference)
+      InternalEObject oldColumn = (InternalEObject)column;
+      column = (ColumnSource)eResolveProxy(oldColumn);
+      if (column != oldColumn)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE, oldReference, reference));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.NEW_COLUMN__COLUMN, oldColumn, column));
       }
     }
-    return reference;
+    return column;
   }
 
   /**
@@ -84,9 +84,9 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectSource basicGetReference()
+  public ColumnSource basicGetColumn()
   {
-    return reference;
+    return column;
   }
 
   /**
@@ -94,12 +94,12 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(SelectSource newReference)
+  public void setColumn(ColumnSource newColumn)
   {
-    SelectSource oldReference = reference;
-    reference = newReference;
+    ColumnSource oldColumn = column;
+    column = newColumn;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE, oldReference, reference));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.NEW_COLUMN__COLUMN, oldColumn, column));
   }
 
   /**
@@ -112,9 +112,9 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
-        if (resolve) return getReference();
-        return basicGetReference();
+      case SqliteModelPackage.NEW_COLUMN__COLUMN:
+        if (resolve) return getColumn();
+        return basicGetColumn();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -129,8 +129,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
-        setReference((SelectSource)newValue);
+      case SqliteModelPackage.NEW_COLUMN__COLUMN:
+        setColumn((ColumnSource)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +146,8 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
-        setReference((SelectSource)null);
+      case SqliteModelPackage.NEW_COLUMN__COLUMN:
+        setColumn((ColumnSource)null);
         return;
     }
     super.eUnset(featureID);
@@ -163,10 +163,10 @@ public class ResultColumnAllImpl extends ResultColumnImpl implements ResultColum
   {
     switch (featureID)
     {
-      case SqliteModelPackage.RESULT_COLUMN_ALL__REFERENCE:
-        return reference != null;
+      case SqliteModelPackage.NEW_COLUMN__COLUMN:
+        return column != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ResultColumnAllImpl
+} //NewColumnImpl

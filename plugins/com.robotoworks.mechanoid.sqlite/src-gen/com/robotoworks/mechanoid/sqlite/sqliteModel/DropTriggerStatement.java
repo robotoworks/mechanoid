@@ -12,6 +12,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement#isIfExists <em>If Exists</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement#getTrigger <em>Trigger</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +47,31 @@ public interface DropTriggerStatement extends DDLStatement
    * @generated
    */
   void setIfExists(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Trigger</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Trigger</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Trigger</em>' reference.
+   * @see #setTrigger(CreateTriggerStatement)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDropTriggerStatement_Trigger()
+   * @model
+   * @generated
+   */
+  CreateTriggerStatement getTrigger();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement#getTrigger <em>Trigger</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Trigger</em>' reference.
+   * @see #getTrigger()
+   * @generated
+   */
+  void setTrigger(CreateTriggerStatement value);
 
 } // DropTriggerStatement

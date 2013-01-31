@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Function#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Function#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Function#getArguments <em>Arguments</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.Function#getArugments <em>Arugments</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,21 +91,5 @@ public interface Function extends Expression
    * @generated
    */
   EList<Expression> getArguments();
-
-  /**
-   * Returns the value of the '<em><b>Arugments</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.Expression}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Arugments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Arugments</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getFunction_Arugments()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Expression> getArugments();
 
 } // Function

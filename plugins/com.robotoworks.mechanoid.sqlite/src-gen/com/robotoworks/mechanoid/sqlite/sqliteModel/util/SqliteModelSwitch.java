@@ -129,6 +129,13 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.ORDERING_TERM_LIST:
+      {
+        OrderingTermList orderingTermList = (OrderingTermList)theEObject;
+        T result = caseOrderingTermList(orderingTermList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.SELECT_CORE_EXPRESSION:
       {
         SelectCoreExpression selectCoreExpression = (SelectCoreExpression)theEObject;
@@ -140,6 +147,27 @@ public class SqliteModelSwitch<T> extends Switch<T>
       {
         SelectList selectList = (SelectList)theEObject;
         T result = caseSelectList(selectList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.WHERE_EXPRESSIONS:
+      {
+        WhereExpressions whereExpressions = (WhereExpressions)theEObject;
+        T result = caseWhereExpressions(whereExpressions);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS:
+      {
+        GroupByExpressions groupByExpressions = (GroupByExpressions)theEObject;
+        T result = caseGroupByExpressions(groupByExpressions);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.HAVING_EXPRESSIONS:
+      {
+        HavingExpressions havingExpressions = (HavingExpressions)theEObject;
+        T result = caseHavingExpressions(havingExpressions);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,26 +215,10 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.RESULT_COLUMN:
-      {
-        ResultColumn resultColumn = (ResultColumn)theEObject;
-        T result = caseResultColumn(resultColumn);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.RESULT_COLUMN_ALL:
-      {
-        ResultColumnAll resultColumnAll = (ResultColumnAll)theEObject;
-        T result = caseResultColumnAll(resultColumnAll);
-        if (result == null) result = caseResultColumn(resultColumnAll);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.COLUMN_SOURCE:
       {
         ColumnSource columnSource = (ColumnSource)theEObject;
         T result = caseColumnSource(columnSource);
-        if (result == null) result = caseResultColumn(columnSource);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -480,19 +492,27 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.NEW_COLUMN_SOURCE_REF:
+      case SqliteModelPackage.NEW_COLUMN:
       {
-        NewColumnSourceRef newColumnSourceRef = (NewColumnSourceRef)theEObject;
-        T result = caseNewColumnSourceRef(newColumnSourceRef);
-        if (result == null) result = caseExpression(newColumnSourceRef);
+        NewColumn newColumn = (NewColumn)theEObject;
+        T result = caseNewColumn(newColumn);
+        if (result == null) result = caseExpression(newColumn);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.OLD_COLUMN_SOURCE_REF:
+      case SqliteModelPackage.OLD_COLUMN:
       {
-        OldColumnSourceRef oldColumnSourceRef = (OldColumnSourceRef)theEObject;
-        T result = caseOldColumnSourceRef(oldColumnSourceRef);
-        if (result == null) result = caseExpression(oldColumnSourceRef);
+        OldColumn oldColumn = (OldColumn)theEObject;
+        T result = caseOldColumn(oldColumn);
+        if (result == null) result = caseExpression(oldColumn);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.ALL_COLUMNS:
+      {
+        AllColumns allColumns = (AllColumns)theEObject;
+        T result = caseAllColumns(allColumns);
+        if (result == null) result = caseExpression(allColumns);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -586,12 +606,11 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION:
+      case SqliteModelPackage.RESULT_COLUMN:
       {
-        ResultColumnExpression resultColumnExpression = (ResultColumnExpression)theEObject;
-        T result = caseResultColumnExpression(resultColumnExpression);
-        if (result == null) result = caseColumnSource(resultColumnExpression);
-        if (result == null) result = caseResultColumn(resultColumnExpression);
+        ResultColumn resultColumn = (ResultColumn)theEObject;
+        T result = caseResultColumn(resultColumn);
+        if (result == null) result = caseColumnSource(resultColumn);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -664,7 +683,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         ColumnDef columnDef = (ColumnDef)theEObject;
         T result = caseColumnDef(columnDef);
         if (result == null) result = caseColumnSource(columnDef);
-        if (result == null) result = caseResultColumn(columnDef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -841,6 +859,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Ordering Term List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Ordering Term List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrderingTermList(OrderingTermList object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Select Core Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -868,6 +902,54 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectList(SelectList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Where Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Where Expressions</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWhereExpressions(WhereExpressions object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Group By Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Group By Expressions</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupByExpressions(GroupByExpressions object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Having Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Having Expressions</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHavingExpressions(HavingExpressions object)
   {
     return null;
   }
@@ -964,38 +1046,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJoinStatement(JoinStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultColumn(ResultColumn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column All</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column All</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseResultColumnAll(ResultColumnAll object)
   {
     return null;
   }
@@ -1577,33 +1627,49 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>New Column Source Ref</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>New Column</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>New Column Source Ref</em>'.
+   * @return the result of interpreting the object as an instance of '<em>New Column</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNewColumnSourceRef(NewColumnSourceRef object)
+  public T caseNewColumn(NewColumn object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Old Column Source Ref</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Old Column</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Old Column Source Ref</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Old Column</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOldColumnSourceRef(OldColumnSourceRef object)
+  public T caseOldColumn(OldColumn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>All Columns</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>All Columns</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAllColumns(AllColumns object)
   {
     return null;
   }
@@ -1785,17 +1851,17 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Result Column Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Result Column</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Result Column Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Result Column</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseResultColumnExpression(ResultColumnExpression object)
+  public T caseResultColumn(ResultColumn object)
   {
     return null;
   }

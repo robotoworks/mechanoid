@@ -2,12 +2,14 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTableStatementImpl#isIfExists <em>If Exists</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTableStatementImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +48,16 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * @ordered
    */
   protected boolean ifExists = IF_EXISTS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTable()
+   * @generated
+   * @ordered
+   */
+  protected CreateTableStatement table;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +108,49 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * <!-- end-user-doc -->
    * @generated
    */
+  public CreateTableStatement getTable()
+  {
+    if (table != null && table.eIsProxy())
+    {
+      InternalEObject oldTable = (InternalEObject)table;
+      table = (CreateTableStatement)eResolveProxy(oldTable);
+      if (table != oldTable)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE, oldTable, table));
+      }
+    }
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTableStatement basicGetTable()
+  {
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTable(CreateTableStatement newTable)
+  {
+    CreateTableStatement oldTable = table;
+    table = newTable;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE, oldTable, table));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +158,9 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
     {
       case SqliteModelPackage.DROP_TABLE_STATEMENT__IF_EXISTS:
         return isIfExists();
+      case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
+        if (resolve) return getTable();
+        return basicGetTable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +177,9 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
     {
       case SqliteModelPackage.DROP_TABLE_STATEMENT__IF_EXISTS:
         setIfExists((Boolean)newValue);
+        return;
+      case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
+        setTable((CreateTableStatement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +198,9 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
       case SqliteModelPackage.DROP_TABLE_STATEMENT__IF_EXISTS:
         setIfExists(IF_EXISTS_EDEFAULT);
         return;
+      case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
+        setTable((CreateTableStatement)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +217,8 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
     {
       case SqliteModelPackage.DROP_TABLE_STATEMENT__IF_EXISTS:
         return ifExists != IF_EXISTS_EDEFAULT;
+      case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
+        return table != null;
     }
     return super.eIsSet(featureID);
   }

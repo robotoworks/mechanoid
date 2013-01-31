@@ -12,10 +12,11 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhen <em>When</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getEventType <em>Event Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getUpdateColumnNames <em>Update Column Names</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getForEachRow <em>For Each Row</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getWhenExpression <em>When Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getStatements <em>Statements</em>}</li>
@@ -28,6 +29,32 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CreateTriggerStatement extends DDLStatement
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>When</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -97,30 +124,30 @@ public interface CreateTriggerStatement extends DDLStatement
   EList<String> getUpdateColumnNames();
 
   /**
-   * Returns the value of the '<em><b>Table Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Table</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Table</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table Name</em>' attribute.
-   * @see #setTableName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_TableName()
+   * @return the value of the '<em>Table</em>' reference.
+   * @see #setTable(CreateTableStatement)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_Table()
    * @model
    * @generated
    */
-  String getTableName();
+  CreateTableStatement getTable();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getTableName <em>Table Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getTable <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table Name</em>' attribute.
-   * @see #getTableName()
+   * @param value the new value of the '<em>Table</em>' reference.
+   * @see #getTable()
    * @generated
    */
-  void setTableName(String value);
+  void setTable(CreateTableStatement value);
 
   /**
    * Returns the value of the '<em><b>For Each Row</b></em>' attribute.

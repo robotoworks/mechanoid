@@ -1,17 +1,15 @@
 package com.robotoworks.mechanoid.sqlite.generator
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnAll
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression
 
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
+import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, MigrationBlock snapshot) { 
@@ -176,10 +174,7 @@ class ContentProviderContractGenerator {
 		'''«FOR item : tbl.columnDefs.filter([!name.equals("_id")]) SEPARATOR ", "»«var col = item as ColumnDef»«col.type.toJavaTypeName()» «col.name.camelize»«ENDFOR»'''
 	}
 	
-	def dispatch generateInterfaceMemberForResultColumn(ResultColumnAll column) { 
-	}
-	
-	def dispatch generateInterfaceMemberForResultColumn(ResultColumnExpression expr) { 
+	def generateInterfaceMemberForResultColumn(ColumnSource expr) { 
 		'''
 		«IF expr.name != null && !expr.name.equals("") && !expr.name.equals("_id")»
 		String «expr.name.underscore.toUpperCase» = "«expr.name»";

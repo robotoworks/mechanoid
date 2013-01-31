@@ -5,21 +5,21 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Old Column Source Ref</b></em>'.
+ * A representation of the model object '<em><b>Old Column</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSourceRef#getColumn <em>Column</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumnSourceRef()
+ * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumn()
  * @model
  * @generated
  */
-public interface OldColumnSourceRef extends Expression
+public interface OldColumn extends Expression
 {
   /**
    * Returns the value of the '<em><b>Column</b></em>' reference.
@@ -31,14 +31,14 @@ public interface OldColumnSourceRef extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Column</em>' reference.
    * @see #setColumn(ColumnSource)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumnSourceRef_Column()
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getOldColumn_Column()
    * @model
    * @generated
    */
   ColumnSource getColumn();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumnSourceRef#getColumn <em>Column</em>}' reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn#getColumn <em>Column</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Column</em>' reference.
@@ -47,4 +47,4 @@ public interface OldColumnSourceRef extends Expression
    */
   void setColumn(ColumnSource value);
 
-} // OldColumnSourceRef
+} // OldColumn
