@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ModelUtil {
@@ -88,7 +90,11 @@ public class ModelUtil {
     return null;
   }
   
-  public static <T extends DDLStatement> T findFirstPreviousStatementOfType(final DDLStatement stmt, final Class<T> statementType) {
+  /**
+   * walks back and visits each previous statement from the given statement, returning
+   * false will cancel the process
+   */
+  public static void forEachPreviousStatement(final DDLStatement stmt, final Function1<DDLStatement,Boolean> delegate) {
     EObject current = ((EObject) stmt);
     MigrationBlock migration = null;
     boolean _dowhile = false;
@@ -101,10 +107,10 @@ public class ModelUtil {
           {
             EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(current);
             current = _previousSibling_1;
-            Class<? extends Object> _class = current.getClass();
-            boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
-            if (_isAssignableFrom) {
-              return ((T) current);
+            Boolean _apply = delegate.apply(((DDLStatement) current));
+            boolean _not = (!_apply);
+            if (_not) {
+              return;
             }
           }
           EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(current);
@@ -112,12 +118,34 @@ public class ModelUtil {
           _while = _notEquals_1;
         }
         EObject _eContainer = current.eContainer();
-        EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(_eContainer);
-        migration = ((MigrationBlock) _previousSibling_1);
+        EObject previousContainer = EcoreUtil2.getPreviousSibling(_eContainer);
+        boolean _and = false;
+        boolean _notEquals_1 = (!Objects.equal(previousContainer, null));
+        if (!_notEquals_1) {
+          _and = false;
+        } else {
+          _and = (_notEquals_1 && (previousContainer instanceof MigrationBlock));
+        }
+        if (_and) {
+          migration = ((MigrationBlock) previousContainer);
+          EList<DDLStatement> _statements = migration.getStatements();
+          DDLStatement _last = IterableExtensions.<DDLStatement>last(_statements);
+          current = _last;
+          boolean _equals = Objects.equal(current, null);
+          if (_equals) {
+            return;
+          }
+          Boolean _apply = delegate.apply(((DDLStatement) current));
+          boolean _not = (!_apply);
+          if (_not) {
+            return;
+          }
+        } else {
+          migration = null;
+        }
       }
       boolean _notEquals = (!Objects.equal(migration, null));
       _dowhile = _notEquals;
     } while(_dowhile);
-    return null;
   }
 }

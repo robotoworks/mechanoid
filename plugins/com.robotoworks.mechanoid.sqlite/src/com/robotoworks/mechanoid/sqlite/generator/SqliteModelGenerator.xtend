@@ -18,7 +18,7 @@ import static extension com.robotoworks.mechanoid.common.util.Strings.*
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
 	@Inject ContentProviderContractGenerator mContentProviderContractGenerator
-	@Inject Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider
+	@Inject Provider<SqliteDatabaseSnapshot$Builder> mDbSnapshotBuilderProvider
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject Provider<SqliteMigrationGenerator> mMigrationGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
@@ -27,7 +27,7 @@ class SqliteModelGenerator implements IGenerator {
 		
 		var model = resource.contents.head as Model;
 		
-		val snapshot = mDbSnapshotBuilderProvider.get().build(model).database.migrations.get(0)
+		val snapshot = mDbSnapshotBuilderProvider.get().build(model);
 		
 		fsa.generateFile(
 			model.packageName.resolveFileName("Abstract".concat(model.database.name.pascalize).concat("OpenHelper")), 
@@ -54,7 +54,7 @@ class SqliteModelGenerator implements IGenerator {
 			mContentProviderGenerator.generateStub(model, snapshot)
 		);
 		
-		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
+		snapshot.tables.forEach[
 			statement|
 			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
 		];

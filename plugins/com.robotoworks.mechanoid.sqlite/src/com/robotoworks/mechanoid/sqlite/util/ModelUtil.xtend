@@ -6,6 +6,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.xbase.lib.Functions$Function1
 
 class ModelUtil {
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType) {
@@ -72,22 +73,41 @@ class ModelUtil {
 		return null
 	}
 	
-	def static <T extends DDLStatement> T findFirstPreviousStatementOfType(DDLStatement stmt, Class<T> statementType) {
+
+	/*
+	 * walks back and visits each previous statement from the given statement, returning
+	 * false will cancel the process
+	 */
+	def static void forEachPreviousStatement(DDLStatement stmt, Functions$Function1<DDLStatement, Boolean> delegate) {
 		var current = stmt as EObject
 		var MigrationBlock migration = null
 		
 		do {
 			while(EcoreUtil2::getPreviousSibling(current) != null) {
 				current = EcoreUtil2::getPreviousSibling(current)
-				
-				if(statementType.isAssignableFrom(current.getClass())) {
-					return current as T
-				}
+				if(!delegate.apply(current as DDLStatement)) {
+					return;
+				}	
 			}
 			
-			migration = EcoreUtil2::getPreviousSibling(current.eContainer) as MigrationBlock
+			var previousContainer = EcoreUtil2::getPreviousSibling(current.eContainer)
+			
+			if(previousContainer != null && previousContainer instanceof MigrationBlock) {
+				migration = previousContainer as MigrationBlock
+				
+				current = migration.statements.last
+				
+				if(current == null) {
+					return
+				}
+				
+				if(!delegate.apply(current as DDLStatement)) {
+					return;
+				}	
+				
+			} else {
+				migration = null
+			}
 		} while (migration != null)
-		
-		return null	
 	}
 }

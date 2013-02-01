@@ -3,13 +3,11 @@ package com.robotoworks.mechanoid.sqlite.scoping;
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.sqlite.naming.NameHelper;
 import com.robotoworks.mechanoid.sqlite.scoping.SqliteModelScopeProvider;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -38,12 +36,10 @@ import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -52,7 +48,6 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -62,10 +57,8 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   private IQualifiedNameProvider nameProvider;
   
   public IScope scope_IndexedColumn_columnReference(final CreateTableStatement context, final EReference reference) {
-    TreeIterator<EObject> _eAllContents = context.eAllContents();
-    Iterator<ColumnDef> inScope = Iterators.<ColumnDef>filter(_eAllContents, ColumnDef.class);
-    Iterable<ColumnDef> _iterable = IteratorExtensions.<ColumnDef>toIterable(inScope);
-    return Scopes.<EObject>scopeFor(_iterable, this.nameProvider, IScope.NULLSCOPE);
+    EList<ColumnSource> _columnDefs = context.getColumnDefs();
+    return Scopes.<EObject>scopeFor(_columnDefs, this.nameProvider, IScope.NULLSCOPE);
   }
   
   public IScope scope_ColumnSourceRef_column(final ColumnSourceRef context, final EReference reference) {

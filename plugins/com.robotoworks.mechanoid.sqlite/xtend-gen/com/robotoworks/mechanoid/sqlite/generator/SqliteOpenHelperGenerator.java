@@ -1,19 +1,18 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.common.util.Strings;
+import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseStatementGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -21,7 +20,7 @@ public class SqliteOpenHelperGenerator {
   @Inject
   private SqliteDatabaseStatementGenerator _sqliteDatabaseStatementGenerator;
   
-  public CharSequence generate(final Model model, final MigrationBlock snapshot) {
+  public CharSequence generate(final Model model, final SqliteDatabaseSnapshot snapshot) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -106,9 +105,8 @@ public class SqliteOpenHelperGenerator {
     _builder.append("public interface Tables {");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
-      for(final CreateTableStatement table : _filter) {
+      Collection<CreateTableStatement> _tables = snapshot.getTables();
+      for(final CreateTableStatement table : _tables) {
         _builder.append("\t\t");
         _builder.append("String ");
         String _name_3 = table.getName();
@@ -123,9 +121,8 @@ public class SqliteOpenHelperGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_1 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
-      for(final CreateViewStatement view : _filter_1) {
+      Collection<CreateViewStatement> _views = snapshot.getViews();
+      for(final CreateViewStatement view : _views) {
         _builder.append("\t\t");
         _builder.append("String ");
         String _name_5 = view.getName();
@@ -165,37 +162,19 @@ public class SqliteOpenHelperGenerator {
     _builder.append("public void onCreate(SQLiteDatabase db) {");
     _builder.newLine();
     _builder.append("\t\t");
-    EList<DDLStatement> _statements_2 = snapshot.getStatements();
-    final Function1<DDLStatement,Boolean> _function = new Function1<DDLStatement,Boolean>() {
-        public Boolean apply(final DDLStatement it) {
-          return Boolean.valueOf((it instanceof CreateTableStatement));
-        }
-      };
-    Iterable<DDLStatement> _filter_2 = IterableExtensions.<DDLStatement>filter(_statements_2, _function);
-    CharSequence _generateStatements = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_2);
-    _builder.append(_generateStatements, "		");
+    Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
+    CharSequence _generateTableStatements = this._sqliteDatabaseStatementGenerator.generateTableStatements(_tables_1);
+    _builder.append(_generateTableStatements, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    EList<DDLStatement> _statements_3 = snapshot.getStatements();
-    final Function1<DDLStatement,Boolean> _function_1 = new Function1<DDLStatement,Boolean>() {
-        public Boolean apply(final DDLStatement it) {
-          return Boolean.valueOf((it instanceof CreateViewStatement));
-        }
-      };
-    Iterable<DDLStatement> _filter_3 = IterableExtensions.<DDLStatement>filter(_statements_3, _function_1);
-    CharSequence _generateStatements_1 = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_3);
-    _builder.append(_generateStatements_1, "		");
+    Collection<CreateViewStatement> _views_1 = snapshot.getViews();
+    CharSequence _generateViewStatements = this._sqliteDatabaseStatementGenerator.generateViewStatements(_views_1);
+    _builder.append(_generateViewStatements, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    EList<DDLStatement> _statements_4 = snapshot.getStatements();
-    final Function1<DDLStatement,Boolean> _function_2 = new Function1<DDLStatement,Boolean>() {
-        public Boolean apply(final DDLStatement it) {
-          return Boolean.valueOf((it instanceof CreateTriggerStatement));
-        }
-      };
-    Iterable<DDLStatement> _filter_4 = IterableExtensions.<DDLStatement>filter(_statements_4, _function_2);
-    CharSequence _generateStatements_2 = this._sqliteDatabaseStatementGenerator.generateStatements(_filter_4);
-    _builder.append(_generateStatements_2, "		");
+    Collection<CreateTriggerStatement> _triggers = snapshot.getTriggers();
+    CharSequence _generateTriggerStatements = this._sqliteDatabaseStatementGenerator.generateTriggerStatements(_triggers);
+    _builder.append(_generateTriggerStatements, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -317,7 +296,7 @@ public class SqliteOpenHelperGenerator {
     return _builder;
   }
   
-  public CharSequence generateStub(final Model model, final MigrationBlock snapshot) {
+  public CharSequence generateStub(final Model model, final SqliteDatabaseSnapshot snapshot) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();

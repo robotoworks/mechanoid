@@ -1,9 +1,9 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
+import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
@@ -12,10 +12,9 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -23,7 +22,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ContentProviderContractGenerator {
-  public CharSequence generate(final Model model, final MigrationBlock snapshot) {
+  public CharSequence generate(final Model model, final SqliteDatabaseSnapshot snapshot) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -145,9 +144,8 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<DDLStatement> _statements = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
-      for(final CreateTableStatement tbl : _filter) {
+      Collection<CreateTableStatement> _tables = snapshot.getTables();
+      for(final CreateTableStatement tbl : _tables) {
         _builder.append("\t");
         _builder.append("interface ");
         String _name_4 = tbl.getName();
@@ -165,8 +163,8 @@ public class ContentProviderContractGenerator {
                 return Boolean.valueOf(_not);
               }
             };
-          Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
-          for(final ColumnSource col : _filter_1) {
+          Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+          for(final ColumnSource col : _filter) {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("String ");
@@ -190,9 +188,8 @@ public class ContentProviderContractGenerator {
     }
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_1 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_2 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
-      for(final CreateViewStatement vw : _filter_2) {
+      Collection<CreateViewStatement> _views = snapshot.getViews();
+      for(final CreateViewStatement vw : _views) {
         _builder.append("\t");
         _builder.append("interface ");
         String _name_7 = vw.getName();
@@ -220,9 +217,8 @@ public class ContentProviderContractGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_2 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_1 : _filter_3) {
+      Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
+      for(final CreateTableStatement tbl_1 : _tables_1) {
         _builder.append("\t");
         _builder.append("/**");
         _builder.newLine();
@@ -500,8 +496,8 @@ public class ContentProviderContractGenerator {
                 return Boolean.valueOf(_not);
               }
             };
-          Iterable<ColumnSource> _filter_4 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
-          for(final ColumnSource item : _filter_4) {
+          Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
+          for(final ColumnSource item : _filter_1) {
             _builder.append("\t");
             _builder.append("\t\t");
             ColumnDef col_2 = ((ColumnDef) item);
@@ -556,9 +552,8 @@ public class ContentProviderContractGenerator {
     }
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_3 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_5 = Iterables.<CreateViewStatement>filter(_statements_3, CreateViewStatement.class);
-      for(final CreateViewStatement vw_1 : _filter_5) {
+      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
+      for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t");
         _builder.append("public static class ");
         String _name_27 = vw_1.getName();
@@ -644,14 +639,14 @@ public class ContentProviderContractGenerator {
         {
           DatabaseBlock _database_10 = model.getDatabase();
           ConfigBlock _config_1 = _database_10.getConfig();
-          EList<ConfigurationStatement> _statements_4 = _config_1.getStatements();
+          EList<ConfigurationStatement> _statements = _config_1.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_6 = IterableExtensions.<ConfigurationStatement>filter(_statements_4, _function_2);
-          for(final ConfigurationStatement action : _filter_6) {
+          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_2);
+          for(final ConfigurationStatement action : _filter_2) {
             _builder.append("\t");
             ActionStatement stmt = ((ActionStatement) action);
             _builder.newLineIfNotEmpty();

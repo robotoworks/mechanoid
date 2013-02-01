@@ -45,9 +45,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
 	
 	def IScope scope_IndexedColumn_columnReference(CreateTableStatement context, EReference reference) {
-		
-		var inScope = context.eAllContents.filter(typeof(ColumnDef))
-		return Scopes::scopeFor(inScope.toIterable, nameProvider, IScope::NULLSCOPE)
+		return Scopes::scopeFor(context.columnDefs, nameProvider, IScope::NULLSCOPE)
 	}
 	
 	def IScope scope_ColumnSourceRef_column(ColumnSourceRef context, EReference reference) {
