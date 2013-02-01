@@ -7,6 +7,7 @@ import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigura
 import com.robotoworks.mechanoid.sqlite.generator.ActiveRecordGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderContractGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderGenerator;
+import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot.Builder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
@@ -117,16 +118,19 @@ public class SqliteModelGenerator implements IGenerator {
   }
   
   public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {
-    EList<EObject> _contents = resource.getContents();
-    EObject _head = IterableExtensions.<EObject>head(_contents);
-    Model model = ((Model) _head);
-    String _packageName = model.getPackageName();
-    String _name = statement.getName();
-    String _pascalize = Strings.pascalize(_name);
-    String _concat = _pascalize.concat("Record");
-    String genFileName = Strings.resolveFileName(_packageName, _concat);
-    CharSequence _generate = this.mActiveRecordGenerator.generate(model, statement);
-    fsa.generateFile(genFileName, _generate);
+    boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(statement);
+    if (_hasAndroidPrimaryKey) {
+      EList<EObject> _contents = resource.getContents();
+      EObject _head = IterableExtensions.<EObject>head(_contents);
+      Model model = ((Model) _head);
+      String _packageName = model.getPackageName();
+      String _name = statement.getName();
+      String _pascalize = Strings.pascalize(_name);
+      String _concat = _pascalize.concat("Record");
+      String genFileName = Strings.resolveFileName(_packageName, _concat);
+      CharSequence _generate = this.mActiveRecordGenerator.generate(model, statement);
+      fsa.generateFile(genFileName, _generate);
+    }
   }
   
   public void generateMigration(final Resource resource, final IFileSystemAccess fsa, final MigrationBlock migration, final int version) {

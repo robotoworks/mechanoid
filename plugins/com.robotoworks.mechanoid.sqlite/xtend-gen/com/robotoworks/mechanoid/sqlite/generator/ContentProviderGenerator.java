@@ -120,7 +120,14 @@ public class ContentProviderGenerator {
     }
     {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
-      for(final CreateTableStatement tbl_1 : _tables_1) {
+      final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
+          public Boolean apply(final CreateTableStatement it) {
+            boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(it);
+            return Boolean.valueOf(_hasAndroidPrimaryKey);
+          }
+        };
+      Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables_1, _function);
+      for(final CreateTableStatement tbl_1 : _filter) {
         _builder.append("import ");
         String _packageName_4 = model.getPackageName();
         _builder.append(_packageName_4, "");
@@ -232,13 +239,13 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_5 = model.getDatabase();
           ConfigBlock _config_1 = _database_5.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter = IterableExtensions.<ConfigurationStatement>filter(_statements, _function);
-          for(final ConfigurationStatement a : _filter) {
+          Iterable<ConfigurationStatement> _filter_1 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_1);
+          for(final ConfigurationStatement a : _filter_1) {
             _builder.append("\t");
             _builder.append("private static final int ");
             String _name_11 = ((ActionStatement) a).getName();
@@ -446,13 +453,13 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_8 = model.getDatabase();
           ConfigBlock _config_3 = _database_8.getConfig();
           EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_1 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_1);
-          for(final ConfigurationStatement a_1 : _filter_1) {
+          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_2);
+          for(final ConfigurationStatement a_1 : _filter_2) {
             _builder.append("\t\t");
             ActionStatement stmt = ((ActionStatement) a_1);
             _builder.newLineIfNotEmpty();
@@ -920,13 +927,13 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_11 = model.getDatabase();
           ConfigBlock _config_5 = _database_11.getConfig();
           EList<ConfigurationStatement> _statements_2 = _config_5.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_2);
-          for(final ConfigurationStatement a_2 : _filter_2) {
+          Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_3);
+          for(final ConfigurationStatement a_2 : _filter_3) {
             _builder.append("\t\t\t");
             _builder.append("case ");
             String _name_39 = ((ActionStatement) a_2).getName();
@@ -982,10 +989,18 @@ public class ContentProviderGenerator {
             String _upperCase_19 = _underscore_19.toUpperCase();
             _builder.append(_upperCase_19, "    	");
             _builder.append(", true, ");
-            String _name_43 = tbl_6.getName();
-            String _pascalize_19 = Strings.pascalize(_name_43);
-            _builder.append(_pascalize_19, "    	");
-            _builder.append("Record.getFactory());");
+            {
+              boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(tbl_6);
+              if (_hasAndroidPrimaryKey_9) {
+                String _name_43 = tbl_6.getName();
+                String _pascalize_19 = Strings.pascalize(_name_43);
+                _builder.append(_pascalize_19, "    	");
+                _builder.append("Record.getFactory()");
+              } else {
+                _builder.append("null");
+              }
+            }
+            _builder.append(");");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("}");
@@ -1009,10 +1024,18 @@ public class ContentProviderGenerator {
         String _upperCase_20 = _underscore_20.toUpperCase();
         _builder.append(_upperCase_20, "    	");
         _builder.append(", false, ");
-        String _name_46 = tbl_6.getName();
-        String _pascalize_21 = Strings.pascalize(_name_46);
-        _builder.append(_pascalize_21, "    	");
-        _builder.append("Record.getFactory());");
+        {
+          boolean _hasAndroidPrimaryKey_10 = Extensions.hasAndroidPrimaryKey(tbl_6);
+          if (_hasAndroidPrimaryKey_10) {
+            String _name_46 = tbl_6.getName();
+            String _pascalize_21 = Strings.pascalize(_name_46);
+            _builder.append(_pascalize_21, "    	");
+            _builder.append("Record.getFactory()");
+          } else {
+            _builder.append("null");
+          }
+        }
+        _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("}");
@@ -1025,8 +1048,8 @@ public class ContentProviderGenerator {
       Collection<CreateViewStatement> _views_5 = snapshot.getViews();
       for(final CreateViewStatement view : _views_5) {
         {
-          boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(view);
-          if (_hasAndroidPrimaryKey_9) {
+          boolean _hasAndroidPrimaryKey_11 = Extensions.hasAndroidPrimaryKey(view);
+          if (_hasAndroidPrimaryKey_11) {
             _builder.append("    ");
             _builder.append("protected ContentProviderActions create");
             String _name_47 = view.getName();
@@ -1082,8 +1105,8 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_13 = model.getDatabase();
           ConfigBlock _config_7 = _database_13.getConfig();
           EList<ConfigurationStatement> _statements_3 = _config_7.getStatements();
-          Iterable<ActionStatement> _filter_3 = Iterables.<ActionStatement>filter(_statements_3, ActionStatement.class);
-          for(final ActionStatement a_3 : _filter_3) {
+          Iterable<ActionStatement> _filter_4 = Iterables.<ActionStatement>filter(_statements_3, ActionStatement.class);
+          for(final ActionStatement a_3 : _filter_4) {
             _builder.append("\t");
             _builder.append("protected ContentProviderActions create");
             String _name_51 = a_3.getName();

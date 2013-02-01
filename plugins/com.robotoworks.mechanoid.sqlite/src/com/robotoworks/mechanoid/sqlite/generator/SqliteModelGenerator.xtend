@@ -14,6 +14,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -67,13 +68,15 @@ class SqliteModelGenerator implements IGenerator {
 	
 	def void generateActiveRecordEntity(Resource resource, IFileSystemAccess fsa, CreateTableStatement statement) {
 		
-		var model = resource.contents.head as Model;
-		
-		var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+		if(statement.hasAndroidPrimaryKey) {
+			var model = resource.contents.head as Model;
 			
-		fsa.generateFile(genFileName, 
-			mActiveRecordGenerator.generate(model, statement)
-		)		
+			var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+				
+			fsa.generateFile(genFileName, 
+				mActiveRecordGenerator.generate(model, statement)
+			)	
+		}	
 	}
 
 	def void generateMigration(Resource resource, IFileSystemAccess fsa, MigrationBlock migration, int version) { 

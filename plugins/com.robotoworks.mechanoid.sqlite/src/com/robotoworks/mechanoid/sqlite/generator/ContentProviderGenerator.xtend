@@ -40,7 +40,7 @@ class ContentProviderGenerator {
 			«FOR vw : snapshot.views»
 			import «model.packageName».«model.database.name.pascalize»Contract.«vw.name.pascalize»;
 			«ENDFOR»
-			«FOR tbl : snapshot.tables»
+			«FOR tbl : snapshot.tables.filter([it.hasAndroidPrimaryKey])»
 			import «model.packageName».«tbl.name.pascalize»Record;
 			«ENDFOR»			
 			
@@ -282,12 +282,12 @@ class ContentProviderGenerator {
 			    «FOR tbl:snapshot.tables»
 			    «IF tbl.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», true, «tbl.name.pascalize»Record.getFactory());
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», true, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», false, «tbl.name.pascalize»Record.getFactory());
+			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», false, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDFOR»
