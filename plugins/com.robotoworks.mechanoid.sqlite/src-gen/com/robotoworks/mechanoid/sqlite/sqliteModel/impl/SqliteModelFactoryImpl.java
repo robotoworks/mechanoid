@@ -88,14 +88,13 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.COLUMN_SOURCE: return createColumnSource();
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
-      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
+      case SqliteModelPackage.TABLE_DEFINITION: return createTableDefinition();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
+      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_STATEMENT: return createAlterTableAddColumnStatement();
       case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
       case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
-      case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
       case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT: return createUniqueTableConstraint();
@@ -142,8 +141,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CURRENT_TIME_LITERAL: return createCurrentTimeLiteral();
       case SqliteModelPackage.CURRENT_DATE_LITERAL: return createCurrentDateLiteral();
       case SqliteModelPackage.CURRENT_TIME_STAMP_LITERAL: return createCurrentTimeStampLiteral();
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
-      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
+      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT: return createAlterTableRenameStatement();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
       case SqliteModelPackage.NOT_NULL_CONSTRAINT: return createNotNullConstraint();
@@ -459,10 +458,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement createCreateTableStatement()
+  public TableDefinition createTableDefinition()
   {
-    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
-    return createTableStatement;
+    TableDefinitionImpl tableDefinition = new TableDefinitionImpl();
+    return tableDefinition;
   }
 
   /**
@@ -492,10 +491,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlterTableStatement createAlterTableStatement()
+  public AlterTableAddColumnStatement createAlterTableAddColumnStatement()
   {
-    AlterTableStatementImpl alterTableStatement = new AlterTableStatementImpl();
-    return alterTableStatement;
+    AlterTableAddColumnStatementImpl alterTableAddColumnStatement = new AlterTableAddColumnStatementImpl();
+    return alterTableAddColumnStatement;
   }
 
   /**
@@ -529,17 +528,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     DropViewStatementImpl dropViewStatement = new DropViewStatementImpl();
     return dropViewStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AlterTableClause createAlterTableClause()
-  {
-    AlterTableClauseImpl alterTableClause = new AlterTableClauseImpl();
-    return alterTableClause;
   }
 
   /**
@@ -1053,10 +1041,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlterTableRenameClause createAlterTableRenameClause()
+  public CreateTableStatement createCreateTableStatement()
   {
-    AlterTableRenameClauseImpl alterTableRenameClause = new AlterTableRenameClauseImpl();
-    return alterTableRenameClause;
+    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
+    return createTableStatement;
   }
 
   /**
@@ -1064,10 +1052,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlterTableAddColumnClause createAlterTableAddColumnClause()
+  public AlterTableRenameStatement createAlterTableRenameStatement()
   {
-    AlterTableAddColumnClauseImpl alterTableAddColumnClause = new AlterTableAddColumnClauseImpl();
-    return alterTableAddColumnClause;
+    AlterTableRenameStatementImpl alterTableRenameStatement = new AlterTableRenameStatementImpl();
+    return alterTableRenameStatement;
   }
 
   /**

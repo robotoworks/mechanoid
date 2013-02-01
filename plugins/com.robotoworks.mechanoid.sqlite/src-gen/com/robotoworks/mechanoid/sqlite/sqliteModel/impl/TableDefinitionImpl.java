@@ -2,8 +2,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,18 +13,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Alter Table Rename Clause</b></em>'.
+ * An implementation of the model object '<em><b>Table Definition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableRenameClauseImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.TableDefinitionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements AlterTableRenameClause
+public class TableDefinitionImpl extends DDLStatementImpl implements TableDefinition
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -51,7 +51,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AlterTableRenameClauseImpl()
+  protected TableDefinitionImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.ALTER_TABLE_RENAME_CLAUSE;
+    return SqliteModelPackage.Literals.TABLE_DEFINITION;
   }
 
   /**
@@ -87,7 +87,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.TABLE_DEFINITION__NAME, oldName, name));
   }
 
   /**
@@ -100,7 +100,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE__NAME:
+      case SqliteModelPackage.TABLE_DEFINITION__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -116,7 +116,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE__NAME:
+      case SqliteModelPackage.TABLE_DEFINITION__NAME:
         setName((String)newValue);
         return;
     }
@@ -133,7 +133,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE__NAME:
+      case SqliteModelPackage.TABLE_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -150,7 +150,7 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE__NAME:
+      case SqliteModelPackage.TABLE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -173,4 +173,4 @@ public class AlterTableRenameClauseImpl extends AlterTableClauseImpl implements 
     return result.toString();
   }
 
-} //AlterTableRenameClauseImpl
+} //TableDefinitionImpl

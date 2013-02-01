@@ -158,7 +158,7 @@ SingleSource:
 
 SingleSourceTable returns SelectSource:
 	 {SingleSourceTable} 
-	 tableReference=[CreateTableStatement|ID] ('as' name=ID)?;
+	 tableReference=[TableDefinition|ID] ('as' name=ID)?;
 	 
 SingleSourceSelectStatement returns SelectSource: 
 	{SingleSourceSelectStatement} 
@@ -200,13 +200,14 @@ DDLStatement:
 	CreateTableStatement
 	| CreateViewStatement
 	| CreateTriggerStatement
-	| AlterTableStatement
+	| AlterTableRenameStatement
+	| AlterTableAddColumnStatement
 	| DropTableStatement
 	| DropTriggerStatement
 	| DropViewStatement
 ;
 
-CreateTableStatement: 
+CreateTableStatement returns TableDefinition: 
 	{CreateTableStatement} 'create' 'table' name=ID '(' 
 		columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* 
 		(',' constraints+=TableConstraint)* 
@@ -219,24 +220,26 @@ CreateViewStatement:
 CreateTriggerStatement: 
 	'create' 'trigger' name=ID when=('before'|'after'|'instead of')?
 	  (eventType='delete'|eventType='insert'|eventType='update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
-	  'on' table=[CreateTableStatement|ID] forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
+	  'on' table=[TableDefinition|ID] forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
 	  'begin' (statements+=DMLStatement ';' (statements+=DMLStatement ';')*)? 'end';
 	  
-AlterTableStatement: 
-	'alter' 'table' table=[CreateTableStatement|ID] clause=AlterTableClause;
-	
+AlterTableRenameStatement returns TableDefinition:
+	{AlterTableRenameStatement} 
+	'alter' 'table' table=[TableDefinition|ID] 'rename to' name=ID
+;
+
+AlterTableAddColumnStatement: 
+	'alter' 'table' table=[TableDefinition|ID] 'add column' columnDef=ColumnDef
+;
+
 DropTableStatement: 
-	'drop' 'table' ifExists?=('if exists')? table=[CreateTableStatement|ID];
+	'drop' 'table' ifExists?=('if exists')? table=[TableDefinition|ID];
 	
 DropTriggerStatement: 
 	'drop' 'trigger' ifExists?=('if exists')? trigger=[CreateTriggerStatement|ID];
 
 DropViewStatement: 
 	'drop' 'view' ifExists?=('if exists')? view=[CreateViewStatement|ID];
-
-AlterTableClause:
-	{AlterTableRenameClause} 'rename to' name=ID |
-	{AlterTableAddColumnClause} 'add column' columnDef=ColumnDef;
 
 ColumnDef returns ColumnSource:
 	{ColumnDef}
@@ -295,11 +298,11 @@ DMLStatement:
 ;
 
 DeleteStatement:
-	'delete' 'from' table=[CreateTableStatement|ID] ('where' expression=SqlExpression)?	
+	'delete' 'from' table=[TableDefinition|ID] ('where' expression=SqlExpression)?	
 ;
 
 InsertStatement:
-	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' table=[CreateTableStatement|ID]
+	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' table=[TableDefinition|ID]
 	('(' columnNames+=ID (',' columnNames+=ID)* ')')? 
 	(('values' 
 		'(' expressions+=SqlExpression (',' expressions+=SqlExpression)* ')'
@@ -308,7 +311,7 @@ InsertStatement:
 ;
 
 UpdateStatement:
-	'update' ('or' (conflictResolution=ConflictResolution))? table=[CreateTableStatement|ID]
+	'update' ('or' (conflictResolution=ConflictResolution))? table=[TableDefinition|ID]
 	'set' updateColumnExpressions+=UpdateColumnExpression (',' updateColumnExpressions+=UpdateColumnExpression)*
 	('where' whereExpression=SqlExpression)?
 ;

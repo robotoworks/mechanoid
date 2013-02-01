@@ -236,11 +236,11 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.CREATE_TABLE_STATEMENT:
+      case SqliteModelPackage.TABLE_DEFINITION:
       {
-        CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
-        T result = caseCreateTableStatement(createTableStatement);
-        if (result == null) result = caseDDLStatement(createTableStatement);
+        TableDefinition tableDefinition = (TableDefinition)theEObject;
+        T result = caseTableDefinition(tableDefinition);
+        if (result == null) result = caseDDLStatement(tableDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -260,11 +260,11 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT:
+      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_STATEMENT:
       {
-        AlterTableStatement alterTableStatement = (AlterTableStatement)theEObject;
-        T result = caseAlterTableStatement(alterTableStatement);
-        if (result == null) result = caseDDLStatement(alterTableStatement);
+        AlterTableAddColumnStatement alterTableAddColumnStatement = (AlterTableAddColumnStatement)theEObject;
+        T result = caseAlterTableAddColumnStatement(alterTableAddColumnStatement);
+        if (result == null) result = caseDDLStatement(alterTableAddColumnStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -289,13 +289,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         DropViewStatement dropViewStatement = (DropViewStatement)theEObject;
         T result = caseDropViewStatement(dropViewStatement);
         if (result == null) result = caseDDLStatement(dropViewStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SqliteModelPackage.ALTER_TABLE_CLAUSE:
-      {
-        AlterTableClause alterTableClause = (AlterTableClause)theEObject;
-        T result = caseAlterTableClause(alterTableClause);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -662,19 +655,21 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE:
+      case SqliteModelPackage.CREATE_TABLE_STATEMENT:
       {
-        AlterTableRenameClause alterTableRenameClause = (AlterTableRenameClause)theEObject;
-        T result = caseAlterTableRenameClause(alterTableRenameClause);
-        if (result == null) result = caseAlterTableClause(alterTableRenameClause);
+        CreateTableStatement createTableStatement = (CreateTableStatement)theEObject;
+        T result = caseCreateTableStatement(createTableStatement);
+        if (result == null) result = caseTableDefinition(createTableStatement);
+        if (result == null) result = caseDDLStatement(createTableStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE:
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT:
       {
-        AlterTableAddColumnClause alterTableAddColumnClause = (AlterTableAddColumnClause)theEObject;
-        T result = caseAlterTableAddColumnClause(alterTableAddColumnClause);
-        if (result == null) result = caseAlterTableClause(alterTableAddColumnClause);
+        AlterTableRenameStatement alterTableRenameStatement = (AlterTableRenameStatement)theEObject;
+        T result = caseAlterTableRenameStatement(alterTableRenameStatement);
+        if (result == null) result = caseTableDefinition(alterTableRenameStatement);
+        if (result == null) result = caseDDLStatement(alterTableRenameStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1099,17 +1094,17 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Table Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Table Definition</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCreateTableStatement(CreateTableStatement object)
+  public T caseTableDefinition(TableDefinition object)
   {
     return null;
   }
@@ -1147,17 +1142,17 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Add Column Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Add Column Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAlterTableStatement(AlterTableStatement object)
+  public T caseAlterTableAddColumnStatement(AlterTableAddColumnStatement object)
   {
     return null;
   }
@@ -1206,22 +1201,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDropViewStatement(DropViewStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Clause</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlterTableClause(AlterTableClause object)
   {
     return null;
   }
@@ -1963,33 +1942,33 @@ public class SqliteModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Rename Clause</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Create Table Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAlterTableRenameClause(AlterTableRenameClause object)
+  public T caseCreateTableStatement(CreateTableStatement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Alter Table Rename Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alter Table Add Column Clause</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Alter Table Rename Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAlterTableAddColumnClause(AlterTableAddColumnClause object)
+  public T caseAlterTableRenameStatement(AlterTableRenameStatement object)
   {
     return null;
   }

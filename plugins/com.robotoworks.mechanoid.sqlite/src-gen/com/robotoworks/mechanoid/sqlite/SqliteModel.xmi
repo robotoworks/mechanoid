@@ -779,7 +779,7 @@
         <elements xsi:type="xtext:Assignment" feature="tableReference" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -997,11 +997,12 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CreateTableStatement">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
@@ -1130,9 +1131,35 @@
         <elements xsi:type="xtext:Keyword" value="end"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="AlterTableStatement">
+    <rules xsi:type="xtext:ParserRule" name="AlterTableRenameStatement">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableStatement"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableRenameStatement"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="alter"/>
+        <elements xsi:type="xtext:Keyword" value="table"/>
+        <elements xsi:type="xtext:Assignment" feature="table" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="rename to"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AlterTableAddColumnStatement">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableAddColumnStatement"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="alter"/>
@@ -1140,13 +1167,14 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="clause" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+        <elements xsi:type="xtext:Keyword" value="add column"/>
+        <elements xsi:type="xtext:Assignment" feature="columnDef" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
         </elements>
       </alternatives>
     </rules>
@@ -1207,35 +1235,6 @@
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="AlterTableClause">
-      <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableClause"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableRenameClause"/>
-            </type>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="rename to"/>
-          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-        </elements>
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//AlterTableAddColumnClause"/>
-            </type>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value="add column"/>
-          <elements xsi:type="xtext:Assignment" feature="columnDef" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
-          </elements>
         </elements>
       </alternatives>
     </rules>

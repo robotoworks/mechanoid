@@ -2647,7 +2647,7 @@ ruleSingleSourceTable returns [EObject current=null]
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getSingleSourceTableAccess().getTableReferenceCreateTableStatementCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getSingleSourceTableAccess().getTableReferenceTableDefinitionCrossReference_1_0()); 
 	}
 
 )
@@ -3221,41 +3221,51 @@ ruleDDLStatement returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableStatementParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableRenameStatementParserRuleCall_3()); 
     }
-    this_AlterTableStatement_3=ruleAlterTableStatement
+    this_AlterTableRenameStatement_3=ruleAlterTableRenameStatement
     { 
-        $current = $this_AlterTableStatement_3.current; 
+        $current = $this_AlterTableRenameStatement_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTableStatementParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableAddColumnStatementParserRuleCall_4()); 
     }
-    this_DropTableStatement_4=ruleDropTableStatement
+    this_AlterTableAddColumnStatement_4=ruleAlterTableAddColumnStatement
     { 
-        $current = $this_DropTableStatement_4.current; 
+        $current = $this_AlterTableAddColumnStatement_4.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTriggerStatementParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTableStatementParserRuleCall_5()); 
     }
-    this_DropTriggerStatement_5=ruleDropTriggerStatement
+    this_DropTableStatement_5=ruleDropTableStatement
     { 
-        $current = $this_DropTriggerStatement_5.current; 
+        $current = $this_DropTableStatement_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropViewStatementParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTriggerStatementParserRuleCall_6()); 
     }
-    this_DropViewStatement_6=ruleDropViewStatement
+    this_DropTriggerStatement_6=ruleDropTriggerStatement
     { 
-        $current = $this_DropViewStatement_6.current; 
+        $current = $this_DropTriggerStatement_6.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropViewStatementParserRuleCall_7()); 
+    }
+    this_DropViewStatement_7=ruleDropViewStatement
+    { 
+        $current = $this_DropViewStatement_7.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -3749,55 +3759,129 @@ ruleCreateTriggerStatement returns [EObject current=null]
 
 
 
-// Entry rule entryRuleAlterTableStatement
-entryRuleAlterTableStatement returns [EObject current=null] 
+// Entry rule entryRuleAlterTableRenameStatement
+entryRuleAlterTableRenameStatement returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getAlterTableStatementRule()); }
-	 iv_ruleAlterTableStatement=ruleAlterTableStatement 
-	 { $current=$iv_ruleAlterTableStatement.current; } 
+	{ newCompositeNode(grammarAccess.getAlterTableRenameStatementRule()); }
+	 iv_ruleAlterTableRenameStatement=ruleAlterTableRenameStatement 
+	 { $current=$iv_ruleAlterTableRenameStatement.current; } 
 	 EOF 
 ;
 
-// Rule AlterTableStatement
-ruleAlterTableStatement returns [EObject current=null] 
+// Rule AlterTableRenameStatement
+ruleAlterTableRenameStatement returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='alter' 
+((
     {
-    	newLeafNode(otherlv_0, grammarAccess.getAlterTableStatementAccess().getAlterKeyword_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getAlterTableRenameStatementAccess().getAlterTableRenameStatementAction_0(),
+            $current);
     }
-	otherlv_1='table' 
+)	otherlv_1='alter' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getAlterTableStatementAccess().getTableKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getAlterTableRenameStatementAccess().getAlterKeyword_1());
+    }
+	otherlv_2='table' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getAlterTableRenameStatementAccess().getTableKeyword_2());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAlterTableStatementRule());
+	            $current = createModelElement(grammarAccess.getAlterTableRenameStatementRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getAlterTableRenameStatementAccess().getTableTableDefinitionCrossReference_3_0()); 
+	}
+
+)
+)	otherlv_4='rename to' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getAlterTableRenameStatementAccess().getRenameToKeyword_4());
+    }
+(
+(
+		lv_name_5_0=RULE_ID
+		{
+			newLeafNode(lv_name_5_0, grammarAccess.getAlterTableRenameStatementAccess().getNameIDTerminalRuleCall_5_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAlterTableRenameStatementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_5_0, 
+        		"ID");
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleAlterTableAddColumnStatement
+entryRuleAlterTableAddColumnStatement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAlterTableAddColumnStatementRule()); }
+	 iv_ruleAlterTableAddColumnStatement=ruleAlterTableAddColumnStatement 
+	 { $current=$iv_ruleAlterTableAddColumnStatement.current; } 
+	 EOF 
+;
+
+// Rule AlterTableAddColumnStatement
+ruleAlterTableAddColumnStatement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='alter' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getAlterTableAddColumnStatementAccess().getAlterKeyword_0());
+    }
+	otherlv_1='table' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getAlterTableAddColumnStatementAccess().getTableKeyword_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAlterTableAddColumnStatementRule());
 	        }
         }
 	otherlv_2=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getAlterTableStatementAccess().getTableCreateTableStatementCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getAlterTableAddColumnStatementAccess().getTableTableDefinitionCrossReference_2_0()); 
 	}
 
 )
-)(
+)	otherlv_3='add column' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getAlterTableAddColumnStatementAccess().getAddColumnKeyword_3());
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAlterTableStatementAccess().getClauseAlterTableClauseParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getAlterTableAddColumnStatementAccess().getColumnDefColumnDefParserRuleCall_4_0()); 
 	    }
-		lv_clause_3_0=ruleAlterTableClause		{
+		lv_columnDef_4_0=ruleColumnDef		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAlterTableStatementRule());
+	            $current = createModelElementForParent(grammarAccess.getAlterTableAddColumnStatementRule());
 	        }
        		set(
        			$current, 
-       			"clause",
-        		lv_clause_3_0, 
-        		"AlterTableClause");
+       			"columnDef",
+        		lv_columnDef_4_0, 
+        		"ColumnDef");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -3974,84 +4058,6 @@ ruleDropViewStatement returns [EObject current=null]
 
 )
 ))
-;
-
-
-
-
-
-// Entry rule entryRuleAlterTableClause
-entryRuleAlterTableClause returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getAlterTableClauseRule()); }
-	 iv_ruleAlterTableClause=ruleAlterTableClause 
-	 { $current=$iv_ruleAlterTableClause.current; } 
-	 EOF 
-;
-
-// Rule AlterTableClause
-ruleAlterTableClause returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getAlterTableClauseAccess().getAlterTableRenameClauseAction_0_0(),
-            $current);
-    }
-)	otherlv_1='rename to' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getAlterTableClauseAccess().getRenameToKeyword_0_1());
-    }
-(
-(
-		lv_name_2_0=RULE_ID
-		{
-			newLeafNode(lv_name_2_0, grammarAccess.getAlterTableClauseAccess().getNameIDTerminalRuleCall_0_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAlterTableClauseRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_2_0, 
-        		"ID");
-	    }
-
-)
-))
-    |((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getAlterTableClauseAccess().getAlterTableAddColumnClauseAction_1_0(),
-            $current);
-    }
-)	otherlv_4='add column' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getAlterTableClauseAccess().getAddColumnKeyword_1_1());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getAlterTableClauseAccess().getColumnDefColumnDefParserRuleCall_1_2_0()); 
-	    }
-		lv_columnDef_5_0=ruleColumnDef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAlterTableClauseRule());
-	        }
-       		set(
-       			$current, 
-       			"columnDef",
-        		lv_columnDef_5_0, 
-        		"ColumnDef");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)))
 ;
 
 

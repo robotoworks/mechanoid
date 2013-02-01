@@ -30,12 +30,12 @@ public interface SingleSourceTable extends SelectSource
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table Reference</em>' reference.
-   * @see #setTableReference(CreateTableStatement)
+   * @see #setTableReference(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_TableReference()
    * @model
    * @generated
    */
-  CreateTableStatement getTableReference();
+  TableDefinition getTableReference();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}' reference.
@@ -45,6 +45,6 @@ public interface SingleSourceTable extends SelectSource
    * @see #getTableReference()
    * @generated
    */
-  void setTableReference(CreateTableStatement value);
+  void setTableReference(TableDefinition value);
 
 } // SingleSourceTable

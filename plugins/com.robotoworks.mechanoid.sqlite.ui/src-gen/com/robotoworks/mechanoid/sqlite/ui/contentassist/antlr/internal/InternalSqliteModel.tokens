@@ -162,7 +162,7 @@ RULE_WS=10
 'real'=48
 'join'=85
 'update'=108
-'drop'=94
+'drop'=96
 'desc'=117
 '='=25
 'replace'=41
@@ -173,7 +173,7 @@ RULE_WS=10
 'cross'=122
 '<<'=17
 '<='=22
-'rename to'=95
+'rename to'=94
 '!='=27
 '<'=21
 'current_time_stamp'=126
@@ -234,7 +234,7 @@ RULE_WS=10
 'on'=86
 'order by'=79
 'fail'=55
-'add column'=96
+'add column'=95
 'after'=39
 '}'=60
 'rollback'=53

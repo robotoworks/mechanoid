@@ -5,9 +5,8 @@ import com.google.inject.Provider;
 import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AllColumns;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
@@ -127,22 +126,17 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
-			case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE:
-				if(context == grammarAccess.getAlterTableClauseRule()) {
-					sequence_AlterTableClause(context, (AlterTableAddColumnClause) semanticObject); 
-					return; 
-				}
-				else break;
-			case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE:
-				if(context == grammarAccess.getAlterTableClauseRule()) {
-					sequence_AlterTableClause(context, (AlterTableRenameClause) semanticObject); 
-					return; 
-				}
-				else break;
-			case SqliteModelPackage.ALTER_TABLE_STATEMENT:
-				if(context == grammarAccess.getAlterTableStatementRule() ||
+			case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_STATEMENT:
+				if(context == grammarAccess.getAlterTableAddColumnStatementRule() ||
 				   context == grammarAccess.getDDLStatementRule()) {
-					sequence_AlterTableStatement(context, (AlterTableStatement) semanticObject); 
+					sequence_AlterTableAddColumnStatement(context, (AlterTableAddColumnStatement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT:
+				if(context == grammarAccess.getAlterTableRenameStatementRule() ||
+				   context == grammarAccess.getDDLStatementRule()) {
+					sequence_AlterTableRenameStatement(context, (AlterTableRenameStatement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -833,51 +827,38 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     columnDef=ColumnDef
+	 *     (table=[TableDefinition|ID] columnDef=ColumnDef)
 	 */
-	protected void sequence_AlterTableClause(EObject context, AlterTableAddColumnClause semanticObject) {
+	protected void sequence_AlterTableAddColumnStatement(EObject context, AlterTableAddColumnStatement semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_CLAUSE__COLUMN_DEF));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__TABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__TABLE));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__COLUMN_DEF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__COLUMN_DEF));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAlterTableClauseAccess().getColumnDefColumnDefParserRuleCall_1_2_0(), semanticObject.getColumnDef());
+		feeder.accept(grammarAccess.getAlterTableAddColumnStatementAccess().getTableTableDefinitionIDTerminalRuleCall_2_0_1(), semanticObject.getTable());
+		feeder.accept(grammarAccess.getAlterTableAddColumnStatementAccess().getColumnDefColumnDefParserRuleCall_4_0(), semanticObject.getColumnDef());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (table=[TableDefinition|ID] name=ID)
 	 */
-	protected void sequence_AlterTableClause(EObject context, AlterTableRenameClause semanticObject) {
+	protected void sequence_AlterTableRenameStatement(EObject context, AlterTableRenameStatement semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_RENAME_CLAUSE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_RENAME_CLAUSE__NAME));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAlterTableClauseAccess().getNameIDTerminalRuleCall_0_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (table=[CreateTableStatement|ID] clause=AlterTableClause)
-	 */
-	protected void sequence_AlterTableStatement(EObject context, AlterTableStatement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_STATEMENT__TABLE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_STATEMENT__TABLE));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_STATEMENT__CLAUSE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ALTER_TABLE_STATEMENT__CLAUSE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAlterTableStatementAccess().getTableCreateTableStatementIDTerminalRuleCall_2_0_1(), semanticObject.getTable());
-		feeder.accept(grammarAccess.getAlterTableStatementAccess().getClauseAlterTableClauseParserRuleCall_3_0(), semanticObject.getClause());
+		feeder.accept(grammarAccess.getAlterTableRenameStatementAccess().getTableTableDefinitionIDTerminalRuleCall_3_0_1(), semanticObject.getTable());
+		feeder.accept(grammarAccess.getAlterTableRenameStatementAccess().getNameIDTerminalRuleCall_5_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1727,7 +1708,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (tableReference=[CreateTableStatement|ID] name=ID?)
+	 *     (tableReference=[TableDefinition|ID] name=ID?)
 	 */
 	protected void sequence_SingleSourceTable(EObject context, SingleSourceTable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

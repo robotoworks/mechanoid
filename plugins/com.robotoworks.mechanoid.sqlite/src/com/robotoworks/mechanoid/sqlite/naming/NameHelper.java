@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 public class NameHelper {
 	public static QualifiedName getName(SelectSource ele) {
@@ -25,5 +26,9 @@ public class NameHelper {
 		}
 		
 		return null;
+	}
+	
+	public static QualifiedName getName(TableDefinition ele) {
+		return QualifiedName.create(ele.getName());
 	}
 }

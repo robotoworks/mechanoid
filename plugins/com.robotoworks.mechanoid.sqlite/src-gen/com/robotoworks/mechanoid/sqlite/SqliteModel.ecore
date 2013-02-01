@@ -107,12 +107,8 @@
     <eLiterals name="numeric" value="5" literal="numeric"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DDLStatement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CreateTableStatement" eSuperTypes="#//DDLStatement">
+  <eClassifiers xsi:type="ecore:EClass" name="TableDefinition" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="columnDefs" upperBound="-1"
-        eType="#//ColumnSource" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-        eType="#//TableConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateViewStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -132,9 +128,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
         eType="#//DMLStatement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlterTableStatement" eSuperTypes="#//DDLStatement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//AlterTableClause"
+  <eClassifiers xsi:type="ecore:EClass" name="AlterTableAddColumnStatement" eSuperTypes="#//DDLStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columnDef" eType="#//ColumnSource"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//DDLStatement">
@@ -149,7 +145,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="view" eType="#//CreateViewStatement"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlterTableClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="TableConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -359,7 +354,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceTable" eSuperTypes="#//SelectSource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tableReference" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableReference" eType="#//TableDefinition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleSourceSelectStatement" eSuperTypes="#//SelectSource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectStatement" eType="#//SelectStatement"
@@ -387,12 +382,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="CurrentTimeStampLiteral" eSuperTypes="#//LiteralValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlterTableRenameClause" eSuperTypes="#//AlterTableClause">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateTableStatement" eSuperTypes="#//TableDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columnDefs" upperBound="-1"
+        eType="#//ColumnSource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//TableConstraint" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlterTableAddColumnClause" eSuperTypes="#//AlterTableClause">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="columnDef" eType="#//ColumnSource"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AlterTableRenameStatement" eSuperTypes="#//TableDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnDef" eSuperTypes="#//ColumnSource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ColumnType"/>

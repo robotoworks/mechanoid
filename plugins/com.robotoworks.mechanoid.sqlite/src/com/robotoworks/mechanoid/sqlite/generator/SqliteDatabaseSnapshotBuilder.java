@@ -6,19 +6,16 @@ import java.util.LinkedHashMap;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnClause;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameClause;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
@@ -29,7 +26,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 
@@ -74,26 +70,25 @@ public class SqliteDatabaseSnapshotBuilder {
 					
 					mViews.put(createViewStmt.getName(), EcoreUtil.copy(createViewStmt));
 					
-				} else if(statement instanceof AlterTableStatement) {
+				} else if(statement instanceof AlterTableRenameStatement) {
 					
-					AlterTableStatement alter = (AlterTableStatement) statement;
+					AlterTableRenameStatement renameStmt = (AlterTableRenameStatement) statement;
 					
-					CreateTableStatement tableToAlter = mTables.get(alter.getTable().getName());
+					CreateTableStatement tableToAlter = mTables.get(renameStmt.getTable().getName());
 					
-					if(alter.getClause() instanceof AlterTableRenameClause) {
-						
-						AlterTableRenameClause renameClause = (AlterTableRenameClause) alter.getClause();
-						tableToAlter.setName(renameClause.getName());
-						
-						mTables.put(renameClause.getName(), tableToAlter);
-						mTables.remove(alter.getTable().getName());
-						
-					} else if(alter.getClause() instanceof AlterTableAddColumnClause) {
-						
-						AlterTableAddColumnClause addColumnClause = (AlterTableAddColumnClause) alter.getClause();
-						tableToAlter.getColumnDefs().add(EcoreUtil.copy(addColumnClause.getColumnDef()));				
-					} 
-				} else if (statement instanceof CreateTriggerStatement) {
+					tableToAlter.setName(renameStmt.getName());
+					
+					mTables.put(renameStmt.getName(), tableToAlter);
+					mTables.remove(renameStmt.getTable().getName());
+				} 
+				else if (statement instanceof AlterTableAddColumnStatement) {
+					AlterTableAddColumnStatement addColumnStmt = (AlterTableAddColumnStatement) statement;
+
+					CreateTableStatement tableToAlter = mTables.get(addColumnStmt.getTable().getName());
+					
+					tableToAlter.getColumnDefs().add(EcoreUtil.copy(addColumnStmt.getColumnDef()));	
+				}
+				else if (statement instanceof CreateTriggerStatement) {
 					CreateTriggerStatement createTriggerStmt = (CreateTriggerStatement) statement;
 					
 					mTriggers.put(createTriggerStmt.getName(), EcoreUtil.copy(createTriggerStmt));

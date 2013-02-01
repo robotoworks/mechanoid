@@ -162,7 +162,7 @@ RULE_WS=10
 'real'=121
 'join'=80
 'update'=95
-'drop'=100
+'drop'=102
 'desc'=74
 '='=34
 'replace'=111
@@ -173,7 +173,7 @@ RULE_WS=10
 'cross'=79
 '<<'=26
 '<='=31
-'rename to'=102
+'rename to'=100
 '!='=36
 '<'=30
 'or'=46
@@ -204,7 +204,7 @@ RULE_WS=10
 'delete'=93
 'ignore'=129
 'group by'=71
-'if exists'=101
+'if exists'=103
 'else'=58
 'for each row'=97
 'unique'=108
@@ -234,7 +234,7 @@ RULE_WS=10
 'on'=81
 'order by'=65
 'fail'=128
-'add column'=103
+'add column'=101
 'after'=91
 'rollback'=126
 '}'=15

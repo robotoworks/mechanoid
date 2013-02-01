@@ -2,15 +2,19 @@ package com.robotoworks.mechanoid.sqlite.scoping;
 
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.sqlite.naming.NameHelper;
 import com.robotoworks.mechanoid.sqlite.scoping.SqliteModelScopeProvider;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement;
@@ -19,6 +23,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTermList;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
@@ -27,9 +32,15 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -42,6 +53,7 @@ import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
@@ -60,16 +72,17 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     SelectSource _source = context.getSource();
     boolean _equals = Objects.equal(_source, null);
     if (_equals) {
-      IScope scope = this.buildScopeForColumnSourceRef(context, context);
+      IScope scope = this.buildScopeForColumnSourceRef_column(context, context);
       return scope;
     } else {
       SelectSource _source_1 = context.getSource();
       if ((_source_1 instanceof SingleSourceTable)) {
         SelectSource _source_2 = context.getSource();
         SingleSourceTable tableSource = ((SingleSourceTable) _source_2);
-        CreateTableStatement _tableReference = tableSource.getTableReference();
-        EList<ColumnSource> _columnDefs = _tableReference.getColumnDefs();
-        return Scopes.scopeFor(_columnDefs);
+        DDLStatement _ancestorOfType = ModelUtil.<DDLStatement>getAncestorOfType(tableSource, DDLStatement.class);
+        TableDefinition _tableReference = tableSource.getTableReference();
+        ArrayList<EObject> _findColumnDefs = this.findColumnDefs(_ancestorOfType, _tableReference);
+        return Scopes.scopeFor(_findColumnDefs);
       }
     }
     return IScope.NULLSCOPE;
@@ -81,7 +94,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   }
   
   public IScope scope_NewColumn_column(final NewColumn context, final EReference reference) {
-    CreateTriggerStatement trigger = this.<CreateTriggerStatement>findOuter(context, CreateTriggerStatement.class);
+    CreateTriggerStatement trigger = ModelUtil.<CreateTriggerStatement>getAncestorOfType(context, CreateTriggerStatement.class);
     boolean _notEquals = (!Objects.equal(trigger, null));
     if (_notEquals) {
       CreateTableStatement _table = trigger.getTable();
@@ -92,7 +105,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   }
   
   public IScope scope_OldColumn_column(final OldColumn context, final EReference reference) {
-    CreateTriggerStatement trigger = this.<CreateTriggerStatement>findOuter(context, CreateTriggerStatement.class);
+    CreateTriggerStatement trigger = ModelUtil.<CreateTriggerStatement>getAncestorOfType(context, CreateTriggerStatement.class);
     boolean _notEquals = (!Objects.equal(trigger, null));
     if (_notEquals) {
       CreateTableStatement _table = trigger.getTable();
@@ -102,7 +115,62 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return IScope.NULLSCOPE;
   }
   
-  public IScope buildScopeForColumnSourceRef(final ColumnSourceRef context, final EObject parent) {
+  public IScope scope_SingleSourceTable_tableReference(final SingleSourceTable tbl, final EReference reference) {
+    DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(tbl, DDLStatement.class);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+  }
+  
+  public IScope scope_CreateTriggerStatement_table(final CreateTriggerStatement context, final EReference reference) {
+    return this.scopeForTableDefinitionsBeforeStatement(context);
+  }
+  
+  public IScope scope_DeleteStatement_table(final DeleteStatement context, final EReference reference) {
+    DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+  }
+  
+  public IScope scope_InsertStatement_table(final InsertStatement context, final EReference reference) {
+    DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+  }
+  
+  public IScope scope_UpdateStatement_table(final UpdateStatement context, final EReference reference) {
+    DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+  }
+  
+  public IScope scopeForTableDefinitionsBeforeStatement(final DDLStatement stmt) {
+    ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(stmt, TableDefinition.class);
+    HashMap<String,EObject> _hashMap = new HashMap<String,EObject>();
+    final HashMap<String,EObject> map = _hashMap;
+    List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
+    final Procedure1<TableDefinition> _function = new Procedure1<TableDefinition>() {
+        public void apply(final TableDefinition it) {
+          String _name = it.getName();
+          boolean _containsKey = map.containsKey(_name);
+          boolean _not = (!_containsKey);
+          if (_not) {
+            String _name_1 = it.getName();
+            map.put(_name_1, it);
+          }
+        }
+      };
+    IterableExtensions.<TableDefinition>forEach(_reverse, _function);
+    Collection<EObject> _values = map.values();
+    final Function1<EObject,QualifiedName> _function_1 = new Function1<EObject,QualifiedName>() {
+        public QualifiedName apply(final EObject it) {
+          QualifiedName _name = NameHelper.getName(((TableDefinition) it));
+          return _name;
+        }
+      };
+    return Scopes.<EObject>scopeFor(_values, new Function<EObject,QualifiedName>() {
+        public QualifiedName apply(EObject input) {
+          return _function_1.apply(input);
+        }
+    }, IScope.NULLSCOPE);
+  }
+  
+  public IScope buildScopeForColumnSourceRef_column(final ColumnSourceRef context, final EObject parent) {
     EObject temp = parent;
     EObject _eContainer = temp.eContainer();
     boolean _not = (!(_eContainer instanceof DatabaseBlock));
@@ -115,9 +183,20 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
           if (container instanceof SelectExpression) {
             final SelectExpression _selectExpression = (SelectExpression)container;
             _matched=true;
-            final ArrayList<EObject> items = this.getAllReferenceableColumns(_selectExpression);
-            IScope _buildScopeForColumnSourceRef = this.buildScopeForColumnSourceRef(context, _selectExpression);
-            return Scopes.scopeFor(items, _buildScopeForColumnSourceRef);
+            final ArrayList<EObject> items = this.getAllReferenceableColumns(_selectExpression, true);
+            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, _selectExpression);
+            return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
+          }
+        }
+        if (!_matched) {
+          if (container instanceof ResultColumn) {
+            final ResultColumn _resultColumn = (ResultColumn)container;
+            _matched=true;
+            EObject _eContainer_1 = _resultColumn.eContainer();
+            EObject _eContainer_2 = _eContainer_1.eContainer();
+            final ArrayList<EObject> items = this.getAllReferenceableColumns(((SelectExpression) _eContainer_2), false);
+            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, _resultColumn);
+            return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
           }
         }
         if (!_matched) {
@@ -245,28 +324,6 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return items;
   }
   
-  public <T extends EObject> T findOuter(final EObject obj, final Class<T> ancestor) {
-    EObject temp = ((EObject) obj);
-    EObject _eContainer = temp.eContainer();
-    boolean _notEquals = (!Objects.equal(_eContainer, null));
-    boolean _while = _notEquals;
-    while (_while) {
-      {
-        EObject _eContainer_1 = temp.eContainer();
-        temp = _eContainer_1;
-        Class<? extends Object> _class = temp.getClass();
-        boolean _isAssignableFrom = ancestor.isAssignableFrom(_class);
-        if (_isAssignableFrom) {
-          return ((T) temp);
-        }
-      }
-      EObject _eContainer_1 = temp.eContainer();
-      boolean _notEquals_1 = (!Objects.equal(_eContainer_1, null));
-      _while = _notEquals_1;
-    }
-    return null;
-  }
-  
   public ArrayList<EObject> getAllReferenceableColumns(final SelectCoreExpression expr) {
     final ArrayList<EObject> items = Lists.<EObject>newArrayList();
     if ((expr instanceof SelectCore)) {
@@ -278,7 +335,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
       items.addAll(_allReferenceableColumns_1);
     } else {
       if ((expr instanceof SelectExpression)) {
-        ArrayList<EObject> _allReferenceableColumns_2 = this.getAllReferenceableColumns(((SelectExpression) expr));
+        ArrayList<EObject> _allReferenceableColumns_2 = this.getAllReferenceableColumns(((SelectExpression) expr), true);
         items.addAll(_allReferenceableColumns_2);
       }
     }
@@ -303,17 +360,31 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return items;
   }
   
-  public ArrayList<EObject> getAllReferenceableColumns(final SelectExpression expr) {
+  public ArrayList<EObject> getAllReferenceableColumns(final SelectExpression expr, final boolean includeAliases) {
     final ArrayList<EObject> items = Lists.<EObject>newArrayList();
+    boolean _and = false;
     SelectList _selectList = expr.getSelectList();
     boolean _notEquals = (!Objects.equal(_selectList, null));
-    if (_notEquals) {
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      _and = (_notEquals && includeAliases);
+    }
+    if (_and) {
       SelectList _selectList_1 = expr.getSelectList();
       EList<ColumnSource> _resultColumns = _selectList_1.getResultColumns();
-      items.addAll(_resultColumns);
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
+            String _name = it.getName();
+            boolean _notEquals = (!Objects.equal(_name, null));
+            return Boolean.valueOf(_notEquals);
+          }
+        };
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_resultColumns, _function);
+      Iterables.<EObject>addAll(items, _filter);
     }
     ArrayList<SingleSource> _findAllSingleSources = this.findAllSingleSources(expr);
-    final Function1<SingleSource,Boolean> _function = new Function1<SingleSource,Boolean>() {
+    final Function1<SingleSource,Boolean> _function_1 = new Function1<SingleSource,Boolean>() {
         public Boolean apply(final SingleSource item) {
           if ((item instanceof SingleSourceTable)) {
             String _name = ((SingleSourceTable) item).getName();
@@ -322,16 +393,75 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
           return Boolean.valueOf(false);
         }
       };
-    Iterable<SingleSource> _filter = IterableExtensions.<SingleSource>filter(_findAllSingleSources, _function);
-    final Procedure1<SingleSource> _function_1 = new Procedure1<SingleSource>() {
+    Iterable<SingleSource> _filter_1 = IterableExtensions.<SingleSource>filter(_findAllSingleSources, _function_1);
+    final Procedure1<SingleSource> _function_2 = new Procedure1<SingleSource>() {
         public void apply(final SingleSource item) {
           SingleSourceTable source = ((SingleSourceTable) item);
-          CreateTableStatement _tableReference = source.getTableReference();
-          EList<ColumnSource> _columnDefs = _tableReference.getColumnDefs();
-          items.addAll(_columnDefs);
+          DDLStatement _ancestorOfType = ModelUtil.<DDLStatement>getAncestorOfType(item, DDLStatement.class);
+          TableDefinition _tableReference = source.getTableReference();
+          ArrayList<EObject> _findColumnDefs = XSqliteModelScopeProvider.this.findColumnDefs(_ancestorOfType, _tableReference);
+          items.addAll(_findColumnDefs);
         }
       };
-    IterableExtensions.<SingleSource>forEach(_filter, _function_1);
+    IterableExtensions.<SingleSource>forEach(_filter_1, _function_2);
     return items;
+  }
+  
+  /**
+   * Find column definitions from caller going back to the definition
+   */
+  public ArrayList<EObject> findColumnDefs(final DDLStatement caller, final TableDefinition definition) {
+    ArrayList<EObject> _arrayList = new ArrayList<EObject>();
+    final ArrayList<EObject> columns = _arrayList;
+    LinkedList<TableDefinition> tableHistory = this.getHistory(definition);
+    TableDefinition _peekLast = tableHistory.peekLast();
+    CreateTableStatement table = ((CreateTableStatement) _peekLast);
+    EList<ColumnSource> _columnDefs = table.getColumnDefs();
+    columns.addAll(_columnDefs);
+    boolean _isEmpty = tableHistory.isEmpty();
+    boolean _not = (!_isEmpty);
+    boolean _while = _not;
+    while (_while) {
+      {
+        final TableDefinition stmt = tableHistory.removeLast();
+        ArrayList<AlterTableAddColumnStatement> _findStatementsOfTypeBetween = ModelUtil.<AlterTableAddColumnStatement>findStatementsOfTypeBetween(AlterTableAddColumnStatement.class, stmt, caller);
+        final Function1<AlterTableAddColumnStatement,Boolean> _function = new Function1<AlterTableAddColumnStatement,Boolean>() {
+            public Boolean apply(final AlterTableAddColumnStatement it) {
+              TableDefinition _table = it.getTable();
+              boolean _equals = Objects.equal(_table, stmt);
+              return Boolean.valueOf(_equals);
+            }
+          };
+        Iterable<AlterTableAddColumnStatement> _filter = IterableExtensions.<AlterTableAddColumnStatement>filter(_findStatementsOfTypeBetween, _function);
+        final Procedure1<AlterTableAddColumnStatement> _function_1 = new Procedure1<AlterTableAddColumnStatement>() {
+            public void apply(final AlterTableAddColumnStatement it) {
+              ColumnSource _columnDef = it.getColumnDef();
+              columns.add(_columnDef);
+            }
+          };
+        IterableExtensions.<AlterTableAddColumnStatement>forEach(_filter, _function_1);
+      }
+      boolean _isEmpty_1 = tableHistory.isEmpty();
+      boolean _not_1 = (!_isEmpty_1);
+      _while = _not_1;
+    }
+    return columns;
+  }
+  
+  public LinkedList<TableDefinition> getHistory(final TableDefinition ref) {
+    LinkedList<TableDefinition> _linkedList = new LinkedList<TableDefinition>();
+    LinkedList<TableDefinition> refs = _linkedList;
+    TableDefinition current = ref;
+    boolean _while = (current instanceof AlterTableRenameStatement);
+    while (_while) {
+      {
+        refs.add(current);
+        TableDefinition _table = ((AlterTableRenameStatement) current).getTable();
+        current = _table;
+      }
+      _while = (current instanceof AlterTableRenameStatement);
+    }
+    refs.add(current);
+    return refs;
   }
 }

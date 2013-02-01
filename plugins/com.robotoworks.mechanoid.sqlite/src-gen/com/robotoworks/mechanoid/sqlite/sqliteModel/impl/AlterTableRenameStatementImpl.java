@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
@@ -15,35 +15,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Single Source Table</b></em>'.
+ * An implementation of the model object '<em><b>Alter Table Rename Statement</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SingleSourceTableImpl#getTableReference <em>Table Reference</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.AlterTableRenameStatementImpl#getTable <em>Table</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSourceTable
+public class AlterTableRenameStatementImpl extends TableDefinitionImpl implements AlterTableRenameStatement
 {
   /**
-   * The cached value of the '{@link #getTableReference() <em>Table Reference</em>}' reference.
+   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableReference()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected TableDefinition tableReference;
+  protected TableDefinition table;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SingleSourceTableImpl()
+  protected AlterTableRenameStatementImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE;
+    return SqliteModelPackage.Literals.ALTER_TABLE_RENAME_STATEMENT;
   }
 
   /**
@@ -64,19 +64,19 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public TableDefinition getTableReference()
+  public TableDefinition getTable()
   {
-    if (tableReference != null && tableReference.eIsProxy())
+    if (table != null && table.eIsProxy())
     {
-      InternalEObject oldTableReference = (InternalEObject)tableReference;
-      tableReference = (TableDefinition)eResolveProxy(oldTableReference);
-      if (tableReference != oldTableReference)
+      InternalEObject oldTable = (InternalEObject)table;
+      table = (TableDefinition)eResolveProxy(oldTable);
+      if (table != oldTable)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, oldTableReference, tableReference));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE, oldTable, table));
       }
     }
-    return tableReference;
+    return table;
   }
 
   /**
@@ -84,9 +84,9 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public TableDefinition basicGetTableReference()
+  public TableDefinition basicGetTable()
   {
-    return tableReference;
+    return table;
   }
 
   /**
@@ -94,12 +94,12 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTableReference(TableDefinition newTableReference)
+  public void setTable(TableDefinition newTable)
   {
-    TableDefinition oldTableReference = tableReference;
-    tableReference = newTableReference;
+    TableDefinition oldTable = table;
+    table = newTable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, oldTableReference, tableReference));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE, oldTable, table));
   }
 
   /**
@@ -112,9 +112,9 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE:
-        if (resolve) return getTableReference();
-        return basicGetTableReference();
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE:
+        if (resolve) return getTable();
+        return basicGetTable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -129,8 +129,8 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE:
-        setTableReference((TableDefinition)newValue);
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE:
+        setTable((TableDefinition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +146,8 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE:
-        setTableReference((TableDefinition)null);
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE:
+        setTable((TableDefinition)null);
         return;
     }
     super.eUnset(featureID);
@@ -163,10 +163,10 @@ public class SingleSourceTableImpl extends SelectSourceImpl implements SingleSou
   {
     switch (featureID)
     {
-      case SqliteModelPackage.SINGLE_SOURCE_TABLE__TABLE_REFERENCE:
-        return tableReference != null;
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT__TABLE:
+        return table != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //SingleSourceTableImpl
+} //AlterTableRenameStatementImpl

@@ -230,13 +230,13 @@ public interface SqliteModelFactory extends EFactory
   DDLStatement createDDLStatement();
 
   /**
-   * Returns a new object of class '<em>Create Table Statement</em>'.
+   * Returns a new object of class '<em>Table Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create Table Statement</em>'.
+   * @return a new object of class '<em>Table Definition</em>'.
    * @generated
    */
-  CreateTableStatement createCreateTableStatement();
+  TableDefinition createTableDefinition();
 
   /**
    * Returns a new object of class '<em>Create View Statement</em>'.
@@ -257,13 +257,13 @@ public interface SqliteModelFactory extends EFactory
   CreateTriggerStatement createCreateTriggerStatement();
 
   /**
-   * Returns a new object of class '<em>Alter Table Statement</em>'.
+   * Returns a new object of class '<em>Alter Table Add Column Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Statement</em>'.
+   * @return a new object of class '<em>Alter Table Add Column Statement</em>'.
    * @generated
    */
-  AlterTableStatement createAlterTableStatement();
+  AlterTableAddColumnStatement createAlterTableAddColumnStatement();
 
   /**
    * Returns a new object of class '<em>Drop Table Statement</em>'.
@@ -291,15 +291,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   DropViewStatement createDropViewStatement();
-
-  /**
-   * Returns a new object of class '<em>Alter Table Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Clause</em>'.
-   * @generated
-   */
-  AlterTableClause createAlterTableClause();
 
   /**
    * Returns a new object of class '<em>Column Constraint</em>'.
@@ -716,22 +707,22 @@ public interface SqliteModelFactory extends EFactory
   CurrentTimeStampLiteral createCurrentTimeStampLiteral();
 
   /**
-   * Returns a new object of class '<em>Alter Table Rename Clause</em>'.
+   * Returns a new object of class '<em>Create Table Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Rename Clause</em>'.
+   * @return a new object of class '<em>Create Table Statement</em>'.
    * @generated
    */
-  AlterTableRenameClause createAlterTableRenameClause();
+  CreateTableStatement createCreateTableStatement();
 
   /**
-   * Returns a new object of class '<em>Alter Table Add Column Clause</em>'.
+   * Returns a new object of class '<em>Alter Table Rename Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Add Column Clause</em>'.
+   * @return a new object of class '<em>Alter Table Rename Statement</em>'.
    * @generated
    */
-  AlterTableAddColumnClause createAlterTableAddColumnClause();
+  AlterTableRenameStatement createAlterTableRenameStatement();
 
   /**
    * Returns a new object of class '<em>Column Def</em>'.
