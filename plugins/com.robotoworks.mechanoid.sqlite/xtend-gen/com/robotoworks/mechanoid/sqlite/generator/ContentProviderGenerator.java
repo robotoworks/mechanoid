@@ -4,15 +4,15 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
+import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -20,7 +20,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ContentProviderGenerator {
-  public CharSequence generate(final Model model, final MigrationBlock snapshot) {
+  public CharSequence generate(final Model model, final SqliteDatabaseSnapshot snapshot) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -81,9 +81,8 @@ public class ContentProviderGenerator {
     _builder.append("OpenHelper.Tables;");
     _builder.newLineIfNotEmpty();
     {
-      EList<DDLStatement> _statements = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
-      for(final CreateTableStatement tbl : _filter) {
+      Collection<CreateTableStatement> _tables = snapshot.getTables();
+      for(final CreateTableStatement tbl : _tables) {
         _builder.append("import ");
         String _packageName_2 = model.getPackageName();
         _builder.append(_packageName_2, "");
@@ -101,9 +100,8 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_1 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_1 = Iterables.<CreateViewStatement>filter(_statements_1, CreateViewStatement.class);
-      for(final CreateViewStatement vw : _filter_1) {
+      Collection<CreateViewStatement> _views = snapshot.getViews();
+      for(final CreateViewStatement vw : _views) {
         _builder.append("import ");
         String _packageName_3 = model.getPackageName();
         _builder.append(_packageName_3, "");
@@ -121,9 +119,15 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_2 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_2 = Iterables.<CreateTableStatement>filter(_statements_2, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_1 : _filter_2) {
+      Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
+      final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
+          public Boolean apply(final CreateTableStatement it) {
+            boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(it);
+            return Boolean.valueOf(_hasAndroidPrimaryKey);
+          }
+        };
+      Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables_1, _function);
+      for(final CreateTableStatement tbl_1 : _filter) {
         _builder.append("import ");
         String _packageName_4 = model.getPackageName();
         _builder.append(_packageName_4, "");
@@ -156,9 +160,8 @@ public class ContentProviderGenerator {
     int counter = (-1);
     _builder.newLineIfNotEmpty();
     {
-      EList<DDLStatement> _statements_3 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_3 = Iterables.<CreateTableStatement>filter(_statements_3, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_2 : _filter_3) {
+      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
+      for(final CreateTableStatement tbl_2 : _tables_2) {
         _builder.append("\t");
         _builder.append("private static final int ");
         String _name_7 = tbl_2.getName();
@@ -192,9 +195,8 @@ public class ContentProviderGenerator {
     }
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_4 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_4 = Iterables.<CreateViewStatement>filter(_statements_4, CreateViewStatement.class);
-      for(final CreateViewStatement vw_1 : _filter_4) {
+      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
+      for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t");
         _builder.append("private static final int ");
         String _name_9 = vw_1.getName();
@@ -236,14 +238,14 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_5 = model.getDatabase();
           ConfigBlock _config_1 = _database_5.getConfig();
-          EList<ConfigurationStatement> _statements_5 = _config_1.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function = new Function1<ConfigurationStatement,Boolean>() {
+          EList<ConfigurationStatement> _statements = _config_1.getStatements();
+          final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_5 = IterableExtensions.<ConfigurationStatement>filter(_statements_5, _function);
-          for(final ConfigurationStatement a : _filter_5) {
+          Iterable<ConfigurationStatement> _filter_1 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_1);
+          for(final ConfigurationStatement a : _filter_1) {
             _builder.append("\t");
             _builder.append("private static final int ");
             String _name_11 = ((ActionStatement) a).getName();
@@ -280,9 +282,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_6 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_6 = Iterables.<CreateTableStatement>filter(_statements_6, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_3 : _filter_6) {
+      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
+      for(final CreateTableStatement tbl_3 : _tables_3) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
         String _name_12 = tbl_3.getName();
@@ -315,9 +316,8 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_7 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_7 = Iterables.<CreateViewStatement>filter(_statements_7, CreateViewStatement.class);
-      for(final CreateViewStatement vw_2 : _filter_7) {
+      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
+      for(final CreateViewStatement vw_2 : _views_2) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
         String _name_16 = vw_2.getName();
@@ -373,9 +373,8 @@ public class ContentProviderGenerator {
     _builder.append("// Tables");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_8 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_8 = Iterables.<CreateTableStatement>filter(_statements_8, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_4 : _filter_8) {
+      Collection<CreateTableStatement> _tables_4 = snapshot.getTables();
+      for(final CreateTableStatement tbl_4 : _tables_4) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
         String _name_21 = tbl_4.getName();
@@ -410,9 +409,8 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_9 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_9 = Iterables.<CreateViewStatement>filter(_statements_9, CreateViewStatement.class);
-      for(final CreateViewStatement vw_3 : _filter_9) {
+      Collection<CreateViewStatement> _views_3 = snapshot.getViews();
+      for(final CreateViewStatement vw_3 : _views_3) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
         String _name_25 = vw_3.getName();
@@ -454,14 +452,14 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_8 = model.getDatabase();
           ConfigBlock _config_3 = _database_8.getConfig();
-          EList<ConfigurationStatement> _statements_10 = _config_3.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
+          EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
+          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_10 = IterableExtensions.<ConfigurationStatement>filter(_statements_10, _function_1);
-          for(final ConfigurationStatement a_1 : _filter_10) {
+          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_2);
+          for(final ConfigurationStatement a_1 : _filter_2) {
             _builder.append("\t\t");
             ActionStatement stmt = ((ActionStatement) a_1);
             _builder.newLineIfNotEmpty();
@@ -837,9 +835,8 @@ public class ContentProviderGenerator {
     _builder.append("switch(id) {");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_11 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_11 = Iterables.<CreateTableStatement>filter(_statements_11, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_5 : _filter_11) {
+      Collection<CreateTableStatement> _tables_5 = snapshot.getTables();
+      for(final CreateTableStatement tbl_5 : _tables_5) {
         _builder.append("\t\t\t");
         _builder.append("case ");
         String _name_31 = tbl_5.getName();
@@ -880,9 +877,8 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_12 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_12 = Iterables.<CreateViewStatement>filter(_statements_12, CreateViewStatement.class);
-      for(final CreateViewStatement vw_4 : _filter_12) {
+      Collection<CreateViewStatement> _views_4 = snapshot.getViews();
+      for(final CreateViewStatement vw_4 : _views_4) {
         _builder.append("\t\t\t");
         _builder.append("case ");
         String _name_35 = vw_4.getName();
@@ -930,14 +926,14 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_11 = model.getDatabase();
           ConfigBlock _config_5 = _database_11.getConfig();
-          EList<ConfigurationStatement> _statements_13 = _config_5.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
+          EList<ConfigurationStatement> _statements_2 = _config_5.getStatements();
+          final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
                 return Boolean.valueOf((it instanceof ActionStatement));
               }
             };
-          Iterable<ConfigurationStatement> _filter_13 = IterableExtensions.<ConfigurationStatement>filter(_statements_13, _function_2);
-          for(final ConfigurationStatement a_2 : _filter_13) {
+          Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_3);
+          for(final ConfigurationStatement a_2 : _filter_3) {
             _builder.append("\t\t\t");
             _builder.append("case ");
             String _name_39 = ((ActionStatement) a_2).getName();
@@ -973,9 +969,8 @@ public class ContentProviderGenerator {
     _builder.append("    ");
     _builder.newLine();
     {
-      EList<DDLStatement> _statements_14 = snapshot.getStatements();
-      Iterable<CreateTableStatement> _filter_14 = Iterables.<CreateTableStatement>filter(_statements_14, CreateTableStatement.class);
-      for(final CreateTableStatement tbl_6 : _filter_14) {
+      Collection<CreateTableStatement> _tables_6 = snapshot.getTables();
+      for(final CreateTableStatement tbl_6 : _tables_6) {
         {
           boolean _hasAndroidPrimaryKey_8 = Extensions.hasAndroidPrimaryKey(tbl_6);
           if (_hasAndroidPrimaryKey_8) {
@@ -994,10 +989,18 @@ public class ContentProviderGenerator {
             String _upperCase_19 = _underscore_19.toUpperCase();
             _builder.append(_upperCase_19, "    	");
             _builder.append(", true, ");
-            String _name_43 = tbl_6.getName();
-            String _pascalize_19 = Strings.pascalize(_name_43);
-            _builder.append(_pascalize_19, "    	");
-            _builder.append("Record.getFactory());");
+            {
+              boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(tbl_6);
+              if (_hasAndroidPrimaryKey_9) {
+                String _name_43 = tbl_6.getName();
+                String _pascalize_19 = Strings.pascalize(_name_43);
+                _builder.append(_pascalize_19, "    	");
+                _builder.append("Record.getFactory()");
+              } else {
+                _builder.append("null");
+              }
+            }
+            _builder.append(");");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("}");
@@ -1021,10 +1024,18 @@ public class ContentProviderGenerator {
         String _upperCase_20 = _underscore_20.toUpperCase();
         _builder.append(_upperCase_20, "    	");
         _builder.append(", false, ");
-        String _name_46 = tbl_6.getName();
-        String _pascalize_21 = Strings.pascalize(_name_46);
-        _builder.append(_pascalize_21, "    	");
-        _builder.append("Record.getFactory());");
+        {
+          boolean _hasAndroidPrimaryKey_10 = Extensions.hasAndroidPrimaryKey(tbl_6);
+          if (_hasAndroidPrimaryKey_10) {
+            String _name_46 = tbl_6.getName();
+            String _pascalize_21 = Strings.pascalize(_name_46);
+            _builder.append(_pascalize_21, "    	");
+            _builder.append("Record.getFactory()");
+          } else {
+            _builder.append("null");
+          }
+        }
+        _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("}");
@@ -1034,12 +1045,11 @@ public class ContentProviderGenerator {
       }
     }
     {
-      EList<DDLStatement> _statements_15 = snapshot.getStatements();
-      Iterable<CreateViewStatement> _filter_15 = Iterables.<CreateViewStatement>filter(_statements_15, CreateViewStatement.class);
-      for(final CreateViewStatement view : _filter_15) {
+      Collection<CreateViewStatement> _views_5 = snapshot.getViews();
+      for(final CreateViewStatement view : _views_5) {
         {
-          boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(view);
-          if (_hasAndroidPrimaryKey_9) {
+          boolean _hasAndroidPrimaryKey_11 = Extensions.hasAndroidPrimaryKey(view);
+          if (_hasAndroidPrimaryKey_11) {
             _builder.append("    ");
             _builder.append("protected ContentProviderActions create");
             String _name_47 = view.getName();
@@ -1094,9 +1104,9 @@ public class ContentProviderGenerator {
         {
           DatabaseBlock _database_13 = model.getDatabase();
           ConfigBlock _config_7 = _database_13.getConfig();
-          EList<ConfigurationStatement> _statements_16 = _config_7.getStatements();
-          Iterable<ActionStatement> _filter_16 = Iterables.<ActionStatement>filter(_statements_16, ActionStatement.class);
-          for(final ActionStatement a_3 : _filter_16) {
+          EList<ConfigurationStatement> _statements_3 = _config_7.getStatements();
+          Iterable<ActionStatement> _filter_4 = Iterables.<ActionStatement>filter(_statements_3, ActionStatement.class);
+          for(final ActionStatement a_3 : _filter_4) {
             _builder.append("\t");
             _builder.append("protected ContentProviderActions create");
             String _name_51 = a_3.getName();
@@ -1122,7 +1132,7 @@ public class ContentProviderGenerator {
     return _builder;
   }
   
-  public CharSequence generateStub(final Model model, final MigrationBlock snapshot) {
+  public CharSequence generateStub(final Model model, final SqliteDatabaseSnapshot snapshot) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*******************************************************************************");
     _builder.newLine();

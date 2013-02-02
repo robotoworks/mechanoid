@@ -12,10 +12,28 @@ import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
 import com.robotoworks.mechanoid.sqlite.ActiveRecord;
+import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 
 public class RecipesRecord extends ActiveRecord implements Parcelable {
+
+	private static ActiveRecordFactory<RecipesRecord> sFactory = new ActiveRecordFactory<RecipesRecord>() {
+		@Override
+		public RecipesRecord create(Cursor c) {
+			return fromCursor(c);
+		}
+		
+		@Override
+		public String[] getProjection() {
+			return PROJECTION;
+		}
+	};
+	
+	public static ActiveRecordFactory<RecipesRecord> getFactory() {
+		return sFactory;
+	}
+
     public static final Parcelable.Creator<RecipesRecord> CREATOR 
     	= new Parcelable.Creator<RecipesRecord>() {
         public RecipesRecord createFromParcel(Parcel in) {

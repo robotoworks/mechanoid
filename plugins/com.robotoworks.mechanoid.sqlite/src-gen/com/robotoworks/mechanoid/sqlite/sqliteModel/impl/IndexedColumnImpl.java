@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IndexedColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IndexedColumnImpl#getColumnReference <em>Column Reference</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IndexedColumnImpl#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.IndexedColumnImpl#isDesc <em>Desc</em>}</li>
  * </ul>
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements IndexedColumn
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
+   * The cached value of the '{@link #getColumnReference() <em>Column Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getColumnReference()
    * @generated
    * @ordered
    */
-  protected ColumnDef name;
+  protected ColumnDef columnReference;
 
   /**
    * The default value of the '{@link #isAsc() <em>Asc</em>}' attribute.
@@ -107,19 +107,19 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnDef getName()
+  public ColumnDef getColumnReference()
   {
-    if (name != null && name.eIsProxy())
+    if (columnReference != null && columnReference.eIsProxy())
     {
-      InternalEObject oldName = (InternalEObject)name;
-      name = (ColumnDef)eResolveProxy(oldName);
-      if (name != oldName)
+      InternalEObject oldColumnReference = (InternalEObject)columnReference;
+      columnReference = (ColumnDef)eResolveProxy(oldColumnReference);
+      if (columnReference != oldColumnReference)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.INDEXED_COLUMN__NAME, oldName, name));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE, oldColumnReference, columnReference));
       }
     }
-    return name;
+    return columnReference;
   }
 
   /**
@@ -127,9 +127,9 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnDef basicGetName()
+  public ColumnDef basicGetColumnReference()
   {
-    return name;
+    return columnReference;
   }
 
   /**
@@ -137,12 +137,12 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(ColumnDef newName)
+  public void setColumnReference(ColumnDef newColumnReference)
   {
-    ColumnDef oldName = name;
-    name = newName;
+    ColumnDef oldColumnReference = columnReference;
+    columnReference = newColumnReference;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.INDEXED_COLUMN__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE, oldColumnReference, columnReference));
   }
 
   /**
@@ -201,9 +201,9 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
   {
     switch (featureID)
     {
-      case SqliteModelPackage.INDEXED_COLUMN__NAME:
-        if (resolve) return getName();
-        return basicGetName();
+      case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
+        if (resolve) return getColumnReference();
+        return basicGetColumnReference();
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         return isAsc();
       case SqliteModelPackage.INDEXED_COLUMN__DESC:
@@ -222,8 +222,8 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
   {
     switch (featureID)
     {
-      case SqliteModelPackage.INDEXED_COLUMN__NAME:
-        setName((ColumnDef)newValue);
+      case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
+        setColumnReference((ColumnDef)newValue);
         return;
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         setAsc((Boolean)newValue);
@@ -245,8 +245,8 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
   {
     switch (featureID)
     {
-      case SqliteModelPackage.INDEXED_COLUMN__NAME:
-        setName((ColumnDef)null);
+      case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
+        setColumnReference((ColumnDef)null);
         return;
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         setAsc(ASC_EDEFAULT);
@@ -268,8 +268,8 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
   {
     switch (featureID)
     {
-      case SqliteModelPackage.INDEXED_COLUMN__NAME:
-        return name != null;
+      case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
+        return columnReference != null;
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         return asc != ASC_EDEFAULT;
       case SqliteModelPackage.INDEXED_COLUMN__DESC:

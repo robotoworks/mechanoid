@@ -7,6 +7,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 import java.util.Collection;
 
@@ -32,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getConflictResolution <em>Conflict Resolution</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getColumnNames <em>Column Names</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.InsertStatementImpl#getSelectStatement <em>Select Statement</em>}</li>
@@ -64,24 +65,14 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
   protected ConflictResolution conflictResolution = CONFLICT_RESOLUTION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
+   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableName()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected static final String TABLE_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTableName()
-   * @generated
-   * @ordered
-   */
-  protected String tableName = TABLE_NAME_EDEFAULT;
+  protected TableDefinition table;
 
   /**
    * The cached value of the '{@link #getColumnNames() <em>Column Names</em>}' attribute list.
@@ -162,9 +153,19 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTableName()
+  public TableDefinition getTable()
   {
-    return tableName;
+    if (table != null && table.eIsProxy())
+    {
+      InternalEObject oldTable = (InternalEObject)table;
+      table = (TableDefinition)eResolveProxy(oldTable);
+      if (table != oldTable)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.INSERT_STATEMENT__TABLE, oldTable, table));
+      }
+    }
+    return table;
   }
 
   /**
@@ -172,12 +173,22 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTableName(String newTableName)
+  public TableDefinition basicGetTable()
   {
-    String oldTableName = tableName;
-    tableName = newTableName;
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTable(TableDefinition newTable)
+  {
+    TableDefinition oldTable = table;
+    table = newTable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.INSERT_STATEMENT__TABLE_NAME, oldTableName, tableName));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.INSERT_STATEMENT__TABLE, oldTable, table));
   }
 
   /**
@@ -286,8 +297,9 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
     {
       case SqliteModelPackage.INSERT_STATEMENT__CONFLICT_RESOLUTION:
         return getConflictResolution();
-      case SqliteModelPackage.INSERT_STATEMENT__TABLE_NAME:
-        return getTableName();
+      case SqliteModelPackage.INSERT_STATEMENT__TABLE:
+        if (resolve) return getTable();
+        return basicGetTable();
       case SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES:
         return getColumnNames();
       case SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS:
@@ -312,8 +324,8 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
       case SqliteModelPackage.INSERT_STATEMENT__CONFLICT_RESOLUTION:
         setConflictResolution((ConflictResolution)newValue);
         return;
-      case SqliteModelPackage.INSERT_STATEMENT__TABLE_NAME:
-        setTableName((String)newValue);
+      case SqliteModelPackage.INSERT_STATEMENT__TABLE:
+        setTable((TableDefinition)newValue);
         return;
       case SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES:
         getColumnNames().clear();
@@ -343,8 +355,8 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
       case SqliteModelPackage.INSERT_STATEMENT__CONFLICT_RESOLUTION:
         setConflictResolution(CONFLICT_RESOLUTION_EDEFAULT);
         return;
-      case SqliteModelPackage.INSERT_STATEMENT__TABLE_NAME:
-        setTableName(TABLE_NAME_EDEFAULT);
+      case SqliteModelPackage.INSERT_STATEMENT__TABLE:
+        setTable((TableDefinition)null);
         return;
       case SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES:
         getColumnNames().clear();
@@ -371,8 +383,8 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
     {
       case SqliteModelPackage.INSERT_STATEMENT__CONFLICT_RESOLUTION:
         return conflictResolution != CONFLICT_RESOLUTION_EDEFAULT;
-      case SqliteModelPackage.INSERT_STATEMENT__TABLE_NAME:
-        return TABLE_NAME_EDEFAULT == null ? tableName != null : !TABLE_NAME_EDEFAULT.equals(tableName);
+      case SqliteModelPackage.INSERT_STATEMENT__TABLE:
+        return table != null;
       case SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES:
         return columnNames != null && !columnNames.isEmpty();
       case SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS:
@@ -396,8 +408,6 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (conflictResolution: ");
     result.append(conflictResolution);
-    result.append(", tableName: ");
-    result.append(tableName);
     result.append(", columnNames: ");
     result.append(columnNames);
     result.append(')');

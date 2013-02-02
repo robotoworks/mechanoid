@@ -2,7 +2,6 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getCore <em>Core</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getOrderingTerms <em>Ordering Terms</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getOrderby <em>Orderby</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,19 +49,29 @@ public interface SelectStatement extends DMLStatement
   void setCore(SelectCoreExpression value);
 
   /**
-   * Returns the value of the '<em><b>Ordering Terms</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm}.
+   * Returns the value of the '<em><b>Orderby</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ordering Terms</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Orderby</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ordering Terms</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectStatement_OrderingTerms()
+   * @return the value of the '<em>Orderby</em>' containment reference.
+   * @see #setOrderby(OrderingTermList)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSelectStatement_Orderby()
    * @model containment="true"
    * @generated
    */
-  EList<OrderingTerm> getOrderingTerms();
+  OrderingTermList getOrderby();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement#getOrderby <em>Orderby</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Orderby</em>' containment reference.
+   * @see #getOrderby()
+   * @generated
+   */
+  void setOrderby(OrderingTermList value);
 
 } // SelectStatement

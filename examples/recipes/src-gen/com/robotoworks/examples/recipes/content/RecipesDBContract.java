@@ -11,10 +11,31 @@ import com.robotoworks.mechanoid.sqlite.SQuery;
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
+import java.lang.reflect.Field;
 
 public class RecipesDBContract  {
-    public static final String CONTENT_AUTHORITY = "com.robotoworks.examples.recipes.content.recipesdb";
+    public static final String CONTENT_AUTHORITY = initAuthority();
 
+	private static String initAuthority() {
+		String authority = "com.robotoworks.examples.recipes.content.recipesdb";
+
+		try {
+    		
+    		ClassLoader loader = RecipesDBContract.class.getClassLoader();
+    		
+			Class<?> clz = loader.loadClass("com.justeat.app.data.RecipesDBContentProviderAuthority");
+			Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
+			
+			authority = declaredField.get(null).toString();
+		} catch (ClassNotFoundException e) {} 
+    	catch (NoSuchFieldException e) {} 
+    	catch (IllegalArgumentException e) {
+		} catch (IllegalAccessException e) {
+		}
+		
+		return authority;
+	}
+	
     private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
 	interface RecipesColumns {

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#getColumnReference <em>Column Reference</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#isDesc <em>Desc</em>}</li>
  * </ul>
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface IndexedColumn extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' reference.
+   * Returns the value of the '<em><b>Column Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' reference isn't clear,
+   * If the meaning of the '<em>Column Reference</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' reference.
-   * @see #setName(ColumnDef)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getIndexedColumn_Name()
+   * @return the value of the '<em>Column Reference</em>' reference.
+   * @see #setColumnReference(ColumnDef)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getIndexedColumn_ColumnReference()
    * @model
    * @generated
    */
-  ColumnDef getName();
+  ColumnDef getColumnReference();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#getName <em>Name</em>}' reference.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn#getColumnReference <em>Column Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' reference.
-   * @see #getName()
+   * @param value the new value of the '<em>Column Reference</em>' reference.
+   * @see #getColumnReference()
    * @generated
    */
-  void setName(ColumnDef value);
+  void setColumnReference(ColumnDef value);
 
   /**
    * Returns the value of the '<em><b>Asc</b></em>' attribute.

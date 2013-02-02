@@ -14,11 +14,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
 	@Inject ContentProviderContractGenerator mContentProviderContractGenerator
-	@Inject Provider<SqliteDatabaseSnapshotBuilder> mDbSnapshotBuilderProvider
+	@Inject Provider<SqliteDatabaseSnapshot$Builder> mDbSnapshotBuilderProvider
 	@Inject ContentProviderGenerator mContentProviderGenerator
 	@Inject Provider<SqliteMigrationGenerator> mMigrationGenerator
 	@Inject ActiveRecordGenerator mActiveRecordGenerator
@@ -27,7 +28,7 @@ class SqliteModelGenerator implements IGenerator {
 		
 		var model = resource.contents.head as Model;
 		
-		val snapshot = mDbSnapshotBuilderProvider.get().build(model).database.migrations.get(0)
+		val snapshot = mDbSnapshotBuilderProvider.get().build(model);
 		
 		fsa.generateFile(
 			model.packageName.resolveFileName("Abstract".concat(model.database.name.pascalize).concat("OpenHelper")), 
@@ -54,7 +55,7 @@ class SqliteModelGenerator implements IGenerator {
 			mContentProviderGenerator.generateStub(model, snapshot)
 		);
 		
-		snapshot.statements.filter(typeof(CreateTableStatement)).forEach[
+		snapshot.tables.forEach[
 			statement|
 			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
 		];
@@ -67,13 +68,15 @@ class SqliteModelGenerator implements IGenerator {
 	
 	def void generateActiveRecordEntity(Resource resource, IFileSystemAccess fsa, CreateTableStatement statement) {
 		
-		var model = resource.contents.head as Model;
-		
-		var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+		if(statement.hasAndroidPrimaryKey) {
+			var model = resource.contents.head as Model;
 			
-		fsa.generateFile(genFileName, 
-			mActiveRecordGenerator.generate(model, statement)
-		)		
+			var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+				
+			fsa.generateFile(genFileName, 
+				mActiveRecordGenerator.generate(model, statement)
+			)	
+		}	
 	}
 
 	def void generateMigration(Resource resource, IFileSystemAccess fsa, MigrationBlock migration, int version) { 

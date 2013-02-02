@@ -6,6 +6,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 import static extension com.robotoworks.mechanoid.common.util.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
 
 class ActiveRecordGenerator {
 		def CharSequence generate(Model model, CreateTableStatement stmt) '''
@@ -82,7 +83,8 @@ class ActiveRecordGenerator {
 			    	
 					setId(in.readLong());
 					«var counter=-1»
-					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«FOR item : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«var col = item as ColumnDef»
 					«IF col.type == ColumnType::BOOLEAN»
 					m«col.name.pascalize» = (in.readInt() > 0);
 					«ELSE»
@@ -105,7 +107,8 @@ class ActiveRecordGenerator {
 				@Override
 				public void writeToParcel(Parcel dest, int flags) {
 					dest.writeLong(getId());
-					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«FOR item : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«var col = item as ColumnDef»
 					«IF col.type == ColumnType::BOOLEAN»
 					dest.writeInt(m«col.name.pascalize» ? 1 : 0);
 					«ELSE»
@@ -142,7 +145,8 @@ class ActiveRecordGenerator {
 				@Override
 				protected void setPropertiesFromCursor(Cursor c) {
 					setId(c.getLong(Indices._ID));
-					«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«FOR item : stmt.columnDefs.filter([!it.name.equals("_id")])»
+					«var col = item as ColumnDef»
 					«IF col.type == ColumnType::BOOLEAN»
 					set«col.name.pascalize»(c.getInt(Indices.«col.name.underscore.toUpperCase») > 0);
 					«ELSE»
@@ -196,14 +200,16 @@ class ActiveRecordGenerator {
 		'''
 		
 		def generateFields(CreateTableStatement stmt) '''
-			«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+			«FOR item : stmt.columnDefs.filter([!it.name.equals("_id")])»
+			«var col = item as ColumnDef»
 			private «col.type.toJavaTypeName» m«col.name.pascalize»;
 			private boolean m«col.name.pascalize»Dirty;
 			«ENDFOR»
 		'''
 		
 		def generateAccessors(CreateTableStatement stmt) '''
-			«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
+			«FOR item : stmt.columnDefs.filter([!it.name.equals("_id")])»
+			«var col = item as ColumnDef»
 			public void set«col.name.pascalize»(«col.type.toJavaTypeName» «col.name.camelize») {
 				m«col.name.pascalize» = «col.name.camelize»;
 				m«col.name.pascalize»Dirty = true;

@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#getArguments <em>Arguments</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.FunctionImpl#getArugments <em>Arugments</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,16 +87,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * @ordered
    */
   protected EList<Expression> arguments;
-
-  /**
-   * The cached value of the '{@link #getArugments() <em>Arugments</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArugments()
-   * @generated
-   * @ordered
-   */
-  protected EList<Expression> arugments;
 
   /**
    * <!-- begin-user-doc -->
@@ -185,20 +174,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getArugments()
-  {
-    if (arugments == null)
-    {
-      arugments = new EObjectContainmentEList<Expression>(Expression.class, this, SqliteModelPackage.FUNCTION__ARUGMENTS);
-    }
-    return arugments;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -206,8 +181,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
     {
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.FUNCTION__ARUGMENTS:
-        return ((InternalEList<?>)getArugments()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -228,8 +201,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         return isAll();
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         return getArguments();
-      case SqliteModelPackage.FUNCTION__ARUGMENTS:
-        return getArugments();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -255,10 +226,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         getArguments().clear();
         getArguments().addAll((Collection<? extends Expression>)newValue);
         return;
-      case SqliteModelPackage.FUNCTION__ARUGMENTS:
-        getArugments().clear();
-        getArugments().addAll((Collection<? extends Expression>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -282,9 +249,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         getArguments().clear();
         return;
-      case SqliteModelPackage.FUNCTION__ARUGMENTS:
-        getArugments().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -305,8 +269,6 @@ public class FunctionImpl extends ExpressionImpl implements Function
         return all != ALL_EDEFAULT;
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         return arguments != null && !arguments.isEmpty();
-      case SqliteModelPackage.FUNCTION__ARUGMENTS:
-        return arugments != null && !arugments.isEmpty();
     }
     return super.eIsSet(featureID);
   }

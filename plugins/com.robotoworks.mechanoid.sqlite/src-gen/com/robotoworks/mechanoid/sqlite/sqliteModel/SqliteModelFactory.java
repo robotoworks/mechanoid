@@ -86,6 +86,141 @@ public interface SqliteModelFactory extends EFactory
   Case createCase();
 
   /**
+   * Returns a new object of class '<em>Select Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Statement</em>'.
+   * @generated
+   */
+  SelectStatement createSelectStatement();
+
+  /**
+   * Returns a new object of class '<em>Ordering Term List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ordering Term List</em>'.
+   * @generated
+   */
+  OrderingTermList createOrderingTermList();
+
+  /**
+   * Returns a new object of class '<em>Select Core Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Core Expression</em>'.
+   * @generated
+   */
+  SelectCoreExpression createSelectCoreExpression();
+
+  /**
+   * Returns a new object of class '<em>Select List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select List</em>'.
+   * @generated
+   */
+  SelectList createSelectList();
+
+  /**
+   * Returns a new object of class '<em>Where Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Where Expressions</em>'.
+   * @generated
+   */
+  WhereExpressions createWhereExpressions();
+
+  /**
+   * Returns a new object of class '<em>Group By Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group By Expressions</em>'.
+   * @generated
+   */
+  GroupByExpressions createGroupByExpressions();
+
+  /**
+   * Returns a new object of class '<em>Having Expressions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Having Expressions</em>'.
+   * @generated
+   */
+  HavingExpressions createHavingExpressions();
+
+  /**
+   * Returns a new object of class '<em>Ordering Term</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ordering Term</em>'.
+   * @generated
+   */
+  OrderingTerm createOrderingTerm();
+
+  /**
+   * Returns a new object of class '<em>Join Source</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Join Source</em>'.
+   * @generated
+   */
+  JoinSource createJoinSource();
+
+  /**
+   * Returns a new object of class '<em>Single Source</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Source</em>'.
+   * @generated
+   */
+  SingleSource createSingleSource();
+
+  /**
+   * Returns a new object of class '<em>Select Source</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Select Source</em>'.
+   * @generated
+   */
+  SelectSource createSelectSource();
+
+  /**
+   * Returns a new object of class '<em>Single Source Join</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Source Join</em>'.
+   * @generated
+   */
+  SingleSourceJoin createSingleSourceJoin();
+
+  /**
+   * Returns a new object of class '<em>Join Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Join Statement</em>'.
+   * @generated
+   */
+  JoinStatement createJoinStatement();
+
+  /**
+   * Returns a new object of class '<em>Column Source</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Source</em>'.
+   * @generated
+   */
+  ColumnSource createColumnSource();
+
+  /**
+   * Returns a new object of class '<em>Literal Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal Value</em>'.
+   * @generated
+   */
+  LiteralValue createLiteralValue();
+
+  /**
    * Returns a new object of class '<em>DDL Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -93,6 +228,141 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   DDLStatement createDDLStatement();
+
+  /**
+   * Returns a new object of class '<em>Table Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Definition</em>'.
+   * @generated
+   */
+  TableDefinition createTableDefinition();
+
+  /**
+   * Returns a new object of class '<em>Create View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create View Statement</em>'.
+   * @generated
+   */
+  CreateViewStatement createCreateViewStatement();
+
+  /**
+   * Returns a new object of class '<em>Create Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create Trigger Statement</em>'.
+   * @generated
+   */
+  CreateTriggerStatement createCreateTriggerStatement();
+
+  /**
+   * Returns a new object of class '<em>Alter Table Add Column Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alter Table Add Column Statement</em>'.
+   * @generated
+   */
+  AlterTableAddColumnStatement createAlterTableAddColumnStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop Table Statement</em>'.
+   * @generated
+   */
+  DropTableStatement createDropTableStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop Trigger Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop Trigger Statement</em>'.
+   * @generated
+   */
+  DropTriggerStatement createDropTriggerStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop View Statement</em>'.
+   * @generated
+   */
+  DropViewStatement createDropViewStatement();
+
+  /**
+   * Returns a new object of class '<em>Column Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Constraint</em>'.
+   * @generated
+   */
+  ColumnConstraint createColumnConstraint();
+
+  /**
+   * Returns a new object of class '<em>Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Constraint</em>'.
+   * @generated
+   */
+  TableConstraint createTableConstraint();
+
+  /**
+   * Returns a new object of class '<em>Unique Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unique Table Constraint</em>'.
+   * @generated
+   */
+  UniqueTableConstraint createUniqueTableConstraint();
+
+  /**
+   * Returns a new object of class '<em>Primary Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primary Constraint</em>'.
+   * @generated
+   */
+  PrimaryConstraint createPrimaryConstraint();
+
+  /**
+   * Returns a new object of class '<em>Check Table Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Check Table Constraint</em>'.
+   * @generated
+   */
+  CheckTableConstraint createCheckTableConstraint();
+
+  /**
+   * Returns a new object of class '<em>Indexed Column</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Indexed Column</em>'.
+   * @generated
+   */
+  IndexedColumn createIndexedColumn();
+
+  /**
+   * Returns a new object of class '<em>Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Value</em>'.
+   * @generated
+   */
+  DefaultValue createDefaultValue();
+
+  /**
+   * Returns a new object of class '<em>Conflict Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conflict Clause</em>'.
+   * @generated
+   */
+  ConflictClause createConflictClause();
 
   /**
    * Returns a new object of class '<em>DML Statement</em>'.
@@ -138,141 +408,6 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   UpdateColumnExpression createUpdateColumnExpression();
-
-  /**
-   * Returns a new object of class '<em>Select Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select Statement</em>'.
-   * @generated
-   */
-  SelectStatement createSelectStatement();
-
-  /**
-   * Returns a new object of class '<em>Select Core Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select Core Expression</em>'.
-   * @generated
-   */
-  SelectCoreExpression createSelectCoreExpression();
-
-  /**
-   * Returns a new object of class '<em>Alter Table Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Clause</em>'.
-   * @generated
-   */
-  AlterTableClause createAlterTableClause();
-
-  /**
-   * Returns a new object of class '<em>Column Def</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Column Def</em>'.
-   * @generated
-   */
-  ColumnDef createColumnDef();
-
-  /**
-   * Returns a new object of class '<em>Column Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Column Constraint</em>'.
-   * @generated
-   */
-  ColumnConstraint createColumnConstraint();
-
-  /**
-   * Returns a new object of class '<em>Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Default Value</em>'.
-   * @generated
-   */
-  DefaultValue createDefaultValue();
-
-  /**
-   * Returns a new object of class '<em>Table Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Table Constraint</em>'.
-   * @generated
-   */
-  TableConstraint createTableConstraint();
-
-  /**
-   * Returns a new object of class '<em>Indexed Column</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Indexed Column</em>'.
-   * @generated
-   */
-  IndexedColumn createIndexedColumn();
-
-  /**
-   * Returns a new object of class '<em>Ordering Term</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ordering Term</em>'.
-   * @generated
-   */
-  OrderingTerm createOrderingTerm();
-
-  /**
-   * Returns a new object of class '<em>Join Source</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Join Source</em>'.
-   * @generated
-   */
-  JoinSource createJoinSource();
-
-  /**
-   * Returns a new object of class '<em>Single Source</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Single Source</em>'.
-   * @generated
-   */
-  SingleSource createSingleSource();
-
-  /**
-   * Returns a new object of class '<em>Join Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Join Statement</em>'.
-   * @generated
-   */
-  JoinStatement createJoinStatement();
-
-  /**
-   * Returns a new object of class '<em>Result Column</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column</em>'.
-   * @generated
-   */
-  ResultColumn createResultColumn();
-
-  /**
-   * Returns a new object of class '<em>Conflict Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Conflict Clause</em>'.
-   * @generated
-   */
-  ConflictClause createConflictClause();
-
-  /**
-   * Returns a new object of class '<em>Literal Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Literal Value</em>'.
-   * @generated
-   */
-  LiteralValue createLiteralValue();
 
   /**
    * Returns a new object of class '<em>Action Statement</em>'.
@@ -383,13 +518,40 @@ public interface SqliteModelFactory extends EFactory
   NotNull createNotNull();
 
   /**
-   * Returns a new object of class '<em>Column Literal</em>'.
+   * Returns a new object of class '<em>New Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Column Literal</em>'.
+   * @return a new object of class '<em>New Column</em>'.
    * @generated
    */
-  ColumnLiteral createColumnLiteral();
+  NewColumn createNewColumn();
+
+  /**
+   * Returns a new object of class '<em>Old Column</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Old Column</em>'.
+   * @generated
+   */
+  OldColumn createOldColumn();
+
+  /**
+   * Returns a new object of class '<em>All Columns</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>All Columns</em>'.
+   * @generated
+   */
+  AllColumns createAllColumns();
+
+  /**
+   * Returns a new object of class '<em>Column Source Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Source Ref</em>'.
+   * @generated
+   */
+  ColumnSourceRef createColumnSourceRef();
 
   /**
    * Returns a new object of class '<em>Literal</em>'.
@@ -446,69 +608,6 @@ public interface SqliteModelFactory extends EFactory
   CastExpression createCastExpression();
 
   /**
-   * Returns a new object of class '<em>Create Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create Table Statement</em>'.
-   * @generated
-   */
-  CreateTableStatement createCreateTableStatement();
-
-  /**
-   * Returns a new object of class '<em>Create View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create View Statement</em>'.
-   * @generated
-   */
-  CreateViewStatement createCreateViewStatement();
-
-  /**
-   * Returns a new object of class '<em>Create Trigger Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create Trigger Statement</em>'.
-   * @generated
-   */
-  CreateTriggerStatement createCreateTriggerStatement();
-
-  /**
-   * Returns a new object of class '<em>Alter Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Statement</em>'.
-   * @generated
-   */
-  AlterTableStatement createAlterTableStatement();
-
-  /**
-   * Returns a new object of class '<em>Drop Table Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Drop Table Statement</em>'.
-   * @generated
-   */
-  DropTableStatement createDropTableStatement();
-
-  /**
-   * Returns a new object of class '<em>Drop Trigger Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Drop Trigger Statement</em>'.
-   * @generated
-   */
-  DropTriggerStatement createDropTriggerStatement();
-
-  /**
-   * Returns a new object of class '<em>Drop View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Drop View Statement</em>'.
-   * @generated
-   */
-  DropViewStatement createDropViewStatement();
-
-  /**
    * Returns a new object of class '<em>Select Core</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -518,94 +617,13 @@ public interface SqliteModelFactory extends EFactory
   SelectCore createSelectCore();
 
   /**
-   * Returns a new object of class '<em>Alter Table Rename Clause</em>'.
+   * Returns a new object of class '<em>Select Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Rename Clause</em>'.
+   * @return a new object of class '<em>Select Expression</em>'.
    * @generated
    */
-  AlterTableRenameClause createAlterTableRenameClause();
-
-  /**
-   * Returns a new object of class '<em>Alter Table Add Column Clause</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alter Table Add Column Clause</em>'.
-   * @generated
-   */
-  AlterTableAddColumnClause createAlterTableAddColumnClause();
-
-  /**
-   * Returns a new object of class '<em>Primary Key Column Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary Key Column Constraint</em>'.
-   * @generated
-   */
-  PrimaryKeyColumnConstraint createPrimaryKeyColumnConstraint();
-
-  /**
-   * Returns a new object of class '<em>Not Null Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Not Null Constraint</em>'.
-   * @generated
-   */
-  NotNullConstraint createNotNullConstraint();
-
-  /**
-   * Returns a new object of class '<em>Default Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Default Constraint</em>'.
-   * @generated
-   */
-  DefaultConstraint createDefaultConstraint();
-
-  /**
-   * Returns a new object of class '<em>Literal Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Literal Default Value</em>'.
-   * @generated
-   */
-  LiteralDefaultValue createLiteralDefaultValue();
-
-  /**
-   * Returns a new object of class '<em>Expression Default Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression Default Value</em>'.
-   * @generated
-   */
-  ExpressionDefaultValue createExpressionDefaultValue();
-
-  /**
-   * Returns a new object of class '<em>Unique Table Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Unique Table Contraint</em>'.
-   * @generated
-   */
-  UniqueTableContraint createUniqueTableContraint();
-
-  /**
-   * Returns a new object of class '<em>Primary Contraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary Contraint</em>'.
-   * @generated
-   */
-  PrimaryContraint createPrimaryContraint();
-
-  /**
-   * Returns a new object of class '<em>Check Table Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Check Table Constraint</em>'.
-   * @generated
-   */
-  CheckTableConstraint createCheckTableConstraint();
+  SelectExpression createSelectExpression();
 
   /**
    * Returns a new object of class '<em>Single Source Table</em>'.
@@ -626,31 +644,13 @@ public interface SqliteModelFactory extends EFactory
   SingleSourceSelectStatement createSingleSourceSelectStatement();
 
   /**
-   * Returns a new object of class '<em>Single Source Join</em>'.
+   * Returns a new object of class '<em>Result Column</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Single Source Join</em>'.
+   * @return a new object of class '<em>Result Column</em>'.
    * @generated
    */
-  SingleSourceJoin createSingleSourceJoin();
-
-  /**
-   * Returns a new object of class '<em>Result Column All</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column All</em>'.
-   * @generated
-   */
-  ResultColumnAll createResultColumnAll();
-
-  /**
-   * Returns a new object of class '<em>Result Column Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Result Column Expression</em>'.
-   * @generated
-   */
-  ResultColumnExpression createResultColumnExpression();
+  ResultColumn createResultColumn();
 
   /**
    * Returns a new object of class '<em>Numeric Literal</em>'.
@@ -705,6 +705,78 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   CurrentTimeStampLiteral createCurrentTimeStampLiteral();
+
+  /**
+   * Returns a new object of class '<em>Create Table Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create Table Statement</em>'.
+   * @generated
+   */
+  CreateTableStatement createCreateTableStatement();
+
+  /**
+   * Returns a new object of class '<em>Alter Table Rename Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alter Table Rename Statement</em>'.
+   * @generated
+   */
+  AlterTableRenameStatement createAlterTableRenameStatement();
+
+  /**
+   * Returns a new object of class '<em>Column Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Def</em>'.
+   * @generated
+   */
+  ColumnDef createColumnDef();
+
+  /**
+   * Returns a new object of class '<em>Primary Key Column Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primary Key Column Constraint</em>'.
+   * @generated
+   */
+  PrimaryKeyColumnConstraint createPrimaryKeyColumnConstraint();
+
+  /**
+   * Returns a new object of class '<em>Not Null Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not Null Constraint</em>'.
+   * @generated
+   */
+  NotNullConstraint createNotNullConstraint();
+
+  /**
+   * Returns a new object of class '<em>Default Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Constraint</em>'.
+   * @generated
+   */
+  DefaultConstraint createDefaultConstraint();
+
+  /**
+   * Returns a new object of class '<em>Literal Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal Default Value</em>'.
+   * @generated
+   */
+  LiteralDefaultValue createLiteralDefaultValue();
+
+  /**
+   * Returns a new object of class '<em>Expression Default Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression Default Value</em>'.
+   * @generated
+   */
+  ExpressionDefaultValue createExpressionDefaultValue();
 
   /**
    * Returns the package supported by this factory.

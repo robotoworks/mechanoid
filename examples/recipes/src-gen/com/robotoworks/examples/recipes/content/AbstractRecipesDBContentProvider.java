@@ -18,19 +18,15 @@ import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
 import com.robotoworks.mechanoid.content.ContentProviderActions;
-
+import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
 import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
+import com.robotoworks.examples.recipes.content.RecipesRecord;
+import com.robotoworks.examples.recipes.content.AuthorsRecord;
 
-
-import com.robotoworks.examples.recipes.content.actions.DefaultRecipesActions;
-import com.robotoworks.examples.recipes.content.actions.DefaultRecipesByIdActions;
-import com.robotoworks.examples.recipes.content.actions.DefaultAuthorsActions;
-import com.robotoworks.examples.recipes.content.actions.DefaultAuthorsByIdActions;
-import com.robotoworks.examples.recipes.content.actions.DefaultRecipesWithAuthorsActions;
-import com.robotoworks.examples.recipes.content.actions.DefaultRecipesWithAuthorsByIdActions;
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
 
     private static final UriMatcher sUriMatcher;
@@ -227,27 +223,27 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
     }
     
     protected ContentProviderActions createRecipesByIdActions() {
-    	return new DefaultRecipesByIdActions();
+    	return new DefaultContentProviderActions(Tables.RECIPES, true, RecipesRecord.getFactory());
     }
     
     protected ContentProviderActions createRecipesActions() {
-    	return new DefaultRecipesActions();
+    	return new DefaultContentProviderActions(Tables.RECIPES, false, RecipesRecord.getFactory());
     }
     
     protected ContentProviderActions createAuthorsByIdActions() {
-    	return new DefaultAuthorsByIdActions();
+    	return new DefaultContentProviderActions(Tables.AUTHORS, true, AuthorsRecord.getFactory());
     }
     
     protected ContentProviderActions createAuthorsActions() {
-    	return new DefaultAuthorsActions();
+    	return new DefaultContentProviderActions(Tables.AUTHORS, false, AuthorsRecord.getFactory());
     }
     
     protected ContentProviderActions createRecipesWithAuthorsByIdActions() {
-    	return new DefaultRecipesWithAuthorsByIdActions();
+    	return new DefaultContentProviderActions(Tables.RECIPES_WITH_AUTHORS, true);
     }
     
     protected ContentProviderActions createRecipesWithAuthorsActions() {
-    	return new DefaultRecipesWithAuthorsActions();
+    	return new DefaultContentProviderActions(Tables.RECIPES_WITH_AUTHORS, false);
     }
     
 }

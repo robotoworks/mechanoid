@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getConflictResolution <em>Conflict Resolution</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getColumnNames <em>Column Names</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getSelectStatement <em>Select Statement</em>}</li>
@@ -56,30 +56,30 @@ public interface InsertStatement extends DMLStatement
   void setConflictResolution(ConflictResolution value);
 
   /**
-   * Returns the value of the '<em><b>Table Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Table</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Table</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table Name</em>' attribute.
-   * @see #setTableName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getInsertStatement_TableName()
+   * @return the value of the '<em>Table</em>' reference.
+   * @see #setTable(TableDefinition)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getInsertStatement_Table()
    * @model
    * @generated
    */
-  String getTableName();
+  TableDefinition getTable();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getTableName <em>Table Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getTable <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table Name</em>' attribute.
-   * @see #getTableName()
+   * @param value the new value of the '<em>Table</em>' reference.
+   * @see #getTable()
    * @generated
    */
-  void setTableName(String value);
+  void setTable(TableDefinition value);
 
   /**
    * Returns the value of the '<em><b>Column Names</b></em>' attribute list.

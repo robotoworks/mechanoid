@@ -1,16 +1,19 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.util.Strings;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 
 
 public class Extensions {	
@@ -32,32 +35,37 @@ public class Extensions {
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateViewStatement stmt) {
-		EList<ResultColumn> resultColumns = getViewResultColumns(stmt);
-		for(ResultColumn col : resultColumns) {
-			if(col instanceof ResultColumnExpression) {
-				ResultColumnExpression expr = (ResultColumnExpression) col;
-				if(!Strings.isEmpty(expr.getName()) && expr.getName().equals("_id")) {
-					return true;
-				}
+		EList<ColumnSource> resultColumns = getViewResultColumns(stmt);
+		for(ColumnSource col : resultColumns) {
+			if(!Strings.isEmpty(col.getName()) && col.getName().equals("_id")) {
+				return true;
 			}
 		}
 		
 		return false;
 	}
 	
-	public static EList<ResultColumn> getViewResultColumns(CreateViewStatement stmt) {
+	public static EList<ColumnSource> getViewResultColumns(CreateViewStatement stmt) {
 		SelectCoreExpression coreExpr = stmt.getSelectStatement().getCore();
 		if(coreExpr instanceof SelectCore) {
 			SelectCore core = (SelectCore) coreExpr;
-			return core.getRight().getResultColumns();
+			SelectList selectList = ((SelectExpression)core.getRight()).getSelectList();
+			if(selectList != null) {
+				return selectList.getResultColumns();
+			}
 		} else {
-			return coreExpr.getResultColumns();
+			SelectList selectList = ((SelectExpression)coreExpr).getSelectList();
+			if(selectList != null) {
+				return selectList.getResultColumns();
+			}
 		}
+		
+		return new BasicEList<ColumnSource>();
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateTableStatement stmt) {
-		EList<ColumnDef> columns = stmt.getColumnDefs();
-		for(ColumnDef col : columns) {
+		EList<ColumnSource> columns = stmt.getColumnDefs();
+		for(ColumnSource col : columns) {
 			if(col.getName().equals("_id")) {
 				return true;
 			}
