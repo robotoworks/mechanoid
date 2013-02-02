@@ -1527,7 +1527,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     ((source=[SelectSource|ID] column=[ColumnSource|ID]) | column=[ColumnSource|ID])
+	 *     (source=[SelectSource|ID]? column=[ColumnSource|ID])
 	 */
 	protected void sequence_PrimaryExpression(EObject context, ColumnSourceRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

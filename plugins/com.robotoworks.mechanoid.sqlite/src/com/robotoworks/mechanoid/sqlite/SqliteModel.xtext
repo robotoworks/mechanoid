@@ -84,8 +84,8 @@ NullExpression returns Expression:
 PrimaryExpression returns Expression:
 	{NewColumn} 'new.' column=[ColumnSource] |
 	{OldColumn} 'old.' column=[ColumnSource] |
-	{AllColumns} source=[SelectSource] '.' '*' |
-	{ColumnSourceRef} (source=[SelectSource] '.' column=[ColumnSource]|column=[ColumnSource]) |
+	{AllColumns} source=[SelectSource]'.''*' |
+	{ColumnSourceRef} (=>source=[SelectSource] '.')? column=[ColumnSource] |
 	{Literal} literalValue=LiteralValue|
 	{NestedExpression} '(' expression=SqlExpression ')'|
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |

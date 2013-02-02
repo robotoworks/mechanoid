@@ -6,20 +6,21 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 
  
 
@@ -77,6 +78,16 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 						error("Table does not exist", ata, SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__TABLE, -1);
 						return;								
 					}
+				} else if (statement instanceof DropTableStatement) {
+					DropTableStatement dt = (DropTableStatement) statement;
+					
+					if(!tables.contains(dt.getTable().getName())) {
+						error("Table does not exist", dt, SqliteModelPackage.Literals.DROP_TABLE_STATEMENT__TABLE, -1);
+						return;							
+					} else {
+						tables.remove(dt.getTable().getName());
+					}
+					
 				} else if(statement instanceof CreateViewStatement) {
 					CreateViewStatement cv = (CreateViewStatement) statement;
 					if(views.contains(cv.getName())) {
@@ -88,6 +99,32 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 						return;				
 					} else {
 						views.add(cv.getName());
+					}
+				} else if (statement instanceof DropViewStatement) {
+					DropViewStatement dv = (DropViewStatement) statement;
+					
+					if(!views.contains(dv.getView().getName())) {
+						error("View does not exist", dv, SqliteModelPackage.Literals.DROP_VIEW_STATEMENT__VIEW, -1);
+						return;							
+					} else {
+						views.remove(dv.getView().getName());
+					}
+				}else if(statement instanceof CreateTriggerStatement) {
+					CreateTriggerStatement ct = (CreateTriggerStatement) statement;
+					if(triggers.contains(ct.getName())) {
+						error("Trigger exists, drop it first", ct, SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__NAME, -1);
+						return;
+					} else {
+						triggers.add(ct.getName());
+					}
+				} else if (statement instanceof DropTriggerStatement) {
+					DropTriggerStatement dt = (DropTriggerStatement) statement;
+					
+					if(!triggers.contains(dt.getTrigger().getName())) {
+						error("Trigger does not exist", dt, SqliteModelPackage.Literals.DROP_TRIGGER_STATEMENT__TRIGGER, -1);
+						return;							
+					} else {
+						triggers.remove(dt.getTrigger().getName());
 					}
 				}
 			}

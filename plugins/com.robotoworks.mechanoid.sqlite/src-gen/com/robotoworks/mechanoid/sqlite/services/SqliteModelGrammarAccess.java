@@ -754,18 +754,14 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
 		private final Action cColumnSourceRefAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
-		private final Group cGroup_3_1_0 = (Group)cAlternatives_3_1.eContents().get(0);
-		private final Assignment cSourceAssignment_3_1_0_0 = (Assignment)cGroup_3_1_0.eContents().get(0);
-		private final CrossReference cSourceSelectSourceCrossReference_3_1_0_0_0 = (CrossReference)cSourceAssignment_3_1_0_0.eContents().get(0);
-		private final RuleCall cSourceSelectSourceIDTerminalRuleCall_3_1_0_0_0_1 = (RuleCall)cSourceSelectSourceCrossReference_3_1_0_0_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_3_1_0_1 = (Keyword)cGroup_3_1_0.eContents().get(1);
-		private final Assignment cColumnAssignment_3_1_0_2 = (Assignment)cGroup_3_1_0.eContents().get(2);
-		private final CrossReference cColumnColumnSourceCrossReference_3_1_0_2_0 = (CrossReference)cColumnAssignment_3_1_0_2.eContents().get(0);
-		private final RuleCall cColumnColumnSourceIDTerminalRuleCall_3_1_0_2_0_1 = (RuleCall)cColumnColumnSourceCrossReference_3_1_0_2_0.eContents().get(1);
-		private final Assignment cColumnAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
-		private final CrossReference cColumnColumnSourceCrossReference_3_1_1_0 = (CrossReference)cColumnAssignment_3_1_1.eContents().get(0);
-		private final RuleCall cColumnColumnSourceIDTerminalRuleCall_3_1_1_0_1 = (RuleCall)cColumnColumnSourceCrossReference_3_1_1_0.eContents().get(1);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Assignment cSourceAssignment_3_1_0 = (Assignment)cGroup_3_1.eContents().get(0);
+		private final CrossReference cSourceSelectSourceCrossReference_3_1_0_0 = (CrossReference)cSourceAssignment_3_1_0.eContents().get(0);
+		private final RuleCall cSourceSelectSourceIDTerminalRuleCall_3_1_0_0_1 = (RuleCall)cSourceSelectSourceCrossReference_3_1_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Assignment cColumnAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final CrossReference cColumnColumnSourceCrossReference_3_2_0 = (CrossReference)cColumnAssignment_3_2.eContents().get(0);
+		private final RuleCall cColumnColumnSourceIDTerminalRuleCall_3_2_0_1 = (RuleCall)cColumnColumnSourceCrossReference_3_2_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Action cLiteralAction_4_0 = (Action)cGroup_4.eContents().get(0);
 		private final Assignment cLiteralValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -827,21 +823,20 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//PrimaryExpression returns Expression:
 		//	{NewColumn} "new." column=[ColumnSource] | {OldColumn} "old." column=[ColumnSource] | {AllColumns}
-		//	source=[SelectSource] "." "*" | {ColumnSourceRef} (source=[SelectSource] "." column=[ColumnSource] |
-		//	column=[ColumnSource]) | {Literal} literalValue=LiteralValue | {NestedExpression} "(" expression=SqlExpression ")" |
-		//	{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case"
-		//	caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
-		//	(all?="*" | arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
-		//	expression=SqlExpression "as" type=SqliteDataType ")";
+		//	source=[SelectSource] "." "*" | {ColumnSourceRef} (=> source=[SelectSource] ".")? column=[ColumnSource] | {Literal}
+		//	literalValue=LiteralValue | {NestedExpression} "(" expression=SqlExpression ")" | {SelectStatementExpression}
+		//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
+		//	cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
+		//	arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+		//	"as" type=SqliteDataType ")";
 		public ParserRule getRule() { return rule; }
 
 		//{NewColumn} "new." column=[ColumnSource] | {OldColumn} "old." column=[ColumnSource] | {AllColumns} source=[SelectSource]
-		//"." "*" | {ColumnSourceRef} (source=[SelectSource] "." column=[ColumnSource] | column=[ColumnSource]) | {Literal}
-		//literalValue=LiteralValue | {NestedExpression} "(" expression=SqlExpression ")" | {SelectStatementExpression}
-		//not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
-		//cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" | arguments+=SqlExpression
-		//("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression "as" type=SqliteDataType
-		//")"
+		//"." "*" | {ColumnSourceRef} (=> source=[SelectSource] ".")? column=[ColumnSource] | {Literal} literalValue=LiteralValue
+		//| {NestedExpression} "(" expression=SqlExpression ")" | {SelectStatementExpression} not?="not"? exists?="exists"? "("
+		//select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression? cases+=Case+ ("else"
+		//elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" | arguments+=SqlExpression (","
+		//arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression "as" type=SqliteDataType ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{NewColumn} "new." column=[ColumnSource]
@@ -901,47 +896,35 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"*"
 		public Keyword getAsteriskKeyword_2_3() { return cAsteriskKeyword_2_3; }
 
-		//{ColumnSourceRef} (source=[SelectSource] "." column=[ColumnSource] | column=[ColumnSource])
+		//{ColumnSourceRef} (=> source=[SelectSource] ".")? column=[ColumnSource]
 		public Group getGroup_3() { return cGroup_3; }
 
 		//{ColumnSourceRef}
 		public Action getColumnSourceRefAction_3_0() { return cColumnSourceRefAction_3_0; }
 
-		//source=[SelectSource] "." column=[ColumnSource] | column=[ColumnSource]
-		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+		//(=> source=[SelectSource] ".")?
+		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//source=[SelectSource] "." column=[ColumnSource]
-		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
-
-		//source=[SelectSource]
-		public Assignment getSourceAssignment_3_1_0_0() { return cSourceAssignment_3_1_0_0; }
+		//=> source=[SelectSource]
+		public Assignment getSourceAssignment_3_1_0() { return cSourceAssignment_3_1_0; }
 
 		//[SelectSource]
-		public CrossReference getSourceSelectSourceCrossReference_3_1_0_0_0() { return cSourceSelectSourceCrossReference_3_1_0_0_0; }
+		public CrossReference getSourceSelectSourceCrossReference_3_1_0_0() { return cSourceSelectSourceCrossReference_3_1_0_0; }
 
 		//ID
-		public RuleCall getSourceSelectSourceIDTerminalRuleCall_3_1_0_0_0_1() { return cSourceSelectSourceIDTerminalRuleCall_3_1_0_0_0_1; }
+		public RuleCall getSourceSelectSourceIDTerminalRuleCall_3_1_0_0_1() { return cSourceSelectSourceIDTerminalRuleCall_3_1_0_0_1; }
 
 		//"."
-		public Keyword getFullStopKeyword_3_1_0_1() { return cFullStopKeyword_3_1_0_1; }
+		public Keyword getFullStopKeyword_3_1_1() { return cFullStopKeyword_3_1_1; }
 
 		//column=[ColumnSource]
-		public Assignment getColumnAssignment_3_1_0_2() { return cColumnAssignment_3_1_0_2; }
+		public Assignment getColumnAssignment_3_2() { return cColumnAssignment_3_2; }
 
 		//[ColumnSource]
-		public CrossReference getColumnColumnSourceCrossReference_3_1_0_2_0() { return cColumnColumnSourceCrossReference_3_1_0_2_0; }
+		public CrossReference getColumnColumnSourceCrossReference_3_2_0() { return cColumnColumnSourceCrossReference_3_2_0; }
 
 		//ID
-		public RuleCall getColumnColumnSourceIDTerminalRuleCall_3_1_0_2_0_1() { return cColumnColumnSourceIDTerminalRuleCall_3_1_0_2_0_1; }
-
-		//column=[ColumnSource]
-		public Assignment getColumnAssignment_3_1_1() { return cColumnAssignment_3_1_1; }
-
-		//[ColumnSource]
-		public CrossReference getColumnColumnSourceCrossReference_3_1_1_0() { return cColumnColumnSourceCrossReference_3_1_1_0; }
-
-		//ID
-		public RuleCall getColumnColumnSourceIDTerminalRuleCall_3_1_1_0_1() { return cColumnColumnSourceIDTerminalRuleCall_3_1_1_0_1; }
+		public RuleCall getColumnColumnSourceIDTerminalRuleCall_3_2_0_1() { return cColumnColumnSourceIDTerminalRuleCall_3_2_0_1; }
 
 		//{Literal} literalValue=LiteralValue
 		public Group getGroup_4() { return cGroup_4; }
@@ -3928,12 +3911,12 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PrimaryExpression returns Expression:
 	//	{NewColumn} "new." column=[ColumnSource] | {OldColumn} "old." column=[ColumnSource] | {AllColumns}
-	//	source=[SelectSource] "." "*" | {ColumnSourceRef} (source=[SelectSource] "." column=[ColumnSource] |
-	//	column=[ColumnSource]) | {Literal} literalValue=LiteralValue | {NestedExpression} "(" expression=SqlExpression ")" |
-	//	{SelectStatementExpression} not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case"
-	//	caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
-	//	(all?="*" | arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
-	//	expression=SqlExpression "as" type=SqliteDataType ")";
+	//	source=[SelectSource] "." "*" | {ColumnSourceRef} (=> source=[SelectSource] ".")? column=[ColumnSource] | {Literal}
+	//	literalValue=LiteralValue | {NestedExpression} "(" expression=SqlExpression ")" | {SelectStatementExpression}
+	//	not?="not"? exists?="exists"? "(" select=SelectStatement ")" | {CaseExpression} "case" caseExpression=SqlExpression?
+	//	cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "(" (all?="*" |
+	//	arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "(" expression=SqlExpression
+	//	"as" type=SqliteDataType ")";
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
 	}
