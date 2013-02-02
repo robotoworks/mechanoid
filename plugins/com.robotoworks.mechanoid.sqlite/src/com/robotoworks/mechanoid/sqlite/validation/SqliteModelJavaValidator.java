@@ -53,6 +53,9 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 					if(tables.contains(ct.getName())) {
 						error("Table exists, drop it or rename it first", ct, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME, -1);
 						return;
+					} else if(views.contains(ct.getName())) {
+						error("A view exists with this name, drop it first", ct, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME, -1);
+						return;				
 					} else {
 						tables.add(ct.getName());
 					}
