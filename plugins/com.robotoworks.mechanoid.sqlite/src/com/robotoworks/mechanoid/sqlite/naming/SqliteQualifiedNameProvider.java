@@ -1,19 +1,53 @@
 package com.robotoworks.mechanoid.sqlite.naming;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
-import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.util.Strings;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.GrammarUtil;
+import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.nodemodel.BidiIterable;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.util.SimpleAttributeResolver;
+
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 public class SqliteQualifiedNameProvider extends
 		DefaultDeclarativeQualifiedNameProvider {
 
-//	protected QualifiedName qualifiedName(SingleSourceTable ele){
-//		String alias = ele.getName() == null ? "alias" : ele.getName();
-//		return QualifiedName.create("Sandbox", "table1", "view1", alias);
-//	}
+	protected QualifiedName qualifiedName(ColumnDef ele){
+		return QualifiedName.create(ele.getName());
+	}
+	
+	protected QualifiedName qualifiedName(SingleSourceTable ele){
+	
+		if(ele.getName() != null) {
+			return null;
+		}
+		
+		List<INode> nodes = NodeModelUtils.findNodesForFeature(ele, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE);
+		String tableName = NodeModelUtils.getTokenText(nodes.get(0));
+		
+		QualifiedName name = null;
+		EObject temp = ele;
+		while (temp.eContainer() != null) {
+			temp = temp.eContainer();
+			QualifiedName parentsQualifiedName = getFullyQualifiedName(temp);
+			if (parentsQualifiedName != null) {
+				name = parentsQualifiedName;
+				break;
+			}
+		}
+		
+		return name.append(tableName);
+	}
 }

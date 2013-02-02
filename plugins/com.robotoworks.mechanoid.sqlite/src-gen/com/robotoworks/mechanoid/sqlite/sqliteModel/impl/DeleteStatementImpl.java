@@ -5,6 +5,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -21,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DeleteStatementImpl#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DeleteStatementImpl#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DeleteStatementImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
@@ -31,24 +32,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class DeleteStatementImpl extends DMLStatementImpl implements DeleteStatement
 {
   /**
-   * The default value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
+   * The cached value of the '{@link #getTable() <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTableName()
+   * @see #getTable()
    * @generated
    * @ordered
    */
-  protected static final String TABLE_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTableName() <em>Table Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTableName()
-   * @generated
-   * @ordered
-   */
-  protected String tableName = TABLE_NAME_EDEFAULT;
+  protected TableDefinition table;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -86,9 +77,19 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTableName()
+  public TableDefinition getTable()
   {
-    return tableName;
+    if (table != null && table.eIsProxy())
+    {
+      InternalEObject oldTable = (InternalEObject)table;
+      table = (TableDefinition)eResolveProxy(oldTable);
+      if (table != oldTable)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.DELETE_STATEMENT__TABLE, oldTable, table));
+      }
+    }
+    return table;
   }
 
   /**
@@ -96,12 +97,22 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTableName(String newTableName)
+  public TableDefinition basicGetTable()
   {
-    String oldTableName = tableName;
-    tableName = newTableName;
+    return table;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTable(TableDefinition newTable)
+  {
+    TableDefinition oldTable = table;
+    table = newTable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DELETE_STATEMENT__TABLE_NAME, oldTableName, tableName));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DELETE_STATEMENT__TABLE, oldTable, table));
   }
 
   /**
@@ -178,8 +189,9 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DELETE_STATEMENT__TABLE_NAME:
-        return getTableName();
+      case SqliteModelPackage.DELETE_STATEMENT__TABLE:
+        if (resolve) return getTable();
+        return basicGetTable();
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
         return getExpression();
     }
@@ -196,8 +208,8 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DELETE_STATEMENT__TABLE_NAME:
-        setTableName((String)newValue);
+      case SqliteModelPackage.DELETE_STATEMENT__TABLE:
+        setTable((TableDefinition)newValue);
         return;
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
         setExpression((Expression)newValue);
@@ -216,8 +228,8 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DELETE_STATEMENT__TABLE_NAME:
-        setTableName(TABLE_NAME_EDEFAULT);
+      case SqliteModelPackage.DELETE_STATEMENT__TABLE:
+        setTable((TableDefinition)null);
         return;
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
         setExpression((Expression)null);
@@ -236,29 +248,12 @@ public class DeleteStatementImpl extends DMLStatementImpl implements DeleteState
   {
     switch (featureID)
     {
-      case SqliteModelPackage.DELETE_STATEMENT__TABLE_NAME:
-        return TABLE_NAME_EDEFAULT == null ? tableName != null : !TABLE_NAME_EDEFAULT.equals(tableName);
+      case SqliteModelPackage.DELETE_STATEMENT__TABLE:
+        return table != null;
       case SqliteModelPackage.DELETE_STATEMENT__EXPRESSION:
         return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tableName: ");
-    result.append(tableName);
-    result.append(')');
-    return result.toString();
   }
 
 } //DeleteStatementImpl

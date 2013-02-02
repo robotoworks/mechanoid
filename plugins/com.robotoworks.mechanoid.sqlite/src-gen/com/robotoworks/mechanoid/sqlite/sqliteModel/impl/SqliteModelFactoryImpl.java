@@ -72,27 +72,42 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
+      case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
+      case SqliteModelPackage.ORDERING_TERM_LIST: return createOrderingTermList();
+      case SqliteModelPackage.SELECT_CORE_EXPRESSION: return createSelectCoreExpression();
+      case SqliteModelPackage.SELECT_LIST: return createSelectList();
+      case SqliteModelPackage.WHERE_EXPRESSIONS: return createWhereExpressions();
+      case SqliteModelPackage.GROUP_BY_EXPRESSIONS: return createGroupByExpressions();
+      case SqliteModelPackage.HAVING_EXPRESSIONS: return createHavingExpressions();
+      case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
+      case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
+      case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
+      case SqliteModelPackage.SELECT_SOURCE: return createSelectSource();
+      case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
+      case SqliteModelPackage.JOIN_STATEMENT: return createJoinStatement();
+      case SqliteModelPackage.COLUMN_SOURCE: return createColumnSource();
+      case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
+      case SqliteModelPackage.TABLE_DEFINITION: return createTableDefinition();
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
+      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_STATEMENT: return createAlterTableAddColumnStatement();
+      case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
+      case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
+      case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
+      case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
+      case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT: return createUniqueTableConstraint();
+      case SqliteModelPackage.PRIMARY_CONSTRAINT: return createPrimaryConstraint();
+      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT: return createCheckTableConstraint();
+      case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
+      case SqliteModelPackage.DEFAULT_VALUE: return createDefaultValue();
+      case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
       case SqliteModelPackage.DML_STATEMENT: return createDMLStatement();
       case SqliteModelPackage.DELETE_STATEMENT: return createDeleteStatement();
       case SqliteModelPackage.INSERT_STATEMENT: return createInsertStatement();
       case SqliteModelPackage.UPDATE_STATEMENT: return createUpdateStatement();
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION: return createUpdateColumnExpression();
-      case SqliteModelPackage.SELECT_STATEMENT: return createSelectStatement();
-      case SqliteModelPackage.SELECT_CORE_EXPRESSION: return createSelectCoreExpression();
-      case SqliteModelPackage.ALTER_TABLE_CLAUSE: return createAlterTableClause();
-      case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
-      case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
-      case SqliteModelPackage.DEFAULT_VALUE: return createDefaultValue();
-      case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
-      case SqliteModelPackage.INDEXED_COLUMN: return createIndexedColumn();
-      case SqliteModelPackage.ORDERING_TERM: return createOrderingTerm();
-      case SqliteModelPackage.JOIN_SOURCE: return createJoinSource();
-      case SqliteModelPackage.SINGLE_SOURCE: return createSingleSource();
-      case SqliteModelPackage.JOIN_STATEMENT: return createJoinStatement();
-      case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
-      case SqliteModelPackage.CONFLICT_CLAUSE: return createConflictClause();
-      case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
       case SqliteModelPackage.EXPR_MULT: return createExprMult();
@@ -105,42 +120,35 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NULL_CHECK_EXPRESSION: return createNullCheckExpression();
       case SqliteModelPackage.IS_NULL: return createIsNull();
       case SqliteModelPackage.NOT_NULL: return createNotNull();
-      case SqliteModelPackage.COLUMN_LITERAL: return createColumnLiteral();
+      case SqliteModelPackage.NEW_COLUMN: return createNewColumn();
+      case SqliteModelPackage.OLD_COLUMN: return createOldColumn();
+      case SqliteModelPackage.ALL_COLUMNS: return createAllColumns();
+      case SqliteModelPackage.COLUMN_SOURCE_REF: return createColumnSourceRef();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
       case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
       case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CAST_EXPRESSION: return createCastExpression();
-      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
-      case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
-      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
-      case SqliteModelPackage.ALTER_TABLE_STATEMENT: return createAlterTableStatement();
-      case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
-      case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
-      case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
-      case SqliteModelPackage.ALTER_TABLE_RENAME_CLAUSE: return createAlterTableRenameClause();
-      case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_CLAUSE: return createAlterTableAddColumnClause();
-      case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
-      case SqliteModelPackage.NOT_NULL_CONSTRAINT: return createNotNullConstraint();
-      case SqliteModelPackage.DEFAULT_CONSTRAINT: return createDefaultConstraint();
-      case SqliteModelPackage.LITERAL_DEFAULT_VALUE: return createLiteralDefaultValue();
-      case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE: return createExpressionDefaultValue();
-      case SqliteModelPackage.UNIQUE_TABLE_CONTRAINT: return createUniqueTableContraint();
-      case SqliteModelPackage.PRIMARY_CONTRAINT: return createPrimaryContraint();
-      case SqliteModelPackage.CHECK_TABLE_CONSTRAINT: return createCheckTableConstraint();
+      case SqliteModelPackage.SELECT_EXPRESSION: return createSelectExpression();
       case SqliteModelPackage.SINGLE_SOURCE_TABLE: return createSingleSourceTable();
       case SqliteModelPackage.SINGLE_SOURCE_SELECT_STATEMENT: return createSingleSourceSelectStatement();
-      case SqliteModelPackage.SINGLE_SOURCE_JOIN: return createSingleSourceJoin();
-      case SqliteModelPackage.RESULT_COLUMN_ALL: return createResultColumnAll();
-      case SqliteModelPackage.RESULT_COLUMN_EXPRESSION: return createResultColumnExpression();
+      case SqliteModelPackage.RESULT_COLUMN: return createResultColumn();
       case SqliteModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       case SqliteModelPackage.STRING_LITERAL: return createStringLiteral();
       case SqliteModelPackage.NULL_LITERAL: return createNullLiteral();
       case SqliteModelPackage.CURRENT_TIME_LITERAL: return createCurrentTimeLiteral();
       case SqliteModelPackage.CURRENT_DATE_LITERAL: return createCurrentDateLiteral();
       case SqliteModelPackage.CURRENT_TIME_STAMP_LITERAL: return createCurrentTimeStampLiteral();
+      case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
+      case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT: return createAlterTableRenameStatement();
+      case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
+      case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
+      case SqliteModelPackage.NOT_NULL_CONSTRAINT: return createNotNullConstraint();
+      case SqliteModelPackage.DEFAULT_CONSTRAINT: return createDefaultConstraint();
+      case SqliteModelPackage.LITERAL_DEFAULT_VALUE: return createLiteralDefaultValue();
+      case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE: return createExpressionDefaultValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -156,14 +164,14 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     switch (eDataType.getClassifierID())
     {
-      case SqliteModelPackage.COLUMN_TYPE:
-        return createColumnTypeFromString(eDataType, initialValue);
-      case SqliteModelPackage.SQLITE_DATA_TYPE:
-        return createSqliteDataTypeFromString(eDataType, initialValue);
-      case SqliteModelPackage.CONFLICT_RESOLUTION:
-        return createConflictResolutionFromString(eDataType, initialValue);
       case SqliteModelPackage.COMPOUND_OPERATOR:
         return createCompoundOperatorFromString(eDataType, initialValue);
+      case SqliteModelPackage.SQLITE_DATA_TYPE:
+        return createSqliteDataTypeFromString(eDataType, initialValue);
+      case SqliteModelPackage.COLUMN_TYPE:
+        return createColumnTypeFromString(eDataType, initialValue);
+      case SqliteModelPackage.CONFLICT_RESOLUTION:
+        return createConflictResolutionFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -179,14 +187,14 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     switch (eDataType.getClassifierID())
     {
-      case SqliteModelPackage.COLUMN_TYPE:
-        return convertColumnTypeToString(eDataType, instanceValue);
-      case SqliteModelPackage.SQLITE_DATA_TYPE:
-        return convertSqliteDataTypeToString(eDataType, instanceValue);
-      case SqliteModelPackage.CONFLICT_RESOLUTION:
-        return convertConflictResolutionToString(eDataType, instanceValue);
       case SqliteModelPackage.COMPOUND_OPERATOR:
         return convertCompoundOperatorToString(eDataType, instanceValue);
+      case SqliteModelPackage.SQLITE_DATA_TYPE:
+        return convertSqliteDataTypeToString(eDataType, instanceValue);
+      case SqliteModelPackage.COLUMN_TYPE:
+        return convertColumnTypeToString(eDataType, instanceValue);
+      case SqliteModelPackage.CONFLICT_RESOLUTION:
+        return convertConflictResolutionToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -274,10 +282,340 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public SelectStatement createSelectStatement()
+  {
+    SelectStatementImpl selectStatement = new SelectStatementImpl();
+    return selectStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderingTermList createOrderingTermList()
+  {
+    OrderingTermListImpl orderingTermList = new OrderingTermListImpl();
+    return orderingTermList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectCoreExpression createSelectCoreExpression()
+  {
+    SelectCoreExpressionImpl selectCoreExpression = new SelectCoreExpressionImpl();
+    return selectCoreExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectList createSelectList()
+  {
+    SelectListImpl selectList = new SelectListImpl();
+    return selectList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WhereExpressions createWhereExpressions()
+  {
+    WhereExpressionsImpl whereExpressions = new WhereExpressionsImpl();
+    return whereExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GroupByExpressions createGroupByExpressions()
+  {
+    GroupByExpressionsImpl groupByExpressions = new GroupByExpressionsImpl();
+    return groupByExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public HavingExpressions createHavingExpressions()
+  {
+    HavingExpressionsImpl havingExpressions = new HavingExpressionsImpl();
+    return havingExpressions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrderingTerm createOrderingTerm()
+  {
+    OrderingTermImpl orderingTerm = new OrderingTermImpl();
+    return orderingTerm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JoinSource createJoinSource()
+  {
+    JoinSourceImpl joinSource = new JoinSourceImpl();
+    return joinSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SingleSource createSingleSource()
+  {
+    SingleSourceImpl singleSource = new SingleSourceImpl();
+    return singleSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SelectSource createSelectSource()
+  {
+    SelectSourceImpl selectSource = new SelectSourceImpl();
+    return selectSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SingleSourceJoin createSingleSourceJoin()
+  {
+    SingleSourceJoinImpl singleSourceJoin = new SingleSourceJoinImpl();
+    return singleSourceJoin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JoinStatement createJoinStatement()
+  {
+    JoinStatementImpl joinStatement = new JoinStatementImpl();
+    return joinStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnSource createColumnSource()
+  {
+    ColumnSourceImpl columnSource = new ColumnSourceImpl();
+    return columnSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LiteralValue createLiteralValue()
+  {
+    LiteralValueImpl literalValue = new LiteralValueImpl();
+    return literalValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public DDLStatement createDDLStatement()
   {
     DDLStatementImpl ddlStatement = new DDLStatementImpl();
     return ddlStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TableDefinition createTableDefinition()
+  {
+    TableDefinitionImpl tableDefinition = new TableDefinitionImpl();
+    return tableDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateViewStatement createCreateViewStatement()
+  {
+    CreateViewStatementImpl createViewStatement = new CreateViewStatementImpl();
+    return createViewStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTriggerStatement createCreateTriggerStatement()
+  {
+    CreateTriggerStatementImpl createTriggerStatement = new CreateTriggerStatementImpl();
+    return createTriggerStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlterTableAddColumnStatement createAlterTableAddColumnStatement()
+  {
+    AlterTableAddColumnStatementImpl alterTableAddColumnStatement = new AlterTableAddColumnStatementImpl();
+    return alterTableAddColumnStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropTableStatement createDropTableStatement()
+  {
+    DropTableStatementImpl dropTableStatement = new DropTableStatementImpl();
+    return dropTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropTriggerStatement createDropTriggerStatement()
+  {
+    DropTriggerStatementImpl dropTriggerStatement = new DropTriggerStatementImpl();
+    return dropTriggerStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropViewStatement createDropViewStatement()
+  {
+    DropViewStatementImpl dropViewStatement = new DropViewStatementImpl();
+    return dropViewStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnConstraint createColumnConstraint()
+  {
+    ColumnConstraintImpl columnConstraint = new ColumnConstraintImpl();
+    return columnConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TableConstraint createTableConstraint()
+  {
+    TableConstraintImpl tableConstraint = new TableConstraintImpl();
+    return tableConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniqueTableConstraint createUniqueTableConstraint()
+  {
+    UniqueTableConstraintImpl uniqueTableConstraint = new UniqueTableConstraintImpl();
+    return uniqueTableConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrimaryConstraint createPrimaryConstraint()
+  {
+    PrimaryConstraintImpl primaryConstraint = new PrimaryConstraintImpl();
+    return primaryConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CheckTableConstraint createCheckTableConstraint()
+  {
+    CheckTableConstraintImpl checkTableConstraint = new CheckTableConstraintImpl();
+    return checkTableConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IndexedColumn createIndexedColumn()
+  {
+    IndexedColumnImpl indexedColumn = new IndexedColumnImpl();
+    return indexedColumn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DefaultValue createDefaultValue()
+  {
+    DefaultValueImpl defaultValue = new DefaultValueImpl();
+    return defaultValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConflictClause createConflictClause()
+  {
+    ConflictClauseImpl conflictClause = new ConflictClauseImpl();
+    return conflictClause;
   }
 
   /**
@@ -333,171 +671,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     UpdateColumnExpressionImpl updateColumnExpression = new UpdateColumnExpressionImpl();
     return updateColumnExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SelectStatement createSelectStatement()
-  {
-    SelectStatementImpl selectStatement = new SelectStatementImpl();
-    return selectStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SelectCoreExpression createSelectCoreExpression()
-  {
-    SelectCoreExpressionImpl selectCoreExpression = new SelectCoreExpressionImpl();
-    return selectCoreExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AlterTableClause createAlterTableClause()
-  {
-    AlterTableClauseImpl alterTableClause = new AlterTableClauseImpl();
-    return alterTableClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ColumnDef createColumnDef()
-  {
-    ColumnDefImpl columnDef = new ColumnDefImpl();
-    return columnDef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ColumnConstraint createColumnConstraint()
-  {
-    ColumnConstraintImpl columnConstraint = new ColumnConstraintImpl();
-    return columnConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefaultValue createDefaultValue()
-  {
-    DefaultValueImpl defaultValue = new DefaultValueImpl();
-    return defaultValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TableConstraint createTableConstraint()
-  {
-    TableConstraintImpl tableConstraint = new TableConstraintImpl();
-    return tableConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IndexedColumn createIndexedColumn()
-  {
-    IndexedColumnImpl indexedColumn = new IndexedColumnImpl();
-    return indexedColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public OrderingTerm createOrderingTerm()
-  {
-    OrderingTermImpl orderingTerm = new OrderingTermImpl();
-    return orderingTerm;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JoinSource createJoinSource()
-  {
-    JoinSourceImpl joinSource = new JoinSourceImpl();
-    return joinSource;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SingleSource createSingleSource()
-  {
-    SingleSourceImpl singleSource = new SingleSourceImpl();
-    return singleSource;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JoinStatement createJoinStatement()
-  {
-    JoinStatementImpl joinStatement = new JoinStatementImpl();
-    return joinStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumn createResultColumn()
-  {
-    ResultColumnImpl resultColumn = new ResultColumnImpl();
-    return resultColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ConflictClause createConflictClause()
-  {
-    ConflictClauseImpl conflictClause = new ConflictClauseImpl();
-    return conflictClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LiteralValue createLiteralValue()
-  {
-    LiteralValueImpl literalValue = new LiteralValueImpl();
-    return literalValue;
   }
 
   /**
@@ -637,10 +810,43 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnLiteral createColumnLiteral()
+  public NewColumn createNewColumn()
   {
-    ColumnLiteralImpl columnLiteral = new ColumnLiteralImpl();
-    return columnLiteral;
+    NewColumnImpl newColumn = new NewColumnImpl();
+    return newColumn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OldColumn createOldColumn()
+  {
+    OldColumnImpl oldColumn = new OldColumnImpl();
+    return oldColumn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AllColumns createAllColumns()
+  {
+    AllColumnsImpl allColumns = new AllColumnsImpl();
+    return allColumns;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnSourceRef createColumnSourceRef()
+  {
+    ColumnSourceRefImpl columnSourceRef = new ColumnSourceRefImpl();
+    return columnSourceRef;
   }
 
   /**
@@ -714,83 +920,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement createCreateTableStatement()
-  {
-    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
-    return createTableStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CreateViewStatement createCreateViewStatement()
-  {
-    CreateViewStatementImpl createViewStatement = new CreateViewStatementImpl();
-    return createViewStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CreateTriggerStatement createCreateTriggerStatement()
-  {
-    CreateTriggerStatementImpl createTriggerStatement = new CreateTriggerStatementImpl();
-    return createTriggerStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AlterTableStatement createAlterTableStatement()
-  {
-    AlterTableStatementImpl alterTableStatement = new AlterTableStatementImpl();
-    return alterTableStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DropTableStatement createDropTableStatement()
-  {
-    DropTableStatementImpl dropTableStatement = new DropTableStatementImpl();
-    return dropTableStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DropTriggerStatement createDropTriggerStatement()
-  {
-    DropTriggerStatementImpl dropTriggerStatement = new DropTriggerStatementImpl();
-    return dropTriggerStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DropViewStatement createDropViewStatement()
-  {
-    DropViewStatementImpl dropViewStatement = new DropViewStatementImpl();
-    return dropViewStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public SelectCore createSelectCore()
   {
     SelectCoreImpl selectCore = new SelectCoreImpl();
@@ -802,109 +931,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public AlterTableRenameClause createAlterTableRenameClause()
+  public SelectExpression createSelectExpression()
   {
-    AlterTableRenameClauseImpl alterTableRenameClause = new AlterTableRenameClauseImpl();
-    return alterTableRenameClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AlterTableAddColumnClause createAlterTableAddColumnClause()
-  {
-    AlterTableAddColumnClauseImpl alterTableAddColumnClause = new AlterTableAddColumnClauseImpl();
-    return alterTableAddColumnClause;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PrimaryKeyColumnConstraint createPrimaryKeyColumnConstraint()
-  {
-    PrimaryKeyColumnConstraintImpl primaryKeyColumnConstraint = new PrimaryKeyColumnConstraintImpl();
-    return primaryKeyColumnConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotNullConstraint createNotNullConstraint()
-  {
-    NotNullConstraintImpl notNullConstraint = new NotNullConstraintImpl();
-    return notNullConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefaultConstraint createDefaultConstraint()
-  {
-    DefaultConstraintImpl defaultConstraint = new DefaultConstraintImpl();
-    return defaultConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LiteralDefaultValue createLiteralDefaultValue()
-  {
-    LiteralDefaultValueImpl literalDefaultValue = new LiteralDefaultValueImpl();
-    return literalDefaultValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExpressionDefaultValue createExpressionDefaultValue()
-  {
-    ExpressionDefaultValueImpl expressionDefaultValue = new ExpressionDefaultValueImpl();
-    return expressionDefaultValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public UniqueTableContraint createUniqueTableContraint()
-  {
-    UniqueTableContraintImpl uniqueTableContraint = new UniqueTableContraintImpl();
-    return uniqueTableContraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PrimaryContraint createPrimaryContraint()
-  {
-    PrimaryContraintImpl primaryContraint = new PrimaryContraintImpl();
-    return primaryContraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CheckTableConstraint createCheckTableConstraint()
-  {
-    CheckTableConstraintImpl checkTableConstraint = new CheckTableConstraintImpl();
-    return checkTableConstraint;
+    SelectExpressionImpl selectExpression = new SelectExpressionImpl();
+    return selectExpression;
   }
 
   /**
@@ -934,32 +964,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public SingleSourceJoin createSingleSourceJoin()
+  public ResultColumn createResultColumn()
   {
-    SingleSourceJoinImpl singleSourceJoin = new SingleSourceJoinImpl();
-    return singleSourceJoin;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumnAll createResultColumnAll()
-  {
-    ResultColumnAllImpl resultColumnAll = new ResultColumnAllImpl();
-    return resultColumnAll;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ResultColumnExpression createResultColumnExpression()
-  {
-    ResultColumnExpressionImpl resultColumnExpression = new ResultColumnExpressionImpl();
-    return resultColumnExpression;
+    ResultColumnImpl resultColumn = new ResultColumnImpl();
+    return resultColumn;
   }
 
   /**
@@ -1033,9 +1041,97 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnType createColumnTypeFromString(EDataType eDataType, String initialValue)
+  public CreateTableStatement createCreateTableStatement()
   {
-    ColumnType result = ColumnType.get(initialValue);
+    CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
+    return createTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlterTableRenameStatement createAlterTableRenameStatement()
+  {
+    AlterTableRenameStatementImpl alterTableRenameStatement = new AlterTableRenameStatementImpl();
+    return alterTableRenameStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnDef createColumnDef()
+  {
+    ColumnDefImpl columnDef = new ColumnDefImpl();
+    return columnDef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrimaryKeyColumnConstraint createPrimaryKeyColumnConstraint()
+  {
+    PrimaryKeyColumnConstraintImpl primaryKeyColumnConstraint = new PrimaryKeyColumnConstraintImpl();
+    return primaryKeyColumnConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotNullConstraint createNotNullConstraint()
+  {
+    NotNullConstraintImpl notNullConstraint = new NotNullConstraintImpl();
+    return notNullConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DefaultConstraint createDefaultConstraint()
+  {
+    DefaultConstraintImpl defaultConstraint = new DefaultConstraintImpl();
+    return defaultConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LiteralDefaultValue createLiteralDefaultValue()
+  {
+    LiteralDefaultValueImpl literalDefaultValue = new LiteralDefaultValueImpl();
+    return literalDefaultValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExpressionDefaultValue createExpressionDefaultValue()
+  {
+    ExpressionDefaultValueImpl expressionDefaultValue = new ExpressionDefaultValueImpl();
+    return expressionDefaultValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompoundOperator createCompoundOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    CompoundOperator result = CompoundOperator.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -1045,7 +1141,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertColumnTypeToString(EDataType eDataType, Object instanceValue)
+  public String convertCompoundOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -1077,6 +1173,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public ColumnType createColumnTypeFromString(EDataType eDataType, String initialValue)
+  {
+    ColumnType result = ColumnType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertColumnTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ConflictResolution createConflictResolutionFromString(EDataType eDataType, String initialValue)
   {
     ConflictResolution result = ConflictResolution.get(initialValue);
@@ -1090,28 +1208,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * @generated
    */
   public String convertConflictResolutionToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CompoundOperator createCompoundOperatorFromString(EDataType eDataType, String initialValue)
-  {
-    CompoundOperator result = CompoundOperator.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertCompoundOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

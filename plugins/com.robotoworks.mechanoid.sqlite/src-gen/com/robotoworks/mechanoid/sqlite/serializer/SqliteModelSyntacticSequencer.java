@@ -20,14 +20,12 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected SqliteModelGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1;
 	protected AbstractElementAlias match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1;
-	protected AbstractElementAlias match_ResultColumn_AsteriskKeyword_0_1_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SqliteModelGrammarAccess) access;
 		match_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getInsertStatementAccess().getInsertKeyword_0_0_0()), new TokenAlias(false, false, grammarAccess.getInsertStatementAccess().getReplaceKeyword_0_1()));
 		match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getNullExpressionAccess().getNotNullKeyword_1_1_0()), new TokenAlias(false, false, grammarAccess.getNullExpressionAccess().getNotnullKeyword_1_1_1()));
-		match_ResultColumn_AsteriskKeyword_0_1_1_q = new TokenAlias(false, true, grammarAccess.getResultColumnAccess().getAsteriskKeyword_0_1_1());
 	}
 	
 	@Override
@@ -46,8 +44,6 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1.equals(syntax))
 				emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_ResultColumn_AsteriskKeyword_0_1_1_q.equals(syntax))
-				emit_ResultColumn_AsteriskKeyword_0_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -62,17 +58,9 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'notnull' | 'not null'
+	 *     'not null' | 'notnull'
 	 */
 	protected void emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '*'?
-	 */
-	protected void emit_ResultColumn_AsteriskKeyword_0_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

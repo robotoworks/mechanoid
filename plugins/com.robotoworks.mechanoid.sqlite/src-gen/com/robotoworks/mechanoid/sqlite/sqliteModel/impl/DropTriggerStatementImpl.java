@@ -2,12 +2,14 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTriggerStatementImpl#isIfExists <em>If Exists</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropTriggerStatementImpl#getTrigger <em>Trigger</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +48,16 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
    * @ordered
    */
   protected boolean ifExists = IF_EXISTS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTrigger()
+   * @generated
+   * @ordered
+   */
+  protected CreateTriggerStatement trigger;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +108,49 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
    * <!-- end-user-doc -->
    * @generated
    */
+  public CreateTriggerStatement getTrigger()
+  {
+    if (trigger != null && trigger.eIsProxy())
+    {
+      InternalEObject oldTrigger = (InternalEObject)trigger;
+      trigger = (CreateTriggerStatement)eResolveProxy(oldTrigger);
+      if (trigger != oldTrigger)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER, oldTrigger, trigger));
+      }
+    }
+    return trigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateTriggerStatement basicGetTrigger()
+  {
+    return trigger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTrigger(CreateTriggerStatement newTrigger)
+  {
+    CreateTriggerStatement oldTrigger = trigger;
+    trigger = newTrigger;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER, oldTrigger, trigger));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +158,9 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
     {
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT__IF_EXISTS:
         return isIfExists();
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER:
+        if (resolve) return getTrigger();
+        return basicGetTrigger();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +177,9 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
     {
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT__IF_EXISTS:
         setIfExists((Boolean)newValue);
+        return;
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER:
+        setTrigger((CreateTriggerStatement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +198,9 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT__IF_EXISTS:
         setIfExists(IF_EXISTS_EDEFAULT);
         return;
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER:
+        setTrigger((CreateTriggerStatement)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +217,8 @@ public class DropTriggerStatementImpl extends DDLStatementImpl implements DropTr
     {
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT__IF_EXISTS:
         return ifExists != IF_EXISTS_EDEFAULT;
+      case SqliteModelPackage.DROP_TRIGGER_STATEMENT__TRIGGER:
+        return trigger != null;
     }
     return super.eIsSet(featureID);
   }

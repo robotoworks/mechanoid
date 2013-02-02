@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
@@ -292,17 +293,20 @@ public class ActiveRecordGenerator {
     int counter = (-1);
     _builder.newLineIfNotEmpty();
     {
-      EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter = IterableExtensions.<ColumnDef>filter(_columnDefs, _function);
-      for(final ColumnDef col : _filter) {
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+      for(final ColumnSource item : _filter) {
+        _builder.append("\t\t");
+        ColumnDef col = ((ColumnDef) item);
+        _builder.newLineIfNotEmpty();
         {
           ColumnType _type = col.getType();
           boolean _equals = Objects.equal(_type, ColumnType.BOOLEAN);
@@ -335,7 +339,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("boolean[] dirtyFlags = new boolean[");
-    EList<ColumnDef> _columnDefs_1 = stmt.getColumnDefs();
+    EList<ColumnSource> _columnDefs_1 = stmt.getColumnDefs();
     int _size = _columnDefs_1.size();
     _builder.append(_size, "		");
     _builder.append("];");
@@ -344,17 +348,17 @@ public class ActiveRecordGenerator {
     _builder.append("in.readBooleanArray(dirtyFlags);");
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_2 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_1 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_2 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_1 = IterableExtensions.<ColumnDef>filter(_columnDefs_2, _function_1);
-      for(final ColumnDef col_1 : _filter_1) {
+      Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_2, _function_1);
+      for(final ColumnSource col_1 : _filter_1) {
         _builder.append("\t\t");
         _builder.append("m");
         String _name_21 = col_1.getName();
@@ -397,17 +401,20 @@ public class ActiveRecordGenerator {
     _builder.append("dest.writeLong(getId());");
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_3 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_2 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_3 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_2 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_2 = IterableExtensions.<ColumnDef>filter(_columnDefs_3, _function_2);
-      for(final ColumnDef col_2 : _filter_2) {
+      Iterable<ColumnSource> _filter_2 = IterableExtensions.<ColumnSource>filter(_columnDefs_3, _function_2);
+      for(final ColumnSource item_1 : _filter_2) {
+        _builder.append("\t\t");
+        ColumnDef col_2 = ((ColumnDef) item_1);
+        _builder.newLineIfNotEmpty();
         {
           ColumnType _type_2 = col_2.getType();
           boolean _equals_1 = Objects.equal(_type_2, ColumnType.BOOLEAN);
@@ -440,18 +447,18 @@ public class ActiveRecordGenerator {
     _builder.append("dest.writeBooleanArray(new boolean[] {");
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_4 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_3 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_4 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_3 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_3 = IterableExtensions.<ColumnDef>filter(_columnDefs_4, _function_3);
+      Iterable<ColumnSource> _filter_3 = IterableExtensions.<ColumnSource>filter(_columnDefs_4, _function_3);
       boolean _hasElements = false;
-      for(final ColumnDef col_3 : _filter_3) {
+      for(final ColumnSource col_3 : _filter_3) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
@@ -489,17 +496,17 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_5 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_4 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_5 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_4 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_4 = IterableExtensions.<ColumnDef>filter(_columnDefs_5, _function_4);
-      for(final ColumnDef col_4 : _filter_4) {
+      Iterable<ColumnSource> _filter_4 = IterableExtensions.<ColumnSource>filter(_columnDefs_5, _function_4);
+      for(final ColumnSource col_4 : _filter_4) {
         _builder.append("\t\t");
         _builder.append("if(m");
         String _name_26 = col_4.getName();
@@ -541,17 +548,17 @@ public class ActiveRecordGenerator {
     _builder.append("public void makeDirty(boolean dirty){");
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_6 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_5 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_6 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_5 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_5 = IterableExtensions.<ColumnDef>filter(_columnDefs_6, _function_5);
-      for(final ColumnDef col_5 : _filter_5) {
+      Iterable<ColumnSource> _filter_5 = IterableExtensions.<ColumnSource>filter(_columnDefs_6, _function_5);
+      for(final ColumnSource col_5 : _filter_5) {
         _builder.append("\t\t");
         _builder.append("m");
         String _name_29 = col_5.getName();
@@ -575,17 +582,20 @@ public class ActiveRecordGenerator {
     _builder.append("setId(c.getLong(Indices._ID));");
     _builder.newLine();
     {
-      EList<ColumnDef> _columnDefs_7 = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function_6 = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs_7 = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function_6 = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter_6 = IterableExtensions.<ColumnDef>filter(_columnDefs_7, _function_6);
-      for(final ColumnDef col_6 : _filter_6) {
+      Iterable<ColumnSource> _filter_6 = IterableExtensions.<ColumnSource>filter(_columnDefs_7, _function_6);
+      for(final ColumnSource item_2 : _filter_6) {
+        _builder.append("\t\t");
+        ColumnDef col_6 = ((ColumnDef) item_2);
+        _builder.newLineIfNotEmpty();
         {
           ColumnType _type_4 = col_6.getType();
           boolean _equals_2 = Objects.equal(_type_4, ColumnType.BOOLEAN);
@@ -732,9 +742,9 @@ public class ActiveRecordGenerator {
   public CharSequence generateProjectionArrayMembers(final CreateTableStatement stmt) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       boolean _hasElements = false;
-      for(final ColumnDef col : _columnDefs) {
+      for(final ColumnSource col : _columnDefs) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
@@ -759,8 +769,8 @@ public class ActiveRecordGenerator {
     int counter = (-1);
     _builder.newLineIfNotEmpty();
     {
-      EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
-      for(final ColumnDef col : _columnDefs) {
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
+      for(final ColumnSource col : _columnDefs) {
         _builder.append("int ");
         String _name = col.getName();
         String _underscore = Strings.underscore(_name);
@@ -780,17 +790,19 @@ public class ActiveRecordGenerator {
   public CharSequence generateFields(final CreateTableStatement stmt) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter = IterableExtensions.<ColumnDef>filter(_columnDefs, _function);
-      for(final ColumnDef col : _filter) {
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+      for(final ColumnSource item : _filter) {
+        ColumnDef col = ((ColumnDef) item);
+        _builder.newLineIfNotEmpty();
         _builder.append("private ");
         ColumnType _type = col.getType();
         String _javaTypeName = Extensions.toJavaTypeName(_type);
@@ -815,17 +827,19 @@ public class ActiveRecordGenerator {
   public CharSequence generateAccessors(final CreateTableStatement stmt) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      EList<ColumnDef> _columnDefs = stmt.getColumnDefs();
-      final Function1<ColumnDef,Boolean> _function = new Function1<ColumnDef,Boolean>() {
-          public Boolean apply(final ColumnDef it) {
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
             String _name = it.getName();
             boolean _equals = _name.equals("_id");
             boolean _not = (!_equals);
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ColumnDef> _filter = IterableExtensions.<ColumnDef>filter(_columnDefs, _function);
-      for(final ColumnDef col : _filter) {
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+      for(final ColumnSource item : _filter) {
+        ColumnDef col = ((ColumnDef) item);
+        _builder.newLineIfNotEmpty();
         _builder.append("public void set");
         String _name = col.getName();
         String _pascalize = Strings.pascalize(_name);

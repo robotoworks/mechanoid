@@ -2,12 +2,14 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropViewStatementImpl#isIfExists <em>If Exists</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.DropViewStatementImpl#getView <em>View</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +48,16 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
    * @ordered
    */
   protected boolean ifExists = IF_EXISTS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getView() <em>View</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getView()
+   * @generated
+   * @ordered
+   */
+  protected CreateViewStatement view;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +108,49 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
    * <!-- end-user-doc -->
    * @generated
    */
+  public CreateViewStatement getView()
+  {
+    if (view != null && view.eIsProxy())
+    {
+      InternalEObject oldView = (InternalEObject)view;
+      view = (CreateViewStatement)eResolveProxy(oldView);
+      if (view != oldView)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW, oldView, view));
+      }
+    }
+    return view;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateViewStatement basicGetView()
+  {
+    return view;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setView(CreateViewStatement newView)
+  {
+    CreateViewStatement oldView = view;
+    view = newView;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW, oldView, view));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +158,9 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
     {
       case SqliteModelPackage.DROP_VIEW_STATEMENT__IF_EXISTS:
         return isIfExists();
+      case SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW:
+        if (resolve) return getView();
+        return basicGetView();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +177,9 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
     {
       case SqliteModelPackage.DROP_VIEW_STATEMENT__IF_EXISTS:
         setIfExists((Boolean)newValue);
+        return;
+      case SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW:
+        setView((CreateViewStatement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +198,9 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
       case SqliteModelPackage.DROP_VIEW_STATEMENT__IF_EXISTS:
         setIfExists(IF_EXISTS_EDEFAULT);
         return;
+      case SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW:
+        setView((CreateViewStatement)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +217,8 @@ public class DropViewStatementImpl extends DDLStatementImpl implements DropViewS
     {
       case SqliteModelPackage.DROP_VIEW_STATEMENT__IF_EXISTS:
         return ifExists != IF_EXISTS_EDEFAULT;
+      case SqliteModelPackage.DROP_VIEW_STATEMENT__VIEW:
+        return view != null;
     }
     return super.eIsSet(featureID);
   }

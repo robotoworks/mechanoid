@@ -12,7 +12,6 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -20,7 +19,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * @model
  * @generated
  */
-public interface SingleSourceTable extends SingleSource
+public interface SingleSourceTable extends SelectSource
 {
   /**
    * Returns the value of the '<em><b>Table Reference</b></em>' reference.
@@ -31,12 +30,12 @@ public interface SingleSourceTable extends SingleSource
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table Reference</em>' reference.
-   * @see #setTableReference(CreateTableStatement)
+   * @see #setTableReference(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_TableReference()
    * @model
    * @generated
    */
-  CreateTableStatement getTableReference();
+  TableDefinition getTableReference();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getTableReference <em>Table Reference</em>}' reference.
@@ -46,32 +45,6 @@ public interface SingleSourceTable extends SingleSource
    * @see #getTableReference()
    * @generated
    */
-  void setTableReference(CreateTableStatement value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getSingleSourceTable_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setTableReference(TableDefinition value);
 
 } // SingleSourceTable

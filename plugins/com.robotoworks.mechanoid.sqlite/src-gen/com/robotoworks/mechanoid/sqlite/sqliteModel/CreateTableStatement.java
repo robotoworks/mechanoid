@@ -21,11 +21,11 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CreateTableStatement extends DDLStatement
+public interface CreateTableStatement extends TableDefinition
 {
   /**
    * Returns the value of the '<em><b>Column Defs</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef}.
+   * The list contents are of type {@link com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Column Defs</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface CreateTableStatement extends DDLStatement
    * @model containment="true"
    * @generated
    */
-  EList<ColumnDef> getColumnDefs();
+  EList<ColumnSource> getColumnDefs();
 
   /**
    * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.

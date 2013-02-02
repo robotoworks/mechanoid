@@ -11,7 +11,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement#getTableName <em>Table Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
@@ -23,30 +23,30 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
 public interface DeleteStatement extends DMLStatement
 {
   /**
-   * Returns the value of the '<em><b>Table Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Table</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Table Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Table</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Table Name</em>' attribute.
-   * @see #setTableName(String)
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDeleteStatement_TableName()
+   * @return the value of the '<em>Table</em>' reference.
+   * @see #setTable(TableDefinition)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDeleteStatement_Table()
    * @model
    * @generated
    */
-  String getTableName();
+  TableDefinition getTable();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement#getTableName <em>Table Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement#getTable <em>Table</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Table Name</em>' attribute.
-   * @see #getTableName()
+   * @param value the new value of the '<em>Table</em>' reference.
+   * @see #getTable()
    * @generated
    */
-  void setTableName(String value);
+  void setTable(TableDefinition value);
 
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.

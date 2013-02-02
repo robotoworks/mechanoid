@@ -2,25 +2,18 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTermList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getCore <em>Core</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getOrderingTerms <em>Ordering Terms</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.SelectStatementImpl#getOrderby <em>Orderby</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,14 +42,14 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
   protected SelectCoreExpression core;
 
   /**
-   * The cached value of the '{@link #getOrderingTerms() <em>Ordering Terms</em>}' containment reference list.
+   * The cached value of the '{@link #getOrderby() <em>Orderby</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOrderingTerms()
+   * @see #getOrderby()
    * @generated
    * @ordered
    */
-  protected EList<OrderingTerm> orderingTerms;
+  protected OrderingTermList orderby;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,13 +125,47 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<OrderingTerm> getOrderingTerms()
+  public OrderingTermList getOrderby()
   {
-    if (orderingTerms == null)
+    return orderby;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOrderby(OrderingTermList newOrderby, NotificationChain msgs)
+  {
+    OrderingTermList oldOrderby = orderby;
+    orderby = newOrderby;
+    if (eNotificationRequired())
     {
-      orderingTerms = new EObjectContainmentEList<OrderingTerm>(OrderingTerm.class, this, SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__ORDERBY, oldOrderby, newOrderby);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return orderingTerms;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOrderby(OrderingTermList newOrderby)
+  {
+    if (newOrderby != orderby)
+    {
+      NotificationChain msgs = null;
+      if (orderby != null)
+        msgs = ((InternalEObject)orderby).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__ORDERBY, null, msgs);
+      if (newOrderby != null)
+        msgs = ((InternalEObject)newOrderby).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__ORDERBY, null, msgs);
+      msgs = basicSetOrderby(newOrderby, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__ORDERBY, newOrderby, newOrderby));
   }
 
   /**
@@ -153,8 +180,8 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
     {
       case SqliteModelPackage.SELECT_STATEMENT__CORE:
         return basicSetCore(null, msgs);
-      case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
-        return ((InternalEList<?>)getOrderingTerms()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
+        return basicSetOrderby(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -171,8 +198,8 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
     {
       case SqliteModelPackage.SELECT_STATEMENT__CORE:
         return getCore();
-      case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
-        return getOrderingTerms();
+      case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
+        return getOrderby();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -182,7 +209,6 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -191,9 +217,8 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
       case SqliteModelPackage.SELECT_STATEMENT__CORE:
         setCore((SelectCoreExpression)newValue);
         return;
-      case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
-        getOrderingTerms().clear();
-        getOrderingTerms().addAll((Collection<? extends OrderingTerm>)newValue);
+      case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
+        setOrderby((OrderingTermList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -212,8 +237,8 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
       case SqliteModelPackage.SELECT_STATEMENT__CORE:
         setCore((SelectCoreExpression)null);
         return;
-      case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
-        getOrderingTerms().clear();
+      case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
+        setOrderby((OrderingTermList)null);
         return;
     }
     super.eUnset(featureID);
@@ -231,8 +256,8 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
     {
       case SqliteModelPackage.SELECT_STATEMENT__CORE:
         return core != null;
-      case SqliteModelPackage.SELECT_STATEMENT__ORDERING_TERMS:
-        return orderingTerms != null && !orderingTerms.isEmpty();
+      case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
+        return orderby != null;
     }
     return super.eIsSet(featureID);
   }

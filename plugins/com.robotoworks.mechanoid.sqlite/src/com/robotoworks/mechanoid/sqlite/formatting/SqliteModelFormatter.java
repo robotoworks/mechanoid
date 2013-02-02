@@ -35,37 +35,49 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(2).before(g.getMigrationBlockRule());
 		c.setLinewrap().after(g.getMigrationBlockAccess().getLeftCurlyBracketKeyword_2());		
 		c.setLinewrap().before(g.getMigrationBlockAccess().getRightCurlyBracketKeyword_4());		
+		c.setNoSpace().before(g.getMigrationBlockAccess().getSemicolonKeyword_3_1());		
 		c.setIndentationDecrement().after(g.getMigrationBlockRule());
 		
 		c.setIndentationIncrement().before(g.getDDLStatementRule());
 		c.setIndentationDecrement().after(g.getDDLStatementRule());
 		
 		c.setLinewrap(2).before(g.getDDLStatementRule());
-		c.setLinewrap().before(g.getDDLStatementAccess().getRightParenthesisKeyword_0_8());
+		c.setLinewrap().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
+		c.setIndentationIncrement().after(g.getCreateTableStatementAccess().getLeftParenthesisKeyword_4());
+		c.setIndentationDecrement().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
 		c.setLinewrap().before(g.getColumnDefRule());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_0_6_0());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_0_7_0());
-		c.setNoSpace().before(g.getDDLStatementAccess().getCommaKeyword_2_5_2_1_2_0());
+		c.setNoSpace().before(g.getCreateTableStatementAccess().getCommaKeyword_6_0());
 		
 		c.setLinewrap().before(g.getDMLStatementRule());
 		c.setLinewrap().before(g.getResultColumnRule());
 		
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getSelectKeyword_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getFromKeyword_4_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getWhereKeyword_5_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getGroupByKeyword_6_0());
-		c.setLinewrap().before(g.getSelectCoreOperandAccess().getHavingKeyword_7_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getSelectKeyword_1());
+		c.setLinewrap().after(g.getSelectExpressionAccess().getSelectKeyword_1());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getFromKeyword_4_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getWhereKeyword_5_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getGroupByKeyword_6_0());
+		c.setLinewrap().before(g.getSelectExpressionAccess().getHavingKeyword_7_0());
 		c.setLinewrap().before(g.getSelectStatementAccess().getOrderByKeyword_1_0());
+		
+		c.setIndentationIncrement().before(g.getSelectListAccess().getRule());
+		c.setIndentationDecrement().after(g.getSelectListAccess().getRule());
+		c.setNoSpace().before(g.getSelectListAccess().getCommaKeyword_1_0());
+
 		c.setLinewrap().before(g.getJoinStatementRule());
 		
 		c.setLinewrap().before(g.getCompoundOperatorRule());
-		c.setLinewrap().before(g.getDDLStatementAccess().getWhenExpressionAssignment_2_9_1());
+		c.setLinewrap().before(g.getCreateTriggerStatementAccess().getWhenExpressionAssignment_8_1());
+		
+		c.setIndentationIncrement().after(g.getCreateViewStatementAccess().getAsKeyword_4());
+		c.setIndentationDecrement().after(g.getCreateViewStatementRule());
 		
 		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());
 		c.setLinewrap().after(g.getExprOrAccess().getOpOrKeyword_1_1_0());
 		c.setLinewrap().after(g.getCaseRule());
-		c.setNoSpace().after(g.getResultColumnAccess().getReferenceAssignment_0_1_0_0());
-		c.setNoSpace().before(g.getResultColumnAccess().getAsteriskKeyword_0_1_1());
-		
+		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_2_1());		
+		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_3_1_0());		
+		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_0_2());		
+		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_1_2());	
+		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_3_2());		
 	}
 }

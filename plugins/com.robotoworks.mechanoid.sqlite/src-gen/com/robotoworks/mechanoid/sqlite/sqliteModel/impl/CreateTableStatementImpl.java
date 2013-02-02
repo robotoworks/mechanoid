@@ -2,7 +2,7 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CreateTableStatementImpl extends DDLStatementImpl implements CreateTableStatement
+public class CreateTableStatementImpl extends TableDefinitionImpl implements CreateTableStatement
 {
   /**
    * The cached value of the '{@link #getColumnDefs() <em>Column Defs</em>}' containment reference list.
@@ -43,7 +43,7 @@ public class CreateTableStatementImpl extends DDLStatementImpl implements Create
    * @generated
    * @ordered
    */
-  protected EList<ColumnDef> columnDefs;
+  protected EList<ColumnSource> columnDefs;
 
   /**
    * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
@@ -81,11 +81,11 @@ public class CreateTableStatementImpl extends DDLStatementImpl implements Create
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ColumnDef> getColumnDefs()
+  public EList<ColumnSource> getColumnDefs()
   {
     if (columnDefs == null)
     {
-      columnDefs = new EObjectContainmentEList<ColumnDef>(ColumnDef.class, this, SqliteModelPackage.CREATE_TABLE_STATEMENT__COLUMN_DEFS);
+      columnDefs = new EObjectContainmentEList<ColumnSource>(ColumnSource.class, this, SqliteModelPackage.CREATE_TABLE_STATEMENT__COLUMN_DEFS);
     }
     return columnDefs;
   }
@@ -153,7 +153,7 @@ public class CreateTableStatementImpl extends DDLStatementImpl implements Create
     {
       case SqliteModelPackage.CREATE_TABLE_STATEMENT__COLUMN_DEFS:
         getColumnDefs().clear();
-        getColumnDefs().addAll((Collection<? extends ColumnDef>)newValue);
+        getColumnDefs().addAll((Collection<? extends ColumnSource>)newValue);
         return;
       case SqliteModelPackage.CREATE_TABLE_STATEMENT__CONSTRAINTS:
         getConstraints().clear();

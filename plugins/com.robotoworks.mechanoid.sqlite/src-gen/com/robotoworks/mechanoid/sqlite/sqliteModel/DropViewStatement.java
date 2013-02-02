@@ -12,6 +12,7 @@ package com.robotoworks.mechanoid.sqlite.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement#isIfExists <em>If Exists</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement#getView <em>View</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +47,31 @@ public interface DropViewStatement extends DDLStatement
    * @generated
    */
   void setIfExists(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>View</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>View</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>View</em>' reference.
+   * @see #setView(CreateViewStatement)
+   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDropViewStatement_View()
+   * @model
+   * @generated
+   */
+  CreateViewStatement getView();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement#getView <em>View</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>View</em>' reference.
+   * @see #getView()
+   * @generated
+   */
+  void setView(CreateViewStatement value);
 
 } // DropViewStatement
