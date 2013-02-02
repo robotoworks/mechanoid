@@ -57,12 +57,12 @@ public interface DropTableStatement extends DDLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table</em>' reference.
-   * @see #setTable(CreateTableStatement)
+   * @see #setTable(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getDropTableStatement_Table()
    * @model
    * @generated
    */
-  CreateTableStatement getTable();
+  TableDefinition getTable();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement#getTable <em>Table</em>}' reference.
@@ -72,6 +72,6 @@ public interface DropTableStatement extends DDLStatement
    * @see #getTable()
    * @generated
    */
-  void setTable(CreateTableStatement value);
+  void setTable(TableDefinition value);
 
 } // DropTableStatement

@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.util.Strings;
 
@@ -12,6 +13,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 
 
 public class Extensions {	
@@ -47,10 +49,18 @@ public class Extensions {
 		SelectCoreExpression coreExpr = stmt.getSelectStatement().getCore();
 		if(coreExpr instanceof SelectCore) {
 			SelectCore core = (SelectCore) coreExpr;
-			return ((SelectExpression)core.getRight()).getSelectList().getResultColumns();
+			SelectList selectList = ((SelectExpression)core.getRight()).getSelectList();
+			if(selectList != null) {
+				return selectList.getResultColumns();
+			}
 		} else {
-			return ((SelectExpression)coreExpr).getSelectList().getResultColumns();
+			SelectList selectList = ((SelectExpression)coreExpr).getSelectList();
+			if(selectList != null) {
+				return selectList.getResultColumns();
+			}
 		}
+		
+		return new BasicEList<ColumnSource>();
 	}
 	
 	public static boolean hasAndroidPrimaryKey(CreateTableStatement stmt) {

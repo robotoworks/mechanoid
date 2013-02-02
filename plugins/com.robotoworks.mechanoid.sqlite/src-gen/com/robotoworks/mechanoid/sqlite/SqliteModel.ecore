@@ -121,7 +121,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateColumnNames" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="forEachRow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whenExpression" eType="#//Expression"
         containment="true"/>
@@ -135,7 +135,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropTableStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropTriggerStatement" eSuperTypes="#//DDLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifExists" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -190,13 +190,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DMLStatement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DeleteStatement" eSuperTypes="#//DMLStatement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InsertStatement" eSuperTypes="#//DMLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflictResolution" eType="#//ConflictResolution"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnNames" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
@@ -206,7 +206,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateStatement" eSuperTypes="#//DMLStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conflictResolution" eType="#//ConflictResolution"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CreateTableStatement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//TableDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="updateColumnExpressions"
         upperBound="-1" eType="#//UpdateColumnExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whereExpression" eType="#//Expression"

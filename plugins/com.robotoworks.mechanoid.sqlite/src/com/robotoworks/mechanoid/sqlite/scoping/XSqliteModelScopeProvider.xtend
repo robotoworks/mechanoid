@@ -75,7 +75,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		var trigger = context.getAncestorOfType(typeof(CreateTriggerStatement))
 		
 		if(trigger != null){
-			return Scopes::scopeFor(trigger.table.columnDefs)
+			return Scopes::scopeFor(trigger.findColumnDefs(trigger.table))
 		}
 		
 		return IScope::NULLSCOPE
@@ -85,7 +85,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		var trigger = context.getAncestorOfType(typeof(CreateTriggerStatement))
 		
 		if(trigger != null){
-			return Scopes::scopeFor(trigger.table.columnDefs)
+			return Scopes::scopeFor(trigger.findColumnDefs(trigger.table))
 		}
 		
 		return IScope::NULLSCOPE
@@ -150,13 +150,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 					return Scopes::scopeFor(items, buildScopeForColumnSourceRef_column(context, container))				
 				}
 				UpdateStatement: {
-					return Scopes::scopeFor(container.table.columnDefs, IScope::NULLSCOPE)
+					var ddl = container.getAncestorOfType(typeof(DDLStatement))
+					return Scopes::scopeFor(ddl.findColumnDefs(container.table), IScope::NULLSCOPE)
 				}
 				InsertStatement: {
-					return Scopes::scopeFor(container.table.columnDefs, IScope::NULLSCOPE)
+					var ddl = container.getAncestorOfType(typeof(DDLStatement))
+					return Scopes::scopeFor(ddl.findColumnDefs(container.table), IScope::NULLSCOPE)
 				}
 				DeleteStatement: {
-					return Scopes::scopeFor(container.table.columnDefs, IScope::NULLSCOPE)
+					var ddl = container.getAncestorOfType(typeof(DDLStatement))
+					return Scopes::scopeFor(ddl.findColumnDefs(container.table), IScope::NULLSCOPE)
 				}
 				OrderingTermList: {
 					var selectStatement = container.eContainer as SelectStatement

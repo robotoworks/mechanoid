@@ -405,24 +405,34 @@
               <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSourceRef"/>
             </type>
           </elements>
-          <elements xsi:type="xtext:Group" cardinality="?">
-            <elements xsi:type="xtext:Assignment" feature="source" operator="=">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Assignment" feature="source" operator="=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectSource"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value="."/>
+              <elements xsi:type="xtext:Assignment" feature="column" operator="=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSource"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+                </terminal>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="column" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//SelectSource"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSource"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
               </terminal>
             </elements>
-            <elements xsi:type="xtext:Keyword" value="."/>
-          </elements>
-          <elements xsi:type="xtext:Assignment" feature="column" operator="=">
-            <terminal xsi:type="xtext:CrossReference">
-              <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//ColumnSource"/>
-              </type>
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-            </terminal>
           </elements>
         </elements>
         <elements xsi:type="xtext:Group">
@@ -1101,7 +1111,7 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -1191,7 +1201,7 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -1531,7 +1541,7 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -1565,7 +1575,7 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -1625,7 +1635,7 @@
         <elements xsi:type="xtext:Assignment" feature="table" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//CreateTableStatement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/sqlite/SqliteModel#//TableDefinition"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>

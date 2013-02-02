@@ -64,12 +64,12 @@ public interface InsertStatement extends DMLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table</em>' reference.
-   * @see #setTable(CreateTableStatement)
+   * @see #setTable(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getInsertStatement_Table()
    * @model
    * @generated
    */
-  CreateTableStatement getTable();
+  TableDefinition getTable();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement#getTable <em>Table</em>}' reference.
@@ -79,7 +79,7 @@ public interface InsertStatement extends DMLStatement
    * @see #getTable()
    * @generated
    */
-  void setTable(CreateTableStatement value);
+  void setTable(TableDefinition value);
 
   /**
    * Returns the value of the '<em><b>Column Names</b></em>' attribute list.

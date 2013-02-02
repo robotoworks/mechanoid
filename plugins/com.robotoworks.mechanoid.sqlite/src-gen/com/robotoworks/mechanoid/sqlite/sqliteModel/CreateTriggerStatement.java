@@ -132,12 +132,12 @@ public interface CreateTriggerStatement extends DDLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table</em>' reference.
-   * @see #setTable(CreateTableStatement)
+   * @see #setTable(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_Table()
    * @model
    * @generated
    */
-  CreateTableStatement getTable();
+  TableDefinition getTable();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement#getTable <em>Table</em>}' reference.
@@ -147,7 +147,7 @@ public interface CreateTriggerStatement extends DDLStatement
    * @see #getTable()
    * @generated
    */
-  void setTable(CreateTableStatement value);
+  void setTable(TableDefinition value);
 
   /**
    * Returns the value of the '<em><b>For Each Row</b></em>' attribute.

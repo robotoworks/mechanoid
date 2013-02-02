@@ -63,12 +63,12 @@ public interface UpdateStatement extends DMLStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Table</em>' reference.
-   * @see #setTable(CreateTableStatement)
+   * @see #setTable(TableDefinition)
    * @see com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage#getUpdateStatement_Table()
    * @model
    * @generated
    */
-  CreateTableStatement getTable();
+  TableDefinition getTable();
 
   /**
    * Sets the value of the '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement#getTable <em>Table</em>}' reference.
@@ -78,7 +78,7 @@ public interface UpdateStatement extends DMLStatement
    * @see #getTable()
    * @generated
    */
-  void setTable(CreateTableStatement value);
+  void setTable(TableDefinition value);
 
   /**
    * Returns the value of the '<em><b>Update Column Expressions</b></em>' containment reference list.

@@ -90,9 +90,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     CreateTriggerStatement trigger = ModelUtil.<CreateTriggerStatement>getAncestorOfType(context, CreateTriggerStatement.class);
     boolean _notEquals = (!Objects.equal(trigger, null));
     if (_notEquals) {
-      CreateTableStatement _table = trigger.getTable();
-      EList<ColumnSource> _columnDefs = _table.getColumnDefs();
-      return Scopes.scopeFor(_columnDefs);
+      TableDefinition _table = trigger.getTable();
+      ArrayList<EObject> _findColumnDefs = this.findColumnDefs(trigger, _table);
+      return Scopes.scopeFor(_findColumnDefs);
     }
     return IScope.NULLSCOPE;
   }
@@ -101,9 +101,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     CreateTriggerStatement trigger = ModelUtil.<CreateTriggerStatement>getAncestorOfType(context, CreateTriggerStatement.class);
     boolean _notEquals = (!Objects.equal(trigger, null));
     if (_notEquals) {
-      CreateTableStatement _table = trigger.getTable();
-      EList<ColumnSource> _columnDefs = _table.getColumnDefs();
-      return Scopes.scopeFor(_columnDefs);
+      TableDefinition _table = trigger.getTable();
+      ArrayList<EObject> _findColumnDefs = this.findColumnDefs(trigger, _table);
+      return Scopes.scopeFor(_findColumnDefs);
     }
     return IScope.NULLSCOPE;
   }
@@ -196,27 +196,30 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
           if (container instanceof UpdateStatement) {
             final UpdateStatement _updateStatement = (UpdateStatement)container;
             _matched=true;
-            CreateTableStatement _table = _updateStatement.getTable();
-            EList<ColumnSource> _columnDefs = _table.getColumnDefs();
-            return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_updateStatement, DDLStatement.class);
+            TableDefinition _table = _updateStatement.getTable();
+            ArrayList<EObject> _findColumnDefs = this.findColumnDefs(ddl, _table);
+            return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {
           if (container instanceof InsertStatement) {
             final InsertStatement _insertStatement = (InsertStatement)container;
             _matched=true;
-            CreateTableStatement _table = _insertStatement.getTable();
-            EList<ColumnSource> _columnDefs = _table.getColumnDefs();
-            return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_insertStatement, DDLStatement.class);
+            TableDefinition _table = _insertStatement.getTable();
+            ArrayList<EObject> _findColumnDefs = this.findColumnDefs(ddl, _table);
+            return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {
           if (container instanceof DeleteStatement) {
             final DeleteStatement _deleteStatement = (DeleteStatement)container;
             _matched=true;
-            CreateTableStatement _table = _deleteStatement.getTable();
-            EList<ColumnSource> _columnDefs = _table.getColumnDefs();
-            return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_deleteStatement, DDLStatement.class);
+            TableDefinition _table = _deleteStatement.getTable();
+            ArrayList<EObject> _findColumnDefs = this.findColumnDefs(ddl, _table);
+            return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {

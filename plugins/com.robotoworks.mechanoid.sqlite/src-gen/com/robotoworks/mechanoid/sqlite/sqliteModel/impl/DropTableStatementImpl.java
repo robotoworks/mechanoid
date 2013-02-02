@@ -2,9 +2,9 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -57,7 +57,7 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * @generated
    * @ordered
    */
-  protected CreateTableStatement table;
+  protected TableDefinition table;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,12 +108,12 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement getTable()
+  public TableDefinition getTable()
   {
     if (table != null && table.eIsProxy())
     {
       InternalEObject oldTable = (InternalEObject)table;
-      table = (CreateTableStatement)eResolveProxy(oldTable);
+      table = (TableDefinition)eResolveProxy(oldTable);
       if (table != oldTable)
       {
         if (eNotificationRequired())
@@ -128,7 +128,7 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement basicGetTable()
+  public TableDefinition basicGetTable()
   {
     return table;
   }
@@ -138,9 +138,9 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTable(CreateTableStatement newTable)
+  public void setTable(TableDefinition newTable)
   {
-    CreateTableStatement oldTable = table;
+    TableDefinition oldTable = table;
     table = newTable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE, oldTable, table));
@@ -179,7 +179,7 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
         setIfExists((Boolean)newValue);
         return;
       case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
-        setTable((CreateTableStatement)newValue);
+        setTable((TableDefinition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,7 +199,7 @@ public class DropTableStatementImpl extends DDLStatementImpl implements DropTabl
         setIfExists(IF_EXISTS_EDEFAULT);
         return;
       case SqliteModelPackage.DROP_TABLE_STATEMENT__TABLE:
-        setTable((CreateTableStatement)null);
+        setTable((TableDefinition)null);
         return;
     }
     super.eUnset(featureID);

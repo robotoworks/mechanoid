@@ -993,7 +993,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *         name=ID 
 	 *         (when='before' | when='after' | when='instead of')? 
 	 *         (eventType='delete' | eventType='insert' | (eventType='update' (updateColumnNames+=ID updateColumnNames+=ID*)?)) 
-	 *         table=[CreateTableStatement|ID] 
+	 *         table=[TableDefinition|ID] 
 	 *         forEachRow='for each row'? 
 	 *         whenExpression=SqlExpression? 
 	 *         (statements+=DMLStatement statements+=DMLStatement*)?
@@ -1066,7 +1066,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (table=[CreateTableStatement|ID] expression=SqlExpression?)
+	 *     (table=[TableDefinition|ID] expression=SqlExpression?)
 	 */
 	protected void sequence_DeleteStatement(EObject context, DeleteStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1075,7 +1075,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (ifExists?='if exists'? table=[CreateTableStatement|ID])
+	 *     (ifExists?='if exists'? table=[TableDefinition|ID])
 	 */
 	protected void sequence_DropTableStatement(EObject context, DropTableStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1265,7 +1265,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (
 	 *         conflictResolution=ConflictResolution? 
-	 *         table=[CreateTableStatement|ID] 
+	 *         table=[TableDefinition|ID] 
 	 *         (columnNames+=ID columnNames+=ID*)? 
 	 *         ((expressions+=SqlExpression expressions+=SqlExpression*) | selectStatement=SelectStatement)?
 	 *     )
@@ -1527,7 +1527,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (source=[SelectSource|ID]? column=[ColumnSource|ID])
+	 *     ((source=[SelectSource|ID] column=[ColumnSource|ID]) | column=[ColumnSource|ID])
 	 */
 	protected void sequence_PrimaryExpression(EObject context, ColumnSourceRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1747,7 +1747,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 * Constraint:
 	 *     (
 	 *         conflictResolution=ConflictResolution? 
-	 *         table=[CreateTableStatement|ID] 
+	 *         table=[TableDefinition|ID] 
 	 *         updateColumnExpressions+=UpdateColumnExpression 
 	 *         updateColumnExpressions+=UpdateColumnExpression* 
 	 *         whereExpression=SqlExpression?

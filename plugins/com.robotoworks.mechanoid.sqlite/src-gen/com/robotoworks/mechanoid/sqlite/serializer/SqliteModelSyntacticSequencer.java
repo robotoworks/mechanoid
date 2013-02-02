@@ -58,7 +58,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'notnull' | 'not null'
+	 *     'not null' | 'notnull'
 	 */
 	protected void emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

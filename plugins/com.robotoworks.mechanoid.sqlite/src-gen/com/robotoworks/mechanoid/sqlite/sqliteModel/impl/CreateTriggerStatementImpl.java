@@ -2,11 +2,11 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
 
 import java.util.Collection;
 
@@ -124,7 +124,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * @generated
    * @ordered
    */
-  protected CreateTableStatement table;
+  protected TableDefinition table;
 
   /**
    * The default value of the '{@link #getForEachRow() <em>For Each Row</em>}' attribute.
@@ -275,12 +275,12 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement getTable()
+  public TableDefinition getTable()
   {
     if (table != null && table.eIsProxy())
     {
       InternalEObject oldTable = (InternalEObject)table;
-      table = (CreateTableStatement)eResolveProxy(oldTable);
+      table = (TableDefinition)eResolveProxy(oldTable);
       if (table != oldTable)
       {
         if (eNotificationRequired())
@@ -295,7 +295,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public CreateTableStatement basicGetTable()
+  public TableDefinition basicGetTable()
   {
     return table;
   }
@@ -305,9 +305,9 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTable(CreateTableStatement newTable)
+  public void setTable(TableDefinition newTable)
   {
-    CreateTableStatement oldTable = table;
+    TableDefinition oldTable = table;
     table = newTable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE, oldTable, table));
@@ -472,7 +472,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
         getUpdateColumnNames().addAll((Collection<? extends String>)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE:
-        setTable((CreateTableStatement)newValue);
+        setTable((TableDefinition)newValue);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
         setForEachRow((String)newValue);
@@ -511,7 +511,7 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
         getUpdateColumnNames().clear();
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TABLE:
-        setTable((CreateTableStatement)null);
+        setTable((TableDefinition)null);
         return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__FOR_EACH_ROW:
         setForEachRow(FOR_EACH_ROW_EDEFAULT);

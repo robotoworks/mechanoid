@@ -85,7 +85,7 @@ PrimaryExpression returns Expression:
 	{NewColumn} 'new.' column=[ColumnSource] |
 	{OldColumn} 'old.' column=[ColumnSource] |
 	{AllColumns} source=[SelectSource] '.' '*' |
-	{ColumnSourceRef} (source=[SelectSource] '.')? column=[ColumnSource] |
+	{ColumnSourceRef} (source=[SelectSource] '.' column=[ColumnSource]|column=[ColumnSource]) |
 	{Literal} literalValue=LiteralValue|
 	{NestedExpression} '(' expression=SqlExpression ')'|
 	{SelectStatementExpression} not?='not'? exists?='exists'? '(' select=SelectStatement ')' |
