@@ -3,6 +3,11 @@
  */
 package com.robotoworks.mechanoid.sqlite.ui.contentassist;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+
 
 /**
  * see
@@ -11,4 +16,11 @@ package com.robotoworks.mechanoid.sqlite.ui.contentassist;
  */
 public class SqliteModelProposalProvider extends
 		AbstractSqliteModelProposalProvider {
+	
+	@Override
+	public void completePrimaryExpression_Column(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		super.completePrimaryExpression_Column(model, assignment, context, acceptor);
+	}
 }

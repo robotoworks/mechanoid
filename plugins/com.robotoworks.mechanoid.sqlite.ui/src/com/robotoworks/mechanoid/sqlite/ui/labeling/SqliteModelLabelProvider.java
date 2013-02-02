@@ -14,10 +14,13 @@ import org.eclipse.xtext.util.Strings;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
@@ -76,10 +79,14 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	public String text(ConfigBlock e) {
 		return "Configuration";
 	}
+	
+	public String text(AlterTableAddColumnStatement e) {
+		return "Add column to " + e.getTable().getName();
+	}
 
 	
 	public String text(MigrationBlock e) {
-		int version = e.eContainer().eContents().indexOf(e);
+		int version = ((DatabaseBlock)e.eContainer()).getMigrations().indexOf(e) + 1;
 		return "Migration (v" + version + ")";
 	}
 	
@@ -90,9 +97,6 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	public String image(ActionStatement e) {
 		return "action.gif";
 	}
-//	public String image(ActiveRecordRegistrationStatement e) {
-//		return "active_record_obj.gif";
-//	}
 
 	public String image(DatabaseBlock e) {
 		return "database.gif";
@@ -113,6 +117,16 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "column.gif";
 	}
 	
+	public String image(AlterTableAddColumnStatement e) {	
+		EList<ColumnConstraint> constraints = ((ColumnDef)e.getColumnDef()).getConstraints();
+		
+		if(findPrimaryKeyConstraint(constraints) != null) {
+			return "key.gif";
+		}
+		
+		return "column.gif";
+	}
+	
 	public String image(PrimaryKeyColumnConstraint e) {
 		return "key.gif";
 	}
@@ -129,12 +143,20 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "table.gif";
 	}
 	
+	public String image(AlterTableRenameStatement e) {
+		return "table.gif";
+	}
+	
 	public String image(TableConstraint e) {
 		return "constraint.gif";
 	}
 	
 	public String image(ColumnConstraint e) {
 		return "constraint.gif";
+	}
+	
+	public String image(CreateTriggerStatement e) {
+		return "trigger.gif";
 	}
 	
 	private PrimaryKeyColumnConstraint findPrimaryKeyConstraint(EList<ColumnConstraint> constraints) {
