@@ -1,9 +1,16 @@
 package com.robotoworks.mechanoid.sqlite.util;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
 import java.util.ArrayList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -147,5 +154,37 @@ public class ModelUtil {
       boolean _notEquals = (!Objects.equal(migration, null));
       _dowhile = _notEquals;
     } while(_dowhile);
+  }
+  
+  public static ArrayList<EObject> getAllReferenceableSingleSources(final SelectCoreExpression expr) {
+    final ArrayList<EObject> items = Lists.<EObject>newArrayList();
+    if ((expr instanceof SelectCore)) {
+      SelectCoreExpression _left = ((SelectCore) expr).getLeft();
+      ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(_left);
+      items.addAll(_allReferenceableSingleSources);
+      SelectCoreExpression _right = ((SelectCore) expr).getRight();
+      ArrayList<EObject> _allReferenceableSingleSources_1 = ModelUtil.getAllReferenceableSingleSources(_right);
+      items.addAll(_allReferenceableSingleSources_1);
+    } else {
+      if ((expr instanceof SelectExpression)) {
+        ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(((SelectExpression) expr));
+        items.addAll(_findAllSingleSources);
+      }
+    }
+    return items;
+  }
+  
+  public static ArrayList<SingleSource> findAllSingleSources(final SelectExpression expr) {
+    final ArrayList<SingleSource> items = Lists.<SingleSource>newArrayList();
+    JoinSource _source = expr.getSource();
+    SingleSource _source_1 = _source.getSource();
+    items.add(_source_1);
+    JoinSource _source_2 = expr.getSource();
+    EList<JoinStatement> _joinStatements = _source_2.getJoinStatements();
+    for (final JoinStatement join : _joinStatements) {
+      SingleSource _singleSource = join.getSingleSource();
+      items.add(_singleSource);
+    }
+    return items;
   }
 }

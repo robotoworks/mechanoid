@@ -291,11 +291,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="OldColumn" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//ColumnSource"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AllColumns" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SelectSource"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColumnSourceRef" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SelectSource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//ColumnSource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Expression">

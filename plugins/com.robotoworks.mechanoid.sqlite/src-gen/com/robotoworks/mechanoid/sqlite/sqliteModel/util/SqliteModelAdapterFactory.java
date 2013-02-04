@@ -360,11 +360,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createOldColumnAdapter();
       }
       @Override
-      public Adapter caseAllColumns(AllColumns object)
-      {
-        return createAllColumnsAdapter();
-      }
-      @Override
       public Adapter caseColumnSourceRef(ColumnSourceRef object)
       {
         return createColumnSourceRefAdapter();
@@ -1367,21 +1362,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOldColumnAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.sqlite.sqliteModel.AllColumns <em>All Columns</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.sqlite.sqliteModel.AllColumns
-   * @generated
-   */
-  public Adapter createAllColumnsAdapter()
   {
     return null;
   }

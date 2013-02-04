@@ -7,6 +7,11 @@ import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.xbase.lib.Functions$Function1
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression
+import com.google.common.collect.Lists
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource
 
 class ModelUtil {
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType) {
@@ -109,5 +114,30 @@ class ModelUtil {
 				migration = null
 			}
 		} while (migration != null)
+	}
+	
+	def static getAllReferenceableSingleSources(SelectCoreExpression expr) {
+		val ArrayList<EObject> items = Lists::newArrayList()
+		
+		if(expr instanceof SelectCore) {
+			items.addAll(getAllReferenceableSingleSources((expr as SelectCore).left))
+			items.addAll(getAllReferenceableSingleSources((expr as SelectCore).right))
+		} else if (expr instanceof SelectExpression) {
+			items.addAll(findAllSingleSources(expr as SelectExpression))
+		}
+		
+		return items
+	}
+	
+	def static ArrayList<SingleSource> findAllSingleSources(SelectExpression expr) {
+		val ArrayList<SingleSource> items = Lists::newArrayList()
+		
+		items.add(expr.source.source)
+		
+		for(join : expr.source.joinStatements) {
+			items.add(join.singleSource)
+		}
+		
+		return items
 	}
 }

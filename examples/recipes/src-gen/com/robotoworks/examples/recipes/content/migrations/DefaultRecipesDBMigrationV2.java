@@ -11,15 +11,13 @@ public class DefaultRecipesDBMigrationV2 extends SQLiteMigration {
 	public void up(SQLiteDatabase db) {
 		db.execSQL(
 			"alter table recipes add column author_id integer "
-		);
-		
+		);	
 		db.execSQL(
 			"create table authors ( " +
 			"_id integer primary key autoincrement, " +
 			"name text " +
 			") "
-		);
-		
+		);	
 		db.execSQL(
 			"create view recipes_with_authors as " +
 			"select " +
@@ -31,7 +29,6 @@ public class DefaultRecipesDBMigrationV2 extends SQLiteMigration {
 			"from recipes as r " +
 			"left join authors as a " +
 			"on r.author_id = a._id "
-		);
-		
+		);	
 	}
 }
