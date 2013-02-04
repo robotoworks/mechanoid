@@ -74,10 +74,11 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());
 		c.setLinewrap().after(g.getExprOrAccess().getOpOrKeyword_1_1_0());
 		c.setLinewrap().after(g.getCaseRule());
-		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_2_1());		
-		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_3_1_0());		
+		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_2_1_0_0());		
+		c.setNoSpace().after(g.getPrimaryExpressionAccess().getSourceAssignment_2_1_1_0());		
 		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_0_2());		
 		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_1_2());	
-		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_3_2());		
+		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_2_1_1_2_1());		
+		c.setNoSpace().before(g.getPrimaryExpressionAccess().getColumnAssignment_2_1_2());		
 	}
 }

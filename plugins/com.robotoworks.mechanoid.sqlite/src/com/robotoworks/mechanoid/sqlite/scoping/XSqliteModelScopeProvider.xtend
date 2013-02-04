@@ -4,10 +4,10 @@ import com.google.common.collect.Lists
 import com.robotoworks.mechanoid.sqlite.naming.NameHelper
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement
@@ -18,12 +18,14 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement
 import java.util.ArrayList
+import java.util.HashMap
 import java.util.LinkedList
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
@@ -33,11 +35,6 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement
-import org.eclipse.xtext.scoping.impl.FilteringScope
-import org.eclipse.emf.mwe2.language.scoping.MapBasedScope
-import java.util.HashMap
-import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -46,6 +43,12 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
 	def IScope scope_IndexedColumn_columnReference(CreateTableStatement context, EReference reference) {
 		return Scopes::scopeFor(context.columnDefs, nameProvider, IScope::NULLSCOPE)
+	}
+	
+	def IScope scope_ColumnSourceRef_column(SelectList context, EReference reference) {
+		var expr = context.getAncestorOfType(typeof(SelectExpression))
+		
+		return Scopes::scopeFor(expr.getAllReferenceableColumns(false))
 	}
 	
 	def IScope scope_ColumnSourceRef_column(ColumnSourceRef context, EReference reference) {
@@ -121,11 +124,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		
 		val map = new HashMap<String, EObject>()
 		
-		refs.reverse.forEach([
-			if(!map.containsKey(it.name)) {
-				map.put(it.name, it)
+		for(ref : refs.reverse){
+			// Cannot complete if the name is null
+			if(ref.name == null) {
+				return IScope::NULLSCOPE;
 			}
-		])
+			
+			if(!map.containsKey(ref.name)) {
+				map.put(ref.name, ref)
+			}
+		}
 
 		return Scopes::scopeFor(map.values, [NameHelper::getName((it as TableDefinition))], IScope::NULLSCOPE)
 	}
@@ -140,7 +148,8 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 			switch container {
 				SelectExpression: {
 					
-					val ArrayList<EObject> items = container.getAllReferenceableColumns(true)
+					var includeAliases = context.getAncestorOfType(typeof(SelectList)) == null
+					val ArrayList<EObject> items = container.getAllReferenceableColumns(includeAliases)
 					
 					return Scopes::scopeFor(items, buildScopeForColumnSourceRef_column(context, container))
 				}
@@ -205,18 +214,6 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return IScope::NULLSCOPE
 	}
 		
-	def ArrayList<SingleSource> findAllSingleSources(SelectExpression expr) {
-		val ArrayList<SingleSource> items = Lists::newArrayList()
-		
-		items.add(expr.source.source)
-		
-		for(join : expr.source.joinStatements) {
-			items.add(join.singleSource)
-		}
-		
-		return items
-	}
-	
 	def getAllReferenceableColumns(SelectCoreExpression expr) {
 		val ArrayList<EObject> items = Lists::newArrayList()
 		
@@ -225,19 +222,6 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 			items.addAll(getAllReferenceableColumns((expr as SelectCore).right))
 		} else if (expr instanceof SelectExpression) {
 			items.addAll((expr as SelectExpression).getAllReferenceableColumns(true))
-		}
-		
-		return items
-	}
-	
-	def getAllReferenceableSingleSources(SelectCoreExpression expr) {
-		val ArrayList<EObject> items = Lists::newArrayList()
-		
-		if(expr instanceof SelectCore) {
-			items.addAll(getAllReferenceableSingleSources((expr as SelectCore).left))
-			items.addAll(getAllReferenceableSingleSources((expr as SelectCore).right))
-		} else if (expr instanceof SelectExpression) {
-			items.addAll((expr as SelectExpression).findAllSingleSources)
 		}
 		
 		return items

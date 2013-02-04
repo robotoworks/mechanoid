@@ -16,8 +16,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTermList;
@@ -59,6 +57,12 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   public IScope scope_IndexedColumn_columnReference(final CreateTableStatement context, final EReference reference) {
     EList<ColumnSource> _columnDefs = context.getColumnDefs();
     return Scopes.<EObject>scopeFor(_columnDefs, this.nameProvider, IScope.NULLSCOPE);
+  }
+  
+  public IScope scope_ColumnSourceRef_column(final SelectList context, final EReference reference) {
+    SelectExpression expr = ModelUtil.<SelectExpression>getAncestorOfType(context, SelectExpression.class);
+    ArrayList<EObject> _allReferenceableColumns = this.getAllReferenceableColumns(expr, false);
+    return Scopes.scopeFor(_allReferenceableColumns);
   }
   
   public IScope scope_ColumnSourceRef_column(final ColumnSourceRef context, final EReference reference) {
@@ -137,20 +141,24 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     HashMap<String,EObject> _hashMap = new HashMap<String,EObject>();
     final HashMap<String,EObject> map = _hashMap;
     List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
-    final Procedure1<TableDefinition> _function = new Procedure1<TableDefinition>() {
-        public void apply(final TableDefinition it) {
-          String _name = it.getName();
-          boolean _containsKey = map.containsKey(_name);
-          boolean _not = (!_containsKey);
-          if (_not) {
-            String _name_1 = it.getName();
-            map.put(_name_1, it);
-          }
+    for (final TableDefinition ref : _reverse) {
+      {
+        String _name = ref.getName();
+        boolean _equals = Objects.equal(_name, null);
+        if (_equals) {
+          return IScope.NULLSCOPE;
         }
-      };
-    IterableExtensions.<TableDefinition>forEach(_reverse, _function);
+        String _name_1 = ref.getName();
+        boolean _containsKey = map.containsKey(_name_1);
+        boolean _not = (!_containsKey);
+        if (_not) {
+          String _name_2 = ref.getName();
+          map.put(_name_2, ref);
+        }
+      }
+    }
     Collection<EObject> _values = map.values();
-    final Function1<EObject,QualifiedName> _function_1 = new Function1<EObject,QualifiedName>() {
+    final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
         public QualifiedName apply(final EObject it) {
           QualifiedName _name = NameHelper.getName(((TableDefinition) it));
           return _name;
@@ -158,7 +166,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
       };
     return Scopes.<EObject>scopeFor(_values, new Function<EObject,QualifiedName>() {
         public QualifiedName apply(EObject input) {
-          return _function_1.apply(input);
+          return _function.apply(input);
         }
     }, IScope.NULLSCOPE);
   }
@@ -176,7 +184,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
           if (container instanceof SelectExpression) {
             final SelectExpression _selectExpression = (SelectExpression)container;
             _matched=true;
-            final ArrayList<EObject> items = this.getAllReferenceableColumns(_selectExpression, true);
+            SelectList _ancestorOfType = ModelUtil.<SelectList>getAncestorOfType(context, SelectList.class);
+            boolean includeAliases = Objects.equal(_ancestorOfType, null);
+            final ArrayList<EObject> items = this.getAllReferenceableColumns(_selectExpression, includeAliases);
             IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, _selectExpression);
             return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
           }
@@ -258,7 +268,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             final SelectExpression _selectExpression = (SelectExpression)container;
             _matched=true;
             final ArrayList<EObject> items = Lists.<EObject>newArrayList();
-            ArrayList<SingleSource> _findAllSingleSources = this.findAllSingleSources(_selectExpression);
+            ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(_selectExpression);
             items.addAll(_findAllSingleSources);
             final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
                 public QualifiedName apply(final EObject it) {
@@ -282,7 +292,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             SelectStatement selectStatement = ((SelectStatement) _eContainer_1);
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
-            ArrayList<EObject> _allReferenceableSingleSources = this.getAllReferenceableSingleSources(core);
+            ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(core);
             final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
                 public QualifiedName apply(final EObject it) {
                   QualifiedName _name = NameHelper.getName(((SelectSource) it));
@@ -306,20 +316,6 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return IScope.NULLSCOPE;
   }
   
-  public ArrayList<SingleSource> findAllSingleSources(final SelectExpression expr) {
-    final ArrayList<SingleSource> items = Lists.<SingleSource>newArrayList();
-    JoinSource _source = expr.getSource();
-    SingleSource _source_1 = _source.getSource();
-    items.add(_source_1);
-    JoinSource _source_2 = expr.getSource();
-    EList<JoinStatement> _joinStatements = _source_2.getJoinStatements();
-    for (final JoinStatement join : _joinStatements) {
-      SingleSource _singleSource = join.getSingleSource();
-      items.add(_singleSource);
-    }
-    return items;
-  }
-  
   public ArrayList<EObject> getAllReferenceableColumns(final SelectCoreExpression expr) {
     final ArrayList<EObject> items = Lists.<EObject>newArrayList();
     if ((expr instanceof SelectCore)) {
@@ -333,24 +329,6 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
       if ((expr instanceof SelectExpression)) {
         ArrayList<EObject> _allReferenceableColumns_2 = this.getAllReferenceableColumns(((SelectExpression) expr), true);
         items.addAll(_allReferenceableColumns_2);
-      }
-    }
-    return items;
-  }
-  
-  public ArrayList<EObject> getAllReferenceableSingleSources(final SelectCoreExpression expr) {
-    final ArrayList<EObject> items = Lists.<EObject>newArrayList();
-    if ((expr instanceof SelectCore)) {
-      SelectCoreExpression _left = ((SelectCore) expr).getLeft();
-      ArrayList<EObject> _allReferenceableSingleSources = this.getAllReferenceableSingleSources(_left);
-      items.addAll(_allReferenceableSingleSources);
-      SelectCoreExpression _right = ((SelectCore) expr).getRight();
-      ArrayList<EObject> _allReferenceableSingleSources_1 = this.getAllReferenceableSingleSources(_right);
-      items.addAll(_allReferenceableSingleSources_1);
-    } else {
-      if ((expr instanceof SelectExpression)) {
-        ArrayList<SingleSource> _findAllSingleSources = this.findAllSingleSources(((SelectExpression) expr));
-        items.addAll(_findAllSingleSources);
       }
     }
     return items;
@@ -379,7 +357,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_resultColumns, _function);
       Iterables.<EObject>addAll(items, _filter);
     }
-    ArrayList<SingleSource> _findAllSingleSources = this.findAllSingleSources(expr);
+    ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(expr);
     final Function1<SingleSource,Boolean> _function_1 = new Function1<SingleSource,Boolean>() {
         public Boolean apply(final SingleSource item) {
           if ((item instanceof SingleSourceTable)) {

@@ -23,16 +23,17 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.sqlite,
+ com.robotoworks.mechanoid.sqlite.formatting,
+ com.robotoworks.mechanoid.sqlite.generator,
+ com.robotoworks.mechanoid.sqlite.jvmmodel,
+ com.robotoworks.mechanoid.sqlite.parser.antlr,
+ com.robotoworks.mechanoid.sqlite.parser.antlr.internal,
+ com.robotoworks.mechanoid.sqlite.scoping,
+ com.robotoworks.mechanoid.sqlite.serializer,
  com.robotoworks.mechanoid.sqlite.services,
  com.robotoworks.mechanoid.sqlite.sqliteModel,
  com.robotoworks.mechanoid.sqlite.sqliteModel.impl,
  com.robotoworks.mechanoid.sqlite.sqliteModel.util,
- com.robotoworks.mechanoid.sqlite.serializer,
- com.robotoworks.mechanoid.sqlite.parser.antlr,
- com.robotoworks.mechanoid.sqlite.parser.antlr.internal,
- com.robotoworks.mechanoid.sqlite.validation,
- com.robotoworks.mechanoid.sqlite.scoping,
- com.robotoworks.mechanoid.sqlite.generator,
- com.robotoworks.mechanoid.sqlite.formatting,
- com.robotoworks.mechanoid.sqlite.jvmmodel
+ com.robotoworks.mechanoid.sqlite.util,
+ com.robotoworks.mechanoid.sqlite.validation
 

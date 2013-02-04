@@ -241,11 +241,9 @@
     <genClasses ecoreClass="SqliteModel.ecore#//OldColumn">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//OldColumn/column"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//AllColumns">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AllColumns/source"/>
-    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ColumnSourceRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ColumnSourceRef/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//ColumnSourceRef/all"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//ColumnSourceRef/column"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//Literal">

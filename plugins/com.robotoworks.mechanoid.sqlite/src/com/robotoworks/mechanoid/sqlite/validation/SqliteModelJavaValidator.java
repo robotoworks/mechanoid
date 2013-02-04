@@ -1,8 +1,10 @@
 package com.robotoworks.mechanoid.sqlite.validation;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
@@ -10,6 +12,7 @@ import org.eclipse.xtext.validation.Check;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
@@ -20,7 +23,9 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 
  
 
@@ -99,8 +104,21 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 					}
 					else if(tables.contains(cv.getName())) {
 						error("A table exists with this name, drop it first", cv, SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT__NAME, -1);
-						return;				
+						return;
 					} else {
+						ArrayList<EObject> sources = ModelUtil.getAllReferenceableSingleSources(cv.getSelectStatement().getCore());
+						
+						for(EObject source : sources) {
+							if(source instanceof SingleSourceTable) {
+								SingleSourceTable table = (SingleSourceTable) source;
+								
+								if(!tables.contains(table.getTableReference().getName())) {
+									error("Table does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
+									return;
+								}
+							}
+						}
+						
 						views.add(cv.getName());
 					}
 				} else if (statement instanceof DropViewStatement) {
@@ -131,6 +149,17 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 					}
 				}
 			}
+		}
+	}
+
+	@Check
+	public void checkColumnSourceRefComplete(ColumnSourceRef ref) {
+		if(ref.isAll()) {
+			return;
+		}
+		
+		if(ref.getSource() != null && ref.getColumn() == null) {
+			error("Incomplete reference", SqliteModelPackage.Literals.COLUMN_SOURCE_REF__COLUMN);
 		}
 	}
 }

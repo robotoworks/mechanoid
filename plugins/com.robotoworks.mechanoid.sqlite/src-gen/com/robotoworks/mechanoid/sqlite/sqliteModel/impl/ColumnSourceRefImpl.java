@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceRefImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceRefImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.sqlite.sqliteModel.impl.ColumnSourceRefImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
@@ -39,6 +40,26 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
    * @ordered
    */
   protected SelectSource source;
+
+  /**
+   * The default value of the '{@link #isAll() <em>All</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAll()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ALL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isAll() <em>All</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAll()
+   * @generated
+   * @ordered
+   */
+  protected boolean all = ALL_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
@@ -119,6 +140,29 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isAll()
+  {
+    return all;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAll(boolean newAll)
+  {
+    boolean oldAll = all;
+    all = newAll;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.COLUMN_SOURCE_REF__ALL, oldAll, all));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ColumnSource getColumn()
   {
     if (column != null && column.eIsProxy())
@@ -170,6 +214,8 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
       case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
         if (resolve) return getSource();
         return basicGetSource();
+      case SqliteModelPackage.COLUMN_SOURCE_REF__ALL:
+        return isAll();
       case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         if (resolve) return getColumn();
         return basicGetColumn();
@@ -189,6 +235,9 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
     {
       case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
         setSource((SelectSource)newValue);
+        return;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__ALL:
+        setAll((Boolean)newValue);
         return;
       case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)newValue);
@@ -210,6 +259,9 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
       case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
         setSource((SelectSource)null);
         return;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__ALL:
+        setAll(ALL_EDEFAULT);
+        return;
       case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         setColumn((ColumnSource)null);
         return;
@@ -229,10 +281,29 @@ public class ColumnSourceRefImpl extends ExpressionImpl implements ColumnSourceR
     {
       case SqliteModelPackage.COLUMN_SOURCE_REF__SOURCE:
         return source != null;
+      case SqliteModelPackage.COLUMN_SOURCE_REF__ALL:
+        return all != ALL_EDEFAULT;
       case SqliteModelPackage.COLUMN_SOURCE_REF__COLUMN:
         return column != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (all: ");
+    result.append(all);
+    result.append(')');
+    return result.toString();
   }
 
 } //ColumnSourceRefImpl

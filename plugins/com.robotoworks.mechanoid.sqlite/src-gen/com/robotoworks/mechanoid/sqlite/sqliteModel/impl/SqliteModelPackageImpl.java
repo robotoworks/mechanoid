@@ -3,7 +3,6 @@
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.AllColumns;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
@@ -507,13 +506,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass oldColumnEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass allColumnsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2393,26 +2385,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAllColumns()
-  {
-    return allColumnsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAllColumns_Source()
-  {
-    return (EReference)allColumnsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getColumnSourceRef()
   {
     return columnSourceRefEClass;
@@ -2433,9 +2405,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getColumnSourceRef_All()
+  {
+    return (EAttribute)columnSourceRefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getColumnSourceRef_Column()
   {
-    return (EReference)columnSourceRefEClass.getEStructuralFeatures().get(1);
+    return (EReference)columnSourceRefEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3425,11 +3407,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     oldColumnEClass = createEClass(OLD_COLUMN);
     createEReference(oldColumnEClass, OLD_COLUMN__COLUMN);
 
-    allColumnsEClass = createEClass(ALL_COLUMNS);
-    createEReference(allColumnsEClass, ALL_COLUMNS__SOURCE);
-
     columnSourceRefEClass = createEClass(COLUMN_SOURCE_REF);
     createEReference(columnSourceRefEClass, COLUMN_SOURCE_REF__SOURCE);
+    createEAttribute(columnSourceRefEClass, COLUMN_SOURCE_REF__ALL);
     createEReference(columnSourceRefEClass, COLUMN_SOURCE_REF__COLUMN);
 
     literalEClass = createEClass(LITERAL);
@@ -3593,7 +3573,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     notNullEClass.getESuperTypes().add(this.getExpression());
     newColumnEClass.getESuperTypes().add(this.getExpression());
     oldColumnEClass.getESuperTypes().add(this.getExpression());
-    allColumnsEClass.getESuperTypes().add(this.getExpression());
     columnSourceRefEClass.getESuperTypes().add(this.getExpression());
     literalEClass.getESuperTypes().add(this.getExpression());
     nestedExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -3839,11 +3818,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(oldColumnEClass, OldColumn.class, "OldColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOldColumn_Column(), this.getColumnSource(), null, "column", null, 0, 1, OldColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(allColumnsEClass, AllColumns.class, "AllColumns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAllColumns_Source(), this.getSelectSource(), null, "source", null, 0, 1, AllColumns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(columnSourceRefEClass, ColumnSourceRef.class, "ColumnSourceRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getColumnSourceRef_Source(), this.getSelectSource(), null, "source", null, 0, 1, ColumnSourceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColumnSourceRef_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, ColumnSourceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getColumnSourceRef_Column(), this.getColumnSource(), null, "column", null, 0, 1, ColumnSourceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

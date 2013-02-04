@@ -154,7 +154,6 @@ public class SqliteDatabaseSnapshot {
 				
 				for(final IndexedColumn col : columns) {
 					ColumnSource source = IterableExtensions.findFirst(stmt.getColumnDefs(), new Function1<ColumnSource, Boolean>(){
-						@Override
 						public Boolean apply(ColumnSource p) {
 							if(p.getName().equals(col.getColumnReference().getName())) {
 								return true;
