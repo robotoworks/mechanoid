@@ -536,15 +536,6 @@ public interface SqliteModelFactory extends EFactory
   OldColumn createOldColumn();
 
   /**
-   * Returns a new object of class '<em>All Columns</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>All Columns</em>'.
-   * @generated
-   */
-  AllColumns createAllColumns();
-
-  /**
    * Returns a new object of class '<em>Column Source Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

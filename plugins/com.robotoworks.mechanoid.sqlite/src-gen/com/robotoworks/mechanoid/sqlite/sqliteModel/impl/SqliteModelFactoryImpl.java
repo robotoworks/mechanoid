@@ -122,7 +122,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NOT_NULL: return createNotNull();
       case SqliteModelPackage.NEW_COLUMN: return createNewColumn();
       case SqliteModelPackage.OLD_COLUMN: return createOldColumn();
-      case SqliteModelPackage.ALL_COLUMNS: return createAllColumns();
       case SqliteModelPackage.COLUMN_SOURCE_REF: return createColumnSourceRef();
       case SqliteModelPackage.LITERAL: return createLiteral();
       case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
@@ -825,17 +824,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     OldColumnImpl oldColumn = new OldColumnImpl();
     return oldColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AllColumns createAllColumns()
-  {
-    AllColumnsImpl allColumns = new AllColumnsImpl();
-    return allColumns;
   }
 
   /**

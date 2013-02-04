@@ -501,14 +501,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.ALL_COLUMNS:
-      {
-        AllColumns allColumns = (AllColumns)theEObject;
-        T result = caseAllColumns(allColumns);
-        if (result == null) result = caseExpression(allColumns);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.COLUMN_SOURCE_REF:
       {
         ColumnSourceRef columnSourceRef = (ColumnSourceRef)theEObject;
@@ -1633,22 +1625,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOldColumn(OldColumn object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>All Columns</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>All Columns</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAllColumns(AllColumns object)
   {
     return null;
   }

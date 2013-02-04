@@ -27,6 +27,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
 
 /**
@@ -144,6 +145,10 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	}
 	
 	public String image(AlterTableRenameStatement e) {
+		return "table.gif";
+	}
+	
+	public String image(SingleSourceTable e) {
 		return "table.gif";
 	}
 	
