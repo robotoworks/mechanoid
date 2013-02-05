@@ -18,12 +18,15 @@ import com.google.common.base.Functions;
 import com.google.common.base.Predicates;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 
 
 /**
@@ -40,9 +43,9 @@ public class SqliteModelProposalProvider extends
 			final ICompletionProposalAcceptor acceptor) {
 		
 		EObject lastObj = NodeModelUtils.findActualSemanticObjectFor(context.getLastCompleteNode());
+		EObject currentObj = NodeModelUtils.findActualSemanticObjectFor(context.getCurrentNode());
 		
 		ICompositeNode node = NodeModelUtils.getNode(lastObj);
-		String nodeText = NodeModelUtils.getTokenText(node);
 		
 		if(lastObj instanceof ColumnSourceRef) {
 			ColumnSourceRef ref = (ColumnSourceRef) lastObj;
@@ -56,6 +59,18 @@ public class SqliteModelProposalProvider extends
 						getProposalFactory("column", context));
 				return;
 			}
+		}
+		
+		SelectList selectList = ModelUtil.getAncestorOfType(currentObj, SelectList.class);
+		
+		if(selectList != null) {
+			lookupCrossReference(
+					selectList, 
+					SqliteModelPackage.Literals.COLUMN_SOURCE_REF__COLUMN, 
+					acceptor, 
+					Predicates.<IEObjectDescription> alwaysTrue(), 
+					getProposalFactory("column", context));
+			return;
 		}
 			
 		super.completePrimaryExpression_Column(model, assignment, context, acceptor);
@@ -82,6 +97,11 @@ public class SqliteModelProposalProvider extends
 		} else if (element instanceof CreateTableStatement) {
 			CreateTableStatement t = (CreateTableStatement) element;
 			return t.getName();
+		} else if(element instanceof ResultColumn) {
+			ResultColumn r = (ResultColumn) element;
+			if(r.getName() != null) {
+				return r.getName() + ":" + ModelUtil.getInferredColumnType(r).getName();
+			}
 		}
 		
 		return super.getDisplayString(element, qualifiedNameAsString, shortName);

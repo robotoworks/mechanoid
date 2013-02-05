@@ -78,7 +78,7 @@ public class ContentProviderGenerator {
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "");
-    _builder.append("OpenHelper.Tables;");
+    _builder.append("OpenHelper.Sources;");
     _builder.newLineIfNotEmpty();
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
@@ -352,7 +352,7 @@ public class ContentProviderGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("// Tables");
+    _builder.append("// Sources");
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
@@ -965,7 +965,7 @@ public class ContentProviderGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("\t");
-            _builder.append("return new DefaultContentProviderActions(Tables.");
+            _builder.append("return new DefaultContentProviderActions(Sources.");
             String _name_42 = tbl_5.getName();
             String _underscore_19 = Strings.underscore(_name_42);
             String _upperCase_19 = _underscore_19.toUpperCase();
@@ -1000,7 +1000,7 @@ public class ContentProviderGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("\t");
-        _builder.append("return new DefaultContentProviderActions(Tables.");
+        _builder.append("return new DefaultContentProviderActions(Sources.");
         String _name_45 = tbl_5.getName();
         String _underscore_20 = Strings.underscore(_name_45);
         String _upperCase_20 = _underscore_20.toUpperCase();
@@ -1041,12 +1041,24 @@ public class ContentProviderGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("\t");
-            _builder.append("return new DefaultContentProviderActions(Tables.");
+            _builder.append("return new DefaultContentProviderActions(Sources.");
             String _name_48 = view.getName();
             String _underscore_21 = Strings.underscore(_name_48);
             String _upperCase_21 = _underscore_21.toUpperCase();
             _builder.append(_upperCase_21, "    	");
-            _builder.append(", true);");
+            _builder.append(", true, ");
+            {
+              boolean _hasAndroidPrimaryKey_12 = ModelUtil.hasAndroidPrimaryKey(view);
+              if (_hasAndroidPrimaryKey_12) {
+                String _name_49 = view.getName();
+                String _pascalize_23 = Strings.pascalize(_name_49);
+                _builder.append(_pascalize_23, "    	");
+                _builder.append("Record.getFactory()");
+              } else {
+                _builder.append("null");
+              }
+            }
+            _builder.append(");");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("}");
@@ -1057,19 +1069,31 @@ public class ContentProviderGenerator {
         }
         _builder.append("    ");
         _builder.append("protected ContentProviderActions create");
-        String _name_49 = view.getName();
-        String _pascalize_23 = Strings.pascalize(_name_49);
-        _builder.append(_pascalize_23, "    ");
+        String _name_50 = view.getName();
+        String _pascalize_24 = Strings.pascalize(_name_50);
+        _builder.append(_pascalize_24, "    ");
         _builder.append("Actions() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("\t");
-        _builder.append("return new DefaultContentProviderActions(Tables.");
-        String _name_50 = view.getName();
-        String _underscore_22 = Strings.underscore(_name_50);
+        _builder.append("return new DefaultContentProviderActions(Sources.");
+        String _name_51 = view.getName();
+        String _underscore_22 = Strings.underscore(_name_51);
         String _upperCase_22 = _underscore_22.toUpperCase();
         _builder.append(_upperCase_22, "    	");
-        _builder.append(", false);");
+        _builder.append(", false, ");
+        {
+          boolean _hasAndroidPrimaryKey_13 = ModelUtil.hasAndroidPrimaryKey(view);
+          if (_hasAndroidPrimaryKey_13) {
+            String _name_52 = view.getName();
+            String _pascalize_25 = Strings.pascalize(_name_52);
+            _builder.append(_pascalize_25, "    	");
+            _builder.append("Record.getFactory()");
+          } else {
+            _builder.append("null");
+          }
+        }
+        _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("}");
@@ -1091,9 +1115,9 @@ public class ContentProviderGenerator {
           for(final ActionStatement a_3 : _filter_4) {
             _builder.append("\t");
             _builder.append("protected ContentProviderActions create");
-            String _name_51 = a_3.getName();
-            String _pascalize_24 = Strings.pascalize(_name_51);
-            _builder.append(_pascalize_24, "	");
+            String _name_53 = a_3.getName();
+            String _pascalize_26 = Strings.pascalize(_name_53);
+            _builder.append(_pascalize_26, "	");
             _builder.append("Actions() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");

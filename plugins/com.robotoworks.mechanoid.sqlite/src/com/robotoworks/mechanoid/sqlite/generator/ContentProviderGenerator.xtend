@@ -30,7 +30,7 @@ class ContentProviderGenerator {
 			import com.robotoworks.mechanoid.sqlite.SQuery;
 			import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
 			import com.robotoworks.mechanoid.content.ContentProviderActions;
-			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Tables;
+			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Sources;
 			«FOR tbl : snapshot.tables.filter([it.hasAndroidPrimaryKey])»
 			import «model.packageName».«tbl.name.pascalize»Record;
 			«ENDFOR»			
@@ -85,7 +85,7 @@ class ContentProviderGenerator {
 			        final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
 			        final String authority = «model.database.name.pascalize»Contract.CONTENT_AUTHORITY;
 			
-					// Tables
+					// Sources
 					«FOR tbl : snapshot.tables»
 					matcher.addURI(authority, "«tbl.name»", «tbl.name.underscore.toUpperCase»);
 					«IF tbl.hasAndroidPrimaryKey»
@@ -273,24 +273,24 @@ class ContentProviderGenerator {
 			    «FOR tbl:snapshot.tables»
 			    «IF tbl.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», true, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    	return new DefaultContentProviderActions(Sources.«tbl.name.underscore.toUpperCase», true, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
-			    	return new DefaultContentProviderActions(Tables.«tbl.name.underscore.toUpperCase», false, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    	return new DefaultContentProviderActions(Sources.«tbl.name.underscore.toUpperCase», false, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDFOR»
 			    «FOR view:snapshot.views»
 			    «IF view.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
-			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», true);
+			    	return new DefaultContentProviderActions(Sources.«view.name.underscore.toUpperCase», true, «IF view.hasAndroidPrimaryKey»«view.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDIF»
 			    protected ContentProviderActions create«view.name.pascalize»Actions() {
-			    	return new DefaultContentProviderActions(Tables.«view.name.underscore.toUpperCase», false);
+			    	return new DefaultContentProviderActions(Sources.«view.name.underscore.toUpperCase», false, «IF view.hasAndroidPrimaryKey»«view.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
 			    }
 			    
 			    «ENDFOR»

@@ -32,7 +32,7 @@ class SqliteOpenHelperGenerator {
 				
 					public static final int VERSION = «model.database.migrations.size»;
 				
-					public interface Tables {
+					public interface Sources {
 						«FOR table : snapshot.tables»
 						String «table.name.underscore.toUpperCase» = "«table.name»";
 						«ENDFOR»

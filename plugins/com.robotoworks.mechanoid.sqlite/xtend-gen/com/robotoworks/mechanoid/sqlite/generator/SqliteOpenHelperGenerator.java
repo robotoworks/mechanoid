@@ -102,7 +102,7 @@ public class SqliteOpenHelperGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public interface Tables {");
+    _builder.append("public interface Sources {");
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
