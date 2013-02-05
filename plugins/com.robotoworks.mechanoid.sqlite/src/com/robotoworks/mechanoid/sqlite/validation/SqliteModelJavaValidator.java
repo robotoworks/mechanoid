@@ -12,6 +12,7 @@ import org.eclipse.xtext.validation.Check;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
@@ -24,6 +25,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
@@ -173,6 +175,30 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		
 		if(ref.getSource() != null && ref.getColumn() == null) {
 			error("Incomplete reference", SqliteModelPackage.Literals.COLUMN_SOURCE_REF__COLUMN);
+		}
+	}
+	
+	@Check
+	public void checkUniqueResultColumnAliases(SelectList list) {
+		EList<ColumnSource> cols = list.getResultColumns();
+		
+		for(int i=0; i < cols.size(); i++) {
+			ColumnSource subject = cols.get(i);
+			int matches = 0;
+			for(int j=0; j < cols.size(); j++) {
+				ColumnSource target = cols.get(j);
+				
+				if(subject.getName() != null && 
+						target.getName() != null &&
+						subject.getName().equalsIgnoreCase(target.getName())) {
+					matches++;
+				}
+				
+				if(matches > 1) {
+					error("Duplicate alias not allowed", target, SqliteModelPackage.Literals.COLUMN_SOURCE__NAME, -1);
+					return;
+				}
+			}
 		}
 	}
 }
