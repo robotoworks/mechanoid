@@ -13,6 +13,7 @@ import com.robotoworks.mechanoid.net.netModel.UserType
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import org.eclipse.emf.common.util.EList
+import com.robotoworks.mechanoid.net.netModel.BooleanType
 
 class JsonReaderGenerator {
 	CodeGenerationContext context
@@ -116,7 +117,12 @@ class JsonReaderGenerator {
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
+		«IF type instanceof BooleanType»
+		«context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil")»
+		«member.toSetMethodName.memberize("subject")»(JsonReaderUtil.coerceNextBoolean(source));
+		«ELSE»
 		«member.toSetMethodName.memberize("subject")»(source.next«type.signature.pascalize»());
+		«ENDIF»
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {

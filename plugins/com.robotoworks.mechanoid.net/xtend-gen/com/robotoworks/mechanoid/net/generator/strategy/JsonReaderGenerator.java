@@ -2,6 +2,7 @@ package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
+import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
@@ -255,15 +256,27 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForType(final TypedMember member, final IntrinsicType type) {
     StringConcatenation _builder = new StringConcatenation();
-    String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
-    _builder.append(_memberize, "");
-    _builder.append("(source.next");
-    String _signature = ModelExtensions.signature(type);
-    String _pascalize = ModelExtensions.pascalize(_signature);
-    _builder.append(_pascalize, "");
-    _builder.append("());");
-    _builder.newLineIfNotEmpty();
+    {
+      if ((type instanceof BooleanType)) {
+        this.context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil");
+        _builder.newLineIfNotEmpty();
+        String _setMethodName = ModelExtensions.toSetMethodName(member);
+        String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+        _builder.append(_memberize, "");
+        _builder.append("(JsonReaderUtil.coerceNextBoolean(source));");
+        _builder.newLineIfNotEmpty();
+      } else {
+        String _setMethodName_1 = ModelExtensions.toSetMethodName(member);
+        String _memberize_1 = ModelExtensions.memberize(_setMethodName_1, "subject");
+        _builder.append(_memberize_1, "");
+        _builder.append("(source.next");
+        String _signature = ModelExtensions.signature(type);
+        String _pascalize = ModelExtensions.pascalize(_signature);
+        _builder.append(_pascalize, "");
+        _builder.append("());");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder;
   }
   
