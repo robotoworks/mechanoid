@@ -20,10 +20,7 @@ import com.robotoworks.mechanoid.sqlite.ActiveRecord;
 import com.robotoworks.mechanoid.sqlite.SQuery;
 import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
 import com.robotoworks.mechanoid.content.ContentProviderActions;
-import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Tables;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
+import com.robotoworks.examples.recipes.content.AbstractRecipesDBOpenHelper.Sources;
 import com.robotoworks.examples.recipes.content.RecipesRecord;
 import com.robotoworks.examples.recipes.content.AuthorsRecord;
 
@@ -47,19 +44,19 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 	
 		sContentTypes = new String[NUM_URI_MATCHERS];
 
-		sContentTypes[RECIPES] = Recipes.CONTENT_TYPE;
-		sContentTypes[RECIPES_ID] = Recipes.ITEM_CONTENT_TYPE;
-		sContentTypes[AUTHORS] = Authors.CONTENT_TYPE;
-		sContentTypes[AUTHORS_ID] = Authors.ITEM_CONTENT_TYPE;
-		sContentTypes[RECIPES_WITH_AUTHORS] = RecipesWithAuthors.CONTENT_TYPE;
-		sContentTypes[RECIPES_WITH_AUTHORS_ID] = RecipesWithAuthors.ITEM_CONTENT_TYPE;
+		sContentTypes[RECIPES] = RecipesDBContract.Recipes.CONTENT_TYPE;
+		sContentTypes[RECIPES_ID] = RecipesDBContract.Recipes.ITEM_CONTENT_TYPE;
+		sContentTypes[AUTHORS] = RecipesDBContract.Authors.CONTENT_TYPE;
+		sContentTypes[AUTHORS_ID] = RecipesDBContract.Authors.ITEM_CONTENT_TYPE;
+		sContentTypes[RECIPES_WITH_AUTHORS] = RecipesDBContract.RecipesWithAuthors.CONTENT_TYPE;
+		sContentTypes[RECIPES_WITH_AUTHORS_ID] = RecipesDBContract.RecipesWithAuthors.ITEM_CONTENT_TYPE;
 	}
 	
     private static UriMatcher buildUriMatcher() {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = RecipesDBContract.CONTENT_AUTHORITY;
 
-		// Tables
+		// Sources
 		matcher.addURI(authority, "recipes", RECIPES);
 		matcher.addURI(authority, "recipes/#", RECIPES_ID);
 		matcher.addURI(authority, "authors", AUTHORS);
@@ -223,27 +220,27 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
     }
     
     protected ContentProviderActions createRecipesByIdActions() {
-    	return new DefaultContentProviderActions(Tables.RECIPES, true, RecipesRecord.getFactory());
+    	return new DefaultContentProviderActions(Sources.RECIPES, true, RecipesRecord.getFactory());
     }
     
     protected ContentProviderActions createRecipesActions() {
-    	return new DefaultContentProviderActions(Tables.RECIPES, false, RecipesRecord.getFactory());
+    	return new DefaultContentProviderActions(Sources.RECIPES, false, RecipesRecord.getFactory());
     }
     
     protected ContentProviderActions createAuthorsByIdActions() {
-    	return new DefaultContentProviderActions(Tables.AUTHORS, true, AuthorsRecord.getFactory());
+    	return new DefaultContentProviderActions(Sources.AUTHORS, true, AuthorsRecord.getFactory());
     }
     
     protected ContentProviderActions createAuthorsActions() {
-    	return new DefaultContentProviderActions(Tables.AUTHORS, false, AuthorsRecord.getFactory());
+    	return new DefaultContentProviderActions(Sources.AUTHORS, false, AuthorsRecord.getFactory());
     }
     
     protected ContentProviderActions createRecipesWithAuthorsByIdActions() {
-    	return new DefaultContentProviderActions(Tables.RECIPES_WITH_AUTHORS, true);
+    	return new DefaultContentProviderActions(Sources.RECIPES_WITH_AUTHORS, true, RecipesWithAuthorsRecord.getFactory());
     }
     
     protected ContentProviderActions createRecipesWithAuthorsActions() {
-    	return new DefaultContentProviderActions(Tables.RECIPES_WITH_AUTHORS, false);
+    	return new DefaultContentProviderActions(Sources.RECIPES_WITH_AUTHORS, false, RecipesWithAuthorsRecord.getFactory());
     }
     
 }
