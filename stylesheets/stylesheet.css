@@ -366,15 +366,54 @@ Full-Width Styles
   border-bottom: 1px solid #111;
 }
 
-#main_content {
-  padding-top: 40px;
-}
-
 #footer_wrap {
   background: #212121;
 }
 
+.info_block {float: left;}
+.info_block section {width: 50%; float: left; }
+.info_block section .inner {padding: 0px 5px; }
 
+/*******************************************************************************
+Alternating Sections
+*******************************************************************************/
+#main_content_wrap .section_v1 {
+  background: #bb4444;
+}
+
+#main_content_wrap .section_v1 p,
+#main_content_wrap .section_v1 a,
+#main_content_wrap .section_v1 h1,
+#main_content_wrap .section_v1 h2,
+#main_content_wrap .section_v1 h3,
+#main_content_wrap .section_v1 ul,
+#main_content_wrap .section_v1 h4 {
+  color: #fff;
+  font-weight:bold;
+}
+
+#main_content_wrap .section_v1 a {
+	text-decoration: underline;
+}
+
+#main_content_wrap .section_v2 {
+  background: #ddaa44;
+}
+
+#main_content_wrap .section_v2 p,
+#main_content_wrap .section_v2 a,
+#main_content_wrap .section_v2 h1,
+#main_content_wrap .section_v2 h2,
+#main_content_wrap .section_v2 h3,
+#main_content_wrap .section_v2 ul,
+#main_content_wrap .section_v2 h4 {
+  color: #fff;
+  font-weight:bold;
+}
+
+#main_content_wrap .section_v2 a {
+	text-decoration: underline;
+}
 
 /*******************************************************************************
 Small Device Styles
@@ -427,5 +466,8 @@ Small Device Styles
     max-width: 480px;
     font-size: 11px;
   }
-
+  
+ 	.info_block {float: left;}
+	.info_block section {width: auto; float: none;}
+.info_block section .inner {padding: 0px 5px; }
 }

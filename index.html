@@ -7,7 +7,16 @@
     <meta name="description" content="Mechanoid : Eclipse plugin providing a set of DSL's for the rapid development of Android apps" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+	<script type="text/javascript" src="javascripts/shCore.js"></script>
+	<script type="text/javascript" src="javascripts/shBrushMechDb.js"></script>
+	<script type="text/javascript" src="javascripts/shBrushMechNet.js"></script>
+	<script type="text/javascript" src="javascripts/shBrushMechOps.js"></script>
+	<script type="text/javascript" src="javascripts/shBrushMechPrefs.js"></script>
+	<script type="text/javascript" src="javascripts/shBrushJava.js"></script>
+	<link type="text/css" rel="stylesheet" href="stylesheets/shCoreDefault.css"/>
+	<link type="text/css" rel="stylesheet" href="stylesheets/shThemeEclipse.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	
     <title>Mechanoid</title>
   </head>
 
@@ -19,45 +28,413 @@
           <a id="forkme_banner" href="https://github.com/robotoworks/mechanoid">View on GitHub</a>
 
           <h1 id="project_title">Mechanoid</h1>
-          <h2 id="project_tagline">Eclipse plugin providing a set of DSL's for the rapid development of Android apps</h2>
+          <h2 id="project_tagline">Rapid Development Tools for Android&#0153;</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/robotoworks/mechanoid/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/robotoworks/mechanoid/tarball/master">Download this project as a tar.gz file</a>
-            </section>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+    <div id="main_content_wrap">
+      <section class="outer content light">
+      	<div class="inner">
+	      	<p>In a nutshell <a href="http://robotoworks.com/mechanoid-plugin/" target="_blank">Mechanoid</a> is an Eclipse Plugin sporting a set of code generators for Android&#0153; driven by Simple DSL's (Domain Specific Languages) with full Eclipse Editor Support for the rapid development of Android applications.</p>
+	      	<p>The following building blocks currently make up the high-level feature set of Mechanoid.</p>
+	        <div class="info_block">
+		        <section>
+		        	<div class="inner">
+			        	<h3>Mechanoid DB</h3>
+			        	<p>Use the Sqlite language itself to generate Android content providers and
+			        	the ActiveRecord pattern with rich editor support.</p>
+		        	</div>
+		        </section>
+		        <section>
+		        	<div class="inner">
+			        	<h3>Mechanoid Net</h3>
+			        	<p>Generate REST over JSON service clients with this simple language to describe
+			        	JSON Objects and REST methods.</p>
+		        	</div>
+		        </section>
+	        </div>
+	        <div class="info_block">
+		        <section>
+		        	<div class="inner">
+			        	<h3>Mechanoid Ops</h3>
+			        	<p>A Framework to create and run decoupled background operations as described
+			        	in Virgin Dobjanschi's Google IO REST 2010 presentation.</p>
+		        	</div>
+		        </section>
+		        <section>
+		        	<div class="inner">
+			        	<h3>Mechanoid Prefs</h3>
+			        	<p>A simple DSL to generate thin wrappers for strongly typed access
+			        	to shared preferences.</p>
+		        	</div>
+		        </section>
+	        </div>
+	        <h3>Learn More</h3>
+			<p>Scroll down to learn more about each component or see the <a href="http://robotoworks.com/mechanoid-plugin/getting-started/" target="_blank">Getting Started Guide</a> for details on how to setup an Android project with Mechanoid.</p>
+	     </div>
+     </section>
+     <section class="outer content section_v1">
+      	<div class="inner">
+	      	<h1>Mechanoid DB</h1>
+	      	<p>Mechanoid DB is a powerful tool with fully blown editor supporting the Sqlite language itself as the driver to generate top quality Android Sqlite-backed Content Providers.</p>
+	        
+	        <h3>Define your database</h3>
+	        <p>With Mechanoid DB you define your database in a mechdb file with a full featured Eclipse editor supporting syntax-highlighting, code completion and more.</p>
+			<pre class="brush: mechdb">
+			package com.robotoworks.examples.recipes.content
+			
+			database RecipesDB {
+				migration {
+					create table recipes (
+						_id integer primary key autoincrement,
+						title text,
+						description text
+					);
+				}
+			}
+			</pre>	
+			<h3>Use the generated API</h3>
+			<p>After saving the mechdb file you can start using the generated code.</p>
+			
+			<h4>You can insert data easily</h4>
+			<pre class="brush: java">
+		        Recipes.newBuilder()
+		        .setTitle("Omelette")
+		        .setDescription("Wonderful omelette with cheese")
+		        .insert();			
+			</pre>  
+			<h4>Or insert with ActiveRecord if you prefer?</h4>
+			<pre class="brush: java">
+				RecipesRecord record = new RecipesRecord();
+		        record.setTitle("Ragu");
+		        record.setDescription("Serve with pasta");
+		        record.save(); 
+        	</pre> 
+        	<h4>SQuery for your CursorLoader's</h4>    
+        	<pre class="brush: java">
+        	CursorLoader loader = 
+        		SQuery.newQuery().createSupportLoader(
+                    Recipes.CONTENT_URI,
+                    new String[] { 
+                            Recipes._ID, 
+                            Recipes.TITLE,
+                            Recipes.DESCRIPTION 
+                    });
+        	</pre>
+        	<h3>Learn More</h3>
+        	<p>Mechanoid DB supports schema migrations first class and almost all of the sqlite syntax including views, joins, triggers and more, you just
+        	need to define the sql and Mechanoid will generate the code!</p>
+        	<p>To find out more read the <a href="http://robotoworks.com/mechanoid-plugin/mechanoid-db/">Mechanoid DB Documentation.</a></p>
+		</div>
+     </section>
+     <section class="outer content">
+      	<div class="inner">
+      		<h1>Mechanoid Net</h1>
+      		<p>Mechanoid Net is a JSON over REST client generator for Android, backed by a powerful Eclipse editor</p>
+      		<h3>Define your service client</h3>
+      		<p>Define your REST client with a language that represents the HTTP Protocol</p>
+        	<pre class="brush: mechnet">
+			client RecipesServiceClient "http://www.robotoworks.com/example" {
+				get getRecipeList /recipes {
+					params
+						limit:int,
+						query:String
+					response Recipe[]
+				}
+				
+				get getRecipe /recipe/id:int {
+					response Recipe[]
+				}
+				
+				post addRecipe /recipes {
+			    	response {
+			    		recipe_id:int
+			    	}
+					body Recipe
+				}
+				
+				delete deleteRecipe /recipe/id:int {
+					response boolean
+				}
+			}			
+        	</pre>
+      		<h3>And describe your JSON entities</h3>
+      		<p>Describe your JSON graph with entities</p>
+        	<pre class="brush: mechnet">
+			entity generate Recipe {
+				recipe_id:int,
+				title:String,
+				description:String
+			}		
+        	</pre>
+        	
+      		<h3>Then use the generated API</h3>
+      		<p>Use the generated client API to access your REST service</p>
+        	<pre class="brush: java">
+	        RecipesServiceClient client = new RecipesServiceClient();
+	        
+	        // Get a list of recipes
+	        Response&lt;GetRecipeListResult&gt; recipeListResponse = 
+	        		client.getRecipeList();
+	
+	        // Get a recipe
+	        Response&lt;GetRecipeResult&gt; recipeResponse = 
+	        		client.getRecipe(new GetRecipeRequest(123));
+	        
+	        // Add a recipe
+	        Recipe recipe = new Recipe();
+	        recipe.setTitle("Ragu");
+	        recipe.setDescription("Great with Pasta");
+	        
+	        Response&lt;AddRecipeResult&gt; addRecipeResponse = 
+	        		client.addRecipe(new AddRecipeRequest(recipe));
+	        
+	        // Delete a recipe
+	        Response&lt;DeleteRecipeResult&gt; deleteRecipeResponse = 
+	        		client.deleteRecipe(new DeleteRecipeRequest(123));	
+        	</pre>
+        	<h3>Learn More</h3>
+        	<p>Mechanoid Net is a powerful tool to describe your JSON over REST service clients, it can save you hours
+        	of time writing parsing logic and fixing issues freeing yourself from boiler-plate problems.</p>
+        	<p>To find out more read the <a href="http://robotoworks.com/mechanoid-plugin/mechanoid-net/">Mechanoid Net Documentation.</a></p>
+      	</div>
       </section>
+	<section class="outer content section_v1">
+	 	<div class="inner">
+	  	<h1>Mechanoid Ops</h1>
+	  	<p>Mechanoid Ops is a framework for running background operations that are decoupled from the UI, first described by Virgil Dobjanschi in
+	  	his <a href="http://www.youtube.com/watch?v=xHXn3Kg2IQE" target="_blank">GOOGLE IO REST 2010 Presentation</a>.</p>
+	    <p>In Mechanoid we call this the <em>Operation Service Pattern</em>, we describe our operations using a simple DSL, for each operation a class stub
+	    is generated in which we can do our background work and return the result to listeners.</p>
+	    <h3>Define your operations</h3>
+	    <p>We use a simple DSL to define our operations in a *.mechnet file</p>
+        <pre class="brush: mechnet">
+		package com.robotoworks.examples.recipes.ops
+		
+		service Recipes {
+			operation getRecipes()
+			operation getRecipe(long id)
+			operation addRecipe(String title, String description)
+			operation deleteRecipe(long id)
+		}
+	    </pre>
+	    <h3>Implement your operation stubs</h3>
+	    <p>For each operation a java class stub is generated, we can then, for instance, make network requests...</p>
+        <pre class="brush: java">
+		public class AddRecipeOperation extends AbstractAddRecipeOperation {
+			@Override
+			protected Bundle onExecute() {
+				
+				// Operation arguments are exposed as properties
+				String title = getTitle();
+				String description = getDescription();
+				
+				// Using a Mechanoid Net generated...
+				Recipe recipe = new Recipe();
+				recipe.setTitle(title);
+				recipe.setDescription(description);
+				
+				RecipesServiceClient client = new RecipesServiceClient();
+				
+				int newRecipeId = 0;
+				
+				try {
+					Response&lt;AddRecipeResult&gt; response 
+						= client.addRecipe(new AddRecipeRequest(recipe));
+					
+					response.checkResponseCodeOk();
+					
+					AddRecipeResult result = response.parse();
+					
+					newRecipeId = result.getRecipeId();
+					
+				} catch (ServiceException e) {
+					// In the event of an error we can 
+					// return the Exception as an error result
+					return Operation.createErrorResult(e);
+				}
+				
+				// If everything is good we return an ok result,
+				// along with any information in a Bundle
+				Bundle bundle = new Bundle();
+				bundle.putInt("new_recipe_id", newRecipeId);
+				
+				return Operation.createOkResult(bundle);
+			}
+		}        
+	    </pre>
+	    <h3>Execute your operations asynchronously</h3>
+	    <p>For each defined service, a service bridge is generated which we use to execute operations</p>
+        <pre class="brush: java">
+		RecipesServiceBridge bridge 
+			= RecipesServiceBridge.getInstance();
+		
+		// Bind a callback listener
+		bridge.bindListener(listener);
+		
+		// execute asynchronously
+		int addRecipeOperationId 
+			= bridge.executeAddRecipeOperation(
+				"Ragu", 
+				"Great with Pasta");    
+        </pre>
+        <h3>Listen and act on operations completing</h3>
+        <p>Implement an OperationServiceListener to handle the callback</p>
+        <pre class="brush: java">
+		private OperationServiceListener listener 
+			= new OperationServiceListener() {
+			
+			@Override
+			public void onOperationComplete(OperationServiceBridge bridge,
+					int requestId, Bundle result) {
+				
+				if(requestId == addRecipeOperationId) {
+					if(Operation.isResultOk(result)) {
+						// TODO: Do something
+					} else {
+						
+						Throwable error = Operation.getResultError(result);
+						
+						// TODO: Deal with the error
+					}
+				}
+			}
+		};
+		</pre>
+		<h3>Check to see if operations are currently pending</h3>
+		<p>We can use the generated service bridge to check if an operation is
+		currently pending completion with a given operation id.</p>
+        <pre class="brush: java">
+		boolean isPending 
+			= bridge.isRequestPending(addRecipeOperationId);
+		</pre>		
+	   <h3>Alternatively, use an OperationManager in your UI</h3>
+	   <p>Managing callbacks for operation ids and checking operations can be cumbersome in UI, 
+	   especially with orientation changes, instead we can use a manager and provide our
+	   own unique identifiers to identify specific operations.</p>
+       <pre class="brush: java">
+		public class AddRecipesActivity extends FragmentActivity {
+		
+			// Define your own ID
+		    private static final int OP_ADD_RECIPES = 123;
+		    
+			private SupportOperationManager&lt;RecipesServiceBridge&gt; mOperationManager;
+		    
+		    @Override
+		    protected void onCreate(Bundle savedInstanceState) {
+		        super.onCreate(savedInstanceState);
+		        
+		        // Create an instance of manager for your bridge
+		        mOperationManager = SupportOperationManager
+		        		.create(getSupportFragmentManager(), 
+		        				RecipesServiceBridge.getInstance(), mCallbacks);
+		        
+		        // Execute your operation using the manager
+		        mOperationManager.runOperation(OP_ADD_RECIPES, false);
+		    }
+		    
+		    // Implement the callbacks
+		    private OperationManagerCallbacks&lt;RecipesServiceBridge&gt; mCallbacks = 
+		    		new OperationManagerCallbacks&lt;RecipesServiceBridge&gt;() {
+				
+		    	@Override
+		    	public int createOperation(RecipesServiceBridge bridge, int id) {
+		    		if(id == OP_ADD_RECIPES) {
+		    			return bridge.executeAddRecipeOperation("Ragu", "Great with Pasta");
+		    		}
+		    		
+		    		return 0;
+		    	}
+		
+		    	@Override
+				public void onOperationComplete(RecipesServiceBridge bridge, int id,
+						Bundle result, boolean fromCache) {
+					if(id == OP_ADD_RECIPES) {
+						if(Operation.isResultOk(result)) {
+							// TODO Do something
+						} else {
+							Throwable error = Operation.getResultError(result);
+							
+							// TODO Do something with the error
+						}
+					}
+				}
+			};
+		}
+	   </pre>
+        	<h3>Learn More</h3>
+        	<p>Mechanoid Ops provides a framework for executing asynchronous operations, and takes the pain away from
+        	 handling background operations in the Android UI Lifecycle.</p>
+        	<p><b>Documentation Coming Soon!</b>, In the meantime some useful points:-</p>
+        	 <ul>
+        	 	<li>An operation service executes operations in the background sequentially, minimizing the risk of race conditions.</li>
+        	 	<li>By default operations are unique, executing the same operation subsequently will return the first
+        	 	accepted (executing, pending) operations id if the subsequent operations have the same argument values.</li>
+        	 	<li>The operation manager guarantees a callback, even when your switching orientation.</li>
+        	 	<li>Operations are run in an Android Service, when all operations are done, it shuts itself down, helping
+        	 	you be a good Android citizen.</li>
+        	 	<li>If you want to tweak the behaviour of the generated code, class stubs are generated for each component that
+        	 	makes an Operation Service (components include:- service bridge, service, operation registry and operation processor).</li>
+        	 </ul>
+	   </div>
+	</section>
+     <section class="outer content">
+      	<div class="inner">
+      		<h1>Mechanoid Prefs</h1>
+      		<p>Mechanoid Prefs is a simple DSL to describe and generated Android Shared Preferences wrappers.</p>
+      		<h3>Define your shared preferences</h3>
+      		<p>Preferences are defined in a *.mechprefs file, with Eclipse Editor support.</p>
+	       <pre class="brush: mechprefs">
+	       	preferences User {
+				name:String = "Anonymous"
+				age:int
+				cash_balance:float
+				likes_ragu:boolean
+			}
+      	   </pre>
+      	   <h3>Access your generated preferences wrapper</h3>
+      	   <p>We can now access preferences using the generated code.</p>
+      	   <pre class="brush: java">
+	         // Get an instance of the generated wrapper
+	        UserPreferences prefs = UserPreferences.getInstance();
+	        
+	        // Easily access preferences
+	        int age = prefs.getAge();
+	        boolean likesRagu = prefs.getLikesRagu();
+	        float cashBalance = prefs.getCashBalance();
+	        
+	        // Easily save prefences
+	        prefs.edit()
+	        	.putAge(37)
+	        	.putLikesRagu(true)
+	        	.putCashBalance(-10000)
+	        	.commit();
+	        
+	        // And the same flexibility...
+	        
+	        // Still access properties
+	        String ageKey = UserPreferences.Keys.AGE;
+	        
+	        // Still Register listeners
+	        prefs.registerOnSharedPreferenceChangeListener(listener);
+	        
+	        // Access underlying preferences
+	        SharedPreferences realPreferences = prefs.getSharedPreferences();     	   
+      	   </pre>
+	       	<h3>Learn More</h3>
+	       	<p>Although very simple, Mechanoid Prefs makes access to your preferences look pretty but offers the
+	       	same flexibility as the underlying SharedPreferences.</p>
+	       	<p>To find out more read the <a href="http://robotoworks.com/mechanoid-plugin/mechanoid-prefs/">Mechanoid Prefs Documentation.</a></p>
+      	</div>
+      </section>
+     <section class="outer content section_v1">
+      	<div class="inner">
+      		<h1>Get Started</h1>
+      		<p>Visit the <a href="http://robotoworks.com/mechanoid-plugin/">Mechanoid Plugin</a> page to get started.</p>
+      		</div>
+      </section>	
     </div>
 
     <!-- FOOTER  -->
