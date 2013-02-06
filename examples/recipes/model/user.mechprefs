@@ -1,0 +1,8 @@
+package com.robotoworks.recipes.example.content
+
+preferences User {
+	name:String = "Anonymous"
+	age:int
+	cash_balance:float
+	likes_ragu:boolean
+}
