@@ -8,7 +8,7 @@
     <relativePath>../../pom.xml</relativePath>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>com.robotoworks.mechanoid.common</artifactId>
+  <artifactId>com.robotoworks.mechanoid</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

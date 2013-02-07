@@ -8,7 +8,7 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class SharedPreferencesModelGenerator implements IGenerator {
 	@Inject SharedPreferencesGenerator mPreferencesGenerator

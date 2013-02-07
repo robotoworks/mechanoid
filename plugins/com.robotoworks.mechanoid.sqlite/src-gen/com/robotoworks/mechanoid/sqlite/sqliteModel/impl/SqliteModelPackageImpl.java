@@ -2,6 +2,13 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
@@ -91,14 +98,6 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.WhereExpressions;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

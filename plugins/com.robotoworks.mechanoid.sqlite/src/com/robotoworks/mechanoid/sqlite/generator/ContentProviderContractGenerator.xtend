@@ -6,7 +6,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement

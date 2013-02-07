@@ -1,7 +1,8 @@
 package com.robotoworks.mechanoid.sqlite.ui.wizards;
 
+import com.robotoworks.mechanoid.ui.wizard.NewMechanoidFileWizard;
 
-import com.robotoworks.mechanoid.common.wizards.NewMechanoidFileWizard;
+
 
 public class NewMechDbFileWizard extends NewMechanoidFileWizard {
 

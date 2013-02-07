@@ -18,9 +18,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
  org.eclipse.jdt.core;bundle-version="3.8.2"
-Import-Package: com.robotoworks.mechanoid.common.internal.util,
- com.robotoworks.mechanoid.common.util,
- com.robotoworks.mechanoid.common.xtext.generator,
+Import-Package: com.robotoworks.mechanoid.generator,
+ com.robotoworks.mechanoid.text,
  org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

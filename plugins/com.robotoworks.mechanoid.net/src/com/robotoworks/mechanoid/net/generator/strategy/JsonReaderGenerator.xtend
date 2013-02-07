@@ -12,6 +12,8 @@ import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
+
 import org.eclipse.emf.common.util.EList
 import com.robotoworks.mechanoid.net.netModel.BooleanType
 

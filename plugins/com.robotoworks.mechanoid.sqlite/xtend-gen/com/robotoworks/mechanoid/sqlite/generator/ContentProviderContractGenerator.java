@@ -1,7 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.common.base.Objects;
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
@@ -16,6 +15,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

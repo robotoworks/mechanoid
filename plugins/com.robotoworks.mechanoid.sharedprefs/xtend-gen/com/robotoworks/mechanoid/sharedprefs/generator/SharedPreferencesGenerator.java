@@ -1,11 +1,11 @@
 package com.robotoworks.mechanoid.sharedprefs.generator;
 
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sharedprefs.generator.Extensions;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferencesBlock;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 

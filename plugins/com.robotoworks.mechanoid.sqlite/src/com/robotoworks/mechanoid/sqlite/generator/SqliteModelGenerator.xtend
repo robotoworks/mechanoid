@@ -5,7 +5,7 @@ package com.robotoworks.mechanoid.sqlite.generator
 
 import com.google.inject.Inject
 import com.google.inject.Provider
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 

@@ -3,7 +3,7 @@ package com.robotoworks.mechanoid.ops.generator
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*
 
 class ServiceBridgeGenerator {

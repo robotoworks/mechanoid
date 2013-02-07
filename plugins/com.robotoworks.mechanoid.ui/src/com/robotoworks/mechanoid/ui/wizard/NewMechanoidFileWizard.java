@@ -1,4 +1,4 @@
-package com.robotoworks.mechanoid.common.wizards;
+package com.robotoworks.mechanoid.ui.wizard;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;

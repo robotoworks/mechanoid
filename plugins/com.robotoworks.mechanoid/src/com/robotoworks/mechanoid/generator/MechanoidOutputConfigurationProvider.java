@@ -1,4 +1,4 @@
-package com.robotoworks.mechanoid.common.xtext.generator;
+package com.robotoworks.mechanoid.generator;
 
 import java.util.Set;
 

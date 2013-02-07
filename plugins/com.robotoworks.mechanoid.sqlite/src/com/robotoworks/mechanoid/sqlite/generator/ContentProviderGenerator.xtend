@@ -3,7 +3,7 @@ package com.robotoworks.mechanoid.sqlite.generator
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
 
 class ContentProviderGenerator {

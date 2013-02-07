@@ -14,6 +14,7 @@ import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -271,7 +272,7 @@ public class JsonReaderGenerator {
         _builder.append(_memberize_1, "");
         _builder.append("(source.next");
         String _signature = ModelExtensions.signature(type);
-        String _pascalize = ModelExtensions.pascalize(_signature);
+        String _pascalize = Strings.pascalize(_signature);
         _builder.append(_pascalize, "");
         _builder.append("());");
         _builder.newLineIfNotEmpty();

@@ -1,6 +1,4 @@
-package com.robotoworks.mechanoid.common.util;
-
-import com.robotoworks.mechanoid.common.internal.util.Inflector;
+package com.robotoworks.mechanoid.text;
 
 public class Strings {
 	public static String resolveFileName(String packageName, String name) {

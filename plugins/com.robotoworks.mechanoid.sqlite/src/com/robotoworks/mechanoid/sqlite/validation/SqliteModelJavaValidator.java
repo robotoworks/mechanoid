@@ -30,10 +30,9 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
 
- 
-
 public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 
+	public static final String ERROR_MISSING_MECHANOID_JAR = "ERROR_MISSING_MECHANOID_JAR";
  
 	@Inject TypeReferences typeReferences;
 	
@@ -42,7 +41,7 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
 
 		if(type == null) {
-			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME);
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME, ERROR_MISSING_MECHANOID_JAR);
 		}
 	}
 	
@@ -133,6 +132,11 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 						error("Trigger exists, drop it first", ct, SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__NAME, -1);
 						return;
 					} else {
+						if(!tables.contains(ct.getTable().getName())) {
+							error("Table does not exist", ct, SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__TABLE, -1);
+							return;
+						}
+						
 						triggers.add(ct.getName());
 					}
 				} else if (statement instanceof DropTriggerStatement) {

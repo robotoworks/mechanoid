@@ -8,7 +8,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
 
 class ActiveRecordGenerator {

@@ -1,4 +1,4 @@
-package com.robotoworks.mechanoid.common;
+package com.robotoworks.mechanoid.ui.builder;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;

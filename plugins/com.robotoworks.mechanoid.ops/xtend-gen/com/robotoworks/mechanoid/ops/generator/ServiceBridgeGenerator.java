@@ -1,7 +1,6 @@
 package com.robotoworks.mechanoid.ops.generator;
 
 import com.google.common.base.Objects;
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.ops.generator.Extensions;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpArgType;
@@ -10,6 +9,7 @@ import com.robotoworks.mechanoid.ops.opServiceModel.OperationArg;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
 import com.robotoworks.mechanoid.ops.opServiceModel.UniqueClause;
 import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 

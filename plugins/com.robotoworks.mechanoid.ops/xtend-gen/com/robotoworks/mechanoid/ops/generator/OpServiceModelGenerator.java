@@ -1,8 +1,7 @@
 package com.robotoworks.mechanoid.ops.generator;
 
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.common.util.Strings;
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.ops.generator.OperationGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationProcessorGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationRegistryGenerator;
@@ -11,6 +10,7 @@ import com.robotoworks.mechanoid.ops.generator.ServiceGenerator;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;

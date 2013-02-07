@@ -1,7 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseStatementGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
@@ -10,6 +9,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;

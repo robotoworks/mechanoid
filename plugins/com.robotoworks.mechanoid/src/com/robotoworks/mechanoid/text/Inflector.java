@@ -37,9 +37,12 @@
  * However, if you add GPL Version 2 code and therefore, elected the GPL
  * Version 2 license, then the option applies only if the new code is
  * made subject to such option by the copyright holder.
+ * 
+ * MODIFICATIONS:
+ * 07/02/2013 Changed package name
  */
 
-package com.robotoworks.mechanoid.common.internal.util;
+package com.robotoworks.mechanoid.text;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
