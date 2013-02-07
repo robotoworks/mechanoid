@@ -11,4 +11,41 @@
   <artifactId>com.robotoworks.mechanoid</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
+  <dependencies>
+      <dependency>
+          <groupId>com.robotoworks.mechanoid</groupId>
+          <artifactId>mechanoid</artifactId>
+          <version>0.1.0-SNAPSHOT</version>
+          <classifier>sources</classifier>
+      </dependency>
+      <dependency>
+          <groupId>com.robotoworks.mechanoid</groupId>
+          <artifactId>mechanoid</artifactId>
+          <version>0.1.0-SNAPSHOT</version>
+      </dependency>
+  </dependencies>
+  <build>
+   <plugins>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/runtime</outputDirectory>
+              <includeArtifactIds>mechanoid</includeArtifactIds>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
