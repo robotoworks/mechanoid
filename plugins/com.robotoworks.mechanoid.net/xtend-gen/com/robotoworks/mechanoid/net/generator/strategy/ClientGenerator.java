@@ -274,14 +274,27 @@ public class ClientGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_9 = client.getName();
+        _builder.append(_name_9, "	");
+        _builder.append("(boolean debug){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("this(DEFAULT_BASE_URL, new TransformerProvider(), debug);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
       }
     }
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
-    String _name_9 = client.getName();
-    _builder.append(_name_9, "	");
+    String _name_10 = client.getName();
+    _builder.append(_name_10, "	");
     _builder.append("(String baseUrl){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -292,17 +305,6 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_10 = client.getName();
-    _builder.append(_name_10, "	");
-    _builder.append("(boolean debug){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(DEFAULT_BASE_URL, new TransformerProvider(), debug);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");

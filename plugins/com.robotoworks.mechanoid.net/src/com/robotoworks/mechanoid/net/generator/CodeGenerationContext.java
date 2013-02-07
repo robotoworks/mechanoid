@@ -17,7 +17,6 @@ public class CodeGenerationContext {
 		imports.add(importId);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public StringConcatenation printImports(){
 		StringConcatenation builder = new StringConcatenation();
 		for(String str:imports){
