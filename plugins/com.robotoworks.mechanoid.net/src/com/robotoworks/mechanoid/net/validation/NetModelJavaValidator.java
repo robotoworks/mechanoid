@@ -5,9 +5,12 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.xml.type.internal.RegEx;
 import org.eclipse.emf.ecore.xml.type.internal.RegEx.RegularExpression;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+import com.google.inject.Inject;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
@@ -20,6 +23,7 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Literal;
+import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelPackage;
 import com.robotoworks.mechanoid.net.netModel.NumericLiteral;
 import com.robotoworks.mechanoid.net.netModel.NumericType;
@@ -28,21 +32,21 @@ import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
 import com.robotoworks.mechanoid.net.netModel.SimpleMemberAssignment;
 import com.robotoworks.mechanoid.net.netModel.StringLiteral;
 import com.robotoworks.mechanoid.net.netModel.StringType;
+import com.robotoworks.mechanoid.validation.ValidatorConstants;
  
 
 public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 
-	private RegularExpression pathPattern = RegEx.REUtil.createRegex("^(\\/)?(?:[^/]+)?(?:(?:\\/(?:[^/]+)?)+)?$", "");
+	@Inject TypeReferences typeReferences;
 	
-//	@Check
-//	public void ensureValidMethodPath(HttpMethod method){
-//		if(method.getPath() == null || method.getPath().length() == 0) {
-//			return;
-//		}
-//		if(!pathPattern.matches(method.getPath())){
-//			error("Invalid path format", NetModelPackage.Literals.HTTP_METHOD__PATH);
-//		}
-//	}
+	@Check
+	public void checkMechanoidLibOnClasspath(Model m) {
+		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
+
+		if(type == null) {
+			error("mechanoid.jar is required in your /libs folder or on the classpath", NetModelPackage.Literals.MODEL__PACKAGE_NAME, ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS);
+		}
+	}
 	
 	@Check
 	public void checkValueAssignment(SimpleMemberAssignment assignment){
@@ -145,7 +149,7 @@ public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 	@Check
 	public void responseSuperValidIfResponseIsLiteral(ResponseBlock response){
 		if(response.getSuperType() != null && response.getType() != null && !(response.getType() instanceof ComplexTypeLiteral)){
-			error("Response must be a literal in order to do this", NetModelPackage.Literals.RESPONSE_BLOCK__SUPER_TYPE);			
+			error("Response must be a literal object in order to do this", NetModelPackage.Literals.RESPONSE_BLOCK__SUPER_TYPE);			
 		}
 	}
 	

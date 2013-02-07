@@ -1,23 +1,32 @@
 package com.robotoworks.mechanoid.sharedprefs.validation;
 
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
 
+import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral;
+import com.robotoworks.mechanoid.validation.ValidatorConstants;
 
 public class SharedPreferencesModelJavaValidator extends AbstractSharedPreferencesModelJavaValidator {
 
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital", MyDslPackage.Literals.GREETING__NAME);
-//		}
-//	}
+	@Inject TypeReferences typeReferences;
+	
+	@Check
+	public void checkMechanoidLibOnClasspath(Model m) {
+		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
+
+		if(type == null) {
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SharedPreferencesModelPackage.Literals.MODEL__PACKAGE_NAME, ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS);
+		}
+	}
 	
 	@Check
 	public void checkDefaultValue(Preference preference){

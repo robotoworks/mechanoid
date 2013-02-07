@@ -12,12 +12,17 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.io;version="10.0.1",
+ com.robotoworks.mechanoid.validation,
  org.eclipse.core.resources,
  org.eclipse.jdt.core,
  org.eclipse.ui.dialogs,
  org.eclipse.ui.ide,
  org.eclipse.xtext.builder,
- org.eclipse.xtext.generator
+ org.eclipse.xtext.common.types.access.jdt,
+ org.eclipse.xtext.generator,
+ org.eclipse.xtext.ui.editor.model.edit,
+ org.eclipse.xtext.ui.editor.quickfix
 Export-Package: com.robotoworks.mechanoid.ui,
  com.robotoworks.mechanoid.ui.builder,
+ com.robotoworks.mechanoid.ui.quickfix,
  com.robotoworks.mechanoid.ui.wizard
