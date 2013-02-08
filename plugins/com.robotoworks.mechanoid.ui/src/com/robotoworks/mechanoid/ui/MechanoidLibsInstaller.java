@@ -2,6 +2,7 @@ package com.robotoworks.mechanoid.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -11,25 +12,28 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaModelException;
 import org.osgi.framework.Bundle;
 
 import com.google.common.io.Files;
+import com.google.common.io.InputSupplier;
 
 public class MechanoidLibsInstaller {
 	
-	private static final String MECHANOID_LIB_PATH = "runtime/mechanoid.jar";
-	private static final String MECHANOID_LIB_SRC_PATH = "runtime/mechanoid-sources.jar";
-	private static final String MECHANOID_LIB_PROPS_PATH = "runtime/mechanoid.jar.properties";
+	private static final String MECHANOID_LIB_PATH = "runtime/";
+	private static final String MECHANOID_LIB_FILE = "mechanoid.jar";
+	private static final String MECHANOID_LIB_SRC_FILE = "mechanoid-sources.jar";
+	private static final String MECHANOID_LIB_PROPS_FILE = "mechanoid.jar.properties";
 	
 	private String[] LIB_FILE_BUNDLE_PATHS = {
-			MECHANOID_LIB_PATH,
-			MECHANOID_LIB_SRC_PATH,
-			MECHANOID_LIB_PROPS_PATH
+			MECHANOID_LIB_FILE,
+			MECHANOID_LIB_SRC_FILE,
+			MECHANOID_LIB_PROPS_FILE
 	};
-	
+
 	public void install(IJavaProject javaProject, IProgressMonitor progressMonitor) throws IOException, URISyntaxException {
 
 		try {
@@ -37,8 +41,8 @@ public class MechanoidLibsInstaller {
 			
 			installLibs(javaProject, progress.newChild(1));
 			
-		} catch (Exception exc) {
-			// TODO Log exception
+		} catch (Exception e) {
+			MechanoidUiActivator.getDefault().getLog().log(new Status(Status.ERROR, MechanoidUiActivator.PLUGIN_ID, Status.OK, "Failed to add Mechanoid Libs", e));
 		}
 		
 
@@ -54,16 +58,22 @@ public class MechanoidLibsInstaller {
 			libsFolder.mkdirs();
 		}
 
-		for(String bundlePath : LIB_FILE_BUNDLE_PATHS) {
-			URL url = bundle.getEntry(bundlePath);
-			File sourceFile = new File(FileLocator.resolve(url).toURI());
-			File targetFile = new File(libsFolder, sourceFile.getName());
+		for(String libFileName : LIB_FILE_BUNDLE_PATHS) {
+			
+			final URL url = FileLocator.resolve(bundle.getEntry(MECHANOID_LIB_PATH + libFileName));
+			
+			File targetFile = new File(libsFolder, libFileName);
 			
 			if(targetFile.exists()) {
 				targetFile.delete();
 			}
 			
-			Files.copy(sourceFile, targetFile);
+			Files.copy(new InputSupplier<InputStream>() {
+				@Override
+				public InputStream getInput() throws IOException {
+					return url.openStream();
+				}
+			}, targetFile);
 			
 		}
 
