@@ -28,6 +28,7 @@ import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -93,7 +94,7 @@ public class RequestGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public class ");
     String _name = method.getName();
-    String _pascalize = ModelExtensions.pascalize(_name);
+    String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "");
     _builder.append("Request {");
     _builder.newLineIfNotEmpty();
@@ -163,7 +164,7 @@ public class RequestGenerator {
             _builder.append(" ");
             SimpleMember _member_1 = slug.getMember();
             String _name_1 = _member_1.getName();
-            String _camelize = ModelExtensions.camelize(_name_1);
+            String _camelize = Strings.camelize(_name_1);
             _builder.append(_camelize, "	");
             _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
@@ -194,7 +195,7 @@ public class RequestGenerator {
             _builder.append(" ");
             SimpleMember _member_3 = param.getMember();
             String _name_2 = _member_3.getName();
-            String _camelize_1 = ModelExtensions.camelize(_name_2);
+            String _camelize_1 = Strings.camelize(_name_2);
             _builder.append(_camelize_1, "	");
             _builder.append("Param");
             {
@@ -213,7 +214,7 @@ public class RequestGenerator {
             _builder.append("private boolean ");
             SimpleMember _member_4 = param.getMember();
             String _name_3 = _member_4.getName();
-            String _camelize_2 = ModelExtensions.camelize(_name_3);
+            String _camelize_2 = Strings.camelize(_name_3);
             _builder.append(_camelize_2, "	");
             _builder.append("ParamSet");
             {
@@ -247,7 +248,7 @@ public class RequestGenerator {
             _builder.append(" ");
             SimpleMember _member_6 = param_1.getMember();
             String _name_4 = _member_6.getName();
-            String _camelize_3 = ModelExtensions.camelize(_name_4);
+            String _camelize_3 = Strings.camelize(_name_4);
             _builder.append(_camelize_3, "	");
             _builder.append("Param");
             {
@@ -266,7 +267,7 @@ public class RequestGenerator {
             _builder.append("private boolean ");
             SimpleMember _member_7 = param_1.getMember();
             String _name_5 = _member_7.getName();
-            String _camelize_4 = ModelExtensions.camelize(_name_5);
+            String _camelize_4 = Strings.camelize(_name_5);
             _builder.append(_camelize_4, "	");
             _builder.append("ParamSet");
             {
@@ -311,12 +312,12 @@ public class RequestGenerator {
             _builder.append("\t");
             _builder.append("public ");
             String _name_6 = method.getName();
-            String _pascalize_1 = ModelExtensions.pascalize(_name_6);
+            String _pascalize_1 = Strings.pascalize(_name_6);
             _builder.append(_pascalize_1, "	");
             _builder.append("Request set");
             SimpleMember _member_8 = param_2.getMember();
             String _name_7 = _member_8.getName();
-            String _pascalize_2 = ModelExtensions.pascalize(_name_7);
+            String _pascalize_2 = Strings.pascalize(_name_7);
             _builder.append(_pascalize_2, "	");
             _builder.append("Param(");
             SimpleMember _member_9 = param_2.getMember();
@@ -330,7 +331,7 @@ public class RequestGenerator {
             _builder.append("this.");
             SimpleMember _member_10 = param_2.getMember();
             String _name_8 = _member_10.getName();
-            String _camelize_5 = ModelExtensions.camelize(_name_8);
+            String _camelize_5 = Strings.camelize(_name_8);
             _builder.append(_camelize_5, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
@@ -339,7 +340,7 @@ public class RequestGenerator {
             _builder.append("this.");
             SimpleMember _member_11 = param_2.getMember();
             String _name_9 = _member_11.getName();
-            String _camelize_6 = ModelExtensions.camelize(_name_9);
+            String _camelize_6 = Strings.camelize(_name_9);
             _builder.append(_camelize_6, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
@@ -356,7 +357,7 @@ public class RequestGenerator {
             _builder.append("public boolean is");
             SimpleMember _member_12 = param_2.getMember();
             String _name_10 = _member_12.getName();
-            String _pascalize_3 = ModelExtensions.pascalize(_name_10);
+            String _pascalize_3 = Strings.pascalize(_name_10);
             _builder.append(_pascalize_3, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
@@ -365,7 +366,7 @@ public class RequestGenerator {
             _builder.append("return ");
             SimpleMember _member_13 = param_2.getMember();
             String _name_11 = _member_13.getName();
-            String _camelize_7 = ModelExtensions.camelize(_name_11);
+            String _camelize_7 = Strings.camelize(_name_11);
             _builder.append(_camelize_7, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -388,12 +389,12 @@ public class RequestGenerator {
             _builder.append("\t");
             _builder.append("public ");
             String _name_12 = method.getName();
-            String _pascalize_4 = ModelExtensions.pascalize(_name_12);
+            String _pascalize_4 = Strings.pascalize(_name_12);
             _builder.append(_pascalize_4, "	");
             _builder.append("Request set");
             SimpleMember _member_14 = param_3.getMember();
             String _name_13 = _member_14.getName();
-            String _pascalize_5 = ModelExtensions.pascalize(_name_13);
+            String _pascalize_5 = Strings.pascalize(_name_13);
             _builder.append(_pascalize_5, "	");
             _builder.append("Param(");
             SimpleMember _member_15 = param_3.getMember();
@@ -407,7 +408,7 @@ public class RequestGenerator {
             _builder.append("this.");
             SimpleMember _member_16 = param_3.getMember();
             String _name_14 = _member_16.getName();
-            String _camelize_8 = ModelExtensions.camelize(_name_14);
+            String _camelize_8 = Strings.camelize(_name_14);
             _builder.append(_camelize_8, "		");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
@@ -416,7 +417,7 @@ public class RequestGenerator {
             _builder.append("this.");
             SimpleMember _member_17 = param_3.getMember();
             String _name_15 = _member_17.getName();
-            String _camelize_9 = ModelExtensions.camelize(_name_15);
+            String _camelize_9 = Strings.camelize(_name_15);
             _builder.append(_camelize_9, "		");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
@@ -433,7 +434,7 @@ public class RequestGenerator {
             _builder.append("public boolean is");
             SimpleMember _member_18 = param_3.getMember();
             String _name_16 = _member_18.getName();
-            String _pascalize_6 = ModelExtensions.pascalize(_name_16);
+            String _pascalize_6 = Strings.pascalize(_name_16);
             _builder.append(_pascalize_6, "	");
             _builder.append("ParamSet() {");
             _builder.newLineIfNotEmpty();
@@ -442,7 +443,7 @@ public class RequestGenerator {
             _builder.append("return ");
             SimpleMember _member_19 = param_3.getMember();
             String _name_17 = _member_19.getName();
-            String _camelize_10 = ModelExtensions.camelize(_name_17);
+            String _camelize_10 = Strings.camelize(_name_17);
             _builder.append(_camelize_10, "		");
             _builder.append("ParamSet;");
             _builder.newLineIfNotEmpty();
@@ -459,7 +460,7 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_18 = method.getName();
-    String _pascalize_7 = ModelExtensions.pascalize(_name_18);
+    String _pascalize_7 = Strings.pascalize(_name_18);
     _builder.append(_pascalize_7, "	");
     _builder.append("Request(");
     Path _path_2 = method.getPath();
@@ -506,12 +507,12 @@ public class RequestGenerator {
             _builder.append("this.");
             SimpleMember _member_20 = slug_1.getMember();
             String _name_20 = _member_20.getName();
-            String _camelize_11 = ModelExtensions.camelize(_name_20);
+            String _camelize_11 = Strings.camelize(_name_20);
             _builder.append(_camelize_11, "		");
             _builder.append("Segment = ");
             SimpleMember _member_21 = slug_1.getMember();
             String _name_21 = _member_21.getName();
-            String _camelize_12 = ModelExtensions.camelize(_name_21);
+            String _camelize_12 = Strings.camelize(_name_21);
             _builder.append(_camelize_12, "		");
             _builder.append("Segment;");
             _builder.newLineIfNotEmpty();
@@ -590,7 +591,7 @@ public class RequestGenerator {
             }
             SimpleMember _member_22 = slug_2.getMember();
             String _name_22 = _member_22.getName();
-            String _camelize_13 = ModelExtensions.camelize(_name_22);
+            String _camelize_13 = Strings.camelize(_name_22);
             _builder.append(_camelize_13, "		");
             _builder.append("Segment");
           }
@@ -615,7 +616,7 @@ public class RequestGenerator {
             _builder.append("if(");
             SimpleMember _member_23 = param_4.getMember();
             String _name_23 = _member_23.getName();
-            String _camelize_14 = ModelExtensions.camelize(_name_23);
+            String _camelize_14 = Strings.camelize(_name_23);
             _builder.append(_camelize_14, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
@@ -632,7 +633,7 @@ public class RequestGenerator {
                 _builder.append("\", ");
                 SimpleMember _member_26 = param_4.getMember();
                 String _name_25 = _member_26.getName();
-                String _camelize_15 = ModelExtensions.camelize(_name_25);
+                String _camelize_15 = Strings.camelize(_name_25);
                 _builder.append(_camelize_15, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
@@ -646,7 +647,7 @@ public class RequestGenerator {
                 _builder.append("\", String.valueOf(");
                 SimpleMember _member_28 = param_4.getMember();
                 String _name_27 = _member_28.getName();
-                String _camelize_16 = ModelExtensions.camelize(_name_27);
+                String _camelize_16 = Strings.camelize(_name_27);
                 _builder.append(_camelize_16, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
@@ -671,7 +672,7 @@ public class RequestGenerator {
             _builder.append("if(");
             SimpleMember _member_29 = param_5.getMember();
             String _name_28 = _member_29.getName();
-            String _camelize_17 = ModelExtensions.camelize(_name_28);
+            String _camelize_17 = Strings.camelize(_name_28);
             _builder.append(_camelize_17, "		");
             _builder.append("ParamSet){");
             _builder.newLineIfNotEmpty();
@@ -688,7 +689,7 @@ public class RequestGenerator {
                 _builder.append("\", ");
                 SimpleMember _member_32 = param_5.getMember();
                 String _name_30 = _member_32.getName();
-                String _camelize_18 = ModelExtensions.camelize(_name_30);
+                String _camelize_18 = Strings.camelize(_name_30);
                 _builder.append(_camelize_18, "			");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
@@ -702,7 +703,7 @@ public class RequestGenerator {
                 _builder.append("\", String.valueOf(");
                 SimpleMember _member_34 = param_5.getMember();
                 String _name_32 = _member_34.getName();
-                String _camelize_19 = ModelExtensions.camelize(_name_32);
+                String _camelize_19 = Strings.camelize(_name_32);
                 _builder.append(_camelize_19, "			");
                 _builder.append("Param));");
                 _builder.newLineIfNotEmpty();
@@ -828,8 +829,8 @@ public class RequestGenerator {
         _builder.append(_signature_1, "");
         _builder.append(" ");
         String _innerSignature = ModelExtensions.innerSignature(type);
-        String _camelize = ModelExtensions.camelize(_innerSignature);
-        String _pluralize = ModelExtensions.pluralize(_camelize);
+        String _camelize = Strings.camelize(_innerSignature);
+        String _pluralize = Strings.pluralize(_camelize);
         _builder.append(_pluralize, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -845,7 +846,7 @@ public class RequestGenerator {
     _builder.append(_signature, "");
     _builder.append(" ");
     String _signature_1 = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature_1);
+    String _camelize = Strings.camelize(_signature_1);
     _builder.append(_camelize, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
@@ -924,16 +925,16 @@ public class RequestGenerator {
         _builder.append(_signature_1, "");
         _builder.append(" get");
         String _innerSignature = ModelExtensions.innerSignature(type);
-        String _pascalize = ModelExtensions.pascalize(_innerSignature);
-        String _pluralize = ModelExtensions.pluralize(_pascalize);
+        String _pascalize = Strings.pascalize(_innerSignature);
+        String _pluralize = Strings.pluralize(_pascalize);
         _builder.append(_pluralize, "");
         _builder.append("() {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("return ");
         String _innerSignature_1 = ModelExtensions.innerSignature(type);
-        String _camelize = ModelExtensions.camelize(_innerSignature_1);
-        String _pluralize_1 = ModelExtensions.pluralize(_camelize);
+        String _camelize = Strings.camelize(_innerSignature_1);
+        String _pluralize_1 = Strings.pluralize(_camelize);
         _builder.append(_pluralize_1, "	");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -951,14 +952,14 @@ public class RequestGenerator {
     _builder.append(_signature, "");
     _builder.append(" get");
     String _signature_1 = ModelExtensions.signature(type);
-    String _pascalize = ModelExtensions.pascalize(_signature_1);
+    String _pascalize = Strings.pascalize(_signature_1);
     _builder.append(_pascalize, "");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("return ");
     String _signature_2 = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature_2);
+    String _camelize = Strings.camelize(_signature_2);
     _builder.append(_camelize, "	");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
@@ -1028,13 +1029,13 @@ public class RequestGenerator {
       } else {
         _builder.append("this.");
         String _innerSignature = ModelExtensions.innerSignature(type);
-        String _camelize = ModelExtensions.camelize(_innerSignature);
-        String _pluralize = ModelExtensions.pluralize(_camelize);
+        String _camelize = Strings.camelize(_innerSignature);
+        String _pluralize = Strings.pluralize(_camelize);
         _builder.append(_pluralize, "");
         _builder.append(" = ");
         String _innerSignature_1 = ModelExtensions.innerSignature(type);
-        String _camelize_1 = ModelExtensions.camelize(_innerSignature_1);
-        String _pluralize_1 = ModelExtensions.pluralize(_camelize_1);
+        String _camelize_1 = Strings.camelize(_innerSignature_1);
+        String _pluralize_1 = Strings.pluralize(_camelize_1);
         _builder.append(_pluralize_1, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -1047,11 +1048,11 @@ public class RequestGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("this.");
     String _signature = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature);
+    String _camelize = Strings.camelize(_signature);
     _builder.append(_camelize, "");
     _builder.append(" = ");
     String _signature_1 = ModelExtensions.signature(type);
-    String _camelize_1 = ModelExtensions.camelize(_signature_1);
+    String _camelize_1 = Strings.camelize(_signature_1);
     _builder.append(_camelize_1, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
@@ -1107,7 +1108,7 @@ public class RequestGenerator {
     _builder.newLine();
     _builder.append("\t");
     String _name = method.getName();
-    String _pascalize = ModelExtensions.pascalize(_name);
+    String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "	");
     _builder.append("Request subject = this;");
     _builder.newLineIfNotEmpty();
@@ -1140,7 +1141,7 @@ public class RequestGenerator {
     _builder.append(_signature, "	");
     _builder.append("Transformer.class).transformOut(");
     String _signature_1 = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature_1);
+    String _camelize = Strings.camelize(_signature_1);
     _builder.append(_camelize, "	");
     _builder.append(", target);");
     _builder.newLineIfNotEmpty();
@@ -1163,7 +1164,7 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.append("ps.print(");
     String _signature = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature);
+    String _camelize = Strings.camelize(_signature);
     _builder.append(_camelize, "	");
     _builder.append(".getValue());");
     _builder.newLineIfNotEmpty();
@@ -1219,8 +1220,8 @@ public class RequestGenerator {
     _builder.append(_innerSignature, "	");
     _builder.append("Transformer.class).transformOut(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    String _camelize = ModelExtensions.camelize(_innerSignature_1);
-    String _pluralize = ModelExtensions.pluralize(_camelize);
+    String _camelize = Strings.camelize(_innerSignature_1);
+    String _pluralize = Strings.pluralize(_camelize);
     _builder.append(_pluralize, "	");
     _builder.append(", target);");
     _builder.newLineIfNotEmpty();
@@ -1247,8 +1248,8 @@ public class RequestGenerator {
     _builder.append(_innerSignature, "	");
     _builder.append(" element:");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    String _camelize = ModelExtensions.camelize(_innerSignature_1);
-    String _pluralize = ModelExtensions.pluralize(_camelize);
+    String _camelize = Strings.camelize(_innerSignature_1);
+    String _pluralize = Strings.pluralize(_camelize);
     _builder.append(_pluralize, "	");
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
@@ -1289,7 +1290,7 @@ public class RequestGenerator {
         String _plus = (_signature + " ");
         SimpleMember _member_1 = slug.getMember();
         String _name = _member_1.getName();
-        String _camelize = ModelExtensions.camelize(_name);
+        String _camelize = Strings.camelize(_name);
         String _plus_1 = (_plus + _camelize);
         String _plus_2 = (_plus_1 + "Segment");
         args.add(_plus_2);
@@ -1338,8 +1339,8 @@ public class RequestGenerator {
       String _signature_1 = ModelExtensions.signature(type);
       String _plus_1 = (_signature_1 + " ");
       String _innerSignature = ModelExtensions.innerSignature(type);
-      String _camelize = ModelExtensions.camelize(_innerSignature);
-      String _pluralize = ModelExtensions.pluralize(_camelize);
+      String _camelize = Strings.camelize(_innerSignature);
+      String _pluralize = Strings.pluralize(_camelize);
       String _plus_2 = (_plus_1 + _pluralize);
       args.add(_plus_2);
     }
@@ -1349,7 +1350,7 @@ public class RequestGenerator {
     String _signature = ModelExtensions.signature(type);
     String _plus = (_signature + " ");
     String _signature_1 = ModelExtensions.signature(type);
-    String _camelize = ModelExtensions.camelize(_signature_1);
+    String _camelize = Strings.camelize(_signature_1);
     String _plus_1 = (_plus + _camelize);
     args.add(_plus_1);
   }
@@ -1366,7 +1367,7 @@ public class RequestGenerator {
     final Function1<String,String> _function_1 = new Function1<String,String>() {
         public String apply(final String arg) {
           String _substring = arg.substring(1);
-          String _camelize = ModelExtensions.camelize(_substring);
+          String _camelize = Strings.camelize(_substring);
           String _plus = (_camelize + "Segment");
           return _plus;
         }

@@ -2,16 +2,14 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-
 import java.math.BigDecimal;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,11 +6,9 @@ package com.robotoworks.mechanoid.sqlite.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
-import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 
 import com.google.inject.Binder;
-import com.robotoworks.mechanoid.common.MechanoidBuilderParticipant;
-
+import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 
 /**
  * Use this class to register components to be used within the IDE.

@@ -1,8 +1,8 @@
 package com.robotoworks.mechanoid.ops.generator;
 
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")

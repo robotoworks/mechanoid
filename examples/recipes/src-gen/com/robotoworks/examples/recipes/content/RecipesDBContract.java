@@ -3,13 +3,9 @@
  */
 package com.robotoworks.examples.recipes.content;
 
-import android.content.ContentValues;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.content.ContentResolver;
-import com.robotoworks.mechanoid.sqlite.SQuery;
 import com.robotoworks.mechanoid.Mechanoid;
-import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
 import java.lang.reflect.Field;
 
@@ -58,25 +54,26 @@ public class RecipesDBContract  {
 	
 			
 	/**
-	 * <p>Column definitions and helper methods to work with the Recipes table.</p>
+	 * <p>Column definitions and helper methods to work with the Recipes.</p>
 	 */
 	public static class Recipes implements RecipesColumns, BaseColumns {
 	    public static final Uri CONTENT_URI = 
 				BASE_CONTENT_URI.buildUpon().appendPath("recipes").build();
 	
 		/**
-		 * <p>The content type for a cursor that contains many Recipes table rows.</p>
+		 * <p>The content type for a cursor that contains many Recipes rows.</p>
 		 */
 	    public static final String CONTENT_TYPE =
 	            "vnd.android.cursor.dir/vnd.recipesdb.recipes";
-		/**
-		 * <p>The content type for a cursor that contains a single Recipes table row.</p>
-		 */
-	    public static final String ITEM_CONTENT_TYPE =
-	            "vnd.android.cursor.item/vnd.recipesdb.recipes";
 	
 		/**
-		 * <p>Builds a Uri with appended id for a row in the Recipes table, 
+		 * <p>The content type for a cursor that contains a single Recipes row.</p>
+		 */
+		public static final String ITEM_CONTENT_TYPE =
+			"vnd.android.cursor.item/vnd.recipesdb.recipes";
+	
+		/**
+		 * <p>Builds a Uri with appended id for a row in Recipes, 
 		 * eg:- content://com.robotoworks.examples.recipes.content.recipesdb/recipes/123.</p>
 		 */
 	    public static Uri buildUriWithId(long id) {
@@ -109,40 +106,40 @@ public class RecipesDBContract  {
 			}
 			
 			public Builder setTitle(String value) {
-				mValues.put(Recipes.TITLE, value);
+				mValues.put(TITLE, value);
 				return this;
 			}
 			public Builder setDescription(String value) {
-				mValues.put(Recipes.DESCRIPTION, value);
+				mValues.put(DESCRIPTION, value);
 				return this;
 			}
 			public Builder setAuthorId(long value) {
-				mValues.put(Recipes.AUTHOR_ID, value);
+				mValues.put(AUTHOR_ID, value);
 				return this;
 			}
 		}
 	}
-	
 	/**
-	 * <p>Column definitions and helper methods to work with the Authors table.</p>
+	 * <p>Column definitions and helper methods to work with the Authors.</p>
 	 */
 	public static class Authors implements AuthorsColumns, BaseColumns {
 	    public static final Uri CONTENT_URI = 
 				BASE_CONTENT_URI.buildUpon().appendPath("authors").build();
 	
 		/**
-		 * <p>The content type for a cursor that contains many Authors table rows.</p>
+		 * <p>The content type for a cursor that contains many Authors rows.</p>
 		 */
 	    public static final String CONTENT_TYPE =
 	            "vnd.android.cursor.dir/vnd.recipesdb.authors";
-		/**
-		 * <p>The content type for a cursor that contains a single Authors table row.</p>
-		 */
-	    public static final String ITEM_CONTENT_TYPE =
-	            "vnd.android.cursor.item/vnd.recipesdb.authors";
 	
 		/**
-		 * <p>Builds a Uri with appended id for a row in the Authors table, 
+		 * <p>The content type for a cursor that contains a single Authors row.</p>
+		 */
+		public static final String ITEM_CONTENT_TYPE =
+			"vnd.android.cursor.item/vnd.recipesdb.authors";
+	
+		/**
+		 * <p>Builds a Uri with appended id for a row in Authors, 
 		 * eg:- content://com.robotoworks.examples.recipes.content.recipesdb/authors/123.</p>
 		 */
 	    public static Uri buildUriWithId(long id) {
@@ -175,23 +172,82 @@ public class RecipesDBContract  {
 			}
 			
 			public Builder setName(String value) {
-				mValues.put(Authors.NAME, value);
+				mValues.put(NAME, value);
 				return this;
 			}
 		}
 	}
-	
 
+	/**
+	 * <p>Column definitions and helper methods to work with the RecipesWithAuthors.</p>
+	 */
 	public static class RecipesWithAuthors implements RecipesWithAuthorsColumns, BaseColumns {
 	    public static final Uri CONTENT_URI = 
 				BASE_CONTENT_URI.buildUpon().appendPath("recipes_with_authors").build();
 	
+		/**
+		 * <p>The content type for a cursor that contains many RecipesWithAuthors rows.</p>
+		 */
 	    public static final String CONTENT_TYPE =
 	            "vnd.android.cursor.dir/vnd.recipesdb.recipes_with_authors";
+	
+		/**
+		 * <p>The content type for a cursor that contains a single RecipesWithAuthors row.</p>
+		 */
 		public static final String ITEM_CONTENT_TYPE =
 			"vnd.android.cursor.item/vnd.recipesdb.recipes_with_authors";
+	
+		/**
+		 * <p>Builds a Uri with appended id for a row in RecipesWithAuthors, 
+		 * eg:- content://com.robotoworks.examples.recipes.content.recipesdb/recipes_with_authors/123.</p>
+		 */
+	    public static Uri buildUriWithId(long id) {
+	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
+	    }
+	
+		public static int delete() {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+		}
+		
+		public static int delete(String where, String[] selectionArgs) {
+			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+		}
+		
+		/**
+		 * <p>Create a new Builder for RecipesWithAuthors</p>
+		 */
+		public static Builder newBuilder() {
+			return new Builder();
+		}
+		
+		/**
+		 * <p>Build and execute insert or update statements for RecipesWithAuthors.</p>
+		 *
+		 * <p>Use {@link RecipesWithAuthors#newBuilder()} to create new builder</p>
+		 */
+		public static class Builder extends AbstractValuesBuilder {
+			private Builder() {
+				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+			}
+			
+			public Builder setRecipeTitle(String value) {
+				mValues.put(RecipesWithAuthors.RECIPE_TITLE, value);
+				return this;
+			}
+			public Builder setRecipeDescription(String value) {
+				mValues.put(RecipesWithAuthors.RECIPE_DESCRIPTION, value);
+				return this;
+			}
+			public Builder setAuthorId(long value) {
+				mValues.put(RecipesWithAuthors.AUTHOR_ID, value);
+				return this;
+			}
+			public Builder setAuthorName(String value) {
+				mValues.put(RecipesWithAuthors.AUTHOR_NAME, value);
+				return this;
+			}
+		}
 	}
-
 	
 
 	private RecipesDBContract(){}

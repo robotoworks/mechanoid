@@ -2,8 +2,6 @@ package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.robotoworks.mechanoid.common.util.Strings;
-import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
@@ -12,6 +10,8 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -78,73 +78,35 @@ public class ContentProviderGenerator {
     String _name = _database.getName();
     String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "");
-    _builder.append("OpenHelper.Tables;");
+    _builder.append("OpenHelper.Sources;");
     _builder.newLineIfNotEmpty();
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
-      for(final CreateTableStatement tbl : _tables) {
+      final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
+          public Boolean apply(final CreateTableStatement it) {
+            boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(it);
+            return Boolean.valueOf(_hasAndroidPrimaryKey);
+          }
+        };
+      Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables, _function);
+      for(final CreateTableStatement tbl : _filter) {
         _builder.append("import ");
         String _packageName_2 = model.getPackageName();
         _builder.append(_packageName_2, "");
         _builder.append(".");
-        DatabaseBlock _database_1 = model.getDatabase();
-        String _name_1 = _database_1.getName();
+        String _name_1 = tbl.getName();
         String _pascalize_1 = Strings.pascalize(_name_1);
         _builder.append(_pascalize_1, "");
-        _builder.append("Contract.");
-        String _name_2 = tbl.getName();
-        String _pascalize_2 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_2, "");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      Collection<CreateViewStatement> _views = snapshot.getViews();
-      for(final CreateViewStatement vw : _views) {
-        _builder.append("import ");
-        String _packageName_3 = model.getPackageName();
-        _builder.append(_packageName_3, "");
-        _builder.append(".");
-        DatabaseBlock _database_2 = model.getDatabase();
-        String _name_3 = _database_2.getName();
-        String _pascalize_3 = Strings.pascalize(_name_3);
-        _builder.append(_pascalize_3, "");
-        _builder.append("Contract.");
-        String _name_4 = vw.getName();
-        String _pascalize_4 = Strings.pascalize(_name_4);
-        _builder.append(_pascalize_4, "");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
-      final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
-          public Boolean apply(final CreateTableStatement it) {
-            boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(it);
-            return Boolean.valueOf(_hasAndroidPrimaryKey);
-          }
-        };
-      Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables_1, _function);
-      for(final CreateTableStatement tbl_1 : _filter) {
-        _builder.append("import ");
-        String _packageName_4 = model.getPackageName();
-        _builder.append(_packageName_4, "");
-        _builder.append(".");
-        String _name_5 = tbl_1.getName();
-        String _pascalize_5 = Strings.pascalize(_name_5);
-        _builder.append(_pascalize_5, "");
         _builder.append("Record;");
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.newLine();
     _builder.append("public abstract class Abstract");
-    DatabaseBlock _database_3 = model.getDatabase();
-    String _name_6 = _database_3.getName();
-    String _pascalize_6 = Strings.pascalize(_name_6);
-    _builder.append(_pascalize_6, "");
+    DatabaseBlock _database_1 = model.getDatabase();
+    String _name_2 = _database_1.getName();
+    String _pascalize_2 = Strings.pascalize(_name_2);
+    _builder.append(_pascalize_2, "");
     _builder.append("ContentProvider extends MechanoidContentProvider {");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -160,12 +122,12 @@ public class ContentProviderGenerator {
     int counter = (-1);
     _builder.newLineIfNotEmpty();
     {
-      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
-      for(final CreateTableStatement tbl_2 : _tables_2) {
+      Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
+      for(final CreateTableStatement tbl_1 : _tables_1) {
         _builder.append("\t");
         _builder.append("private static final int ");
-        String _name_7 = tbl_2.getName();
-        String _underscore = Strings.underscore(_name_7);
+        String _name_3 = tbl_1.getName();
+        String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "	");
         _builder.append(" = ");
@@ -175,12 +137,12 @@ public class ContentProviderGenerator {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl_2);
+          boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(tbl_1);
           if (_hasAndroidPrimaryKey) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_8 = tbl_2.getName();
-            String _underscore_1 = Strings.underscore(_name_8);
+            String _name_4 = tbl_1.getName();
+            String _underscore_1 = Strings.underscore(_name_4);
             String _upperCase_1 = _underscore_1.toUpperCase();
             _builder.append(_upperCase_1, "	");
             _builder.append("_ID = ");
@@ -195,12 +157,12 @@ public class ContentProviderGenerator {
     }
     _builder.newLine();
     {
-      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
-      for(final CreateViewStatement vw_1 : _views_1) {
+      Collection<CreateViewStatement> _views = snapshot.getViews();
+      for(final CreateViewStatement vw : _views) {
         _builder.append("\t");
         _builder.append("private static final int ");
-        String _name_9 = vw_1.getName();
-        String _underscore_2 = Strings.underscore(_name_9);
+        String _name_5 = vw.getName();
+        String _underscore_2 = Strings.underscore(_name_5);
         String _upperCase_2 = _underscore_2.toUpperCase();
         _builder.append(_upperCase_2, "	");
         _builder.append(" = ");
@@ -210,12 +172,12 @@ public class ContentProviderGenerator {
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(vw_1);
+          boolean _hasAndroidPrimaryKey_1 = ModelUtil.hasAndroidPrimaryKey(vw);
           if (_hasAndroidPrimaryKey_1) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_10 = vw_1.getName();
-            String _underscore_3 = Strings.underscore(_name_10);
+            String _name_6 = vw.getName();
+            String _underscore_3 = Strings.underscore(_name_6);
             String _upperCase_3 = _underscore_3.toUpperCase();
             _builder.append(_upperCase_3, "	");
             _builder.append("_ID = ");
@@ -231,13 +193,13 @@ public class ContentProviderGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      DatabaseBlock _database_4 = model.getDatabase();
-      ConfigBlock _config = _database_4.getConfig();
+      DatabaseBlock _database_2 = model.getDatabase();
+      ConfigBlock _config = _database_2.getConfig();
       boolean _notEquals = (!Objects.equal(_config, null));
       if (_notEquals) {
         {
-          DatabaseBlock _database_5 = model.getDatabase();
-          ConfigBlock _config_1 = _database_5.getConfig();
+          DatabaseBlock _database_3 = model.getDatabase();
+          ConfigBlock _config_1 = _database_3.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
@@ -248,8 +210,8 @@ public class ContentProviderGenerator {
           for(final ConfigurationStatement a : _filter_1) {
             _builder.append("\t");
             _builder.append("private static final int ");
-            String _name_11 = ((ActionStatement) a).getName();
-            String _underscore_4 = Strings.underscore(_name_11);
+            String _name_7 = ((ActionStatement) a).getName();
+            String _underscore_4 = Strings.underscore(_name_7);
             String _upperCase_4 = _underscore_4.toUpperCase();
             _builder.append(_upperCase_4, "	");
             _builder.append(" = ");
@@ -282,33 +244,43 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
-      for(final CreateTableStatement tbl_3 : _tables_3) {
+      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
+      for(final CreateTableStatement tbl_2 : _tables_2) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
-        String _name_12 = tbl_3.getName();
-        String _underscore_5 = Strings.underscore(_name_12);
+        String _name_8 = tbl_2.getName();
+        String _underscore_5 = Strings.underscore(_name_8);
         String _upperCase_5 = _underscore_5.toUpperCase();
         _builder.append(_upperCase_5, "		");
         _builder.append("] = ");
-        String _name_13 = tbl_3.getName();
-        String _pascalize_7 = Strings.pascalize(_name_13);
-        _builder.append(_pascalize_7, "		");
+        DatabaseBlock _database_4 = model.getDatabase();
+        String _name_9 = _database_4.getName();
+        String _pascalize_3 = Strings.pascalize(_name_9);
+        _builder.append(_pascalize_3, "		");
+        _builder.append("Contract.");
+        String _name_10 = tbl_2.getName();
+        String _pascalize_4 = Strings.pascalize(_name_10);
+        _builder.append(_pascalize_4, "		");
         _builder.append(".CONTENT_TYPE;");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(tbl_3);
+          boolean _hasAndroidPrimaryKey_2 = ModelUtil.hasAndroidPrimaryKey(tbl_2);
           if (_hasAndroidPrimaryKey_2) {
             _builder.append("\t\t");
             _builder.append("sContentTypes[");
-            String _name_14 = tbl_3.getName();
-            String _underscore_6 = Strings.underscore(_name_14);
+            String _name_11 = tbl_2.getName();
+            String _underscore_6 = Strings.underscore(_name_11);
             String _upperCase_6 = _underscore_6.toUpperCase();
             _builder.append(_upperCase_6, "		");
             _builder.append("_ID] = ");
-            String _name_15 = tbl_3.getName();
-            String _pascalize_8 = Strings.pascalize(_name_15);
-            _builder.append(_pascalize_8, "		");
+            DatabaseBlock _database_5 = model.getDatabase();
+            String _name_12 = _database_5.getName();
+            String _pascalize_5 = Strings.pascalize(_name_12);
+            _builder.append(_pascalize_5, "		");
+            _builder.append("Contract.");
+            String _name_13 = tbl_2.getName();
+            String _pascalize_6 = Strings.pascalize(_name_13);
+            _builder.append(_pascalize_6, "		");
             _builder.append(".ITEM_CONTENT_TYPE;");
             _builder.newLineIfNotEmpty();
           }
@@ -316,31 +288,41 @@ public class ContentProviderGenerator {
       }
     }
     {
-      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
-      for(final CreateViewStatement vw_2 : _views_2) {
+      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
+      for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t\t");
         _builder.append("sContentTypes[");
-        String _name_16 = vw_2.getName();
-        String _underscore_7 = Strings.underscore(_name_16);
+        String _name_14 = vw_1.getName();
+        String _underscore_7 = Strings.underscore(_name_14);
         String _upperCase_7 = _underscore_7.toUpperCase();
         _builder.append(_upperCase_7, "		");
         _builder.append("] = ");
-        String _name_17 = vw_2.getName();
-        String _pascalize_9 = Strings.pascalize(_name_17);
-        _builder.append(_pascalize_9, "		");
+        DatabaseBlock _database_6 = model.getDatabase();
+        String _name_15 = _database_6.getName();
+        String _pascalize_7 = Strings.pascalize(_name_15);
+        _builder.append(_pascalize_7, "		");
+        _builder.append("Contract.");
+        String _name_16 = vw_1.getName();
+        String _pascalize_8 = Strings.pascalize(_name_16);
+        _builder.append(_pascalize_8, "		");
         _builder.append(".CONTENT_TYPE;");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_3 = Extensions.hasAndroidPrimaryKey(vw_2);
+          boolean _hasAndroidPrimaryKey_3 = ModelUtil.hasAndroidPrimaryKey(vw_1);
           if (_hasAndroidPrimaryKey_3) {
             _builder.append("\t\t");
             _builder.append("sContentTypes[");
-            String _name_18 = vw_2.getName();
-            String _underscore_8 = Strings.underscore(_name_18);
+            String _name_17 = vw_1.getName();
+            String _underscore_8 = Strings.underscore(_name_17);
             String _upperCase_8 = _underscore_8.toUpperCase();
             _builder.append(_upperCase_8, "		");
             _builder.append("_ID] = ");
-            String _name_19 = vw_2.getName();
+            DatabaseBlock _database_7 = model.getDatabase();
+            String _name_18 = _database_7.getName();
+            String _pascalize_9 = Strings.pascalize(_name_18);
+            _builder.append(_pascalize_9, "		");
+            _builder.append("Contract.");
+            String _name_19 = vw_1.getName();
             String _pascalize_10 = Strings.pascalize(_name_19);
             _builder.append(_pascalize_10, "		");
             _builder.append(".ITEM_CONTENT_TYPE;");
@@ -362,39 +344,39 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("final String authority = ");
-    DatabaseBlock _database_6 = model.getDatabase();
-    String _name_20 = _database_6.getName();
+    DatabaseBlock _database_8 = model.getDatabase();
+    String _name_20 = _database_8.getName();
     String _pascalize_11 = Strings.pascalize(_name_20);
     _builder.append(_pascalize_11, "        ");
     _builder.append("Contract.CONTENT_AUTHORITY;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("// Tables");
+    _builder.append("// Sources");
     _builder.newLine();
     {
-      Collection<CreateTableStatement> _tables_4 = snapshot.getTables();
-      for(final CreateTableStatement tbl_4 : _tables_4) {
+      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
+      for(final CreateTableStatement tbl_3 : _tables_3) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_21 = tbl_4.getName();
+        String _name_21 = tbl_3.getName();
         _builder.append(_name_21, "		");
         _builder.append("\", ");
-        String _name_22 = tbl_4.getName();
+        String _name_22 = tbl_3.getName();
         String _underscore_9 = Strings.underscore(_name_22);
         String _upperCase_9 = _underscore_9.toUpperCase();
         _builder.append(_upperCase_9, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_4 = Extensions.hasAndroidPrimaryKey(tbl_4);
+          boolean _hasAndroidPrimaryKey_4 = ModelUtil.hasAndroidPrimaryKey(tbl_3);
           if (_hasAndroidPrimaryKey_4) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_23 = tbl_4.getName();
+            String _name_23 = tbl_3.getName();
             _builder.append(_name_23, "		");
             _builder.append("/#\", ");
-            String _name_24 = tbl_4.getName();
+            String _name_24 = tbl_3.getName();
             String _underscore_10 = Strings.underscore(_name_24);
             String _upperCase_10 = _underscore_10.toUpperCase();
             _builder.append(_upperCase_10, "		");
@@ -409,28 +391,28 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      Collection<CreateViewStatement> _views_3 = snapshot.getViews();
-      for(final CreateViewStatement vw_3 : _views_3) {
+      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
+      for(final CreateViewStatement vw_2 : _views_2) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_25 = vw_3.getName();
+        String _name_25 = vw_2.getName();
         _builder.append(_name_25, "		");
         _builder.append("\", ");
-        String _name_26 = vw_3.getName();
+        String _name_26 = vw_2.getName();
         String _underscore_11 = Strings.underscore(_name_26);
         String _upperCase_11 = _underscore_11.toUpperCase();
         _builder.append(_upperCase_11, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_5 = Extensions.hasAndroidPrimaryKey(vw_3);
+          boolean _hasAndroidPrimaryKey_5 = ModelUtil.hasAndroidPrimaryKey(vw_2);
           if (_hasAndroidPrimaryKey_5) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_27 = vw_3.getName();
+            String _name_27 = vw_2.getName();
             _builder.append(_name_27, "		");
             _builder.append("/#\", ");
-            String _name_28 = vw_3.getName();
+            String _name_28 = vw_2.getName();
             String _underscore_12 = Strings.underscore(_name_28);
             String _upperCase_12 = _underscore_12.toUpperCase();
             _builder.append(_upperCase_12, "		");
@@ -445,13 +427,13 @@ public class ContentProviderGenerator {
     _builder.append("// User Actions");
     _builder.newLine();
     {
-      DatabaseBlock _database_7 = model.getDatabase();
-      ConfigBlock _config_2 = _database_7.getConfig();
+      DatabaseBlock _database_9 = model.getDatabase();
+      ConfigBlock _config_2 = _database_9.getConfig();
       boolean _notEquals_1 = (!Objects.equal(_config_2, null));
       if (_notEquals_1) {
         {
-          DatabaseBlock _database_8 = model.getDatabase();
-          ConfigBlock _config_3 = _database_8.getConfig();
+          DatabaseBlock _database_10 = model.getDatabase();
+          ConfigBlock _config_3 = _database_10.getConfig();
           EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
@@ -657,8 +639,8 @@ public class ContentProviderGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("return new ");
-    DatabaseBlock _database_9 = model.getDatabase();
-    String _name_30 = _database_9.getName();
+    DatabaseBlock _database_11 = model.getDatabase();
+    String _name_30 = _database_11.getName();
     String _pascalize_12 = Strings.pascalize(_name_30);
     _builder.append(_pascalize_12, "        ");
     _builder.append("OpenHelper(context);");
@@ -835,11 +817,11 @@ public class ContentProviderGenerator {
     _builder.append("switch(id) {");
     _builder.newLine();
     {
-      Collection<CreateTableStatement> _tables_5 = snapshot.getTables();
-      for(final CreateTableStatement tbl_5 : _tables_5) {
+      Collection<CreateTableStatement> _tables_4 = snapshot.getTables();
+      for(final CreateTableStatement tbl_4 : _tables_4) {
         _builder.append("\t\t\t");
         _builder.append("case ");
-        String _name_31 = tbl_5.getName();
+        String _name_31 = tbl_4.getName();
         String _underscore_14 = Strings.underscore(_name_31);
         String _upperCase_14 = _underscore_14.toUpperCase();
         _builder.append(_upperCase_14, "			");
@@ -848,17 +830,17 @@ public class ContentProviderGenerator {
         _builder.append("\t\t\t");
         _builder.append("\t");
         _builder.append("return create");
-        String _name_32 = tbl_5.getName();
+        String _name_32 = tbl_4.getName();
         String _pascalize_13 = Strings.pascalize(_name_32);
         _builder.append(_pascalize_13, "				");
         _builder.append("Actions();");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_6 = Extensions.hasAndroidPrimaryKey(tbl_5);
+          boolean _hasAndroidPrimaryKey_6 = ModelUtil.hasAndroidPrimaryKey(tbl_4);
           if (_hasAndroidPrimaryKey_6) {
             _builder.append("\t\t\t");
             _builder.append("case ");
-            String _name_33 = tbl_5.getName();
+            String _name_33 = tbl_4.getName();
             String _underscore_15 = Strings.underscore(_name_33);
             String _upperCase_15 = _underscore_15.toUpperCase();
             _builder.append(_upperCase_15, "			");
@@ -867,7 +849,7 @@ public class ContentProviderGenerator {
             _builder.append("\t\t\t");
             _builder.append("\t");
             _builder.append("return create");
-            String _name_34 = tbl_5.getName();
+            String _name_34 = tbl_4.getName();
             String _pascalize_14 = Strings.pascalize(_name_34);
             _builder.append(_pascalize_14, "				");
             _builder.append("ByIdActions();");
@@ -877,11 +859,11 @@ public class ContentProviderGenerator {
       }
     }
     {
-      Collection<CreateViewStatement> _views_4 = snapshot.getViews();
-      for(final CreateViewStatement vw_4 : _views_4) {
+      Collection<CreateViewStatement> _views_3 = snapshot.getViews();
+      for(final CreateViewStatement vw_3 : _views_3) {
         _builder.append("\t\t\t");
         _builder.append("case ");
-        String _name_35 = vw_4.getName();
+        String _name_35 = vw_3.getName();
         String _underscore_16 = Strings.underscore(_name_35);
         String _upperCase_16 = _underscore_16.toUpperCase();
         _builder.append(_upperCase_16, "			");
@@ -890,17 +872,17 @@ public class ContentProviderGenerator {
         _builder.append("\t\t\t");
         _builder.append("\t");
         _builder.append("return create");
-        String _name_36 = vw_4.getName();
+        String _name_36 = vw_3.getName();
         String _pascalize_15 = Strings.pascalize(_name_36);
         _builder.append(_pascalize_15, "				");
         _builder.append("Actions();");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_7 = Extensions.hasAndroidPrimaryKey(vw_4);
+          boolean _hasAndroidPrimaryKey_7 = ModelUtil.hasAndroidPrimaryKey(vw_3);
           if (_hasAndroidPrimaryKey_7) {
             _builder.append("\t\t\t");
             _builder.append("case ");
-            String _name_37 = vw_4.getName();
+            String _name_37 = vw_3.getName();
             String _underscore_17 = Strings.underscore(_name_37);
             String _upperCase_17 = _underscore_17.toUpperCase();
             _builder.append(_upperCase_17, "			");
@@ -909,7 +891,7 @@ public class ContentProviderGenerator {
             _builder.append("\t\t\t");
             _builder.append("\t");
             _builder.append("return create");
-            String _name_38 = vw_4.getName();
+            String _name_38 = vw_3.getName();
             String _pascalize_16 = Strings.pascalize(_name_38);
             _builder.append(_pascalize_16, "				");
             _builder.append("ByIdActions();");
@@ -919,13 +901,13 @@ public class ContentProviderGenerator {
       }
     }
     {
-      DatabaseBlock _database_10 = model.getDatabase();
-      ConfigBlock _config_4 = _database_10.getConfig();
+      DatabaseBlock _database_12 = model.getDatabase();
+      ConfigBlock _config_4 = _database_12.getConfig();
       boolean _notEquals_2 = (!Objects.equal(_config_4, null));
       if (_notEquals_2) {
         {
-          DatabaseBlock _database_11 = model.getDatabase();
-          ConfigBlock _config_5 = _database_11.getConfig();
+          DatabaseBlock _database_13 = model.getDatabase();
+          ConfigBlock _config_5 = _database_13.getConfig();
           EList<ConfigurationStatement> _statements_2 = _config_5.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
@@ -969,30 +951,30 @@ public class ContentProviderGenerator {
     _builder.append("    ");
     _builder.newLine();
     {
-      Collection<CreateTableStatement> _tables_6 = snapshot.getTables();
-      for(final CreateTableStatement tbl_6 : _tables_6) {
+      Collection<CreateTableStatement> _tables_5 = snapshot.getTables();
+      for(final CreateTableStatement tbl_5 : _tables_5) {
         {
-          boolean _hasAndroidPrimaryKey_8 = Extensions.hasAndroidPrimaryKey(tbl_6);
+          boolean _hasAndroidPrimaryKey_8 = ModelUtil.hasAndroidPrimaryKey(tbl_5);
           if (_hasAndroidPrimaryKey_8) {
             _builder.append("    ");
             _builder.append("protected ContentProviderActions create");
-            String _name_41 = tbl_6.getName();
+            String _name_41 = tbl_5.getName();
             String _pascalize_18 = Strings.pascalize(_name_41);
             _builder.append(_pascalize_18, "    ");
             _builder.append("ByIdActions() {");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("\t");
-            _builder.append("return new DefaultContentProviderActions(Tables.");
-            String _name_42 = tbl_6.getName();
+            _builder.append("return new DefaultContentProviderActions(Sources.");
+            String _name_42 = tbl_5.getName();
             String _underscore_19 = Strings.underscore(_name_42);
             String _upperCase_19 = _underscore_19.toUpperCase();
             _builder.append(_upperCase_19, "    	");
             _builder.append(", true, ");
             {
-              boolean _hasAndroidPrimaryKey_9 = Extensions.hasAndroidPrimaryKey(tbl_6);
+              boolean _hasAndroidPrimaryKey_9 = ModelUtil.hasAndroidPrimaryKey(tbl_5);
               if (_hasAndroidPrimaryKey_9) {
-                String _name_43 = tbl_6.getName();
+                String _name_43 = tbl_5.getName();
                 String _pascalize_19 = Strings.pascalize(_name_43);
                 _builder.append(_pascalize_19, "    	");
                 _builder.append("Record.getFactory()");
@@ -1011,23 +993,23 @@ public class ContentProviderGenerator {
         }
         _builder.append("    ");
         _builder.append("protected ContentProviderActions create");
-        String _name_44 = tbl_6.getName();
+        String _name_44 = tbl_5.getName();
         String _pascalize_20 = Strings.pascalize(_name_44);
         _builder.append(_pascalize_20, "    ");
         _builder.append("Actions() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("\t");
-        _builder.append("return new DefaultContentProviderActions(Tables.");
-        String _name_45 = tbl_6.getName();
+        _builder.append("return new DefaultContentProviderActions(Sources.");
+        String _name_45 = tbl_5.getName();
         String _underscore_20 = Strings.underscore(_name_45);
         String _upperCase_20 = _underscore_20.toUpperCase();
         _builder.append(_upperCase_20, "    	");
         _builder.append(", false, ");
         {
-          boolean _hasAndroidPrimaryKey_10 = Extensions.hasAndroidPrimaryKey(tbl_6);
+          boolean _hasAndroidPrimaryKey_10 = ModelUtil.hasAndroidPrimaryKey(tbl_5);
           if (_hasAndroidPrimaryKey_10) {
-            String _name_46 = tbl_6.getName();
+            String _name_46 = tbl_5.getName();
             String _pascalize_21 = Strings.pascalize(_name_46);
             _builder.append(_pascalize_21, "    	");
             _builder.append("Record.getFactory()");
@@ -1045,10 +1027,10 @@ public class ContentProviderGenerator {
       }
     }
     {
-      Collection<CreateViewStatement> _views_5 = snapshot.getViews();
-      for(final CreateViewStatement view : _views_5) {
+      Collection<CreateViewStatement> _views_4 = snapshot.getViews();
+      for(final CreateViewStatement view : _views_4) {
         {
-          boolean _hasAndroidPrimaryKey_11 = Extensions.hasAndroidPrimaryKey(view);
+          boolean _hasAndroidPrimaryKey_11 = ModelUtil.hasAndroidPrimaryKey(view);
           if (_hasAndroidPrimaryKey_11) {
             _builder.append("    ");
             _builder.append("protected ContentProviderActions create");
@@ -1059,12 +1041,24 @@ public class ContentProviderGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("\t");
-            _builder.append("return new DefaultContentProviderActions(Tables.");
+            _builder.append("return new DefaultContentProviderActions(Sources.");
             String _name_48 = view.getName();
             String _underscore_21 = Strings.underscore(_name_48);
             String _upperCase_21 = _underscore_21.toUpperCase();
             _builder.append(_upperCase_21, "    	");
-            _builder.append(", true);");
+            _builder.append(", true, ");
+            {
+              boolean _hasAndroidPrimaryKey_12 = ModelUtil.hasAndroidPrimaryKey(view);
+              if (_hasAndroidPrimaryKey_12) {
+                String _name_49 = view.getName();
+                String _pascalize_23 = Strings.pascalize(_name_49);
+                _builder.append(_pascalize_23, "    	");
+                _builder.append("Record.getFactory()");
+              } else {
+                _builder.append("null");
+              }
+            }
+            _builder.append(");");
             _builder.newLineIfNotEmpty();
             _builder.append("    ");
             _builder.append("}");
@@ -1075,19 +1069,31 @@ public class ContentProviderGenerator {
         }
         _builder.append("    ");
         _builder.append("protected ContentProviderActions create");
-        String _name_49 = view.getName();
-        String _pascalize_23 = Strings.pascalize(_name_49);
-        _builder.append(_pascalize_23, "    ");
+        String _name_50 = view.getName();
+        String _pascalize_24 = Strings.pascalize(_name_50);
+        _builder.append(_pascalize_24, "    ");
         _builder.append("Actions() {");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("\t");
-        _builder.append("return new DefaultContentProviderActions(Tables.");
-        String _name_50 = view.getName();
-        String _underscore_22 = Strings.underscore(_name_50);
+        _builder.append("return new DefaultContentProviderActions(Sources.");
+        String _name_51 = view.getName();
+        String _underscore_22 = Strings.underscore(_name_51);
         String _upperCase_22 = _underscore_22.toUpperCase();
         _builder.append(_upperCase_22, "    	");
-        _builder.append(", false);");
+        _builder.append(", false, ");
+        {
+          boolean _hasAndroidPrimaryKey_13 = ModelUtil.hasAndroidPrimaryKey(view);
+          if (_hasAndroidPrimaryKey_13) {
+            String _name_52 = view.getName();
+            String _pascalize_25 = Strings.pascalize(_name_52);
+            _builder.append(_pascalize_25, "    	");
+            _builder.append("Record.getFactory()");
+          } else {
+            _builder.append("null");
+          }
+        }
+        _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("}");
@@ -1097,21 +1103,21 @@ public class ContentProviderGenerator {
       }
     }
     {
-      DatabaseBlock _database_12 = model.getDatabase();
-      ConfigBlock _config_6 = _database_12.getConfig();
+      DatabaseBlock _database_14 = model.getDatabase();
+      ConfigBlock _config_6 = _database_14.getConfig();
       boolean _notEquals_3 = (!Objects.equal(_config_6, null));
       if (_notEquals_3) {
         {
-          DatabaseBlock _database_13 = model.getDatabase();
-          ConfigBlock _config_7 = _database_13.getConfig();
+          DatabaseBlock _database_15 = model.getDatabase();
+          ConfigBlock _config_7 = _database_15.getConfig();
           EList<ConfigurationStatement> _statements_3 = _config_7.getStatements();
           Iterable<ActionStatement> _filter_4 = Iterables.<ActionStatement>filter(_statements_3, ActionStatement.class);
           for(final ActionStatement a_3 : _filter_4) {
             _builder.append("\t");
             _builder.append("protected ContentProviderActions create");
-            String _name_51 = a_3.getName();
-            String _pascalize_24 = Strings.pascalize(_name_51);
-            _builder.append(_pascalize_24, "	");
+            String _name_53 = a_3.getName();
+            String _pascalize_26 = Strings.pascalize(_name_53);
+            _builder.append(_pascalize_26, "	");
             _builder.append("Actions() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");

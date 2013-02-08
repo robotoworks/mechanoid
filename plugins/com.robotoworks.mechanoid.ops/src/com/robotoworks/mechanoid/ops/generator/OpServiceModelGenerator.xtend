@@ -8,8 +8,8 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 import com.google.inject.Inject
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import static extension com.robotoworks.mechanoid.text.Strings.*
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation
 
 class OpServiceModelGenerator implements IGenerator {

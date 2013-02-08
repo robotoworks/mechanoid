@@ -1,10 +1,9 @@
 package com.robotoworks.mechanoid.sqlite.generator
 
 import com.google.inject.Inject
-import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class SqliteOpenHelperGenerator {
 		@Inject extension SqliteDatabaseStatementGenerator
@@ -32,7 +31,7 @@ class SqliteOpenHelperGenerator {
 				
 					public static final int VERSION = «model.database.migrations.size»;
 				
-					public interface Tables {
+					public interface Sources {
 						«FOR table : snapshot.tables»
 						String «table.name.underscore.toUpperCase» = "«table.name»";
 						«ENDFOR»

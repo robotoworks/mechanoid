@@ -17,10 +17,10 @@
 	
 	// Register the brush file with WordPress
 	function syntaxhighlighter_mechanoid_regscript() {
-		wp_register_script( 'syntaxhighlighter-brush-mechprefs', plugins_url('shMechPrefs.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
-		wp_register_script( 'syntaxhighlighter-brush-mechnet', plugins_url('shMechNet.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
-		wp_register_script( 'syntaxhighlighter-brush-mechops', plugins_url('shMechOps.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
-		wp_register_script( 'syntaxhighlighter-brush-mechdb', plugins_url('shMechDb.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
+		wp_register_script( 'syntaxhighlighter-brush-mechprefs', plugins_url('shBrushMechPrefs.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
+		wp_register_script( 'syntaxhighlighter-brush-mechnet', plugins_url('shBrushMechNet.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
+		wp_register_script( 'syntaxhighlighter-brush-mechops', plugins_url('shBrushMechOps.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
+		wp_register_script( 'syntaxhighlighter-brush-mechdb', plugins_url('shBrushMechDb.js', __FILE__ ), array('syntaxhighlighter-core'), '1.2.3');
 	}
 	
 	// Filter SyntaxHighlighter Evolved's language array

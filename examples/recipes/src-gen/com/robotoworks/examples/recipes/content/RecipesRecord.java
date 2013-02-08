@@ -107,6 +107,7 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
     	super(Recipes.CONTENT_URI);
     	
 		setId(in.readLong());
+		
 		mTitle = in.readString();
 		mDescription = in.readString();
 		mAuthorId = in.readLong();
@@ -129,11 +130,11 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		dest.writeString(mTitle);
 		dest.writeString(mDescription);
 		dest.writeLong(mAuthorId);
-	    dest.writeBooleanArray(new boolean[] {
+		dest.writeBooleanArray(new boolean[] {
 			mTitleDirty,
 			mDescriptionDirty,
 			mAuthorIdDirty
-	    });
+		});
 	}
 	
 	@Override

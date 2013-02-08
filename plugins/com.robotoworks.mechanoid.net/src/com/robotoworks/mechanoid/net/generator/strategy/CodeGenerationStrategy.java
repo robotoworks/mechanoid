@@ -1,15 +1,16 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
+import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
-import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.Declaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
 import com.robotoworks.mechanoid.net.netModel.Model;
-import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import com.robotoworks.mechanoid.text.Strings;
 
 public class CodeGenerationStrategy {
 	private ClientGenerator clientGenerator;
@@ -33,12 +34,12 @@ public class CodeGenerationStrategy {
 				Client client = (Client) decl;
 				
 				// Generate each client file
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), client.getName()), getClientGenerator().generate(client, module));
+				fsa.generateFile(Strings.resolveFileName(module.getPackageName(), client.getName()), getClientGenerator().generate(client, module));
 				
 				// Generate client methods for each client
 				for(HttpMethod method:IterableExtensions.filter(client.getBlocks(), HttpMethod.class)){
-					String requestFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Request");
-					String responseFileName = ModelExtensions.resolveFileName(module.getPackageName(), ModelExtensions.pascalize(method.getName()) + "Result");
+					String requestFileName = Strings.resolveFileName(module.getPackageName(), Strings.pascalize(method.getName()) + "Request");
+					String responseFileName = Strings.resolveFileName(module.getPackageName(), Strings.pascalize(method.getName()) + "Result");
 					fsa.generateFile(requestFileName, getRequestGenerator().generate(method, module, client));
 					fsa.generateFile(responseFileName, getResponseGenerator().generate(method, module, client));
 				}
@@ -46,11 +47,11 @@ public class CodeGenerationStrategy {
 				ComplexTypeDeclaration lit = (ComplexTypeDeclaration)decl;
 
 				// Generate transformers
-				fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName() + "Transformer"), getTransformerGenerator().generate(lit, module));
+				fsa.generateFile(Strings.resolveFileName(module.getPackageName(), lit.getName() + "Transformer"), getTransformerGenerator().generate(lit, module));
 				
 				// Generate types
 				if(lit.isGen()){
-					fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), lit.getName()), getTypeGenerator().generate(lit, module));
+					fsa.generateFile(Strings.resolveFileName(module.getPackageName(), lit.getName()), getTypeGenerator().generate(lit, module));
 				}		
 			} else if(decl instanceof EnumTypeDeclaration) {
 				EnumTypeDeclaration typeDecl = (EnumTypeDeclaration)decl;
@@ -58,9 +59,9 @@ public class CodeGenerationStrategy {
 				// Generate enum types
 				if(typeDecl.isGen()){
 					if(typeDecl.getSuperType() != null) {
-						fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), typeDecl.getName()), getIntegerEnumTypeGenerator().generate(typeDecl, module));						
+						fsa.generateFile(Strings.resolveFileName(module.getPackageName(), typeDecl.getName()), getIntegerEnumTypeGenerator().generate(typeDecl, module));						
 					} else {						
-						fsa.generateFile(ModelExtensions.resolveFileName(module.getPackageName(), typeDecl.getName()), getStringEnumTypeGenerator().generate(typeDecl, module));
+						fsa.generateFile(Strings.resolveFileName(module.getPackageName(), typeDecl.getName()), getStringEnumTypeGenerator().generate(typeDecl, module));
 					}
 				}		
 			}

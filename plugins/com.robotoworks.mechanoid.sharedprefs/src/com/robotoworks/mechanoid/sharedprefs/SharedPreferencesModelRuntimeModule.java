@@ -7,7 +7,7 @@ import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 
 import com.google.inject.Binder;
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sharedprefs.conversion.ValueConverters;
 
 /**

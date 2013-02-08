@@ -3,9 +3,9 @@
 */
 package com.robotoworks.mechanoid.sqlite.parser.antlr;
 
-import com.google.inject.Inject;
-
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
+
+import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
 
 public class SqliteModelParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {

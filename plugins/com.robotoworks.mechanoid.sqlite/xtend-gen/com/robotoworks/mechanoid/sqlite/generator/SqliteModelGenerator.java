@@ -2,20 +2,21 @@ package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import com.robotoworks.mechanoid.common.util.Strings;
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sqlite.generator.ActiveRecordGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderContractGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.ContentProviderGenerator;
-import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot.Builder;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteOpenHelperGenerator;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
+import com.robotoworks.mechanoid.text.Strings;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -103,9 +104,16 @@ public class SqliteModelGenerator implements IGenerator {
         }
       };
     IterableExtensions.<CreateTableStatement>forEach(_tables, _function);
+    Collection<CreateViewStatement> _views = snapshot.getViews();
+    final Procedure1<CreateViewStatement> _function_1 = new Procedure1<CreateViewStatement>() {
+        public void apply(final CreateViewStatement statement) {
+          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
+        }
+      };
+    IterableExtensions.<CreateViewStatement>forEach(_views, _function_1);
     DatabaseBlock _database_5 = model.getDatabase();
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_1 = new Procedure2<MigrationBlock,Integer>() {
+    final Procedure2<MigrationBlock,Integer> _function_2 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -114,11 +122,27 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations, _function_1);
+    IterableExtensions.<MigrationBlock>forEach(_migrations, _function_2);
   }
   
   public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {
-    boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(statement);
+    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(statement);
+    if (_hasAndroidPrimaryKey) {
+      EList<EObject> _contents = resource.getContents();
+      EObject _head = IterableExtensions.<EObject>head(_contents);
+      Model model = ((Model) _head);
+      String _packageName = model.getPackageName();
+      String _name = statement.getName();
+      String _pascalize = Strings.pascalize(_name);
+      String _concat = _pascalize.concat("Record");
+      String genFileName = Strings.resolveFileName(_packageName, _concat);
+      CharSequence _generate = this.mActiveRecordGenerator.generate(model, statement);
+      fsa.generateFile(genFileName, _generate);
+    }
+  }
+  
+  public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateViewStatement statement) {
+    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(statement);
     if (_hasAndroidPrimaryKey) {
       EList<EObject> _contents = resource.getContents();
       EObject _head = IterableExtensions.<EObject>head(_contents);

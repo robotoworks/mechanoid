@@ -15,9 +15,11 @@ Require-Bundle: com.robotoworks.mechanoid.ops;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare,
- com.robotoworks.mechanoid.common
-Import-Package: org.apache.log4j
+ org.eclipse.compare
+Import-Package: com.robotoworks.mechanoid.ui.builder,
+ com.robotoworks.mechanoid.ui.quickfix,
+ com.robotoworks.mechanoid.ui.wizard,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.ops.ui.contentassist,
  com.robotoworks.mechanoid.ops.ui.contentassist.antlr,

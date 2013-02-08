@@ -4,6 +4,7 @@
 package com.robotoworks.mechanoid.sqlite.parser.antlr;
 
 import java.io.InputStream;
+
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class SqliteModelAntlrTokenFileProvider implements IAntlrTokenFileProvider {

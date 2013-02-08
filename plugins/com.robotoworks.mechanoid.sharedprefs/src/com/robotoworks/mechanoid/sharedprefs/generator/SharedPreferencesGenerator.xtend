@@ -1,7 +1,7 @@
 package com.robotoworks.mechanoid.sharedprefs.generator
 
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model
 
 import static extension com.robotoworks.mechanoid.sharedprefs.generator.Extensions.*

@@ -2,23 +2,19 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
-import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 
 /**
  * <!-- begin-user-doc -->

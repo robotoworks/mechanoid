@@ -1,12 +1,12 @@
 package com.robotoworks.example.recipes;
 
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
-import com.robotoworks.mechanoid.Mechanoid;
-
 import android.app.Application;
 import android.content.ContentUris;
 import android.net.Uri;
+
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Authors;
+import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
+import com.robotoworks.mechanoid.Mechanoid;
 
 public class RecipesApplication extends Application {
     @Override

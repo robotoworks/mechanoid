@@ -7,7 +7,6 @@ import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
-
 import com.robotoworks.mechanoid.sqlite.ui.internal.SqliteModelActivator;
 
 /**

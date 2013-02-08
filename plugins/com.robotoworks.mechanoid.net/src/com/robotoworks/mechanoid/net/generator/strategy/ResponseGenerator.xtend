@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class ResponseGenerator {
 	CodeGenerationContext context

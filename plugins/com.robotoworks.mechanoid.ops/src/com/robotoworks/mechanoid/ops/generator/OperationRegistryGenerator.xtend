@@ -1,10 +1,8 @@
 package com.robotoworks.mechanoid.ops.generator
 
-
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
-import com.robotoworks.mechanoid.ops.opServiceModel.Operation
+
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class OperationRegistryGenerator {
 		def CharSequence generate(Model model) '''		

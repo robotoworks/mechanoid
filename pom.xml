@@ -10,7 +10,8 @@
   <modules>
    	<module>releng/com.robotoworks.mechanoid.updatesite</module>
     <module>features/com.robotoworks.mechanoid.feature</module>
-    <module>plugins/com.robotoworks.mechanoid.common</module>
+    <module>plugins/com.robotoworks.mechanoid</module>
+    <module>plugins/com.robotoworks.mechanoid.ui</module>
    	<module>plugins/com.robotoworks.mechanoid.net</module>
    	<module>plugins/com.robotoworks.mechanoid.net.ui</module>
    	<module>plugins/com.robotoworks.mechanoid.ops</module>
