@@ -13,10 +13,10 @@ class IntegerEnumTypeGenerator {
 	}	
 	
 	def generate(EnumTypeDeclaration type, Model module) '''
-	package Çmodule.packageNameÈ;
+	package «module.packageName»;
 		
-	public enum Çtype.nameÈ {
-		Çtype.generateEnumMembers()È;
+	public enum «type.name» {
+		«type.generateEnumMembers()»;
 		
 		private int value;
 		
@@ -24,13 +24,13 @@ class IntegerEnumTypeGenerator {
 			return value;
 		}
 		
-		Çtype.nameÈ(int value){
+		«type.name»(int value){
 			this.value = value;
 		}
 		
-		public static Çtype.nameÈ fromValue(int value) {
+		public static «type.name» fromValue(int value) {
 			
-			for (Çtype.nameÈ member : Çtype.nameÈ.values()) {
+			for («type.name» member : «type.name».values()) {
 				if (value == member.value) {
 					return member;
 				}

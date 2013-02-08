@@ -16,49 +16,49 @@ class TypeGenerator {
 	}
 		
 	def generate(ComplexTypeDeclaration type, Model module) '''
-	package Çmodule.packageNameÈ;
+	package «module.packageName»;
 	
-	Çvar body = generateType(type, module)È
-	Çcontext.printImportsÈ
-	Çcontext.clearImportsÈ	
-	ÇbodyÈ
+	«var body = generateType(type, module)»
+	«context.printImports»
+	«context.clearImports»	
+	«body»
 	'''
 	
 	def generateType(ComplexTypeDeclaration type, Model module) '''
-	public class Çtype.nameÈ {
-		ÇFOR member:type.literal.membersÈ
-		ÇgenerateField(member)È
-		ÇENDFORÈ
+	public class «type.name» {
+		«FOR member:type.literal.members»
+		«generateField(member)»
+		«ENDFOR»
 		
-		ÇFOR member:type.literal.membersÈ
-		ÇgenerateGetterAndSetter(member)È
-		ÇENDFORÈ
+		«FOR member:type.literal.members»
+		«generateGetterAndSetter(member)»
+		«ENDFOR»
 	}
 	'''
 	
 	def dispatch generateField(TypedMember member) '''
-		private Çmember.type.signatureÈ Çmember.toIdentifierÈ;
-		ÇIF(member.type instanceof GenericListType)ÈÇcontext.registerImport("java.util.List")ÈÇENDIFÈ	
+		private «member.type.signature» «member.toIdentifier»;
+		«IF(member.type instanceof GenericListType)»«context.registerImport("java.util.List")»«ENDIF»	
 	'''
 	
 	def dispatch generateField(SkipMember skipper) '''
-		ÇFOR member:skipper.literal.membersÈ
-		ÇgenerateField(member)È
-		ÇENDFORÈ
+		«FOR member:skipper.literal.members»
+		«generateField(member)»
+		«ENDFOR»
 	'''
 	
 	def dispatch generateGetterAndSetter(TypedMember member) '''
-		public Çmember.type.signatureÈ Çmember.toGetMethodNameÈ(){
-			return Çmember.toIdentifierÈ;
+		public «member.type.signature» «member.toGetMethodName»(){
+			return «member.toIdentifier»;
 		}
-		public void Çmember.toSetMethodNameÈ(Çmember.type.signatureÈ value){
-			this.Çmember.toIdentifierÈ = value;
+		public void «member.toSetMethodName»(«member.type.signature» value){
+			this.«member.toIdentifier» = value;
 		}
 	'''
 	
 	def dispatch generateGetterAndSetter(SkipMember skipper) '''
-		ÇFOR member:skipper.literal.membersÈ
-		ÇgenerateGetterAndSetter(member)È
-		ÇENDFORÈ
+		«FOR member:skipper.literal.members»
+		«generateGetterAndSetter(member)»
+		«ENDFOR»
 	'''
 }
