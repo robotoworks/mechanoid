@@ -29,7 +29,7 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
-import com.robotoworks.mechanoid.validation.ValidatorConstants;
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
  
@@ -40,7 +40,7 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
 
 		if(type == null) {
-			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME, ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS);
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);
 		}
 	}
 	

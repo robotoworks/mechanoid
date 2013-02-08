@@ -15,7 +15,7 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.ui.MechanoidLibsInstaller;
-import com.robotoworks.mechanoid.validation.ValidatorConstants;
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
 
@@ -25,11 +25,11 @@ public class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
 	@Inject 
 	protected MechanoidLibsInstaller libsInstaller;
 	
-	@Fix(ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS)
+	@Fix(MechanoidIssueCodes.MISSING_MECHANOID_LIBS)
 	public void addMechanoidToClasspath(final Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 
 				"Add Mechanoid Library", 
-				"Add the Mechanoid runtime library to the /libs folder.", "upcase.png", 
+				"Add the Mechanoid runtime library to the /libs folder.", "add.gif", 
 				new ISemanticModification() {
 					public void apply(EObject element, IModificationContext context)
 							throws Exception {

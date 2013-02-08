@@ -7,7 +7,7 @@ import org.eclipse.xtext.validation.Check;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage;
-import com.robotoworks.mechanoid.validation.ValidatorConstants;
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
  
 
 public class OpServiceModelJavaValidator extends AbstractOpServiceModelJavaValidator {
@@ -19,7 +19,7 @@ public class OpServiceModelJavaValidator extends AbstractOpServiceModelJavaValid
 		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
 
 		if(type == null) {
-			error("mechanoid.jar is required in your /libs folder or on the classpath", OpServiceModelPackage.Literals.MODEL__PACKAGE_NAME, ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS);
+			error("mechanoid.jar is required in your /libs folder or on the classpath", OpServiceModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);
 		}
 	}
 

@@ -13,7 +13,7 @@ import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral;
-import com.robotoworks.mechanoid.validation.ValidatorConstants;
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class SharedPreferencesModelJavaValidator extends AbstractSharedPreferencesModelJavaValidator {
 
@@ -24,7 +24,7 @@ public class SharedPreferencesModelJavaValidator extends AbstractSharedPreferenc
 		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
 
 		if(type == null) {
-			error("mechanoid.jar is required in your /libs folder or on the classpath", SharedPreferencesModelPackage.Literals.MODEL__PACKAGE_NAME, ValidatorConstants.VALIDATOR_MISSING_MECHANOID_LIBS);
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SharedPreferencesModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);
 		}
 	}
 	
