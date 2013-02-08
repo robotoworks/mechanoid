@@ -20,34 +20,34 @@ class SqliteDatabaseStatementGenerator {
 	}
 	
 	def generateStatements(Collection<DDLStatement> statements) '''
-		ÇFOR stmt : statementsÈ
-		ÇgenerateStatement(stmt)È
-		ÇENDFORÈ
+		«FOR stmt : statements»
+		«generateStatement(stmt)»
+		«ENDFOR»
 	'''
 	
 	def generateTableStatements(Collection<CreateTableStatement> statements) '''
-		ÇFOR stmt : statementsÈ
-		ÇgenerateStatement(stmt)È
-		ÇENDFORÈ
+		«FOR stmt : statements»
+		«generateStatement(stmt)»
+		«ENDFOR»
 	'''
 	
 	def generateViewStatements(Collection<CreateViewStatement> statements) '''
-		ÇFOR stmt : statementsÈ
-		ÇgenerateStatement(stmt)È
-		ÇENDFORÈ
+		«FOR stmt : statements»
+		«generateStatement(stmt)»
+		«ENDFOR»
 	'''
 	
 	def generateTriggerStatements(Collection<CreateTriggerStatement> statements) '''
-		ÇFOR stmt : statementsÈ
-		ÇgenerateStatement(stmt)È
-		ÇENDFORÈ
+		«FOR stmt : statements»
+		«generateStatement(stmt)»
+		«ENDFOR»
 	'''
 	
 	def generateStatement(DDLStatement stmt) '''
 		db.execSQL(
-			ÇFOR line : stmt.serialize(saveOptions).trim.split("\\r?\\n") SEPARATOR " +"È
-			"Çline.trim.replaceAll('\\\"', '\\\\\"')È "
-			ÇENDFORÈ
+			«FOR line : stmt.serialize(saveOptions).trim.split("\\r?\\n") SEPARATOR " +"»
+			"«line.trim.replaceAll('\\\"', '\\\\\"')» "
+			«ENDFOR»
 		);	
 	'''
 }

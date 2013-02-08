@@ -29,7 +29,7 @@ class JsonReaderGenerator {
 	}
 	
 	def genReadComplexTypeLiteral(ComplexTypeLiteral literal) '''
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")È
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -40,22 +40,22 @@ class JsonReaderGenerator {
 				continue;
 			}
 			
-			Çvar COUNTER = 0È
-			ÇFOR member : literal.membersÈ
-			ÇgenBlock(member, COUNTER = COUNTER + 1)È
-			ÇENDFORÈ
-			ÇIF COUNTER > 0È
+			«var COUNTER = 0»
+			«FOR member : literal.members»
+			«genBlock(member, COUNTER = COUNTER + 1)»
+			«ENDFOR»
+			«IF COUNTER > 0»
 			else {
 				source.skipValue();
 			}
-			ÇENDIFÈ
+			«ENDIF»
 		}
 		
 		source.endObject();
 	'''
 	
 	def genReadComplexTypeLiteralForMembers(EList<Member> members) '''
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")È
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -66,15 +66,15 @@ class JsonReaderGenerator {
 				continue;
 			}
 						
-			Çvar COUNTER = 0È
-			ÇFOR member : membersÈ
-			ÇgenBlock(member, COUNTER = COUNTER + 1)È
-			ÇENDFORÈ
-			ÇIF COUNTER > 0È
+			«var COUNTER = 0»
+			«FOR member : members»
+			«genBlock(member, COUNTER = COUNTER + 1)»
+			«ENDFOR»
+			«IF COUNTER > 0»
 			else {
 				source.skipValue();
 			}
-			ÇENDIFÈ
+			«ENDIF»
 		}
 		
 		source.endObject();
@@ -82,8 +82,8 @@ class JsonReaderGenerator {
 
 	
 	def genBlock(Member member, int blockNumber) '''
-		ÇIF blockNumber > 1Èelse ÇENDIFÈif(name.equals("Çmember.nameÈ")) {
-			ÇgenStatement(member)È
+		«IF blockNumber > 1»else «ENDIF»if(name.equals("«member.name»")) {
+			«genStatement(member)»
 		}
 	''' 
 	
@@ -93,7 +93,7 @@ class JsonReaderGenerator {
 
 	
 	def dispatch genStatement(SkipMember skipMember) '''
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")È
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -104,27 +104,27 @@ class JsonReaderGenerator {
 				continue;
 			}
 			
-			Çvar COUNTER = 0È
-			ÇFOR member : skipMember.literal.membersÈ
-			ÇgenBlock(member, COUNTER = COUNTER + 1)È
-			ÇENDFORÈ
-			ÇIF COUNTER > 0È
+			«var COUNTER = 0»
+			«FOR member : skipMember.literal.members»
+			«genBlock(member, COUNTER = COUNTER + 1)»
+			«ENDFOR»
+			«IF COUNTER > 0»
 			else {
 				source.skipValue();
 			}
-			ÇENDIFÈ
+			«ENDIF»
 		}
 		
 		source.endObject();
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
-		ÇIF type instanceof BooleanTypeÈ
-		Çcontext.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil")È
-		Çmember.toSetMethodName.memberize("subject")È(JsonReaderUtil.coerceNextBoolean(source));
-		ÇELSEÈ
-		Çmember.toSetMethodName.memberize("subject")È(source.nextÇtype.signature.pascalizeÈ());
-		ÇENDIFÈ
+		«IF type instanceof BooleanType»
+		«context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil")»
+		«member.toSetMethodName.memberize("subject")»(JsonReaderUtil.coerceNextBoolean(source));
+		«ELSE»
+		«member.toSetMethodName.memberize("subject")»(source.next«type.signature.pascalize»());
+		«ENDIF»
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {
@@ -132,14 +132,14 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
-		Çtype.signatureÈ subjectMember = new Çtype.signatureÈ();
-		provider.get(Çtype.innerSignatureÈTransformer.class).transformIn(source, subjectMember);
-		Çmember.toSetMethodName.memberize("subject")È(subjectMember);
+		«type.signature» subjectMember = new «type.signature»();
+		provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
-		Çtype.signatureÈ subjectMember = Çtype.signatureÈ.fromValue(source.Çdecl.resolveJsonReaderMethodNameÈ());
-		Çmember.toSetMethodName.memberize("subject")È(subjectMember);
+		«type.signature» subjectMember = «type.signature».fromValue(source.«decl.resolveJsonReaderMethodName»());
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, GenericListType type) {
@@ -147,10 +147,10 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
-		Çcontext.registerImport("java.util.List")È
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")È
-		List<ÇitemType.boxedTypeSignatureÈ> subjectMember = JsonUtil.readÇitemType.boxedTypeSignatureÈList(source);
-		Çmember.toSetMethodName.memberize("subject")È(subjectMember);
+		«context.registerImport("java.util.List")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		List<«itemType.boxedTypeSignature»> subjectMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, UserType itemType) { 
@@ -158,28 +158,28 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
-		Çcontext.registerImport("java.util.List")È
-		Çcontext.registerImport("java.util.ArrayList")È
-		Çtype.signatureÈ subjectMember = new ArrayList<Çtype.innerSignatureÈ>();
-		provider.get(Çtype.innerSignatureÈTransformer.class).transformIn(source, subjectMember);
-		Çmember.toSetMethodName.memberize("subject")È(subjectMember);
+		«context.registerImport("java.util.List")»
+		«context.registerImport("java.util.ArrayList")»
+		«type.signature» subjectMember = new ArrayList<«type.innerSignature»>();
+		provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, EnumTypeDeclaration decl) '''
-		Çcontext.registerImport("java.util.List")È
-		Çcontext.registerImport("java.util.ArrayList")È
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")È
-		Çtype.signatureÈ subjectMember = new ArrayListÇtype.signatureÈ();
+		«context.registerImport("java.util.List")»
+		«context.registerImport("java.util.ArrayList")»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«type.signature» subjectMember = new ArrayList«type.signature»();
 		
 		source.beginArray();
 		
 		while(source.hasNext()) {
-			Çtype.innerSignatureÈ element = Çtype.innerSignatureÈ.fromValue(source.Çdecl.resolveJsonReaderMethodNameÈ());
+			«type.innerSignature» element = «type.innerSignature».fromValue(source.«decl.resolveJsonReaderMethodName»());
 			targetMember.add(element);
 		}
 		
 		source.endArray();
 		
-		Çmember.toSetMethodName.memberize("subject")È(subjectMember);
+		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 }

@@ -37,24 +37,24 @@ class RequestGenerator {
 	def registerImports()''''''
 	
 	def generate(HttpMethod method, Model module, Client client) '''
-	package Çmodule.packageNameÈ;
+	package «module.packageName»;
 
-	Çvar body = generateRequestClass(method, module, client)È
-	ÇregisterImportsÈ
+	«var body = generateRequestClass(method, module, client)»
+	«registerImports»
 	
 	import android.net.Uri;
 	import java.util.LinkedHashMap;
 	import java.util.Set;
-	Çcontext.printImportsÈ
-	Çcontext.clearImportsÈ
+	«context.printImports»
+	«context.clearImports»
 	
-	ÇbodyÈ
+	«body»
 	'''	
 	
 	def generateRequestClass(HttpMethod method, Model module, Client client) '''
-	public class Çmethod.name.pascalizeÈRequest {
+	public class «method.name.pascalize»Request {
 		
-		private static final String PATH="Çmethod.getPathAsFormatString(context.serializer)È";
+		private static final String PATH="«method.getPathAsFormatString(context.serializer)»";
 		
 		private LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 		
@@ -70,136 +70,136 @@ class RequestGenerator {
 			return headers.get(key);
 		}
 	
-		ÇIF(method.path?.params?.size > 0)È
-		ÇFOR slug:method.path.paramsÈ
-		private final Çslug.member.type.signatureÈ Çslug.member.name.camelizeÈSegment;
-		ÇENDFORÈ
+		«IF(method.path?.params?.size > 0)»
+		«FOR slug:method.path.params»
+		private final «slug.member.type.signature» «slug.member.name.camelize»Segment;
+		«ENDFOR»
 		
-		ÇENDIFÈ
-		Çvar methodParams = method.paramsBlockÈ
-		Çvar clientParams = client.paramsBlockÈ
-		ÇIF(methodParams != null)È
-		ÇFOR param:methodParams.paramsÈ
-		private Çparam.member.type.signatureÈ Çparam.member.name.camelizeÈParamÇIF param.defaultValue != nullÈ = Çparam.defaultValue.convertToJavaLiteralÈÇENDIFÈ;
-		private boolean Çparam.member.name.camelizeÈParamSetÇIF param.defaultValue != nullÈ = trueÇENDIFÈ;
-		ÇENDFORÈ
+		«ENDIF»
+		«var methodParams = method.paramsBlock»
+		«var clientParams = client.paramsBlock»
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
+		«ENDFOR»
 			
-		ÇENDIFÈ
-		ÇIF(clientParams != null)È
-		ÇFOR param:clientParams.paramsÈ
-		private Çparam.member.type.signatureÈ Çparam.member.name.camelizeÈParamÇIF param.defaultValue != nullÈ = Çparam.defaultValue.convertToJavaLiteralÈÇENDIFÈ;
-		private boolean Çparam.member.name.camelizeÈParamSetÇIF param.defaultValue != nullÈ = trueÇENDIFÈ;
-		ÇENDFORÈ
+		«ENDIF»
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
+		private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+		private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
+		«ENDFOR»
 			
-		ÇENDIFÈ
-		ÇIF(method.hasBody)È
-			ÇgenerateFieldForType(method.body.type)È
-			ÇgenerateGetterSetterForType(method.body.type)È
-		ÇENDIFÈ
-		ÇIF(methodParams != null)È
-		ÇFOR param:methodParams.paramsÈ
-		public Çmethod.name.pascalizeÈRequest setÇparam.member.name.pascalizeÈParam(Çparam.member.type.signatureÈ value) {
-			this.Çparam.member.name.camelizeÈParam = value;
-			this.Çparam.member.name.camelizeÈParamSet = true;
+		«ENDIF»
+		«IF(method.hasBody)»
+			«generateFieldForType(method.body.type)»
+			«generateGetterSetterForType(method.body.type)»
+		«ENDIF»
+		«IF(methodParams != null)»
+		«FOR param:methodParams.params»
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean isÇparam.member.name.pascalizeÈParamSet() {
-			return Çparam.member.name.camelizeÈParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
-		ÇENDFORÈ
+		«ENDFOR»
 			
-		ÇENDIFÈ
-		ÇIF(clientParams != null)È
-		ÇFOR param:clientParams.paramsÈ
-		public Çmethod.name.pascalizeÈRequest setÇparam.member.name.pascalizeÈParam(Çparam.member.type.signatureÈ value) {
-			this.Çparam.member.name.camelizeÈParam = value;
-			this.Çparam.member.name.camelizeÈParamSet = true;
+		«ENDIF»
+		«IF(clientParams != null)»
+		«FOR param:clientParams.params»
+		public «method.name.pascalize»Request set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+			this.«param.member.name.camelize»Param = value;
+			this.«param.member.name.camelize»ParamSet = true;
 			return this;
 		}
 		
-		public boolean isÇparam.member.name.pascalizeÈParamSet() {
-			return Çparam.member.name.camelizeÈParamSet;
+		public boolean is«param.member.name.pascalize»ParamSet() {
+			return «param.member.name.camelize»ParamSet;
 		}
-		ÇENDFORÈ
+		«ENDFOR»
 				
-		ÇENDIFÈ
-		public Çmethod.name.pascalizeÈRequest(ÇgenerateRequestConstructorArgs(method.path, method.body)È){
-			Çvar methodHeaders = method.headerBlockÈ
-			ÇIF methodHeaders != nullÈ
-			ÇFOR header : methodHeaders.headersÈ
-			headers.put("Çheader.nameÈ","Çheader.valueÈ");
-			ÇENDFORÈ
+		«ENDIF»
+		public «method.name.pascalize»Request(«generateRequestConstructorArgs(method.path, method.body)»){
+			«var methodHeaders = method.headerBlock»
+			«IF methodHeaders != null»
+			«FOR header : methodHeaders.headers»
+			headers.put("«header.name»","«header.value»");
+			«ENDFOR»
 			
-			ÇENDIFÈ
-			ÇIF(method.path?.params?.size > 0)È
-				ÇFOR slug:method.path.paramsÈ
-				this.Çslug.member.name.camelizeÈSegment = Çslug.member.name.camelizeÈSegment;
-				ÇENDFORÈ	
-			ÇENDIFÈ
-			ÇIF(method.hasBody)È
-				ÇgenerateConstructorAssignmentForType(method.body.type)È
-			ÇENDIFÈ
+			«ENDIF»
+			«IF(method.path?.params?.size > 0)»
+				«FOR slug:method.path.params»
+				this.«slug.member.name.camelize»Segment = «slug.member.name.camelize»Segment;
+				«ENDFOR»	
+			«ENDIF»
+			«IF(method.hasBody)»
+				«generateConstructorAssignmentForType(method.body.type)»
+			«ENDIF»
 		}
 		
-		ÇIF(method.hasBody)È
-		Çcontext.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")È
-		Çcontext.registerImport("com.robotoworks.mechanoid.net.TransformException")È
-		Çcontext.registerImport("com.robotoworks.mechanoid.util.Closeables")È
-		Çcontext.registerImport("java.io.OutputStream")È
+		«IF(method.hasBody)»
+		«context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")»
+		«context.registerImport("com.robotoworks.mechanoid.net.TransformException")»
+		«context.registerImport("com.robotoworks.mechanoid.util.Closeables")»
+		«context.registerImport("java.io.OutputStream")»
 		void writeBody(TransformerProvider provider, OutputStream stream) throws TransformException {
-			ÇgenerateSerializationStatementForType(method, method.body, method.body.type)È
+			«generateSerializationStatementForType(method, method.body, method.body.type)»
 		}
 
-		ÇENDIFÈ
+		«ENDIF»
 		public String createUrl(String baseUrl){
-			ÇIF(method.path?.params?.size > 0)È
-				Uri.Builder uriBuilder = Uri.parse(baseUrl + String.format(PATH, ÇFOR slug:method.path.params SEPARATOR ", "ÈÇslug.member.name.camelizeÈSegmentÇENDFORÈ)).buildUpon();
-			ÇELSEÈ
+			«IF(method.path?.params?.size > 0)»
+				Uri.Builder uriBuilder = Uri.parse(baseUrl + String.format(PATH, «FOR slug:method.path.params SEPARATOR ", "»«slug.member.name.camelize»Segment«ENDFOR»)).buildUpon();
+			«ELSE»
 				Uri.Builder uriBuilder = Uri.parse(baseUrl + PATH).buildUpon();
-			ÇENDIFÈ		
+			«ENDIF»		
 				
-			ÇIF(methodParams != null)È
-				ÇFOR param:methodParams.paramsÈ
-					if(Çparam.member.name.camelizeÈParamSet){
-						ÇIF param.member.type instanceof StringTypeÈ
-						uriBuilder.appendQueryParameter("Çparam.member.nameÈ", Çparam.member.name.camelizeÈParam);
-						ÇELSEÈ
-						uriBuilder.appendQueryParameter("Çparam.member.nameÈ", String.valueOf(Çparam.member.name.camelizeÈParam));
-						ÇENDIFÈ
+			«IF(methodParams != null)»
+				«FOR param:methodParams.params»
+					if(«param.member.name.camelize»ParamSet){
+						«IF param.member.type instanceof StringType»
+						uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
+						«ELSE»
+						uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
+						«ENDIF»
 					}
-				ÇENDFORÈ
+				«ENDFOR»
 				
-			ÇENDIFÈ
-			ÇIF(clientParams != null)È
-			ÇFOR param:clientParams.paramsÈ
-				if(Çparam.member.name.camelizeÈParamSet){
-					ÇIF param.member.type instanceof StringTypeÈ
-					uriBuilder.appendQueryParameter("Çparam.member.nameÈ", Çparam.member.name.camelizeÈParam);
-					ÇELSEÈ
-					uriBuilder.appendQueryParameter("Çparam.member.nameÈ", String.valueOf(Çparam.member.name.camelizeÈParam));
-					ÇENDIFÈ
+			«ENDIF»
+			«IF(clientParams != null)»
+			«FOR param:clientParams.params»
+				if(«param.member.name.camelize»ParamSet){
+					«IF param.member.type instanceof StringType»
+					uriBuilder.appendQueryParameter("«param.member.name»", «param.member.name.camelize»Param);
+					«ELSE»
+					uriBuilder.appendQueryParameter("«param.member.name»", String.valueOf(«param.member.name.camelize»Param));
+					«ENDIF»
 				}
-			ÇENDFORÈ
+			«ENDFOR»
 			
-			ÇENDIFÈ
+			«ENDIF»
 			return uriBuilder.toString();			
 		}
 	}
 	'''
 	
 	def generateSerializationStatementHeader(boolean withReader)'''
-		ÇIF withReaderÈ
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonWriter")È
-		Çcontext.registerImport("java.io.OutputStreamWriter")È
-		Çcontext.registerImport("java.nio.charset.Charset")È
+		«IF withReader»
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonWriter")»
+		«context.registerImport("java.io.OutputStreamWriter")»
+		«context.registerImport("java.nio.charset.Charset")»
 		JsonWriter target = null;
-		ÇENDIFÈ
+		«ENDIF»
 		try {
 			if(stream != null) {
-				ÇIF withReaderÈ
+				«IF withReader»
 				target = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));
-				ÇENDIFÈ
+				«ENDIF»
 				
 	'''
 	
@@ -209,131 +209,131 @@ class RequestGenerator {
 		} catch(Exception x) {
 			throw new TransformException(x);
 		} finally {
-			ÇIF withReaderÈ
+			«IF withReader»
 			Closeables.closeSilently(target);
-			ÇELSEÈ
+			«ELSE»
 			Closeables.closeSilently(stream);
-			ÇENDIFÈ
+			«ENDIF»
 		}
 	'''
 	
 	def dispatch generateFieldForType(ComplexTypeLiteral type) '''
-		ÇFOR member:type.membersÈ
-		ÇgenerateFieldForMember(member)È
-		ÇENDFORÈ
+		«FOR member:type.members»
+		«generateFieldForMember(member)»
+		«ENDFOR»
 	'''
 	def dispatch generateFieldForType(IntrinsicType type) '''
-		private final Çtype.signatureÈ value;
+		private final «type.signature» value;
 	'''
 	
 	def dispatch generateFieldForType(GenericListType type) '''
-		ÇIF(type.elementType instanceof IntrinsicType)È
-			private final Çtype.signatureÈ values;
-		ÇELSEÈ
-			private final Çtype.signatureÈ Çtype.innerSignature.camelize.pluralizeÈ;
-		ÇENDIFÈ
+		«IF(type.elementType instanceof IntrinsicType)»
+			private final «type.signature» values;
+		«ELSE»
+			private final «type.signature» «type.innerSignature.camelize.pluralize»;
+		«ENDIF»
 	'''
 	
 	def dispatch generateFieldForType(UserType type) '''
-		private final Çtype.signatureÈ Çtype.signature.camelizeÈ;
+		private final «type.signature» «type.signature.camelize»;
 	'''
 	
 	def dispatch generateFieldForMember(TypedMember member) '''
-		private final Çmember.type.signatureÈ Çmember.toIdentifierÈ;
+		private final «member.type.signature» «member.toIdentifier»;
 	'''
 	
 	def dispatch generateFieldForMember(SkipMember member) '''
-		ÇgenerateFieldForType(member.literal)È
+		«generateFieldForType(member.literal)»
 	'''
 	
 	def dispatch generateGetterSetterForType(ComplexTypeLiteral type) '''
-		ÇFOR member:type.membersÈ
-		ÇgenerateGetterSetterForMember(member)È
-		ÇENDFORÈ
+		«FOR member:type.members»
+		«generateGetterSetterForMember(member)»
+		«ENDFOR»
 	'''
 	def dispatch generateGetterSetterForType(IntrinsicType type) '''
-		public Çtype.signatureÈ getValue() {
+		public «type.signature» getValue() {
 			return value;
 		}
 	'''
 	
 	def dispatch generateGetterSetterForType(GenericListType type) '''
-		ÇIF(type.elementType instanceof IntrinsicType)È
-			public Çtype.signatureÈ getValues() {
+		«IF(type.elementType instanceof IntrinsicType)»
+			public «type.signature» getValues() {
 				return values;
 			}
-		ÇELSEÈ
-			public Çtype.signatureÈ getÇtype.innerSignature.pascalize.pluralizeÈ() {
-				return Çtype.innerSignature.camelize.pluralizeÈ;
+		«ELSE»
+			public «type.signature» get«type.innerSignature.pascalize.pluralize»() {
+				return «type.innerSignature.camelize.pluralize»;
 			}
-		ÇENDIFÈ
+		«ENDIF»
 	'''
 	
 	def dispatch generateGetterSetterForType(UserType type) '''
-		public Çtype.signatureÈ getÇtype.signature.pascalizeÈ() {
-			return Çtype.signature.camelizeÈ;
+		public «type.signature» get«type.signature.pascalize»() {
+			return «type.signature.camelize»;
 		}
 	'''
 	
 	def dispatch generateGetterSetterForMember(TypedMember member) '''
-		public Çmember.type.signatureÈ Çmember.toGetMethodNameÈ() {
-			return Çmember.toIdentifierÈ;
+		public «member.type.signature» «member.toGetMethodName»() {
+			return «member.toIdentifier»;
 		}
 	'''
 	
 	def dispatch generateGetterSetterForMember(SkipMember member) '''
-		ÇgenerateGetterSetterForType(member.literal)È
+		«generateGetterSetterForType(member.literal)»
 	'''
 	
 	def dispatch generateConstructorAssignmentForType(ComplexTypeLiteral type) '''
-		ÇFOR member:type.membersÈ
-		ÇgenerateConstructorAssignmentForMember(member)È
-		ÇENDFORÈ
+		«FOR member:type.members»
+		«generateConstructorAssignmentForMember(member)»
+		«ENDFOR»
 	'''
 	def dispatch generateConstructorAssignmentForType(IntrinsicType type) '''
 		this.value = value;
 	'''
 
 	def dispatch generateConstructorAssignmentForType(GenericListType type) '''
-		ÇIF(type.elementType instanceof IntrinsicType)È
+		«IF(type.elementType instanceof IntrinsicType)»
 			this.values = values;
-		ÇELSEÈ
-			this.Çtype.innerSignature.camelize.pluralizeÈ = Çtype.innerSignature.camelize.pluralizeÈ;
-		ÇENDIFÈ
+		«ELSE»
+			this.«type.innerSignature.camelize.pluralize» = «type.innerSignature.camelize.pluralize»;
+		«ENDIF»
 	'''
 	def dispatch generateConstructorAssignmentForType(UserType type) '''
-		this.Çtype.signature.camelizeÈ = Çtype.signature.camelizeÈ;
+		this.«type.signature.camelize» = «type.signature.camelize»;
 	'''
 	
 	def dispatch generateConstructorAssignmentForMember(TypedMember member) '''
-		this.Çmember.toIdentifierÈ = Çmember.toIdentifierÈ;
+		this.«member.toIdentifier» = «member.toIdentifier»;
 	'''
 	
 	def dispatch generateConstructorAssignmentForMember(SkipMember member) '''
-		ÇgenerateConstructorAssignmentForType(member.literal)È
+		«generateConstructorAssignmentForType(member.literal)»
 	'''
 	
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, IntrinsicType type) '''
-		Çcontext.registerImport("java.io.PrintStream")È
-		ÇgenerateSerializationStatementHeader(false)È
+		«context.registerImport("java.io.PrintStream")»
+		«generateSerializationStatementHeader(false)»
 			PrintStream ps = new PrintStream(stream);
 			ps.print(value);
-ÇÇÇ			ÇIF type instanceof StringTypeÈ
-ÇÇÇ			Streams.writeText(stream, value);
-ÇÇÇ			ÇELSEÈ
-ÇÇÇ			Streams.writeText(stream, Çtype.boxedTypeSignatureÈ.toString(value));
-ÇÇÇ			ÇENDIFÈ
-		ÇgenerateSerializationStatementFooter(false)È
+«««			«IF type instanceof StringType»
+«««			Streams.writeText(stream, value);
+«««			«ELSE»
+«««			Streams.writeText(stream, «type.boxedTypeSignature».toString(value));
+«««			«ENDIF»
+		«generateSerializationStatementFooter(false)»
 	'''
 	
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, ComplexTypeLiteral type) '''
-		ÇgenerateSerializationStatementHeader(true)È
+		«generateSerializationStatementHeader(true)»
 		
-			Çmethod.name.pascalizeÈRequest subject = this;
+			«method.name.pascalize»Request subject = this;
 		
-			ÇjsonWriterGenerator.genWriteComplexTypeLiteral(type)È
+			«jsonWriterGenerator.genWriteComplexTypeLiteral(type)»
 		
-		ÇgenerateSerializationStatementFooter(true)È
+		«generateSerializationStatementFooter(true)»
 	'''
 	
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, UserType type) {
@@ -344,21 +344,21 @@ class RequestGenerator {
 		BodyBlock body,
 		UserType type,
 		ComplexTypeDeclaration declaration) '''
-			ÇgenerateSerializationStatementHeader(true)È
-				provider.get(Çtype.signatureÈTransformer.class).transformOut(Çtype.signature.camelizeÈ, target);
-			ÇgenerateSerializationStatementFooter(true)È
+			«generateSerializationStatementHeader(true)»
+				provider.get(«type.signature»Transformer.class).transformOut(«type.signature.camelize», target);
+			«generateSerializationStatementFooter(true)»
 		'''
 	
 	def dispatch generateSerializationStatementForUserType(
 		BodyBlock body,
 		UserType type,
 		EnumTypeDeclaration declaration) '''
-			Çcontext.registerImport("java.io.PrintStream")È
-			ÇgenerateSerializationStatementHeader(false)È
+			«context.registerImport("java.io.PrintStream")»
+			«generateSerializationStatementHeader(false)»
 				PrintStream ps = new PrintStream(stream);
-				ps.print(Çtype.signature.camelizeÈ.getValue());
-ÇÇÇ				Streams.writeText(stream, Çtype.signature.camelizeÈ.getValue());
-			ÇgenerateSerializationStatementFooter(false)È
+				ps.print(«type.signature.camelize».getValue());
+«««				Streams.writeText(stream, «type.signature.camelize».getValue());
+			«generateSerializationStatementFooter(false)»
 		'''
 	
 	def dispatch generateSerializationStatementForType(HttpMethod method, BodyBlock body, GenericListType type) {
@@ -370,11 +370,11 @@ class RequestGenerator {
 		GenericListType type,
 		IntrinsicType elementType
 	) '''
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")È
-		Çcontext.registerImport("java.util.List")È
-		ÇgenerateSerializationStatementHeader(true)È
-			JsonUtil.writeÇelementType.boxedTypeSignatureÈList(target, values);
-		ÇgenerateSerializationStatementFooter(true)È
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«context.registerImport("java.util.List")»
+		«generateSerializationStatementHeader(true)»
+			JsonUtil.write«elementType.boxedTypeSignature»List(target, values);
+		«generateSerializationStatementFooter(true)»
 	'''
 
 	def dispatch generateSerializationStatementForGenericListType(
@@ -391,10 +391,10 @@ class RequestGenerator {
 		UserType elementType,
 		ComplexTypeDeclaration declaration
 	) '''
-		Çcontext.registerImport("java.util.List")È
-		ÇgenerateSerializationStatementHeader(true)È
-			provider.get(Çtype.innerSignatureÈTransformer.class).transformOut(Çtype.innerSignature.camelize.pluralizeÈ, target);
-		ÇgenerateSerializationStatementFooter(true)È
+		«context.registerImport("java.util.List")»
+		«generateSerializationStatementHeader(true)»
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
+		«generateSerializationStatementFooter(true)»
 	'''
 
 	def dispatch generateSerializationStatementForUserTypeGenericList(
@@ -403,17 +403,17 @@ class RequestGenerator {
 		UserType elementType,
 		EnumTypeDeclaration declaration
 	) '''
-		ÇgenerateSerializationStatementHeader(true)È
+		«generateSerializationStatementHeader(true)»
 		
 			target.beginArray();
 			
-			for(Çtype.innerSignatureÈ element:Çtype.innerSignature.camelize.pluralizeÈ) {
+			for(«type.innerSignature» element:«type.innerSignature.camelize.pluralize») {
 				target.put(element.getValue());
 			}
 			
 			target.endArray();
 		
-		ÇgenerateSerializationStatementFooter(true)È
+		«generateSerializationStatementFooter(true)»
 	'''
 			
 	/*
