@@ -2,16 +2,102 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.sqlite.sqliteModel.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Case;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CaseExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CastExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CheckTableConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnType;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CompoundOperator;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictClause;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ConflictResolution;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentDateLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentTimeLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CurrentTimeStampLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DMLStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DefaultConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DefaultValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DeleteStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAdd;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprAnd;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprBit;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprConcat;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprEqual;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprMult;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprOr;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExprRelate;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Expression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ExpressionDefaultValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Function;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.GroupByExpressions;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.HavingExpressions;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.IndexedColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.InsertStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.JoinStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Literal;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralDefaultValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.LiteralValue;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NestedExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NewColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNull;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NotNullConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NullCheckExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NullLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.NumericLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OldColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTerm;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.OrderingTermList;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.PrimaryKeyColumnConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCore;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectStatementExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSource;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceJoin;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceSelectStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteDataType;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.StringLiteral;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.UniqueTableConstraint;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateColumnExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.UpdateStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.WhereExpressions;
 
 /**
  * <!-- begin-user-doc -->

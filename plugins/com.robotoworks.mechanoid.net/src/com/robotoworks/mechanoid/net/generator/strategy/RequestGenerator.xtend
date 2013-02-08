@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.net.netModel.GenericListType
 import com.robotoworks.mechanoid.net.netModel.HttpMethod
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType
 import com.robotoworks.mechanoid.net.netModel.Model
+import com.robotoworks.mechanoid.net.netModel.Path
 import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.StringType
 import com.robotoworks.mechanoid.net.netModel.TypedMember
@@ -18,10 +19,7 @@ import java.util.ArrayList
 import java.util.List
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import org.eclipse.xtext.serializer.ISerializer
-import com.google.inject.Inject
-import com.robotoworks.mechanoid.net.netModel.Path
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class RequestGenerator {
 	CodeGenerationContext context

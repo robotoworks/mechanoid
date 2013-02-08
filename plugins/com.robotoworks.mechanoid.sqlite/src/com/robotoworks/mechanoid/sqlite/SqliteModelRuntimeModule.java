@@ -5,13 +5,14 @@ package com.robotoworks.mechanoid.sqlite;
 
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.service.SingletonBinding;
 
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.google.inject.Binder;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sqlite.naming.SqliteQualifiedNameProvider;
 import com.robotoworks.mechanoid.sqlite.scoping.XSqliteModelScopeProvider;
-import com.google.inject.Binder;
+import com.robotoworks.mechanoid.sqlite.validation.SqliteModelJavaValidator;
 
 
 /**

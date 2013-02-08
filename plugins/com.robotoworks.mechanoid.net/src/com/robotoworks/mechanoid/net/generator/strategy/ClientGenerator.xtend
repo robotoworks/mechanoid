@@ -7,6 +7,7 @@ import com.robotoworks.mechanoid.net.netModel.HttpMethodType
 import com.robotoworks.mechanoid.net.netModel.Model
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
 
 class ClientGenerator {
 	CodeGenerationContext context
@@ -83,15 +84,16 @@ class ClientGenerator {
 				this(DEFAULT_BASE_URL, transformerProvider, false);
 			}
 			
+			public «client.name»(boolean debug){
+				this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
+			}
 			«ENDIF»
 			
 			public «client.name»(String baseUrl){
 				this(baseUrl, new TransformerProvider(), false);
 			}
 			
-			public «client.name»(boolean debug){
-				this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
-			}
+
 			public «client.name»(String baseUrl, boolean debug){
 				this(baseUrl, new TransformerProvider(), debug);
 			}

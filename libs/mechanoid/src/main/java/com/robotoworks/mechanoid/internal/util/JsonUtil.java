@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.robotoworks.mechanoid.net.JsonReaderUtil;
+
 public class JsonUtil {
 	public static List<String> readStringList(JsonReader reader) throws IOException {
 		ArrayList<String> list = new ArrayList<String>();
@@ -67,7 +69,7 @@ public class JsonUtil {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {
-			list.add(reader.nextBoolean());
+			list.add(JsonReaderUtil.coerceNextBoolean(reader));
 		}
 		
 		reader.endArray();

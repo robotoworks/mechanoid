@@ -1,6 +1,6 @@
 package com.robotoworks.mechanoid.net.ui.wizards;
 
-import com.robotoworks.mechanoid.common.wizards.NewMechanoidFileWizard;
+import com.robotoworks.mechanoid.ui.wizard.NewMechanoidFileWizard;
 
 public class NewMechNetFileWizard extends NewMechanoidFileWizard {
 

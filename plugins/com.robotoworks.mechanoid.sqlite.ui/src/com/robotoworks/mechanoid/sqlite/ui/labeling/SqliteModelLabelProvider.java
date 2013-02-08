@@ -133,7 +133,11 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	}
 	
 	public String image(ResultColumn e) {
-		return "column.gif";
+		if(e.getName() == null) {
+			return "column.gif";
+		} else {
+			return "aliased_column.gif";
+		}
 	}
 	
 	public String image(CreateTableStatement e) {

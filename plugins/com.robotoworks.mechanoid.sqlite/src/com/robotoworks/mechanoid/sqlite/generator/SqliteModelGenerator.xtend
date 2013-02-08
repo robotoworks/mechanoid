@@ -5,7 +5,7 @@ package com.robotoworks.mechanoid.sqlite.generator
 
 import com.google.inject.Inject
 import com.google.inject.Provider
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model
@@ -13,8 +13,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
-import static extension com.robotoworks.mechanoid.common.util.Strings.*
-import static extension com.robotoworks.mechanoid.sqlite.generator.Extensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.sqlite.util.ModelUtil.*
+import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement
 
 class SqliteModelGenerator implements IGenerator {
 	@Inject SqliteOpenHelperGenerator mOpenHelperGenerator
@@ -60,6 +61,11 @@ class SqliteModelGenerator implements IGenerator {
 			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
 		];
 		
+		snapshot.views.forEach[
+			statement|
+			generateActiveRecordEntity(resource, fsa, statement as CreateViewStatement)
+		];
+		
 		model.database.migrations.forEach[
 			item,index|
 			if(index> 0) generateMigration(resource, fsa, item, index + 1)
@@ -67,6 +73,19 @@ class SqliteModelGenerator implements IGenerator {
 	}
 	
 	def void generateActiveRecordEntity(Resource resource, IFileSystemAccess fsa, CreateTableStatement statement) {
+		
+		if(statement.hasAndroidPrimaryKey) {
+			var model = resource.contents.head as Model;
+			
+			var genFileName = model.packageName.resolveFileName(statement.name.pascalize.concat("Record"))
+				
+			fsa.generateFile(genFileName, 
+				mActiveRecordGenerator.generate(model, statement)
+			)	
+		}	
+	}
+	
+	def void generateActiveRecordEntity(Resource resource, IFileSystemAccess fsa, CreateViewStatement statement) {
 		
 		if(statement.hasAndroidPrimaryKey) {
 			var model = resource.contents.head as Model;

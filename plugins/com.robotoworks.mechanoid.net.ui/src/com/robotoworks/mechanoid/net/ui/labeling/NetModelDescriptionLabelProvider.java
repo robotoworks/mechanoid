@@ -3,7 +3,6 @@
 */
 package com.robotoworks.mechanoid.net.ui.labeling;
 
-import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
 /**

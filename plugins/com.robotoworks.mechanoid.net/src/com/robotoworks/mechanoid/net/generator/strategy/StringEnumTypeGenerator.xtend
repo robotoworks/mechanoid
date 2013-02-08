@@ -1,6 +1,8 @@
 package com.robotoworks.mechanoid.net.generator.strategy
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
+
 import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext

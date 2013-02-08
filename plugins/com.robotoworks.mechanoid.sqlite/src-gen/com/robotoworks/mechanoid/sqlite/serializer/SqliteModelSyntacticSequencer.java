@@ -1,8 +1,7 @@
 package com.robotoworks.mechanoid.sqlite.serializer;
 
-import com.google.inject.Inject;
-import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
@@ -13,6 +12,9 @@ import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
+
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.sqlite.services.SqliteModelGrammarAccess;
 
 @SuppressWarnings("all")
 public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {

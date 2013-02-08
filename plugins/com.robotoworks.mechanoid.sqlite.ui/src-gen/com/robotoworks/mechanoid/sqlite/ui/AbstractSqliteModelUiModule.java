@@ -4,8 +4,8 @@
  */
 package com.robotoworks.mechanoid.sqlite.ui;
 
-import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.DefaultUiModule;
 
 /**
  * Manual modifications go to {com.robotoworks.mechanoid.sqlite.ui.SqliteModelUiModule}

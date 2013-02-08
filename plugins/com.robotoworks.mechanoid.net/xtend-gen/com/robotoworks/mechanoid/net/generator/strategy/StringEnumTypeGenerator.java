@@ -1,11 +1,11 @@
 package com.robotoworks.mechanoid.net.generator.strategy;
 
 import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
-import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.Model;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -40,7 +40,7 @@ public class StringEnumTypeGenerator {
     final Function1<EnumMember,String> _function = new Function1<EnumMember,String>() {
         public String apply(final EnumMember member) {
           String _name = member.getName();
-          String _underscore = ModelExtensions.underscore(_name);
+          String _underscore = Strings.underscore(_name);
           String _upperCase = _underscore.toUpperCase();
           String _plus = (_upperCase + "(\"");
           String _name_1 = member.getName();

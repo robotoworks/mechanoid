@@ -1,10 +1,10 @@
 package com.robotoworks.mechanoid.sharedprefs.generator;
 
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.common.util.Strings;
 import com.robotoworks.mechanoid.sharedprefs.generator.SharedPreferencesGenerator;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferencesBlock;
+import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;

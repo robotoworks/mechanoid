@@ -15,7 +15,7 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 
 	public static final int VERSION = 2;
 
-	public interface Tables {
+	public interface Sources {
 		String RECIPES = "recipes";
 		String AUTHORS = "authors";
 		String RECIPES_WITH_AUTHORS = "recipes_with_authors";

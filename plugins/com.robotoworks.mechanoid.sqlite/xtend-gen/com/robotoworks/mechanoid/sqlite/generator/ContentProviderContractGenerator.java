@@ -1,8 +1,6 @@
 package com.robotoworks.mechanoid.sqlite.generator;
 
 import com.google.common.base.Objects;
-import com.robotoworks.mechanoid.common.util.Strings;
-import com.robotoworks.mechanoid.sqlite.generator.Extensions;
 import com.robotoworks.mechanoid.sqlite.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnDef;
@@ -12,8 +10,14 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
+import com.robotoworks.mechanoid.text.Strings;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -38,19 +42,11 @@ public class ContentProviderContractGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import android.content.ContentValues;");
-    _builder.newLine();
     _builder.append("import android.net.Uri;");
     _builder.newLine();
     _builder.append("import android.provider.BaseColumns;");
     _builder.newLine();
-    _builder.append("import android.content.ContentResolver;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SQuery;");
-    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.Mechanoid;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.content.MechanoidContentProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.content.AbstractValuesBuilder;");
     _builder.newLine();
@@ -198,8 +194,17 @@ public class ContentProviderContractGenerator {
         _builder.append("Columns {");
         _builder.newLineIfNotEmpty();
         {
-          EList<ColumnSource> _viewResultColumns = Extensions.getViewResultColumns(vw);
-          for(final ColumnSource col_1 : _viewResultColumns) {
+          ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(vw);
+          final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
+              public Boolean apply(final ColumnSource it) {
+                String _name = it.getName();
+                boolean _equals = _name.equals("_id");
+                boolean _not = (!_equals);
+                return Boolean.valueOf(_not);
+              }
+            };
+          Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function_1);
+          for(final ColumnSource col_1 : _filter_1) {
             _builder.append("\t");
             _builder.append("\t");
             CharSequence _generateInterfaceMemberForResultColumn = this.generateInterfaceMemberForResultColumn(col_1);
@@ -220,334 +225,9 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
       for(final CreateTableStatement tbl_1 : _tables_1) {
         _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append(" ");
-        _builder.append("* <p>Column definitions and helper methods to work with the ");
-        String _name_8 = tbl_1.getName();
-        String _pascalize_5 = Strings.pascalize(_name_8);
-        _builder.append(_pascalize_5, "	 ");
-        _builder.append(" table.</p>");
+        CharSequence _generateContractItem = this.generateContractItem(model, tbl_1);
+        _builder.append(_generateContractItem, "	");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append(" ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("public static class ");
-        String _name_9 = tbl_1.getName();
-        String _pascalize_6 = Strings.pascalize(_name_9);
-        _builder.append(_pascalize_6, "	");
-        _builder.append(" implements ");
-        String _name_10 = tbl_1.getName();
-        String _pascalize_7 = Strings.pascalize(_name_10);
-        _builder.append(_pascalize_7, "	");
-        _builder.append("Columns");
-        {
-          boolean _hasAndroidPrimaryKey = Extensions.hasAndroidPrimaryKey(tbl_1);
-          if (_hasAndroidPrimaryKey) {
-            _builder.append(", BaseColumns");
-          }
-        }
-        _builder.append(" {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static final Uri CONTENT_URI = ");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t\t");
-        _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-        String _name_11 = tbl_1.getName();
-        String _lowerCase_1 = _name_11.toLowerCase();
-        _builder.append(_lowerCase_1, "				");
-        _builder.append("\").build();");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>The content type for a cursor that contains many ");
-        String _name_12 = tbl_1.getName();
-        String _pascalize_8 = Strings.pascalize(_name_12);
-        _builder.append(_pascalize_8, "		 ");
-        _builder.append(" table rows.</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static final String CONTENT_TYPE =");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("            ");
-        _builder.append("\"vnd.android.cursor.dir/vnd.");
-        DatabaseBlock _database_4 = model.getDatabase();
-        String _name_13 = _database_4.getName();
-        String _lowerCase_2 = _name_13.toLowerCase();
-        _builder.append(_lowerCase_2, "	            ");
-        _builder.append(".");
-        String _name_14 = tbl_1.getName();
-        _builder.append(_name_14, "	            ");
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>The content type for a cursor that contains a single ");
-        String _name_15 = tbl_1.getName();
-        String _pascalize_9 = Strings.pascalize(_name_15);
-        _builder.append(_pascalize_9, "		 ");
-        _builder.append(" table row.</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static final String ITEM_CONTENT_TYPE =");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("            ");
-        _builder.append("\"vnd.android.cursor.item/vnd.");
-        DatabaseBlock _database_5 = model.getDatabase();
-        String _name_16 = _database_5.getName();
-        String _lowerCase_3 = _name_16.toLowerCase();
-        _builder.append(_lowerCase_3, "	            ");
-        _builder.append(".");
-        String _name_17 = tbl_1.getName();
-        _builder.append(_name_17, "	            ");
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>Builds a Uri with appended id for a row in the ");
-        String _name_18 = tbl_1.getName();
-        String _pascalize_10 = Strings.pascalize(_name_18);
-        _builder.append(_pascalize_10, "		 ");
-        _builder.append(" table, ");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* eg:- content://");
-        String _packageName_2 = model.getPackageName();
-        _builder.append(_packageName_2, "		 ");
-        _builder.append(".");
-        DatabaseBlock _database_6 = model.getDatabase();
-        String _name_19 = _database_6.getName();
-        String _lowerCase_4 = _name_19.toLowerCase();
-        _builder.append(_lowerCase_4, "		 ");
-        _builder.append("/");
-        String _name_20 = tbl_1.getName();
-        String _lowerCase_5 = _name_20.toLowerCase();
-        _builder.append(_lowerCase_5, "		 ");
-        _builder.append("/123.</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static Uri buildUriWithId(long id) {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("        ");
-        _builder.append("return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("public static int delete() {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("public static int delete(String where, String[] selectionArgs) {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>Create a new Builder for ");
-        String _name_21 = tbl_1.getName();
-        String _pascalize_11 = Strings.pascalize(_name_21);
-        _builder.append(_pascalize_11, "		 ");
-        _builder.append("</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("public static Builder newBuilder() {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("return new Builder();");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>Build and execute insert or update statements for ");
-        String _name_22 = tbl_1.getName();
-        String _pascalize_12 = Strings.pascalize(_name_22);
-        _builder.append(_pascalize_12, "		 ");
-        _builder.append(".</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("* <p>Use {@link ");
-        String _name_23 = tbl_1.getName();
-        String _pascalize_13 = Strings.pascalize(_name_23);
-        _builder.append(_pascalize_13, "		 ");
-        _builder.append("#newBuilder()} to create new builder</p>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("public static class Builder extends AbstractValuesBuilder {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("private Builder() {");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t\t");
-        _builder.append("super(Mechanoid.getApplicationContext(), CONTENT_URI);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.newLine();
-        {
-          EList<ColumnSource> _columnDefs_1 = tbl_1.getColumnDefs();
-          final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-              public Boolean apply(final ColumnSource it) {
-                String _name = it.getName();
-                boolean _equals = _name.equals("_id");
-                boolean _not = (!_equals);
-                return Boolean.valueOf(_not);
-              }
-            };
-          Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
-          for(final ColumnSource item : _filter_1) {
-            _builder.append("\t");
-            _builder.append("\t\t");
-            ColumnDef col_2 = ((ColumnDef) item);
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            _builder.append("public Builder set");
-            String _name_24 = col_2.getName();
-            String _pascalize_14 = Strings.pascalize(_name_24);
-            _builder.append(_pascalize_14, "			");
-            _builder.append("(");
-            ColumnType _type = col_2.getType();
-            String _javaTypeName = Extensions.toJavaTypeName(_type);
-            _builder.append(_javaTypeName, "			");
-            _builder.append(" value) {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("mValues.put(");
-            String _name_25 = tbl_1.getName();
-            String _pascalize_15 = Strings.pascalize(_name_25);
-            _builder.append(_pascalize_15, "				");
-            _builder.append(".");
-            String _name_26 = col_2.getName();
-            String _underscore_1 = Strings.underscore(_name_26);
-            String _upperCase_1 = _underscore_1.toUpperCase();
-            _builder.append(_upperCase_1, "				");
-            _builder.append(", value);");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("return this;");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
-          }
-        }
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.newLine();
       }
     }
     _builder.newLine();
@@ -555,90 +235,21 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
       for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t");
-        _builder.append("public static class ");
-        String _name_27 = vw_1.getName();
-        String _pascalize_16 = Strings.pascalize(_name_27);
-        _builder.append(_pascalize_16, "	");
-        _builder.append(" implements ");
-        String _name_28 = vw_1.getName();
-        String _pascalize_17 = Strings.pascalize(_name_28);
-        _builder.append(_pascalize_17, "	");
-        _builder.append("Columns");
-        {
-          boolean _hasAndroidPrimaryKey_1 = Extensions.hasAndroidPrimaryKey(vw_1);
-          if (_hasAndroidPrimaryKey_1) {
-            _builder.append(", BaseColumns");
-          }
-        }
-        _builder.append(" {");
+        CharSequence _generateContractItem_1 = this.generateContractItem(model, vw_1);
+        _builder.append(_generateContractItem_1, "	");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static final Uri CONTENT_URI = ");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t\t\t");
-        _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-        String _name_29 = vw_1.getName();
-        _builder.append(_name_29, "				");
-        _builder.append("\").build();");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("    ");
-        _builder.append("public static final String CONTENT_TYPE =");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("            ");
-        _builder.append("\"vnd.android.cursor.dir/vnd.");
-        DatabaseBlock _database_7 = model.getDatabase();
-        String _name_30 = _database_7.getName();
-        String _lowerCase_6 = _name_30.toLowerCase();
-        _builder.append(_lowerCase_6, "	            ");
-        _builder.append(".");
-        String _name_31 = vw_1.getName();
-        _builder.append(_name_31, "	            ");
-        _builder.append("\";");
-        _builder.newLineIfNotEmpty();
-        {
-          boolean _hasAndroidPrimaryKey_2 = Extensions.hasAndroidPrimaryKey(vw_1);
-          if (_hasAndroidPrimaryKey_2) {
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("public static final String ITEM_CONTENT_TYPE =");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("\"vnd.android.cursor.item/vnd.");
-            DatabaseBlock _database_8 = model.getDatabase();
-            String _name_32 = _database_8.getName();
-            String _lowerCase_7 = _name_32.toLowerCase();
-            _builder.append(_lowerCase_7, "			");
-            _builder.append(".");
-            String _name_33 = vw_1.getName();
-            _builder.append(_name_33, "			");
-            _builder.append("\";");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.newLine();
       }
     }
     _builder.append("\t");
     _builder.newLine();
     {
-      DatabaseBlock _database_9 = model.getDatabase();
-      ConfigBlock _config = _database_9.getConfig();
+      DatabaseBlock _database_4 = model.getDatabase();
+      ConfigBlock _config = _database_4.getConfig();
       boolean _notEquals = (!Objects.equal(_config, null));
       if (_notEquals) {
         {
-          DatabaseBlock _database_10 = model.getDatabase();
-          ConfigBlock _config_1 = _database_10.getConfig();
+          DatabaseBlock _database_5 = model.getDatabase();
+          ConfigBlock _config_1 = _database_5.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
               public Boolean apply(final ConfigurationStatement it) {
@@ -652,9 +263,9 @@ public class ContentProviderContractGenerator {
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("public static class ");
-            String _name_34 = stmt.getName();
-            String _pascalize_18 = Strings.pascalize(_name_34);
-            _builder.append(_pascalize_18, "	");
+            String _name_8 = stmt.getName();
+            String _pascalize_5 = Strings.pascalize(_name_8);
+            _builder.append(_pascalize_5, "	");
             _builder.append(" {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -677,13 +288,13 @@ public class ContentProviderContractGenerator {
             _builder.append("\t");
             _builder.append("            ");
             _builder.append("\"vnd.android.cursor.dir/vnd.");
-            DatabaseBlock _database_11 = model.getDatabase();
-            String _name_35 = _database_11.getName();
-            String _lowerCase_8 = _name_35.toLowerCase();
-            _builder.append(_lowerCase_8, "	            ");
+            DatabaseBlock _database_6 = model.getDatabase();
+            String _name_9 = _database_6.getName();
+            String _lowerCase_1 = _name_9.toLowerCase();
+            _builder.append(_lowerCase_1, "	            ");
             _builder.append(".");
-            String _name_36 = stmt.getName();
-            _builder.append(_name_36, "	            ");
+            String _name_10 = stmt.getName();
+            _builder.append(_name_10, "	            ");
             _builder.append("\";");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -697,15 +308,368 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private ");
-    DatabaseBlock _database_12 = model.getDatabase();
-    String _name_37 = _database_12.getName();
-    String _pascalize_19 = Strings.pascalize(_name_37);
-    _builder.append(_pascalize_19, "	");
+    DatabaseBlock _database_7 = model.getDatabase();
+    String _name_11 = _database_7.getName();
+    String _pascalize_6 = Strings.pascalize(_name_11);
+    _builder.append(_pascalize_6, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public CharSequence generateContractItem(final Model model, final DDLStatement stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* <p>Column definitions and helper methods to work with the ");
+    String _name = this.getName(stmt);
+    String _pascalize = Strings.pascalize(_name);
+    _builder.append(_pascalize, " ");
+    _builder.append(".</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("public static class ");
+    String _name_1 = this.getName(stmt);
+    String _pascalize_1 = Strings.pascalize(_name_1);
+    _builder.append(_pascalize_1, "");
+    _builder.append(" implements ");
+    String _name_2 = this.getName(stmt);
+    String _pascalize_2 = Strings.pascalize(_name_2);
+    _builder.append(_pascalize_2, "");
+    _builder.append("Columns");
+    {
+      boolean _hasAndroidPrimaryKey = this.hasAndroidPrimaryKey(stmt);
+      if (_hasAndroidPrimaryKey) {
+        _builder.append(", BaseColumns");
+      }
+    }
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.append("public static final Uri CONTENT_URI = ");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
+    String _name_3 = this.getName(stmt);
+    String _lowerCase = _name_3.toLowerCase();
+    _builder.append(_lowerCase, "			");
+    _builder.append("\").build();");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>The content type for a cursor that contains many ");
+    String _name_4 = this.getName(stmt);
+    String _pascalize_3 = Strings.pascalize(_name_4);
+    _builder.append(_pascalize_3, "	 ");
+    _builder.append(" rows.</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public static final String CONTENT_TYPE =");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("\"vnd.android.cursor.dir/vnd.");
+    DatabaseBlock _database = model.getDatabase();
+    String _name_5 = _database.getName();
+    String _lowerCase_1 = _name_5.toLowerCase();
+    _builder.append(_lowerCase_1, "            ");
+    _builder.append(".");
+    String _name_6 = this.getName(stmt);
+    _builder.append(_name_6, "            ");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    {
+      boolean _hasAndroidPrimaryKey_1 = this.hasAndroidPrimaryKey(stmt);
+      if (_hasAndroidPrimaryKey_1) {
+        _builder.append("\t");
+        _builder.append("/**");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append(" ");
+        _builder.append("* <p>The content type for a cursor that contains a single ");
+        String _name_7 = this.getName(stmt);
+        String _pascalize_4 = Strings.pascalize(_name_7);
+        _builder.append(_pascalize_4, "	 ");
+        _builder.append(" row.</p>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append(" ");
+        _builder.append("*/");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public static final String ITEM_CONTENT_TYPE =");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("\"vnd.android.cursor.item/vnd.");
+        DatabaseBlock _database_1 = model.getDatabase();
+        String _name_8 = _database_1.getName();
+        String _lowerCase_2 = _name_8.toLowerCase();
+        _builder.append(_lowerCase_2, "		");
+        _builder.append(".");
+        String _name_9 = this.getName(stmt);
+        _builder.append(_name_9, "		");
+        _builder.append("\";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>Builds a Uri with appended id for a row in ");
+    String _name_10 = this.getName(stmt);
+    String _pascalize_5 = Strings.pascalize(_name_10);
+    _builder.append(_pascalize_5, "	 ");
+    _builder.append(", ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("* eg:- content://");
+    String _packageName = model.getPackageName();
+    _builder.append(_packageName, "	 ");
+    _builder.append(".");
+    DatabaseBlock _database_2 = model.getDatabase();
+    String _name_11 = _database_2.getName();
+    String _lowerCase_3 = _name_11.toLowerCase();
+    _builder.append(_lowerCase_3, "	 ");
+    _builder.append("/");
+    String _name_12 = this.getName(stmt);
+    String _lowerCase_4 = _name_12.toLowerCase();
+    _builder.append(_lowerCase_4, "	 ");
+    _builder.append("/123.</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public static Uri buildUriWithId(long id) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static int delete() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static int delete(String where, String[] selectionArgs) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>Create a new Builder for ");
+    String _name_13 = this.getName(stmt);
+    String _pascalize_6 = Strings.pascalize(_name_13);
+    _builder.append(_pascalize_6, "	 ");
+    _builder.append("</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static Builder newBuilder() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return new Builder();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>Build and execute insert or update statements for ");
+    String _name_14 = this.getName(stmt);
+    String _pascalize_7 = Strings.pascalize(_name_14);
+    _builder.append(_pascalize_7, "	 ");
+    _builder.append(".</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>Use {@link ");
+    String _name_15 = this.getName(stmt);
+    String _pascalize_8 = Strings.pascalize(_name_15);
+    _builder.append(_pascalize_8, "	 ");
+    _builder.append("#newBuilder()} to create new builder</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static class Builder extends AbstractValuesBuilder {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("private Builder() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("super(Mechanoid.getApplicationContext(), CONTENT_URI);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    CharSequence _generateBuilderSetters = this.generateBuilderSetters(stmt);
+    _builder.append(_generateBuilderSetters, "		");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  protected CharSequence _generateBuilderSetters(final CreateTableStatement stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
+            String _name = it.getName();
+            boolean _equals = _name.equals("_id");
+            boolean _not = (!_equals);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
+      for(final ColumnSource item : _filter) {
+        ColumnDef col = ((ColumnDef) item);
+        _builder.newLineIfNotEmpty();
+        _builder.append("public Builder set");
+        String _name = col.getName();
+        String _pascalize = Strings.pascalize(_name);
+        _builder.append(_pascalize, "");
+        _builder.append("(");
+        ColumnType _type = col.getType();
+        String _javaTypeName = ModelUtil.toJavaTypeName(_type);
+        _builder.append(_javaTypeName, "");
+        _builder.append(" value) {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("mValues.put(");
+        String _name_1 = col.getName();
+        String _underscore = Strings.underscore(_name_1);
+        String _upperCase = _underscore.toUpperCase();
+        _builder.append(_upperCase, "	");
+        _builder.append(", value);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("return this;");
+        _builder.newLine();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generateBuilderSetters(final CreateViewStatement stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    ArrayList<ColumnSource> cols = ModelUtil.getViewResultColumns(stmt);
+    _builder.newLineIfNotEmpty();
+    {
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
+            String _name = it.getName();
+            boolean _equals = _name.equals("_id");
+            boolean _not = (!_equals);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
+      for(final ColumnSource item : _filter) {
+        ResultColumn col = ((ResultColumn) item);
+        _builder.newLineIfNotEmpty();
+        ColumnType type = ModelUtil.getInferredColumnType(col);
+        _builder.newLineIfNotEmpty();
+        _builder.append("public Builder set");
+        String _name = col.getName();
+        String _pascalize = Strings.pascalize(_name);
+        _builder.append(_pascalize, "");
+        _builder.append("(");
+        String _javaTypeName = ModelUtil.toJavaTypeName(type);
+        _builder.append(_javaTypeName, "");
+        _builder.append(" value) {");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("mValues.put(");
+        String _name_1 = stmt.getName();
+        String _pascalize_1 = Strings.pascalize(_name_1);
+        _builder.append(_pascalize_1, "	");
+        _builder.append(".");
+        String _name_2 = col.getName();
+        String _underscore = Strings.underscore(_name_2);
+        String _upperCase = _underscore.toUpperCase();
+        _builder.append(_upperCase, "	");
+        _builder.append(", value);");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("return this;");
+        _builder.newLine();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  protected String _getName(final CreateTableStatement stmt) {
+    String _name = stmt.getName();
+    return _name;
+  }
+  
+  protected String _getName(final CreateViewStatement stmt) {
+    String _name = stmt.getName();
+    return _name;
+  }
+  
+  protected boolean _hasAndroidPrimaryKey(final CreateTableStatement stmt) {
+    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(stmt);
+    return _hasAndroidPrimaryKey;
+  }
+  
+  protected boolean _hasAndroidPrimaryKey(final CreateViewStatement stmt) {
+    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(stmt);
+    return _hasAndroidPrimaryKey;
   }
   
   public CharSequence createMethodArgsFromColumns(final CreateTableStatement tbl) {
@@ -730,7 +694,7 @@ public class ContentProviderContractGenerator {
         }
         ColumnDef col = ((ColumnDef) item);
         ColumnType _type = col.getType();
-        String _javaTypeName = Extensions.toJavaTypeName(_type);
+        String _javaTypeName = ModelUtil.toJavaTypeName(_type);
         _builder.append(_javaTypeName, "");
         _builder.append(" ");
         String _name = col.getName();
@@ -778,5 +742,38 @@ public class ContentProviderContractGenerator {
       }
     }
     return _builder;
+  }
+  
+  public CharSequence generateBuilderSetters(final DDLStatement stmt) {
+    if (stmt instanceof CreateTableStatement) {
+      return _generateBuilderSetters((CreateTableStatement)stmt);
+    } else if (stmt instanceof CreateViewStatement) {
+      return _generateBuilderSetters((CreateViewStatement)stmt);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(stmt).toString());
+    }
+  }
+  
+  public String getName(final DDLStatement stmt) {
+    if (stmt instanceof CreateTableStatement) {
+      return _getName((CreateTableStatement)stmt);
+    } else if (stmt instanceof CreateViewStatement) {
+      return _getName((CreateViewStatement)stmt);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(stmt).toString());
+    }
+  }
+  
+  public boolean hasAndroidPrimaryKey(final DDLStatement stmt) {
+    if (stmt instanceof CreateTableStatement) {
+      return _hasAndroidPrimaryKey((CreateTableStatement)stmt);
+    } else if (stmt instanceof CreateViewStatement) {
+      return _hasAndroidPrimaryKey((CreateViewStatement)stmt);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(stmt).toString());
+    }
   }
 }

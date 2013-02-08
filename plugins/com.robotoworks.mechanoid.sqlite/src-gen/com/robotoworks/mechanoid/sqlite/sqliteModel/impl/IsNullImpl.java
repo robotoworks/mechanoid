@@ -2,10 +2,10 @@
  */
 package com.robotoworks.mechanoid.sqlite.sqliteModel.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import com.robotoworks.mechanoid.sqlite.sqliteModel.IsNull;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

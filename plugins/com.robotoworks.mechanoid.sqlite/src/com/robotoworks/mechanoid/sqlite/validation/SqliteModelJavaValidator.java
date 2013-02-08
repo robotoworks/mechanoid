@@ -12,6 +12,7 @@ import org.eclipse.xtext.validation.Check;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.AlterTableRenameStatement;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.CreateTriggerStatement;
@@ -23,14 +24,14 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectCoreExpression;
+import com.robotoworks.mechanoid.sqlite.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.sqlite.util.ModelUtil;
-
- 
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
-
  
 	@Inject TypeReferences typeReferences;
 	
@@ -39,7 +40,7 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
 
 		if(type == null) {
-			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME);
+			error("mechanoid.jar is required in your /libs folder or on the classpath", SqliteModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);
 		}
 	}
 	
@@ -106,17 +107,11 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 						error("A table exists with this name, drop it first", cv, SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT__NAME, -1);
 						return;
 					} else {
-						ArrayList<EObject> sources = ModelUtil.getAllReferenceableSingleSources(cv.getSelectStatement().getCore());
 						
-						for(EObject source : sources) {
-							if(source instanceof SingleSourceTable) {
-								SingleSourceTable table = (SingleSourceTable) source;
-								
-								if(!tables.contains(table.getTableReference().getName())) {
-									error("Table does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
-									return;
-								}
-							}
+						SelectCoreExpression expr = cv.getSelectStatement().getCore();
+						
+						if(!checkTablesInExpressionExist(tables, expr)) {
+							return;
 						}
 						
 						views.add(cv.getName());
@@ -136,6 +131,11 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 						error("Trigger exists, drop it first", ct, SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__NAME, -1);
 						return;
 					} else {
+						if(!tables.contains(ct.getTable().getName())) {
+							error("Table does not exist", ct, SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__TABLE, -1);
+							return;
+						}
+						
 						triggers.add(ct.getName());
 					}
 				} else if (statement instanceof DropTriggerStatement) {
@@ -152,6 +152,24 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		}
 	}
 
+	private boolean checkTablesInExpressionExist(HashSet<String> tables,
+			SelectCoreExpression expr) {
+		ArrayList<EObject> sources = ModelUtil.getAllReferenceableSingleSources(expr);
+		
+		for(EObject source : sources) {
+			if(source instanceof SingleSourceTable) {
+				SingleSourceTable table = (SingleSourceTable) source;
+				
+				if(!tables.contains(table.getTableReference().getName())) {
+					error("Table does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
+
 	@Check
 	public void checkColumnSourceRefComplete(ColumnSourceRef ref) {
 		if(ref.isAll()) {
@@ -160,6 +178,30 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 		
 		if(ref.getSource() != null && ref.getColumn() == null) {
 			error("Incomplete reference", SqliteModelPackage.Literals.COLUMN_SOURCE_REF__COLUMN);
+		}
+	}
+	
+	@Check
+	public void checkUniqueResultColumnAliases(SelectList list) {
+		EList<ColumnSource> cols = list.getResultColumns();
+		
+		for(int i=0; i < cols.size(); i++) {
+			ColumnSource subject = cols.get(i);
+			int matches = 0;
+			for(int j=0; j < cols.size(); j++) {
+				ColumnSource target = cols.get(j);
+				
+				if(subject.getName() != null && 
+						target.getName() != null &&
+						subject.getName().equalsIgnoreCase(target.getName())) {
+					matches++;
+				}
+				
+				if(matches > 1) {
+					error("Duplicate alias not allowed", target, SqliteModelPackage.Literals.COLUMN_SOURCE__NAME, -1);
+					return;
+				}
+			}
 		}
 	}
 }

@@ -81,6 +81,7 @@ public class AuthorsRecord extends ActiveRecord implements Parcelable {
     	super(Authors.CONTENT_URI);
     	
 		setId(in.readLong());
+		
 		mName = in.readString();
 		
 		boolean[] dirtyFlags = new boolean[2];
@@ -97,9 +98,9 @@ public class AuthorsRecord extends ActiveRecord implements Parcelable {
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeLong(getId());
 		dest.writeString(mName);
-	    dest.writeBooleanArray(new boolean[] {
+		dest.writeBooleanArray(new boolean[] {
 			mNameDirty
-	    });
+		});
 	}
 	
 	@Override
