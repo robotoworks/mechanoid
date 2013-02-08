@@ -8,5 +8,10 @@ public class NewMechNetFileWizard extends NewMechanoidFileWizard {
 	protected String getFileExtension() {
 		return "mechnet";
 	}
+	
+	@Override
+	protected String getFileTypeDescription() {
+		return "Mechanoid Net File";
+	}
 
 }

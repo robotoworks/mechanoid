@@ -5,8 +5,9 @@
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
         	id="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard"
-        	name="Net Service"
+        	name="Mechanoid Net File"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
+        	icon="icons/mechnet_file.png"
         	class="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard">
 		</wizard>
 	</extension>
@@ -17,8 +18,9 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="mechnet"
+            icon="icons/mechnet_file.png"
             id="com.robotoworks.mechanoid.net.NetModel"
-            name="NetModel Editor">
+            name="Mechanoid Net Editor">
         </editor>
     </extension>
     <extension

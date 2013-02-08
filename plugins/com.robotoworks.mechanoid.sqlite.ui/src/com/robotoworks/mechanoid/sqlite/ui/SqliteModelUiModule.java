@@ -6,6 +6,7 @@ package com.robotoworks.mechanoid.sqlite.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
@@ -32,5 +33,11 @@ public class SqliteModelUiModule extends com.robotoworks.mechanoid.sqlite.ui.Abs
 	@Override
 	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
 		return MechanoidBuilderParticipant.class;
+	}
+	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		// TODO Auto-generated method stub
+		return super.bindIXtextEditorCallback();
 	}
 }

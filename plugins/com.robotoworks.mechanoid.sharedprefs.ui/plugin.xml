@@ -5,8 +5,9 @@
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
         	id="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard"
-        	name="Shared Preferences"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
+        	name="Mechanoid Prefs File"
+        	icon="icons/mechprefs_file.png"
         	class="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard">
 		</wizard>
 	</extension>
@@ -17,8 +18,9 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="mechprefs"
+            icon="icons/mechprefs_file.png"
             id="com.robotoworks.mechanoid.sharedprefs.SharedPreferencesModel"
-            name="SharedPreferencesModel Editor">
+            name="Mechanoid Prefs Editor">
         </editor>
     </extension>
     <extension

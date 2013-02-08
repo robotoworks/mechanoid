@@ -5,7 +5,8 @@
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
         	id="com.robotoworks.mechanoid.ops.ui.wizards.NewMechOpsFileWizard"
-        	name="Operation Service"
+        	name="Mechanoid Ops File"
+        	icon="icons/mechops_file.png"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
         	class="com.robotoworks.mechanoid.ops.ui.wizards.NewMechOpsFileWizard">
 		</wizard>
@@ -18,7 +19,8 @@
             default="true"
             extensions="mechops"
             id="com.robotoworks.mechanoid.ops.OpServiceModel"
-            name="OpServiceModel Editor">
+            icon="icons/mechops_file.png"
+            name="Mechanoid Ops Editor">
         </editor>
     </extension>
     <extension

@@ -8,5 +8,10 @@ public class NewMechPrefsFileWizard extends NewMechanoidFileWizard {
 	protected String getFileExtension() {
 		return "mechprefs";
 	}
+	
+	@Override
+	protected String getFileTypeDescription() {
+		return "Mechanoid Prefs File";
+	}
 
 }
