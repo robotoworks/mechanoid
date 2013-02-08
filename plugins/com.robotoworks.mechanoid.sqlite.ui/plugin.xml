@@ -6,7 +6,8 @@
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
         	id="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard"
-        	name="Database"
+        	name="Mechanoid DB File"
+        	icon="icons/mechdb_file.png"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
         	class="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard">
 		</wizard>
@@ -20,7 +21,7 @@
             extensions="mechdb"
             icon="icons/mechdb_file.png"
             id="com.robotoworks.mechanoid.sqlite.SqliteModel"
-            name="SqliteModel Editor">
+            name="Mechanoid DB Editor">
         </editor>
     </extension>
     <extension

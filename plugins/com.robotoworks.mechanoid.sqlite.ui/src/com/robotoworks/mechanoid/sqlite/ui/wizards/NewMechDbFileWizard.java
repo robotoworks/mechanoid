@@ -10,5 +10,10 @@ public class NewMechDbFileWizard extends NewMechanoidFileWizard {
 	protected String getFileExtension() {
 		return "mechdb";
 	}
+	
+	@Override
+	protected String getFileTypeDescription() {
+		return "Mechanoid DB File";
+	}
 
 }

@@ -7,11 +7,11 @@ class FileCreationPage extends WizardNewFileCreationPage {
 	
 	private String extension;
 
-	public FileCreationPage(IStructuredSelection selection, String extension) {
+	public FileCreationPage(IStructuredSelection selection, String extension, String fileTypeDescription) {
 		super("setFileName", selection);
 		this.extension = extension;
 		
-		setTitle("Create Database (*." + extension + ") File");
+		setTitle(fileTypeDescription + " (*." + extension + ")");
 		setFileName("untitled." + extension);
 	}
 	

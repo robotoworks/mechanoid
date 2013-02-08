@@ -9,4 +9,9 @@ public class NewMechOpsFileWizard extends NewMechanoidFileWizard {
 		return "mechops";
 	}
 
+	@Override
+	protected String getFileTypeDescription() {
+		return "Mechanoid Ops File";
+	}
+
 }

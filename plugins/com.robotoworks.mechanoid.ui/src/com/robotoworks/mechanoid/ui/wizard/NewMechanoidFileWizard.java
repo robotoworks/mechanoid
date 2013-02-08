@@ -47,16 +47,19 @@ public abstract class NewMechanoidFileWizard extends Wizard implements INewWizar
 	}
 	
 	protected abstract String getFileExtension();
+	protected abstract String getFileTypeDescription();
 	
 	@Override
 	public void addPages() {
 		super.addPages();
 
-		this.fileCreationPage = new FileCreationPage(selection, getFileExtension());
+		this.fileCreationPage = new FileCreationPage(selection, getFileExtension(), getFileTypeDescription());
 		
 		addPage(fileCreationPage);
 	}
 	
+
+
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
