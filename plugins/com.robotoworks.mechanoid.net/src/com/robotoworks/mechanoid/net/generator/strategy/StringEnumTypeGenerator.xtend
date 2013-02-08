@@ -15,10 +15,10 @@ class StringEnumTypeGenerator {
 	}
 	
 	def generate(EnumTypeDeclaration type, Model module) '''
-	package Çmodule.packageNameÈ;
+	package «module.packageName»;
 		
-	public enum Çtype.nameÈ {
-		Çtype.literal.members.join(",\n", [member|member.name.underscore.toUpperCase + '("' + member.name + '")'])È;
+	public enum «type.name» {
+		«type.literal.members.join(",\n", [member|member.name.underscore.toUpperCase + '("' + member.name + '")'])»;
 		
 		private String value;
 		
@@ -26,16 +26,16 @@ class StringEnumTypeGenerator {
 			return value;
 		}
 		
-		Çtype.nameÈ(String value){
+		«type.name»(String value){
 			this.value = value;
 		}
 		
-		public static Çtype.nameÈ fromValue(String value) {
+		public static «type.name» fromValue(String value) {
 			if (value == null) {
 				throw new IllegalArgumentException("value cannot be null");
 			}
 			
-			for (Çtype.nameÈ member : Çtype.nameÈ.values()) {
+			for («type.name» member : «type.name».values()) {
 				if (value.equalsIgnoreCase(member.value)) {
 					return member;
 				}

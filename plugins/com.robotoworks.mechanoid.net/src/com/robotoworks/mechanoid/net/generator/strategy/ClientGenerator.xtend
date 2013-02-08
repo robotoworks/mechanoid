@@ -19,10 +19,10 @@ class ClientGenerator {
 	def registerImports()''''''
 	
 	def generate(Client client, Model module) '''
-	package Çmodule.packageNameÈ;
+	package «module.packageName»;
 
-	Çvar body = generateClientClass(client, module)È
-	ÇregisterImportsÈ
+	«var body = generateClientClass(client, module)»
+	«registerImports»
 	import android.util.Log;
 	import com.robotoworks.mechanoid.net.Parser;
 	import com.robotoworks.mechanoid.net.TransformException;
@@ -34,20 +34,20 @@ class ClientGenerator {
 	import java.net.URL;
 	import java.util.LinkedHashMap;
 	import com.robotoworks.mechanoid.net.NetLogHelper;
-	Çcontext.printImportsÈ
-	Çcontext.clearImportsÈ
+	«context.printImports»
+	«context.clearImports»
 	
-	ÇbodyÈ
+	«body»
 	'''
 	
 	def generateClientClass(Client client, Model module) '''
-		public class Çclient.nameÈ {
-			private static final String LOG_TAG = "Çclient.nameÈ";
+		public class «client.name» {
+			private static final String LOG_TAG = "«client.name»";
 			
-			ÇIF client.baseUrl != nullÈ
-			private static final String DEFAULT_BASE_URL = "Çclient.baseUrlÈ";
+			«IF client.baseUrl != null»
+			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
 			
-			ÇENDIFÈ
+			«ENDIF»
 			private final TransformerProvider transformerProvider;
 			private final String baseUrl;
 			private final boolean debug;
@@ -57,94 +57,94 @@ class ClientGenerator {
 			public void setHeader(String field, String value) {
 				headers.put(field, value);
 			}
-			Çvar params = client.paramsBlockÈ
-			ÇIF(params != null)È
-			ÇFOR param:params.paramsÈ
-			private Çparam.member.type.signatureÈ Çparam.member.name.camelizeÈParamÇIF param.defaultValue != nullÈ = Çparam.defaultValue.convertToJavaLiteralÈÇENDIFÈ;
-			private boolean Çparam.member.name.camelizeÈParamSetÇIF param.defaultValue != nullÈ = trueÇENDIFÈ;
-			ÇENDFORÈ
+			«var params = client.paramsBlock»
+			«IF(params != null)»
+			«FOR param:params.params»
+			private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
+			private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
+			«ENDFOR»
 				
-			ÇENDIFÈ
+			«ENDIF»
 			
-			ÇIF(params != null)È
-			ÇFOR param:params.paramsÈ
-			public void setÇparam.member.name.pascalizeÈParam(Çparam.member.type.signatureÈ value) {
-				this.Çparam.member.name.camelizeÈParam = value;
-				this.Çparam.member.name.camelizeÈParamSet = true;
+			«IF(params != null)»
+			«FOR param:params.params»
+			public void set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
+				this.«param.member.name.camelize»Param = value;
+				this.«param.member.name.camelize»ParamSet = true;
 			}
-			ÇENDFORÈ
+			«ENDFOR»
 				
-			ÇENDIFÈ
-			ÇIF client.baseUrl != nullÈ
-			public Çclient.nameÈ(){
+			«ENDIF»
+			«IF client.baseUrl != null»
+			public «client.name»(){
 				this(DEFAULT_BASE_URL, new TransformerProvider(), false);
 			}
 
-			public Çclient.nameÈ(TransformerProvider transformerProvider){
+			public «client.name»(TransformerProvider transformerProvider){
 				this(DEFAULT_BASE_URL, transformerProvider, false);
 			}
 			
-			public Çclient.nameÈ(boolean debug){
+			public «client.name»(boolean debug){
 				this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
 			}
-			ÇENDIFÈ
+			«ENDIF»
 			
-			public Çclient.nameÈ(String baseUrl){
+			public «client.name»(String baseUrl){
 				this(baseUrl, new TransformerProvider(), false);
 			}
 			
 
-			public Çclient.nameÈ(String baseUrl, boolean debug){
+			public «client.name»(String baseUrl, boolean debug){
 				this(baseUrl, new TransformerProvider(), debug);
 			}
 			
-			public Çclient.nameÈ(String baseUrl, TransformerProvider transformerProvider, boolean debug){
+			public «client.name»(String baseUrl, TransformerProvider transformerProvider, boolean debug){
 				this.baseUrl = baseUrl;
 				this.transformerProvider = transformerProvider;
 				this.debug = debug;
-				Çvar headers = client.headerBlockÈ
-				ÇIF headers != nullÈ
-				ÇFOR header : headers.headersÈ
-				headers.put("Çheader.nameÈ","Çheader.valueÈ");
-				ÇENDFORÈ
-				ÇENDIFÈ
+				«var headers = client.headerBlock»
+				«IF headers != null»
+				«FOR header : headers.headers»
+				headers.put("«header.name»","«header.value»");
+				«ENDFOR»
+				«ENDIF»
 			}
 			
-			ÇgenerateClientMethods(client, module)È
+			«generateClientMethods(client, module)»
 		}
 	'''
 	
 	def generateClientMethods(Client client, Model model) '''
-		ÇFOR method:client.blocks.filter(typeof(HttpMethod))È
-		ÇIF !method.hasBody && (method.path == null || method.path.params.size == 0)È
-		public Response<Çmethod.name.pascalizeÈResult> Çmethod.name.camelizeÈ()
+		«FOR method:client.blocks.filter(typeof(HttpMethod))»
+		«IF !method.hasBody && (method.path == null || method.path.params.size == 0)»
+		public Response<«method.name.pascalize»Result> «method.name.camelize»()
 		  throws ServiceException {
-		  	return Çmethod.name.camelizeÈ(new Çmethod.name.pascalizeÈRequest());
+		  	return «method.name.camelize»(new «method.name.pascalize»Request());
 		}
 		
-		ÇENDIFÈ
-		public Response<Çmethod.name.pascalizeÈResult> Çmethod.name.camelizeÈ(Çmethod.name.pascalizeÈRequest request)
+		«ENDIF»
+		public Response<«method.name.pascalize»Result> «method.name.camelize»(«method.name.pascalize»Request request)
 		  throws ServiceException {
-		  	Çvar params = client.paramsBlockÈ
-			ÇIF(params != null)È
-			ÇFOR param:params.paramsÈ
-			if(this.Çparam.member.name.camelizeÈParamSet && !request.isÇparam.member.name.pascalizeÈParamSet()){
-				request.setÇparam.member.name.pascalizeÈParam(this.Çparam.member.name.camelizeÈParam);
+		  	«var params = client.paramsBlock»
+			«IF(params != null)»
+			«FOR param:params.params»
+			if(this.«param.member.name.camelize»ParamSet && !request.is«param.member.name.pascalize»ParamSet()){
+				request.set«param.member.name.pascalize»Param(this.«param.member.name.camelize»Param);
 			}
-			ÇENDFORÈ
+			«ENDFOR»
 			
-			ÇENDIFÈ	
+			«ENDIF»	
 			
-			Parser<Çmethod.name.pascalizeÈResult> parser = new Parser<Çmethod.name.pascalizeÈResult>() {
-				public Çmethod.name.pascalizeÈResult parse(InputStream inStream) throws TransformException {
-					return new Çmethod.name.pascalizeÈResult(transformerProvider, inStream);
+			Parser<«method.name.pascalize»Result> parser = new Parser<«method.name.pascalize»Result>() {
+				public «method.name.pascalize»Result parse(InputStream inStream) throws TransformException {
+					return new «method.name.pascalize»Result(transformerProvider, inStream);
 				}
 			};
 			
-			ÇgenerateServiceMethod(method)È
+			«generateServiceMethod(method)»
 		}
 		
-		ÇENDFORÈ
+		«ENDFOR»
 	'''
 	def generateServiceMethod(HttpMethod method) { 
 		switch(method.type) {
@@ -174,7 +174,7 @@ class ClientGenerator {
 			
 			conn.setRequestProperty("Accept", "application/json, text/json");
 			
-			ÇprintSetHeadersStatements()È
+			«printSetHeadersStatements()»
 			
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
@@ -182,7 +182,7 @@ class ClientGenerator {
 			
 			conn.connect();
 			
-			Response<Çmethod.name.pascalizeÈResult> response = new Response<Çmethod.name.pascalizeÈResult>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
@@ -220,16 +220,16 @@ class ClientGenerator {
 			
 			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
-			ÇprintSetHeadersStatements()È
+			«printSetHeadersStatements()»
 			
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
 			}
 			
 			conn.connect()
-			ÇIF method.body != nullÈ
+			«IF method.body != null»
 			
-			Çcontext.registerImport("java.io.ByteArrayOutputStream")È
+			«context.registerImport("java.io.ByteArrayOutputStream")»
 			if(debug) {
 			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
 			    request.writeBody(transformerProvider, debugOutStream);
@@ -239,8 +239,8 @@ class ClientGenerator {
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			ÇENDIFÈ
-			Response<Çmethod.name.pascalizeÈResult> response = new Response<Çmethod.name.pascalizeÈResult>(conn, parser);
+			«ENDIF»
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
@@ -269,16 +269,16 @@ class ClientGenerator {
 			
 			conn.setRequestProperty("Content-Type", "application/json, text/json");
 			
-			ÇprintSetHeadersStatements()È
+			«printSetHeadersStatements()»
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
 			}
 						
 			conn.connect();
-			ÇIF method.body != nullÈ
+			«IF method.body != null»
 			
-			Çcontext.registerImport("java.io.ByteArrayOutputStream")È
+			«context.registerImport("java.io.ByteArrayOutputStream")»
 			if(debug) {
 			    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
 			    request.writeBody(transformerProvider, debugOutStream);
@@ -288,8 +288,8 @@ class ClientGenerator {
 			
 			request.writeBody(transformerProvider, conn.getOutputStream());
 			
-			ÇENDIFÈ
-			Response<Çmethod.name.pascalizeÈResult> response = new Response<Çmethod.name.pascalizeÈResult>(conn, parser);
+			«ENDIF»
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());
@@ -315,7 +315,7 @@ class ClientGenerator {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("DELETE");
 			
-			ÇprintSetHeadersStatements()È
+			«printSetHeadersStatements()»
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, conn.getRequestProperties());
@@ -323,7 +323,7 @@ class ClientGenerator {
 	
 			conn.connect();
 			
-			Response<Çmethod.name.pascalizeÈResult> response = new Response<Çmethod.name.pascalizeÈResult>(conn, parser);
+			Response<«method.name.pascalize»Result> response = new Response<«method.name.pascalize»Result>(conn, parser);
 
 			if(debug) {
 				NetLogHelper.logProperties(LOG_TAG, response.getHeaders());

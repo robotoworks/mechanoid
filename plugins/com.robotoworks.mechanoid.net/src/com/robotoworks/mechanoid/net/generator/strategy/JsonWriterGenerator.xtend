@@ -26,15 +26,15 @@ class JsonWriterGenerator {
 	}
 	
 	def genWriteComplexTypeLiteral(ComplexTypeLiteral literal) '''
-		ÇgenWriteComplexTypeLiteralForMembers(literal.members)È
+		«genWriteComplexTypeLiteralForMembers(literal.members)»
 	'''
 	
 	def genWriteComplexTypeLiteralForMembers(EList<Member> members) '''
 		target.beginObject();
 		
-		ÇFOR member:membersÈ
-			ÇgenStatement(member)È
-		ÇENDFORÈ
+		«FOR member:members»
+			«genStatement(member)»
+		«ENDFOR»
 		
 		target.endObject();
 	'''
@@ -46,14 +46,14 @@ class JsonWriterGenerator {
 	
 	def dispatch genStatement(SkipMember skipMember) '''
 	
-		target.name("ÇskipMember.nameÈ");
+		target.name("«skipMember.name»");
 		
-		ÇgenWriteComplexTypeLiteralForMembers(skipMember.literal.members)È
+		«genWriteComplexTypeLiteralForMembers(skipMember.literal.members)»
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
-		target.name("Çmember.nameÈ");
-		target.value(Çmember.toGetMethodName.memberize("subject")È());
+		target.name("«member.name»");
+		target.value(«member.toGetMethodName.memberize("subject")»());
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {
@@ -61,16 +61,16 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
-		if(Çmember.toGetMethodName.memberize("subject")È() != null) {
-			target.name("Çmember.nameÈ");
-			provider.get(Çtype.innerSignatureÈTransformer.class).transformOut(Çmember.toGetMethodName.memberize("subject")È(), target);
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
+			target.name("«member.name»");
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
 		}
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
-		if(Çmember.toGetMethodName.memberize("subject")È() != null) {
-			target.name("Çmember.nameÈ");
-			target.value(Çmember.toGetMethodName.memberize("subject")È().toString());
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
+			target.name("«member.name»");
+			target.value(«member.toGetMethodName.memberize("subject")»().toString());
 		}
 	'''
 	
@@ -79,11 +79,11 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
-		Çcontext.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")È
-		Çcontext.registerImport("java.util.List")È
-		if(Çmember.toGetMethodName.memberize("subject")È() != null) {
-			target.name("Çmember.nameÈ");
-			JsonUtil.writeÇitemType.boxedTypeSignatureÈList(target, Çmember.toGetMethodName.memberize("subject")È());
+		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«context.registerImport("java.util.List")»
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
+			target.name("«member.name»");
+			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("subject")»());
 		}
 	'''
 	
@@ -92,24 +92,24 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
-		Çcontext.registerImport("java.util.List")È
-		if(Çmember.toGetMethodName.memberize("subject")È() != null) {
-			target.name("Çmember.nameÈ");
-			provider.get(Çtype.innerSignatureÈTransformer.class).transformOut(Çmember.toGetMethodName.memberize("subject")È(), target);
+		«context.registerImport("java.util.List")»
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
+			target.name("«member.name»");
+			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
 		}
 	'''
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, EnumTypeDeclaration decl) '''
-		Çcontext.registerImport("java.util.List")È
-		Çcontext.registerImport("java.util.ArrayList")È
+		«context.registerImport("java.util.List")»
+		«context.registerImport("java.util.ArrayList")»
 		
-		if(Çmember.toGetMethodName.memberize("subject")È() != null) {
+		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			
-			target.name("Çmember.nameÈ");
+			target.name("«member.name»");
 			
 			target.beginArray();
 			
-			for(Çmember.type.innerSignatureÈ element : Çmember.toGetMethodName.memberize("subject")È()) {
+			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize("subject")»()) {
 				target.value(element.toString());
 			}
 			
