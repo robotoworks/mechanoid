@@ -25,7 +25,7 @@ public abstract class NewMechanoidFileWizard extends Wizard implements INewWizar
         if (file == null) {
 			return false;
 		}
-
+        
         IWorkbenchWindow dw = workbench.getActiveWorkbenchWindow();
         
         BasicNewResourceWizard.selectAndReveal(file, dw);
