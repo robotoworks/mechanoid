@@ -1,33 +1,23 @@
 package com.robotoworks.mechanoid.ui.wizard;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jface.bindings.keys.KeyStroke;
-import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.fieldassist.ContentProposalAdapter;
-import org.eclipse.jface.fieldassist.SimpleContentProposalProvider;
-import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
-import org.eclipse.ui.dialogs.NewFolderDialog;
 
-import com.robotoworks.mechanoid.ui.wizard.fields.BrowseableValueField;
+import com.robotoworks.mechanoid.ui.wizard.fields.ContainerBrowserField;
+import com.robotoworks.mechanoid.ui.wizard.fields.PackageBrowserField;
+import com.robotoworks.mechanoid.ui.wizard.fields.TextField;
 
-public abstract class NewMechanoidElementPage extends WizardPage {
+public abstract class NewMechanoidElementPage extends MechanoidWizardPage {
 	
-    private BrowseableValueField mFolderField;
-    private BrowseableValueField mPackageField;
-    private ContentProposalAdapter mPackageProposalAdapter;
+    private ContainerBrowserField mFolderField;
+    private PackageBrowserField mPackageField;
+    private TextField mElementNameField;
 
     protected NewMechanoidElementPage(String pageName) {
 		super(pageName);
@@ -61,57 +51,27 @@ public abstract class NewMechanoidElementPage extends WizardPage {
                 | GridData.GRAB_HORIZONTAL));
         group.setFont(font);
         
-        mFolderField = new BrowseableValueField(group, "Folder:");
-        mFolderField.getBrowseButton().addSelectionListener(mFolderFieldButtonSelectedListener);
-        
-        mPackageField = new BrowseableValueField(group, "Package:");
-        
-        setupPackageFieldProposals();
-    }
-
-    private void setupPackageFieldProposals() {
-        try {
-            SimpleContentProposalProvider provider = new SimpleContentProposalProvider(
-                new String[]{ "some.awesome.package", "some.other.package", "some.awesome.thing"});
-            provider.setFiltering(true);
+        IContainer initialRoot = getMechanoidWizard().getSelectedFolder() != null ? 
+            getMechanoidWizard().getSelectedFolder() : getMechanoidWizard().getSelectedProject();
             
-            mPackageProposalAdapter = new ContentProposalAdapter(
-                mPackageField.getValueField(), 
-                new TextContentAdapter(), 
-                provider, 
-                KeyStroke.getInstance("Ctrl+Space"), 
-                new char[] {'.'});
+        mFolderField = new ContainerBrowserField(group, "Folder:", initialRoot);
         
-            mPackageProposalAdapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        mFolderField.getTextField().addModifyListener(mFolderTextModifyListener);
+        
+        mPackageField = new PackageBrowserField(group, "Package:");
+        mPackageField.setJavaProject(getMechanoidWizard().getSelectedJavaProject());
+        
+        mElementNameField = new TextField(group, "Name:");
     }
     
-    private SelectionListener mFolderFieldButtonSelectedListener = new SelectionListener() {
-        
+    private ModifyListener mFolderTextModifyListener = new ModifyListener() {
         @Override
-        public void widgetSelected(SelectionEvent e) {
-            onFolderBrowseButtonSelected(e);
-        }
-        
-        @Override
-        public void widgetDefaultSelected(SelectionEvent e) {
-            onFolderBrowseButtonSelected(e);
+        public void modifyText(ModifyEvent e) {
+            if(mFolderField.getSelectedPath() == null) {
+                setErrorMessage("Invalid Path must be /project/folder, ie:- /myproject/model");
+            } else {
+                setErrorMessage(null);
+            }
         }
     };
-
-    protected void onFolderBrowseButtonSelected(SelectionEvent e) {
-        ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-            PlatformUI.getWorkbench().getModalDialogShellProvider().getShell(), 
-            null, true, 
-                "Select a parent folder:");
-            dialog.setTitle("Select Folder");
-            dialog.setBlockOnOpen(true);
-            dialog.setInitialSelections(new Object[] { mFolderField.getValueField().getText() });
-        if(dialog.open() == Window.OK) {
-            mFolderField.getValueField().setText(dialog.getResult()[0].toString());
-        }
-    }
 }
