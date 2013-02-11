@@ -5,12 +5,18 @@ import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.jdt.internal.ui.JavaPluginImages;
 
 public class PackageBrowserField extends BrowseableValueTextField {
 
     private ContentProposalAdapter mPackageProposalAdapter;
     private PackageProposalProvider mProposalProvider;
+    private Image mPackageImage;
     
     public void setJavaProject(IJavaProject project) {
         mProposalProvider.setProposalsFromProject(project);
@@ -19,7 +25,11 @@ public class PackageBrowserField extends BrowseableValueTextField {
     public PackageBrowserField(Composite parent, String labelText) {
         super(parent, labelText);
         
-        attachProposalProvider();   
+        attachProposalProvider();
+        
+        parent.addDisposeListener(mDisposeListener);
+        
+        mPackageImage = JavaPluginImages.DESC_OBJS_PACKAGE.createImage();
     }
 
     private void attachProposalProvider() {
@@ -33,12 +43,18 @@ public class PackageBrowserField extends BrowseableValueTextField {
                 KeyStroke.getInstance("Ctrl+Space"), 
                 new char[] {'.'});
             
-//            mPackageProposalAdapter.setLabelProvider(new LabelProvider() {
-//                @Override
-//                public Image getImage(Object element) {
-//                    new Image()
-//                }
-//            });
+            mPackageProposalAdapter.setLabelProvider(new LabelProvider() {
+                @Override
+                public Image getImage(Object element) {
+                    return mPackageImage;
+                }
+                
+                @Override
+                public String getText(Object element) {
+                    PackageProposal p = (PackageProposal) element;
+                    return p.getContent();
+                }
+            });
             
             mPackageProposalAdapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
 
@@ -46,4 +62,13 @@ public class PackageBrowserField extends BrowseableValueTextField {
             e.printStackTrace();
         }
     }
+    
+    private DisposeListener mDisposeListener = new DisposeListener() {
+        @Override
+        public void widgetDisposed(DisposeEvent e) {
+            if(mPackageImage != null) {
+                mPackageImage.dispose();
+            }
+        }
+    };
 }

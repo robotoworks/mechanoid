@@ -1,42 +1,40 @@
 package com.robotoworks.mechanoid.ui.wizard.fields;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 public class ContainerBrowserField extends BrowseableValueTextField {
-    private IContainer mSelectedContainer;
-    private IPath mSelectedPath;
+    
+    private IPath mSelectedPath = Path.EMPTY;
+    
     private IWorkspaceRoot mWorkspaceRoot;
+
+    private IProject mSelectedProject;
+    
+    public IProject getSelectedProject() {
+        return mSelectedProject;
+    }
 
     public ContainerBrowserField(Composite parent, String labelText, IContainer initialRoot) {
         super(parent, labelText);
 
-        mSelectedContainer = initialRoot;
-        
         mWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
         
-        if(mSelectedContainer != null) {
-            mSelectedPath = mSelectedContainer.getFullPath();
+        if(initialRoot != null) {
+            mSelectedPath = initialRoot.getFullPath();
             getTextField().setText(mSelectedPath.toPortableString());
         }
-    }
-    
-    public IContainer getSelectedContainer() {
-        return mSelectedContainer;
     }
     
     public IPath getSelectedPath() {
@@ -45,15 +43,15 @@ public class ContainerBrowserField extends BrowseableValueTextField {
     
     @Override
     protected void onBrowseButtonPressed() {
+        
         ContainerSelectionDialog dialog = new ContainerSelectionDialog(
             PlatformUI.getWorkbench().getModalDialogShellProvider().getShell(), 
-            mSelectedContainer, true, "Enter or select parent folder:");
+            (IContainer) mWorkspaceRoot.findMember(mSelectedPath), 
+            true, "Enter or select parent folder:");
             dialog.setTitle("Select Folder");
             dialog.setBlockOnOpen(true);
-            
         if(dialog.open() == Window.OK) {
             mSelectedPath = (IPath) dialog.getResult()[0];
-            mSelectedContainer = (IContainer) mWorkspaceRoot.findMember(mSelectedPath);
             getTextField().setText(mSelectedPath.toPortableString());
         }
     }
@@ -61,7 +59,18 @@ public class ContainerBrowserField extends BrowseableValueTextField {
     @Override
     protected void onTextChanged(ModifyEvent e) {
         super.onTextChanged(e);
+        
         mSelectedPath = Path.fromPortableString(getTextField().getText());
-        mSelectedContainer = (IContainer) mWorkspaceRoot.findMember(mSelectedPath);        
+        
+        if(mSelectedPath.segmentCount() > 0) {
+            IPath firstPart = mSelectedPath.uptoSegment(1);
+            IContainer container = (IContainer) mWorkspaceRoot.findMember(firstPart);
+            
+            if(container != null && container instanceof IProject) {
+                mSelectedProject = (IProject) container;
+            } else {
+                mSelectedProject = null;
+            }
+        }
     }
 }

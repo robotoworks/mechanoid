@@ -18,11 +18,12 @@ public class PackageProposalProvider implements IContentProposalProvider {
     }
     
     public void setProposalsFromProject(IJavaProject project) {
+        
+        mAllProposals.clear();
+
         if(project == null) {
             return;
         }
-        
-        mAllProposals.clear();
         
         try {
             IPackageFragment[] packageFragments = project.getPackageFragments();
