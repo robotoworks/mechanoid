@@ -2,6 +2,7 @@ package com.robotoworks.mechanoid.ui.wizard;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaConventions;
@@ -18,13 +19,26 @@ import com.robotoworks.mechanoid.ui.wizard.fields.ContainerBrowserField;
 import com.robotoworks.mechanoid.ui.wizard.fields.PackageBrowserField;
 import com.robotoworks.mechanoid.ui.wizard.fields.TextField;
 
-public abstract class NewMechanoidElementPage extends MechanoidWizardPage {
+public class NewMechanoidElementPage extends MechanoidWizardPage {
 	
     private ContainerBrowserField mFolderField;
     private PackageBrowserField mPackageField;
     private TextField mElementNameField;
-
-    protected NewMechanoidElementPage(String pageName) {
+    
+    
+    public String getSelectedPackageName() {
+        return mPackageField.getTextField().getText();
+    }
+    
+    public IPath getSelectedFolderPath() {
+        return mFolderField.getSelectedPath();
+    }
+    
+    public String getSelectedElementName() {
+        return mElementNameField.getTextField().getText();
+    }
+    
+    public NewMechanoidElementPage(String pageName) {
 		super(pageName);
 		
 		setPageComplete(false);
@@ -168,4 +182,5 @@ public abstract class NewMechanoidElementPage extends MechanoidWizardPage {
         return true;
         
     }
+
 }
