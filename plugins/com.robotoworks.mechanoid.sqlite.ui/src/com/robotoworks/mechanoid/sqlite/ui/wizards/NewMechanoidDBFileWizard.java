@@ -73,7 +73,7 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
                 monitor = new NullProgressMonitor();
             }
             
-            monitor.beginTask("Create Mechanoid DB FIle", 1);
+            monitor.beginTask("Create Mechanoid DB File", 1);
             
             URI newEmfResourceURI = URI.createURI("platform:/resource" +
                     path
