@@ -87,9 +87,9 @@ public abstract class NewMechanoidElementWizard extends MechanoidWizard {
 
         if(activePage == null) {
             return;
-            
         }
-        final Display display= getShell().getDisplay();
+        
+        final Display display = getShell().getDisplay();
         
         if (display == null) {
             return;
@@ -98,9 +98,7 @@ public abstract class NewMechanoidElementWizard extends MechanoidWizard {
         display.asyncExec(new Runnable() {
             public void run() {
                 try {
-                    
                     if(activePage != null) {
-                        
                         IEditorPart editor = IDE.openEditor(activePage, (IFile) resource, true);
                         onNewResourceEditorOpened(editor);
                     }
