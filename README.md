@@ -1,3 +1,5 @@
-A set of Xtext DSL's for the rapid development of Android applications.
+Mechanoid is an Eclipse Plugin sporting a set of code generators for Android™ driven by Simple DSL's (Domain Specific Languages) with full Eclipse Editor Support for the rapid development of Android applications.
 
-For information about this project please visit http://robotoworks.com/mechanoid-plugin/
+For a quick overview of features visit the github page http://robotoworks.github.com/mechanoid/
+
+To get started with Mechanoid visit http://robotoworks.com/mechanoid-plugin/
