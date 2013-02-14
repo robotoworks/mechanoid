@@ -1,36 +1,51 @@
 package com.robotoworks.mechanoid.ui.wizard;
 
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaConventions;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jface.bindings.keys.KeyStroke;
-import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.fieldassist.ContentProposalAdapter;
-import org.eclipse.jface.fieldassist.SimpleContentProposalProvider;
-import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
-import org.eclipse.ui.dialogs.NewFolderDialog;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 
-import com.robotoworks.mechanoid.ui.wizard.fields.BrowseableValueField;
+import com.robotoworks.mechanoid.ui.wizard.fields.ContainerBrowserField;
+import com.robotoworks.mechanoid.ui.wizard.fields.PackageBrowserField;
+import com.robotoworks.mechanoid.ui.wizard.fields.TextField;
 
-public abstract class NewMechanoidElementPage extends WizardPage {
+public class NewMechanoidElementPage extends MechanoidWizardPage {
 	
-    private BrowseableValueField mFolderField;
-    private BrowseableValueField mPackageField;
-    private ContentProposalAdapter mPackageProposalAdapter;
-
-    protected NewMechanoidElementPage(String pageName) {
+    private ContainerBrowserField mFolderField;
+    private PackageBrowserField mPackageField;
+    private TextField mElementNameField;
+    
+    
+    public String getSelectedPackageName() {
+        return mPackageField.getTextField().getText();
+    }
+    
+    public IPath getSelectedFolderPath() {
+        return mFolderField.getSelectedPath();
+    }
+    
+    public String getSelectedElementName() {
+        return mElementNameField.getTextField().getText();
+    }
+    
+    public NewMechanoidElementPage(String pageName) {
 		super(pageName);
+		
+		setPageComplete(false);
 	}
 
 	@Override
@@ -61,57 +76,146 @@ public abstract class NewMechanoidElementPage extends WizardPage {
                 | GridData.GRAB_HORIZONTAL));
         group.setFont(font);
         
-        mFolderField = new BrowseableValueField(group, "Folder:");
-        mFolderField.getBrowseButton().addSelectionListener(mFolderFieldButtonSelectedListener);
-        
-        mPackageField = new BrowseableValueField(group, "Package:");
-        
-        setupPackageFieldProposals();
-    }
-
-    private void setupPackageFieldProposals() {
-        try {
-            SimpleContentProposalProvider provider = new SimpleContentProposalProvider(
-                new String[]{ "some.awesome.package", "some.other.package", "some.awesome.thing"});
-            provider.setFiltering(true);
+        IContainer initialRoot = getMechanoidWizard().getSelectedFolder() != null ? 
+            getMechanoidWizard().getSelectedFolder() : getMechanoidWizard().getSelectedProject();
             
-            mPackageProposalAdapter = new ContentProposalAdapter(
-                mPackageField.getValueField(), 
-                new TextContentAdapter(), 
-                provider, 
-                KeyStroke.getInstance("Ctrl+Space"), 
-                new char[] {'.'});
+        mFolderField = new ContainerBrowserField(group, "Folder:", initialRoot);
+        mFolderField.getTextField().addModifyListener(mValidatingModifyListener);
         
-            mPackageProposalAdapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        mPackageField = new PackageBrowserField(group, "Package:");
+        mPackageField.setJavaProject(getMechanoidWizard().getSelectedJavaProject());
+        mPackageField.getTextField().addModifyListener(mValidatingModifyListener);
+        
+        mElementNameField = new TextField(group, "Name:");
+        mElementNameField.getTextField().addModifyListener(mValidatingModifyListener);
+        
+        Label label = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        //createAddMechanoidLibraryGroup(parent);
     }
     
-    private SelectionListener mFolderFieldButtonSelectedListener = new SelectionListener() {
+    private boolean isMechanoidLibraryOnClassPath() {
+        IProject project = mFolderField.getSelectedProject();
         
-        @Override
-        public void widgetSelected(SelectionEvent e) {
-            onFolderBrowseButtonSelected(e);
-        }
+        // TODO
+        return false;
+    }
+
+    private void createAddMechanoidLibraryGroup(Composite parent) {
+        Group group = new Group(parent, SWT.NONE);
+        group.setFont(parent.getFont());
+        group.setText("Mechanoid Library");
+        group.setLayout(new GridLayout(1, false));
+        group.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
         
+        Label label = new Label(group, SWT.NONE);
+        label.setFont(group.getFont());
+        label.setText("The Mechanoid libary needs to be in your /libs folder for Mechanoid to operation correctly.");
+        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        Button enableButton = new Button(group, SWT.CHECK);
+        enableButton.setFont(group.getFont());
+        enableButton.setText("Add Mechanoid Library");
+        enableButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        enableButton.setSelection(true);
+    }
+
+    private ModifyListener mValidatingModifyListener = new ModifyListener() {
+
         @Override
-        public void widgetDefaultSelected(SelectionEvent e) {
-            onFolderBrowseButtonSelected(e);
+        public void modifyText(ModifyEvent e) {
+            validateAll();
         }
     };
 
-    protected void onFolderBrowseButtonSelected(SelectionEvent e) {
-        ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-            PlatformUI.getWorkbench().getModalDialogShellProvider().getShell(), 
-            null, true, 
-                "Select a parent folder:");
-            dialog.setTitle("Select Folder");
-            dialog.setBlockOnOpen(true);
-            dialog.setInitialSelections(new Object[] { mFolderField.getValueField().getText() });
-        if(dialog.open() == Window.OK) {
-            mFolderField.getValueField().setText(dialog.getResult()[0].toString());
+    private void validateAll() {
+        setPageComplete(false);
+
+        if(!validateFolderField()) {
+            return;
+        } 
+
+        onFolderFieldValid();
+        
+        if(!validatePackageField()) {
+            return;
         }
+
+        if(!validateNameField()) {
+            return;
+        }
+        
+        setPageComplete(true);
     }
+    
+    private void onFolderFieldValid() {
+        IProject project = mFolderField.getSelectedProject();
+        IJavaProject javaProj = JavaCore.create(project);
+        mPackageField.setJavaProject(javaProj);
+    }
+
+    private boolean validateFolderField() {
+        if(mFolderField.getSelectedPath().isEmpty()) {
+            setErrorMessage("Folder must be specified.");
+            return false;
+        } else {
+            IProject project = mFolderField.getSelectedProject();
+            
+            if(project == null) {
+                setErrorMessage("The specified project does not exist.");
+                return false;
+            }
+            
+        }
+        
+        setErrorMessage(null);
+        
+        return true;
+    }
+    
+    private boolean validatePackageField() {
+        String packageText = mPackageField.getTextField().getText();
+        
+        if(packageText.length() == 0) {
+            setErrorMessage("Package must be specified.");
+            return false;
+        }
+        
+        IStatus status = JavaConventions.validatePackageName(
+            packageText, JavaCore.VERSION_1_3, JavaCore.VERSION_1_3);
+        
+        if(!status.isOK()) {
+            setErrorMessage(status.getMessage());
+            return false;
+        }
+        
+        setErrorMessage(null);
+        
+        return true;
+        
+    }
+    
+    private boolean validateNameField() {
+        String name = mElementNameField.getTextField().getText();
+        
+        if(name.length() == 0) {
+            setErrorMessage("Name must be specified.");
+            return false;
+        }
+        
+        // TODO does this need to be more specific?
+        IStatus status = JavaConventions.validateIdentifier(name, JavaCore.VERSION_1_3, JavaCore.VERSION_1_3);
+        
+        if(!status.isOK()) {
+            setErrorMessage(String.format("%s is not a valid name, only alphanumeric and underscoes are valid.", name));
+            return false;
+        }
+        
+        setErrorMessage(null);
+        
+        return true;
+        
+    }
+
 }
