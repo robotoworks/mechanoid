@@ -16,13 +16,14 @@ import com.google.inject.Injector;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.net.netModel.NetModelFactory;
+import com.robotoworks.mechanoid.net.ui.Messages;
 import com.robotoworks.mechanoid.net.ui.internal.NetModelActivator;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementPage;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementWizard;
 
 public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
     
-    private static final String FILE_EXTENSION = "mechnet";
+    private static final String FILE_EXTENSION = "mechnet"; //$NON-NLS-1$
     
     @Inject XtextResourceSet mResourceSet;
     
@@ -38,9 +39,14 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
         
         injector.injectMembers(this);
         
-        mNewFilePage = new NewMechanoidElementPage("new_file_page");
-        mNewFilePage.setTitle("Mechanoid Net Client");
-        mNewFilePage.setDescription("Create a new Mechanoid Net (*.mechnet) file.");
+        mNewFilePage = new NewMechanoidElementPage("new_file_page") { //$NON-NLS-1$
+            @Override
+            protected String getNameFieldInfoMessage() {
+                return Messages.NewMechanoidNetFileWizard_Widget_Label_Message_Name;
+            }  
+        };
+        mNewFilePage.setTitle(Messages.NewMechanoidNetFileWizard_Title);
+        mNewFilePage.setDescription(Messages.NewMechanoidNetFileWizard_Message);
     }
 
     @Override
@@ -71,9 +77,9 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
                 monitor = new NullProgressMonitor();
             }
             
-            monitor.beginTask("Create Mechanoid Net Client File", 1);
+            monitor.beginTask(Messages.NewMechanoidNetFileWizard_Progress_Message, 1);
             
-            URI newEmfResourceURI = URI.createURI("platform:/resource" +
+            URI newEmfResourceURI = URI.createURI("platform:/resource" + //$NON-NLS-1$
                     path
                      .toPortableString());
                      

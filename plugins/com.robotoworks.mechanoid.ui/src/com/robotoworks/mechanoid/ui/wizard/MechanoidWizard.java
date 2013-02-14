@@ -2,7 +2,6 @@ package com.robotoworks.mechanoid.ui.wizard;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
@@ -10,7 +9,6 @@ import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
-import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
 public abstract class MechanoidWizard extends Wizard implements IWorkbenchWizard {
     

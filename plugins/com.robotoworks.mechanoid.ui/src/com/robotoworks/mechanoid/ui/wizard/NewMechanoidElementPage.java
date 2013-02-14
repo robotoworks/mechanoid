@@ -7,18 +7,22 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaConventions;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
+import com.robotoworks.mechanoid.ui.MechanoidPluginImages;
+import com.robotoworks.mechanoid.ui.MechanoidUiPlugin;
+import com.robotoworks.mechanoid.ui.Messages;
 import com.robotoworks.mechanoid.ui.wizard.fields.ContainerBrowserField;
 import com.robotoworks.mechanoid.ui.wizard.fields.PackageBrowserField;
 import com.robotoworks.mechanoid.ui.wizard.fields.TextField;
@@ -28,7 +32,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
     private ContainerBrowserField mFolderField;
     private PackageBrowserField mPackageField;
     private TextField mElementNameField;
-    
+    private Label mFieldInfoLabel;
     
     public String getSelectedPackageName() {
         return mPackageField.getTextField().getText();
@@ -79,47 +83,104 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         IContainer initialRoot = getMechanoidWizard().getSelectedFolder() != null ? 
             getMechanoidWizard().getSelectedFolder() : getMechanoidWizard().getSelectedProject();
             
-        mFolderField = new ContainerBrowserField(group, "Folder:", initialRoot);
+        mFolderField = new ContainerBrowserField(group, Messages.NewMechanoidElementPage_Widget_Label_Folder, initialRoot);
         mFolderField.getTextField().addModifyListener(mValidatingModifyListener);
+        mFolderField.getTextField().addFocusListener(mFieldFocusedListener);
         
-        mPackageField = new PackageBrowserField(group, "Package:");
+        mPackageField = new PackageBrowserField(group, Messages.NewMechanoidElementPage_Widget_Label_Package);
         mPackageField.setJavaProject(getMechanoidWizard().getSelectedJavaProject());
         mPackageField.getTextField().addModifyListener(mValidatingModifyListener);
+        mPackageField.getTextField().addFocusListener(mFieldFocusedListener);
         
-        mElementNameField = new TextField(group, "Name:");
+        mElementNameField = new TextField(group, Messages.NewMechanoidElementPage_Widget_Label_Name);
         mElementNameField.getTextField().addModifyListener(mValidatingModifyListener);
+        mElementNameField.getTextField().addFocusListener(mFieldFocusedListener);
+        mElementNameField.getTextField().addFocusListener(mFieldFocusedListener);
         
-        Label label = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
-        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        Label seperator = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+        seperator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
+        createFieldInfoLabel(parent);
         
         //createAddMechanoidLibraryGroup(parent);
     }
     
-    private boolean isMechanoidLibraryOnClassPath() {
-        IProject project = mFolderField.getSelectedProject();
+    private FocusListener mFieldFocusedListener = new FocusListener() {
+        @Override
+        public void focusLost(FocusEvent e) {}
         
-        // TODO
-        return false;
+        @Override
+        public void focusGained(FocusEvent e) {
+            if(e.widget == mFolderField.getTextField()) {
+                mFieldInfoLabel.setText(getFolderFieldInfoMessage());
+            } else if(e.widget == mPackageField.getTextField()) {
+                mFieldInfoLabel.setText(getPackageFieldInfoMessage());
+            } else if(e.widget == mElementNameField.getTextField()) {
+                mFieldInfoLabel.setText(getNameFieldInfoMessage());
+                
+            }
+            
+            mFieldInfoLabel.getParent().layout();
+        }
+    };
+    
+    protected String getFolderFieldInfoMessage() {
+        return Messages.NewMechanoidElementPage_Widget_Label_Message_Folder;
+    }
+    
+    protected String getPackageFieldInfoMessage() {
+        return Messages.NewMechanoidElementPage_Widget_Label_Message_Package;
+    }
+    
+    protected String getNameFieldInfoMessage() {
+        return Messages.NewMechanoidElementPage_Widget_Label_Message_Name;
     }
 
-    private void createAddMechanoidLibraryGroup(Composite parent) {
-        Group group = new Group(parent, SWT.NONE);
-        group.setFont(parent.getFont());
-        group.setText("Mechanoid Library");
-        group.setLayout(new GridLayout(1, false));
-        group.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+    private void createFieldInfoLabel(Composite parent) {
+        Composite comp = new Composite(parent, SWT.NONE);
+        comp.setLayout(new GridLayout(1, true));
+        comp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         
-        Label label = new Label(group, SWT.NONE);
-        label.setFont(group.getFont());
-        label.setText("The Mechanoid libary needs to be in your /libs folder for Mechanoid to operation correctly.");
-        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        mFieldInfoLabel = new Label(comp, SWT.WRAP);
+        GridData labelLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        labelLayoutData.horizontalIndent = 24;
+        mFieldInfoLabel.setLayoutData(labelLayoutData);
         
-        Button enableButton = new Button(group, SWT.CHECK);
-        enableButton.setFont(group.getFont());
-        enableButton.setText("Add Mechanoid Library");
-        enableButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-        enableButton.setSelection(true);
+        final ControlDecoration deco = new ControlDecoration(mFieldInfoLabel, SWT.LEFT | SWT.TOP);
+        
+        Image decoImage = MechanoidUiPlugin.getPlugin().getImageRegistry().get(MechanoidPluginImages.IMG_INFO_LABEL);
+        //Image decoImage = FieldDecorationRegistry.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_ERROR_QUICKFIX).getImage();
+        deco.setMarginWidth(8);
+        deco.setImage(decoImage);
     }
+    
+    // UNDONE: Implement this later
+//    private boolean isMechanoidLibraryOnClassPath() {
+//        IProject project = mFolderField.getSelectedProject();
+//        
+//        // TODO
+//        return false;
+//    }
+//
+//    private void createAddMechanoidLibraryGroup(Composite parent) {
+//        Group group = new Group(parent, SWT.NONE);
+//        group.setFont(parent.getFont());
+//        group.setText(Messages.NewMechanoidElementPage_Widget_Group_Mechanoid_Library);
+//        group.setLayout(new GridLayout(1, false));
+//        group.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+//        
+//        Label label = new Label(group, SWT.NONE);
+//        label.setFont(group.getFont());
+//        label.setText(Messages.NewMechanoidElementPage_Widget_Group_Mechanoid_Library_Message);
+//        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+//        
+//        Button enableButton = new Button(group, SWT.CHECK);
+//        enableButton.setFont(group.getFont());
+//        enableButton.setText(Messages.NewMechanoidElementPage_Widget_Group_Button_Label_Mechanoid_Library);
+//        enableButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+//        enableButton.setSelection(true);
+//    }
 
     private ModifyListener mValidatingModifyListener = new ModifyListener() {
 
@@ -157,13 +218,13 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
 
     private boolean validateFolderField() {
         if(mFolderField.getSelectedPath().isEmpty()) {
-            setErrorMessage("Folder must be specified.");
+            setErrorMessage(Messages.NewMechanoidElementPage_Widget_Field_ValidationMessage_Required_Folder);
             return false;
         } else {
             IProject project = mFolderField.getSelectedProject();
             
             if(project == null) {
-                setErrorMessage("The specified project does not exist.");
+                setErrorMessage(Messages.NewMechanoidElementPage_Widget_Field_ValidationMessage_Invalid_Folder);
                 return false;
             }
             
@@ -178,7 +239,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         String packageText = mPackageField.getTextField().getText();
         
         if(packageText.length() == 0) {
-            setErrorMessage("Package must be specified.");
+            setErrorMessage(Messages.NewMechanoidElementPage_Widget_Field_ValidationMessage_Required_Package);
             return false;
         }
         
@@ -200,7 +261,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         String name = mElementNameField.getTextField().getText();
         
         if(name.length() == 0) {
-            setErrorMessage("Name must be specified.");
+            setErrorMessage(Messages.NewMechanoidElementPage_Widget_Field_ValidationMessage_Required_Name);
             return false;
         }
         
@@ -208,7 +269,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         IStatus status = JavaConventions.validateIdentifier(name, JavaCore.VERSION_1_3, JavaCore.VERSION_1_3);
         
         if(!status.isOK()) {
-            setErrorMessage(String.format("%s is not a valid name, only alphanumeric and underscoes are valid.", name));
+            setErrorMessage(String.format(Messages.NewMechanoidElementPage_Widget_Field_ValidationMessage_Invalid_Name, name));
             return false;
         }
         

@@ -33,13 +33,14 @@ import com.robotoworks.mechanoid.sqlite.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.Model;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelFactory;
 import com.robotoworks.mechanoid.sqlite.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.sqlite.ui.Messages;
 import com.robotoworks.mechanoid.sqlite.ui.internal.SqliteModelActivator;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementPage;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementWizard;
 
 public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
     
-    private static final String MECHDB_FILE_EXTENSION = "mechdb";
+    private static final String MECHDB_FILE_EXTENSION = "mechdb"; //$NON-NLS-1$
     
     @Inject XtextResourceSet mResourceSet;
     @Inject SqliteModelGrammarAccess mGrammarAccess;
@@ -56,9 +57,14 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
         
         injector.injectMembers(this);
         
-        mNewFilePage = new NewMechanoidElementPage("new_file_page");
-        mNewFilePage.setTitle("Mechanoid DB");
-        mNewFilePage.setDescription("Create a new Mechanoid DB (*.mechdb) file.");
+        mNewFilePage = new NewMechanoidElementPage("new_file_page") { //$NON-NLS-1$
+            @Override
+            protected String getNameFieldInfoMessage() {
+                return Messages.NewMechanoidDBFileWizard_Widget_Label_Message_Name;
+            }
+        };
+        mNewFilePage.setTitle(Messages.NewMechanoidDBFileWizard_Title);
+        mNewFilePage.setDescription(Messages.NewMechanoidDBFileWizard_Message);
     }
 
     @Override
@@ -89,9 +95,9 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
                 monitor = new NullProgressMonitor();
             }
             
-            monitor.beginTask("Create Mechanoid DB File", 1);
+            monitor.beginTask(Messages.NewMechanoidDBFileWizard_Progress_Message, 1);
             
-            URI newEmfResourceURI = URI.createURI("platform:/resource" +
+            URI newEmfResourceURI = URI.createURI("platform:/resource" + //$NON-NLS-1$
                     path
                      .toPortableString());
                      
@@ -136,11 +142,11 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
                 Model model = (Model)state.getContents().get(0);
                 MigrationBlock migrationBlock = model.getDatabase().getMigrations().get(0);
                 
-                ILeafNode node = findFirstLeafNodeForKeyword(migrationBlock, "{");
+                ILeafNode node = findFirstLeafNodeForKeyword(migrationBlock, "{"); //$NON-NLS-1$
                 
                 int position = node.getOffset() + 1;
                 
-                document.replace(position, 0, "\n\t\t");
+                document.replace(position, 0, "\n\t\t"); //$NON-NLS-1$
                 xeditor.selectAndReveal(position + 3, 0);
             }
         });

@@ -15,10 +15,13 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.ui.MechanoidLibsInstaller;
+import com.robotoworks.mechanoid.ui.Messages;
 import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
 
+    private static final String IMG_ADD_MECHANOID_LIBRARY = "add.gif"; //$NON-NLS-1$
+    
 	@Inject
 	protected IJavaProjectProvider projectProvider;
 	
@@ -28,8 +31,8 @@ public class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(MechanoidIssueCodes.MISSING_MECHANOID_LIBS)
 	public void addMechanoidToClasspath(final Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 
-				"Add Mechanoid Library", 
-				"Add the Mechanoid runtime library to the /libs folder.", "add.gif", 
+				Messages.MechanoidQuickfixProvider_Button_Add_Mechanoid_Library, 
+				Messages.MechanoidQuickfixProvider_Message_Add_Mechanoid_Library, IMG_ADD_MECHANOID_LIBRARY,  
 				new ISemanticModification() {
 					public void apply(EObject element, IModificationContext context)
 							throws Exception {

@@ -10,6 +10,7 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
+import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -35,9 +36,8 @@ public class SqliteModelUiModule extends com.robotoworks.mechanoid.sqlite.ui.Abs
 		return MechanoidBuilderParticipant.class;
 	}
 	
-	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		// TODO Auto-generated method stub
-		return super.bindIXtextEditorCallback();
-	}
+    @Override
+    public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+        return MechanoidXtextAddingEditorCallback.class;
+    }
 }
