@@ -6,6 +6,8 @@ package com.robotoworks.mechanoid.ops.formatting;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 
+import com.robotoworks.mechanoid.ops.services.OpServiceModelGrammarAccess;
+
 /**
  * This class contains custom formatting description.
  * 
@@ -18,10 +20,13 @@ public class OpServiceModelFormatter extends AbstractDeclarativeFormatter {
 	
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
-// It's usually a good idea to activate the following three statements.
-// They will add and preserve newlines around comments
-//		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
-//		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getML_COMMENTRule());
-//		c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
+	    OpServiceModelGrammarAccess g = (OpServiceModelGrammarAccess) getGrammarAccess();
+	    
+	    c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
+		c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
+		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
+		
+		c.setLinewrap(2).after(g.getModelAccess().getPackageNameAssignment_1());
+		c.setLinewrap().after(g.getServiceBlockAccess().getLeftCurlyBracketKeyword_2());
 	}
 }

@@ -7,13 +7,17 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaConventions;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 
 import com.robotoworks.mechanoid.ui.wizard.fields.ContainerBrowserField;
 import com.robotoworks.mechanoid.ui.wizard.fields.PackageBrowserField;
@@ -84,8 +88,39 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         
         mElementNameField = new TextField(group, "Name:");
         mElementNameField.getTextField().addModifyListener(mValidatingModifyListener);
+        
+        Label label = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        //createAddMechanoidLibraryGroup(parent);
     }
     
+    private boolean isMechanoidLibraryOnClassPath() {
+        IProject project = mFolderField.getSelectedProject();
+        
+        // TODO
+        return false;
+    }
+
+    private void createAddMechanoidLibraryGroup(Composite parent) {
+        Group group = new Group(parent, SWT.NONE);
+        group.setFont(parent.getFont());
+        group.setText("Mechanoid Library");
+        group.setLayout(new GridLayout(1, false));
+        group.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        Label label = new Label(group, SWT.NONE);
+        label.setFont(group.getFont());
+        label.setText("The Mechanoid libary needs to be in your /libs folder for Mechanoid to operation correctly.");
+        label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        
+        Button enableButton = new Button(group, SWT.CHECK);
+        enableButton.setFont(group.getFont());
+        enableButton.setText("Add Mechanoid Library");
+        enableButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+        enableButton.setSelection(true);
+    }
+
     private ModifyListener mValidatingModifyListener = new ModifyListener() {
 
         @Override
@@ -173,7 +208,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         IStatus status = JavaConventions.validateIdentifier(name, JavaCore.VERSION_1_3, JavaCore.VERSION_1_3);
         
         if(!status.isOK()) {
-            setErrorMessage(String.format("%s is not a valid name.", name));
+            setErrorMessage(String.format("%s is not a valid name, only alphanumeric and underscoes are valid.", name));
             return false;
         }
         

@@ -19,7 +19,6 @@ import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
 public abstract class NewMechanoidElementWizard extends MechanoidWizard {
 
-
     private IResource mNewResource;
 
     @Override
