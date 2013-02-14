@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaModelException;
 import org.osgi.framework.Bundle;
 
 import com.google.common.io.Files;
@@ -23,10 +22,12 @@ import com.google.common.io.InputSupplier;
 
 public class MechanoidLibsInstaller {
 	
-	private static final String MECHANOID_LIB_PATH = "runtime/";
-	private static final String MECHANOID_LIB_FILE = "mechanoid.jar";
-	private static final String MECHANOID_LIB_SRC_FILE = "mechanoid-sources.jar";
-	private static final String MECHANOID_LIB_PROPS_FILE = "mechanoid.jar.properties";
+	private static final String MECHANOID_LIB_PATH = "runtime/"; //$NON-NLS-1$
+	private static final String MECHANOID_LIB_FILE = "mechanoid.jar"; //$NON-NLS-1$
+	private static final String MECHANOID_LIB_SRC_FILE = "mechanoid-sources.jar"; //$NON-NLS-1$
+	private static final String MECHANOID_LIB_PROPS_FILE = "mechanoid.jar.properties"; //$NON-NLS-1$
+	private static final String ANDROID_LIBS_DIR_NAME = "libs"; //$NON-NLS-1$
+	private static final String ANDROID_LIBS_PLUGIN_RESOURCE_BUNDLE = "com.robotoworks.mechanoid"; //$NON-NLS-1$
 	
 	private String[] LIB_FILE_BUNDLE_PATHS = {
 			MECHANOID_LIB_FILE,
@@ -42,17 +43,17 @@ public class MechanoidLibsInstaller {
 			installLibs(javaProject, progress.newChild(1));
 			
 		} catch (Exception e) {
-			MechanoidUiActivator.getDefault().getLog().log(new Status(Status.ERROR, MechanoidUiActivator.PLUGIN_ID, Status.OK, "Failed to add Mechanoid Libs", e));
+			MechanoidUiPlugin.getPlugin().getLog().log(new Status(Status.ERROR, MechanoidUiPlugin.PLUGIN_ID, Status.OK, Messages.MechanoidLibsInstaller_Message_Failed_To_Add_Libs, e));
 		}
 		
 
 	}
 	
 	protected void installLibs(IJavaProject javaProject, IProgressMonitor monitor) throws URISyntaxException, IOException, CoreException {
-		Bundle bundle = Platform.getBundle("com.robotoworks.mechanoid");
+		Bundle bundle = Platform.getBundle(ANDROID_LIBS_PLUGIN_RESOURCE_BUNDLE);
 		
 		IPath location = javaProject.getProject().getLocation();
-		File libsFolder = new File(location.toOSString(), "libs");
+		File libsFolder = new File(location.toOSString(), ANDROID_LIBS_DIR_NAME);
 		
 		if(!libsFolder.exists()) {
 			libsFolder.mkdirs();

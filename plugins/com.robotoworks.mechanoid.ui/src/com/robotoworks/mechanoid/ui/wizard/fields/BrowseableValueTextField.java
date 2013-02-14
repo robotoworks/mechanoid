@@ -7,6 +7,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
+import com.robotoworks.mechanoid.ui.Messages;
+
 public class BrowseableValueTextField extends TextField {
 
     protected Button mBrowseButton;
@@ -20,7 +22,7 @@ public class BrowseableValueTextField extends TextField {
         super(parent, labelText);
         
         mBrowseButton = new Button(parent, SWT.PUSH);
-        mBrowseButton.setText("Browse...");
+        mBrowseButton.setText(Messages.BrowseableValueTextField_Button_Browse);
         mBrowseButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
         mBrowseButton.setFont(parent.getFont()); 
         

@@ -16,13 +16,14 @@ import com.google.inject.Injector;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelFactory;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
+import com.robotoworks.mechanoid.ops.ui.Messages;
 import com.robotoworks.mechanoid.ops.ui.internal.OpServiceModelActivator;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementPage;
 import com.robotoworks.mechanoid.ui.wizard.NewMechanoidElementWizard;
 
 public class NewMechanoidOpsFileWizard extends NewMechanoidElementWizard {
     
-    private static final String FILE_EXTENSION = "mechops";
+    private static final String FILE_EXTENSION = "mechops"; //$NON-NLS-1$
     
     @Inject XtextResourceSet mResourceSet;
     
@@ -38,9 +39,14 @@ public class NewMechanoidOpsFileWizard extends NewMechanoidElementWizard {
         
         injector.injectMembers(this);
         
-        mNewFilePage = new NewMechanoidElementPage("new_file_page");
-        mNewFilePage.setTitle("Mechanoid Ops");
-        mNewFilePage.setDescription("Create a new Mechanoid Ops (*.mechops) file.");
+        mNewFilePage = new NewMechanoidElementPage("new_file_page") { //$NON-NLS-1$
+            @Override
+            protected String getNameFieldInfoMessage() {
+                return Messages.NewMechanoidOpsFileWizard_Widget_Label_Message_Name;
+            }  
+        };
+        mNewFilePage.setTitle(Messages.NewMechanoidOpsFileWizard_Title);
+        mNewFilePage.setDescription(Messages.NewMechanoidOpsFileWizard_Message);
     }
 
     @Override
@@ -71,9 +77,9 @@ public class NewMechanoidOpsFileWizard extends NewMechanoidElementWizard {
                 monitor = new NullProgressMonitor();
             }
             
-            monitor.beginTask("Create Mechanoid Ops File", 1);
+            monitor.beginTask(Messages.NewMechanoidOpsFileWizard_Progress_Message, 1);
             
-            URI newEmfResourceURI = URI.createURI("platform:/resource" +
+            URI newEmfResourceURI = URI.createURI("platform:/resource" + //$NON-NLS-1$
                     path
                      .toPortableString());
                      

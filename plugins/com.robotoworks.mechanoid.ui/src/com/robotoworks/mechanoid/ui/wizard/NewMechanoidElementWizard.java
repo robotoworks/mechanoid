@@ -17,6 +17,8 @@ import org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
+import com.robotoworks.mechanoid.ui.Messages;
+
 public abstract class NewMechanoidElementWizard extends MechanoidWizard {
 
     private IResource mNewResource;
@@ -50,7 +52,7 @@ public abstract class NewMechanoidElementWizard extends MechanoidWizard {
             openResource(mNewResource);
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), "Error", realException.getMessage());
+            MessageDialog.openError(getShell(), Messages.NewMechanoidElementWizard_Dialog_CreateResourceError_Title, realException.getMessage());
             return false;
         } catch (InterruptedException e) {
             return false;

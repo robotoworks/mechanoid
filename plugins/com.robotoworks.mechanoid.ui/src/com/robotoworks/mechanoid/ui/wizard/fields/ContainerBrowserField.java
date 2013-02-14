@@ -6,13 +6,13 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+
+import com.robotoworks.mechanoid.ui.Messages;
 
 public class ContainerBrowserField extends BrowseableValueTextField {
     
@@ -47,8 +47,8 @@ public class ContainerBrowserField extends BrowseableValueTextField {
         ContainerSelectionDialog dialog = new ContainerSelectionDialog(
             PlatformUI.getWorkbench().getModalDialogShellProvider().getShell(), 
             (IContainer) mWorkspaceRoot.findMember(mSelectedPath), 
-            true, "Enter or select parent folder:");
-            dialog.setTitle("Select Folder");
+            true, Messages.ContainerBrowserField_ContainerSelectionDialog_Message);
+            dialog.setTitle(Messages.ContainerBrowserField_Title);
             dialog.setBlockOnOpen(true);
         if(dialog.open() == Window.OK) {
             mSelectedPath = (IPath) dialog.getResult()[0];

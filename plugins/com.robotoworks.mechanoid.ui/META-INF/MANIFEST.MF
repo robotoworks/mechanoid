@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid.ui
 Bundle-SymbolicName: com.robotoworks.mechanoid.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: com.robotoworks.mechanoid.ui.MechanoidUiActivator
+Bundle-Activator: com.robotoworks.mechanoid.ui.MechanoidUiPlugin
 Bundle-Vendor: Robotoworks Limited
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
