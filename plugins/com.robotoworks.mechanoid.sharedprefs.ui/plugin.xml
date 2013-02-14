@@ -4,11 +4,11 @@
 <plugin>
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
-        	id="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard"
+        	id="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechanoidPrefsFileWizard"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
         	name="Mechanoid Prefs File"
         	icon="icons/mechprefs_file.png"
-        	class="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechPrefsFileWizard">
+        	class="com.robotoworks.mechanoid.sharedprefs.ui.wizards.NewMechanoidPrefsFileWizard">
 		</wizard>
 	</extension>
     <extension

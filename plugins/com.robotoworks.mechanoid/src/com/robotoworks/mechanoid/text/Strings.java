@@ -2,7 +2,7 @@ package com.robotoworks.mechanoid.text;
 
 public class Strings {
 	public static String resolveFileName(String packageName, String name) {
-		return packageName.replace(".", "/") + "/" + pascalize(name) + ".java";
+		return packageName.replace(".", "/") + "/" + name + ".java";
 	}  
 	
 	public static String pascalize(String value){

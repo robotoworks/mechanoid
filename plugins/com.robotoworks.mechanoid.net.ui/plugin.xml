@@ -4,11 +4,11 @@
 <plugin>
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
-        	id="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard"
+        	id="com.robotoworks.mechanoid.net.ui.wizards.NewMechanoidNetFileWizard"
         	name="Mechanoid Net File"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
         	icon="icons/mechnet_file.png"
-        	class="com.robotoworks.mechanoid.net.ui.wizards.NewMechNetFileWizard">
+        	class="com.robotoworks.mechanoid.net.ui.wizards.NewMechanoidNetFileWizard">
 		</wizard>
 	</extension>
     <extension

@@ -22,15 +22,25 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 	protected void configureFormatting(FormattingConfig c) {
 		SqliteModelGrammarAccess g = (SqliteModelGrammarAccess) getGrammarAccess();
 		
-
 		c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
 		c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
 		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
-				
-		c.setLinewrap().before(g.getDatabaseBlockRule());
+		
+		//
+		// PACKAGE
+		//
+		c.setLinewrap(2).after(g.getModelAccess().getPackageNameAssignment_1());
+		
+		//
+		// DATABASE BLOCK
+		//
 		c.setLinewrap().after(g.getDatabaseBlockAccess().getLeftCurlyBracketKeyword_2());
 		c.setLinewrap().before(g.getDatabaseBlockAccess().getRightCurlyBracketKeyword_5());
 		
+		
+		//
+		// MIGRATION BLOCKS
+		//
 		c.setIndentationIncrement().before(g.getMigrationBlockRule());
 		c.setLinewrap(2).before(g.getMigrationBlockRule());
 		c.setLinewrap().after(g.getMigrationBlockAccess().getLeftCurlyBracketKeyword_2());		
@@ -38,10 +48,13 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setNoSpace().before(g.getMigrationBlockAccess().getSemicolonKeyword_3_1());		
 		c.setIndentationDecrement().after(g.getMigrationBlockRule());
 		
+		//
+		// DDL STATEMENTS
+		//
+		c.setLinewrap(2).before(g.getDDLStatementRule());
 		c.setIndentationIncrement().before(g.getDDLStatementRule());
 		c.setIndentationDecrement().after(g.getDDLStatementRule());
 		
-		c.setLinewrap(2).before(g.getDDLStatementRule());
 		c.setLinewrap().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
 		c.setIndentationIncrement().after(g.getCreateTableStatementAccess().getLeftParenthesisKeyword_4());
 		c.setIndentationDecrement().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
