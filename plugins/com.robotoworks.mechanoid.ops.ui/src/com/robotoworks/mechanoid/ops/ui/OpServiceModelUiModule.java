@@ -5,8 +5,10 @@ package com.robotoworks.mechanoid.ops.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
+import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -20,4 +22,9 @@ public class OpServiceModelUiModule extends com.robotoworks.mechanoid.ops.ui.Abs
 	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
 		return MechanoidBuilderParticipant.class;
 	}
+	
+    @Override
+    public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+        return MechanoidXtextAddingEditorCallback.class;
+    }	
 }
