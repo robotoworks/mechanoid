@@ -9,7 +9,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import com.google.inject.Inject;
 
 @SuppressWarnings("restriction")
-public class MechanoidAddingEditorCallback extends
+public class MechanoidXtextAddingEditorCallback extends
 		AbstractDirtyStateAwareEditorCallback {
 	@Inject
 	private ToggleXtextNatureAction toggleNature;
