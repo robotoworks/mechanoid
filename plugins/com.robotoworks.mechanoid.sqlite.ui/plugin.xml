@@ -5,11 +5,11 @@
 
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard
-        	id="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard"
+        	id="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechanoidDBFileWizard"
         	name="Mechanoid DB File"
         	icon="icons/mechdb_file.png"
         	category="com.robotoworks.mechanoid.NewWizardsCategory"
-        	class="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechDbFileWizard">
+        	class="com.robotoworks.mechanoid.sqlite.ui.wizards.NewMechanoidDBFileWizard">
 		</wizard>
 	</extension>
     <extension
