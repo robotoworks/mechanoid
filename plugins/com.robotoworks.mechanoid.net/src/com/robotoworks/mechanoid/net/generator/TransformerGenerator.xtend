@@ -1,45 +1,37 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.Model
+import com.google.inject.Inject
 
 class TransformerGenerator {
-	CodeGenerationContext context
+	@Inject ImportHelper imports
+	@Inject JsonWriterGenerator jsonWriterGenerator
+	@Inject JsonReaderGenerator jsonReaderGenerator
 	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
+	
+	def generate(ComplexTypeDeclaration decl, Model model) {
+		jsonReaderGenerator.imports = imports
+		jsonWriterGenerator.imports = imports
+		
+		doGenerate(decl, model)
 	}
 	
-	def registerImports(){}
+	def doGenerate(ComplexTypeDeclaration decl, Model model) '''
+	package «model.packageName»;
 	
-	JsonWriterGenerator jsonWriterGenerator
-	JsonReaderGenerator jsonReaderGenerator
-	
-	def setJsonWriterGenerator(JsonWriterGenerator jsonWriterGenerator){
-		this.jsonWriterGenerator = jsonWriterGenerator;
-	}
-	def setJsonReaderGenerator(JsonReaderGenerator jsonReaderGenerator){
-		this.jsonReaderGenerator = jsonReaderGenerator;
-	}
-	
-	def generate(ComplexTypeDeclaration decl, Model module) '''
-	package «module.packageName»;
-	
-	«var body = generateOutputTransformerGeneratorClass(decl, module)»
-	«registerImports»
+	«var classDecl = generateOutputTransformerGeneratorClass(decl, model)»
 	import com.robotoworks.mechanoid.net.Transformer;
 	import com.robotoworks.mechanoid.net.TransformException;
 	import com.robotoworks.mechanoid.internal.util.JsonWriter;
 	import com.robotoworks.mechanoid.internal.util.JsonReader;
-	«context.printImports»
-	«context.clearImports»
+	«imports.printAndClear»
 	
-	«body»
+	«classDecl»
 	'''	
 	
 	def generateOutputTransformerGeneratorClass(ComplexTypeDeclaration decl, Model module) '''
-		«context.registerImport("java.util.List")»
+		«imports.addImport("java.util.List")»
 
 		public class «decl.name»Transformer extends Transformer<«decl.name», JsonReader, JsonWriter> {			
 			public void transformOut(«decl.name» subject, JsonWriter target) throws TransformException {

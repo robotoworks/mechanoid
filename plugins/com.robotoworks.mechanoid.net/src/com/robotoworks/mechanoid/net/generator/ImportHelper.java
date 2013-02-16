@@ -4,20 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.serializer.ISerializer;
 
-import com.google.inject.Inject;
-
-public class CodeGenerationContext {
+public class ImportHelper {
 	private Set<String> imports = new HashSet<String>();
 	
-	@Inject public ISerializer serializer;
-	
-	public void registerImport(String importId){
+	public void addImport(String importId){
 		imports.add(importId);
 	}
 	
-	public StringConcatenation printImports(){
+	public StringConcatenation printAndClear(){
 		StringConcatenation builder = new StringConcatenation();
 		for(String str:imports){
 			builder.append("import ");

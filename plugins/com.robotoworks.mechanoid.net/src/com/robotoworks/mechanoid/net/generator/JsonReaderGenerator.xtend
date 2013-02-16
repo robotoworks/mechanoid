@@ -1,6 +1,5 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
@@ -18,18 +17,14 @@ import org.eclipse.emf.common.util.EList
 import com.robotoworks.mechanoid.net.netModel.BooleanType
 
 class JsonReaderGenerator {
-	CodeGenerationContext context
-	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
-	}	
+	@Property ImportHelper imports
 	
 	def genReadComplexType(ComplexTypeDeclaration decl) {
 		genReadComplexTypeLiteral(decl.literal)
 	}
 	
 	def genReadComplexTypeLiteral(ComplexTypeLiteral literal) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -55,7 +50,7 @@ class JsonReaderGenerator {
 	'''
 	
 	def genReadComplexTypeLiteralForMembers(EList<Member> members) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -93,7 +88,7 @@ class JsonReaderGenerator {
 
 	
 	def dispatch genStatement(SkipMember skipMember) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		source.beginObject();
 		
 		while(source.hasNext()) {
@@ -120,7 +115,7 @@ class JsonReaderGenerator {
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
 		«IF type instanceof BooleanType»
-		«context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil")»
+		«imports.addImport("com.robotoworks.mechanoid.net.JsonReaderUtil")»
 		«member.toSetMethodName.memberize("subject")»(JsonReaderUtil.coerceNextBoolean(source));
 		«ELSE»
 		«member.toSetMethodName.memberize("subject")»(source.next«type.signature.pascalize»());
@@ -147,8 +142,8 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
-		«context.registerImport("java.util.List")»
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«imports.addImport("java.util.List")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		List<«itemType.boxedTypeSignature»> subjectMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
 		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
@@ -158,17 +153,17 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
+		«imports.addImport("java.util.List")»
+		«imports.addImport("java.util.ArrayList")»
 		«type.signature» subjectMember = new ArrayList<«type.innerSignature»>();
 		provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
 		«member.toSetMethodName.memberize("subject")»(subjectMember);
 	'''
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, EnumTypeDeclaration decl) '''
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«imports.addImport("java.util.List")»
+		«imports.addImport("java.util.ArrayList")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
 		«type.signature» subjectMember = new ArrayList«type.signature»();
 		
 		source.beginArray();

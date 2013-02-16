@@ -1,19 +1,12 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import static extension com.robotoworks.mechanoid.text.Strings.*
 
 import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 
 class StringEnumTypeGenerator {
-	CodeGenerationContext context
-	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
-	}
-	
 	def generate(EnumTypeDeclaration type, Model module) '''
 	package «module.packageName»;
 		

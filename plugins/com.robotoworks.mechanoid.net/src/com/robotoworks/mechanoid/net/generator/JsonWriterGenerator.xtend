@@ -1,6 +1,5 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
@@ -10,16 +9,13 @@ import com.robotoworks.mechanoid.net.netModel.Member
 import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
+import org.eclipse.emf.common.util.EList
+import org.eclipse.xtend.lib.Property
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import org.eclipse.emf.common.util.EList
 
 class JsonWriterGenerator {
-	CodeGenerationContext context
-	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
-	}	
+	@Property ImportHelper imports
 	
 	def genWriteComplexType(ComplexTypeDeclaration decl) {
 		genWriteComplexTypeLiteral(decl.literal)
@@ -79,8 +75,8 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
-		«context.registerImport("java.util.List")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«imports.addImport("java.util.List")»
 		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
 			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("subject")»());
@@ -92,7 +88,7 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
-		«context.registerImport("java.util.List")»
+		«imports.addImport("java.util.List")»
 		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			target.name("«member.name»");
 			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
@@ -100,8 +96,8 @@ class JsonWriterGenerator {
 	'''
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, EnumTypeDeclaration decl) '''
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
+		«imports.addImport("java.util.List")»
+		«imports.addImport("java.util.ArrayList")»
 		
 		if(«member.toGetMethodName.memberize("subject")»() != null) {
 			

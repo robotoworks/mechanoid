@@ -1,6 +1,6 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -21,11 +21,14 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class JsonReaderGenerator {
-  private CodeGenerationContext context;
+  private ImportHelper _imports;
   
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
   }
   
   public CharSequence genReadComplexType(final ComplexTypeDeclaration decl) {
@@ -36,7 +39,8 @@ public class JsonReaderGenerator {
   
   public CharSequence genReadComplexTypeLiteral(final ComplexTypeLiteral literal) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     _builder.append("source.beginObject();");
     _builder.newLine();
@@ -101,7 +105,8 @@ public class JsonReaderGenerator {
   
   public CharSequence genReadComplexTypeLiteralForMembers(final EList<Member> members) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     _builder.append("source.beginObject();");
     _builder.newLine();
@@ -192,7 +197,8 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatement(final SkipMember skipMember) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     _builder.append("source.beginObject();");
     _builder.newLine();
@@ -259,7 +265,8 @@ public class JsonReaderGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       if ((type instanceof BooleanType)) {
-        this.context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil");
+        ImportHelper _imports = this.getImports();
+        _imports.addImport("com.robotoworks.mechanoid.net.JsonReaderUtil");
         _builder.newLineIfNotEmpty();
         String _setMethodName = ModelExtensions.toSetMethodName(member);
         String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
@@ -337,9 +344,11 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final IntrinsicType itemType) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
     _builder.append("List<");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(itemType);
@@ -365,9 +374,11 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
@@ -391,11 +402,14 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final EnumTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports_2 = this.getImports();
+    _imports_2.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");

@@ -1,6 +1,6 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
+import com.google.inject.Inject
 import com.robotoworks.mechanoid.net.netModel.Client
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
@@ -15,47 +15,51 @@ import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.Type
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
+import java.util.HashMap
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import com.robotoworks.mechanoid.net.netModel.GenericListType
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
 
-class ResponseGenerator {
-	CodeGenerationContext context
+class ResultGenerator {
+	@Inject ImportHelper imports
+	@Inject JsonReaderGenerator jsonReaderGenerator
 	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
+	def generate(HttpMethod method, Model model, Client client) {
+		jsonReaderGenerator.imports = imports
+				
+		doGenerate(method, model, client)
 	}
 	
-	JsonReaderGenerator jsonReaderGenerator
-	
-	def setJsonReaderGenerator(JsonReaderGenerator jsonReaderGenerator){
-		this.jsonReaderGenerator = jsonReaderGenerator;
-	}
+	def doGenerate(HttpMethod method, Model model, Client client) '''
+	package «model.packageName»;
 
-	def registerImports(){
-		context.registerImport("com.robotoworks.mechanoid.net.TransformerProvider")
-		context.registerImport("com.robotoworks.mechanoid.net.TransformException")
-		context.registerImport("java.io.InputStream")
-		context.registerImport("com.robotoworks.mechanoid.util.Closeables")
-	}
+	«var classDecl = generateResponseClass(method, model, client)»
 	
-	def generate(HttpMethod method, Model module, Client client) '''
-	package «module.packageName»;
-
-	«var body = generateResponseClass(method, module, client)»
-	«registerImports»
-	«context.printImports»
-	«context.clearImports»
+	import com.robotoworks.mechanoid.net.TransformerProvider;
+	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.net.ServiceResult;
+	import java.io.InputStream;
+	import com.robotoworks.mechanoid.util.Closeables;
+	«imports.printAndClear»
 	
-	«body»
+	«classDecl»
 	'''	
 			
 	def dispatch generateFieldForType(ComplexTypeLiteral type) '''
 		«FOR member:type.members»
 		«generateFieldForMember(member)»
 		«ENDFOR»	
+	'''
+	
+	def generateFieldsForMemberList(EList<Member> members) '''
+		«FOR member:members»
+		«generateFieldForMember(member)»
+		«ENDFOR»			
 	'''
 	
 	def dispatch generateFieldForType(IntrinsicType type) '''
@@ -83,10 +87,15 @@ class ResponseGenerator {
 	'''
 		
 	def dispatch generateGetterForType(ComplexTypeLiteral type) '''
-		«FOR member:type.members»
+		«generateGettersForMemberList(type.members)»
+	'''
+	
+	def generateGettersForMemberList(EList<Member> members) '''
+		«FOR member:members»
 		«generateGetter(member)»
 		«ENDFOR»	
 	'''
+	
 	def dispatch generateGetterForType(IntrinsicType type) '''
 		public «type.signature» getValue(){
 			return this.value;
@@ -124,26 +133,59 @@ class ResponseGenerator {
 		«generateGetterForType(member.literal)»
 	'''
 	
+	def generateBaseAccessors(Iterable<Member> members) '''
+		«FOR member:members»
+		«generateBaseAccessor(member)»
+		«ENDFOR»	
+	'''
 	
+	def dispatch generateBaseAccessor(SkipMember member) '''
+		«generateBaseAccessors(member.literal.members)»
+	'''
+	
+	def dispatch generateBaseAccessor(TypedMember member) '''
+		«IF member.type instanceof GenericListType»«imports.addImport("java.util.List")»«ENDIF»
+		public «member.type.signature» «member.toGetMethodName»(){
+			return base.«member.toGetMethodName»();
+		}
+		public void «member.toSetMethodName»(«member.type.signature» value){
+			base.«member.toSetMethodName»(value);
+		}
+	'''
+		
 	def generateResponseClass(HttpMethod method, Model module, Client client) '''
-	«var responseBlock = method.responseBlock»
-	public class «method.name.pascalize»Result «IF(responseBlock != null && responseBlock.superType != null)»extends «responseBlock.superType.name»«ENDIF» {
+	«val responseBlock = method.responseBlock»
+	public class «method.name.pascalize»Result extends ServiceResult {
 		«IF (responseBlock?.type != null)»
 			«generateFieldForType(responseBlock.type)»	
 			«generateGetterForType(responseBlock.type)»	
+		«ENDIF»
+		«IF responseBlock?.superType != null»
+			private «responseBlock.superType.name.pascalize» base;
+			«generateBaseAccessors(responseBlock.superType.literal.members.filter[superMember|
+				if(responseBlock?.type instanceof ComplexTypeLiteral) {
+					return (responseBlock.type as ComplexTypeLiteral).members.findFirst[member|
+						superMember.name.equals(member.name)
+					] == null
+				}
+				return true
+			])»
 		«ENDIF»
 		
 		public «method.name.pascalize»Result(TransformerProvider provider, InputStream inStream) throws TransformException {
 		«IF (responseBlock != null)»
 			«IF(responseBlock.type instanceof ComplexTypeLiteral || responseBlock.superType != null)»
 				«generateDeserializationStatementHeader(true)»
-				
-					«method.name.pascalize»Result subject = this;
+					«IF responseBlock.superType != null»
 					
-					«var members = mergeMembers(responseBlock.type as ComplexTypeLiteral, responseBlock.superType)»
-				
-					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers(members)»
-		
+					this.base = new «responseBlock.superType.name.pascalize»();
+					provider.get(«responseBlock.superType.name.pascalize»Transformer.class).transformIn(source, base);
+					«ENDIF»
+					«IF responseBlock.type instanceof ComplexTypeLiteral»
+					
+					«method.name.pascalize»Result subject = this;
+					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers((responseBlock.type as ComplexTypeLiteral).members)»
+					«ENDIF»
 				«generateDeserializationStatementFooter(true)»
 			«ELSE»
 				«generateDeserializationStatementForType(responseBlock, responseBlock.type as Type)»
@@ -157,9 +199,9 @@ class ResponseGenerator {
 	
 	def generateDeserializationStatementHeader(boolean withReader)'''
 		«IF withReader»
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
-		«context.registerImport("java.io.InputStreamReader")»
-		«context.registerImport("java.nio.charset.Charset")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
+		«imports.addImport("java.io.InputStreamReader")»
+		«imports.addImport("java.nio.charset.Charset")»
 		JsonReader source = null;
 		«ENDIF»
 		try {
@@ -183,21 +225,25 @@ class ResponseGenerator {
 	'''
 	
 	def EList<Member> mergeMembers(ComplexTypeLiteral type, ComplexTypeDeclaration superType) { 
-		var members = new BasicEList<Member>()
+		var members = new HashMap<String, Member>()
 		
 		if(type != null) {
-			members.addAll(type.members)
+			for(m : type.members) {
+				members.put(m.name, m)
+			}
 		}
 		
 		if(superType != null) {
-			members.addAll(superType.literal.members)
+			for(m : superType.literal.members) {
+				members.put(m.name, m)
+			}
 		}
 
-		return members;
+		return new BasicEList<Member>(members.values);
 	}
 	
 	def dispatch generateDeserializationStatementForType(ResponseBlock response, IntrinsicType type) '''
-		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+		«imports.addImport("com.robotoworks.mechanoid.util.Streams")»
 		«generateDeserializationStatementHeader(false)»
 				String source = Streams.readAllText(inStream);
 				
@@ -217,7 +263,7 @@ class ResponseGenerator {
 	'''
 	
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, EnumTypeDeclaration declaration) '''
-		«context.registerImport("com.robotoworks.mechanoid.util.Streams")»
+		«imports.addImport("com.robotoworks.mechanoid.util.Streams")»
 		«generateDeserializationStatementHeader(false)»
 				String source = Streams.readAllText(inStream);
 				this.«type.signature.camelize» = «type.signature».fromValue(source);
@@ -229,8 +275,8 @@ class ResponseGenerator {
 	}
 	
 	def dispatch generateDeserializationStatementForGenericListType(ResponseBlock response, GenericListType type, IntrinsicType genericType) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
-		«context.registerImport("java.util.List")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
+		«imports.addImport("java.util.List")»
 		«generateDeserializationStatementHeader(true)»
 				this.values = JsonUtil.read«genericType.boxedTypeSignature»List(source);
 		«generateDeserializationStatementFooter(true)»
@@ -246,8 +292,8 @@ class ResponseGenerator {
 		UserType genericType,
 		ComplexTypeDeclaration declaration
 	) '''
-		«context.registerImport("java.util.List")»
-		«context.registerImport("java.util.ArrayList")»
+		«imports.addImport("java.util.List")»
+		«imports.addImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
 				provider.get(«type.innerSignature»Transformer.class).transformIn(source, this.«type.innerSignature.camelize.pluralize»);
@@ -260,9 +306,9 @@ class ResponseGenerator {
 		UserType genericType,
 		EnumTypeDeclaration declaration
 	) '''
-		«context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		«context.registerImport("java.util.ArrayList")»
-		«context.registerImport("java.util.List")»
+		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
+		«imports.addImport("java.util.ArrayList")»
+		«imports.addImport("java.util.List")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»();
 				

@@ -1,6 +1,6 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
@@ -19,11 +19,14 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class JsonWriterGenerator {
-  private CodeGenerationContext context;
+  private ImportHelper _imports;
   
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
   }
   
   public CharSequence genWriteComplexType(final ComplexTypeDeclaration decl) {
@@ -170,9 +173,11 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final IntrinsicType itemType) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
@@ -209,7 +214,8 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
@@ -240,9 +246,11 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final EnumTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("if(");

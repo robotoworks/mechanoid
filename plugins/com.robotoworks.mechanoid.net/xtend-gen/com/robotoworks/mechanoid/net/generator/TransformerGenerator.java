@@ -1,51 +1,44 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
-import com.robotoworks.mechanoid.net.generator.strategy.JsonReaderGenerator;
-import com.robotoworks.mechanoid.net.generator.strategy.JsonWriterGenerator;
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
+import com.robotoworks.mechanoid.net.generator.JsonReaderGenerator;
+import com.robotoworks.mechanoid.net.generator.JsonWriterGenerator;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class TransformerGenerator {
-  private CodeGenerationContext context;
+  @Inject
+  private ImportHelper imports;
   
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
-  }
-  
-  public Object registerImports() {
-    return null;
-  }
-  
+  @Inject
   private JsonWriterGenerator jsonWriterGenerator;
   
+  @Inject
   private JsonReaderGenerator jsonReaderGenerator;
   
-  public JsonWriterGenerator setJsonWriterGenerator(final JsonWriterGenerator jsonWriterGenerator) {
-    JsonWriterGenerator _jsonWriterGenerator = this.jsonWriterGenerator = jsonWriterGenerator;
-    return _jsonWriterGenerator;
+  public CharSequence generate(final ComplexTypeDeclaration decl, final Model model) {
+    CharSequence _xblockexpression = null;
+    {
+      this.jsonReaderGenerator.setImports(this.imports);
+      this.jsonWriterGenerator.setImports(this.imports);
+      CharSequence _doGenerate = this.doGenerate(decl, model);
+      _xblockexpression = (_doGenerate);
+    }
+    return _xblockexpression;
   }
   
-  public JsonReaderGenerator setJsonReaderGenerator(final JsonReaderGenerator jsonReaderGenerator) {
-    JsonReaderGenerator _jsonReaderGenerator = this.jsonReaderGenerator = jsonReaderGenerator;
-    return _jsonReaderGenerator;
-  }
-  
-  public CharSequence generate(final ComplexTypeDeclaration decl, final Model module) {
+  public CharSequence doGenerate(final ComplexTypeDeclaration decl, final Model model) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
-    String _packageName = module.getPackageName();
+    String _packageName = model.getPackageName();
     _builder.append(_packageName, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    CharSequence body = this.generateOutputTransformerGeneratorClass(decl, module);
-    _builder.newLineIfNotEmpty();
-    Object _registerImports = this.registerImports();
-    _builder.append(_registerImports, "");
+    CharSequence classDecl = this.generateOutputTransformerGeneratorClass(decl, model);
     _builder.newLineIfNotEmpty();
     _builder.append("import com.robotoworks.mechanoid.net.Transformer;");
     _builder.newLine();
@@ -55,20 +48,18 @@ public class TransformerGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.internal.util.JsonReader;");
     _builder.newLine();
-    StringConcatenation _printImports = this.context.printImports();
-    _builder.append(_printImports, "");
-    _builder.newLineIfNotEmpty();
-    this.context.clearImports();
+    StringConcatenation _printAndClear = this.imports.printAndClear();
+    _builder.append(_printAndClear, "");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append(body, "");
+    _builder.append(classDecl, "");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence generateOutputTransformerGeneratorClass(final ComplexTypeDeclaration decl, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    this.imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("public class ");
