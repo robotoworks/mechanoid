@@ -40,9 +40,7 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.Parser;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
+    _builder.append("import java.io.IOException;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.Response;");
     _builder.newLine();
@@ -52,6 +50,9 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.ServiceClient;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;");
     _builder.newLine();
     StringConcatenation _printAndClear = this.imports.printAndClear();
     _builder.append(_printAndClear, "");
@@ -91,20 +92,6 @@ public class ClientGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("protected String getLogTag() {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return LOG_TAG;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
     _builder.append("\t");
     ParamsBlock params = ModelExtensions.getParamsBlock(client);
     _builder.newLineIfNotEmpty();
@@ -157,12 +144,9 @@ public class ClientGenerator {
           }
         }
         _builder.append("\t");
-        _builder.append("\t");
         _builder.newLine();
       }
     }
-    _builder.append("\t");
-    _builder.newLine();
     {
       boolean _notEquals_4 = (!Objects.equal(params, null));
       if (_notEquals_4) {
@@ -206,10 +190,51 @@ public class ClientGenerator {
           }
         }
         _builder.append("\t");
-        _builder.append("\t");
         _builder.newLine();
       }
     }
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected String getLogTag() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return LOG_TAG;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected JsonEntityWriterProvider createWriterProvider() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return null;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected JsonEntityReaderProvider createReaderProvider() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return null;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
     {
       String _baseUrl_2 = client.getBaseUrl();
       boolean _notEquals_5 = (!Objects.equal(_baseUrl_2, null));
@@ -222,7 +247,7 @@ public class ClientGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("this(DEFAULT_BASE_URL, new TransformerProvider(), false);");
+        _builder.append("this(DEFAULT_BASE_URL, false);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");
@@ -232,26 +257,11 @@ public class ClientGenerator {
         _builder.append("public ");
         String _name_8 = client.getName();
         _builder.append(_name_8, "	");
-        _builder.append("(TransformerProvider transformerProvider){");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("this(DEFAULT_BASE_URL, transformerProvider, false);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("public ");
-        String _name_9 = client.getName();
-        _builder.append(_name_9, "	");
         _builder.append("(boolean debug){");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("this(DEFAULT_BASE_URL, new TransformerProvider(), debug);");
+        _builder.append("this(DEFAULT_BASE_URL, debug);");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");
@@ -262,41 +272,25 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
-    String _name_10 = client.getName();
-    _builder.append(_name_10, "	");
+    String _name_9 = client.getName();
+    _builder.append(_name_9, "	");
     _builder.append("(String baseUrl){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("this(baseUrl, new TransformerProvider(), false);");
+    _builder.append("this(baseUrl, false);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public ");
-    String _name_11 = client.getName();
-    _builder.append(_name_11, "	");
+    String _name_10 = client.getName();
+    _builder.append(_name_10, "	");
     _builder.append("(String baseUrl, boolean debug){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("this(baseUrl, new TransformerProvider(), debug);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_12 = client.getName();
-    _builder.append(_name_12, "	");
-    _builder.append("(String baseUrl, TransformerProvider transformerProvider, boolean debug){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("super(baseUrl, transformerProvider, debug);");
+    _builder.append("super(baseUrl, debug);");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
@@ -311,8 +305,8 @@ public class ClientGenerator {
           for(final Header header : _headers) {
             _builder.append("\t\t");
             _builder.append("setHeader(\"");
-            String _name_13 = header.getName();
-            _builder.append(_name_13, "		");
+            String _name_11 = header.getName();
+            _builder.append(_name_11, "		");
             _builder.append("\",\"");
             String _value = header.getValue();
             _builder.append(_value, "		");
@@ -473,14 +467,14 @@ public class ClientGenerator {
         String _name_13 = method.getName();
         String _pascalize_8 = Strings.pascalize(_name_13);
         _builder.append(_pascalize_8, "		");
-        _builder.append("Result parse(InputStream inStream) throws TransformException {");
+        _builder.append("Result parse(InputStream inStream) throws IOException {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t\t");
         _builder.append("return new ");
         String _name_14 = method.getName();
         String _pascalize_9 = Strings.pascalize(_name_14);
         _builder.append(_pascalize_9, "			");
-        _builder.append("Result(getTransformerProvider(), inStream);");
+        _builder.append("Result(getReaderProvider(), inStream);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("}");

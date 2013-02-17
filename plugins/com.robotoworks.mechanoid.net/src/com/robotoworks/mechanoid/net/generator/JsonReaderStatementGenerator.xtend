@@ -9,15 +9,27 @@ import com.robotoworks.mechanoid.net.netModel.Member
 import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
+import org.eclipse.emf.common.util.EList
+import com.robotoworks.mechanoid.net.netModel.BooleanType
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import static extension com.robotoworks.mechanoid.text.Strings.*
 
-import org.eclipse.emf.common.util.EList
-import com.robotoworks.mechanoid.net.netModel.BooleanType
-
-class JsonReaderGenerator {
+class JsonReaderStatementGenerator {
 	@Property ImportHelper imports
+	
+	/*
+	 * The identifier of the JSONReader instance
+	 */
+	@Property String readerIdentifier = "source"
+	
+	/*
+	 * The identifier of the reader subject (the entity the reader is
+	 * setting data to)
+	 */
+	@Property String subjectIdentifier = "entity"
+	
+	@Property String providerIdentifier = "provider"
 	
 	def genReadComplexType(ComplexTypeDeclaration decl) {
 		genReadComplexTypeLiteral(decl.literal)
@@ -25,13 +37,13 @@ class JsonReaderGenerator {
 	
 	def genReadComplexTypeLiteral(ComplexTypeLiteral literal) '''
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		source.beginObject();
+		«readerIdentifier».beginObject();
 		
-		while(source.hasNext()) {
-			String name = source.nextName();
+		while(«readerIdentifier».hasNext()) {
+			String name = «readerIdentifier».nextName();
 			
-			if(source.peek() == JsonToken.NULL) {
-				source.skipValue();
+			if(«readerIdentifier».peek() == JsonToken.NULL) {
+				«readerIdentifier».skipValue();
 				continue;
 			}
 			
@@ -41,23 +53,23 @@ class JsonReaderGenerator {
 			«ENDFOR»
 			«IF COUNTER > 0»
 			else {
-				source.skipValue();
+				«readerIdentifier».skipValue();
 			}
 			«ENDIF»
 		}
 		
-		source.endObject();
+		«readerIdentifier».endObject();
 	'''
 	
 	def genReadComplexTypeLiteralForMembers(EList<Member> members) '''
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		source.beginObject();
+		«readerIdentifier».beginObject();
 		
-		while(source.hasNext()) {
-			String name = source.nextName();
+		while(«readerIdentifier».hasNext()) {
+			String name = «readerIdentifier».nextName();
 
-			if(source.peek() == JsonToken.NULL) {
-				source.skipValue();
+			if(«readerIdentifier».peek() == JsonToken.NULL) {
+				«readerIdentifier».skipValue();
 				continue;
 			}
 						
@@ -67,12 +79,12 @@ class JsonReaderGenerator {
 			«ENDFOR»
 			«IF COUNTER > 0»
 			else {
-				source.skipValue();
+				«readerIdentifier».skipValue();
 			}
 			«ENDIF»
 		}
 		
-		source.endObject();
+		«readerIdentifier».endObject();
 	'''
 
 	
@@ -89,13 +101,13 @@ class JsonReaderGenerator {
 	
 	def dispatch genStatement(SkipMember skipMember) '''
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		source.beginObject();
+		«readerIdentifier».beginObject();
 		
-		while(source.hasNext()) {
-			name = source.nextName();
+		while(«readerIdentifier».hasNext()) {
+			name = «readerIdentifier».nextName();
 
-			if(source.peek() == JsonToken.NULL) {
-				source.skipValue();
+			if(«readerIdentifier».peek() == JsonToken.NULL) {
+				«readerIdentifier».skipValue();
 				continue;
 			}
 			
@@ -105,20 +117,20 @@ class JsonReaderGenerator {
 			«ENDFOR»
 			«IF COUNTER > 0»
 			else {
-				source.skipValue();
+				«readerIdentifier».skipValue();
 			}
 			«ENDIF»
 		}
 		
-		source.endObject();
+		«readerIdentifier».endObject();
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
 		«IF type instanceof BooleanType»
 		«imports.addImport("com.robotoworks.mechanoid.net.JsonReaderUtil")»
-		«member.toSetMethodName.memberize("subject")»(JsonReaderUtil.coerceNextBoolean(source));
+		«member.toSetMethodName.memberize(subjectIdentifier)»(JsonReaderUtil.coerceNextBoolean(«readerIdentifier»));
 		«ELSE»
-		«member.toSetMethodName.memberize("subject")»(source.next«type.signature.pascalize»());
+		«member.toSetMethodName.memberize(subjectIdentifier)»(«readerIdentifier».next«type.signature.pascalize»());
 		«ENDIF»
 	'''
 	
@@ -127,14 +139,14 @@ class JsonReaderGenerator {
 	}
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
-		«type.signature» subjectMember = new «type.signature»();
-		provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
-		«member.toSetMethodName.memberize("subject")»(subjectMember);
+		«type.signature» entityMember = new «type.signature»();
+		«providerIdentifier».get(«type.innerSignature».class).read(«readerIdentifier», entityMember);
+		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
-		«type.signature» subjectMember = «type.signature».fromValue(source.«decl.resolveJsonReaderMethodName»());
-		«member.toSetMethodName.memberize("subject")»(subjectMember);
+		«type.signature» entityMember = «type.signature».fromValue(«readerIdentifier».«decl.resolveJsonReaderMethodName»());
+		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, GenericListType type) {
@@ -144,8 +156,8 @@ class JsonReaderGenerator {
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
 		«imports.addImport("java.util.List")»
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
-		List<«itemType.boxedTypeSignature»> subjectMember = JsonUtil.read«itemType.boxedTypeSignature»List(source);
-		«member.toSetMethodName.memberize("subject")»(subjectMember);
+		List<«itemType.boxedTypeSignature»> entityMember = JsonUtil.read«itemType.boxedTypeSignature»List(«readerIdentifier»);
+		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 	
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, UserType itemType) { 
@@ -155,26 +167,26 @@ class JsonReaderGenerator {
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
 		«imports.addImport("java.util.List")»
 		«imports.addImport("java.util.ArrayList")»
-		«type.signature» subjectMember = new ArrayList<«type.innerSignature»>();
-		provider.get(«type.innerSignature»Transformer.class).transformIn(source, subjectMember);
-		«member.toSetMethodName.memberize("subject")»(subjectMember);
+		«type.signature» entityMember = new ArrayList<«type.innerSignature»>();
+		«providerIdentifier».get(«type.innerSignature».class).read(«readerIdentifier», entityMember);
+		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, EnumTypeDeclaration decl) '''
 		«imports.addImport("java.util.List")»
 		«imports.addImport("java.util.ArrayList")»
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken")»
-		«type.signature» subjectMember = new ArrayList«type.signature»();
+		«type.signature» entityMember = new ArrayList«type.signature»();
 		
-		source.beginArray();
+		«readerIdentifier».beginArray();
 		
-		while(source.hasNext()) {
-			«type.innerSignature» element = «type.innerSignature».fromValue(source.«decl.resolveJsonReaderMethodName»());
+		while(«readerIdentifier».hasNext()) {
+			«type.innerSignature» element = «type.innerSignature».fromValue(«readerIdentifier».«decl.resolveJsonReaderMethodName»());
 			targetMember.add(element);
 		}
 		
-		source.endArray();
+		«readerIdentifier».endArray();
 		
-		«member.toSetMethodName.memberize("subject")»(subjectMember);
+		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 }

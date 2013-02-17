@@ -14,8 +14,14 @@ import org.eclipse.xtend.lib.Property
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 
-class JsonWriterGenerator {
+class JsonWriterStatementGenerator {
 	@Property ImportHelper imports
+	
+	@Property String writerIdentifier = "target"
+	
+	@Property String subjectIdentifier = "subject"
+	
+	@Property String providerIdentifier = "provider"
 	
 	def genWriteComplexType(ComplexTypeDeclaration decl) {
 		genWriteComplexTypeLiteral(decl.literal)
@@ -26,13 +32,13 @@ class JsonWriterGenerator {
 	'''
 	
 	def genWriteComplexTypeLiteralForMembers(EList<Member> members) '''
-		target.beginObject();
+		«writerIdentifier».beginObject();
 		
 		«FOR member:members»
 			«genStatement(member)»
 		«ENDFOR»
 		
-		target.endObject();
+		«writerIdentifier».endObject();
 	'''
 	
 	def dispatch genStatement(TypedMember member) {
@@ -42,14 +48,14 @@ class JsonWriterGenerator {
 	
 	def dispatch genStatement(SkipMember skipMember) '''
 	
-		target.name("«skipMember.name»");
+		«writerIdentifier».name("«skipMember.name»");
 		
 		«genWriteComplexTypeLiteralForMembers(skipMember.literal.members)»
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, IntrinsicType type) '''
-		target.name("«member.name»");
-		target.value(«member.toGetMethodName.memberize("subject")»());
+		«writerIdentifier».name("«member.name»");
+		«writerIdentifier».value(«member.toGetMethodName.memberize(subjectIdentifier)»());
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type) {
@@ -57,16 +63,16 @@ class JsonWriterGenerator {
 	}
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, ComplexTypeDeclaration decl) '''
-		if(«member.toGetMethodName.memberize("subject")»() != null) {
-			target.name("«member.name»");
-			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
+		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
+			«writerIdentifier».name("«member.name»");
+			«providerIdentifier».get(«type.innerSignature».class).write(«writerIdentifier», «member.toGetMethodName.memberize(subjectIdentifier)»());
 		}
 	'''
 	
 	def dispatch genStatementForType(TypedMember member, UserType type, EnumTypeDeclaration decl) '''
-		if(«member.toGetMethodName.memberize("subject")»() != null) {
-			target.name("«member.name»");
-			target.value(«member.toGetMethodName.memberize("subject")»().toString());
+		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
+			«writerIdentifier».name("«member.name»");
+			«writerIdentifier».value(«member.toGetMethodName.memberize(subjectIdentifier)»().toString());
 		}
 	'''
 	
@@ -77,9 +83,9 @@ class JsonWriterGenerator {
 	def dispatch genStatementForGenericListType(TypedMember member, GenericListType type, IntrinsicType itemType) '''
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		«imports.addImport("java.util.List")»
-		if(«member.toGetMethodName.memberize("subject")»() != null) {
-			target.name("«member.name»");
-			JsonUtil.write«itemType.boxedTypeSignature»List(target, «member.toGetMethodName.memberize("subject")»());
+		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
+			«writerIdentifier».name("«member.name»");
+			JsonUtil.write«itemType.boxedTypeSignature»List(«writerIdentifier», «member.toGetMethodName.memberize(subjectIdentifier)»());
 		}
 	'''
 	
@@ -89,9 +95,9 @@ class JsonWriterGenerator {
 	
 	def dispatch genStatementForUserTypeGenericList(TypedMember member, GenericListType type, UserType itemType, ComplexTypeDeclaration decl) '''
 		«imports.addImport("java.util.List")»
-		if(«member.toGetMethodName.memberize("subject")»() != null) {
-			target.name("«member.name»");
-			provider.get(«type.innerSignature»Transformer.class).transformOut(«member.toGetMethodName.memberize("subject")»(), target);
+		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
+			«writerIdentifier».name("«member.name»");
+			«providerIdentifier».get(«type.innerSignature».class).write(«writerIdentifier», «member.toGetMethodName.memberize(subjectIdentifier)»());
 		}
 	'''
 	
@@ -99,17 +105,17 @@ class JsonWriterGenerator {
 		«imports.addImport("java.util.List")»
 		«imports.addImport("java.util.ArrayList")»
 		
-		if(«member.toGetMethodName.memberize("subject")»() != null) {
+		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
 			
-			target.name("«member.name»");
+			«writerIdentifier».name("«member.name»");
 			
-			target.beginArray();
+			«writerIdentifier».beginArray();
 			
-			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize("subject")»()) {
-				target.value(element.toString());
+			for(«member.type.innerSignature» element : «member.toGetMethodName.memberize(subjectIdentifier)»()) {
+				«writerIdentifier».value(element.toString());
 			}
 			
-			target.endArray();
+			«writerIdentifier».endArray();
 		}
 	'''
 }

@@ -3,7 +3,7 @@ package com.robotoworks.mechanoid.net.generator;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.net.generator.ImportHelper;
-import com.robotoworks.mechanoid.net.generator.JsonReaderGenerator;
+import com.robotoworks.mechanoid.net.generator.JsonReaderStatementGenerator;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.BlockType;
 import com.robotoworks.mechanoid.net.netModel.Client;
@@ -37,12 +37,14 @@ public class ResultGenerator {
   private ImportHelper imports;
   
   @Inject
-  private JsonReaderGenerator jsonReaderGenerator;
+  private JsonReaderStatementGenerator jsonReaderGenerator;
   
   public CharSequence generate(final HttpMethod method, final Model model, final Client client) {
     CharSequence _xblockexpression = null;
     {
       this.jsonReaderGenerator.setImports(this.imports);
+      this.jsonReaderGenerator.setReaderIdentifier("reader");
+      this.jsonReaderGenerator.setSubjectIdentifier("subject");
       CharSequence _doGenerate = this.doGenerate(method, model, client);
       _xblockexpression = (_doGenerate);
     }
@@ -60,9 +62,9 @@ public class ResultGenerator {
     CharSequence classDecl = this.generateResponseClass(method, model, client);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.TransformerProvider;");
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.TransformException;");
+    _builder.append("import java.io.IOException;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.net.ServiceResult;");
     _builder.newLine();
@@ -472,7 +474,7 @@ public class ResultGenerator {
     String _name_2 = method.getName();
     String _pascalize_2 = Strings.pascalize(_name_2);
     _builder.append(_pascalize_2, "	");
-    _builder.append("Result(TransformerProvider provider, InputStream inStream) throws TransformException {");
+    _builder.append("Result(JsonEntityReaderProvider provider, InputStream inStream) throws IOException {");
     _builder.newLineIfNotEmpty();
     {
       boolean _notEquals_2 = (!Objects.equal(responseBlock, null));
@@ -515,7 +517,7 @@ public class ResultGenerator {
                 String _name_4 = _superType_6.getName();
                 String _pascalize_4 = Strings.pascalize(_name_4);
                 _builder.append(_pascalize_4, "		");
-                _builder.append("Transformer.class).transformIn(source, base);");
+                _builder.append(".class).read(reader, base);");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -577,19 +579,21 @@ public class ResultGenerator {
         _builder.newLineIfNotEmpty();
         this.imports.addImport("java.nio.charset.Charset");
         _builder.newLineIfNotEmpty();
-        _builder.append("JsonReader source = null;");
+        _builder.append("\t");
+        _builder.append("JsonReader reader = null;");
         _builder.newLine();
       }
     }
+    _builder.append("\t");
     _builder.append("try {");
     _builder.newLine();
-    _builder.append("\t");
+    _builder.append("\t\t");
     _builder.append("if(inStream != null) {");
     _builder.newLine();
     {
       if (withReader) {
-        _builder.append("\t\t");
-        _builder.append("source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));");
+        _builder.append("\t\t\t");
+        _builder.append("reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));");
         _builder.newLine();
       }
     }
@@ -601,17 +605,12 @@ public class ResultGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("} catch(Exception x) {");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("throw new TransformException(x);");
-    _builder.newLine();
     _builder.append("} finally {");
     _builder.newLine();
     {
       if (withReader) {
         _builder.append("\t");
-        _builder.append("Closeables.closeSilently(source);");
+        _builder.append("Closeables.closeSilently(reader);");
         _builder.newLine();
       } else {
         _builder.append("\t");
@@ -698,7 +697,7 @@ public class ResultGenerator {
     _builder.append("provider.get(");
     String _signature_2 = ModelExtensions.signature(type);
     _builder.append(_signature_2, "		");
-    _builder.append("Transformer.class).transformIn(source, this.");
+    _builder.append(".class).read(reader, this.");
     String _signature_3 = ModelExtensions.signature(type);
     String _camelize_1 = Strings.camelize(_signature_3);
     _builder.append(_camelize_1, "		");
@@ -755,7 +754,7 @@ public class ResultGenerator {
     _builder.append("this.values = JsonUtil.read");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(genericType);
     _builder.append(_boxedTypeSignature, "		");
-    _builder.append("List(source);");
+    _builder.append("List(reader);");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
     _builder.append(_generateDeserializationStatementFooter, "");
@@ -793,7 +792,7 @@ public class ResultGenerator {
     _builder.append("provider.get(");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_2, "		");
-    _builder.append("Transformer.class).transformIn(source, this.");
+    _builder.append(".class).read(reader, this.");
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = Strings.camelize(_innerSignature_3);
     String _pluralize_1 = Strings.pluralize(_camelize_1);
@@ -831,17 +830,17 @@ public class ResultGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if(source.peek() != JsonToken.NULL) {");
+    _builder.append("if(reader.peek() != JsonToken.NULL) {");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("source.beginArray();");
+    _builder.append("reader.beginArray();");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("while(source.hasNext()) {");
+    _builder.append("while(reader.hasNext()) {");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
@@ -849,7 +848,7 @@ public class ResultGenerator {
     _builder.append(" element = ");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_2, "				");
-    _builder.append(".fromValue(source.");
+    _builder.append(".fromValue(reader.");
     String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(declaration);
     _builder.append(_resolveJsonReaderMethodName, "				");
     _builder.append("());");
@@ -868,7 +867,7 @@ public class ResultGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("source.endArray();");
+    _builder.append("reader.endArray();");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");

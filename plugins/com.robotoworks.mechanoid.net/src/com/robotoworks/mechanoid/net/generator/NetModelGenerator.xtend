@@ -20,7 +20,8 @@ class NetModelGenerator implements IGenerator {
 	@Inject Provider<ClientGenerator> mClientGenerator
 	@Inject Provider<RequestGenerator> mRequestGenerator
 	@Inject Provider<ResultGenerator> mResultGenerator	
-	@Inject Provider<TransformerGenerator> mTransformerGenerator
+	@Inject Provider<EntityReaderGenerator> mEntityReaderGenerator
+	@Inject Provider<EntityWriterGenerator> mEntityWriterGenerator
 	@Inject Provider<EntityGenerator> mEntityGenerator
 	@Inject Provider<IntegerEnumTypeGenerator> mIntEnumGenerator
 	@Inject Provider<StringEnumTypeGenerator> mStringEnumGenerator
@@ -52,8 +53,13 @@ class NetModelGenerator implements IGenerator {
 	
 	def dispatch generate(ComplexTypeDeclaration entity, Model model, IFileSystemAccess fsa) {
 		fsa.generateFile(
-			model.packageName.resolveFileName(entity.name.pascalize.concat("Transformer")), 
-			mTransformerGenerator.get.generate(entity, model)
+			model.packageName.resolveFileName(entity.name.pascalize.concat("Reader")), 
+			mEntityReaderGenerator.get.generate(entity, model)
+		)		
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName(entity.name.pascalize.concat("Writer")), 
+			mEntityWriterGenerator.get.generate(entity, model)
 		)		
 		
 		fsa.generateFile(

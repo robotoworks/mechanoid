@@ -21,16 +21,15 @@ import org.eclipse.emf.common.util.EList
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import static extension com.robotoworks.mechanoid.text.Strings.*
-import com.robotoworks.mechanoid.net.netModel.GenericListType
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral
 
 class ResultGenerator {
 	@Inject ImportHelper imports
-	@Inject JsonReaderGenerator jsonReaderGenerator
+	@Inject JsonReaderStatementGenerator jsonReaderGenerator
 	
 	def generate(HttpMethod method, Model model, Client client) {
 		jsonReaderGenerator.imports = imports
+		jsonReaderGenerator.setReaderIdentifier("reader")
+		jsonReaderGenerator.setSubjectIdentifier("subject")
 				
 		doGenerate(method, model, client)
 	}
@@ -40,8 +39,8 @@ class ResultGenerator {
 
 	«var classDecl = generateResponseClass(method, model, client)»
 	
-	import com.robotoworks.mechanoid.net.TransformerProvider;
-	import com.robotoworks.mechanoid.net.TransformException;
+	import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;
+	import java.io.IOException;
 	import com.robotoworks.mechanoid.net.ServiceResult;
 	import java.io.InputStream;
 	import com.robotoworks.mechanoid.util.Closeables;
@@ -172,14 +171,14 @@ class ResultGenerator {
 			])»
 		«ENDIF»
 		
-		public «method.name.pascalize»Result(TransformerProvider provider, InputStream inStream) throws TransformException {
+		public «method.name.pascalize»Result(JsonEntityReaderProvider provider, InputStream inStream) throws IOException {
 		«IF (responseBlock != null)»
 			«IF(responseBlock.type instanceof ComplexTypeLiteral || responseBlock.superType != null)»
 				«generateDeserializationStatementHeader(true)»
 					«IF responseBlock.superType != null»
 					
 					this.base = new «responseBlock.superType.name.pascalize»();
-					provider.get(«responseBlock.superType.name.pascalize»Transformer.class).transformIn(source, base);
+					provider.get(«responseBlock.superType.name.pascalize».class).read(reader, base);
 					«ENDIF»
 					«IF responseBlock.type instanceof ComplexTypeLiteral»
 					
@@ -202,26 +201,24 @@ class ResultGenerator {
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
 		«imports.addImport("java.io.InputStreamReader")»
 		«imports.addImport("java.nio.charset.Charset")»
-		JsonReader source = null;
-		«ENDIF»
-		try {
-			if(inStream != null) {
-				«IF withReader»
-				source = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
-				«ENDIF»
+			JsonReader reader = null;
+			«ENDIF»
+			try {
+				if(inStream != null) {
+					«IF withReader»
+					reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
+					«ENDIF»
 	'''
 	
 	def generateDeserializationStatementFooter(boolean withReader)'''
+				}
+			} finally {
+				«IF withReader»
+				Closeables.closeSilently(reader);
+				«ELSE»
+				Closeables.closeSilently(inStream);
+				«ENDIF»
 			}
-		} catch(Exception x) {
-			throw new TransformException(x);
-		} finally {
-			«IF withReader»
-			Closeables.closeSilently(source);
-			«ELSE»
-			Closeables.closeSilently(inStream);
-			«ENDIF»
-		}
 	'''
 	
 	def EList<Member> mergeMembers(ComplexTypeLiteral type, ComplexTypeDeclaration superType) { 
@@ -258,7 +255,7 @@ class ResultGenerator {
 	def dispatch generateDeserializationStatementForUserType(ResponseBlock response, UserType type, ComplexTypeDeclaration declaration) '''
 		«generateDeserializationStatementHeader(true)»
 				this.«type.signature.camelize» = new «type.signature»();
-				provider.get(«type.signature»Transformer.class).transformIn(source, this.«type.signature.camelize»);
+				provider.get(«type.signature».class).read(reader, this.«type.signature.camelize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -278,7 +275,7 @@ class ResultGenerator {
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		«imports.addImport("java.util.List")»
 		«generateDeserializationStatementHeader(true)»
-				this.values = JsonUtil.read«genericType.boxedTypeSignature»List(source);
+				this.values = JsonUtil.read«genericType.boxedTypeSignature»List(reader);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -296,7 +293,7 @@ class ResultGenerator {
 		«imports.addImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
-				provider.get(«type.innerSignature»Transformer.class).transformIn(source, this.«type.innerSignature.camelize.pluralize»);
+				provider.get(«type.innerSignature».class).read(reader, this.«type.innerSignature.camelize.pluralize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	
@@ -312,16 +309,16 @@ class ResultGenerator {
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new Array«type.signature»();
 				
-				if(source.peek() != JsonToken.NULL) {
+				if(reader.peek() != JsonToken.NULL) {
 					
-					source.beginArray();
+					reader.beginArray();
 					
-					while(source.hasNext()) {
-						«type.innerSignature» element = «type.innerSignature».fromValue(source.«declaration.resolveJsonReaderMethodName»());
+					while(reader.hasNext()) {
+						«type.innerSignature» element = «type.innerSignature».fromValue(reader.«declaration.resolveJsonReaderMethodName»());
 						this.«type.innerSignature.camelize.pluralize».add(element);
 					}
 					
-					source.endArray();
+					reader.endArray();
 				}
 		«generateDeserializationStatementFooter(true)»
 	'''

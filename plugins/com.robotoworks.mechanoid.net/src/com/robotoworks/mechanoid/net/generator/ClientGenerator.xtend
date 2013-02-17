@@ -18,13 +18,13 @@ class ClientGenerator {
 	«var classDecl = generateClientClass(client, module)»
 	
 	import com.robotoworks.mechanoid.net.Parser;
-	import com.robotoworks.mechanoid.net.TransformException;
-	import com.robotoworks.mechanoid.net.TransformerProvider;
+	import java.io.IOException;
 	import com.robotoworks.mechanoid.net.Response;
 	import com.robotoworks.mechanoid.net.ServiceException;
 	import java.io.InputStream;
 	import com.robotoworks.mechanoid.net.ServiceClient;
-	
+	import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;
+	import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;
 	«imports.printAndClear»
 	
 	«classDecl»
@@ -38,20 +38,14 @@ class ClientGenerator {
 			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
 			
 			«ENDIF»
-			@Override
-			protected String getLogTag() {
-				return LOG_TAG;
-			}
-			
 			«var params = client.paramsBlock»
 			«IF(params != null)»
 			«FOR param:params.params»
 			private «param.member.type.signature» «param.member.name.camelize»Param«IF param.defaultValue != null» = «param.defaultValue.convertToJavaLiteral»«ENDIF»;
 			private boolean «param.member.name.camelize»ParamSet«IF param.defaultValue != null» = true«ENDIF»;
 			«ENDFOR»
-				
-			«ENDIF»
 			
+			«ENDIF»
 			«IF(params != null)»
 			«FOR param:params.params»
 			public void set«param.member.name.pascalize»Param(«param.member.type.signature» value) {
@@ -59,33 +53,39 @@ class ClientGenerator {
 				this.«param.member.name.camelize»ParamSet = true;
 			}
 			«ENDFOR»
-				
+			
 			«ENDIF»
-			«IF client.baseUrl != null»
-			public «client.name»(){
-				this(DEFAULT_BASE_URL, new TransformerProvider(), false);
-			}
-
-			public «client.name»(TransformerProvider transformerProvider){
-				this(DEFAULT_BASE_URL, transformerProvider, false);
+			@Override
+			protected String getLogTag() {
+				return LOG_TAG;
 			}
 			
+			@Override
+			protected JsonEntityWriterProvider createWriterProvider() {
+				return null;
+			}
+			
+			@Override
+			protected JsonEntityReaderProvider createReaderProvider() {
+				return null;
+			}
+			
+			«IF client.baseUrl != null»
+			public «client.name»(){
+				this(DEFAULT_BASE_URL, false);
+			}
+
 			public «client.name»(boolean debug){
-				this(DEFAULT_BASE_URL, new TransformerProvider(), debug);
+				this(DEFAULT_BASE_URL, debug);
 			}
 			«ENDIF»
 			
 			public «client.name»(String baseUrl){
-				this(baseUrl, new TransformerProvider(), false);
+				this(baseUrl, false);
 			}
-			
 
 			public «client.name»(String baseUrl, boolean debug){
-				this(baseUrl, new TransformerProvider(), debug);
-			}
-			
-			public «client.name»(String baseUrl, TransformerProvider transformerProvider, boolean debug){
-				super(baseUrl, transformerProvider, debug);
+				super(baseUrl, debug);
 				
 				«var headers = client.headerBlock»
 				«IF headers != null»
@@ -121,8 +121,8 @@ class ClientGenerator {
 			«ENDIF»	
 			
 			Parser<«method.name.pascalize»Result> parser = new Parser<«method.name.pascalize»Result>() {
-				public «method.name.pascalize»Result parse(InputStream inStream) throws TransformException {
-					return new «method.name.pascalize»Result(getTransformerProvider(), inStream);
+				public «method.name.pascalize»Result parse(InputStream inStream) throws IOException {
+					return new «method.name.pascalize»Result(getReaderProvider(), inStream);
 				}
 			};
 			

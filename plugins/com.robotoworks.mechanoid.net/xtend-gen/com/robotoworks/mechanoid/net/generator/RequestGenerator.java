@@ -3,7 +3,7 @@ package com.robotoworks.mechanoid.net.generator;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.net.generator.ImportHelper;
-import com.robotoworks.mechanoid.net.generator.JsonWriterGenerator;
+import com.robotoworks.mechanoid.net.generator.JsonWriterStatementGenerator;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.BlockType;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
@@ -46,15 +46,24 @@ public class RequestGenerator {
   private ImportHelper imports;
   
   @Inject
-  private JsonWriterGenerator jsonWriterGenerator;
+  private JsonWriterStatementGenerator jsonWriterGenerator;
   
   @Inject
   private ISerializer serializer;
   
   public CharSequence generate(final HttpMethod method, final Model module, final Client client) {
+    CharSequence _xblockexpression = null;
+    {
+      this.jsonWriterGenerator.setImports(this.imports);
+      this.jsonWriterGenerator.setWriterIdentifier("writer");
+      CharSequence _doGenerate = this.doGenerate(method, module, client);
+      _xblockexpression = (_doGenerate);
+    }
+    return _xblockexpression;
+  }
+  
+  public CharSequence doGenerate(final HttpMethod method, final Model module, final Client client) {
     StringConcatenation _builder = new StringConcatenation();
-    this.jsonWriterGenerator.setImports(this.imports);
-    _builder.newLineIfNotEmpty();
     _builder.append("package ");
     String _packageName = module.getPackageName();
     _builder.append(_packageName, "");
@@ -65,6 +74,8 @@ public class RequestGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import android.net.Uri;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;");
     _builder.newLine();
     {
       boolean _hasBody = ModelExtensions.hasBody(method);
@@ -103,7 +114,7 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private static final String PATH=\"");
+    _builder.append("private static final String PATH = \"");
     String _pathAsFormatString = ModelExtensions.getPathAsFormatString(method, this.serializer);
     _builder.append(_pathAsFormatString, "	");
     _builder.append("\";");
@@ -260,6 +271,8 @@ public class RequestGenerator {
         CharSequence _generateFieldForType = this.generateFieldForType(_type_3);
         _builder.append(_generateFieldForType, "	");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.newLine();
         _builder.append("\t");
         BodyBlock _body_1 = ModelExtensions.getBody(method);
         BlockType _type_4 = _body_1.getType();
@@ -505,22 +518,19 @@ public class RequestGenerator {
       boolean _hasBody_3 = ModelExtensions.hasBody(method);
       if (_hasBody_3) {
         _builder.append("\t");
-        this.imports.addImport("com.robotoworks.mechanoid.net.TransformerProvider");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        this.imports.addImport("com.robotoworks.mechanoid.net.TransformException");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         this.imports.addImport("com.robotoworks.mechanoid.util.Closeables");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         this.imports.addImport("java.io.OutputStream");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
+        this.imports.addImport("java.io.IOException");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("@Override");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("public void writeBody(TransformerProvider provider, OutputStream stream) throws TransformException {");
+        _builder.append("public void writeBody(JsonEntityWriterProvider provider, OutputStream stream) throws IOException {");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
@@ -710,7 +720,7 @@ public class RequestGenerator {
         _builder.newLineIfNotEmpty();
         this.imports.addImport("java.nio.charset.Charset");
         _builder.newLineIfNotEmpty();
-        _builder.append("JsonWriter target = null;");
+        _builder.append("JsonWriter writer = null;");
         _builder.newLine();
       }
     }
@@ -722,7 +732,7 @@ public class RequestGenerator {
     {
       if (withReader) {
         _builder.append("\t\t");
-        _builder.append("target = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));");
+        _builder.append("writer = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));");
         _builder.newLine();
       }
     }
@@ -738,17 +748,12 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("} catch(Exception x) {");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("throw new TransformException(x);");
-    _builder.newLine();
     _builder.append("} finally {");
     _builder.newLine();
     {
       if (withReader) {
         _builder.append("\t");
-        _builder.append("Closeables.closeSilently(target);");
+        _builder.append("Closeables.closeSilently(writer);");
         _builder.newLine();
       } else {
         _builder.append("\t");
@@ -1110,11 +1115,11 @@ public class RequestGenerator {
     _builder.append("provider.get(");
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "	");
-    _builder.append("Transformer.class).transformOut(");
+    _builder.append(".class).write(writer, ");
     String _signature_1 = ModelExtensions.signature(type);
     String _camelize = Strings.camelize(_signature_1);
     _builder.append(_camelize, "	");
-    _builder.append(", target);");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementFooter = this.generateSerializationStatementFooter(true);
     _builder.append(_generateSerializationStatementFooter, "");
@@ -1164,7 +1169,7 @@ public class RequestGenerator {
     _builder.append("JsonUtil.write");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(elementType);
     _builder.append(_boxedTypeSignature, "	");
-    _builder.append("List(target, values);");
+    _builder.append("List(writer, values);");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementFooter = this.generateSerializationStatementFooter(true);
     _builder.append(_generateSerializationStatementFooter, "");
@@ -1189,12 +1194,12 @@ public class RequestGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("Transformer.class).transformOut(");
+    _builder.append(".class).write(writer, ");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     String _camelize = Strings.camelize(_innerSignature_1);
     String _pluralize = Strings.pluralize(_camelize);
     _builder.append(_pluralize, "	");
-    _builder.append(", target);");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateSerializationStatementFooter = this.generateSerializationStatementFooter(true);
     _builder.append(_generateSerializationStatementFooter, "");
@@ -1209,7 +1214,7 @@ public class RequestGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.beginArray();");
+    _builder.append("writer.beginArray();");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -1225,7 +1230,7 @@ public class RequestGenerator {
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("target.put(element.getValue());");
+    _builder.append("writer.put(element.getValue());");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -1233,7 +1238,7 @@ public class RequestGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.endArray();");
+    _builder.append("writer.endArray();");
     _builder.newLine();
     _builder.newLine();
     CharSequence _generateSerializationStatementFooter = this.generateSerializationStatementFooter(true);

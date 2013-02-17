@@ -16,24 +16,30 @@ import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.UserType
 import java.util.ArrayList
 import java.util.List
-
-import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import static extension com.robotoworks.mechanoid.text.Strings.*
 import com.google.inject.Inject
 import org.eclipse.xtext.serializer.ISerializer
 
+import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
+import static extension com.robotoworks.mechanoid.text.Strings.*
+
 class RequestGenerator {
 	@Inject ImportHelper imports
-	@Inject JsonWriterGenerator jsonWriterGenerator
+	@Inject JsonWriterStatementGenerator jsonWriterGenerator
 	@Inject ISerializer serializer
 
-	def generate(HttpMethod method, Model module, Client client) '''
-	«jsonWriterGenerator.imports = imports»
+	def generate(HttpMethod method, Model module, Client client) {
+		jsonWriterGenerator.imports = imports
+		jsonWriterGenerator.setWriterIdentifier("writer")
+		doGenerate(method, module, client)
+	}
+	
+	def doGenerate(HttpMethod method, Model module, Client client) '''
 	package «module.packageName»;
 
 	«var classDecl = generateRequestClass(method, module, client)»
 	
 	import android.net.Uri;
+	import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;
 	«IF(method.hasBody)»
 	import com.robotoworks.mechanoid.net.EntityEnclosedServiceRequest;
 	«ELSE»
@@ -47,7 +53,7 @@ class RequestGenerator {
 	def generateRequestClass(HttpMethod method, Model module, Client client) '''
 	public class «method.name.pascalize»Request extends «IF(method.hasBody)»EntityEnclosed«ENDIF»ServiceRequest {
 		
-		private static final String PATH="«method.getPathAsFormatString(serializer)»";
+		private static final String PATH = "«method.getPathAsFormatString(serializer)»";
 		
 		«IF(method.path?.params?.size > 0)»
 		«FOR slug:method.path.params»
@@ -73,6 +79,7 @@ class RequestGenerator {
 		«ENDIF»
 		«IF(method.hasBody)»
 			«generateFieldForType(method.body.type)»
+			
 			«generateGetterSetterForType(method.body.type)»
 		«ENDIF»
 		«IF(methodParams != null)»
@@ -122,12 +129,11 @@ class RequestGenerator {
 		}
 		
 		«IF(method.hasBody)»
-		«imports.addImport("com.robotoworks.mechanoid.net.TransformerProvider")»
-		«imports.addImport("com.robotoworks.mechanoid.net.TransformException")»
 		«imports.addImport("com.robotoworks.mechanoid.util.Closeables")»
 		«imports.addImport("java.io.OutputStream")»
+		«imports.addImport("java.io.IOException")»
 		@Override
-		public void writeBody(TransformerProvider provider, OutputStream stream) throws TransformException {
+		public void writeBody(JsonEntityWriterProvider provider, OutputStream stream) throws IOException {
 			«generateSerializationStatementForType(method, method.body, method.body.type)»
 		}
 
@@ -174,12 +180,12 @@ class RequestGenerator {
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonWriter")»
 		«imports.addImport("java.io.OutputStreamWriter")»
 		«imports.addImport("java.nio.charset.Charset")»
-		JsonWriter target = null;
+		JsonWriter writer = null;
 		«ENDIF»
 		try {
 			if(stream != null) {
 				«IF withReader»
-				target = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));
+				writer = new JsonWriter(new OutputStreamWriter(stream, Charset.defaultCharset()));
 				«ENDIF»
 				
 	'''
@@ -187,11 +193,9 @@ class RequestGenerator {
 	def generateSerializationStatementFooter(boolean withReader)'''
 				
 			}
-		} catch(Exception x) {
-			throw new TransformException(x);
 		} finally {
 			«IF withReader»
-			Closeables.closeSilently(target);
+			Closeables.closeSilently(writer);
 			«ELSE»
 			Closeables.closeSilently(stream);
 			«ENDIF»
@@ -326,7 +330,7 @@ class RequestGenerator {
 		UserType type,
 		ComplexTypeDeclaration declaration) '''
 			«generateSerializationStatementHeader(true)»
-				provider.get(«type.signature»Transformer.class).transformOut(«type.signature.camelize», target);
+				provider.get(«type.signature».class).write(writer, «type.signature.camelize»);
 			«generateSerializationStatementFooter(true)»
 		'''
 	
@@ -354,7 +358,7 @@ class RequestGenerator {
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil")»
 		«imports.addImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
-			JsonUtil.write«elementType.boxedTypeSignature»List(target, values);
+			JsonUtil.write«elementType.boxedTypeSignature»List(writer, values);
 		«generateSerializationStatementFooter(true)»
 	'''
 
@@ -374,7 +378,7 @@ class RequestGenerator {
 	) '''
 		«imports.addImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
-			provider.get(«type.innerSignature»Transformer.class).transformOut(«type.innerSignature.camelize.pluralize», target);
+			provider.get(«type.innerSignature».class).write(writer, «type.innerSignature.camelize.pluralize»);
 		«generateSerializationStatementFooter(true)»
 	'''
 
@@ -386,13 +390,13 @@ class RequestGenerator {
 	) '''
 		«generateSerializationStatementHeader(true)»
 		
-			target.beginArray();
+			writer.beginArray();
 			
 			for(«type.innerSignature» element:«type.innerSignature.camelize.pluralize») {
-				target.put(element.getValue());
+				writer.put(element.getValue());
 			}
 			
-			target.endArray();
+			writer.endArray();
 		
 		«generateSerializationStatementFooter(true)»
 	'''

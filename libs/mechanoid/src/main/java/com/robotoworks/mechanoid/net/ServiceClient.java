@@ -18,8 +18,10 @@ public abstract class ServiceClient {
 
 	private LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
 	private String mBaseUrl;
-	private TransformerProvider mTransformerProvider;
 	private boolean mDebug;
+
+	private JsonEntityReaderProvider mReaderProvider;
+	private JsonEntityWriterProvider mWriterProvider;
 
 	protected String getBaseUrl() {
 		return mBaseUrl;
@@ -29,16 +31,20 @@ public abstract class ServiceClient {
 		return mDebug;
 	}
 	
-	protected TransformerProvider getTransformerProvider() {
-		return mTransformerProvider;
-	}
-	
 	protected LinkedHashMap<String, String> getHeaders() {
 		return mHeaders;
 	}
 
 	protected String getLogTag() {
 		return DEFAULT_LOG_TAG;
+	}
+	
+	public JsonEntityReaderProvider getReaderProvider() {
+		return mReaderProvider;
+	}
+	
+	public JsonEntityWriterProvider getWriterProvider() {
+		return mWriterProvider;
 	}
 
 	/**
@@ -51,11 +57,16 @@ public abstract class ServiceClient {
 		getHeaders().put(field, value);
 	}
 	
-	public ServiceClient(String baseUrl, TransformerProvider transformerProvider, boolean debug){
+	public ServiceClient(String baseUrl, boolean debug){
 		mBaseUrl = baseUrl;
-		mTransformerProvider = transformerProvider;
 		mDebug = debug;
+		
+		mReaderProvider = createReaderProvider();
+		mWriterProvider = createWriterProvider();
 	}
+
+	protected abstract JsonEntityWriterProvider createWriterProvider();
+	protected abstract JsonEntityReaderProvider createReaderProvider();
 
 	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> get(
 			REQUEST request, Parser<RESULT> resultParser)
@@ -163,12 +174,12 @@ public abstract class ServiceClient {
 
 			if (isDebug()) {
 				ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
-				request.writeBody(getTransformerProvider(), debugOutStream);
+				request.writeBody(mWriterProvider, debugOutStream);
 
 				Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
 			}
 
-			request.writeBody(getTransformerProvider(), conn.getOutputStream());
+			request.writeBody(mWriterProvider, conn.getOutputStream());
 
 			Response<RESULT> response = new Response<RESULT>(conn, resultParser);
 

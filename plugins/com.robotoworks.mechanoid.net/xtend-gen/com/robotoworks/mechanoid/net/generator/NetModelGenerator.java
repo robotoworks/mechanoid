@@ -6,11 +6,12 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.robotoworks.mechanoid.net.generator.ClientGenerator;
 import com.robotoworks.mechanoid.net.generator.EntityGenerator;
+import com.robotoworks.mechanoid.net.generator.EntityReaderGenerator;
+import com.robotoworks.mechanoid.net.generator.EntityWriterGenerator;
 import com.robotoworks.mechanoid.net.generator.IntegerEnumTypeGenerator;
 import com.robotoworks.mechanoid.net.generator.RequestGenerator;
 import com.robotoworks.mechanoid.net.generator.ResultGenerator;
 import com.robotoworks.mechanoid.net.generator.StringEnumTypeGenerator;
-import com.robotoworks.mechanoid.net.generator.TransformerGenerator;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -41,7 +42,10 @@ public class NetModelGenerator implements IGenerator {
   private Provider<ResultGenerator> mResultGenerator;
   
   @Inject
-  private Provider<TransformerGenerator> mTransformerGenerator;
+  private Provider<EntityReaderGenerator> mEntityReaderGenerator;
+  
+  @Inject
+  private Provider<EntityWriterGenerator> mEntityWriterGenerator;
   
   @Inject
   private Provider<EntityGenerator> mEntityGenerator;
@@ -102,18 +106,26 @@ public class NetModelGenerator implements IGenerator {
     String _packageName = model.getPackageName();
     String _name = entity.getName();
     String _pascalize = Strings.pascalize(_name);
-    String _concat = _pascalize.concat("Transformer");
+    String _concat = _pascalize.concat("Reader");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat);
-    TransformerGenerator _get = this.mTransformerGenerator.get();
+    EntityReaderGenerator _get = this.mEntityReaderGenerator.get();
     CharSequence _generate = _get.generate(entity, model);
     fsa.generateFile(_resolveFileName, _generate);
     String _packageName_1 = model.getPackageName();
     String _name_1 = entity.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
-    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _pascalize_1);
-    EntityGenerator _get_1 = this.mEntityGenerator.get();
+    String _concat_1 = _pascalize_1.concat("Writer");
+    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_1);
+    EntityWriterGenerator _get_1 = this.mEntityWriterGenerator.get();
     CharSequence _generate_1 = _get_1.generate(entity, model);
     fsa.generateFile(_resolveFileName_1, _generate_1);
+    String _packageName_2 = model.getPackageName();
+    String _name_2 = entity.getName();
+    String _pascalize_2 = Strings.pascalize(_name_2);
+    String _resolveFileName_2 = Strings.resolveFileName(_packageName_2, _pascalize_2);
+    EntityGenerator _get_2 = this.mEntityGenerator.get();
+    CharSequence _generate_2 = _get_2.generate(entity, model);
+    fsa.generateFile(_resolveFileName_2, _generate_2);
   }
   
   protected void _generate(final EnumTypeDeclaration type, final Model model, final IFileSystemAccess fsa) {
