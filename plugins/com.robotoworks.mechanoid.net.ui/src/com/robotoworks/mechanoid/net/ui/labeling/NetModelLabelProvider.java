@@ -106,5 +106,5 @@ public class NetModelLabelProvider extends DefaultEObjectLabelProvider {
     
     String text (Header ele) {
         return ele.getName() + " : " + ele.getValue();
-    }
+    }    
 }
