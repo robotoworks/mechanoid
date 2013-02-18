@@ -4,9 +4,24 @@
 package com.robotoworks.mechanoid.net.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
  
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.net.generator.ModelExtensions;
+import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
+import com.robotoworks.mechanoid.net.netModel.EnumMember;
+import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
+import com.robotoworks.mechanoid.net.netModel.Header;
+import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
+import com.robotoworks.mechanoid.net.netModel.HttpMethod;
+import com.robotoworks.mechanoid.net.netModel.Member;
+import com.robotoworks.mechanoid.net.netModel.Model;
+import com.robotoworks.mechanoid.net.netModel.ResponseBlock;
+import com.robotoworks.mechanoid.net.netModel.Type;
+import com.robotoworks.mechanoid.net.netModel.TypedMember;
 
 /**
  * Provides labels for a EObjects.
@@ -15,6 +30,8 @@ import com.google.inject.Inject;
  */
 public class NetModelLabelProvider extends DefaultEObjectLabelProvider {
 
+    @Inject ISerializer serializer;
+    
 	@Inject
 	public NetModelLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
@@ -31,10 +48,64 @@ public class NetModelLabelProvider extends DefaultEObjectLabelProvider {
       return "MyModel.gif";
     }
 */
-	@Override
-	protected Object doGetText(Object element) {
-		Object qux = super.doGetText(element);
-		
-		return qux;
-	}
+	
+    String image(Model ele) {
+        return "package.gif";
+    }
+    
+    String image(ComplexTypeDeclaration ele) {
+        return "entity_obj.gif";
+    }
+    
+    String image(EnumTypeDeclaration ele) {
+        return "enum_obj.gif";
+    }
+    
+    String image(Member ele) {
+        return "member_obj.gif";
+    }
+    
+    String image(EnumMember ele) {
+        return "member_obj.gif";
+    }
+    
+    String image(HttpMethod ele) {
+        return "httpmethod_obj.gif";
+    }
+    
+    String image(Client ele) {
+        return "client_obj.gif";
+    }
+    
+    String text(Member ele) {
+        if(ele instanceof TypedMember) {
+            return ele.getName() + " : " + ModelExtensions.signature(((TypedMember)ele).getType());
+        }
+        
+        return ele.getName();
+    }
+    
+    String text(HttpMethod ele) {
+        ResponseBlock block = ModelExtensions.getResponseBlock(ele);
+        
+        String name = ele.getName();
+        
+        name += " " + serializer.serialize(ele.getPath()).replaceAll("([a-zA-Z0-9_\\^]+):[a-zA-Z0-9_\\^]+", "{$1}");
+        
+        if(block != null && block.getType() instanceof Type) {
+            if(block.getType() instanceof Type) {
+                name += " : " + ModelExtensions.signature((Type)block.getType());
+            }
+        }
+        
+        return name;
+    }
+    
+    String text (HeaderBlock ele) {
+        return "headers";
+    }
+    
+    String text (Header ele) {
+        return ele.getName() + " : " + ele.getValue();
+    }
 }
