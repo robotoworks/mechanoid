@@ -1,27 +1,22 @@
-package com.robotoworks.mechanoid.net.generator.strategy
+package com.robotoworks.mechanoid.net.generator
 
 import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.Model
 import com.robotoworks.mechanoid.net.netModel.GenericListType
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext
 import com.robotoworks.mechanoid.net.netModel.TypedMember
 import com.robotoworks.mechanoid.net.netModel.SkipMember
+import com.google.inject.Inject
 
-class TypeGenerator {
-	CodeGenerationContext context
+class EntityGenerator {
+	@Inject ImportHelper imports
 	
-	def setContext(CodeGenerationContext context){
-		this.context = context;
-	}
-		
 	def generate(ComplexTypeDeclaration type, Model module) '''
 	package «module.packageName»;
 	
-	«var body = generateType(type, module)»
-	«context.printImports»
-	«context.clearImports»	
-	«body»
+	«var classDecl = generateType(type, module)»
+	«imports.printAndClear»
+	«classDecl»
 	'''
 	
 	def generateType(ComplexTypeDeclaration type, Model module) '''
@@ -38,7 +33,7 @@ class TypeGenerator {
 	
 	def dispatch generateField(TypedMember member) '''
 		private «member.type.signature» «member.toIdentifier»;
-		«IF(member.type instanceof GenericListType)»«context.registerImport("java.util.List")»«ENDIF»	
+		«IF(member.type instanceof GenericListType)»«imports.addImport("java.util.List")»«ENDIF»	
 	'''
 	
 	def dispatch generateField(SkipMember skipper) '''

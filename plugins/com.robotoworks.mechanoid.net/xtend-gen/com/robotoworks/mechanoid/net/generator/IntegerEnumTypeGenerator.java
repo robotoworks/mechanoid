@@ -1,6 +1,5 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.Model;
@@ -8,13 +7,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class IntegerEnumTypeGenerator {
-  private CodeGenerationContext context;
-  
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
-  }
-  
   public CharSequence generate(final EnumTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
