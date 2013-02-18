@@ -19,7 +19,7 @@ public class BrowseableValueTextField extends TextField {
     }
     
     public BrowseableValueTextField(Composite parent, String labelText) {
-        super(parent, labelText);
+        super(parent, labelText, false);
         
         mBrowseButton = new Button(parent, SWT.PUSH);
         mBrowseButton.setText(Messages.BrowseableValueTextField_Button_Browse);

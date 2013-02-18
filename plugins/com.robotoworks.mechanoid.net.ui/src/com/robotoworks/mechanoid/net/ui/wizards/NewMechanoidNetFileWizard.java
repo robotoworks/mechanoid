@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
+import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.robotoworks.mechanoid.net.netModel.Client;
@@ -27,11 +28,13 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
     
     @Inject XtextResourceSet mResourceSet;
     
-    private NewMechanoidElementPage mNewFilePage;
+    private NewMechanoidNetServiceClientPage mNewFilePage;
 
     private String mSelectedPackageName;
 
     private String mSelectedElementName;
+
+    private String mSelectedBaseUrl;
 
     public NewMechanoidNetFileWizard() {
         
@@ -39,14 +42,7 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
         
         injector.injectMembers(this);
         
-        mNewFilePage = new NewMechanoidElementPage("new_file_page") { //$NON-NLS-1$
-            @Override
-            protected String getNameFieldInfoMessage() {
-                return Messages.NewMechanoidNetFileWizard_Widget_Label_Message_Name;
-            }  
-        };
-        mNewFilePage.setTitle(Messages.NewMechanoidNetFileWizard_Title);
-        mNewFilePage.setDescription(Messages.NewMechanoidNetFileWizard_Message);
+        mNewFilePage = new NewMechanoidNetServiceClientPage();
     }
 
     @Override
@@ -67,6 +63,7 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
     protected void onBeforeCreateElementResource() {
         mSelectedPackageName = mNewFilePage.getSelectedPackageName();
         mSelectedElementName = mNewFilePage.getSelectedElementName();
+        mSelectedBaseUrl = mNewFilePage.getBaseUrlField().getTextField().getText();
     }
     
     @Override
@@ -92,6 +89,11 @@ public class NewMechanoidNetFileWizard extends NewMechanoidElementWizard {
             
             Client client = (Client) NetModelFactory.eINSTANCE.createClient();
             client.setName(mSelectedElementName);
+            
+            if(!Strings.isNullOrEmpty(mSelectedBaseUrl)) {
+                client.setBaseUrl(mSelectedBaseUrl);
+            }
+            
             model.getDeclarations().add(client);
             
             emfResource.save(Collections.EMPTY_MAP);
