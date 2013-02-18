@@ -5,13 +5,12 @@ package com.robotoworks.mechanoid.net.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
- 
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.Client;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.Header;
