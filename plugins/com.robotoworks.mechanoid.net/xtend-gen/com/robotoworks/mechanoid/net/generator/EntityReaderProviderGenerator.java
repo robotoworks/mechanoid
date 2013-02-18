@@ -1,0 +1,112 @@
+package com.robotoworks.mechanoid.net.generator;
+
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
+import com.robotoworks.mechanoid.net.netModel.Client;
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
+import com.robotoworks.mechanoid.net.netModel.Declaration;
+import com.robotoworks.mechanoid.net.netModel.Model;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend2.lib.StringConcatenation;
+
+@SuppressWarnings("all")
+public class EntityReaderProviderGenerator {
+  @Inject
+  private ImportHelper imports;
+  
+  public CharSequence generate(final Client client, final Model model) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _packageName = model.getPackageName();
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;");
+    _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityReader;");
+    _builder.newLine();
+    _builder.append("import java.util.HashMap;");
+    _builder.newLine();
+    CharSequence classDecl = this.generateType(client, model);
+    _builder.newLineIfNotEmpty();
+    StringConcatenation _printAndClear = this.imports.printAndClear();
+    _builder.append(_printAndClear, "");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append(classDecl, "");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence generateType(final Client client, final Model model) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public class Default");
+    String _name = client.getName();
+    _builder.append(_name, "");
+    _builder.append("ReaderProvider implements JsonEntityReaderProvider {");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("private HashMap<Class<?>, JsonEntityReader<?>> mMap = new HashMap<Class<?>, JsonEntityReader<?>>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Default");
+    String _name_1 = client.getName();
+    _builder.append(_name_1, "	");
+    _builder.append("ReaderProvider(){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("registerReaders(mMap);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@SuppressWarnings(\"unchecked\")");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public <T, R extends JsonEntityReader<T>> R get(Class<T> entityType) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return (R) mMap.get(entityType);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected void registerReaders(HashMap<Class<?>, JsonEntityReader<?>> map) {");
+    _builder.newLine();
+    {
+      EList<Declaration> _declarations = model.getDeclarations();
+      Iterable<ComplexTypeDeclaration> _filter = Iterables.<ComplexTypeDeclaration>filter(_declarations, ComplexTypeDeclaration.class);
+      for(final ComplexTypeDeclaration entity : _filter) {
+        _builder.append("\t\t");
+        _builder.append("map.put(");
+        String _name_2 = entity.getName();
+        _builder.append(_name_2, "		");
+        _builder.append(".class, new ");
+        String _name_3 = entity.getName();
+        _builder.append(_name_3, "		");
+        _builder.append("Reader(this));");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+}

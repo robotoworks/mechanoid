@@ -1,6 +1,6 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
@@ -20,12 +20,66 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class JsonReaderGenerator {
-  private CodeGenerationContext context;
+public class JsonReaderStatementGenerator {
+  private ImportHelper _imports;
   
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
+  }
+  
+  /**
+   * The identifier of the JSONReader instance
+   */
+  private String _readerIdentifier = "source";
+  
+  /**
+   * The identifier of the JSONReader instance
+   */
+  public String getReaderIdentifier() {
+    return this._readerIdentifier;
+  }
+  
+  /**
+   * The identifier of the JSONReader instance
+   */
+  public void setReaderIdentifier(final String readerIdentifier) {
+    this._readerIdentifier = readerIdentifier;
+  }
+  
+  /**
+   * The identifier of the reader subject (the entity the reader is
+   * setting data to)
+   */
+  private String _subjectIdentifier = "entity";
+  
+  /**
+   * The identifier of the reader subject (the entity the reader is
+   * setting data to)
+   */
+  public String getSubjectIdentifier() {
+    return this._subjectIdentifier;
+  }
+  
+  /**
+   * The identifier of the reader subject (the entity the reader is
+   * setting data to)
+   */
+  public void setSubjectIdentifier(final String subjectIdentifier) {
+    this._subjectIdentifier = subjectIdentifier;
+  }
+  
+  private String _providerIdentifier = "provider";
+  
+  public String getProviderIdentifier() {
+    return this._providerIdentifier;
+  }
+  
+  public void setProviderIdentifier(final String providerIdentifier) {
+    this._providerIdentifier = providerIdentifier;
   }
   
   public CharSequence genReadComplexType(final ComplexTypeDeclaration decl) {
@@ -36,24 +90,38 @@ public class JsonReaderGenerator {
   
   public CharSequence genReadComplexTypeLiteral(final ComplexTypeLiteral literal) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
-    _builder.append("source.beginObject();");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(".beginObject();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("while(source.hasNext()) {");
+    _builder.append("while(");
+    String _readerIdentifier_1 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_1, "");
+    _builder.append(".hasNext()) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("String name = ");
+    String _readerIdentifier_2 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(".nextName();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("String name = source.nextName();");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("if(source.peek() == JsonToken.NULL) {");
-    _builder.newLine();
+    _builder.append("if(");
+    String _readerIdentifier_3 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(".peek() == JsonToken.NULL) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("source.skipValue();");
-    _builder.newLine();
+    String _readerIdentifier_4 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(".skipValue();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("continue;");
     _builder.newLine();
@@ -84,8 +152,10 @@ public class JsonReaderGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("source.skipValue();");
-        _builder.newLine();
+        String _readerIdentifier_5 = this.getReaderIdentifier();
+        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(".skipValue();");
+        _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
@@ -94,30 +164,46 @@ public class JsonReaderGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("source.endObject();");
-    _builder.newLine();
+    String _readerIdentifier_6 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_6, "");
+    _builder.append(".endObject();");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence genReadComplexTypeLiteralForMembers(final EList<Member> members) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
-    _builder.append("source.beginObject();");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(".beginObject();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("while(source.hasNext()) {");
+    _builder.append("while(");
+    String _readerIdentifier_1 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_1, "");
+    _builder.append(".hasNext()) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("String name = ");
+    String _readerIdentifier_2 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(".nextName();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("String name = source.nextName();");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("if(source.peek() == JsonToken.NULL) {");
-    _builder.newLine();
+    _builder.append("if(");
+    String _readerIdentifier_3 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(".peek() == JsonToken.NULL) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("source.skipValue();");
-    _builder.newLine();
+    String _readerIdentifier_4 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(".skipValue();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("continue;");
     _builder.newLine();
@@ -147,8 +233,10 @@ public class JsonReaderGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("source.skipValue();");
-        _builder.newLine();
+        String _readerIdentifier_5 = this.getReaderIdentifier();
+        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(".skipValue();");
+        _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
@@ -157,8 +245,10 @@ public class JsonReaderGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("source.endObject();");
-    _builder.newLine();
+    String _readerIdentifier_6 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_6, "");
+    _builder.append(".endObject();");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -192,23 +282,37 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatement(final SkipMember skipMember) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
-    _builder.append("source.beginObject();");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(".beginObject();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("while(source.hasNext()) {");
+    _builder.append("while(");
+    String _readerIdentifier_1 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_1, "");
+    _builder.append(".hasNext()) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("name = ");
+    String _readerIdentifier_2 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(".nextName();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("name = source.nextName();");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("if(source.peek() == JsonToken.NULL) {");
-    _builder.newLine();
+    _builder.append("if(");
+    String _readerIdentifier_3 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(".peek() == JsonToken.NULL) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("source.skipValue();");
-    _builder.newLine();
+    String _readerIdentifier_4 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(".skipValue();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("continue;");
     _builder.newLine();
@@ -240,8 +344,10 @@ public class JsonReaderGenerator {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("source.skipValue();");
-        _builder.newLine();
+        String _readerIdentifier_5 = this.getReaderIdentifier();
+        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(".skipValue();");
+        _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
@@ -250,8 +356,10 @@ public class JsonReaderGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("source.endObject();");
-    _builder.newLine();
+    String _readerIdentifier_6 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_6, "");
+    _builder.append(".endObject();");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -259,18 +367,27 @@ public class JsonReaderGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       if ((type instanceof BooleanType)) {
-        this.context.registerImport("com.robotoworks.mechanoid.net.JsonReaderUtil");
+        ImportHelper _imports = this.getImports();
+        _imports.addImport("com.robotoworks.mechanoid.net.JsonReaderUtil");
         _builder.newLineIfNotEmpty();
         String _setMethodName = ModelExtensions.toSetMethodName(member);
-        String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+        String _subjectIdentifier = this.getSubjectIdentifier();
+        String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
         _builder.append(_memberize, "");
-        _builder.append("(JsonReaderUtil.coerceNextBoolean(source));");
+        _builder.append("(JsonReaderUtil.coerceNextBoolean(");
+        String _readerIdentifier = this.getReaderIdentifier();
+        _builder.append(_readerIdentifier, "");
+        _builder.append("));");
         _builder.newLineIfNotEmpty();
       } else {
         String _setMethodName_1 = ModelExtensions.toSetMethodName(member);
-        String _memberize_1 = ModelExtensions.memberize(_setMethodName_1, "subject");
+        String _subjectIdentifier_1 = this.getSubjectIdentifier();
+        String _memberize_1 = ModelExtensions.memberize(_setMethodName_1, _subjectIdentifier_1);
         _builder.append(_memberize_1, "");
-        _builder.append("(source.next");
+        _builder.append("(");
+        String _readerIdentifier_1 = this.getReaderIdentifier();
+        _builder.append(_readerIdentifier_1, "");
+        _builder.append(".next");
         String _signature = ModelExtensions.signature(type);
         String _pascalize = Strings.pascalize(_signature);
         _builder.append(_pascalize, "");
@@ -291,20 +408,26 @@ public class JsonReaderGenerator {
     StringConcatenation _builder = new StringConcatenation();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" subjectMember = new ");
+    _builder.append(" entityMember = new ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
-    _builder.append("provider.get(");
+    String _providerIdentifier = this.getProviderIdentifier();
+    _builder.append(_providerIdentifier, "");
+    _builder.append(".get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "");
-    _builder.append("Transformer.class).transformIn(source, subjectMember);");
+    _builder.append(".class).read(");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(", entityMember);");
     _builder.newLineIfNotEmpty();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
-    _builder.append("(subjectMember);");
+    _builder.append("(entityMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -313,18 +436,22 @@ public class JsonReaderGenerator {
     StringConcatenation _builder = new StringConcatenation();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" subjectMember = ");
+    _builder.append(" entityMember = ");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "");
-    _builder.append(".fromValue(source.");
+    _builder.append(".fromValue(");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(".");
     String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(decl);
     _builder.append(_resolveJsonReaderMethodName, "");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
-    _builder.append("(subjectMember);");
+    _builder.append("(entityMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -337,22 +464,28 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final IntrinsicType itemType) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
     _builder.append("List<");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature, "");
-    _builder.append("> subjectMember = JsonUtil.read");
+    _builder.append("> entityMember = JsonUtil.read");
     String _boxedTypeSignature_1 = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature_1, "");
-    _builder.append("List(source);");
+    _builder.append("List(");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(");");
     _builder.newLineIfNotEmpty();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
-    _builder.append("(subjectMember);");
+    _builder.append("(entityMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -365,58 +498,77 @@ public class JsonReaderGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" subjectMember = new ArrayList<");
+    _builder.append(" entityMember = new ArrayList<");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "");
     _builder.append(">();");
     _builder.newLineIfNotEmpty();
-    _builder.append("provider.get(");
+    String _providerIdentifier = this.getProviderIdentifier();
+    _builder.append(_providerIdentifier, "");
+    _builder.append(".get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "");
-    _builder.append("Transformer.class).transformIn(source, subjectMember);");
+    _builder.append(".class).read(");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(", entityMember);");
     _builder.newLineIfNotEmpty();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
-    _builder.append("(subjectMember);");
+    _builder.append("(entityMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final EnumTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonToken");
+    ImportHelper _imports_2 = this.getImports();
+    _imports_2.addImport("com.robotoworks.mechanoid.internal.util.JsonToken");
     _builder.newLineIfNotEmpty();
     String _signature = ModelExtensions.signature(type);
     _builder.append(_signature, "");
-    _builder.append(" subjectMember = new ArrayList");
+    _builder.append(" entityMember = new ArrayList");
     String _signature_1 = ModelExtensions.signature(type);
     _builder.append(_signature_1, "");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("source.beginArray();");
+    String _readerIdentifier = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier, "");
+    _builder.append(".beginArray();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("while(source.hasNext()) {");
-    _builder.newLine();
+    _builder.append("while(");
+    String _readerIdentifier_1 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_1, "");
+    _builder.append(".hasNext()) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
     _builder.append(" element = ");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "	");
-    _builder.append(".fromValue(source.");
+    _builder.append(".fromValue(");
+    String _readerIdentifier_2 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(".");
     String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(decl);
     _builder.append(_resolveJsonReaderMethodName, "	");
     _builder.append("());");
@@ -427,13 +579,16 @@ public class JsonReaderGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("source.endArray();");
-    _builder.newLine();
+    String _readerIdentifier_3 = this.getReaderIdentifier();
+    _builder.append(_readerIdentifier_3, "");
+    _builder.append(".endArray();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     String _setMethodName = ModelExtensions.toSetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_setMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_setMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
-    _builder.append("(subjectMember);");
+    _builder.append("(entityMember);");
     _builder.newLineIfNotEmpty();
     return _builder;
   }

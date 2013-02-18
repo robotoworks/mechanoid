@@ -1,6 +1,5 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeLiteral;
@@ -13,13 +12,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class StringEnumTypeGenerator {
-  private CodeGenerationContext context;
-  
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
-  }
-  
   public CharSequence generate(final EnumTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
