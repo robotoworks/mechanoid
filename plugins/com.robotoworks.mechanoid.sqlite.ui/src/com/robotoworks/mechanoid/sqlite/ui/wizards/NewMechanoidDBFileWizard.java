@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -65,6 +66,8 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
         };
         mNewFilePage.setTitle(Messages.NewMechanoidDBFileWizard_Title);
         mNewFilePage.setDescription(Messages.NewMechanoidDBFileWizard_Message);
+        
+        setNeedsProgressMonitor(true);
     }
 
     @Override
@@ -95,7 +98,7 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
                 monitor = new NullProgressMonitor();
             }
             
-            monitor.beginTask(Messages.NewMechanoidDBFileWizard_Progress_Message, 1);
+            monitor.beginTask(Messages.NewMechanoidDBFileWizard_Progress_Message, 2);
             
             URI newEmfResourceURI = URI.createURI("platform:/resource" + //$NON-NLS-1$
                     path
@@ -118,10 +121,13 @@ public class NewMechanoidDBFileWizard extends NewMechanoidElementWizard {
             
             emfResource.save(Collections.EMPTY_MAP);
             
+            monitor.worked(1);
+            
             IResource resource =  ResourcesPlugin.getWorkspace()
                     .getRoot().findMember(newEmfResourceURI.toPlatformString(true));
             
-            monitor.worked(1);
+            monitor.worked(2);
+            
             
             return resource;
             

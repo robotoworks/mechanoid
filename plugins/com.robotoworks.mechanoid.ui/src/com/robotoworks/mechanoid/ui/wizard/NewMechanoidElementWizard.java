@@ -46,7 +46,7 @@ public abstract class NewMechanoidElementWizard extends MechanoidWizard {
         });
         
         try {
-            getWorkbench().getProgressService().runInUI(getContainer(), op, ResourcesPlugin.getWorkspace().getRoot());
+            getContainer().run(true, true, op);
             
             selectAndReveal(mNewResource);
             openResource(mNewResource);

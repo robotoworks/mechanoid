@@ -1,6 +1,6 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
@@ -18,12 +18,45 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class JsonWriterGenerator {
-  private CodeGenerationContext context;
+public class JsonWriterStatementGenerator {
+  private ImportHelper _imports;
   
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
+  }
+  
+  private String _writerIdentifier = "target";
+  
+  public String getWriterIdentifier() {
+    return this._writerIdentifier;
+  }
+  
+  public void setWriterIdentifier(final String writerIdentifier) {
+    this._writerIdentifier = writerIdentifier;
+  }
+  
+  private String _subjectIdentifier = "subject";
+  
+  public String getSubjectIdentifier() {
+    return this._subjectIdentifier;
+  }
+  
+  public void setSubjectIdentifier(final String subjectIdentifier) {
+    this._subjectIdentifier = subjectIdentifier;
+  }
+  
+  private String _providerIdentifier = "provider";
+  
+  public String getProviderIdentifier() {
+    return this._providerIdentifier;
+  }
+  
+  public void setProviderIdentifier(final String providerIdentifier) {
+    this._providerIdentifier = providerIdentifier;
   }
   
   public CharSequence genWriteComplexType(final ComplexTypeDeclaration decl) {
@@ -43,8 +76,10 @@ public class JsonWriterGenerator {
   
   public CharSequence genWriteComplexTypeLiteralForMembers(final EList<Member> members) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("target.beginObject();");
-    _builder.newLine();
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "");
+    _builder.append(".beginObject();");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
       for(final Member member : members) {
@@ -54,8 +89,10 @@ public class JsonWriterGenerator {
       }
     }
     _builder.newLine();
-    _builder.append("target.endObject();");
-    _builder.newLine();
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "");
+    _builder.append(".endObject();");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -69,7 +106,9 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = skipMember.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
@@ -87,14 +126,19 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForType(final TypedMember member, final IntrinsicType type) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
-    _builder.append("target.value(");
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "");
+    _builder.append(".value(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
@@ -111,25 +155,34 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("provider.get(");
+    String _providerIdentifier = this.getProviderIdentifier();
+    _builder.append(_providerIdentifier, "	");
+    _builder.append(".get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("Transformer.class).transformOut(");
+    _builder.append(".class).write(");
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "	");
+    _builder.append(", ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
+    String _subjectIdentifier_1 = this.getSubjectIdentifier();
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, _subjectIdentifier_1);
     _builder.append(_memberize_1, "	");
-    _builder.append("(), target);");
+    _builder.append("());");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -140,20 +193,26 @@ public class JsonWriterGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target.value(");
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "	");
+    _builder.append(".value(");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
+    String _subjectIdentifier_1 = this.getSubjectIdentifier();
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, _subjectIdentifier_1);
     _builder.append(_memberize_1, "	");
     _builder.append("().toString());");
     _builder.newLineIfNotEmpty();
@@ -170,18 +229,23 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final IntrinsicType itemType) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("com.robotoworks.mechanoid.internal.util.JsonUtil");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
@@ -190,9 +254,13 @@ public class JsonWriterGenerator {
     _builder.append("JsonUtil.write");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(itemType);
     _builder.append(_boxedTypeSignature, "	");
-    _builder.append("List(target, ");
+    _builder.append("List(");
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "	");
+    _builder.append(", ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
+    String _subjectIdentifier_1 = this.getSubjectIdentifier();
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, _subjectIdentifier_1);
     _builder.append(_memberize_1, "	");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
@@ -209,29 +277,39 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("provider.get(");
+    String _providerIdentifier = this.getProviderIdentifier();
+    _builder.append(_providerIdentifier, "	");
+    _builder.append(".get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append("Transformer.class).transformOut(");
+    _builder.append(".class).write(");
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "	");
+    _builder.append(", ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
+    String _subjectIdentifier_1 = this.getSubjectIdentifier();
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, _subjectIdentifier_1);
     _builder.append(_memberize_1, "	");
-    _builder.append("(), target);");
+    _builder.append("());");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -240,21 +318,26 @@ public class JsonWriterGenerator {
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final EnumTypeDeclaration decl) {
     StringConcatenation _builder = new StringConcatenation();
-    this.context.registerImport("java.util.List");
+    ImportHelper _imports = this.getImports();
+    _imports.addImport("java.util.List");
     _builder.newLineIfNotEmpty();
-    this.context.registerImport("java.util.ArrayList");
+    ImportHelper _imports_1 = this.getImports();
+    _imports_1.addImport("java.util.ArrayList");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("if(");
     String _getMethodName = ModelExtensions.toGetMethodName(member);
-    String _memberize = ModelExtensions.memberize(_getMethodName, "subject");
+    String _subjectIdentifier = this.getSubjectIdentifier();
+    String _memberize = ModelExtensions.memberize(_getMethodName, _subjectIdentifier);
     _builder.append(_memberize, "");
     _builder.append("() != null) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.name(\"");
+    String _writerIdentifier = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier, "	");
+    _builder.append(".name(\"");
     String _name = member.getName();
     _builder.append(_name, "	");
     _builder.append("\");");
@@ -262,8 +345,10 @@ public class JsonWriterGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.beginArray();");
-    _builder.newLine();
+    String _writerIdentifier_1 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_1, "	");
+    _builder.append(".beginArray();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -273,21 +358,26 @@ public class JsonWriterGenerator {
     _builder.append(_innerSignature, "	");
     _builder.append(" element : ");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, "subject");
+    String _subjectIdentifier_1 = this.getSubjectIdentifier();
+    String _memberize_1 = ModelExtensions.memberize(_getMethodName_1, _subjectIdentifier_1);
     _builder.append(_memberize_1, "	");
     _builder.append("()) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    _builder.append("target.value(element.toString());");
-    _builder.newLine();
+    String _writerIdentifier_2 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_2, "		");
+    _builder.append(".value(element.toString());");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("target.endArray();");
-    _builder.newLine();
+    String _writerIdentifier_3 = this.getWriterIdentifier();
+    _builder.append(_writerIdentifier_3, "	");
+    _builder.append(".endArray();");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     return _builder;

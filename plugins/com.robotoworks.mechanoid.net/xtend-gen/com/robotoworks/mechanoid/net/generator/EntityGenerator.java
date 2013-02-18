@@ -1,6 +1,7 @@
-package com.robotoworks.mechanoid.net.generator.strategy;
+package com.robotoworks.mechanoid.net.generator;
 
-import com.robotoworks.mechanoid.net.generator.CodeGenerationContext;
+import com.google.inject.Inject;
+import com.robotoworks.mechanoid.net.generator.ImportHelper;
 import com.robotoworks.mechanoid.net.generator.ModelExtensions;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeLiteral;
@@ -15,13 +16,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class TypeGenerator {
-  private CodeGenerationContext context;
-  
-  public CodeGenerationContext setContext(final CodeGenerationContext context) {
-    CodeGenerationContext _context = this.context = context;
-    return _context;
-  }
+public class EntityGenerator {
+  @Inject
+  private ImportHelper imports;
   
   public CharSequence generate(final ComplexTypeDeclaration type, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
@@ -31,15 +28,12 @@ public class TypeGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    CharSequence body = this.generateType(type, module);
+    CharSequence classDecl = this.generateType(type, module);
     _builder.newLineIfNotEmpty();
-    StringConcatenation _printImports = this.context.printImports();
-    _builder.append(_printImports, "");
+    StringConcatenation _printAndClear = this.imports.printAndClear();
+    _builder.append(_printAndClear, "");
     _builder.newLineIfNotEmpty();
-    this.context.clearImports();
-    _builder.append("\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append(body, "");
+    _builder.append(classDecl, "");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -92,7 +86,7 @@ public class TypeGenerator {
     {
       Type _type_1 = member.getType();
       if ((_type_1 instanceof GenericListType)) {
-        this.context.registerImport("java.util.List");
+        this.imports.addImport("java.util.List");
       }
     }
     _builder.append("\t");
