@@ -51,6 +51,10 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
 		
 		setPageComplete(false);
 	}
+    
+    public Label getFieldInfoLabel() {
+        return mFieldInfoLabel;
+    }
 
 	@Override
 	public void createControl(Composite parent) {
@@ -64,12 +68,12 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         //PlatformUI.getWorkbench().getHelpSystem().setHelp(topLevel,
         //        IIDEHelpContextIds.NEW_FILE_WIZARD_PAGE);
         
-        addFields(topLevel, parent.getFont());
+        createFields(topLevel, parent.getFont());
         
         setControl(topLevel);
 	}
 	
-    private void addFields(Composite parent, Font font) {
+    protected void createFields(Composite parent, Font font) {
         Composite group = new Composite(parent, SWT.NONE);
         GridLayout layout = new GridLayout();
         layout.numColumns = 3;
@@ -97,6 +101,7 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         mElementNameField.getTextField().addFocusListener(mFieldFocusedListener);
         mElementNameField.getTextField().addFocusListener(mFieldFocusedListener);
         
+        onAfterAddNameField(group, font);
         
         Label seperator = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
         seperator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
@@ -106,6 +111,10 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
         //createAddMechanoidLibraryGroup(parent);
     }
     
+    protected void onAfterAddNameField(Composite parent, Font font) {
+        
+    }
+
     private FocusListener mFieldFocusedListener = new FocusListener() {
         @Override
         public void focusLost(FocusEvent e) {}
@@ -118,7 +127,6 @@ public class NewMechanoidElementPage extends MechanoidWizardPage {
                 mFieldInfoLabel.setText(getPackageFieldInfoMessage());
             } else if(e.widget == mElementNameField.getTextField()) {
                 mFieldInfoLabel.setText(getNameFieldInfoMessage());
-                
             }
             
             mFieldInfoLabel.getParent().layout();

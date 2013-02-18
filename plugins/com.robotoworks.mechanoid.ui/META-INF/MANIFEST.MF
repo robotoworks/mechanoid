@@ -28,4 +28,5 @@ Import-Package: com.google.common.io;version="10.0.1",
 Export-Package: com.robotoworks.mechanoid.ui,
  com.robotoworks.mechanoid.ui.builder,
  com.robotoworks.mechanoid.ui.quickfix,
- com.robotoworks.mechanoid.ui.wizard
+ com.robotoworks.mechanoid.ui.wizard,
+ com.robotoworks.mechanoid.ui.wizard.fields
