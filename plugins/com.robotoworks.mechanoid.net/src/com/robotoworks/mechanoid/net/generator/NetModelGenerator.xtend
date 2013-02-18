@@ -15,6 +15,7 @@ import static extension com.robotoworks.mechanoid.text.Strings.*
 import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
 import com.google.inject.Provider
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 
 class NetModelGenerator implements IGenerator {
 	@Inject Provider<ClientGenerator> mClientGenerator
@@ -25,6 +26,8 @@ class NetModelGenerator implements IGenerator {
 	@Inject Provider<EntityGenerator> mEntityGenerator
 	@Inject Provider<IntegerEnumTypeGenerator> mIntEnumGenerator
 	@Inject Provider<StringEnumTypeGenerator> mStringEnumGenerator
+	@Inject Provider<EntityReaderProviderGenerator> mEntityReaderProviderGenerator
+	@Inject Provider<EntityWriterProviderGenerator> mEntityWriterProviderGenerator
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
@@ -35,8 +38,24 @@ class NetModelGenerator implements IGenerator {
 	
 	def dispatch generate(Client client, Model model, IFileSystemAccess fsa) {
 		fsa.generateFile(
-			model.packageName.resolveFileName(client.name.pascalize), 
+			model.packageName.resolveFileName("Abstract" + client.name), 
 			mClientGenerator.get.generate(client, model)
+		)
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName(client.name), 
+			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
+			mClientGenerator.get.generateStub(client, model)
+		);
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName("Default" + client.name.pascalize.concat("ReaderProvider")), 
+			mEntityReaderProviderGenerator.get.generate(client, model)
+		)
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName("Default" + client.name.pascalize.concat("WriterProvider")), 
+			mEntityWriterProviderGenerator.get.generate(client, model)
 		)
 		
 		client.blocks.filter(typeof(HttpMethod)).forEach[method|
@@ -60,8 +79,8 @@ class NetModelGenerator implements IGenerator {
 		fsa.generateFile(
 			model.packageName.resolveFileName(entity.name.pascalize.concat("Writer")), 
 			mEntityWriterGenerator.get.generate(entity, model)
-		)		
-		
+		)	
+ 
 		fsa.generateFile(
 			model.packageName.resolveFileName(entity.name.pascalize), 
 			mEntityGenerator.get.generate(entity, model)

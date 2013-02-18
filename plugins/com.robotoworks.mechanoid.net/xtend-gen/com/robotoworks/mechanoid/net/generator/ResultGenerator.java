@@ -500,24 +500,12 @@ public class ResultGenerator {
               if (_notEquals_4) {
                 _builder.append("\t");
                 _builder.append("\t");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("\t");
                 _builder.append("this.base = new ");
                 ComplexTypeDeclaration _superType_5 = responseBlock.getSuperType();
                 String _name_3 = _superType_5.getName();
                 String _pascalize_3 = Strings.pascalize(_name_3);
                 _builder.append(_pascalize_3, "		");
                 _builder.append("();");
-                _builder.newLineIfNotEmpty();
-                _builder.append("\t");
-                _builder.append("\t");
-                _builder.append("provider.get(");
-                ComplexTypeDeclaration _superType_6 = responseBlock.getSuperType();
-                String _name_4 = _superType_6.getName();
-                String _pascalize_4 = Strings.pascalize(_name_4);
-                _builder.append(_pascalize_4, "		");
-                _builder.append(".class).read(reader, base);");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -526,19 +514,18 @@ public class ResultGenerator {
               if ((_type_4 instanceof ComplexTypeLiteral)) {
                 _builder.append("\t");
                 _builder.append("\t");
-                _builder.newLine();
-                _builder.append("\t");
-                _builder.append("\t");
-                String _name_5 = method.getName();
-                String _pascalize_5 = Strings.pascalize(_name_5);
-                _builder.append(_pascalize_5, "		");
+                String _name_4 = method.getName();
+                String _pascalize_4 = Strings.pascalize(_name_4);
+                _builder.append(_pascalize_4, "		");
                 _builder.append("Result subject = this;");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
                 _builder.append("\t");
                 BlockType _type_5 = responseBlock.getType();
-                EList<Member> _members_1 = ((ComplexTypeLiteral) _type_5).getMembers();
-                CharSequence _genReadComplexTypeLiteralForMembers = this.jsonReaderGenerator.genReadComplexTypeLiteralForMembers(_members_1);
+                ComplexTypeDeclaration _superType_6 = responseBlock==null?(ComplexTypeDeclaration)null:responseBlock.getSuperType();
+                ComplexTypeLiteral _literal_1 = _superType_6==null?(ComplexTypeLiteral)null:_superType_6.getLiteral();
+                EList<Member> _mergeMembers = this.mergeMembers(((ComplexTypeLiteral) _type_5), _literal_1);
+                CharSequence _genReadComplexTypeLiteralForMembers = this.jsonReaderGenerator.genReadComplexTypeLiteralForMembers(_mergeMembers);
                 _builder.append(_genReadComplexTypeLiteralForMembers, "		");
                 _builder.newLineIfNotEmpty();
               }
@@ -623,24 +610,28 @@ public class ResultGenerator {
     return _builder;
   }
   
-  public EList<Member> mergeMembers(final ComplexTypeLiteral type, final ComplexTypeDeclaration superType) {
+  public EList<Member> mergeMembers(final ComplexTypeLiteral a, final ComplexTypeLiteral b) {
     HashMap<String,Member> _hashMap = new HashMap<String,Member>();
     HashMap<String,Member> members = _hashMap;
-    boolean _notEquals = (!Objects.equal(type, null));
+    boolean _notEquals = (!Objects.equal(a, null));
     if (_notEquals) {
-      EList<Member> _members = type.getMembers();
+      EList<Member> _members = a.getMembers();
       for (final Member m : _members) {
         String _name = m.getName();
         members.put(_name, m);
       }
     }
-    boolean _notEquals_1 = (!Objects.equal(superType, null));
+    boolean _notEquals_1 = (!Objects.equal(b, null));
     if (_notEquals_1) {
-      ComplexTypeLiteral _literal = superType.getLiteral();
-      EList<Member> _members_1 = _literal.getMembers();
+      EList<Member> _members_1 = b.getMembers();
       for (final Member m_1 : _members_1) {
         String _name_1 = m_1.getName();
-        members.put(_name_1, m_1);
+        boolean _containsKey = members.containsKey(_name_1);
+        boolean _not = (!_containsKey);
+        if (_not) {
+          String _name_2 = m_1.getName();
+          members.put(_name_2, m_1);
+        }
       }
     }
     Collection<Member> _values = members.values();

@@ -4,10 +4,13 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.net.generator.ClientGenerator;
 import com.robotoworks.mechanoid.net.generator.EntityGenerator;
 import com.robotoworks.mechanoid.net.generator.EntityReaderGenerator;
+import com.robotoworks.mechanoid.net.generator.EntityReaderProviderGenerator;
 import com.robotoworks.mechanoid.net.generator.EntityWriterGenerator;
+import com.robotoworks.mechanoid.net.generator.EntityWriterProviderGenerator;
 import com.robotoworks.mechanoid.net.generator.IntegerEnumTypeGenerator;
 import com.robotoworks.mechanoid.net.generator.RequestGenerator;
 import com.robotoworks.mechanoid.net.generator.ResultGenerator;
@@ -56,6 +59,12 @@ public class NetModelGenerator implements IGenerator {
   @Inject
   private Provider<StringEnumTypeGenerator> mStringEnumGenerator;
   
+  @Inject
+  private Provider<EntityReaderProviderGenerator> mEntityReaderProviderGenerator;
+  
+  @Inject
+  private Provider<EntityWriterProviderGenerator> mEntityWriterProviderGenerator;
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
@@ -72,11 +81,36 @@ public class NetModelGenerator implements IGenerator {
   protected void _generate(final Client client, final Model model, final IFileSystemAccess fsa) {
     String _packageName = model.getPackageName();
     String _name = client.getName();
-    String _pascalize = Strings.pascalize(_name);
-    String _resolveFileName = Strings.resolveFileName(_packageName, _pascalize);
+    String _plus = ("Abstract" + _name);
+    String _resolveFileName = Strings.resolveFileName(_packageName, _plus);
     ClientGenerator _get = this.mClientGenerator.get();
     CharSequence _generate = _get.generate(client, model);
     fsa.generateFile(_resolveFileName, _generate);
+    String _packageName_1 = model.getPackageName();
+    String _name_1 = client.getName();
+    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _name_1);
+    ClientGenerator _get_1 = this.mClientGenerator.get();
+    CharSequence _generateStub = _get_1.generateStub(client, model);
+    fsa.generateFile(_resolveFileName_1, 
+      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
+    String _packageName_2 = model.getPackageName();
+    String _name_2 = client.getName();
+    String _pascalize = Strings.pascalize(_name_2);
+    String _concat = _pascalize.concat("ReaderProvider");
+    String _plus_1 = ("Default" + _concat);
+    String _resolveFileName_2 = Strings.resolveFileName(_packageName_2, _plus_1);
+    EntityReaderProviderGenerator _get_2 = this.mEntityReaderProviderGenerator.get();
+    CharSequence _generate_1 = _get_2.generate(client, model);
+    fsa.generateFile(_resolveFileName_2, _generate_1);
+    String _packageName_3 = model.getPackageName();
+    String _name_3 = client.getName();
+    String _pascalize_1 = Strings.pascalize(_name_3);
+    String _concat_1 = _pascalize_1.concat("WriterProvider");
+    String _plus_2 = ("Default" + _concat_1);
+    String _resolveFileName_3 = Strings.resolveFileName(_packageName_3, _plus_2);
+    EntityWriterProviderGenerator _get_3 = this.mEntityWriterProviderGenerator.get();
+    CharSequence _generate_2 = _get_3.generate(client, model);
+    fsa.generateFile(_resolveFileName_3, _generate_2);
     EList<ClientBlock> _blocks = client.getBlocks();
     Iterable<HttpMethod> _filter = Iterables.<HttpMethod>filter(_blocks, HttpMethod.class);
     final Procedure1<HttpMethod> _function = new Procedure1<HttpMethod>() {

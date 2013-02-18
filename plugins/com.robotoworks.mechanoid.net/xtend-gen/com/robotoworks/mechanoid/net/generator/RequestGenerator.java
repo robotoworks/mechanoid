@@ -75,11 +75,11 @@ public class RequestGenerator {
     _builder.newLine();
     _builder.append("import android.net.Uri;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;");
-    _builder.newLine();
     {
       boolean _hasBody = ModelExtensions.hasBody(method);
       if (_hasBody) {
+        _builder.append("import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;");
+        _builder.newLine();
         _builder.append("import com.robotoworks.mechanoid.net.EntityEnclosedServiceRequest;");
         _builder.newLine();
       } else {

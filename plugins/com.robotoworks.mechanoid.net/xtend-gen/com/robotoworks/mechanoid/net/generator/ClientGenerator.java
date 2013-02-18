@@ -65,7 +65,7 @@ public class ClientGenerator {
   
   public CharSequence generateClientClass(final Client client, final Model module) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class ");
+    _builder.append("public abstract class Abstract");
     String _name = client.getName();
     _builder.append(_name, "");
     _builder.append(" extends ServiceClient {");
@@ -83,7 +83,7 @@ public class ClientGenerator {
       boolean _notEquals = (!Objects.equal(_baseUrl, null));
       if (_notEquals) {
         _builder.append("\t");
-        _builder.append("private static final String DEFAULT_BASE_URL = \"");
+        _builder.append("protected static final String DEFAULT_BASE_URL = \"");
         String _baseUrl_1 = client.getBaseUrl();
         _builder.append(_baseUrl_1, "	");
         _builder.append("\";");
@@ -214,8 +214,11 @@ public class ClientGenerator {
     _builder.append("protected JsonEntityWriterProvider createWriterProvider() {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return null;");
-    _builder.newLine();
+    _builder.append("return new Default");
+    String _name_7 = client.getName();
+    _builder.append(_name_7, "		");
+    _builder.append("WriterProvider();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -228,65 +231,20 @@ public class ClientGenerator {
     _builder.append("protected JsonEntityReaderProvider createReaderProvider() {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return null;");
-    _builder.newLine();
+    _builder.append("return new Default");
+    String _name_8 = client.getName();
+    _builder.append(_name_8, "		");
+    _builder.append("ReaderProvider();");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    {
-      String _baseUrl_2 = client.getBaseUrl();
-      boolean _notEquals_5 = (!Objects.equal(_baseUrl_2, null));
-      if (_notEquals_5) {
-        _builder.append("\t");
-        _builder.append("public ");
-        String _name_7 = client.getName();
-        _builder.append(_name_7, "	");
-        _builder.append("(){");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("this(DEFAULT_BASE_URL, false);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("public ");
-        String _name_8 = client.getName();
-        _builder.append(_name_8, "	");
-        _builder.append("(boolean debug){");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("this(DEFAULT_BASE_URL, debug);");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-      }
-    }
     _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
+    _builder.append("public Abstract");
     String _name_9 = client.getName();
     _builder.append(_name_9, "	");
-    _builder.append("(String baseUrl){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("this(baseUrl, false);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public ");
-    String _name_10 = client.getName();
-    _builder.append(_name_10, "	");
     _builder.append("(String baseUrl, boolean debug){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -298,15 +256,15 @@ public class ClientGenerator {
     HeaderBlock headers = ModelExtensions.getHeaderBlock(client);
     _builder.newLineIfNotEmpty();
     {
-      boolean _notEquals_6 = (!Objects.equal(headers, null));
-      if (_notEquals_6) {
+      boolean _notEquals_5 = (!Objects.equal(headers, null));
+      if (_notEquals_5) {
         {
           EList<Header> _headers = headers.getHeaders();
           for(final Header header : _headers) {
             _builder.append("\t\t");
             _builder.append("setHeader(\"");
-            String _name_11 = header.getName();
-            _builder.append(_name_11, "		");
+            String _name_10 = header.getName();
+            _builder.append(_name_10, "		");
             _builder.append("\",\"");
             String _value = header.getValue();
             _builder.append(_value, "		");
@@ -576,6 +534,88 @@ public class ClientGenerator {
   public CharSequence generateServiceDeleteMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("return delete(request, parser);");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateStub(final Client client, final Model module) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _packageName = module.getPackageName();
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("public class ");
+    String _name = client.getName();
+    _builder.append(_name, "");
+    _builder.append(" extends Abstract");
+    String _name_1 = client.getName();
+    _builder.append(_name_1, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    {
+      String _baseUrl = client.getBaseUrl();
+      boolean _notEquals = (!Objects.equal(_baseUrl, null));
+      if (_notEquals) {
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_2 = client.getName();
+        _builder.append(_name_2, "	");
+        _builder.append("(){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("super(DEFAULT_BASE_URL, false);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("public ");
+        String _name_3 = client.getName();
+        _builder.append(_name_3, "	");
+        _builder.append("(boolean debug){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("super(DEFAULT_BASE_URL, debug);");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public ");
+    String _name_4 = client.getName();
+    _builder.append(_name_4, "	");
+    _builder.append("(String baseUrl){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("super(baseUrl, false);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public ");
+    String _name_5 = client.getName();
+    _builder.append(_name_5, "	");
+    _builder.append("(String baseUrl, boolean debug){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("super(baseUrl, debug);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     return _builder;
   }

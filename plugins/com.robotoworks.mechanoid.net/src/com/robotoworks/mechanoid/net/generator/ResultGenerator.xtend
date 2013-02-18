@@ -176,14 +176,13 @@ class ResultGenerator {
 			«IF(responseBlock.type instanceof ComplexTypeLiteral || responseBlock.superType != null)»
 				«generateDeserializationStatementHeader(true)»
 					«IF responseBlock.superType != null»
-					
 					this.base = new «responseBlock.superType.name.pascalize»();
-					provider.get(«responseBlock.superType.name.pascalize».class).read(reader, base);
 					«ENDIF»
 					«IF responseBlock.type instanceof ComplexTypeLiteral»
-					
 					«method.name.pascalize»Result subject = this;
-					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers((responseBlock.type as ComplexTypeLiteral).members)»
+					«jsonReaderGenerator.genReadComplexTypeLiteralForMembers(
+						(responseBlock.type as ComplexTypeLiteral).mergeMembers(responseBlock?.superType?.literal)
+					)»
 					«ENDIF»
 				«generateDeserializationStatementFooter(true)»
 			«ELSE»
@@ -221,18 +220,20 @@ class ResultGenerator {
 			}
 	'''
 	
-	def EList<Member> mergeMembers(ComplexTypeLiteral type, ComplexTypeDeclaration superType) { 
+	def EList<Member> mergeMembers(ComplexTypeLiteral a, ComplexTypeLiteral b) { 
 		var members = new HashMap<String, Member>()
 		
-		if(type != null) {
-			for(m : type.members) {
+		if(a != null) {
+			for(m : a.members) {
 				members.put(m.name, m)
 			}
 		}
 		
-		if(superType != null) {
-			for(m : superType.literal.members) {
-				members.put(m.name, m)
+		if(b != null) {
+			for(m : b.members) {
+				if(!members.containsKey(m.name)) {
+					members.put(m.name, m)
+				}
 			}
 		}
 

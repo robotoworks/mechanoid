@@ -39,8 +39,8 @@ class RequestGenerator {
 	«var classDecl = generateRequestClass(method, module, client)»
 	
 	import android.net.Uri;
-	import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;
 	«IF(method.hasBody)»
+	import com.robotoworks.mechanoid.net.JsonEntityWriterProvider;
 	import com.robotoworks.mechanoid.net.EntityEnclosedServiceRequest;
 	«ELSE»
 	import com.robotoworks.mechanoid.net.ServiceRequest;

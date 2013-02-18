@@ -31,11 +31,11 @@ class ClientGenerator {
 	'''
 	
 	def generateClientClass(Client client, Model module) '''
-		public class «client.name» extends ServiceClient {
+		public abstract class Abstract«client.name» extends ServiceClient {
 			private static final String LOG_TAG = "«client.name»";
 			
 			«IF client.baseUrl != null»
-			private static final String DEFAULT_BASE_URL = "«client.baseUrl»";
+			protected static final String DEFAULT_BASE_URL = "«client.baseUrl»";
 			
 			«ENDIF»
 			«var params = client.paramsBlock»
@@ -62,29 +62,15 @@ class ClientGenerator {
 			
 			@Override
 			protected JsonEntityWriterProvider createWriterProvider() {
-				return null;
+				return new Default«client.name»WriterProvider();
 			}
 			
 			@Override
 			protected JsonEntityReaderProvider createReaderProvider() {
-				return null;
+				return new Default«client.name»ReaderProvider();
 			}
 			
-			«IF client.baseUrl != null»
-			public «client.name»(){
-				this(DEFAULT_BASE_URL, false);
-			}
-
-			public «client.name»(boolean debug){
-				this(DEFAULT_BASE_URL, debug);
-			}
-			«ENDIF»
-			
-			public «client.name»(String baseUrl){
-				this(baseUrl, false);
-			}
-
-			public «client.name»(String baseUrl, boolean debug){
+			public Abstract«client.name»(String baseUrl, boolean debug){
 				super(baseUrl, debug);
 				
 				«var headers = client.headerBlock»
@@ -170,4 +156,27 @@ class ClientGenerator {
 		return delete(request, parser);
 	'''
 
+	def generateStub(Client client, Model module) '''
+	package «module.packageName»;
+	
+	public class «client.name» extends Abstract«client.name» {
+		«IF client.baseUrl != null»
+		public «client.name»(){
+			super(DEFAULT_BASE_URL, false);
+		}
+
+		public «client.name»(boolean debug){
+			super(DEFAULT_BASE_URL, debug);
+		}
+		«ENDIF»
+		
+		public «client.name»(String baseUrl){
+			super(baseUrl, false);
+		}
+		
+		public «client.name»(String baseUrl, boolean debug){
+			super(baseUrl, debug);
+		}
+	}
+	'''
 }
