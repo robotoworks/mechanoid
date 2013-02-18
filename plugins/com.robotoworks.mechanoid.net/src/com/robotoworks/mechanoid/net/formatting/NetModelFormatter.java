@@ -29,6 +29,75 @@ public class NetModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
 		
 		c.setLinewrap(2).after(g.getModelAccess().getPackageNameAssignment_1());
+		
+		//
+		// Complex type literals
+		//
+		c.setLinewrap().after(g.getComplexTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
+		c.setLinewrap().after(g.getComplexTypeLiteralAccess().getCommaKeyword_2_0());
+		c.setLinewrap().before(g.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setLinewrap(2).after(g.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setIndentationIncrement().after(g.getComplexTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
+		c.setIndentationDecrement().before(g.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setNoSpace().before(g.getComplexTypeLiteralAccess().getCommaKeyword_2_0());
+		
+		//
+		// Enums
+		//
+		c.setLinewrap().after(g.getEnumTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
+		c.setLinewrap().after(g.getEnumTypeLiteralAccess().getCommaKeyword_2_0());
+		c.setLinewrap().before(g.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setLinewrap(2).after(g.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setIndentationIncrement().after(g.getEnumTypeLiteralAccess().getLeftCurlyBracketKeyword_0());
+		c.setIndentationDecrement().before(g.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3());
+		c.setNoSpace().before(g.getEnumTypeLiteralAccess().getCommaKeyword_2_0());
+		
+		//
+		// Clients
+		//
 		c.setLinewrap().after(g.getClientAccess().getLeftCurlyBracketKeyword_3());
+		c.setLinewrap().before(g.getClientAccess().getRightCurlyBracketKeyword_5());
+		c.setLinewrap(2).after(g.getClientAccess().getRightCurlyBracketKeyword_5());
+		c.setIndentationIncrement().after(g.getClientAccess().getLeftCurlyBracketKeyword_3());
+		c.setIndentationDecrement().before(g.getClientAccess().getRightCurlyBracketKeyword_5());
+
+		// Methods
+		c.setLinewrap().around(g.getHttpMethodRule());
+		c.setLinewrap().around(g.getHttpMethodBlockRule());
+		c.setIndentationIncrement().after(g.getHttpMethodAccess().getLeftCurlyBracketKeyword_3());
+		c.setIndentationDecrement().before(g.getHttpMethodAccess().getRightCurlyBracketKeyword_5());
+		c.setLinewrap(1).after(g.getHttpMethodAccess().getRightCurlyBracketKeyword_5());
+		c.setNoLinewrap().after(g.getHttpMethodAccess().getTypeHttpMethodTypeEnumRuleCall_0_0());
+		
+		//
+		// Paths
+		//
+		c.setNoSpace().after(g.getPathAccess().getSolidusKeyword_1());
+		c.setNoSpace().before(g.getPathAccess().getSolidusKeyword_3_0());
+		c.setNoSpace().after(g.getPathAccess().getSolidusKeyword_3_0());
+		c.setNoLinewrap().around(g.getPathRule());
+		
+		//
+		// Headers
+		//
+		c.setLinewrap().after(g.getHeaderBlockAccess().getHeadersKeyword_0());
+		c.setIndentationIncrement().after(g.getHeaderBlockAccess().getHeadersKeyword_0());
+		c.setNoSpace().before(g.getHeaderBlockAccess().getCommaKeyword_2_0());
+		c.setNoSpace().before(g.getHeaderAccess().getColonKeyword_1());
+		c.setNoSpace().after(g.getHeaderAccess().getColonKeyword_1());
+		c.setIndentationDecrement().after(g.getHeaderBlockRule());
+		c.setLinewrap().after(g.getHeaderBlockRule());
+		
+		
+		//
+		// Members
+		//
+		c.setNoSpace().after(g.getSimpleMemberAccess().getColonKeyword_1());
+		c.setNoSpace().before(g.getSimpleMemberAccess().getColonKeyword_1());
+		c.setNoSpace().after(g.getTypedMemberAccess().getColonKeyword_1());
+		c.setNoSpace().before(g.getTypedMemberAccess().getColonKeyword_1());
+		c.setNoSpace().before(g.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0());
+		
+		
 	}
 }
