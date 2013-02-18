@@ -31,7 +31,7 @@ class RequestGenerator {
 		jsonWriterGenerator.imports = imports
 		jsonWriterGenerator.setWriterIdentifier("writer")
 		doGenerate(method, module, client)
-	}
+	} 
 	
 	def doGenerate(HttpMethod method, Model module, Client client) '''
 	package «module.packageName»;
