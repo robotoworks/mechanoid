@@ -101,20 +101,56 @@ public class SQuery {
 	 * @see SQuery#expr(String, String, Literal)
 	 */
 	public interface Op {
+		/**
+		 * The equals (=) operator
+		 */
 		String EQ = " = ";
+		/**
+		 * The not equal (!=) operator
+		 */
 		String NEQ = " != ";
+		/**
+		 * The greater than (>) operator
+		 */
 		String GT = " > ";
+		/**
+		 * The less than (<) operator
+		 */
 		String LT = " < ";
+		/**
+		 * The greater than or equal (>=) operator
+		 */
 		String GTEQ = " >= ";
+		/**
+		 * The less than or equal (<=) operator
+		 */
 		String LTEQ = " <= ";
+		/**
+		 * The LIKE operator
+		 */
 		String LIKE = " LIKE ";
+		/**
+		 * The IS operator
+		 */
 		String IS = " IS ";
+		/**
+		 * The IS NOT operator
+		 */
 		String ISNOT = " IS NOT ";
+		/**
+		 * The REGEXP operator
+		 */
 		String REGEXP = " REGEXP ";
 	}
 	
+	/**
+	 * The AND operator
+	 */
 	private static final String AND = " AND ";
 	
+	/**
+	 * The OR operator
+	 */
 	private static final String OR = " OR ";
 	
 	

@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * Copyright (c) 2012, Robotoworks Limited
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *******************************************************************************/
 package com.robotoworks.mechanoid.net;
 
 import java.io.ByteArrayOutputStream;
@@ -8,6 +16,10 @@ import java.util.LinkedHashMap;
 
 import android.util.Log;
 
+/**
+ * <p>Base for all generated Mechanoid Net service clients.</p>
+ *
+ */
 public abstract class ServiceClient {
 	private static final String DEFAULT_LOG_TAG = ServiceClient.class.getSimpleName();
 
@@ -39,10 +51,20 @@ public abstract class ServiceClient {
 		return DEFAULT_LOG_TAG;
 	}
 	
+	/**
+	 * <p>The reader provider for this client, if you want to override the returned
+	 * reader provider, consider using {@link #createReaderProvider()} instead.</p>
+	 * @return
+	 */
 	public JsonEntityReaderProvider getReaderProvider() {
 		return mReaderProvider;
 	}
-	
+
+	/**
+	 * <p>The writer provider for this client, if you want to override the returned
+	 * writer provider, consider using {@link #createWriterProvider()} instead.</p>
+	 * @return
+	 */
 	public JsonEntityWriterProvider getWriterProvider() {
 		return mWriterProvider;
 	}
@@ -65,7 +87,15 @@ public abstract class ServiceClient {
 		mWriterProvider = createWriterProvider();
 	}
 
+	/**
+	 * <p>For advanced use only, override this to provide your own writer provider</p>
+	 * @return
+	 */
 	protected abstract JsonEntityWriterProvider createWriterProvider();
+	/**
+	 * <p>For advanced use only, override this to provide your own reader provider</p>
+	 * @return
+	 */
 	protected abstract JsonEntityReaderProvider createReaderProvider();
 
 	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> get(
