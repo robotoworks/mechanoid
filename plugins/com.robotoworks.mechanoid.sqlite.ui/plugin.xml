@@ -62,7 +62,7 @@
         <page
             class="com.robotoworks.mechanoid.sqlite.ui.SqliteModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="com.robotoworks.mechanoid.sqlite.SqliteModel"
-            name="SqliteModel">
+            name="Mechanoid DB">
             <keywordReference id="com.robotoworks.mechanoid.sqlite.ui.keyword_SqliteModel"/>
         </page>
         <page

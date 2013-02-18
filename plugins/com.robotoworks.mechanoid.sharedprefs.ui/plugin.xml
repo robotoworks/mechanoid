@@ -61,7 +61,7 @@
         <page
             class="com.robotoworks.mechanoid.sharedprefs.ui.SharedPreferencesModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="com.robotoworks.mechanoid.sharedprefs.SharedPreferencesModel"
-            name="SharedPreferencesModel">
+            name="Mechanoid Prefs">
             <keywordReference id="com.robotoworks.mechanoid.sharedprefs.ui.keyword_SharedPreferencesModel"/>
         </page>
         <page
