@@ -15,14 +15,14 @@ class ServiceBridgeGenerator {
 			package «model.packageName»;
 			
 			import com.robotoworks.mechanoid.ops.OperationServiceBridge;
-			import «model.packageName».«svc.name.pascalize»Service;
+			import «model.packageName».«svc.name.formatServiceName»;
 			import android.content.Intent;
 			import com.robotoworks.mechanoid.Mechanoid;			
 			
-			public abstract class Abstract«svc.name.pascalize»ServiceBridge extends OperationServiceBridge {
-				private static final Class<?> SERVICE_CLASS = «svc.name.pascalize»Service.class;
+			public abstract class Abstract«svc.name.formatServiceBridgeName» extends OperationServiceBridge {
+				private static final Class<?> SERVICE_CLASS = «svc.name.formatServiceName».class;
 
-				public Abstract«svc.name.pascalize»ServiceBridge(boolean enableLogging){
+				public Abstract«svc.name.formatServiceBridgeName»(boolean enableLogging){
 					super(enableLogging);
 				}
 							
@@ -73,18 +73,18 @@ class ServiceBridgeGenerator {
 			 */
 			package «model.packageName»;
 			
-			public class «svc.name.pascalize»ServiceBridge extends Abstract«svc.name.pascalize»ServiceBridge {
+			public class «svc.name.formatServiceBridgeName» extends Abstract«svc.name.formatServiceBridgeName» {
 
-				private static «svc.name.pascalize»ServiceBridge instance;
+				private static «svc.name.formatServiceBridgeName» instance;
 				
-				public static «svc.name.pascalize»ServiceBridge getInstance() {
+				public static «svc.name.formatServiceBridgeName» getInstance() {
 					if(instance == null) {
-						instance = new «svc.name.pascalize»ServiceBridge();
+						instance = new «svc.name.formatServiceBridgeName»();
 					} 
 					return instance;
 				}
 				
-				private «svc.name.pascalize»ServiceBridge(){
+				private «svc.name.formatServiceBridgeName»(){
 					super(false);
 				}
 			

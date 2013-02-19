@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.ops.generator
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*;
 
 class ServiceGenerator {
 		def CharSequence generate(Model model) '''
@@ -16,13 +17,13 @@ class ServiceGenerator {
 			import com.robotoworks.mechanoid.ops.OperationService;
 			import «model.packageName».«svc.name.pascalize»Processor;
 			
-			public abstract class Abstract«svc.name.pascalize»Service extends OperationService {
+			public abstract class Abstract«svc.name.formatServiceName» extends OperationService {
 				@Override
 				protected OperationProcessor createProcessor() {
 					return new «svc.name.pascalize»Processor(this);
 				}
 				
-				public Abstract«svc.name.pascalize»Service(boolean enableLogging) {
+				public Abstract«svc.name.formatServiceName»(boolean enableLogging) {
 					super(enableLogging);
 				}
 			}
@@ -35,10 +36,10 @@ class ServiceGenerator {
 			 */
 			package «model.packageName»;
 			
-			import «model.packageName».Abstract«svc.name.pascalize»Service;
+			import «model.packageName».Abstract«svc.name.formatServiceName»;
 			
-			public class «svc.name.pascalize»Service extends Abstract«svc.name.pascalize»Service {
-				public «svc.name.pascalize»Service() {
+			public class «svc.name.formatServiceName» extends Abstract«svc.name.formatServiceName» {
+				public «svc.name.formatServiceName»() {
 					super(false);
 				}
 			}

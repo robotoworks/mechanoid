@@ -3,10 +3,14 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         		<category
+         <category
      		id="com.robotoworks.mechanoid.NewWizardsCategory" 
      		name="Mechanoid">
 		</category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+
    </extension>
 
 </plugin>

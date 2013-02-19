@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * Copyright (c) 2012, Robotoworks Limited
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *******************************************************************************/
 package com.robotoworks.mechanoid.net;
 
 import java.io.ByteArrayInputStream;
@@ -9,6 +17,13 @@ import java.util.Map;
 
 import com.robotoworks.mechanoid.util.Streams;
 
+/**
+ * <p>A Mechanoid Net response that captures the HTTP response code and headers of a HTTP response.</p>
+ * <p>The response defers parsing from the stream until {@link #parse()} is called, this allows examination
+ * of the response code before reading the stream in case of an unexpected response code.</p>
+ * 
+ * @param <T> A result representing that which will be parsed when {@link #parse()} is called.
+ */
 public class Response<T> {
 	public static final int HTTP_INVALID = -1;
     public static final int HTTP_ACCEPTED = 202;
