@@ -27,6 +27,10 @@ public class MainActivity extends FragmentActivity {
             break;
         case R.id.button_recipes_with_author:
         	fragName = RecipesWithAuthorListFragment.class.getName();
+        	break;
+        case R.id.button_recipes_and_ingredients:
+        	fragName = RecipesAndIngredientsListFragment.class.getName();
+        	break;
         }
         
         getSupportFragmentManager()

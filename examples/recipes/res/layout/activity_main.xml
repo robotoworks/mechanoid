@@ -18,5 +18,12 @@
         android:layout_height="wrap_content"
         android:text="@string/button_recipes_with_author"
         android:onClick="onExampleClick" />
+    
+    <Button
+        android:id="@+id/button_recipes_and_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_recipes_and_ingredients"
+        android:onClick="onExampleClick" />
 
 </LinearLayout>
