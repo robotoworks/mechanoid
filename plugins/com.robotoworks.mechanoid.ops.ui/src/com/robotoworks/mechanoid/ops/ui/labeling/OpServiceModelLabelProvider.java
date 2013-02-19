@@ -3,10 +3,17 @@
 */
 package com.robotoworks.mechanoid.ops.ui.labeling;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
+import org.eclipse.xtext.util.Strings;
  
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.ops.opServiceModel.Model;
+import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
+import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
 
 /**
  * Provides labels for a EObjects.
@@ -31,4 +38,35 @@ public class OpServiceModelLabelProvider extends DefaultEObjectLabelProvider {
       return "MyModel.gif";
     }
 */
+	
+    String text(Operation op) {
+        
+        int numArgs = op.getArgs().size();
+        
+        if(numArgs == 0) {
+            return op.getName() + "()";
+        }
+        
+        ArrayList<String> typeNames = new ArrayList<String>(numArgs);
+        
+        for(int i=0; i < op.getArgs().size(); i++) {
+            typeNames.add(op.getArgs().get(i).getType().getLiteral());
+        }
+        
+        String args = Strings.concat(",", typeNames);
+
+        return op.getName() + "(" + args + ")";
+    }
+	
+    String image(Model ele) {
+        return "package_obj.gif";
+    }
+    
+    String image(ServiceBlock ele) {
+        return "service_obj.gif";
+    }
+    
+    String image(Operation ele) {
+        return "operation_obj.gif";
+    }
 }

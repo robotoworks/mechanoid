@@ -9,7 +9,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import com.robotoworks.examples.recipes.content.RecipesDBContract.RecipesWithAuthors;
+import com.robotoworks.example.recipes.content.RecipesDBContract.RecipesWithAuthors;
 import com.robotoworks.mechanoid.sqlite.SQuery;
 
 public class RecipesWithAuthorListFragment extends ListFragment {
@@ -36,8 +36,8 @@ public class RecipesWithAuthorListFragment extends ListFragment {
                         RecipesWithAuthors.AUTHOR_NAME
                     }, 
                     new int[] {
-                        R.id.recipe_title,
-                        R.id.recipe_description,
+                        R.id.title,
+                        R.id.description,
                         R.id.recipe_author
                     }, 0);
         }
