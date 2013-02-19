@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid
 Bundle-SymbolicName: com.robotoworks.mechanoid
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: com.robotoworks.mechanoid.MechanoidActivator
+Bundle-Activator: com.robotoworks.mechanoid.MechanoidPlugin
 Bundle-Vendor: Robotoworks Limited
 Require-Bundle: org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

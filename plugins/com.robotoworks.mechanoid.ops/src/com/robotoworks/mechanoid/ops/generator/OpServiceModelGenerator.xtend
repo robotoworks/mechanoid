@@ -69,12 +69,12 @@ class OpServiceModelGenerator implements IGenerator {
 		var model = resource.contents.head as Model;
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concat("ServiceBridge")), 
+			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concatOnce("Service").concat("Bridge")), 
 			mServiceBridgeGenerator.generate(model)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.service.name.pascalize.concat("ServiceBridge")), 
+			model.packageName.resolveFileName(model.service.name.pascalize.concatOnce("Service").concat("Bridge")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
 			mServiceBridgeGenerator.generateStub(model)
 		);
@@ -85,12 +85,12 @@ class OpServiceModelGenerator implements IGenerator {
 		var model = resource.contents.head as Model;
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concat("Service")), 
+			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concatOnce("Service")), 
 			mServiceGenerator.generate(model)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.service.name.pascalize.concat("Service")), 
+			model.packageName.resolveFileName(model.service.name.pascalize.concatOnce("Service")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
 			mServiceGenerator.generateStub(model)
 		);

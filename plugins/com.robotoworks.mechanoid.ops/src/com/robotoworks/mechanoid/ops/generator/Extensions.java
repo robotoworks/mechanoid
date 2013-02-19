@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.ops.generator;
 
 import com.robotoworks.mechanoid.ops.opServiceModel.OpArgType;
+import com.robotoworks.mechanoid.text.Strings;
 
 public class Extensions {
 	public static String toTypeLiteral(OpArgType arg) {
@@ -60,4 +61,13 @@ public class Extensions {
 		}
 		return "";
 	}
+	
+    
+    public static String formatServiceName(String name) {
+        return Strings.concatOnce(Strings.pascalize(name), "Service");
+    }       
+    
+    public static String formatServiceBridgeName(String name) {
+        return Strings.concatOnce(Strings.pascalize(name), "Service").concat("Bridge");
+    }       
 }

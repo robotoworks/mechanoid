@@ -61,7 +61,7 @@
         <page
             class="com.robotoworks.mechanoid.ops.ui.OpServiceModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="com.robotoworks.mechanoid.ops.OpServiceModel"
-            name="OpServiceModel">
+            name="Mechanoid Ops">
             <keywordReference id="com.robotoworks.mechanoid.ops.ui.keyword_OpServiceModel"/>
         </page>
         <page

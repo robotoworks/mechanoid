@@ -109,7 +109,8 @@ public class OpServiceModelGenerator implements IGenerator {
     String _name = _service.getName();
     String _pascalize = Strings.pascalize(_name);
     String _concat = "Abstract".concat(_pascalize);
-    String _concat_1 = _concat.concat("ServiceBridge");
+    String _concatOnce = Strings.concatOnce(_concat, "Service");
+    String _concat_1 = _concatOnce.concat("Bridge");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
     CharSequence _generate = this.mServiceBridgeGenerator.generate(model);
     fsa.generateFile(_resolveFileName, _generate);
@@ -117,7 +118,8 @@ public class OpServiceModelGenerator implements IGenerator {
     ServiceBlock _service_1 = model.getService();
     String _name_1 = _service_1.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_2 = _pascalize_1.concat("ServiceBridge");
+    String _concatOnce_1 = Strings.concatOnce(_pascalize_1, "Service");
+    String _concat_2 = _concatOnce_1.concat("Bridge");
     String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
     CharSequence _generateStub = this.mServiceBridgeGenerator.generateStub(model);
     fsa.generateFile(_resolveFileName_1, 
@@ -133,16 +135,16 @@ public class OpServiceModelGenerator implements IGenerator {
     String _name = _service.getName();
     String _pascalize = Strings.pascalize(_name);
     String _concat = "Abstract".concat(_pascalize);
-    String _concat_1 = _concat.concat("Service");
-    String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
+    String _concatOnce = Strings.concatOnce(_concat, "Service");
+    String _resolveFileName = Strings.resolveFileName(_packageName, _concatOnce);
     CharSequence _generate = this.mServiceGenerator.generate(model);
     fsa.generateFile(_resolveFileName, _generate);
     String _packageName_1 = model.getPackageName();
     ServiceBlock _service_1 = model.getService();
     String _name_1 = _service_1.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_2 = _pascalize_1.concat("Service");
-    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
+    String _concatOnce_1 = Strings.concatOnce(_pascalize_1, "Service");
+    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concatOnce_1);
     CharSequence _generateStub = this.mServiceGenerator.generateStub(model);
     fsa.generateFile(_resolveFileName_1, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);

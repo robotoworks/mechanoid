@@ -61,7 +61,7 @@
         <page
             class="com.robotoworks.mechanoid.net.ui.NetModelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="com.robotoworks.mechanoid.net.NetModel"
-            name="NetModel">
+            name="Mechanoid Net">
             <keywordReference id="com.robotoworks.mechanoid.net.ui.keyword_NetModel"/>
         </page>
         <page
