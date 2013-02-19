@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.examples.recipes.content;
+package com.robotoworks.example.recipes.content;
 
-import com.robotoworks.examples.recipes.content.AbstractRecipesDBContentProvider;
+import com.robotoworks.example.recipes.content.AbstractRecipesDBContentProvider;
 
 public class RecipesDBContentProvider extends AbstractRecipesDBContentProvider {}

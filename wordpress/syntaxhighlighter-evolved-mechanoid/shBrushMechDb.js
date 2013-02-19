@@ -8,12 +8,14 @@ typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHig
 
 SyntaxHighlighter.brushes.MechDb = function()
 {
-	var keywords = 'package database migration actions or and is not in like ' +
+	var keywords = 'package database config migration actions or and is not in like ' +
                    'glob match regexp create table alter view rename to add column ' +
                    'primary key asc desc autoincrement not null default ' +
                    'unique select distinct all from as left outer join cross inner ' +
                    'natural on conflict null current_time current_data current_time_stamp ' +
-                   'text integer real blob rollback abort fail ignore replace';
+                   'text integer real blob rollback abort fail ignore replace union all new. old. ' +
+                   'exists case else end cast order by intersect except asc desc if check ' +
+                   'update delete where default values set';
 
 	this.regexList = [
 			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,    		css: 'comments' },
