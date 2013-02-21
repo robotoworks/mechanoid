@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.mechanoid.content;
+package com.robotoworks.mechanoid.db;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
@@ -14,7 +14,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 
-import com.robotoworks.mechanoid.sqlite.SQuery;
 
 /**
  * <p>Abstract base class for generated Mechanoid DB builders.</p>

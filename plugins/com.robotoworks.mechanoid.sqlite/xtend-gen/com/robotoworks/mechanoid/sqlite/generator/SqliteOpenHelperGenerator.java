@@ -40,9 +40,9 @@ public class SqliteOpenHelperGenerator {
     _builder.newLine();
     _builder.append("import android.database.sqlite.SQLiteDatabase;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;");
+    _builder.append("import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.SQLiteMigration;");
+    _builder.append("import com.robotoworks.mechanoid.db.SQLiteMigration;");
     _builder.newLine();
     _builder.newLine();
     {

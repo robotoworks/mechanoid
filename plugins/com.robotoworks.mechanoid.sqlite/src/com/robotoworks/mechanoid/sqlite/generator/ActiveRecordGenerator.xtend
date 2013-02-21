@@ -26,10 +26,10 @@ class ActiveRecordGenerator {
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize»;
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize».Builder;
 			import com.robotoworks.mechanoid.util.Closeables;
-			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-			import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
+			import com.robotoworks.mechanoid.db.ActiveRecord;
+			import com.robotoworks.mechanoid.db.ActiveRecordFactory;
 			import com.robotoworks.mechanoid.Mechanoid;
-			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
+			import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
 			
 			public class «stmt.name.pascalize»Record extends ActiveRecord implements Parcelable {
 

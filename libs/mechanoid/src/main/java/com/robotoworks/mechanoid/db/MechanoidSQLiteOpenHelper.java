@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.mechanoid.sqlite;
+package com.robotoworks.mechanoid.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

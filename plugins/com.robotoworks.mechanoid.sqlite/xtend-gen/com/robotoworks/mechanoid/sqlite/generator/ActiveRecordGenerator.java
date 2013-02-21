@@ -76,13 +76,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("import com.robotoworks.mechanoid.util.Closeables;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.ActiveRecord;");
+    _builder.append("import com.robotoworks.mechanoid.db.ActiveRecord;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;");
+    _builder.append("import com.robotoworks.mechanoid.db.ActiveRecordFactory;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.Mechanoid;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.content.AbstractValuesBuilder;");
+    _builder.append("import com.robotoworks.mechanoid.db.AbstractValuesBuilder;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");

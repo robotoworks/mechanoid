@@ -17,7 +17,7 @@ class SqliteMigrationGenerator {
 			package «model.packageName».migrations;
 			
 			import android.database.sqlite.SQLiteDatabase;
-			import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
+			import com.robotoworks.mechanoid.db.SQLiteMigration;
 			
 			public class Default«model.database.name.pascalize»MigrationV«version» extends SQLiteMigration {
 				@Override

@@ -16,8 +16,8 @@ class SqliteOpenHelperGenerator {
 				
 				import android.content.Context;
 				import android.database.sqlite.SQLiteDatabase;
-				import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
-				import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
+				import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
+				import com.robotoworks.mechanoid.db.SQLiteMigration;
 				
 				«IF model.database.migrations.size > 1»
 				«var version = 1»

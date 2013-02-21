@@ -48,7 +48,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.Mechanoid;");
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.content.AbstractValuesBuilder;");
+    _builder.append("import com.robotoworks.mechanoid.db.AbstractValuesBuilder;");
     _builder.newLine();
     _builder.append("import java.lang.reflect.Field;");
     _builder.newLine();

@@ -24,7 +24,7 @@ class ContentProviderContractGenerator {
 			import android.net.Uri;
 			import android.provider.BaseColumns;
 			import com.robotoworks.mechanoid.Mechanoid;
-			import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
+			import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
 			import java.lang.reflect.Field;
 			
 			public class «model.database.name.pascalize»Contract  {

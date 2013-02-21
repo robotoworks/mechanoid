@@ -24,12 +24,12 @@ class ContentProviderGenerator {
 			import android.database.Cursor;
 			import android.database.sqlite.SQLiteDatabase;
 			import android.net.Uri;
-			import com.robotoworks.mechanoid.content.MechanoidContentProvider;
-			import com.robotoworks.mechanoid.sqlite.MechanoidSQLiteOpenHelper;
-			import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-			import com.robotoworks.mechanoid.sqlite.SQuery;
-			import com.robotoworks.mechanoid.content.DefaultContentProviderActions;
-			import com.robotoworks.mechanoid.content.ContentProviderActions;
+			import com.robotoworks.mechanoid.db.MechanoidContentProvider;
+			import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
+			import com.robotoworks.mechanoid.db.ActiveRecord;
+			import com.robotoworks.mechanoid.db.SQuery;
+			import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
+			import com.robotoworks.mechanoid.db.ContentProviderActions;
 			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Sources;
 			«FOR tbl : snapshot.tables.filter([it.hasAndroidPrimaryKey])»
 			import «model.packageName».«tbl.name.pascalize»Record;

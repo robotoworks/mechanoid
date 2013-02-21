@@ -6,12 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.mechanoid.content;
+package com.robotoworks.mechanoid.db;
 
 import java.util.List;
 
-import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-import com.robotoworks.mechanoid.sqlite.SQuery;
 
 import android.content.ContentValues;
 import android.database.Cursor;

@@ -41,7 +41,7 @@ public class NetModelJavaValidator extends AbstractNetModelJavaValidator {
 	
 	@Check
 	public void checkMechanoidLibOnClasspath(Model m) {
-		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.content.CursorWalker", m);
+		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.Mechanoid", m);
 
 		if(type == null) {
 			error("mechanoid.jar is required in your /libs folder or on the classpath", NetModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);

@@ -6,11 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.mechanoid.sqlite;
+package com.robotoworks.mechanoid.db;
 
 import com.robotoworks.mechanoid.Mechanoid;
-import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
-import com.robotoworks.mechanoid.content.MechanoidContentProvider;
 import com.robotoworks.mechanoid.util.Closeables;
 
 import android.content.ContentResolver;

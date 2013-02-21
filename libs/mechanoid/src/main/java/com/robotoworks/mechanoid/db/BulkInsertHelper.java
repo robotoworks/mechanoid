@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  *******************************************************************************/
-package com.robotoworks.mechanoid.content;
+package com.robotoworks.mechanoid.db;
 
 import java.util.List;
 
