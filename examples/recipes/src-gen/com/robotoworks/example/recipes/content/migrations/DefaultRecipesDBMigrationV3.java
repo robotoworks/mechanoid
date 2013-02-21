@@ -4,7 +4,7 @@
 package com.robotoworks.example.recipes.content.migrations;
 
 import android.database.sqlite.SQLiteDatabase;
-import com.robotoworks.mechanoid.sqlite.SQLiteMigration;
+import com.robotoworks.mechanoid.db.SQLiteMigration;
 
 public class DefaultRecipesDBMigrationV3 extends SQLiteMigration {
 	@Override

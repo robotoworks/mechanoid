@@ -11,10 +11,10 @@ import android.os.Parcelable;
 import com.robotoworks.example.recipes.content.RecipesDBContract.Ingredients;
 import com.robotoworks.example.recipes.content.RecipesDBContract.Ingredients.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
-import com.robotoworks.mechanoid.sqlite.ActiveRecord;
-import com.robotoworks.mechanoid.sqlite.ActiveRecordFactory;
+import com.robotoworks.mechanoid.db.ActiveRecord;
+import com.robotoworks.mechanoid.db.ActiveRecordFactory;
 import com.robotoworks.mechanoid.Mechanoid;
-import com.robotoworks.mechanoid.content.AbstractValuesBuilder;
+import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
 
 public class IngredientsRecord extends ActiveRecord implements Parcelable {
 

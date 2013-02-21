@@ -18,14 +18,14 @@
    	<module>plugins/com.robotoworks.mechanoid.ops.ui</module>
    	<module>plugins/com.robotoworks.mechanoid.sharedprefs</module>
    	<module>plugins/com.robotoworks.mechanoid.sharedprefs.ui</module>
-   	<module>plugins/com.robotoworks.mechanoid.sqlite</module>
-   	<module>plugins/com.robotoworks.mechanoid.sqlite.ui</module>
+   	<module>plugins/com.robotoworks.mechanoid.db</module>
+   	<module>plugins/com.robotoworks.mechanoid.db.ui</module>
    	<module>libs/mechanoid</module>
 
 <!--    	<module>tests/com.robotoworks.mechanoid.net.tests</module> -->
 <!--    	<module>tests/com.robotoworks.mechanoid.ops.tests</module> -->
 <!--    	<module>tests/com.robotoworks.mechanoid.sharedprefs.tests</module> -->
-<!--    	<module>tests/com.robotoworks.mechanoid.sqlite.tests</module> -->
+<!--    	<module>tests/com.robotoworks.mechanoid.db.tests</module> -->
   </modules>
   
   <properties>
