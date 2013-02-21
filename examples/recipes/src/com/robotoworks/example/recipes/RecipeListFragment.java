@@ -1,7 +1,7 @@
 package com.robotoworks.example.recipes;
 
 import com.robotoworks.example.recipes.content.RecipesDBContract.Recipes;
-import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.db.SQuery;
 
 import android.content.Context;
 import android.database.Cursor;
