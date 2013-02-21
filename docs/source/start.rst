@@ -1,6 +1,23 @@
+Getting Started
+===============
+If you are familiar with the Android SDK then getting up and running with
+Mechanoid should be quite straight forward.
+
+This topic will guide you through the process of installing Mechanoid and
+setting it up for an Android Project.
+
+Prerequisites
+-------------
+The following points outline the requirements of Mechanoid.
+
+* The plugin is developed and tested with Eclipse Juno and has not been tested with previous versions.
+* The Mechanoid generated source code requires the Mechanoid Library Jar which is compatible with Android API Level 8 and upwards.
+* The Mechanoid generated source requires the Android SDK and is only known to work with Android Projects and Android Library Projects.
+
 Installation
-============
-Mechanoid can be installed like other Eclipse Plugins. In Eclipse go to Help > Install New Software and add the following update site URL.
+------------
+Mechanoid can be installed like other Eclipse Plugins. In Eclipse go to Help > 
+Install New Software and add the following update site URL.
 
 	**Latest Snapshot Release**: `http://www.robotoworks.com/mechanoid/updates/snapshot`
 
@@ -48,3 +65,4 @@ Then make sure your application class is registered in your manifest:
 
 	<application android:name="MyApplication">
 	
+

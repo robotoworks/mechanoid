@@ -7,5 +7,6 @@ Mechanoid documentation contents
    :maxdepth: 3
    
    intro
-   gettingstarted
+   start
    db/index
+   credits

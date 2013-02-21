@@ -12,6 +12,8 @@
 # serve to show the default.
 import sys, os
 
+import sphinx_bootstrap_theme
+
 sys.path.append(os.path.abspath('../extensions'))
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -26,7 +28,7 @@ sys.path.append(os.path.abspath('../extensions'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'highlighting']
+extensions = ['sphinx.ext.todo', 'javasphinx', 'highlighting']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -49,7 +51,7 @@ copyright = u'2013, Robotoworks Limited'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1.0'
+version = '0.1.0 ALPHA'
 # The full version, including alpha/beta/rc tags.
 release = '0.1.0'
 
@@ -91,12 +93,17 @@ pygments_style = 'perldoc'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinxdoc'
+# html_theme = 'sphinxdoc'
+# html_theme = 'default'
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    'navbar_fixed_top': "false"
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
@@ -240,4 +247,13 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+rst_prolog = """
+.. |link| image:: /images/link.gif
+.. |ref| image:: /images/docref.png
+.. |mechdb| replace:: Mechanoid DB
+.. |mechnet| replace:: Mechanoid Net
+.. |mechops| replace:: Mechanoid Ops
+.. |mechprefs| replace:: Mechanoid Prefs
+"""
 

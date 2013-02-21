@@ -25,7 +25,7 @@ class MechDBLexer(RegexLexer):
              r'table|view|trigger|before|after|instead|of|for|each|row|when|' 
              r'begin|alter|if|primary|key|autoincrement|default|constraint|' 
              r'unique|check|conflict|delete|insert|replace|into|values|set|'
-             r'rollback|abort|fail|ignore|replace|package)\b', 
+             r'rollback|abort|fail|ignore|replace|package|drop)\b', 
              Keyword),
             (r'"(\\\\|\\"|[^"])*"', String),
             (r"'(\\\\|\\'|[^'])*'", String),
