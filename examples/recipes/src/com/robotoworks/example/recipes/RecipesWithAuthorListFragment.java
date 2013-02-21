@@ -10,7 +10,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.robotoworks.example.recipes.content.RecipesDBContract.RecipesWithAuthors;
-import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.db.SQuery;
 
 public class RecipesWithAuthorListFragment extends ListFragment {
 

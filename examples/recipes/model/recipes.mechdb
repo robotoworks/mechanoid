@@ -36,7 +36,7 @@ database RecipesDB {
 			quantity text,
 			ingredient text
 		);
-		
+
 		create view recipes_and_ingredients as
 			select 
 				_id as _id,

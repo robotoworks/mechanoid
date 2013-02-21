@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.CreateTableStatement" deleted="false" description="Create a table" enabled="true" name="createtable">create table ${name} (
+	${cursor}
+);</template><template autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Primary Key Column" enabled="true" name="pk">${name} integer primary key primary key${cursor}</template></templates>

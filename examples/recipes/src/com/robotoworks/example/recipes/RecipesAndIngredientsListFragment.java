@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.robotoworks.example.recipes.content.RecipesDBContract.RecipesAndIngredients;
-import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.mechanoid.db.SQuery;
 
 public class RecipesAndIngredientsListFragment extends ListFragment {
 
