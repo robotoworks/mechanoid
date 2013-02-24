@@ -156,6 +156,8 @@ class ActiveRecordGenerator {
 			«var col = item as ColumnDef»
 			«IF col.type == ColumnType::BOOLEAN»
 			set«col.name.pascalize»(c.getInt(Indices.«col.name.underscore.toUpperCase») > 0);
+			«ELSEIF col.type == ColumnType::BLOB»
+			set«col.name.pascalize»(c.getBlob(Indices.«col.name.underscore.toUpperCase»));
 			«ELSE»
 			set«col.name.pascalize»(c.get«col.type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»));
 			«ENDIF»
@@ -169,6 +171,8 @@ class ActiveRecordGenerator {
 			«var type = col.inferredColumnType»
 			«IF type == ColumnType::BOOLEAN»
 			set«col.name.pascalize»(c.getInt(Indices.«col.name.underscore.toUpperCase») > 0);
+			«ELSEIF type == ColumnType::BLOB»
+			set«col.name.pascalize»(c.getBlob(Indices.«col.name.underscore.toUpperCase»));
 			«ELSE»
 			set«col.name.pascalize»(c.get«type.toJavaTypeName.pascalize»(Indices.«col.name.underscore.toUpperCase»));
 			«ENDIF»
@@ -213,6 +217,8 @@ class ActiveRecordGenerator {
 			«var col = item as ColumnDef»
 			«IF col.type == ColumnType::BOOLEAN»
 			dest.writeInt(m«col.name.pascalize» ? 1 : 0);
+			«ELSEIF col.type == ColumnType::BLOB»
+			dest.writeByteArray(m«col.name.pascalize»);
 			«ELSE»
 			dest.write«col.type.toJavaTypeName.pascalize»(m«col.name.pascalize»);
 			«ENDIF»
@@ -231,6 +237,8 @@ class ActiveRecordGenerator {
 			«var type = col.inferredColumnType»
 			«IF type == ColumnType::BOOLEAN»
 			dest.writeInt(m«col.name.pascalize» ? 1 : 0);
+			«ELSEIF type == ColumnType::BLOB»
+			dest.writeByteArray(m«col.name.pascalize»);
 			«ELSE»
 			dest.write«type.toJavaTypeName.pascalize»(m«col.name.pascalize»);
 			«ENDIF»
@@ -249,6 +257,8 @@ class ActiveRecordGenerator {
 				«var col = item as ColumnDef»
 				«IF col.type == ColumnType::BOOLEAN»
 				m«col.name.pascalize» = (in.readInt() > 0);
+				«ELSEIF col.type == ColumnType::BLOB»
+				m«col.name.pascalize» = in.createByteArray();
 				«ELSE»
 				m«col.name.pascalize» = in.read«col.type.toJavaTypeName.pascalize»();
 				«ENDIF»
@@ -269,6 +279,8 @@ class ActiveRecordGenerator {
 				«var type = col.inferredColumnType»
 				«IF type == ColumnType::BOOLEAN»
 				m«col.name.pascalize» = (in.readInt() > 0);
+				«ELSEIF type == ColumnType::BLOB»
+				m«col.name.pascalize» = in.createByteArray();
 				«ELSE»
 				m«col.name.pascalize» = in.read«type.toJavaTypeName.pascalize»();
 				«ENDIF»

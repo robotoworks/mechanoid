@@ -1,23 +1,24 @@
 Defining Databases
 ==================
 The |mechdb| language supports most of the SQL grammar for Sqlite, if you 
-know SQL then you know most of |mechdb|.
+know SQL then you know most of the |mechdb| grammar.
 
-Additionally, |mechdb| has its own language grammar mainly for defining
-structure, such as for schema migrations using the **migration** keyword.
-
-.. note:: 
-   Although |mechdb| uses the Sqlite syntax, all keywords in 
-   |mechdb| are lower cased, for instance use the keyword **select** instead
-   of **SELECT**
+Additionally, |mechdb| has its own grammar constructs mainly for defining
+structure, such as schema migrations using the **migration** keyword.
 
 Each time you modify a |mechdb| File, such as adding new migrations and
 statements, corresponding code is generated that makes up the generated
 Content Provider API for your database.
 
-Detailed usage of the generated API is dedicated to the Using the API, this 
-topic will focus on the |mechdb| grammar, and refer to examples of generated 
-code where it seems appropriate.
+This topic will focus on the |mechdb| grammar, and refer 
+to examples of generated code where it seems appropriate.
+
+See |ref| :doc:`api` for detailed usage of the generated API.
+
+.. note:: 
+   Although |mechdb| uses the Sqlite syntax, all keywords in 
+   |mechdb| are lower cased, for instance use the keyword **select** instead
+   of **SELECT**
 
 The Mechanoid DB File
 ---------------------
@@ -159,6 +160,9 @@ example shows how we can do this.
       
    }
    
+After renaming a table, you will no longer be able to reference its old name
+in subsequent statements.
+   
 .. note:: 
 
    Changing the names of tables will also change the name in the generate code.
@@ -178,9 +182,11 @@ The following example shows how to drop a table.
 .. code-block:: mechdb
    
    migration {
-   
       drop table formulas;
    }
+   
+After dropping a table, you will no longer be able to reference it in
+subsequent statements.
    
 .. note:: 
 
@@ -228,7 +234,6 @@ Dropping views is similar to dropping tables.
 .. code-block:: mechdb
    
    migration {
-   
       drop view recipes_with_authors;
    }
    
@@ -263,3 +268,126 @@ the ``ingredients`` table, we should update the ``recipes`` table by setting
 the column ``num_ingredients`` to the total number of recipes.
 
 |link| Learn more: http://www.sqlite.org/lang_createtrigger.html
+
+Dropping Triggers
+-----------------
+The following example shows how to drop a trigger.
+
+.. code-block:: mechdb
+   
+   migration {
+      drop trigger update_number_of_ingredients;
+   }
+   
+|link| Learn more: http://sqlite.org/lang_droptrigger.html
+
+Schema Migrations
+-----------------
+|mechdb| was created with schema migrations as a first class requirement, all
+creational statements such as create table, create view, drop table, etc are
+defined in migration blocks, for example:-
+
+.. code-block:: mechdb
+   
+   migration {
+      create table table_one (
+         _id integer primary key autoincrement
+      );
+   }
+
+Migrations blocks represent versions of the database, implicitly by order of
+appearance, for instance:-
+
+.. code-block:: mechdb
+   
+   // Database Version 1
+   migration {
+      create table table_one (
+         _id integer primary key autoincrement
+      );
+   }
+   
+   // Database Version 2
+   migration {
+      create table table_two (
+         _id integer primary key autoincrement
+      );
+   }
+   
+   // Database Version 2
+   migration {
+      drop table_one;
+   }
+   
+   // etc ...
+   
+|mechdb| tries to do its best to make sure that everything is valid, for instance
+it is an error to drop a table then reference it:
+
+.. code-block:: mechdb
+   :emphasize-lines: 9, 11
+   
+   migration {
+      create table table_one (
+         _id integer primary key autoincrement
+      );
+   }
+   
+   migration {
+      drop table table_one;
+      
+      create view view_one on
+         select _id as id from table_one;
+   }
+   
+The create view statement above would fail since ``table_one`` was dropped in
+the previous statement.
+
+.. topic:: The generated code
+   
+   For each migration, code is generated that represents one change from
+   the other.
+   
+   Most of the time making changes to the database schema is enough and nothing 
+   more needs to be done, however in some circumstances, data also needs 
+   to be migrated.
+
+   In order to migrate data in |mechdb| we can add code before and after a 
+   migration by overriding methods in the generated ``SqliteOpenHelper`` as 
+   follows:
+   
+   .. code-block:: java
+      
+      public class RecipesDBOpenHelper extends AbstractRecipesDBOpenHelper {
+          public RecipesDBOpenHelper(Context context) {
+              super(context);
+          }
+           
+          @Override
+          protected SQLiteMigration createRecipesDBMigrationV2() {
+              return new DefaultRecipesDBMigrationV2(){
+                  @Override
+                  public void up(SQLiteDatabase db) {
+                       
+                      // TODO Do something before the migration
+                       
+                      super.up(db);
+                       
+                      // TODO Do something after the migration
+                       
+                  }
+              };
+          }
+      }
+      
+   Above we can return our own implementation a specific migration and add code 
+   before and after the ``super.up(db)`` call, its important that we subclass 
+   the right migration, in this case its ``DefaultRecipesDBMigrationV2``, where 
+   the format for migration classes is 
+   ``Default{database_name}MigrationV{version_number}``.
+   
+   .. warning::
+      By overriding migrations in this way it is entirely possible to also
+      make schema changes, but this could cause your |mechdb| File to be
+      out of sync with what is actually the schema of the database, if you really 
+      need to make scheme changes in this way, make sure you know what your doing.
