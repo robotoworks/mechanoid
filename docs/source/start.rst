@@ -41,11 +41,18 @@ Copy the mechanoid.jar library to the libs folder of your Android project
 
 .. note:: If you have not added the library, Eclipse will show an error and provide a quickfix to add it, this provides the best compatibility because the library is bundled with the plugin
 
-.. warning:: The Mechanoid Plugin requires the Mechanoid library (mechanoid.jar), if it is not present or up-to-date compilation errors can occur if the generated Mechanoid source code references classes/methods that do not exist in the mechanoid.jar. Always make sure you have the latest version of the library – when updating the plugin also update mechanoid library in your projects.
+.. warning:: 
+   The Mechanoid Plugin requires the Mechanoid library (mechanoid.jar), if it 
+   is not present or up-to-date compilation errors can occur if the generated 
+   Mechanoid source code references classes/methods that do not exist in the 
+   mechanoid.jar. Always make sure you have the latest version of the library – 
+   when updating the plugin also update mechanoid library in your projects.
 
 .. rubric:: Step 3: Initialize Mechanoid in your Application
 
-For mechanoid to work it needs to be initialized, you do this by adding calling ``Mechanoid.init(Context)`` in a custom application class as follows:
+For mechanoid to work it needs to be initialized, you do this by adding calling 
+|jdoc| :java:extdoc:`Mechanoid.init(Context) <com.robotoworks.mechanoid.Mechanoid.init(android.content.Context)>` 
+in a custom application class as follows:
 
 .. code-block:: java
 
