@@ -93,8 +93,6 @@ pygments_style = 'perldoc'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-# html_theme = 'sphinxdoc'
-# html_theme = 'default'
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
@@ -102,7 +100,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'navbar_fixed_top': "false"
+
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -251,9 +249,14 @@ texinfo_documents = [
 rst_prolog = """
 .. |link| image:: /images/link.gif
 .. |ref| image:: /images/docref.png
+.. |jdoc| image:: /images/jdoc.gif
 .. |mechdb| replace:: Mechanoid DB
 .. |mechnet| replace:: Mechanoid Net
 .. |mechops| replace:: Mechanoid Ops
 .. |mechprefs| replace:: Mechanoid Prefs
 """
+
+javadoc_url_map = {
+    'com.robotoworks.mechanoid' : ('http://robotoworks.com/mechanoid/doc/apidocs/reference', 'javadoc')
+}
 

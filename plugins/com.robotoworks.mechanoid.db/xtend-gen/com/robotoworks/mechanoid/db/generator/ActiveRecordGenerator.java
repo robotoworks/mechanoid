@@ -529,22 +529,38 @@ public class ActiveRecordGenerator {
             _builder.append(") > 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("set");
-            String _name_2 = col.getName();
-            String _pascalize_1 = Strings.pascalize(_name_2);
-            _builder.append(_pascalize_1, "");
-            _builder.append("(c.get");
             ColumnType _type_1 = col.getType();
-            String _javaTypeName = ModelUtil.toJavaTypeName(_type_1);
-            String _pascalize_2 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_2, "");
-            _builder.append("(Indices.");
-            String _name_3 = col.getName();
-            String _underscore_1 = Strings.underscore(_name_3);
-            String _upperCase_1 = _underscore_1.toUpperCase();
-            _builder.append(_upperCase_1, "");
-            _builder.append("));");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(_type_1, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("set");
+              String _name_2 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_1, "");
+              _builder.append("(c.getBlob(Indices.");
+              String _name_3 = col.getName();
+              String _underscore_1 = Strings.underscore(_name_3);
+              String _upperCase_1 = _underscore_1.toUpperCase();
+              _builder.append(_upperCase_1, "");
+              _builder.append("));");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("set");
+              String _name_4 = col.getName();
+              String _pascalize_2 = Strings.pascalize(_name_4);
+              _builder.append(_pascalize_2, "");
+              _builder.append("(c.get");
+              ColumnType _type_2 = col.getType();
+              String _javaTypeName = ModelUtil.toJavaTypeName(_type_2);
+              String _pascalize_3 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_3, "");
+              _builder.append("(Indices.");
+              String _name_5 = col.getName();
+              String _underscore_2 = Strings.underscore(_name_5);
+              String _upperCase_2 = _underscore_2.toUpperCase();
+              _builder.append(_upperCase_2, "");
+              _builder.append("));");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -586,21 +602,36 @@ public class ActiveRecordGenerator {
             _builder.append(") > 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("set");
-            String _name_2 = col.getName();
-            String _pascalize_1 = Strings.pascalize(_name_2);
-            _builder.append(_pascalize_1, "");
-            _builder.append("(c.get");
-            String _javaTypeName = ModelUtil.toJavaTypeName(type);
-            String _pascalize_2 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_2, "");
-            _builder.append("(Indices.");
-            String _name_3 = col.getName();
-            String _underscore_1 = Strings.underscore(_name_3);
-            String _upperCase_1 = _underscore_1.toUpperCase();
-            _builder.append(_upperCase_1, "");
-            _builder.append("));");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(type, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("set");
+              String _name_2 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_1, "");
+              _builder.append("(c.getBlob(Indices.");
+              String _name_3 = col.getName();
+              String _underscore_1 = Strings.underscore(_name_3);
+              String _upperCase_1 = _underscore_1.toUpperCase();
+              _builder.append(_upperCase_1, "");
+              _builder.append("));");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("set");
+              String _name_4 = col.getName();
+              String _pascalize_2 = Strings.pascalize(_name_4);
+              _builder.append(_pascalize_2, "");
+              _builder.append("(c.get");
+              String _javaTypeName = ModelUtil.toJavaTypeName(type);
+              String _pascalize_3 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_3, "");
+              _builder.append("(Indices.");
+              String _name_5 = col.getName();
+              String _underscore_2 = Strings.underscore(_name_5);
+              String _upperCase_2 = _underscore_2.toUpperCase();
+              _builder.append(_upperCase_2, "");
+              _builder.append("));");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -763,17 +794,28 @@ public class ActiveRecordGenerator {
             _builder.append(" ? 1 : 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("dest.write");
             ColumnType _type_1 = col.getType();
-            String _javaTypeName = ModelUtil.toJavaTypeName(_type_1);
-            String _pascalize_1 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_1, "");
-            _builder.append("(m");
-            String _name_1 = col.getName();
-            String _pascalize_2 = Strings.pascalize(_name_1);
-            _builder.append(_pascalize_2, "");
-            _builder.append(");");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(_type_1, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("dest.writeByteArray(m");
+              String _name_1 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_1);
+              _builder.append(_pascalize_1, "");
+              _builder.append(");");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("dest.write");
+              ColumnType _type_2 = col.getType();
+              String _javaTypeName = ModelUtil.toJavaTypeName(_type_2);
+              String _pascalize_2 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_2, "");
+              _builder.append("(m");
+              String _name_2 = col.getName();
+              String _pascalize_3 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_3, "");
+              _builder.append(");");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -800,9 +842,9 @@ public class ActiveRecordGenerator {
         }
         _builder.append("\t");
         _builder.append("m");
-        String _name_2 = col_1.getName();
-        String _pascalize_3 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_3, "	");
+        String _name_3 = col_1.getName();
+        String _pascalize_4 = Strings.pascalize(_name_3);
+        _builder.append(_pascalize_4, "	");
         _builder.append("Dirty");
         _builder.newLineIfNotEmpty();
       }
@@ -841,16 +883,26 @@ public class ActiveRecordGenerator {
             _builder.append(" ? 1 : 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("dest.write");
-            String _javaTypeName = ModelUtil.toJavaTypeName(type);
-            String _pascalize_1 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_1, "");
-            _builder.append("(m");
-            String _name_1 = col.getName();
-            String _pascalize_2 = Strings.pascalize(_name_1);
-            _builder.append(_pascalize_2, "");
-            _builder.append(");");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(type, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("dest.writeByteArray(m");
+              String _name_1 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_1);
+              _builder.append(_pascalize_1, "");
+              _builder.append(");");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("dest.write");
+              String _javaTypeName = ModelUtil.toJavaTypeName(type);
+              String _pascalize_2 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_2, "");
+              _builder.append("(m");
+              String _name_2 = col.getName();
+              String _pascalize_3 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_3, "");
+              _builder.append(");");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -876,9 +928,9 @@ public class ActiveRecordGenerator {
         }
         _builder.append("\t");
         _builder.append("m");
-        String _name_2 = col_1.getName();
-        String _pascalize_3 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_3, "	");
+        String _name_3 = col_1.getName();
+        String _pascalize_4 = Strings.pascalize(_name_3);
+        _builder.append(_pascalize_4, "	");
         _builder.append("Dirty");
         _builder.newLineIfNotEmpty();
       }
@@ -917,17 +969,28 @@ public class ActiveRecordGenerator {
             _builder.append(" = (in.readInt() > 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("m");
-            String _name_1 = col.getName();
-            String _pascalize_1 = Strings.pascalize(_name_1);
-            _builder.append(_pascalize_1, "");
-            _builder.append(" = in.read");
             ColumnType _type_1 = col.getType();
-            String _javaTypeName = ModelUtil.toJavaTypeName(_type_1);
-            String _pascalize_2 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_2, "");
-            _builder.append("();");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(_type_1, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("m");
+              String _name_1 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_1);
+              _builder.append(_pascalize_1, "");
+              _builder.append(" = in.createByteArray();");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("m");
+              String _name_2 = col.getName();
+              String _pascalize_2 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_2, "");
+              _builder.append(" = in.read");
+              ColumnType _type_2 = col.getType();
+              String _javaTypeName = ModelUtil.toJavaTypeName(_type_2);
+              String _pascalize_3 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_3, "");
+              _builder.append("();");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -954,9 +1017,9 @@ public class ActiveRecordGenerator {
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_2, _function_1);
       for(final ColumnSource col_1 : _filter_1) {
         _builder.append("m");
-        String _name_2 = col_1.getName();
-        String _pascalize_3 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_3, "");
+        String _name_3 = col_1.getName();
+        String _pascalize_4 = Strings.pascalize(_name_3);
+        _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
         int _plus = (counter + 1);
         int _counter = counter = _plus;
@@ -999,16 +1062,26 @@ public class ActiveRecordGenerator {
             _builder.append(" = (in.readInt() > 0);");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("m");
-            String _name_1 = col.getName();
-            String _pascalize_1 = Strings.pascalize(_name_1);
-            _builder.append(_pascalize_1, "");
-            _builder.append(" = in.read");
-            String _javaTypeName = ModelUtil.toJavaTypeName(type);
-            String _pascalize_2 = Strings.pascalize(_javaTypeName);
-            _builder.append(_pascalize_2, "");
-            _builder.append("();");
-            _builder.newLineIfNotEmpty();
+            boolean _equals_1 = Objects.equal(type, ColumnType.BLOB);
+            if (_equals_1) {
+              _builder.append("m");
+              String _name_1 = col.getName();
+              String _pascalize_1 = Strings.pascalize(_name_1);
+              _builder.append(_pascalize_1, "");
+              _builder.append(" = in.createByteArray();");
+              _builder.newLineIfNotEmpty();
+            } else {
+              _builder.append("m");
+              String _name_2 = col.getName();
+              String _pascalize_2 = Strings.pascalize(_name_2);
+              _builder.append(_pascalize_2, "");
+              _builder.append(" = in.read");
+              String _javaTypeName = ModelUtil.toJavaTypeName(type);
+              String _pascalize_3 = Strings.pascalize(_javaTypeName);
+              _builder.append(_pascalize_3, "");
+              _builder.append("();");
+              _builder.newLineIfNotEmpty();
+            }
           }
         }
       }
@@ -1033,9 +1106,9 @@ public class ActiveRecordGenerator {
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(cols, _function_1);
       for(final ColumnSource col_1 : _filter_1) {
         _builder.append("m");
-        String _name_2 = col_1.getName();
-        String _pascalize_3 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_3, "");
+        String _name_3 = col_1.getName();
+        String _pascalize_4 = Strings.pascalize(_name_3);
+        _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
         int _plus = (counter + 1);
         int _counter = counter = _plus;

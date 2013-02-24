@@ -58,3 +58,17 @@ The following sections briefly describe the purpose of each generator.
       easier to work with in code.
       
       |ref| See the :doc:`Mechanoid Prefs Documentation </prefs/index>`
+      
+Help and Support
+----------------
+Mechanoid is still a work in progress so it is highly likely you will encounter 
+issues and limitations, please log issues on the github project page 
+https://github.com/robotoworks/mechanoid/issues
+
+To discuss Mechanoid use the Google Group 
+https://groups.google.com/forum/#!forum/android-mechanoid-plugin
+
+You could ask a question on Stack Overflow 
+http://stackoverflow.com/questions/ask?tags=Android+Mechanoid
+
+Also, you could read the Robotoworks Blog http://robotoworks.com/blog
