@@ -49,10 +49,11 @@ class MechNetLexer(RegexLexer):
             (r'//.*?\n', Comment.Single),
             (r'/\*.*?\*/', Comment.Multiline),
             (r'(package|client|headers|params|body|response|extends|entity|generate|'
-             r'enum|String|boolean|int|long|double)\b', 
+             r'enum|String|boolean|int|long|double|get|put|post|delete)\b', 
              Keyword),
             (r'"(\\\\|\\"|[^"])*"', String),
             (r"'(\\\\|\\'|[^'])*'", String),
+            (r'/[^\{]+', String),
             (r'[a-zA-Z_\$][a-zA-Z0-9_]*', Name),
             (r'[~\^\*!%&\[\]\(\)\{\}<>\|+=:;,./?-]', Operator),
             (r'[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?', Number.Float),

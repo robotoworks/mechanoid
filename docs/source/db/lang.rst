@@ -56,8 +56,10 @@ contain an empty definition of a database with a single migration.
       }
    }
 
+.. note::
 
-.. todo:: link to migrations topic
+   To learn more about how |mechdb| supports schema migrations, 
+   see |ref| :ref:`schema-migrations`
 
 The Database Definition
 -----------------------
@@ -280,6 +282,8 @@ The following example shows how to drop a trigger.
    }
    
 |link| Learn more: http://sqlite.org/lang_droptrigger.html
+
+.. _schema-migrations:
 
 Schema Migrations
 -----------------
