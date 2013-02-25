@@ -1,5 +1,5 @@
-Mechanoid DB
-============
+|mechdb|
+========
 .. note:: 
    You must install the Mechanoid Plugin before you can use |mechdb|.
    |ref| See :doc:`/start`

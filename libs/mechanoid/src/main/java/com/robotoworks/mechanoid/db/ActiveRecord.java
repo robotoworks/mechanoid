@@ -94,26 +94,6 @@ public abstract class ActiveRecord {
 		return mId;
 	}
 	
-	public int update(SQuery query){
-		AbstractValuesBuilder builder = createBuilder();
-		
-		int affected = builder.update(query);
-		
-		makeDirty(false);
-		
-		return affected;
-	}
-	
-	public int update(SQuery query, boolean notifyChange){
-		AbstractValuesBuilder builder = createBuilder();
-		
-		int affected = builder.update(query, notifyChange);
-		
-		makeDirty(false);
-		
-		return affected;
-	}
-	
 	public boolean delete(){
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
