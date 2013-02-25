@@ -132,7 +132,7 @@ service client.
 
    package com.robotoworks.example.books.net
    
-   entity generate Book {
+   entity Book {
       id:long,
       title:String,
       description:String

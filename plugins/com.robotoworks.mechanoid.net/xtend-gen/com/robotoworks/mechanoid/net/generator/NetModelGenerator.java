@@ -163,8 +163,9 @@ public class NetModelGenerator implements IGenerator {
   }
   
   protected void _generate(final EnumTypeDeclaration type, final Model model, final IFileSystemAccess fsa) {
-    boolean _isGen = type.isGen();
-    if (_isGen) {
+    boolean _isNogen = type.isNogen();
+    boolean _not = (!_isNogen);
+    if (_not) {
       IntegerType _superType = type.getSuperType();
       boolean _notEquals = (!Objects.equal(_superType, null));
       if (_notEquals) {

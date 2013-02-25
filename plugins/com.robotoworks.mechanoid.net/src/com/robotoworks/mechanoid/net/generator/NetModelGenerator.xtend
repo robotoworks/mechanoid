@@ -88,7 +88,7 @@ class NetModelGenerator implements IGenerator {
 	}
 	
 	def dispatch generate(EnumTypeDeclaration type, Model model, IFileSystemAccess fsa) {
-		if(type.gen) {
+		if(!type.nogen) {
 			if(type.superType != null) {
 				fsa.generateFile(
 					model.packageName.resolveFileName(type.name.pascalize), 

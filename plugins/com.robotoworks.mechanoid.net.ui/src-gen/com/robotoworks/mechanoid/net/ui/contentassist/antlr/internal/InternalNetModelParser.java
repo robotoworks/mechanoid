@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalNetModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'get'", "'put'", "'post'", "'delete'", "'true'", "'false'", "'package'", "'client'", "'{'", "'}'", "'headers'", "','", "':'", "'/'", "'-'", "'params'", "'='", "'body'", "'response'", "'extends'", "'.'", "'[]'", "'entity'", "'generate'", "'enum'", "'String'", "'boolean'", "'int'", "'long'", "'double'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'get'", "'put'", "'post'", "'delete'", "'true'", "'false'", "'package'", "'client'", "'{'", "'}'", "'headers'", "','", "':'", "'/'", "'-'", "'params'", "'='", "'body'", "'response'", "'extends'", "'.'", "'[]'", "'entity'", "'nogen'", "'enum'", "'String'", "'boolean'", "'int'", "'long'", "'double'"
     };
     public static final int RULE_ID=4;
     public static final int T__40=40;
@@ -10450,20 +10450,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3766:1: rule__ComplexTypeDeclaration__Group__1__Impl : ( ( rule__ComplexTypeDeclaration__GenAssignment_1 )? ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3766:1: rule__ComplexTypeDeclaration__Group__1__Impl : ( ( rule__ComplexTypeDeclaration__NogenAssignment_1 )? ) ;
     public final void rule__ComplexTypeDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3770:1: ( ( ( rule__ComplexTypeDeclaration__GenAssignment_1 )? ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3771:1: ( ( rule__ComplexTypeDeclaration__GenAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3770:1: ( ( ( rule__ComplexTypeDeclaration__NogenAssignment_1 )? ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3771:1: ( ( rule__ComplexTypeDeclaration__NogenAssignment_1 )? )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3771:1: ( ( rule__ComplexTypeDeclaration__GenAssignment_1 )? )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3772:1: ( rule__ComplexTypeDeclaration__GenAssignment_1 )?
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3771:1: ( ( rule__ComplexTypeDeclaration__NogenAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3772:1: ( rule__ComplexTypeDeclaration__NogenAssignment_1 )?
             {
-             before(grammarAccess.getComplexTypeDeclarationAccess().getGenAssignment_1()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3773:1: ( rule__ComplexTypeDeclaration__GenAssignment_1 )?
+             before(grammarAccess.getComplexTypeDeclarationAccess().getNogenAssignment_1()); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3773:1: ( rule__ComplexTypeDeclaration__NogenAssignment_1 )?
             int alt31=2;
             int LA31_0 = input.LA(1);
 
@@ -10472,10 +10472,10 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             }
             switch (alt31) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3773:2: rule__ComplexTypeDeclaration__GenAssignment_1
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3773:2: rule__ComplexTypeDeclaration__NogenAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__GenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712);
-                    rule__ComplexTypeDeclaration__GenAssignment_1();
+                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712);
+                    rule__ComplexTypeDeclaration__NogenAssignment_1();
 
                     state._fsp--;
 
@@ -10485,7 +10485,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
             }
 
-             after(grammarAccess.getComplexTypeDeclarationAccess().getGenAssignment_1()); 
+             after(grammarAccess.getComplexTypeDeclarationAccess().getNogenAssignment_1()); 
 
             }
 
@@ -10807,20 +10807,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__Group__1__Impl"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3889:1: rule__EnumTypeDeclaration__Group__1__Impl : ( ( rule__EnumTypeDeclaration__GenAssignment_1 )? ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3889:1: rule__EnumTypeDeclaration__Group__1__Impl : ( ( rule__EnumTypeDeclaration__NogenAssignment_1 )? ) ;
     public final void rule__EnumTypeDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3893:1: ( ( ( rule__EnumTypeDeclaration__GenAssignment_1 )? ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3894:1: ( ( rule__EnumTypeDeclaration__GenAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3893:1: ( ( ( rule__EnumTypeDeclaration__NogenAssignment_1 )? ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3894:1: ( ( rule__EnumTypeDeclaration__NogenAssignment_1 )? )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3894:1: ( ( rule__EnumTypeDeclaration__GenAssignment_1 )? )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3895:1: ( rule__EnumTypeDeclaration__GenAssignment_1 )?
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3894:1: ( ( rule__EnumTypeDeclaration__NogenAssignment_1 )? )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3895:1: ( rule__EnumTypeDeclaration__NogenAssignment_1 )?
             {
-             before(grammarAccess.getEnumTypeDeclarationAccess().getGenAssignment_1()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3896:1: ( rule__EnumTypeDeclaration__GenAssignment_1 )?
+             before(grammarAccess.getEnumTypeDeclarationAccess().getNogenAssignment_1()); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3896:1: ( rule__EnumTypeDeclaration__NogenAssignment_1 )?
             int alt33=2;
             int LA33_0 = input.LA(1);
 
@@ -10829,10 +10829,10 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             }
             switch (alt33) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3896:2: rule__EnumTypeDeclaration__GenAssignment_1
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3896:2: rule__EnumTypeDeclaration__NogenAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__GenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959);
-                    rule__EnumTypeDeclaration__GenAssignment_1();
+                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959);
+                    rule__EnumTypeDeclaration__NogenAssignment_1();
 
                     state._fsp--;
 
@@ -10842,7 +10842,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
             }
 
-             after(grammarAccess.getEnumTypeDeclarationAccess().getGenAssignment_1()); 
+             after(grammarAccess.getEnumTypeDeclarationAccess().getNogenAssignment_1()); 
 
             }
 
@@ -14539,30 +14539,30 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__ComplexTypeDeclaration__KeywordAssignment_0"
 
 
-    // $ANTLR start "rule__ComplexTypeDeclaration__GenAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5308:1: rule__ComplexTypeDeclaration__GenAssignment_1 : ( ( 'generate' ) ) ;
-    public final void rule__ComplexTypeDeclaration__GenAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ComplexTypeDeclaration__NogenAssignment_1"
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5308:1: rule__ComplexTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
+    public final void rule__ComplexTypeDeclaration__NogenAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5312:1: ( ( ( 'generate' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'generate' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5312:1: ( ( ( 'nogen' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'nogen' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'generate' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5314:1: ( 'generate' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5314:1: ( 'nogen' )
             {
-             before(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5315:1: ( 'generate' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5316:1: 'generate'
+             before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5315:1: ( 'nogen' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5316:1: 'nogen'
             {
-             before(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
-            match(input,35,FOLLOW_35_in_rule__ComplexTypeDeclaration__GenAssignment_110804); 
-             after(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
+             before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            match(input,35,FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110804); 
+             after(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
 
-             after(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
+             after(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
 
@@ -14581,7 +14581,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__ComplexTypeDeclaration__GenAssignment_1"
+    // $ANTLR end "rule__ComplexTypeDeclaration__NogenAssignment_1"
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__NameAssignment_2"
@@ -14707,30 +14707,30 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__EnumTypeDeclaration__KeywordAssignment_0"
 
 
-    // $ANTLR start "rule__EnumTypeDeclaration__GenAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5384:1: rule__EnumTypeDeclaration__GenAssignment_1 : ( ( 'generate' ) ) ;
-    public final void rule__EnumTypeDeclaration__GenAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__EnumTypeDeclaration__NogenAssignment_1"
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5384:1: rule__EnumTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
+    public final void rule__EnumTypeDeclaration__NogenAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5388:1: ( ( ( 'generate' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'generate' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5388:1: ( ( ( 'nogen' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'nogen' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'generate' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5390:1: ( 'generate' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5390:1: ( 'nogen' )
             {
-             before(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5391:1: ( 'generate' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5392:1: 'generate'
+             before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5391:1: ( 'nogen' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5392:1: 'nogen'
             {
-             before(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
-            match(input,35,FOLLOW_35_in_rule__EnumTypeDeclaration__GenAssignment_110954); 
-             after(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
+             before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            match(input,35,FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_110954); 
+             after(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
 
-             after(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); 
+             after(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
 
@@ -14749,7 +14749,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__EnumTypeDeclaration__GenAssignment_1"
+    // $ANTLR end "rule__EnumTypeDeclaration__NogenAssignment_1"
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__NameAssignment_2"
@@ -15779,7 +15779,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__KeywordAssignment_0_in_rule__ComplexTypeDeclaration__Group__0__Impl7652 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__1__Impl_in_rule__ComplexTypeDeclaration__Group__17682 = new BitSet(new long[]{0x0000000800000010L});
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2_in_rule__ComplexTypeDeclaration__Group__17685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__GenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2__Impl_in_rule__ComplexTypeDeclaration__Group__27743 = new BitSet(new long[]{0x000003E000100010L});
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__3_in_rule__ComplexTypeDeclaration__Group__27746 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NameAssignment_2_in_rule__ComplexTypeDeclaration__Group__2__Impl7773 = new BitSet(new long[]{0x0000000000000002L});
@@ -15790,7 +15790,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__KeywordAssignment_0_in_rule__EnumTypeDeclaration__Group__0__Impl7899 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__1__Impl_in_rule__EnumTypeDeclaration__Group__17929 = new BitSet(new long[]{0x0000000800000010L});
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2_in_rule__EnumTypeDeclaration__Group__17932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__GenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2__Impl_in_rule__EnumTypeDeclaration__Group__27990 = new BitSet(new long[]{0x0000000080100000L});
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__3_in_rule__EnumTypeDeclaration__Group__27993 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NameAssignment_2_in_rule__EnumTypeDeclaration__Group__2__Impl8020 = new BitSet(new long[]{0x0000000000000002L});
@@ -15896,11 +15896,11 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_33_in_rule__GenericListType__IdAssignment_110677 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__UserType__DeclarationAssignment10720 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_rule__ComplexTypeDeclaration__KeywordAssignment_010760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__ComplexTypeDeclaration__GenAssignment_110804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110804 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__ComplexTypeDeclaration__NameAssignment_210843 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__ComplexTypeDeclaration__LiteralAssignment_310874 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_rule__EnumTypeDeclaration__KeywordAssignment_010910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__EnumTypeDeclaration__GenAssignment_110954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_110954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__EnumTypeDeclaration__NameAssignment_210993 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIntegerType_in_rule__EnumTypeDeclaration__SuperTypeAssignment_3_111024 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_rule__EnumTypeDeclaration__LiteralAssignment_411055 = new BitSet(new long[]{0x0000000000000002L});

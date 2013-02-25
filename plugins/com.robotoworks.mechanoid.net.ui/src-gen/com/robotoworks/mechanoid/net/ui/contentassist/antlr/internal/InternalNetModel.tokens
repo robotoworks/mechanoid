@@ -45,7 +45,6 @@ RULE_WS=10
 'String'=37
 '='=28
 'body'=29
-'generate'=35
 '.'=32
 'delete'=15
 '[]'=33
@@ -64,5 +63,6 @@ RULE_WS=10
 ':'=24
 '-'=26
 ','=23
+'nogen'=35
 'get'=12
 'long'=40

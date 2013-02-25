@@ -919,7 +919,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getUserTypeDeclaration_Gen()
+  public EAttribute getUserTypeDeclaration_Nogen()
   {
     return (EAttribute)userTypeDeclarationEClass.getEStructuralFeatures().get(1);
   }
@@ -1317,7 +1317,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     userTypeDeclarationEClass = createEClass(USER_TYPE_DECLARATION);
     createEAttribute(userTypeDeclarationEClass, USER_TYPE_DECLARATION__KEYWORD);
-    createEAttribute(userTypeDeclarationEClass, USER_TYPE_DECLARATION__GEN);
+    createEAttribute(userTypeDeclarationEClass, USER_TYPE_DECLARATION__NOGEN);
 
     complexTypeDeclarationEClass = createEClass(COMPLEX_TYPE_DECLARATION);
     createEReference(complexTypeDeclarationEClass, COMPLEX_TYPE_DECLARATION__LITERAL);
@@ -1497,7 +1497,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
 
     initEClass(userTypeDeclarationEClass, UserTypeDeclaration.class, "UserTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUserTypeDeclaration_Keyword(), ecorePackage.getEString(), "keyword", null, 0, 1, UserTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getUserTypeDeclaration_Gen(), ecorePackage.getEBoolean(), "gen", null, 0, 1, UserTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getUserTypeDeclaration_Nogen(), ecorePackage.getEBoolean(), "nogen", null, 0, 1, UserTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(complexTypeDeclarationEClass, ComplexTypeDeclaration.class, "ComplexTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComplexTypeDeclaration_Literal(), this.getComplexTypeLiteral(), null, "literal", null, 0, 1, ComplexTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
