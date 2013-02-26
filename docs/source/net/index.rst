@@ -264,7 +264,7 @@ as follows-:
 
    BookServiceClient client = new BookServiceClient("http://books.robotoworks.com");
    
-   Response<GetBookResponse> response = client.getBook(new GetBookRequest(123));
+   Response<GetBookResult> response = client.getBook(new GetBookRequest(123));
  
 URL Parameters
 --------------
@@ -291,7 +291,7 @@ The parameters would then be available in the generated client:
    request.setOffsetParam(10);
    request.setLimitParam(100);
 
-   Response<GetBookResponse> response = client.getBooks(request);
+   Response<GetBookResult> response = client.getBooks(request);
 
 We can also specify that a parameter should have a default value, for instance
 we can set a default of 100 on the ``limit`` param:
@@ -339,7 +339,7 @@ client, however we can still override it for a specific method, for instance:
    // override the api_token for this request
    request.setApiTokenParam("wxyz6789");
    
-   Response<GetBookResponse> response = client.getBooks(request);
+   Response<GetBookResult> response = client.getBooks(request);
    
 HTTP Headers
 ------------
@@ -397,7 +397,7 @@ A body or response can be defined in a few ways, outlined below.
 
 Anonymous Blocks
 """"""""""""""""
-A body or response block can be defined as a braced block of name:type pairs, 
+A body or response block can be defined as a block of name:type pairs in braces, 
 in both cases, the result of the JSON will be that of a JSON object.
 
 Given the following example of a post method definition:
@@ -437,7 +437,7 @@ And an example for the response JSON would be:-
 
 Blocks with entities
 """"""""""""""""""""
-Rather than define an anonymous entity as the body or response, it is often
+Rather than define body and response blocks with anonymous blocks it is often
 more beneficial to define them as entities like we saw earlier with ``Book`` 
 entity.
 
@@ -457,144 +457,214 @@ The following example shows how we can use an entity for the body:-
 In the example we show that body expects the entity ``Book``, entities are defined
 using the ``entity`` keyword:
 
-entity BaseBookResult {
-    success:boolean,
-    status_message:String
-}
-Then we can update the code to extend the response.
+.. code-block:: mechnet
 
-1
-2
-3
-4
-5
-6
-post createBook /books {
-    body Book
-    response extends BaseBookResult {
-        book_id:int
-    }
-}
-This helps us reduce repetition and allows us to share common response parameters amongst all responses that extend the same base response.
+   entity Book {
+      id:long,
+      title:String,
+      description:String
+   }
+   
+Entities can use other entities as types to define complex JSON graphs, for 
+instance we can define an ``Author`` entity for our ``Book`` entity:
+
+.. code-block:: mechnet
+
+   entity Book {
+      id:long,
+      title:String,
+      description:String,
+      author:Author
+   }
+   
+   entity Author {
+      id:long,
+      name:String
+   }
 
 Blocks with primitives
+""""""""""""""""""""""
+It is also possible to use primitives in blocks, such as String, int, boolean, 
+etc, for example:-
 
-Its also possible to use primitives in blocks, such as String, int, boolean, etc.
+.. code-block:: mechnet
 
-1
-2
-3
-get getBookTitle /books/id:long {
-    response String
-}
-This example response returns only a String, its not possible to extend a base response when doing this.
-
+   get getBookTitle /books/id:long {
+       response String
+   }
+   
 Blocks with arrays
+""""""""""""""""""
+We can also define responses to return arrays of primitives or entities by 
+using the [] array notation, generated code will always generated to lists 
+when defining arrays.
 
-The DSL allows responses to return arrays of primitives or entities by using the [] array notation, generated code will always generated to lists when defining arrays.
+.. code-block:: mechnet
 
-1
-2
-3
-4
-5
-6
-get getAllBookTitles /books {
-    response String[]
-}
-get getBooks "/books" {
-    response Book[]
-}
-Consuming superflous nesting
+   get getAllBookTitles /books {
+       response String[]
+   }
+   
+   get getBooks "/books" {
+       response Book[]
+   }
 
-Sometimes JSON comes badly structured, in order to get around this we can skip into JSON objects effectively flattening nested hierarchies.
+Consuming superfluous nesting
+"""""""""""""""""""""""""""""
+Sometimes JSON comes strangely structured for instance by introducing unnecessary
+containers (or superfluous nesting), in order to get around this we can skip 
+into JSON objects effectively flattening nested hierarchies.
 
 Consider the following JSON response.
 
-1
-2
-3
-4
-5
-6
-7
-8
-{
-    "result": {
-        "books":[
-            {"id":1, "title":"Musashi", "author":"Eiji Yoshikawa"},
-            {"id":2, "title":"A Still Forest Pool", "author":"Achaan Chah"}
-        ]
-    }
-}
-In this response, we can consider the JSON object “result” is superflous, in order to consume this result we would need to create a wrapper entity Result:-
+.. code-block:: json
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-entity generate Result {
-    books:Book[]
-}
-1
+   {
+       "result": {
+           "books":[
+               {"id":1, "title":"Musashi", "author":"Eiji Yoshikawa"},
+               {"id":2, "title":"A Still Forest Pool", "author":"Achaan Chah"}
+           ]
+       }
+   }
+   
+In this response, we can consider the JSON object ``result`` as superfluous, in 
+order to consume this result we would need to create a wrapper entity ``Result``
+as follows:-
+
+.. code-block:: mechnet
+
+   entity Result {
+       books:Book[]
+   }
  
 We can then make our method return the result:
  
-1
-get getBooks /books {
-    response Result
-}
+.. code-block:: mechnet
+
+   get getBooks /books {
+       response Result
+   }
+   
 Then to access the list of books in the response in the generated code:-
 
-1
-2
-3
-Response<GetBooksResponse> response = client.getBooks(new GetBooksRequest());
-GetBooksResponse content = response.parse();
-List<Book> books = content.getResult().getBooks();
-This is not desirable since result is nothing but a wrapper for books, we can get around this issue by wrapping the books array in a block with the name result as follows:-
+.. code-block:: java
 
-1
-2
-3
-4
-5
-6
-7
-get getBooks /books {
-    response {
-        result {
-            books:Book[]
-        }
-    }
-}
-This makes our generated response code much easier to use by reducing verbosity in the JSON and avoiding creating unnecessary entity definitions purely to support this structure.
+   Response<GetBooksResponse> response = client.getBooks(new GetBooksRequest());
+   GetBooksResponse content = response.parse();
+   List<Book> books = content.getResult().getBooks();
+   
+This is not desirable since result is nothing but a wrapper for books, we can 
+get around this issue by wrapping the books array in a block with the name 
+``result`` as follows:-
 
-In order to see the affect the generated code is as follows.
+.. code-block:: mechnet
 
-1
-2
-3
-Response<GetBooksResponse> response = client.getBooks(new GetBooksRequest());
-GetBooksResponse content = response.parse();
-List<Book> books = content.getBooks();
-This is much cleaner and also works with entities.
+   get getBooks /books {
+       response {
+           result {
+               books:Book[]
+           }
+       }
+   }
+   
+This makes our generated response code much easier to use by reducing verbosity 
+in the JSON and avoiding creating unnecessary entity definitions purely 
+to support this structure.
 
-Debugging Requests/Responses
+Using the generated code would then look like the following:
 
-By default generated Mechanoid Net service clients do not log network requests, to enable logging service clients are generated with constructors with an argument to enable logging. The following example shows how to enable logging for the book service.
+.. code-block:: java
 
-1
-BookService service = new BookService(BuildConfig.DEBUG);
-In the example we use the Android BuildConfig.DEBUG flag (generated by the Android ADT Plugin) to enable logging on the BookService client.
+   Response<GetBooksResponse> response = client.getBooks(new GetBooksRequest());
+   GetBooksResponse content = response.parse();
+   List<Book> books = content.getBooks();
+
+
+The Generated API
+-----------------
+We have seen in the previous sections some snippets on how we use the generated
+API from our service client definition, this section will explain general
+usage of the generated API and other features not covered in previous sections.
+
+Executing Requests
+""""""""""""""""""
+For each method we define in our |mechnet| service definition a request and result
+object will be generated, for instance, given the following method definition:
+
+.. code-block:: mechnet
+
+   get getBooks /books {
+       response {
+           result {
+               books:Book[]
+           }
+       }
+   }
+   
+We expect a ``GetBooksRequest`` class and a ``GetBooksResult`` class to be 
+generated.
+
+When we think of the result, when executing a request, we contruct a request
+instance, such as ``GetBooksRequest`` and pass it as the only argument to
+the relevant method on the generated service client:-
+
+.. code-block:: java
+
+   BookServiceClient client = new BookServiceClient();
+   
+   GetBooksRequest request = new GetBooksRequest();
+   
+   Response<GetBookResult> response = client.getBooks(request);
+
+All service client request methods are synchronous, for instance calling
+``client.getBooks(request)`` will block until the underlying network operation
+is complete.
+
+The return type of a service method will always be of type ``Response<T>`` where
+``T`` will always be of type ``ServiceResult``, in the example ``GetBookResult``.
+
+Given we have a ``Response<GetBookResult>`` we can then begin to examine the
+response, for instance we can check the response code:
+
+.. code-block:: java
+   
+   if(response.getResponseCode() == Response.HTTP_OK) {
+      // TODO Do something if all is ok
+   }
+   
+After we have examined the response, we need to parse the result, we can
+do this with the ``parse()`` method of the response:
+
+.. code-block:: java
+   
+   if(response.getResponseCode() == Response.HTTP_OK) {
+   
+      GetBookResult result = response.parse();
+      
+      // TODO Do something with the result
+   }
+
+This approach gives us a 2 step process to handle responses, the first step allows
+us to examine the result before parsing, the second step allows us to parse
+and inspect the result.
+
+Logging
+"""""""
+By default generated |mechnet| service clients do not log network requests, 
+to enable logging service clients are generated with constructors with an 
+argument to enable logging. The following example shows how to enable logging 
+for the book service.
+
+.. code-block:: java
+
+   BookServiceClient service = new BookServiceClient(BuildConfig.DEBUG);
+   
+In the example we use the Android ``BuildConfig.DEBUG`` flag (generated by the 
+Android ADT Plugin) to enable logging on the generated ``BookServiceClient``.
 
 Once logging is enabled, all requests and responses will be logged.
 
-Logging can product an extra performance overhead since input/output streams needs to be parsed twice, logging should be disabled in production builds of your applications.
+Logging can result in a performance overhead since input/output streams 
+needs to be parsed twice, logging should be disabled in production builds of 
+your applications.
