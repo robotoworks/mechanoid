@@ -1,0 +1,83 @@
+HOST: http://examples.robotoworks.com/moviedb/v1
+
+--- Mechanoid Examples API v1 ---
+---
+A mock service used by the Robotoworks Mechanoid Movie Database Example Application
+---
+
+--
+Movie Resources
+The following is a section of resources related to movies
+--
+List all movies
+GET /movies
+< 200
+< Content-Type: application/json
+[
+    {
+        "title":"The Shawshank Redemption",
+        "description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "year":1994
+    },
+    {
+        "title":"The Godfather",
+        "description":"The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        "year":1972
+    },
+    {
+        "title":"The Godfather: Part II",
+        "description":"The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on his crime syndicate stretching from Lake Tahoe, Nevada to pre-revolution 1958 Cuba.",
+        "year":1974
+    },
+    {
+        "title":"Pulp Fiction",
+        "description":"The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "year":1994
+    },
+    {
+        "title":"The Good, the Bad and the Ugly",
+        "description":"A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+        "year":1966
+    },
+    {
+        "title":"12 Angry Men",
+        "description":"A dissenting juror in a murder trial slowly manages to convince the others that the case is not as obviously clear as it seemed in court.",
+        "year":1957
+    }
+    },
+    {
+        "title":"The Dark Knight",
+        "description":"When Batman, Gordon and Harvey Dent launch an assault on the mob, they let the clown out of the box, the Joker, bent on turning Gotham on itself and bringing any heroes down to his level.",
+        "year":2008
+    },
+    {
+        "title":"Schindler's List",
+        "description":"In Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+        "year":1993
+    }
+]
+
+Save a new movie
+
+POST /movies
+> Content-Type: application/json
+{
+    "title":"The Shawshank Redemption",
+    "description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "release_date":"1994"
+}
+< 201
+< Content-Type: application/json
+{ "status": "created", "url": "/movies/123" }
+
+Update an existing movie
+PUT /movies/123
+> Content-Type: application/json
+{
+    "title":"The Shawshank Redemption",
+    "description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "release_date":"1994"
+}
+< 200
+< Content-Type: application/json
+{ "status": "updated", "url": "/movies/123" }

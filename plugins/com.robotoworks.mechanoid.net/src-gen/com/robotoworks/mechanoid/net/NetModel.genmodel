@@ -85,7 +85,7 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//UserTypeDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//UserTypeDeclaration/keyword"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//UserTypeDeclaration/gen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//UserTypeDeclaration/nogen"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//ComplexTypeDeclaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//ComplexTypeDeclaration/literal"/>

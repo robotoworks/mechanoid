@@ -37,7 +37,7 @@ class ContentProviderContractGenerator {
 			    		
 			    		ClassLoader loader = «model.database.name.pascalize»Contract.class.getClassLoader();
 			    		
-						Class<?> clz = loader.loadClass("com.justeat.app.data.«model.database.name.pascalize»ContentProviderAuthority");
+						Class<?> clz = loader.loadClass("«model.packageName».«model.database.name.pascalize»ContentProviderAuthority");
 						Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
 						
 						authority = declaredField.get(null).toString();
