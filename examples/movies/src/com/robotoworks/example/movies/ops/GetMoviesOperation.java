@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.robotoworks.example.movies.MoviesApplication;
+import com.robotoworks.example.movies.db.MovieDBContract.Movies;
 import com.robotoworks.example.movies.net.GetMoviesResult;
 import com.robotoworks.example.movies.net.Movie;
 import com.robotoworks.example.movies.net.MoviesApiClient;
@@ -43,6 +44,14 @@ public class GetMoviesOperation extends AbstractGetMoviesOperation {
 	}
 	
 	private void saveMovies(List<Movie> movies) {
-		// TODO Save to database
+		Movies.delete();
+		
+		for(Movie movie : movies) {
+			Movies.newBuilder()
+				.setTitle(movie.getTitle())
+				.setDescription(movie.getDescription())
+				.setYear(movie.getYear())
+				.insert(false);
+		}
 	}
 }

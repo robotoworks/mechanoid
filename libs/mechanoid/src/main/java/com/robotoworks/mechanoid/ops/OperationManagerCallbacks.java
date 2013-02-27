@@ -12,8 +12,8 @@ import android.os.Bundle;
 
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 
-public abstract class OperationManagerCallbacks<T extends OperationServiceBridge> {
-    public abstract int createOperation(T bridge, int id);
+public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
+    public int createOperation(T bridge, int id);
 
     /**
      * <p>Called when an operation is pending, can be invoked when invoking {@link OperationManagerBase#runOperation(int, boolean),
@@ -21,9 +21,7 @@ public abstract class OperationManagerCallbacks<T extends OperationServiceBridge
      * @param bridge The bridge associated to the OperationManager the callbacks are registered with
      * @param id A user-defined id for this operation
      */
-    public void onOperationPending(T bridge, int id) {
-        
-    }
+    public void onOperationPending(T bridge, int id);
     
     /**
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}

@@ -29,7 +29,7 @@ public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelpe
 			"_id integer primary key autoincrement, " +
 			"title text, " +
 			"description text, " +
-			"year text , unique ( title , year ) on conflict replace " +
+			"year integer , unique ( title , year ) on conflict replace " +
 			") "
 		);	
 	}
