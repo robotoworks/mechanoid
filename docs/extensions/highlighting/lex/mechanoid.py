@@ -61,3 +61,27 @@ class MechNetLexer(RegexLexer):
             (r'[0-9]+L?', Number.Integer),
         ]
     }
+    
+class MechOpsLexer(RegexLexer):
+    name = 'MechOps'
+    aliases = ['mechops']
+    filenames = ['*.mechops']
+    mimetypes = ['text/mechops']
+    
+    tokens = {
+        'root': [
+            (r'[^\S\n]+', Text),
+            (r'//.*?\n', Comment.Single),
+            (r'/\*.*?\*/', Comment.Multiline),
+            (r'(package|service|operation|not|unique|boolean|String|int|float|long|Parcelable|PendingIntent)\b', 
+             Keyword),
+            (r'"(\\\\|\\"|[^"])*"', String),
+            (r"'(\\\\|\\'|[^'])*'", String),
+            (r'/[^\{]+', String),
+            (r'[a-zA-Z_\$][a-zA-Z0-9_]*', Name),
+            (r'[~\^\*!%&\[\]\(\)\{\}<>\|+=:;,./?-]', Operator),
+            (r'[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?', Number.Float),
+            (r'0x[0-9a-fA-F]+', Number.Hex),
+            (r'[0-9]+L?', Number.Integer),
+        ]
+    }

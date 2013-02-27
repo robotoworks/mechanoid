@@ -6,14 +6,18 @@ Mechanoid is an Eclipse Plugin sporting a set of code generators for Android™
 driven by DSL's (Domain Specific Languages) with full Eclipse Editor Support 
 for the rapid development of Android applications.
 
+Installation
+------------
+To download and install Mechanoid, see |ref| :doc:`/start`.
+
+Components
+----------
 Mechanoid is currently composed of four generators, each code generator focuses
 on specific components of an Android application.
 
 Each code generator comes with first class Eclipse editor support including
 syntax highlighting, content assist and validation thanks to the powerful 
-xText Language Framwork.
-
-To download and install Mechanoid, see |ref| :doc:`/start`.
+xText Language Framework.
 
 The following sections briefly describe the purpose of each generator.
 
@@ -55,14 +59,21 @@ The following sections briefly describe the purpose of each generator.
 
    .. container:: span5
 
-      .. rubric:: |mechnet|
+      .. rubric:: |mechprefs|
       
       |mechprefs| is possibly the simplest DSL in the set, it allows you to
       define and generate Shared Preference wrappers that make preferences
       easier to work with in code.
       
       |ref| See the :doc:`Mechanoid Prefs Documentation </prefs/index>`
-      
+
+Mechanoid Library Documentation
+-------------------------------
+The Mechanoid Library is a jar file that provides common base code for generated
+code.
+
+|ref| See the Javadoc for more details: http://robotoworks.com/mechanoid/doc/apidocs 
+ 
 Help and Support
 ----------------
 Mechanoid is still a work in progress so it is highly likely you will encounter 
@@ -77,8 +88,8 @@ http://stackoverflow.com/questions/ask?tags=Android+Mechanoid
 
 Also, you could read the Robotoworks Blog http://robotoworks.com/blog
 
-Contents
---------
+Documentation Contents
+----------------------
 
 .. toctree::
    :maxdepth: 3
@@ -87,4 +98,5 @@ Contents
    start
    db/index
    net/index
+   ops/index
    credits
