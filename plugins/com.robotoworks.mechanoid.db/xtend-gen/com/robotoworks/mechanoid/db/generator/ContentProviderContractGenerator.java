@@ -95,7 +95,10 @@ public class ContentProviderContractGenerator {
     _builder.append("    \t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("Class<?> clz = loader.loadClass(\"com.justeat.app.data.");
+    _builder.append("Class<?> clz = loader.loadClass(\"");
+    String _packageName_2 = model.getPackageName();
+    _builder.append(_packageName_2, "			");
+    _builder.append(".");
     DatabaseBlock _database_3 = model.getDatabase();
     String _name_3 = _database_3.getName();
     String _pascalize_2 = Strings.pascalize(_name_3);
