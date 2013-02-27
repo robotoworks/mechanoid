@@ -1,0 +1,13 @@
+package com.robotoworks.example.movies.net
+
+entity Movie {
+	title:String,
+	description:String,
+	year:int
+}
+
+client MoviesApiClient "http://robotoworks.apiary.io/moviedb" {
+	get getMovies /v1/movies {
+		response Movie[]
+	}
+}

@@ -126,11 +126,11 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGenericListTypeAccess().getIdAssignment_1(), "rule__GenericListType__IdAssignment_1");
 					put(grammarAccess.getUserTypeAccess().getDeclarationAssignment(), "rule__UserType__DeclarationAssignment");
 					put(grammarAccess.getComplexTypeDeclarationAccess().getKeywordAssignment_0(), "rule__ComplexTypeDeclaration__KeywordAssignment_0");
-					put(grammarAccess.getComplexTypeDeclarationAccess().getGenAssignment_1(), "rule__ComplexTypeDeclaration__GenAssignment_1");
+					put(grammarAccess.getComplexTypeDeclarationAccess().getNogenAssignment_1(), "rule__ComplexTypeDeclaration__NogenAssignment_1");
 					put(grammarAccess.getComplexTypeDeclarationAccess().getNameAssignment_2(), "rule__ComplexTypeDeclaration__NameAssignment_2");
 					put(grammarAccess.getComplexTypeDeclarationAccess().getLiteralAssignment_3(), "rule__ComplexTypeDeclaration__LiteralAssignment_3");
 					put(grammarAccess.getEnumTypeDeclarationAccess().getKeywordAssignment_0(), "rule__EnumTypeDeclaration__KeywordAssignment_0");
-					put(grammarAccess.getEnumTypeDeclarationAccess().getGenAssignment_1(), "rule__EnumTypeDeclaration__GenAssignment_1");
+					put(grammarAccess.getEnumTypeDeclarationAccess().getNogenAssignment_1(), "rule__EnumTypeDeclaration__NogenAssignment_1");
 					put(grammarAccess.getEnumTypeDeclarationAccess().getNameAssignment_2(), "rule__EnumTypeDeclaration__NameAssignment_2");
 					put(grammarAccess.getEnumTypeDeclarationAccess().getSuperTypeAssignment_3_1(), "rule__EnumTypeDeclaration__SuperTypeAssignment_3_1");
 					put(grammarAccess.getEnumTypeDeclarationAccess().getLiteralAssignment_4(), "rule__EnumTypeDeclaration__LiteralAssignment_4");

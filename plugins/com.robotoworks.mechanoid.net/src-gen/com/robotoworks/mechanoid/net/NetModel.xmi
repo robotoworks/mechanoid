@@ -422,8 +422,8 @@
         <elements xsi:type="xtext:Assignment" feature="keyword" operator="=">
           <terminal xsi:type="xtext:Keyword" value="entity"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="gen" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="generate"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="nogen" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="nogen"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
@@ -441,8 +441,8 @@
         <elements xsi:type="xtext:Assignment" feature="keyword" operator="=">
           <terminal xsi:type="xtext:Keyword" value="enum"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="gen" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="generate"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="nogen" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="nogen"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>

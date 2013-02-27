@@ -12,7 +12,7 @@ package com.robotoworks.mechanoid.net.netModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration#getKeyword <em>Keyword</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration#isGen <em>Gen</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration#isNogen <em>Nogen</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface UserTypeDeclaration extends Declaration
   void setKeyword(String value);
 
   /**
-   * Returns the value of the '<em><b>Gen</b></em>' attribute.
+   * Returns the value of the '<em><b>Nogen</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Gen</em>' attribute isn't clear,
+   * If the meaning of the '<em>Nogen</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Gen</em>' attribute.
-   * @see #setGen(boolean)
-   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getUserTypeDeclaration_Gen()
+   * @return the value of the '<em>Nogen</em>' attribute.
+   * @see #setNogen(boolean)
+   * @see com.robotoworks.mechanoid.net.netModel.NetModelPackage#getUserTypeDeclaration_Nogen()
    * @model
    * @generated
    */
-  boolean isGen();
+  boolean isNogen();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration#isGen <em>Gen</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration#isNogen <em>Nogen</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Gen</em>' attribute.
-   * @see #isGen()
+   * @param value the new value of the '<em>Nogen</em>' attribute.
+   * @see #isNogen()
    * @generated
    */
-  void setGen(boolean value);
+  void setNogen(boolean value);
 
 } // UserTypeDeclaration

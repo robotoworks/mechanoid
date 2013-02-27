@@ -1,0 +1,6 @@
+package com.robotoworks.example.movies.ops
+
+service Movies {
+	operation getMovies()
+	operation addMovie(String title, String description, int year)
+}
