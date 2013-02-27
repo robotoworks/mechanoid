@@ -102,6 +102,8 @@ operation arguments, for example:
 The example defines two operations, and argumentless ``getMovies()`` operation, 
 and a ``addMovie(...)`` operation with arguments.
 
+.. _operation-uniqueness:
+
 Operation Uniqueness
 --------------------
 By default, when using the generated Operation Service API, all operations
@@ -168,7 +170,7 @@ Implementing Operations
 -----------------------
 For each operation defined in the |opsvcdef|, a class stub is generated, with
 the format of the class name as ``{operation_id}Operation`` where ``operation_id``
-is the identifier given to the operation, ie:- ``getMovies`` becomes ``GetMoviesOperation``.
+is the identifier given to the operation, ie:- ``getMovies()`` becomes ``GetMoviesOperation``.
 
 .. warning:: 
    Currently, when renaming operations, a new stub is generated which would make 
@@ -191,8 +193,9 @@ When we implement operations, we add code to the ``onExecute()`` method, and
 return a ``Bundle`` that represents a result.
 
 The ``Bundle`` we return should be constructed with the Mechanoid API method, 
-|jdoc| :java:extdoc:`Operation.createOkResult()  <com.robotoworks.mechanoid.ops.Operation.createOkResult()>` to
-indicate that the operation was successful, or |jdoc| :java:extdoc:`Operation.createErrorResult(Throwable)  <com.robotoworks.mechanoid.ops.Operation.createErrorResult(java.lang.Throwable)>` 
+|jdoc| :java:extdoc:`Operation.createOkResult() <com.robotoworks.mechanoid.ops.Operation.createOkResult()>` to
+indicate that the operation was successful, or 
+|jdoc| :java:extdoc:`Operation.createErrorResult(Throwable) <com.robotoworks.mechanoid.ops.Operation.createErrorResult(java.lang.Throwable)>` 
 to indicate that an error occurred.
 
 The following example shows how we could implement the ``onExecute()`` of
@@ -252,4 +255,195 @@ We can access the arguments in ``onExecute()`` as follows:
       ...
    }
    
+Executing Operations
+--------------------
+Most commonly operations will be executed from the UI such as an ``Activity``
+or ``Fragment``, the best way to manage operations from the UI is with
+the |jdoc| :java:extdoc:`OperationManager <com.robotoworks.mechanoid.ops.OperationManager>` 
+(or |jdoc| :java:extdoc:`OperationManager <com.robotoworks.mechanoid.ops.SupportOperationManager>` for backward compatibility).
 
+Executing operations are always performed with an implementation of ``OperationServiceBridge`` 
+described in the next section.
+
+The Service Bridge
+""""""""""""""""""
+Every |opsvcdef| results in a generated implementation of 
+|jdoc| :java:extdoc:`OperationServiceBridge <com.robotoworks.mechanoid.ops.OperationServiceBridge>`  
+for instance ``MoviesServiceBridge``.
+
+The bridge acts as a proxy to the service (eg:- ``MoviesService``). It is responsible
+for constructing service intents, handling operation uniqueness, and also dispatching
+callbacks to registered instances of ``OperationServiceListener``.
+
+By default bridges are generated as singletons, in order for a bridge to work
+correctly it must either be a singleton or created in a way that makes a single
+instance accessible (ie:- managed by a dependency container), for example, we 
+can get an instance of the ``MoviesServiceBridge`` like this:
+
+.. code-block:: java
+
+   MoviesServiceBridge bridge = MoviesServiceBridge.getInstance();
+
+Once we have an instance of a bridge, we gain access to the methods we defined
+in our |opsvcdef|, the following example shows how we can use the bridge to
+execute these operations:
+
+.. code-block:: java
+
+   MoviesServiceBridge bridge = MoviesServiceBridge.getInstance();
+   
+   int operationId = service.executeAddMovieOperation("The Godfather", "Movie about gangstas.", 1972);
+   
+The method ``executeAddMovieOperation(...)`` is the generated version of
+the method we defined in our |opsvcdef| earlier ``addMovie(...)``.
+
+Every operation always returns an operation request id, for each new operation an 
+incrementing id is assigned that uniquely identifies a request, with the exception 
+of operation uniqueness (see |ref| :ref:`operation-uniqueness`) where the same
+id could be returned for a pending or currently executing operation.
+
+.. topic:: The Request ID
+   
+   Executing operations with the bridge happens asynchronously, behind the scenes
+   a request to execute the operation is put into a queue managed by an ``OperationProcessor``.
+   The operation processor is responsible for taking the next operation from the
+   queue and executing it until no operations are left to process.
+   
+   With this in mind, when we invoke an ``execute`` method on a bridge, we
+   get a **request id** back, which we can use to uniquely identify an operation.
+   
+   In order to know what is happening with an operation, we rely on callbacks 
+   discussed later.
+   
+The Operation Manager
+"""""""""""""""""""""
+As previously mentioned when executing operations from a UI class such as 
+an ``Activity`` or a ``Fragment`` we can use the ``OperationManager``, or, the ``SupportOperationManager``
+if we want backward compatibility.
+
+This section shows examples using the ``SupportOperationManager``.
+
+The Operation Manager allows us to easily handle operation callbacks and lifecycle
+in much the same way the Android Loader API does.
+
+we must first represent each operation we want to execute with a unique integer constant,
+for instance:
+
+.. code-block:: java
+
+   public class MovieListFragment extends ListFragment {
+   
+      private static final int OP_GET_MOVIES = 1;
+      
+   ...
+   
+We can then define an instance of an Operation Manager, an Operation Manager
+is responsible for managing a single |opsvc|, the following example shows
+how we can manage our Movies |opsvc|:
+
+.. code-block:: java
+
+   private SupportOperationManager<MoviesServiceBridge> mOperationManager;
+
+   @Override
+   public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+
+      mOperationManager = SupportOperationManager
+            .create(getFragmentManager(), 
+                  MoviesServiceBridge.getInstance(),
+                  mOperationManagerCallbacks);
+      
+      mOperationManager.runOperation(OP_GET_MOVIES, false);
+   }
+   
+In the example we construct a new ``SupportOperationManager<MoviesServiceBridge>`` in
+a fragments ``onCreate(Bundle)`` method, this is important since the manager needs
+to be introduced early into an activity or fragments lifecycle.
+
+The last statement uses the manager to run an operation that we represent as 
+``OP_GET_MOVIES``, the second argument tells the manager if we should force the operation
+to run, by providing the value of ``false`` means to only run the operation if
+it has not yet been run.
+
+The field, ``mOperationManagerCallbacks`` refers to a callback instance defined
+in the fragment that is responsible for actually running the operation as follows:
+
+.. code-block:: java
+
+   private OperationManagerCallbacks<MoviesServiceBridge> mOperationManagerCallbacks
+      = new OperationManagerCallbacks<MoviesServiceBridge>() {
+
+      @Override
+      public void onOperationComplete(MoviesServiceBridge bridge, int id, Bundle result, boolean fromCache) {
+      }
+
+      @Override
+      public int createOperation(MoviesServiceBridge bridge, int id) {
+      
+      }
+      
+      @Override
+      public void onOperationPending(MoviesServiceBridge bridge, int id) {
+      }
+   };
+   
+For each operation we want to execute we must implement at least ``onOperationComplete(...)`` 
+and ``createOperation(...)``.
+
+To implement ``createOperation(...)`` we simply use the bridge to execute the
+operation for the id we used to represent it:
+
+.. code-block:: java
+
+   @Override
+   public int createOperation(MoviesServiceBridge bridge, int id) {
+      if(id == OP_GET_MOVIES) {
+         return bridge.executeGetMoviesOperation();
+      }
+      
+      return -1;
+   }
+
+In the example we use the bridge to execute the ``GetMoviesOperation`` via
+``executeGetMoviesOperation()`` if the id matches ``OP_GET_MOVIES`` returning the 
+result, in any other case we simply return -1 to indicate that there is no match.
+ 
+.. warning::
+   It is important here to not get confused request ID we return from executing
+   an operation on the bridge with the value we gave ``OP_GET_MOVIES`` since this
+   ID is managed by us and needed so the ``OperationManager`` can track the requests
+   according to the life-cycle of an ``Activity`` or ``Fragment``.
+   
+The ``onOperationComplete(...)`` callback gives us an opportunity to examine and act
+upon the completion of an operation, typically binding data or showing an error,
+for example:
+
+.. code-block:: java
+
+   @Override
+   public void onOperationComplete(MoviesServiceBridge bridge, int id, Bundle result, boolean fromCache) {
+      if(id == OP_GET_MOVIES) {
+         if(Operation.isResultOk(result)) {
+            
+            getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
+            
+         } else {
+            Throwable error = Operation.getResultError(result);
+            
+            Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+         }
+      }
+   }
+
+In the example, we first check the ``id`` argument is an ``OP_GET_MOVIES``, if so
+we know that the completing operation is the one that we executed, we can then
+check the result with the helper 
+:java:extdoc:`Operation.isResultOk(Bundle) <com.robotoworks.mechanoid.ops.Operation.isResultOk(android.os.Bundle)>`, 
+if ok, we can then perform actions based on an OK result, such as initializing a loader
+as in the example, or, if the result is not OK, we can use the helper 
+:java:extdoc:`Operation.getResultError(Bundle) <com.robotoworks.mechanoid.ops.Operation.getResultError(android.os.Bundle)>` to
+extract the error from the Bundle, and act on the error.
+
+
+ 

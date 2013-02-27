@@ -19,7 +19,7 @@ public class MovieDBContract  {
     		
     		ClassLoader loader = MovieDBContract.class.getClassLoader();
     		
-			Class<?> clz = loader.loadClass("com.justeat.app.data.MovieDBContentProviderAuthority");
+			Class<?> clz = loader.loadClass("com.robotoworks.example.movies.db.MovieDBContentProviderAuthority");
 			Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
 			
 			authority = declaredField.get(null).toString();
@@ -102,7 +102,7 @@ public class MovieDBContract  {
 				mValues.put(DESCRIPTION, value);
 				return this;
 			}
-			public Builder setYear(String value) {
+			public Builder setYear(long value) {
 				mValues.put(YEAR, value);
 				return this;
 			}

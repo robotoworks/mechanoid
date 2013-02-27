@@ -63,7 +63,7 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
     private boolean mTitleDirty;
     private String mDescription;
     private boolean mDescriptionDirty;
-    private String mYear;
+    private long mYear;
     private boolean mYearDirty;
     
     @Override
@@ -89,12 +89,12 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
     	return mDescription;
     }
     
-    public void setYear(String year) {
+    public void setYear(long year) {
     	mYear = year;
     	mYearDirty = true;
     }
     
-    public String getYear() {
+    public long getYear() {
     	return mYear;
     }
     
@@ -110,7 +110,7 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		
 		mTitle = in.readString();
 		mDescription = in.readString();
-		mYear = in.readString();
+		mYear = in.readLong();
 		
 		boolean[] dirtyFlags = new boolean[4];
 		in.readBooleanArray(dirtyFlags);
@@ -129,7 +129,7 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		dest.writeLong(getId());
 		dest.writeString(mTitle);
 		dest.writeString(mDescription);
-		dest.writeString(mYear);
+		dest.writeLong(mYear);
 		dest.writeBooleanArray(new boolean[] {
 			mTitleDirty,
 			mDescriptionDirty,
@@ -166,7 +166,7 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		setId(c.getLong(Indices._ID));
 		setTitle(c.getString(Indices.TITLE));
 		setDescription(c.getString(Indices.DESCRIPTION));
-		setYear(c.getString(Indices.YEAR));
+		setYear(c.getLong(Indices.YEAR));
 	}
 	
 	public static MoviesRecord fromCursor(Cursor c) {

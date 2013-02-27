@@ -19,7 +19,7 @@ public class RecipesDBContract  {
     		
     		ClassLoader loader = RecipesDBContract.class.getClassLoader();
     		
-			Class<?> clz = loader.loadClass("com.justeat.app.data.RecipesDBContentProviderAuthority");
+			Class<?> clz = loader.loadClass("com.robotoworks.example.recipes.content.RecipesDBContentProviderAuthority");
 			Field declaredField = clz.getDeclaredField("CONTENT_AUTHORITY");
 			
 			authority = declaredField.get(null).toString();
