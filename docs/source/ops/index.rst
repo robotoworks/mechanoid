@@ -14,10 +14,10 @@ You define your operations using a simple language (DSL), implement some
 generated operation stubs and then use a generated API to execute them.
 
 The approach makes use of the Android ``Service`` Component, along with support 
-classes to queue operations, execute operations and handle operation lifecyle 
+classes to queue operations, execute operations and handle operation life-cycle 
 callbacks.
 
-The design was first seen in 
+The design pattern was first seen in 
 |link| `Virgil Dobjanschi's Google IO 2010 REST Presentation <http://www.youtube.com/watch?v=xHXn3Kg2IQE>`_
 
 In |mechops| we call this design the **Operation Service Pattern**.
@@ -45,6 +45,13 @@ We can then use the generated code to execute them:
    
 The following sections describe the syntax of the DSL, and how we can use the
 generated |opsvc| API.
+
+.. topic:: Example Project
+
+   The examples used in this documentation are based on an example project available
+   on github:
+   
+   |link| https://github.com/robotoworks/mechanoid/tree/master/examples/movies
 
 The |mechops| File
 ------------------
@@ -158,22 +165,23 @@ operation arguments, for example:
       operation addMovie(String title, String description, int year)
    }
    
-The example defines two operations, and argumentless ``getMovies()`` operation, 
+The example defines two operations, an argumentless ``getMovies()`` operation, 
 and a ``addMovie(...)`` operation with arguments.
 
 .. _operation-uniqueness:
 
 Operation Uniqueness
 --------------------
-By default, when using the generated Operation Service API, all operations
-are unique.
+By default, when using the generated Operation Service API, when executing 
+operations, all operations are considered unique.
 
 An operation that is unique is an operation where only one of its kind can
 exist in the background queue, or one that is currently executing.
 
-An operation is considered unique if it is of the same signature, for instance
-``addMovie(String, String, int)`` and has the same argument values, for instance,
-we can use the generated API to execute operations:
+An operation is considered unique if it is of the same signature and has the same 
+argument values, for instance ``addMovie(String, String, int)``.
+
+We can use the generated API to execute operations:
 
 .. code-block:: java
 
@@ -183,8 +191,18 @@ we can use the generated API to execute operations:
    int op2 = service.executeAddMovieOperation("The Godfather", "Movie about gangstas.", 1972);
 
 If an operation is unique, in the example above, executing the second operation
-would return the same result (operation id), if the first operation is in the queue
-or currently executing, such that ``op1 == op2``.
+would return the same result (Operation Request ID), if the first operation is 
+in the queue or currently executing, such that ``op1 == op2``.
+
+.. topic:: Why Make Operations Unique?
+
+   Making operations unique reduces power consumption and in some cases network 
+   bandwidth by executing the same operation as little times as possible, if
+   two callers need to execute the same operation with the same arguments it
+   stands to reason that they are interested in the same result, |mechops| deals
+   with this in a smart way by intercepting this and returning the same 
+   Operation Request ID, when the operation completes they both receive the a 
+   callback from the same completing operation.
 
 We can specify that an operation should not be unique, with the ``not unique``
 keyword, for instance:
@@ -199,7 +217,7 @@ keyword, for instance:
    }
    
 Executing the same operation in succession that is ``not unique`` will always
-be added to the queue.
+be added to the operation queue.
 
 Sometimes we just want an operation to be partially unique, we can do this
 by specifying a unique clause and a list of arguments that make it unique,
@@ -218,7 +236,7 @@ Executing this operation, will only be added to the queue if an operation is
 not currently in the queue with the same title, or currently executing with
 the same title.
 
-We can specify many arguments that make an operation unique in a comma seperated 
+We can specify many arguments that make an operation unique in a comma separated 
 list, for instance:
 
 .. code-block:: mechops
@@ -252,9 +270,9 @@ When we implement operations, we add code to the ``onExecute()`` method, and
 return a ``Bundle`` that represents a result.
 
 The ``Bundle`` we return should be constructed with the Mechanoid API method, 
-|jdoc| :java:extdoc:`Operation.createOkResult() <com.robotoworks.mechanoid.ops.Operation.createOkResult()>` to
+:java:extdoc:`Operation.createOkResult() <com.robotoworks.mechanoid.ops.Operation.createOkResult()>` to
 indicate that the operation was successful, or 
-|jdoc| :java:extdoc:`Operation.createErrorResult(Throwable) <com.robotoworks.mechanoid.ops.Operation.createErrorResult(java.lang.Throwable)>` 
+:java:extdoc:`Operation.createErrorResult(Throwable) <com.robotoworks.mechanoid.ops.Operation.createErrorResult(java.lang.Throwable)>` 
 to indicate that an error occurred.
 
 The following example shows how we could implement the ``onExecute()`` of
@@ -286,10 +304,10 @@ the ``GetMoviesOperation`` stub.
       }
    }
 
-The example demonstrates how we call a REST client and how we should construct 
-the result, as previously outlined, if everything is ok, we return 
-``Operation.createOkResult()``, in the event of an error we return 
-``Operation.createErrorResult(Throwable)``.
+For the purposes of the example, we retrieve data using a REST client, the 
+example demonstrates how we should construct the result. As previously outlined, 
+if everything is ok, we return ``Operation.createOkResult()``, in the event of 
+an error we return ``Operation.createErrorResult(Throwable)``.
 
 Operations with arguments, such as the ``addMovie(...)`` operation we saw earlier,
 make their arguments available to the operation stub through properties, for instance
@@ -318,8 +336,8 @@ Executing Operations
 --------------------
 Most commonly operations will be executed from the UI such as an ``Activity``
 or ``Fragment``, the best way to manage operations from the UI is with
-the |jdoc| :java:extdoc:`OperationManager <com.robotoworks.mechanoid.ops.OperationManager>` 
-(or |jdoc| :java:extdoc:`OperationManager <com.robotoworks.mechanoid.ops.SupportOperationManager>` for backward compatibility).
+the :java:extdoc:`OperationManager <com.robotoworks.mechanoid.ops.OperationManager>` 
+(or :java:extdoc:`SupportOperationManager <com.robotoworks.mechanoid.ops.SupportOperationManager>` for backward compatibility).
 
 Executing operations are always performed with an implementation of ``OperationServiceBridge`` 
 described in the next section.
@@ -327,7 +345,7 @@ described in the next section.
 The Service Bridge
 """"""""""""""""""
 Every |opsvcdef| results in a generated implementation of 
-|jdoc| :java:extdoc:`OperationServiceBridge <com.robotoworks.mechanoid.ops.OperationServiceBridge>`  
+:java:extdoc:`OperationServiceBridge <com.robotoworks.mechanoid.ops.OperationServiceBridge>`  
 for instance ``MoviesServiceBridge``.
 
 The bridge acts as a proxy to the service (eg:- ``MoviesService``). It is responsible
@@ -351,15 +369,15 @@ execute these operations:
 
    MoviesServiceBridge bridge = MoviesServiceBridge.getInstance();
    
-   int operationId = service.executeAddMovieOperation("The Godfather", "Movie about gangstas.", 1972);
+   int id = bridge.executeAddMovieOperation("The Godfather", "Movie about gangstas.", 1972);
    
 The method ``executeAddMovieOperation(...)`` is the generated version of
 the method we defined in our |opsvcdef| earlier ``addMovie(...)``.
 
-Every operation always returns an operation request id, for each new operation an 
-incrementing id is assigned that uniquely identifies a request, with the exception 
-of operation uniqueness (see |ref| :ref:`operation-uniqueness`) where the same
-id could be returned for a pending or currently executing operation.
+Every operation always returns an Operation Request ID, for each new operation an 
+incrementing ID is assigned that uniquely identifies an operation request, 
+with the exception of operation uniqueness (see |ref| :ref:`operation-uniqueness`) 
+where the same ID could be returned for a pending or currently executing operation.
 
 .. topic:: The Request ID
    
@@ -369,11 +387,21 @@ id could be returned for a pending or currently executing operation.
    queue and executing it until no operations are left to process.
    
    With this in mind, when we invoke an ``execute`` method on a bridge, we
-   get a **request id** back, which we can use to uniquely identify an operation.
+   get a **Request ID** back, which we can use to uniquely identify an operation.
    
    In order to know what is happening with an operation, we rely on callbacks 
    discussed later.
+ 
+As well as executing operations we can also use the bridge to check if an 
+operation is pending completion (either in the queue or executing), for this
+we need the Operation Request ID that was returned to us when we executed
+the operation:
+
+.. code-block:: java
+
+   boolean pending = bridge.isRequestPending(id);
    
+  
 The Operation Manager
 """""""""""""""""""""
 As previously mentioned when executing operations from a UI class such as 
