@@ -524,12 +524,6 @@ ruleOpArgType returns [Enumerator current=null]
         $current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
     }
-)
-    |(	enumLiteral_6='PendingIntent' 
-	{
-        $current = grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
-    }
 ));
 
 

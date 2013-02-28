@@ -1,5 +1,4 @@
 RULE_ID=4
-T__28=28
 T__27=27
 T__26=26
 T__25=25
@@ -30,7 +29,6 @@ RULE_WS=9
 '{'=13
 'service'=12
 'package'=11
-'PendingIntent'=28
 'String'=23
 'Parcelable'=27
 'int'=24
