@@ -43,8 +43,8 @@ The following should be considered when providing values for the wizard.
 * **Name** is the name of your sqlite database, this name will be used for 
   your generated SqliteOpenHelper.
 
-Once completing the wizard, a new file will be created, the contents will
-contain an empty definition of a database with a single migration.
+On completing the wizard, a new file is created, the contents will contain an 
+empty definition of a database with a single migration.
 
 .. code-block:: mechdb
    

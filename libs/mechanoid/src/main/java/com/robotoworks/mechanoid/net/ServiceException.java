@@ -15,6 +15,9 @@ public class ServiceException extends Exception {
 	public ServiceException(Throwable cause) {
 		initCause(cause);
 	}
-
-
+	
+	@Override
+	public String getMessage() {
+		return getCause().getMessage();
+	}
 }

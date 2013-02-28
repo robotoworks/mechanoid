@@ -35,9 +35,9 @@ public class MovieListFragment extends ListFragment {
 	private MoviesAdapter mAdapter;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
 		mOperationManager = SupportOperationManager
 				.create(getFragmentManager(), 
 						MoviesServiceBridge.getInstance(),
@@ -99,6 +99,8 @@ public class MovieListFragment extends ListFragment {
 		@Override
 		public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 			mAdapter.swapCursor(cursor);
+			
+			setListShown(true);
 		}
 		
 		@Override
