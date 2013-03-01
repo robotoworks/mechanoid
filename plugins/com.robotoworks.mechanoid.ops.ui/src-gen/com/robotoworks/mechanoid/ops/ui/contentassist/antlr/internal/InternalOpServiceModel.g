@@ -313,13 +313,6 @@ rule__OpArgType__Alternatives
 { after(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); }
 )
 
-    |(
-{ before(grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); }
-(	'PendingIntent' 
-)
-{ after(grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); }
-)
-
 ;
 finally {
 	restoreStackSize(stackSize);

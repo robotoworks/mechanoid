@@ -18,8 +18,6 @@ public class Extensions {
 			return "String";
 		case PARCELABLE:
 			return "android.os.Parcelable";
-		case PENDING_INTENT:
-			return "android.app.PendingIntent";
 		}
 		return "";
 	}
@@ -37,7 +35,6 @@ public class Extensions {
 		case STRING:
 			return "putString";
 		case PARCELABLE:
-		case PENDING_INTENT:
 			return "putParcelable";
 		}
 		return "";
@@ -56,7 +53,6 @@ public class Extensions {
 		case STRING:
 			return "getString";
 		case PARCELABLE:
-		case PENDING_INTENT:
 			return "getParcelable";
 		}
 		return "";

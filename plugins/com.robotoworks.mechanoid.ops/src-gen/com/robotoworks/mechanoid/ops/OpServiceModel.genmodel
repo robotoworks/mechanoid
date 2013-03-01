@@ -14,7 +14,6 @@
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Float"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Long"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Parcelable"/>
-      <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/PendingIntent"/>
     </genEnums>
     <genClasses ecoreClass="OpServiceModel.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OpServiceModel.ecore#//Model/packageName"/>

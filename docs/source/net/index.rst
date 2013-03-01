@@ -49,8 +49,8 @@ The following should be considered when providing values for the wizard.
   only be able to create an instance of your generated service client with a 
   mandatory base URL.
   
-Once completing the wizard, a new file will be created, the contents will
-contain an empty service client definition:
+On completing the wizard, a new file is created, the contents will contain an 
+empty service client definition:
 
 .. code-block:: mechnet
    
@@ -59,6 +59,15 @@ contain an empty service client definition:
    client BookServiceClient "http://books.robotoworks.com" {
 
    }
+   
+The INTERNET Permission
+-----------------------
+Before you can use your generated REST client in an Android Application, you 
+must add the ``INTERNET`` permission to your ``AndroidManifest.xml`` as follows:
+
+.. code-block:: xml
+
+   <uses-permission android:name="android.permission.INTERNET"/>
 
 .. _defining-methods:
 

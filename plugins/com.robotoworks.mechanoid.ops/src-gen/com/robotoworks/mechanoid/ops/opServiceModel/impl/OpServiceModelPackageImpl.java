@@ -451,7 +451,6 @@ public class OpServiceModelPackageImpl extends EPackageImpl implements OpService
     addEEnumLiteral(opArgTypeEEnum, OpArgType.FLOAT);
     addEEnumLiteral(opArgTypeEEnum, OpArgType.LONG);
     addEEnumLiteral(opArgTypeEEnum, OpArgType.PARCELABLE);
-    addEEnumLiteral(opArgTypeEEnum, OpArgType.PENDING_INTENT);
 
     // Create resource
     createResource(eNS_URI);

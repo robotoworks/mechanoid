@@ -31,7 +31,6 @@
     <eLiterals name="Float" value="3" literal="float"/>
     <eLiterals name="Long" value="4" literal="long"/>
     <eLiterals name="Parcelable" value="5" literal="Parcelable"/>
-    <eLiterals name="PendingIntent" value="6" literal="PendingIntent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotUnique" eSuperTypes="#//UniqueClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="UniqueDeclaration" eSuperTypes="#//UniqueClause">

@@ -1,0 +1,9 @@
+package com.robotoworks.example.prefs
+
+preferences User {
+	UserId:long = 0
+	Name:String
+	Age:int
+	BankBalance:float = 100.0
+	Subscribed:boolean = true
+}

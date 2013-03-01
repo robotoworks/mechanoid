@@ -311,14 +311,12 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLongLongKeyword_4_0 = (Keyword)cLongEnumLiteralDeclaration_4.eContents().get(0);
 		private final EnumLiteralDeclaration cParcelableEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
 		private final Keyword cParcelableParcelableKeyword_5_0 = (Keyword)cParcelableEnumLiteralDeclaration_5.eContents().get(0);
-		private final EnumLiteralDeclaration cPendingIntentEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
-		private final Keyword cPendingIntentPendingIntentKeyword_6_0 = (Keyword)cPendingIntentEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum OpArgType:
-		//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable | PendingIntent;
+		//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable;
 		public EnumRule getRule() { return rule; }
 
-		//Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable | PendingIntent
+		//Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Boolean="boolean"
@@ -356,12 +354,6 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"Parcelable"
 		public Keyword getParcelableParcelableKeyword_5_0() { return cParcelableParcelableKeyword_5_0; }
-
-		//PendingIntent
-		public EnumLiteralDeclaration getPendingIntentEnumLiteralDeclaration_6() { return cPendingIntentEnumLiteralDeclaration_6; }
-
-		//"PendingIntent"
-		public Keyword getPendingIntentPendingIntentKeyword_6_0() { return cPendingIntentPendingIntentKeyword_6_0; }
 	}
 	
 	private ModelElements pModel;
@@ -461,7 +453,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum OpArgType:
-	//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable | PendingIntent;
+	//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable;
 	public OpArgTypeElements getOpArgTypeAccess() {
 		return (unknownRuleOpArgType != null) ? unknownRuleOpArgType : (unknownRuleOpArgType = new OpArgTypeElements());
 	}
