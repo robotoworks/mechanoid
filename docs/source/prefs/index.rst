@@ -1,5 +1,9 @@
 |mechprefs|
 ===========
+.. note:: 
+   You must install the Mechanoid Plugin before you can use |mechprefs|.
+   |ref| See :doc:`/start`
+   
 |mechprefs| provides a simple way to access Android Shared Preferences. Rather
 than access your preferences by constants or hand-rolling a wrapper to access
 them, |mechprefs| provides a simple language (DSL) that can be used to
