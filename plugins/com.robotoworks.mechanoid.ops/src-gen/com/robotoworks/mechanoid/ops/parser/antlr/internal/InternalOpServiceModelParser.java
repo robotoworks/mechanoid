@@ -22,10 +22,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'not'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'", "'PendingIntent'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'not'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'"
     };
     public static final int RULE_ID=4;
-    public static final int T__28=28;
     public static final int T__27=27;
     public static final int T__26=26;
     public static final int T__25=25;
@@ -495,7 +494,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( ((LA3_0>=22 && LA3_0<=28)) ) {
+            if ( ((LA3_0>=22 && LA3_0<=27)) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -1142,7 +1141,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOpArgType"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:489:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) ;
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:489:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) ) ;
     public final Enumerator ruleOpArgType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1152,15 +1151,14 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
         Token enumLiteral_3=null;
         Token enumLiteral_4=null;
         Token enumLiteral_5=null;
-        Token enumLiteral_6=null;
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:491:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:491:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
-            int alt8=7;
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) )
+            int alt8=6;
             switch ( input.LA(1) ) {
             case 22:
                 {
@@ -1190,11 +1188,6 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
             case 27:
                 {
                 alt8=6;
-                }
-                break;
-            case 28:
-                {
-                alt8=7;
                 }
                 break;
             default:
@@ -1307,23 +1300,6 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 7 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
-                    {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:8: enumLiteral_6= 'PendingIntent'
-                    {
-                    enumLiteral_6=(Token)match(input,28,FOLLOW_28_in_ruleOpArgType1139); 
-
-                            current = grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-                            newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
-                        
-
-                    }
-
-
-                    }
-                    break;
 
             }
 
@@ -1364,9 +1340,9 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleOperation361 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_15_in_ruleOperation398 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleOperation415 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_ruleOperation432 = new BitSet(new long[]{0x000000001FC40000L});
+    public static final BitSet FOLLOW_16_in_ruleOperation432 = new BitSet(new long[]{0x000000000FC40000L});
     public static final BitSet FOLLOW_ruleOperationArg_in_ruleOperation454 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_17_in_ruleOperation467 = new BitSet(new long[]{0x000000001FC00000L});
+    public static final BitSet FOLLOW_17_in_ruleOperation467 = new BitSet(new long[]{0x000000000FC00000L});
     public static final BitSet FOLLOW_ruleOperationArg_in_ruleOperation488 = new BitSet(new long[]{0x0000000000060000L});
     public static final BitSet FOLLOW_18_in_ruleOperation504 = new BitSet(new long[]{0x0000000000180002L});
     public static final BitSet FOLLOW_ruleUniqueClause_in_ruleOperation525 = new BitSet(new long[]{0x0000000000000002L});
@@ -1395,6 +1371,5 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_25_in_ruleOpArgType1088 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_ruleOpArgType1105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_27_in_ruleOpArgType1122 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleOpArgType1139 = new BitSet(new long[]{0x0000000000000002L});
 
 }

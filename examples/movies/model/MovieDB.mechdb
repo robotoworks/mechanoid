@@ -11,4 +11,21 @@ database MovieDB {
 			unique (title, year) on conflict replace
 		);
 	}
+	
+	migration {
+		create table table1 (
+			_id integer
+		);
+		
+		create view view1 as select * from table1;
+		
+		
+	    alter table table1 add column datstr text;
+	    
+	    drop view view1; 
+	    
+	    create view view1 as
+	        select _id as _id, datstr as datstr from table1;
+	        
+	}
 }

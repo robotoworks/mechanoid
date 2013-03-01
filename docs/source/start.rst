@@ -51,7 +51,7 @@ Copy the mechanoid.jar library to the libs folder of your Android project
 .. rubric:: Step 3: Initialize Mechanoid in your Application
 
 For mechanoid to work it needs to be initialized, you do this by adding calling 
-|jdoc| :java:extdoc:`Mechanoid.init(Context) <com.robotoworks.mechanoid.Mechanoid.init(android.content.Context)>` 
+:java:extdoc:`Mechanoid.init(Context) <com.robotoworks.mechanoid.Mechanoid.init(android.content.Context)>` 
 in a custom application class as follows:
 
 .. code-block:: java

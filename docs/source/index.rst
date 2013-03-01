@@ -99,4 +99,5 @@ Documentation Contents
    db/index
    net/index
    ops/index
+   prefs/index
    credits

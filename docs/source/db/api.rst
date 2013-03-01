@@ -19,7 +19,7 @@ example to get a full picture of the generated API.
 Registering the Provider
 ------------------------
 Before we can use the generated API, you must register your generated 
-content provider in the ``AndroidManifest.xml`` file:
+content provider in the ``AndroidManifest.xml`` file.
 
 .. code-block:: xml
 
@@ -184,7 +184,7 @@ contract, they are thin wrappers around Content Values with the purpose of
 providing some clarity in your code.
 
 All value builders derive from 
-|jdoc| :java:extdoc:`AbstractValuesBuilder <com.robotoworks.mechanoid.db.AbstractValuesBuilder>`,
+:java:extdoc:`AbstractValuesBuilder <com.robotoworks.mechanoid.db.AbstractValuesBuilder>`,
 the following sections outline their main functionality.
 
 Inserting
@@ -265,7 +265,7 @@ for this insert.
 Query API
 ---------
 Selecting data in |mechdb| is performed using a single utility class,
-|jdoc| :java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>`. 
+:java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>`. 
 
 ``SQuery`` provides a simple way to specify selection criteria, it was
 conceived as a substitute for string concatentation (which can often look
@@ -296,7 +296,7 @@ Expressions with ``SQuery`` are performed with the ``expr()``
 method overloads, which can be chained to form a full query.
 
 Operators in expressions such as ``=``, ``>=``, ``<=``, ``LIKE``, etc, are provided
-by constants in |jdoc| :java:extdoc:`SQuery.Op <com.robotoworks.mechanoid.db.SQuery.Op>`,
+by constants in :java:extdoc:`SQuery.Op <com.robotoworks.mechanoid.db.SQuery.Op>`,
 for instance, we can use ``OP.EQ`` for an ``=`` operator, or ``Op.LIKE`` for the
 ``LIKE`` operator, the javadoc for ``SQuery.Op`` explains what each operator
 means.
@@ -317,7 +317,7 @@ Will translate to the SQL expression
 
 Updating Records
 """"""""""""""""
-With |jdoc| :java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>` we can
+With :java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>` we can
 update records by using the terminating method ``update()``, the following example shows how to change
 all recipes with the title of Omelette to Scrambled Eggs.
 
@@ -402,7 +402,7 @@ represents a single row. The following example shows how we can use the
    record.save();
    
 All generated ActiveRecord implementations derive 
-from |jdoc| :java:extdoc:`ActiveRecord <com.robotoworks.mechanoid.db.ActiveRecord>`.
+from :java:extdoc:`ActiveRecord <com.robotoworks.mechanoid.db.ActiveRecord>`.
 
 Using ActiveRecord to manipulate our data can sometimes provide better clarity
 in code.
@@ -417,7 +417,7 @@ The simplest way to select a record is by its id, for this we can use the genera
    RecipesRecord record = RecipesRecord.get(123);
 
 To select records with criteria, we use the ``select(Uri)`` and ``selectFirst(Uri)``
-of |jdoc| :java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>`.
+of :java:extdoc:`SQuery <com.robotoworks.mechanoid.db.SQuery>`.
 
 For instance to select all recipes we can do this:
 
@@ -438,7 +438,7 @@ terminating method as follows:
 Creating/Updating Records
 """""""""""""""""""""""""
 Creating or updating records can be achieved using the 
-|jdoc| :java:extdoc:`save() <com.robotoworks.mechanoid.db.ActiveRecord.save>` 
+:java:extdoc:`save() <com.robotoworks.mechanoid.db.ActiveRecord.save>` 
 method.
 
 If a record is saved with an id set to zero (which is the default when
@@ -477,7 +477,7 @@ that have changed will be set.
 
 Sometimes this might not be desirable and we can either make all fields
 dirty, or not dirty by called the 
-|jdoc| :java:extdoc:`makeDirty(boolean) <com.robotoworks.mechanoid.db.ActiveRecord.makeDirty>`
+:java:extdoc:`makeDirty(boolean) <com.robotoworks.mechanoid.db.ActiveRecord.makeDirty>`
 with true or false respectively.
  
 Projection and Column Indices

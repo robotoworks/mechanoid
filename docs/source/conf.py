@@ -260,3 +260,29 @@ javadoc_url_map = {
     'com.robotoworks.mechanoid' : ('http://robotoworks.com/mechanoid/doc/apidocs/reference', 'javadoc')
 }
 
+#
+# MONKEY PATCHING
+#
+from sphinx.highlighting import lexers
+from sphinx.writers.html import HTMLTranslator
+
+# overwritten
+orig_visit_literal_block = HTMLTranslator.visit_literal_block
+
+def visit_literal_block(self, node):
+	lang = node['language']
+	
+	# Dirty warm up hack so we can get the lexer name 
+	# in the next statement
+	self.highlighter.highlight_block('', lang)
+            
+	
+	# self.body.append('<div class="example-' + lang + '">')
+	self.body.append('<b>' + lexers[lang].name + '</b>')
+	
+	orig_visit_literal_block(self, node)
+	
+	# self.body.append('</div>')
+        
+HTMLTranslator.visit_literal_block = visit_literal_block
+     

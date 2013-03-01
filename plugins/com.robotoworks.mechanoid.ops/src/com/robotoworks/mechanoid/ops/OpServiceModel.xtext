@@ -29,8 +29,7 @@ enum OpArgType:
 	Integer='int' | 
 	Float='float' |
 	Long='long' |
-	Parcelable='Parcelable' |
-	PendingIntent='PendingIntent'
+	Parcelable='Parcelable'
 	;
 
 

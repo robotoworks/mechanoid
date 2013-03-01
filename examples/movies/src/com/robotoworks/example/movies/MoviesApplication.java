@@ -23,7 +23,7 @@ public class MoviesApplication extends Application {
 	}
 
 	protected void createMoviesApiClient() {
-		mMoviesApiClient = new MoviesApiClient();
+		mMoviesApiClient = new MoviesApiClient(BuildConfig.DEBUG);
 	}
 	
 	public static MoviesApiClient getMoviesApiClient() {

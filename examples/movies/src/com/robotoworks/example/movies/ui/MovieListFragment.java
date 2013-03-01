@@ -15,6 +15,8 @@ import com.robotoworks.example.movies.ops.MoviesServiceBridge;
 import com.robotoworks.mechanoid.db.SQuery;
 import com.robotoworks.mechanoid.ops.Operation;
 import com.robotoworks.mechanoid.ops.OperationManagerCallbacks;
+import com.robotoworks.mechanoid.ops.OperationServiceBridge;
+import com.robotoworks.mechanoid.ops.OperationServiceListener;
 import com.robotoworks.mechanoid.ops.SupportOperationManager;
 
 public class MovieListFragment extends ListFragment {
@@ -35,9 +37,9 @@ public class MovieListFragment extends ListFragment {
 	private MoviesAdapter mAdapter;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
 		mOperationManager = SupportOperationManager
 				.create(getFragmentManager(), 
 						MoviesServiceBridge.getInstance(),
@@ -54,8 +56,8 @@ public class MovieListFragment extends ListFragment {
 		= new OperationManagerCallbacks<MoviesServiceBridge>() {
 
 		@Override
-		public void onOperationComplete(MoviesServiceBridge bridge, int id, Bundle result, boolean fromCache) {
-			if(id == OP_GET_MOVIES) {
+		public void onOperationComplete(MoviesServiceBridge bridge, int code, Bundle result, boolean fromCache) {
+			if(code == OP_GET_MOVIES) {
 				if(Operation.isResultOk(result)) {
 					
 					getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
@@ -69,8 +71,8 @@ public class MovieListFragment extends ListFragment {
 		}
 
 		@Override
-		public int createOperation(MoviesServiceBridge bridge, int id) {
-			if(id == OP_GET_MOVIES) {
+		public int createOperation(MoviesServiceBridge bridge, int code) {
+			if(code == OP_GET_MOVIES) {
 				return bridge.executeGetMoviesOperation();
 			}
 			
@@ -78,7 +80,7 @@ public class MovieListFragment extends ListFragment {
 		}
 		
 		@Override
-		public void onOperationPending(MoviesServiceBridge bridge, int id) {
+		public void onOperationPending(MoviesServiceBridge bridge, int code) {
 			setListShown(false);
 		}
 	};
@@ -99,6 +101,8 @@ public class MovieListFragment extends ListFragment {
 		@Override
 		public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 			mAdapter.swapCursor(cursor);
+			
+			setListShown(true);
 		}
 		
 		@Override
@@ -123,4 +127,11 @@ public class MovieListFragment extends ListFragment {
 					}, 0);
 		}
 	}
+	
+	private OperationServiceListener mOperationListener = new OperationServiceListener() {
+		@Override
+		public void onOperationComplete(OperationServiceBridge bridge, int requestId, Bundle result) {
+			// TODO Implement completion logic
+		}
+	};
 }

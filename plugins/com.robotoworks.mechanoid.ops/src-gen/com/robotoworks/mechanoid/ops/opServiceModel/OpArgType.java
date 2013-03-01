@@ -77,17 +77,7 @@ public enum OpArgType implements Enumerator
    * @generated
    * @ordered
    */
-  PARCELABLE(5, "Parcelable", "Parcelable"),
-
-  /**
-   * The '<em><b>Pending Intent</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #PENDING_INTENT_VALUE
-   * @generated
-   * @ordered
-   */
-  PENDING_INTENT(6, "PendingIntent", "PendingIntent");
+  PARCELABLE(5, "Parcelable", "Parcelable");
 
   /**
    * The '<em><b>Boolean</b></em>' literal value.
@@ -180,21 +170,6 @@ public enum OpArgType implements Enumerator
   public static final int PARCELABLE_VALUE = 5;
 
   /**
-   * The '<em><b>Pending Intent</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>Pending Intent</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #PENDING_INTENT
-   * @model name="PendingIntent"
-   * @generated
-   * @ordered
-   */
-  public static final int PENDING_INTENT_VALUE = 6;
-
-  /**
    * An array of all the '<em><b>Op Arg Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -209,7 +184,6 @@ public enum OpArgType implements Enumerator
       FLOAT,
       LONG,
       PARCELABLE,
-      PENDING_INTENT,
     };
 
   /**
@@ -274,7 +248,6 @@ public enum OpArgType implements Enumerator
       case FLOAT_VALUE: return FLOAT;
       case LONG_VALUE: return LONG;
       case PARCELABLE_VALUE: return PARCELABLE;
-      case PENDING_INTENT_VALUE: return PENDING_INTENT;
     }
     return null;
   }

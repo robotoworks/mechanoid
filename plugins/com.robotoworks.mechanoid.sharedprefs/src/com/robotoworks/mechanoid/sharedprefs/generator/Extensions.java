@@ -34,7 +34,12 @@ public class Extensions {
 			} else if(lit instanceof BooleanLiteral) {
 				return ((BooleanLiteral)lit).getLiteral().toString();
 			} else if(lit instanceof NumericLiteral) {
-				return ((NumericLiteral)lit).getLiteral().toString();
+				float v = ((NumericLiteral)lit).getLiteral().floatValue();
+				if(v - (int)v != v) {
+				    return String.valueOf(v) + "f";
+				} else {
+				    return String.valueOf((int)v);
+				}
 			}
 		} 
 		
