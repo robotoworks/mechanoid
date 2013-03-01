@@ -5,7 +5,7 @@ from pygments.token import Keyword, Text, Comment, Name, String, Number, \
 __all__ = ['MechDBLexer']
 
 class MechDBLexer(RegexLexer):
-    name = 'MechDB'
+    name = 'Mechanoid DB'
     aliases = ['mechdb']
     filenames = ['*.mechdb']
     mimetypes = ['text/mechdb']
@@ -25,7 +25,7 @@ class MechDBLexer(RegexLexer):
              r'table|view|trigger|before|after|instead|of|for|each|row|when|' 
              r'begin|alter|if|primary|key|autoincrement|default|constraint|' 
              r'unique|check|conflict|delete|insert|replace|into|values|set|'
-             r'rollback|abort|fail|ignore|replace|package|drop)\b', 
+             r'rollback|abort|fail|ignore|replace|package|drop|add|column|rename|to)\b', 
              Keyword),
             (r'"(\\\\|\\"|[^"])*"', String),
             (r"'(\\\\|\\'|[^'])*'", String),
@@ -38,7 +38,7 @@ class MechDBLexer(RegexLexer):
     }
     
 class MechNetLexer(RegexLexer):
-    name = 'MechNet'
+    name = 'Mechanoid Net'
     aliases = ['mechnet']
     filenames = ['*.mechnet']
     mimetypes = ['text/mechnet']
@@ -63,7 +63,7 @@ class MechNetLexer(RegexLexer):
     }
     
 class MechOpsLexer(RegexLexer):
-    name = 'MechOps'
+    name = 'Mechanoid Ops'
     aliases = ['mechops']
     filenames = ['*.mechops']
     mimetypes = ['text/mechops']
@@ -74,6 +74,30 @@ class MechOpsLexer(RegexLexer):
             (r'//.*?\n', Comment.Single),
             (r'/\*.*?\*/', Comment.Multiline),
             (r'(package|service|operation|not|unique|boolean|String|int|float|long|Parcelable|PendingIntent)\b', 
+             Keyword),
+            (r'"(\\\\|\\"|[^"])*"', String),
+            (r"'(\\\\|\\'|[^'])*'", String),
+            (r'/[^\{]+', String),
+            (r'[a-zA-Z_\$][a-zA-Z0-9_]*', Name),
+            (r'[~\^\*!%&\[\]\(\)\{\}<>\|+=:;,./?-]', Operator),
+            (r'[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?', Number.Float),
+            (r'0x[0-9a-fA-F]+', Number.Hex),
+            (r'[0-9]+L?', Number.Integer),
+        ]
+    }
+    
+class MechPrefsLexer(RegexLexer):
+    name = 'Mechanoid Prefs'
+    aliases = ['mechprefs']
+    filenames = ['*.mechprefs']
+    mimetypes = ['text/mechprefs']
+    
+    tokens = {
+        'root': [
+            (r'[^\S\n]+', Text),
+            (r'//.*?\n', Comment.Single),
+            (r'/\*.*?\*/', Comment.Multiline),
+            (r'(package|preferences|long|String|int|float|boolean|true|false)\b', 
              Keyword),
             (r'"(\\\\|\\"|[^"])*"', String),
             (r"'(\\\\|\\'|[^'])*'", String),

@@ -19,7 +19,7 @@ example to get a full picture of the generated API.
 Registering the Provider
 ------------------------
 Before we can use the generated API, you must register your generated 
-content provider in the ``AndroidManifest.xml`` file:
+content provider in the ``AndroidManifest.xml`` file.
 
 .. code-block:: xml
 
