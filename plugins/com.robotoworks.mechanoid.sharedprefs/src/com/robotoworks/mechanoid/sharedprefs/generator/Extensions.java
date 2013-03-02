@@ -35,7 +35,7 @@ public class Extensions {
 				return ((BooleanLiteral)lit).getLiteral().toString();
 			} else if(lit instanceof NumericLiteral) {
 				float v = ((NumericLiteral)lit).getLiteral().floatValue();
-				if(v - (int)v != v) {
+				if((v - Math.floor(v))  > 0) {
 				    return String.valueOf(v) + "f";
 				} else {
 				    return String.valueOf((int)v);

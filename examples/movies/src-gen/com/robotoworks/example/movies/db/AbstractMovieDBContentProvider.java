@@ -22,7 +22,6 @@ import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
 import com.robotoworks.mechanoid.db.ContentProviderActions;
 import com.robotoworks.example.movies.db.AbstractMovieDBOpenHelper.Sources;
 import com.robotoworks.example.movies.db.MoviesRecord;
-import com.robotoworks.example.movies.db.Table1Record;
 
 public abstract class AbstractMovieDBContentProvider extends MechanoidContentProvider {
 
@@ -31,13 +30,9 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
     
 	private static final int MOVIES = 0;
 	private static final int MOVIES_ID = 1;
-	private static final int TABLE1 = 2;
-	private static final int TABLE1_ID = 3;
 
-	private static final int VIEW1 = 4;
-	private static final int VIEW1_ID = 5;
 	
-	public static final int NUM_URI_MATCHERS = 6;
+	public static final int NUM_URI_MATCHERS = 2;
 
 	static {
 		sUriMatcher = buildUriMatcher();
@@ -46,10 +41,6 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
 
 		sContentTypes[MOVIES] = MovieDBContract.Movies.CONTENT_TYPE;
 		sContentTypes[MOVIES_ID] = MovieDBContract.Movies.ITEM_CONTENT_TYPE;
-		sContentTypes[TABLE1] = MovieDBContract.Table1.CONTENT_TYPE;
-		sContentTypes[TABLE1_ID] = MovieDBContract.Table1.ITEM_CONTENT_TYPE;
-		sContentTypes[VIEW1] = MovieDBContract.View1.CONTENT_TYPE;
-		sContentTypes[VIEW1_ID] = MovieDBContract.View1.ITEM_CONTENT_TYPE;
 	}
 	
     private static UriMatcher buildUriMatcher() {
@@ -59,12 +50,8 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
 		// Sources
 		matcher.addURI(authority, "movies", MOVIES);
 		matcher.addURI(authority, "movies/#", MOVIES_ID);
-		matcher.addURI(authority, "table1", TABLE1);
-		matcher.addURI(authority, "table1/#", TABLE1_ID);
 
 		// Views
-		matcher.addURI(authority, "view1", VIEW1);
-		matcher.addURI(authority, "view1/#", VIEW1_ID);
 
 		// User Actions
         return matcher;
@@ -206,14 +193,6 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
 				return createMoviesActions();
 			case MOVIES_ID:
 				return createMoviesByIdActions();
-			case TABLE1: 
-				return createTable1Actions();
-			case TABLE1_ID:
-				return createTable1ByIdActions();
-			case VIEW1:
-				return createView1Actions();
-			case VIEW1_ID: 
-				return createView1ByIdActions();
 			default:
 				throw new UnsupportedOperationException("Unknown id: " + id);
     	}
@@ -225,22 +204,6 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
     
     protected ContentProviderActions createMoviesActions() {
     	return new DefaultContentProviderActions(Sources.MOVIES, false, MoviesRecord.getFactory());
-    }
-    
-    protected ContentProviderActions createTable1ByIdActions() {
-    	return new DefaultContentProviderActions(Sources.TABLE1, true, Table1Record.getFactory());
-    }
-    
-    protected ContentProviderActions createTable1Actions() {
-    	return new DefaultContentProviderActions(Sources.TABLE1, false, Table1Record.getFactory());
-    }
-    
-    protected ContentProviderActions createView1ByIdActions() {
-    	return new DefaultContentProviderActions(Sources.VIEW1, true, View1Record.getFactory());
-    }
-    
-    protected ContentProviderActions createView1Actions() {
-    	return new DefaultContentProviderActions(Sources.VIEW1, false, View1Record.getFactory());
     }
     
 }
