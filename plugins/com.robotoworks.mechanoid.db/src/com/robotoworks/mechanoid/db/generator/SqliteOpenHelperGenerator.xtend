@@ -27,7 +27,7 @@ class SqliteOpenHelperGenerator {
 				«ENDIF»
 				
 				public abstract class Abstract«model.database.name.pascalize()»OpenHelper extends MechanoidSQLiteOpenHelper {
-					public static final String DATABASE_NAME = "«model.database.name».db";
+					private static final String DATABASE_NAME = "«model.database.name».db";
 				
 					public static final int VERSION = «model.database.migrations.size»;
 				
@@ -43,7 +43,11 @@ class SqliteOpenHelperGenerator {
 					public Abstract«model.database.name.pascalize()»OpenHelper(Context context) {
 						super(context, DATABASE_NAME, null, VERSION);
 					}
-				
+
+					public Abstract«model.database.name.pascalize()»OpenHelper(Context context, String name) {
+						super(context, name, null, VERSION);
+					}
+			
 					@Override
 					public void onCreate(SQLiteDatabase db) {
 						«snapshot.tables.generateTableStatements»

@@ -12,7 +12,7 @@ import com.robotoworks.example.recipes.content.migrations.DefaultRecipesDBMigrat
 import com.robotoworks.example.recipes.content.migrations.DefaultRecipesDBMigrationV3;
 
 public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHelper {
-	public static final String DATABASE_NAME = "RecipesDB.db";
+	private static final String DATABASE_NAME = "RecipesDB.db";
 
 	public static final int VERSION = 3;
 
@@ -27,7 +27,11 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 	public AbstractRecipesDBOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null, VERSION);
 	}
-
+	
+	public AbstractRecipesDBOpenHelper(Context context, String name) {
+		super(context, name, null, VERSION);
+	}
+	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(
