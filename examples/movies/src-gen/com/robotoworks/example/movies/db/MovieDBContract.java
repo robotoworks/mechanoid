@@ -40,15 +40,7 @@ public class MovieDBContract  {
 		String YEAR = "year";
 	}
 	
-	interface Table1Columns {
-		String DATSTR = "datstr";
-	}
-	
 
-	interface View1Columns {
-		String DATSTR = "datstr";
-	}
-	
 			
 	/**
 	 * <p>Column definitions and helper methods to work with the Movies.</p>
@@ -116,123 +108,7 @@ public class MovieDBContract  {
 			}
 		}
 	}
-	/**
-	 * <p>Column definitions and helper methods to work with the Table1.</p>
-	 */
-	public static class Table1 implements Table1Columns, BaseColumns {
-	    public static final Uri CONTENT_URI = 
-				BASE_CONTENT_URI.buildUpon().appendPath("table1").build();
-	
-		/**
-		 * <p>The content type for a cursor that contains many Table1 rows.</p>
-		 */
-	    public static final String CONTENT_TYPE =
-	            "vnd.android.cursor.dir/vnd.moviedb.table1";
-	
-		/**
-		 * <p>The content type for a cursor that contains a single Table1 row.</p>
-		 */
-		public static final String ITEM_CONTENT_TYPE =
-			"vnd.android.cursor.item/vnd.moviedb.table1";
-	
-		/**
-		 * <p>Builds a Uri with appended id for a row in Table1, 
-		 * eg:- content://com.robotoworks.example.movies.db.moviedb/table1/123.</p>
-		 */
-	    public static Uri buildUriWithId(long id) {
-	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
-	    }
-	
-		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
-		}
-		
-		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
-		}
-		
-		/**
-		 * <p>Create a new Builder for Table1</p>
-		 */
-		public static Builder newBuilder() {
-			return new Builder();
-		}
-		
-		/**
-		 * <p>Build and execute insert or update statements for Table1.</p>
-		 *
-		 * <p>Use {@link Table1#newBuilder()} to create new builder</p>
-		 */
-		public static class Builder extends AbstractValuesBuilder {
-			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
-			}
-			
-			public Builder setDatstr(String value) {
-				mValues.put(DATSTR, value);
-				return this;
-			}
-		}
-	}
 
-	/**
-	 * <p>Column definitions and helper methods to work with the View1.</p>
-	 */
-	public static class View1 implements View1Columns, BaseColumns {
-	    public static final Uri CONTENT_URI = 
-				BASE_CONTENT_URI.buildUpon().appendPath("view1").build();
-	
-		/**
-		 * <p>The content type for a cursor that contains many View1 rows.</p>
-		 */
-	    public static final String CONTENT_TYPE =
-	            "vnd.android.cursor.dir/vnd.moviedb.view1";
-	
-		/**
-		 * <p>The content type for a cursor that contains a single View1 row.</p>
-		 */
-		public static final String ITEM_CONTENT_TYPE =
-			"vnd.android.cursor.item/vnd.moviedb.view1";
-	
-		/**
-		 * <p>Builds a Uri with appended id for a row in View1, 
-		 * eg:- content://com.robotoworks.example.movies.db.moviedb/view1/123.</p>
-		 */
-	    public static Uri buildUriWithId(long id) {
-	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
-	    }
-	
-		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
-		}
-		
-		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
-		}
-		
-		/**
-		 * <p>Create a new Builder for View1</p>
-		 */
-		public static Builder newBuilder() {
-			return new Builder();
-		}
-		
-		/**
-		 * <p>Build and execute insert or update statements for View1.</p>
-		 *
-		 * <p>Use {@link View1#newBuilder()} to create new builder</p>
-		 */
-		public static class Builder extends AbstractValuesBuilder {
-			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
-			}
-			
-			public Builder setDatstr(String value) {
-				mValues.put(View1.DATSTR, value);
-				return this;
-			}
-		}
-	}
 	
 
 	private MovieDBContract(){}
