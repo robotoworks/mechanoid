@@ -85,7 +85,7 @@ public class SqliteOpenHelperGenerator {
     _builder.append("OpenHelper extends MechanoidSQLiteOpenHelper {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("public static final String DATABASE_NAME = \"");
+    _builder.append("private static final String DATABASE_NAME = \"");
     DatabaseBlock _database_4 = model.getDatabase();
     String _name_2 = _database_4.getName();
     _builder.append(_name_2, "	");
@@ -156,6 +156,22 @@ public class SqliteOpenHelperGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("public Abstract");
+    DatabaseBlock _database_7 = model.getDatabase();
+    String _name_8 = _database_7.getName();
+    String _pascalize_3 = Strings.pascalize(_name_8);
+    _builder.append(_pascalize_3, "	");
+    _builder.append("OpenHelper(Context context, String name) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("super(context, name, null, VERSION);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
@@ -187,8 +203,8 @@ public class SqliteOpenHelperGenerator {
     _builder.append("protected SQLiteMigration createMigration(int version) {");
     _builder.newLine();
     {
-      DatabaseBlock _database_7 = model.getDatabase();
-      EList<MigrationBlock> _migrations_3 = _database_7.getMigrations();
+      DatabaseBlock _database_8 = model.getDatabase();
+      EList<MigrationBlock> _migrations_3 = _database_8.getMigrations();
       int _size_2 = _migrations_3.size();
       boolean _greaterThan_1 = (_size_2 > 1);
       if (_greaterThan_1) {
@@ -199,8 +215,8 @@ public class SqliteOpenHelperGenerator {
         _builder.append("switch(version) {");
         _builder.newLine();
         {
-          DatabaseBlock _database_8 = model.getDatabase();
-          EList<MigrationBlock> _migrations_4 = _database_8.getMigrations();
+          DatabaseBlock _database_9 = model.getDatabase();
+          EList<MigrationBlock> _migrations_4 = _database_9.getMigrations();
           Iterable<MigrationBlock> _drop_1 = IterableExtensions.<MigrationBlock>drop(_migrations_4, 1);
           for(final MigrationBlock migration_1 : _drop_1) {
             _builder.append("\t\t");
@@ -215,10 +231,10 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return create");
-            DatabaseBlock _database_9 = model.getDatabase();
-            String _name_8 = _database_9.getName();
-            String _pascalize_3 = Strings.pascalize(_name_8);
-            _builder.append(_pascalize_3, "				");
+            DatabaseBlock _database_10 = model.getDatabase();
+            String _name_9 = _database_10.getName();
+            String _pascalize_4 = Strings.pascalize(_name_9);
+            _builder.append(_pascalize_4, "				");
             _builder.append("MigrationV");
             _builder.append(version_1, "				");
             _builder.append("();");
@@ -248,8 +264,8 @@ public class SqliteOpenHelperGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      DatabaseBlock _database_10 = model.getDatabase();
-      EList<MigrationBlock> _migrations_5 = _database_10.getMigrations();
+      DatabaseBlock _database_11 = model.getDatabase();
+      EList<MigrationBlock> _migrations_5 = _database_11.getMigrations();
       int _size_3 = _migrations_5.size();
       boolean _greaterThan_2 = (_size_3 > 1);
       if (_greaterThan_2) {
@@ -257,16 +273,16 @@ public class SqliteOpenHelperGenerator {
         int version_2 = 1;
         _builder.newLineIfNotEmpty();
         {
-          DatabaseBlock _database_11 = model.getDatabase();
-          EList<MigrationBlock> _migrations_6 = _database_11.getMigrations();
+          DatabaseBlock _database_12 = model.getDatabase();
+          EList<MigrationBlock> _migrations_6 = _database_12.getMigrations();
           Iterable<MigrationBlock> _drop_2 = IterableExtensions.<MigrationBlock>drop(_migrations_6, 1);
           for(final MigrationBlock migration_2 : _drop_2) {
             _builder.append("\t");
             _builder.append("protected SQLiteMigration create");
-            DatabaseBlock _database_12 = model.getDatabase();
-            String _name_9 = _database_12.getName();
-            String _pascalize_4 = Strings.pascalize(_name_9);
-            _builder.append(_pascalize_4, "	");
+            DatabaseBlock _database_13 = model.getDatabase();
+            String _name_10 = _database_13.getName();
+            String _pascalize_5 = Strings.pascalize(_name_10);
+            _builder.append(_pascalize_5, "	");
             _builder.append("MigrationV");
             int _plus_2 = (version_2 + 1);
             int _version_2 = version_2 = _plus_2;
@@ -276,10 +292,10 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return new Default");
-            DatabaseBlock _database_13 = model.getDatabase();
-            String _name_10 = _database_13.getName();
-            String _pascalize_5 = Strings.pascalize(_name_10);
-            _builder.append(_pascalize_5, "		");
+            DatabaseBlock _database_14 = model.getDatabase();
+            String _name_11 = _database_14.getName();
+            String _pascalize_6 = Strings.pascalize(_name_11);
+            _builder.append(_pascalize_6, "		");
             _builder.append("MigrationV");
             _builder.append(version_2, "		");
             _builder.append("();");
