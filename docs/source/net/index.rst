@@ -118,8 +118,7 @@ this:-
    {
       "id":123,
       "title":"Musashi",
-      "description":"Eiji Yoshikawa",
-      "author":Author
+      "description":"Eiji Yoshikawa"
    }
    
 Or, we can define the response to map to an entity like this:-
@@ -263,8 +262,9 @@ segment for our ``getBook`` method:
    }
 
 The format for a parameterized segment is ``segement_name:type`` where ``type`` 
-could be either String, long, int, boolean, double or any of the supported 
-primitive types.
+could be either ``String``, ``long``, ``int``, ``boolean``, ``double`` or any 
+of the supported primitive types, currently only types that are directly 
+compatible with JSON types are supported.
 
 Using the generated service client will require us to provide the id parameter 
 as follows-:
@@ -280,7 +280,7 @@ URL Parameters
 URL parameters or query strings can be defined by adding a ``params`` block to
 any method definition.
 
-For example we can add a ``offset`` and ``limit`` parameters to our ``getBooks``
+For example we can add ``offset`` and ``limit`` parameters to our ``getBooks``
 service method:
 
 .. code-block:: mechnet
@@ -589,6 +589,43 @@ Using the generated code would then look like the following:
    GetBooksResponse content = response.parse();
    List<Book> books = content.getBooks();
 
+
+Sharing a Base Response
+"""""""""""""""""""""""
+Often JSON REST responses have common properties that are always returned in
+a response, consider the following example:
+
+.. code-block:: mechnet
+
+   post createBook /books {
+       body Book
+       response {
+           success:boolean,
+           status_message:String,
+           book_id:int
+       }
+   }
+   
+The response gives a ``success`` property and a ``status_message`` property, we
+can extract these values into a base response, which we define as another entity
+and we can reuse it for all responses that have these properties, for example:
+
+.. code-block:: mechnet
+
+   entity BaseBookResponse {
+       success:boolean,
+       status_message:String,     
+   }
+   
+   post createBook /books {
+       body Book
+       response extends BaseBookResponse {
+           book_id:int
+       }
+   }
+   
+The generated ``Result`` for ``createBook`` will now provide accessors
+for ``success`` and ``status_message``.
 
 The Generated API
 -----------------
