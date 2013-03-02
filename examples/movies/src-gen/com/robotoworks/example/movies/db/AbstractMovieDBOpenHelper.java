@@ -8,23 +8,24 @@ import android.database.sqlite.SQLiteDatabase;
 import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.SQLiteMigration;
 
-import com.robotoworks.example.movies.db.migrations.DefaultMovieDBMigrationV2;
 
 public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelper {
-	public static final String DATABASE_NAME = "MovieDB.db";
+	private static final String DATABASE_NAME = "MovieDB.db";
 
-	public static final int VERSION = 2;
+	public static final int VERSION = 1;
 
 	public interface Sources {
 		String MOVIES = "movies";
-		String TABLE1 = "table1";
-		String VIEW1 = "view1";
 	}
 
 	public AbstractMovieDBOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null, VERSION);
 	}
 
+	public AbstractMovieDBOpenHelper(Context context, String name) {
+		super(context, name, null, VERSION);
+	}
+			
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(
@@ -35,29 +36,11 @@ public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelpe
 			"year integer , unique ( title , year ) on conflict replace " +
 			") "
 		);	
-		db.execSQL(
-			"create table table1 ( " +
-			"_id integer, " +
-			"datstr text " +
-			") "
-		);	
-		db.execSQL(
-			"create view view1 as " +
-			"select _id as _id, datstr as datstr from table1 "
-		);	
 	}
 
 	@Override
 	protected SQLiteMigration createMigration(int version) {
-		switch(version) {
-			case 2:
-				return createMovieDBMigrationV2();
-			default:
-				throw new IllegalStateException("No migration for version " + version);
-		}
+		throw new IllegalStateException("No migrations for any version");
 	}
 	
-	protected SQLiteMigration createMovieDBMigrationV2() {
-		return new DefaultMovieDBMigrationV2();
-	}
 }

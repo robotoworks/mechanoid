@@ -12,12 +12,12 @@ To download and install Mechanoid, see |ref| :doc:`/start`.
 
 Components
 ----------
-Mechanoid is currently composed of four generators, each code generator focuses
-on specific components of an Android application.
+Mechanoid is currently composed of four code generators. Each code generator 
+focuses on specific components of an Android application.
 
 Each code generator comes with first class Eclipse editor support including
 syntax highlighting, content assist and validation thanks to the powerful 
-xText Language Framework.
+|link| `xText Language Framework <http://www.eclipse.org/Xtext/>`_.
 
 The following sections briefly describe the purpose of each generator.
 
