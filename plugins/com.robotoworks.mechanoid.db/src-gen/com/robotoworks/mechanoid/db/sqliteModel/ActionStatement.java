@@ -12,7 +12,7 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ActionStatement#getName <em>Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ActionStatement#getPath <em>Path</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ActionStatement#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface ActionStatement extends ConfigurationStatement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Path</b></em>' attribute.
+   * Returns the value of the '<em><b>Uri</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Path</em>' attribute isn't clear,
+   * If the meaning of the '<em>Uri</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Path</em>' attribute.
-   * @see #setPath(String)
-   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getActionStatement_Path()
-   * @model
+   * @return the value of the '<em>Uri</em>' containment reference.
+   * @see #setUri(ContentUri)
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getActionStatement_Uri()
+   * @model containment="true"
    * @generated
    */
-  String getPath();
+  ContentUri getUri();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.ActionStatement#getPath <em>Path</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.ActionStatement#getUri <em>Uri</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Path</em>' attribute.
-   * @see #getPath()
+   * @param value the new value of the '<em>Uri</em>' containment reference.
+   * @see #getUri()
    * @generated
    */
-  void setPath(String value);
+  void setUri(ContentUri value);
 
 } // ActionStatement

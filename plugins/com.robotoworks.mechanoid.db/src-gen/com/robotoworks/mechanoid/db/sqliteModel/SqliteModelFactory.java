@@ -59,6 +59,24 @@ public interface SqliteModelFactory extends EFactory
   ConfigurationStatement createConfigurationStatement();
 
   /**
+   * Returns a new object of class '<em>Content Uri</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Content Uri</em>'.
+   * @generated
+   */
+  ContentUri createContentUri();
+
+  /**
+   * Returns a new object of class '<em>Content Uri Segment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Content Uri Segment</em>'.
+   * @generated
+   */
+  ContentUriSegment createContentUriSegment();
+
+  /**
    * Returns a new object of class '<em>Migration Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -417,6 +435,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   ActionStatement createActionStatement();
+
+  /**
+   * Returns a new object of class '<em>Content Uri Param Segment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Content Uri Param Segment</em>'.
+   * @generated
+   */
+  ContentUriParamSegment createContentUriParamSegment();
 
   /**
    * Returns a new object of class '<em>Expr Concat</em>'.

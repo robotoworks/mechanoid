@@ -12,6 +12,9 @@ import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.db.util.ModelUtil
 import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn
+import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) { 
@@ -78,24 +81,78 @@ class ContentProviderContractGenerator {
 				«generateContractItem(model, vw)»
 				«ENDFOR»
 				
-				«IF model.database.config != null»
-				«FOR action : model.database.config.statements.filter([it instanceof ActionStatement])»
-				«var stmt = action as ActionStatement»
-				public static class «stmt.name.pascalize» {
-				    public static final Uri CONTENT_URI = 
-							BASE_CONTENT_URI.buildUpon().appendPath("«stmt.path»").build();
-				
-				    public static final String CONTENT_TYPE =
-				            "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«stmt.name»";
-				}
-
-				«ENDFOR»
-				«ENDIF»
-			
+				«generateContractItemsForActions(model, snapshot)»
 				private «model.database.name.pascalize»Contract(){}
 			}
 			'''
 	}
+	
+	def generateContractItemsForActions(Model model, SqliteDatabaseSnapshot snapshot) '''
+		«IF model.database.config != null»
+		«FOR action : model.database.config.statements
+			.filter(typeof(ActionStatement))
+			.filter([!snapshot.containsDefinition(it.uri.type)])
+		»
+		public static class «action.uri.type.pascalize» {
+			«createActionUriBuilderMethod(action)»
+			public static final String CONTENT_TYPE =
+			        "vnd.android.cursor.dir/vnd.«model.database.name.toLowerCase».«action.uri.type»";
+		}
+
+		«ENDFOR»
+		«ENDIF»	
+	'''
+	
+	def createActionUriBuilderMethod(ActionStatement action) '''
+		public Uri build«action.name.pascalize»Uri(«action.uri.toMethodArgs») {
+			return BASE_CONTENT_URI
+				.buildUpon()
+				.appendPath("«action.uri.type»")
+				«FOR seg : action.uri.segments»
+				«IF seg instanceof ContentUriParamSegment»
+				«IF (seg as ContentUriParamSegment).num»
+				.appendPath(String.valueOf(«seg.name.camelize»))
+				«ELSE»
+				.appendPath(«seg.name.camelize»)
+				«ENDIF»
+				«ELSE»
+				.appendPath("«seg.name»")
+				«ENDIF»
+				«ENDFOR»
+				.build();
+		}
+		
+	'''
+	
+	/*
+	 * Find all actions associated to the given definition,
+	 * actions are associated to the definition via the first
+	 * part of an action uri, for instance /recipes/a/b/c is
+	 * associated to recipes
+	 */
+	def Iterable<ActionStatement> findActionsForDefinition(Model model, String defName) {
+		return model.database.config?.statements
+			.filter(typeof(ActionStatement))
+			.filter([action|action.uri.type.equals(defName)])
+	}
+	
+	
+	def toMethodArgs(ContentUri uri) {
+		uri.segments
+			.filter(typeof(ContentUriParamSegment))
+			.join(", ", [seg|(
+				if(seg.num) {
+					return "int " + seg.name.camelize
+				} else {
+					return "String " + seg.name.camelize
+				})])
+	}
+	
+	def hasMethodArgs(ContentUri uri) {
+		uri.segments
+			.filter(typeof(ContentUriParamSegment)).size > 0
+	}
+
 	
 	def generateContractItem(Model model, DDLStatement stmt) '''
 		/**
@@ -126,7 +183,13 @@ class ContentProviderContractGenerator {
 		    public static Uri buildUriWithId(long id) {
 		        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 		    }
-		
+		    «var actions = model.findActionsForDefinition(stmt.name)»
+			«IF actions != null»
+			«FOR action : actions»
+			«action.createActionUriBuilderMethod»
+			
+			«ENDFOR»
+			«ENDIF»
 			public static int delete() {
 				return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
 			}

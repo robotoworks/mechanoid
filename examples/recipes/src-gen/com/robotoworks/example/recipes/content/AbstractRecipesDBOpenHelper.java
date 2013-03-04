@@ -27,11 +27,11 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 	public AbstractRecipesDBOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null, VERSION);
 	}
-	
+
 	public AbstractRecipesDBOpenHelper(Context context, String name) {
 		super(context, name, null, VERSION);
 	}
-	
+			
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(

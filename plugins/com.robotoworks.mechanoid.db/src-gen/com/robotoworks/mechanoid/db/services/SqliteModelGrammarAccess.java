@@ -146,14 +146,14 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cActionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPathSTRINGTerminalRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
+		private final Assignment cUriAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cUriContentUriParserRuleCall_3_0 = (RuleCall)cUriAssignment_3.eContents().get(0);
 		
 		//ConfigurationStatement:
-		//	{ActionStatement} "action" name=ID path=STRING;
+		//	{ActionStatement} "action" name=ID uri=ContentUri;
 		public ParserRule getRule() { return rule; }
 
-		//{ActionStatement} "action" name=ID path=STRING
+		//{ActionStatement} "action" name=ID uri=ContentUri
 		public Group getGroup() { return cGroup; }
 
 		//{ActionStatement}
@@ -168,11 +168,119 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//path=STRING
-		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
+		//uri=ContentUri
+		public Assignment getUriAssignment_3() { return cUriAssignment_3; }
 
-		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_3_0() { return cPathSTRINGTerminalRuleCall_3_0; }
+		//ContentUri
+		public RuleCall getUriContentUriParserRuleCall_3_0() { return cUriContentUriParserRuleCall_3_0; }
+	}
+
+	public class ContentUriElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContentUri");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSolidusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cSolidusKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cSegmentsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cSegmentsContentUriSegmentParserRuleCall_2_1_0 = (RuleCall)cSegmentsAssignment_2_1.eContents().get(0);
+		
+		//ContentUri:
+		//	"/" type=ID ("/" segments+=ContentUriSegment)*;
+		public ParserRule getRule() { return rule; }
+
+		//"/" type=ID ("/" segments+=ContentUriSegment)*
+		public Group getGroup() { return cGroup; }
+
+		//"/"
+		public Keyword getSolidusKeyword_0() { return cSolidusKeyword_0; }
+
+		//type=ID
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
+
+		//("/" segments+=ContentUriSegment)*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"/"
+		public Keyword getSolidusKeyword_2_0() { return cSolidusKeyword_2_0; }
+
+		//segments+=ContentUriSegment
+		public Assignment getSegmentsAssignment_2_1() { return cSegmentsAssignment_2_1; }
+
+		//ContentUriSegment
+		public RuleCall getSegmentsContentUriSegmentParserRuleCall_2_1_0() { return cSegmentsContentUriSegmentParserRuleCall_2_1_0; }
+	}
+
+	public class ContentUriSegmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContentUriSegment");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cContentUriParamSegmentAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
+		private final Keyword cColonKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Alternatives cAlternatives_1_4 = (Alternatives)cGroup_1.eContents().get(4);
+		private final Assignment cNumAssignment_1_4_0 = (Assignment)cAlternatives_1_4.eContents().get(0);
+		private final Keyword cNumNumberSignKeyword_1_4_0_0 = (Keyword)cNumAssignment_1_4_0.eContents().get(0);
+		private final Assignment cTextAssignment_1_4_1 = (Assignment)cAlternatives_1_4.eContents().get(1);
+		private final Keyword cTextAsteriskKeyword_1_4_1_0 = (Keyword)cTextAssignment_1_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
+		
+		//ContentUriSegment:
+		//	name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}";
+		public ParserRule getRule() { return rule; }
+
+		//name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+
+		//{ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}"
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{ContentUriParamSegment}
+		public Action getContentUriParamSegmentAction_1_0() { return cContentUriParamSegmentAction_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1_1() { return cLeftCurlyBracketKeyword_1_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_2_0() { return cNameIDTerminalRuleCall_1_2_0; }
+
+		//":"
+		public Keyword getColonKeyword_1_3() { return cColonKeyword_1_3; }
+
+		//num?="#" | text?="*"
+		public Alternatives getAlternatives_1_4() { return cAlternatives_1_4; }
+
+		//num?="#"
+		public Assignment getNumAssignment_1_4_0() { return cNumAssignment_1_4_0; }
+
+		//"#"
+		public Keyword getNumNumberSignKeyword_1_4_0_0() { return cNumNumberSignKeyword_1_4_0_0; }
+
+		//text?="*"
+		public Assignment getTextAssignment_1_4_1() { return cTextAssignment_1_4_1; }
+
+		//"*"
+		public Keyword getTextAsteriskKeyword_1_4_1_0() { return cTextAsteriskKeyword_1_4_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_1_5() { return cRightCurlyBracketKeyword_1_5; }
 	}
 
 	public class MigrationBlockElements extends AbstractParserRuleElementFinder {
@@ -3660,6 +3768,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private DatabaseBlockElements pDatabaseBlock;
 	private ConfigBlockElements pConfigBlock;
 	private ConfigurationStatementElements pConfigurationStatement;
+	private ContentUriElements pContentUri;
+	private ContentUriSegmentElements pContentUriSegment;
 	private MigrationBlockElements pMigrationBlock;
 	private SqlExpressionElements pSqlExpression;
 	private ExprConcatElements pExprConcat;
@@ -3797,13 +3907,33 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConfigurationStatement:
-	//	{ActionStatement} "action" name=ID path=STRING;
+	//	{ActionStatement} "action" name=ID uri=ContentUri;
 	public ConfigurationStatementElements getConfigurationStatementAccess() {
 		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
 	}
 	
 	public ParserRule getConfigurationStatementRule() {
 		return getConfigurationStatementAccess().getRule();
+	}
+
+	//ContentUri:
+	//	"/" type=ID ("/" segments+=ContentUriSegment)*;
+	public ContentUriElements getContentUriAccess() {
+		return (pContentUri != null) ? pContentUri : (pContentUri = new ContentUriElements());
+	}
+	
+	public ParserRule getContentUriRule() {
+		return getContentUriAccess().getRule();
+	}
+
+	//ContentUriSegment:
+	//	name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}";
+	public ContentUriSegmentElements getContentUriSegmentAccess() {
+		return (pContentUriSegment != null) ? pContentUriSegment : (pContentUriSegment = new ContentUriSegmentElements());
+	}
+	
+	public ParserRule getContentUriSegmentRule() {
+		return getContentUriSegmentAccess().getRule();
 	}
 
 	//MigrationBlock:

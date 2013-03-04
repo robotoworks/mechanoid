@@ -100,6 +100,20 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.CONTENT_URI:
+      {
+        ContentUri contentUri = (ContentUri)theEObject;
+        T result = caseContentUri(contentUri);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CONTENT_URI_SEGMENT:
+      {
+        ContentUriSegment contentUriSegment = (ContentUriSegment)theEObject;
+        T result = caseContentUriSegment(contentUriSegment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.MIGRATION_BLOCK:
       {
         MigrationBlock migrationBlock = (MigrationBlock)theEObject;
@@ -394,6 +408,14 @@ public class SqliteModelSwitch<T> extends Switch<T>
         ActionStatement actionStatement = (ActionStatement)theEObject;
         T result = caseActionStatement(actionStatement);
         if (result == null) result = caseConfigurationStatement(actionStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CONTENT_URI_PARAM_SEGMENT:
+      {
+        ContentUriParamSegment contentUriParamSegment = (ContentUriParamSegment)theEObject;
+        T result = caseContentUriParamSegment(contentUriParamSegment);
+        if (result == null) result = caseContentUriSegment(contentUriParamSegment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -777,6 +799,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConfigurationStatement(ConfigurationStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Content Uri</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Content Uri</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContentUri(ContentUri object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Content Uri Segment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Content Uri Segment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContentUriSegment(ContentUriSegment object)
   {
     return null;
   }
@@ -1417,6 +1471,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseActionStatement(ActionStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Content Uri Param Segment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Content Uri Param Segment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContentUriParamSegment(ContentUriParamSegment object)
   {
     return null;
   }
