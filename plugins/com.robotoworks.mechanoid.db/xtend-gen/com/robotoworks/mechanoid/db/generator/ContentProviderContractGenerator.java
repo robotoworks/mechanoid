@@ -327,7 +327,7 @@ public class ContentProviderContractGenerator {
   
   public CharSequence createActionUriBuilderMethod(final ActionStatement action) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public Uri build");
+    _builder.append("public static Uri build");
     String _name = action.getName();
     String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "");
