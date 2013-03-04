@@ -104,7 +104,7 @@ class ContentProviderContractGenerator {
 	'''
 	
 	def createActionUriBuilderMethod(ActionStatement action) '''
-		public Uri build«action.name.pascalize»Uri(«action.uri.toMethodArgs») {
+		public static Uri build«action.name.pascalize»Uri(«action.uri.toMethodArgs») {
 			return BASE_CONTENT_URI
 				.buildUpon()
 				.appendPath("«action.uri.type»")
