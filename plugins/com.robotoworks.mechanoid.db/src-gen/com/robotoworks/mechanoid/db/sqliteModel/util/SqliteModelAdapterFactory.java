@@ -95,6 +95,16 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createConfigurationStatementAdapter();
       }
       @Override
+      public Adapter caseContentUri(ContentUri object)
+      {
+        return createContentUriAdapter();
+      }
+      @Override
+      public Adapter caseContentUriSegment(ContentUriSegment object)
+      {
+        return createContentUriSegmentAdapter();
+      }
+      @Override
       public Adapter caseMigrationBlock(MigrationBlock object)
       {
         return createMigrationBlockAdapter();
@@ -293,6 +303,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseActionStatement(ActionStatement object)
       {
         return createActionStatementAdapter();
+      }
+      @Override
+      public Adapter caseContentUriParamSegment(ContentUriParamSegment object)
+      {
+        return createContentUriParamSegmentAdapter();
       }
       @Override
       public Adapter caseExprConcat(ExprConcat object)
@@ -567,6 +582,36 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConfigurationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.ContentUri <em>Content Uri</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.ContentUri
+   * @generated
+   */
+  public Adapter createContentUriAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment <em>Content Uri Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment
+   * @generated
+   */
+  public Adapter createContentUriSegmentAdapter()
   {
     return null;
   }
@@ -1167,6 +1212,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createActionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment <em>Content Uri Param Segment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
+   * @generated
+   */
+  public Adapter createContentUriParamSegmentAdapter()
   {
     return null;
   }

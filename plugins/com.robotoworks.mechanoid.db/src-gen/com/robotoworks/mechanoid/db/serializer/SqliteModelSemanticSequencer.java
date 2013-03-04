@@ -14,6 +14,9 @@ import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.ConflictClause;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -217,6 +220,24 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case SqliteModelPackage.CONFLICT_CLAUSE:
 				if(context == grammarAccess.getConflictClauseRule()) {
 					sequence_ConflictClause(context, (ConflictClause) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CONTENT_URI:
+				if(context == grammarAccess.getContentUriRule()) {
+					sequence_ContentUri(context, (ContentUri) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CONTENT_URI_PARAM_SEGMENT:
+				if(context == grammarAccess.getContentUriSegmentRule()) {
+					sequence_ContentUriSegment(context, (ContentUriParamSegment) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CONTENT_URI_SEGMENT:
+				if(context == grammarAccess.getContentUriSegmentRule()) {
+					sequence_ContentUriSegment(context, (ContentUriSegment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -919,19 +940,19 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (name=ID path=STRING)
+	 *     (name=ID uri=ContentUri)
 	 */
 	protected void sequence_ConfigurationStatement(EObject context, ActionStatement semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__PATH));
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.ACTION_STATEMENT__URI));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getConfigurationStatementAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getConfigurationStatementAccess().getPathSTRINGTerminalRuleCall_3_0(), semanticObject.getPath());
+		feeder.accept(grammarAccess.getConfigurationStatementAccess().getUriContentUriParserRuleCall_3_0(), semanticObject.getUri());
 		feeder.finish();
 	}
 	
@@ -949,6 +970,40 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getConflictClauseAccess().getResolutionConflictResolutionEnumRuleCall_2_0(), semanticObject.getResolution());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID (num?='#' | text?='*'))
+	 */
+	protected void sequence_ContentUriSegment(EObject context, ContentUriParamSegment semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_ContentUriSegment(EObject context, ContentUriSegment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CONTENT_URI_SEGMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CONTENT_URI_SEGMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getContentUriSegmentAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=ID segments+=ContentUriSegment*)
+	 */
+	protected void sequence_ContentUri(EObject context, ContentUri semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

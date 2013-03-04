@@ -5,6 +5,8 @@ import com.robotoworks.mechanoid.db.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.text.Strings.*
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
 
 class ContentProviderGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) '''
@@ -57,7 +59,7 @@ class ContentProviderGenerator {
 				
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-				private static final int «(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
+				private static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
@@ -78,7 +80,12 @@ class ContentProviderGenerator {
 					«IF vw.hasAndroidPrimaryKey»
 					sContentTypes[«vw.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«vw.name.pascalize».ITEM_CONTENT_TYPE;
 					«ENDIF»
-					«ENDFOR»					
+					«ENDFOR»	
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
+					sContentTypes[«(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»] = «(a as ActionStatement).generateContentTypeConstantReference(model)»;
+					«ENDFOR»
+					«ENDIF»					
 				}
 				
 			    private static UriMatcher buildUriMatcher() {
@@ -105,7 +112,7 @@ class ContentProviderGenerator {
 					«IF model.database.config !=null»
 					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 					«var stmt = a as ActionStatement»
-					matcher.addURI(authority, "«stmt.path»", «(a as ActionStatement).name.underscore.toUpperCase»); 
+					matcher.addURI(authority, "«stmt.uri.asString»", «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»); 
 					«ENDFOR»
 					«ENDIF»
 			        return matcher;
@@ -261,7 +268,7 @@ class ContentProviderGenerator {
 						«ENDFOR»
 						«IF model.database.config !=null»
 						«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-						case «(a as ActionStatement).name.underscore.toUpperCase»:
+						case «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»:
 							return create«(a as ActionStatement).name.pascalize»Actions();
 						«ENDFOR»
 						«ENDIF»
@@ -303,7 +310,38 @@ class ContentProviderGenerator {
 				«ENDFOR»
 				«ENDIF»
 			}
-			'''
+		'''
+		
+		def asString(ContentUri uri) {
+			var builder = new StringBuilder()
+			
+			builder.append("/")
+			builder.append(uri.type)
+			
+			for(seg : uri.segments) {
+				builder.append("/")
+				if(seg instanceof ContentUriParamSegment) {
+					var paramSeg = seg as ContentUriParamSegment
+					
+					if(paramSeg.num) {
+						builder.append("#")
+					} else {
+						builder.append("*")
+					}
+					
+				} else {
+					builder.append(seg.name)
+				}
+			}
+			
+			return builder.toString
+		}
+
+	
+		def generateContentTypeConstantReference(ActionStatement action, Model model) {
+			return model.database.name.pascalize + "Contract." + action.uri.type.pascalize + ".CONTENT_TYPE";
+		}
+
 			
 		def CharSequence generateStub(Model model, SqliteDatabaseSnapshot snapshot) '''
 			/*******************************************************************************
