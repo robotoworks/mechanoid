@@ -47,7 +47,7 @@ class SqliteOpenHelperGenerator {
 					public Abstract«model.database.name.pascalize()»OpenHelper(Context context, String name) {
 						super(context, name, null, VERSION);
 					}
-			
+
 					@Override
 					public void onCreate(SQLiteDatabase db) {
 						«snapshot.tables.generateTableStatements»

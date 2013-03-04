@@ -21,7 +21,16 @@ ConfigBlock:
 ;
 
 ConfigurationStatement:
-	{ActionStatement} 'action' name=ID path=STRING
+	{ActionStatement} 'action' name=ID uri=ContentUri
+;
+
+ContentUri:
+	'/' type=ID ('/' segments+=ContentUriSegment)*
+;
+
+ContentUriSegment:
+	name=ID |
+	{ContentUriParamSegment} '{'name=ID':'(num?="#"|text?="*")'}'
 ;
 
 MigrationBlock:

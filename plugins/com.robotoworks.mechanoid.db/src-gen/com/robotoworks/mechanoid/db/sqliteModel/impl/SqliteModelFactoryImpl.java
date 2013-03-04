@@ -69,6 +69,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.DATABASE_BLOCK: return createDatabaseBlock();
       case SqliteModelPackage.CONFIG_BLOCK: return createConfigBlock();
       case SqliteModelPackage.CONFIGURATION_STATEMENT: return createConfigurationStatement();
+      case SqliteModelPackage.CONTENT_URI: return createContentUri();
+      case SqliteModelPackage.CONTENT_URI_SEGMENT: return createContentUriSegment();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
       case SqliteModelPackage.EXPRESSION: return createExpression();
       case SqliteModelPackage.CASE: return createCase();
@@ -109,6 +111,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.UPDATE_STATEMENT: return createUpdateStatement();
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION: return createUpdateColumnExpression();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
+      case SqliteModelPackage.CONTENT_URI_PARAM_SEGMENT: return createContentUriParamSegment();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
       case SqliteModelPackage.EXPR_MULT: return createExprMult();
       case SqliteModelPackage.EXPR_ADD: return createExprAdd();
@@ -241,6 +244,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ConfigurationStatementImpl configurationStatement = new ConfigurationStatementImpl();
     return configurationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContentUri createContentUri()
+  {
+    ContentUriImpl contentUri = new ContentUriImpl();
+    return contentUri;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContentUriSegment createContentUriSegment()
+  {
+    ContentUriSegmentImpl contentUriSegment = new ContentUriSegmentImpl();
+    return contentUriSegment;
   }
 
   /**
@@ -681,6 +706,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     ActionStatementImpl actionStatement = new ActionStatementImpl();
     return actionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContentUriParamSegment createContentUriParamSegment()
+  {
+    ContentUriParamSegmentImpl contentUriParamSegment = new ContentUriParamSegmentImpl();
+    return contentUriParamSegment;
   }
 
   /**

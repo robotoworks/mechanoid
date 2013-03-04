@@ -7,8 +7,10 @@ package com.robotoworks.mechanoid.db.ui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
 import com.google.inject.Binder;
+import com.robotoworks.mechanoid.db.ui.editor.syntaxcoloring.MechDbSemanticHighlightingCalculator;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 
@@ -23,6 +25,8 @@ public class SqliteModelUiModule extends com.robotoworks.mechanoid.db.ui.Abstrac
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		
+		binder.bind(ISemanticHighlightingCalculator.class).to(MechDbSemanticHighlightingCalculator.class);
 		
 //		binder.bind(String.class)
 //		.annotatedWith(com.google.inject.name.Names.named(

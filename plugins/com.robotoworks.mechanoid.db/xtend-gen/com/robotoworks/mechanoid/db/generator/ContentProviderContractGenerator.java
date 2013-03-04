@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.db.generator;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.db.sqliteModel.ActionStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
@@ -8,6 +9,9 @@ import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigurationStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
@@ -245,62 +249,72 @@ public class ContentProviderContractGenerator {
     }
     _builder.append("\t");
     _builder.newLine();
+    _builder.append("\t");
+    CharSequence _generateContractItemsForActions = this.generateContractItemsForActions(model, snapshot);
+    _builder.append(_generateContractItemsForActions, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("private ");
+    DatabaseBlock _database_4 = model.getDatabase();
+    String _name_8 = _database_4.getName();
+    String _pascalize_5 = Strings.pascalize(_name_8);
+    _builder.append(_pascalize_5, "	");
+    _builder.append("Contract(){}");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateContractItemsForActions(final Model model, final SqliteDatabaseSnapshot snapshot) {
+    StringConcatenation _builder = new StringConcatenation();
     {
-      DatabaseBlock _database_4 = model.getDatabase();
-      ConfigBlock _config = _database_4.getConfig();
+      DatabaseBlock _database = model.getDatabase();
+      ConfigBlock _config = _database.getConfig();
       boolean _notEquals = (!Objects.equal(_config, null));
       if (_notEquals) {
         {
-          DatabaseBlock _database_5 = model.getDatabase();
-          ConfigBlock _config_1 = _database_5.getConfig();
+          DatabaseBlock _database_1 = model.getDatabase();
+          ConfigBlock _config_1 = _database_1.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
+          Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
+          final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
+              public Boolean apply(final ActionStatement it) {
+                ContentUri _uri = it.getUri();
+                String _type = _uri.getType();
+                boolean _containsDefinition = snapshot.containsDefinition(_type);
+                boolean _not = (!_containsDefinition);
+                return Boolean.valueOf(_not);
               }
             };
-          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_2);
-          for(final ConfigurationStatement action : _filter_2) {
-            _builder.append("\t");
-            ActionStatement stmt = ((ActionStatement) action);
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
+          Iterable<ActionStatement> _filter_1 = IterableExtensions.<ActionStatement>filter(_filter, _function);
+          for(final ActionStatement action : _filter_1) {
             _builder.append("public static class ");
-            String _name_8 = stmt.getName();
-            String _pascalize_5 = Strings.pascalize(_name_8);
-            _builder.append(_pascalize_5, "	");
+            ContentUri _uri = action.getUri();
+            String _type = _uri.getType();
+            String _pascalize = Strings.pascalize(_type);
+            _builder.append(_pascalize, "");
             _builder.append(" {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("    ");
-            _builder.append("public static final Uri CONTENT_URI = ");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t\t\t");
-            _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-            String _path = stmt.getPath();
-            _builder.append(_path, "				");
-            _builder.append("\").build();");
+            CharSequence _createActionUriBuilderMethod = this.createActionUriBuilderMethod(action);
+            _builder.append(_createActionUriBuilderMethod, "	");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("    ");
             _builder.append("public static final String CONTENT_TYPE =");
             _builder.newLine();
-            _builder.append("\t");
-            _builder.append("            ");
+            _builder.append("\t        ");
             _builder.append("\"vnd.android.cursor.dir/vnd.");
-            DatabaseBlock _database_6 = model.getDatabase();
-            String _name_9 = _database_6.getName();
-            String _lowerCase_1 = _name_9.toLowerCase();
-            _builder.append(_lowerCase_1, "	            ");
+            DatabaseBlock _database_2 = model.getDatabase();
+            String _name = _database_2.getName();
+            String _lowerCase = _name.toLowerCase();
+            _builder.append(_lowerCase, "	        ");
             _builder.append(".");
-            String _name_10 = stmt.getName();
-            _builder.append(_name_10, "	            ");
+            ContentUri _uri_1 = action.getUri();
+            String _type_1 = _uri_1.getType();
+            _builder.append(_type_1, "	        ");
             _builder.append("\";");
             _builder.newLineIfNotEmpty();
-            _builder.append("\t");
             _builder.append("}");
             _builder.newLine();
             _builder.newLine();
@@ -308,18 +322,129 @@ public class ContentProviderContractGenerator {
         }
       }
     }
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("private ");
-    DatabaseBlock _database_7 = model.getDatabase();
-    String _name_11 = _database_7.getName();
-    String _pascalize_6 = Strings.pascalize(_name_11);
-    _builder.append(_pascalize_6, "	");
-    _builder.append("Contract(){}");
+    return _builder;
+  }
+  
+  public CharSequence createActionUriBuilderMethod(final ActionStatement action) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public Uri build");
+    String _name = action.getName();
+    String _pascalize = Strings.pascalize(_name);
+    _builder.append(_pascalize, "");
+    _builder.append("Uri(");
+    ContentUri _uri = action.getUri();
+    String _methodArgs = this.toMethodArgs(_uri);
+    _builder.append(_methodArgs, "");
+    _builder.append(") {");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("return BASE_CONTENT_URI");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append(".buildUpon()");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append(".appendPath(\"");
+    ContentUri _uri_1 = action.getUri();
+    String _type = _uri_1.getType();
+    _builder.append(_type, "		");
+    _builder.append("\")");
+    _builder.newLineIfNotEmpty();
+    {
+      ContentUri _uri_2 = action.getUri();
+      EList<ContentUriSegment> _segments = _uri_2.getSegments();
+      for(final ContentUriSegment seg : _segments) {
+        {
+          if ((seg instanceof ContentUriParamSegment)) {
+            {
+              boolean _isNum = ((ContentUriParamSegment) seg).isNum();
+              if (_isNum) {
+                _builder.append("\t\t");
+                _builder.append(".appendPath(String.valueOf(");
+                String _name_1 = seg.getName();
+                String _camelize = Strings.camelize(_name_1);
+                _builder.append(_camelize, "		");
+                _builder.append("))");
+                _builder.newLineIfNotEmpty();
+              } else {
+                _builder.append("\t\t");
+                _builder.append(".appendPath(");
+                String _name_2 = seg.getName();
+                String _camelize_1 = Strings.camelize(_name_2);
+                _builder.append(_camelize_1, "		");
+                _builder.append(")");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          } else {
+            _builder.append("\t\t");
+            _builder.append(".appendPath(\"");
+            String _name_3 = seg.getName();
+            _builder.append(_name_3, "		");
+            _builder.append("\")");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append(".build();");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
     return _builder;
+  }
+  
+  /**
+   * Find all actions associated to the given definition,
+   * actions are associated to the definition via the first
+   * part of an action uri, for instance /recipes/a/b/c is
+   * associated to recipes
+   */
+  public Iterable<ActionStatement> findActionsForDefinition(final Model model, final String defName) {
+    DatabaseBlock _database = model.getDatabase();
+    ConfigBlock _config = _database.getConfig();
+    EList<ConfigurationStatement> _statements = _config==null?(EList<ConfigurationStatement>)null:_config.getStatements();
+    Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
+    final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
+        public Boolean apply(final ActionStatement action) {
+          ContentUri _uri = action.getUri();
+          String _type = _uri.getType();
+          boolean _equals = _type.equals(defName);
+          return Boolean.valueOf(_equals);
+        }
+      };
+    return IterableExtensions.<ActionStatement>filter(_filter, _function);
+  }
+  
+  public String toMethodArgs(final ContentUri uri) {
+    EList<ContentUriSegment> _segments = uri.getSegments();
+    Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
+    final Function1<ContentUriParamSegment,String> _function = new Function1<ContentUriParamSegment,String>() {
+        public String apply(final ContentUriParamSegment seg) {
+          boolean _isNum = seg.isNum();
+          if (_isNum) {
+            String _name = seg.getName();
+            String _camelize = Strings.camelize(_name);
+            return ("int " + _camelize);
+          } else {
+            String _name_1 = seg.getName();
+            String _camelize_1 = Strings.camelize(_name_1);
+            return ("String " + _camelize_1);
+          }
+        }
+      };
+    String _join = IterableExtensions.<ContentUriParamSegment>join(_filter, ", ", _function);
+    return _join;
+  }
+  
+  public boolean hasMethodArgs(final ContentUri uri) {
+    EList<ContentUriSegment> _segments = uri.getSegments();
+    Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
+    int _size = IterableExtensions.size(_filter);
+    boolean _greaterThan = (_size > 0);
+    return _greaterThan;
   }
   
   public CharSequence generateContractItem(final Model model, final DDLStatement stmt) {
@@ -465,7 +590,25 @@ public class ContentProviderContractGenerator {
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
-    _builder.newLine();
+    _builder.append("    ");
+    String _name_13 = this.getName(stmt);
+    Iterable<ActionStatement> actions = this.findActionsForDefinition(model, _name_13);
+    _builder.newLineIfNotEmpty();
+    {
+      boolean _notEquals = (!Objects.equal(actions, null));
+      if (_notEquals) {
+        {
+          for(final ActionStatement action : actions) {
+            _builder.append("\t");
+            CharSequence _createActionUriBuilderMethod = this.createActionUriBuilderMethod(action);
+            _builder.append(_createActionUriBuilderMethod, "	");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.newLine();
+          }
+        }
+      }
+    }
     _builder.append("\t");
     _builder.append("public static int delete() {");
     _builder.newLine();
@@ -493,8 +636,8 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Create a new Builder for ");
-    String _name_13 = this.getName(stmt);
-    String _pascalize_6 = Strings.pascalize(_name_13);
+    String _name_14 = this.getName(stmt);
+    String _pascalize_6 = Strings.pascalize(_name_14);
     _builder.append(_pascalize_6, "	 ");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
@@ -517,8 +660,8 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Build and execute insert or update statements for ");
-    String _name_14 = this.getName(stmt);
-    String _pascalize_7 = Strings.pascalize(_name_14);
+    String _name_15 = this.getName(stmt);
+    String _pascalize_7 = Strings.pascalize(_name_15);
     _builder.append(_pascalize_7, "	 ");
     _builder.append(".</p>");
     _builder.newLineIfNotEmpty();
@@ -527,8 +670,8 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Use {@link ");
-    String _name_15 = this.getName(stmt);
-    String _pascalize_8 = Strings.pascalize(_name_15);
+    String _name_16 = this.getName(stmt);
+    String _pascalize_8 = Strings.pascalize(_name_16);
     _builder.append(_pascalize_8, "	 ");
     _builder.append("#newBuilder()} to create new builder</p>");
     _builder.newLineIfNotEmpty();

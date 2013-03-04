@@ -37,6 +37,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getContentUriSegmentAccess().getAlternatives(), "rule__ContentUriSegment__Alternatives");
+					put(grammarAccess.getContentUriSegmentAccess().getAlternatives_1_4(), "rule__ContentUriSegment__Alternatives_1_4");
 					put(grammarAccess.getExprMultAccess().getOpAlternatives_1_1_0(), "rule__ExprMult__OpAlternatives_1_1_0");
 					put(grammarAccess.getExprAddAccess().getOpAlternatives_1_1_0(), "rule__ExprAdd__OpAlternatives_1_1_0");
 					put(grammarAccess.getExprBitAccess().getOpAlternatives_1_1_0(), "rule__ExprBit__OpAlternatives_1_1_0");
@@ -74,6 +76,9 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDatabaseBlockAccess().getGroup(), "rule__DatabaseBlock__Group__0");
 					put(grammarAccess.getConfigBlockAccess().getGroup(), "rule__ConfigBlock__Group__0");
 					put(grammarAccess.getConfigurationStatementAccess().getGroup(), "rule__ConfigurationStatement__Group__0");
+					put(grammarAccess.getContentUriAccess().getGroup(), "rule__ContentUri__Group__0");
+					put(grammarAccess.getContentUriAccess().getGroup_2(), "rule__ContentUri__Group_2__0");
+					put(grammarAccess.getContentUriSegmentAccess().getGroup_1(), "rule__ContentUriSegment__Group_1__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup(), "rule__MigrationBlock__Group__0");
 					put(grammarAccess.getMigrationBlockAccess().getGroup_3(), "rule__MigrationBlock__Group_3__0");
 					put(grammarAccess.getExprConcatAccess().getGroup(), "rule__ExprConcat__Group__0");
@@ -200,7 +205,13 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4(), "rule__DatabaseBlock__MigrationsAssignment_4");
 					put(grammarAccess.getConfigBlockAccess().getStatementsAssignment_3(), "rule__ConfigBlock__StatementsAssignment_3");
 					put(grammarAccess.getConfigurationStatementAccess().getNameAssignment_2(), "rule__ConfigurationStatement__NameAssignment_2");
-					put(grammarAccess.getConfigurationStatementAccess().getPathAssignment_3(), "rule__ConfigurationStatement__PathAssignment_3");
+					put(grammarAccess.getConfigurationStatementAccess().getUriAssignment_3(), "rule__ConfigurationStatement__UriAssignment_3");
+					put(grammarAccess.getContentUriAccess().getTypeAssignment_1(), "rule__ContentUri__TypeAssignment_1");
+					put(grammarAccess.getContentUriAccess().getSegmentsAssignment_2_1(), "rule__ContentUri__SegmentsAssignment_2_1");
+					put(grammarAccess.getContentUriSegmentAccess().getNameAssignment_0(), "rule__ContentUriSegment__NameAssignment_0");
+					put(grammarAccess.getContentUriSegmentAccess().getNameAssignment_1_2(), "rule__ContentUriSegment__NameAssignment_1_2");
+					put(grammarAccess.getContentUriSegmentAccess().getNumAssignment_1_4_0(), "rule__ContentUriSegment__NumAssignment_1_4_0");
+					put(grammarAccess.getContentUriSegmentAccess().getTextAssignment_1_4_1(), "rule__ContentUriSegment__TextAssignment_1_4_1");
 					put(grammarAccess.getMigrationBlockAccess().getStatementsAssignment_3_0(), "rule__MigrationBlock__StatementsAssignment_3_0");
 					put(grammarAccess.getExprConcatAccess().getOpAssignment_1_1(), "rule__ExprConcat__OpAssignment_1_1");
 					put(grammarAccess.getExprConcatAccess().getRightAssignment_1_2(), "rule__ExprConcat__RightAssignment_1_2");

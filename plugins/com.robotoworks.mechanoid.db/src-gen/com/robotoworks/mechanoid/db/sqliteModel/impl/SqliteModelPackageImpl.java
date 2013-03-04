@@ -19,6 +19,9 @@ import com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigurationStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.db.sqliteModel.ConflictResolution;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -135,6 +138,20 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass configurationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contentUriEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contentUriSegmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -415,6 +432,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass actionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass contentUriParamSegmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -878,6 +902,56 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EClass getConfigurationStatement()
   {
     return configurationStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContentUri()
+  {
+    return contentUriEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContentUri_Type()
+  {
+    return (EAttribute)contentUriEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContentUri_Segments()
+  {
+    return (EReference)contentUriEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContentUriSegment()
+  {
+    return contentUriSegmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContentUriSegment_Name()
+  {
+    return (EAttribute)contentUriSegmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1965,9 +2039,39 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getActionStatement_Path()
+  public EReference getActionStatement_Uri()
   {
-    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(1);
+    return (EReference)actionStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContentUriParamSegment()
+  {
+    return contentUriParamSegmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContentUriParamSegment_Num()
+  {
+    return (EAttribute)contentUriParamSegmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContentUriParamSegment_Text()
+  {
+    return (EAttribute)contentUriParamSegmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3204,6 +3308,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     configurationStatementEClass = createEClass(CONFIGURATION_STATEMENT);
 
+    contentUriEClass = createEClass(CONTENT_URI);
+    createEAttribute(contentUriEClass, CONTENT_URI__TYPE);
+    createEReference(contentUriEClass, CONTENT_URI__SEGMENTS);
+
+    contentUriSegmentEClass = createEClass(CONTENT_URI_SEGMENT);
+    createEAttribute(contentUriSegmentEClass, CONTENT_URI_SEGMENT__NAME);
+
     migrationBlockEClass = createEClass(MIGRATION_BLOCK);
     createEReference(migrationBlockEClass, MIGRATION_BLOCK__STATEMENTS);
 
@@ -3351,7 +3462,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
     createEAttribute(actionStatementEClass, ACTION_STATEMENT__NAME);
-    createEAttribute(actionStatementEClass, ACTION_STATEMENT__PATH);
+    createEReference(actionStatementEClass, ACTION_STATEMENT__URI);
+
+    contentUriParamSegmentEClass = createEClass(CONTENT_URI_PARAM_SEGMENT);
+    createEAttribute(contentUriParamSegmentEClass, CONTENT_URI_PARAM_SEGMENT__NUM);
+    createEAttribute(contentUriParamSegmentEClass, CONTENT_URI_PARAM_SEGMENT__TEXT);
 
     exprConcatEClass = createEClass(EXPR_CONCAT);
     createEReference(exprConcatEClass, EXPR_CONCAT__LEFT);
@@ -3560,6 +3675,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     insertStatementEClass.getESuperTypes().add(this.getDMLStatement());
     updateStatementEClass.getESuperTypes().add(this.getDMLStatement());
     actionStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
+    contentUriParamSegmentEClass.getESuperTypes().add(this.getContentUriSegment());
     exprConcatEClass.getESuperTypes().add(this.getExpression());
     exprMultEClass.getESuperTypes().add(this.getExpression());
     exprAddEClass.getESuperTypes().add(this.getExpression());
@@ -3614,6 +3730,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getConfigBlock_Statements(), this.getConfigurationStatement(), null, "statements", null, 0, -1, ConfigBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(configurationStatementEClass, ConfigurationStatement.class, "ConfigurationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(contentUriEClass, ContentUri.class, "ContentUri", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContentUri_Type(), ecorePackage.getEString(), "type", null, 0, 1, ContentUri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContentUri_Segments(), this.getContentUriSegment(), null, "segments", null, 0, -1, ContentUri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contentUriSegmentEClass, ContentUriSegment.class, "ContentUriSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContentUriSegment_Name(), ecorePackage.getEString(), "name", null, 0, 1, ContentUriSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(migrationBlockEClass, MigrationBlock.class, "MigrationBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMigrationBlock_Statements(), this.getDDLStatement(), null, "statements", null, 0, -1, MigrationBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3762,7 +3885,11 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getActionStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getActionStatement_Path(), ecorePackage.getEString(), "path", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActionStatement_Uri(), this.getContentUri(), null, "uri", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(contentUriParamSegmentEClass, ContentUriParamSegment.class, "ContentUriParamSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContentUriParamSegment_Num(), ecorePackage.getEBoolean(), "num", null, 0, 1, ContentUriParamSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContentUriParamSegment_Text(), ecorePackage.getEBoolean(), "text", null, 0, 1, ContentUriParamSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprConcatEClass, ExprConcat.class, "ExprConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExprConcat_Left(), this.getExpression(), null, "left", null, 0, 1, ExprConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

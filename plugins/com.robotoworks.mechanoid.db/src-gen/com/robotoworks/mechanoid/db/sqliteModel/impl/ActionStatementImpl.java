@@ -3,11 +3,14 @@
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.db.sqliteModel.ActionStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -19,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ActionStatementImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ActionStatementImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ActionStatementImpl#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,24 +51,14 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+   * The cached value of the '{@link #getUri() <em>Uri</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPath()
+   * @see #getUri()
    * @generated
    * @ordered
    */
-  protected static final String PATH_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPath()
-   * @generated
-   * @ordered
-   */
-  protected String path = PATH_EDEFAULT;
+  protected ContentUri uri;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +109,9 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPath()
+  public ContentUri getUri()
   {
-    return path;
+    return uri;
   }
 
   /**
@@ -126,12 +119,53 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPath(String newPath)
+  public NotificationChain basicSetUri(ContentUri newUri, NotificationChain msgs)
   {
-    String oldPath = path;
-    path = newPath;
+    ContentUri oldUri = uri;
+    uri = newUri;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ACTION_STATEMENT__PATH, oldPath, path));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ACTION_STATEMENT__URI, oldUri, newUri);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUri(ContentUri newUri)
+  {
+    if (newUri != uri)
+    {
+      NotificationChain msgs = null;
+      if (uri != null)
+        msgs = ((InternalEObject)uri).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ACTION_STATEMENT__URI, null, msgs);
+      if (newUri != null)
+        msgs = ((InternalEObject)newUri).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.ACTION_STATEMENT__URI, null, msgs);
+      msgs = basicSetUri(newUri, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ACTION_STATEMENT__URI, newUri, newUri));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SqliteModelPackage.ACTION_STATEMENT__URI:
+        return basicSetUri(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -146,8 +180,8 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
     {
       case SqliteModelPackage.ACTION_STATEMENT__NAME:
         return getName();
-      case SqliteModelPackage.ACTION_STATEMENT__PATH:
-        return getPath();
+      case SqliteModelPackage.ACTION_STATEMENT__URI:
+        return getUri();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,8 +199,8 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
       case SqliteModelPackage.ACTION_STATEMENT__NAME:
         setName((String)newValue);
         return;
-      case SqliteModelPackage.ACTION_STATEMENT__PATH:
-        setPath((String)newValue);
+      case SqliteModelPackage.ACTION_STATEMENT__URI:
+        setUri((ContentUri)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,8 +219,8 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
       case SqliteModelPackage.ACTION_STATEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SqliteModelPackage.ACTION_STATEMENT__PATH:
-        setPath(PATH_EDEFAULT);
+      case SqliteModelPackage.ACTION_STATEMENT__URI:
+        setUri((ContentUri)null);
         return;
     }
     super.eUnset(featureID);
@@ -204,8 +238,8 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
     {
       case SqliteModelPackage.ACTION_STATEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SqliteModelPackage.ACTION_STATEMENT__PATH:
-        return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+      case SqliteModelPackage.ACTION_STATEMENT__URI:
+        return uri != null;
     }
     return super.eIsSet(featureID);
   }
@@ -223,8 +257,6 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", path: ");
-    result.append(path);
     result.append(')');
     return result.toString();
   }

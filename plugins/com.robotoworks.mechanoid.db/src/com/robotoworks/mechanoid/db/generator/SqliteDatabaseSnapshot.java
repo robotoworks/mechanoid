@@ -196,4 +196,30 @@ public class SqliteDatabaseSnapshot {
 	public Collection<CreateTriggerStatement> getTriggers() {
 		return mTriggers;
 	}
+	
+    public boolean containsDefinition(final String name) {
+        CreateTableStatement tableStmt = IterableExtensions.findFirst(mTables, new Function1<CreateTableStatement, Boolean>() {
+            @Override
+            public Boolean apply(CreateTableStatement p) {
+                return p.getName().equals(name);
+            }
+        });
+        
+        if(tableStmt != null) {
+            return true;
+        }
+        
+        CreateViewStatement viewStmt = IterableExtensions.findFirst(mViews, new Function1<CreateViewStatement, Boolean>() {
+            @Override
+            public Boolean apply(CreateViewStatement p) {
+                return p.getName().equals(name);
+            }
+        });
+        
+        if(viewStmt != null) {
+            return true;
+        }
+        
+        return false;
+    }
 }
