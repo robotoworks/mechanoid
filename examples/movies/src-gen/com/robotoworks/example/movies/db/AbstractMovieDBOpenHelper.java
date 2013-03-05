@@ -25,7 +25,7 @@ public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelpe
 	public AbstractMovieDBOpenHelper(Context context, String name) {
 		super(context, name, null, VERSION);
 	}
-			
+
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(

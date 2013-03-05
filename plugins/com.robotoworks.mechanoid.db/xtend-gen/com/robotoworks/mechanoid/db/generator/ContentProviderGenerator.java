@@ -1200,7 +1200,6 @@ public class ContentProviderGenerator {
   public String asString(final ContentUri uri) {
     StringBuilder _stringBuilder = new StringBuilder();
     StringBuilder builder = _stringBuilder;
-    builder.append("/");
     String _type = uri.getType();
     builder.append(_type);
     EList<ContentUriSegment> _segments = uri.getSegments();
