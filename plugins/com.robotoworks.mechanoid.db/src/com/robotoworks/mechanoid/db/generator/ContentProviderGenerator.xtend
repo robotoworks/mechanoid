@@ -315,7 +315,6 @@ class ContentProviderGenerator {
 		def asString(ContentUri uri) {
 			var builder = new StringBuilder()
 			
-			builder.append("/")
 			builder.append(uri.type)
 			
 			for(seg : uri.segments) {
