@@ -27,7 +27,7 @@ public abstract class MechanoidSQLiteOpenHelper extends SQLiteOpenHelper {
     	public void onConfigure(SQLiteDatabase db) {
         	// Enable foreign key constraints
         	if (db.isReadOnly() || !shouldEnableForeignKeyConstraints())
-        		return
+        		return;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO)
     			db.execSQL("PRAGMA foreign_keys=ON;");
     		else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
