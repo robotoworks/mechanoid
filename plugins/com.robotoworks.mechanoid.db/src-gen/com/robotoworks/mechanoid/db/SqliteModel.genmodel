@@ -178,7 +178,7 @@
     <genClasses ecoreClass="SqliteModel.ecore#//InsertStatement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//InsertStatement/conflictResolution"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//InsertStatement/table"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//InsertStatement/columnNames"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//InsertStatement/columnNames"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//InsertStatement/expressions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//InsertStatement/selectStatement"/>
     </genClasses>
@@ -189,7 +189,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//UpdateStatement/whereExpression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//UpdateColumnExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//UpdateColumnExpression/columnName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//UpdateColumnExpression/columnName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//UpdateColumnExpression/expression"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//ActionStatement">

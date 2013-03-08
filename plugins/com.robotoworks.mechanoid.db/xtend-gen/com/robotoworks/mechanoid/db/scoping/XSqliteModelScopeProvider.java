@@ -29,6 +29,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSource;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement;
 import com.robotoworks.mechanoid.db.util.ModelUtil;
 import java.util.ArrayList;
@@ -134,6 +135,42 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   public IScope scope_UpdateStatement_table(final UpdateStatement context, final EReference reference) {
     DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
     return this.scopeForTableDefinitionsBeforeStatement(stmt);
+  }
+  
+  public IScope scope_InsertStatement_columnNames(final InsertStatement context, final EReference reference) {
+    DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    TableDefinition _table = context.getTable();
+    ArrayList<EObject> _findColumnDefs = this.findColumnDefs(stmt, _table);
+    return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
+  }
+  
+  public IScope scope_UpdateColumnExpression_columnName(final UpdateColumnExpression context, final EReference reference) {
+    UpdateStatement updateStmt = ModelUtil.<UpdateStatement>getAncestorOfType(context, UpdateStatement.class);
+    DDLStatement containingStmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    TableDefinition _table = updateStmt.getTable();
+    ArrayList<EObject> _findColumnDefs = this.findColumnDefs(containingStmt, _table);
+    return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
+  }
+  
+  public IScope scope_UpdateColumnExpression_columnName(final UpdateStatement context, final EReference reference) {
+    DDLStatement containingStmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    TableDefinition _table = context.getTable();
+    ArrayList<EObject> _findColumnDefs = this.findColumnDefs(containingStmt, _table);
+    return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
+  }
+  
+  public IScope scope_ColumnSourceRef_source(final UpdateStatement context, final EReference reference) {
+    DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    TableDefinition _table = context.getTable();
+    ArrayList<EObject> _findColumnDefs = this.findColumnDefs(ddl, _table);
+    return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
+  }
+  
+  public IScope scope_ColumnSourceRef_source(final DeleteStatement context, final EReference reference) {
+    DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
+    TableDefinition _table = context.getTable();
+    ArrayList<EObject> _findColumnDefs = this.findColumnDefs(ddl, _table);
+    return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
   }
   
   public IScope scopeForTableDefinitionsBeforeStatement(final DDLStatement stmt) {

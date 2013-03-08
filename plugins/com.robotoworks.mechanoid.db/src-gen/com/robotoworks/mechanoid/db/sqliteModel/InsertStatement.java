@@ -82,20 +82,20 @@ public interface InsertStatement extends DMLStatement
   void setTable(TableDefinition value);
 
   /**
-   * Returns the value of the '<em><b>Column Names</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Column Names</b></em>' reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.db.sqliteModel.ColumnDef}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Column Names</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Column Names</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Column Names</em>' attribute list.
+   * @return the value of the '<em>Column Names</em>' reference list.
    * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getInsertStatement_ColumnNames()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getColumnNames();
+  EList<ColumnDef> getColumnNames();
 
   /**
    * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
