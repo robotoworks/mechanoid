@@ -15,6 +15,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
+import java.util.ArrayList
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) { 
@@ -131,7 +132,11 @@ class ContentProviderContractGenerator {
 	 * associated to recipes
 	 */
 	def Iterable<ActionStatement> findActionsForDefinition(Model model, String defName) {
-		return model.database.config?.statements
+		if(model.database.config == null) {
+			return new ArrayList<ActionStatement>();
+		}
+		
+		return model.database.config.statements
 			.filter(typeof(ActionStatement))
 			.filter([action|action.uri.type.equals(defName)])
 	}
