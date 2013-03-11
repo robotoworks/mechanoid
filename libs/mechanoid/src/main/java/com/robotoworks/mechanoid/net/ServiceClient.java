@@ -35,6 +35,9 @@ public abstract class ServiceClient {
 	private JsonEntityReaderProvider mReaderProvider;
 	private JsonEntityWriterProvider mWriterProvider;
 
+	private int mConnectTimeout = 30000;
+	private int mReadTimeout = 30000;
+
 	protected String getBaseUrl() {
 		return mBaseUrl;
 	}
@@ -110,11 +113,14 @@ public abstract class ServiceClient {
 			}
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			applyRequestTimeouts(request, conn);
+			
 			conn.setRequestMethod(METHOD_GET);
 
 			conn.setRequestProperty("Accept", "application/json, text/json");
 
-			setRequestProperties(request, conn);
+			applyRequestProperties(request, conn);
 
 			if (isDebug()) {
 				NetLogHelper.logProperties(getLogTag(),
@@ -148,9 +154,12 @@ public abstract class ServiceClient {
 			}
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			applyRequestTimeouts(request, conn);
+			
 			conn.setRequestMethod(METHOD_DELETE);
 
-			setRequestProperties(request, conn);
+			applyRequestProperties(request, conn);
 
 			if (isDebug()) {
 				NetLogHelper.logProperties(getLogTag(),
@@ -188,12 +197,15 @@ public abstract class ServiceClient {
 			}
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			applyRequestTimeouts(request, conn);
+			
 			conn.setDoOutput(true);
 			conn.setRequestMethod(method);
 
 			conn.setRequestProperty("Content-Type", "application/json, text/json");
 
-			setRequestProperties(request, conn);
+			applyRequestProperties(request, conn);
 
 			if (isDebug()) {
 				NetLogHelper
@@ -238,6 +250,22 @@ public abstract class ServiceClient {
 		return postUnlessPut(request, resultParser, true);
 	}
 	
+
+	protected <REQUEST extends ServiceRequest> void applyRequestTimeouts(
+			REQUEST request, HttpURLConnection conn) {
+		if(request.getReadTimeout() > -1) {
+			conn.setReadTimeout(request.getReadTimeout());
+		} else {
+			conn.setReadTimeout(mReadTimeout);
+		}
+		
+		if(request.getConnectTimeout() > -1) {
+			conn.setConnectTimeout(request.getConnectTimeout());
+		} else {
+			conn.setConnectTimeout(mConnectTimeout);
+		}
+	}
+	
 	/**
 	 * <p>Sets request properties using this clients headers and then
 	 * headers from the given request such that request properties from the
@@ -246,7 +274,7 @@ public abstract class ServiceClient {
 	 * @param request The request to add headers from
 	 * @param conn The connection to add headers to
 	 */
-	protected <REQUEST extends ServiceRequest> void setRequestProperties(
+	protected <REQUEST extends ServiceRequest> void applyRequestProperties(
 			REQUEST request, HttpURLConnection conn) {
 		for (String key : getHeaders().keySet()) {
 			conn.setRequestProperty(key, getHeaders().get(key));

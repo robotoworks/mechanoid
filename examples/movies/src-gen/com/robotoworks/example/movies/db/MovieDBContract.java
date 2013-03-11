@@ -68,7 +68,6 @@ public class MovieDBContract  {
 	    public static Uri buildUriWithId(long id) {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
-	
 		public static int delete() {
 			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
 		}
@@ -110,6 +109,5 @@ public class MovieDBContract  {
 	}
 
 	
-
 	private MovieDBContract(){}
 }
