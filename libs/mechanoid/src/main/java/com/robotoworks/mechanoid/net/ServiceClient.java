@@ -35,8 +35,8 @@ public abstract class ServiceClient {
 	private JsonEntityReaderProvider mReaderProvider;
 	private JsonEntityWriterProvider mWriterProvider;
 
-	private int mConnectTimeout = 30000;
-	private int mReadTimeout = 30000;
+	private int mConnectTimeout = 20000;
+	private int mReadTimeout = 20000;
 
 	protected String getBaseUrl() {
 		return mBaseUrl;
