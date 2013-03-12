@@ -5208,20 +5208,15 @@ ruleInsertStatement returns [EObject current=null]
     }
 (
 (
-		lv_columnNames_7_0=RULE_ID
 		{
-			newLeafNode(lv_columnNames_7_0, grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getInsertStatementRule());
 	        }
-       		addWithLastConsumed(
-       			$current, 
-       			"columnNames",
-        		lv_columnNames_7_0, 
-        		"ID");
-	    }
+        }
+	otherlv_7=RULE_ID
+	{
+		newLeafNode(otherlv_7, grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_1_0()); 
+	}
 
 )
 )(	otherlv_8=',' 
@@ -5230,20 +5225,15 @@ ruleInsertStatement returns [EObject current=null]
     }
 (
 (
-		lv_columnNames_9_0=RULE_ID
 		{
-			newLeafNode(lv_columnNames_9_0, grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getInsertStatementRule());
 	        }
-       		addWithLastConsumed(
-       			$current, 
-       			"columnNames",
-        		lv_columnNames_9_0, 
-        		"ID");
-	    }
+        }
+	otherlv_9=RULE_ID
+	{
+		newLeafNode(otherlv_9, grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_2_1_0()); 
+	}
 
 )
 ))*	otherlv_10=')' 
@@ -5479,20 +5469,15 @@ ruleUpdateColumnExpression returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_columnName_0_0=RULE_ID
 		{
-			newLeafNode(lv_columnName_0_0, grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); 
-		}
-		{
-	        if ($current==null) {
+			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getUpdateColumnExpressionRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"columnName",
-        		lv_columnName_0_0, 
-        		"ID");
-	    }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefCrossReference_0_0()); 
+	}
 
 )
 )	otherlv_1='=' 

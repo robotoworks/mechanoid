@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ConflictResolution;
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.InsertStatement;
@@ -21,8 +22,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -75,14 +76,14 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
   protected TableDefinition table;
 
   /**
-   * The cached value of the '{@link #getColumnNames() <em>Column Names</em>}' attribute list.
+   * The cached value of the '{@link #getColumnNames() <em>Column Names</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getColumnNames()
    * @generated
    * @ordered
    */
-  protected EList<String> columnNames;
+  protected EList<ColumnDef> columnNames;
 
   /**
    * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
@@ -196,11 +197,11 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getColumnNames()
+  public EList<ColumnDef> getColumnNames()
   {
     if (columnNames == null)
     {
-      columnNames = new EDataTypeEList<String>(String.class, this, SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES);
+      columnNames = new EObjectResolvingEList<ColumnDef>(ColumnDef.class, this, SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES);
     }
     return columnNames;
   }
@@ -329,7 +330,7 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
         return;
       case SqliteModelPackage.INSERT_STATEMENT__COLUMN_NAMES:
         getColumnNames().clear();
-        getColumnNames().addAll((Collection<? extends String>)newValue);
+        getColumnNames().addAll((Collection<? extends ColumnDef>)newValue);
         return;
       case SqliteModelPackage.INSERT_STATEMENT__EXPRESSIONS:
         getExpressions().clear();
@@ -408,8 +409,6 @@ public class InsertStatementImpl extends DMLStatementImpl implements InsertState
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (conflictResolution: ");
     result.append(conflictResolution);
-    result.append(", columnNames: ");
-    result.append(columnNames);
     result.append(')');
     return result.toString();
   }

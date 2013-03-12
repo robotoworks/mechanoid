@@ -1295,7 +1295,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     (
 	 *         conflictResolution=ConflictResolution? 
 	 *         table=[TableDefinition|ID] 
-	 *         (columnNames+=ID columnNames+=ID*)? 
+	 *         (columnNames+=[ColumnDef|ID] columnNames+=[ColumnDef|ID]*)? 
 	 *         ((expressions+=SqlExpression expressions+=SqlExpression*) | selectStatement=SelectStatement)?
 	 *     )
 	 */
@@ -1739,7 +1739,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (columnName=ID expression=SqlExpression)
+	 *     (columnName=[ColumnDef|ID] expression=SqlExpression)
 	 */
 	protected void sequence_UpdateColumnExpression(EObject context, UpdateColumnExpression semanticObject) {
 		if(errorAcceptor != null) {
@@ -1750,7 +1750,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0(), semanticObject.getColumnName());
+		feeder.accept(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefIDTerminalRuleCall_0_0_1(), semanticObject.getColumnName());
 		feeder.accept(grammarAccess.getUpdateColumnExpressionAccess().getExpressionSqlExpressionParserRuleCall_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}

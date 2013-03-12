@@ -1909,9 +1909,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getInsertStatement_ColumnNames()
+  public EReference getInsertStatement_ColumnNames()
   {
-    return (EAttribute)insertStatementEClass.getEStructuralFeatures().get(2);
+    return (EReference)insertStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1999,9 +1999,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getUpdateColumnExpression_ColumnName()
+  public EReference getUpdateColumnExpression_ColumnName()
   {
-    return (EAttribute)updateColumnExpressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)updateColumnExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3446,7 +3446,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     insertStatementEClass = createEClass(INSERT_STATEMENT);
     createEAttribute(insertStatementEClass, INSERT_STATEMENT__CONFLICT_RESOLUTION);
     createEReference(insertStatementEClass, INSERT_STATEMENT__TABLE);
-    createEAttribute(insertStatementEClass, INSERT_STATEMENT__COLUMN_NAMES);
+    createEReference(insertStatementEClass, INSERT_STATEMENT__COLUMN_NAMES);
     createEReference(insertStatementEClass, INSERT_STATEMENT__EXPRESSIONS);
     createEReference(insertStatementEClass, INSERT_STATEMENT__SELECT_STATEMENT);
 
@@ -3457,7 +3457,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(updateStatementEClass, UPDATE_STATEMENT__WHERE_EXPRESSION);
 
     updateColumnExpressionEClass = createEClass(UPDATE_COLUMN_EXPRESSION);
-    createEAttribute(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__COLUMN_NAME);
+    createEReference(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__COLUMN_NAME);
     createEReference(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__EXPRESSION);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
@@ -3869,7 +3869,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(insertStatementEClass, InsertStatement.class, "InsertStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInsertStatement_ConflictResolution(), this.getConflictResolution(), "conflictResolution", null, 0, 1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInsertStatement_Table(), this.getTableDefinition(), null, "table", null, 0, 1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getInsertStatement_ColumnNames(), ecorePackage.getEString(), "columnNames", null, 0, -1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInsertStatement_ColumnNames(), this.getColumnDef(), null, "columnNames", null, 0, -1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInsertStatement_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInsertStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, InsertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -3880,7 +3880,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getUpdateStatement_WhereExpression(), this.getExpression(), null, "whereExpression", null, 0, 1, UpdateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(updateColumnExpressionEClass, UpdateColumnExpression.class, "UpdateColumnExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUpdateColumnExpression_ColumnName(), ecorePackage.getEString(), "columnName", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUpdateColumnExpression_ColumnName(), this.getColumnDef(), null, "columnName", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUpdateColumnExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -18147,8 +18147,12 @@ rule__InsertStatement__ColumnNamesAssignment_3_1
     }
 :
 (
-{ before(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); }
-	RULE_ID{ after(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_1_0()); }
+{ before(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_1_0()); }
+(
+{ before(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefIDTerminalRuleCall_3_1_0_1()); }
+	RULE_ID{ after(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefIDTerminalRuleCall_3_1_0_1()); }
+)
+{ after(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_1_0()); }
 )
 
 ;
@@ -18162,8 +18166,12 @@ rule__InsertStatement__ColumnNamesAssignment_3_2_1
     }
 :
 (
-{ before(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); }
-	RULE_ID{ after(grammarAccess.getInsertStatementAccess().getColumnNamesIDTerminalRuleCall_3_2_1_0()); }
+{ before(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_2_1_0()); }
+(
+{ before(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefIDTerminalRuleCall_3_2_1_0_1()); }
+	RULE_ID{ after(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefIDTerminalRuleCall_3_2_1_0_1()); }
+)
+{ after(grammarAccess.getInsertStatementAccess().getColumnNamesColumnDefCrossReference_3_2_1_0()); }
 )
 
 ;
@@ -18301,8 +18309,12 @@ rule__UpdateColumnExpression__ColumnNameAssignment_0
     }
 :
 (
-{ before(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); }
-	RULE_ID{ after(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameIDTerminalRuleCall_0_0()); }
+{ before(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefCrossReference_0_0()); }
+(
+{ before(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefIDTerminalRuleCall_0_0_1()); }
+	RULE_ID{ after(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefIDTerminalRuleCall_0_0_1()); }
+)
+{ after(grammarAccess.getUpdateColumnExpressionAccess().getColumnNameColumnDefCrossReference_0_0()); }
 )
 
 ;

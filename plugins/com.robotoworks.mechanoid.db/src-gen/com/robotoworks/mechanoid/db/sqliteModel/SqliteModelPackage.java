@@ -1496,7 +1496,7 @@ public interface SqliteModelPackage extends EPackage
   int INSERT_STATEMENT__TABLE = DML_STATEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Column Names</b></em>' attribute list.
+   * The feature id for the '<em><b>Column Names</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1597,7 +1597,7 @@ public interface SqliteModelPackage extends EPackage
   int UPDATE_COLUMN_EXPRESSION = 44;
 
   /**
-   * The feature id for the '<em><b>Column Name</b></em>' attribute.
+   * The feature id for the '<em><b>Column Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4394,15 +4394,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getInsertStatement_Table();
 
   /**
-   * Returns the meta object for the attribute list '{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getColumnNames <em>Column Names</em>}'.
+   * Returns the meta object for the reference list '{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getColumnNames <em>Column Names</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Column Names</em>'.
+   * @return the meta object for the reference list '<em>Column Names</em>'.
    * @see com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getColumnNames()
    * @see #getInsertStatement()
    * @generated
    */
-  EAttribute getInsertStatement_ColumnNames();
+  EReference getInsertStatement_ColumnNames();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getExpressions <em>Expressions</em>}'.
@@ -4491,15 +4491,15 @@ public interface SqliteModelPackage extends EPackage
   EClass getUpdateColumnExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName <em>Column Name</em>}'.
+   * Returns the meta object for the reference '{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName <em>Column Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Column Name</em>'.
+   * @return the meta object for the reference '<em>Column Name</em>'.
    * @see com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName()
    * @see #getUpdateColumnExpression()
    * @generated
    */
-  EAttribute getUpdateColumnExpression_ColumnName();
+  EReference getUpdateColumnExpression_ColumnName();
 
   /**
    * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getExpression <em>Expression</em>}'.
@@ -6832,12 +6832,12 @@ public interface SqliteModelPackage extends EPackage
     EReference INSERT_STATEMENT__TABLE = eINSTANCE.getInsertStatement_Table();
 
     /**
-     * The meta object literal for the '<em><b>Column Names</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Column Names</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSERT_STATEMENT__COLUMN_NAMES = eINSTANCE.getInsertStatement_ColumnNames();
+    EReference INSERT_STATEMENT__COLUMN_NAMES = eINSTANCE.getInsertStatement_ColumnNames();
 
     /**
      * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
@@ -6908,12 +6908,12 @@ public interface SqliteModelPackage extends EPackage
     EClass UPDATE_COLUMN_EXPRESSION = eINSTANCE.getUpdateColumnExpression();
 
     /**
-     * The meta object literal for the '<em><b>Column Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Column Name</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute UPDATE_COLUMN_EXPRESSION__COLUMN_NAME = eINSTANCE.getUpdateColumnExpression_ColumnName();
+    EReference UPDATE_COLUMN_EXPRESSION__COLUMN_NAME = eINSTANCE.getUpdateColumnExpression_ColumnName();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.

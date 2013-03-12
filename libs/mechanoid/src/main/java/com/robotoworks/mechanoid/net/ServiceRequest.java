@@ -19,6 +19,9 @@ public abstract class ServiceRequest {
 	
 	private LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
 	
+	private int mReadTimeout = -1;
+	private int mConnectTimeout = -1;
+	
 	public void setHeader(String field, String value) {
 		mHeaders.put(field, value);
 	}
@@ -29,6 +32,22 @@ public abstract class ServiceRequest {
 	
 	public String getHeaderValue(String key) {
 		return mHeaders.get(key);
+	}
+	
+	public void setReadTimeout(int readTimeout) {
+		mReadTimeout = readTimeout;
+	}
+	
+	public int getReadTimeout() {
+		return mReadTimeout;
+	}
+	
+	public void setConnectTimeout(int connectTimeout) {
+		mConnectTimeout = connectTimeout;
+	}
+	
+	public int getConnectTimeout() {
+		return mConnectTimeout;
 	}
 	
 	public abstract String createUrl(String baseUrl);
