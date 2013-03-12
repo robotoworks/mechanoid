@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression;
@@ -32,24 +33,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container implements UpdateColumnExpression
 {
   /**
-   * The default value of the '{@link #getColumnName() <em>Column Name</em>}' attribute.
+   * The cached value of the '{@link #getColumnName() <em>Column Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getColumnName()
    * @generated
    * @ordered
    */
-  protected static final String COLUMN_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getColumnName() <em>Column Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getColumnName()
-   * @generated
-   * @ordered
-   */
-  protected String columnName = COLUMN_NAME_EDEFAULT;
+  protected ColumnDef columnName;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -87,7 +78,27 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getColumnName()
+  public ColumnDef getColumnName()
+  {
+    if (columnName != null && columnName.eIsProxy())
+    {
+      InternalEObject oldColumnName = (InternalEObject)columnName;
+      columnName = (ColumnDef)eResolveProxy(oldColumnName);
+      if (columnName != oldColumnName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME, oldColumnName, columnName));
+      }
+    }
+    return columnName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnDef basicGetColumnName()
   {
     return columnName;
   }
@@ -97,9 +108,9 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setColumnName(String newColumnName)
+  public void setColumnName(ColumnDef newColumnName)
   {
-    String oldColumnName = columnName;
+    ColumnDef oldColumnName = columnName;
     columnName = newColumnName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME, oldColumnName, columnName));
@@ -180,7 +191,8 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME:
-        return getColumnName();
+        if (resolve) return getColumnName();
+        return basicGetColumnName();
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
         return getExpression();
     }
@@ -198,7 +210,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME:
-        setColumnName((String)newValue);
+        setColumnName((ColumnDef)newValue);
         return;
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((Expression)newValue);
@@ -218,7 +230,7 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME:
-        setColumnName(COLUMN_NAME_EDEFAULT);
+        setColumnName((ColumnDef)null);
         return;
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
         setExpression((Expression)null);
@@ -238,28 +250,11 @@ public class UpdateColumnExpressionImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__COLUMN_NAME:
-        return COLUMN_NAME_EDEFAULT == null ? columnName != null : !COLUMN_NAME_EDEFAULT.equals(columnName);
+        return columnName != null;
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION__EXPRESSION:
         return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (columnName: ");
-    result.append(columnName);
-    result.append(')');
-    return result.toString();
   }
 
 } //UpdateColumnExpressionImpl

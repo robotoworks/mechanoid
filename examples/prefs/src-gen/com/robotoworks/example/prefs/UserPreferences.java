@@ -47,7 +47,7 @@ public class UserPreferences {
 		return mPreferences.getInt(Keys.AGE, 0);
 	}
 	public float getBankBalance() {
-		return mPreferences.getFloat(Keys.BANK_BALANCE, 100.0f);
+		return mPreferences.getFloat(Keys.BANK_BALANCE, 100);
 	}
 	public boolean getSubscribed() {
 		return mPreferences.getBoolean(Keys.SUBSCRIBED, true);

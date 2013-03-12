@@ -405,7 +405,14 @@ public class ContentProviderContractGenerator {
   public Iterable<ActionStatement> findActionsForDefinition(final Model model, final String defName) {
     DatabaseBlock _database = model.getDatabase();
     ConfigBlock _config = _database.getConfig();
-    EList<ConfigurationStatement> _statements = _config==null?(EList<ConfigurationStatement>)null:_config.getStatements();
+    boolean _equals = Objects.equal(_config, null);
+    if (_equals) {
+      ArrayList<ActionStatement> _arrayList = new ArrayList<ActionStatement>();
+      return _arrayList;
+    }
+    DatabaseBlock _database_1 = model.getDatabase();
+    ConfigBlock _config_1 = _database_1.getConfig();
+    EList<ConfigurationStatement> _statements = _config_1.getStatements();
     Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
     final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
         public Boolean apply(final ActionStatement action) {

@@ -24,30 +24,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface UpdateColumnExpression extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Column Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Column Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Column Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Column Name</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Column Name</em>' attribute.
-   * @see #setColumnName(String)
+   * @return the value of the '<em>Column Name</em>' reference.
+   * @see #setColumnName(ColumnDef)
    * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getUpdateColumnExpression_ColumnName()
    * @model
    * @generated
    */
-  String getColumnName();
+  ColumnDef getColumnName();
 
   /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName <em>Column Name</em>}' attribute.
+   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName <em>Column Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Column Name</em>' attribute.
+   * @param value the new value of the '<em>Column Name</em>' reference.
    * @see #getColumnName()
    * @generated
    */
-  void setColumnName(String value);
+  void setColumnName(ColumnDef value);
 
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.

@@ -35,6 +35,7 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
+import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -118,6 +119,31 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return stmt.scopeForTableDefinitionsBeforeStatement
 	}
 	
+	def IScope scope_InsertStatement_columnNames(InsertStatement context, EReference reference) {
+		var stmt = context.getAncestorOfType(typeof(DDLStatement))
+		return Scopes::scopeFor(stmt.findColumnDefs(context.table), IScope::NULLSCOPE)
+	}
+	
+	def IScope scope_UpdateColumnExpression_columnName(UpdateColumnExpression context, EReference reference) {
+		var updateStmt = context.getAncestorOfType(typeof(UpdateStatement))
+		var containingStmt = context.getAncestorOfType(typeof(DDLStatement))
+		return Scopes::scopeFor(containingStmt.findColumnDefs(updateStmt.table), IScope::NULLSCOPE)
+	}
+	
+	def IScope scope_UpdateColumnExpression_columnName(UpdateStatement context, EReference reference) {
+		var containingStmt = context.getAncestorOfType(typeof(DDLStatement))
+		return Scopes::scopeFor(containingStmt.findColumnDefs(context.table), IScope::NULLSCOPE)
+	}
+	
+	def IScope scope_ColumnSourceRef_source(UpdateStatement context, EReference reference) {
+		var ddl = context.getAncestorOfType(typeof(DDLStatement))
+		return Scopes::scopeFor(ddl.findColumnDefs(context.table), IScope::NULLSCOPE)
+	}	
+	
+	def IScope scope_ColumnSourceRef_source(DeleteStatement context, EReference reference) {
+		var ddl = context.getAncestorOfType(typeof(DDLStatement))
+		return Scopes::scopeFor(ddl.findColumnDefs(context.table), IScope::NULLSCOPE)
+	}	
 	
 	def scopeForTableDefinitionsBeforeStatement(DDLStatement stmt) {
 		var refs = stmt.findPreviousStatementsOfType(typeof(TableDefinition))

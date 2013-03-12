@@ -311,7 +311,7 @@ DeleteStatement:
 
 InsertStatement:
 	('insert' ('or' (conflictResolution=ConflictResolution))?|'replace') 'into' table=[TableDefinition|ID]
-	('(' columnNames+=ID (',' columnNames+=ID)* ')')? 
+	('(' columnNames+=[ColumnDef] (',' columnNames+=[ColumnDef])* ')')? 
 	(('values' 
 		'(' expressions+=SqlExpression (',' expressions+=SqlExpression)* ')'
 		| selectStatement=SelectStatement
@@ -325,7 +325,7 @@ UpdateStatement:
 ;
 
 UpdateColumnExpression:
-	columnName=ID '=' expression=SqlExpression
+	columnName=[ColumnDef] '=' expression=SqlExpression
 ;
 
 /***********************************************************************
