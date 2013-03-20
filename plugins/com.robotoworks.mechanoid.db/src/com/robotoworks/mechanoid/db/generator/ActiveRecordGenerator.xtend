@@ -264,7 +264,7 @@ class ActiveRecordGenerator {
 				«ENDIF»
 				«ENDFOR»
 				
-				boolean[] dirtyFlags = new boolean[«stmt.columnDefs.size»];
+				boolean[] dirtyFlags = new boolean[«stmt.columnDefs.size - 1»];
 				in.readBooleanArray(dirtyFlags);
 				«FOR col : stmt.columnDefs.filter([!it.name.equals("_id")])»
 				m«col.name.pascalize»Dirty = dirtyFlags[«counter = counter + 1»];
