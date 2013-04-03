@@ -183,7 +183,7 @@ public abstract class ServiceClient {
 		}
 	}
 	
-	protected <REQUEST extends EntityEnclosedServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
+	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
 		postUnlessPut(REQUEST request, Parser<RESULT> resultParser, boolean doPut)
 			throws ServiceException {
 
@@ -214,15 +214,19 @@ public abstract class ServiceClient {
 
 			conn.connect();
 
-			if (isDebug()) {
-				ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
-				request.writeBody(mWriterProvider, debugOutStream);
-
-				Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
+			if(request instanceof EntityEnclosedServiceRequest) {
+				EntityEnclosedServiceRequest entityEnclosedRequest = (EntityEnclosedServiceRequest) request;
+				
+				if (isDebug()) {
+					ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+					entityEnclosedRequest.writeBody(mWriterProvider, debugOutStream);
+	
+					Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
+				}
+	
+				entityEnclosedRequest.writeBody(mWriterProvider, conn.getOutputStream());
 			}
-
-			request.writeBody(mWriterProvider, conn.getOutputStream());
-
+			
 			Response<RESULT> response = new Response<RESULT>(conn, resultParser);
 
 			if (isDebug()) {
@@ -238,13 +242,13 @@ public abstract class ServiceClient {
 		}
 	}
 	
-	protected <REQUEST extends EntityEnclosedServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
+	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
 		post(REQUEST request, Parser<RESULT> resultParser)
 			throws ServiceException {
 		return postUnlessPut(request, resultParser, false);
 	}
 	
-	protected <REQUEST extends EntityEnclosedServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
+	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
 		put(REQUEST request, Parser<RESULT> resultParser)
 			throws ServiceException {
 		return postUnlessPut(request, resultParser, true);
