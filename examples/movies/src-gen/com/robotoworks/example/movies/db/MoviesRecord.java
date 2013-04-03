@@ -112,7 +112,7 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		mDescription = in.readString();
 		mYear = in.readLong();
 		
-		boolean[] dirtyFlags = new boolean[4];
+		boolean[] dirtyFlags = new boolean[3];
 		in.readBooleanArray(dirtyFlags);
 		mTitleDirty = dirtyFlags[0];
 		mDescriptionDirty = dirtyFlags[1];

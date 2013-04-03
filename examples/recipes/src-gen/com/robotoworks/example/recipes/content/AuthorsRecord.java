@@ -84,7 +84,7 @@ public class AuthorsRecord extends ActiveRecord implements Parcelable {
 		
 		mName = in.readString();
 		
-		boolean[] dirtyFlags = new boolean[2];
+		boolean[] dirtyFlags = new boolean[1];
 		in.readBooleanArray(dirtyFlags);
 		mNameDirty = dirtyFlags[0];
 	}
