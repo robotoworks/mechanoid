@@ -112,7 +112,7 @@ public class IngredientsRecord extends ActiveRecord implements Parcelable {
 		mQuantity = in.readString();
 		mIngredient = in.readString();
 		
-		boolean[] dirtyFlags = new boolean[4];
+		boolean[] dirtyFlags = new boolean[3];
 		in.readBooleanArray(dirtyFlags);
 		mRecipeIdDirty = dirtyFlags[0];
 		mQuantityDirty = dirtyFlags[1];

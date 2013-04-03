@@ -114,7 +114,7 @@ class RequestGenerator {
 			«var methodHeaders = method.headerBlock»
 			«IF methodHeaders != null»
 			«FOR header : methodHeaders.headers»
-			headers.put("«header.name»","«header.value»");
+			setHeader("«header.name»","«header.value»");
 			«ENDFOR»
 			
 			«ENDIF»

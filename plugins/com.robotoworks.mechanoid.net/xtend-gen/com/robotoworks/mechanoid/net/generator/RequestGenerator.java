@@ -457,7 +457,7 @@ public class RequestGenerator {
           EList<Header> _headers = methodHeaders.getHeaders();
           for(final Header header : _headers) {
             _builder.append("\t\t");
-            _builder.append("headers.put(\"");
+            _builder.append("setHeader(\"");
             String _name_19 = header.getName();
             _builder.append(_name_19, "		");
             _builder.append("\",\"");

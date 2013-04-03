@@ -999,7 +999,8 @@ public class ActiveRecordGenerator {
     _builder.append("boolean[] dirtyFlags = new boolean[");
     EList<ColumnSource> _columnDefs_1 = stmt.getColumnDefs();
     int _size = _columnDefs_1.size();
-    _builder.append(_size, "");
+    int _minus = (_size - 1);
+    _builder.append(_minus, "");
     _builder.append("];");
     _builder.newLineIfNotEmpty();
     _builder.append("in.readBooleanArray(dirtyFlags);");
