@@ -3352,16 +3352,16 @@ ruleLiteralValue returns [EObject current=null]
     }
 )(
 (
-		lv_literal_11_0=	'current_time_stamp' 
+		lv_literal_11_0=	'current_timestamp' 
     {
-        newLeafNode(lv_literal_11_0, grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0());
+        newLeafNode(lv_literal_11_0, grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getLiteralValueRule());
 	        }
-       		setWithLastConsumed($current, "literal", lv_literal_11_0, "current_time_stamp");
+       		setWithLastConsumed($current, "literal", lv_literal_11_0, "current_timestamp");
 	    }
 
 )
