@@ -179,7 +179,6 @@ RULE_WS=10
 'rename to'=95
 '!='=27
 '<'=21
-'current_time_stamp'=128
 'or'=107
 'into'=105
 'like'=32
@@ -242,6 +241,7 @@ RULE_WS=10
 'after'=39
 '}'=60
 'rollback'=53
+'current_timestamp'=128
 'before'=38
 '*'=12
 'except'=45

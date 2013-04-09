@@ -17151,16 +17151,16 @@ rule__LiteralValue__LiteralAssignment_5_1
     }
 :
 (
-{ before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); }
+{ before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); }
 (
-{ before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); }
+{ before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); }
 
-	'current_time_stamp' 
+	'current_timestamp' 
 
-{ after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); }
+{ after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); }
 )
 
-{ after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); }
+{ after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); }
 )
 
 ;

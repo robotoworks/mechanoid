@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalSqliteModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NUMBER", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'not null'", "'notnull'", "'before'", "'after'", "'instead of'", "'replace'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "':'", "'migration'", "';'", "'is null'", "'new.'", "'old.'", "'.'", "'('", "')'", "'case'", "'end'", "'else'", "','", "'cast'", "'as'", "'when'", "'then'", "'order by'", "'select'", "'from'", "'where'", "'group by'", "'having'", "'join'", "'on'", "'create'", "'table'", "'view'", "'trigger'", "'begin'", "'of'", "'alter'", "'rename to'", "'add column'", "'drop'", "'primary key'", "'default'", "'unique'", "'constraint'", "'check'", "'conflict'", "'delete'", "'into'", "'insert'", "'or'", "'values'", "'update'", "'set'", "'#'", "'||'", "'and'", "'not'", "'exists'", "'distinct'", "'all'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'null'", "'current_time'", "'current_date'", "'current_time_stamp'", "'for each row'", "'if exists'", "'autoincrement'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NUMBER", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'like'", "'glob'", "'match'", "'regexp'", "'not null'", "'notnull'", "'before'", "'after'", "'instead of'", "'replace'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'", "'package'", "'database'", "'{'", "'}'", "'config'", "'action'", "':'", "'migration'", "';'", "'is null'", "'new.'", "'old.'", "'.'", "'('", "')'", "'case'", "'end'", "'else'", "','", "'cast'", "'as'", "'when'", "'then'", "'order by'", "'select'", "'from'", "'where'", "'group by'", "'having'", "'join'", "'on'", "'create'", "'table'", "'view'", "'trigger'", "'begin'", "'of'", "'alter'", "'rename to'", "'add column'", "'drop'", "'primary key'", "'default'", "'unique'", "'constraint'", "'check'", "'conflict'", "'delete'", "'into'", "'insert'", "'or'", "'values'", "'update'", "'set'", "'#'", "'||'", "'and'", "'not'", "'exists'", "'distinct'", "'all'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'null'", "'current_time'", "'current_date'", "'current_timestamp'", "'for each row'", "'if exists'", "'autoincrement'"
     };
     public static final int RULE_ID=5;
     public static final int T__29=29;
@@ -48854,36 +48854,36 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__LiteralValue__LiteralAssignment_5_1"
-    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17148:1: rule__LiteralValue__LiteralAssignment_5_1 : ( ( 'current_time_stamp' ) ) ;
+    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17148:1: rule__LiteralValue__LiteralAssignment_5_1 : ( ( 'current_timestamp' ) ) ;
     public final void rule__LiteralValue__LiteralAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17152:1: ( ( ( 'current_time_stamp' ) ) )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17153:1: ( ( 'current_time_stamp' ) )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17152:1: ( ( ( 'current_timestamp' ) ) )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17153:1: ( ( 'current_timestamp' ) )
             {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17153:1: ( ( 'current_time_stamp' ) )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17154:1: ( 'current_time_stamp' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17153:1: ( ( 'current_timestamp' ) )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17154:1: ( 'current_timestamp' )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
+               before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); 
             }
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17155:1: ( 'current_time_stamp' )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17156:1: 'current_time_stamp'
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17155:1: ( 'current_timestamp' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:17156:1: 'current_timestamp'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
+               before(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); 
             }
             match(input,128,FOLLOW_128_in_rule__LiteralValue__LiteralAssignment_5_134561); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
+               after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0()); 
+               after(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0()); 
             }
 
             }

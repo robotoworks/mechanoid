@@ -180,7 +180,6 @@ RULE_WS=10
 '!='=38
 '<'=32
 'or'=48
-'current_time_stamp'=87
 'into'=114
 'like'=43
 '&'=30
@@ -242,6 +241,7 @@ RULE_WS=10
 'after'=93
 'rollback'=128
 '}'=15
+'current_timestamp'=87
 'before'=92
 '*'=21
 'except'=120
