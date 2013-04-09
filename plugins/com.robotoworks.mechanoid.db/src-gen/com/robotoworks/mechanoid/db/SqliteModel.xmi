@@ -1006,7 +1006,7 @@
             </type>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="literal" operator="=">
-            <terminal xsi:type="xtext:Keyword" value="current_time_stamp"/>
+            <terminal xsi:type="xtext:Keyword" value="current_timestamp"/>
           </elements>
         </elements>
       </alternatives>

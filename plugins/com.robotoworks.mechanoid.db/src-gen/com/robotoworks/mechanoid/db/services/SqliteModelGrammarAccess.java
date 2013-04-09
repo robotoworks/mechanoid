@@ -1979,17 +1979,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
 		private final Action cCurrentTimeStampLiteralAction_5_0 = (Action)cGroup_5.eContents().get(0);
 		private final Assignment cLiteralAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final Keyword cLiteralCurrent_time_stampKeyword_5_1_0 = (Keyword)cLiteralAssignment_5_1.eContents().get(0);
+		private final Keyword cLiteralCurrent_timestampKeyword_5_1_0 = (Keyword)cLiteralAssignment_5_1.eContents().get(0);
 		
 		//LiteralValue:
 		//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
 		//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-		//	literal="current_time_stamp";
+		//	literal="current_timestamp";
 		public ParserRule getRule() { return rule; }
 
 		//{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
 		//{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-		//literal="current_time_stamp"
+		//literal="current_timestamp"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{NumericLiteral} number=SignedNumber
@@ -2052,17 +2052,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"current_date"
 		public Keyword getLiteralCurrent_dateKeyword_4_1_0() { return cLiteralCurrent_dateKeyword_4_1_0; }
 
-		//{CurrentTimeStampLiteral} literal="current_time_stamp"
+		//{CurrentTimeStampLiteral} literal="current_timestamp"
 		public Group getGroup_5() { return cGroup_5; }
 
 		//{CurrentTimeStampLiteral}
 		public Action getCurrentTimeStampLiteralAction_5_0() { return cCurrentTimeStampLiteralAction_5_0; }
 
-		//literal="current_time_stamp"
+		//literal="current_timestamp"
 		public Assignment getLiteralAssignment_5_1() { return cLiteralAssignment_5_1; }
 
-		//"current_time_stamp"
-		public Keyword getLiteralCurrent_time_stampKeyword_5_1_0() { return cLiteralCurrent_time_stampKeyword_5_1_0; }
+		//"current_timestamp"
+		public Keyword getLiteralCurrent_timestampKeyword_5_1_0() { return cLiteralCurrent_timestampKeyword_5_1_0; }
 	}
 
 	public class DDLStatementElements extends AbstractParserRuleElementFinder {
@@ -4275,7 +4275,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//LiteralValue:
 	//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
 	//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
-	//	literal="current_time_stamp";
+	//	literal="current_timestamp";
 	public LiteralValueElements getLiteralValueAccess() {
 		return (pLiteralValue != null) ? pLiteralValue : (pLiteralValue = new LiteralValueElements());
 	}

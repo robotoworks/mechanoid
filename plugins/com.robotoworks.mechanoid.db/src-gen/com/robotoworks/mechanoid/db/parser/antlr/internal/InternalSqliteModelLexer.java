@@ -1716,10 +1716,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:86:7: ( 'current_time_stamp' )
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:86:9: 'current_time_stamp'
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:86:7: ( 'current_timestamp' )
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:86:9: 'current_timestamp'
             {
-            match("current_time_stamp"); 
+            match("current_timestamp"); 
 
 
             }
@@ -4169,9 +4169,9 @@ public class InternalSqliteModelLexer extends Lexer {
         "\1\u01e1\4\uffff\1\u01e2\4\uffff\1\u01e3\1\u01e4\1\uffff\1\u01e5"+
         "\4\65\1\uffff\1\65\2\uffff\1\u01ec\10\uffff\4\65\1\u01f1\1\u01f2"+
         "\1\uffff\1\u01f3\3\65\3\uffff\3\65\1\u01fb\1\u01fc\2\65\2\uffff"+
-        "\1\u01ff\1\65\1\uffff\3\65\1\u0204\1\uffff";
+        "\1\u01ff\1\65\1\uffff\2\65\1\u0203\1\uffff";
     static final String DFA14_eofS =
-        "\u0205\uffff";
+        "\u0204\uffff";
     static final String DFA14_minS =
         "\1\0\2\141\2\uffff\1\141\1\142\1\52\3\uffff\1\141\1\uffff\1\174"+
         "\3\uffff\1\74\1\75\1\uffff\2\75\1\146\1\145\1\154\1\145\1\146\1"+
@@ -4211,8 +4211,7 @@ public class InternalSqliteModelLexer extends Lexer {
         "\60\2\uffff\1\60\4\uffff\1\60\4\uffff\2\60\1\uffff\1\60\1\156\1"+
         "\144\1\145\1\156\1\uffff\1\164\2\uffff\1\60\10\uffff\1\164\1\151"+
         "\1\141\1\155\2\60\1\uffff\1\60\1\155\1\164\1\145\3\uffff\2\145\1"+
-        "\156\2\60\1\164\1\163\2\uffff\1\60\1\164\1\uffff\1\141\1\155\1\160"+
-        "\1\60\1\uffff";
+        "\156\2\60\2\164\2\uffff\1\60\1\141\1\uffff\1\155\1\160\1\60\1\uffff";
     static final String DFA14_maxS =
         "\1\uffff\2\162\2\uffff\2\165\1\57\3\uffff\1\151\1\uffff\1\174\3"+
         "\uffff\2\76\1\uffff\2\75\1\163\1\151\1\162\1\157\2\165\1\71\2\uffff"+
@@ -4252,8 +4251,8 @@ public class InternalSqliteModelLexer extends Lexer {
         "\1\172\3\uffff\1\172\1\153\3\172\2\uffff\1\172\4\uffff\1\172\4\uffff"+
         "\2\172\1\uffff\1\172\1\156\1\164\1\145\1\156\1\uffff\1\164\2\uffff"+
         "\1\172\10\uffff\1\164\1\151\1\141\1\155\2\172\1\uffff\1\172\1\155"+
-        "\1\164\1\145\3\uffff\2\145\1\156\2\172\1\164\1\163\2\uffff\1\172"+
-        "\1\164\1\uffff\1\141\1\155\1\160\1\172\1\uffff";
+        "\1\164\1\145\3\uffff\2\145\1\156\2\172\2\164\2\uffff\1\172\1\141"+
+        "\1\uffff\1\155\1\160\1\172\1\uffff";
     static final String DFA14_acceptS =
         "\3\uffff\1\3\1\4\3\uffff\1\10\1\11\1\12\1\uffff\1\14\1\uffff\1\16"+
         "\1\17\1\20\2\uffff\1\23\11\uffff\1\54\1\55\1\uffff\1\63\11\uffff"+
@@ -4276,9 +4275,9 @@ public class InternalSqliteModelLexer extends Lexer {
         "\1\uffff\1\126\1\143\1\1\1\137\2\uffff\1\141\5\uffff\1\123\1\uffff"+
         "\1\157\1\146\1\uffff\1\50\1\102\1\163\1\120\1\164\1\2\1\72\1\145"+
         "\6\uffff\1\165\4\uffff\1\13\1\154\1\142\7\uffff\1\112\1\113\2\uffff"+
-        "\1\140\4\uffff\1\114";
+        "\1\140\3\uffff\1\114";
     static final String DFA14_specialS =
-        "\1\1\54\uffff\1\2\1\0\u01d6\uffff}>";
+        "\1\0\54\uffff\1\2\1\1\u01d5\uffff}>";
     static final String[] DFA14_transitionS = {
             "\11\62\2\61\2\62\1\61\22\62\1\61\1\25\1\55\1\11\1\54\1\16\1"+
             "\23\1\56\1\35\1\36\1\12\1\17\1\40\1\20\1\34\1\7\12\52\1\10\1"+
@@ -4794,7 +4793,7 @@ public class InternalSqliteModelLexer extends Lexer {
             "\1\u01f7",
             "\1\u01f8",
             "\1\u01f9",
-            "\12\65\7\uffff\32\65\4\uffff\1\u01fa\1\uffff\32\65",
+            "\12\65\7\uffff\32\65\4\uffff\1\65\1\uffff\22\65\1\u01fa\7\65",
             "\12\65\7\uffff\32\65\4\uffff\1\65\1\uffff\32\65",
             "\1\u01fd",
             "\1\u01fe",
@@ -4805,7 +4804,6 @@ public class InternalSqliteModelLexer extends Lexer {
             "",
             "\1\u0201",
             "\1\u0202",
-            "\1\u0203",
             "\12\65\7\uffff\32\65\4\uffff\1\65\1\uffff\32\65",
             ""
     };
@@ -4847,16 +4845,6 @@ public class InternalSqliteModelLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA14_46 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_46>='\u0000' && LA14_46<='\uFFFF')) ) {s = 143;}
-
-                        else s = 50;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA14_0 = input.LA(1);
 
                         s = -1;
@@ -4959,6 +4947,16 @@ public class InternalSqliteModelLexer extends Lexer {
                         else if ( ((LA14_0>='\u0000' && LA14_0<='\b')||(LA14_0>='\u000B' && LA14_0<='\f')||(LA14_0>='\u000E' && LA14_0<='\u001F')||(LA14_0>='?' && LA14_0<='@')||(LA14_0>='[' && LA14_0<=']')||LA14_0=='`'||(LA14_0>='~' && LA14_0<='\uFFFF')) ) {s = 50;}
 
                         else s = 43;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA14_46 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_46>='\u0000' && LA14_46<='\uFFFF')) ) {s = 143;}
+
+                        else s = 50;
 
                         if ( s>=0 ) return s;
                         break;

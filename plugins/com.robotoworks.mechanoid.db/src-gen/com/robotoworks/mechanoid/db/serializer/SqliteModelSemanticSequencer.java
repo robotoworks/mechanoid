@@ -1356,7 +1356,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     literal='current_time_stamp'
+	 *     literal='current_timestamp'
 	 */
 	protected void sequence_LiteralValue(EObject context, CurrentTimeStampLiteral semanticObject) {
 		if(errorAcceptor != null) {
@@ -1365,7 +1365,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getLiteralValueAccess().getLiteralCurrent_time_stampKeyword_5_1_0(), semanticObject.getLiteral());
+		feeder.accept(grammarAccess.getLiteralValueAccess().getLiteralCurrent_timestampKeyword_5_1_0(), semanticObject.getLiteral());
 		feeder.finish();
 	}
 	

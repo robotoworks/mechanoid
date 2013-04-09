@@ -192,7 +192,7 @@ LiteralValue:
 	{NullLiteral} literal='null' |
 	{CurrentTimeLiteral} literal='current_time' |
 	{CurrentDateLiteral} literal='current_date' |
-	{CurrentTimeStampLiteral} literal='current_time_stamp'
+	{CurrentTimeStampLiteral} literal='current_timestamp'
 ;
 
 enum SqliteDataType:
