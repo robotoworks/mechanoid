@@ -1,86 +1,114 @@
-/*******************************************************************************
- * Copyright (c) 2012, Robotoworks Limited
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/*
+ * Copyright 2013 Robotoworks Limited
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  * 
- *******************************************************************************/
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.robotoworks.mechanoid.ops;
 
-import java.lang.ref.WeakReference;
-
-import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 
 public class OperationManager<T extends OperationServiceBridge> extends OperationManagerBase<T> {
 
+	private static final String TAG = "OperationManager";
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends OperationServiceBridge> OperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks) {
-		
-        String tag = "Tags." + bridge.getClass().getName() + callbacks.getClass().getName();
+	public static <T extends OperationServiceBridge> OperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks, boolean enableLogging) {
+
+		String tag = "Tags." + bridge.getClass().getName() + callbacks.getClass().getName();
         
         OperationManager<T> operationManager = null;
         
         PersistenceFragment frag = (PersistenceFragment) fragmentManager.findFragmentByTag(tag);
+        
         if(frag == null) {
         	
+        	if(enableLogging) {
+        		Log.d(TAG, String.format("[Create Fragment] tag:%s", tag));
+        	}
+        	
             frag = new PersistenceFragment();
-            operationManager = new OperationManager<T>(bridge, callbacks);
+            operationManager = new OperationManager<T>(bridge, callbacks, enableLogging);
             frag.setOperationManager(operationManager);
             fragmentManager.beginTransaction().add(frag, tag).commit();
         } else {
+        	
+        	if(enableLogging) {
+        		Log.d(TAG, String.format("[Recover Fragment] tag:%s", tag));
+        	}
+        	
         	operationManager = (OperationManager<T>) frag.getOperationManager();
         	
         	if(operationManager == null) {
-        		operationManager = new OperationManager<T>(bridge, callbacks);
+            	if(enableLogging) {
+            		Log.d(TAG, String.format("[Create Manager] tag:%s", tag));
+            	}
+            	
+        		operationManager = new OperationManager<T>(bridge, callbacks, enableLogging);
         		frag.setOperationManager(operationManager);
         	} else {
+            	if(enableLogging) {
+            		Log.d(TAG, String.format("[Recover Manager] tag:%s", tag));
+            	}
+            	
         		operationManager.mCallbacks = callbacks;
         	}
         }		
-        		
+		
 		return operationManager;
 	}
 	
-    @TargetApi(11)
-    private OperationManager(T bridge, OperationManagerCallbacks<T> callbacks) {
-        super(bridge, callbacks);
+	@SuppressWarnings("unchecked")
+	public static <T extends OperationServiceBridge> OperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks) {
+		return create(fragmentManager, bridge, callbacks, false);
+	}
+	
+    private OperationManager(T bridge, OperationManagerCallbacks<T> callbacks, boolean enableLogging) {
+        super(bridge, callbacks, enableLogging);
     }
     
-    @TargetApi(11)
     public static class PersistenceFragment extends Fragment {
-        private WeakReference<OperationManagerBase<?>> mOperationManagerRef;
+        private OperationManagerBase<?> mOperationManager;
+		private Bundle mSavedState;
         
         public void setOperationManager(OperationManagerBase<?> operationManager) {
-        	mOperationManagerRef = new WeakReference<OperationManagerBase<?>>(operationManager);
+        	mOperationManager = operationManager;
+        	
+        	if(mSavedState != null) {
+        		mOperationManager.restoreState(mSavedState);
+        		mOperationManager.start();
+        	}
 		}
         
         public OperationManagerBase<?> getOperationManager() {
-        	if(mOperationManagerRef == null) {
-        		return null;
-        	}
-        	
-			return mOperationManagerRef.get();
+        	return mOperationManager;
 		}
-
+        
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             
             OperationManagerBase<?> operationManager = getOperationManager();
             
-            if(operationManager != null) {
-            	operationManager.restoreState(savedInstanceState);
+            if(operationManager == null) {
+            	mSavedState = savedInstanceState;
             } else {
-            	removeSelf();
+            	operationManager.restoreState(savedInstanceState);
             }
         }
-        
-        @Override
+
+		@Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             
@@ -93,10 +121,11 @@ public class OperationManager<T extends OperationServiceBridge> extends Operatio
             }
         }
         
-        @Override
-        public void onStart() {
-            super.onStart();
-            
+		
+		@Override
+		public void onStart() {
+			super.onStart();
+			
             OperationManagerBase<?> operationManager = getOperationManager();
             
             if(operationManager != null) {
@@ -104,12 +133,12 @@ public class OperationManager<T extends OperationServiceBridge> extends Operatio
             } else {
             	removeSelf();
             }
-        }
-        
-        @Override
-        public void onStop() {
-            super.onStop();
-            
+		}
+		
+		@Override
+		public void onStop() {
+			super.onStop();
+			
             OperationManagerBase<?> operationManager = getOperationManager();
             
             if(operationManager != null) {
@@ -117,8 +146,8 @@ public class OperationManager<T extends OperationServiceBridge> extends Operatio
             } else {
             	removeSelf();
             }
-        }
-
+		}
+        
 		private void removeSelf() {
 			getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
 		}
