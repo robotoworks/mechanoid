@@ -39,35 +39,13 @@ public class ContentProviderGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("import java.util.ArrayList;");
-    _builder.newLine();
-    _builder.append("import java.util.List;");
-    _builder.newLine();
-    _builder.append("import android.content.ContentProviderOperation;");
-    _builder.newLine();
-    _builder.append("import android.content.ContentProviderResult;");
-    _builder.newLine();
-    _builder.append("import android.content.ContentValues;");
-    _builder.newLine();
     _builder.append("import android.content.Context;");
     _builder.newLine();
-    _builder.append("import android.content.OperationApplicationException;");
-    _builder.newLine();
     _builder.append("import android.content.UriMatcher;");
-    _builder.newLine();
-    _builder.append("import android.database.Cursor;");
-    _builder.newLine();
-    _builder.append("import android.database.sqlite.SQLiteDatabase;");
-    _builder.newLine();
-    _builder.append("import android.net.Uri;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.db.MechanoidContentProvider;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.db.ActiveRecord;");
-    _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.db.SQuery;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.db.DefaultContentProviderActions;");
     _builder.newLine();
@@ -112,14 +90,6 @@ public class ContentProviderGenerator {
     _builder.append(_pascalize_2, "");
     _builder.append("ContentProvider extends MechanoidContentProvider {");
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("private static final UriMatcher sUriMatcher;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("private static final String[] sContentTypes;");
-    _builder.newLine();
-    _builder.append("    ");
     _builder.newLine();
     _builder.append("\t");
     int counter = (-1);
@@ -241,159 +211,20 @@ public class ContentProviderGenerator {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("static {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("sUriMatcher = buildUriMatcher();");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("sContentTypes = new String[NUM_URI_MATCHERS];");
-    _builder.newLine();
-    _builder.newLine();
-    {
-      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
-      for(final CreateTableStatement tbl_2 : _tables_2) {
-        _builder.append("\t\t");
-        _builder.append("sContentTypes[");
-        String _name_8 = tbl_2.getName();
-        String _underscore_6 = Strings.underscore(_name_8);
-        String _upperCase_6 = _underscore_6.toUpperCase();
-        _builder.append(_upperCase_6, "		");
-        _builder.append("] = ");
-        DatabaseBlock _database_4 = model.getDatabase();
-        String _name_9 = _database_4.getName();
-        String _pascalize_3 = Strings.pascalize(_name_9);
-        _builder.append(_pascalize_3, "		");
-        _builder.append("Contract.");
-        String _name_10 = tbl_2.getName();
-        String _pascalize_4 = Strings.pascalize(_name_10);
-        _builder.append(_pascalize_4, "		");
-        _builder.append(".CONTENT_TYPE;");
-        _builder.newLineIfNotEmpty();
-        {
-          boolean _hasAndroidPrimaryKey_2 = ModelUtil.hasAndroidPrimaryKey(tbl_2);
-          if (_hasAndroidPrimaryKey_2) {
-            _builder.append("\t\t");
-            _builder.append("sContentTypes[");
-            String _name_11 = tbl_2.getName();
-            String _underscore_7 = Strings.underscore(_name_11);
-            String _upperCase_7 = _underscore_7.toUpperCase();
-            _builder.append(_upperCase_7, "		");
-            _builder.append("_ID] = ");
-            DatabaseBlock _database_5 = model.getDatabase();
-            String _name_12 = _database_5.getName();
-            String _pascalize_5 = Strings.pascalize(_name_12);
-            _builder.append(_pascalize_5, "		");
-            _builder.append("Contract.");
-            String _name_13 = tbl_2.getName();
-            String _pascalize_6 = Strings.pascalize(_name_13);
-            _builder.append(_pascalize_6, "		");
-            _builder.append(".ITEM_CONTENT_TYPE;");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    {
-      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
-      for(final CreateViewStatement vw_1 : _views_1) {
-        _builder.append("\t\t");
-        _builder.append("sContentTypes[");
-        String _name_14 = vw_1.getName();
-        String _underscore_8 = Strings.underscore(_name_14);
-        String _upperCase_8 = _underscore_8.toUpperCase();
-        _builder.append(_upperCase_8, "		");
-        _builder.append("] = ");
-        DatabaseBlock _database_6 = model.getDatabase();
-        String _name_15 = _database_6.getName();
-        String _pascalize_7 = Strings.pascalize(_name_15);
-        _builder.append(_pascalize_7, "		");
-        _builder.append("Contract.");
-        String _name_16 = vw_1.getName();
-        String _pascalize_8 = Strings.pascalize(_name_16);
-        _builder.append(_pascalize_8, "		");
-        _builder.append(".CONTENT_TYPE;");
-        _builder.newLineIfNotEmpty();
-        {
-          boolean _hasAndroidPrimaryKey_3 = ModelUtil.hasAndroidPrimaryKey(vw_1);
-          if (_hasAndroidPrimaryKey_3) {
-            _builder.append("\t\t");
-            _builder.append("sContentTypes[");
-            String _name_17 = vw_1.getName();
-            String _underscore_9 = Strings.underscore(_name_17);
-            String _upperCase_9 = _underscore_9.toUpperCase();
-            _builder.append(_upperCase_9, "		");
-            _builder.append("_ID] = ");
-            DatabaseBlock _database_7 = model.getDatabase();
-            String _name_18 = _database_7.getName();
-            String _pascalize_9 = Strings.pascalize(_name_18);
-            _builder.append(_pascalize_9, "		");
-            _builder.append("Contract.");
-            String _name_19 = vw_1.getName();
-            String _pascalize_10 = Strings.pascalize(_name_19);
-            _builder.append(_pascalize_10, "		");
-            _builder.append(".ITEM_CONTENT_TYPE;");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    {
-      DatabaseBlock _database_8 = model.getDatabase();
-      ConfigBlock _config_2 = _database_8.getConfig();
-      boolean _notEquals_1 = (!Objects.equal(_config_2, null));
-      if (_notEquals_1) {
-        {
-          DatabaseBlock _database_9 = model.getDatabase();
-          ConfigBlock _config_3 = _database_9.getConfig();
-          EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
-              }
-            };
-          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_2);
-          for(final ConfigurationStatement a_1 : _filter_2) {
-            _builder.append("\t\t");
-            _builder.append("sContentTypes[");
-            ContentUri _uri_1 = ((ActionStatement) a_1).getUri();
-            String _type_1 = _uri_1.getType();
-            String _underscore_10 = Strings.underscore(_type_1);
-            String _upperCase_10 = _underscore_10.toUpperCase();
-            _builder.append(_upperCase_10, "		");
-            _builder.append("_");
-            String _name_20 = ((ActionStatement) a_1).getName();
-            String _underscore_11 = Strings.underscore(_name_20);
-            String _upperCase_11 = _underscore_11.toUpperCase();
-            _builder.append(_upperCase_11, "		");
-            _builder.append("] = ");
-            String _generateContentTypeConstantReference = this.generateContentTypeConstantReference(((ActionStatement) a_1), model);
-            _builder.append(_generateContentTypeConstantReference, "		");
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
+    _builder.append("@Override");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("private static UriMatcher buildUriMatcher() {");
+    _builder.append("protected UriMatcher createUriMatcher() {");
     _builder.newLine();
     _builder.append("        ");
     _builder.append("final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);");
     _builder.newLine();
     _builder.append("        ");
     _builder.append("final String authority = ");
-    DatabaseBlock _database_10 = model.getDatabase();
-    String _name_21 = _database_10.getName();
-    String _pascalize_11 = Strings.pascalize(_name_21);
-    _builder.append(_pascalize_11, "        ");
+    DatabaseBlock _database_4 = model.getDatabase();
+    String _name_8 = _database_4.getName();
+    String _pascalize_3 = Strings.pascalize(_name_8);
+    _builder.append(_pascalize_3, "        ");
     _builder.append("Contract.CONTENT_AUTHORITY;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -401,31 +232,31 @@ public class ContentProviderGenerator {
     _builder.append("// Sources");
     _builder.newLine();
     {
-      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
-      for(final CreateTableStatement tbl_3 : _tables_3) {
+      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
+      for(final CreateTableStatement tbl_2 : _tables_2) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_22 = tbl_3.getName();
-        _builder.append(_name_22, "		");
+        String _name_9 = tbl_2.getName();
+        _builder.append(_name_9, "		");
         _builder.append("\", ");
-        String _name_23 = tbl_3.getName();
-        String _underscore_12 = Strings.underscore(_name_23);
-        String _upperCase_12 = _underscore_12.toUpperCase();
-        _builder.append(_upperCase_12, "		");
+        String _name_10 = tbl_2.getName();
+        String _underscore_6 = Strings.underscore(_name_10);
+        String _upperCase_6 = _underscore_6.toUpperCase();
+        _builder.append(_upperCase_6, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_4 = ModelUtil.hasAndroidPrimaryKey(tbl_3);
-          if (_hasAndroidPrimaryKey_4) {
+          boolean _hasAndroidPrimaryKey_2 = ModelUtil.hasAndroidPrimaryKey(tbl_2);
+          if (_hasAndroidPrimaryKey_2) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_24 = tbl_3.getName();
-            _builder.append(_name_24, "		");
+            String _name_11 = tbl_2.getName();
+            _builder.append(_name_11, "		");
             _builder.append("/#\", ");
-            String _name_25 = tbl_3.getName();
-            String _underscore_13 = Strings.underscore(_name_25);
-            String _upperCase_13 = _underscore_13.toUpperCase();
-            _builder.append(_upperCase_13, "		");
+            String _name_12 = tbl_2.getName();
+            String _underscore_7 = Strings.underscore(_name_12);
+            String _upperCase_7 = _underscore_7.toUpperCase();
+            _builder.append(_upperCase_7, "		");
             _builder.append("_ID);");
             _builder.newLineIfNotEmpty();
           }
@@ -437,31 +268,31 @@ public class ContentProviderGenerator {
     _builder.append("// Views");
     _builder.newLine();
     {
-      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
-      for(final CreateViewStatement vw_2 : _views_2) {
+      Collection<CreateViewStatement> _views_1 = snapshot.getViews();
+      for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t\t");
         _builder.append("matcher.addURI(authority, \"");
-        String _name_26 = vw_2.getName();
-        _builder.append(_name_26, "		");
+        String _name_13 = vw_1.getName();
+        _builder.append(_name_13, "		");
         _builder.append("\", ");
-        String _name_27 = vw_2.getName();
-        String _underscore_14 = Strings.underscore(_name_27);
-        String _upperCase_14 = _underscore_14.toUpperCase();
-        _builder.append(_upperCase_14, "		");
+        String _name_14 = vw_1.getName();
+        String _underscore_8 = Strings.underscore(_name_14);
+        String _upperCase_8 = _underscore_8.toUpperCase();
+        _builder.append(_upperCase_8, "		");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         {
-          boolean _hasAndroidPrimaryKey_5 = ModelUtil.hasAndroidPrimaryKey(vw_2);
-          if (_hasAndroidPrimaryKey_5) {
+          boolean _hasAndroidPrimaryKey_3 = ModelUtil.hasAndroidPrimaryKey(vw_1);
+          if (_hasAndroidPrimaryKey_3) {
             _builder.append("\t\t");
             _builder.append("matcher.addURI(authority, \"");
-            String _name_28 = vw_2.getName();
-            _builder.append(_name_28, "		");
+            String _name_15 = vw_1.getName();
+            _builder.append(_name_15, "		");
             _builder.append("/#\", ");
-            String _name_29 = vw_2.getName();
-            String _underscore_15 = Strings.underscore(_name_29);
-            String _upperCase_15 = _underscore_15.toUpperCase();
-            _builder.append(_upperCase_15, "		");
+            String _name_16 = vw_1.getName();
+            String _underscore_9 = Strings.underscore(_name_16);
+            String _upperCase_9 = _underscore_9.toUpperCase();
+            _builder.append(_upperCase_9, "		");
             _builder.append("_ID);");
             _builder.newLineIfNotEmpty();
           }
@@ -472,6 +303,153 @@ public class ContentProviderGenerator {
     _builder.append("\t\t");
     _builder.append("// User Actions");
     _builder.newLine();
+    {
+      DatabaseBlock _database_5 = model.getDatabase();
+      ConfigBlock _config_2 = _database_5.getConfig();
+      boolean _notEquals_1 = (!Objects.equal(_config_2, null));
+      if (_notEquals_1) {
+        {
+          DatabaseBlock _database_6 = model.getDatabase();
+          ConfigBlock _config_3 = _database_6.getConfig();
+          EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
+          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
+              public Boolean apply(final ConfigurationStatement it) {
+                return Boolean.valueOf((it instanceof ActionStatement));
+              }
+            };
+          Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_2);
+          for(final ConfigurationStatement a_1 : _filter_2) {
+            _builder.append("\t\t");
+            ActionStatement stmt = ((ActionStatement) a_1);
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t");
+            _builder.append("matcher.addURI(authority, \"");
+            ContentUri _uri_1 = stmt.getUri();
+            String _asString = this.asString(_uri_1);
+            _builder.append(_asString, "		");
+            _builder.append("\", ");
+            ContentUri _uri_2 = ((ActionStatement) a_1).getUri();
+            String _type_1 = _uri_2.getType();
+            String _underscore_10 = Strings.underscore(_type_1);
+            String _upperCase_10 = _underscore_10.toUpperCase();
+            _builder.append(_upperCase_10, "		");
+            _builder.append("_");
+            String _name_17 = ((ActionStatement) a_1).getName();
+            String _underscore_11 = Strings.underscore(_name_17);
+            String _upperCase_11 = _underscore_11.toUpperCase();
+            _builder.append(_upperCase_11, "		");
+            _builder.append("); ");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("        ");
+    _builder.append("return matcher;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("protected String[] createContentTypes() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("String[] contentTypes = new String[NUM_URI_MATCHERS];");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
+      for(final CreateTableStatement tbl_3 : _tables_3) {
+        _builder.append("\t\t");
+        _builder.append("contentTypes[");
+        String _name_18 = tbl_3.getName();
+        String _underscore_12 = Strings.underscore(_name_18);
+        String _upperCase_12 = _underscore_12.toUpperCase();
+        _builder.append(_upperCase_12, "		");
+        _builder.append("] = ");
+        DatabaseBlock _database_7 = model.getDatabase();
+        String _name_19 = _database_7.getName();
+        String _pascalize_4 = Strings.pascalize(_name_19);
+        _builder.append(_pascalize_4, "		");
+        _builder.append("Contract.");
+        String _name_20 = tbl_3.getName();
+        String _pascalize_5 = Strings.pascalize(_name_20);
+        _builder.append(_pascalize_5, "		");
+        _builder.append(".CONTENT_TYPE;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_4 = ModelUtil.hasAndroidPrimaryKey(tbl_3);
+          if (_hasAndroidPrimaryKey_4) {
+            _builder.append("\t\t");
+            _builder.append("contentTypes[");
+            String _name_21 = tbl_3.getName();
+            String _underscore_13 = Strings.underscore(_name_21);
+            String _upperCase_13 = _underscore_13.toUpperCase();
+            _builder.append(_upperCase_13, "		");
+            _builder.append("_ID] = ");
+            DatabaseBlock _database_8 = model.getDatabase();
+            String _name_22 = _database_8.getName();
+            String _pascalize_6 = Strings.pascalize(_name_22);
+            _builder.append(_pascalize_6, "		");
+            _builder.append("Contract.");
+            String _name_23 = tbl_3.getName();
+            String _pascalize_7 = Strings.pascalize(_name_23);
+            _builder.append(_pascalize_7, "		");
+            _builder.append(".ITEM_CONTENT_TYPE;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    {
+      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
+      for(final CreateViewStatement vw_2 : _views_2) {
+        _builder.append("\t\t");
+        _builder.append("contentTypes[");
+        String _name_24 = vw_2.getName();
+        String _underscore_14 = Strings.underscore(_name_24);
+        String _upperCase_14 = _underscore_14.toUpperCase();
+        _builder.append(_upperCase_14, "		");
+        _builder.append("] = ");
+        DatabaseBlock _database_9 = model.getDatabase();
+        String _name_25 = _database_9.getName();
+        String _pascalize_8 = Strings.pascalize(_name_25);
+        _builder.append(_pascalize_8, "		");
+        _builder.append("Contract.");
+        String _name_26 = vw_2.getName();
+        String _pascalize_9 = Strings.pascalize(_name_26);
+        _builder.append(_pascalize_9, "		");
+        _builder.append(".CONTENT_TYPE;");
+        _builder.newLineIfNotEmpty();
+        {
+          boolean _hasAndroidPrimaryKey_5 = ModelUtil.hasAndroidPrimaryKey(vw_2);
+          if (_hasAndroidPrimaryKey_5) {
+            _builder.append("\t\t");
+            _builder.append("contentTypes[");
+            String _name_27 = vw_2.getName();
+            String _underscore_15 = Strings.underscore(_name_27);
+            String _upperCase_15 = _underscore_15.toUpperCase();
+            _builder.append(_upperCase_15, "		");
+            _builder.append("_ID] = ");
+            DatabaseBlock _database_10 = model.getDatabase();
+            String _name_28 = _database_10.getName();
+            String _pascalize_10 = Strings.pascalize(_name_28);
+            _builder.append(_pascalize_10, "		");
+            _builder.append("Contract.");
+            String _name_29 = vw_2.getName();
+            String _pascalize_11 = Strings.pascalize(_name_29);
+            _builder.append(_pascalize_11, "		");
+            _builder.append(".ITEM_CONTENT_TYPE;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
     {
       DatabaseBlock _database_11 = model.getDatabase();
       ConfigBlock _config_4 = _database_11.getConfig();
@@ -489,14 +467,7 @@ public class ContentProviderGenerator {
           Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_3);
           for(final ConfigurationStatement a_2 : _filter_3) {
             _builder.append("\t\t");
-            ActionStatement stmt = ((ActionStatement) a_2);
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("matcher.addURI(authority, \"");
-            ContentUri _uri_2 = stmt.getUri();
-            String _asString = this.asString(_uri_2);
-            _builder.append(_asString, "		");
-            _builder.append("\", ");
+            _builder.append("contentTypes[");
             ContentUri _uri_3 = ((ActionStatement) a_2).getUri();
             String _type_2 = _uri_3.getType();
             String _underscore_16 = Strings.underscore(_type_2);
@@ -507,178 +478,19 @@ public class ContentProviderGenerator {
             String _underscore_17 = Strings.underscore(_name_30);
             String _upperCase_17 = _underscore_17.toUpperCase();
             _builder.append(_upperCase_17, "		");
-            _builder.append("); ");
+            _builder.append("] = ");
+            String _generateContentTypeConstantReference = this.generateContentTypeConstantReference(((ActionStatement) a_2), model);
+            _builder.append(_generateContentTypeConstantReference, "		");
+            _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
         }
       }
     }
-    _builder.append("        ");
-    _builder.append("return matcher;");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public String getType(Uri uri) {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return sContentTypes[match];");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public int delete(Uri uri, String selection, String[] selectionArgs) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("int affected = createActions(match).delete(this, uri, selection, selectionArgs);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(affected > 0) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("tryNotifyChange(uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return affected;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public Uri insert(Uri uri, ContentValues values) {");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Uri newUri = createActions(match).insert(this, uri, values);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(newUri != null) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("tryNotifyChange(uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return newUri;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("public int bulkInsert(Uri uri, ContentValues[] values) {");
-    _builder.newLine();
-    _builder.append("    \t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("int affected = createActions(match).bulkInsert(this, uri, values);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(affected > 0) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("tryNotifyChange(uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return affected;");
+    _builder.append("return contentTypes;");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
@@ -699,163 +511,6 @@ public class ContentProviderGenerator {
     _builder.append("OpenHelper(context);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("Cursor cursor = createActions(match).query(this, uri, projection, selection, selectionArgs, sortOrder);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("trySetNotificationUri(cursor, uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return cursor;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("int affected = createActions(match).update(this, uri, values, selection, selectionArgs);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("if(affected > 0) {");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("tryNotifyChange(uri);");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("return affected;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("final int match = sUriMatcher.match(uri);");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("if(match == UriMatcher.NO_MATCH) {");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("throw new UnsupportedOperationException(\"Unknown uri: \" + uri);");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("return createActions(match).selectRecords(this, uri, sQuery, sortOrder);");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("throws OperationApplicationException {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("final SQLiteDatabase db = getOpenHelper().getWritableDatabase();");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("db.beginTransaction();");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("try {");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("final int numOperations = operations.size();");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("final ContentProviderResult[] results = new ContentProviderResult[numOperations];");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("for (int i = 0; i < numOperations; i++) {");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("results[i] = operations.get(i).apply(this, results, i);");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("db.setTransactionSuccessful();");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("return results;");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("} finally {");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("db.endTransaction();");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("    ");
     _builder.append("}");
     _builder.newLine();
     _builder.append("    ");

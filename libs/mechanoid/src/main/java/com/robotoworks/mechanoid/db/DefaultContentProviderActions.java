@@ -15,7 +15,9 @@
 package com.robotoworks.mechanoid.db;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -184,6 +186,35 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 		    
 		    while(c.moveToNext()) {
 		        items.add((T)mRecordFactory.create(c));
+	        }
+	    } finally {
+	        Closeables.closeSilently(c);
+	    }
+	    
+	    return items;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends ActiveRecord> Map<String, T> selectRecordMap(
+			MechanoidContentProvider provider, Uri uri, SQuery sQuery,
+			String keyColumnName) {
+		if(mRecordFactory == null) {
+			return null;
+		}
+		
+		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+		
+		Cursor c = null;
+		
+		HashMap<String, T> items = new HashMap<String, T>();
+		
+		try {
+			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), null, null, null);
+		    int keyColumnIndex = c.getColumnIndexOrThrow(keyColumnName);
+		    
+		    while(c.moveToNext()) {
+		        items.put(c.getString(keyColumnIndex), (T)mRecordFactory.create(c));
 	        }
 	    } finally {
 	        Closeables.closeSilently(c);

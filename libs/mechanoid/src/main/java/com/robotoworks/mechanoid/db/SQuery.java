@@ -16,6 +16,7 @@ package com.robotoworks.mechanoid.db;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.annotation.TargetApi;
 import android.content.ContentProviderClient;
@@ -596,6 +597,24 @@ public class SQuery {
 		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
 		
 		List<T> records = provider.selectRecords(uri, this, null);
+		
+		return records;
+	}
+	
+	/**
+	 * Select records based on this query
+	 * @param uri The ContentProvider Uri to query for
+	 * @param keyColumnName The column that will be used as the key for the resulting map
+	 * @return A map of results using the value of keyColumnName as the map key
+	 */
+	public <T extends ActiveRecord> Map<String, T> selectMap(Uri uri, String keyColumnName) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
+		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
+		
+		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		
+		Map<String, T> records = provider.selectRecordMap(uri, this, keyColumnName);
 		
 		return records;
 	}
