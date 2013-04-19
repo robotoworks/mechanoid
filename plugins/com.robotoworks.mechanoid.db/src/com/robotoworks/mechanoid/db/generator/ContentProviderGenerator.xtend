@@ -15,21 +15,10 @@ class ContentProviderGenerator {
 			 */
 			package «model.packageName»;
 			
-			import java.util.ArrayList;
-			import java.util.List;
-			import android.content.ContentProviderOperation;
-			import android.content.ContentProviderResult;
-			import android.content.ContentValues;
 			import android.content.Context;
-			import android.content.OperationApplicationException;
 			import android.content.UriMatcher;
-			import android.database.Cursor;
-			import android.database.sqlite.SQLiteDatabase;
-			import android.net.Uri;
 			import com.robotoworks.mechanoid.db.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
-			import com.robotoworks.mechanoid.db.ActiveRecord;
-			import com.robotoworks.mechanoid.db.SQuery;
 			import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
 			import com.robotoworks.mechanoid.db.ContentProviderActions;
 			import «model.packageName».Abstract«model.database.name.pascalize»OpenHelper.Sources;
@@ -39,9 +28,6 @@ class ContentProviderGenerator {
 			
 			public abstract class Abstract«model.database.name.pascalize»ContentProvider extends MechanoidContentProvider {
 			
-			    private static final UriMatcher sUriMatcher;
-				private static final String[] sContentTypes;
-			    
 				«var counter=-1»
 				«FOR tbl : snapshot.tables»
 				private static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
@@ -64,31 +50,8 @@ class ContentProviderGenerator {
 				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
 			
-				static {
-					sUriMatcher = buildUriMatcher();
-				
-					sContentTypes = new String[NUM_URI_MATCHERS];
-
-					«FOR tbl : snapshot.tables»
-					sContentTypes[«tbl.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».CONTENT_TYPE;
-					«IF tbl.hasAndroidPrimaryKey»
-					sContentTypes[«tbl.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».ITEM_CONTENT_TYPE;
-					«ENDIF»
-					«ENDFOR»
-					«FOR vw : snapshot.views»
-					sContentTypes[«vw.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«vw.name.pascalize».CONTENT_TYPE;
-					«IF vw.hasAndroidPrimaryKey»
-					sContentTypes[«vw.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«vw.name.pascalize».ITEM_CONTENT_TYPE;
-					«ENDIF»
-					«ENDFOR»	
-					«IF model.database.config !=null»
-					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-					sContentTypes[«(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»] = «(a as ActionStatement).generateContentTypeConstantReference(model)»;
-					«ENDFOR»
-					«ENDIF»					
-				}
-				
-			    private static UriMatcher buildUriMatcher() {
+				@Override
+			    protected UriMatcher createUriMatcher() {
 			        final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
 			        final String authority = «model.database.name.pascalize»Contract.CONTENT_AUTHORITY;
 			
@@ -117,135 +80,36 @@ class ContentProviderGenerator {
 					«ENDIF»
 			        return matcher;
 			    }
-			
-				@Override
-				public String getType(Uri uri) {
-			        final int match = sUriMatcher.match(uri);
-			
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
-					
-					return sContentTypes[match];
-				}
-			
-				@Override
-				public int delete(Uri uri, String selection, String[] selectionArgs) {
-					final int match = sUriMatcher.match(uri);
+			    
+			    @Override
+			    protected String[] createContentTypes() {
+					String[] contentTypes = new String[NUM_URI_MATCHERS];
 
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
+					«FOR tbl : snapshot.tables»
+					contentTypes[«tbl.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».CONTENT_TYPE;
+					«IF tbl.hasAndroidPrimaryKey»
+					contentTypes[«tbl.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»
+					«FOR vw : snapshot.views»
+					contentTypes[«vw.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«vw.name.pascalize».CONTENT_TYPE;
+					«IF vw.hasAndroidPrimaryKey»
+					contentTypes[«vw.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«vw.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»	
+					«IF model.database.config !=null»
+					«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
+					contentTypes[«(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»] = «(a as ActionStatement).generateContentTypeConstantReference(model)»;
+					«ENDFOR»
+					«ENDIF»	
 					
-					int affected = createActions(match).delete(this, uri, selection, selectionArgs);
-					
-					if(affected > 0) {
-						tryNotifyChange(uri);
-					}
-					
-					return affected;
-				}
-			
-				@Override
-				public Uri insert(Uri uri, ContentValues values) {
-			
-					final int match = sUriMatcher.match(uri);
-
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
-					
-					Uri newUri = createActions(match).insert(this, uri, values);
-					
-					if(newUri != null) {
-						tryNotifyChange(uri);
-					}
-					
-					return newUri;
-				}
-				
-				@Override
-			    public int bulkInsert(Uri uri, ContentValues[] values) {
-			    	
-					final int match = sUriMatcher.match(uri);
-
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
-					
-					int affected = createActions(match).bulkInsert(this, uri, values);
-					
-					if(affected > 0) {
-						tryNotifyChange(uri);
-					}
-					
-					return affected;
+					return contentTypes;
 			    }
 			
 				@Override
 				protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {
 			        return new «model.database.name.pascalize»OpenHelper(context);
 				}
-			
-				@Override
-				public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-					final int match = sUriMatcher.match(uri);
-
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
-					
-					Cursor cursor = createActions(match).query(this, uri, projection, selection, selectionArgs, sortOrder);
-			
-					trySetNotificationUri(cursor, uri);
-					
-					return cursor;
-				}
-			
-				@Override
-				public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-					final int match = sUriMatcher.match(uri);
-
-					if(match == UriMatcher.NO_MATCH) {
-						throw new UnsupportedOperationException("Unknown uri: " + uri);
-					}
-					
-					int affected = createActions(match).update(this, uri, values, selection, selectionArgs);
-
-					if(affected > 0) {
-						tryNotifyChange(uri);
-					}
-
-					return affected;
-				}
-
-			    public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {
-			        final int match = sUriMatcher.match(uri);
-			
-			        if(match == UriMatcher.NO_MATCH) {
-			            throw new UnsupportedOperationException("Unknown uri: " + uri);
-			        }
-			        
-			        return createActions(match).selectRecords(this, uri, sQuery, sortOrder);
-			    }
-			    
-			    @Override
-			    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
-			            throws OperationApplicationException {
-			        final SQLiteDatabase db = getOpenHelper().getWritableDatabase();
-			        db.beginTransaction();
-			        try {
-			            final int numOperations = operations.size();
-			            final ContentProviderResult[] results = new ContentProviderResult[numOperations];
-			            for (int i = 0; i < numOperations; i++) {
-			                results[i] = operations.get(i).apply(this, results, i);
-			            }
-			            db.setTransactionSuccessful();
-			            return results;
-			        } finally {
-			            db.endTransaction();
-			        }
-			    }
 			    
 			    @Override
 			    protected ContentProviderActions createActions(int id) {

@@ -15,6 +15,7 @@
 package com.robotoworks.mechanoid.db;
 
 import java.util.List;
+import java.util.Map;
 
 
 import android.content.ContentValues;
@@ -47,6 +48,10 @@ public class ContentProviderActions {
     }
     
 	public <T extends ActiveRecord> List<T> selectRecords(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String sortOrder) {
+		return null;
+	}
+	
+	public <T extends ActiveRecord> Map<String, T> selectRecordMap(MechanoidContentProvider provider, Uri uri, SQuery sQuery, String keyColumnName) {
 		return null;
 	}
 }
