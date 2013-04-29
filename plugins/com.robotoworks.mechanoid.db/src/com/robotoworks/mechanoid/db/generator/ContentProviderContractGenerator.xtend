@@ -229,7 +229,7 @@ class ContentProviderContractGenerator {
 		«FOR item : stmt.columnDefs.filter([!name.equals("_id")])»
 		«var col = item as ColumnDef»
 		public Builder set«col.name.pascalize»(«col.type.toJavaTypeName» value) {
-			mValues.put(«col.name.underscore.toUpperCase», value);
+			mValues.put(«stmt.name.pascalize».«col.name.underscore.toUpperCase», value);
 			return this;
 		}
 		«ENDFOR»

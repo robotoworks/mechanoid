@@ -739,8 +739,12 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("mValues.put(");
-        String _name_1 = col.getName();
-        String _underscore = Strings.underscore(_name_1);
+        String _name_1 = stmt.getName();
+        String _pascalize_1 = Strings.pascalize(_name_1);
+        _builder.append(_pascalize_1, "	");
+        _builder.append(".");
+        String _name_2 = col.getName();
+        String _underscore = Strings.underscore(_name_2);
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "	");
         _builder.append(", value);");
