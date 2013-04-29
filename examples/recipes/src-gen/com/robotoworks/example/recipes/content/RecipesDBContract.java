@@ -119,15 +119,15 @@ public class RecipesDBContract  {
 			}
 			
 			public Builder setTitle(String value) {
-				mValues.put(TITLE, value);
+				mValues.put(Recipes.TITLE, value);
 				return this;
 			}
 			public Builder setDescription(String value) {
-				mValues.put(DESCRIPTION, value);
+				mValues.put(Recipes.DESCRIPTION, value);
 				return this;
 			}
 			public Builder setAuthorId(long value) {
-				mValues.put(AUTHOR_ID, value);
+				mValues.put(Recipes.AUTHOR_ID, value);
 				return this;
 			}
 		}
@@ -184,7 +184,7 @@ public class RecipesDBContract  {
 			}
 			
 			public Builder setName(String value) {
-				mValues.put(NAME, value);
+				mValues.put(Authors.NAME, value);
 				return this;
 			}
 		}
@@ -241,15 +241,15 @@ public class RecipesDBContract  {
 			}
 			
 			public Builder setRecipeId(long value) {
-				mValues.put(RECIPE_ID, value);
+				mValues.put(Ingredients.RECIPE_ID, value);
 				return this;
 			}
 			public Builder setQuantity(String value) {
-				mValues.put(QUANTITY, value);
+				mValues.put(Ingredients.QUANTITY, value);
 				return this;
 			}
 			public Builder setIngredient(String value) {
-				mValues.put(INGREDIENT, value);
+				mValues.put(Ingredients.INGREDIENT, value);
 				return this;
 			}
 		}
