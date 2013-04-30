@@ -15,8 +15,6 @@ import com.robotoworks.example.movies.ops.MoviesServiceBridge;
 import com.robotoworks.mechanoid.db.SQuery;
 import com.robotoworks.mechanoid.ops.Operation;
 import com.robotoworks.mechanoid.ops.OperationManagerCallbacks;
-import com.robotoworks.mechanoid.ops.OperationServiceBridge;
-import com.robotoworks.mechanoid.ops.OperationServiceListener;
 import com.robotoworks.mechanoid.ops.SupportOperationManager;
 
 public class MovieListFragment extends ListFragment {
@@ -40,8 +38,7 @@ public class MovieListFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mOperationManager = SupportOperationManager
-				.create(getFragmentManager(), 
+		mOperationManager = SupportOperationManager.create(getFragmentManager(), 
 						MoviesServiceBridge.getInstance(),
 						mOperationManagerCallbacks);
 		
@@ -127,11 +124,4 @@ public class MovieListFragment extends ListFragment {
 					}, 0);
 		}
 	}
-	
-	private OperationServiceListener mOperationListener = new OperationServiceListener() {
-		@Override
-		public void onOperationComplete(OperationServiceBridge bridge, int requestId, Bundle result) {
-			// TODO Implement completion logic
-		}
-	};
 }

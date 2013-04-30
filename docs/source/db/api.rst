@@ -441,10 +441,10 @@ Creating or updating records can be achieved using the
 :java:extdoc:`save() <com.robotoworks.mechanoid.db.ActiveRecord.save>` 
 method.
 
-If a record is saved with an id set to zero (which is the default when
-constructing new records), then calling ``save()`` will ultimately cause a 
-Sqlite ``INSERT`` statement for the record, if the id is greater than zero,
-then an ``UPDATE``` will occur.
+If a record is saved with an ``id`` set to zero (which is the default when
+constructing new records), then calling ``save()`` will cause a 
+Sqlite ``INSERT`` statement for the record. If the ``id`` is greater than zero,
+then an ``UPDATE`` will occur instead.
 
 For instance the following example will insert a new record:
 
@@ -464,6 +464,22 @@ it with its id:
    record.setTitle("Scrambled Eggs");
    record.setDescription("Traditional scrambled eggs on buttery toast");
    record.save();
+   
+   
+We can also explicitly force an ``INSERT`` or ``UPDATE`` by calling ``insert()`` or
+``update()`` respectively, for instance:
+
+.. code-block:: java
+
+   RecipesRecord record = new RecipesRecord();
+   record.setTitle("Omelette");
+   record.setDescription("Wonderful omelette with cheese");
+   record.insert();
+   
+By doing so you are responsible for any issues that might occur such as inserting
+into an existing record (with the same unique id), you should always try to use 
+the ``CONFLICT REPLACE`` clause in your table definitions if you intend to insert 
+over an already existing record.
    
 Dirty State
 """""""""""
