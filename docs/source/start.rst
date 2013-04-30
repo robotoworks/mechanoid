@@ -71,5 +71,22 @@ Then make sure your application class is registered in your manifest:
 .. code-block:: xml
 
 	<application android:name="MyApplication">
+   
+   
+Upgrading
+---------
+Once you have installed the Mechanoid Plugin, you can check to see if updates
+are available in Eclipse by going to ``Help > Check for Updates``.
+
+After upgrading it is possible that new code is generated that relies on an
+updated Mechanoid Library (mechanoid.jar), if the library is out of date, then
+compile errors will be introduced since the new generated source could reference
+new features of the library.
+
+To update the library, you can simply delete the Mechanoid Library jar's from your 
+``/libs`` folder, after doing so, your Mechanoid files will show an error
+offering a quickfix to add the Mechanoid Libraries, as in the screenshot below:
+
+.. figure:: /images/screens/mech-library-quickfix.png
 	
 
