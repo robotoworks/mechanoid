@@ -94,15 +94,15 @@ public class MovieDBContract  {
 			}
 			
 			public Builder setTitle(String value) {
-				mValues.put(TITLE, value);
+				mValues.put(Movies.TITLE, value);
 				return this;
 			}
 			public Builder setDescription(String value) {
-				mValues.put(DESCRIPTION, value);
+				mValues.put(Movies.DESCRIPTION, value);
 				return this;
 			}
 			public Builder setYear(long value) {
-				mValues.put(YEAR, value);
+				mValues.put(Movies.YEAR, value);
 				return this;
 			}
 		}
