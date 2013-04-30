@@ -54,6 +54,10 @@ public abstract class ActiveRecord {
     protected abstract void setPropertiesFromCursor(Cursor c);
 
     /**
+     * <p>Save this record to the database, this is a convenience method, use
+     * {@link #insert()} or {@link #update()} if you want to explicitly perform
+     * an INSERT or UPDATE.</p>
+     * 
      * <p>If the <b>id</b> column for this record is zero, then saving will cause
      * an insert, after saving the <b>id</b> will be set with the new id of the inserted record,
      * If the id column is not zero, then saving will cause an update to the record with the <b>id</b>.
@@ -64,52 +68,24 @@ public abstract class ActiveRecord {
      * will also be updated
      */
 	public long save(){
-		AbstractValuesBuilder builder = createBuilder();
-		
-		if(mId > 0) {
-		    builder.update(mId);
-		} else {
-		    Uri uri = builder.insert();
-		    mId = ContentUris.parseId(uri);
-		}
-		
-		makeDirty(false);
-		
-		return mId;
+		return save(true);
 	}
 	
 	/**
 	 * <p>Same as {@link #save()} but with the option to notify content observers that the record
 	 * has changed, by default, content observers are always notified, set to false to disable.</p>
-	 * @param notifyChange Wether to notify observers, default is true
-     * @return the new <b>id</b> of the record, the id property of this active record
-     * will also be updated
+	 * @param notifyChange Whether to notify observers, default is true
+     * @return the <b>id</b> of the record, the id property of this active record
+     * will also be set
 	 */
 	public long save(boolean notifyChange){
-		AbstractValuesBuilder builder = createBuilder();
-		
-		if(mId > 0) {
-		    builder.update(mId, notifyChange);
-		} else {
-		    Uri uri = builder.insert(notifyChange);
-		    mId = ContentUris.parseId(uri);
-		}
-		
-		makeDirty(false);
+		mId = mId > 0 ? update(notifyChange) : insert(notifyChange);
 		
 		return mId;
 	}
 	
 	public boolean delete(){
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		boolean result = resolver.delete(
-				mContentUri.buildUpon()
-			.appendPath(String.valueOf(mId)).build(), null, null) > 0;
-			
-		makeDirty(false);
-		
-		return result;
+		return delete(true);
 	}
 	
 	public boolean delete(boolean notifyChange){
@@ -126,6 +102,57 @@ public abstract class ActiveRecord {
 		makeDirty(false);
 		
 		return result;
+	}
+
+	/**
+	 * <p>Insert this record into the database</p>
+     * @return the new <b>id</b> of the record, the id property of this active record
+     * will also be updated
+	 */
+	public long insert() {
+		return insert(true);
+	}
+	
+	/**
+	 * <p>Like {@link #insert()} with the option to enable/disable change notification.</p>
+	 * @param notifyChange Whether to notify observers, default is true
+     * @return the <b>id</b> of the record, the id property of this active record
+     * will also be updated
+	 */
+	public long insert(boolean notifyChange) {
+		AbstractValuesBuilder builder = createBuilder();
+		
+		Uri uri = builder.insert(notifyChange);
+	    mId = ContentUris.parseId(uri);
+	    
+	    makeDirty(false);
+	    
+	    return mId;
+	}
+
+	/**
+	 * <p>Updates this record into the database</p>
+     * @return the <b>id</b> of the record, the id property of this active record
+     * will also be updated
+	 */
+	public long update() {
+		return update(true);
+	}
+	
+	/**
+	 * <p>Like {@link #update()} with the option to enable/disable change notification.</p>
+	 * @param notifyChange Whether to notify observers, default is true
+     * @return the <b>id</b> of the record, the id property of this active record
+     * will also be updated
+	 */
+	public long update(boolean notifyChange) {
+    	AbstractValuesBuilder builder = createBuilder();
+    	
+    	builder.update(mId, notifyChange);
+    	
+    	makeDirty(false);
+		
+    	return mId;
 	}
 	
 	public void reload(){

@@ -3,6 +3,7 @@
  */
 package com.robotoworks.example.movies.ops;
 
+
 public class MoviesServiceBridge extends AbstractMoviesServiceBridge {
 
 	private static MoviesServiceBridge instance;
@@ -17,6 +18,5 @@ public class MoviesServiceBridge extends AbstractMoviesServiceBridge {
 	private MoviesServiceBridge(){
 		super(false);
 	}
-
 }
 
