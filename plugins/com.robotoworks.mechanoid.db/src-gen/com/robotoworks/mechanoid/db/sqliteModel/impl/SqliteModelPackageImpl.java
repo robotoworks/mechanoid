@@ -1049,6 +1049,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getSelectStatement_Limit()
+  {
+    return (EReference)selectStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSelectStatement_LimitOffset()
+  {
+    return (EReference)selectStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOrderingTermList()
   {
     return orderingTermListEClass;
@@ -3327,6 +3347,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     selectStatementEClass = createEClass(SELECT_STATEMENT);
     createEReference(selectStatementEClass, SELECT_STATEMENT__CORE);
     createEReference(selectStatementEClass, SELECT_STATEMENT__ORDERBY);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__LIMIT);
+    createEReference(selectStatementEClass, SELECT_STATEMENT__LIMIT_OFFSET);
 
     orderingTermListEClass = createEClass(ORDERING_TERM_LIST);
     createEReference(orderingTermListEClass, ORDERING_TERM_LIST__ORDERING_TERMS);
@@ -3750,6 +3772,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(selectStatementEClass, SelectStatement.class, "SelectStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSelectStatement_Core(), this.getSelectCoreExpression(), null, "core", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelectStatement_Orderby(), this.getOrderingTermList(), null, "orderby", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_Limit(), this.getExpression(), null, "limit", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSelectStatement_LimitOffset(), this.getExpression(), null, "limitOffset", null, 0, 1, SelectStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orderingTermListEClass, OrderingTermList.class, "OrderingTermList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOrderingTermList_OrderingTerms(), this.getOrderingTerm(), null, "orderingTerms", null, 0, -1, OrderingTermList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -50,6 +50,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPrimaryExpressionAccess().getAlternatives_2_1(), "rule__PrimaryExpression__Alternatives_2_1");
 					put(grammarAccess.getPrimaryExpressionAccess().getAlternatives_2_1_1_2(), "rule__PrimaryExpression__Alternatives_2_1_1_2");
 					put(grammarAccess.getPrimaryExpressionAccess().getAlternatives_7_3(), "rule__PrimaryExpression__Alternatives_7_3");
+					put(grammarAccess.getSelectStatementAccess().getAlternatives_2_2_0(), "rule__SelectStatement__Alternatives_2_2_0");
 					put(grammarAccess.getSelectExpressionAccess().getAlternatives_2(), "rule__SelectExpression__Alternatives_2");
 					put(grammarAccess.getSelectExpressionAccess().getAlternatives_3(), "rule__SelectExpression__Alternatives_3");
 					put(grammarAccess.getOrderingTermAccess().getAlternatives_1(), "rule__OrderingTerm__Alternatives_1");
@@ -118,6 +119,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCaseAccess().getGroup(), "rule__Case__Group__0");
 					put(grammarAccess.getSelectStatementAccess().getGroup(), "rule__SelectStatement__Group__0");
 					put(grammarAccess.getSelectStatementAccess().getGroup_1(), "rule__SelectStatement__Group_1__0");
+					put(grammarAccess.getSelectStatementAccess().getGroup_2(), "rule__SelectStatement__Group_2__0");
+					put(grammarAccess.getSelectStatementAccess().getGroup_2_2(), "rule__SelectStatement__Group_2_2__0");
 					put(grammarAccess.getOrderingTermListAccess().getGroup(), "rule__OrderingTermList__Group__0");
 					put(grammarAccess.getOrderingTermListAccess().getGroup_1(), "rule__OrderingTermList__Group_1__0");
 					put(grammarAccess.getSelectCoreAccess().getGroup(), "rule__SelectCore__Group__0");
@@ -255,6 +258,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCaseAccess().getThenExpressionAssignment_3(), "rule__Case__ThenExpressionAssignment_3");
 					put(grammarAccess.getSelectStatementAccess().getCoreAssignment_0(), "rule__SelectStatement__CoreAssignment_0");
 					put(grammarAccess.getSelectStatementAccess().getOrderbyAssignment_1_1(), "rule__SelectStatement__OrderbyAssignment_1_1");
+					put(grammarAccess.getSelectStatementAccess().getLimitAssignment_2_1(), "rule__SelectStatement__LimitAssignment_2_1");
+					put(grammarAccess.getSelectStatementAccess().getLimitOffsetAssignment_2_2_1(), "rule__SelectStatement__LimitOffsetAssignment_2_2_1");
 					put(grammarAccess.getOrderingTermListAccess().getOrderingTermsAssignment_0(), "rule__OrderingTermList__OrderingTermsAssignment_0");
 					put(grammarAccess.getOrderingTermListAccess().getOrderingTermsAssignment_1_1(), "rule__OrderingTermList__OrderingTermsAssignment_1_1");
 					put(grammarAccess.getSelectCoreAccess().getOpAssignment_1_1(), "rule__SelectCore__OpAssignment_1_1");

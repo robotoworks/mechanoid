@@ -384,13 +384,31 @@ public interface SqliteModelPackage extends EPackage
   int SELECT_STATEMENT__ORDERBY = DML_STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Limit</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__LIMIT = DML_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Limit Offset</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_STATEMENT__LIMIT_OFFSET = DML_STATEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Select Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SELECT_STATEMENT_FEATURE_COUNT = DML_STATEMENT_FEATURE_COUNT + 2;
+  int SELECT_STATEMENT_FEATURE_COUNT = DML_STATEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.OrderingTermListImpl <em>Ordering Term List</em>}' class.
@@ -3481,6 +3499,28 @@ public interface SqliteModelPackage extends EPackage
   EReference getSelectStatement_Orderby();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimit <em>Limit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Limit</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimit()
+   * @see #getSelectStatement()
+   * @generated
+   */
+  EReference getSelectStatement_Limit();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimitOffset <em>Limit Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Limit Offset</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimitOffset()
+   * @see #getSelectStatement()
+   * @generated
+   */
+  EReference getSelectStatement_LimitOffset();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.OrderingTermList <em>Ordering Term List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6076,6 +6116,22 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference SELECT_STATEMENT__ORDERBY = eINSTANCE.getSelectStatement_Orderby();
+
+    /**
+     * The meta object literal for the '<em><b>Limit</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_STATEMENT__LIMIT = eINSTANCE.getSelectStatement_Limit();
+
+    /**
+     * The meta object literal for the '<em><b>Limit Offset</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECT_STATEMENT__LIMIT_OFFSET = eINSTANCE.getSelectStatement_LimitOffset();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.OrderingTermListImpl <em>Ordering Term List</em>}' class.
