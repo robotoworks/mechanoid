@@ -2126,7 +2126,56 @@ ruleSelectStatement returns [EObject current=null]
 	    }
 
 )
-))?)
+))?(	otherlv_3='limit' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getSelectStatementAccess().getLimitKeyword_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectStatementAccess().getLimitSqlExpressionParserRuleCall_2_1_0()); 
+	    }
+		lv_limit_4_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectStatementRule());
+	        }
+       		set(
+       			$current, 
+       			"limit",
+        		lv_limit_4_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)((	otherlv_5='offset' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getSelectStatementAccess().getOffsetKeyword_2_2_0_0());
+    }
+
+    |	otherlv_6=',' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getSelectStatementAccess().getCommaKeyword_2_2_0_1());
+    }
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSelectStatementAccess().getLimitOffsetSqlExpressionParserRuleCall_2_2_1_0()); 
+	    }
+		lv_limitOffset_7_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSelectStatementRule());
+	        }
+       		set(
+       			$current, 
+       			"limitOffset",
+        		lv_limitOffset_7_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)?)
 ;
 
 

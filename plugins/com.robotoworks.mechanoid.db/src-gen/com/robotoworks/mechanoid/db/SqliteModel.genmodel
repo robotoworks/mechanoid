@@ -66,6 +66,8 @@
     <genClasses ecoreClass="SqliteModel.ecore#//SelectStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/core"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/orderby"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/limit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//SelectStatement/limitOffset"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//OrderingTermList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//OrderingTermList/orderingTerms"/>

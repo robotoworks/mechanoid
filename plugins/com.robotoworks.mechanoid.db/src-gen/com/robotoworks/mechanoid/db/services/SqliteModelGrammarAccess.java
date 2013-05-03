@@ -1280,12 +1280,24 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cOrderByKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cOrderbyAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cOrderbyOrderingTermListParserRuleCall_1_1_0 = (RuleCall)cOrderbyAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLimitKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cLimitAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cLimitSqlExpressionParserRuleCall_2_1_0 = (RuleCall)cLimitAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Alternatives cAlternatives_2_2_0 = (Alternatives)cGroup_2_2.eContents().get(0);
+		private final Keyword cOffsetKeyword_2_2_0_0 = (Keyword)cAlternatives_2_2_0.eContents().get(0);
+		private final Keyword cCommaKeyword_2_2_0_1 = (Keyword)cAlternatives_2_2_0.eContents().get(1);
+		private final Assignment cLimitOffsetAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cLimitOffsetSqlExpressionParserRuleCall_2_2_1_0 = (RuleCall)cLimitOffsetAssignment_2_2_1.eContents().get(0);
 		
 		//SelectStatement:
-		//	core=SelectCore ("order by" orderby=OrderingTermList)?;
+		//	core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
+		//	limitOffset=SqlExpression)?)?;
 		public ParserRule getRule() { return rule; }
 
-		//core=SelectCore ("order by" orderby=OrderingTermList)?
+		//core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
+		//limitOffset=SqlExpression)?)?
 		public Group getGroup() { return cGroup; }
 
 		//core=SelectCore
@@ -1305,6 +1317,36 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//OrderingTermList
 		public RuleCall getOrderbyOrderingTermListParserRuleCall_1_1_0() { return cOrderbyOrderingTermListParserRuleCall_1_1_0; }
+
+		//("limit" limit=SqlExpression (("offset" | ",") limitOffset=SqlExpression)?)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"limit"
+		public Keyword getLimitKeyword_2_0() { return cLimitKeyword_2_0; }
+
+		//limit=SqlExpression
+		public Assignment getLimitAssignment_2_1() { return cLimitAssignment_2_1; }
+
+		//SqlExpression
+		public RuleCall getLimitSqlExpressionParserRuleCall_2_1_0() { return cLimitSqlExpressionParserRuleCall_2_1_0; }
+
+		//(("offset" | ",") limitOffset=SqlExpression)?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"offset" | ","
+		public Alternatives getAlternatives_2_2_0() { return cAlternatives_2_2_0; }
+
+		//"offset"
+		public Keyword getOffsetKeyword_2_2_0_0() { return cOffsetKeyword_2_2_0_0; }
+
+		//","
+		public Keyword getCommaKeyword_2_2_0_1() { return cCommaKeyword_2_2_0_1; }
+
+		//limitOffset=SqlExpression
+		public Assignment getLimitOffsetAssignment_2_2_1() { return cLimitOffsetAssignment_2_2_1; }
+
+		//SqlExpression
+		public RuleCall getLimitOffsetSqlExpressionParserRuleCall_2_2_1_0() { return cLimitOffsetSqlExpressionParserRuleCall_2_2_1_0; }
 	}
 
 	public class OrderingTermListElements extends AbstractParserRuleElementFinder {
@@ -4104,7 +4146,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SelectStatement:
-	//	core=SelectCore ("order by" orderby=OrderingTermList)?;
+	//	core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
+	//	limitOffset=SqlExpression)?)?;
 	public SelectStatementElements getSelectStatementAccess() {
 		return (pSelectStatement != null) ? pSelectStatement : (pSelectStatement = new SelectStatementElements());
 	}

@@ -111,6 +111,7 @@ Case:
 SelectStatement:
 	core=SelectCore
 	('order by'  orderby=OrderingTermList)?
+	('limit' limit=SqlExpression ( ('offset'|',') limitOffset=SqlExpression)?)?
 ;
 
 OrderingTermList:

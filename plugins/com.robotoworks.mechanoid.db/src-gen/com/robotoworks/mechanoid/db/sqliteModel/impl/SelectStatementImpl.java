@@ -2,6 +2,7 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.OrderingTermList;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
@@ -24,6 +25,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getCore <em>Core</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getOrderby <em>Orderby</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getLimit <em>Limit</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getLimitOffset <em>Limit Offset</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +53,26 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
    * @ordered
    */
   protected OrderingTermList orderby;
+
+  /**
+   * The cached value of the '{@link #getLimit() <em>Limit</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLimit()
+   * @generated
+   * @ordered
+   */
+  protected Expression limit;
+
+  /**
+   * The cached value of the '{@link #getLimitOffset() <em>Limit Offset</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLimitOffset()
+   * @generated
+   * @ordered
+   */
+  protected Expression limitOffset;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,6 +196,102 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
    * <!-- end-user-doc -->
    * @generated
    */
+  public Expression getLimit()
+  {
+    return limit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLimit(Expression newLimit, NotificationChain msgs)
+  {
+    Expression oldLimit = limit;
+    limit = newLimit;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__LIMIT, oldLimit, newLimit);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLimit(Expression newLimit)
+  {
+    if (newLimit != limit)
+    {
+      NotificationChain msgs = null;
+      if (limit != null)
+        msgs = ((InternalEObject)limit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__LIMIT, null, msgs);
+      if (newLimit != null)
+        msgs = ((InternalEObject)newLimit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__LIMIT, null, msgs);
+      msgs = basicSetLimit(newLimit, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__LIMIT, newLimit, newLimit));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getLimitOffset()
+  {
+    return limitOffset;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetLimitOffset(Expression newLimitOffset, NotificationChain msgs)
+  {
+    Expression oldLimitOffset = limitOffset;
+    limitOffset = newLimitOffset;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET, oldLimitOffset, newLimitOffset);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLimitOffset(Expression newLimitOffset)
+  {
+    if (newLimitOffset != limitOffset)
+    {
+      NotificationChain msgs = null;
+      if (limitOffset != null)
+        msgs = ((InternalEObject)limitOffset).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET, null, msgs);
+      if (newLimitOffset != null)
+        msgs = ((InternalEObject)newLimitOffset).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET, null, msgs);
+      msgs = basicSetLimitOffset(newLimitOffset, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET, newLimitOffset, newLimitOffset));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -182,6 +301,10 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
         return basicSetCore(null, msgs);
       case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
         return basicSetOrderby(null, msgs);
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT:
+        return basicSetLimit(null, msgs);
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET:
+        return basicSetLimitOffset(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -200,6 +323,10 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
         return getCore();
       case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
         return getOrderby();
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT:
+        return getLimit();
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET:
+        return getLimitOffset();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -219,6 +346,12 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
         return;
       case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
         setOrderby((OrderingTermList)newValue);
+        return;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT:
+        setLimit((Expression)newValue);
+        return;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET:
+        setLimitOffset((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,6 +373,12 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
       case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
         setOrderby((OrderingTermList)null);
         return;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT:
+        setLimit((Expression)null);
+        return;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET:
+        setLimitOffset((Expression)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -258,6 +397,10 @@ public class SelectStatementImpl extends DMLStatementImpl implements SelectState
         return core != null;
       case SqliteModelPackage.SELECT_STATEMENT__ORDERBY:
         return orderby != null;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT:
+        return limit != null;
+      case SqliteModelPackage.SELECT_STATEMENT__LIMIT_OFFSET:
+        return limitOffset != null;
     }
     return super.eIsSet(featureID);
   }
