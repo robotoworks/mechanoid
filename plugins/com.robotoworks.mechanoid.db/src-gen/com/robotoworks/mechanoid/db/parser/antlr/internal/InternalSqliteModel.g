@@ -1180,9 +1180,9 @@ ruleExprEqual returns [EObject current=null]
        		setWithLastConsumed($current, "op", lv_op_2_7, null);
 	    }
 
-    |		lv_op_2_8=	'like' 
+    |		lv_op_2_8=	'not in' 
     {
-        newLeafNode(lv_op_2_8, grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_7());
+        newLeafNode(lv_op_2_8, grammarAccess.getExprEqualAccess().getOpNotInKeyword_1_1_0_7());
     }
  
 	    {
@@ -1192,9 +1192,9 @@ ruleExprEqual returns [EObject current=null]
        		setWithLastConsumed($current, "op", lv_op_2_8, null);
 	    }
 
-    |		lv_op_2_9=	'glob' 
+    |		lv_op_2_9=	'like' 
     {
-        newLeafNode(lv_op_2_9, grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_8());
+        newLeafNode(lv_op_2_9, grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_8());
     }
  
 	    {
@@ -1204,9 +1204,9 @@ ruleExprEqual returns [EObject current=null]
        		setWithLastConsumed($current, "op", lv_op_2_9, null);
 	    }
 
-    |		lv_op_2_10=	'match' 
+    |		lv_op_2_10=	'glob' 
     {
-        newLeafNode(lv_op_2_10, grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_9());
+        newLeafNode(lv_op_2_10, grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_9());
     }
  
 	    {
@@ -1216,9 +1216,9 @@ ruleExprEqual returns [EObject current=null]
        		setWithLastConsumed($current, "op", lv_op_2_10, null);
 	    }
 
-    |		lv_op_2_11=	'regexp' 
+    |		lv_op_2_11=	'match' 
     {
-        newLeafNode(lv_op_2_11, grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_10());
+        newLeafNode(lv_op_2_11, grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_10());
     }
  
 	    {
@@ -1226,6 +1226,18 @@ ruleExprEqual returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getExprEqualRule());
 	        }
        		setWithLastConsumed($current, "op", lv_op_2_11, null);
+	    }
+
+    |		lv_op_2_12=	'regexp' 
+    {
+        newLeafNode(lv_op_2_12, grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_11());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExprEqualRule());
+	        }
+       		setWithLastConsumed($current, "op", lv_op_2_12, null);
 	    }
 
 )

@@ -68,7 +68,7 @@ ExprRelate returns Expression:
 
 ExprEqual returns Expression:
 	ExprAnd ({ExprEqual.left=current} 
-		op=('='|'=='|'!='|'<>'|'is'|'is not'|'in'|'like'|'glob'|'match'|'regexp') 
+		op=('='|'=='|'!='|'<>'|'is'|'is not'|'in'|'not in'|'like'|'glob'|'match'|'regexp') 
 		right=ExprAnd
 	)*
 ;
