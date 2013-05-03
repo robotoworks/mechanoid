@@ -610,36 +610,37 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cOpIsKeyword_1_1_0_4 = (Keyword)cOpAlternatives_1_1_0.eContents().get(4);
 		private final Keyword cOpIsNotKeyword_1_1_0_5 = (Keyword)cOpAlternatives_1_1_0.eContents().get(5);
 		private final Keyword cOpInKeyword_1_1_0_6 = (Keyword)cOpAlternatives_1_1_0.eContents().get(6);
-		private final Keyword cOpLikeKeyword_1_1_0_7 = (Keyword)cOpAlternatives_1_1_0.eContents().get(7);
-		private final Keyword cOpGlobKeyword_1_1_0_8 = (Keyword)cOpAlternatives_1_1_0.eContents().get(8);
-		private final Keyword cOpMatchKeyword_1_1_0_9 = (Keyword)cOpAlternatives_1_1_0.eContents().get(9);
-		private final Keyword cOpRegexpKeyword_1_1_0_10 = (Keyword)cOpAlternatives_1_1_0.eContents().get(10);
+		private final Keyword cOpNotInKeyword_1_1_0_7 = (Keyword)cOpAlternatives_1_1_0.eContents().get(7);
+		private final Keyword cOpLikeKeyword_1_1_0_8 = (Keyword)cOpAlternatives_1_1_0.eContents().get(8);
+		private final Keyword cOpGlobKeyword_1_1_0_9 = (Keyword)cOpAlternatives_1_1_0.eContents().get(9);
+		private final Keyword cOpMatchKeyword_1_1_0_10 = (Keyword)cOpAlternatives_1_1_0.eContents().get(10);
+		private final Keyword cOpRegexpKeyword_1_1_0_11 = (Keyword)cOpAlternatives_1_1_0.eContents().get(11);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightExprAndParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//ExprEqual returns Expression:
-		//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" |
-		//	"regexp") right=ExprAnd)*;
+		//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
+		//	"match" | "regexp") right=ExprAnd)*;
 		public ParserRule getRule() { return rule; }
 
-		//ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" |
-		//"regexp") right=ExprAnd)*
+		//ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
+		//"match" | "regexp") right=ExprAnd)*
 		public Group getGroup() { return cGroup; }
 
 		//ExprAnd
 		public RuleCall getExprAndParserRuleCall_0() { return cExprAndParserRuleCall_0; }
 
-		//({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" | "regexp")
-		//right=ExprAnd)*
+		//({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" | "match" |
+		//"regexp") right=ExprAnd)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{ExprEqual.left=current}
 		public Action getExprEqualLeftAction_1_0() { return cExprEqualLeftAction_1_0; }
 
-		//op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" | "regexp")
+		//op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" | "match" | "regexp")
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 
-		//"=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" | "regexp"
+		//"=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" | "match" | "regexp"
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 
 		//"="
@@ -663,17 +664,20 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"in"
 		public Keyword getOpInKeyword_1_1_0_6() { return cOpInKeyword_1_1_0_6; }
 
+		//"not in"
+		public Keyword getOpNotInKeyword_1_1_0_7() { return cOpNotInKeyword_1_1_0_7; }
+
 		//"like"
-		public Keyword getOpLikeKeyword_1_1_0_7() { return cOpLikeKeyword_1_1_0_7; }
+		public Keyword getOpLikeKeyword_1_1_0_8() { return cOpLikeKeyword_1_1_0_8; }
 
 		//"glob"
-		public Keyword getOpGlobKeyword_1_1_0_8() { return cOpGlobKeyword_1_1_0_8; }
+		public Keyword getOpGlobKeyword_1_1_0_9() { return cOpGlobKeyword_1_1_0_9; }
 
 		//"match"
-		public Keyword getOpMatchKeyword_1_1_0_9() { return cOpMatchKeyword_1_1_0_9; }
+		public Keyword getOpMatchKeyword_1_1_0_10() { return cOpMatchKeyword_1_1_0_10; }
 
 		//"regexp"
-		public Keyword getOpRegexpKeyword_1_1_0_10() { return cOpRegexpKeyword_1_1_0_10; }
+		public Keyword getOpRegexpKeyword_1_1_0_11() { return cOpRegexpKeyword_1_1_0_11; }
 
 		//right=ExprAnd
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -4023,8 +4027,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExprEqual returns Expression:
-	//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "like" | "glob" | "match" |
-	//	"regexp") right=ExprAnd)*;
+	//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
+	//	"match" | "regexp") right=ExprAnd)*;
 	public ExprEqualElements getExprEqualAccess() {
 		return (pExprEqual != null) ? pExprEqual : (pExprEqual = new ExprEqualElements());
 	}

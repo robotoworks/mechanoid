@@ -2120,35 +2120,43 @@ rule__ExprEqual__OpAlternatives_1_1_0
 )
 
     |(
-{ before(grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_7()); }
+{ before(grammarAccess.getExprEqualAccess().getOpNotInKeyword_1_1_0_7()); }
+
+	'not in' 
+
+{ after(grammarAccess.getExprEqualAccess().getOpNotInKeyword_1_1_0_7()); }
+)
+
+    |(
+{ before(grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_8()); }
 
 	'like' 
 
-{ after(grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_7()); }
+{ after(grammarAccess.getExprEqualAccess().getOpLikeKeyword_1_1_0_8()); }
 )
 
     |(
-{ before(grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_8()); }
+{ before(grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_9()); }
 
 	'glob' 
 
-{ after(grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_8()); }
+{ after(grammarAccess.getExprEqualAccess().getOpGlobKeyword_1_1_0_9()); }
 )
 
     |(
-{ before(grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_9()); }
+{ before(grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_10()); }
 
 	'match' 
 
-{ after(grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_9()); }
+{ after(grammarAccess.getExprEqualAccess().getOpMatchKeyword_1_1_0_10()); }
 )
 
     |(
-{ before(grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_10()); }
+{ before(grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_11()); }
 
 	'regexp' 
 
-{ after(grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_10()); }
+{ after(grammarAccess.getExprEqualAccess().getOpRegexpKeyword_1_1_0_11()); }
 )
 
 ;

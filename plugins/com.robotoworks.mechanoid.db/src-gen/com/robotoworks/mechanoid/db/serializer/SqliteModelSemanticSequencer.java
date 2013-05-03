@@ -1203,6 +1203,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *             op='is' | 
 	 *             op='is not' | 
 	 *             op='in' | 
+	 *             op='not in' | 
 	 *             op='like' | 
 	 *             op='glob' | 
 	 *             op='match' | 
