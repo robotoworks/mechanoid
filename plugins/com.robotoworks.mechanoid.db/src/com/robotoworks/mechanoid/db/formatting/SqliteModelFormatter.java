@@ -71,6 +71,7 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().before(g.getSelectExpressionAccess().getGroupByKeyword_6_0());
 		c.setLinewrap().before(g.getSelectExpressionAccess().getHavingKeyword_7_0());
 		c.setLinewrap().before(g.getSelectStatementAccess().getOrderByKeyword_1_0());
+		c.setLinewrap().before(g.getSelectStatementAccess().getLimitKeyword_2_0());
 		
 		c.setIndentationIncrement().before(g.getSelectListAccess().getRule());
 		c.setIndentationDecrement().after(g.getSelectListAccess().getRule());

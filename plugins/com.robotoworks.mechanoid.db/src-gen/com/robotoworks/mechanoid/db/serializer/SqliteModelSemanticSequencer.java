@@ -1688,7 +1688,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (core=SelectCore orderby=OrderingTermList?)
+	 *     (core=SelectCore orderby=OrderingTermList? (limit=SqlExpression limitOffset=SqlExpression?)?)
 	 */
 	protected void sequence_SelectStatement(EObject context, SelectStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

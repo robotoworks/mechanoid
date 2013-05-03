@@ -620,6 +620,21 @@
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
           </elements>
         </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="limit"/>
+          <elements xsi:type="xtext:Assignment" feature="limit" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="offset"/>
+              <elements xsi:type="xtext:Keyword" value=","/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="limitOffset" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+            </elements>
+          </elements>
+        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="OrderingTermList">

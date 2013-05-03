@@ -43,6 +43,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderby" eType="#//OrderingTermList"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="limit" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="limitOffset" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrderingTermList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderingTerms" upperBound="-1"

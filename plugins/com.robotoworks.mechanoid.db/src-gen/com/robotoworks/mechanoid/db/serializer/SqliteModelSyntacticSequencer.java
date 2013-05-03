@@ -20,12 +20,14 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected SqliteModelGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1;
 	protected AbstractElementAlias match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1;
+	protected AbstractElementAlias match_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SqliteModelGrammarAccess) access;
 		match_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getInsertStatementAccess().getInsertKeyword_0_0_0()), new TokenAlias(false, false, grammarAccess.getInsertStatementAccess().getReplaceKeyword_0_1()));
 		match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getNullExpressionAccess().getNotNullKeyword_1_1_0()), new TokenAlias(false, false, grammarAccess.getNullExpressionAccess().getNotnullKeyword_1_1_1()));
+		match_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSelectStatementAccess().getCommaKeyword_2_2_0_1()), new TokenAlias(false, false, grammarAccess.getSelectStatementAccess().getOffsetKeyword_2_2_0_0()));
 	}
 	
 	@Override
@@ -44,13 +46,15 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1.equals(syntax))
 				emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0.equals(syntax))
+				emit_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Syntax:
-	 *     'replace' | 'insert'
+	 *     'insert' | 'replace'
 	 */
 	protected void emit_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -61,6 +65,14 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'not null' | 'notnull'
 	 */
 	protected void emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'offset' | ','
+	 */
+	protected void emit_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
