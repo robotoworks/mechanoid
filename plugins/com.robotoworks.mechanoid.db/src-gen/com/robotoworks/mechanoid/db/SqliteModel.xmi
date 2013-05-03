@@ -295,6 +295,7 @@
               <elements xsi:type="xtext:Keyword" value="is"/>
               <elements xsi:type="xtext:Keyword" value="is not"/>
               <elements xsi:type="xtext:Keyword" value="in"/>
+              <elements xsi:type="xtext:Keyword" value="not in"/>
               <elements xsi:type="xtext:Keyword" value="like"/>
               <elements xsi:type="xtext:Keyword" value="glob"/>
               <elements xsi:type="xtext:Keyword" value="match"/>
