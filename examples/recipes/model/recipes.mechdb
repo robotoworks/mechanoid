@@ -55,6 +55,6 @@ database RecipesDB {
 				quantity as ingredient_quantity,
 				recipe_id || "-" || _id as sort_key
 			from ingredients
-			order by sort_key asc; 
+			order by sort_key asc;
 	}
 }

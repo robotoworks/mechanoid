@@ -300,17 +300,24 @@ rule__OpArgType__Alternatives
 )
 
     |(
-{ before(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); }
-(	'long' 
+{ before(grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); }
+(	'double' 
 )
-{ after(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); }
+{ after(grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); }
 )
 
     |(
-{ before(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); }
+{ before(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); }
+(	'long' 
+)
+{ after(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); }
+)
+
+    |(
+{ before(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); }
 (	'Parcelable' 
 )
-{ after(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); }
+{ after(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); }
 )
 
 ;
