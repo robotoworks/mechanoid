@@ -146,7 +146,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 
@@ -164,7 +166,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -185,7 +189,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -207,7 +213,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 }
