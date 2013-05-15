@@ -4,6 +4,7 @@
 package com.robotoworks.example.movies.ops;
 
 import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationResult;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,11 +27,11 @@ public abstract class AbstractGetMoviesOperation extends Operation {
 	}
 
 	@Override
-	public Bundle execute() {
+	public OperationResult execute() {
 		Bundle extras = getIntent().getExtras();
 		
 		return onExecute();
 	}
 			
-	protected abstract Bundle onExecute();
+	protected abstract OperationResult onExecute();
 }

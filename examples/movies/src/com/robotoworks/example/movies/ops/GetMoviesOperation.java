@@ -15,12 +15,13 @@ import com.robotoworks.example.movies.net.Movie;
 import com.robotoworks.example.movies.net.MoviesApiClient;
 import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationResult;
 
 public class GetMoviesOperation extends AbstractGetMoviesOperation {
 	private static final String TAG = GetMoviesOperation.class.getSimpleName();
 	
 	@Override
-	protected Bundle onExecute() {
+	protected OperationResult onExecute() {
 		
 		MoviesApiClient client = MoviesApplication.getMoviesApiClient();
 		
@@ -34,12 +35,12 @@ public class GetMoviesOperation extends AbstractGetMoviesOperation {
 			
 			saveMovies(result.getMovies());
 			
-			return Operation.createOkResult();
+			return OperationResult.ok();
 			
 		} catch (Exception e) {
 			Log.e(TAG, Log.getStackTraceString(e));
 			
-			return Operation.createErrorResult(e);
+			return OperationResult.error(e);
 		}
 	}
 	

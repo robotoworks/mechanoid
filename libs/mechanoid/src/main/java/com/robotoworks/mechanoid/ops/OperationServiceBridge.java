@@ -111,7 +111,6 @@ public abstract class OperationServiceBridge {
 		intent.setClass(context, getServiceClass());
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
 		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
-		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
 		
 		addPendingRequest(id, intent);
 		
@@ -256,29 +255,26 @@ public abstract class OperationServiceBridge {
 			if(data == null) {
 				data = new Bundle();
 			}
- 			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
-			notifyOperationStarting(requestId, data);
+			notifyOperationStarting(requestId, intent, data);
 		}
 	}
 
-	protected void onOperationComplete(int requestId, Bundle data) {
+	protected void onOperationComplete(int requestId, Bundle bundledResult) {
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Complete] id:%s, data:%s", requestId, data));
+			Log.d(mLogTag, String.format("[Operation Complete] id:%s, result:%s", requestId, bundledResult));
 		}
 		
 		Intent intent = removePendingRequestById(requestId);
 
+		OperationResult result = OperationResult.fromBundle(bundledResult);
+		
 		if(intent != null) {
-
-			if(data == null) {
-				data = new Bundle();
-			}
-
-			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
-
-			mLog.put(requestId, data);
 			
-			notifyOperationComplete(requestId, data);
+			result.setRequest(intent);
+			
+			mLog.put(requestId, result);
+			
+			notifyOperationComplete(requestId, result);
 		}
 	}
 	
@@ -291,14 +287,7 @@ public abstract class OperationServiceBridge {
 		Intent intent = mPendingRequests.get(requestId);
 		
 		if(intent != null) {
-
-			if(data == null) {
-				data = new Bundle();
-			}
-
- 			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
-
-			notifyOperationProgress(requestId, progress, data);
+			notifyOperationProgress(requestId, intent, progress, data);
 		}
 	}
 	
@@ -311,45 +300,38 @@ public abstract class OperationServiceBridge {
 		Intent intent = removePendingRequestById(requestId);
 		
 		if(intent != null) {
-
-			if(data == null) {
-				data = new Bundle();
-			}
-
-			data.putParcelable(Operation.KEY_RESULT_REQUEST, intent);
-
-			notifyOperationAborted(requestId, reason, data);
+			notifyOperationAborted(requestId, intent, reason, data);
 		}
 	}
 
-	private void notifyOperationStarting(int requestId, Bundle data) {
+	private void notifyOperationStarting(int requestId, Intent intent, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationStarting(this, requestId, data);
+				listener.onOperationStarting(this, requestId, intent, data);
 			}
 		}
 	}
 
-	private void notifyOperationComplete(int requestId, Bundle data) {
+	private void notifyOperationComplete(int requestId, OperationResult result) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationComplete(this, requestId, data);
+				listener.onOperationComplete(this, requestId, result);
 			}
 		}
 	}
 
-	private void notifyOperationProgress(int requestId, int progress, Bundle data) {
+	private void notifyOperationProgress(int requestId, Intent intent, int progress, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationProgress(this, requestId, progress, data);
+				listener.onOperationProgress(this, requestId, intent, progress, data);
 			}
 		}
 	}
 	
-	private void notifyOperationAborted(int requestId, int reason, Bundle data) {
+	private void notifyOperationAborted(int requestId, Intent intent, int reason, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationAborted(this, requestId, reason, data);
+				listener.onOperationAborted(this, requestId, intent, reason, data);
 			}
 		}
 	}

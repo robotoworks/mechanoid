@@ -13,8 +13,8 @@ import com.robotoworks.example.movies.R;
 import com.robotoworks.example.movies.db.MovieDBContract.Movies;
 import com.robotoworks.example.movies.ops.MoviesServiceBridge;
 import com.robotoworks.mechanoid.db.SQuery;
-import com.robotoworks.mechanoid.ops.Operation;
 import com.robotoworks.mechanoid.ops.OperationManagerCallbacks;
+import com.robotoworks.mechanoid.ops.OperationResult;
 import com.robotoworks.mechanoid.ops.SupportOperationManager;
 
 public class MovieListFragment extends ListFragment {
@@ -53,14 +53,14 @@ public class MovieListFragment extends ListFragment {
 		= new OperationManagerCallbacks<MoviesServiceBridge>() {
 
 		@Override
-		public void onOperationComplete(MoviesServiceBridge bridge, int code, Bundle result, boolean fromCache) {
+		public void onOperationComplete(MoviesServiceBridge bridge, int code, OperationResult result, boolean fromCache) {
 			if(code == OP_GET_MOVIES) {
-				if(Operation.isResultOk(result)) {
+				if(result.isOk()) {
 					
 					getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
 					
 				} else {
-					Throwable error = Operation.getResultError(result);
+					Throwable error = result.getError();
 					
 					Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
 				}

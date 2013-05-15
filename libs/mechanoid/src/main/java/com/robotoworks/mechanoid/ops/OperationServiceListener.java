@@ -14,6 +14,7 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -26,9 +27,10 @@ public abstract class OperationServiceListener {
 	 * <p>Callback when an operation is about to start.<p>
 	 * @param bridge the operation bridge responsible for this operation
 	 * @param requestId The unique id of the operation
+	 * @param intent The intent that represents the operation request
 	 * @param data currently unused
 	 */
-	public void onOperationStarting(OperationServiceBridge bridge, int requestId, Bundle data) {
+	public void onOperationStarting(OperationServiceBridge bridge, int requestId, Intent intent, Bundle data) {
 		
 	}
 	/**
@@ -39,17 +41,18 @@ public abstract class OperationServiceListener {
 	 * be created with one of the operation result helpers 
 	 * such as {@link Operation#createOkResult()} or {@link Operation#createErrorResult(Throwable)}
 	 */
-	public abstract void onOperationComplete(OperationServiceBridge bridge, int requestId, Bundle result);
+	public abstract void onOperationComplete(OperationServiceBridge bridge, int requestId, OperationResult result);
 	
 	/**
 	 * <p>Callback when an operation invokes {@link Operation#postProgress(int, Bundle)}, useful
 	 * in scenarios where long running operations need to report progress.</p>
 	 * @param bridge the bridge responsible for this operation
 	 * @param requestId The unique id of the operation
+	 * @param intent The intent that represents the operation request
 	 * @param progress an integer to describe the progress of the operation, ie :- 0 to 100%
 	 * @param data arbitrary data
 	 */
-	public void onOperationProgress(OperationServiceBridge bridge, int requestId, int progress, Bundle data) {
+	public void onOperationProgress(OperationServiceBridge bridge, int requestId, Intent intent, int progress, Bundle data) {
 		
 	}
 	
@@ -60,10 +63,11 @@ public abstract class OperationServiceListener {
 	 *  if an operation is aborted.</p>
 	 * @param bridge the bridge responsible for this operation
 	 * @param requestId The unique id of the aborted operation
+	 * @param intent The intent that represents the operation request
 	 * @param reason A user defined reason for the aborting of the operation
-	 * @param result arbitrary data for the aborting operation
+	 * @param data arbitrary data
 	 */
-	public void onOperationAborted(OperationServiceBridge bridge, int requestId, int reason, Bundle result) {
+	public void onOperationAborted(OperationServiceBridge bridge, int requestId, Intent intent, int reason, Bundle data) {
 		
 	}
 }

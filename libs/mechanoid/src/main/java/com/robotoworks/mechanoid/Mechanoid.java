@@ -24,7 +24,8 @@ import android.content.Intent;
  * more details.</p>
  */
 public class Mechanoid {
-	private Context mApplicationContext;
+	
+	Context mApplicationContext;
 	
 	public static Context getApplicationContext() {
 		return get().mApplicationContext;

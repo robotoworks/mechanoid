@@ -17,6 +17,7 @@ package com.robotoworks.mechanoid.ops;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -48,7 +49,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         int mUserCode = 0;
         int mRequestId = 0;
         boolean mCallbackInvoked = false;
-        Bundle mResult = null;
+        OperationResult mResult = null;
         
         public static final Parcelable.Creator<OpInfo> CREATOR
         = new Parcelable.Creator<OpInfo>() {
@@ -69,7 +70,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             mUserCode = in.readInt();
             mRequestId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
-            mResult = in.readBundle();
+            mResult = in.readParcelable(OperationResult.class.getClassLoader());
         }
 
         @Override
@@ -82,21 +83,21 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             dest.writeInt(mUserCode);
             dest.writeInt(mRequestId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
-            dest.writeBundle(mResult);
+            dest.writeParcelable(mResult, 0);
         }
     }
     
     private OperationServiceListener mServiceListener = new OperationServiceListener() {
         @Override
-        public void onOperationStarting(OperationServiceBridge bridge, int requestId, Bundle data) {
+        public void onOperationStarting(OperationServiceBridge bridge, int requestId, Intent request, Bundle data) {
         }
         
         @Override
-        public void onOperationProgress(OperationServiceBridge bridge, int requestId, int progress, Bundle data) {
+        public void onOperationProgress(OperationServiceBridge bridge, int requestId, Intent request, int progress, Bundle data) {
         }
         
         @Override
-        public void onOperationComplete(OperationServiceBridge bridge, int requestId, Bundle data) {
+        public void onOperationComplete(OperationServiceBridge bridge, int requestId, OperationResult result) {
             
             // This is not our bridge
             if(mBridge != bridge) {
@@ -110,8 +111,8 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
                 return;
             }
             
-            op.mResult = data;
-            mCallbacks.onOperationComplete((T)mBridge, op.mUserCode, data, false);
+            op.mResult = result;
+            mCallbacks.onOperationComplete((T)mBridge, op.mUserCode, result, false);
             op.mCallbackInvoked = true;
             
         	if(mEnableLogging) {
@@ -120,7 +121,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         }
         
         @Override
-        public void onOperationAborted(OperationServiceBridge bridge, int requestId, int reason, Bundle data) {
+        public void onOperationAborted(OperationServiceBridge bridge, int requestId, Intent intent, int reason, Bundle data) {
         }
     };
     
@@ -206,7 +207,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
                 continue;
             }
             
-            Bundle result = mBridge.getLog().get(op.mRequestId);
+            OperationResult result = mBridge.getLog().get(op.mRequestId);
             
             if (result != null) {
                 op.mResult = result;

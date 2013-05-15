@@ -14,6 +14,7 @@ class OperationGenerator {
 			package «model.packageName»;
 
 			import com.robotoworks.mechanoid.ops.Operation;
+			import com.robotoworks.mechanoid.ops.OperationResult;
 			import android.content.Context;
 			import android.content.Intent;
 			import android.os.Bundle;
@@ -50,7 +51,7 @@ class OperationGenerator {
 				}
 			
 				@Override
-				public Bundle execute() {
+				public OperationResult execute() {
 					Bundle extras = getIntent().getExtras();
 					«FOR arg : op.args»
 					m«arg.name.pascalize» = extras.«arg.type.toBundleGetMethodName»(EXTRA_«arg.name.underscore.toUpperCase»);
@@ -59,7 +60,7 @@ class OperationGenerator {
 					return onExecute();
 				}
 						
-				protected abstract Bundle onExecute();
+				protected abstract OperationResult onExecute();
 			}
 			'''
 			
@@ -76,7 +77,7 @@ class OperationGenerator {
 			
 			public class «op.name.pascalize»Operation extends Abstract«op.name.pascalize»Operation {
 				@Override
-				protected Bundle onExecute() {
+				protected OperationResult onExecute() {
 					// TODO Auto-generated method stub
 					return null;
 				}

@@ -14,9 +14,6 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-import android.os.Bundle;
-
-import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 
 public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
     public int createOperation(T bridge, int code);
@@ -39,8 +36,8 @@ public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
      * 
      * @param bridge The bridge associated to the OperationManager the callbacks are registered with
      * @param code A user-defined code for this operation
-     * @param result The result Bundle of the completed operation
+     * @param result The result of the completed operation
      * @param fromCache Wether the operation result was from cache
      */
-    public abstract void onOperationComplete(T bridge, int code, Bundle result, boolean fromCache);
+    public abstract void onOperationComplete(T bridge, int code, OperationResult result, boolean fromCache);
 }

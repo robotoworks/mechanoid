@@ -29,6 +29,8 @@ public class OperationGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.Operation;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.ops.OperationResult;");
+    _builder.newLine();
     _builder.append("import android.content.Context;");
     _builder.newLine();
     _builder.append("import android.content.Intent;");
@@ -206,7 +208,7 @@ public class OperationGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public Bundle execute() {");
+    _builder.append("public OperationResult execute() {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Bundle extras = getIntent().getExtras();");
@@ -243,7 +245,7 @@ public class OperationGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected abstract Bundle onExecute();");
+    _builder.append("protected abstract OperationResult onExecute();");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -296,7 +298,7 @@ public class OperationGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected Bundle onExecute() {");
+    _builder.append("protected OperationResult onExecute() {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("// TODO Auto-generated method stub");
