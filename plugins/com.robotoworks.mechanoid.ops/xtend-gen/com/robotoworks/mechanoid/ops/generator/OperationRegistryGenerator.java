@@ -32,6 +32,8 @@ public class OperationRegistryGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.Operation;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.ops.OperationConfiguration;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("public abstract class Abstract");
     String _name = svc.getName();
@@ -42,7 +44,7 @@ public class OperationRegistryGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private HashMap<String, Class<? extends Operation>> mOperations;");
+    _builder.append("private HashMap<String, OperationConfiguration> mOperationConfigurations;");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -56,7 +58,7 @@ public class OperationRegistryGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("mOperations = new HashMap<String, Class<? extends Operation>>();");
+    _builder.append("mOperationConfigurations = new HashMap<String, OperationConfiguration>();");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.newLine();
@@ -69,13 +71,13 @@ public class OperationRegistryGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected void registerOperations(){");
+    _builder.append("protected void registerOperationConfigurations(){");
     _builder.newLine();
     {
       EList<Operation> _ops = svc.getOps();
       for(final Operation op : _ops) {
         _builder.append("\t\t");
-        _builder.append("registerOperation(Abstract");
+        _builder.append("registerOperationConfiguration(");
         String _name_2 = op.getName();
         String _pascalize_2 = Strings.pascalize(_name_2);
         _builder.append(_pascalize_2, "		");
@@ -84,11 +86,11 @@ public class OperationRegistryGenerator {
         String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "		");
-        _builder.append(", ");
+        _builder.append(", new ");
         String _name_4 = op.getName();
         String _pascalize_3 = Strings.pascalize(_name_4);
         _builder.append(_pascalize_3, "		");
-        _builder.append("Operation.class);");
+        _builder.append("Operation.Configuration());");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -98,20 +100,20 @@ public class OperationRegistryGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected void registerOperation(String action, Class<? extends Operation> clazz) {");
+    _builder.append("protected void registerOperationConfiguration(String action, OperationConfiguration config) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("mOperations.put(action, clazz);");
+    _builder.append("mOperationConfigurations.put(action, config);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public Class<? extends Operation> getOperation(String action) {");
+    _builder.append("public OperationConfiguration getOperationConfiguration(String action) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return mOperations.get(action);");
+    _builder.append("return mOperationConfigurations.get(action);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");

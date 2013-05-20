@@ -33,6 +33,16 @@ class OperationGenerator {
 					«ENDFOR»
 				}
 				
+				static class Configuration extends OperationConfiguration {
+					@Override 
+					public Operation createOperation(Intent intent) {
+					}
+					
+					@Override
+					public Bundle createMatcher(Intent intent) {
+					}
+				}
+				
 				public static final Intent createIntent(«FOR arg: op.args SEPARATOR ', '»«arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
 					Intent intent = new Intent(ACTION_«op.name.underscore.toUpperCase»);
 					intent.setClass(Mechanoid.getApplicationContext(), «svc.name.formatServiceName».class);

@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.Hashtable;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;

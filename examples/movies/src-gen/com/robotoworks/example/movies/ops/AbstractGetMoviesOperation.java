@@ -11,9 +11,7 @@ import android.os.Bundle;
 public abstract class AbstractGetMoviesOperation extends Operation {
 	public static final String ACTION_GET_MOVIES = "com.robotoworks.example.movies.ops.actions.GET_MOVIES";
 
-
-
-
+	
 	public static final Intent createGetMoviesIntent() {
 		Intent intent = new Intent(ACTION_GET_MOVIES);
 		
