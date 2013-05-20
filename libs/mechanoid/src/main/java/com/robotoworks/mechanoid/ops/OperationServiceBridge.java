@@ -28,7 +28,7 @@ import android.util.SparseArray;
 
 import com.robotoworks.mechanoid.Mechanoid;
 
-public abstract class OperationServiceBridge {	
+public class OperationServiceBridge {	
 	public static final int MSG_OPERATION_STARTING = 1;
 	public static final int MSG_OPERATION_COMPLETE = 2;
 	public static final int MSG_OPERATION_PROGRESS = 3;
@@ -92,31 +92,11 @@ public abstract class OperationServiceBridge {
 		mLogTag = this.getClass().getSimpleName();
 		mEnableLogging = enableLogging;
 	}
-
-	protected abstract Class<?> getServiceClass();
 	
 	private int createRequestId() {
 		return mRequestIdCounter++;
 	}
 		
-	/**
-	 * Extends an operation intent with extra info for a service request
-	 * @param context
-	 * @param intent
-	 * @return request id
-	 */
-	protected int createServiceRequest(Intent intent) {
-		Context context = Mechanoid.getApplicationContext();
-		int id = createRequestId();
-		intent.setClass(context, getServiceClass());
-		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
-		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
-		
-		addPendingRequest(id, intent);
-		
-		return id;
-	}
-	
 	private void addPendingRequest(int requestId, Intent intent) {
 		if(mEnableLogging) {
 			Log.d(mLogTag, "[Added Request] " + intent.toString());
@@ -177,10 +157,10 @@ public abstract class OperationServiceBridge {
 	 * @param requestId
 	 * @return true if the request is pending, false if the request was not found
 	 */
-	public boolean isRequestPending(int requestId) {
-		if(requestId <= 0) return false;
+	public boolean isRequestPending(int id) {
+		if(id <= 0) return false;
 		
-		return (mPendingRequests.get(requestId) != null);
+		return (mPendingRequests.get(id) != null);
 	}
 	
 	/**
@@ -190,10 +170,10 @@ public abstract class OperationServiceBridge {
 	 * @param requestId The id of the operation to abort
 	 * @param reason A code used to identify a reason for aborting
 	 */
-	public void abort(int requestId, int reason) {
+	public void abort(Class<?> serviceClass, int requestId, int reason) {
 		Context context = Mechanoid.getApplicationContext();
 		Intent intent = new Intent(OperationService.ACTION_ABORT);
-		intent.setClass(context, getServiceClass());
+		intent.setClass(context, serviceClass);
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
 		intent.putExtra(OperationService.EXTRA_REQUEST_ID, requestId);		
 		intent.putExtra(OperationService.EXTRA_ABORT_REASON, reason);	
@@ -202,28 +182,25 @@ public abstract class OperationServiceBridge {
 	}
 	
 	/**
-	 * Execute an arbitrary request, this is for advanced use only, useful if
-	 * you need to reissue a request with the same request id, its assumed that
-	 * the intent used when invoking this method will provide a request id.
+	 * Execute an operation represented by the intent
 	 * 
 	 * @param context
 	 * @param intent
 	 * @return the request id
 	 */
-	public int execute(Intent intent) {
+	public int execute(Intent intent) {		
+		Intent clonedIntent = (Intent) intent.clone();
 		
-		Context context = Mechanoid.getApplicationContext();
+		int id = createRequestId();
 		
-		intent.setClass(context, getServiceClass());
-		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
-
-		int requestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
+		clonedIntent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
+		clonedIntent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
 		
-		addPendingRequest(requestId, intent);
+		addPendingRequest(id, clonedIntent);
 		
-		context.startService(intent);
+		Mechanoid.startService(intent);
 		
-		return requestId;
+		return id;
 	}
 	
 	/**
@@ -244,27 +221,27 @@ public abstract class OperationServiceBridge {
 		this.mListeners.remove(listener);
 	}
 	
-	protected void onOperationStarting(int requestId, Bundle data) {
+	protected void onOperationStarting(int id, Bundle data) {
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Starting] id:%s, data:%s", requestId, data));
+			Log.d(mLogTag, String.format("[Operation Starting] id:%s, data:%s", id, data));
 		}
 		
-		Intent intent = mPendingRequests.get(requestId);
+		Intent intent = mPendingRequests.get(id);
 		
 		if(intent != null) {
 			if(data == null) {
 				data = new Bundle();
 			}
-			notifyOperationStarting(requestId, intent, data);
+			notifyOperationStarting(id, intent, data);
 		}
 	}
 
-	protected void onOperationComplete(int requestId, Bundle bundledResult) {
+	protected void onOperationComplete(int id, Bundle bundledResult) {
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Complete] id:%s, result:%s", requestId, bundledResult));
+			Log.d(mLogTag, String.format("[Operation Complete] id:%s, result:%s", id, bundledResult));
 		}
 		
-		Intent intent = removePendingRequestById(requestId);
+		Intent intent = removePendingRequestById(id);
 
 		OperationResult result = OperationResult.fromBundle(bundledResult);
 		
@@ -272,71 +249,71 @@ public abstract class OperationServiceBridge {
 			
 			result.setRequest(intent);
 			
-			mLog.put(requestId, result);
+			mLog.put(id, result);
 			
-			notifyOperationComplete(requestId, result);
+			notifyOperationComplete(id, result);
 		}
 	}
 	
-	protected void onOperationProgress(int requestId, int progress, Bundle data) {
+	protected void onOperationProgress(int id, int progress, Bundle data) {
 		
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Progress] id:%s, progress:%s, data:%s", requestId, progress, data));
+			Log.d(mLogTag, String.format("[Operation Progress] id:%s, progress:%s, data:%s", id, progress, data));
 		}
 		
-		Intent intent = mPendingRequests.get(requestId);
+		Intent intent = mPendingRequests.get(id);
 		
 		if(intent != null) {
-			notifyOperationProgress(requestId, intent, progress, data);
+			notifyOperationProgress(id, intent, progress, data);
 		}
 	}
 	
-	protected void onOperationAborted(int requestId, int reason, Bundle data) {
+	protected void onOperationAborted(int id, int reason, Bundle data) {
 		
 		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Aborted] id:%s, reason:%s, data:%s", requestId, reason, data));
+			Log.d(mLogTag, String.format("[Operation Aborted] id:%s, reason:%s, data:%s", id, reason, data));
 		}
 		
-		Intent intent = removePendingRequestById(requestId);
+		Intent intent = removePendingRequestById(id);
 		
 		if(intent != null) {
-			notifyOperationAborted(requestId, intent, reason, data);
+			notifyOperationAborted(id, intent, reason, data);
 		}
 	}
 
-	private void notifyOperationStarting(int requestId, Intent intent, Bundle data) {
+	private void notifyOperationStarting(int id, Intent intent, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationStarting(this, requestId, intent, data);
+				listener.onOperationStarting(id, intent, data);
 			}
 		}
 	}
 
-	private void notifyOperationComplete(int requestId, OperationResult result) {
+	private void notifyOperationComplete(int id, OperationResult result) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationComplete(this, requestId, result);
+				listener.onOperationComplete(id, result);
 			}
 		}
 	}
 
-	private void notifyOperationProgress(int requestId, Intent intent, int progress, Bundle data) {
+	private void notifyOperationProgress(int id, Intent intent, int progress, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationProgress(this, requestId, intent, progress, data);
+				listener.onOperationProgress(id, intent, progress, data);
 			}
 		}
 	}
 	
-	private void notifyOperationAborted(int requestId, Intent intent, int reason, Bundle data) {
+	private void notifyOperationAborted(int id, Intent intent, int reason, Bundle data) {
 		for(OperationServiceListener listener : mListeners) {
 			if(listener != null) {
-				listener.onOperationAborted(this, requestId, intent, reason, data);
+				listener.onOperationAborted(id, intent, reason, data);
 			}
 		}
 	}
 
-	protected boolean intentContainsExtras(Intent intent, Bundle extras) {
+	public boolean intentContainsExtras(Intent intent, Bundle extras) {
 		Bundle intentExtras = intent.getExtras();
 		
 		for(String key : extras.keySet()) {

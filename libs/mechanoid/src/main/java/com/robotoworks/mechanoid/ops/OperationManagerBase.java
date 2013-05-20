@@ -47,9 +47,10 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
     	
     static class OpInfo implements Parcelable {
         int mUserCode = 0;
-        int mRequestId = 0;
+        int mId = 0;
         boolean mCallbackInvoked = false;
         OperationResult mResult = null;
+		public Intent mIntent;
         
         public static final Parcelable.Creator<OpInfo> CREATOR
         = new Parcelable.Creator<OpInfo>() {
@@ -68,9 +69,10 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         
         OpInfo(Parcel in) {
             mUserCode = in.readInt();
-            mRequestId = in.readInt();
+            mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
             mResult = in.readParcelable(OperationResult.class.getClassLoader());
+            mIntent = in.readParcelable(Intent.class.getClassLoader());
         }
 
         @Override
@@ -81,30 +83,18 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeInt(mUserCode);
-            dest.writeInt(mRequestId);
+            dest.writeInt(mId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
             dest.writeParcelable(mResult, 0);
+            dest.writeParcelable(mIntent, 0);
         }
     }
     
     private OperationServiceListener mServiceListener = new OperationServiceListener() {
-        @Override
-        public void onOperationStarting(OperationServiceBridge bridge, int requestId, Intent request, Bundle data) {
-        }
-        
-        @Override
-        public void onOperationProgress(OperationServiceBridge bridge, int requestId, Intent request, int progress, Bundle data) {
-        }
-        
-        @Override
-        public void onOperationComplete(OperationServiceBridge bridge, int requestId, OperationResult result) {
-            
-            // This is not our bridge
-            if(mBridge != bridge) {
-                return;
-            }
-            
-            OpInfo op = findOperationInfoByRequestId(requestId);
+
+		@Override
+		public void onOperationComplete(int id, OperationResult result) {
+            OpInfo op = findOperationInfoByRequestId(id);
             
             // This is not our op
             if(op == null) {
@@ -116,13 +106,10 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             op.mCallbackInvoked = true;
             
         	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Operation Complete] request id:%s, user code:%s", requestId, op.mUserCode));
+        		Log.d(TAG, String.format("[Operation Complete] request id:%s, user code:%s", id, op.mUserCode));
         	}
-        }
-        
-        @Override
-        public void onOperationAborted(OperationServiceBridge bridge, int requestId, Intent intent, int reason, Bundle data) {
-        }
+		}
+
     };
     
 
@@ -137,7 +124,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
     private OpInfo findOperationInfoByRequestId(int requestId) {
         for (int i = 0; i < mOperations.size(); i++){
             OpInfo op = mOperations.valueAt(i);
-            if (op.mRequestId == requestId) {
+            if (op.mId == requestId) {
                 return op;
             }
         }
@@ -199,22 +186,22 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         for(int i=0; i < mOperations.size(); i++) {
             OpInfo op = mOperations.valueAt(i);
             
-            if(mBridge.isRequestPending(op.mRequestId)) {
+            if(mBridge.isRequestPending(op.mId)) {
             	if(mEnableLogging) {
-            		Log.d(TAG, String.format("[Operation Pending] request id: %s, user code:%s", op.mRequestId, op.mUserCode));
+            		Log.d(TAG, String.format("[Operation Pending] request id: %s, user code:%s", op.mId, op.mUserCode));
             	}
-                mCallbacks.onOperationPending(mBridge, op.mUserCode);
+                mCallbacks.onOperationPending(op.mUserCode);
                 continue;
             }
             
-            OperationResult result = mBridge.getLog().get(op.mRequestId);
+            OperationResult result = mBridge.getLog().get(op.mId);
             
             if (result != null) {
                 op.mResult = result;
                 
                 if(!op.mCallbackInvoked) {
                 	if(mEnableLogging) {
-                		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s", op.mRequestId, op.mUserCode));
+                		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s", op.mId, op.mUserCode));
                 	}
                     mCallbacks.onOperationComplete(mBridge, op.mUserCode, op.mResult, false);
                     op.mCallbackInvoked = true;
@@ -277,20 +264,22 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         		Log.d(TAG, String.format("[Operation Pending] user code:%s", code));
         	}
         	
-            mCallbacks.onOperationPending(mBridge, code);
+            mCallbacks.onOperationPending(code);
             
         	if(mEnableLogging) {
         		Log.d(TAG, String.format("[Execute Operation] user code:%s", code));
         	}
         	
-            int newRequestId = mCallbacks.createOperation(mBridge, code);
+            Intent operationIntent = mCallbacks.createOperationIntent(code);
 
-            if (newRequestId > 0) {
+            if (operationIntent != null) {
                 OpInfo newOp = new OpInfo();
                 newOp.mUserCode = code;
-                newOp.mRequestId = newRequestId;
+                newOp.mIntent = operationIntent;
                 
                 mOperations.put(code, newOp);
+                
+                newOp.mId = Ops.execute(operationIntent);
             }
             
             return;
@@ -298,7 +287,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         
         if(op.mResult != null) {
         	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s, from cache:%s", op.mRequestId, op.mUserCode, op.mCallbackInvoked));
+        		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s, from cache:%s", op.mId, op.mUserCode, op.mCallbackInvoked));
         	}
         	
         	mCallbacks.onOperationComplete(mBridge, op.mUserCode, op.mResult, op.mCallbackInvoked);

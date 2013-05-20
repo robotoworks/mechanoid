@@ -14,9 +14,11 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import android.content.Intent;
+
 
 public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
-    public int createOperation(T bridge, int code);
+    public Intent createOperationIntent(int code);
 
     /**
      * <p>Called when an operation is pending, can be invoked when invoking {@link OperationManagerBase#runOperation(int, boolean),
@@ -24,7 +26,7 @@ public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
      * @param bridge The bridge associated to the OperationManager the callbacks are registered with
      * @param code A user-defined code for this operation
      */
-    public void onOperationPending(T bridge, int code);
+    public void onOperationPending(int code);
     
     /**
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}
@@ -37,7 +39,7 @@ public interface OperationManagerCallbacks<T extends OperationServiceBridge> {
      * @param bridge The bridge associated to the OperationManager the callbacks are registered with
      * @param code A user-defined code for this operation
      * @param result The result of the completed operation
-     * @param fromCache Wether the operation result was from cache
+     * @param fromCache Whether the operation result was from cache
      */
     public abstract void onOperationComplete(T bridge, int code, OperationResult result, boolean fromCache);
 }

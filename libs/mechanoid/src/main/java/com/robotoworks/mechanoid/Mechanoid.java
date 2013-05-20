@@ -14,6 +14,8 @@
  */
 package com.robotoworks.mechanoid;
 
+import com.robotoworks.mechanoid.ops.Ops;
+
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -59,8 +61,14 @@ public class Mechanoid {
 	 * @param context
 	 */
 	public static void init(Context context) {
+		init(context, false);
+	}
+	
+	public static void init(Context context, boolean enableOperationLogging) {
 		if(sInstance == null) {
 			sInstance = new Mechanoid(context);
+			
+			Ops.init(enableOperationLogging);
 		}
 	}
 }
