@@ -9,13 +9,14 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 import com.google.inject.Inject
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation
 
 class OpServiceModelGenerator implements IGenerator {
 	
 	@Inject OperationGenerator mOperationGenerator
-	@Inject ServiceBridgeGenerator mServiceBridgeGenerator
+	@Inject ServiceConfigurationGenerator mServiceConfigGenerator
 	@Inject ServiceGenerator mServiceGenerator
 	@Inject OperationProcessorGenerator mOperationProcessorGenerator
 	@Inject OperationRegistryGenerator mOperationRegistryGenerator
@@ -25,7 +26,7 @@ class OpServiceModelGenerator implements IGenerator {
 			
 		generateOperationProcessor(resource, fsa)
 		generateService(resource, fsa)
-		generateServiceBridge(resource, fsa)
+		generateServiceConfiguration(resource, fsa)
 		generateOperationRegistry(resource, fsa)
 			
 		model.service.ops.forEach[
@@ -54,29 +55,30 @@ class OpServiceModelGenerator implements IGenerator {
 		var model = resource.contents.head as Model;
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concat("OperationRegistry")), 
+			model.packageName.resolveFileName("Abstract".concat(model.service.name.formatServiceName).concat("OperationConfigurationRegistry")), 
 			mOperationRegistryGenerator.generate(model)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.service.name.pascalize.concat("OperationRegistry")), 
+			model.packageName.resolveFileName(model.service.name.formatServiceName.concat("OperationConfigurationRegistry")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
 			mOperationRegistryGenerator.generateStub(model)
 		);
 	}
-	def generateServiceBridge(Resource resource, IFileSystemAccess fsa) {
+	
+	def generateServiceConfiguration(Resource resource, IFileSystemAccess fsa) {
 		
 		var model = resource.contents.head as Model;
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concatOnce("Service").concat("Bridge")), 
-			mServiceBridgeGenerator.generate(model)
+			model.packageName.resolveFileName("Abstract".concat(model.service.name.pascalize).concatOnce("Service").concat("Configuration")), 
+			mServiceConfigGenerator.generate(model)
 		);
 		
 		fsa.generateFile(
-			model.packageName.resolveFileName(model.service.name.pascalize.concatOnce("Service").concat("Bridge")), 
+			model.packageName.resolveFileName(model.service.name.pascalize.concatOnce("Service").concat("Configuration")), 
 			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
-			mServiceBridgeGenerator.generateStub(model)
+			mServiceConfigGenerator.generateStub(model)
 		);
 	}
 

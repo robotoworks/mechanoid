@@ -12,7 +12,9 @@ import android.os.Bundle;
 
 public class AddMovieOperation extends AbstractAddMovieOperation {
 	@Override
-	protected OperationResult onExecute() {
+	protected OperationResult onExecute(Args args) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

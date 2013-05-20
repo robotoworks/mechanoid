@@ -17,9 +17,13 @@ public class Ops {
 	private static OperationServiceBridge mBridge;
 	private static Hashtable<String, OperationServiceConfiguration> mConfigurations = new Hashtable<String, OperationServiceConfiguration>();
 
-	public static void init(boolean enableLogging) {
+	static void init() {
 		
-		mBridge = new OperationServiceBridge(enableLogging);
+		if(mBridge != null) {
+			return;
+		}
+		
+		mBridge = new OperationServiceBridge();
 		
 		String packageName = Mechanoid.getApplicationContext().getPackageName();
 		PackageManager pm = Mechanoid.getApplicationContext().getPackageManager();
@@ -50,9 +54,11 @@ public class Ops {
 	}
 	
 	public static int execute(Intent intent) {
-		OperationServiceConfiguration config = mConfigurations.get(intent.getComponent().getClassName());
+		OperationServiceConfiguration serviceConfig = mConfigurations.get(intent.getComponent().getClassName());
 		
-		Intent pending = config.findPendingRequestForUniqueConstraint(mBridge, intent);
+		OperationConfiguration opConfig = serviceConfig.getOperationConfigurationRegistry().getOperationConfiguration(intent.getAction());
+		
+		Intent pending = opConfig.findMatchOnConstraint(mBridge, intent);
 		
 		if(pending != null) {
 			return pending.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);

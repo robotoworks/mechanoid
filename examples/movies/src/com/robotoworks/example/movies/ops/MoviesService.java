@@ -7,6 +7,6 @@ import com.robotoworks.example.movies.ops.AbstractMoviesService;
 
 public class MoviesService extends AbstractMoviesService {
 	public MoviesService() {
-		super(false);
+		super(true);
 	}
 }

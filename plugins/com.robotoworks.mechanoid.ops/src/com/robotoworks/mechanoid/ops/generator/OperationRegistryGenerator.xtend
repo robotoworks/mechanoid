@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.ops.generator
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*;
 
 class OperationRegistryGenerator {
 		def CharSequence generate(Model model) '''		
@@ -14,18 +15,18 @@ class OperationRegistryGenerator {
 
 			import java.util.HashMap;
 			
-			import com.robotoworks.mechanoid.ops.Operation;
+			import com.robotoworks.mechanoid.ops.OperationConfigurationRegistry;
 			import com.robotoworks.mechanoid.ops.OperationConfiguration;
 			
-			public abstract class Abstract«svc.name.pascalize»OperationRegistry {
+			public abstract class Abstract«svc.name.formatServiceName»OperationConfigurationRegistry extends OperationConfigurationRegistry {
 				
 				private HashMap<String, OperationConfiguration> mOperationConfigurations;
 				
-				public Abstract«svc.name.pascalize»OperationRegistry() {
+				public Abstract«svc.name.formatServiceName»OperationConfigurationRegistry() {
 					
 					mOperationConfigurations = new HashMap<String, OperationConfiguration>();
 					
-					registerOperations();
+					registerOperationConfigurations();
 				}
 				
 				protected void registerOperationConfigurations(){
@@ -38,6 +39,7 @@ class OperationRegistryGenerator {
 					mOperationConfigurations.put(action, config);
 				}
 			
+				@Override
 				public OperationConfiguration getOperationConfiguration(String action) {
 					return mOperationConfigurations.get(action);
 				}
@@ -51,7 +53,7 @@ class OperationRegistryGenerator {
 			 */
 			package «model.packageName»;
 			
-			public class «svc.name.pascalize»OperationRegistry extends Abstract«svc.name.pascalize»OperationRegistry {
+			public class «svc.name.formatServiceName»OperationConfigurationRegistry extends Abstract«svc.name.formatServiceName»OperationConfigurationRegistry {
 				
 			}
 			

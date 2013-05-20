@@ -1,5 +1,6 @@
 package com.robotoworks.mechanoid.ops.generator;
 
+import com.robotoworks.mechanoid.ops.generator.Extensions;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
@@ -30,16 +31,16 @@ public class OperationRegistryGenerator {
     _builder.append("import java.util.HashMap;");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("import com.robotoworks.mechanoid.ops.Operation;");
+    _builder.append("import com.robotoworks.mechanoid.ops.OperationConfigurationRegistry;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.OperationConfiguration;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public abstract class Abstract");
     String _name = svc.getName();
-    String _pascalize = Strings.pascalize(_name);
-    _builder.append(_pascalize, "");
-    _builder.append("OperationRegistry {");
+    String _formatServiceName = Extensions.formatServiceName(_name);
+    _builder.append(_formatServiceName, "");
+    _builder.append("OperationConfigurationRegistry extends OperationConfigurationRegistry {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -51,9 +52,9 @@ public class OperationRegistryGenerator {
     _builder.append("\t");
     _builder.append("public Abstract");
     String _name_1 = svc.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    _builder.append(_pascalize_1, "	");
-    _builder.append("OperationRegistry() {");
+    String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
+    _builder.append(_formatServiceName_1, "	");
+    _builder.append("OperationConfigurationRegistry() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -63,7 +64,7 @@ public class OperationRegistryGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("registerOperations();");
+    _builder.append("registerOperationConfigurations();");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -79,8 +80,8 @@ public class OperationRegistryGenerator {
         _builder.append("\t\t");
         _builder.append("registerOperationConfiguration(");
         String _name_2 = op.getName();
-        String _pascalize_2 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_2, "		");
+        String _pascalize = Strings.pascalize(_name_2);
+        _builder.append(_pascalize, "		");
         _builder.append("Operation.ACTION_");
         String _name_3 = op.getName();
         String _underscore = Strings.underscore(_name_3);
@@ -88,8 +89,8 @@ public class OperationRegistryGenerator {
         _builder.append(_upperCase, "		");
         _builder.append(", new ");
         String _name_4 = op.getName();
-        String _pascalize_3 = Strings.pascalize(_name_4);
-        _builder.append(_pascalize_3, "		");
+        String _pascalize_1 = Strings.pascalize(_name_4);
+        _builder.append(_pascalize_1, "		");
         _builder.append("Operation.Configuration());");
         _builder.newLineIfNotEmpty();
       }
@@ -108,6 +109,9 @@ public class OperationRegistryGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public OperationConfiguration getOperationConfiguration(String action) {");
@@ -143,13 +147,13 @@ public class OperationRegistryGenerator {
     _builder.newLine();
     _builder.append("public class ");
     String _name = svc.getName();
-    String _pascalize = Strings.pascalize(_name);
-    _builder.append(_pascalize, "");
-    _builder.append("OperationRegistry extends Abstract");
+    String _formatServiceName = Extensions.formatServiceName(_name);
+    _builder.append(_formatServiceName, "");
+    _builder.append("OperationConfigurationRegistry extends Abstract");
     String _name_1 = svc.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    _builder.append(_pascalize_1, "");
-    _builder.append("OperationRegistry {");
+    String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
+    _builder.append(_formatServiceName_1, "");
+    _builder.append("OperationConfigurationRegistry {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();

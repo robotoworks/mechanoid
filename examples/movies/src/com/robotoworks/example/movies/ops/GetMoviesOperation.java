@@ -19,9 +19,22 @@ import com.robotoworks.mechanoid.ops.OperationResult;
 
 public class GetMoviesOperation extends AbstractGetMoviesOperation {
 	private static final String TAG = GetMoviesOperation.class.getSimpleName();
-	
+
+	private void saveMovies(List<Movie> movies) {
+		Movies.delete();
+		
+		for(Movie movie : movies) {
+			Movies.newBuilder()
+				.setTitle(movie.getTitle())
+				.setDescription(movie.getDescription())
+				.setYear(movie.getYear())
+				.insert(false);
+		}
+	}
+
+
 	@Override
-	protected OperationResult onExecute() {
+	protected OperationResult onExecute(Args args) {
 		
 		MoviesApiClient client = MoviesApplication.getMoviesApiClient();
 		
@@ -41,18 +54,6 @@ public class GetMoviesOperation extends AbstractGetMoviesOperation {
 			Log.e(TAG, Log.getStackTraceString(e));
 			
 			return OperationResult.error(e);
-		}
-	}
-	
-	private void saveMovies(List<Movie> movies) {
-		Movies.delete();
-		
-		for(Movie movie : movies) {
-			Movies.newBuilder()
-				.setTitle(movie.getTitle())
-				.setDescription(movie.getDescription())
-				.setYear(movie.getYear())
-				.insert(false);
 		}
 	}
 }

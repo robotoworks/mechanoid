@@ -3,34 +3,45 @@
  */
 package com.robotoworks.example.movies.ops;
 
+import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.ops.Operation;
-import android.content.Context;
+import com.robotoworks.mechanoid.ops.OperationResult;
+import com.robotoworks.mechanoid.ops.OperationServiceBridge;
+import com.robotoworks.mechanoid.ops.OperationConfiguration;
 import android.content.Intent;
 import android.os.Bundle;
 
 public abstract class AbstractAddMovieOperation extends Operation {
-	public static final String ACTION_ADD_MOVIE = "com.robotoworks.example.movies.ops.actions.ADD_MOVIE";
+	public static final String ACTION_ADD_MOVIE = "com.robotoworks.example.movies.ops.MoviesService.actions.ADD_MOVIE";
 
-	public static final String EXTRA_TITLE = "com.robotoworks.example.movies.ops.extras.TITLE";
-	public static final String EXTRA_DESCRIPTION = "com.robotoworks.example.movies.ops.extras.DESCRIPTION";
-	public static final String EXTRA_YEAR = "com.robotoworks.example.movies.ops.extras.YEAR";
+	public static final String EXTRA_TITLE = "com.robotoworks.example.movies.ops.MoviesService.extras.TITLE";
+	public static final String EXTRA_DESCRIPTION = "com.robotoworks.example.movies.ops.MoviesService.extras.DESCRIPTION";
+	public static final String EXTRA_YEAR = "com.robotoworks.example.movies.ops.MoviesService.extras.YEAR";
 
-	private String mTitle;
-	private String mDescription;
-	private int mYear;
-
-	public String getTitle() {
-		return mTitle;
+	static class Args {
+		public String title;
+		public String description;
+		public int year;
 	}
-	public String getDescription() {
-		return mDescription;
+	
+	static class Configuration extends OperationConfiguration {
+		@Override 
+		public Operation createOperation() {
+			return new AddMovieOperation();
+		}
+		
+		@Override
+		public Intent findMatchOnConstraint(OperationServiceBridge bridge, Intent intent) {
+			Intent existingRequest = bridge.findPendingRequestByActionWithExtras(AbstractAddMovieOperation.ACTION_ADD_MOVIE, intent.getExtras());
+			
+			return existingRequest;
+			
+		}
 	}
-	public int getYear() {
-		return mYear;
-	}
-
-	public static final Intent createAddMovieIntent(String title, String description, int year) {
+	
+	public static final Intent createIntent(String title, String description, int year) {
 		Intent intent = new Intent(ACTION_ADD_MOVIE);
+		intent.setClass(Mechanoid.getApplicationContext(), MoviesService.class);
 		
 		Bundle extras = new Bundle();
 		extras.putString(EXTRA_TITLE, title);
@@ -44,14 +55,15 @@ public abstract class AbstractAddMovieOperation extends Operation {
 	}
 
 	@Override
-	public Bundle execute() {
+	public OperationResult execute() {
+		Args args = new Args();
 		Bundle extras = getIntent().getExtras();
-		mTitle = extras.getString(EXTRA_TITLE);
-		mDescription = extras.getString(EXTRA_DESCRIPTION);
-		mYear = extras.getInt(EXTRA_YEAR);
+		args.title = extras.getString(EXTRA_TITLE);
+		args.description = extras.getString(EXTRA_DESCRIPTION);
+		args.year = extras.getInt(EXTRA_YEAR);
 		
-		return onExecute();
+		return onExecute(args);
 	}
 			
-	protected abstract Bundle onExecute();
+	protected abstract OperationResult onExecute(Args args);
 }

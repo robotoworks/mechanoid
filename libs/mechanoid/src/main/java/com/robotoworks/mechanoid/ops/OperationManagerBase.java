@@ -27,14 +27,12 @@ import android.util.SparseArray;
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 import com.robotoworks.mechanoid.ops.OperationServiceListener;
 
-public abstract class OperationManagerBase<T extends OperationServiceBridge> {
+public abstract class OperationManagerBase {
 	
 	private static final String TAG = "OperationManager";
 	
-    OperationManagerCallbacks<T> mCallbacks;
+    OperationManagerCallbacks mCallbacks;
     
-    private T mBridge;
-
     private String mStateKey;
 
 	private boolean mEnableLogging;
@@ -102,7 +100,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
             }
             
             op.mResult = result;
-            mCallbacks.onOperationComplete((T)mBridge, op.mUserCode, result, false);
+            mCallbacks.onOperationComplete(op.mUserCode, result, false);
             op.mCallbackInvoked = true;
             
         	if(mEnableLogging) {
@@ -114,11 +112,10 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
     
 
 
-    protected OperationManagerBase(T bridge, OperationManagerCallbacks<T> callbacks, boolean enableLogging) {
-        mBridge = bridge;
+    protected OperationManagerBase(OperationManagerCallbacks callbacks, boolean enableLogging) {
         mCallbacks = callbacks;
 		mEnableLogging = enableLogging;
-        mStateKey = mBridge.getClass().getName() + ".OperationManager.State";
+        mStateKey = "com.robotoworks.mechanoid.ops.OperationManager.State";
     }
     
     private OpInfo findOperationInfoByRequestId(int requestId) {
@@ -167,7 +164,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
     		Log.d(TAG, String.format("[Starting]"));
     	}
     	
-        mBridge.bindListener(mServiceListener);
+        Ops.bindListener(mServiceListener);
         
         mStarted = true;
         
@@ -186,7 +183,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         for(int i=0; i < mOperations.size(); i++) {
             OpInfo op = mOperations.valueAt(i);
             
-            if(mBridge.isRequestPending(op.mId)) {
+            if(Ops.isRequestPending(op.mId)) {
             	if(mEnableLogging) {
             		Log.d(TAG, String.format("[Operation Pending] request id: %s, user code:%s", op.mId, op.mUserCode));
             	}
@@ -194,7 +191,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
                 continue;
             }
             
-            OperationResult result = mBridge.getLog().get(op.mId);
+            OperationResult result = Ops.getLog().get(op.mId);
             
             if (result != null) {
                 op.mResult = result;
@@ -203,7 +200,7 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
                 	if(mEnableLogging) {
                 		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s", op.mId, op.mUserCode));
                 	}
-                    mCallbacks.onOperationComplete(mBridge, op.mUserCode, op.mResult, false);
+                    mCallbacks.onOperationComplete(op.mUserCode, op.mResult, false);
                     op.mCallbackInvoked = true;
                 }
                 
@@ -221,10 +218,10 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         mStarted = false;
         
     	if(mEnableLogging) {
-    		Log.d(TAG, String.format("[Stoping]"));
+    		Log.d(TAG, String.format("[Stopping]"));
     	}
     	
-        mBridge.unbindListener(mServiceListener);
+        Ops.unbindListener(mServiceListener);
     }
     
     /**
@@ -243,15 +240,20 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
      * its result will be ignored and no callbacks will be received.</p>
      *
      * @param code user-defined code representing the operation to run
-     * @param force wether to force the operation to run
+     * @param force whether to force the operation to run
      */
-    public void runOperation(int code, boolean force) {
+    public void runOperation(Intent operationIntent, int code, boolean force) {
+        
+        if (operationIntent == null) {
+        	Log.d(TAG, String.format("[Operation Null] cannot run on a null intent", code));
+        	return;
+        }
         
         if(!mStarted) {
         	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Queue Operation] user code:%s", code));
+        		Log.d(TAG, String.format("[Queue Operation] manager not started, queueing, user code:%s", code));
         	}
-            queuePendingOperation(code, force);
+            queuePendingOperation(operationIntent, code, force);
             return;
         }
         
@@ -270,17 +272,13 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         		Log.d(TAG, String.format("[Execute Operation] user code:%s", code));
         	}
         	
-            Intent operationIntent = mCallbacks.createOperationIntent(code);
-
-            if (operationIntent != null) {
-                OpInfo newOp = new OpInfo();
-                newOp.mUserCode = code;
-                newOp.mIntent = operationIntent;
-                
-                mOperations.put(code, newOp);
-                
-                newOp.mId = Ops.execute(operationIntent);
-            }
+            OpInfo newOp = new OpInfo();
+            newOp.mUserCode = code;
+            newOp.mIntent = operationIntent;
+            
+            mOperations.put(code, newOp);
+            
+            newOp.mId = Ops.execute(operationIntent);
             
             return;
         }
@@ -290,17 +288,17 @@ public abstract class OperationManagerBase<T extends OperationServiceBridge> {
         		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s, from cache:%s", op.mId, op.mUserCode, op.mCallbackInvoked));
         	}
         	
-        	mCallbacks.onOperationComplete(mBridge, op.mUserCode, op.mResult, op.mCallbackInvoked);
+        	mCallbacks.onOperationComplete(op.mUserCode, op.mResult, op.mCallbackInvoked);
         	op.mCallbackInvoked = true;
         }
     }
 
-    private void queuePendingOperation(final int pendingOperationCode, final boolean pendingForce) {
+    private void queuePendingOperation(final Intent operationIntent, final int pendingOperationCode, final boolean pendingForce) {
         mPendingOperations.add(new Runnable() {
             
             @Override
             public void run() {
-                runOperation(pendingOperationCode, pendingForce);
+                runOperation(operationIntent, pendingOperationCode, pendingForce);
             }
         });
         

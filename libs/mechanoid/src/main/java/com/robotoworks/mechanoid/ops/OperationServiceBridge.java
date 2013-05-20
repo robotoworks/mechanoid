@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-import android.util.Log;
 import android.util.SparseArray;
 
 import com.robotoworks.mechanoid.Mechanoid;
@@ -35,9 +34,6 @@ public class OperationServiceBridge {
 	public static final int MSG_OPERATION_ABORTED = 4;
 	
 	private int mRequestIdCounter = 1;
-	
-	protected final String mLogTag;
-	protected final boolean mEnableLogging;
 	
 	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
 			
@@ -88,20 +84,11 @@ public class OperationServiceBridge {
 		}
 	});
 	
-	public OperationServiceBridge(boolean enableLogging) {
-		mLogTag = this.getClass().getSimpleName();
-		mEnableLogging = enableLogging;
-	}
-	
 	private int createRequestId() {
 		return mRequestIdCounter++;
 	}
 		
 	private void addPendingRequest(int requestId, Intent intent) {
-		if(mEnableLogging) {
-			Log.d(mLogTag, "[Added Request] " + intent.toString());
-		}
-		
 		mPendingRequests.put(requestId, intent);
 	}
 	
@@ -167,15 +154,15 @@ public class OperationServiceBridge {
 	 * Abort an operation
 	 * 
 	 * @param context
-	 * @param requestId The id of the operation to abort
+	 * @param id The id of the operation to abort
 	 * @param reason A code used to identify a reason for aborting
 	 */
-	public void abort(Class<?> serviceClass, int requestId, int reason) {
+	public void abort(Class<?> serviceClass, int id, int reason) {
 		Context context = Mechanoid.getApplicationContext();
 		Intent intent = new Intent(OperationService.ACTION_ABORT);
 		intent.setClass(context, serviceClass);
 		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
-		intent.putExtra(OperationService.EXTRA_REQUEST_ID, requestId);		
+		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);		
 		intent.putExtra(OperationService.EXTRA_ABORT_REASON, reason);	
 		
 		context.startService(intent);
@@ -199,7 +186,7 @@ public class OperationServiceBridge {
 		
 		addPendingRequest(id, clonedIntent);
 		
-		Mechanoid.startService(intent);
+		Mechanoid.startService(clonedIntent);
 		
 		return id;
 	}
@@ -223,10 +210,6 @@ public class OperationServiceBridge {
 	}
 	
 	protected void onOperationStarting(int id, Bundle data) {
-		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Starting] id:%s, data:%s", id, data));
-		}
-		
 		Intent intent = mPendingRequests.get(id);
 		
 		if(intent != null) {
@@ -238,10 +221,6 @@ public class OperationServiceBridge {
 	}
 
 	protected void onOperationComplete(int id, Bundle bundledResult) {
-		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Complete] id:%s, result:%s", id, bundledResult));
-		}
-		
 		Intent intent = removePendingRequestById(id);
 
 		OperationResult result = OperationResult.fromBundle(bundledResult);
@@ -258,10 +237,6 @@ public class OperationServiceBridge {
 	
 	protected void onOperationProgress(int id, int progress, Bundle data) {
 		
-		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Progress] id:%s, progress:%s, data:%s", id, progress, data));
-		}
-		
 		Intent intent = mPendingRequests.get(id);
 		
 		if(intent != null) {
@@ -270,10 +245,6 @@ public class OperationServiceBridge {
 	}
 	
 	protected void onOperationAborted(int id, int reason, Bundle data) {
-		
-		if(mEnableLogging) {
-			Log.d(mLogTag, String.format("[Operation Aborted] id:%s, reason:%s, data:%s", id, reason, data));
-		}
 		
 		Intent intent = removePendingRequestById(id);
 		

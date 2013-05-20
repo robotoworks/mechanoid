@@ -13,34 +13,20 @@ class OperationProcessorGenerator {
 			 */
 			package «model.packageName»;
 			
-			import android.content.Intent;
-			
 			import com.robotoworks.mechanoid.ops.Operation;
-			import com.robotoworks.mechanoid.ops.OperationInstantiationException;
 			import com.robotoworks.mechanoid.ops.OperationService;
 			import com.robotoworks.mechanoid.ops.OperationProcessor;			
 			
 			public abstract class Abstract«svc.name.pascalize»Processor extends OperationProcessor {
 
-				private static «svc.name.pascalize»OperationRegistry sOperationRegistry;
-				
 				@Override
 				protected Operation createOperation(String action) {
-					if(sOperationRegistry == null) {
-						sOperationRegistry = new «svc.name.pascalize»OperationRegistry();
-					}
-					
-					Class<? extends Operation> operation = sOperationRegistry.getOperation(action);
-				
-					try {
-						Operation instance = operation.newInstance();
-						
-						return instance;
-					}
-					catch(Exception x) {
-						throw new OperationInstantiationException(x);
-					}
+					return «svc.name.formatServiceName».CONFIG
+						.getOperationConfigurationRegistry()
+						.getOperationConfiguration(action)
+						.createOperation();
 				}
+				
 				public Abstract«svc.name.pascalize»Processor(OperationService service, boolean enableLogging) {
 					super(service, enableLogging);
 				}

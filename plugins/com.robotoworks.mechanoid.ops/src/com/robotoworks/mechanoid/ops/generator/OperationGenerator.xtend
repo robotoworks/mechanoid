@@ -5,6 +5,7 @@ import com.robotoworks.mechanoid.ops.opServiceModel.Operation
 
 import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import com.robotoworks.mechanoid.ops.opServiceModel.UniqueDeclaration
 
 class OperationGenerator {
 		def CharSequence generate(Model model, Operation op) '''
@@ -14,9 +15,11 @@ class OperationGenerator {
 			 */
 			package «model.packageName»;
 
+			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.ops.Operation;
 			import com.robotoworks.mechanoid.ops.OperationResult;
-			import android.content.Context;
+			import com.robotoworks.mechanoid.ops.OperationServiceBridge;
+			import com.robotoworks.mechanoid.ops.OperationConfiguration;
 			import android.content.Intent;
 			import android.os.Bundle;
 			
@@ -29,17 +32,39 @@ class OperationGenerator {
 			
 				static class Args {
 					«FOR arg : op.args»
-					public «arg.type.toTypeLiteral» m«arg.name.camelize»;
+					public «arg.type.toTypeLiteral» «arg.name.camelize»;
 					«ENDFOR»
 				}
 				
 				static class Configuration extends OperationConfiguration {
 					@Override 
-					public Operation createOperation(Intent intent) {
+					public Operation createOperation() {
+						return new «op.name.pascalize»Operation();
 					}
 					
 					@Override
-					public Bundle createMatcher(Intent intent) {
+					public Intent findMatchOnConstraint(OperationServiceBridge bridge, Intent intent) {
+						«IF op.uniqueClause == null»
+						Intent existingRequest = bridge.findPendingRequestByActionWithExtras(Abstract«op.name.pascalize»Operation.ACTION_«op.name.underscore.toUpperCase», intent.getExtras());
+						
+						return existingRequest;
+						
+						«ELSEIF op.uniqueClause instanceof UniqueDeclaration»
+						«var uniqueDecl = op.uniqueClause as UniqueDeclaration»
+						android.os.Bundle matcher = new android.os.Bundle();
+						android.os.Bundle intentExtras = intent.getExtras();
+						«FOR uarg : uniqueDecl.args»
+						matcher.«uarg.type.toBundlePutMethodName»(
+							«op.name.pascalize»Operation.EXTRA_«uarg.name.underscore.toUpperCase», 
+							intentExtras.«uarg.type.toBundleGetMethodName»(«op.name.pascalize»Operation.EXTRA_«uarg.name.underscore.toUpperCase»));
+						«ENDFOR»
+						
+						Intent existingRequest = bridge.findPendingRequestByActionWithExtras(Abstract«op.name.pascalize»Operation.ACTION_«op.name.underscore.toUpperCase», matcher);
+
+						return existingRequest;
+						«ELSE»
+						return null;
+						«ENDIF»
 					}
 				}
 				
@@ -69,7 +94,7 @@ class OperationGenerator {
 					return onExecute(args);
 				}
 						
-				protected abstract OperationResult onExecute();
+				protected abstract OperationResult onExecute(Args args);
 			}
 			'''
 			
@@ -80,10 +105,7 @@ class OperationGenerator {
 			package «model.packageName»;
 			
 			import «model.packageName».Abstract«op.name.pascalize»Operation;
-			import «model.packageName».Abstract«op.name.pascalize»Operation.Args;
-			import android.content.Context;
-			import android.content.Intent;
-			import android.os.Bundle;
+			import com.robotoworks.mechanoid.ops.OperationResult;
 			
 			public class «op.name.pascalize»Operation extends Abstract«op.name.pascalize»Operation {
 				@Override
