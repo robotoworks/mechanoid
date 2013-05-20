@@ -189,6 +189,7 @@ public class OperationServiceBridge {
 	 * @return the request id
 	 */
 	public int execute(Intent intent) {		
+		
 		Intent clonedIntent = (Intent) intent.clone();
 		
 		int id = createRequestId();
