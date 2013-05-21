@@ -39,7 +39,7 @@ public abstract class AbstractAddMovieOperation extends Operation {
 		}
 	}
 	
-	public static final Intent createIntent(String title, String description, int year) {
+	public static final Intent newIntent(String title, String description, int year) {
 		Intent intent = new Intent(ACTION_ADD_MOVIE);
 		intent.setClass(Mechanoid.getApplicationContext(), MoviesService.class);
 		

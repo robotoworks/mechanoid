@@ -14,11 +14,18 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import java.lang.reflect.Field;
+import java.util.Hashtable;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ServiceInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +33,7 @@ import android.os.Messenger;
 import android.util.SparseArray;
 
 import com.robotoworks.mechanoid.Mechanoid;
+import com.robotoworks.mechanoid.ReflectUtil;
 
 public class OperationServiceBridge {	
 	public static final int MSG_OPERATION_STARTING = 1;
@@ -34,6 +42,8 @@ public class OperationServiceBridge {
 	public static final int MSG_OPERATION_ABORTED = 4;
 	
 	private int mRequestIdCounter = 1;
+	
+	private Hashtable<String, OperationServiceConfiguration> mConfigurations = new Hashtable<String, OperationServiceConfiguration>();
 	
 	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
 			
@@ -83,6 +93,37 @@ public class OperationServiceBridge {
 			}
 		}
 	});
+	
+	public OperationServiceBridge() {
+		initConfigurations();
+	}
+
+	protected void initConfigurations() {
+		String packageName = Mechanoid.getApplicationContext().getPackageName();
+		PackageManager pm = Mechanoid.getApplicationContext().getPackageManager();
+		
+		try {
+			PackageInfo info = pm.getPackageInfo(packageName, PackageManager.GET_SERVICES);
+			
+			ServiceInfo[] services = info.services;
+			
+			for(ServiceInfo si : services) {
+				String serviceName = si.name;
+				
+				Class<?> clz = ReflectUtil.loadClassSilently(Ops.class.getClassLoader(), serviceName);
+
+				if(Service.class.isAssignableFrom(clz)) {
+					Field field = ReflectUtil.getFieldSilently(clz, "CONFIG");
+					if(field != null) {
+						OperationServiceConfiguration factory = (OperationServiceConfiguration) ReflectUtil.getFieldValueSilently(field);
+						mConfigurations.put(clz.getName(), factory);
+					}
+				}
+			}
+			
+		} catch (NameNotFoundException e) {
+		}
+	}
 	
 	private int createRequestId() {
 		return mRequestIdCounter++;
@@ -176,6 +217,15 @@ public class OperationServiceBridge {
 	 * @return the request id
 	 */
 	public int execute(Intent intent) {		
+		OperationServiceConfiguration serviceConfig = mConfigurations.get(intent.getComponent().getClassName());
+		
+		OperationConfiguration opConfig = serviceConfig.getOperationConfigurationRegistry().getOperationConfiguration(intent.getAction());
+		
+		Intent pending = opConfig.findMatchOnConstraint(this, intent);
+		
+		if(pending != null) {
+			return Operation.getOperationRequestId(intent);
+		}
 		
 		Intent clonedIntent = (Intent) intent.clone();
 		

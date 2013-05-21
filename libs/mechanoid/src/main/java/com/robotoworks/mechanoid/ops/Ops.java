@@ -1,21 +1,9 @@
 package com.robotoworks.mechanoid.ops;
 
-import java.lang.reflect.Field;
-import java.util.Hashtable;
-
-import android.app.Service;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ServiceInfo;
-
-import com.robotoworks.mechanoid.Mechanoid;
-import com.robotoworks.mechanoid.ReflectUtil;
 
 public class Ops {
 	private static OperationServiceBridge mBridge;
-	private static Hashtable<String, OperationServiceConfiguration> mConfigurations = new Hashtable<String, OperationServiceConfiguration>();
 
 	static void init() {
 		
@@ -24,46 +12,14 @@ public class Ops {
 		}
 		
 		mBridge = new OperationServiceBridge();
-		
-		String packageName = Mechanoid.getApplicationContext().getPackageName();
-		PackageManager pm = Mechanoid.getApplicationContext().getPackageManager();
-		
-		try {
-			PackageInfo info = pm.getPackageInfo(packageName, PackageManager.GET_SERVICES);
-			
-			ServiceInfo[] services = info.services;
-			
-			for(ServiceInfo si : services) {
-				String serviceName = si.name;
-				
-				Class<?> clz = ReflectUtil.loadClassSilently(Ops.class.getClassLoader(), serviceName);
-
-				if(Service.class.isAssignableFrom(clz)) {
-					Field field = ReflectUtil.getFieldSilently(clz, "CONFIG");
-					if(field != null) {
-						OperationServiceConfiguration factory = (OperationServiceConfiguration) ReflectUtil.getFieldValueSilently(field);
-						mConfigurations.put(clz.getName(), factory);
-					}
-				}
-			}
-			
-		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
+	/**
+	 * <p>Execute an operation described by the given intent</p>
+	 * @param intent
+	 * @return
+	 */
 	public static int execute(Intent intent) {
-		OperationServiceConfiguration serviceConfig = mConfigurations.get(intent.getComponent().getClassName());
-		
-		OperationConfiguration opConfig = serviceConfig.getOperationConfigurationRegistry().getOperationConfiguration(intent.getAction());
-		
-		Intent pending = opConfig.findMatchOnConstraint(mBridge, intent);
-		
-		if(pending != null) {
-			return pending.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
-		}
-		
 		return mBridge.execute(intent);
 	}
 	

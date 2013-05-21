@@ -263,7 +263,7 @@ public class OperationGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static final Intent createIntent(");
+    _builder.append("public static final Intent newIntent(");
     {
       EList<OperationArg> _args_3 = op.getArgs();
       boolean _hasElements = false;

@@ -33,7 +33,7 @@ public abstract class AbstractGetMoviesOperation extends Operation {
 		}
 	}
 	
-	public static final Intent createIntent() {
+	public static final Intent newIntent() {
 		Intent intent = new Intent(ACTION_GET_MOVIES);
 		intent.setClass(Mechanoid.getApplicationContext(), MoviesService.class);
 		

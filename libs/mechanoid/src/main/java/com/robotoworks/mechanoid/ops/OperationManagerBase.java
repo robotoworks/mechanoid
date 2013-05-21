@@ -24,9 +24,6 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseArray;
 
-import com.robotoworks.mechanoid.ops.OperationServiceBridge;
-import com.robotoworks.mechanoid.ops.OperationServiceListener;
-
 public abstract class OperationManagerBase {
 	
 	private static final String TAG = "OperationManager";
@@ -225,15 +222,14 @@ public abstract class OperationManagerBase {
     }
     
     /**
-     * <p>Run an operation associated to the user-defined code, when invoked this method,
-     * the associated {@link OperationManagerCallbacks#createOperation(OperationServiceBridge, int)} will
-     * be invoked to actually create the operation (effectively running it) if the manager has not run the operation before.</p>
+     * <p>Execute an operation described by the given intent with a user defined code</p>
      * 
-     * <p>When the operation completes, {@link OperationManagerCallbacks#onOperationComplete(OperationServiceBridge, int, Bundle, boolean)}
+     * <p>When the operation completes, {@link OperationManagerCallbacks#onOperationComplete(int, OperationResult, boolean)}
      * will be invoked.</p>
-     * <p><b>runOperation</b> can be invoked many times for the same operation, however it will only run the operation once,
+     * <p><b>execute</b> can be invoked many times for the same operation intent, however it will only run the operation once if
+     * the <b>force</b> flag is set to false,
      * subsequent calls will be ignored unless the <b>force</b> argument is set to true. In all cases the 
-     * {@link OperationManagerCallbacks#onOperationComplete(OperationServiceBridge, int, Bundle, boolean)} will
+     * {@link OperationManagerCallbacks#onOperationComplete(int, OperationResult, boolean)} will
      * be invoked for each call to runOperation but subsequent calls for the same operation will have the <b>fromCache</b> argument set to true.</p>
      * 
      * <p>Setting the force flag to true, will force the operation to run, if an operation is currently running then it will continue to run but 
@@ -242,10 +238,10 @@ public abstract class OperationManagerBase {
      * @param code user-defined code representing the operation to run
      * @param force whether to force the operation to run
      */
-    public void runOperation(Intent operationIntent, int code, boolean force) {
+    public void execute(Intent operationIntent, int code, boolean force) {
         
         if (operationIntent == null) {
-        	Log.d(TAG, String.format("[Operation Null] cannot run on a null intent", code));
+        	Log.d(TAG, String.format("[Operation Null] operationintent argument was null, code:%s", code));
         	return;
         }
         
@@ -298,7 +294,7 @@ public abstract class OperationManagerBase {
             
             @Override
             public void run() {
-                runOperation(operationIntent, pendingOperationCode, pendingForce);
+                execute(operationIntent, pendingOperationCode, pendingForce);
             }
         });
         

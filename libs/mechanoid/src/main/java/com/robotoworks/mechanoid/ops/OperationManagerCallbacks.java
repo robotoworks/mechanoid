@@ -18,7 +18,8 @@ package com.robotoworks.mechanoid.ops;
 
 public interface OperationManagerCallbacks {
     /**
-     * <p>Called when an operation is pending, can be invoked when invoking {@link OperationManagerBase#runOperation(int, boolean),
+     * <p>Called when an operation is pending completion, will be invoked when
+     * executing an operation with the associated manager 
      * or after a configuration change when the activity is recreated.</p>
      * @param code A user-defined code for this operation
      */
@@ -28,7 +29,7 @@ public interface OperationManagerCallbacks {
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}
      * on completion of an operation.</p>
      * 
-     * <p>Will be invoked for each call to {@link OperationManagerBase#runOperation(int, boolean),
+     * <p>Will be invoked for each completing operation,
      * the first time it will be invoked is after the operation completes, subsequent times it
      * will be invoked and the fromCache argument will be true.</p>
      * 

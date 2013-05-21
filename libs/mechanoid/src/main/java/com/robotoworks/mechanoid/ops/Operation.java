@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 
 /**
- * <p>An abstract operation, with useful helper methods for dealing with operations.</p>
+ * <p>An abstract operation</p>
  *
  */
 public abstract class Operation {	
@@ -77,6 +77,12 @@ public abstract class Operation {
 		return mIntent;
 	}
 	
+	/**
+	 * <p>Helper method to extract an operation id from an operation intent</p>
+	 * 
+	 * @param intent The intent to extract the id from
+	 * @return An operation id
+	 */
 	public static int getOperationRequestId(Intent intent) {
 		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, -1);
 	}

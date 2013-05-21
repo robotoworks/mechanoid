@@ -40,7 +40,7 @@ public class MovieListFragment extends ListFragment {
 		
 		mOperationManager = SupportOperationManager.create(getActivity(), mOperationManagerCallbacks);
 		
-		mOperationManager.runOperation(GetMoviesOperation.createIntent(), OP_GET_MOVIES, false);
+		mOperationManager.execute(GetMoviesOperation.newIntent(), OP_GET_MOVIES, false);
 		
 		mAdapter = new MoviesAdapter(getActivity());
 		

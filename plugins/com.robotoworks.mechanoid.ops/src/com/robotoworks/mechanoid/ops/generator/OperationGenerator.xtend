@@ -68,7 +68,7 @@ class OperationGenerator {
 					}
 				}
 				
-				public static final Intent createIntent(«FOR arg: op.args SEPARATOR ', '»«arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
+				public static final Intent newIntent(«FOR arg: op.args SEPARATOR ', '»«arg.type.toTypeLiteral» «arg.name.camelize»«ENDFOR») {
 					Intent intent = new Intent(ACTION_«op.name.underscore.toUpperCase»);
 					intent.setClass(Mechanoid.getApplicationContext(), «svc.name.formatServiceName».class);
 					
