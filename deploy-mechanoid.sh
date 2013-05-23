@@ -2,7 +2,7 @@
 
 source ../deploy-mechanoid-settings.sh
 
-MECH_VERSION = 0.2.0
+MECH_VERSION=0.2.0
 REMOTE_SNAPSHOT_PATH=$REMOTE_PATH/mechanoid/updates/snapshot
 REMOTE_DOC_PATH=$REMOTE_PATH/mechanoid/doc
 REMOTE_APIDOCS_PATH=$REMOTE_PATH/mechanoid/doc/apidocs
