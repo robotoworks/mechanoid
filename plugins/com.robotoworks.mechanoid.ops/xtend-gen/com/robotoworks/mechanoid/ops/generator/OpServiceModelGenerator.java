@@ -2,10 +2,11 @@ package com.robotoworks.mechanoid.ops.generator;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.ops.generator.Extensions;
 import com.robotoworks.mechanoid.ops.generator.OperationGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationProcessorGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationRegistryGenerator;
-import com.robotoworks.mechanoid.ops.generator.ServiceBridgeGenerator;
+import com.robotoworks.mechanoid.ops.generator.ServiceConfigurationGenerator;
 import com.robotoworks.mechanoid.ops.generator.ServiceGenerator;
 import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
@@ -25,7 +26,7 @@ public class OpServiceModelGenerator implements IGenerator {
   private OperationGenerator mOperationGenerator;
   
   @Inject
-  private ServiceBridgeGenerator mServiceBridgeGenerator;
+  private ServiceConfigurationGenerator mServiceConfigGenerator;
   
   @Inject
   private ServiceGenerator mServiceGenerator;
@@ -42,7 +43,7 @@ public class OpServiceModelGenerator implements IGenerator {
     Model model = ((Model) _head);
     this.generateOperationProcessor(resource, fsa);
     this.generateService(resource, fsa);
-    this.generateServiceBridge(resource, fsa);
+    this.generateServiceConfiguration(resource, fsa);
     this.generateOperationRegistry(resource, fsa);
     ServiceBlock _service = model.getService();
     EList<Operation> _ops = _service.getOps();
@@ -83,24 +84,24 @@ public class OpServiceModelGenerator implements IGenerator {
     String _packageName = model.getPackageName();
     ServiceBlock _service = model.getService();
     String _name = _service.getName();
-    String _pascalize = Strings.pascalize(_name);
-    String _concat = "Abstract".concat(_pascalize);
-    String _concat_1 = _concat.concat("OperationRegistry");
+    String _formatServiceName = Extensions.formatServiceName(_name);
+    String _concat = "Abstract".concat(_formatServiceName);
+    String _concat_1 = _concat.concat("OperationConfigurationRegistry");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
     CharSequence _generate = this.mOperationRegistryGenerator.generate(model);
     fsa.generateFile(_resolveFileName, _generate);
     String _packageName_1 = model.getPackageName();
     ServiceBlock _service_1 = model.getService();
     String _name_1 = _service_1.getName();
-    String _pascalize_1 = Strings.pascalize(_name_1);
-    String _concat_2 = _pascalize_1.concat("OperationRegistry");
+    String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
+    String _concat_2 = _formatServiceName_1.concat("OperationConfigurationRegistry");
     String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
     CharSequence _generateStub = this.mOperationRegistryGenerator.generateStub(model);
     fsa.generateFile(_resolveFileName_1, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
-  public void generateServiceBridge(final Resource resource, final IFileSystemAccess fsa) {
+  public void generateServiceConfiguration(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);
@@ -110,18 +111,18 @@ public class OpServiceModelGenerator implements IGenerator {
     String _pascalize = Strings.pascalize(_name);
     String _concat = "Abstract".concat(_pascalize);
     String _concatOnce = Strings.concatOnce(_concat, "Service");
-    String _concat_1 = _concatOnce.concat("Bridge");
+    String _concat_1 = _concatOnce.concat("Configuration");
     String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
-    CharSequence _generate = this.mServiceBridgeGenerator.generate(model);
+    CharSequence _generate = this.mServiceConfigGenerator.generate(model);
     fsa.generateFile(_resolveFileName, _generate);
     String _packageName_1 = model.getPackageName();
     ServiceBlock _service_1 = model.getService();
     String _name_1 = _service_1.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
     String _concatOnce_1 = Strings.concatOnce(_pascalize_1, "Service");
-    String _concat_2 = _concatOnce_1.concat("Bridge");
+    String _concat_2 = _concatOnce_1.concat("Configuration");
     String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
-    CharSequence _generateStub = this.mServiceBridgeGenerator.generateStub(model);
+    CharSequence _generateStub = this.mServiceConfigGenerator.generateStub(model);
     fsa.generateFile(_resolveFileName_1, 
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }

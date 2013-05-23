@@ -2,6 +2,7 @@
 
 source ../deploy-mechanoid-settings.sh
 
+MECH_VERSION=0.2.0
 REMOTE_SNAPSHOT_PATH=$REMOTE_PATH/mechanoid/updates/snapshot
 REMOTE_DOC_PATH=$REMOTE_PATH/mechanoid/doc
 REMOTE_APIDOCS_PATH=$REMOTE_PATH/mechanoid/doc/apidocs
@@ -14,8 +15,8 @@ deployUpdateSite() {
     ssh $REMOTE_USER "rm -r $REMOTE_SNAPSHOT_PATH"
     ssh $REMOTE_USER "mkdir $REMOTE_SNAPSHOT_PATH"
     scp -r $PWD/releng/com.robotoworks.mechanoid.updatesite/target/repository/** $REMOTE_USER:$REMOTE_SNAPSHOT_PATH
-    scp $PWD/libs/mechanoid/target/mechanoid-0.1.0-SNAPSHOT.jar $REMOTE_USER:$REMOTE_SNAPSHOT_PATH/mechanoid.jar
-    scp $PWD/libs/mechanoid/target/mechanoid-0.1.0-SNAPSHOT-sources.jar $REMOTE_USER:$REMOTE_SNAPSHOT_PATH/mechanoid-sources.jar
+    scp $PWD/libs/mechanoid/target/mechanoid-$MECH_VERSION-SNAPSHOT.jar $REMOTE_USER:$REMOTE_SNAPSHOT_PATH/mechanoid.jar
+    scp $PWD/libs/mechanoid/target/mechanoid-$MECH_VERSION-SNAPSHOT-sources.jar $REMOTE_USER:$REMOTE_SNAPSHOT_PATH/mechanoid-sources.jar
 }
 
 deployJavaDoc() {

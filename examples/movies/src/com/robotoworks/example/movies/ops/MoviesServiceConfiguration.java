@@ -3,7 +3,6 @@
  */
 package com.robotoworks.example.movies.ops;
 
-public class MoviesOperationRegistry extends AbstractMoviesOperationRegistry {
-	
+public class MoviesServiceConfiguration extends AbstractMoviesServiceConfiguration {
 }
 

@@ -4,13 +4,17 @@
 package com.robotoworks.example.movies.ops;
 
 import com.robotoworks.example.movies.ops.AbstractAddMovieOperation;
+import com.robotoworks.mechanoid.ops.OperationResult;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 public class AddMovieOperation extends AbstractAddMovieOperation {
 	@Override
-	protected Bundle onExecute() {
+	protected OperationResult onExecute(Args args) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

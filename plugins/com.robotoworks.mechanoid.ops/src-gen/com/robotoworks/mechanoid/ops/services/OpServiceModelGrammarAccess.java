@@ -307,16 +307,18 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIntegerIntKeyword_2_0 = (Keyword)cIntegerEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cFloatEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cFloatFloatKeyword_3_0 = (Keyword)cFloatEnumLiteralDeclaration_3.eContents().get(0);
-		private final EnumLiteralDeclaration cLongEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cLongLongKeyword_4_0 = (Keyword)cLongEnumLiteralDeclaration_4.eContents().get(0);
-		private final EnumLiteralDeclaration cParcelableEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cParcelableParcelableKeyword_5_0 = (Keyword)cParcelableEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cDoubleEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cDoubleDoubleKeyword_4_0 = (Keyword)cDoubleEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cLongEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cLongLongKeyword_5_0 = (Keyword)cLongEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cParcelableEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cParcelableParcelableKeyword_6_0 = (Keyword)cParcelableEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum OpArgType:
-		//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable;
+		//	Boolean="boolean" | String | Integer="int" | Float="float" | Double="double" | Long="long" | Parcelable;
 		public EnumRule getRule() { return rule; }
 
-		//Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable
+		//Boolean="boolean" | String | Integer="int" | Float="float" | Double="double" | Long="long" | Parcelable
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Boolean="boolean"
@@ -343,17 +345,23 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"float"
 		public Keyword getFloatFloatKeyword_3_0() { return cFloatFloatKeyword_3_0; }
 
+		//Double="double"
+		public EnumLiteralDeclaration getDoubleEnumLiteralDeclaration_4() { return cDoubleEnumLiteralDeclaration_4; }
+
+		//"double"
+		public Keyword getDoubleDoubleKeyword_4_0() { return cDoubleDoubleKeyword_4_0; }
+
 		//Long="long"
-		public EnumLiteralDeclaration getLongEnumLiteralDeclaration_4() { return cLongEnumLiteralDeclaration_4; }
+		public EnumLiteralDeclaration getLongEnumLiteralDeclaration_5() { return cLongEnumLiteralDeclaration_5; }
 
 		//"long"
-		public Keyword getLongLongKeyword_4_0() { return cLongLongKeyword_4_0; }
+		public Keyword getLongLongKeyword_5_0() { return cLongLongKeyword_5_0; }
 
 		//Parcelable
-		public EnumLiteralDeclaration getParcelableEnumLiteralDeclaration_5() { return cParcelableEnumLiteralDeclaration_5; }
+		public EnumLiteralDeclaration getParcelableEnumLiteralDeclaration_6() { return cParcelableEnumLiteralDeclaration_6; }
 
 		//"Parcelable"
-		public Keyword getParcelableParcelableKeyword_5_0() { return cParcelableParcelableKeyword_5_0; }
+		public Keyword getParcelableParcelableKeyword_6_0() { return cParcelableParcelableKeyword_6_0; }
 	}
 	
 	private ModelElements pModel;
@@ -453,7 +461,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum OpArgType:
-	//	Boolean="boolean" | String | Integer="int" | Float="float" | Long="long" | Parcelable;
+	//	Boolean="boolean" | String | Integer="int" | Float="float" | Double="double" | Long="long" | Parcelable;
 	public OpArgTypeElements getOpArgTypeAccess() {
 		return (unknownRuleOpArgType != null) ? unknownRuleOpArgType : (unknownRuleOpArgType = new OpArgTypeElements());
 	}

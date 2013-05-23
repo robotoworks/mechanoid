@@ -25,6 +25,18 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
+/*
+ * Intent intent = GetApplicationVersionOperation.create();
+ * int id = Ops.execute(intent);
+ * 
+ * Ops.registerListener(mListener);
+ * 
+ * Ops.unregisterListener(mListener);
+ * 
+ * OperationManager manager = OperationManager.create(getFragmentManager(), mCallbacks);
+ * 
+ * Ops.execute(manager, OP_GET_VERSION, true, intent);
+ */
 public abstract class OperationService extends Service {
 	protected static final String ACTION_ABORT = "com.robotoworks.mechanoid.op.actions.ABORT";
 	
@@ -146,7 +158,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 
@@ -164,7 +178,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -185,7 +201,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -207,7 +225,9 @@ public abstract class OperationService extends Service {
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 }

@@ -141,6 +141,10 @@
           <literal value="float"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//OpArgType/Double"/>
+          <literal value="double"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
           <enumLiteral href="http://www.robotoworks.com/mechanoid/ops/OpServiceModel#//OpArgType/Long"/>
           <literal value="long"/>
         </elements>

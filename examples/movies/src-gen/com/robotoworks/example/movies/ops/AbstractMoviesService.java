@@ -5,9 +5,14 @@ package com.robotoworks.example.movies.ops;
 
 import com.robotoworks.mechanoid.ops.OperationProcessor;
 import com.robotoworks.mechanoid.ops.OperationService;
+import com.robotoworks.mechanoid.ops.OperationServiceConfiguration;
+
 import com.robotoworks.example.movies.ops.MoviesProcessor;
 
 public abstract class AbstractMoviesService extends OperationService {
+	
+	public static final OperationServiceConfiguration CONFIG = new MoviesServiceConfiguration();
+	
 	@Override
 	protected OperationProcessor createProcessor() {
 		return new MoviesProcessor(this);

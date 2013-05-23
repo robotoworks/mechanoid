@@ -187,8 +187,8 @@ public abstract class OperationProcessor {
 		Intent request = null;
 		
 		while((request = requestQueue.poll()) != null) {
-			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
-			mService.onOperationComplete(request, result);
+			OperationResult result = OperationResult.error(new OperationServiceStoppedException());
+			mService.onOperationComplete(request, result.toBundle());
 		}
 		
 		mWorker.quit();
@@ -221,7 +221,7 @@ public abstract class OperationProcessor {
 		mCurrentOperation.setOperationProcessor(this);
 				
 		
-		mWorker.post(new OperationRunnable(handler, mCurrentOperation));
+		mWorker.post(new OperationRunnable(handler, mCurrentOperation, mEnableLogging, mLogTag));
 	}
 
 	protected abstract Operation createOperation(String action);
@@ -230,11 +230,14 @@ public abstract class OperationProcessor {
 		
 		private Operation mOperation;
 		private Handler mCallbackHandler;
+		private boolean mEnableLogging;
+		private String mLogTag;
 
-		public OperationRunnable(Handler callbackHandler, Operation operation) {
+		public OperationRunnable(Handler callbackHandler, Operation operation, boolean enableLogging, String logTag) {
 			mCallbackHandler = callbackHandler;
 			mOperation = operation;
-			
+			mEnableLogging = enableLogging;
+			mLogTag = logTag;
 		}
 		
 		@Override
@@ -245,9 +248,21 @@ public abstract class OperationProcessor {
 			Bundle result = null;
 
 			try {
-				result = mOperation.execute();
+				OperationResult opResult = mOperation.execute();
+				
+				if(opResult == null) {
+					throw new NullPointerException("OperationResult should not be null");
+				}
+				
+				result = opResult.toBundle();
+				
 			} catch(Exception x) {
-				result = Operation.createErrorResult(x);
+				
+				result = OperationResult.error(x).toBundle();
+				
+				if(mEnableLogging) {
+					Log.e(mLogTag, String.format("[Operation Error] %s", Log.getStackTraceString(x)));
+				}
 			}
 			
 			Message m = null;

@@ -12,6 +12,7 @@
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/String"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Integer"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Double"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Long"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Parcelable"/>
     </genEnums>
