@@ -2,4 +2,4 @@ Mechanoid is an Eclipse Plugin sporting a set of code generators for Android™ 
 
 For a quick overview of features visit the github page http://robotoworks.github.com/mechanoid/
 
-To get started with Mechanoid visit http://robotoworks.com/mechanoid-plugin/
+To get started with Mechanoid visit http://robotoworks.com/mechanoid/doc/
