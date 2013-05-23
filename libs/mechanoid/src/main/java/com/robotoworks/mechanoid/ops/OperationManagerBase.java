@@ -180,7 +180,7 @@ public abstract class OperationManagerBase {
         for(int i=0; i < mOperations.size(); i++) {
             OpInfo op = mOperations.valueAt(i);
             
-            if(Ops.isRequestPending(op.mId)) {
+            if(Ops.isOperationPending(op.mId)) {
             	if(mEnableLogging) {
             		Log.d(TAG, String.format("[Operation Pending] request id: %s, user code:%s", op.mId, op.mUserCode));
             	}

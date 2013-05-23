@@ -174,18 +174,13 @@ public class OperationServiceBridge {
 		return intent;
 	}
 	
-
-	protected int extractRequestId(Intent intent) {
-		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
-	}
-	
 	/**
-	 * Check if a request with the given id is pending
+	 * Check if an operation with the given id is pending
 	 * 
-	 * @param requestId
-	 * @return true if the request is pending, false if the request was not found
+	 * @param id
+	 * @return true if the operation is pending, false if the operation intent was not found
 	 */
-	public boolean isRequestPending(int id) {
+	public boolean isOperationPending(int id) {
 		if(id <= 0) return false;
 		
 		return (mPendingRequests.get(id) != null);

@@ -31,8 +31,8 @@ public class Ops {
 		mBridge.unbindListener(listener);
 	}
 	
-	public static boolean isRequestPending(int id) {
-		return mBridge.isRequestPending(id);
+	public static boolean isOperationPending(int id) {
+		return mBridge.isOperationPending(id);
 	}
 	
 	public static OperationLog getLog() {
