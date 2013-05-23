@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import com.robotoworks.example.movies.R;
 import com.robotoworks.example.movies.db.MovieDBContract.Movies;
-import com.robotoworks.example.movies.ops.MoviesServiceBridge;
+import com.robotoworks.example.movies.ops.GetMoviesOperation;
 import com.robotoworks.mechanoid.db.SQuery;
-import com.robotoworks.mechanoid.ops.Operation;
 import com.robotoworks.mechanoid.ops.OperationManagerCallbacks;
+import com.robotoworks.mechanoid.ops.OperationResult;
 import com.robotoworks.mechanoid.ops.SupportOperationManager;
 
 public class MovieListFragment extends ListFragment {
@@ -30,7 +30,7 @@ public class MovieListFragment extends ListFragment {
 		Movies.YEAR
 	};
 	
-	private SupportOperationManager<MoviesServiceBridge> mOperationManager;
+	private SupportOperationManager mOperationManager;
 
 	private MoviesAdapter mAdapter;
 
@@ -38,29 +38,26 @@ public class MovieListFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mOperationManager = SupportOperationManager.create(getFragmentManager(), 
-						MoviesServiceBridge.getInstance(),
-						mOperationManagerCallbacks);
+		mOperationManager = SupportOperationManager.create(getActivity(), mOperationManagerCallbacks);
 		
-		mOperationManager.runOperation(OP_GET_MOVIES, false);
+		mOperationManager.execute(GetMoviesOperation.newIntent(), OP_GET_MOVIES, false);
 		
 		mAdapter = new MoviesAdapter(getActivity());
 		
 		setListAdapter(mAdapter);
 	}
 
-	private OperationManagerCallbacks<MoviesServiceBridge> mOperationManagerCallbacks
-		= new OperationManagerCallbacks<MoviesServiceBridge>() {
+	private OperationManagerCallbacks mOperationManagerCallbacks = new OperationManagerCallbacks() {
 
 		@Override
-		public void onOperationComplete(MoviesServiceBridge bridge, int code, Bundle result, boolean fromCache) {
+		public void onOperationComplete(int code, OperationResult result, boolean fromCache) {
 			if(code == OP_GET_MOVIES) {
-				if(Operation.isResultOk(result)) {
+				if(result.isOk()) {
 					
 					getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
 					
 				} else {
-					Throwable error = Operation.getResultError(result);
+					Throwable error = result.getError();
 					
 					Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
 				}
@@ -68,19 +65,11 @@ public class MovieListFragment extends ListFragment {
 		}
 
 		@Override
-		public int createOperation(MoviesServiceBridge bridge, int code) {
-			if(code == OP_GET_MOVIES) {
-				return bridge.executeGetMoviesOperation();
-			}
-			
-			return -1;
-		}
-		
-		@Override
-		public void onOperationPending(MoviesServiceBridge bridge, int code) {
+		public void onOperationPending(int code) {
 			setListShown(false);
 		}
 	};
+	
 	
 	LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks 
 		= new LoaderManager.LoaderCallbacks<Cursor>() {

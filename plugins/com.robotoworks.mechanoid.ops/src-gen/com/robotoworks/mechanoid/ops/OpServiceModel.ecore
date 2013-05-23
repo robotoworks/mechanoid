@@ -29,8 +29,9 @@
     <eLiterals name="String" value="1" literal="String"/>
     <eLiterals name="Integer" value="2" literal="int"/>
     <eLiterals name="Float" value="3" literal="float"/>
-    <eLiterals name="Long" value="4" literal="long"/>
-    <eLiterals name="Parcelable" value="5" literal="Parcelable"/>
+    <eLiterals name="Double" value="4" literal="double"/>
+    <eLiterals name="Long" value="5" literal="long"/>
+    <eLiterals name="Parcelable" value="6" literal="Parcelable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotUnique" eSuperTypes="#//UniqueClause"/>
   <eClassifiers xsi:type="ecore:EClass" name="UniqueDeclaration" eSuperTypes="#//UniqueClause">

@@ -19,9 +19,7 @@ Installation
 Mechanoid can be installed like other Eclipse Plugins. In Eclipse go to Help > 
 Install New Software and add the following update site URL.
 
-**Latest Snapshot Release**: ``http://www.robotoworks.com/mechanoid/updates/snapshot``
-
-.. warning:: If you have installed any previous alpha releases (versions ending with .alpha), its possible that you may not be able to install without first uninstalling the previous versions, this is due to a new build/release process.
+**Latest Snapshot (0.2.0)**: ``http://www.robotoworks.com/mechanoid/updates/snapshot``
 
 Android Project Setup
 ---------------------
@@ -35,9 +33,9 @@ Create an Android Project with the Eclipse ADT Plugin
 
 Copy the mechanoid.jar library to the libs folder of your Android project
 
-**Latest Snapshot Release**: ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid.jar``
+**Latest Snapshot (0.2.0)**: ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid.jar``
 
-**Latest Snapshot Release (Source, Docs)**: ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid-sources.jar``
+**Latest Snapshot (0.2.0) (Source, Docs)**: ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid-sources.jar``
 
 .. note:: If you have not added the library, Eclipse will show an error and provide a quickfix to add it, this provides the best compatibility because the library is bundled with the plugin
 
@@ -89,4 +87,11 @@ offering a quickfix to add the Mechanoid Libraries, as in the screenshot below:
 
 .. figure:: /images/screens/mech-library-quickfix.png
 	
+Legacy Releases
+---------------
+
+**0.1.0 Final**
+Update Site: ``http://www.robotoworks.com/mechanoid/updates/0.1.0``
+Mechanoid Library: ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid.jar``
+Mechanoid Library (docs, sources): ``http://www.robotoworks.com/mechanoid/updates/snapshot/mechanoid-sources.jar``
 

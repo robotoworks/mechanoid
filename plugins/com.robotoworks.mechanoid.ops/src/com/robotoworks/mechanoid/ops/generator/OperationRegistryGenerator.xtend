@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.ops.generator
 import com.robotoworks.mechanoid.ops.opServiceModel.Model
 
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.ops.generator.Extensions.*;
 
 class OperationRegistryGenerator {
 		def CharSequence generate(Model model) '''		
@@ -14,31 +15,33 @@ class OperationRegistryGenerator {
 
 			import java.util.HashMap;
 			
-			import com.robotoworks.mechanoid.ops.Operation;
+			import com.robotoworks.mechanoid.ops.OperationConfigurationRegistry;
+			import com.robotoworks.mechanoid.ops.OperationConfiguration;
 			
-			public abstract class Abstract«svc.name.pascalize»OperationRegistry {
+			public abstract class Abstract«svc.name.formatServiceName»OperationConfigurationRegistry extends OperationConfigurationRegistry {
 				
-				private HashMap<String, Class<? extends Operation>> mOperations;
+				private HashMap<String, OperationConfiguration> mOperationConfigurations;
 				
-				public Abstract«svc.name.pascalize»OperationRegistry() {
+				public Abstract«svc.name.formatServiceName»OperationConfigurationRegistry() {
 					
-					mOperations = new HashMap<String, Class<? extends Operation>>();
+					mOperationConfigurations = new HashMap<String, OperationConfiguration>();
 					
-					registerOperations();
+					registerOperationConfigurations();
 				}
 				
-				protected void registerOperations(){
+				protected void registerOperationConfigurations(){
 					«FOR op : svc.ops»
-					registerOperation(Abstract«op.name.pascalize»Operation.ACTION_«op.name.underscore.toUpperCase», «op.name.pascalize»Operation.class);
+					registerOperationConfiguration(«op.name.pascalize»Operation.ACTION_«op.name.underscore.toUpperCase», new «op.name.pascalize»Operation.Configuration());
 					«ENDFOR»
 				}
 				
-				protected void registerOperation(String action, Class<? extends Operation> clazz) {
-					mOperations.put(action, clazz);
+				protected void registerOperationConfiguration(String action, OperationConfiguration config) {
+					mOperationConfigurations.put(action, config);
 				}
 			
-				public Class<? extends Operation> getOperation(String action) {
-					return mOperations.get(action);
+				@Override
+				public OperationConfiguration getOperationConfiguration(String action) {
+					return mOperationConfigurations.get(action);
 				}
 			}
 			'''
@@ -50,7 +53,7 @@ class OperationRegistryGenerator {
 			 */
 			package «model.packageName»;
 			
-			public class «svc.name.pascalize»OperationRegistry extends Abstract«svc.name.pascalize»OperationRegistry {
+			public class «svc.name.formatServiceName»OperationConfigurationRegistry extends Abstract«svc.name.formatServiceName»OperationConfigurationRegistry {
 				
 			}
 			

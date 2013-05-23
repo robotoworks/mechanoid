@@ -10,6 +10,8 @@ public class Extensions {
 			return "boolean";
 		case FLOAT:
 			return "float";
+		case DOUBLE:
+		    return "double";
 		case INTEGER:
 			return "int";
 		case LONG:
@@ -28,6 +30,8 @@ public class Extensions {
 			return "putBoolean";
 		case FLOAT:
 			return "putFloat";
+		case DOUBLE:
+		    return "putDouble";
 		case INTEGER:
 			return "putInt";
 		case LONG:
@@ -46,6 +50,8 @@ public class Extensions {
 			return "getBoolean";
 		case FLOAT:
 			return "getFloat";
+		case DOUBLE:
+		    return "getDouble";
 		case INTEGER:
 			return "getInt";
 		case LONG:
