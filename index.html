@@ -224,13 +224,13 @@
         <pre class="brush: java">
 		public class AddRecipeOperation extends AbstractAddRecipeOperation {
 			@Override
-			protected Bundle onExecute() {
+			protected OperationResult onExecute(Args args) {
 				
-				// Operation arguments are exposed as properties
-				String title = getTitle();
-				String description = getDescription();
+				// Operation arguments are available in Args, ie:-
+				String title = args.title;
+				String description = args.description;
 				
-				// Using a Mechanoid Net generated...
+				// Using a Mechanoid Net generated rest client...
 				Recipe recipe = new Recipe();
 				recipe.setTitle(title);
 				recipe.setDescription(description);
@@ -252,32 +252,30 @@
 				} catch (ServiceException e) {
 					// In the event of an error we can 
 					// return the Exception as an error result
-					return Operation.createErrorResult(e);
+					return OperationResult.error(e);
 				}
 				
 				// If everything is good we return an ok result,
-				// along with any information in a Bundle
+				// optionally along with any information in a Bundle
 				Bundle bundle = new Bundle();
 				bundle.putInt("new_recipe_id", newRecipeId);
 				
-				return Operation.createOkResult(bundle);
+				return OperationResult.ok(bundle);
 			}
 		}        
 	    </pre>
 	    <h3>Execute your operations asynchronously</h3>
 	    <p>For each defined service, a service bridge is generated which we use to execute operations</p>
         <pre class="brush: java">
-		RecipesServiceBridge bridge 
-			= RecipesServiceBridge.getInstance();
-		
 		// Bind a callback listener
-		bridge.bindListener(listener);
+		Ops.bindListener(listener);
 		
-		// execute asynchronously
-		int addRecipeOperationId 
-			= bridge.executeAddRecipeOperation(
-				"Ragu", 
-				"Great with Pasta");    
+		// Create an operation intent using the generated static helper method
+		Intent intent = AddRecipeOperation.newIntent("Ragu", "Great with Pasta");
+		
+		// Execute
+		int addRecipeOperationId = Ops.execute(intent);
+		
         </pre>
         <h3>Listen and act on operations completing</h3>
         <p>Implement an OperationServiceListener to handle the callback</p>
@@ -286,15 +284,14 @@
 			= new OperationServiceListener() {
 			
 			@Override
-			public void onOperationComplete(OperationServiceBridge bridge,
-					int requestId, Bundle result) {
+			public void onOperationComplete(int id, OperationResult result) {
 				
-				if(requestId == addRecipeOperationId) {
-					if(Operation.isResultOk(result)) {
+				if(id == addRecipeOperationId) {
+					if(result.isOk()) {
 						// TODO: Do something
 					} else {
 						
-						Throwable error = Operation.getResultError(result);
+						Throwable error = result.getError();
 						
 						// TODO: Deal with the error
 					}
@@ -306,8 +303,7 @@
 		<p>We can use the generated service bridge to check if an operation is
 		currently pending completion with a given operation id.</p>
         <pre class="brush: java">
-		boolean isPending 
-			= bridge.isRequestPending(addRecipeOperationId);
+		boolean isPending = Ops.isOperationPending(addRecipeOperationId);
 		</pre>		
 	   <h3>Alternatively, use an OperationManager in your UI</h3>
 	   <p>Managing callbacks for operation ids and checking operations can be cumbersome in UI, 
@@ -319,42 +315,31 @@
 			// Define your own ID
 		    private static final int OP_ADD_RECIPES = 123;
 		    
-			private SupportOperationManager&lt;RecipesServiceBridge&gt; mOperationManager;
+			private SupportOperationManager mOperationManager;
 		    
 		    @Override
 		    protected void onCreate(Bundle savedInstanceState) {
 		        super.onCreate(savedInstanceState);
 		        
 		        // Create an instance of manager for your bridge
-		        mOperationManager = SupportOperationManager
-		        		.create(getSupportFragmentManager(), 
-		        				RecipesServiceBridge.getInstance(), mCallbacks);
+		        mOperationManager = SupportOperationManager.create(this, mCallbacks);
 		        
 		        // Execute your operation using the manager
-		        mOperationManager.runOperation(OP_ADD_RECIPES, false);
+		        Intent intent = AddRecipeOperation.newIntent("Ragu", "Great with Pasta");
+		        mOperationManager.execute(intent, OP_ADD_RECIPES, false);
 		    }
 		    
 		    // Implement the callbacks
-		    private OperationManagerCallbacks&lt;RecipesServiceBridge&gt; mCallbacks = 
-		    		new OperationManagerCallbacks&lt;RecipesServiceBridge&gt;() {
-				
+		    private OperationManagerCallbacks mCallbacks = 
+		    		new OperationManagerCallbacks() {		
 		    	@Override
-		    	public int createOperation(RecipesServiceBridge bridge, int id) {
-		    		if(id == OP_ADD_RECIPES) {
-		    			return bridge.executeAddRecipeOperation("Ragu", "Great with Pasta");
-		    		}
-		    		
-		    		return 0;
-		    	}
-		
-		    	@Override
-				public void onOperationComplete(RecipesServiceBridge bridge, int id,
-						Bundle result, boolean fromCache) {
+				public void onOperationComplete(int id,
+						OperationResult result, boolean fromCache) {
 					if(id == OP_ADD_RECIPES) {
-						if(Operation.isResultOk(result)) {
+						if(result.isOk()) {
 							// TODO Do something
 						} else {
-							Throwable error = Operation.getResultError(result);
+							Throwable error = result.getError();
 							
 							// TODO Do something with the error
 						}
