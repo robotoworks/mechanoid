@@ -15,9 +15,14 @@ class ServiceGenerator {
 			
 			import com.robotoworks.mechanoid.ops.OperationProcessor;
 			import com.robotoworks.mechanoid.ops.OperationService;
+			import com.robotoworks.mechanoid.ops.OperationServiceConfiguration;
+			
 			import «model.packageName».«svc.name.pascalize»Processor;
 			
 			public abstract class Abstract«svc.name.formatServiceName» extends OperationService {
+				
+				public static final OperationServiceConfiguration CONFIG = new «svc.name.formatServiceName»Configuration();
+				
 				@Override
 				protected OperationProcessor createProcessor() {
 					return new «svc.name.pascalize»Processor(this);

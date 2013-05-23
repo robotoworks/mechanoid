@@ -14,24 +14,25 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
-public class SupportOperationManager<T extends OperationServiceBridge> extends OperationManagerBase<T> {
+public class SupportOperationManager extends OperationManagerBase {
 
 	private static final String TAG = "OperationManager";
 	
-	@SuppressWarnings("unchecked")
-	public static <T extends OperationServiceBridge> SupportOperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks, boolean enableLogging) {
+	public static SupportOperationManager create(FragmentActivity activity, OperationManagerCallbacks callbacks, boolean enableLogging) {
 		
-		String tag = "Tags." + bridge.getClass().getName() + callbacks.getClass().getName();
+		String tag = "Tags." + callbacks.getClass().getName();
         
-        SupportOperationManager<T> operationManager = null;
+        SupportOperationManager operationManager = null;
         
-        PersistenceFragment frag = (PersistenceFragment) fragmentManager.findFragmentByTag(tag);
+        FragmentManager fm = activity.getSupportFragmentManager();
+        
+        PersistenceFragment frag = (PersistenceFragment) fm.findFragmentByTag(tag);
         
         if(frag == null) {
         	
@@ -40,23 +41,23 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
         	}
         	
             frag = new PersistenceFragment();
-            operationManager = new SupportOperationManager<T>(bridge, callbacks, enableLogging);
+            operationManager = new SupportOperationManager(callbacks, enableLogging);
             frag.setOperationManager(operationManager);
-            fragmentManager.beginTransaction().add(frag, tag).commit();
+            fm.beginTransaction().add(frag, tag).commit();
         } else {
         	
         	if(enableLogging) {
         		Log.d(TAG, String.format("[Recover Fragment] tag:%s", tag));
         	}
         	
-        	operationManager = (SupportOperationManager<T>) frag.getOperationManager();
+        	operationManager = (SupportOperationManager) frag.getOperationManager();
         	
         	if(operationManager == null) {
             	if(enableLogging) {
             		Log.d(TAG, String.format("[Create Manager] tag:%s", tag));
             	}
             	
-        		operationManager = new SupportOperationManager<T>(bridge, callbacks, enableLogging);
+        		operationManager = new SupportOperationManager(callbacks, enableLogging);
         		frag.setOperationManager(operationManager);
         	} else {
             	if(enableLogging) {
@@ -70,20 +71,19 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
 		return operationManager;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public static <T extends OperationServiceBridge> SupportOperationManager<T> create(FragmentManager fragmentManager, T bridge, OperationManagerCallbacks<T> callbacks) {
-		return create(fragmentManager, bridge, callbacks, false);
+	public static SupportOperationManager create(FragmentActivity activity, OperationManagerCallbacks callbacks) {
+		return create(activity, callbacks, false);
 	}
 	
-    private SupportOperationManager(T bridge, OperationManagerCallbacks<T> callbacks, boolean enableLogging) {
-        super(bridge, callbacks, enableLogging);
+    private SupportOperationManager(OperationManagerCallbacks callbacks, boolean enableLogging) {
+        super(callbacks, enableLogging);
     }
     
     public static class PersistenceFragment extends Fragment {
-        private OperationManagerBase<?> mOperationManager;
+        private OperationManagerBase mOperationManager;
 		private Bundle mSavedState;
         
-        public void setOperationManager(OperationManagerBase<?> operationManager) {
+        public void setOperationManager(OperationManagerBase operationManager) {
         	mOperationManager = operationManager;
         	
         	if(mSavedState != null) {
@@ -92,7 +92,7 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
         	}
 		}
         
-        public OperationManagerBase<?> getOperationManager() {
+        public OperationManagerBase getOperationManager() {
         	return mOperationManager;
 		}
         
@@ -100,7 +100,7 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             
-            OperationManagerBase<?> operationManager = getOperationManager();
+            OperationManagerBase operationManager = getOperationManager();
             
             if(operationManager == null) {
             	mSavedState = savedInstanceState;
@@ -113,7 +113,7 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             
-            OperationManagerBase<?> operationManager = getOperationManager();
+            OperationManagerBase operationManager = getOperationManager();
             
             if(operationManager != null) {
             	operationManager.saveState(outState);
@@ -127,7 +127,7 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
 		public void onStart() {
 			super.onStart();
 			
-            OperationManagerBase<?> operationManager = getOperationManager();
+            OperationManagerBase operationManager = getOperationManager();
             
             if(operationManager != null) {
             	operationManager.start();
@@ -140,7 +140,7 @@ public class SupportOperationManager<T extends OperationServiceBridge> extends O
 		public void onStop() {
 			super.onStop();
 			
-            OperationManagerBase<?> operationManager = getOperationManager();
+            OperationManagerBase operationManager = getOperationManager();
             
             if(operationManager != null) {
             	operationManager.stop();

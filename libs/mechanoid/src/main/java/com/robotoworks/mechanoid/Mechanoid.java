@@ -14,6 +14,8 @@
  */
 package com.robotoworks.mechanoid;
 
+import com.robotoworks.mechanoid.ops.OpsInitializer;
+
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -24,7 +26,8 @@ import android.content.Intent;
  * more details.</p>
  */
 public class Mechanoid {
-	private Context mApplicationContext;
+	
+	Context mApplicationContext;
 	
 	public static Context getApplicationContext() {
 		return get().mApplicationContext;
@@ -60,6 +63,8 @@ public class Mechanoid {
 	public static void init(Context context) {
 		if(sInstance == null) {
 			sInstance = new Mechanoid(context);
+			
+			OpsInitializer.init();
 		}
 	}
 }
