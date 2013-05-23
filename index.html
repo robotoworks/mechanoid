@@ -256,10 +256,6 @@
 				}
 				
 				// If everything is good we return an ok result,
-				// optionally along with any information in a Bundle
-				Bundle bundle = new Bundle();
-				bundle.putInt("new_recipe_id", newRecipeId);
-				
 				return OperationResult.ok(bundle);
 			}
 		}        
