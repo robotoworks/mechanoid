@@ -107,6 +107,10 @@ public class OperationServiceBridge {
 			
 			ServiceInfo[] services = info.services;
 			
+			if(services == null) {
+				return;
+			}
+			
 			for(ServiceInfo si : services) {
 				String serviceName = si.name;
 				
