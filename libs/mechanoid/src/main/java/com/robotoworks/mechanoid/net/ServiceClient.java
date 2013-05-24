@@ -15,6 +15,7 @@
 package com.robotoworks.mechanoid.net;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -118,7 +119,7 @@ public abstract class ServiceClient {
 				Log.d(getLogTag(), METHOD_GET + " " + url.toString());
 			}
 
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			HttpURLConnection conn = openConnection(url);
 			
 			applyRequestTimeouts(request, conn);
 			
@@ -159,7 +160,7 @@ public abstract class ServiceClient {
 				Log.d(getLogTag(), METHOD_DELETE + " " + url.toString());
 			}
 
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			HttpURLConnection conn = openConnection(url);
 			
 			applyRequestTimeouts(request, conn);
 			
@@ -202,7 +203,7 @@ public abstract class ServiceClient {
 				Log.d(getLogTag(), method + " " + url.toString());
 			}
 
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			HttpURLConnection conn = openConnection(url);
 			
 			applyRequestTimeouts(request, conn);
 			
@@ -246,6 +247,10 @@ public abstract class ServiceClient {
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	protected HttpURLConnection openConnection(URL url) throws IOException {
+		return (HttpURLConnection) url.openConnection();
 	}
 	
 	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
