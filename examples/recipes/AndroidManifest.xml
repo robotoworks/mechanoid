@@ -25,8 +25,8 @@
         </activity>
 
         <provider
-            android:name="com.robotoworks.examples.recipes.content.RecipesDBContentProvider"
-            android:authorities="com.robotoworks.examples.recipes.content.recipesdb"
+            android:name="com.robotoworks.example.recipes.content.RecipesDBContentProvider"
+            android:authorities="com.robotoworks.example.recipes.content.recipesdb"
             android:exported="false" />
     </application>
 
