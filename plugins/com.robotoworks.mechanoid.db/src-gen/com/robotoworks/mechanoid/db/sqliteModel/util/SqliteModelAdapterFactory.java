@@ -205,11 +205,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createTableDefinitionAdapter();
       }
       @Override
-      public Adapter caseCreateViewStatement(CreateViewStatement object)
-      {
-        return createCreateViewStatementAdapter();
-      }
-      @Override
       public Adapter caseCreateTriggerStatement(CreateTriggerStatement object)
       {
         return createCreateTriggerStatementAdapter();
@@ -468,6 +463,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCreateTableStatement(CreateTableStatement object)
       {
         return createCreateTableStatementAdapter();
+      }
+      @Override
+      public Adapter caseCreateViewStatement(CreateViewStatement object)
+      {
+        return createCreateViewStatementAdapter();
       }
       @Override
       public Adapter caseAlterTableRenameStatement(AlterTableRenameStatement object)
@@ -912,21 +912,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTableDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement <em>Create View Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
-   * @generated
-   */
-  public Adapter createCreateViewStatementAdapter()
   {
     return null;
   }
@@ -1707,6 +1692,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCreateTableStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement <em>Create View Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
+   * @generated
+   */
+  public Adapter createCreateViewStatementAdapter()
   {
     return null;
   }

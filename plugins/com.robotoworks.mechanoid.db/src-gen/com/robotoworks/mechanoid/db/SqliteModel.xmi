@@ -1109,7 +1109,7 @@
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CreateViewStatement">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/db/SqliteModel#//CreateViewStatement"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.robotoworks.com/mechanoid/db/SqliteModel#//TableDefinition"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">

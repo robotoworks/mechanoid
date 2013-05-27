@@ -6,10 +6,10 @@ import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnType;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import com.robotoworks.mechanoid.db.util.ModelUtil;
 import com.robotoworks.mechanoid.text.Strings;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ActiveRecordGenerator {
-  public CharSequence generate(final Model model, final DDLStatement stmt) {
+  public CharSequence generate(final Model model, final TableDefinition stmt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*");
     _builder.newLine();
@@ -55,7 +55,7 @@ public class ActiveRecordGenerator {
     String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, "");
     _builder.append("Contract.");
-    String _name_1 = this.getName(stmt);
+    String _name_1 = stmt.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
     _builder.append(_pascalize_1, "");
     _builder.append(";");
@@ -69,7 +69,7 @@ public class ActiveRecordGenerator {
     String _pascalize_2 = Strings.pascalize(_name_2);
     _builder.append(_pascalize_2, "");
     _builder.append("Contract.");
-    String _name_3 = this.getName(stmt);
+    String _name_3 = stmt.getName();
     String _pascalize_3 = Strings.pascalize(_name_3);
     _builder.append(_pascalize_3, "");
     _builder.append(".Builder;");
@@ -86,7 +86,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
-    String _name_4 = this.getName(stmt);
+    String _name_4 = stmt.getName();
     String _pascalize_4 = Strings.pascalize(_name_4);
     _builder.append(_pascalize_4, "");
     _builder.append("Record extends ActiveRecord implements Parcelable {");
@@ -94,11 +94,11 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private static ActiveRecordFactory<");
-    String _name_5 = this.getName(stmt);
+    String _name_5 = stmt.getName();
     String _pascalize_5 = Strings.pascalize(_name_5);
     _builder.append(_pascalize_5, "	");
     _builder.append("Record> sFactory = new ActiveRecordFactory<");
-    String _name_6 = this.getName(stmt);
+    String _name_6 = stmt.getName();
     String _pascalize_6 = Strings.pascalize(_name_6);
     _builder.append(_pascalize_6, "	");
     _builder.append("Record>() {");
@@ -108,7 +108,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("public ");
-    String _name_7 = this.getName(stmt);
+    String _name_7 = stmt.getName();
     String _pascalize_7 = Strings.pascalize(_name_7);
     _builder.append(_pascalize_7, "		");
     _builder.append("Record create(Cursor c) {");
@@ -140,7 +140,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static ActiveRecordFactory<");
-    String _name_8 = this.getName(stmt);
+    String _name_8 = stmt.getName();
     String _pascalize_8 = Strings.pascalize(_name_8);
     _builder.append(_pascalize_8, "	");
     _builder.append("Record> getFactory() {");
@@ -154,28 +154,28 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("public static final Parcelable.Creator<");
-    String _name_9 = this.getName(stmt);
+    String _name_9 = stmt.getName();
     String _pascalize_9 = Strings.pascalize(_name_9);
     _builder.append(_pascalize_9, "    ");
     _builder.append("Record> CREATOR ");
     _builder.newLineIfNotEmpty();
     _builder.append("    \t");
     _builder.append("= new Parcelable.Creator<");
-    String _name_10 = this.getName(stmt);
+    String _name_10 = stmt.getName();
     String _pascalize_10 = Strings.pascalize(_name_10);
     _builder.append(_pascalize_10, "    	");
     _builder.append("Record>() {");
     _builder.newLineIfNotEmpty();
     _builder.append("        ");
     _builder.append("public ");
-    String _name_11 = this.getName(stmt);
+    String _name_11 = stmt.getName();
     String _pascalize_11 = Strings.pascalize(_name_11);
     _builder.append(_pascalize_11, "        ");
     _builder.append("Record createFromParcel(Parcel in) {");
     _builder.newLineIfNotEmpty();
     _builder.append("            ");
     _builder.append("return new ");
-    String _name_12 = this.getName(stmt);
+    String _name_12 = stmt.getName();
     String _pascalize_12 = Strings.pascalize(_name_12);
     _builder.append(_pascalize_12, "            ");
     _builder.append("Record(in);");
@@ -186,14 +186,14 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("public ");
-    String _name_13 = this.getName(stmt);
+    String _name_13 = stmt.getName();
     String _pascalize_13 = Strings.pascalize(_name_13);
     _builder.append(_pascalize_13, "        ");
     _builder.append("Record[] newArray(int size) {");
     _builder.newLineIfNotEmpty();
     _builder.append("            ");
     _builder.append("return new ");
-    String _name_14 = this.getName(stmt);
+    String _name_14 = stmt.getName();
     String _pascalize_14 = Strings.pascalize(_name_14);
     _builder.append(_pascalize_14, "            ");
     _builder.append("Record[size];");
@@ -258,14 +258,14 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("public ");
-    String _name_15 = this.getName(stmt);
+    String _name_15 = stmt.getName();
     String _pascalize_15 = Strings.pascalize(_name_15);
     _builder.append(_pascalize_15, "    ");
     _builder.append("Record() {");
     _builder.newLineIfNotEmpty();
     _builder.append("    \t");
     _builder.append("super(");
-    String _name_16 = this.getName(stmt);
+    String _name_16 = stmt.getName();
     String _pascalize_16 = Strings.pascalize(_name_16);
     _builder.append(_pascalize_16, "    	");
     _builder.append(".CONTENT_URI);");
@@ -277,14 +277,14 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("private ");
-    String _name_17 = this.getName(stmt);
+    String _name_17 = stmt.getName();
     String _pascalize_17 = Strings.pascalize(_name_17);
     _builder.append(_pascalize_17, "	");
     _builder.append("Record(Parcel in) {");
     _builder.newLineIfNotEmpty();
     _builder.append("    \t");
     _builder.append("super(");
-    String _name_18 = this.getName(stmt);
+    String _name_18 = stmt.getName();
     String _pascalize_18 = Strings.pascalize(_name_18);
     _builder.append(_pascalize_18, "    	");
     _builder.append(".CONTENT_URI);");
@@ -345,7 +345,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Builder builder = ");
-    String _name_19 = this.getName(stmt);
+    String _name_19 = stmt.getName();
     String _pascalize_19 = Strings.pascalize(_name_19);
     _builder.append(_pascalize_19, "		");
     _builder.append(".newBuilder();");
@@ -399,17 +399,17 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static ");
-    String _name_20 = this.getName(stmt);
+    String _name_20 = stmt.getName();
     String _pascalize_20 = Strings.pascalize(_name_20);
     _builder.append(_pascalize_20, "	");
     _builder.append("Record fromCursor(Cursor c) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
-    String _name_21 = this.getName(stmt);
+    String _name_21 = stmt.getName();
     String _pascalize_21 = Strings.pascalize(_name_21);
     _builder.append(_pascalize_21, "	    ");
     _builder.append("Record item = new ");
-    String _name_22 = this.getName(stmt);
+    String _name_22 = stmt.getName();
     String _pascalize_22 = Strings.pascalize(_name_22);
     _builder.append(_pascalize_22, "	    ");
     _builder.append("Record();");
@@ -436,7 +436,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static ");
-    String _name_23 = this.getName(stmt);
+    String _name_23 = stmt.getName();
     String _pascalize_23 = Strings.pascalize(_name_23);
     _builder.append(_pascalize_23, "	");
     _builder.append("Record get(long id) {");
@@ -456,7 +456,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t        ");
     _builder.append("c = resolver.query(");
-    String _name_24 = this.getName(stmt);
+    String _name_24 = stmt.getName();
     String _pascalize_24 = Strings.pascalize(_name_24);
     _builder.append(_pascalize_24, "	        ");
     _builder.append(".CONTENT_URI.buildUpon()");
@@ -1453,7 +1453,7 @@ public class ActiveRecordGenerator {
     return _builder;
   }
   
-  public CharSequence generateSetFromCursorStatements(final DDLStatement stmt) {
+  public CharSequence generateSetFromCursorStatements(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateSetFromCursorStatements((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1464,7 +1464,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateMakeDirtyStatements(final DDLStatement stmt) {
+  public CharSequence generateMakeDirtyStatements(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateMakeDirtyStatements((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1475,7 +1475,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateBuilderStatements(final DDLStatement stmt) {
+  public CharSequence generateBuilderStatements(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateBuilderStatements((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1486,7 +1486,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateParcelSerializationStatements(final DDLStatement stmt) {
+  public CharSequence generateParcelSerializationStatements(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateParcelSerializationStatements((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1497,7 +1497,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateParcelDeserializationStatements(final DDLStatement stmt) {
+  public CharSequence generateParcelDeserializationStatements(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateParcelDeserializationStatements((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1508,7 +1508,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public String getName(final DDLStatement statement) {
+  public String getName(final TableDefinition statement) {
     if (statement instanceof CreateTableStatement) {
       return _getName((CreateTableStatement)statement);
     } else if (statement instanceof CreateViewStatement) {
@@ -1519,7 +1519,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateProjectionArrayMembers(final DDLStatement stmt) {
+  public CharSequence generateProjectionArrayMembers(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateProjectionArrayMembers((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1530,7 +1530,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateProjectionIndicesMembers(final DDLStatement stmt) {
+  public CharSequence generateProjectionIndicesMembers(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateProjectionIndicesMembers((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1541,7 +1541,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateFields(final DDLStatement stmt) {
+  public CharSequence generateFields(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateFields((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -1552,7 +1552,7 @@ public class ActiveRecordGenerator {
     }
   }
   
-  public CharSequence generateAccessors(final DDLStatement stmt) {
+  public CharSequence generateAccessors(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateAccessors((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
