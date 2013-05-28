@@ -38,4 +38,8 @@ public class Ops {
 	public static OperationLog getLog() {
 		return mBridge.getLog();
 	}
+	
+	public static void abort(int id, int reason) {
+		mBridge.abort(id, reason);
+	}
 }

@@ -197,15 +197,19 @@ public class OperationServiceBridge {
 	 * @param id The id of the operation to abort
 	 * @param reason A code used to identify a reason for aborting
 	 */
-	public void abort(Class<?> serviceClass, int id, int reason) {
-		Context context = Mechanoid.getApplicationContext();
-		Intent intent = new Intent(OperationService.ACTION_ABORT);
-		intent.setClass(context, serviceClass);
-		intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
-		intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);		
-		intent.putExtra(OperationService.EXTRA_ABORT_REASON, reason);	
+	public void abort(int id, int reason) {
+		Intent opIntent = mPendingRequests.get(id);
 		
-		context.startService(intent);
+		if(opIntent != null) {
+			Context context = Mechanoid.getApplicationContext();
+			Intent intent = new Intent(OperationService.ACTION_ABORT);
+			intent.setClassName(context, opIntent.getComponent().getClassName());
+			intent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
+			intent.putExtra(OperationService.EXTRA_REQUEST_ID, id);		
+			intent.putExtra(OperationService.EXTRA_ABORT_REASON, reason);	
+			
+			context.startService(intent);
+		}
 	}
 	
 	/**
