@@ -91,7 +91,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.LITERAL_VALUE: return createLiteralValue();
       case SqliteModelPackage.DDL_STATEMENT: return createDDLStatement();
       case SqliteModelPackage.TABLE_DEFINITION: return createTableDefinition();
-      case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT: return createCreateTriggerStatement();
       case SqliteModelPackage.ALTER_TABLE_ADD_COLUMN_STATEMENT: return createAlterTableAddColumnStatement();
       case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
@@ -144,6 +143,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.CURRENT_DATE_LITERAL: return createCurrentDateLiteral();
       case SqliteModelPackage.CURRENT_TIME_STAMP_LITERAL: return createCurrentTimeStampLiteral();
       case SqliteModelPackage.CREATE_TABLE_STATEMENT: return createCreateTableStatement();
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT: return createCreateViewStatement();
       case SqliteModelPackage.ALTER_TABLE_RENAME_STATEMENT: return createAlterTableRenameStatement();
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
@@ -486,17 +486,6 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     TableDefinitionImpl tableDefinition = new TableDefinitionImpl();
     return tableDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CreateViewStatement createCreateViewStatement()
-  {
-    CreateViewStatementImpl createViewStatement = new CreateViewStatementImpl();
-    return createViewStatement;
   }
 
   /**
@@ -1069,6 +1058,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     CreateTableStatementImpl createTableStatement = new CreateTableStatementImpl();
     return createTableStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateViewStatement createCreateViewStatement()
+  {
+    CreateViewStatementImpl createViewStatement = new CreateViewStatementImpl();
+    return createViewStatement;
   }
 
   /**

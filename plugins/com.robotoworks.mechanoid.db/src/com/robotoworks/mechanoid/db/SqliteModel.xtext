@@ -222,7 +222,7 @@ CreateTableStatement returns TableDefinition:
 		(',' constraints+=TableConstraint)* 
 	')';
 
-CreateViewStatement: 
+CreateViewStatement returns TableDefinition: 
 	{CreateViewStatement}
 	'create' 'view' name=ID 'as' selectStatement=SelectStatement;
 	

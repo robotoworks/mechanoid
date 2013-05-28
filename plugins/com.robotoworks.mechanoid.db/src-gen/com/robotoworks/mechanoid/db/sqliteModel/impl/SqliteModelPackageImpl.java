@@ -298,13 +298,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass createViewStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass createTriggerStatementEClass = null;
 
   /**
@@ -663,6 +656,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass createTableStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass createViewStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1432,36 +1432,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EAttribute getTableDefinition_Name()
   {
     return (EAttribute)tableDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCreateViewStatement()
-  {
-    return createViewStatementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCreateViewStatement_Name()
-  {
-    return (EAttribute)createViewStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCreateViewStatement_SelectStatement()
-  {
-    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3079,6 +3049,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCreateViewStatement()
+  {
+    return createViewStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateViewStatement_SelectStatement()
+  {
+    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getAlterTableRenameStatement()
   {
     return alterTableRenameStatementEClass;
@@ -3403,10 +3393,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     tableDefinitionEClass = createEClass(TABLE_DEFINITION);
     createEAttribute(tableDefinitionEClass, TABLE_DEFINITION__NAME);
 
-    createViewStatementEClass = createEClass(CREATE_VIEW_STATEMENT);
-    createEAttribute(createViewStatementEClass, CREATE_VIEW_STATEMENT__NAME);
-    createEReference(createViewStatementEClass, CREATE_VIEW_STATEMENT__SELECT_STATEMENT);
-
     createTriggerStatementEClass = createEClass(CREATE_TRIGGER_STATEMENT);
     createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__NAME);
     createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN);
@@ -3620,6 +3606,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__COLUMN_DEFS);
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__CONSTRAINTS);
 
+    createViewStatementEClass = createEClass(CREATE_VIEW_STATEMENT);
+    createEReference(createViewStatementEClass, CREATE_VIEW_STATEMENT__SELECT_STATEMENT);
+
     alterTableRenameStatementEClass = createEClass(ALTER_TABLE_RENAME_STATEMENT);
     createEReference(alterTableRenameStatementEClass, ALTER_TABLE_RENAME_STATEMENT__TABLE);
 
@@ -3684,7 +3673,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     selectSourceEClass.getESuperTypes().add(this.getSingleSource());
     singleSourceJoinEClass.getESuperTypes().add(this.getSingleSource());
     tableDefinitionEClass.getESuperTypes().add(this.getDDLStatement());
-    createViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
     createTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
     alterTableAddColumnStatementEClass.getESuperTypes().add(this.getDDLStatement());
     dropTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
@@ -3730,6 +3718,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     currentDateLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     currentTimeStampLiteralEClass.getESuperTypes().add(this.getLiteralValue());
     createTableStatementEClass.getESuperTypes().add(this.getTableDefinition());
+    createViewStatementEClass.getESuperTypes().add(this.getTableDefinition());
     alterTableRenameStatementEClass.getESuperTypes().add(this.getTableDefinition());
     columnDefEClass.getESuperTypes().add(this.getColumnSource());
     primaryKeyColumnConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
@@ -3827,10 +3816,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(tableDefinitionEClass, TableDefinition.class, "TableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTableDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(createViewStatementEClass, CreateViewStatement.class, "CreateViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCreateViewStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCreateViewStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(createTriggerStatementEClass, CreateTriggerStatement.class, "CreateTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCreateTriggerStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4044,6 +4029,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(createTableStatementEClass, CreateTableStatement.class, "CreateTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCreateTableStatement_ColumnDefs(), this.getColumnSource(), null, "columnDefs", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCreateTableStatement_Constraints(), this.getTableConstraint(), null, "constraints", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(createViewStatementEClass, CreateViewStatement.class, "CreateViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCreateViewStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(alterTableRenameStatementEClass, AlterTableRenameStatement.class, "AlterTableRenameStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAlterTableRenameStatement_Table(), this.getTableDefinition(), null, "table", null, 0, 1, AlterTableRenameStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

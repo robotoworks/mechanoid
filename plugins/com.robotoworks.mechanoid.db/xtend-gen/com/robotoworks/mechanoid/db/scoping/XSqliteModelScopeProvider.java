@@ -12,6 +12,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DeleteStatement;
@@ -425,9 +426,14 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     ArrayList<EObject> _arrayList = new ArrayList<EObject>();
     final ArrayList<EObject> columns = _arrayList;
     LinkedList<TableDefinition> tableHistory = this.getHistory(definition);
-    TableDefinition _peekLast = tableHistory.peekLast();
-    CreateTableStatement table = ((CreateTableStatement) _peekLast);
-    EList<ColumnSource> _columnDefs = table.getColumnDefs();
+    TableDefinition last = tableHistory.peekLast();
+    if ((last instanceof CreateViewStatement)) {
+      CreateViewStatement view = ((CreateViewStatement) last);
+      ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(view);
+      columns.addAll(_viewResultColumns);
+      return columns;
+    }
+    EList<ColumnSource> _columnDefs = ((CreateTableStatement) last).getColumnDefs();
     columns.addAll(_columnDefs);
     boolean _isEmpty = tableHistory.isEmpty();
     boolean _not = (!_isEmpty);

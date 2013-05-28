@@ -257,15 +257,6 @@ public interface SqliteModelFactory extends EFactory
   TableDefinition createTableDefinition();
 
   /**
-   * Returns a new object of class '<em>Create View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Create View Statement</em>'.
-   * @generated
-   */
-  CreateViewStatement createCreateViewStatement();
-
-  /**
    * Returns a new object of class '<em>Create Trigger Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -732,6 +723,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   CreateTableStatement createCreateTableStatement();
+
+  /**
+   * Returns a new object of class '<em>Create View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create View Statement</em>'.
+   * @generated
+   */
+  CreateViewStatement createCreateViewStatement();
 
   /**
    * Returns a new object of class '<em>Alter Table Rename Statement</em>'.

@@ -2255,7 +2255,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSelectStatementAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cSelectStatementSelectStatementParserRuleCall_5_0 = (RuleCall)cSelectStatementAssignment_5.eContents().get(0);
 		
-		//CreateViewStatement:
+		//CreateViewStatement returns TableDefinition:
 		//	{CreateViewStatement} "create" "view" name=ID "as" selectStatement=SelectStatement;
 		public ParserRule getRule() { return rule; }
 
@@ -4367,7 +4367,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateTableStatementAccess().getRule();
 	}
 
-	//CreateViewStatement:
+	//CreateViewStatement returns TableDefinition:
 	//	{CreateViewStatement} "create" "view" name=ID "as" selectStatement=SelectStatement;
 	public CreateViewStatementElements getCreateViewStatementAccess() {
 		return (pCreateViewStatement != null) ? pCreateViewStatement : (pCreateViewStatement = new CreateViewStatementElements());

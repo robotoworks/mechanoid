@@ -14,10 +14,10 @@ import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn;
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import com.robotoworks.mechanoid.db.util.ModelUtil;
 import com.robotoworks.mechanoid.text.Strings;
 import java.util.ArrayList;
@@ -454,13 +454,13 @@ public class ContentProviderContractGenerator {
     return _greaterThan;
   }
   
-  public CharSequence generateContractItem(final Model model, final DDLStatement stmt) {
+  public CharSequence generateContractItem(final Model model, final TableDefinition stmt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/**");
     _builder.newLine();
     _builder.append(" ");
     _builder.append("* <p>Column definitions and helper methods to work with the ");
-    String _name = this.getName(stmt);
+    String _name = stmt.getName();
     String _pascalize = Strings.pascalize(_name);
     _builder.append(_pascalize, " ");
     _builder.append(".</p>");
@@ -469,11 +469,11 @@ public class ContentProviderContractGenerator {
     _builder.append("*/");
     _builder.newLine();
     _builder.append("public static class ");
-    String _name_1 = this.getName(stmt);
+    String _name_1 = stmt.getName();
     String _pascalize_1 = Strings.pascalize(_name_1);
     _builder.append(_pascalize_1, "");
     _builder.append(" implements ");
-    String _name_2 = this.getName(stmt);
+    String _name_2 = stmt.getName();
     String _pascalize_2 = Strings.pascalize(_name_2);
     _builder.append(_pascalize_2, "");
     _builder.append("Columns");
@@ -490,7 +490,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
-    String _name_3 = this.getName(stmt);
+    String _name_3 = stmt.getName();
     String _lowerCase = _name_3.toLowerCase();
     _builder.append(_lowerCase, "			");
     _builder.append("\").build();");
@@ -501,7 +501,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>The content type for a cursor that contains many ");
-    String _name_4 = this.getName(stmt);
+    String _name_4 = stmt.getName();
     String _pascalize_3 = Strings.pascalize(_name_4);
     _builder.append(_pascalize_3, "	 ");
     _builder.append(" rows.</p>");
@@ -519,7 +519,7 @@ public class ContentProviderContractGenerator {
     String _lowerCase_1 = _name_5.toLowerCase();
     _builder.append(_lowerCase_1, "            ");
     _builder.append(".");
-    String _name_6 = this.getName(stmt);
+    String _name_6 = stmt.getName();
     _builder.append(_name_6, "            ");
     _builder.append("\";");
     _builder.newLineIfNotEmpty();
@@ -533,7 +533,7 @@ public class ContentProviderContractGenerator {
         _builder.append("\t");
         _builder.append(" ");
         _builder.append("* <p>The content type for a cursor that contains a single ");
-        String _name_7 = this.getName(stmt);
+        String _name_7 = stmt.getName();
         String _pascalize_4 = Strings.pascalize(_name_7);
         _builder.append(_pascalize_4, "	 ");
         _builder.append(" row.</p>");
@@ -553,7 +553,7 @@ public class ContentProviderContractGenerator {
         String _lowerCase_2 = _name_8.toLowerCase();
         _builder.append(_lowerCase_2, "		");
         _builder.append(".");
-        String _name_9 = this.getName(stmt);
+        String _name_9 = stmt.getName();
         _builder.append(_name_9, "		");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
@@ -565,7 +565,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Builds a Uri with appended id for a row in ");
-    String _name_10 = this.getName(stmt);
+    String _name_10 = stmt.getName();
     String _pascalize_5 = Strings.pascalize(_name_10);
     _builder.append(_pascalize_5, "	 ");
     _builder.append(", ");
@@ -580,7 +580,7 @@ public class ContentProviderContractGenerator {
     String _lowerCase_3 = _name_11.toLowerCase();
     _builder.append(_lowerCase_3, "	 ");
     _builder.append("/");
-    String _name_12 = this.getName(stmt);
+    String _name_12 = stmt.getName();
     String _lowerCase_4 = _name_12.toLowerCase();
     _builder.append(_lowerCase_4, "	 ");
     _builder.append("/123.</p>");
@@ -598,7 +598,7 @@ public class ContentProviderContractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("    ");
-    String _name_13 = this.getName(stmt);
+    String _name_13 = stmt.getName();
     Iterable<ActionStatement> actions = this.findActionsForDefinition(model, _name_13);
     _builder.newLineIfNotEmpty();
     {
@@ -643,7 +643,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Create a new Builder for ");
-    String _name_14 = this.getName(stmt);
+    String _name_14 = stmt.getName();
     String _pascalize_6 = Strings.pascalize(_name_14);
     _builder.append(_pascalize_6, "	 ");
     _builder.append("</p>");
@@ -667,7 +667,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Build and execute insert or update statements for ");
-    String _name_15 = this.getName(stmt);
+    String _name_15 = stmt.getName();
     String _pascalize_7 = Strings.pascalize(_name_15);
     _builder.append(_pascalize_7, "	 ");
     _builder.append(".</p>");
@@ -677,7 +677,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Use {@link ");
-    String _name_16 = this.getName(stmt);
+    String _name_16 = stmt.getName();
     String _pascalize_8 = Strings.pascalize(_name_16);
     _builder.append(_pascalize_8, "	 ");
     _builder.append("#newBuilder()} to create new builder</p>");
@@ -901,7 +901,7 @@ public class ContentProviderContractGenerator {
     return _builder;
   }
   
-  public CharSequence generateBuilderSetters(final DDLStatement stmt) {
+  public CharSequence generateBuilderSetters(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _generateBuilderSetters((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -912,7 +912,7 @@ public class ContentProviderContractGenerator {
     }
   }
   
-  public String getName(final DDLStatement stmt) {
+  public String getName(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _getName((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
@@ -923,7 +923,7 @@ public class ContentProviderContractGenerator {
     }
   }
   
-  public boolean hasAndroidPrimaryKey(final DDLStatement stmt) {
+  public boolean hasAndroidPrimaryKey(final TableDefinition stmt) {
     if (stmt instanceof CreateTableStatement) {
       return _hasAndroidPrimaryKey((CreateTableStatement)stmt);
     } else if (stmt instanceof CreateViewStatement) {
