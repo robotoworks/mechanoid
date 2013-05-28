@@ -118,10 +118,6 @@
     <genClasses ecoreClass="SqliteModel.ecore#//TableDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//TableDefinition/name"/>
     </genClasses>
-    <genClasses ecoreClass="SqliteModel.ecore#//CreateViewStatement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//CreateViewStatement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateViewStatement/selectStatement"/>
-    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//CreateTriggerStatement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//CreateTriggerStatement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SqliteModel.ecore#//CreateTriggerStatement/when"/>
@@ -329,6 +325,9 @@
     <genClasses ecoreClass="SqliteModel.ecore#//CreateTableStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateTableStatement/columnDefs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateTableStatement/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//CreateViewStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CreateViewStatement/selectStatement"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//AlterTableRenameStatement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//AlterTableRenameStatement/table"/>

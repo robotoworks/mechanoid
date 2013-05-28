@@ -258,14 +258,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SqliteModelPackage.CREATE_VIEW_STATEMENT:
-      {
-        CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
-        T result = caseCreateViewStatement(createViewStatement);
-        if (result == null) result = caseDDLStatement(createViewStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT:
       {
         CreateTriggerStatement createTriggerStatement = (CreateTriggerStatement)theEObject;
@@ -675,6 +667,15 @@ public class SqliteModelSwitch<T> extends Switch<T>
         T result = caseCreateTableStatement(createTableStatement);
         if (result == null) result = caseTableDefinition(createTableStatement);
         if (result == null) result = caseDDLStatement(createTableStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT:
+      {
+        CreateViewStatement createViewStatement = (CreateViewStatement)theEObject;
+        T result = caseCreateViewStatement(createViewStatement);
+        if (result == null) result = caseTableDefinition(createViewStatement);
+        if (result == null) result = caseDDLStatement(createViewStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1151,22 +1152,6 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTableDefinition(TableDefinition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCreateViewStatement(CreateViewStatement object)
   {
     return null;
   }
@@ -1999,6 +1984,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCreateTableStatement(CreateTableStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create View Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateViewStatement(CreateViewStatement object)
   {
     return null;
   }

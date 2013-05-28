@@ -36,6 +36,7 @@ import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression
+import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -283,9 +284,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 
 		var tableHistory = definition.history
 
+		var last = tableHistory.peekLast
+
+		if(last instanceof CreateViewStatement) {
+			var view = last as CreateViewStatement
+			columns.addAll(view.viewResultColumns)
+			return columns
+		}
+
 		// Columns directly declared in the create table statement
-		var table = tableHistory.peekLast as CreateTableStatement
-		columns.addAll(table.columnDefs)
+		columns.addAll((last as CreateTableStatement).columnDefs)
 
 		// Every table rename and columns associated to that
 		while(!tableHistory.empty) {

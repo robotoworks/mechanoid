@@ -100,17 +100,17 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 				} else if(statement instanceof CreateViewStatement) {
 					CreateViewStatement cv = (CreateViewStatement) statement;
 					if(views.contains(cv.getName())) {
-						error("View exists, drop it first", cv, SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT__NAME, -1);
+						error("View exists, drop it first", cv, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME, -1);
 						return;
 					}
 					else if(tables.contains(cv.getName())) {
-						error("A table exists with this name, drop it first", cv, SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT__NAME, -1);
+						error("A table exists with this name, drop it first", cv, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME, -1);
 						return;
 					} else {
 						
 						SelectCoreExpression expr = cv.getSelectStatement().getCore();
 						
-						if(!checkTablesInExpressionExist(tables, expr)) {
+						if(!checkTablesInExpressionExist(tables, views, expr)) {
 							return;
 						}
 						
@@ -153,17 +153,25 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 	}
 
 	private boolean checkTablesInExpressionExist(HashSet<String> tables,
-			SelectCoreExpression expr) {
+			HashSet<String> views, SelectCoreExpression expr) {
 		ArrayList<EObject> sources = ModelUtil.getAllReferenceableSingleSources(expr);
 		
 		for(EObject source : sources) {
 			if(source instanceof SingleSourceTable) {
 				SingleSourceTable table = (SingleSourceTable) source;
 				
-				if(!tables.contains(table.getTableReference().getName())) {
-					error("Table does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
-					return false;
+				if(table.getTableReference() instanceof CreateViewStatement) {
+				    if(!views.contains(table.getTableReference().getName())) {
+				        error("View does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
+				        return false;
+				    }
+				} else {
+    				if(!tables.contains(table.getTableReference().getName())) {
+    					error("Table does not exist", table, SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE, -1);
+    					return false;
+    				}
 				}
+				
 			}
 		}
 		

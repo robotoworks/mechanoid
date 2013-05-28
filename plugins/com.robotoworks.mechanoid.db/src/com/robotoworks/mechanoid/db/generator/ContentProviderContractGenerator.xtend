@@ -16,6 +16,7 @@ import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
 import java.util.ArrayList
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) { 
@@ -159,7 +160,7 @@ class ContentProviderContractGenerator {
 	}
 
 	
-	def generateContractItem(Model model, DDLStatement stmt) '''
+	def generateContractItem(Model model, TableDefinition stmt) '''
 		/**
 		 * <p>Column definitions and helper methods to work with the «stmt.name.pascalize».</p>
 		 */
