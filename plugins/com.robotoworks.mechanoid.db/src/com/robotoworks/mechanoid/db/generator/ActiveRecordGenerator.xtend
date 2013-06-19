@@ -130,6 +130,11 @@ class ActiveRecordGenerator {
 				    return item;
 				}
 				
+				public static «stmt.name.pascalize»Record fromBundle(Bundle bundle, String key) {
+					bundle.setClassLoader(«stmt.name.pascalize»Record.class.getClassLoader());
+					return bundle.getParcelable(key);
+				}
+				
 				public static «stmt.name.pascalize»Record get(long id) {
 				    Cursor c = null;
 				    
@@ -286,7 +291,7 @@ class ActiveRecordGenerator {
 				«ENDIF»
 				«ENDFOR»
 				
-				boolean[] dirtyFlags = new boolean[«cols.size»];
+				boolean[] dirtyFlags = new boolean[«cols.size - 1»];
 				in.readBooleanArray(dirtyFlags);
 				«FOR col : cols.filter([!it.name.equals("_id")])»
 				m«col.name.pascalize»Dirty = dirtyFlags[«counter = counter + 1»];
