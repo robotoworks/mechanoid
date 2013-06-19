@@ -20,6 +20,7 @@ class ActiveRecordGenerator {
 
 			import android.content.ContentResolver;
 			import android.database.Cursor;
+			import android.os.Bundle;
 			import android.os.Parcel;
 			import android.os.Parcelable;
 			

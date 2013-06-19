@@ -41,6 +41,8 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("import android.database.Cursor;");
     _builder.newLine();
+    _builder.append("import android.os.Bundle;");
+    _builder.newLine();
     _builder.append("import android.os.Parcel;");
     _builder.newLine();
     _builder.append("import android.os.Parcelable;");

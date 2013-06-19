@@ -5,6 +5,7 @@ package com.robotoworks.example.movies.db;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -177,6 +178,11 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		item.makeDirty(false);
 		
 	    return item;
+	}
+	
+	public static MoviesRecord fromBundle(Bundle bundle, String key) {
+		bundle.setClassLoader(MoviesRecord.class.getClassLoader());
+		return bundle.getParcelable(key);
 	}
 	
 	public static MoviesRecord get(long id) {
