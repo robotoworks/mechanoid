@@ -97,12 +97,13 @@ public abstract class OperationManagerBase {
             }
             
             op.mResult = result;
-            mCallbacks.onOperationComplete(op.mUserCode, result, false);
-            op.mCallbackInvoked = true;
+            if(invokeOnOperationComplete(op.mUserCode, result, false)) {
+            	op.mCallbackInvoked = true;
+            	if(mEnableLogging) {
+            		Log.d(TAG, String.format("[Operation Complete] request id:%s, user code:%s", id, op.mUserCode));
+            	}
+            }
             
-        	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Operation Complete] request id:%s, user code:%s", id, op.mUserCode));
-        	}
 		}
 
     };
@@ -113,6 +114,14 @@ public abstract class OperationManagerBase {
         mCallbacks = callbacks;
 		mEnableLogging = enableLogging;
         mStateKey = "com.robotoworks.mechanoid.ops.OperationManager.State";
+    }
+    
+    public void removeCallbacks() {
+    	mCallbacks = null;
+    }
+    
+    public void setCallbacks(OperationManagerCallbacks callbacks) {
+    	mCallbacks = callbacks;
     }
     
     private OpInfo findOperationInfoByRequestId(int requestId) {
@@ -181,10 +190,13 @@ public abstract class OperationManagerBase {
             OpInfo op = mOperations.valueAt(i);
             
             if(Ops.isOperationPending(op.mId)) {
+            	
             	if(mEnableLogging) {
             		Log.d(TAG, String.format("[Operation Pending] request id: %s, user code:%s", op.mId, op.mUserCode));
             	}
-                mCallbacks.onOperationPending(op.mUserCode);
+            	
+            	invokeOnOperationPending(op.mUserCode);
+            	
                 continue;
             }
             
@@ -194,11 +206,15 @@ public abstract class OperationManagerBase {
                 op.mResult = result;
                 
                 if(!op.mCallbackInvoked) {
-                	if(mEnableLogging) {
-                		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s", op.mId, op.mUserCode));
-                	}
-                    mCallbacks.onOperationComplete(op.mUserCode, op.mResult, false);
-                    op.mCallbackInvoked = true;
+                	
+                    if(invokeOnOperationComplete(op.mUserCode, op.mResult, false)) {
+                    	
+                    	op.mCallbackInvoked = true;
+
+                    	if(mEnableLogging) {
+                    		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s", op.mId, op.mUserCode));
+                    	}
+                    }
                 }
                 
                 continue;
@@ -262,7 +278,7 @@ public abstract class OperationManagerBase {
         		Log.d(TAG, String.format("[Operation Pending] user code:%s", code));
         	}
         	
-            mCallbacks.onOperationPending(code);
+            invokeOnOperationPending(code);
             
         	if(mEnableLogging) {
         		Log.d(TAG, String.format("[Execute Operation] user code:%s", code));
@@ -284,8 +300,9 @@ public abstract class OperationManagerBase {
         		Log.d(TAG, String.format("[Operation Complete] request id: %s, user code:%s, from cache:%s", op.mId, op.mUserCode, op.mCallbackInvoked));
         	}
         	
-        	mCallbacks.onOperationComplete(op.mUserCode, op.mResult, op.mCallbackInvoked);
-        	op.mCallbackInvoked = true;
+        	if(invokeOnOperationComplete(op.mUserCode, op.mResult, op.mCallbackInvoked)) {
+        		op.mCallbackInvoked = true;
+        	}
         }
     }
 
@@ -299,5 +316,23 @@ public abstract class OperationManagerBase {
         });
         
         return;
+    }
+    
+    protected boolean invokeOnOperationPending(int code) {
+    	if(mCallbacks == null) {
+    		return false;
+    	}
+    	
+    	mCallbacks.onOperationPending(code);
+    	return true;
+    }
+    
+    protected boolean invokeOnOperationComplete(int code, OperationResult result, boolean fromCache) {
+    	if(mCallbacks == null) {
+    		return false;
+    	}
+    	
+    	mCallbacks.onOperationComplete(code, result, fromCache);
+    	return true;
     }
 }
