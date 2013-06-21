@@ -5,6 +5,7 @@ package com.robotoworks.example.recipes.content;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -177,6 +178,11 @@ public class RecipesRecord extends ActiveRecord implements Parcelable {
 		item.makeDirty(false);
 		
 	    return item;
+	}
+	
+	public static RecipesRecord fromBundle(Bundle bundle, String key) {
+		bundle.setClassLoader(RecipesRecord.class.getClassLoader());
+		return bundle.getParcelable(key);
 	}
 	
 	public static RecipesRecord get(long id) {

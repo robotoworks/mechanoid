@@ -5,6 +5,7 @@ package com.robotoworks.example.recipes.content;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -122,7 +123,7 @@ public class RecipesWithAuthorsRecord extends ActiveRecord implements Parcelable
 		mAuthorId = in.readLong();
 		mAuthorName = in.readString();
 		
-		boolean[] dirtyFlags = new boolean[5];
+		boolean[] dirtyFlags = new boolean[4];
 		in.readBooleanArray(dirtyFlags);
 		mRecipeTitleDirty = dirtyFlags[0];
 		mRecipeDescriptionDirty = dirtyFlags[1];
@@ -195,6 +196,11 @@ public class RecipesWithAuthorsRecord extends ActiveRecord implements Parcelable
 		item.makeDirty(false);
 		
 	    return item;
+	}
+	
+	public static RecipesWithAuthorsRecord fromBundle(Bundle bundle, String key) {
+		bundle.setClassLoader(RecipesWithAuthorsRecord.class.getClassLoader());
+		return bundle.getParcelable(key);
 	}
 	
 	public static RecipesWithAuthorsRecord get(long id) {

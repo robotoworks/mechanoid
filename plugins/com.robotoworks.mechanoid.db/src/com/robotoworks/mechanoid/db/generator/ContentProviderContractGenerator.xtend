@@ -148,7 +148,7 @@ class ContentProviderContractGenerator {
 			.filter(typeof(ContentUriParamSegment))
 			.join(", ", [seg|(
 				if(seg.num) {
-					return "int " + seg.name.camelize
+					return "long " + seg.name.camelize
 				} else {
 					return "String " + seg.name.camelize
 				})])

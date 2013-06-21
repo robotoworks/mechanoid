@@ -434,7 +434,7 @@ public class ContentProviderContractGenerator {
           if (_isNum) {
             String _name = seg.getName();
             String _camelize = Strings.camelize(_name);
-            return ("int " + _camelize);
+            return ("long " + _camelize);
           } else {
             String _name_1 = seg.getName();
             String _camelize_1 = Strings.camelize(_name_1);

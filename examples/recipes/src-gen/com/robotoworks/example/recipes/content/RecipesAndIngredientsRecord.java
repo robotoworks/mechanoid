@@ -5,6 +5,7 @@ package com.robotoworks.example.recipes.content;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -135,7 +136,7 @@ public class RecipesAndIngredientsRecord extends ActiveRecord implements Parcela
 		mIngredientQuantity = in.readString();
 		mSortKey = in.readString();
 		
-		boolean[] dirtyFlags = new boolean[6];
+		boolean[] dirtyFlags = new boolean[5];
 		in.readBooleanArray(dirtyFlags);
 		mRowTypeDirty = dirtyFlags[0];
 		mTitleDirty = dirtyFlags[1];
@@ -216,6 +217,11 @@ public class RecipesAndIngredientsRecord extends ActiveRecord implements Parcela
 		item.makeDirty(false);
 		
 	    return item;
+	}
+	
+	public static RecipesAndIngredientsRecord fromBundle(Bundle bundle, String key) {
+		bundle.setClassLoader(RecipesAndIngredientsRecord.class.getClassLoader());
+		return bundle.getParcelable(key);
 	}
 	
 	public static RecipesAndIngredientsRecord get(long id) {
