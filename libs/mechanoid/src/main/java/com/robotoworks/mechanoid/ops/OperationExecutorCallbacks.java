@@ -14,16 +14,13 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-
-@Deprecated
-public interface OperationManagerCallbacks {
+public interface OperationExecutorCallbacks {
     /**
      * <p>Called when an operation is pending completion, will be invoked when
      * executing an operation with the associated manager 
      * or after a configuration change when the activity is recreated.</p>
-     * @param code A user-defined code for this operation
      */
-    public void onOperationPending(int code);
+    public void onOperationPending(OperationExecutor executor);
     
     /**
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}
@@ -33,9 +30,14 @@ public interface OperationManagerCallbacks {
      * the first time it will be invoked is after the operation completes, subsequent times it
      * will be invoked and the fromCache argument will be true.</p>
      * 
-     * @param code A user-defined code for this operation
      * @param result The result of the completed operation
-     * @param fromCache Whether the operation result was from cache
+     * @param handled Whether the operation result has been handled already, this is useful in scenarios
+     * where you still want to act upon the completion of an operation but you only want to do certain
+     * things the first time it was handled
+     * 
+     * @return you should return true if you handled this operation, and false if you did not or if you
+     * do not want to handle it yet, this can be useful if you do not want to handle the operation because your 
+     * fragment or activity is being destroyed
      */
-    public abstract void onOperationComplete(int code, OperationResult result, boolean fromCache);
+    public boolean onOperationComplete(OperationExecutor executor, OperationResult result);
 }
