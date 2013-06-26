@@ -19,8 +19,11 @@ public interface OperationExecutorCallbacks {
      * <p>Called when an operation is pending completion, will be invoked when
      * executing an operation with the associated manager 
      * or after a configuration change when the activity is recreated.</p>
+     * 
+     * @param key The key used to persist an executor through saved state, which can be used to
+     * identify which executor the callback is is coming from
      */
-    public void onOperationPending(OperationExecutor executor);
+    public void onOperationPending(String key);
     
     /**
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}
@@ -30,6 +33,8 @@ public interface OperationExecutorCallbacks {
      * the first time it will be invoked is after the operation completes, subsequent times it
      * will be invoked and the fromCache argument will be true.</p>
      * 
+     * @param key The key used to persist an executor through saved state, which can be used to
+     * identify which executor the callback is is coming from
      * @param result The result of the completed operation
      * @param handled Whether the operation result has been handled already, this is useful in scenarios
      * where you still want to act upon the completion of an operation but you only want to do certain
@@ -39,5 +44,5 @@ public interface OperationExecutorCallbacks {
      * do not want to handle it yet, this can be useful if you do not want to handle the operation because your 
      * fragment or activity is being destroyed
      */
-    public boolean onOperationComplete(OperationExecutor executor, OperationResult result);
+    public boolean onOperationComplete(String key, OperationResult result);
 }

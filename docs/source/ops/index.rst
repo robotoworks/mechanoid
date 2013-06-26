@@ -371,125 +371,172 @@ the operation:
 
 .. code-block:: java
 
-   boolean pending = bridge.isOperationPending(id);
+   boolean pending = Ops.isOperationPending(id);
    
   
-The Operation Manager
----------------------
-As previously mentioned when executing operations from a UI class such as 
-an ``Activity`` or a ``Fragment`` we can use the ``OperationManager``, or, 
-the ``SupportOperationManager`` if we want backward compatibility.
+Operation Executors
+-------------------
+The most convenient way to execute operations from a UI class such as 
+an ``Activity`` or a ``Fragment`` is with an ``OperationExecutor``.
 
-An Operation Manager is responsible for managing a single |opsvc| and is
-associated with the service via its ``OperationServiceBridge``.
+An executor can manage the life-cycle of a single operation at a time.
 
-When executing operations via an Operation Manager, the manager guarantees a 
+When executing an operation, the executor guarantees a 
 completion callback within the life-cycle of the hosting Activity.
 
-For the purposes of the following examples, we will be using the 
-``SupportOperationManager`` as its more likely you will require backward 
-compatibility, however usage of the ``OperationManager`` is equivalent.
-
-The Operation Manager allows us to easily handle operation callbacks and 
+An executor allows us to easily handle operation callbacks and 
 life-cycle in much the same way the Android Loader API does.
 
-Operation Codes
-"""""""""""""""
-we must first represent each operation we want to execute with a unique 
-code (which must be 1 or greater) which we define as an integer constant, 
-for instance:
+Operation Executor Keys
+"""""""""""""""""""""""
+Each executor must be instantiated with a unique key which is used to persist
+the executor through state, we can define this key as a constant.
 
 .. code-block:: java
 
    public class MovieListFragment extends ListFragment {
    
-      private static final int OP_GET_MOVIES = 1;
+      private static final String OP_GET_MOVIES = "OP_GET_MOVIES";
       
    ...
       
-Creating an Operation Manager
-"""""""""""""""""""""""""""""
-We can then create an instance of an Operation Manager, the following example 
-shows how we can manage our Movies |opsvc|:
+Creating an executor
+""""""""""""""""""""
+The following example shows how we create an executor.
 
 .. code-block:: java
-
-   private SupportOperationManager mOperationManager;
 
    @Override
    public void onActivityCreated(Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
       
-      mOperationManager = SupportOperationManager.create(getActivity(), mOperationManagerCallbacks);
+      mGetMoviesOperationExecutor = new OperationExecutor(
+          OP_GET_MOVIES, savedInstanceState, mOperationExecutorCallbacks);
+      
    }
    
-In the example we construct a new ``SupportOperationManager`` in
-a fragments ``onActivityCreated(Bundle)`` method, this is important since the manager needs
-to be introduced early into an activity or fragments life-cycle.
+In the example we construct a new ``OperationExecutor`` in
+a fragments ``onActivityCreated(Bundle)`` method, this is important since the executor needs
+to be introduced early into an activity or fragments life-cycle and is really the only
+place you can get hold of a state ``Bundle``, as mentioned we provide a key ``OP_GET_MOVIES`` 
+so the executor can uniquely persist the state of the executor. The last argument
+we provide callbacks which we will look at later.
+
+Saving State
+""""""""""""
+The most important requirement of an operation executor is to save its state
+which we can do in ``onSaveInstanceState(Bundle)`` as follows.
+
+.. code-block:: java
+
+   @Override
+   public void onSaveInstanceState(Bundle outState) {
+      super.onSaveInstanceState(outState);
+      
+      mGetMoviesOperationExecutor.saveState(outState);
+   }
+   
+This enables the executor to track an operation through configuration changes
+using the key give during instantiation.
 
 Executing Operations
 """"""""""""""""""""
-To execute operations using the manager we use the Operation Managers ``execute(Intent, int, boolean)``
+To execute operations using the manager we use the executors ``execute(Intent, boolean)``
 method:
 
 .. code-block:: java
 
-   Intent intent = AddMovieOperation.newIntent("The Godfather", "Movie about gangstas.", 1972);
-
-   mOperationManager.execute(intent, OP_GET_MOVIES, false);
+   mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
       
-The example uses the manager to run an operation described by the given intent,
-we provide a user-defined code ``OP_GET_MOVIES`` in order to identify the operation 
-later, the last argument tells the manager if we should force the 
-operation to run, by providing the value of ``false`` means to only run the 
+The example uses the executor to execute an operation described by the given intent, 
+the last argument tells the executor if we should force the 
+operation to execute, by providing the value of ``false`` means to only run the 
 operation if it has not yet been run.
 
 .. topic:: The Force Flag
 
-   The Operation Manager guarantees that the operation will run and the 
-   associated completion callback will be received, even if a  configuration 
+   The ``OperationExecutor`` guarantees that the operation will run and the 
+   associated completion callback will be called once, even if a configuration 
    change occurs such as rotating the screen.
    
-   When we call ``execute(Intent, int, boolean)`` and set the force flag to false, 
-   tells the Operation Manager `"Only run this operation if its not been run 
-   before but call me back in either case"`, effectively the result is cached and 
-   invoking it multiple times will cause a callback with the cached result.
+   When we call ``execute(Intent, boolean)`` and set the force flag to false, 
+   tells the executor `"Only run this operation if its not been run 
+   before"`.
    
    We can set the force flag to true if we want to clear the cached result and
-   force the operation to queue and run again, which is useful in scenarios
+   force the operation to queue and execute again, which is useful in scenarios
    such as retrying after an operation error.
-
-Operation Manager Callbacks
-"""""""""""""""""""""""""""
-When we construct an Operation Manager, we need to provide an implementation of
-``OperationManagerCallbacks`` which is responsible for handling the completion of
-operations as follows:
+   
+   
+Dealing with Configuration Change
+"""""""""""""""""""""""""""""""""
+When the user rotates the device, an activity or fragment could be recreated
+due to a configuration change. If this happens you may need to know what is happening
+with your operation. Directly after you instantiate an executor you can check
+if it is complete.
 
 .. code-block:: java
 
-   private OperationManagerCallbacks mOperationManagerCallbacks
-      = new OperationManagerCallbacks() {
+   mGetMoviesOperationExecutor = new OperationExecutor(
+       OP_GET_MOVIES, savedInstanceState, mOperationExecutorCallbacks);
+          
+   if(mGetMoviesOperationExecutor.isComplete()) {
+      getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
+   } else {
+      mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
+   }
+   
+In the above example we check if the operation is complete and if it is we
+initialize a loader, otherwise we execute the operation.
 
+We can also get the result from the executor if we need it with ``getResult()`` 
+which can be useful if we need to know certain things about the completed operation.
+
+.. note:: 
+   An important thing to note is even though you can check ``isComplete()`` you
+   are always guaranteed to receive the completion callback, checking completion
+   after instantiation is only really useful if you want to do something like
+   reinitialize loaders or set up UI state according to the completion of an operation.
+
+Executor Callbacks
+""""""""""""""""""
+When we construct an executor, we need to provide an implementation of
+``OperationExecutorCallbacks`` which we can use to receive a callback for the
+completion of operations, and a callback to tell us that the operation is pending.
+
+
+.. code-block:: java
+
+   private OperationExecutorCallbacks mOperationExecutorCallbacks 
+      = new OperationExecutorCallbacks() {
+   
       @Override
-      public void onOperationComplete(int code, OperationResult result, boolean fromCache) {
+      public boolean onOperationComplete(String key, OperationResult result) {
+         
       }
-      
+   
       @Override
-      public void onOperationPending(int code) {
+      public void onOperationPending(String key) {
+
       }
    };
+   
 
-.. rubric:: Implementing the ``onOperationComplete(...)`` Callback 
+.. rubric:: Implementing the ``onOperationComplete(String, OperationResult)`` Callback 
 
-The ``onOperationComplete(...)`` callback provides the opportunity to examine and act
-upon the completion of an operation, typically binding data or showing an error,
+The ``onOperationComplete(String, OperationResult)`` callback provides the opportunity to 
+act upon the completion of an operation, typically binding data or showing an error,
 for example:
 
 .. code-block:: java
 
    @Override
-   public void onOperationComplete(int code, OperationResult result, boolean fromCache) {
-      if(code == OP_GET_MOVIES) {
+   public boolean onOperationComplete(String key, OperationResult result) {
+      if(!isAdded()) {
+         return false;
+      }
+         
+      if(OP_GET_MOVIES.equals(key)) {
          if(result.isOk()) {
             
             getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
@@ -499,11 +546,23 @@ for example:
             
             Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
          }
+         
+         return true;
       }
+      
+      return false;
    }
 
-In the example, the ``code`` argument is checked against the ``OP_GET_MOVIES`` 
-code, if it matches, we know that the completing operation is the one that we 
+The example shows the callback in the context of a Fragment, we should return
+``true`` from the callback if we want to handle it now, or ``false`` if we want to
+handle it later. At times it is desirable to not handle the callback for instance
+if the fragment is being destroyed, checking the ``isAdded()`` method is one way
+to check if the fragment is in a state that could handle the callback, by
+returning ``false`` we will receive the callback again as a result of the of the executor 
+being recovered from state, or when the execute method is invoked again.
+
+Next in the example, the ``key`` argument is checked against the ``OP_GET_MOVIES`` 
+constant, if it matches, we know that the completing operation is the one that we 
 executed, we can then check the result with
 :java:extdoc:`result.isOk() <com.robotoworks.mechanoid.ops.OperationResult.isOk()>`, 
 if OK, we can then perform actions based on an OK result, such as initializing a loader
@@ -517,7 +576,7 @@ The callback ``onOperationPending(...)`` is called immediately after you
 call ``runOperation(int, boolean)`` for the first time, or you if you set the
 force flag to true.
 
-It is also called when the Operation Manager recovers from a configuration 
+It is also called when the executor recovers from a configuration 
 change such as switching the orientation of the device.
 
 This makes the ``onOperationPending(...)`` callback a convenient place to show 
@@ -526,8 +585,10 @@ loading indicators, as in the following example:
 .. code-block:: java
 
    @Override
-   public void onOperationPending(int code) {
-      setListShown(false);
+   public void onOperationPending(String key) {
+      if(OP_GET_MOVIES.equals(key)) {
+         setListShown(false);
+      }
    }
 
 To see a working example of the concepts described here |link| See 
@@ -536,17 +597,15 @@ To see a working example of the concepts described here |link| See
 Service Listeners
 -----------------
 In most cases when we are running operations from the UI, we benefit greatly
-from using an ``OperationManager``, however, operation managers are bound
-to the lifecycle of an ``Activity`` since they were designed to automatically
-manage operation state across configuration changes, in much the same way the
-Loader Manager API manages ``Loader`` state.
+from using an ``OperationExecutor``, however in more advanced scenarios we
+should use Service Listeners if we need to do something special when
+handling operation lifecycles.
 
-Under the hood, the ``OperationManager`` registers an 
+Under the hood, an ``OperationExecutor`` registers an 
 :java:extdoc:`OperationServiceListener <com.robotoworks.mechanoid.ops.OperationServiceListener>`, 
-with the ``ServiceBridge``.
+with ``Ops``.
 
-In non-UI scenarios we can also register an ``OperationServiceListener`` with 
-our ``Ops``.
+In non-UI scenarios we can also register an ``OperationServiceListener`` with ``Ops``.
 
 The following example shows how we can define a new listener.
 

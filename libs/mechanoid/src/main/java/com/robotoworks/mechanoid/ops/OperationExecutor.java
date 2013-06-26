@@ -21,24 +21,28 @@ public class OperationExecutor {
 	private WeakReference<OperationExecutorCallbacks> mCallbacksRef;
 	private boolean mEnableLogging;
 	private OpInfo mOpInfo;
-
-	/**
-	 * @param stateKey The key used to persist this executor through saved state
-	 * @param savedInstanceState The state Bundle to persist the state of this executor to
-	 * @param callbacks callbacks that will be invoked during the execution of an operation
-	 */
-	public OperationExecutor(String stateKey, Bundle savedInstanceState, OperationExecutorCallbacks callbacks) {
-		this(stateKey, savedInstanceState, callbacks, false);
+	
+	public String getKey() {
+		return mUserStateKey;
 	}
 	
 	/**
-	 * @param stateKey The key used to persist this executor through saved state
+	 * @param key The key used to persist this executor through saved state
+	 * @param savedInstanceState The state Bundle to persist the state of this executor to
+	 * @param callbacks callbacks that will be invoked during the execution of an operation
+	 */
+	public OperationExecutor(String key, Bundle savedInstanceState, OperationExecutorCallbacks callbacks) {
+		this(key, savedInstanceState, callbacks, false);
+	}
+	
+	/**
+	 * @param key The key used to persist this executor through saved state
 	 * @param savedInstanceState The state Bundle to persist the state of this executor to
 	 * @param callbacks callbacks that will be invoked during the execution of an operation
 	 * @param enableLogging enable log output for the executor
 	 */
-	public OperationExecutor(String stateKey, Bundle savedInstanceState, OperationExecutorCallbacks callbacks, boolean enableLogging) {
-		mUserStateKey = stateKey;
+	public OperationExecutor(String key, Bundle savedInstanceState, OperationExecutorCallbacks callbacks, boolean enableLogging) {
+		mUserStateKey = key;
 		mCallbacksRef = new WeakReference<OperationExecutorCallbacks>(callbacks);
 		mEnableLogging = enableLogging;
 		
@@ -172,23 +176,17 @@ public class OperationExecutor {
         
         OperationResult result = Ops.getLog().get(mOpInfo.mId);
         
-        if (result != null) {
-        	mOpInfo.mResult = result;
-            
-            if(!mOpInfo.mCallbackInvoked) {
-            	
-                if(invokeOnOperationComplete(mOpInfo.mResult)) {
-                	
-                	mOpInfo.mCallbackInvoked = true;
-
-                	if(mEnableLogging) {
-                		Log.d(TAG, String.format("[Operation Complete] request id: %s, key:%s", mOpInfo.mId, mUserStateKey));
-                	}
-                }
-            }
-        } else {
-        	Log.d(TAG, String.format("[Operation Lost] the log did not contain request id: %s, key: %s", mOpInfo.mId, mUserStateKey));
+        if (result == null) {
+        	Log.d(TAG, String.format("[Operation Retry] the log did not contain request id: %s, key: %s, retrying...", mOpInfo.mId, mUserStateKey));
+        	
+        	executeOperation(mOpInfo.mIntent);
+        	
+        	return;
         }
+        
+    	mOpInfo.mResult = result;
+        
+    	completeOperation();
     }
     
     static class OpInfo implements Parcelable {
@@ -244,7 +242,7 @@ public class OperationExecutor {
     		return false;
     	}
     	
-    	callbacks.onOperationPending(this);
+    	callbacks.onOperationPending(mUserStateKey);
     	return true;
     }
     
@@ -259,7 +257,7 @@ public class OperationExecutor {
     		return false;
     	}
     	
-    	return callbacks.onOperationComplete(this, result);
+    	return callbacks.onOperationComplete(mUserStateKey, result);
     }
     
     /**
@@ -288,31 +286,38 @@ public class OperationExecutor {
         }
         
         if (force || mOpInfo == null) {
-        	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Operation Pending] key: %s", mUserStateKey));
-        	}
-        	
-            invokeOnOperationPending();
-            
-        	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
-        	}
-        	
-        	mOpInfo = new OpInfo();
-        	mOpInfo.mIntent = operationIntent;
-        	mOpInfo.mId = Ops.execute(operationIntent);
-            
+        	executeOperation(operationIntent);
             return;
         }
         
+        completeOperation();
+    }
+    
+    private void completeOperation() {
         if(mOpInfo.mResult != null && !mOpInfo.mCallbackInvoked) {
-        	if(mEnableLogging) {
-        		Log.d(TAG, String.format("[Operation Complete] request id: %s, key: %s, from cache:%s", mOpInfo.mId, mUserStateKey, mOpInfo.mCallbackInvoked));
-        	}
-        	
         	if(invokeOnOperationComplete(mOpInfo.mResult)) {
+        		if(mEnableLogging) {
+        			Log.d(TAG, String.format("[Operation Complete] request id: %s, key: %s", mOpInfo.mId, mUserStateKey));
+        		}
+        		
         		mOpInfo.mCallbackInvoked = true;
         	}
         }
     }
+
+	protected void executeOperation(Intent operationIntent) {
+		if(mEnableLogging) {
+			Log.d(TAG, String.format("[Operation Pending] key: %s", mUserStateKey));
+		}
+		
+		invokeOnOperationPending();
+		
+		if(mEnableLogging) {
+			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
+		}
+		
+		mOpInfo = new OpInfo();
+		mOpInfo.mIntent = operationIntent;
+		mOpInfo.mId = Ops.execute(operationIntent);
+	}
 }
