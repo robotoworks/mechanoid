@@ -64,6 +64,16 @@ public class OperationExecutor {
 	}
 	
 	/**
+	 * Whether the operation is complete according to {@link #isComplete()} and
+	 * whether the result of the operation is ok according to {@link OperationResult#isOk()}
+	 * 
+	 * @return
+	 */
+	public boolean isOk() {
+		return isComplete() && getResult().isOk();
+	}
+	
+	/**
 	 * Whether the operation is currently pending completion. An operation
 	 * is considered pending completion when it is currently executing or
 	 * waiting to be executed yet a result has not yet been received.
