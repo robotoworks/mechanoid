@@ -24,6 +24,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseArray;
 
+@Deprecated
 public abstract class OperationManagerBase {
 	
 	private static final String TAG = "OperationManager";

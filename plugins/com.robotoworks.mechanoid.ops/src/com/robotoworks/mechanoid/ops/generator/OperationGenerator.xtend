@@ -86,11 +86,14 @@ class OperationGenerator {
 				@Override
 				public OperationResult execute() {
 					Args args = new Args();
+					
+					«IF op.args.size() > 0»
 					Bundle extras = getIntent().getExtras();
 					«FOR arg : op.args»
 					args.«arg.name.camelize» = extras.«arg.type.toBundleGetMethodName»(EXTRA_«arg.name.underscore.toUpperCase»);
 					«ENDFOR»
 					
+					«ENDIF»
 					return onExecute(args);
 				}
 						

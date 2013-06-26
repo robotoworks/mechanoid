@@ -49,7 +49,7 @@ public class OperationServiceBridge {
 			
 	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
 
-	private OperationLog mLog = new OperationLog(20);
+	private OperationLog mLog = new OperationLog(60);
 	
 	public OperationLog getLog() {
 		return mLog;
@@ -227,7 +227,7 @@ public class OperationServiceBridge {
 		Intent pending = opConfig.findMatchOnConstraint(this, intent);
 		
 		if(pending != null) {
-			return Operation.getOperationRequestId(intent);
+			return Operation.getOperationRequestId(pending);
 		}
 		
 		Intent clonedIntent = (Intent) intent.clone();

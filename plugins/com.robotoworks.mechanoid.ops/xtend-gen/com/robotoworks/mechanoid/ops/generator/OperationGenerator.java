@@ -351,31 +351,40 @@ public class OperationGenerator {
     _builder.append("Args args = new Args();");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("Bundle extras = getIntent().getExtras();");
     _builder.newLine();
     {
       EList<OperationArg> _args_5 = op.getArgs();
-      for(final OperationArg arg_4 : _args_5) {
+      int _size = _args_5.size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
         _builder.append("\t\t");
-        _builder.append("args.");
-        String _name_22 = arg_4.getName();
-        String _camelize_3 = Strings.camelize(_name_22);
-        _builder.append(_camelize_3, "		");
-        _builder.append(" = extras.");
-        OpArgType _type_5 = arg_4.getType();
-        String _bundleGetMethodName_1 = Extensions.toBundleGetMethodName(_type_5);
-        _builder.append(_bundleGetMethodName_1, "		");
-        _builder.append("(EXTRA_");
-        String _name_23 = arg_4.getName();
-        String _underscore_10 = Strings.underscore(_name_23);
-        String _upperCase_10 = _underscore_10.toUpperCase();
-        _builder.append(_upperCase_10, "		");
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
+        _builder.append("Bundle extras = getIntent().getExtras();");
+        _builder.newLine();
+        {
+          EList<OperationArg> _args_6 = op.getArgs();
+          for(final OperationArg arg_4 : _args_6) {
+            _builder.append("\t\t");
+            _builder.append("args.");
+            String _name_22 = arg_4.getName();
+            String _camelize_3 = Strings.camelize(_name_22);
+            _builder.append(_camelize_3, "		");
+            _builder.append(" = extras.");
+            OpArgType _type_5 = arg_4.getType();
+            String _bundleGetMethodName_1 = Extensions.toBundleGetMethodName(_type_5);
+            _builder.append(_bundleGetMethodName_1, "		");
+            _builder.append("(EXTRA_");
+            String _name_23 = arg_4.getName();
+            String _underscore_10 = Strings.underscore(_name_23);
+            String _upperCase_10 = _underscore_10.toUpperCase();
+            _builder.append(_upperCase_10, "		");
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t");
+        _builder.newLine();
       }
     }
-    _builder.append("\t\t");
-    _builder.newLine();
     _builder.append("\t\t");
     _builder.append("return onExecute(args);");
     _builder.newLine();
