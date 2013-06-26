@@ -20,6 +20,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 
+@Deprecated
 public class OperationManager extends OperationManagerBase {
 
 	private static final String TAG = "OperationManager";

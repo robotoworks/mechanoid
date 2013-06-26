@@ -57,6 +57,7 @@ public abstract class AbstractAddMovieOperation extends Operation {
 	@Override
 	public OperationResult execute() {
 		Args args = new Args();
+		
 		Bundle extras = getIntent().getExtras();
 		args.title = extras.getString(EXTRA_TITLE);
 		args.description = extras.getString(EXTRA_DESCRIPTION);

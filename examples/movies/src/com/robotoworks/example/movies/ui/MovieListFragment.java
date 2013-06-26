@@ -13,13 +13,13 @@ import com.robotoworks.example.movies.R;
 import com.robotoworks.example.movies.db.MovieDBContract.Movies;
 import com.robotoworks.example.movies.ops.GetMoviesOperation;
 import com.robotoworks.mechanoid.db.SQuery;
-import com.robotoworks.mechanoid.ops.OperationManagerCallbacks;
+import com.robotoworks.mechanoid.ops.OperationExecutor;
+import com.robotoworks.mechanoid.ops.OperationExecutorCallbacks;
 import com.robotoworks.mechanoid.ops.OperationResult;
-import com.robotoworks.mechanoid.ops.SupportOperationManager;
 
 public class MovieListFragment extends ListFragment {
 
-	private static final int OP_GET_MOVIES = 1;
+	private static final String OP_GET_MOVIES = "OP_GET_MOVIES";
 	
 	private static final int LOADER_MOVIES = 1;
 	
@@ -30,7 +30,7 @@ public class MovieListFragment extends ListFragment {
 		Movies.YEAR
 	};
 	
-	private SupportOperationManager mOperationManager;
+	private OperationExecutor mGetMoviesOperationExecutor;
 
 	private MoviesAdapter mAdapter;
 
@@ -38,20 +38,35 @@ public class MovieListFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mOperationManager = SupportOperationManager.create(getActivity(), mOperationManagerCallbacks);
+		mGetMoviesOperationExecutor = new OperationExecutor(OP_GET_MOVIES, savedInstanceState, mOperationExecutorCallbacks);
 		
-		mOperationManager.execute(GetMoviesOperation.newIntent(), OP_GET_MOVIES, false);
+		if(mGetMoviesOperationExecutor.isComplete()) {
+			getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
+		} else {
+			mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
+		}
 		
 		mAdapter = new MoviesAdapter(getActivity());
 		
 		setListAdapter(mAdapter);
 	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		
+		mGetMoviesOperationExecutor.saveState(outState);
+	}
 
-	private OperationManagerCallbacks mOperationManagerCallbacks = new OperationManagerCallbacks() {
-
+	private OperationExecutorCallbacks mOperationExecutorCallbacks = new OperationExecutorCallbacks() {
+	
 		@Override
-		public void onOperationComplete(int code, OperationResult result, boolean fromCache) {
-			if(code == OP_GET_MOVIES) {
+		public boolean onOperationComplete(String key, OperationResult result) {
+			if(!isAdded()) {
+				return false;
+			}
+			
+			if(OP_GET_MOVIES.equals(key)) {
 				if(result.isOk()) {
 					
 					getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
@@ -61,12 +76,18 @@ public class MovieListFragment extends ListFragment {
 					
 					Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
 				}
+				
+				return true;
 			}
+			
+			return false;
 		}
-
+	
 		@Override
-		public void onOperationPending(int code) {
-			setListShown(false);
+		public void onOperationPending(String key) {
+			if(OP_GET_MOVIES.equals(key)) {
+				setListShown(false);
+			}
 		}
 	};
 	

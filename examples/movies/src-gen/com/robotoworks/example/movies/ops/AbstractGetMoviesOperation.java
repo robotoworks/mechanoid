@@ -48,7 +48,6 @@ public abstract class AbstractGetMoviesOperation extends Operation {
 	@Override
 	public OperationResult execute() {
 		Args args = new Args();
-		Bundle extras = getIntent().getExtras();
 		
 		return onExecute(args);
 	}
