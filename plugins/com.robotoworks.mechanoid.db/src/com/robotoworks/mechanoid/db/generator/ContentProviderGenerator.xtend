@@ -17,6 +17,8 @@ class ContentProviderGenerator {
 			
 			import android.content.Context;
 			import android.content.UriMatcher;
+			import android.net.Uri;
+			import java.util.Set;
 			import com.robotoworks.mechanoid.db.MechanoidContentProvider;
 			import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 			import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
@@ -109,6 +111,11 @@ class ContentProviderGenerator {
 				@Override
 				protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {
 			        return new «model.database.name.pascalize»OpenHelper(context);
+				}
+				
+				@Override
+				protected Set<Uri> getRelatedUris(Uri uri) {
+					return «model.database.name.pascalize»Contract.REFERENCING_VIEWS.get(uri);
 				}
 			    
 			    @Override

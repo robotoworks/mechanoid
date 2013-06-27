@@ -7,7 +7,12 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
-import java.lang.reflect.Field;
+import java.lang.reflect.Field;			
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
 
 public class RecipesDBContract  {
     public static final String CONTENT_AUTHORITY = initAuthority();
@@ -131,6 +136,17 @@ public class RecipesDBContract  {
 				return this;
 			}
 		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			viewUris.add(RecipesWithAuthors.CONTENT_URI);
+			viewUris.add(RecipesAndIngredients.CONTENT_URI);
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
+		}
 	}
 	/**
 	 * <p>Column definitions and helper methods to work with the Authors.</p>
@@ -187,6 +203,16 @@ public class RecipesDBContract  {
 				mValues.put(Authors.NAME, value);
 				return this;
 			}
+		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			viewUris.add(RecipesWithAuthors.CONTENT_URI);
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
 	}
 	/**
@@ -252,6 +278,16 @@ public class RecipesDBContract  {
 				mValues.put(Ingredients.INGREDIENT, value);
 				return this;
 			}
+		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			viewUris.add(RecipesAndIngredients.CONTENT_URI);
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
 	}
 
@@ -322,6 +358,15 @@ public class RecipesDBContract  {
 				mValues.put(RecipesWithAuthors.AUTHOR_NAME, value);
 				return this;
 			}
+		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
 	}
 	/**
@@ -396,6 +441,30 @@ public class RecipesDBContract  {
 				return this;
 			}
 		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
+		}
+	}
+	
+	static Map<Uri, Set<Uri>> REFERENCING_VIEWS;
+	
+	static {
+		Map<Uri, Set<Uri>> map = new HashMap<Uri, Set<Uri>>();
+		
+		map.put(Recipes.CONTENT_URI, Recipes.VIEW_URIS);
+		map.put(Authors.CONTENT_URI, Authors.VIEW_URIS);
+		map.put(Ingredients.CONTENT_URI, Ingredients.VIEW_URIS);
+		map.put(RecipesWithAuthors.CONTENT_URI, RecipesWithAuthors.VIEW_URIS);
+		map.put(RecipesAndIngredients.CONTENT_URI, RecipesAndIngredients.VIEW_URIS);
+		
+		REFERENCING_VIEWS = Collections.unmodifiableMap(map);
+		
 	}
 	
 	private RecipesDBContract(){}

@@ -5,6 +5,8 @@ package com.robotoworks.example.movies.db;
 
 import android.content.Context;
 import android.content.UriMatcher;
+import android.net.Uri;
+import java.util.Set;
 import com.robotoworks.mechanoid.db.MechanoidContentProvider;
 import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
@@ -14,8 +16,8 @@ import com.robotoworks.example.movies.db.MoviesRecord;
 
 public abstract class AbstractMovieDBContentProvider extends MechanoidContentProvider {
 
-	private static final int MOVIES = 0;
-	private static final int MOVIES_ID = 1;
+	protected static final int MOVIES = 0;
+	protected static final int MOVIES_ID = 1;
 
 	
 	public static final int NUM_URI_MATCHERS = 2;
@@ -48,6 +50,11 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
 	@Override
 	protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {
         return new MovieDBOpenHelper(context);
+	}
+	
+	@Override
+	protected Set<Uri> getRelatedUris(Uri uri) {
+		return MovieDBContract.REFERENCING_VIEWS.get(uri);
 	}
     
     @Override

@@ -17,6 +17,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
 import java.util.ArrayList
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition
+import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) { 
@@ -30,7 +31,12 @@ class ContentProviderContractGenerator {
 			import android.provider.BaseColumns;
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
-			import java.lang.reflect.Field;
+			import java.lang.reflect.Field;			
+			import java.util.Collections;
+			import java.util.HashSet;
+			import java.util.HashMap;
+			import java.util.Set;
+			import java.util.Map;
 			
 			public class «model.database.name.pascalize»Contract  {
 			    public static final String CONTENT_AUTHORITY = initAuthority();
@@ -76,12 +82,28 @@ class ContentProviderContractGenerator {
 				«ENDFOR»
 						
 				«FOR tbl : snapshot.tables»
-				«generateContractItem(model, tbl)»
+				«generateContractItem(model, snapshot, tbl)»
 				«ENDFOR»
 			
 				«FOR vw : snapshot.views»
-				«generateContractItem(model, vw)»
+				«generateContractItem(model, snapshot, vw)»
 				«ENDFOR»
+				
+				static Map<Uri, Set<Uri>> REFERENCING_VIEWS;
+				
+				static {
+					Map<Uri, Set<Uri>> map = new HashMap<Uri, Set<Uri>>();
+					
+					«FOR tbl : snapshot.tables»
+					map.put(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize».VIEW_URIS);
+					«ENDFOR»
+					«FOR vw : snapshot.views»
+					map.put(«vw.name.pascalize».CONTENT_URI, «vw.name.pascalize».VIEW_URIS);
+					«ENDFOR»
+					
+					REFERENCING_VIEWS = Collections.unmodifiableMap(map);
+					
+				}
 				
 				«generateContractItemsForActions(model, snapshot)»
 				private «model.database.name.pascalize»Contract(){}
@@ -160,7 +182,7 @@ class ContentProviderContractGenerator {
 	}
 
 	
-	def generateContractItem(Model model, TableDefinition stmt) '''
+	def generateContractItem(Model model, SqliteDatabaseSnapshot snapshot, TableDefinition stmt) '''
 		/**
 		 * <p>Column definitions and helper methods to work with the «stmt.name.pascalize».</p>
 		 */
@@ -222,6 +244,18 @@ class ContentProviderContractGenerator {
 				}
 				
 				«generateBuilderSetters(stmt)»
+			}
+			
+			static final Set<Uri> VIEW_URIS;
+			
+			static {
+				HashSet<Uri> viewUris =  new HashSet<Uri>();
+
+				«FOR ref : snapshot.getAllViewsReferencingTable(stmt)»
+				viewUris.add(«ref.name.pascalize».CONTENT_URI);
+				«ENDFOR»
+				
+				VIEW_URIS = Collections.unmodifiableSet(viewUris);
 			}
 		}
 	'''

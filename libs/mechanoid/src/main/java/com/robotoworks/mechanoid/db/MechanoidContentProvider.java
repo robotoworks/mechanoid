@@ -17,6 +17,7 @@ package com.robotoworks.mechanoid.db;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
@@ -68,6 +69,8 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 	protected abstract ContentProviderActions createActions(int id);
 
 	protected abstract MechanoidSQLiteOpenHelper createOpenHelper(Context context);
+	
+	protected abstract Set<Uri> getRelatedUris(Uri uri);
 
     /**
      * Notifies a change (invokes {@link ContentResolver#notifyChange(Uri, android.database.ContentObserver) 
@@ -86,6 +89,22 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 		
 		if(notify) {
 		    getContext().getContentResolver().notifyChange(uri, null);
+		    
+		    if(uri.getPathSegments().size() > 0) {
+			    Uri key = new Uri.Builder()
+			    	.scheme(uri.getScheme())
+			    	.authority(uri.getAuthority())
+			    	.appendPath(uri.getPathSegments().get(0))
+			    	.build();
+			    
+			    Set<Uri> relatedUris = getRelatedUris(key);
+			    
+			    if(relatedUris != null) {
+				    for(Uri relatedUri : relatedUris) {
+				    	getContext().getContentResolver().notifyChange(relatedUri, null);
+				    }
+			    }
+		    }
 		}
     }
     

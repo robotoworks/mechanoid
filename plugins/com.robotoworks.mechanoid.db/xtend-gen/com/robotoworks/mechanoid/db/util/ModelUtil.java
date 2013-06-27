@@ -3,6 +3,7 @@ package com.robotoworks.mechanoid.db.util;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.db.sqliteModel.CastExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
@@ -25,14 +26,20 @@ import com.robotoworks.mechanoid.db.sqliteModel.SelectExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSource;
+import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteDataType;
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class ModelUtil {
@@ -278,7 +285,14 @@ public class ModelUtil {
         final ColumnSourceRef _columnSourceRef = (ColumnSourceRef)expr;
         _matched=true;
         ColumnSource _column = _columnSourceRef.getColumn();
-        return ((ColumnDef) _column).getType();
+        if ((_column instanceof ResultColumn)) {
+          ColumnSource _column_1 = _columnSourceRef.getColumn();
+          ColumnType _inferredColumnType = ModelUtil.getInferredColumnType(((ResultColumn) _column_1));
+          return ((ColumnType) _inferredColumnType);
+        } else {
+          ColumnSource _column_2 = _columnSourceRef.getColumn();
+          return ((ColumnDef) _column_2).getType();
+        }
       }
     }
     if (!_matched) {
@@ -376,6 +390,46 @@ public class ModelUtil {
       }
     }
     return result;
+  }
+  
+  public static HashSet<CreateViewStatement> getAllViewsReferencingTable(final SqliteDatabaseSnapshot snapshot, final TableDefinition tableDef) {
+    HashSet<CreateViewStatement> _hashSet = new HashSet<CreateViewStatement>();
+    HashSet<CreateViewStatement> matches = _hashSet;
+    Collection<CreateViewStatement> _views = snapshot.getViews();
+    for (final CreateViewStatement view : _views) {
+      boolean _isDefinitionReferencedByView = ModelUtil.isDefinitionReferencedByView(tableDef, view);
+      if (_isDefinitionReferencedByView) {
+        matches.add(view);
+      }
+    }
+    return matches;
+  }
+  
+  public static boolean isDefinitionReferencedByView(final TableDefinition tableDef, final CreateViewStatement view) {
+    TreeIterator<EObject> _eAllContents = view.eAllContents();
+    final Function1<EObject,Boolean> _function = new Function1<EObject,Boolean>() {
+        public Boolean apply(final EObject obj) {
+          if ((obj instanceof SingleSourceTable)) {
+            SingleSourceTable sourceTable = ((SingleSourceTable) obj);
+            TableDefinition _tableReference = sourceTable.getTableReference();
+            boolean _not = (!(_tableReference instanceof CreateViewStatement));
+            if (_not) {
+              TableDefinition _tableReference_1 = sourceTable.getTableReference();
+              String _name = _tableReference_1.getName();
+              String _name_1 = tableDef.getName();
+              boolean _equals = _name.equals(_name_1);
+              if (_equals) {
+                return Boolean.valueOf(true);
+              }
+            } else {
+              TableDefinition _tableReference_2 = sourceTable.getTableReference();
+              return Boolean.valueOf(ModelUtil.isDefinitionReferencedByView(tableDef, ((CreateViewStatement) _tableReference_2)));
+            }
+          }
+          return Boolean.valueOf(false);
+        }
+      };
+    return IteratorExtensions.<EObject>exists(_eAllContents, _function);
   }
   
   public static boolean hasAndroidPrimaryKey(final CreateTableStatement stmt) {
