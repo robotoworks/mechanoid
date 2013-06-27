@@ -74,6 +74,18 @@ in the manifest, ie:-
        android:name="com.robotoworks.examples.recipes.content.RecipesDBContentProvider"
        android:authorities="your.new.authority.here"
        android:exported="false" />
+     
+The following lines should be then added to your ``proguard-project.txt`` to make
+sure ``CONTENT_AUTHORITY`` is not renamed:
+
+.. code-block:: java
+
+
+   -keep class com.robotoworks.examples.recipes.content.RecipesDBContentProviderAuthority
+   -keepclassmembers class com.robotoworks.examples.recipes.content.RecipesDBContentProviderAuthority {
+       *;
+   }
+
        
 Content Provider Contract
 -------------------------

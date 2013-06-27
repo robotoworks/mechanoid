@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.db.util
 
 import com.google.common.collect.Lists
+import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot
 import com.robotoworks.mechanoid.db.sqliteModel.CastExpression
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource
@@ -18,8 +19,11 @@ import com.robotoworks.mechanoid.db.sqliteModel.SelectCore
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression
 import com.robotoworks.mechanoid.db.sqliteModel.SelectExpression
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSource
+import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteDataType
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition
 import java.util.ArrayList
+import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.util.Strings
@@ -191,7 +195,11 @@ class ModelUtil {
 				return toColumnType(expr.type)
 			}
 			ColumnSourceRef: {
-				return (expr.column as ColumnDef).type
+				if(expr.column instanceof ResultColumn) {
+					return getInferredColumnType(expr.column as ResultColumn) as ColumnType
+				} else {
+					return (expr.column as ColumnDef).type
+				}
 			}
 			ExprConcat: {
 				return ColumnType::TEXT
@@ -229,6 +237,40 @@ class ModelUtil {
 		}
 		
 		return result;
+	}
+	
+	def static getAllViewsReferencingTable(SqliteDatabaseSnapshot snapshot, TableDefinition tableDef) {
+		var matches = new HashSet<CreateViewStatement>();
+		
+		for(view : snapshot.views) {
+			if(isDefinitionReferencedByView(tableDef, view)) {
+				matches.add(view)
+			}
+		}
+		
+		//snapshot.views.
+		
+		
+		return matches;
+	}
+	
+	def static isDefinitionReferencedByView(TableDefinition tableDef, CreateViewStatement view) {
+		return view.eAllContents.exists([obj|
+			if(obj instanceof SingleSourceTable) {
+				var sourceTable = obj as SingleSourceTable
+				
+				if(!(sourceTable.tableReference instanceof CreateViewStatement)) {
+					if(sourceTable.tableReference.name.equals(tableDef.name)) {
+						return true
+					}
+					
+				} else {
+					return isDefinitionReferencedByView(tableDef, sourceTable.tableReference as CreateViewStatement)
+				}
+			}
+			
+			return false
+		])
 	}
 	
 	def static hasAndroidPrimaryKey(CreateTableStatement stmt) {

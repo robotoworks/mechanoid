@@ -18,6 +18,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 /**
  * <p>Base for all Mechanoid DB open helpers.</p>
@@ -35,9 +36,9 @@ public abstract class MechanoidSQLiteOpenHelper extends SQLiteOpenHelper {
         	if (db.isReadOnly() || !shouldEnableForeignKeyConstraints())
         		return;
 		
-    		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+    		if (Build.VERSION.SDK_INT >= 16)
     			db.setForeignKeyConstraintsEnabled(true);
-    		else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO)
+    		else if (Build.VERSION.SDK_INT >= 8)
     			db.execSQL("PRAGMA foreign_keys=ON;");
     	}
 

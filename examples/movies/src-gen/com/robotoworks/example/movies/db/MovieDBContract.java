@@ -7,7 +7,12 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.db.AbstractValuesBuilder;
-import java.lang.reflect.Field;
+import java.lang.reflect.Field;			
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
 
 public class MovieDBContract  {
     public static final String CONTENT_AUTHORITY = initAuthority();
@@ -106,8 +111,28 @@ public class MovieDBContract  {
 				return this;
 			}
 		}
+		
+		static final Set<Uri> VIEW_URIS;
+		
+		static {
+			HashSet<Uri> viewUris =  new HashSet<Uri>();
+	
+			
+			VIEW_URIS = Collections.unmodifiableSet(viewUris);
+		}
 	}
 
+	
+	static Map<Uri, Set<Uri>> REFERENCING_VIEWS;
+	
+	static {
+		Map<Uri, Set<Uri>> map = new HashMap<Uri, Set<Uri>>();
+		
+		map.put(Movies.CONTENT_URI, Movies.VIEW_URIS);
+		
+		REFERENCING_VIEWS = Collections.unmodifiableMap(map);
+		
+	}
 	
 	private MovieDBContract(){}
 }

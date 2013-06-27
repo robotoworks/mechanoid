@@ -64,16 +64,41 @@ public class OperationExecutor {
 	}
 	
 	/**
+	 * <p>Useful if you want to know if the operation completed and is ok.</p>
+	 * 
+	 * <p>Equivalent to <code>isComplete() && getResult().isOk()</code></p>
+	 * 
+	 * @return true if the operation completed ok
+	 */
+	public boolean isOk() {
+		return isComplete() && getResult().isOk();
+	}
+	
+	/**
+	 * <p>Useful if you want to know if an operation completed but with error.</p>
+	 * 
+	 * <p>Equivalent to <code>isComplete() && !getResult().isOk()</code></p>
+	 * @return true if the operation completed with error
+	 */
+	public boolean isError() {
+		return isComplete() && getResult().isOk();
+	}
+	
+	/**
 	 * Whether the operation is currently pending completion. An operation
 	 * is considered pending completion when it is currently executing or
 	 * waiting to be executed yet a result has not yet been received.
 	 * 
-	 * @return
+	 * @return true if the operation has been executed but not yet received a result
 	 */
 	public boolean isPending() {
 		return (mOpInfo != null && mOpInfo.mResult == null);
 	}
 	
+	/**
+	 * @return the result of this executors operation, or null if an operation
+	 * is yet to be executed
+	 */
 	public OperationResult getResult() {
 		if(mOpInfo == null) {
 			return null;
@@ -82,6 +107,9 @@ public class OperationExecutor {
 		return mOpInfo.mResult;
 	}
 	
+	/**
+	 * @return The intent that represents the operation to execute, set by {@link #execute(Intent, boolean)}.
+	 */
 	public Intent getIntent() {
 		if(mOpInfo == null) {
 			return null;
