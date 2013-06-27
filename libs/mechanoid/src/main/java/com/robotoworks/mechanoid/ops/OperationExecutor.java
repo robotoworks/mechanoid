@@ -81,7 +81,7 @@ public class OperationExecutor {
 	 * @return true if the operation completed with error
 	 */
 	public boolean isError() {
-		return isComplete() && getResult().isOk();
+		return isComplete() && !getResult().isOk();
 	}
 	
 	/**
