@@ -23,6 +23,7 @@ import com.robotoworks.mechanoid.text.Strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -54,7 +55,17 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.db.AbstractValuesBuilder;");
     _builder.newLine();
-    _builder.append("import java.lang.reflect.Field;");
+    _builder.append("import java.lang.reflect.Field;\t\t\t");
+    _builder.newLine();
+    _builder.append("import java.util.Collections;");
+    _builder.newLine();
+    _builder.append("import java.util.HashSet;");
+    _builder.newLine();
+    _builder.append("import java.util.HashMap;");
+    _builder.newLine();
+    _builder.append("import java.util.Set;");
+    _builder.newLine();
+    _builder.append("import java.util.Map;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
@@ -232,7 +243,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
       for(final CreateTableStatement tbl_1 : _tables_1) {
         _builder.append("\t");
-        CharSequence _generateContractItem = this.generateContractItem(model, tbl_1);
+        CharSequence _generateContractItem = this.generateContractItem(model, snapshot, tbl_1);
         _builder.append(_generateContractItem, "	");
         _builder.newLineIfNotEmpty();
       }
@@ -242,11 +253,68 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
       for(final CreateViewStatement vw_1 : _views_1) {
         _builder.append("\t");
-        CharSequence _generateContractItem_1 = this.generateContractItem(model, vw_1);
+        CharSequence _generateContractItem_1 = this.generateContractItem(model, snapshot, vw_1);
         _builder.append(_generateContractItem_1, "	");
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static Map<Uri, Set<Uri>> REFERENCING_VIEWS;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Map<Uri, Set<Uri>> map = new HashMap<Uri, Set<Uri>>();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    {
+      Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
+      for(final CreateTableStatement tbl_2 : _tables_2) {
+        _builder.append("\t\t");
+        _builder.append("map.put(");
+        String _name_8 = tbl_2.getName();
+        String _pascalize_5 = Strings.pascalize(_name_8);
+        _builder.append(_pascalize_5, "		");
+        _builder.append(".CONTENT_URI, ");
+        String _name_9 = tbl_2.getName();
+        String _pascalize_6 = Strings.pascalize(_name_9);
+        _builder.append(_pascalize_6, "		");
+        _builder.append(".VIEW_URIS);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Collection<CreateViewStatement> _views_2 = snapshot.getViews();
+      for(final CreateViewStatement vw_2 : _views_2) {
+        _builder.append("\t\t");
+        _builder.append("map.put(");
+        String _name_10 = vw_2.getName();
+        String _pascalize_7 = Strings.pascalize(_name_10);
+        _builder.append(_pascalize_7, "		");
+        _builder.append(".CONTENT_URI, ");
+        String _name_11 = vw_2.getName();
+        String _pascalize_8 = Strings.pascalize(_name_11);
+        _builder.append(_pascalize_8, "		");
+        _builder.append(".VIEW_URIS);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("REFERENCING_VIEWS = Collections.unmodifiableMap(map);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -256,9 +324,9 @@ public class ContentProviderContractGenerator {
     _builder.append("\t");
     _builder.append("private ");
     DatabaseBlock _database_4 = model.getDatabase();
-    String _name_8 = _database_4.getName();
-    String _pascalize_5 = Strings.pascalize(_name_8);
-    _builder.append(_pascalize_5, "	");
+    String _name_12 = _database_4.getName();
+    String _pascalize_9 = Strings.pascalize(_name_12);
+    _builder.append(_pascalize_9, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -454,7 +522,7 @@ public class ContentProviderContractGenerator {
     return _greaterThan;
   }
   
-  public CharSequence generateContractItem(final Model model, final TableDefinition stmt) {
+  public CharSequence generateContractItem(final Model model, final SqliteDatabaseSnapshot snapshot, final TableDefinition stmt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/**");
     _builder.newLine();
@@ -703,6 +771,40 @@ public class ContentProviderContractGenerator {
     CharSequence _generateBuilderSetters = this.generateBuilderSetters(stmt);
     _builder.append(_generateBuilderSetters, "		");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static final Set<Uri> VIEW_URIS;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("static {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("HashSet<Uri> viewUris =  new HashSet<Uri>();");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      HashSet<CreateViewStatement> _allViewsReferencingTable = ModelUtil.getAllViewsReferencingTable(snapshot, stmt);
+      for(final CreateViewStatement ref : _allViewsReferencingTable) {
+        _builder.append("\t\t");
+        _builder.append("viewUris.add(");
+        String _name_17 = ref.getName();
+        String _pascalize_9 = Strings.pascalize(_name_17);
+        _builder.append(_pascalize_9, "		");
+        _builder.append(".CONTENT_URI);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("VIEW_URIS = Collections.unmodifiableSet(viewUris);");
+    _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();

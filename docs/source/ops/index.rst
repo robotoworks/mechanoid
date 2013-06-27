@@ -657,3 +657,13 @@ We can then use this id to identify our operation and act upon it, for example:
 The example shows that we can act upon completion of an operation in much the
 same way as we do with ``OperationManagerCallbacks`` but we work directly with
 Operation ID's.
+
+Proguard
+--------
+The following lines should be added to your proguard-project.txt
+
+.. code-block:: java
+
+   -keepclassmembers class * extends com.robotoworks.mechanoid.ops.OperationService {
+       public static <fields>;
+   }

@@ -5,6 +5,8 @@ package com.robotoworks.example.recipes.content;
 
 import android.content.Context;
 import android.content.UriMatcher;
+import android.net.Uri;
+import java.util.Set;
 import com.robotoworks.mechanoid.db.MechanoidContentProvider;
 import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.DefaultContentProviderActions;
@@ -16,17 +18,17 @@ import com.robotoworks.example.recipes.content.IngredientsRecord;
 
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
 
-	private static final int RECIPES = 0;
-	private static final int RECIPES_ID = 1;
-	private static final int AUTHORS = 2;
-	private static final int AUTHORS_ID = 3;
-	private static final int INGREDIENTS = 4;
-	private static final int INGREDIENTS_ID = 5;
+	protected static final int RECIPES = 0;
+	protected static final int RECIPES_ID = 1;
+	protected static final int AUTHORS = 2;
+	protected static final int AUTHORS_ID = 3;
+	protected static final int INGREDIENTS = 4;
+	protected static final int INGREDIENTS_ID = 5;
 
-	private static final int RECIPES_WITH_AUTHORS = 6;
-	private static final int RECIPES_WITH_AUTHORS_ID = 7;
-	private static final int RECIPES_AND_INGREDIENTS = 8;
-	private static final int RECIPES_AND_INGREDIENTS_ID = 9;
+	protected static final int RECIPES_WITH_AUTHORS = 6;
+	protected static final int RECIPES_WITH_AUTHORS_ID = 7;
+	protected static final int RECIPES_AND_INGREDIENTS = 8;
+	protected static final int RECIPES_AND_INGREDIENTS_ID = 9;
 	
 	public static final int NUM_URI_MATCHERS = 10;
 
@@ -74,6 +76,11 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 	@Override
 	protected MechanoidSQLiteOpenHelper createOpenHelper(Context context) {
         return new RecipesDBOpenHelper(context);
+	}
+	
+	@Override
+	protected Set<Uri> getRelatedUris(Uri uri) {
+		return RecipesDBContract.REFERENCING_VIEWS.get(uri);
 	}
     
     @Override
