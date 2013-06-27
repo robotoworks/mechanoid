@@ -98,7 +98,7 @@ public class ContentProviderGenerator {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
       for(final CreateTableStatement tbl_1 : _tables_1) {
         _builder.append("\t");
-        _builder.append("private static final int ");
+        _builder.append("protected static final int ");
         String _name_3 = tbl_1.getName();
         String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
@@ -113,7 +113,7 @@ public class ContentProviderGenerator {
           boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(tbl_1);
           if (_hasAndroidPrimaryKey) {
             _builder.append("\t");
-            _builder.append("private static final int ");
+            _builder.append("protected static final int ");
             String _name_4 = tbl_1.getName();
             String _underscore_1 = Strings.underscore(_name_4);
             String _upperCase_1 = _underscore_1.toUpperCase();
@@ -133,7 +133,7 @@ public class ContentProviderGenerator {
       Collection<CreateViewStatement> _views = snapshot.getViews();
       for(final CreateViewStatement vw : _views) {
         _builder.append("\t");
-        _builder.append("private static final int ");
+        _builder.append("protected static final int ");
         String _name_5 = vw.getName();
         String _underscore_2 = Strings.underscore(_name_5);
         String _upperCase_2 = _underscore_2.toUpperCase();
@@ -148,7 +148,7 @@ public class ContentProviderGenerator {
           boolean _hasAndroidPrimaryKey_1 = ModelUtil.hasAndroidPrimaryKey(vw);
           if (_hasAndroidPrimaryKey_1) {
             _builder.append("\t");
-            _builder.append("private static final int ");
+            _builder.append("protected static final int ");
             String _name_6 = vw.getName();
             String _underscore_3 = Strings.underscore(_name_6);
             String _upperCase_3 = _underscore_3.toUpperCase();
@@ -182,7 +182,7 @@ public class ContentProviderGenerator {
           Iterable<ConfigurationStatement> _filter_1 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_1);
           for(final ConfigurationStatement a : _filter_1) {
             _builder.append("\t");
-            _builder.append("private static final int ");
+            _builder.append("protected static final int ");
             ContentUri _uri = ((ActionStatement) a).getUri();
             String _type = _uri.getType();
             String _underscore_4 = Strings.underscore(_type);

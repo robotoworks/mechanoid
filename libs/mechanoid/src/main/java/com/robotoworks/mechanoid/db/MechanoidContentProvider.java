@@ -48,6 +48,10 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 		return mOpenHelper;
 	}
     
+	protected int matchUri(Uri uri) {
+		return mUriMatcher.match(uri);
+	}
+    
 	@Override
 	public boolean onCreate() {
         final Context context = getContext();
@@ -112,7 +116,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
     
     @Override
     public String getType(Uri uri) {
-        final int match = mUriMatcher.match(uri);
+        final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -123,7 +127,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
     
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		final int match = mUriMatcher.match(uri);
+		final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -141,7 +145,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 
-		final int match = mUriMatcher.match(uri);
+		final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -159,7 +163,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 	@Override
     public int bulkInsert(Uri uri, ContentValues[] values) {
     	
-		final int match = mUriMatcher.match(uri);
+		final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -176,7 +180,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 	
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-		final int match = mUriMatcher.match(uri);
+		final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -191,7 +195,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 
 	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-		final int match = mUriMatcher.match(uri);
+		final int match = matchUri(uri);
 
 		if(match == UriMatcher.NO_MATCH) {
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -207,7 +211,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
 	}
 
     public <T extends ActiveRecord> List<T> selectRecords(Uri uri, SQuery sQuery, String sortOrder) {
-        final int match = mUriMatcher.match(uri);
+        final int match = matchUri(uri);
 
         if(match == UriMatcher.NO_MATCH) {
             throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -217,7 +221,7 @@ public abstract class MechanoidContentProvider extends ContentProvider {
     }
     
     public <T extends ActiveRecord> Map<String, T> selectRecordMap(Uri uri, SQuery sQuery, String keyColumnName) {
-    	final int match = mUriMatcher.match(uri);
+    	final int match = matchUri(uri);
     	
     	if(match == UriMatcher.NO_MATCH) {
     		throw new UnsupportedOperationException("Unknown uri: " + uri);

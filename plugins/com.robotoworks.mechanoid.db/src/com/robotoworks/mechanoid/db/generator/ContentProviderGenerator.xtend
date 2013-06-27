@@ -30,22 +30,22 @@ class ContentProviderGenerator {
 			
 				«var counter=-1»
 				«FOR tbl : snapshot.tables»
-				private static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
+				protected static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF tbl.hasAndroidPrimaryKey»
-				private static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				protected static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»
 				«ENDFOR»
 
 				«FOR vw : snapshot.views»
-				private static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
+				protected static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF vw.hasAndroidPrimaryKey»
-				private static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				protected static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»				
 				«ENDFOR»
 				
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-				private static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
+				protected static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;
