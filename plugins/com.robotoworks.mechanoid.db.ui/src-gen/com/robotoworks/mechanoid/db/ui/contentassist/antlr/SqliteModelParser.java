@@ -171,6 +171,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnConstraintAccess().getGroup_0(), "rule__ColumnConstraint__Group_0__0");
 					put(grammarAccess.getColumnConstraintAccess().getGroup_1(), "rule__ColumnConstraint__Group_1__0");
 					put(grammarAccess.getColumnConstraintAccess().getGroup_2(), "rule__ColumnConstraint__Group_2__0");
+					put(grammarAccess.getColumnConstraintAccess().getGroup_3(), "rule__ColumnConstraint__Group_3__0");
 					put(grammarAccess.getUniqueTableConstraintAccess().getGroup(), "rule__UniqueTableConstraint__Group__0");
 					put(grammarAccess.getUniqueTableConstraintAccess().getGroup_0(), "rule__UniqueTableConstraint__Group_0__0");
 					put(grammarAccess.getUniqueTableConstraintAccess().getGroup_4(), "rule__UniqueTableConstraint__Group_4__0");
@@ -338,7 +339,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnConstraintAccess().getDescAssignment_0_2_1(), "rule__ColumnConstraint__DescAssignment_0_2_1");
 					put(grammarAccess.getColumnConstraintAccess().getAutoincrementAssignment_0_3(), "rule__ColumnConstraint__AutoincrementAssignment_0_3");
 					put(grammarAccess.getColumnConstraintAccess().getConflictClauseAssignment_1_2(), "rule__ColumnConstraint__ConflictClauseAssignment_1_2");
-					put(grammarAccess.getColumnConstraintAccess().getDefaultValueAssignment_2_2(), "rule__ColumnConstraint__DefaultValueAssignment_2_2");
+					put(grammarAccess.getColumnConstraintAccess().getConflictClauseAssignment_2_2(), "rule__ColumnConstraint__ConflictClauseAssignment_2_2");
+					put(grammarAccess.getColumnConstraintAccess().getDefaultValueAssignment_3_2(), "rule__ColumnConstraint__DefaultValueAssignment_3_2");
 					put(grammarAccess.getUniqueTableConstraintAccess().getNameAssignment_0_1(), "rule__UniqueTableConstraint__NameAssignment_0_1");
 					put(grammarAccess.getUniqueTableConstraintAccess().getColumnsAssignment_3(), "rule__UniqueTableConstraint__ColumnsAssignment_3");
 					put(grammarAccess.getUniqueTableConstraintAccess().getColumnsAssignment_4_1(), "rule__UniqueTableConstraint__ColumnsAssignment_4_1");

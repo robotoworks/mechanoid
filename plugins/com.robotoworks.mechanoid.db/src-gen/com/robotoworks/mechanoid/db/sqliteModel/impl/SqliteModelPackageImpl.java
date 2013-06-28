@@ -90,6 +90,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.db.sqliteModel.StringLiteral;
 import com.robotoworks.mechanoid.db.sqliteModel.TableConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.UniqueTableConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement;
@@ -691,6 +692,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass notNullConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uniqueConstraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3179,6 +3187,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getUniqueConstraint()
+  {
+    return uniqueConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUniqueConstraint_ConflictClause()
+  {
+    return (EReference)uniqueConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDefaultConstraint()
   {
     return defaultConstraintEClass;
@@ -3624,6 +3652,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     notNullConstraintEClass = createEClass(NOT_NULL_CONSTRAINT);
     createEReference(notNullConstraintEClass, NOT_NULL_CONSTRAINT__CONFLICT_CLAUSE);
 
+    uniqueConstraintEClass = createEClass(UNIQUE_CONSTRAINT);
+    createEReference(uniqueConstraintEClass, UNIQUE_CONSTRAINT__CONFLICT_CLAUSE);
+
     defaultConstraintEClass = createEClass(DEFAULT_CONSTRAINT);
     createEReference(defaultConstraintEClass, DEFAULT_CONSTRAINT__DEFAULT_VALUE);
 
@@ -3723,6 +3754,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     columnDefEClass.getESuperTypes().add(this.getColumnSource());
     primaryKeyColumnConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     notNullConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
+    uniqueConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     defaultConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     literalDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
     expressionDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
@@ -4047,6 +4079,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(notNullConstraintEClass, NotNullConstraint.class, "NotNullConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNotNullConstraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, NotNullConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(uniqueConstraintEClass, UniqueConstraint.class, "UniqueConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUniqueConstraint_ConflictClause(), this.getConflictClause(), null, "conflictClause", null, 0, 1, UniqueConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(defaultConstraintEClass, DefaultConstraint.class, "DefaultConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDefaultConstraint_DefaultValue(), this.getDefaultValue(), null, "defaultValue", null, 0, 1, DefaultConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

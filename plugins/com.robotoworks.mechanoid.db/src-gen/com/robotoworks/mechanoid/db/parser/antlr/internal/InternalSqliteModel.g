@@ -4506,26 +4506,55 @@ ruleColumnConstraint returns [EObject current=null]
     |((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getColumnConstraintAccess().getDefaultConstraintAction_2_0(),
+            grammarAccess.getColumnConstraintAccess().getUniqueConstraintAction_2_0(),
             $current);
     }
-)	otherlv_9='default' 
+)	otherlv_9='unique' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getColumnConstraintAccess().getDefaultKeyword_2_1());
+    	newLeafNode(otherlv_9, grammarAccess.getColumnConstraintAccess().getUniqueKeyword_2_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_2_2_0()); 
+	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getConflictClauseConflictClauseParserRuleCall_2_2_0()); 
 	    }
-		lv_defaultValue_10_0=ruleDefaultValue		{
+		lv_conflictClause_10_0=ruleConflictClause		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getColumnConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"conflictClause",
+        		lv_conflictClause_10_0, 
+        		"ConflictClause");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?)
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getColumnConstraintAccess().getDefaultConstraintAction_3_0(),
+            $current);
+    }
+)	otherlv_12='default' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getColumnConstraintAccess().getDefaultKeyword_3_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_3_2_0()); 
+	    }
+		lv_defaultValue_13_0=ruleDefaultValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getColumnConstraintRule());
 	        }
        		set(
        			$current, 
        			"defaultValue",
-        		lv_defaultValue_10_0, 
+        		lv_defaultValue_13_0, 
         		"DefaultValue");
 	        afterParserOrEnumRuleCall();
 	    }

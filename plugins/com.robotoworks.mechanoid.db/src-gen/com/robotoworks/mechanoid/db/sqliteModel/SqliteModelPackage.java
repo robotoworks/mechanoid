@@ -3120,6 +3120,34 @@ public interface SqliteModelPackage extends EPackage
   int NOT_NULL_CONSTRAINT_FEATURE_COUNT = COLUMN_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UniqueConstraintImpl <em>Unique Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.db.sqliteModel.impl.UniqueConstraintImpl
+   * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getUniqueConstraint()
+   * @generated
+   */
+  int UNIQUE_CONSTRAINT = 83;
+
+  /**
+   * The feature id for the '<em><b>Conflict Clause</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE_CONSTRAINT__CONFLICT_CLAUSE = COLUMN_CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Unique Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE_CONSTRAINT_FEATURE_COUNT = COLUMN_CONSTRAINT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DefaultConstraintImpl <em>Default Constraint</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3127,7 +3155,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getDefaultConstraint()
    * @generated
    */
-  int DEFAULT_CONSTRAINT = 83;
+  int DEFAULT_CONSTRAINT = 84;
 
   /**
    * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -3155,7 +3183,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getLiteralDefaultValue()
    * @generated
    */
-  int LITERAL_DEFAULT_VALUE = 84;
+  int LITERAL_DEFAULT_VALUE = 85;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' containment reference.
@@ -3183,7 +3211,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getExpressionDefaultValue()
    * @generated
    */
-  int EXPRESSION_DEFAULT_VALUE = 85;
+  int EXPRESSION_DEFAULT_VALUE = 86;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -3211,7 +3239,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getCompoundOperator()
    * @generated
    */
-  int COMPOUND_OPERATOR = 86;
+  int COMPOUND_OPERATOR = 87;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.SqliteDataType <em>Sqlite Data Type</em>}' enum.
@@ -3221,7 +3249,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getSqliteDataType()
    * @generated
    */
-  int SQLITE_DATA_TYPE = 87;
+  int SQLITE_DATA_TYPE = 88;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnType <em>Column Type</em>}' enum.
@@ -3231,7 +3259,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getColumnType()
    * @generated
    */
-  int COLUMN_TYPE = 88;
+  int COLUMN_TYPE = 89;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.ConflictResolution <em>Conflict Resolution</em>}' enum.
@@ -3241,7 +3269,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getConflictResolution()
    * @generated
    */
-  int CONFLICT_RESOLUTION = 89;
+  int CONFLICT_RESOLUTION = 90;
 
 
   /**
@@ -5769,6 +5797,27 @@ public interface SqliteModelPackage extends EPackage
   EReference getNotNullConstraint_ConflictClause();
 
   /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint <em>Unique Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Unique Constraint</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint
+   * @generated
+   */
+  EClass getUniqueConstraint();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint#getConflictClause <em>Conflict Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Conflict Clause</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint#getConflictClause()
+   * @see #getUniqueConstraint()
+   * @generated
+   */
+  EReference getUniqueConstraint_ConflictClause();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.DefaultConstraint <em>Default Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -7955,6 +8004,24 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference NOT_NULL_CONSTRAINT__CONFLICT_CLAUSE = eINSTANCE.getNotNullConstraint_ConflictClause();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UniqueConstraintImpl <em>Unique Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.db.sqliteModel.impl.UniqueConstraintImpl
+     * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getUniqueConstraint()
+     * @generated
+     */
+    EClass UNIQUE_CONSTRAINT = eINSTANCE.getUniqueConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Conflict Clause</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UNIQUE_CONSTRAINT__CONFLICT_CLAUSE = eINSTANCE.getUniqueConstraint_ConflictClause();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DefaultConstraintImpl <em>Default Constraint</em>}' class.
