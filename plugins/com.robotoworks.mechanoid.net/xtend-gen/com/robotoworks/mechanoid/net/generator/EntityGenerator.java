@@ -100,7 +100,7 @@ public class EntityGenerator {
       ComplexTypeLiteral _literal = skipper.getLiteral();
       EList<Member> _members = _literal.getMembers();
       for(final Member member : _members) {
-        CharSequence _generateField = this.generateField(member);
+        Object _generateField = this.generateField(member);
         _builder.append(_generateField, "");
         _builder.newLineIfNotEmpty();
       }
@@ -153,7 +153,7 @@ public class EntityGenerator {
       ComplexTypeLiteral _literal = skipper.getLiteral();
       EList<Member> _members = _literal.getMembers();
       for(final Member member : _members) {
-        CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member);
+        Object _generateGetterAndSetter = this.generateGetterAndSetter(member);
         _builder.append(_generateGetterAndSetter, "");
         _builder.newLineIfNotEmpty();
       }

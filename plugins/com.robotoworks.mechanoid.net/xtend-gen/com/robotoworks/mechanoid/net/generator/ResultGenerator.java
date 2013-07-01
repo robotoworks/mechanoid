@@ -174,7 +174,7 @@ public class ResultGenerator {
   protected CharSequence _generateFieldForMember(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
-    CharSequence _generateFieldForType = this.generateFieldForType(_literal);
+    Object _generateFieldForType = this.generateFieldForType(_literal);
     _builder.append(_generateFieldForType, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -323,7 +323,7 @@ public class ResultGenerator {
   protected CharSequence _generateGetter(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
-    CharSequence _generateGetterForType = this.generateGetterForType(_literal);
+    Object _generateGetterForType = this.generateGetterForType(_literal);
     _builder.append(_generateGetterForType, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -345,7 +345,7 @@ public class ResultGenerator {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
     EList<Member> _members = _literal.getMembers();
-    CharSequence _generateBaseAccessors = this.generateBaseAccessors(_members);
+    Object _generateBaseAccessors = this.generateBaseAccessors(_members);
     _builder.append(_generateBaseAccessors, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -408,7 +408,10 @@ public class ResultGenerator {
     _builder.append("Result extends ServiceResult {");
     _builder.newLineIfNotEmpty();
     {
-      BlockType _type = responseBlock==null?(BlockType)null:responseBlock.getType();
+      BlockType _type = null;
+      if (responseBlock!=null) {
+        _type=responseBlock.getType();
+      }
       boolean _notEquals = (!Objects.equal(_type, null));
       if (_notEquals) {
         _builder.append("\t");
@@ -426,7 +429,10 @@ public class ResultGenerator {
       }
     }
     {
-      ComplexTypeDeclaration _superType = responseBlock==null?(ComplexTypeDeclaration)null:responseBlock.getSuperType();
+      ComplexTypeDeclaration _superType = null;
+      if (responseBlock!=null) {
+        _superType=responseBlock.getSuperType();
+      }
       boolean _notEquals_1 = (!Objects.equal(_superType, null));
       if (_notEquals_1) {
         _builder.append("\t");
@@ -443,7 +449,10 @@ public class ResultGenerator {
         EList<Member> _members = _literal.getMembers();
         final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
             public Boolean apply(final Member superMember) {
-              BlockType _type = responseBlock==null?(BlockType)null:responseBlock.getType();
+              BlockType _type = null;
+              if (responseBlock!=null) {
+                _type=responseBlock.getType();
+              }
               if ((_type instanceof ComplexTypeLiteral)) {
                 BlockType _type_1 = responseBlock.getType();
                 EList<Member> _members = ((ComplexTypeLiteral) _type_1).getMembers();
@@ -522,8 +531,14 @@ public class ResultGenerator {
                 _builder.append("\t");
                 _builder.append("\t");
                 BlockType _type_5 = responseBlock.getType();
-                ComplexTypeDeclaration _superType_6 = responseBlock==null?(ComplexTypeDeclaration)null:responseBlock.getSuperType();
-                ComplexTypeLiteral _literal_1 = _superType_6==null?(ComplexTypeLiteral)null:_superType_6.getLiteral();
+                ComplexTypeDeclaration _superType_6 = null;
+                if (responseBlock!=null) {
+                  _superType_6=responseBlock.getSuperType();
+                }
+                ComplexTypeLiteral _literal_1 = null;
+                if (_superType_6!=null) {
+                  _literal_1=_superType_6.getLiteral();
+                }
                 EList<Member> _mergeMembers = this.mergeMembers(((ComplexTypeLiteral) _type_5), _literal_1);
                 CharSequence _genReadComplexTypeLiteralForMembers = this.jsonReaderGenerator.genReadComplexTypeLiteralForMembers(_mergeMembers);
                 _builder.append(_genReadComplexTypeLiteralForMembers, "		");

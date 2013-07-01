@@ -770,6 +770,15 @@ public interface SqliteModelFactory extends EFactory
   NotNullConstraint createNotNullConstraint();
 
   /**
+   * Returns a new object of class '<em>Unique Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unique Constraint</em>'.
+   * @generated
+   */
+  UniqueConstraint createUniqueConstraint();
+
+  /**
    * Returns a new object of class '<em>Default Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

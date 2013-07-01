@@ -13,11 +13,13 @@ import com.robotoworks.mechanoid.text.Strings;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class SqliteOpenHelperGenerator {
   @Inject
+  @Extension
   private SqliteDatabaseStatementGenerator _sqliteDatabaseStatementGenerator;
   
   public CharSequence generate(final Model model, final SqliteDatabaseSnapshot snapshot) {

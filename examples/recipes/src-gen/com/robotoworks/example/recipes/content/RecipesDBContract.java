@@ -142,8 +142,8 @@ public class RecipesDBContract  {
 		static {
 			HashSet<Uri> viewUris =  new HashSet<Uri>();
 	
-			viewUris.add(RecipesWithAuthors.CONTENT_URI);
 			viewUris.add(RecipesAndIngredients.CONTENT_URI);
+			viewUris.add(RecipesWithAuthors.CONTENT_URI);
 			
 			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}

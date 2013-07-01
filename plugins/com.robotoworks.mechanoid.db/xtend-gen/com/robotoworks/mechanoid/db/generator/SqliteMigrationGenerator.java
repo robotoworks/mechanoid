@@ -9,10 +9,12 @@ import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.text.Strings;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class SqliteMigrationGenerator {
   @Inject
+  @Extension
   private SqliteDatabaseStatementGenerator _sqliteDatabaseStatementGenerator;
   
   public CharSequence generate(final Model model, final MigrationBlock migration, final int version) {

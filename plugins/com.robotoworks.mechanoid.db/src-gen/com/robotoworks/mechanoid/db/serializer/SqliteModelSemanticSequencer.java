@@ -73,6 +73,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceSelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.db.sqliteModel.StringLiteral;
+import com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.UniqueTableConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement;
@@ -790,6 +791,12 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
+			case SqliteModelPackage.UNIQUE_CONSTRAINT:
+				if(context == grammarAccess.getColumnConstraintRule()) {
+					sequence_ColumnConstraint(context, (UniqueConstraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT:
 				if(context == grammarAccess.getTableConstraintRule() ||
 				   context == grammarAccess.getUniqueTableConstraintRule()) {
@@ -897,7 +904,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_2_2_0(), semanticObject.getDefaultValue());
+		feeder.accept(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_3_2_0(), semanticObject.getDefaultValue());
 		feeder.finish();
 	}
 	
@@ -916,6 +923,15 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ((asc?='asc' | desc?='desc')? autoincrement?='autoincrement'?)
 	 */
 	protected void sequence_ColumnConstraint(EObject context, PrimaryKeyColumnConstraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (conflictClause=ConflictClause?)
+	 */
+	protected void sequence_ColumnConstraint(EObject context, UniqueConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

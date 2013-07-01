@@ -4,7 +4,7 @@
     editorDirectory="/com.robotoworks.mechanoid.db.editor/src" modelPluginID="com.robotoworks.mechanoid.db"
     forceOverwrite="true" modelName="SqliteModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.db.edit"
-    editorPluginID="com.robotoworks.mechanoid.db.editor" runtimeVersion="2.8">
+    editorPluginID="com.robotoworks.mechanoid.db.editor" runtimeVersion="2.9">
   <genPackages prefix="SqliteModel" basePackage="com.robotoworks.mechanoid.db" disposableProviderFactory="true"
       ecorePackage="SqliteModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SqliteModel.ecore#//CompoundOperator">
@@ -343,6 +343,9 @@
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//NotNullConstraint">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//NotNullConstraint/conflictClause"/>
+    </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//UniqueConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//UniqueConstraint/conflictClause"/>
     </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//DefaultConstraint">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DefaultConstraint/defaultValue"/>

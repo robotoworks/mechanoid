@@ -166,7 +166,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	}
 	
 	
-	def buildScopeForColumnSourceRef_column(ColumnSourceRef context, EObject parent) {
+	def IScope buildScopeForColumnSourceRef_column(ColumnSourceRef context, EObject parent) {
 		
 		var EObject temp = parent
 		
@@ -212,7 +212,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return IScope::NULLSCOPE
 	}
 	
-	def buildScopeForColumnSourceRef_source(ColumnSourceRef context, EObject parent) {
+	def IScope buildScopeForColumnSourceRef_source(ColumnSourceRef context, EObject parent) {
 		
 		var EObject temp = parent
 		
@@ -241,7 +241,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return IScope::NULLSCOPE
 	}
 		
-	def getAllReferenceableColumns(SelectCoreExpression expr) {
+	def ArrayList<EObject> getAllReferenceableColumns(SelectCoreExpression expr) {
 		val ArrayList<EObject> items = Lists::newArrayList()
 		
 		if(expr instanceof SelectCore) {

@@ -2035,10 +2035,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:101:8: ( 'default' )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:101:10: 'default'
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:101:8: ( 'unique' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:101:10: 'unique'
             {
-            match("default"); 
+            match("unique"); 
 
 
             }
@@ -2056,10 +2056,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:102:8: ( 'unique' )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:102:10: 'unique'
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:102:8: ( 'default' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:102:10: 'default'
             {
-            match("unique"); 
+            match("default"); 
 
 
             }
@@ -2727,10 +2727,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:13: ( ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )? )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:15: ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )?
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:13: ( ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )? )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:15: ( '0' .. '9' )* ( '.' ( '0' .. '9' )+ )?
             {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:15: ( '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:15: ( '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -2743,7 +2743,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:16: '0' .. '9'
+            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:16: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2755,7 +2755,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:27: ( '.' ( '0' .. '9' )+ )?
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:27: ( '.' ( '0' .. '9' )+ )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -2764,10 +2764,10 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:28: '.' ( '0' .. '9' )+
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:28: '.' ( '0' .. '9' )+
                     {
                     match('.'); 
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:32: ( '0' .. '9' )+
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:32: ( '0' .. '9' )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -2781,7 +2781,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18591:33: '0' .. '9'
+                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18708:33: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2819,8 +2819,8 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18593:10: ( '$$$don\\'t use this anymore$$$' )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18593:12: '$$$don\\'t use this anymore$$$'
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18710:10: ( '$$$don\\'t use this anymore$$$' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18710:12: '$$$don\\'t use this anymore$$$'
             {
             match("$$$don't use this anymore$$$"); 
 
@@ -2840,10 +2840,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2861,10 +2861,10 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -2880,7 +2880,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2896,7 +2896,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2921,10 +2921,10 @@ public class InternalSqliteModelLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -2940,7 +2940,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2956,7 +2956,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18595:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18712:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2999,10 +2999,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18597:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18597:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18714:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18714:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18597:11: ( '^' )?
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18714:11: ( '^' )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -3011,7 +3011,7 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18597:11: '^'
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18714:11: '^'
                     {
                     match('^'); 
 
@@ -3029,7 +3029,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18597:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18714:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop8:
             do {
                 int alt8=2;
@@ -3078,12 +3078,12 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18599:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18599:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18716:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18716:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18599:24: ( options {greedy=false; } : . )*
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18716:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -3108,7 +3108,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18599:52: .
+            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18716:52: .
             	    {
             	    matchAny(); 
 
@@ -3138,12 +3138,12 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -3156,7 +3156,7 @@ public class InternalSqliteModelLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3176,7 +3176,7 @@ public class InternalSqliteModelLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:40: ( ( '\\r' )? '\\n' )?
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -3185,9 +3185,9 @@ public class InternalSqliteModelLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:41: ( '\\r' )? '\\n'
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:41: ( '\\r' )? '\\n'
                     {
-                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:41: ( '\\r' )?
+                    // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -3196,7 +3196,7 @@ public class InternalSqliteModelLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18601:41: '\\r'
+                            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18718:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3228,10 +3228,10 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18603:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18603:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18720:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18720:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18603:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18720:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -3285,8 +3285,8 @@ public class InternalSqliteModelLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18605:16: ( . )
-            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18605:18: .
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18722:16: ( . )
+            // ../com.robotoworks.mechanoid.db.ui/src-gen/com/robotoworks/mechanoid/db/ui/contentassist/antlr/internal/InternalSqliteModel.g:18722:18: .
             {
             matchAny(); 
 
@@ -4362,10 +4362,10 @@ public class InternalSqliteModelLexer extends Lexer {
         "\1\107\1\162\1\uffff\1\124\1\uffff\1\37\1\56\1\uffff\1\126\1\uffff"+
         "\1\42\1\43\4\uffff\1\121\13\uffff\1\164\1\136\1\uffff\1\113\4\uffff"+
         "\1\142\2\uffff\1\60\4\uffff\1\31\1\uffff\1\127\1\uffff\1\34\1\36"+
-        "\1\uffff\1\66\1\uffff\1\134\1\145\1\45\1\153\5\uffff\1\140\1\uffff"+
+        "\1\uffff\1\66\1\uffff\1\133\1\145\1\45\1\153\5\uffff\1\140\1\uffff"+
         "\1\65\2\uffff\1\120\1\uffff\1\111\1\115\1\144\1\40\1\uffff\1\47"+
         "\1\33\1\53\1\160\1\uffff\1\41\1\uffff\1\54\1\uffff\1\123\1\61\1"+
-        "\132\1\uffff\1\133\6\uffff\1\55\1\uffff\1\62\1\154\1\137\3\uffff"+
+        "\132\1\uffff\1\134\6\uffff\1\55\1\uffff\1\62\1\154\1\137\3\uffff"+
         "\1\44\1\70\5\uffff\1\135\7\uffff\1\166\1\167\1\173\4\uffff\1\170";
     static final String DFA14_specialS =
         "\1\2\54\uffff\1\1\1\0\u01e0\uffff}>";
