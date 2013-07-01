@@ -6,7 +6,7 @@ Bundle-Version: 0.2.0.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.db; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
- org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.4.2";resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.4.2";visibility:=reexport,
  com.robotoworks.mechanoid
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib

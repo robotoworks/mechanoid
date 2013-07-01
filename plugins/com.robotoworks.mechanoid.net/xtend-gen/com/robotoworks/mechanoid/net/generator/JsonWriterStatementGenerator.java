@@ -118,7 +118,7 @@ public class JsonWriterStatementGenerator {
     _builder.append("\t");
     ComplexTypeLiteral _literal = skipMember.getLiteral();
     EList<Member> _members = _literal.getMembers();
-    CharSequence _genWriteComplexTypeLiteralForMembers = this.genWriteComplexTypeLiteralForMembers(_members);
+    Object _genWriteComplexTypeLiteralForMembers = this.genWriteComplexTypeLiteralForMembers(_members);
     _builder.append(_genWriteComplexTypeLiteralForMembers, "	");
     _builder.newLineIfNotEmpty();
     return _builder;

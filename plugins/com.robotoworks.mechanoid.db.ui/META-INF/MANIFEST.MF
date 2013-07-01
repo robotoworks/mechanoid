@@ -25,5 +25,6 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.db.ui.contentassist,
  com.robotoworks.mechanoid.db.ui.contentassist.antlr,
- com.robotoworks.mechanoid.db.ui.internal
+ com.robotoworks.mechanoid.db.ui.internal,
+ com.robotoworks.mechanoid.db.ui.quickfix
 Bundle-Activator: com.robotoworks.mechanoid.db.ui.internal.SqliteModelActivator

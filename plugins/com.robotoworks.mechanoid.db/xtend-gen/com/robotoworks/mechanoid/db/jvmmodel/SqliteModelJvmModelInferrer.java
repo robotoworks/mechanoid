@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -20,6 +21,7 @@ public class SqliteModelJvmModelInferrer extends AbstractModelInferrer {
    * convenience API to build and initialize JVM types and their members.
    */
   @Inject
+  @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
   
   /**
