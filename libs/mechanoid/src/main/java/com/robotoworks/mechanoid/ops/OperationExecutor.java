@@ -13,6 +13,28 @@ import android.util.Log;
  */
 public class OperationExecutor {
 	
+	/**
+	 * <p>Execute the operation once only.</p>
+	 * <p>In this mode, the operation will only be executed if it has not been executed
+	 * before by this executor, to force the operation to execute again, use {@link #MODE_ALWAYS}</p>
+	 */
+	public static final int MODE_ONCE = 0;
+	
+	
+	/**
+	 * <p>Always execute this operation regardless of whether it is currently executing, finished, or
+	 * has never been executed at all. Currently executing or completed operations will be abandoned but not aborted by
+	 * this executor.</p>
+	 */
+	public static final int MODE_ALWAYS = 1;
+	
+	
+	/**
+	 * <p>Execute the operation only if it has previously completed with an error or if it has never
+	 * been executed before.</p>
+	 */
+	public static final int MODE_ON_ERROR = 2;
+	
 	private static final String TAG = OperationExecutor.class.getSimpleName();
 	
 	private static final String STATE_KEY = "com.robotoworks.mechanoid.ops.OperationExecutor.State";
@@ -191,6 +213,11 @@ public class OperationExecutor {
     		return;
     	}
     	
+    	if(mOpInfo.mResult != null) {
+    		completeOperation();
+    		return;
+    	}
+    	
         if(Ops.isOperationPending(mOpInfo.mId)) {
         	
         	if(mEnableLogging) {
@@ -306,16 +333,24 @@ public class OperationExecutor {
      * @param force true to force the operation intent to execute, this will abandon any previous operation
      * intent
      */
-    public void execute(Intent operationIntent, boolean force) {
+    public void execute(Intent operationIntent, int mode) {
         
         if (operationIntent == null) {
         	Log.d(TAG, String.format("[Operation Null] operationintent argument was null, key: %s", mUserStateKey));
         	return;
         }
         
-        if (force || mOpInfo == null) {
+        if (mode == MODE_ALWAYS) {
+        	mOpInfo = null;
         	executeOperation(operationIntent);
-            return;
+        } else if(mode == MODE_ONCE) {
+        	if(mOpInfo == null) {
+        		executeOperation(operationIntent);
+        	}
+        } else if(mode == MODE_ON_ERROR) {
+        	if(mOpInfo == null || isError()) {
+        		executeOperation(operationIntent);
+        	}
         }
         
         completeOperation();

@@ -446,26 +446,39 @@ method:
 
 .. code-block:: java
 
-   mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
+   mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), OperationExecutor.MODE_ONCE);
       
 The example uses the executor to execute an operation described by the given intent, 
-the last argument tells the executor if we should force the 
-operation to execute, by providing the value of ``false`` means to only run the 
+the last argument tells the executor how we want the 
+operation to execute, by providing the value of ``OperationExecutor.MODE_ONCE`` means to only run the 
 operation if it has not yet been run.
 
-.. topic:: The Force Flag
+Execution Modes
+"""""""""""""""
+Currently the operation executor supports 3 operating modes that are useful
+in certain scenarios, the default mode is ``MODE_ONCE``.
 
+The following points outline the purpose of each mode.
+
+* ``MODE_ONCE``
    The ``OperationExecutor`` guarantees that the operation will run and the 
    associated completion callback will be called once, even if a configuration 
    change occurs such as rotating the screen.
    
-   When we call ``execute(Intent, boolean)`` and set the force flag to false, 
-   tells the executor `"Only run this operation if its not been run 
+   When we call ``execute(Intent, boolean)`` and set the mode to ``MODE_ONCE``, 
+   tells the executor `"Only run this operation if it has not been run 
    before"`.
    
-   We can set the force flag to true if we want to clear the cached result and
+* ``MODE_ALWAYS``
+   We can use ``MODE_ALWAYS`` if we want to clear the cached result and
    force the operation to queue and execute again, which is useful in scenarios
    such as retrying after an operation error.
+   
+* ``MODE_ON_ERROR``
+   This mode can be useful in scenarios where the user is resuming your application 
+   where the previous operation completed with error and you do not want to bother 
+   them with a retry option and just go ahead and execute the operation as if 
+   nothing happened.
    
    
 Dealing with Configuration Change
@@ -480,23 +493,25 @@ if it is complete.
    mGetMoviesOperationExecutor = new OperationExecutor(
        OP_GET_MOVIES, savedInstanceState, mOperationExecutorCallbacks);
           
-   if(mGetMoviesOperationExecutor.isComplete()) {
+   if(mGetMoviesOperationExecutor.isOk()) {
       getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
    } else {
-      mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
+      mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), OperationExecutor.MODE_ONCE);
    }
    
-In the above example we check if the operation is complete and if it is we
-initialize a loader, otherwise we execute the operation.
+In the above example we check if the operation is complete and the result is ok
+with the convenient ``isOk()`` method, if true we initialize a loader, otherwise 
+we execute the operation.
 
 We can also get the result from the executor if we need it with ``getResult()`` 
 which can be useful if we need to know certain things about the completed operation.
 
 .. note:: 
-   An important thing to note is even though you can check ``isComplete()`` you
+   An important thing to note is even though you can check ``isOk()`` you
    are always guaranteed to receive the completion callback, checking completion
    after instantiation is only really useful if you want to do something like
-   reinitialize loaders or set up UI state according to the completion of an operation.
+   reinitialize loaders or set up UI state according to the completion of an 
+   operation
 
 Executor Callbacks
 """"""""""""""""""
@@ -573,8 +588,7 @@ extract the error from the Bundle, and act on the error.
 .. rubric:: Implementing the ``onOperationPending(...)`` Callback 
 
 The callback ``onOperationPending(...)`` is called immediately after you
-call ``runOperation(int, boolean)`` for the first time, or you if you set the
-force flag to true.
+call ``execute(Intent, int)``.
 
 It is also called when the executor recovers from a configuration 
 change such as switching the orientation of the device.
