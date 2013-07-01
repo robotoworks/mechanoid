@@ -196,17 +196,13 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
       }
     }
     Collection<EObject> _values = map.values();
-    final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
+    final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
         public QualifiedName apply(final EObject it) {
           QualifiedName _name = NameHelper.getName(((TableDefinition) it));
           return _name;
         }
       };
-    return Scopes.<EObject>scopeFor(_values, new Function<EObject,QualifiedName>() {
-        public QualifiedName apply(EObject input) {
-          return _function.apply(input);
-        }
-    }, IScope.NULLSCOPE);
+    return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
   }
   
   public IScope buildScopeForColumnSourceRef_column(final ColumnSourceRef context, final EObject parent) {
@@ -308,18 +304,14 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             final ArrayList<EObject> items = Lists.<EObject>newArrayList();
             ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(_selectExpression);
             items.addAll(_findAllSingleSources);
-            final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
+            final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
                 public QualifiedName apply(final EObject it) {
                   QualifiedName _name = NameHelper.getName(((SelectSource) it));
                   return _name;
                 }
               };
             IScope _buildScopeForColumnSourceRef_source = this.buildScopeForColumnSourceRef_source(context, _selectExpression);
-            return Scopes.<EObject>scopeFor(items, new Function<EObject,QualifiedName>() {
-                public QualifiedName apply(EObject input) {
-                  return _function.apply(input);
-                }
-            }, _buildScopeForColumnSourceRef_source);
+            return Scopes.<EObject>scopeFor(items, _function, _buildScopeForColumnSourceRef_source);
           }
         }
         if (!_matched) {
@@ -331,17 +323,13 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
             ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(core);
-            final Function1<EObject,QualifiedName> _function = new Function1<EObject,QualifiedName>() {
+            final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
                 public QualifiedName apply(final EObject it) {
                   QualifiedName _name = NameHelper.getName(((SelectSource) it));
                   return _name;
                 }
               };
-            return Scopes.<EObject>scopeFor(_allReferenceableSingleSources, new Function<EObject,QualifiedName>() {
-                public QualifiedName apply(EObject input) {
-                  return _function.apply(input);
-                }
-            }, IScope.NULLSCOPE);
+            return Scopes.<EObject>scopeFor(_allReferenceableSingleSources, _function, IScope.NULLSCOPE);
           }
         }
         EObject _eContainer_1 = temp.eContainer();

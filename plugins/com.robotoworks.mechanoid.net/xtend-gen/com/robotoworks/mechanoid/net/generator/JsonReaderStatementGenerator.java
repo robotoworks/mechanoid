@@ -331,7 +331,7 @@ public class JsonReaderStatementGenerator {
         _builder.append("\t");
         int _plus = (COUNTER + 1);
         int _COUNTER = COUNTER = _plus;
-        CharSequence _genBlock = this.genBlock(member, _COUNTER);
+        Object _genBlock = this.genBlock(member, _COUNTER);
         _builder.append(_genBlock, "	");
         _builder.newLineIfNotEmpty();
       }

@@ -123,8 +123,14 @@ public class RequestGenerator {
     _builder.newLine();
     {
       Path _path = method.getPath();
-      EList<SimpleMemberAssignment> _params = _path==null?(EList<SimpleMemberAssignment>)null:_path.getParams();
-      int _size = _params==null?0:_params.size();
+      EList<SimpleMemberAssignment> _params = null;
+      if (_path!=null) {
+        _params=_path.getParams();
+      }
+      int _size = 0;
+      if (_params!=null) {
+        _size=_params.size();
+      }
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         {
@@ -473,8 +479,14 @@ public class RequestGenerator {
     }
     {
       Path _path_3 = method.getPath();
-      EList<SimpleMemberAssignment> _params_6 = _path_3==null?(EList<SimpleMemberAssignment>)null:_path_3.getParams();
-      int _size_1 = _params_6==null?0:_params_6.size();
+      EList<SimpleMemberAssignment> _params_6 = null;
+      if (_path_3!=null) {
+        _params_6=_path_3.getParams();
+      }
+      int _size_1 = 0;
+      if (_params_6!=null) {
+        _size_1=_params_6.size();
+      }
       boolean _greaterThan_1 = (_size_1 > 0);
       if (_greaterThan_1) {
         {
@@ -554,8 +566,14 @@ public class RequestGenerator {
     _builder.newLine();
     {
       Path _path_5 = method.getPath();
-      EList<SimpleMemberAssignment> _params_8 = _path_5==null?(EList<SimpleMemberAssignment>)null:_path_5.getParams();
-      int _size_2 = _params_8==null?0:_params_8.size();
+      EList<SimpleMemberAssignment> _params_8 = null;
+      if (_path_5!=null) {
+        _params_8=_path_5.getParams();
+      }
+      int _size_2 = 0;
+      if (_params_8!=null) {
+        _size_2=_params_8.size();
+      }
       boolean _greaterThan_2 = (_size_2 > 0);
       if (_greaterThan_2) {
         _builder.append("\t\t");
@@ -846,7 +864,7 @@ public class RequestGenerator {
   protected CharSequence _generateFieldForMember(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
-    CharSequence _generateFieldForType = this.generateFieldForType(_literal);
+    Object _generateFieldForType = this.generateFieldForType(_literal);
     _builder.append(_generateFieldForType, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -969,7 +987,7 @@ public class RequestGenerator {
   protected CharSequence _generateGetterSetterForMember(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
-    CharSequence _generateGetterSetterForType = this.generateGetterSetterForType(_literal);
+    Object _generateGetterSetterForType = this.generateGetterSetterForType(_literal);
     _builder.append(_generateGetterSetterForType, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -1051,7 +1069,7 @@ public class RequestGenerator {
   protected CharSequence _generateConstructorAssignmentForMember(final SkipMember member) {
     StringConcatenation _builder = new StringConcatenation();
     ComplexTypeLiteral _literal = member.getLiteral();
-    CharSequence _generateConstructorAssignmentForType = this.generateConstructorAssignmentForType(_literal);
+    Object _generateConstructorAssignmentForType = this.generateConstructorAssignmentForType(_literal);
     _builder.append(_generateConstructorAssignmentForType, "");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -1254,8 +1272,14 @@ public class RequestGenerator {
   public String generateRequestConstructorArgs(final Path path, final BodyBlock body) {
     ArrayList<String> _arrayList = new ArrayList<String>();
     ArrayList<String> args = _arrayList;
-    EList<SimpleMemberAssignment> _params = path==null?(EList<SimpleMemberAssignment>)null:path.getParams();
-    int _size = _params==null?0:_params.size();
+    EList<SimpleMemberAssignment> _params = null;
+    if (path!=null) {
+      _params=path.getParams();
+    }
+    int _size = 0;
+    if (_params!=null) {
+      _size=_params.size();
+    }
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EList<SimpleMemberAssignment> _params_1 = path.getParams();

@@ -31,7 +31,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     try
     {
-      SqliteModelFactory theSqliteModelFactory = (SqliteModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.robotoworks.com/mechanoid/db/SqliteModel"); 
+      SqliteModelFactory theSqliteModelFactory = (SqliteModelFactory)EPackage.Registry.INSTANCE.getEFactory(SqliteModelPackage.eNS_URI);
       if (theSqliteModelFactory != null)
       {
         return theSqliteModelFactory;
@@ -148,6 +148,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.COLUMN_DEF: return createColumnDef();
       case SqliteModelPackage.PRIMARY_KEY_COLUMN_CONSTRAINT: return createPrimaryKeyColumnConstraint();
       case SqliteModelPackage.NOT_NULL_CONSTRAINT: return createNotNullConstraint();
+      case SqliteModelPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
       case SqliteModelPackage.DEFAULT_CONSTRAINT: return createDefaultConstraint();
       case SqliteModelPackage.LITERAL_DEFAULT_VALUE: return createLiteralDefaultValue();
       case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE: return createExpressionDefaultValue();
@@ -1113,6 +1114,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     NotNullConstraintImpl notNullConstraint = new NotNullConstraintImpl();
     return notNullConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniqueConstraint createUniqueConstraint()
+  {
+    UniqueConstraintImpl uniqueConstraint = new UniqueConstraintImpl();
+    return uniqueConstraint;
   }
 
   /**

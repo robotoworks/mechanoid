@@ -490,6 +490,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createNotNullConstraintAdapter();
       }
       @Override
+      public Adapter caseUniqueConstraint(UniqueConstraint object)
+      {
+        return createUniqueConstraintAdapter();
+      }
+      @Override
       public Adapter caseDefaultConstraint(DefaultConstraint object)
       {
         return createDefaultConstraintAdapter();
@@ -1767,6 +1772,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNotNullConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint <em>Unique Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.UniqueConstraint
+   * @generated
+   */
+  public Adapter createUniqueConstraintAdapter()
   {
     return null;
   }

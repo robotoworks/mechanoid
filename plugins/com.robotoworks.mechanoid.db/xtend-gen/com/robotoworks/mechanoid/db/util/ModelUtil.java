@@ -56,7 +56,7 @@ public class ModelUtil {
           if (_equals) {
             return list;
           }
-          Class<? extends Object> _class = ddl.getClass();
+          Class<? extends DDLStatement> _class = ddl.getClass();
           boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
           if (_isAssignableFrom) {
             list.add(((T) ddl));
@@ -81,7 +81,7 @@ public class ModelUtil {
           if (_equals) {
             return list;
           }
-          Class<? extends Object> _class = ddl.getClass();
+          Class<? extends DDLStatement> _class = ddl.getClass();
           boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
           if (_isAssignableFrom) {
             if (between) {
@@ -107,7 +107,7 @@ public class ModelUtil {
       {
         EObject _eContainer_1 = temp.eContainer();
         temp = _eContainer_1;
-        Class<? extends Object> _class = temp.getClass();
+        Class<? extends EObject> _class = temp.getClass();
         boolean _isAssignableFrom = ancestorType.isAssignableFrom(_class);
         if (_isAssignableFrom) {
           return ((T) temp);
@@ -138,7 +138,7 @@ public class ModelUtil {
             EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(current);
             current = _previousSibling_1;
             Boolean _apply = delegate.apply(((DDLStatement) current));
-            boolean _not = (!_apply);
+            boolean _not = (!(_apply).booleanValue());
             if (_not) {
               return;
             }
@@ -166,7 +166,7 @@ public class ModelUtil {
             return;
           }
           Boolean _apply = delegate.apply(((DDLStatement) current));
-          boolean _not = (!_apply);
+          boolean _not = (!(_apply).booleanValue());
           if (_not) {
             return;
           }

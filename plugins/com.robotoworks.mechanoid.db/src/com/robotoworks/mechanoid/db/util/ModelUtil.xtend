@@ -27,9 +27,7 @@ import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.util.Strings
-import org.eclipse.xtext.xbase.lib.Functions$Function1
-
-import static com.robotoworks.mechanoid.db.util.ModelUtil.*
+import org.eclipse.xtext.xbase.lib.Functions
 
 class ModelUtil {
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType) {
@@ -101,7 +99,7 @@ class ModelUtil {
 	 * walks back and visits each previous statement from the given statement, returning
 	 * false will cancel the process
 	 */
-	def static void forEachPreviousStatement(DDLStatement stmt, Functions$Function1<DDLStatement, Boolean> delegate) {
+	def static void forEachPreviousStatement(DDLStatement stmt, Functions.Function1<DDLStatement, Boolean> delegate) {
 		var current = stmt as EObject
 		var MigrationBlock migration = null
 		
@@ -134,7 +132,7 @@ class ModelUtil {
 		} while (migration != null)
 	}
 	
-	def static getAllReferenceableSingleSources(SelectCoreExpression expr) {
+	def static ArrayList<EObject> getAllReferenceableSingleSources(SelectCoreExpression expr) {
 		val ArrayList<EObject> items = Lists::newArrayList()
 		
 		if(expr instanceof SelectCore) {
@@ -188,7 +186,7 @@ class ModelUtil {
 		return "!!ERROR!!";
 	}
 	
-	def static getInferredColumnType(ResultColumn col) { 
+	def static ColumnType getInferredColumnType(ResultColumn col) { 
 		var expr = col.expression
 		switch expr {
 			CastExpression: {
@@ -204,7 +202,7 @@ class ModelUtil {
 			ExprConcat: {
 				return ColumnType::TEXT
 			}
-			com.robotoworks.mechanoid.db.sqliteModel.Function: {
+			Function: {
 				if(expr.name.equalsIgnoreCase("count") ||
 					expr.name.equalsIgnoreCase("length") ||
 					expr.name.equalsIgnoreCase("random")
@@ -254,8 +252,8 @@ class ModelUtil {
 		return matches;
 	}
 	
-	def static isDefinitionReferencedByView(TableDefinition tableDef, CreateViewStatement view) {
-		return view.eAllContents.exists([obj|
+	def static boolean isDefinitionReferencedByView(TableDefinition tableDef, CreateViewStatement view) {
+		return view.eAllContents.exists[obj|
 			if(obj instanceof SingleSourceTable) {
 				var sourceTable = obj as SingleSourceTable
 				
@@ -270,7 +268,7 @@ class ModelUtil {
 			}
 			
 			return false
-		])
+		]
 	}
 	
 	def static hasAndroidPrimaryKey(CreateTableStatement stmt) {

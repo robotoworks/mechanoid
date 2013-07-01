@@ -43,7 +43,7 @@ public class MovieListFragment extends ListFragment {
 		if(mGetMoviesOperationExecutor.isComplete()) {
 			getLoaderManager().initLoader(LOADER_MOVIES, null, mLoaderCallbacks);
 		} else {
-			mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), false);
+			mGetMoviesOperationExecutor.execute(GetMoviesOperation.newIntent(), OperationExecutor.MODE_ONCE);
 		}
 		
 		mAdapter = new MoviesAdapter(getActivity());

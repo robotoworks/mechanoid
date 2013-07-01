@@ -10,10 +10,12 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.SaveOptions.Builder;
 import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class SqliteDatabaseStatementGenerator {
   @Inject
+  @Extension
   private ISerializer _iSerializer;
   
   private SaveOptions saveOptions;

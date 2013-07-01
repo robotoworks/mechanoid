@@ -419,6 +419,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueConstraint" eSuperTypes="#//ColumnConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conflictClause" eType="#//ConflictClause"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DefaultConstraint" eSuperTypes="#//ColumnConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//DefaultValue"
         containment="true"/>

@@ -257,6 +257,7 @@ ColumnDef returns ColumnSource:
 ColumnConstraint:
 	{PrimaryKeyColumnConstraint} 'primary key' (asc?='asc'|desc?='desc')? autoincrement?='autoincrement'? |
 	{NotNullConstraint} 'not null' conflictClause=ConflictClause? |
+	{UniqueConstraint} 'unique' conflictClause=ConflictClause? |
 	{DefaultConstraint} 'default' defaultValue=DefaultValue
 ;
 
