@@ -5,28 +5,35 @@ package com.robotoworks.example.ghissues.ops;
 
 import java.util.List;
 
+import android.content.ContentValues;
+import android.util.Log;
+
+import com.robotoworks.example.ghissues.BuildConfig;
+import com.robotoworks.example.ghissues.db.GithubDBContract;
+import com.robotoworks.example.ghissues.db.GithubDBContract.Issues;
 import com.robotoworks.example.ghissues.net.GetIssuesForRepositoryRequest;
 import com.robotoworks.example.ghissues.net.GetIssuesForRepositoryResult;
 import com.robotoworks.example.ghissues.net.GithubClient;
 import com.robotoworks.example.ghissues.net.Issue;
 import com.robotoworks.example.ghissues.ops.AbstractGetIssuesForRepositoryOperation;
+import com.robotoworks.mechanoid.db.BulkInsertHelper;
 import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.net.ServiceException;
 import com.robotoworks.mechanoid.ops.OperationResult;
 
-public class GetIssuesForRepositoryOperation extends
-		AbstractGetIssuesForRepositoryOperation {
+public class GetIssuesForRepositoryOperation extends AbstractGetIssuesForRepositoryOperation {
+	
+	private static final String TAG = GetIssuesForRepositoryOperation.class.getSimpleName();
+	
 	@Override
-	protected OperationResult onExecute(Args args) {
+	protected OperationResult onExecute(final Args args) {
 
-		GithubClient client = new GithubClient();
+		GithubClient client = new GithubClient(BuildConfig.DEBUG);
 
-		GetIssuesForRepositoryRequest request = new GetIssuesForRepositoryRequest(
-				"robotworks", "mechanoid");
-
-		Response<GetIssuesForRepositoryResult> response;
 		try {
-			response = client.getIssuesForRepository(request);
+			GetIssuesForRepositoryRequest request = new GetIssuesForRepositoryRequest(args.owner,args.repo);
+
+			Response<GetIssuesForRepositoryResult> response = client.getIssuesForRepository(request);
 			
 			response.checkResponseCodeOk();
 			
@@ -34,12 +41,25 @@ public class GetIssuesForRepositoryOperation extends
 			
 			List<Issue> issues = result.getIssues();
 			
+			new BulkInsertHelper<Issue>() {
+				@Override
+				protected ContentValues createValues(Issue item) {
+					return Issues.newBuilder()
+							.setGhid(item.getId())
+							.setNumber(item.getNumber())
+							.setOwner(args.owner)
+							.setRepo(args.repo)
+							.setTitle(item.getTitle())
+							.setBody(item.getBody())
+							.getValues();
+				}
+			}.insert(Issues.CONTENT_URI, issues);
+			
+			return OperationResult.ok();
+			
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e(TAG, Log.getStackTraceString(e));
+			return OperationResult.error(e);
 		}
-
-
-		return null;
 	}
 }
