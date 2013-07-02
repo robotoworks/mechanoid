@@ -14,8 +14,12 @@ import android.os.Bundle;
 public abstract class AbstractGetIssuesForRepositoryOperation extends Operation {
 	public static final String ACTION_GET_ISSUES_FOR_REPOSITORY = "com.robotoworks.example.ghissues.ops.GithubService.actions.GET_ISSUES_FOR_REPOSITORY";
 
+	public static final String EXTRA_OWNER = "com.robotoworks.example.ghissues.ops.GithubService.extras.OWNER";
+	public static final String EXTRA_REPO = "com.robotoworks.example.ghissues.ops.GithubService.extras.REPO";
 
 	static class Args {
+		public String owner;
+		public String repo;
 	}
 	
 	static class Configuration extends OperationConfiguration {
@@ -33,11 +37,13 @@ public abstract class AbstractGetIssuesForRepositoryOperation extends Operation 
 		}
 	}
 	
-	public static final Intent newIntent() {
+	public static final Intent newIntent(String owner, String repo) {
 		Intent intent = new Intent(ACTION_GET_ISSUES_FOR_REPOSITORY);
 		intent.setClass(Mechanoid.getApplicationContext(), GithubService.class);
 		
 		Bundle extras = new Bundle();
+		extras.putString(EXTRA_OWNER, owner);
+		extras.putString(EXTRA_REPO, repo);
 		
 		intent.putExtras(extras);
 		
@@ -48,6 +54,10 @@ public abstract class AbstractGetIssuesForRepositoryOperation extends Operation 
 	@Override
 	public OperationResult execute() {
 		Args args = new Args();
+		
+		Bundle extras = getIntent().getExtras();
+		args.owner = extras.getString(EXTRA_OWNER);
+		args.repo = extras.getString(EXTRA_REPO);
 		
 		return onExecute(args);
 	}

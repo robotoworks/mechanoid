@@ -1,8 +1,10 @@
-package com.robotoworks.example.ghissues;
+package com.robotoworks.example.ghissues.ui;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+
+import com.robotoworks.example.ghissues.R;
 
 public class MainActivity extends Activity {
 

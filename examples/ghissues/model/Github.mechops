@@ -1,5 +1,5 @@
 package com.robotoworks.example.ghissues.ops
 
 service Github {
-	operation getIssuesForRepository()
+	operation getIssuesForRepository(String owner, String repo)
 }

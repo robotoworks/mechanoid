@@ -1,0 +1,17 @@
+package com.robotoworks.example.ghissues.db
+
+database GithubDB {
+
+	migration {
+		create table issues (
+			_id integer primary key autoincrement,
+			owner text,
+			repo text,
+			ghid integer,
+			number integer,
+			title text,
+			body text,
+			unique (ghid) on conflict replace
+		);
+	}
+}
