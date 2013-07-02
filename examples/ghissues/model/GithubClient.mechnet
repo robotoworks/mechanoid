@@ -1,0 +1,56 @@
+package com.robotoworks.example.ghissues.net
+
+entity Issue {
+	url:String,
+	labels_url:String,
+	comments_url:String,
+	events_url:String,
+	html_url:String,
+	id:long,
+	number:long,
+	title:String,
+	user:User,
+	labels:Label[],
+	state:IssueState,
+	comments:int,
+	created_at:String,
+	updated_at:String,
+	closed_at:String,
+	"body":String	
+}
+
+entity User {
+	login:String,
+	id:long,
+	avatar_url:String,
+	gravatar_id:String,
+	url:String,
+	html_url:String,
+	followers_url:String,
+	following_url:String,
+	gists_url:String,
+	starred_url:String,
+	subscriptions_url:String,
+	organizations_url:String,
+	repos_url:String,
+	events_url:String,
+	received_events_url:String
+}
+
+entity Label {
+	url:String,
+	name:String,
+	color:String
+}
+
+enum IssueState {
+	open,
+	closed
+}
+
+client GithubClient "https://api.github.com" {
+	
+	get getIssuesForRepository /repos/owner:String/repo:String/issues {
+		response Issue[]
+	}
+}
