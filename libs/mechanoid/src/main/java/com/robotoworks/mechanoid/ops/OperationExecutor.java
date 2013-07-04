@@ -370,17 +370,14 @@ public class OperationExecutor {
 
 	protected void executeOperation(Intent operationIntent) {
 		if(mEnableLogging) {
-			Log.d(TAG, String.format("[Operation Pending] key: %s", mUserStateKey));
-		}
-		
-		invokeOnOperationPending();
-		
-		if(mEnableLogging) {
 			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
 		}
 		
 		mOpInfo = new OpInfo();
 		mOpInfo.mIntent = operationIntent;
+
+		invokeOnOperationPending();
+		
 		mOpInfo.mId = Ops.execute(operationIntent);
 	}
 }
