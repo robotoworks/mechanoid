@@ -96,6 +96,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.DROP_TABLE_STATEMENT: return createDropTableStatement();
       case SqliteModelPackage.DROP_TRIGGER_STATEMENT: return createDropTriggerStatement();
       case SqliteModelPackage.DROP_VIEW_STATEMENT: return createDropViewStatement();
+      case SqliteModelPackage.CREATE_INDEX_STATEMENT: return createCreateIndexStatement();
+      case SqliteModelPackage.DROP_INDEX_STATEMENT: return createDropIndexStatement();
       case SqliteModelPackage.COLUMN_CONSTRAINT: return createColumnConstraint();
       case SqliteModelPackage.TABLE_CONSTRAINT: return createTableConstraint();
       case SqliteModelPackage.UNIQUE_TABLE_CONSTRAINT: return createUniqueTableConstraint();
@@ -542,6 +544,28 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     DropViewStatementImpl dropViewStatement = new DropViewStatementImpl();
     return dropViewStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CreateIndexStatement createCreateIndexStatement()
+  {
+    CreateIndexStatementImpl createIndexStatement = new CreateIndexStatementImpl();
+    return createIndexStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DropIndexStatement createDropIndexStatement()
+  {
+    DropIndexStatementImpl dropIndexStatement = new DropIndexStatementImpl();
+    return dropIndexStatement;
   }
 
   /**

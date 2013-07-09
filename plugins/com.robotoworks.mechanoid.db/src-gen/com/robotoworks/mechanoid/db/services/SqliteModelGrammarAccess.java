@@ -2116,23 +2116,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCreateTableStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cCreateViewStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCreateTriggerStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cAlterTableRenameStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cAlterTableAddColumnStatementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDropTableStatementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cDropTriggerStatementParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cDropViewStatementParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cCreateIndexStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cAlterTableRenameStatementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cAlterTableAddColumnStatementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cDropTableStatementParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cDropTriggerStatementParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cDropViewStatementParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cDropIndexStatementParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		/// ***********************************************************************
 		// *                                                                     *
 		// * DDL                                                                 *
 		// *                                                                     *
 		// *********************************************************************** / DDLStatement:
-		//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | AlterTableRenameStatement |
-		//	AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement;
+		//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement
+		//	| AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement;
 		public ParserRule getRule() { return rule; }
 
-		//CreateTableStatement | CreateViewStatement | CreateTriggerStatement | AlterTableRenameStatement |
-		//AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement
+		//CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement |
+		//AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//CreateTableStatement
@@ -2144,20 +2146,26 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//CreateTriggerStatement
 		public RuleCall getCreateTriggerStatementParserRuleCall_2() { return cCreateTriggerStatementParserRuleCall_2; }
 
+		//CreateIndexStatement
+		public RuleCall getCreateIndexStatementParserRuleCall_3() { return cCreateIndexStatementParserRuleCall_3; }
+
 		//AlterTableRenameStatement
-		public RuleCall getAlterTableRenameStatementParserRuleCall_3() { return cAlterTableRenameStatementParserRuleCall_3; }
+		public RuleCall getAlterTableRenameStatementParserRuleCall_4() { return cAlterTableRenameStatementParserRuleCall_4; }
 
 		//AlterTableAddColumnStatement
-		public RuleCall getAlterTableAddColumnStatementParserRuleCall_4() { return cAlterTableAddColumnStatementParserRuleCall_4; }
+		public RuleCall getAlterTableAddColumnStatementParserRuleCall_5() { return cAlterTableAddColumnStatementParserRuleCall_5; }
 
 		//DropTableStatement
-		public RuleCall getDropTableStatementParserRuleCall_5() { return cDropTableStatementParserRuleCall_5; }
+		public RuleCall getDropTableStatementParserRuleCall_6() { return cDropTableStatementParserRuleCall_6; }
 
 		//DropTriggerStatement
-		public RuleCall getDropTriggerStatementParserRuleCall_6() { return cDropTriggerStatementParserRuleCall_6; }
+		public RuleCall getDropTriggerStatementParserRuleCall_7() { return cDropTriggerStatementParserRuleCall_7; }
 
 		//DropViewStatement
-		public RuleCall getDropViewStatementParserRuleCall_7() { return cDropViewStatementParserRuleCall_7; }
+		public RuleCall getDropViewStatementParserRuleCall_8() { return cDropViewStatementParserRuleCall_8; }
+
+		//DropIndexStatement
+		public RuleCall getDropIndexStatementParserRuleCall_9() { return cDropIndexStatementParserRuleCall_9; }
 	}
 
 	public class CreateTableStatementElements extends AbstractParserRuleElementFinder {
@@ -2696,6 +2704,132 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getViewCreateViewStatementIDTerminalRuleCall_3_0_1() { return cViewCreateViewStatementIDTerminalRuleCall_3_0_1; }
 	}
 
+	public class CreateIndexStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CreateIndexStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cUniqueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cUniqueUniqueKeyword_1_0 = (Keyword)cUniqueAssignment_1.eContents().get(0);
+		private final Keyword cIndexKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cOnKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cTableAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cTableTableDefinitionCrossReference_5_0 = (CrossReference)cTableAssignment_5.eContents().get(0);
+		private final RuleCall cTableTableDefinitionIDTerminalRuleCall_5_0_1 = (RuleCall)cTableTableDefinitionCrossReference_5_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cColumnsAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cColumnsIndexedColumnParserRuleCall_7_0 = (RuleCall)cColumnsAssignment_7.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cCommaKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cColumnsAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cColumnsIndexedColumnParserRuleCall_8_1_0 = (RuleCall)cColumnsAssignment_8_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//CreateIndexStatement:
+		//	"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
+		//	columns+=IndexedColumn)* ")";
+		public ParserRule getRule() { return rule; }
+
+		//"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
+		//columns+=IndexedColumn)* ")"
+		public Group getGroup() { return cGroup; }
+
+		//"create"
+		public Keyword getCreateKeyword_0() { return cCreateKeyword_0; }
+
+		//unique?="unique"?
+		public Assignment getUniqueAssignment_1() { return cUniqueAssignment_1; }
+
+		//"unique"
+		public Keyword getUniqueUniqueKeyword_1_0() { return cUniqueUniqueKeyword_1_0; }
+
+		//"index"
+		public Keyword getIndexKeyword_2() { return cIndexKeyword_2; }
+
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+
+		//"on"
+		public Keyword getOnKeyword_4() { return cOnKeyword_4; }
+
+		//table=[TableDefinition]
+		public Assignment getTableAssignment_5() { return cTableAssignment_5; }
+
+		//[TableDefinition]
+		public CrossReference getTableTableDefinitionCrossReference_5_0() { return cTableTableDefinitionCrossReference_5_0; }
+
+		//ID
+		public RuleCall getTableTableDefinitionIDTerminalRuleCall_5_0_1() { return cTableTableDefinitionIDTerminalRuleCall_5_0_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
+
+		//columns+=IndexedColumn
+		public Assignment getColumnsAssignment_7() { return cColumnsAssignment_7; }
+
+		//IndexedColumn
+		public RuleCall getColumnsIndexedColumnParserRuleCall_7_0() { return cColumnsIndexedColumnParserRuleCall_7_0; }
+
+		//("," columns+=IndexedColumn)*
+		public Group getGroup_8() { return cGroup_8; }
+
+		//","
+		public Keyword getCommaKeyword_8_0() { return cCommaKeyword_8_0; }
+
+		//columns+=IndexedColumn
+		public Assignment getColumnsAssignment_8_1() { return cColumnsAssignment_8_1; }
+
+		//IndexedColumn
+		public RuleCall getColumnsIndexedColumnParserRuleCall_8_1_0() { return cColumnsIndexedColumnParserRuleCall_8_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
+	}
+
+	public class DropIndexStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DropIndexStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDropKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cIndexKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIfExistsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cIfExistsIfExistsKeyword_2_0 = (Keyword)cIfExistsAssignment_2.eContents().get(0);
+		private final Assignment cIndexAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cIndexCreateIndexStatementCrossReference_3_0 = (CrossReference)cIndexAssignment_3.eContents().get(0);
+		private final RuleCall cIndexCreateIndexStatementIDTerminalRuleCall_3_0_1 = (RuleCall)cIndexCreateIndexStatementCrossReference_3_0.eContents().get(1);
+		
+		//DropIndexStatement:
+		//	"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement];
+		public ParserRule getRule() { return rule; }
+
+		//"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement]
+		public Group getGroup() { return cGroup; }
+
+		//"drop"
+		public Keyword getDropKeyword_0() { return cDropKeyword_0; }
+
+		//"index"
+		public Keyword getIndexKeyword_1() { return cIndexKeyword_1; }
+
+		//ifExists?="if exists"?
+		public Assignment getIfExistsAssignment_2() { return cIfExistsAssignment_2; }
+
+		//"if exists"
+		public Keyword getIfExistsIfExistsKeyword_2_0() { return cIfExistsIfExistsKeyword_2_0; }
+
+		//index=[CreateIndexStatement]
+		public Assignment getIndexAssignment_3() { return cIndexAssignment_3; }
+
+		//[CreateIndexStatement]
+		public CrossReference getIndexCreateIndexStatementCrossReference_3_0() { return cIndexCreateIndexStatementCrossReference_3_0; }
+
+		//ID
+		public RuleCall getIndexCreateIndexStatementIDTerminalRuleCall_3_0_1() { return cIndexCreateIndexStatementIDTerminalRuleCall_3_0_1; }
+	}
+
 	public class ColumnDefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ColumnDef");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -3078,17 +3212,21 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cColumnReferenceAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cColumnReferenceColumnDefCrossReference_0_0 = (CrossReference)cColumnReferenceAssignment_0.eContents().get(0);
 		private final RuleCall cColumnReferenceColumnDefIDTerminalRuleCall_0_0_1 = (RuleCall)cColumnReferenceColumnDefCrossReference_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cAscAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final Keyword cAscAscKeyword_1_0_0 = (Keyword)cAscAssignment_1_0.eContents().get(0);
-		private final Assignment cDescAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final Keyword cDescDescKeyword_1_1_0 = (Keyword)cDescAssignment_1_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCollateKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cCollationNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cCollationNameIDTerminalRuleCall_1_1_0 = (RuleCall)cCollationNameAssignment_1_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cAscAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final Keyword cAscAscKeyword_2_0_0 = (Keyword)cAscAssignment_2_0.eContents().get(0);
+		private final Assignment cDescAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final Keyword cDescDescKeyword_2_1_0 = (Keyword)cDescAssignment_2_1.eContents().get(0);
 		
 		//IndexedColumn:
-		//	columnReference=[ColumnDef] (asc?="asc" | desc?="desc")?;
+		//	columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?;
 		public ParserRule getRule() { return rule; }
 
-		//columnReference=[ColumnDef] (asc?="asc" | desc?="desc")?
+		//columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?
 		public Group getGroup() { return cGroup; }
 
 		//columnReference=[ColumnDef]
@@ -3100,20 +3238,32 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getColumnReferenceColumnDefIDTerminalRuleCall_0_0_1() { return cColumnReferenceColumnDefIDTerminalRuleCall_0_0_1; }
 
+		//("collate" collationName=ID)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"collate"
+		public Keyword getCollateKeyword_1_0() { return cCollateKeyword_1_0; }
+
+		//collationName=ID
+		public Assignment getCollationNameAssignment_1_1() { return cCollationNameAssignment_1_1; }
+
+		//ID
+		public RuleCall getCollationNameIDTerminalRuleCall_1_1_0() { return cCollationNameIDTerminalRuleCall_1_1_0; }
+
 		//(asc?="asc" | desc?="desc")?
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//asc?="asc"
-		public Assignment getAscAssignment_1_0() { return cAscAssignment_1_0; }
+		public Assignment getAscAssignment_2_0() { return cAscAssignment_2_0; }
 
 		//"asc"
-		public Keyword getAscAscKeyword_1_0_0() { return cAscAscKeyword_1_0_0; }
+		public Keyword getAscAscKeyword_2_0_0() { return cAscAscKeyword_2_0_0; }
 
 		//desc?="desc"
-		public Assignment getDescAssignment_1_1() { return cDescAssignment_1_1; }
+		public Assignment getDescAssignment_2_1() { return cDescAssignment_2_1; }
 
 		//"desc"
-		public Keyword getDescDescKeyword_1_1_0() { return cDescDescKeyword_1_1_0; }
+		public Keyword getDescDescKeyword_2_1_0() { return cDescDescKeyword_2_1_0; }
 	}
 
 	public class DefaultValueElements extends AbstractParserRuleElementFinder {
@@ -3890,6 +4040,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	private DropTableStatementElements pDropTableStatement;
 	private DropTriggerStatementElements pDropTriggerStatement;
 	private DropViewStatementElements pDropViewStatement;
+	private CreateIndexStatementElements pCreateIndexStatement;
+	private DropIndexStatementElements pDropIndexStatement;
 	private ColumnDefElements pColumnDef;
 	private ColumnConstraintElements pColumnConstraint;
 	private TableConstraintElements pTableConstraint;
@@ -4366,8 +4518,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// * DDL                                                                 *
 	// *                                                                     *
 	// *********************************************************************** / DDLStatement:
-	//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | AlterTableRenameStatement |
-	//	AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement;
+	//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement
+	//	| AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement;
 	public DDLStatementElements getDDLStatementAccess() {
 		return (pDDLStatement != null) ? pDDLStatement : (pDDLStatement = new DDLStatementElements());
 	}
@@ -4460,6 +4612,27 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getDropViewStatementAccess().getRule();
 	}
 
+	//CreateIndexStatement:
+	//	"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
+	//	columns+=IndexedColumn)* ")";
+	public CreateIndexStatementElements getCreateIndexStatementAccess() {
+		return (pCreateIndexStatement != null) ? pCreateIndexStatement : (pCreateIndexStatement = new CreateIndexStatementElements());
+	}
+	
+	public ParserRule getCreateIndexStatementRule() {
+		return getCreateIndexStatementAccess().getRule();
+	}
+
+	//DropIndexStatement:
+	//	"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement];
+	public DropIndexStatementElements getDropIndexStatementAccess() {
+		return (pDropIndexStatement != null) ? pDropIndexStatement : (pDropIndexStatement = new DropIndexStatementElements());
+	}
+	
+	public ParserRule getDropIndexStatementRule() {
+		return getDropIndexStatementAccess().getRule();
+	}
+
 	//ColumnDef returns ColumnSource:
 	//	{ColumnDef} name=ID type=ColumnType constraints+=ColumnConstraint*;
 	public ColumnDefElements getColumnDefAccess() {
@@ -4525,7 +4698,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IndexedColumn:
-	//	columnReference=[ColumnDef] (asc?="asc" | desc?="desc")?;
+	//	columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?;
 	public IndexedColumnElements getIndexedColumnAccess() {
 		return (pIndexedColumn != null) ? pIndexedColumn : (pIndexedColumn = new IndexedColumnElements());
 	}

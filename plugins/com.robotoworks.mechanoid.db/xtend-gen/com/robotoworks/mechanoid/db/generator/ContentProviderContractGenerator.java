@@ -329,6 +329,34 @@ public class ContentProviderContractGenerator {
     _builder.append(_pascalize_9, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("* <p>Delete all rows from all tables</p>");
+    _builder.newLine();
+    _builder.append("\t ");
+    _builder.append("*/\t\t\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static void deleteAll() {");
+    _builder.newLine();
+    {
+      Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
+      for(final CreateTableStatement tbl_3 : _tables_3) {
+        _builder.append("\t\t");
+        String _name_13 = tbl_3.getName();
+        String _pascalize_10 = Strings.pascalize(_name_13);
+        _builder.append(_pascalize_10, "		");
+        _builder.append(".delete();");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
@@ -688,8 +716,12 @@ public class ContentProviderContractGenerator {
     _builder.append("public static int delete() {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);");
-    _builder.newLine();
+    _builder.append("return Mechanoid.getContentResolver().delete(");
+    String _name_14 = stmt.getName();
+    String _pascalize_6 = Strings.pascalize(_name_14);
+    _builder.append(_pascalize_6, "		");
+    _builder.append(".CONTENT_URI, null, null);");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -699,8 +731,12 @@ public class ContentProviderContractGenerator {
     _builder.append("public static int delete(String where, String[] selectionArgs) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);");
-    _builder.newLine();
+    _builder.append("return Mechanoid.getContentResolver().delete(");
+    String _name_15 = stmt.getName();
+    String _pascalize_7 = Strings.pascalize(_name_15);
+    _builder.append(_pascalize_7, "		");
+    _builder.append(".CONTENT_URI, where, selectionArgs);");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -711,9 +747,9 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Create a new Builder for ");
-    String _name_14 = stmt.getName();
-    String _pascalize_6 = Strings.pascalize(_name_14);
-    _builder.append(_pascalize_6, "	 ");
+    String _name_16 = stmt.getName();
+    String _pascalize_8 = Strings.pascalize(_name_16);
+    _builder.append(_pascalize_8, "	 ");
     _builder.append("</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t ");
@@ -735,9 +771,9 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Build and execute insert or update statements for ");
-    String _name_15 = stmt.getName();
-    String _pascalize_7 = Strings.pascalize(_name_15);
-    _builder.append(_pascalize_7, "	 ");
+    String _name_17 = stmt.getName();
+    String _pascalize_9 = Strings.pascalize(_name_17);
+    _builder.append(_pascalize_9, "	 ");
     _builder.append(".</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t ");
@@ -745,9 +781,9 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     _builder.append("\t ");
     _builder.append("* <p>Use {@link ");
-    String _name_16 = stmt.getName();
-    String _pascalize_8 = Strings.pascalize(_name_16);
-    _builder.append(_pascalize_8, "	 ");
+    String _name_18 = stmt.getName();
+    String _pascalize_10 = Strings.pascalize(_name_18);
+    _builder.append(_pascalize_10, "	 ");
     _builder.append("#newBuilder()} to create new builder</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t ");
@@ -760,8 +796,12 @@ public class ContentProviderContractGenerator {
     _builder.append("private Builder() {");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("super(Mechanoid.getApplicationContext(), CONTENT_URI);");
-    _builder.newLine();
+    _builder.append("super(Mechanoid.getApplicationContext(), ");
+    String _name_19 = stmt.getName();
+    String _pascalize_11 = Strings.pascalize(_name_19);
+    _builder.append(_pascalize_11, "			");
+    _builder.append(".CONTENT_URI);");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("}");
     _builder.newLine();
@@ -793,9 +833,9 @@ public class ContentProviderContractGenerator {
       for(final CreateViewStatement ref : _allViewsReferencingTable) {
         _builder.append("\t\t");
         _builder.append("viewUris.add(");
-        String _name_17 = ref.getName();
-        String _pascalize_9 = Strings.pascalize(_name_17);
-        _builder.append(_pascalize_9, "		");
+        String _name_20 = ref.getName();
+        String _pascalize_12 = Strings.pascalize(_name_20);
+        _builder.append(_pascalize_12, "		");
         _builder.append(".CONTENT_URI);");
         _builder.newLineIfNotEmpty();
       }

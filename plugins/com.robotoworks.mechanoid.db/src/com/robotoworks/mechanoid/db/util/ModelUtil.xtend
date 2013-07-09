@@ -28,6 +28,9 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.util.Strings
 import org.eclipse.xtext.xbase.lib.Functions
+import java.util.LinkedList
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement
 
 class ModelUtil {
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType) {
@@ -279,5 +282,87 @@ class ModelUtil {
 		return getViewResultColumns(stmt).exists([
 			!Strings::isEmpty(it.getName()) && it.getName().equals("_id")
 		]);
+	}
+	
+	/*
+	 * Find column definitions from caller going back to the definition
+	 */
+	def static findColumnDefs(DDLStatement caller, TableDefinition definition) {
+		
+		val columns = new ArrayList<EObject>()
+
+		var tableHistory = definition.history
+
+		var last = tableHistory.peekLast
+
+		if(last instanceof CreateViewStatement) {
+			var view = last as CreateViewStatement
+			columns.addAll(view.viewResultColumns)
+			return columns
+		}
+
+		// Columns directly declared in the create table statement
+		columns.addAll((last as CreateTableStatement).columnDefs)
+
+		// Every table rename and columns associated to that
+		while(!tableHistory.empty) {
+			val stmt = tableHistory.removeLast
+			
+			findStatementsOfTypeBetween(typeof(AlterTableAddColumnStatement), stmt, caller)
+				.filter([it.table == stmt]).forEach([
+					columns.add(it.columnDef)
+				])
+		}
+		
+		return columns
+	}
+	
+	def static getHistory(TableDefinition ref) {
+		var refs = new LinkedList<TableDefinition>()
+		
+		var current = ref
+		
+		while(current instanceof AlterTableRenameStatement) {
+			refs.add(current)
+			current = (current as AlterTableRenameStatement).table
+		}
+		
+		refs.add(current)
+		
+		return refs
+	}
+	
+	def static ArrayList<EObject> getAllReferenceableColumns(SelectCoreExpression expr) {
+		val ArrayList<EObject> items = Lists::newArrayList()
+		
+		if(expr instanceof SelectCore) {
+			items.addAll(getAllReferenceableColumns((expr as SelectCore).left))
+			items.addAll(getAllReferenceableColumns((expr as SelectCore).right))
+		} else if (expr instanceof SelectExpression) {
+			items.addAll((expr as SelectExpression).getAllReferenceableColumns(true))
+		}
+		
+		return items
+	}
+	
+	def static getAllReferenceableColumns(SelectExpression expr, boolean includeAliases) {
+		val ArrayList<EObject> items = Lists::newArrayList()
+		
+		if(expr.selectList != null && includeAliases) {
+			items.addAll(expr.selectList.resultColumns.filter([it.name != null]))
+		}
+		
+		expr.findAllSingleSources.filter([item|
+			if(item instanceof SingleSourceTable) {
+				return (item as SingleSourceTable).name == null
+			}
+			return false
+		]).forEach([item|
+			var source = item as SingleSourceTable
+			
+			items.addAll(findColumnDefs(item.getAncestorOfType(typeof(DDLStatement)), source.tableReference))
+		])
+		
+		return items
 	}
 }
