@@ -209,11 +209,13 @@ DDLStatement:
 	CreateTableStatement
 	| CreateViewStatement
 	| CreateTriggerStatement
+	| CreateIndexStatement
 	| AlterTableRenameStatement
 	| AlterTableAddColumnStatement
 	| DropTableStatement
 	| DropTriggerStatement
 	| DropViewStatement
+	| DropIndexStatement
 ;
 
 CreateTableStatement returns TableDefinition: 
@@ -249,6 +251,15 @@ DropTriggerStatement:
 
 DropViewStatement: 
 	'drop' 'view' ifExists?=('if exists')? view=[CreateViewStatement|ID];
+	
+CreateIndexStatement:
+	'create' unique?=('unique')? 'index' name=ID 'on' table=[TableDefinition|ID]
+	'(' columns+=IndexedColumn (',' columns+=IndexedColumn)* ')'
+;
+
+DropIndexStatement: 
+	'drop' 'index' ifExists?=('if exists')? index=[CreateIndexStatement|ID];
+	
 
 ColumnDef returns ColumnSource:
 	{ColumnDef}
@@ -278,7 +289,7 @@ CheckTableConstraint:
 ;
 
 IndexedColumn:
-	columnReference=[ColumnDef] (asc?='asc'|desc?='desc')?;
+	columnReference=[ColumnDef] ('collate' collationName=ID)? (asc?='asc'|desc?='desc')?;
 
 DefaultValue:
 	{LiteralDefaultValue} literal=LiteralValue |

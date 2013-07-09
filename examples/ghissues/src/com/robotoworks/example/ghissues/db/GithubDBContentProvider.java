@@ -9,5 +9,12 @@
 package com.robotoworks.example.ghissues.db;
 
 import com.robotoworks.example.ghissues.db.AbstractGithubDBContentProvider;
+import com.robotoworks.mechanoid.db.ContentProviderActions;
 
-public class GithubDBContentProvider extends AbstractGithubDBContentProvider {}
+public class GithubDBContentProvider extends AbstractGithubDBContentProvider {
+	@Override
+	protected ContentProviderActions createIssuesActions() {
+		// TODO Auto-generated method stub
+		return super.createIssuesActions();
+	}
+}

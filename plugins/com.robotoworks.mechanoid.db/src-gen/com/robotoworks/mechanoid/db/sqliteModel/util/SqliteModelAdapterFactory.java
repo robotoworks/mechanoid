@@ -230,6 +230,16 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createDropViewStatementAdapter();
       }
       @Override
+      public Adapter caseCreateIndexStatement(CreateIndexStatement object)
+      {
+        return createCreateIndexStatementAdapter();
+      }
+      @Override
+      public Adapter caseDropIndexStatement(DropIndexStatement object)
+      {
+        return createDropIndexStatementAdapter();
+      }
+      @Override
       public Adapter caseColumnConstraint(ColumnConstraint object)
       {
         return createColumnConstraintAdapter();
@@ -992,6 +1002,36 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDropViewStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement <em>Create Index Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
+   * @generated
+   */
+  public Adapter createCreateIndexStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement <em>Drop Index Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement
+   * @generated
+   */
+  public Adapter createDropIndexStatementAdapter()
   {
     return null;
   }

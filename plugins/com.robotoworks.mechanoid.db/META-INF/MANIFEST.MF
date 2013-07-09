@@ -8,7 +8,13 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.xbase;bundle-version="2.4.2";resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;bundle-version="2.4.2";resolution:=optional,
  org.eclipse.emf.mwe2.launch;bundle-version="2.4.0";resolution:=optional,
- com.robotoworks.mechanoid
+ com.robotoworks.mechanoid,
+ org.eclipse.xtext,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.db,
  com.robotoworks.mechanoid.db.formatting,
@@ -24,4 +30,6 @@ Export-Package: com.robotoworks.mechanoid.db,
  com.robotoworks.mechanoid.db.sqliteModel.util,
  com.robotoworks.mechanoid.db.util,
  com.robotoworks.mechanoid.db.validation
-
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j;version="1.2.15",
+ org.eclipse.xtext.xbase.lib

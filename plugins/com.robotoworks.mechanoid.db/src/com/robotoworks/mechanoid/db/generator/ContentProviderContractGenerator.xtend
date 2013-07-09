@@ -107,6 +107,15 @@ class ContentProviderContractGenerator {
 				
 				«generateContractItemsForActions(model, snapshot)»
 				private «model.database.name.pascalize»Contract(){}
+				
+				/**
+				 * <p>Delete all rows from all tables</p>
+				 */						
+				public static void deleteAll() {
+					«FOR tbl : snapshot.tables»
+					«tbl.name.pascalize».delete();
+					«ENDFOR»
+				}
 			}
 			'''
 	}
@@ -219,11 +228,11 @@ class ContentProviderContractGenerator {
 			«ENDFOR»
 			«ENDIF»
 			public static int delete() {
-				return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+				return Mechanoid.getContentResolver().delete(«stmt.name.pascalize».CONTENT_URI, null, null);
 			}
 			
 			public static int delete(String where, String[] selectionArgs) {
-				return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+				return Mechanoid.getContentResolver().delete(«stmt.name.pascalize».CONTENT_URI, where, selectionArgs);
 			}
 			
 			/**
@@ -240,7 +249,7 @@ class ContentProviderContractGenerator {
 			 */
 			public static class Builder extends AbstractValuesBuilder {
 				private Builder() {
-					super(Mechanoid.getApplicationContext(), CONTENT_URI);
+					super(Mechanoid.getApplicationContext(), «stmt.name.pascalize».CONTENT_URI);
 				}
 				
 				«generateBuilderSetters(stmt)»

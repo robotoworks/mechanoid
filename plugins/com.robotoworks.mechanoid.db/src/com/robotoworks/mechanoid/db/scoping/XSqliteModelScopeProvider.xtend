@@ -2,8 +2,6 @@ package com.robotoworks.mechanoid.db.scoping
 
 import com.google.common.collect.Lists
 import com.robotoworks.mechanoid.db.naming.NameHelper
-import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement
-import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement
@@ -16,17 +14,16 @@ import com.robotoworks.mechanoid.db.sqliteModel.OldColumn
 import com.robotoworks.mechanoid.db.sqliteModel.OrderingTermList
 import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCore
-import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression
 import com.robotoworks.mechanoid.db.sqliteModel.SelectExpression
 import com.robotoworks.mechanoid.db.sqliteModel.SelectList
 import com.robotoworks.mechanoid.db.sqliteModel.SelectSource
 import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition
+import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement
 import java.util.ArrayList
 import java.util.HashMap
-import java.util.LinkedList
 import javax.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
@@ -35,8 +32,6 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
-import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression
-import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -239,87 +234,5 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		}
 		
 		return IScope::NULLSCOPE
-	}
-		
-	def ArrayList<EObject> getAllReferenceableColumns(SelectCoreExpression expr) {
-		val ArrayList<EObject> items = Lists::newArrayList()
-		
-		if(expr instanceof SelectCore) {
-			items.addAll(getAllReferenceableColumns((expr as SelectCore).left))
-			items.addAll(getAllReferenceableColumns((expr as SelectCore).right))
-		} else if (expr instanceof SelectExpression) {
-			items.addAll((expr as SelectExpression).getAllReferenceableColumns(true))
-		}
-		
-		return items
-	}
-	
-	def getAllReferenceableColumns(SelectExpression expr, boolean includeAliases) {
-		val ArrayList<EObject> items = Lists::newArrayList()
-		
-		if(expr.selectList != null && includeAliases) {
-			items.addAll(expr.selectList.resultColumns.filter([it.name != null]))
-		}
-		
-		expr.findAllSingleSources.filter([item|
-			if(item instanceof SingleSourceTable) {
-				return (item as SingleSourceTable).name == null
-			}
-			return false
-		]).forEach([item|
-			var source = item as SingleSourceTable
-			
-			items.addAll(findColumnDefs(item.getAncestorOfType(typeof(DDLStatement)), source.tableReference))
-		])
-		
-		return items
-	}
-	
-	/*
-	 * Find column definitions from caller going back to the definition
-	 */
-	def findColumnDefs(DDLStatement caller, TableDefinition definition) {
-		
-		val columns = new ArrayList<EObject>()
-
-		var tableHistory = definition.history
-
-		var last = tableHistory.peekLast
-
-		if(last instanceof CreateViewStatement) {
-			var view = last as CreateViewStatement
-			columns.addAll(view.viewResultColumns)
-			return columns
-		}
-
-		// Columns directly declared in the create table statement
-		columns.addAll((last as CreateTableStatement).columnDefs)
-
-		// Every table rename and columns associated to that
-		while(!tableHistory.empty) {
-			val stmt = tableHistory.removeLast
-			
-			findStatementsOfTypeBetween(typeof(AlterTableAddColumnStatement), stmt, caller)
-				.filter([it.table == stmt]).forEach([
-					columns.add(it.columnDef)
-				])
-		}
-		
-		return columns
-	}
-	
-	def getHistory(TableDefinition ref) {
-		var refs = new LinkedList<TableDefinition>()
-		
-		var current = ref
-		
-		while(current instanceof AlterTableRenameStatement) {
-			refs.add(current)
-			current = (current as AlterTableRenameStatement).table
-		}
-		
-		refs.add(current)
-		
-		return refs
 	}
 }

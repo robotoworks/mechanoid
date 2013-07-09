@@ -3479,51 +3479,71 @@ ruleDDLStatement returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableRenameStatementParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getCreateIndexStatementParserRuleCall_3()); 
     }
-    this_AlterTableRenameStatement_3=ruleAlterTableRenameStatement
+    this_CreateIndexStatement_3=ruleCreateIndexStatement
     { 
-        $current = $this_AlterTableRenameStatement_3.current; 
+        $current = $this_CreateIndexStatement_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableAddColumnStatementParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableRenameStatementParserRuleCall_4()); 
     }
-    this_AlterTableAddColumnStatement_4=ruleAlterTableAddColumnStatement
+    this_AlterTableRenameStatement_4=ruleAlterTableRenameStatement
     { 
-        $current = $this_AlterTableAddColumnStatement_4.current; 
+        $current = $this_AlterTableRenameStatement_4.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTableStatementParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getAlterTableAddColumnStatementParserRuleCall_5()); 
     }
-    this_DropTableStatement_5=ruleDropTableStatement
+    this_AlterTableAddColumnStatement_5=ruleAlterTableAddColumnStatement
     { 
-        $current = $this_DropTableStatement_5.current; 
+        $current = $this_AlterTableAddColumnStatement_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTriggerStatementParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTableStatementParserRuleCall_6()); 
     }
-    this_DropTriggerStatement_6=ruleDropTriggerStatement
+    this_DropTableStatement_6=ruleDropTableStatement
     { 
-        $current = $this_DropTriggerStatement_6.current; 
+        $current = $this_DropTableStatement_6.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropViewStatementParserRuleCall_7()); 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropTriggerStatementParserRuleCall_7()); 
     }
-    this_DropViewStatement_7=ruleDropViewStatement
+    this_DropTriggerStatement_7=ruleDropTriggerStatement
     { 
-        $current = $this_DropViewStatement_7.current; 
+        $current = $this_DropTriggerStatement_7.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropViewStatementParserRuleCall_8()); 
+    }
+    this_DropViewStatement_8=ruleDropViewStatement
+    { 
+        $current = $this_DropViewStatement_8.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getDDLStatementAccess().getDropIndexStatementParserRuleCall_9()); 
+    }
+    this_DropIndexStatement_9=ruleDropIndexStatement
+    { 
+        $current = $this_DropIndexStatement_9.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -4322,6 +4342,190 @@ ruleDropViewStatement returns [EObject current=null]
 
 
 
+// Entry rule entryRuleCreateIndexStatement
+entryRuleCreateIndexStatement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCreateIndexStatementRule()); }
+	 iv_ruleCreateIndexStatement=ruleCreateIndexStatement 
+	 { $current=$iv_ruleCreateIndexStatement.current; } 
+	 EOF 
+;
+
+// Rule CreateIndexStatement
+ruleCreateIndexStatement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='create' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCreateIndexStatementAccess().getCreateKeyword_0());
+    }
+(
+(
+		lv_unique_1_0=	'unique' 
+    {
+        newLeafNode(lv_unique_1_0, grammarAccess.getCreateIndexStatementAccess().getUniqueUniqueKeyword_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCreateIndexStatementRule());
+	        }
+       		setWithLastConsumed($current, "unique", true, "unique");
+	    }
+
+)
+)?	otherlv_2='index' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCreateIndexStatementAccess().getIndexKeyword_2());
+    }
+(
+(
+		lv_name_3_0=RULE_ID
+		{
+			newLeafNode(lv_name_3_0, grammarAccess.getCreateIndexStatementAccess().getNameIDTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCreateIndexStatementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_3_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_4='on' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCreateIndexStatementAccess().getOnKeyword_4());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCreateIndexStatementRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getCreateIndexStatementAccess().getTableTableDefinitionCrossReference_5_0()); 
+	}
+
+)
+)	otherlv_6='(' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getCreateIndexStatementAccess().getLeftParenthesisKeyword_6());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCreateIndexStatementAccess().getColumnsIndexedColumnParserRuleCall_7_0()); 
+	    }
+		lv_columns_7_0=ruleIndexedColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCreateIndexStatementRule());
+	        }
+       		add(
+       			$current, 
+       			"columns",
+        		lv_columns_7_0, 
+        		"IndexedColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_8=',' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getCreateIndexStatementAccess().getCommaKeyword_8_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCreateIndexStatementAccess().getColumnsIndexedColumnParserRuleCall_8_1_0()); 
+	    }
+		lv_columns_9_0=ruleIndexedColumn		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCreateIndexStatementRule());
+	        }
+       		add(
+       			$current, 
+       			"columns",
+        		lv_columns_9_0, 
+        		"IndexedColumn");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_10=')' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getCreateIndexStatementAccess().getRightParenthesisKeyword_9());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDropIndexStatement
+entryRuleDropIndexStatement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDropIndexStatementRule()); }
+	 iv_ruleDropIndexStatement=ruleDropIndexStatement 
+	 { $current=$iv_ruleDropIndexStatement.current; } 
+	 EOF 
+;
+
+// Rule DropIndexStatement
+ruleDropIndexStatement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='drop' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getDropIndexStatementAccess().getDropKeyword_0());
+    }
+	otherlv_1='index' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDropIndexStatementAccess().getIndexKeyword_1());
+    }
+(
+(
+		lv_ifExists_2_0=	'if exists' 
+    {
+        newLeafNode(lv_ifExists_2_0, grammarAccess.getDropIndexStatementAccess().getIfExistsIfExistsKeyword_2_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDropIndexStatementRule());
+	        }
+       		setWithLastConsumed($current, "ifExists", true, "if exists");
+	    }
+
+)
+)?(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDropIndexStatementRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getDropIndexStatementAccess().getIndexCreateIndexStatementCrossReference_3_0()); 
+	}
+
+)
+))
+;
+
+
+
+
+
 // Entry rule entryRuleColumnDef
 entryRuleColumnDef returns [EObject current=null] 
 	:
@@ -4943,11 +5147,33 @@ ruleIndexedColumn returns [EObject current=null]
 	}
 
 )
-)((
-(
-		lv_asc_1_0=	'asc' 
+)(	otherlv_1='collate' 
     {
-        newLeafNode(lv_asc_1_0, grammarAccess.getIndexedColumnAccess().getAscAscKeyword_1_0_0());
+    	newLeafNode(otherlv_1, grammarAccess.getIndexedColumnAccess().getCollateKeyword_1_0());
+    }
+(
+(
+		lv_collationName_2_0=RULE_ID
+		{
+			newLeafNode(lv_collationName_2_0, grammarAccess.getIndexedColumnAccess().getCollationNameIDTerminalRuleCall_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getIndexedColumnRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"collationName",
+        		lv_collationName_2_0, 
+        		"ID");
+	    }
+
+)
+))?((
+(
+		lv_asc_3_0=	'asc' 
+    {
+        newLeafNode(lv_asc_3_0, grammarAccess.getIndexedColumnAccess().getAscAscKeyword_2_0_0());
     }
  
 	    {
@@ -4961,9 +5187,9 @@ ruleIndexedColumn returns [EObject current=null]
 )
     |(
 (
-		lv_desc_2_0=	'desc' 
+		lv_desc_4_0=	'desc' 
     {
-        newLeafNode(lv_desc_2_0, grammarAccess.getIndexedColumnAccess().getDescDescKeyword_1_1_0());
+        newLeafNode(lv_desc_4_0, grammarAccess.getIndexedColumnAccess().getDescDescKeyword_2_1_0());
     }
  
 	    {
