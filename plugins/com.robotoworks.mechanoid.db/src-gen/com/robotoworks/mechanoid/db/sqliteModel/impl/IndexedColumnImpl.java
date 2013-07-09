@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#getColumnReference <em>Column Reference</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#getCollationName <em>Collation Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#isDesc <em>Desc</em>}</li>
  * </ul>
@@ -40,6 +41,26 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
    * @ordered
    */
   protected ColumnDef columnReference;
+
+  /**
+   * The default value of the '{@link #getCollationName() <em>Collation Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCollationName()
+   * @generated
+   * @ordered
+   */
+  protected static final String COLLATION_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCollationName() <em>Collation Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCollationName()
+   * @generated
+   * @ordered
+   */
+  protected String collationName = COLLATION_NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #isAsc() <em>Asc</em>}' attribute.
@@ -150,6 +171,29 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getCollationName()
+  {
+    return collationName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCollationName(String newCollationName)
+  {
+    String oldCollationName = collationName;
+    collationName = newCollationName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.INDEXED_COLUMN__COLLATION_NAME, oldCollationName, collationName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isAsc()
   {
     return asc;
@@ -204,6 +248,8 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
       case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
         if (resolve) return getColumnReference();
         return basicGetColumnReference();
+      case SqliteModelPackage.INDEXED_COLUMN__COLLATION_NAME:
+        return getCollationName();
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         return isAsc();
       case SqliteModelPackage.INDEXED_COLUMN__DESC:
@@ -224,6 +270,9 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
     {
       case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
         setColumnReference((ColumnDef)newValue);
+        return;
+      case SqliteModelPackage.INDEXED_COLUMN__COLLATION_NAME:
+        setCollationName((String)newValue);
         return;
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         setAsc((Boolean)newValue);
@@ -248,6 +297,9 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
       case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
         setColumnReference((ColumnDef)null);
         return;
+      case SqliteModelPackage.INDEXED_COLUMN__COLLATION_NAME:
+        setCollationName(COLLATION_NAME_EDEFAULT);
+        return;
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         setAsc(ASC_EDEFAULT);
         return;
@@ -270,6 +322,8 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
     {
       case SqliteModelPackage.INDEXED_COLUMN__COLUMN_REFERENCE:
         return columnReference != null;
+      case SqliteModelPackage.INDEXED_COLUMN__COLLATION_NAME:
+        return COLLATION_NAME_EDEFAULT == null ? collationName != null : !COLLATION_NAME_EDEFAULT.equals(collationName);
       case SqliteModelPackage.INDEXED_COLUMN__ASC:
         return asc != ASC_EDEFAULT;
       case SqliteModelPackage.INDEXED_COLUMN__DESC:
@@ -289,7 +343,9 @@ public class IndexedColumnImpl extends MinimalEObjectImpl.Container implements I
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (asc: ");
+    result.append(" (collationName: ");
+    result.append(collationName);
+    result.append(", asc: ");
     result.append(asc);
     result.append(", desc: ");
     result.append(desc);

@@ -14,17 +14,21 @@ import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression
 import com.robotoworks.mechanoid.db.util.ModelUtil
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
+import com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement
 
 class StatementSequenceValidator {
 	val tables = new HashSet<String>()
 	val views = new HashSet<String>()
 	val triggers = new HashSet<String>()
+	val indexes = new HashSet<String>()
 
 	def StatementSequenceValidatorResult validate(DatabaseBlock db) {
 		
 		tables.clear
 		views.clear
 		triggers.clear
+		indexes.clear
 
 		var result = new StatementSequenceValidatorResult()
 
@@ -47,16 +51,24 @@ class StatementSequenceValidator {
 		return result
 	}
 	
+	def nameExists(String name) {
+		return tables.contains(name) || 
+			views.contains(name) || 
+			triggers.contains(name) || 
+			indexes.contains(name)
+	}
+	
+	def sourceExists(String name) {
+		return tables.contains(name) || 
+			views.contains(name)
+	}
+	
 	def dispatch void validateStatement(StatementSequenceValidatorResult result, CreateTableStatement stmt) {
-		if(tables.contains(stmt.getName())) {
+		if(nameExists(stmt.getName())) {
 			result.valid = false
-			result.message = "Table exists, drop it or rename it first"
+			result.message = "Name conflict, use another name"
 			result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME
-		} else if(views.contains(stmt.getName())) {
-			result.valid = false
-			result.message = "A view exists with this name, drop it first"
-			result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME
-		}	
+		}
 	}
 	
 	def dispatch void validateStatement(StatementSequenceValidatorResult result, AlterTableRenameStatement stmt) {
@@ -65,9 +77,9 @@ class StatementSequenceValidator {
 			result.message = "No such table"
 			result.feature = SqliteModelPackage.Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE
 		}
-		else if(tables.contains(stmt.getName())) {
+		else if(nameExists(stmt.getName())) {
 			result.valid = false
-			result.message = "Table name conflict, use another name"
+			result.message = "Name conflict, use another name"
 			result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME
 		}
 	}
@@ -89,16 +101,12 @@ class StatementSequenceValidator {
 	}
 	
 	def dispatch void validateStatement(StatementSequenceValidatorResult result, CreateViewStatement stmt) {
-		if(views.contains(stmt)) {
+		if(nameExists(stmt.name)) {
 			result.valid = false
-			result.message = "View exists, drop it first"
+			result.message = "Name conflict, use another name"
 			result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME
 		}
-		else if(tables.contains(stmt.getName())) {
-			result.valid = false
-			result.message = "A table exists with this name, drop it first"
-			result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME
-		} else {
+		else {
 			validateTablesInExpression(result, stmt.selectStatement.core)
 		}		
 	}
@@ -110,23 +118,13 @@ class StatementSequenceValidator {
 			if(source instanceof SingleSourceTable) {
 				var table = source as SingleSourceTable;
 				
-				if(table.getTableReference() instanceof CreateViewStatement) {
-				    if(!views.contains(table.getTableReference().getName())) {
-				    	result.source = table
-						result.valid = false
-						result.message = "No such view"
-						result.feature = SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE
-				        return;
-				    }
-				} else {
-    				if(!tables.contains(table.getTableReference().getName())) {
-				    	result.source = table
-						result.valid = false
-						result.message = "No such table"
-						result.feature = SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE
-    					return;
-    				}
-				}
+			    if(!sourceExists(table.getTableReference().getName())) {
+			    	result.source = table
+					result.valid = false
+					result.message = "No such reference"
+					result.feature = SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE
+			        return;
+			    }
 			}
 		}
 	}
@@ -140,9 +138,9 @@ class StatementSequenceValidator {
 	}
 	
 	def dispatch void validateStatement(StatementSequenceValidatorResult result, CreateTriggerStatement stmt) {
-		if(triggers.contains(stmt.getName())) {
+		if(nameExists(stmt.getName())) {
 			result.valid = false
-			result.message = "Trigger exists, drop it first"
+			result.message = "Name conflict, use another name"
 			result.feature = SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__NAME
 		} else if(!tables.contains(stmt.getTable().getName())) {
 			result.valid = false
@@ -156,6 +154,26 @@ class StatementSequenceValidator {
 			result.valid = false
 			result.message = "No such trigger"
 			result.feature = SqliteModelPackage.Literals.DROP_TRIGGER_STATEMENT__TRIGGER
+		}	
+	}
+	
+	def dispatch void validateStatement(StatementSequenceValidatorResult result, CreateIndexStatement stmt) {
+		if(nameExists(stmt.getName())) {
+			result.valid = false
+			result.message = "Name conflict, use another name"
+			result.feature = SqliteModelPackage.Literals.CREATE_INDEX_STATEMENT__NAME
+		} else if(!tables.contains(stmt.getTable().getName())) {
+			result.valid = false
+			result.message = "No such table"
+			result.feature = SqliteModelPackage.Literals.CREATE_INDEX_STATEMENT__TABLE
+		}		
+	}
+	
+	def dispatch void validateStatement(StatementSequenceValidatorResult result, DropIndexStatement stmt) {
+		if(!indexes.contains(stmt.index.name)) {
+			result.valid = false
+			result.message = "No such index"
+			result.feature = SqliteModelPackage.Literals.DROP_INDEX_STATEMENT__INDEX
 		}	
 	}
 	
@@ -190,6 +208,14 @@ class StatementSequenceValidator {
 	
 	def dispatch void sequence(DropTriggerStatement stmt) {
 		triggers.remove(stmt.getTrigger().getName());
+	}
+	
+	def dispatch void sequence(CreateIndexStatement stmt) {
+		indexes.add(stmt.name)
+	}
+	
+	def dispatch void sequence(DropIndexStatement stmt) {
+		indexes.remove(stmt.index.name)
 	}
 	
 }

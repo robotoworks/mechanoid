@@ -19,6 +19,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -108,6 +109,10 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	}
 	public String image(Model e) {
 		return "package.gif";
+	}
+	
+	public String image(CreateIndexStatement e) {
+	    return "index.gif";
 	}
 	
 	public String image(ColumnDef e) {	

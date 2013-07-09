@@ -302,6 +302,24 @@ public interface SqliteModelFactory extends EFactory
   DropViewStatement createDropViewStatement();
 
   /**
+   * Returns a new object of class '<em>Create Index Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Create Index Statement</em>'.
+   * @generated
+   */
+  CreateIndexStatement createCreateIndexStatement();
+
+  /**
+   * Returns a new object of class '<em>Drop Index Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drop Index Statement</em>'.
+   * @generated
+   */
+  DropIndexStatement createDropIndexStatement();
+
+  /**
    * Returns a new object of class '<em>Column Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -22,6 +22,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.ConflictResolution;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -34,6 +35,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DefaultConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.DefaultValue;
 import com.robotoworks.mechanoid.db.sqliteModel.DeleteStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
@@ -328,6 +330,20 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass dropViewStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass createIndexStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dropIndexStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1657,6 +1673,86 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCreateIndexStatement()
+  {
+    return createIndexStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateIndexStatement_Unique()
+  {
+    return (EAttribute)createIndexStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCreateIndexStatement_Name()
+  {
+    return (EAttribute)createIndexStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateIndexStatement_Table()
+  {
+    return (EReference)createIndexStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCreateIndexStatement_Columns()
+  {
+    return (EReference)createIndexStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDropIndexStatement()
+  {
+    return dropIndexStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDropIndexStatement_IfExists()
+  {
+    return (EAttribute)dropIndexStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDropIndexStatement_Index()
+  {
+    return (EReference)dropIndexStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getColumnConstraint()
   {
     return columnConstraintEClass;
@@ -1787,7 +1883,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIndexedColumn_Asc()
+  public EAttribute getIndexedColumn_CollationName()
   {
     return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(1);
   }
@@ -1797,9 +1893,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIndexedColumn_Desc()
+  public EAttribute getIndexedColumn_Asc()
   {
     return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIndexedColumn_Desc()
+  {
+    return (EAttribute)indexedColumnEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3447,6 +3553,16 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(dropViewStatementEClass, DROP_VIEW_STATEMENT__IF_EXISTS);
     createEReference(dropViewStatementEClass, DROP_VIEW_STATEMENT__VIEW);
 
+    createIndexStatementEClass = createEClass(CREATE_INDEX_STATEMENT);
+    createEAttribute(createIndexStatementEClass, CREATE_INDEX_STATEMENT__UNIQUE);
+    createEAttribute(createIndexStatementEClass, CREATE_INDEX_STATEMENT__NAME);
+    createEReference(createIndexStatementEClass, CREATE_INDEX_STATEMENT__TABLE);
+    createEReference(createIndexStatementEClass, CREATE_INDEX_STATEMENT__COLUMNS);
+
+    dropIndexStatementEClass = createEClass(DROP_INDEX_STATEMENT);
+    createEAttribute(dropIndexStatementEClass, DROP_INDEX_STATEMENT__IF_EXISTS);
+    createEReference(dropIndexStatementEClass, DROP_INDEX_STATEMENT__INDEX);
+
     columnConstraintEClass = createEClass(COLUMN_CONSTRAINT);
 
     tableConstraintEClass = createEClass(TABLE_CONSTRAINT);
@@ -3465,6 +3581,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     indexedColumnEClass = createEClass(INDEXED_COLUMN);
     createEReference(indexedColumnEClass, INDEXED_COLUMN__COLUMN_REFERENCE);
+    createEAttribute(indexedColumnEClass, INDEXED_COLUMN__COLLATION_NAME);
     createEAttribute(indexedColumnEClass, INDEXED_COLUMN__ASC);
     createEAttribute(indexedColumnEClass, INDEXED_COLUMN__DESC);
 
@@ -3709,6 +3826,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     dropTableStatementEClass.getESuperTypes().add(this.getDDLStatement());
     dropTriggerStatementEClass.getESuperTypes().add(this.getDDLStatement());
     dropViewStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    createIndexStatementEClass.getESuperTypes().add(this.getDDLStatement());
+    dropIndexStatementEClass.getESuperTypes().add(this.getDDLStatement());
     uniqueTableConstraintEClass.getESuperTypes().add(this.getTableConstraint());
     primaryConstraintEClass.getESuperTypes().add(this.getTableConstraint());
     checkTableConstraintEClass.getESuperTypes().add(this.getTableConstraint());
@@ -3875,6 +3994,16 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getDropViewStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDropViewStatement_View(), this.getCreateViewStatement(), null, "view", null, 0, 1, DropViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(createIndexStatementEClass, CreateIndexStatement.class, "CreateIndexStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCreateIndexStatement_Unique(), ecorePackage.getEBoolean(), "unique", null, 0, 1, CreateIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCreateIndexStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CreateIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCreateIndexStatement_Table(), this.getTableDefinition(), null, "table", null, 0, 1, CreateIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCreateIndexStatement_Columns(), this.getIndexedColumn(), null, "columns", null, 0, -1, CreateIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dropIndexStatementEClass, DropIndexStatement.class, "DropIndexStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDropIndexStatement_IfExists(), ecorePackage.getEBoolean(), "ifExists", null, 0, 1, DropIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDropIndexStatement_Index(), this.getCreateIndexStatement(), null, "index", null, 0, 1, DropIndexStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(columnConstraintEClass, ColumnConstraint.class, "ColumnConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(tableConstraintEClass, TableConstraint.class, "TableConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3893,6 +4022,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(indexedColumnEClass, IndexedColumn.class, "IndexedColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIndexedColumn_ColumnReference(), this.getColumnDef(), null, "columnReference", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIndexedColumn_CollationName(), ecorePackage.getEString(), "collationName", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getIndexedColumn_Asc(), ecorePackage.getEBoolean(), "asc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getIndexedColumn_Desc(), ecorePackage.getEBoolean(), "desc", null, 0, 1, IndexedColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

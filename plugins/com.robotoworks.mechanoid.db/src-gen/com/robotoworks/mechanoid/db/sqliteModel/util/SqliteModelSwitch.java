@@ -298,6 +298,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.CREATE_INDEX_STATEMENT:
+      {
+        CreateIndexStatement createIndexStatement = (CreateIndexStatement)theEObject;
+        T result = caseCreateIndexStatement(createIndexStatement);
+        if (result == null) result = caseDDLStatement(createIndexStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SqliteModelPackage.DROP_INDEX_STATEMENT:
+      {
+        DropIndexStatement dropIndexStatement = (DropIndexStatement)theEObject;
+        T result = caseDropIndexStatement(dropIndexStatement);
+        if (result == null) result = caseDDLStatement(dropIndexStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.COLUMN_CONSTRAINT:
       {
         ColumnConstraint columnConstraint = (ColumnConstraint)theEObject;
@@ -1240,6 +1256,38 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDropViewStatement(DropViewStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Create Index Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Create Index Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCreateIndexStatement(CreateIndexStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Drop Index Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Drop Index Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDropIndexStatement(DropIndexStatement object)
   {
     return null;
   }

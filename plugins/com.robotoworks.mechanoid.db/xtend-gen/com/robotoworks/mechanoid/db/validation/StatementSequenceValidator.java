@@ -2,11 +2,13 @@ package com.robotoworks.mechanoid.db.validation;
 
 import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
@@ -48,10 +50,18 @@ public class StatementSequenceValidator {
     }
   }.apply();
   
+  private final HashSet<String> indexes = new Function0<HashSet<String>>() {
+    public HashSet<String> apply() {
+      HashSet<String> _hashSet = new HashSet<String>();
+      return _hashSet;
+    }
+  }.apply();
+  
   public StatementSequenceValidatorResult validate(final DatabaseBlock db) {
     this.tables.clear();
     this.views.clear();
     this.triggers.clear();
+    this.indexes.clear();
     StatementSequenceValidatorResult _statementSequenceValidatorResult = new StatementSequenceValidatorResult();
     StatementSequenceValidatorResult result = _statementSequenceValidatorResult;
     result.valid = true;
@@ -75,21 +85,51 @@ public class StatementSequenceValidator {
     return result;
   }
   
+  public boolean nameExists(final String name) {
+    boolean _or = false;
+    boolean _or_1 = false;
+    boolean _or_2 = false;
+    boolean _contains = this.tables.contains(name);
+    if (_contains) {
+      _or_2 = true;
+    } else {
+      boolean _contains_1 = this.views.contains(name);
+      _or_2 = (_contains || _contains_1);
+    }
+    if (_or_2) {
+      _or_1 = true;
+    } else {
+      boolean _contains_2 = this.triggers.contains(name);
+      _or_1 = (_or_2 || _contains_2);
+    }
+    if (_or_1) {
+      _or = true;
+    } else {
+      boolean _contains_3 = this.indexes.contains(name);
+      _or = (_or_1 || _contains_3);
+    }
+    return _or;
+  }
+  
+  public boolean sourceExists(final String name) {
+    boolean _or = false;
+    boolean _contains = this.tables.contains(name);
+    if (_contains) {
+      _or = true;
+    } else {
+      boolean _contains_1 = this.views.contains(name);
+      _or = (_contains || _contains_1);
+    }
+    return _or;
+  }
+  
   protected void _validateStatement(final StatementSequenceValidatorResult result, final CreateTableStatement stmt) {
     String _name = stmt.getName();
-    boolean _contains = this.tables.contains(_name);
-    if (_contains) {
+    boolean _nameExists = this.nameExists(_name);
+    if (_nameExists) {
       result.valid = false;
-      result.message = "Table exists, drop it or rename it first";
+      result.message = "Name conflict, use another name";
       result.feature = Literals.TABLE_DEFINITION__NAME;
-    } else {
-      String _name_1 = stmt.getName();
-      boolean _contains_1 = this.views.contains(_name_1);
-      if (_contains_1) {
-        result.valid = false;
-        result.message = "A view exists with this name, drop it first";
-        result.feature = Literals.TABLE_DEFINITION__NAME;
-      }
     }
   }
   
@@ -104,10 +144,10 @@ public class StatementSequenceValidator {
       result.feature = Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE;
     } else {
       String _name_1 = stmt.getName();
-      boolean _contains_1 = this.tables.contains(_name_1);
-      if (_contains_1) {
+      boolean _nameExists = this.nameExists(_name_1);
+      if (_nameExists) {
         result.valid = false;
-        result.message = "Table name conflict, use another name";
+        result.message = "Name conflict, use another name";
         result.feature = Literals.TABLE_DEFINITION__NAME;
       }
     }
@@ -138,23 +178,16 @@ public class StatementSequenceValidator {
   }
   
   protected void _validateStatement(final StatementSequenceValidatorResult result, final CreateViewStatement stmt) {
-    boolean _contains = this.views.contains(stmt);
-    if (_contains) {
+    String _name = stmt.getName();
+    boolean _nameExists = this.nameExists(_name);
+    if (_nameExists) {
       result.valid = false;
-      result.message = "View exists, drop it first";
+      result.message = "Name conflict, use another name";
       result.feature = Literals.TABLE_DEFINITION__NAME;
     } else {
-      String _name = stmt.getName();
-      boolean _contains_1 = this.tables.contains(_name);
-      if (_contains_1) {
-        result.valid = false;
-        result.message = "A table exists with this name, drop it first";
-        result.feature = Literals.TABLE_DEFINITION__NAME;
-      } else {
-        SelectStatement _selectStatement = stmt.getSelectStatement();
-        SelectCoreExpression _core = _selectStatement.getCore();
-        this.validateTablesInExpression(result, _core);
-      }
+      SelectStatement _selectStatement = stmt.getSelectStatement();
+      SelectCoreExpression _core = _selectStatement.getCore();
+      this.validateTablesInExpression(result, _core);
     }
   }
   
@@ -164,30 +197,15 @@ public class StatementSequenceValidator {
       if ((source instanceof SingleSourceTable)) {
         SingleSourceTable table = ((SingleSourceTable) source);
         TableDefinition _tableReference = table.getTableReference();
-        if ((_tableReference instanceof CreateViewStatement)) {
-          TableDefinition _tableReference_1 = table.getTableReference();
-          String _name = _tableReference_1.getName();
-          boolean _contains = this.views.contains(_name);
-          boolean _not = (!_contains);
-          if (_not) {
-            result.source = table;
-            result.valid = false;
-            result.message = "No such view";
-            result.feature = Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE;
-            return;
-          }
-        } else {
-          TableDefinition _tableReference_2 = table.getTableReference();
-          String _name_1 = _tableReference_2.getName();
-          boolean _contains_1 = this.tables.contains(_name_1);
-          boolean _not_1 = (!_contains_1);
-          if (_not_1) {
-            result.source = table;
-            result.valid = false;
-            result.message = "No such table";
-            result.feature = Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE;
-            return;
-          }
+        String _name = _tableReference.getName();
+        boolean _sourceExists = this.sourceExists(_name);
+        boolean _not = (!_sourceExists);
+        if (_not) {
+          result.source = table;
+          result.valid = false;
+          result.message = "No such reference";
+          result.feature = Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE;
+          return;
         }
       }
     }
@@ -207,16 +225,16 @@ public class StatementSequenceValidator {
   
   protected void _validateStatement(final StatementSequenceValidatorResult result, final CreateTriggerStatement stmt) {
     String _name = stmt.getName();
-    boolean _contains = this.triggers.contains(_name);
-    if (_contains) {
+    boolean _nameExists = this.nameExists(_name);
+    if (_nameExists) {
       result.valid = false;
-      result.message = "Trigger exists, drop it first";
+      result.message = "Name conflict, use another name";
       result.feature = Literals.CREATE_TRIGGER_STATEMENT__NAME;
     } else {
       TableDefinition _table = stmt.getTable();
       String _name_1 = _table.getName();
-      boolean _contains_1 = this.tables.contains(_name_1);
-      boolean _not = (!_contains_1);
+      boolean _contains = this.tables.contains(_name_1);
+      boolean _not = (!_contains);
       if (_not) {
         result.valid = false;
         result.message = "No such table";
@@ -234,6 +252,38 @@ public class StatementSequenceValidator {
       result.valid = false;
       result.message = "No such trigger";
       result.feature = Literals.DROP_TRIGGER_STATEMENT__TRIGGER;
+    }
+  }
+  
+  protected void _validateStatement(final StatementSequenceValidatorResult result, final CreateIndexStatement stmt) {
+    String _name = stmt.getName();
+    boolean _nameExists = this.nameExists(_name);
+    if (_nameExists) {
+      result.valid = false;
+      result.message = "Name conflict, use another name";
+      result.feature = Literals.CREATE_INDEX_STATEMENT__NAME;
+    } else {
+      TableDefinition _table = stmt.getTable();
+      String _name_1 = _table.getName();
+      boolean _contains = this.tables.contains(_name_1);
+      boolean _not = (!_contains);
+      if (_not) {
+        result.valid = false;
+        result.message = "No such table";
+        result.feature = Literals.CREATE_INDEX_STATEMENT__TABLE;
+      }
+    }
+  }
+  
+  protected void _validateStatement(final StatementSequenceValidatorResult result, final DropIndexStatement stmt) {
+    CreateIndexStatement _index = stmt.getIndex();
+    String _name = _index.getName();
+    boolean _contains = this.indexes.contains(_name);
+    boolean _not = (!_contains);
+    if (_not) {
+      result.valid = false;
+      result.message = "No such index";
+      result.feature = Literals.DROP_INDEX_STATEMENT__INDEX;
     }
   }
   
@@ -281,6 +331,17 @@ public class StatementSequenceValidator {
     this.triggers.remove(_name);
   }
   
+  protected void _sequence(final CreateIndexStatement stmt) {
+    String _name = stmt.getName();
+    this.indexes.add(_name);
+  }
+  
+  protected void _sequence(final DropIndexStatement stmt) {
+    CreateIndexStatement _index = stmt.getIndex();
+    String _name = _index.getName();
+    this.indexes.remove(_name);
+  }
+  
   public void validateStatement(final StatementSequenceValidatorResult result, final DDLStatement stmt) {
     if (stmt instanceof AlterTableRenameStatement) {
       _validateStatement(result, (AlterTableRenameStatement)stmt);
@@ -294,8 +355,14 @@ public class StatementSequenceValidator {
     } else if (stmt instanceof AlterTableAddColumnStatement) {
       _validateStatement(result, (AlterTableAddColumnStatement)stmt);
       return;
+    } else if (stmt instanceof CreateIndexStatement) {
+      _validateStatement(result, (CreateIndexStatement)stmt);
+      return;
     } else if (stmt instanceof CreateTriggerStatement) {
       _validateStatement(result, (CreateTriggerStatement)stmt);
+      return;
+    } else if (stmt instanceof DropIndexStatement) {
+      _validateStatement(result, (DropIndexStatement)stmt);
       return;
     } else if (stmt instanceof DropTableStatement) {
       _validateStatement(result, (DropTableStatement)stmt);
@@ -325,8 +392,14 @@ public class StatementSequenceValidator {
     } else if (stmt instanceof AlterTableAddColumnStatement) {
       _sequence((AlterTableAddColumnStatement)stmt);
       return;
+    } else if (stmt instanceof CreateIndexStatement) {
+      _sequence((CreateIndexStatement)stmt);
+      return;
     } else if (stmt instanceof CreateTriggerStatement) {
       _sequence((CreateTriggerStatement)stmt);
+      return;
+    } else if (stmt instanceof DropIndexStatement) {
+      _sequence((DropIndexStatement)stmt);
       return;
     } else if (stmt instanceof DropTableStatement) {
       _sequence((DropTableStatement)stmt);

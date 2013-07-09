@@ -6,6 +6,7 @@ package com.robotoworks.mechanoid.db.ui.outline;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 
@@ -41,5 +42,9 @@ public class SqliteModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	protected boolean _isLeaf(CreateTriggerStatement modelElement) {
 		return true;
+	}
+	
+	protected boolean _isLeaf(CreateIndexStatement modelElement) {
+	    return true;
 	}
 }

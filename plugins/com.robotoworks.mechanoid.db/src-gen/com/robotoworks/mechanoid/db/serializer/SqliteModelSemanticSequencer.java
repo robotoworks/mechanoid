@@ -17,6 +17,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.ConflictClause;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUri;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment;
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriSegment;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -26,6 +27,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.CurrentTimeStampLiteral;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DefaultConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.DeleteStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
@@ -242,6 +244,13 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 					return; 
 				}
 				else break;
+			case SqliteModelPackage.CREATE_INDEX_STATEMENT:
+				if(context == grammarAccess.getCreateIndexStatementRule() ||
+				   context == grammarAccess.getDDLStatementRule()) {
+					sequence_CreateIndexStatement(context, (CreateIndexStatement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SqliteModelPackage.CREATE_TABLE_STATEMENT:
 				if(context == grammarAccess.getCreateTableStatementRule() ||
 				   context == grammarAccess.getDDLStatementRule()) {
@@ -297,6 +306,13 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				if(context == grammarAccess.getDMLStatementRule() ||
 				   context == grammarAccess.getDeleteStatementRule()) {
 					sequence_DeleteStatement(context, (DeleteStatement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.DROP_INDEX_STATEMENT:
+				if(context == grammarAccess.getDDLStatementRule() ||
+				   context == grammarAccess.getDropIndexStatementRule()) {
+					sequence_DropIndexStatement(context, (DropIndexStatement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1025,6 +1041,15 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
+	 *     (unique?='unique'? name=ID table=[TableDefinition|ID] columns+=IndexedColumn columns+=IndexedColumn*)
+	 */
+	protected void sequence_CreateIndexStatement(EObject context, CreateIndexStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=ID columnDefs+=ColumnDef columnDefs+=ColumnDef* constraints+=TableConstraint*)
 	 */
 	protected void sequence_CreateTableStatement(EObject context, CreateTableStatement semanticObject) {
@@ -1114,6 +1139,15 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     (table=[TableDefinition|ID] expression=SqlExpression?)
 	 */
 	protected void sequence_DeleteStatement(EObject context, DeleteStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (ifExists?='if exists'? index=[CreateIndexStatement|ID])
+	 */
+	protected void sequence_DropIndexStatement(EObject context, DropIndexStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1300,7 +1334,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (columnReference=[ColumnDef|ID] (asc?='asc' | desc?='desc')?)
+	 *     (columnReference=[ColumnDef|ID] collationName=ID? (asc?='asc' | desc?='desc')?)
 	 */
 	protected void sequence_IndexedColumn(EObject context, IndexedColumn semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

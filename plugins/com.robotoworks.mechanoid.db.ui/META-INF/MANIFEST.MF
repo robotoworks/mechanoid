@@ -13,7 +13,10 @@ Require-Bundle: com.robotoworks.mechanoid.db;visibility:=reexport,
  org.eclipse.xtext.ui.codetemplates.ui;bundle-version="2.4.2",
  org.eclipse.compare;bundle-version="3.5.301",
  org.eclipse.xtext.xbase.ui;bundle-version="2.4.2",
- com.robotoworks.mechanoid.ui
+ com.robotoworks.mechanoid.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui,
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.db.ui.contentassist,

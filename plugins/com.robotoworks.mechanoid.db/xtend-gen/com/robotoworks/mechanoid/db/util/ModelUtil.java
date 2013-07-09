@@ -4,6 +4,8 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot;
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CastExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
@@ -32,6 +34,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +43,7 @@ import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class ModelUtil {
@@ -463,5 +467,133 @@ public class ModelUtil {
         }
       };
     return IterableExtensions.<ColumnSource>exists(_viewResultColumns, _function);
+  }
+  
+  /**
+   * Find column definitions from caller going back to the definition
+   */
+  public static ArrayList<EObject> findColumnDefs(final DDLStatement caller, final TableDefinition definition) {
+    ArrayList<EObject> _arrayList = new ArrayList<EObject>();
+    final ArrayList<EObject> columns = _arrayList;
+    LinkedList<TableDefinition> tableHistory = ModelUtil.getHistory(definition);
+    TableDefinition last = tableHistory.peekLast();
+    if ((last instanceof CreateViewStatement)) {
+      CreateViewStatement view = ((CreateViewStatement) last);
+      ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(view);
+      columns.addAll(_viewResultColumns);
+      return columns;
+    }
+    EList<ColumnSource> _columnDefs = ((CreateTableStatement) last).getColumnDefs();
+    columns.addAll(_columnDefs);
+    boolean _isEmpty = tableHistory.isEmpty();
+    boolean _not = (!_isEmpty);
+    boolean _while = _not;
+    while (_while) {
+      {
+        final TableDefinition stmt = tableHistory.removeLast();
+        ArrayList<AlterTableAddColumnStatement> _findStatementsOfTypeBetween = ModelUtil.<AlterTableAddColumnStatement>findStatementsOfTypeBetween(AlterTableAddColumnStatement.class, stmt, caller);
+        final Function1<AlterTableAddColumnStatement,Boolean> _function = new Function1<AlterTableAddColumnStatement,Boolean>() {
+            public Boolean apply(final AlterTableAddColumnStatement it) {
+              TableDefinition _table = it.getTable();
+              boolean _equals = Objects.equal(_table, stmt);
+              return Boolean.valueOf(_equals);
+            }
+          };
+        Iterable<AlterTableAddColumnStatement> _filter = IterableExtensions.<AlterTableAddColumnStatement>filter(_findStatementsOfTypeBetween, _function);
+        final Procedure1<AlterTableAddColumnStatement> _function_1 = new Procedure1<AlterTableAddColumnStatement>() {
+            public void apply(final AlterTableAddColumnStatement it) {
+              ColumnSource _columnDef = it.getColumnDef();
+              columns.add(_columnDef);
+            }
+          };
+        IterableExtensions.<AlterTableAddColumnStatement>forEach(_filter, _function_1);
+      }
+      boolean _isEmpty_1 = tableHistory.isEmpty();
+      boolean _not_1 = (!_isEmpty_1);
+      _while = _not_1;
+    }
+    return columns;
+  }
+  
+  public static LinkedList<TableDefinition> getHistory(final TableDefinition ref) {
+    LinkedList<TableDefinition> _linkedList = new LinkedList<TableDefinition>();
+    LinkedList<TableDefinition> refs = _linkedList;
+    TableDefinition current = ref;
+    boolean _while = (current instanceof AlterTableRenameStatement);
+    while (_while) {
+      {
+        refs.add(current);
+        TableDefinition _table = ((AlterTableRenameStatement) current).getTable();
+        current = _table;
+      }
+      _while = (current instanceof AlterTableRenameStatement);
+    }
+    refs.add(current);
+    return refs;
+  }
+  
+  public static ArrayList<EObject> getAllReferenceableColumns(final SelectCoreExpression expr) {
+    final ArrayList<EObject> items = Lists.<EObject>newArrayList();
+    if ((expr instanceof SelectCore)) {
+      SelectCoreExpression _left = ((SelectCore) expr).getLeft();
+      ArrayList<EObject> _allReferenceableColumns = ModelUtil.getAllReferenceableColumns(_left);
+      items.addAll(_allReferenceableColumns);
+      SelectCoreExpression _right = ((SelectCore) expr).getRight();
+      ArrayList<EObject> _allReferenceableColumns_1 = ModelUtil.getAllReferenceableColumns(_right);
+      items.addAll(_allReferenceableColumns_1);
+    } else {
+      if ((expr instanceof SelectExpression)) {
+        ArrayList<EObject> _allReferenceableColumns_2 = ModelUtil.getAllReferenceableColumns(((SelectExpression) expr), true);
+        items.addAll(_allReferenceableColumns_2);
+      }
+    }
+    return items;
+  }
+  
+  public static ArrayList<EObject> getAllReferenceableColumns(final SelectExpression expr, final boolean includeAliases) {
+    final ArrayList<EObject> items = Lists.<EObject>newArrayList();
+    boolean _and = false;
+    SelectList _selectList = expr.getSelectList();
+    boolean _notEquals = (!Objects.equal(_selectList, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      _and = (_notEquals && includeAliases);
+    }
+    if (_and) {
+      SelectList _selectList_1 = expr.getSelectList();
+      EList<ColumnSource> _resultColumns = _selectList_1.getResultColumns();
+      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+          public Boolean apply(final ColumnSource it) {
+            String _name = it.getName();
+            boolean _notEquals = (!Objects.equal(_name, null));
+            return Boolean.valueOf(_notEquals);
+          }
+        };
+      Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_resultColumns, _function);
+      Iterables.<EObject>addAll(items, _filter);
+    }
+    ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(expr);
+    final Function1<SingleSource,Boolean> _function_1 = new Function1<SingleSource,Boolean>() {
+        public Boolean apply(final SingleSource item) {
+          if ((item instanceof SingleSourceTable)) {
+            String _name = ((SingleSourceTable) item).getName();
+            return Boolean.valueOf(Objects.equal(_name, null));
+          }
+          return Boolean.valueOf(false);
+        }
+      };
+    Iterable<SingleSource> _filter_1 = IterableExtensions.<SingleSource>filter(_findAllSingleSources, _function_1);
+    final Procedure1<SingleSource> _function_2 = new Procedure1<SingleSource>() {
+        public void apply(final SingleSource item) {
+          SingleSourceTable source = ((SingleSourceTable) item);
+          DDLStatement _ancestorOfType = ModelUtil.<DDLStatement>getAncestorOfType(item, DDLStatement.class);
+          TableDefinition _tableReference = source.getTableReference();
+          ArrayList<EObject> _findColumnDefs = ModelUtil.findColumnDefs(_ancestorOfType, _tableReference);
+          items.addAll(_findColumnDefs);
+        }
+      };
+    IterableExtensions.<SingleSource>forEach(_filter_1, _function_2);
+    return items;
   }
 }
