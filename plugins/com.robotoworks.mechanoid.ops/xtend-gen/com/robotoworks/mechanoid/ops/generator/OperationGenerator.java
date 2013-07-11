@@ -37,6 +37,8 @@ public class OperationGenerator {
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.Operation;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.ops.OperationContext;");
+    _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.OperationResult;");
     _builder.newLine();
     _builder.append("import com.robotoworks.mechanoid.ops.OperationServiceBridge;");
@@ -345,7 +347,7 @@ public class OperationGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public OperationResult execute() {");
+    _builder.append("public OperationResult execute(OperationContext context) {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("Args args = new Args();");
@@ -358,7 +360,7 @@ public class OperationGenerator {
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         _builder.append("\t\t");
-        _builder.append("Bundle extras = getIntent().getExtras();");
+        _builder.append("Bundle extras = context.getIntent().getExtras();");
         _builder.newLine();
         {
           EList<OperationArg> _args_6 = op.getArgs();
@@ -386,7 +388,7 @@ public class OperationGenerator {
       }
     }
     _builder.append("\t\t");
-    _builder.append("return onExecute(args);");
+    _builder.append("return onExecute(context, args);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -394,7 +396,7 @@ public class OperationGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected abstract OperationResult onExecute(Args args);");
+    _builder.append("protected abstract OperationResult onExecute(OperationContext context, Args args);");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -428,6 +430,8 @@ public class OperationGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("import com.robotoworks.mechanoid.ops.OperationResult;");
     _builder.newLine();
+    _builder.append("import com.robotoworks.mechanoid.ops.OperationContext;");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
     String _name_1 = op.getName();
@@ -443,7 +447,7 @@ public class OperationGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("protected OperationResult onExecute(Args args) {");
+    _builder.append("protected OperationResult onExecute(OperationContext context, Args args) {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("// TODO Auto-generated method stub");

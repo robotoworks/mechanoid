@@ -74,11 +74,11 @@ public class MovieDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(Movies.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(Movies.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -95,7 +95,7 @@ public class MovieDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), Movies.CONTENT_URI);
 			}
 			
 			public Builder setTitle(String value) {
@@ -135,4 +135,11 @@ public class MovieDBContract  {
 	}
 	
 	private MovieDBContract(){}
+	
+	/**
+	 * <p>Delete all rows from all tables</p>
+	 */						
+	public static void deleteAll() {
+		Movies.delete();
+	}
 }

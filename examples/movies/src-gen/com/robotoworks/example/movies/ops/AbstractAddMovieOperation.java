@@ -5,6 +5,7 @@ package com.robotoworks.example.movies.ops;
 
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 import com.robotoworks.mechanoid.ops.OperationConfiguration;
@@ -55,16 +56,16 @@ public abstract class AbstractAddMovieOperation extends Operation {
 	}
 
 	@Override
-	public OperationResult execute() {
+	public OperationResult execute(OperationContext context) {
 		Args args = new Args();
 		
-		Bundle extras = getIntent().getExtras();
+		Bundle extras = context.getIntent().getExtras();
 		args.title = extras.getString(EXTRA_TITLE);
 		args.description = extras.getString(EXTRA_DESCRIPTION);
 		args.year = extras.getInt(EXTRA_YEAR);
 		
-		return onExecute(args);
+		return onExecute(context, args);
 	}
 			
-	protected abstract OperationResult onExecute(Args args);
+	protected abstract OperationResult onExecute(OperationContext context, Args args);
 }
