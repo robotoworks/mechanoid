@@ -5,7 +5,6 @@ package com.robotoworks.example.movies.ops;
 
 import java.util.List;
 
-import android.os.Bundle;
 import android.util.Log;
 
 import com.robotoworks.example.movies.MoviesApplication;
@@ -14,7 +13,7 @@ import com.robotoworks.example.movies.net.GetMoviesResult;
 import com.robotoworks.example.movies.net.Movie;
 import com.robotoworks.example.movies.net.MoviesApiClient;
 import com.robotoworks.mechanoid.net.Response;
-import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 
 public class GetMoviesOperation extends AbstractGetMoviesOperation {
@@ -34,7 +33,7 @@ public class GetMoviesOperation extends AbstractGetMoviesOperation {
 
 
 	@Override
-	protected OperationResult onExecute(Args args) {
+	protected OperationResult onExecute(OperationContext context, Args args) {
 		
 		MoviesApiClient client = MoviesApplication.getMoviesApiClient();
 		

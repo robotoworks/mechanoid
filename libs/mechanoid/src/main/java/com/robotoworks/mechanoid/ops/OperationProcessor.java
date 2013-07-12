@@ -42,6 +42,8 @@ public abstract class OperationProcessor {
 	
 	protected final String mLogTag;
 	protected final boolean mEnableLogging;
+	
+	private OperationContext mContext;
 		
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -104,6 +106,9 @@ public abstract class OperationProcessor {
 		this.mService = service;
 		mLogTag = this.getClass().getSimpleName();
 		mEnableLogging = enableLogging;
+		
+		mContext = new OperationContext();
+		
 		mWorker = new Worker(handler);
 		mWorker.start();
 	}
@@ -142,8 +147,8 @@ public abstract class OperationProcessor {
 			int currentRequestId = Operation.getOperationRequestId(mCurrentRequest);
 			
 			if(currentRequestId == abortRequestId) {
-				Message m = mCurrentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
-				mCurrentOperation.handler.sendMessage(m);
+				Message m = mContext.handler.obtainMessage(OperationContext.MSG_ABORT, abortReason, 0);
+				mContext.handler.sendMessage(m);
 				return;
 			}			
 		}
@@ -216,12 +221,12 @@ public abstract class OperationProcessor {
 			throw new RuntimeException(request.getAction() + " Not Implemented");
 		}
 
-		mCurrentOperation.setContext(mService.getApplicationContext());
-		mCurrentOperation.setIntent(request);
-		mCurrentOperation.setOperationProcessor(this);
-				
+		mContext.reset();
+		mContext.setContext(mService.getApplicationContext());
+		mContext.setIntent(request);
+		mContext.setOperationProcessor(this);
 		
-		mWorker.post(new OperationRunnable(handler, mCurrentOperation, mEnableLogging, mLogTag));
+		mWorker.post(new OperationRunnable(handler, mContext, mCurrentOperation, mEnableLogging, mLogTag));
 	}
 
 	protected abstract Operation createOperation(String action);
@@ -232,11 +237,13 @@ public abstract class OperationProcessor {
 		private Handler mCallbackHandler;
 		private boolean mEnableLogging;
 		private String mLogTag;
+		private OperationContext mOperationContext;
 
-		public OperationRunnable(Handler callbackHandler, Operation operation, boolean enableLogging, String logTag) {
+		public OperationRunnable(Handler callbackHandler, OperationContext operationContext, Operation operation, boolean enableLogging, String logTag) {
 			mCallbackHandler = callbackHandler;
 			mOperation = operation;
 			mEnableLogging = enableLogging;
+			mOperationContext = operationContext;
 			mLogTag = logTag;
 		}
 		
@@ -248,7 +255,7 @@ public abstract class OperationProcessor {
 			Bundle result = null;
 
 			try {
-				OperationResult opResult = mOperation.execute();
+				OperationResult opResult = mOperation.execute(mOperationContext);
 				
 				if(opResult == null) {
 					throw new NullPointerException("OperationResult should not be null");
@@ -267,9 +274,9 @@ public abstract class OperationProcessor {
 			
 			Message m = null;
 			
-			if(mOperation.isAborted()) {
+			if(mOperationContext.isAborted()) {
 				m = mCallbackHandler.obtainMessage(MSG_OPERATION_ABORTED);
-				m.arg1 = mOperation.getAbortReason();
+				m.arg1 = mOperationContext.getAbortReason();
 			} else {			
 				m = mCallbackHandler.obtainMessage(MSG_OPERATION_COMPLETE);
 			}

@@ -5,6 +5,7 @@ package com.robotoworks.example.ghissues.ops;
 
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 import com.robotoworks.mechanoid.ops.OperationConfiguration;
@@ -52,15 +53,15 @@ public abstract class AbstractGetIssuesForRepositoryOperation extends Operation 
 	}
 
 	@Override
-	public OperationResult execute() {
+	public OperationResult execute(OperationContext context) {
 		Args args = new Args();
 		
-		Bundle extras = getIntent().getExtras();
+		Bundle extras = context.getIntent().getExtras();
 		args.owner = extras.getString(EXTRA_OWNER);
 		args.repo = extras.getString(EXTRA_REPO);
 		
-		return onExecute(args);
+		return onExecute(context, args);
 	}
 			
-	protected abstract OperationResult onExecute(Args args);
+	protected abstract OperationResult onExecute(OperationContext context, Args args);
 }

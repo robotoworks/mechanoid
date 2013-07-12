@@ -77,11 +77,11 @@ public class GithubDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(Issues.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(Issues.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -98,7 +98,7 @@ public class GithubDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), Issues.CONTENT_URI);
 			}
 			
 			public Builder setOwner(String value) {
@@ -150,4 +150,11 @@ public class GithubDBContract  {
 	}
 	
 	private GithubDBContract(){}
+	
+	/**
+	 * <p>Delete all rows from all tables</p>
+	 */						
+	public static void deleteAll() {
+		Issues.delete();
+	}
 }
