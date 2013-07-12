@@ -5,6 +5,7 @@ package com.robotoworks.example.movies.ops;
 
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.ops.Operation;
+import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 import com.robotoworks.mechanoid.ops.OperationConfiguration;
@@ -46,11 +47,11 @@ public abstract class AbstractGetMoviesOperation extends Operation {
 	}
 
 	@Override
-	public OperationResult execute() {
+	public OperationResult execute(OperationContext context) {
 		Args args = new Args();
 		
-		return onExecute(args);
+		return onExecute(context, args);
 	}
 			
-	protected abstract OperationResult onExecute(Args args);
+	protected abstract OperationResult onExecute(OperationContext context, Args args);
 }

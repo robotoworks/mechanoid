@@ -17,6 +17,7 @@ class OperationGenerator {
 
 			import com.robotoworks.mechanoid.Mechanoid;
 			import com.robotoworks.mechanoid.ops.Operation;
+			import com.robotoworks.mechanoid.ops.OperationContext;
 			import com.robotoworks.mechanoid.ops.OperationResult;
 			import com.robotoworks.mechanoid.ops.OperationServiceBridge;
 			import com.robotoworks.mechanoid.ops.OperationConfiguration;
@@ -84,20 +85,20 @@ class OperationGenerator {
 				}
 			
 				@Override
-				public OperationResult execute() {
+				public OperationResult execute(OperationContext context) {
 					Args args = new Args();
 					
 					«IF op.args.size() > 0»
-					Bundle extras = getIntent().getExtras();
+					Bundle extras = context.getIntent().getExtras();
 					«FOR arg : op.args»
 					args.«arg.name.camelize» = extras.«arg.type.toBundleGetMethodName»(EXTRA_«arg.name.underscore.toUpperCase»);
 					«ENDFOR»
 					
 					«ENDIF»
-					return onExecute(args);
+					return onExecute(context, args);
 				}
 						
-				protected abstract OperationResult onExecute(Args args);
+				protected abstract OperationResult onExecute(OperationContext context, Args args);
 			}
 			'''
 			
@@ -109,10 +110,11 @@ class OperationGenerator {
 			
 			import «model.packageName».Abstract«op.name.pascalize»Operation;
 			import com.robotoworks.mechanoid.ops.OperationResult;
+			import com.robotoworks.mechanoid.ops.OperationContext;
 			
 			public class «op.name.pascalize»Operation extends Abstract«op.name.pascalize»Operation {
 				@Override
-				protected OperationResult onExecute(Args args) {
+				protected OperationResult onExecute(OperationContext context, Args args) {
 					// TODO Auto-generated method stub
 					return null;
 				}

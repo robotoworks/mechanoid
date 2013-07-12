@@ -9,16 +9,15 @@ import android.content.ContentValues;
 import android.util.Log;
 
 import com.robotoworks.example.ghissues.BuildConfig;
-import com.robotoworks.example.ghissues.db.GithubDBContract;
 import com.robotoworks.example.ghissues.db.GithubDBContract.Issues;
 import com.robotoworks.example.ghissues.net.GetIssuesForRepositoryRequest;
 import com.robotoworks.example.ghissues.net.GetIssuesForRepositoryResult;
 import com.robotoworks.example.ghissues.net.GithubClient;
 import com.robotoworks.example.ghissues.net.Issue;
-import com.robotoworks.example.ghissues.ops.AbstractGetIssuesForRepositoryOperation;
 import com.robotoworks.mechanoid.db.BulkInsertHelper;
 import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.net.ServiceException;
+import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 
 public class GetIssuesForRepositoryOperation extends AbstractGetIssuesForRepositoryOperation {
@@ -26,7 +25,7 @@ public class GetIssuesForRepositoryOperation extends AbstractGetIssuesForReposit
 	private static final String TAG = GetIssuesForRepositoryOperation.class.getSimpleName();
 	
 	@Override
-	protected OperationResult onExecute(final Args args) {
+	protected OperationResult onExecute(OperationContext context, final Args args) {
 
 		GithubClient client = new GithubClient(BuildConfig.DEBUG);
 
