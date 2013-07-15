@@ -31,7 +31,7 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
   {
     try
     {
-      SharedPreferencesModelFactory theSharedPreferencesModelFactory = (SharedPreferencesModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.robotoworks.com/mechanoid/sharedprefs/SharedPreferencesModel"); 
+      SharedPreferencesModelFactory theSharedPreferencesModelFactory = (SharedPreferencesModelFactory)EPackage.Registry.INSTANCE.getEFactory(SharedPreferencesModelPackage.eNS_URI);
       if (theSharedPreferencesModelFactory != null)
       {
         return theSharedPreferencesModelFactory;

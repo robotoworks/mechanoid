@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<platform-version-name>juno</platform-version-name>
+		<platform-version-name>kepler</platform-version-name>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
 	</properties>
 
@@ -50,7 +50,7 @@
 
 	<repositories>
 		<repository>
-			<id>juno</id>
+			<id>kepler</id>
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>
 		</repository>
@@ -65,22 +65,22 @@
 		</repository>
 	</repositories>
 
-	<profiles>
+<!-- 	<profiles>
 		<profile>
-			<id>platform-juno</id>
+			<id>platform-kepler</id>
 			<activation>
 				<property>
 					<name>platform-version-name</name>
-					<value>juno</value>
+					<value>kepler</value>
 				</property>
 			</activation>
 			<properties>
-				<eclipse-site>http://download.eclipse.org/releases/juno</eclipse-site>
+				<eclipse-site>http://download.eclipse.org/releases/kepler</eclipse-site>
 				<platform-version>[3.7,3.8)</platform-version>
 			</properties>
 		</profile>
 	</profiles>
-
+ -->
 	<build>
 		<plugins>
 			<plugin>
