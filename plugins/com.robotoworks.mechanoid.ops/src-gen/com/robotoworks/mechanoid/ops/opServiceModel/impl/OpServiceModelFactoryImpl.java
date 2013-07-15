@@ -31,7 +31,7 @@ public class OpServiceModelFactoryImpl extends EFactoryImpl implements OpService
   {
     try
     {
-      OpServiceModelFactory theOpServiceModelFactory = (OpServiceModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.robotoworks.com/mechanoid/ops/OpServiceModel"); 
+      OpServiceModelFactory theOpServiceModelFactory = (OpServiceModelFactory)EPackage.Registry.INSTANCE.getEFactory(OpServiceModelPackage.eNS_URI);
       if (theOpServiceModelFactory != null)
       {
         return theOpServiceModelFactory;
