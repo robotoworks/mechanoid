@@ -5,11 +5,12 @@ Bundle-Vendor: Robotoworks Limited
 Bundle-Version: 0.2.0.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.db; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext.xbase;bundle-version="2.4.2";resolution:=optional;visibility:=reexport,
- org.eclipse.xtext.generator;bundle-version="2.4.2";resolution:=optional,
- org.eclipse.emf.mwe2.launch;bundle-version="2.4.0";resolution:=optional,
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
  com.robotoworks.mechanoid,
- org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
@@ -30,6 +31,5 @@ Export-Package: com.robotoworks.mechanoid.db,
  com.robotoworks.mechanoid.db.sqliteModel.util,
  com.robotoworks.mechanoid.db.util,
  com.robotoworks.mechanoid.db.validation
-Import-Package: org.apache.commons.logging,
- org.apache.log4j;version="1.2.15",
+Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib

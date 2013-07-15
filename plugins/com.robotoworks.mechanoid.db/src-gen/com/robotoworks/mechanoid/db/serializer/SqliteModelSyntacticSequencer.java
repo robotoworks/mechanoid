@@ -62,7 +62,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'not null' | 'notnull'
+	 *     'notnull' | 'not null'
 	 */
 	protected void emit_NullExpression_NotNullKeyword_1_1_0_or_NotnullKeyword_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -70,7 +70,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'offset' | ','
+	 *     ',' | 'offset'
 	 */
 	protected void emit_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
