@@ -3,10 +3,27 @@ package com.robotoworks.mechanoid.standalone;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import com.robotoworks.mechanoid.db.SqliteModelRuntimeModule;
 import com.robotoworks.mechanoid.db.SqliteModelStandaloneSetup;
 import com.robotoworks.mechanoid.db.generator.SqliteModelGenerator;
+import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelFactory;
+import com.robotoworks.mechanoid.net.NetModelStandaloneSetup;
+import com.robotoworks.mechanoid.net.generator.NetModelGenerator;
+import com.robotoworks.mechanoid.ops.OpServiceModelStandaloneSetup;
+import com.robotoworks.mechanoid.ops.generator.OpServiceModelGenerator;
+import com.robotoworks.mechanoid.sharedprefs.SharedPreferencesModelStandaloneSetup;
+import com.robotoworks.mechanoid.sharedprefs.generator.SharedPreferencesGenerator;
+import com.robotoworks.mechanoid.sharedprefs.generator.SharedPreferencesModelGenerator;
 
 public class CompilerMain {
+
+	private static Compiler[] COMPILERS = {
+		new Compiler(new SqliteModelStandaloneSetup(), SqliteModelGenerator.class, ".mechdb"),
+		new Compiler(new OpServiceModelStandaloneSetup(), OpServiceModelGenerator.class, ".mechops"),
+		new Compiler(new NetModelStandaloneSetup(), NetModelGenerator.class, ".mechnet"),
+		new Compiler(new SharedPreferencesModelStandaloneSetup(), SharedPreferencesModelGenerator.class, ".mechprefs")
+	};
+	
 	public static void main(String[] args) {
 		
 		if(args == null || args.length == 0) {
@@ -35,8 +52,9 @@ public class CompilerMain {
 			}
 		}
 		
-		new Compiler(new SqliteModelStandaloneSetup(), SqliteModelGenerator.class, ".mechdb")
-			.compile(inputSource, sourceFolder, stubFolder, recurse);
+		for(Compiler compiler : COMPILERS) {
+			compiler.compile(inputSource, sourceFolder, stubFolder, recurse);
+		}
 	}
 	
 	private static void printUsage() {

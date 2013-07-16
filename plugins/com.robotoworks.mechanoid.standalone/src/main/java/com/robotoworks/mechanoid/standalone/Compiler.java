@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;

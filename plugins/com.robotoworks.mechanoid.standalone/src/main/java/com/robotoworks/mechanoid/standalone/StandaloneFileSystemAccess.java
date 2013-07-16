@@ -13,6 +13,8 @@ public class StandaloneFileSystemAccess extends JavaIoFileSystemAccess {
 		OutputConfiguration config = getOutputConfig(outputConfigName);
 		
 		File file = getFile(fileName, outputConfigName);
+
+		System.out.println(file.getAbsolutePath());
 		
 		if(file.exists()) {
 			if(config.isOverrideExistingResources()) {
