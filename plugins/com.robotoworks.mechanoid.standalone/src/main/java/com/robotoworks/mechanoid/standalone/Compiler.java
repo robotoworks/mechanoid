@@ -3,18 +3,24 @@ package com.robotoworks.mechanoid.standalone;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfiguration;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.validation.CheckMode;
+import org.eclipse.xtext.validation.IResourceValidator;
+import org.eclipse.xtext.validation.Issue;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Injector;
+import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class Compiler {
 	
@@ -50,9 +56,48 @@ public class Compiler {
 		
 		getResourcePaths(resourcePaths, file, recurse);
 		
-		for(String path : resourcePaths) {
-			Resource resource = mResourceSet.getResource(URI.createURI(path), true);
+		loadResources(resourcePaths);
+		
+		List<Issue> issues = validate();
+		
+		for(Issue issue : issues) {
+			System.out.println(issue.getCode() + ":" + issue.getMessage());
+		}
+		
+		if(issues.size() == 0) {
+			generate();
+		}
+
+	}
+
+	private List<Issue> validate() {
+		List<Issue> issues = Lists.newArrayList();
+		for (Resource resource : mResourceSet.getResources()) {
+			IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE
+					.getResourceServiceProvider(resource.getURI());
+			if (resourceServiceProvider != null) {
+				IResourceValidator resourceValidator = resourceServiceProvider.getResourceValidator();
+				List<Issue> result = resourceValidator.validate(resource, CheckMode.ALL, null);
+				
+				for(Issue issue : result) {
+					if(!issue.getCode().equals(MechanoidIssueCodes.MISSING_MECHANOID_LIBS)) {
+						issues.add(issue);
+					}
+				}
+			}
+		}
+		return issues;
+	}
+
+	protected void generate() {
+		for(Resource resource : mResourceSet.getResources()) {
 			mGenerator.doGenerate(resource, mFileSystemAccess);
+		}
+	}
+
+	protected void loadResources(ArrayList<String> resourcePaths) {
+		for(String path : resourcePaths) {
+			mResourceSet.getResource(URI.createURI(path), true);
 		}
 	}
 

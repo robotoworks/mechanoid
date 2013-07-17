@@ -12,49 +12,57 @@
 	<artifactId>com.robotoworks.mechanoid.standalone</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.standalone</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.robotoworks.mechanoid</groupId>
+			<artifactId>com.robotoworks.mechanoid.db</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.robotoworks.mechanoid</groupId>
+			<artifactId>com.robotoworks.mechanoid.net</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.robotoworks.mechanoid</groupId>
+			<artifactId>com.robotoworks.mechanoid.ops</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.robotoworks.mechanoid</groupId>
+			<artifactId>com.robotoworks.mechanoid.sharedprefs</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.robotoworks.mechanoid</groupId>
+			<artifactId>com.robotoworks.mechanoid</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
 	<build>
+
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.8</version>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/lib
-							</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.googlecode.addjars-maven-plugin</groupId>
-				<artifactId>addjars-maven-plugin</artifactId>
-				<version>1.0.5</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>add-jars</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>${project.build.directory}/lib</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<version>2.8</version> <executions> <execution> <id>copy-dependencies</id> 
+				<phase>package</phase> <goals> <goal>copy-dependencies</goal> </goals> <configuration> 
+				<outputDirectory>${project.build.directory}/lib </outputDirectory> <overWriteReleases>false</overWriteReleases> 
+				<overWriteSnapshots>true</overWriteSnapshots> <overWriteIfNewer>true</overWriteIfNewer> 
+				</configuration> </execution> </executions> </plugin> <plugin> <groupId>com.googlecode.addjars-maven-plugin</groupId> 
+				<artifactId>addjars-maven-plugin</artifactId> <version>1.0.5</version> <executions> 
+				<execution> <phase>package</phase> <goals> <goal>add-jars</goal> </goals> 
+				<configuration> <resources> <resource> <directory>${project.build.directory}/lib</directory> 
+				</resource> </resources> </configuration> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -73,42 +81,48 @@
 									</mainClass>
 								</transformer>
 							</transformers>
-							<minimizeJar>true</minimizeJar>
 							<filters>
 								<filter>
 									<artifact>*:*</artifact>
-									<includes>
-									    <include>**</include>
-									    <include>com/google/inject/internal/util/$Finalizer.class</include>
-									</includes>
 									<excludes>
-										<exclude>*.html</exclude>
-										<exclude>about_files/**/*</exclude>
-										<exclude>*.ini</exclude>
-										<exclude>*.mappings</exclude>
-										<exclude>ant_tasks/**/*</exclude>
-										<exclude>*.profile</exclude>
-										<exclude>*.png</exclude>
-										<exclude>images/**</exclude>
 										<exclude>*.jar</exclude>
-										<exclude>META-INF/**</exclude>
-										<exclude>model/**</exclude>
-										<exclude>lib/**</exclude>
 										<exclude>runtime/**</exclude>
-										<exclude>schema/**</exclude>
 										<exclude>src/**</exclude>
-										<exclude>templates/**</exclude>
-										<exclude>*.xtext</exclude>
-										<exclude>*.xtend</exclude>
-										<exclude>*.ecore</exclude>
-										<exclude>*.genmodel</exclude>
-										<exclude>plugin.xml</exclude>
+										<exclude>META-INF/**</exclude>
 									</excludes>
 								</filter>
 							</filters>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.pyx4me</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<version>2.0.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>proguard</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skip>true</skip>
+					<fork>true</fork>
+					<obfuscate>false</obfuscate>
+					<includeDependency>false</includeDependency>
+					<injar>${project.build.finalName}.jar</injar>
+					<outjar>${project.build.finalName}-small.jar</outjar>
+					<outputDirectory>${project.build.directory}</outputDirectory>
+					<proguardInclude>${basedir}/proguard.cfg</proguardInclude>
+					<libs>
+						<lib>${java.home}/../Classes/classes.jar</lib>
+						<lib>${java.home}/../Classes/jsse.jar</lib>
+					</libs>
+					<maxMemory>1024m</maxMemory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

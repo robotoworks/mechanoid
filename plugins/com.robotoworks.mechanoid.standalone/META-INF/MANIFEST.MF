@@ -10,3 +10,4 @@ Require-Bundle: com.robotoworks.mechanoid.db,
  com.robotoworks.mechanoid.ops,
  com.robotoworks.mechanoid.sharedprefs,
  org.eclipse.core.resources
+Import-Package: com.robotoworks.mechanoid.validation
