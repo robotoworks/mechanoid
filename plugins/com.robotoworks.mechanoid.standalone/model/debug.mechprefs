@@ -1,7 +1,0 @@
-package com.justeat.app.content
-
-preferences Debug {
-	DebugEnvironmentSwitcherEnabled:boolean
-	DebugEnvironment:String
-	DebugAPIHostHeader:String
-}
