@@ -41,6 +41,7 @@
 		<module>plugins/com.robotoworks.mechanoid.db</module>
 		<module>plugins/com.robotoworks.mechanoid.db.ui</module>
 		<module>libs/mechanoid</module>
+		<module>plugins/com.robotoworks.mechanoid.standalone</module>
 
 		<!-- <module>tests/com.robotoworks.mechanoid.net.tests</module> -->
 		<!-- <module>tests/com.robotoworks.mechanoid.ops.tests</module> -->
