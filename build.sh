@@ -8,7 +8,14 @@ APIDOCS_PATH=$WORKING_DIR/target/doc/apidocs
 LIB_PATH=$WORKING_DIR/target/lib
 BIN_PATH=$WORKING_DIR/target/bin
 
-mvn clean javadoc:javadoc install
+echo "Building..."
+mvn clean install
+
+echo "Building Mechanoid Library Docs..."
+mvn -f $WORKING_DIR/libs/mechanoid/pom.xml javadoc:javadoc
+
+echo "Building user docs..."
+make -C $WORKING_DIR/docs html
 
 rm -r $TARGET
 mkdir $TARGET
