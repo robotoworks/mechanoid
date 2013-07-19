@@ -1,3 +1,4 @@
+#!/bin/bash
 
 WORKING_DIR=$PWD
 MECH_VERSION=0.2.0
