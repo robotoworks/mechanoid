@@ -14,24 +14,18 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-import android.content.Intent;
 
 
 /**
- * <p>An abstract operation</p>
+ * <p>An operation, responsible for executing potentially blocking or long-running code.</p>
  *
  */
-public abstract class Operation {	
-	
+public abstract class Operation {		
 	/**
-	 * <p>Helper method to extract an operation id from an operation intent</p>
+	 * <p>Execute this operations code</p>
 	 * 
-	 * @param intent The intent to extract the id from
-	 * @return An operation id
+	 * @param context Context of this operation
+	 * @return
 	 */
-	public static int getOperationRequestId(Intent intent) {
-		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, -1);
-	}
-	
 	public abstract OperationResult execute(OperationContext context);
 }
