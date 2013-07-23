@@ -152,7 +152,7 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_STARTING;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.setData(data);
 		try {	
 			messenger.send(m);
@@ -172,7 +172,7 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_COMPLETE;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.setData(data);
 		try {	
 			messenger.send(m);
@@ -194,7 +194,7 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_ABORTED;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.arg2 = reason;
 		m.setData(data);
 		try {	
@@ -218,7 +218,7 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_PROGRESS;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.arg2 = progress;
 		m.setData(data);
 		try {	

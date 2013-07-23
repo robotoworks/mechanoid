@@ -144,7 +144,7 @@ public abstract class OperationProcessor {
 		
 		// Try to abort if its the current operation
 		if(mCurrentOperation != null) {
-			int currentRequestId = Operation.getOperationRequestId(mCurrentRequest);
+			int currentRequestId = OperationServiceBridge.getOperationRequestId(mCurrentRequest);
 			
 			if(currentRequestId == abortRequestId) {
 				Message m = mContext.handler.obtainMessage(OperationContext.MSG_ABORT, abortReason, 0);
@@ -162,7 +162,7 @@ public abstract class OperationProcessor {
 		for(int i=0; i < requestQueue.size(); i++) {
 			Intent queuedRequest = requestQueue.get(i);
 			
-			if(Operation.getOperationRequestId(queuedRequest) == abortRequestId) {
+			if(OperationServiceBridge.getOperationRequestId(queuedRequest) == abortRequestId) {
 				queuedRequest.putExtra(OperationService.EXTRA_IS_ABORTED, true);
 				queuedRequest.putExtra(OperationService.EXTRA_ABORT_REASON, abortReason);
 				break;
@@ -222,7 +222,7 @@ public abstract class OperationProcessor {
 		}
 
 		mContext.reset();
-		mContext.setContext(mService.getApplicationContext());
+		mContext.setApplicationContext(mService.getApplicationContext());
 		mContext.setIntent(request);
 		mContext.setOperationProcessor(this);
 		

@@ -89,6 +89,19 @@
 										<exclude>runtime/**</exclude>
 										<exclude>src/**</exclude>
 										<exclude>META-INF/**</exclude>
+										<exclude>model/**</exclude>
+										<exclude>schema/**</exclude>
+										<exclude>org/eclipse/xtend/core/**</exclude>
+										<exclude>org/eclipse/xtend/lib/**</exclude>
+										<exclude>org/eclipse/xtext/junit4/**</exclude>
+										<exclude>org/eclipse/core/**</exclude>
+										<exclude>org/eclipse/jdt/**</exclude>
+										<exclude>org/aopalliance/**</exclude>
+										<exclude>*.ecore</exclude>
+										<exclude>*.genmodel</exclude>
+										<exclude>*.xtext</exclude>
+										<exclude>*.xtextbin</exclude>
+										<exclude>*.mwe2</exclude>
 									</excludes>
 								</filter>
 							</filters>

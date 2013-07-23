@@ -10,7 +10,7 @@ public class OperationContext {
 	
 	protected static final int MSG_ABORT = 1;
 	
-	private Context mContext;
+	private Context mApplicationContext;
 	private OperationProcessor mProcessor;
 	private Intent mIntent;
 	private boolean mIsAborted;
@@ -28,7 +28,7 @@ public class OperationContext {
 	
 
 	public void reset() {
-		mContext = null;
+		mApplicationContext = null;
 		mProcessor = null;
 		mIntent = null;
 		mIsAborted = false;
@@ -61,16 +61,16 @@ public class OperationContext {
 		mAbortReason = reason;
 	}
 	
-	public Context getContext() {
-		return mContext;
+	public Context getApplicationContext() {
+		return mApplicationContext;
 	}
 	
 	public Intent getIntent() {
 		return mIntent;
 	}
 	
-	void setContext(Context context) {
-		mContext = context;
+	void setApplicationContext(Context context) {
+		mApplicationContext = context.getApplicationContext();
 	}
 	
 	void setIntent(Intent intent) {
