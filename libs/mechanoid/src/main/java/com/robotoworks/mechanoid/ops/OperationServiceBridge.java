@@ -55,6 +55,16 @@ public class OperationServiceBridge {
 		return mLog;
 	}
 	
+	/**
+	 * <p>Helper method to extract an operation id from an operation intent</p>
+	 * 
+	 * @param intent The intent to extract the id from
+	 * @return An operation id
+	 */
+	public static int getOperationRequestId(Intent intent) {
+		return intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, -1);
+	}
+	
 	private Messenger messenger = new Messenger(new Handler() {
 
 		@Override
@@ -227,7 +237,7 @@ public class OperationServiceBridge {
 		Intent pending = opConfig.findMatchOnConstraint(this, intent);
 		
 		if(pending != null) {
-			return Operation.getOperationRequestId(pending);
+			return getOperationRequestId(pending);
 		}
 		
 		Intent clonedIntent = (Intent) intent.clone();

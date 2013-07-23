@@ -18,16 +18,20 @@ import com.robotoworks.mechanoid.ui.MechanoidLibsInstaller;
 import com.robotoworks.mechanoid.ui.Messages;
 import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
-public class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
+public abstract class MechanoidQuickfixProvider extends DefaultQuickfixProvider {
 
     private static final String IMG_ADD_MECHANOID_LIBRARY = "add.gif"; //$NON-NLS-1$
     
-	@Inject
-	protected IJavaProjectProvider projectProvider;
+    private IJavaProjectProvider projectProvider;
 	
-	@Inject 
-	protected MechanoidLibsInstaller libsInstaller;
+    private MechanoidLibsInstaller libsInstaller;
 	
+    @Inject
+    public MechanoidQuickfixProvider(IJavaProjectProvider projectProvider, MechanoidLibsInstaller libsInstaller) {
+        this.projectProvider = projectProvider;
+        this.libsInstaller = libsInstaller;
+    }
+    
 	@Fix(MechanoidIssueCodes.MISSING_MECHANOID_LIBS)
 	public void addMechanoidToClasspath(final Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 
