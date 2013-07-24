@@ -25,9 +25,9 @@ mkdir -p $SITE_PATH
 cp -r $WORKING_DIR/releng/com.robotoworks.mechanoid.updatesite/target/repository/** $SITE_PATH
 
 mkdir -p $LIB_PATH
-cp $WORKING_DIR/libs/mechanoid/target/mechanoid-$MECH_VERSION-SNAPSHOT.jar $LIB_PATH/mechanoid.jar
-cp $WORKING_DIR/libs/mechanoid/target/mechanoid-$MECH_VERSION-SNAPSHOT-sources.jar $LIB_PATH/mechanoid-sources.jar
-cp $WORKING_DIR/plugins/com.robotoworks.mechanoid.standalone/target/com.robotoworks.mechanoid.standalone-$MECH_VERSION-SNAPSHOT.jar $LIB_PATH/mechanoid.runner.jar
+MECH_VERSION=0.2.0
+MECH_VERSION=0.2.0
+MECH_VERSION=0.2.0
 
 
 mkdir -p $APIDOCS_PATH
