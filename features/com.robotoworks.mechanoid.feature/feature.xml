@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feature label="Robotoworks Mechanoid" provider-name="Robotoworks Limited" version="0.2.0.qualifier" id="com.robotoworks.mechanoid.feature">
+<feature provider-name="Robotoworks Limited" id="com.robotoworks.mechanoid.feature" label="Robotoworks Mechanoid" version="0.2.1.qualifier">
 
    <description url="http://www.robotoworks.com/mechanoid-plugin">
       A set of DSL&apos;s that aid in the rapid development of Android applications
@@ -118,24 +118,24 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.jdt.ui"/>
    </requires>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.net" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.net" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.net.ui" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.net.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.ops" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ops" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.ops.ui" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ops.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.sharedprefs" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.sharedprefs" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.sharedprefs.ui" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.sharedprefs.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.db" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.db" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.db.ui" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.db.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin install-size="0" download-size="0" version="0.0.0" id="com.robotoworks.mechanoid.ui" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
 
 </feature>
