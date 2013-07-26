@@ -50,8 +50,21 @@ class SharedPreferencesGenerator {
 				public «p.type.toTypeLiteral» get«p.name.pascalize»() {
 					return mPreferences.«p.type.toGetMethodName»(Keys.«p.name.underscore.toUpperCase», «p.toDefaultValue»);
 				}
+				
 				«ENDFOR»
-			
+				«FOR p : sp.prefs»
+				/**
+				 * Update this preference, if you need to change many preferences
+				 * you should use edit() instead since calling update in succession
+				 * can have a severe performance penalty
+				 */
+				public void update«p.name.pascalize»(«p.type.toTypeLiteral» value) {
+					mPreferences.edit()
+						.«p.type.toPutMethodName»(Keys.«p.name.underscore.toUpperCase», value)
+						.commit();
+				}
+				
+				«ENDFOR»			
 				public SharedPreferences getSharedPreferences() {
 					return mPreferences;
 				}
