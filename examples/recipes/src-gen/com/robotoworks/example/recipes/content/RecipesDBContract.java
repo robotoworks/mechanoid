@@ -99,11 +99,11 @@ public class RecipesDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(Recipes.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(Recipes.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -120,7 +120,7 @@ public class RecipesDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), Recipes.CONTENT_URI);
 			}
 			
 			public Builder setTitle(String value) {
@@ -142,8 +142,8 @@ public class RecipesDBContract  {
 		static {
 			HashSet<Uri> viewUris =  new HashSet<Uri>();
 	
-			viewUris.add(RecipesAndIngredients.CONTENT_URI);
 			viewUris.add(RecipesWithAuthors.CONTENT_URI);
+			viewUris.add(RecipesAndIngredients.CONTENT_URI);
 			
 			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
@@ -175,11 +175,11 @@ public class RecipesDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(Authors.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(Authors.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -196,7 +196,7 @@ public class RecipesDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), Authors.CONTENT_URI);
 			}
 			
 			public Builder setName(String value) {
@@ -242,11 +242,11 @@ public class RecipesDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(Ingredients.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(Ingredients.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -263,7 +263,7 @@ public class RecipesDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), Ingredients.CONTENT_URI);
 			}
 			
 			public Builder setRecipeId(long value) {
@@ -318,11 +318,11 @@ public class RecipesDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(RecipesWithAuthors.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(RecipesWithAuthors.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -339,7 +339,7 @@ public class RecipesDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), RecipesWithAuthors.CONTENT_URI);
 			}
 			
 			public Builder setRecipeTitle(String value) {
@@ -396,11 +396,11 @@ public class RecipesDBContract  {
 	        return CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build();
 	    }
 		public static int delete() {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, null, null);
+			return Mechanoid.getContentResolver().delete(RecipesAndIngredients.CONTENT_URI, null, null);
 		}
 		
 		public static int delete(String where, String[] selectionArgs) {
-			return Mechanoid.getContentResolver().delete(CONTENT_URI, where, selectionArgs);
+			return Mechanoid.getContentResolver().delete(RecipesAndIngredients.CONTENT_URI, where, selectionArgs);
 		}
 		
 		/**
@@ -417,7 +417,7 @@ public class RecipesDBContract  {
 		 */
 		public static class Builder extends AbstractValuesBuilder {
 			private Builder() {
-				super(Mechanoid.getApplicationContext(), CONTENT_URI);
+				super(Mechanoid.getApplicationContext(), RecipesAndIngredients.CONTENT_URI);
 			}
 			
 			public Builder setRowType(String value) {
@@ -468,4 +468,13 @@ public class RecipesDBContract  {
 	}
 	
 	private RecipesDBContract(){}
+	
+	/**
+	 * <p>Delete all rows from all tables</p>
+	 */						
+	public static void deleteAll() {
+		Recipes.delete();
+		Authors.delete();
+		Ingredients.delete();
+	}
 }
