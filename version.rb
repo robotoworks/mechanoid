@@ -12,7 +12,8 @@ puts "New version to #{newVersion}"
 
 updateSiteCategories(newVersion)
 updateFeatureVersions(newVersion)
-updatePluginManifestVersions(newVersion)
+updateManifestVersions("plugins/*/META-INF/MANIFEST.MF", newVersion)
+updateManifestVersions("libs/*/META-INF/MANIFEST.MF", newVersion)
 
 Dir.glob("features/*/pom.xml") do |entry|
     updatePomVersion(entry, newVersion, true)
@@ -37,8 +38,8 @@ updateDocsVersion("docs/source/conf.py", newVersion)
 updateShellScriptMechVersion("build.sh", newVersion)
 
 BEGIN {
-    def updatePluginManifestVersions(version)
-        Dir.glob("plugins/*/META-INF/MANIFEST.MF") do |entry|
+    def updateManifestVersions(path, version)
+        Dir.glob(path) do |entry|
             
             puts "Updating #{entry} to version #{version}"
             

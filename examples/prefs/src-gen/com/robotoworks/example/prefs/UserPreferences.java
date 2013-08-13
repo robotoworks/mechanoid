@@ -40,19 +40,78 @@ public class UserPreferences {
 	public long getUserId() {
 		return mPreferences.getLong(Keys.USER_ID, 0);
 	}
+	
 	public String getName() {
 		return mPreferences.getString(Keys.NAME, null);
 	}
+	
 	public int getAge() {
 		return mPreferences.getInt(Keys.AGE, 0);
 	}
+	
 	public float getBankBalance() {
 		return mPreferences.getFloat(Keys.BANK_BALANCE, 100);
 	}
+	
 	public boolean getSubscribed() {
 		return mPreferences.getBoolean(Keys.SUBSCRIBED, true);
 	}
-
+	
+	/**
+	 * Update this preference, if you need to change many preferences
+	 * you should use edit() instead since calling update in succession
+	 * can have a severe performance penalty
+	 */
+	public void updateUserId(long value) {
+		mPreferences.edit()
+			.putLong(Keys.USER_ID, value)
+			.commit();
+	}
+	
+	/**
+	 * Update this preference, if you need to change many preferences
+	 * you should use edit() instead since calling update in succession
+	 * can have a severe performance penalty
+	 */
+	public void updateName(String value) {
+		mPreferences.edit()
+			.putString(Keys.NAME, value)
+			.commit();
+	}
+	
+	/**
+	 * Update this preference, if you need to change many preferences
+	 * you should use edit() instead since calling update in succession
+	 * can have a severe performance penalty
+	 */
+	public void updateAge(int value) {
+		mPreferences.edit()
+			.putInt(Keys.AGE, value)
+			.commit();
+	}
+	
+	/**
+	 * Update this preference, if you need to change many preferences
+	 * you should use edit() instead since calling update in succession
+	 * can have a severe performance penalty
+	 */
+	public void updateBankBalance(float value) {
+		mPreferences.edit()
+			.putFloat(Keys.BANK_BALANCE, value)
+			.commit();
+	}
+	
+	/**
+	 * Update this preference, if you need to change many preferences
+	 * you should use edit() instead since calling update in succession
+	 * can have a severe performance penalty
+	 */
+	public void updateSubscribed(boolean value) {
+		mPreferences.edit()
+			.putBoolean(Keys.SUBSCRIBED, value)
+			.commit();
+	}
+	
 	public SharedPreferences getSharedPreferences() {
 		return mPreferences;
 	}

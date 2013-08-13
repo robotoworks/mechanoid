@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feature provider-name="Robotoworks Limited" id="com.robotoworks.mechanoid.feature" label="Robotoworks Mechanoid" version="0.2.1.qualifier">
+<feature id="com.robotoworks.mechanoid.feature" version="0.2.2.qualifier" label="Robotoworks Mechanoid" provider-name="Robotoworks Limited">
 
    <description url="http://www.robotoworks.com/mechanoid-plugin">
       A set of DSL&apos;s that aid in the rapid development of Android applications
@@ -88,7 +88,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import plugin="org.eclipse.xtext"/>
-      <import plugin="org.apache.commons.logging" match="greaterOrEqual" version="1.0.4"/>
+      <import version="1.0.4" match="greaterOrEqual" plugin="org.apache.commons.logging"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
@@ -97,7 +97,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.xtext.ui"/>
-      <import plugin="org.eclipse.ui.ide" match="greaterOrEqual" version="3.5.0"/>
+      <import version="3.5.0" match="greaterOrEqual" plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.xtext.ui.shared"/>
       <import plugin="org.eclipse.xtext.builder"/>
       <import plugin="org.eclipse.xtext.common.types.ui"/>
@@ -105,37 +105,37 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.ui.editors"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.jdt" match="greaterOrEqual" version="3.8.0"/>
-      <import plugin="org.eclipse.jdt.core" match="greaterOrEqual" version="3.8.0"/>
-      <import plugin="org.eclipse.ui.editors" match="greaterOrEqual" version="3.5.0"/>
+      <import version="3.8.0" match="greaterOrEqual" plugin="org.eclipse.jdt"/>
+      <import version="3.8.0" match="greaterOrEqual" plugin="org.eclipse.jdt.core"/>
+      <import version="3.5.0" match="greaterOrEqual" plugin="org.eclipse.ui.editors"/>
       <import plugin="org.eclipse.xtext.xbase.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.xtext.generator"/>
-      <import plugin="org.eclipse.core.runtime" match="greaterOrEqual" version="3.5.0"/>
+      <import version="3.5.0" match="greaterOrEqual" plugin="org.eclipse.core.runtime"/>
       <import plugin="com.google.guava"/>
       <import plugin="com.google.inject"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jdt.ui"/>
    </requires>
 
-   <plugin id="com.robotoworks.mechanoid.net" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.net" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.net.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.net.ui" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.ops" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ops" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.ops.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ops.ui" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.sharedprefs" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.sharedprefs" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.sharedprefs.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.sharedprefs.ui" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.db" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.db" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.db.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.db.ui" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
-   <plugin id="com.robotoworks.mechanoid.ui" install-size="0" download-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="com.robotoworks.mechanoid.ui" version="0.0.0" unpack="false" install-size="0" download-size="0"/>
 
 </feature>
