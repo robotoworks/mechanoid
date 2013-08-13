@@ -3,10 +3,10 @@
    <description url="http://www.robotoworks.com/mechanoid/updates" name="Mechanoid Update Site">
       Mechanoid Plugins
    </description>
-   <feature id="com.robotoworks.mechanoid.feature" url="features/com.robotoworks.mechanoid.feature_0.2.5.qualifier.jar" version="0.2.1.qualifier">
+   <feature id="com.robotoworks.mechanoid.feature" url="features/com.robotoworks.mechanoid.feature_0.2.5.qualifier.jar" version="0.2.2.qualifier">
       <category name="mechanoid"/>
    </feature>
-   <category-def label="Mechanoid" name="mechanoid">
+   <category-def name="mechanoid" label="Mechanoid">
       <description>
          Mechanoid Plugins
       </description>

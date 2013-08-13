@@ -163,6 +163,8 @@ public class SQuery {
 	private StringBuilder mBuilder;
 	private List<String> mArgs = new ArrayList<String>();
 	private String mNextOp = null;
+
+	private MechanoidContentProvider mProvider;
 	
 	/**
 	 * @return A list of expression arguments added so far
@@ -182,8 +184,24 @@ public class SQuery {
 		mBuilder = new StringBuilder();
 	}
 	
+	public SQuery(MechanoidContentProvider provider) {
+		this();
+		mProvider = provider;
+	}
+
 	public static SQuery newQuery() {
 		return new SQuery();
+	}
+	
+	/**
+	 * <p>Force this query to use the given content provider when
+	 * doing active record queries, ie:- {@link #select(Uri)}, {@link #selectFirst(Uri)}, etc.</p>
+	 * 
+	 * @param provider The provider to use when performing active record
+	 * queries
+	 */
+	public static SQuery newQuery(MechanoidContentProvider provider) {
+		return new SQuery(provider);
 	}
 	
 	/**
@@ -573,11 +591,7 @@ public class SQuery {
 	 * @return The results as active records
 	 */
 	public <T extends ActiveRecord> List<T> select(Uri uri, String sortOrder) {
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
-		
-		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		List<T> records = provider.selectRecords(uri, this, sortOrder);
 		
@@ -590,11 +604,7 @@ public class SQuery {
 	 * @return The results as active records
 	 */	
 	public <T extends ActiveRecord> List<T> select(Uri uri) {
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
-		
-		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		List<T> records = provider.selectRecords(uri, this, null);
 		
@@ -608,11 +618,7 @@ public class SQuery {
 	 * @return A map of results using the value of keyColumnName as the map key
 	 */
 	public <T extends ActiveRecord> Map<String, T> selectMap(Uri uri, String keyColumnName) {
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
-		
-		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		Map<String, T> records = provider.selectRecordMap(uri, this, keyColumnName);
 		
@@ -626,11 +632,7 @@ public class SQuery {
 	 * @return The results as active records
 	 */	
 	public <T extends ActiveRecord> T selectFirst(Uri uri, String sortOrder) {
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
-		
-		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		List<T> records = provider.selectRecords(uri, this, sortOrder);
 		
@@ -647,11 +649,7 @@ public class SQuery {
 	 * @return The results as active records
 	 */		
 	public <T extends ActiveRecord> T selectFirst(Uri uri) {
-		ContentResolver resolver = Mechanoid.getContentResolver();
-		
-		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
-		
-		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		List<T> records = provider.selectRecords(uri, this, null);
 		
@@ -660,6 +658,20 @@ public class SQuery {
 		} else {
 			return null;
 		}
+	}
+
+	private MechanoidContentProvider getContentProvider(Uri uri) {
+		
+		if(mProvider != null) {
+			return mProvider;
+		}
+		
+		ContentResolver resolver = Mechanoid.getContentResolver();
+		
+		ContentProviderClient client = resolver.acquireContentProviderClient(uri);
+		
+		MechanoidContentProvider provider = (MechanoidContentProvider) client.getLocalContentProvider();
+		return provider;
 	}
 	
 	public Cursor select(Uri uri, String[] projection, String sortOrder) {
@@ -906,6 +918,390 @@ public class SQuery {
 		}
 		
 		return value;
+	}
+
+	public int[] selectIntArray(Uri uri, String column) {
+		return selectIntArray(uri, column, null);
+	}
+	
+	public int[] selectIntArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			int[] array = new int[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getInt(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public long[] selectLongArray(Uri uri, String column) {
+		return selectLongArray(uri, column, null);
+	}
+	
+	public long[] selectLongArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			long[] array = new long[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getLong(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public double[] selectDoubleArray(Uri uri, String column) {
+		return selectDoubleArray(uri, column, null);
+	}
+	
+	public double[] selectDoubleArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			double[] array = new double[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getDouble(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public float[] selectFloatArray(Uri uri, String column) {
+		return selectFloatArray(uri, column, null);
+	}
+	
+	public float[] selectFloatArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			float[] array = new float[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getFloat(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public short[] selectShortArray(Uri uri, String column) {
+		return selectShortArray(uri, column, null);
+	}
+	
+	public short[] selectShortArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			short[] array = new short[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getShort(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public byte[][] selectBlobArray(Uri uri, String column) {
+		return selectBlobArray(uri, column, null);
+	}
+	
+	public byte[][] selectBlobArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			byte[][] array = new byte[cursor.getCount()][];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getBlob(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public boolean[] selectBooleanArray(Uri uri, String column) {
+		return selectBooleanArray(uri, column, null);
+	}
+	
+	public boolean[] selectBooleanArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			boolean[] array = new boolean[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getLong(0) > 0;
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public String[] selectStringArray(Uri uri, String column) {
+		return selectStringArray(uri, column, null);
+	}
+	
+	public String[] selectStringArray(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			String[] array = new String[cursor.getCount()];
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				array[i] = cursor.getString(0);
+			}
+			
+			return array;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Integer> selectIntegerList(Uri uri, String column) {
+		return selectIntegerList(uri, column, null);
+	}
+	
+	public List<Integer> selectIntegerList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Integer> list = new ArrayList<Integer>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getInt(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Long> selectLongList(Uri uri, String column) {
+		return selectLongList(uri, column, null);
+	}
+	
+	public List<Long> selectLongList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Long> list = new ArrayList<Long>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getLong(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Double> selectDoubleList(Uri uri, String column) {
+		return selectDoubleList(uri, column, null);
+	}
+	
+	public List<Double> selectDoubleList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Double> list = new ArrayList<Double>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getDouble(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Float> selectFloatList(Uri uri, String column) {
+		return selectFloatList(uri, column, null);
+	}
+	
+	public List<Float> selectFloatList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Float> list = new ArrayList<Float>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getFloat(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Short> selectShortList(Uri uri, String column) {
+		return selectShortList(uri, column, null);
+	}
+	
+	public List<Short> selectShortList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Short> list = new ArrayList<Short>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getShort(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<byte[]> selectBlobList(Uri uri, String column) {
+		return selectBlobList(uri, column, null);
+	}
+	
+	public List<byte[]> selectBlobList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<byte[]> list = new ArrayList<byte[]>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getBlob(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<Boolean> selectBooleanList(Uri uri, String column) {
+		return selectBooleanList(uri, column, null);
+	}
+	
+	public List<Boolean> selectBooleanList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<Boolean> list = new ArrayList<Boolean>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getLong(0) > 0);
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
+	}
+	
+	public List<String> selectStringList(Uri uri, String column) {
+		return selectStringList(uri, column, null);
+	}
+	
+	public List<String> selectStringList(Uri uri, String column, String orderBy) {
+		Cursor cursor = null;
+		
+		try {
+			cursor = select(uri, new String[] { column }, orderBy, false);
+			
+			List<String> list = new ArrayList<String>(cursor.getCount());
+			
+			for(int i=0; i < cursor.getCount(); i++) {
+				cursor.moveToNext();
+				list.add(cursor.getString(0));
+			}
+			
+			return list;
+			
+		} finally {
+			Closeables.closeSilently(cursor);
+		}
 	}
 	
 	public int update(Uri uri, ContentValues values) {

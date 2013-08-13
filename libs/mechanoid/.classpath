@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-16/android.jar" sourcepath="/ANDROID_HOME/sources/android-16"/>
-	<classpathentry kind="var" path="ANDROID_HOME/extras/android/support/v4/android-support-v4.jar"/>
+	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-18/android.jar" sourcepath="/ANDROID_HOME/sources/android-16"/>
+	<classpathentry kind="var" path="ANDROID_HOME/extras/android/support/v13/android-support-v13.jar"/>
 	<classpathentry kind="var" path="ANDROID_HOME"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

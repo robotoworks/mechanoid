@@ -1,13 +1,16 @@
 #!/bin/bash
 
 WORKING_DIR=$PWD
-MECH_VERSION=0.2.1
+MECH_VERSION=0.2.2
 TARGET=target
 SITE_PATH=$WORKING_DIR/target/ide/eclipse
 DOC_PATH=$WORKING_DIR/target/doc
 APIDOCS_PATH=$WORKING_DIR/target/doc/apidocs
 LIB_PATH=$WORKING_DIR/target/lib
 BIN_PATH=$WORKING_DIR/target/bin
+
+rm -r $TARGET
+mkdir $TARGET
 
 echo "Building..."
 mvn clean install
@@ -17,9 +20,6 @@ mvn -f $WORKING_DIR/libs/mechanoid/pom.xml javadoc:javadoc
 
 echo "Building user docs..."
 make -C $WORKING_DIR/docs html
-
-rm -r $TARGET
-mkdir $TARGET
 
 mkdir -p $SITE_PATH
 cp -r $WORKING_DIR/releng/com.robotoworks.mechanoid.updatesite/target/repository/** $SITE_PATH
