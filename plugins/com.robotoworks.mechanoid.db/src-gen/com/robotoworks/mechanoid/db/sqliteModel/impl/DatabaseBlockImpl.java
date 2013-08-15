@@ -4,6 +4,7 @@ package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getConfig <em>Config</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getMigrations <em>Migrations</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getInit <em>Init</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +81,16 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
    * @ordered
    */
   protected EList<MigrationBlock> migrations;
+
+  /**
+   * The cached value of the '{@link #getInit() <em>Init</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInit()
+   * @generated
+   * @ordered
+   */
+  protected InitBlock init;
 
   /**
    * <!-- begin-user-doc -->
@@ -191,6 +203,54 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
+  public InitBlock getInit()
+  {
+    return init;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInit(InitBlock newInit, NotificationChain msgs)
+  {
+    InitBlock oldInit = init;
+    init = newInit;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DATABASE_BLOCK__INIT, oldInit, newInit);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInit(InitBlock newInit)
+  {
+    if (newInit != init)
+    {
+      NotificationChain msgs = null;
+      if (init != null)
+        msgs = ((InternalEObject)init).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DATABASE_BLOCK__INIT, null, msgs);
+      if (newInit != null)
+        msgs = ((InternalEObject)newInit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.DATABASE_BLOCK__INIT, null, msgs);
+      msgs = basicSetInit(newInit, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.DATABASE_BLOCK__INIT, newInit, newInit));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -200,6 +260,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
         return basicSetConfig(null, msgs);
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return ((InternalEList<?>)getMigrations()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.DATABASE_BLOCK__INIT:
+        return basicSetInit(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -220,6 +282,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
         return getConfig();
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return getMigrations();
+      case SqliteModelPackage.DATABASE_BLOCK__INIT:
+        return getInit();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -245,6 +309,9 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
         getMigrations().clear();
         getMigrations().addAll((Collection<? extends MigrationBlock>)newValue);
         return;
+      case SqliteModelPackage.DATABASE_BLOCK__INIT:
+        setInit((InitBlock)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -268,6 +335,9 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         getMigrations().clear();
         return;
+      case SqliteModelPackage.DATABASE_BLOCK__INIT:
+        setInit((InitBlock)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -288,6 +358,8 @@ public class DatabaseBlockImpl extends MinimalEObjectImpl.Container implements D
         return config != null;
       case SqliteModelPackage.DATABASE_BLOCK__MIGRATIONS:
         return migrations != null && !migrations.isEmpty();
+      case SqliteModelPackage.DATABASE_BLOCK__INIT:
+        return init != null;
     }
     return super.eIsSet(featureID);
   }

@@ -90,9 +90,19 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createConfigBlockAdapter();
       }
       @Override
+      public Adapter caseInitBlock(InitBlock object)
+      {
+        return createInitBlockAdapter();
+      }
+      @Override
       public Adapter caseConfigurationStatement(ConfigurationStatement object)
       {
         return createConfigurationStatementAdapter();
+      }
+      @Override
+      public Adapter caseFunctionArg(FunctionArg object)
+      {
+        return createFunctionArgAdapter();
       }
       @Override
       public Adapter caseContentUri(ContentUri object)
@@ -310,6 +320,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createActionStatementAdapter();
       }
       @Override
+      public Adapter caseFunction(Function object)
+      {
+        return createFunctionAdapter();
+      }
+      @Override
       public Adapter caseContentUriParamSegment(ContentUriParamSegment object)
       {
         return createContentUriParamSegmentAdapter();
@@ -405,14 +420,14 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createCaseExpressionAdapter();
       }
       @Override
-      public Adapter caseFunction(Function object)
-      {
-        return createFunctionAdapter();
-      }
-      @Override
       public Adapter caseCastExpression(CastExpression object)
       {
         return createCastExpressionAdapter();
+      }
+      @Override
+      public Adapter caseFunctionArgument(FunctionArgument object)
+      {
+        return createFunctionArgumentAdapter();
       }
       @Override
       public Adapter caseSelectCore(SelectCore object)
@@ -587,6 +602,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.InitBlock <em>Init Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.InitBlock
+   * @generated
+   */
+  public Adapter createInitBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.ConfigurationStatement <em>Configuration Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -597,6 +627,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConfigurationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.FunctionArg <em>Function Arg</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.FunctionArg
+   * @generated
+   */
+  public Adapter createFunctionArgAdapter()
   {
     return null;
   }
@@ -1247,6 +1292,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.Function <em>Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.Function
+   * @generated
+   */
+  public Adapter createFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment <em>Content Uri Param Segment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1532,21 +1592,6 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.Function <em>Function</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.robotoworks.mechanoid.db.sqliteModel.Function
-   * @generated
-   */
-  public Adapter createFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.CastExpression <em>Cast Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1557,6 +1602,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCastExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.FunctionArgument <em>Function Argument</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.FunctionArgument
+   * @generated
+   */
+  public Adapter createFunctionArgumentAdapter()
   {
     return null;
   }

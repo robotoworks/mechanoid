@@ -4,6 +4,8 @@ package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.Function;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArg;
+import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -28,7 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getBody <em>Body</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
@@ -36,27 +39,27 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class FunctionImpl extends ExpressionImpl implements Function
+public class FunctionImpl extends ConfigurationStatementImpl implements Function
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getArgs()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected EList<FunctionArg> args;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getBody()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected SelectStatement body;
 
   /**
    * The default value of the '{@link #isAll() <em>All</em>}' attribute.
@@ -114,9 +117,13 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public EList<FunctionArg> getArgs()
   {
-    return name;
+    if (args == null)
+    {
+      args = new EObjectContainmentEList<FunctionArg>(FunctionArg.class, this, SqliteModelPackage.FUNCTION__ARGS);
+    }
+    return args;
   }
 
   /**
@@ -124,12 +131,47 @@ public class FunctionImpl extends ExpressionImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public SelectStatement getBody()
   {
-    String oldName = name;
-    name = newName;
+    return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(SelectStatement newBody, NotificationChain msgs)
+  {
+    SelectStatement oldBody = body;
+    body = newBody;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBody(SelectStatement newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.FUNCTION__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.FUNCTION__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__BODY, newBody, newBody));
   }
 
   /**
@@ -179,6 +221,10 @@ public class FunctionImpl extends ExpressionImpl implements Function
   {
     switch (featureID)
     {
+      case SqliteModelPackage.FUNCTION__ARGS:
+        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
+      case SqliteModelPackage.FUNCTION__BODY:
+        return basicSetBody(null, msgs);
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
     }
@@ -195,8 +241,10 @@ public class FunctionImpl extends ExpressionImpl implements Function
   {
     switch (featureID)
     {
-      case SqliteModelPackage.FUNCTION__NAME:
-        return getName();
+      case SqliteModelPackage.FUNCTION__ARGS:
+        return getArgs();
+      case SqliteModelPackage.FUNCTION__BODY:
+        return getBody();
       case SqliteModelPackage.FUNCTION__ALL:
         return isAll();
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
@@ -216,8 +264,12 @@ public class FunctionImpl extends ExpressionImpl implements Function
   {
     switch (featureID)
     {
-      case SqliteModelPackage.FUNCTION__NAME:
-        setName((String)newValue);
+      case SqliteModelPackage.FUNCTION__ARGS:
+        getArgs().clear();
+        getArgs().addAll((Collection<? extends FunctionArg>)newValue);
+        return;
+      case SqliteModelPackage.FUNCTION__BODY:
+        setBody((SelectStatement)newValue);
         return;
       case SqliteModelPackage.FUNCTION__ALL:
         setAll((Boolean)newValue);
@@ -240,8 +292,11 @@ public class FunctionImpl extends ExpressionImpl implements Function
   {
     switch (featureID)
     {
-      case SqliteModelPackage.FUNCTION__NAME:
-        setName(NAME_EDEFAULT);
+      case SqliteModelPackage.FUNCTION__ARGS:
+        getArgs().clear();
+        return;
+      case SqliteModelPackage.FUNCTION__BODY:
+        setBody((SelectStatement)null);
         return;
       case SqliteModelPackage.FUNCTION__ALL:
         setAll(ALL_EDEFAULT);
@@ -263,8 +318,10 @@ public class FunctionImpl extends ExpressionImpl implements Function
   {
     switch (featureID)
     {
-      case SqliteModelPackage.FUNCTION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SqliteModelPackage.FUNCTION__ARGS:
+        return args != null && !args.isEmpty();
+      case SqliteModelPackage.FUNCTION__BODY:
+        return body != null;
       case SqliteModelPackage.FUNCTION__ALL:
         return all != ALL_EDEFAULT;
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
@@ -284,9 +341,7 @@ public class FunctionImpl extends ExpressionImpl implements Function
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", all: ");
+    result.append(" (all: ");
     result.append(all);
     result.append(')');
     return result.toString();

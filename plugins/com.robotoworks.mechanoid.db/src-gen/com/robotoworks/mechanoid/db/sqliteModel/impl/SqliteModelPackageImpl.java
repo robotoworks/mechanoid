@@ -50,9 +50,12 @@ import com.robotoworks.mechanoid.db.sqliteModel.ExprRelate;
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.ExpressionDefaultValue;
 import com.robotoworks.mechanoid.db.sqliteModel.Function;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArg;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArgument;
 import com.robotoworks.mechanoid.db.sqliteModel.GroupByExpressions;
 import com.robotoworks.mechanoid.db.sqliteModel.HavingExpressions;
 import com.robotoworks.mechanoid.db.sqliteModel.IndexedColumn;
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.InsertStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.IsNull;
 import com.robotoworks.mechanoid.db.sqliteModel.JoinSource;
@@ -140,7 +143,21 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass initBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass configurationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionArgEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -448,6 +465,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass functionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass contentUriParamSegmentEClass = null;
 
   /**
@@ -581,14 +605,14 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionEClass = null;
+  private EClass castExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass castExpressionEClass = null;
+  private EClass functionArgumentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -903,6 +927,16 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getDatabaseBlock_Init()
+  {
+    return (EReference)databaseBlockEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getConfigBlock()
   {
     return configBlockEClass;
@@ -923,9 +957,69 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getInitBlock()
+  {
+    return initBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getInitBlock_Statements()
+  {
+    return (EReference)initBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getConfigurationStatement()
   {
     return configurationStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConfigurationStatement_Name()
+  {
+    return (EAttribute)configurationStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionArg()
+  {
+    return functionArgEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionArg_Type()
+  {
+    return (EAttribute)functionArgEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionArg_Name()
+  {
+    return (EAttribute)functionArgEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1473,7 +1567,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCreateTriggerStatement_Name()
+  public EAttribute getCreateTriggerStatement_Temporary()
   {
     return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(0);
   }
@@ -1483,7 +1577,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCreateTriggerStatement_When()
+  public EAttribute getCreateTriggerStatement_Name()
   {
     return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(1);
   }
@@ -1493,7 +1587,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCreateTriggerStatement_EventType()
+  public EAttribute getCreateTriggerStatement_When()
   {
     return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(2);
   }
@@ -1503,7 +1597,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCreateTriggerStatement_UpdateColumnNames()
+  public EAttribute getCreateTriggerStatement_EventType()
   {
     return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(3);
   }
@@ -1513,9 +1607,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCreateTriggerStatement_UpdateColumnNames()
+  {
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getCreateTriggerStatement_Table()
   {
-    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(4);
+    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1525,7 +1629,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    */
   public EAttribute getCreateTriggerStatement_ForEachRow()
   {
-    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)createTriggerStatementEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1535,7 +1639,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    */
   public EReference getCreateTriggerStatement_WhenExpression()
   {
-    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(6);
+    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1545,7 +1649,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    */
   public EReference getCreateTriggerStatement_Statements()
   {
-    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(7);
+    return (EReference)createTriggerStatementEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -2133,9 +2237,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getActionStatement_Name()
+  public EReference getActionStatement_Uri()
   {
-    return (EAttribute)actionStatementEClass.getEStructuralFeatures().get(0);
+    return (EReference)actionStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2143,9 +2247,49 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActionStatement_Uri()
+  public EClass getFunction()
   {
-    return (EReference)actionStatementEClass.getEStructuralFeatures().get(1);
+    return functionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Args()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Body()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunction_All()
+  {
+    return (EAttribute)functionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Arguments()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2753,46 +2897,6 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunction()
-  {
-    return functionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFunction_Name()
-  {
-    return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFunction_All()
-  {
-    return (EAttribute)functionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFunction_Arguments()
-  {
-    return (EReference)functionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getCastExpression()
   {
     return castExpressionEClass;
@@ -2816,6 +2920,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
   public EAttribute getCastExpression_Type()
   {
     return (EAttribute)castExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionArgument()
+  {
+    return functionArgumentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionArgument_Arg()
+  {
+    return (EReference)functionArgumentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3143,9 +3267,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCreateTableStatement_Temporary()
+  {
+    return (EAttribute)createTableStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getCreateTableStatement_ColumnDefs()
   {
-    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(0);
+    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3155,7 +3289,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    */
   public EReference getCreateTableStatement_Constraints()
   {
-    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(1);
+    return (EReference)createTableStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3173,9 +3307,19 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCreateViewStatement_Temporary()
+  {
+    return (EAttribute)createViewStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getCreateViewStatement_SelectStatement()
   {
-    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(0);
+    return (EReference)createViewStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3446,11 +3590,20 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(databaseBlockEClass, DATABASE_BLOCK__NAME);
     createEReference(databaseBlockEClass, DATABASE_BLOCK__CONFIG);
     createEReference(databaseBlockEClass, DATABASE_BLOCK__MIGRATIONS);
+    createEReference(databaseBlockEClass, DATABASE_BLOCK__INIT);
 
     configBlockEClass = createEClass(CONFIG_BLOCK);
     createEReference(configBlockEClass, CONFIG_BLOCK__STATEMENTS);
 
+    initBlockEClass = createEClass(INIT_BLOCK);
+    createEReference(initBlockEClass, INIT_BLOCK__STATEMENTS);
+
     configurationStatementEClass = createEClass(CONFIGURATION_STATEMENT);
+    createEAttribute(configurationStatementEClass, CONFIGURATION_STATEMENT__NAME);
+
+    functionArgEClass = createEClass(FUNCTION_ARG);
+    createEAttribute(functionArgEClass, FUNCTION_ARG__TYPE);
+    createEAttribute(functionArgEClass, FUNCTION_ARG__NAME);
 
     contentUriEClass = createEClass(CONTENT_URI);
     createEAttribute(contentUriEClass, CONTENT_URI__TYPE);
@@ -3528,6 +3681,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(tableDefinitionEClass, TABLE_DEFINITION__NAME);
 
     createTriggerStatementEClass = createEClass(CREATE_TRIGGER_STATEMENT);
+    createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__TEMPORARY);
     createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__NAME);
     createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__WHEN);
     createEAttribute(createTriggerStatementEClass, CREATE_TRIGGER_STATEMENT__EVENT_TYPE);
@@ -3614,8 +3768,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(updateColumnExpressionEClass, UPDATE_COLUMN_EXPRESSION__EXPRESSION);
 
     actionStatementEClass = createEClass(ACTION_STATEMENT);
-    createEAttribute(actionStatementEClass, ACTION_STATEMENT__NAME);
     createEReference(actionStatementEClass, ACTION_STATEMENT__URI);
+
+    functionEClass = createEClass(FUNCTION);
+    createEReference(functionEClass, FUNCTION__ARGS);
+    createEReference(functionEClass, FUNCTION__BODY);
+    createEAttribute(functionEClass, FUNCTION__ALL);
+    createEReference(functionEClass, FUNCTION__ARGUMENTS);
 
     contentUriParamSegmentEClass = createEClass(CONTENT_URI_PARAM_SEGMENT);
     createEAttribute(contentUriParamSegmentEClass, CONTENT_URI_PARAM_SEGMENT__NUM);
@@ -3696,14 +3855,12 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEReference(caseExpressionEClass, CASE_EXPRESSION__CASES);
     createEReference(caseExpressionEClass, CASE_EXPRESSION__ELSE_EXPRESSION);
 
-    functionEClass = createEClass(FUNCTION);
-    createEAttribute(functionEClass, FUNCTION__NAME);
-    createEAttribute(functionEClass, FUNCTION__ALL);
-    createEReference(functionEClass, FUNCTION__ARGUMENTS);
-
     castExpressionEClass = createEClass(CAST_EXPRESSION);
     createEReference(castExpressionEClass, CAST_EXPRESSION__EXPRESSION);
     createEAttribute(castExpressionEClass, CAST_EXPRESSION__TYPE);
+
+    functionArgumentEClass = createEClass(FUNCTION_ARGUMENT);
+    createEReference(functionArgumentEClass, FUNCTION_ARGUMENT__ARG);
 
     selectCoreEClass = createEClass(SELECT_CORE);
     createEReference(selectCoreEClass, SELECT_CORE__LEFT);
@@ -3748,10 +3905,12 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     createEAttribute(currentTimeStampLiteralEClass, CURRENT_TIME_STAMP_LITERAL__LITERAL);
 
     createTableStatementEClass = createEClass(CREATE_TABLE_STATEMENT);
+    createEAttribute(createTableStatementEClass, CREATE_TABLE_STATEMENT__TEMPORARY);
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__COLUMN_DEFS);
     createEReference(createTableStatementEClass, CREATE_TABLE_STATEMENT__CONSTRAINTS);
 
     createViewStatementEClass = createEClass(CREATE_VIEW_STATEMENT);
+    createEAttribute(createViewStatementEClass, CREATE_VIEW_STATEMENT__TEMPORARY);
     createEReference(createViewStatementEClass, CREATE_VIEW_STATEMENT__SELECT_STATEMENT);
 
     alterTableRenameStatementEClass = createEClass(ALTER_TABLE_RENAME_STATEMENT);
@@ -3835,6 +3994,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     insertStatementEClass.getESuperTypes().add(this.getDMLStatement());
     updateStatementEClass.getESuperTypes().add(this.getDMLStatement());
     actionStatementEClass.getESuperTypes().add(this.getConfigurationStatement());
+    functionEClass.getESuperTypes().add(this.getConfigurationStatement());
+    functionEClass.getESuperTypes().add(this.getExpression());
     contentUriParamSegmentEClass.getESuperTypes().add(this.getContentUriSegment());
     exprConcatEClass.getESuperTypes().add(this.getExpression());
     exprMultEClass.getESuperTypes().add(this.getExpression());
@@ -3854,8 +4015,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     nestedExpressionEClass.getESuperTypes().add(this.getExpression());
     selectStatementExpressionEClass.getESuperTypes().add(this.getExpression());
     caseExpressionEClass.getESuperTypes().add(this.getExpression());
-    functionEClass.getESuperTypes().add(this.getExpression());
     castExpressionEClass.getESuperTypes().add(this.getExpression());
+    functionArgumentEClass.getESuperTypes().add(this.getExpression());
     selectCoreEClass.getESuperTypes().add(this.getSelectCoreExpression());
     selectExpressionEClass.getESuperTypes().add(this.getSelectCoreExpression());
     singleSourceTableEClass.getESuperTypes().add(this.getSelectSource());
@@ -3887,11 +4048,20 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getDatabaseBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDatabaseBlock_Config(), this.getConfigBlock(), null, "config", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDatabaseBlock_Migrations(), this.getMigrationBlock(), null, "migrations", null, 0, -1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDatabaseBlock_Init(), this.getInitBlock(), null, "init", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(configBlockEClass, ConfigBlock.class, "ConfigBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConfigBlock_Statements(), this.getConfigurationStatement(), null, "statements", null, 0, -1, ConfigBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(initBlockEClass, InitBlock.class, "InitBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInitBlock_Statements(), this.getDDLStatement(), null, "statements", null, 0, -1, InitBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(configurationStatementEClass, ConfigurationStatement.class, "ConfigurationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConfigurationStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConfigurationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionArgEClass, FunctionArg.class, "FunctionArg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionArg_Type(), this.getColumnType(), "type", null, 0, 1, FunctionArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionArg_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contentUriEClass, ContentUri.class, "ContentUri", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getContentUri_Type(), ecorePackage.getEString(), "type", null, 0, 1, ContentUri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3969,6 +4139,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getTableDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(createTriggerStatementEClass, CreateTriggerStatement.class, "CreateTriggerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCreateTriggerStatement_Temporary(), ecorePackage.getEBoolean(), "temporary", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCreateTriggerStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCreateTriggerStatement_When(), ecorePackage.getEString(), "when", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCreateTriggerStatement_EventType(), ecorePackage.getEString(), "eventType", null, 0, 1, CreateTriggerStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4055,8 +4226,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getUpdateColumnExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, UpdateColumnExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionStatementEClass, ActionStatement.class, "ActionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getActionStatement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActionStatement_Uri(), this.getContentUri(), null, "uri", null, 0, 1, ActionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunction_Args(), this.getFunctionArg(), null, "args", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Body(), this.getSelectStatement(), null, "body", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunction_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Arguments(), this.getExpression(), null, "arguments", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contentUriParamSegmentEClass, ContentUriParamSegment.class, "ContentUriParamSegment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getContentUriParamSegment_Num(), ecorePackage.getEBoolean(), "num", null, 0, 1, ContentUriParamSegment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4137,14 +4313,12 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEReference(getCaseExpression_Cases(), this.getCase(), null, "cases", null, 0, -1, CaseExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCaseExpression_ElseExpression(), this.getExpression(), null, "elseExpression", null, 0, 1, CaseExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunction_All(), ecorePackage.getEBoolean(), "all", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunction_Arguments(), this.getExpression(), null, "arguments", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(castExpressionEClass, CastExpression.class, "CastExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCastExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCastExpression_Type(), this.getSqliteDataType(), "type", null, 0, 1, CastExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionArgumentEClass, FunctionArgument.class, "FunctionArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionArgument_Arg(), this.getFunctionArg(), null, "arg", null, 0, 1, FunctionArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectCoreEClass, SelectCore.class, "SelectCore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSelectCore_Left(), this.getSelectCoreExpression(), null, "left", null, 0, 1, SelectCore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4189,10 +4363,12 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEAttribute(getCurrentTimeStampLiteral_Literal(), ecorePackage.getEString(), "literal", null, 0, 1, CurrentTimeStampLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(createTableStatementEClass, CreateTableStatement.class, "CreateTableStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCreateTableStatement_Temporary(), ecorePackage.getEBoolean(), "temporary", null, 0, 1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCreateTableStatement_ColumnDefs(), this.getColumnSource(), null, "columnDefs", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCreateTableStatement_Constraints(), this.getTableConstraint(), null, "constraints", null, 0, -1, CreateTableStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(createViewStatementEClass, CreateViewStatement.class, "CreateViewStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCreateViewStatement_Temporary(), ecorePackage.getEBoolean(), "temporary", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCreateViewStatement_SelectStatement(), this.getSelectStatement(), null, "selectStatement", null, 0, 1, CreateViewStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(alterTableRenameStatementEClass, AlterTableRenameStatement.class, "AlterTableRenameStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

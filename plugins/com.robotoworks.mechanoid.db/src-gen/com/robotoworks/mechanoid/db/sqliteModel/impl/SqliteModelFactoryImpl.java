@@ -68,7 +68,9 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.MODEL: return createModel();
       case SqliteModelPackage.DATABASE_BLOCK: return createDatabaseBlock();
       case SqliteModelPackage.CONFIG_BLOCK: return createConfigBlock();
+      case SqliteModelPackage.INIT_BLOCK: return createInitBlock();
       case SqliteModelPackage.CONFIGURATION_STATEMENT: return createConfigurationStatement();
+      case SqliteModelPackage.FUNCTION_ARG: return createFunctionArg();
       case SqliteModelPackage.CONTENT_URI: return createContentUri();
       case SqliteModelPackage.CONTENT_URI_SEGMENT: return createContentUriSegment();
       case SqliteModelPackage.MIGRATION_BLOCK: return createMigrationBlock();
@@ -112,6 +114,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.UPDATE_STATEMENT: return createUpdateStatement();
       case SqliteModelPackage.UPDATE_COLUMN_EXPRESSION: return createUpdateColumnExpression();
       case SqliteModelPackage.ACTION_STATEMENT: return createActionStatement();
+      case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CONTENT_URI_PARAM_SEGMENT: return createContentUriParamSegment();
       case SqliteModelPackage.EXPR_CONCAT: return createExprConcat();
       case SqliteModelPackage.EXPR_MULT: return createExprMult();
@@ -131,8 +134,8 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NESTED_EXPRESSION: return createNestedExpression();
       case SqliteModelPackage.SELECT_STATEMENT_EXPRESSION: return createSelectStatementExpression();
       case SqliteModelPackage.CASE_EXPRESSION: return createCaseExpression();
-      case SqliteModelPackage.FUNCTION: return createFunction();
       case SqliteModelPackage.CAST_EXPRESSION: return createCastExpression();
+      case SqliteModelPackage.FUNCTION_ARGUMENT: return createFunctionArgument();
       case SqliteModelPackage.SELECT_CORE: return createSelectCore();
       case SqliteModelPackage.SELECT_EXPRESSION: return createSelectExpression();
       case SqliteModelPackage.SINGLE_SOURCE_TABLE: return createSingleSourceTable();
@@ -243,10 +246,32 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public InitBlock createInitBlock()
+  {
+    InitBlockImpl initBlock = new InitBlockImpl();
+    return initBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ConfigurationStatement createConfigurationStatement()
   {
     ConfigurationStatementImpl configurationStatement = new ConfigurationStatementImpl();
     return configurationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionArg createFunctionArg()
+  {
+    FunctionArgImpl functionArg = new FunctionArgImpl();
+    return functionArg;
   }
 
   /**
@@ -727,6 +752,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
+  public Function createFunction()
+  {
+    FunctionImpl function = new FunctionImpl();
+    return function;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ContentUriParamSegment createContentUriParamSegment()
   {
     ContentUriParamSegmentImpl contentUriParamSegment = new ContentUriParamSegmentImpl();
@@ -936,10 +972,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Function createFunction()
+  public CastExpression createCastExpression()
   {
-    FunctionImpl function = new FunctionImpl();
-    return function;
+    CastExpressionImpl castExpression = new CastExpressionImpl();
+    return castExpression;
   }
 
   /**
@@ -947,10 +983,10 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
    * <!-- end-user-doc -->
    * @generated
    */
-  public CastExpression createCastExpression()
+  public FunctionArgument createFunctionArgument()
   {
-    CastExpressionImpl castExpression = new CastExpressionImpl();
-    return castExpression;
+    FunctionArgumentImpl functionArgument = new FunctionArgumentImpl();
+    return functionArgument;
   }
 
   /**

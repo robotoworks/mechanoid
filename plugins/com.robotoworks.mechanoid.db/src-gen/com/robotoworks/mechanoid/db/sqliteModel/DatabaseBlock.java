@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getConfig <em>Config</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getInit <em>Init</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,5 +94,31 @@ public interface DatabaseBlock extends EObject
    * @generated
    */
   EList<MigrationBlock> getMigrations();
+
+  /**
+   * Returns the value of the '<em><b>Init</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Init</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Init</em>' containment reference.
+   * @see #setInit(InitBlock)
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getDatabaseBlock_Init()
+   * @model containment="true"
+   * @generated
+   */
+  InitBlock getInit();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getInit <em>Init</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Init</em>' containment reference.
+   * @see #getInit()
+   * @generated
+   */
+  void setInit(InitBlock value);
 
 } // DatabaseBlock

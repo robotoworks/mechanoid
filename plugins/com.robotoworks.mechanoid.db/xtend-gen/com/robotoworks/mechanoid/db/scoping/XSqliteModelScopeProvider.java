@@ -108,26 +108,31 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   
   public IScope scope_SingleSourceTable_tableReference(final SingleSourceTable tbl, final EReference reference) {
     DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(tbl, DDLStatement.class);
-    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+    boolean _notEquals = (!Objects.equal(stmt, null));
+    if (_notEquals) {
+      return this.scopeForTableDefinitionsBeforeStatement(stmt, false);
+    }
+    DatabaseBlock db = ModelUtil.<DatabaseBlock>getAncestorOfType(tbl, DatabaseBlock.class);
+    return this.scopeForTableDefinitionsBeforeStatement(db, stmt, true);
   }
   
   public IScope scope_CreateTriggerStatement_table(final CreateTriggerStatement context, final EReference reference) {
-    return this.scopeForTableDefinitionsBeforeStatement(context);
+    return this.scopeForTableDefinitionsBeforeStatement(context, false);
   }
   
   public IScope scope_DeleteStatement_table(final DeleteStatement context, final EReference reference) {
     DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
-    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt, false);
   }
   
   public IScope scope_InsertStatement_table(final InsertStatement context, final EReference reference) {
     DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
-    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt, false);
   }
   
   public IScope scope_UpdateStatement_table(final UpdateStatement context, final EReference reference) {
     DDLStatement stmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
-    return this.scopeForTableDefinitionsBeforeStatement(stmt);
+    return this.scopeForTableDefinitionsBeforeStatement(stmt, false);
   }
   
   public IScope scope_InsertStatement_columnNames(final InsertStatement context, final EReference reference) {
@@ -166,8 +171,39 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
   }
   
-  public IScope scopeForTableDefinitionsBeforeStatement(final DDLStatement stmt) {
-    ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(stmt, TableDefinition.class);
+  public IScope scopeForTableDefinitionsBeforeStatement(final DDLStatement stmt, final boolean inclusive) {
+    ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(stmt, TableDefinition.class, inclusive);
+    HashMap<String,EObject> _hashMap = new HashMap<String,EObject>();
+    final HashMap<String,EObject> map = _hashMap;
+    List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
+    for (final TableDefinition ref : _reverse) {
+      {
+        String _name = ref.getName();
+        boolean _equals = Objects.equal(_name, null);
+        if (_equals) {
+          return IScope.NULLSCOPE;
+        }
+        String _name_1 = ref.getName();
+        boolean _containsKey = map.containsKey(_name_1);
+        boolean _not = (!_containsKey);
+        if (_not) {
+          String _name_2 = ref.getName();
+          map.put(_name_2, ref);
+        }
+      }
+    }
+    Collection<EObject> _values = map.values();
+    final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
+        public QualifiedName apply(final EObject it) {
+          QualifiedName _name = NameHelper.getName(((TableDefinition) it));
+          return _name;
+        }
+      };
+    return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
+  }
+  
+  public IScope scopeForTableDefinitionsBeforeStatement(final DatabaseBlock db, final DDLStatement stmt, final boolean inclusive) {
+    ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(db, stmt, TableDefinition.class, inclusive);
     HashMap<String,EObject> _hashMap = new HashMap<String,EObject>();
     final HashMap<String,EObject> map = _hashMap;
     List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);

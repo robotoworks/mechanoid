@@ -22,6 +22,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression;
@@ -52,6 +53,17 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 	    
 	    if(!result.valid) {
 	        error(result.message, result.source, result.feature, -1);
+	    }
+	}
+	
+	@Check
+	public void checkInitBlockStatementTypes(InitBlock initBlock) {
+	    for(DDLStatement stmt : initBlock.getStatements()) {
+	        if(!((stmt instanceof CreateViewStatement) ||
+	                (stmt instanceof CreateTableStatement))) {
+	            error("Only tables and view statements allowed in the init block", 
+	                stmt, SqliteModelPackage.Literals.DDL_STATEMENT.getEStructuralFeature(SqliteModelPackage.DDL_STATEMENT), -1);
+	        }
 	    }
 	}
 

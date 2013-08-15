@@ -50,6 +50,15 @@ public interface SqliteModelFactory extends EFactory
   ConfigBlock createConfigBlock();
 
   /**
+   * Returns a new object of class '<em>Init Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Init Block</em>'.
+   * @generated
+   */
+  InitBlock createInitBlock();
+
+  /**
    * Returns a new object of class '<em>Configuration Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -57,6 +66,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   ConfigurationStatement createConfigurationStatement();
+
+  /**
+   * Returns a new object of class '<em>Function Arg</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Arg</em>'.
+   * @generated
+   */
+  FunctionArg createFunctionArg();
 
   /**
    * Returns a new object of class '<em>Content Uri</em>'.
@@ -446,6 +464,15 @@ public interface SqliteModelFactory extends EFactory
   ActionStatement createActionStatement();
 
   /**
+   * Returns a new object of class '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function</em>'.
+   * @generated
+   */
+  Function createFunction();
+
+  /**
    * Returns a new object of class '<em>Content Uri Param Segment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -617,15 +644,6 @@ public interface SqliteModelFactory extends EFactory
   CaseExpression createCaseExpression();
 
   /**
-   * Returns a new object of class '<em>Function</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function</em>'.
-   * @generated
-   */
-  Function createFunction();
-
-  /**
    * Returns a new object of class '<em>Cast Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -633,6 +651,15 @@ public interface SqliteModelFactory extends EFactory
    * @generated
    */
   CastExpression createCastExpression();
+
+  /**
+   * Returns a new object of class '<em>Function Argument</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Argument</em>'.
+   * @generated
+   */
+  FunctionArgument createFunctionArgument();
 
   /**
    * Returns a new object of class '<em>Select Core</em>'.
