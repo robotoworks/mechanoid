@@ -31,9 +31,12 @@ import org.eclipse.xtext.xbase.lib.Functions
 import java.util.LinkedList
 import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement
 import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement
+import com.robotoworks.mechanoid.db.sqliteModel.Model
+import java.util.Collection
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock
 
 class ModelUtil {
-	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType) {
+	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType, boolean inclusive) {
 		var list = new ArrayList<T>()
 		
 		var db = ModelUtil::getAncestorOfType(stmt, typeof(DatabaseBlock))
@@ -41,12 +44,81 @@ class ModelUtil {
 		for(MigrationBlock migration : db.migrations) {
 			for(ddl : migration.statements) {
 				
-				if(ddl == stmt) {
-					return list
+				if(!inclusive) {
+					if(ddl == stmt) {
+						return list
+					}
 				}
 				
 				if(statementType.isAssignableFrom(ddl.getClass())) {
 					list.add(ddl as T)
+				}
+				
+				if(ddl == stmt) {
+					return list
+				}
+			}
+		}
+		
+		if(ModelUtil::getAncestorOfType(stmt, typeof(InitBlock)) != null) {
+			for(ddl : db.init.statements) {
+				
+				if(!inclusive) {
+					if(ddl == stmt) {
+						return list
+					}
+				}
+				
+				if(statementType.isAssignableFrom(ddl.getClass())) {
+					list.add(ddl as T)
+				}
+				
+				if(ddl == stmt) {
+					return list
+				}
+			}			
+		}
+		
+		return list
+	}
+	
+	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DatabaseBlock db, DDLStatement stmt, Class<T> statementType, boolean inclusive) {
+		var list = new ArrayList<T>()
+		
+		for(MigrationBlock migration : db.migrations) {
+			for(ddl : migration.statements) {
+				
+				if(!inclusive) {
+					if(ddl == stmt) {
+						return list
+					}
+				}
+				
+				if(statementType.isAssignableFrom(ddl.getClass())) {
+					list.add(ddl as T)
+				}
+				
+				if(ddl == stmt) {
+					return list
+				}
+			}
+		}
+		
+		if(db.init != null) {
+			for(ddl : db.init.statements) {
+				
+				if(!inclusive) {
+					if(ddl == stmt) {
+						return list
+					}
+				}
+				
+				if(statementType.isAssignableFrom(ddl.getClass())) {
+					list.add(ddl as T)
+				}
+				
+				if(ddl == stmt) {
+					return list
 				}
 			}
 		}
@@ -255,6 +327,21 @@ class ModelUtil {
 		return matches;
 	}
 	
+	def static getAllViewsInConfigInitReferencingTable(Model model, TableDefinition tableDef) {
+		var matches = new HashSet<CreateViewStatement>();
+		
+		for(view : getConfigInitViews(model)) {
+			if(isDefinitionReferencedByView(tableDef, view)) {
+				matches.add(view)
+			}
+		}
+		
+		//snapshot.views.
+		
+		
+		return matches;
+	}
+	
 	def static boolean isDefinitionReferencedByView(TableDefinition tableDef, CreateViewStatement view) {
 		return view.eAllContents.exists[obj|
 			if(obj instanceof SingleSourceTable) {
@@ -362,6 +449,26 @@ class ModelUtil {
 			
 			items.addAll(findColumnDefs(item.getAncestorOfType(typeof(DDLStatement)), source.tableReference))
 		])
+		
+		return items
+	}
+	
+	def static Collection<CreateViewStatement> getConfigInitViews(Model model) {
+		val ArrayList<CreateViewStatement> items = Lists::newArrayList()
+		
+		if(model.database.init != null) {
+			items.addAll(model.database.init.statements.filter(typeof(CreateViewStatement)))
+		}
+		
+		return items
+	}
+	
+	def static Collection<CreateTableStatement> getConfigInitTables(Model model) {
+		val ArrayList<CreateTableStatement> items = Lists::newArrayList()
+		
+		if(model.database.init != null) {
+			items.addAll(model.database.init.statements.filter(typeof(CreateTableStatement)))
+		}
 		
 		return items
 	}

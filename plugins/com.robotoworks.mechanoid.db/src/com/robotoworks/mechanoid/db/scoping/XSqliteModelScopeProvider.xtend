@@ -32,6 +32,7 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
+import com.robotoworks.mechanoid.db.sqliteModel.Function
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -94,25 +95,32 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	def IScope scope_SingleSourceTable_tableReference(SingleSourceTable tbl, EReference reference) {
 		var stmt = tbl.getAncestorOfType(typeof(DDLStatement))
 		
-		return stmt.scopeForTableDefinitionsBeforeStatement
+		if(stmt != null) {
+			return stmt.scopeForTableDefinitionsBeforeStatement(false)
+		}
+		
+		var db = tbl.getAncestorOfType(typeof(DatabaseBlock))
+		
+		return db.scopeForTableDefinitionsBeforeStatement(stmt, true)
+		
 	}
 	def IScope scope_CreateTriggerStatement_table(CreateTriggerStatement context, EReference reference) {
-		return context.scopeForTableDefinitionsBeforeStatement
+		return context.scopeForTableDefinitionsBeforeStatement(false)
 	}
 	
 	def IScope scope_DeleteStatement_table(DeleteStatement context, EReference reference) {
 		var stmt = context.getAncestorOfType(typeof(DDLStatement))
-		return stmt.scopeForTableDefinitionsBeforeStatement
+		return stmt.scopeForTableDefinitionsBeforeStatement(false)
 	}
 	
 	def IScope scope_InsertStatement_table(InsertStatement context, EReference reference) {
 		var stmt = context.getAncestorOfType(typeof(DDLStatement))
-		return stmt.scopeForTableDefinitionsBeforeStatement
+		return stmt.scopeForTableDefinitionsBeforeStatement(false)
 	}
 	
 	def IScope scope_UpdateStatement_table(UpdateStatement context, EReference reference) {
 		var stmt = context.getAncestorOfType(typeof(DDLStatement))
-		return stmt.scopeForTableDefinitionsBeforeStatement
+		return stmt.scopeForTableDefinitionsBeforeStatement(false)
 	}
 	
 	def IScope scope_InsertStatement_columnNames(InsertStatement context, EReference reference) {
@@ -141,8 +149,27 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return Scopes::scopeFor(ddl.findColumnDefs(context.table), IScope::NULLSCOPE)
 	}	
 	
-	def scopeForTableDefinitionsBeforeStatement(DDLStatement stmt) {
-		var refs = stmt.findPreviousStatementsOfType(typeof(TableDefinition))
+	def scopeForTableDefinitionsBeforeStatement(DDLStatement stmt, boolean inclusive) {
+		var refs = stmt.findPreviousStatementsOfType(typeof(TableDefinition), inclusive)
+		
+		val map = new HashMap<String, EObject>()
+		
+		for(ref : refs.reverse){
+			// Cannot complete if the name is null
+			if(ref.name == null) {
+				return IScope::NULLSCOPE;
+			}
+			
+			if(!map.containsKey(ref.name)) {
+				map.put(ref.name, ref)
+			}
+		}
+
+		return Scopes::scopeFor(map.values, [NameHelper::getName((it as TableDefinition))], IScope::NULLSCOPE)
+	}
+	
+	def scopeForTableDefinitionsBeforeStatement(DatabaseBlock db, DDLStatement stmt, boolean inclusive) {
+		var refs = db.findPreviousStatementsOfType(stmt, typeof(TableDefinition), inclusive)
 		
 		val map = new HashMap<String, EObject>()
 		

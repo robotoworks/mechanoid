@@ -114,9 +114,23 @@ public class SqliteModelGenerator implements IGenerator {
         }
       };
     IterableExtensions.<CreateViewStatement>forEach(_views, _function_1);
+    Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
+    final Procedure1<CreateTableStatement> _function_2 = new Procedure1<CreateTableStatement>() {
+        public void apply(final CreateTableStatement statement) {
+          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
+        }
+      };
+    IterableExtensions.<CreateTableStatement>forEach(_configInitTables, _function_2);
+    Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
+    final Procedure1<CreateViewStatement> _function_3 = new Procedure1<CreateViewStatement>() {
+        public void apply(final CreateViewStatement statement) {
+          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
+        }
+      };
+    IterableExtensions.<CreateViewStatement>forEach(_configInitViews, _function_3);
     DatabaseBlock _database_5 = model.getDatabase();
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_2 = new Procedure2<MigrationBlock,Integer>() {
+    final Procedure2<MigrationBlock,Integer> _function_4 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
           boolean _greaterThan = ((index).intValue() > 0);
           if (_greaterThan) {
@@ -125,7 +139,7 @@ public class SqliteModelGenerator implements IGenerator {
           }
         }
       };
-    IterableExtensions.<MigrationBlock>forEach(_migrations, _function_2);
+    IterableExtensions.<MigrationBlock>forEach(_migrations, _function_4);
   }
   
   public void generateActiveRecordEntity(final Resource resource, final IFileSystemAccess fsa, final CreateTableStatement statement) {

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateViewStatementImpl#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateViewStatementImpl#getSelectStatement <em>Select Statement</em>}</li>
  * </ul>
  * </p>
@@ -29,6 +30,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class CreateViewStatementImpl extends TableDefinitionImpl implements CreateViewStatement
 {
+  /**
+   * The default value of the '{@link #isTemporary() <em>Temporary</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTemporary()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean TEMPORARY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isTemporary() <em>Temporary</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTemporary()
+   * @generated
+   * @ordered
+   */
+  protected boolean temporary = TEMPORARY_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getSelectStatement() <em>Select Statement</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -58,6 +79,29 @@ public class CreateViewStatementImpl extends TableDefinitionImpl implements Crea
   protected EClass eStaticClass()
   {
     return SqliteModelPackage.Literals.CREATE_VIEW_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isTemporary()
+  {
+    return temporary;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTemporary(boolean newTemporary)
+  {
+    boolean oldTemporary = temporary;
+    temporary = newTemporary;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_VIEW_STATEMENT__TEMPORARY, oldTemporary, temporary));
   }
 
   /**
@@ -134,6 +178,8 @@ public class CreateViewStatementImpl extends TableDefinitionImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__TEMPORARY:
+        return isTemporary();
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         return getSelectStatement();
     }
@@ -150,6 +196,9 @@ public class CreateViewStatementImpl extends TableDefinitionImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__TEMPORARY:
+        setTemporary((Boolean)newValue);
+        return;
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)newValue);
         return;
@@ -167,6 +216,9 @@ public class CreateViewStatementImpl extends TableDefinitionImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__TEMPORARY:
+        setTemporary(TEMPORARY_EDEFAULT);
+        return;
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         setSelectStatement((SelectStatement)null);
         return;
@@ -184,10 +236,29 @@ public class CreateViewStatementImpl extends TableDefinitionImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_VIEW_STATEMENT__TEMPORARY:
+        return temporary != TEMPORARY_EDEFAULT;
       case SqliteModelPackage.CREATE_VIEW_STATEMENT__SELECT_STATEMENT:
         return selectStatement != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (temporary: ");
+    result.append(temporary);
+    result.append(')');
+    return result.toString();
   }
 
 } //CreateViewStatementImpl

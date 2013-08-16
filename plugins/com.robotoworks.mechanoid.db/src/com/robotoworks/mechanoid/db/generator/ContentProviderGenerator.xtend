@@ -45,6 +45,20 @@ class ContentProviderGenerator {
 				«ENDIF»				
 				«ENDFOR»
 				
+				«FOR tbl : model.configInitTables»
+				protected static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
+				«IF tbl.hasAndroidPrimaryKey»
+				protected static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				«ENDIF»
+				«ENDFOR»
+
+				«FOR vw : model.configInitViews»
+				protected static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
+				«IF vw.hasAndroidPrimaryKey»
+				protected static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				«ENDIF»				
+				«ENDFOR»
+				
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 				protected static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
@@ -57,16 +71,25 @@ class ContentProviderGenerator {
 			        final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
 			        final String authority = «model.database.name.pascalize»Contract.CONTENT_AUTHORITY;
 			
-					// Sources
 					«FOR tbl : snapshot.tables»
 					matcher.addURI(authority, "«tbl.name»", «tbl.name.underscore.toUpperCase»);
 					«IF tbl.hasAndroidPrimaryKey»
 					matcher.addURI(authority, "«tbl.name»/#", «tbl.name.underscore.toUpperCase»_ID);
 					«ENDIF»
 					«ENDFOR»
-			
-					// Views
 					«FOR vw : snapshot.views»
+					matcher.addURI(authority, "«vw.name»", «vw.name.underscore.toUpperCase»);
+					«IF vw.hasAndroidPrimaryKey»
+					matcher.addURI(authority, "«vw.name»/#", «vw.name.underscore.toUpperCase»_ID);
+					«ENDIF»
+					«ENDFOR»
+					«FOR tbl : model.configInitTables»
+					matcher.addURI(authority, "«tbl.name»", «tbl.name.underscore.toUpperCase»);
+					«IF tbl.hasAndroidPrimaryKey»
+					matcher.addURI(authority, "«tbl.name»/#", «tbl.name.underscore.toUpperCase»_ID);
+					«ENDIF»
+					«ENDFOR»
+					«FOR vw : model.configInitViews»
 					matcher.addURI(authority, "«vw.name»", «vw.name.underscore.toUpperCase»);
 					«IF vw.hasAndroidPrimaryKey»
 					matcher.addURI(authority, "«vw.name»/#", «vw.name.underscore.toUpperCase»_ID);
@@ -94,6 +117,18 @@ class ContentProviderGenerator {
 					«ENDIF»
 					«ENDFOR»
 					«FOR vw : snapshot.views»
+					contentTypes[«vw.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«vw.name.pascalize».CONTENT_TYPE;
+					«IF vw.hasAndroidPrimaryKey»
+					contentTypes[«vw.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«vw.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»	
+					«FOR tbl : model.configInitTables»
+					contentTypes[«tbl.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».CONTENT_TYPE;
+					«IF tbl.hasAndroidPrimaryKey»
+					contentTypes[«tbl.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«tbl.name.pascalize».ITEM_CONTENT_TYPE;
+					«ENDIF»
+					«ENDFOR»
+					«FOR vw : model.configInitViews»
 					contentTypes[«vw.name.underscore.toUpperCase»] = «model.database.name.pascalize»Contract.«vw.name.pascalize».CONTENT_TYPE;
 					«IF vw.hasAndroidPrimaryKey»
 					contentTypes[«vw.name.underscore.toUpperCase»_ID] = «model.database.name.pascalize»Contract.«vw.name.pascalize».ITEM_CONTENT_TYPE;
@@ -137,6 +172,22 @@ class ContentProviderGenerator {
 							return create«vw.name.pascalize»ByIdActions();
 						«ENDIF»
 						«ENDFOR»
+						«FOR tbl : model.configInitTables»
+						case «tbl.name.underscore.toUpperCase»: 
+							return create«tbl.name.pascalize»Actions();
+						«IF tbl.hasAndroidPrimaryKey»
+						case «tbl.name.underscore.toUpperCase»_ID:
+							return create«tbl.name.pascalize»ByIdActions();
+						«ENDIF»
+						«ENDFOR»
+						«FOR vw : model.configInitViews»
+						case «vw.name.underscore.toUpperCase»:
+							return create«vw.name.pascalize»Actions();
+						«IF vw.hasAndroidPrimaryKey»
+						case «vw.name.underscore.toUpperCase»_ID: 
+							return create«vw.name.pascalize»ByIdActions();
+						«ENDIF»
+						«ENDFOR»
 						«IF model.database.config !=null»
 						«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
 						case «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase»:
@@ -161,6 +212,30 @@ class ContentProviderGenerator {
 			    
 			    «ENDFOR»
 			    «FOR view:snapshot.views»
+			    «IF view.hasAndroidPrimaryKey»
+			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
+			    	return new DefaultContentProviderActions(Sources.«view.name.underscore.toUpperCase», true, «IF view.hasAndroidPrimaryKey»«view.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    }
+			    
+			    «ENDIF»
+			    protected ContentProviderActions create«view.name.pascalize»Actions() {
+			    	return new DefaultContentProviderActions(Sources.«view.name.underscore.toUpperCase», false, «IF view.hasAndroidPrimaryKey»«view.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    }
+			    
+			    «ENDFOR»
+			    «FOR tbl:model.configInitTables»
+			    «IF tbl.hasAndroidPrimaryKey»
+			    protected ContentProviderActions create«tbl.name.pascalize»ByIdActions() {
+			    	return new DefaultContentProviderActions(Sources.«tbl.name.underscore.toUpperCase», true, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    }
+			    
+			    «ENDIF»
+			    protected ContentProviderActions create«tbl.name.pascalize»Actions() {
+			    	return new DefaultContentProviderActions(Sources.«tbl.name.underscore.toUpperCase», false, «IF tbl.hasAndroidPrimaryKey»«tbl.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
+			    }
+			    
+			    «ENDFOR»
+			    «FOR view:model.configInitViews»
 			    «IF view.hasAndroidPrimaryKey»
 			    protected ContentProviderActions create«view.name.pascalize»ByIdActions() {
 			    	return new DefaultContentProviderActions(Sources.«view.name.underscore.toUpperCase», true, «IF view.hasAndroidPrimaryKey»«view.name.pascalize»Record.getFactory()«ELSE»null«ENDIF»);
