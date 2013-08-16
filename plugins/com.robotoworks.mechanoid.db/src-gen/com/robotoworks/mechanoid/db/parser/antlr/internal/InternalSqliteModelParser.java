@@ -401,7 +401,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDatabaseBlock"
-    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:138:1: ruleDatabaseBlock returns [EObject current=null] : (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_migrations_4_0= ruleMigrationBlock ) )* ( (lv_init_5_0= ruleInitBlock ) )? otherlv_6= '}' ) ;
+    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:138:1: ruleDatabaseBlock returns [EObject current=null] : (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_init_4_0= ruleInitBlock ) )? ( (lv_migrations_5_0= ruleMigrationBlock ) )* otherlv_6= '}' ) ;
     public final EObject ruleDatabaseBlock() throws RecognitionException {
         EObject current = null;
 
@@ -411,19 +411,19 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
         Token otherlv_6=null;
         EObject lv_config_3_0 = null;
 
-        EObject lv_migrations_4_0 = null;
+        EObject lv_init_4_0 = null;
 
-        EObject lv_init_5_0 = null;
+        EObject lv_migrations_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:141:28: ( (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_migrations_4_0= ruleMigrationBlock ) )* ( (lv_init_5_0= ruleInitBlock ) )? otherlv_6= '}' ) )
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:1: (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_migrations_4_0= ruleMigrationBlock ) )* ( (lv_init_5_0= ruleInitBlock ) )? otherlv_6= '}' )
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:141:28: ( (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_init_4_0= ruleInitBlock ) )? ( (lv_migrations_5_0= ruleMigrationBlock ) )* otherlv_6= '}' ) )
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:1: (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_init_4_0= ruleInitBlock ) )? ( (lv_migrations_5_0= ruleMigrationBlock ) )* otherlv_6= '}' )
             {
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:1: (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_migrations_4_0= ruleMigrationBlock ) )* ( (lv_init_5_0= ruleInitBlock ) )? otherlv_6= '}' )
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:3: otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_migrations_4_0= ruleMigrationBlock ) )* ( (lv_init_5_0= ruleInitBlock ) )? otherlv_6= '}'
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:1: (otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_init_4_0= ruleInitBlock ) )? ( (lv_migrations_5_0= ruleMigrationBlock ) )* otherlv_6= '}' )
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:142:3: otherlv_0= 'database' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_config_3_0= ruleConfigBlock ) )? ( (lv_init_4_0= ruleInitBlock ) )? ( (lv_migrations_5_0= ruleMigrationBlock ) )* otherlv_6= '}'
             {
             otherlv_0=(Token)match(input,13,FOLLOW_13_in_ruleDatabaseBlock247); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -513,80 +513,27 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:186:3: ( (lv_migrations_4_0= ruleMigrationBlock ) )*
-            loop2:
-            do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:186:3: ( (lv_init_4_0= ruleInitBlock ) )?
+            int alt2=2;
+            int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==28) ) {
-                    alt2=1;
-                }
-
-
-                switch (alt2) {
-            	case 1 :
-            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:187:1: (lv_migrations_4_0= ruleMigrationBlock )
-            	    {
-            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:187:1: (lv_migrations_4_0= ruleMigrationBlock )
-            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:188:3: lv_migrations_4_0= ruleMigrationBlock
-            	    {
-            	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_4_0()); 
-            	      	    
-            	    }
-            	    pushFollow(FOLLOW_ruleMigrationBlock_in_ruleDatabaseBlock324);
-            	    lv_migrations_4_0=ruleMigrationBlock();
-
-            	    state._fsp--;
-            	    if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getDatabaseBlockRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"migrations",
-            	              		lv_migrations_4_0, 
-            	              		"MigrationBlock");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
-            	    }
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop2;
-                }
-            } while (true);
-
-            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:204:3: ( (lv_init_5_0= ruleInitBlock ) )?
-            int alt3=2;
-            int LA3_0 = input.LA(1);
-
-            if ( (LA3_0==17) ) {
-                alt3=1;
+            if ( (LA2_0==17) ) {
+                alt2=1;
             }
-            switch (alt3) {
+            switch (alt2) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:205:1: (lv_init_5_0= ruleInitBlock )
+                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:187:1: (lv_init_4_0= ruleInitBlock )
                     {
-                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:205:1: (lv_init_5_0= ruleInitBlock )
-                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:206:3: lv_init_5_0= ruleInitBlock
+                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:187:1: (lv_init_4_0= ruleInitBlock )
+                    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:188:3: lv_init_4_0= ruleInitBlock
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_5_0()); 
+                      	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleInitBlock_in_ruleDatabaseBlock346);
-                    lv_init_5_0=ruleInitBlock();
+                    pushFollow(FOLLOW_ruleInitBlock_in_ruleDatabaseBlock324);
+                    lv_init_4_0=ruleInitBlock();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -598,7 +545,7 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"init",
-                              		lv_init_5_0, 
+                              		lv_init_4_0, 
                               		"InitBlock");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -611,6 +558,59 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     break;
 
             }
+
+            // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:204:3: ( (lv_migrations_5_0= ruleMigrationBlock ) )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( (LA3_0==28) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:205:1: (lv_migrations_5_0= ruleMigrationBlock )
+            	    {
+            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:205:1: (lv_migrations_5_0= ruleMigrationBlock )
+            	    // ../com.robotoworks.mechanoid.db/src-gen/com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.g:206:3: lv_migrations_5_0= ruleMigrationBlock
+            	    {
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_5_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleMigrationBlock_in_ruleDatabaseBlock346);
+            	    lv_migrations_5_0=ruleMigrationBlock();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getDatabaseBlockRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"migrations",
+            	              		lv_migrations_5_0, 
+            	              		"MigrationBlock");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
 
             otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleDatabaseBlock359); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -18452,8 +18452,8 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleDatabaseBlock264 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_ruleDatabaseBlock281 = new BitSet(new long[]{0x0000000010038000L});
     public static final BitSet FOLLOW_ruleConfigBlock_in_ruleDatabaseBlock302 = new BitSet(new long[]{0x0000000010028000L});
-    public static final BitSet FOLLOW_ruleMigrationBlock_in_ruleDatabaseBlock324 = new BitSet(new long[]{0x0000000010028000L});
-    public static final BitSet FOLLOW_ruleInitBlock_in_ruleDatabaseBlock346 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_ruleInitBlock_in_ruleDatabaseBlock324 = new BitSet(new long[]{0x0000000010008000L});
+    public static final BitSet FOLLOW_ruleMigrationBlock_in_ruleDatabaseBlock346 = new BitSet(new long[]{0x0000000010008000L});
     public static final BitSet FOLLOW_15_in_ruleDatabaseBlock359 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConfigBlock_in_entryRuleConfigBlock395 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConfigBlock405 = new BitSet(new long[]{0x0000000000000002L});

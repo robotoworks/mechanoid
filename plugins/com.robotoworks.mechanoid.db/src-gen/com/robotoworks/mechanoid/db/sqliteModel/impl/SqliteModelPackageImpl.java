@@ -917,7 +917,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDatabaseBlock_Migrations()
+  public EReference getDatabaseBlock_Init()
   {
     return (EReference)databaseBlockEClass.getEStructuralFeatures().get(2);
   }
@@ -927,7 +927,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDatabaseBlock_Init()
+  public EReference getDatabaseBlock_Migrations()
   {
     return (EReference)databaseBlockEClass.getEStructuralFeatures().get(3);
   }
@@ -3589,8 +3589,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     databaseBlockEClass = createEClass(DATABASE_BLOCK);
     createEAttribute(databaseBlockEClass, DATABASE_BLOCK__NAME);
     createEReference(databaseBlockEClass, DATABASE_BLOCK__CONFIG);
-    createEReference(databaseBlockEClass, DATABASE_BLOCK__MIGRATIONS);
     createEReference(databaseBlockEClass, DATABASE_BLOCK__INIT);
+    createEReference(databaseBlockEClass, DATABASE_BLOCK__MIGRATIONS);
 
     configBlockEClass = createEClass(CONFIG_BLOCK);
     createEReference(configBlockEClass, CONFIG_BLOCK__STATEMENTS);
@@ -4047,8 +4047,8 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     initEClass(databaseBlockEClass, DatabaseBlock.class, "DatabaseBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDatabaseBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDatabaseBlock_Config(), this.getConfigBlock(), null, "config", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDatabaseBlock_Migrations(), this.getMigrationBlock(), null, "migrations", null, 0, -1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDatabaseBlock_Init(), this.getInitBlock(), null, "init", null, 0, 1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDatabaseBlock_Migrations(), this.getMigrationBlock(), null, "migrations", null, 0, -1, DatabaseBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(configBlockEClass, ConfigBlock.class, "ConfigBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConfigBlock_Statements(), this.getConfigurationStatement(), null, "statements", null, 0, -1, ConfigBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

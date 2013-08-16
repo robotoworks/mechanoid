@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getConfig <em>Config</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getInit <em>Init</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,22 +80,6 @@ public interface DatabaseBlock extends EObject
   void setConfig(ConfigBlock value);
 
   /**
-   * Returns the value of the '<em><b>Migrations</b></em>' containment reference list.
-   * The list contents are of type {@link com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Migrations</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Migrations</em>' containment reference list.
-   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getDatabaseBlock_Migrations()
-   * @model containment="true"
-   * @generated
-   */
-  EList<MigrationBlock> getMigrations();
-
-  /**
    * Returns the value of the '<em><b>Init</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -120,5 +104,21 @@ public interface DatabaseBlock extends EObject
    * @generated
    */
   void setInit(InitBlock value);
+
+  /**
+   * Returns the value of the '<em><b>Migrations</b></em>' containment reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Migrations</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Migrations</em>' containment reference list.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getDatabaseBlock_Migrations()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MigrationBlock> getMigrations();
 
 } // DatabaseBlock

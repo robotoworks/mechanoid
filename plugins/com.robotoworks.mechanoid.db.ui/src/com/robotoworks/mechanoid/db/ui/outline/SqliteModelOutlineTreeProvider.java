@@ -3,12 +3,16 @@
 */
 package com.robotoworks.mechanoid.db.ui.outline;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
 
 /**
  * customization of the default outline structure
@@ -47,4 +51,19 @@ public class SqliteModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	protected boolean _isLeaf(CreateIndexStatement modelElement) {
 	    return true;
 	}
+	
+    protected boolean _isLeaf(DropViewStatement modelElement) {
+        return true;
+    }
+    
+//    @Override
+//    protected void _createNode(DocumentRootNode parentNode, EObject modelElement) {
+//    
+//        if(modelElement instanceof CreateViewStatement) {
+//            createEObjectNode(parentNode, modelElement, _image(modelElement), "qux", true);
+//        } else {
+//            super._createNode(parentNode, modelElement);
+//        }
+//    }
+    
 }

@@ -63,17 +63,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cConfigAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cConfigConfigBlockParserRuleCall_3_0 = (RuleCall)cConfigAssignment_3.eContents().get(0);
-		private final Assignment cMigrationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMigrationsMigrationBlockParserRuleCall_4_0 = (RuleCall)cMigrationsAssignment_4.eContents().get(0);
-		private final Assignment cInitAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInitInitBlockParserRuleCall_5_0 = (RuleCall)cInitAssignment_5.eContents().get(0);
+		private final Assignment cInitAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cInitInitBlockParserRuleCall_4_0 = (RuleCall)cInitAssignment_4.eContents().get(0);
+		private final Assignment cMigrationsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cMigrationsMigrationBlockParserRuleCall_5_0 = (RuleCall)cMigrationsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//DatabaseBlock:
-		//	"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* init=InitBlock? "}";
+		//	"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* init=InitBlock? "}"
+		//"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"database"
@@ -94,17 +94,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ConfigBlock
 		public RuleCall getConfigConfigBlockParserRuleCall_3_0() { return cConfigConfigBlockParserRuleCall_3_0; }
 
-		//migrations+=MigrationBlock*
-		public Assignment getMigrationsAssignment_4() { return cMigrationsAssignment_4; }
-
-		//MigrationBlock
-		public RuleCall getMigrationsMigrationBlockParserRuleCall_4_0() { return cMigrationsMigrationBlockParserRuleCall_4_0; }
-
 		//init=InitBlock?
-		public Assignment getInitAssignment_5() { return cInitAssignment_5; }
+		public Assignment getInitAssignment_4() { return cInitAssignment_4; }
 
 		//InitBlock
-		public RuleCall getInitInitBlockParserRuleCall_5_0() { return cInitInitBlockParserRuleCall_5_0; }
+		public RuleCall getInitInitBlockParserRuleCall_4_0() { return cInitInitBlockParserRuleCall_4_0; }
+
+		//migrations+=MigrationBlock*
+		public Assignment getMigrationsAssignment_5() { return cMigrationsAssignment_5; }
+
+		//MigrationBlock
+		public RuleCall getMigrationsMigrationBlockParserRuleCall_5_0() { return cMigrationsMigrationBlockParserRuleCall_5_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -4325,7 +4325,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DatabaseBlock:
-	//	"database" name=ID "{" config=ConfigBlock? migrations+=MigrationBlock* init=InitBlock? "}";
+	//	"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}";
 	public DatabaseBlockElements getDatabaseBlockAccess() {
 		return (pDatabaseBlock != null) ? pDatabaseBlock : (pDatabaseBlock = new DatabaseBlockElements());
 	}

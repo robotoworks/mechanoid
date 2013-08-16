@@ -11,10 +11,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//ConfigBlock"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="migrations" upperBound="-1"
-        eType="#//MigrationBlock" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//InitBlock"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="migrations" upperBound="-1"
+        eType="#//MigrationBlock" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConfigBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"

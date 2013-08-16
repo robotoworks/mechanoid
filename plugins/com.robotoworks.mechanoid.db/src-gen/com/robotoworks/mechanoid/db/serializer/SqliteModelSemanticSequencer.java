@@ -1139,7 +1139,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (name=ID config=ConfigBlock? migrations+=MigrationBlock* init=InitBlock?)
+	 *     (name=ID config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock*)
 	 */
 	protected void sequence_DatabaseBlock(EObject context, DatabaseBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

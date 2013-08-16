@@ -41,6 +41,25 @@ class ModelUtil {
 		
 		var db = ModelUtil::getAncestorOfType(stmt, typeof(DatabaseBlock))
 		
+		for(MigrationBlock migration : db.migrations) {
+			for(ddl : migration.statements) {
+				
+				if(!inclusive) {
+					if(ddl == stmt) {
+						return list
+					}
+				}
+				
+				if(statementType.isAssignableFrom(ddl.getClass())) {
+					list.add(ddl as T)
+				}
+				
+				if(ddl == stmt) {
+					return list
+				}
+			}
+		}
+		
 		if(ModelUtil::getAncestorOfType(stmt, typeof(InitBlock)) != null) {
 			for(ddl : db.init.statements) {
 				
@@ -60,33 +79,14 @@ class ModelUtil {
 			}			
 		}
 		
-		for(MigrationBlock migration : db.migrations) {
-			for(ddl : migration.statements) {
-				
-				if(!inclusive) {
-					if(ddl == stmt) {
-						return list
-					}
-				}
-				
-				if(statementType.isAssignableFrom(ddl.getClass())) {
-					list.add(ddl as T)
-				}
-				
-				if(ddl == stmt) {
-					return list
-				}
-			}
-		}
-		
 		return list
 	}
 	
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DatabaseBlock db, DDLStatement stmt, Class<T> statementType, boolean inclusive) {
 		var list = new ArrayList<T>()
 		
-		if(db.init != null) {
-			for(ddl : db.init.statements) {
+		for(MigrationBlock migration : db.migrations) {
+			for(ddl : migration.statements) {
 				
 				if(!inclusive) {
 					if(ddl == stmt) {
@@ -104,8 +104,8 @@ class ModelUtil {
 			}
 		}
 		
-		for(MigrationBlock migration : db.migrations) {
-			for(ddl : migration.statements) {
+		if(db.init != null) {
+			for(ddl : db.init.statements) {
 				
 				if(!inclusive) {
 					if(ddl == stmt) {

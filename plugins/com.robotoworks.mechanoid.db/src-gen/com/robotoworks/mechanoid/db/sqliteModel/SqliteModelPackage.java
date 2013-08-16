@@ -123,22 +123,22 @@ public interface SqliteModelPackage extends EPackage
   int DATABASE_BLOCK__CONFIG = 1;
 
   /**
-   * The feature id for the '<em><b>Migrations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATABASE_BLOCK__MIGRATIONS = 2;
-
-  /**
    * The feature id for the '<em><b>Init</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATABASE_BLOCK__INIT = 3;
+  int DATABASE_BLOCK__INIT = 2;
+
+  /**
+   * The feature id for the '<em><b>Migrations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATABASE_BLOCK__MIGRATIONS = 3;
 
   /**
    * The number of structural features of the '<em>Database Block</em>' class.
@@ -3594,17 +3594,6 @@ public interface SqliteModelPackage extends EPackage
   EReference getDatabaseBlock_Config();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Migrations</em>'.
-   * @see com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations()
-   * @see #getDatabaseBlock()
-   * @generated
-   */
-  EReference getDatabaseBlock_Migrations();
-
-  /**
    * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getInit <em>Init</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3614,6 +3603,17 @@ public interface SqliteModelPackage extends EPackage
    * @generated
    */
   EReference getDatabaseBlock_Init();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations <em>Migrations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Migrations</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock#getMigrations()
+   * @see #getDatabaseBlock()
+   * @generated
+   */
+  EReference getDatabaseBlock_Migrations();
 
   /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.ConfigBlock <em>Config Block</em>}'.
@@ -6479,20 +6479,20 @@ public interface SqliteModelPackage extends EPackage
     EReference DATABASE_BLOCK__CONFIG = eINSTANCE.getDatabaseBlock_Config();
 
     /**
-     * The meta object literal for the '<em><b>Migrations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DATABASE_BLOCK__MIGRATIONS = eINSTANCE.getDatabaseBlock_Migrations();
-
-    /**
      * The meta object literal for the '<em><b>Init</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference DATABASE_BLOCK__INIT = eINSTANCE.getDatabaseBlock_Init();
+
+    /**
+     * The meta object literal for the '<em><b>Migrations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATABASE_BLOCK__MIGRATIONS = eINSTANCE.getDatabaseBlock_Migrations();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ConfigBlockImpl <em>Config Block</em>}' class.

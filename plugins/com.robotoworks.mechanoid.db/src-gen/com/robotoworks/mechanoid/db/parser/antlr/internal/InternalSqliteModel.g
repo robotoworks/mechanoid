@@ -186,40 +186,40 @@ ruleDatabaseBlock returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_4_0()); 
 	    }
-		lv_migrations_4_0=ruleMigrationBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDatabaseBlockRule());
-	        }
-       		add(
-       			$current, 
-       			"migrations",
-        		lv_migrations_4_0, 
-        		"MigrationBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_5_0()); 
-	    }
-		lv_init_5_0=ruleInitBlock		{
+		lv_init_4_0=ruleInitBlock		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDatabaseBlockRule());
 	        }
        		set(
        			$current, 
        			"init",
-        		lv_init_5_0, 
+        		lv_init_4_0, 
         		"InitBlock");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?	otherlv_6='}' 
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_5_0()); 
+	    }
+		lv_migrations_5_0=ruleMigrationBlock		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDatabaseBlockRule());
+	        }
+       		add(
+       			$current, 
+       			"migrations",
+        		lv_migrations_5_0, 
+        		"MigrationBlock");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_6='}' 
     {
     	newLeafNode(otherlv_6, grammarAccess.getDatabaseBlockAccess().getRightCurlyBracketKeyword_6());
     }

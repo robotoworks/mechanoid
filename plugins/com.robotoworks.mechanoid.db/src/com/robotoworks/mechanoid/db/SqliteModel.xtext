@@ -13,7 +13,7 @@ Model:
 	database=DatabaseBlock;
 
 DatabaseBlock:
-	'database' name=ID '{' (config=ConfigBlock)? (migrations+=MigrationBlock)* (init=InitBlock)? '}';
+	'database' name=ID '{' (config=ConfigBlock)? (init=InitBlock)? (migrations+=MigrationBlock)* '}';
 
 ConfigBlock:
 	{ConfigBlock}

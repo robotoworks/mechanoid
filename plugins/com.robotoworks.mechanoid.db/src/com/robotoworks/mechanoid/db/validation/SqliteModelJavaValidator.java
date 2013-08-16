@@ -64,6 +64,21 @@ public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
 	            error("Only tables and view statements allowed in the init block", 
 	                stmt, SqliteModelPackage.Literals.DDL_STATEMENT.getEStructuralFeature(SqliteModelPackage.DDL_STATEMENT), -1);
 	        }
+	        
+	        if(stmt instanceof CreateViewStatement) {
+	            CreateViewStatement v = (CreateViewStatement) stmt;
+	            
+	            if(!v.isTemporary()) {
+	                error("Only temporary views allowed in the init block", stmt, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME);                
+	            }
+	        }
+	        if(stmt instanceof CreateTableStatement) {
+	            CreateTableStatement t = (CreateTableStatement) stmt;
+	            
+	            if(!t.isTemporary()) {
+	                error("Only temporary tables allowed in the init block", stmt, SqliteModelPackage.Literals.TABLE_DEFINITION__NAME);   
+	            }
+	        }
 	    }
 	}
 

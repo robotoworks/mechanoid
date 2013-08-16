@@ -3458,9 +3458,9 @@ rule__DatabaseBlock__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4()); }
-(rule__DatabaseBlock__MigrationsAssignment_4)*
-{ after(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4()); }
+{ before(grammarAccess.getDatabaseBlockAccess().getInitAssignment_4()); }
+(rule__DatabaseBlock__InitAssignment_4)?
+{ after(grammarAccess.getDatabaseBlockAccess().getInitAssignment_4()); }
 )
 
 ;
@@ -3487,9 +3487,9 @@ rule__DatabaseBlock__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getDatabaseBlockAccess().getInitAssignment_5()); }
-(rule__DatabaseBlock__InitAssignment_5)?
-{ after(grammarAccess.getDatabaseBlockAccess().getInitAssignment_5()); }
+{ before(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_5()); }
+(rule__DatabaseBlock__MigrationsAssignment_5)*
+{ after(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_5()); }
 )
 
 ;
@@ -17508,14 +17508,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__DatabaseBlock__MigrationsAssignment_4
+rule__DatabaseBlock__InitAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_4_0()); }
-	ruleMigrationBlock{ after(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_4_0()); }
+{ before(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_4_0()); }
+	ruleInitBlock{ after(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_4_0()); }
 )
 
 ;
@@ -17523,14 +17523,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__DatabaseBlock__InitAssignment_5
+rule__DatabaseBlock__MigrationsAssignment_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_5_0()); }
-	ruleInitBlock{ after(grammarAccess.getDatabaseBlockAccess().getInitInitBlockParserRuleCall_5_0()); }
+{ before(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_5_0()); }
+	ruleMigrationBlock{ after(grammarAccess.getDatabaseBlockAccess().getMigrationsMigrationBlockParserRuleCall_5_0()); }
 )
 
 ;

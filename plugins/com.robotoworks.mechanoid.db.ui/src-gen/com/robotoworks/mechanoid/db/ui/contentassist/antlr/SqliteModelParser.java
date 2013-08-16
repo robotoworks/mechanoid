@@ -218,8 +218,8 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getDatabaseAssignment_2(), "rule__Model__DatabaseAssignment_2");
 					put(grammarAccess.getDatabaseBlockAccess().getNameAssignment_1(), "rule__DatabaseBlock__NameAssignment_1");
 					put(grammarAccess.getDatabaseBlockAccess().getConfigAssignment_3(), "rule__DatabaseBlock__ConfigAssignment_3");
-					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_4(), "rule__DatabaseBlock__MigrationsAssignment_4");
-					put(grammarAccess.getDatabaseBlockAccess().getInitAssignment_5(), "rule__DatabaseBlock__InitAssignment_5");
+					put(grammarAccess.getDatabaseBlockAccess().getInitAssignment_4(), "rule__DatabaseBlock__InitAssignment_4");
+					put(grammarAccess.getDatabaseBlockAccess().getMigrationsAssignment_5(), "rule__DatabaseBlock__MigrationsAssignment_5");
 					put(grammarAccess.getConfigBlockAccess().getStatementsAssignment_3(), "rule__ConfigBlock__StatementsAssignment_3");
 					put(grammarAccess.getInitBlockAccess().getStatementsAssignment_3_0(), "rule__InitBlock__StatementsAssignment_3_0");
 					put(grammarAccess.getConfigurationStatementAccess().getNameAssignment_0_2(), "rule__ConfigurationStatement__NameAssignment_0_2");
