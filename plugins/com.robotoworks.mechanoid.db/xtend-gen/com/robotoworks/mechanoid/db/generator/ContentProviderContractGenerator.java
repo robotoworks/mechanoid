@@ -200,7 +200,6 @@ public class ContentProviderContractGenerator {
         _builder.newLine();
       }
     }
-    _builder.newLine();
     {
       Collection<CreateViewStatement> _views = snapshot.getViews();
       for(final CreateViewStatement vw : _views) {
@@ -233,6 +232,83 @@ public class ContentProviderContractGenerator {
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
+      }
+    }
+    {
+      Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
+      for(final CreateTableStatement tbl_1 : _configInitTables) {
+        _builder.append("\t");
+        _builder.append("interface ");
+        String _name_8 = tbl_1.getName();
+        String _pascalize_5 = Strings.pascalize(_name_8);
+        _builder.append(_pascalize_5, "	");
+        _builder.append("Columns {");
+        _builder.newLineIfNotEmpty();
+        {
+          EList<ColumnSource> _columnDefs_1 = tbl_1.getColumnDefs();
+          final Function1<ColumnSource,Boolean> _function_2 = new Function1<ColumnSource,Boolean>() {
+              public Boolean apply(final ColumnSource it) {
+                String _name = it.getName();
+                boolean _equals = _name.equals("_id");
+                boolean _not = (!_equals);
+                return Boolean.valueOf(_not);
+              }
+            };
+          Iterable<ColumnSource> _filter_2 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_2);
+          for(final ColumnSource col_2 : _filter_2) {
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("String ");
+            String _name_9 = col_2.getName();
+            String _underscore_1 = Strings.underscore(_name_9);
+            String _upperCase_1 = _underscore_1.toUpperCase();
+            _builder.append(_upperCase_1, "		");
+            _builder.append(" = \"");
+            String _name_10 = col_2.getName();
+            _builder.append(_name_10, "		");
+            _builder.append("\";");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+      }
+    }
+    {
+      Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
+      for(final CreateViewStatement vw_1 : _configInitViews) {
+        _builder.append("\t");
+        _builder.append("interface ");
+        String _name_11 = vw_1.getName();
+        String _pascalize_6 = Strings.pascalize(_name_11);
+        _builder.append(_pascalize_6, "	");
+        _builder.append("Columns {");
+        _builder.newLineIfNotEmpty();
+        {
+          ArrayList<ColumnSource> _viewResultColumns_1 = ModelUtil.getViewResultColumns(vw_1);
+          final Function1<ColumnSource,Boolean> _function_3 = new Function1<ColumnSource,Boolean>() {
+              public Boolean apply(final ColumnSource it) {
+                String _name = it.getName();
+                boolean _equals = _name.equals("_id");
+                boolean _not = (!_equals);
+                return Boolean.valueOf(_not);
+              }
+            };
+          Iterable<ColumnSource> _filter_3 = IterableExtensions.<ColumnSource>filter(_viewResultColumns_1, _function_3);
+          for(final ColumnSource col_3 : _filter_3) {
+            _builder.append("\t");
+            _builder.append("\t");
+            CharSequence _generateInterfaceMemberForResultColumn_1 = this.generateInterfaceMemberForResultColumn(col_3);
+            _builder.append(_generateInterfaceMemberForResultColumn_1, "		");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("}");
+        _builder.newLine();
         _builder.append("\t");
         _builder.newLine();
       }
@@ -241,9 +317,9 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
-      for(final CreateTableStatement tbl_1 : _tables_1) {
+      for(final CreateTableStatement tbl_2 : _tables_1) {
         _builder.append("\t");
-        CharSequence _generateContractItem = this.generateContractItem(model, snapshot, tbl_1);
+        CharSequence _generateContractItem = this.generateContractItem(model, snapshot, tbl_2);
         _builder.append(_generateContractItem, "	");
         _builder.newLineIfNotEmpty();
       }
@@ -251,10 +327,31 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
-      for(final CreateViewStatement vw_1 : _views_1) {
+      for(final CreateViewStatement vw_2 : _views_1) {
         _builder.append("\t");
-        CharSequence _generateContractItem_1 = this.generateContractItem(model, snapshot, vw_1);
+        CharSequence _generateContractItem_1 = this.generateContractItem(model, snapshot, vw_2);
         _builder.append(_generateContractItem_1, "	");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.newLine();
+    {
+      Collection<CreateTableStatement> _configInitTables_1 = ModelUtil.getConfigInitTables(model);
+      for(final CreateTableStatement tbl_3 : _configInitTables_1) {
+        _builder.append("\t");
+        CharSequence _generateContractItem_2 = this.generateContractItem(model, snapshot, tbl_3);
+        _builder.append(_generateContractItem_2, "	");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    {
+      Collection<CreateViewStatement> _configInitViews_1 = ModelUtil.getConfigInitViews(model);
+      for(final CreateViewStatement vw_3 : _configInitViews_1) {
+        _builder.append("\t");
+        CharSequence _generateContractItem_3 = this.generateContractItem(model, snapshot, vw_3);
+        _builder.append(_generateContractItem_3, "	");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -275,32 +372,64 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
-      for(final CreateTableStatement tbl_2 : _tables_2) {
+      for(final CreateTableStatement tbl_4 : _tables_2) {
         _builder.append("\t\t");
         _builder.append("map.put(");
-        String _name_8 = tbl_2.getName();
-        String _pascalize_5 = Strings.pascalize(_name_8);
-        _builder.append(_pascalize_5, "		");
+        String _name_12 = tbl_4.getName();
+        String _pascalize_7 = Strings.pascalize(_name_12);
+        _builder.append(_pascalize_7, "		");
         _builder.append(".CONTENT_URI, ");
-        String _name_9 = tbl_2.getName();
-        String _pascalize_6 = Strings.pascalize(_name_9);
-        _builder.append(_pascalize_6, "		");
+        String _name_13 = tbl_4.getName();
+        String _pascalize_8 = Strings.pascalize(_name_13);
+        _builder.append(_pascalize_8, "		");
         _builder.append(".VIEW_URIS);");
         _builder.newLineIfNotEmpty();
       }
     }
     {
       Collection<CreateViewStatement> _views_2 = snapshot.getViews();
-      for(final CreateViewStatement vw_2 : _views_2) {
+      for(final CreateViewStatement vw_4 : _views_2) {
         _builder.append("\t\t");
         _builder.append("map.put(");
-        String _name_10 = vw_2.getName();
-        String _pascalize_7 = Strings.pascalize(_name_10);
-        _builder.append(_pascalize_7, "		");
+        String _name_14 = vw_4.getName();
+        String _pascalize_9 = Strings.pascalize(_name_14);
+        _builder.append(_pascalize_9, "		");
         _builder.append(".CONTENT_URI, ");
-        String _name_11 = vw_2.getName();
-        String _pascalize_8 = Strings.pascalize(_name_11);
-        _builder.append(_pascalize_8, "		");
+        String _name_15 = vw_4.getName();
+        String _pascalize_10 = Strings.pascalize(_name_15);
+        _builder.append(_pascalize_10, "		");
+        _builder.append(".VIEW_URIS);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Collection<CreateTableStatement> _configInitTables_2 = ModelUtil.getConfigInitTables(model);
+      for(final CreateTableStatement tbl_5 : _configInitTables_2) {
+        _builder.append("\t\t");
+        _builder.append("map.put(");
+        String _name_16 = tbl_5.getName();
+        String _pascalize_11 = Strings.pascalize(_name_16);
+        _builder.append(_pascalize_11, "		");
+        _builder.append(".CONTENT_URI, ");
+        String _name_17 = tbl_5.getName();
+        String _pascalize_12 = Strings.pascalize(_name_17);
+        _builder.append(_pascalize_12, "		");
+        _builder.append(".VIEW_URIS);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Collection<CreateViewStatement> _configInitViews_2 = ModelUtil.getConfigInitViews(model);
+      for(final CreateViewStatement vw_5 : _configInitViews_2) {
+        _builder.append("\t\t");
+        _builder.append("map.put(");
+        String _name_18 = vw_5.getName();
+        String _pascalize_13 = Strings.pascalize(_name_18);
+        _builder.append(_pascalize_13, "		");
+        _builder.append(".CONTENT_URI, ");
+        String _name_19 = vw_5.getName();
+        String _pascalize_14 = Strings.pascalize(_name_19);
+        _builder.append(_pascalize_14, "		");
         _builder.append(".VIEW_URIS);");
         _builder.newLineIfNotEmpty();
       }
@@ -324,9 +453,9 @@ public class ContentProviderContractGenerator {
     _builder.append("\t");
     _builder.append("private ");
     DatabaseBlock _database_4 = model.getDatabase();
-    String _name_12 = _database_4.getName();
-    String _pascalize_9 = Strings.pascalize(_name_12);
-    _builder.append(_pascalize_9, "	");
+    String _name_20 = _database_4.getName();
+    String _pascalize_15 = Strings.pascalize(_name_20);
+    _builder.append(_pascalize_15, "	");
     _builder.append("Contract(){}");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -345,11 +474,22 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
-      for(final CreateTableStatement tbl_3 : _tables_3) {
+      for(final CreateTableStatement tbl_6 : _tables_3) {
         _builder.append("\t\t");
-        String _name_13 = tbl_3.getName();
-        String _pascalize_10 = Strings.pascalize(_name_13);
-        _builder.append(_pascalize_10, "		");
+        String _name_21 = tbl_6.getName();
+        String _pascalize_16 = Strings.pascalize(_name_21);
+        _builder.append(_pascalize_16, "		");
+        _builder.append(".delete();");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Collection<CreateTableStatement> _configInitTables_3 = ModelUtil.getConfigInitTables(model);
+      for(final CreateTableStatement tbl_7 : _configInitTables_3) {
+        _builder.append("\t\t");
+        String _name_22 = tbl_7.getName();
+        String _pascalize_17 = Strings.pascalize(_name_22);
+        _builder.append(_pascalize_17, "		");
         _builder.append(".delete();");
         _builder.newLineIfNotEmpty();
       }
@@ -836,6 +976,18 @@ public class ContentProviderContractGenerator {
         String _name_20 = ref.getName();
         String _pascalize_12 = Strings.pascalize(_name_20);
         _builder.append(_pascalize_12, "		");
+        _builder.append(".CONTENT_URI);");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      HashSet<CreateViewStatement> _allViewsInConfigInitReferencingTable = ModelUtil.getAllViewsInConfigInitReferencingTable(model, stmt);
+      for(final CreateViewStatement ref_1 : _allViewsInConfigInitReferencingTable) {
+        _builder.append("\t\t");
+        _builder.append("viewUris.add(");
+        String _name_21 = ref_1.getName();
+        String _pascalize_13 = Strings.pascalize(_name_21);
+        _builder.append(_pascalize_13, "		");
         _builder.append(".CONTENT_URI);");
         _builder.newLineIfNotEmpty();
       }

@@ -13,15 +13,27 @@ Model:
 	database=DatabaseBlock;
 
 DatabaseBlock:
-	'database' name=ID '{' (config=ConfigBlock)? (migrations+=MigrationBlock)* '}';
+	'database' name=ID '{' (config=ConfigBlock)? (init=InitBlock)? (migrations+=MigrationBlock)* '}';
 
 ConfigBlock:
 	{ConfigBlock}
 	'config' '{' statements+=ConfigurationStatement* '}'
 ;
 
+InitBlock:
+	{InitBlock}
+	'init' '{' (statements+=DDLStatement ';')* '}'
+;
+
 ConfigurationStatement:
-	{ActionStatement} 'action' name=ID uri=ContentUri
+	{ActionStatement} 'action' name=ID uri=ContentUri |
+	{Function} 'function' name=ID '(' (args+=FunctionArg (',' args+=FunctionArg)*)? ')' '{'
+		body=SelectStatement
+	'}' 
+;
+
+FunctionArg:
+	type=ColumnType name=ID
 ;
 
 ContentUri:
@@ -101,7 +113,8 @@ PrimaryExpression returns Expression:
 			cases+=Case+
 			('else' elseExpression=SqlExpression)? 'end' |
 	{Function} name=ID '(' (all?='*'|arguments+=SqlExpression (',' arguments+=SqlExpression)*) ')' |
-	{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')'
+	{CastExpression} 'cast' '(' expression=SqlExpression 'as' type=SqliteDataType ')' |
+	{FunctionArgument} '$' arg=[FunctionArg]
 ;
 
 Case:
@@ -219,17 +232,17 @@ DDLStatement:
 ;
 
 CreateTableStatement returns TableDefinition: 
-	{CreateTableStatement} 'create' 'table' name=ID '(' 
+	{CreateTableStatement} 'create' temporary?='temp'? 'table' name=ID '(' 
 		columnDefs+=ColumnDef (',' columnDefs+=ColumnDef)* 
 		(',' constraints+=TableConstraint)* 
 	')';
 
 CreateViewStatement returns TableDefinition: 
 	{CreateViewStatement}
-	'create' 'view' name=ID 'as' selectStatement=SelectStatement;
+	'create' temporary?='temp'? 'view' name=ID 'as' selectStatement=SelectStatement;
 	
 CreateTriggerStatement: 
-	'create' 'trigger' name=ID when=('before'|'after'|'instead of')?
+	'create' temporary?='temp'? 'trigger' name=ID when=('before'|'after'|'instead of')?
 	  (eventType='delete'|eventType='insert'|eventType='update' ('of' updateColumnNames+=ID (',' updateColumnNames+=ID)*)?)
 	  'on' table=[TableDefinition|ID] forEachRow=('for each row')? ('when' whenExpression=SqlExpression)?
 	  'begin' (statements+=DMLStatement ';' (statements+=DMLStatement ';')*)? 'end';

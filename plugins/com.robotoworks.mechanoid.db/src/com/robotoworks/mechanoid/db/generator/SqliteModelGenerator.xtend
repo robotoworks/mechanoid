@@ -66,6 +66,16 @@ class SqliteModelGenerator implements IGenerator {
 			generateActiveRecordEntity(resource, fsa, statement as CreateViewStatement)
 		];
 		
+		model.configInitTables.forEach[
+			statement|
+			generateActiveRecordEntity(resource, fsa, statement as CreateTableStatement)
+		];
+		
+		model.configInitViews.forEach[
+			statement|
+			generateActiveRecordEntity(resource, fsa, statement as CreateViewStatement)
+		];
+		
 		model.database.migrations.forEach[
 			item,index|
 			if(index> 0) generateMigration(resource, fsa, item, index + 1)

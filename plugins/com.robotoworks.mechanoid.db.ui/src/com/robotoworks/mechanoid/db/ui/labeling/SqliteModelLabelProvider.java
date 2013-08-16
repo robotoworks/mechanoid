@@ -24,6 +24,9 @@ import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.PrimaryKeyColumnConstraint;
@@ -82,6 +85,10 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		return "Configuration";
 	}
 	
+    public String text(InitBlock e) {
+        return "Initialization";
+    }
+	
 	public String text(AlterTableAddColumnStatement e) {
 		return "Add column to " + e.getTable().getName();
 	}
@@ -94,6 +101,10 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 	
 	public String image(ConfigBlock e) {
 		return "actions.gif";
+	}
+	
+	public String image(InitBlock e) {
+	    return "actions.gif";
 	}
 	
 	public String image(ActionStatement e) {
@@ -183,5 +194,21 @@ public class SqliteModelLabelProvider extends DefaultEObjectLabelProvider {
 		}
 		
 		return null;
+	}
+	
+	public String text(DropViewStatement e) {
+	    return e.getView().getName();
+	}
+	
+	public String image(DropViewStatement e) {
+	    return "drop_table.gif";
+	}
+	
+	public String text(DropTableStatement e) {
+	    return e.getTable().getName();
+	}
+	
+	public String image(DropTableStatement e) {
+        return "drop_table.gif";
 	}
 }

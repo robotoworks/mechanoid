@@ -2,7 +2,8 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.db.sqliteModel.ConfigurationStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.ColumnType;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArg;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,19 +15,40 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Configuration Statement</b></em>'.
+ * An implementation of the model object '<em><b>Function Arg</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ConfigurationStatementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionArgImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionArgImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container implements ConfigurationStatement
+public class FunctionArgImpl extends MinimalEObjectImpl.Container implements FunctionArg
 {
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final ColumnType TYPE_EDEFAULT = ColumnType.TEXT;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected ColumnType type = TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -52,7 +74,7 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ConfigurationStatementImpl()
+  protected FunctionArgImpl()
   {
     super();
   }
@@ -65,7 +87,30 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.CONFIGURATION_STATEMENT;
+    return SqliteModelPackage.Literals.FUNCTION_ARG;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColumnType getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(ColumnType newType)
+  {
+    ColumnType oldType = type;
+    type = newType == null ? TYPE_EDEFAULT : newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION_ARG__TYPE, oldType, type));
   }
 
   /**
@@ -88,7 +133,7 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CONFIGURATION_STATEMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION_ARG__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +146,9 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
+      case SqliteModelPackage.FUNCTION_ARG__TYPE:
+        return getType();
+      case SqliteModelPackage.FUNCTION_ARG__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +164,10 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
+      case SqliteModelPackage.FUNCTION_ARG__TYPE:
+        setType((ColumnType)newValue);
+        return;
+      case SqliteModelPackage.FUNCTION_ARG__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +184,10 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
+      case SqliteModelPackage.FUNCTION_ARG__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
+      case SqliteModelPackage.FUNCTION_ARG__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +204,9 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
+      case SqliteModelPackage.FUNCTION_ARG__TYPE:
+        return type != TYPE_EDEFAULT;
+      case SqliteModelPackage.FUNCTION_ARG__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -168,10 +223,12 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (type: ");
+    result.append(type);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //ConfigurationStatementImpl
+} //FunctionArgImpl

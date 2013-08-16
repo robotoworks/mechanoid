@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getWhen <em>When</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getEventType <em>Event Type</em>}</li>
@@ -29,6 +30,32 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CreateTriggerStatement extends DDLStatement
 {
+  /**
+   * Returns the value of the '<em><b>Temporary</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Temporary</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Temporary</em>' attribute.
+   * @see #setTemporary(boolean)
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCreateTriggerStatement_Temporary()
+   * @model
+   * @generated
+   */
+  boolean isTemporary();
+
+  /**
+   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#isTemporary <em>Temporary</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Temporary</em>' attribute.
+   * @see #isTemporary()
+   * @generated
+   */
+  void setTemporary(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

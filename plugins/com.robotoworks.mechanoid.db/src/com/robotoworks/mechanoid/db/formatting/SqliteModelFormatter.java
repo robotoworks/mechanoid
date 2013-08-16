@@ -35,7 +35,7 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		// DATABASE BLOCK
 		//
 		c.setLinewrap().after(g.getDatabaseBlockAccess().getLeftCurlyBracketKeyword_2());
-		c.setLinewrap().before(g.getDatabaseBlockAccess().getRightCurlyBracketKeyword_5());
+		c.setLinewrap().before(g.getDatabaseBlockAccess().getRightCurlyBracketKeyword_6());
 		
 		
 		//
@@ -55,11 +55,11 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setIndentationIncrement().before(g.getDDLStatementRule());
 		c.setIndentationDecrement().after(g.getDDLStatementRule());
 		
-		c.setLinewrap().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
-		c.setIndentationIncrement().after(g.getCreateTableStatementAccess().getLeftParenthesisKeyword_4());
-		c.setIndentationDecrement().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_8());
+		c.setLinewrap().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_9());
+		c.setIndentationIncrement().after(g.getCreateTableStatementAccess().getLeftParenthesisKeyword_5());
+		c.setIndentationDecrement().before(g.getCreateTableStatementAccess().getRightParenthesisKeyword_9());
 		c.setLinewrap().before(g.getColumnDefRule());
-		c.setNoSpace().before(g.getCreateTableStatementAccess().getCommaKeyword_6_0());
+		c.setNoSpace().before(g.getCreateTableStatementAccess().getCommaKeyword_7_0());
 		
 		c.setLinewrap().before(g.getDMLStatementRule());
 		c.setLinewrap().before(g.getResultColumnRule());
@@ -80,9 +80,9 @@ public class SqliteModelFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap().before(g.getJoinStatementRule());
 		
 		c.setLinewrap().before(g.getCompoundOperatorRule());
-		c.setLinewrap().before(g.getCreateTriggerStatementAccess().getWhenExpressionAssignment_8_1());
+		c.setLinewrap().before(g.getCreateTriggerStatementAccess().getWhenExpressionAssignment_9_1());
 		
-		c.setIndentationIncrement().after(g.getCreateViewStatementAccess().getAsKeyword_4());
+		c.setIndentationIncrement().after(g.getCreateViewStatementAccess().getAsKeyword_5());
 		c.setIndentationDecrement().after(g.getCreateViewStatementRule());
 		
 		c.setLinewrap().after(g.getExprAndAccess().getOpAndKeyword_1_1_0());

@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ActionStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ActionStatementImpl#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
@@ -30,26 +29,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ActionStatementImpl extends ConfigurationStatementImpl implements ActionStatement
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getUri() <em>Uri</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -79,29 +58,6 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   protected EClass eStaticClass()
   {
     return SqliteModelPackage.Literals.ACTION_STATEMENT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.ACTION_STATEMENT__NAME, oldName, name));
   }
 
   /**
@@ -178,8 +134,6 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        return getName();
       case SqliteModelPackage.ACTION_STATEMENT__URI:
         return getUri();
     }
@@ -196,9 +150,6 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        setName((String)newValue);
-        return;
       case SqliteModelPackage.ACTION_STATEMENT__URI:
         setUri((ContentUri)newValue);
         return;
@@ -216,9 +167,6 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SqliteModelPackage.ACTION_STATEMENT__URI:
         setUri((ContentUri)null);
         return;
@@ -236,29 +184,10 @@ public class ActionStatementImpl extends ConfigurationStatementImpl implements A
   {
     switch (featureID)
     {
-      case SqliteModelPackage.ACTION_STATEMENT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SqliteModelPackage.ACTION_STATEMENT__URI:
         return uri != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ActionStatementImpl

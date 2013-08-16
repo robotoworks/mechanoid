@@ -2,57 +2,48 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
-import com.robotoworks.mechanoid.db.sqliteModel.ConfigurationStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArg;
+import com.robotoworks.mechanoid.db.sqliteModel.FunctionArgument;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Configuration Statement</b></em>'.
+ * An implementation of the model object '<em><b>Function Argument</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ConfigurationStatementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionArgumentImpl#getArg <em>Arg</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container implements ConfigurationStatement
+public class FunctionArgumentImpl extends ExpressionImpl implements FunctionArgument
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getArg() <em>Arg</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getArg()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected FunctionArg arg;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ConfigurationStatementImpl()
+  protected FunctionArgumentImpl()
   {
     super();
   }
@@ -65,7 +56,7 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   @Override
   protected EClass eStaticClass()
   {
-    return SqliteModelPackage.Literals.CONFIGURATION_STATEMENT;
+    return SqliteModelPackage.Literals.FUNCTION_ARGUMENT;
   }
 
   /**
@@ -73,9 +64,19 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public FunctionArg getArg()
   {
-    return name;
+    if (arg != null && arg.eIsProxy())
+    {
+      InternalEObject oldArg = (InternalEObject)arg;
+      arg = (FunctionArg)eResolveProxy(oldArg);
+      if (arg != oldArg)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SqliteModelPackage.FUNCTION_ARGUMENT__ARG, oldArg, arg));
+      }
+    }
+    return arg;
   }
 
   /**
@@ -83,12 +84,22 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public FunctionArg basicGetArg()
   {
-    String oldName = name;
-    name = newName;
+    return arg;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setArg(FunctionArg newArg)
+  {
+    FunctionArg oldArg = arg;
+    arg = newArg;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CONFIGURATION_STATEMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION_ARGUMENT__ARG, oldArg, arg));
   }
 
   /**
@@ -101,8 +112,9 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
-        return getName();
+      case SqliteModelPackage.FUNCTION_ARGUMENT__ARG:
+        if (resolve) return getArg();
+        return basicGetArg();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +129,8 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
-        setName((String)newValue);
+      case SqliteModelPackage.FUNCTION_ARGUMENT__ARG:
+        setArg((FunctionArg)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +146,8 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
-        setName(NAME_EDEFAULT);
+      case SqliteModelPackage.FUNCTION_ARGUMENT__ARG:
+        setArg((FunctionArg)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,27 +163,10 @@ public class ConfigurationStatementImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case SqliteModelPackage.CONFIGURATION_STATEMENT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SqliteModelPackage.FUNCTION_ARGUMENT__ARG:
+        return arg != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
-
-} //ConfigurationStatementImpl
+} //FunctionArgumentImpl

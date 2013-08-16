@@ -4,6 +4,7 @@ import com.google.inject.Inject
 import com.robotoworks.mechanoid.db.sqliteModel.Model
 
 import static extension com.robotoworks.mechanoid.text.Strings.*
+import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
 
 class SqliteOpenHelperGenerator {
 		@Inject extension SqliteDatabaseStatementGenerator
@@ -38,6 +39,12 @@ class SqliteOpenHelperGenerator {
 						«FOR view : snapshot.views»
 						String «view.name.underscore.toUpperCase» = "«view.name»";
 						«ENDFOR»
+						«FOR table : model.configInitTables»
+						String «table.name.underscore.toUpperCase» = "«table.name»";
+						«ENDFOR»
+						«FOR view : model.configInitViews»
+						String «view.name.underscore.toUpperCase» = "«view.name»";
+						«ENDFOR»
 					}
 				
 					public Abstract«model.database.name.pascalize()»OpenHelper(Context context) {
@@ -54,6 +61,15 @@ class SqliteOpenHelperGenerator {
 						«snapshot.views.generateViewStatements»
 						«snapshot.triggers.generateTriggerStatements»
 					}
+					
+					«IF model.database.init != null»
+					@Override
+					public void onOpen(SQLiteDatabase db) {
+						super.onOpen(db);
+						
+						«model.database.init.statements.generateStatements»
+					}
+					«ENDIF»
 				
 					@Override
 					protected SQLiteMigration createMigration(int version) {

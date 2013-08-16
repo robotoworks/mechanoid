@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getWhen <em>When</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getEventType <em>Event Type</em>}</li>
@@ -46,6 +47,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class CreateTriggerStatementImpl extends DDLStatementImpl implements CreateTriggerStatement
 {
+  /**
+   * The default value of the '{@link #isTemporary() <em>Temporary</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTemporary()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean TEMPORARY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isTemporary() <em>Temporary</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isTemporary()
+   * @generated
+   * @ordered
+   */
+  protected boolean temporary = TEMPORARY_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -185,6 +206,29 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   protected EClass eStaticClass()
   {
     return SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isTemporary()
+  {
+    return temporary;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTemporary(boolean newTemporary)
+  {
+    boolean oldTemporary = temporary;
+    temporary = newTemporary;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TEMPORARY, oldTemporary, temporary));
   }
 
   /**
@@ -426,6 +470,8 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TEMPORARY:
+        return isTemporary();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__NAME:
         return getName();
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
@@ -458,6 +504,9 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TEMPORARY:
+        setTemporary((Boolean)newValue);
+        return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__NAME:
         setName((String)newValue);
         return;
@@ -498,6 +547,9 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TEMPORARY:
+        setTemporary(TEMPORARY_EDEFAULT);
+        return;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -536,6 +588,8 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
   {
     switch (featureID)
     {
+      case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__TEMPORARY:
+        return temporary != TEMPORARY_EDEFAULT;
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SqliteModelPackage.CREATE_TRIGGER_STATEMENT__WHEN:
@@ -567,7 +621,9 @@ public class CreateTriggerStatementImpl extends DDLStatementImpl implements Crea
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (temporary: ");
+    result.append(temporary);
+    result.append(", name: ");
     result.append(name);
     result.append(", when: ");
     result.append(when);

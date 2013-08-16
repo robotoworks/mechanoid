@@ -18,9 +18,11 @@ import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.ExprConcat;
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.Function;
+import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.JoinSource;
 import com.robotoworks.mechanoid.db.sqliteModel.JoinStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.ResultColumn;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCore;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression;
@@ -47,7 +49,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class ModelUtil {
-  public static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(final DDLStatement stmt, final Class<T> statementType) {
+  public static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(final DDLStatement stmt, final Class<T> statementType, final boolean inclusive) {
     ArrayList<T> _arrayList = new ArrayList<T>();
     ArrayList<T> list = _arrayList;
     DatabaseBlock db = ModelUtil.<DatabaseBlock>getAncestorOfType(stmt, DatabaseBlock.class);
@@ -56,14 +58,103 @@ public class ModelUtil {
       EList<DDLStatement> _statements = migration.getStatements();
       for (final DDLStatement ddl : _statements) {
         {
-          boolean _equals = Objects.equal(ddl, stmt);
-          if (_equals) {
-            return list;
+          boolean _not = (!inclusive);
+          if (_not) {
+            boolean _equals = Objects.equal(ddl, stmt);
+            if (_equals) {
+              return list;
+            }
           }
           Class<? extends DDLStatement> _class = ddl.getClass();
           boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
           if (_isAssignableFrom) {
             list.add(((T) ddl));
+          }
+          boolean _equals_1 = Objects.equal(ddl, stmt);
+          if (_equals_1) {
+            return list;
+          }
+        }
+      }
+    }
+    InitBlock _ancestorOfType = ModelUtil.<InitBlock>getAncestorOfType(stmt, InitBlock.class);
+    boolean _notEquals = (!Objects.equal(_ancestorOfType, null));
+    if (_notEquals) {
+      InitBlock _init = db.getInit();
+      EList<DDLStatement> _statements_1 = _init.getStatements();
+      for (final DDLStatement ddl_1 : _statements_1) {
+        {
+          boolean _not = (!inclusive);
+          if (_not) {
+            boolean _equals = Objects.equal(ddl_1, stmt);
+            if (_equals) {
+              return list;
+            }
+          }
+          Class<? extends DDLStatement> _class = ddl_1.getClass();
+          boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
+          if (_isAssignableFrom) {
+            list.add(((T) ddl_1));
+          }
+          boolean _equals_1 = Objects.equal(ddl_1, stmt);
+          if (_equals_1) {
+            return list;
+          }
+        }
+      }
+    }
+    return list;
+  }
+  
+  public static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(final DatabaseBlock db, final DDLStatement stmt, final Class<T> statementType, final boolean inclusive) {
+    ArrayList<T> _arrayList = new ArrayList<T>();
+    ArrayList<T> list = _arrayList;
+    EList<MigrationBlock> _migrations = db.getMigrations();
+    for (final MigrationBlock migration : _migrations) {
+      EList<DDLStatement> _statements = migration.getStatements();
+      for (final DDLStatement ddl : _statements) {
+        {
+          boolean _not = (!inclusive);
+          if (_not) {
+            boolean _equals = Objects.equal(ddl, stmt);
+            if (_equals) {
+              return list;
+            }
+          }
+          Class<? extends DDLStatement> _class = ddl.getClass();
+          boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
+          if (_isAssignableFrom) {
+            list.add(((T) ddl));
+          }
+          boolean _equals_1 = Objects.equal(ddl, stmt);
+          if (_equals_1) {
+            return list;
+          }
+        }
+      }
+    }
+    InitBlock _init = db.getInit();
+    boolean _notEquals = (!Objects.equal(_init, null));
+    if (_notEquals) {
+      InitBlock _init_1 = db.getInit();
+      EList<DDLStatement> _statements_1 = _init_1.getStatements();
+      for (final DDLStatement ddl_1 : _statements_1) {
+        {
+          boolean _not = (!inclusive);
+          if (_not) {
+            boolean _equals = Objects.equal(ddl_1, stmt);
+            if (_equals) {
+              return list;
+            }
+          }
+          Class<? extends DDLStatement> _class = ddl_1.getClass();
+          boolean _isAssignableFrom = statementType.isAssignableFrom(_class);
+          if (_isAssignableFrom) {
+            list.add(((T) ddl_1));
+          }
+          boolean _equals_1 = Objects.equal(ddl_1, stmt);
+          if (_equals_1) {
+            return list;
           }
         }
       }
@@ -409,6 +500,19 @@ public class ModelUtil {
     return matches;
   }
   
+  public static HashSet<CreateViewStatement> getAllViewsInConfigInitReferencingTable(final Model model, final TableDefinition tableDef) {
+    HashSet<CreateViewStatement> _hashSet = new HashSet<CreateViewStatement>();
+    HashSet<CreateViewStatement> matches = _hashSet;
+    Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
+    for (final CreateViewStatement view : _configInitViews) {
+      boolean _isDefinitionReferencedByView = ModelUtil.isDefinitionReferencedByView(tableDef, view);
+      if (_isDefinitionReferencedByView) {
+        matches.add(view);
+      }
+    }
+    return matches;
+  }
+  
   public static boolean isDefinitionReferencedByView(final TableDefinition tableDef, final CreateViewStatement view) {
     TreeIterator<EObject> _eAllContents = view.eAllContents();
     final Function1<EObject,Boolean> _function = new Function1<EObject,Boolean>() {
@@ -594,6 +698,36 @@ public class ModelUtil {
         }
       };
     IterableExtensions.<SingleSource>forEach(_filter_1, _function_2);
+    return items;
+  }
+  
+  public static Collection<CreateViewStatement> getConfigInitViews(final Model model) {
+    final ArrayList<CreateViewStatement> items = Lists.<CreateViewStatement>newArrayList();
+    DatabaseBlock _database = model.getDatabase();
+    InitBlock _init = _database.getInit();
+    boolean _notEquals = (!Objects.equal(_init, null));
+    if (_notEquals) {
+      DatabaseBlock _database_1 = model.getDatabase();
+      InitBlock _init_1 = _database_1.getInit();
+      EList<DDLStatement> _statements = _init_1.getStatements();
+      Iterable<CreateViewStatement> _filter = Iterables.<CreateViewStatement>filter(_statements, CreateViewStatement.class);
+      Iterables.<CreateViewStatement>addAll(items, _filter);
+    }
+    return items;
+  }
+  
+  public static Collection<CreateTableStatement> getConfigInitTables(final Model model) {
+    final ArrayList<CreateTableStatement> items = Lists.<CreateTableStatement>newArrayList();
+    DatabaseBlock _database = model.getDatabase();
+    InitBlock _init = _database.getInit();
+    boolean _notEquals = (!Objects.equal(_init, null));
+    if (_notEquals) {
+      DatabaseBlock _database_1 = model.getDatabase();
+      InitBlock _init_1 = _database_1.getInit();
+      EList<DDLStatement> _statements = _init_1.getStatements();
+      Iterable<CreateTableStatement> _filter = Iterables.<CreateTableStatement>filter(_statements, CreateTableStatement.class);
+      Iterables.<CreateTableStatement>addAll(items, _filter);
+    }
     return items;
   }
 }

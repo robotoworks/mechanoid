@@ -17,7 +17,6 @@ import com.robotoworks.mechanoid.db.sqliteModel.ContentUri
 import com.robotoworks.mechanoid.db.sqliteModel.ContentUriParamSegment
 import java.util.ArrayList
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition
-import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement
 
 class ContentProviderContractGenerator {
 		def CharSequence generate(Model model, SqliteDatabaseSnapshot snapshot) { 
@@ -71,8 +70,22 @@ class ContentProviderContractGenerator {
 				}
 				
 				«ENDFOR»
-
 				«FOR vw :  snapshot.views»
+				interface «vw.name.pascalize»Columns {
+					«FOR col : vw.getViewResultColumns.filter([!name.equals("_id")])»
+					«generateInterfaceMemberForResultColumn(col)»
+					«ENDFOR»
+				}
+				«ENDFOR»
+				«FOR tbl : model.configInitTables»
+				interface «tbl.name.pascalize»Columns {
+					«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
+					String «col.name.underscore.toUpperCase» = "«col.name»";
+					«ENDFOR»
+				}
+				
+				«ENDFOR»
+				«FOR vw :  model.configInitViews»
 				interface «vw.name.pascalize»Columns {
 					«FOR col : vw.getViewResultColumns.filter([!name.equals("_id")])»
 					«generateInterfaceMemberForResultColumn(col)»
@@ -89,6 +102,14 @@ class ContentProviderContractGenerator {
 				«generateContractItem(model, snapshot, vw)»
 				«ENDFOR»
 				
+				«FOR tbl : model.configInitTables»
+				«generateContractItem(model, snapshot, tbl)»
+				«ENDFOR»
+			
+				«FOR vw : model.configInitViews»
+				«generateContractItem(model, snapshot, vw)»
+				«ENDFOR»
+				
 				static Map<Uri, Set<Uri>> REFERENCING_VIEWS;
 				
 				static {
@@ -98,6 +119,12 @@ class ContentProviderContractGenerator {
 					map.put(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize».VIEW_URIS);
 					«ENDFOR»
 					«FOR vw : snapshot.views»
+					map.put(«vw.name.pascalize».CONTENT_URI, «vw.name.pascalize».VIEW_URIS);
+					«ENDFOR»
+					«FOR tbl : model.configInitTables»
+					map.put(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize».VIEW_URIS);
+					«ENDFOR»
+					«FOR vw : model.configInitViews»
 					map.put(«vw.name.pascalize».CONTENT_URI, «vw.name.pascalize».VIEW_URIS);
 					«ENDFOR»
 					
@@ -113,6 +140,9 @@ class ContentProviderContractGenerator {
 				 */						
 				public static void deleteAll() {
 					«FOR tbl : snapshot.tables»
+					«tbl.name.pascalize».delete();
+					«ENDFOR»
+					«FOR tbl : model.configInitTables»
 					«tbl.name.pascalize».delete();
 					«ENDFOR»
 				}
@@ -261,6 +291,9 @@ class ContentProviderContractGenerator {
 				HashSet<Uri> viewUris =  new HashSet<Uri>();
 
 				«FOR ref : snapshot.getAllViewsReferencingTable(stmt)»
+				viewUris.add(«ref.name.pascalize».CONTENT_URI);
+				«ENDFOR»
+				«FOR ref : model.getAllViewsInConfigInitReferencingTable(stmt)»
 				viewUris.add(«ref.name.pascalize».CONTENT_URI);
 				«ENDFOR»
 				
