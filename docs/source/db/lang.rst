@@ -395,3 +395,37 @@ the previous statement.
       make schema changes, but this could cause your |mechdb| File to be
       out of sync with what is actually the schema of the database, if you really 
       need to make scheme changes in this way, make sure you know what your doing.
+
+Initialization Block
+--------------------
+Sometimes it makes more sense to create temporary views or tables, especially in the case
+of views that may change from migration to migration, which can introduce a maintenance
+overhead if your views are quite large in definition.
+
+The initialization block can include create temp view and table statements that are executed
+once when the database is first opened.
+
+The following example shows how to define a temporary view in the initialization block.
+
+.. code-block:: mechdb
+
+    database RecipesDB {
+        init {
+            create temp view recipes_with_authors as
+                select
+                    r._id as _id,
+                    r.title as recipe_title,
+                    r.description as recipe_description,
+                    r.author_id as author_id,
+                    a.name as author_name
+                from recipes as r
+                left join authors as a
+                on r.author_id = a._id;
+        }
+    }
+
+The code generated for a temp view or table in the init block is exactly the same as
+it would be if they were defined in a migration.
+
+By defining views like this means you do not need to manage them when they change over
+migrations and can be edited in place with no concern to Android database upgradability.
