@@ -15,7 +15,7 @@ SyntaxHighlighter.brushes.MechDb = function()
                    'natural on conflict null current_time current_data current_time_stamp ' +
                    'text integer real blob rollback abort fail ignore replace union all new. old. ' +
                    'exists case else end cast order by intersect except asc desc if check ' +
-                   'update delete where default values set';
+                   'update delete where default values set init temp';
 
 	this.regexList = [
 			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,    		css: 'comments' },
