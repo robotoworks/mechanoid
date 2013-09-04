@@ -9,8 +9,11 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
+import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
+import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.db.util.ModelUtil;
 
 public class SqliteQualifiedNameProvider extends
 		DefaultDeclarativeQualifiedNameProvider {
@@ -41,4 +44,10 @@ public class SqliteQualifiedNameProvider extends
 		
 		return name.append(tableName);
 	}
+	
+    protected QualifiedName qualifiedName(TableDefinition ele){
+        Model model = ModelUtil.getAncestorOfType(ele, Model.class);
+        
+        return QualifiedName.create(model.getPackageName(), ele.getName());
+    }
 }

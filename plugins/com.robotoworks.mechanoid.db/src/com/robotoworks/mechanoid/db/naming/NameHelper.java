@@ -6,10 +6,12 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
+import com.robotoworks.mechanoid.db.sqliteModel.Model;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
+import com.robotoworks.mechanoid.db.util.ModelUtil;
 
 public class NameHelper {
 	public static QualifiedName getName(SelectSource ele) {
