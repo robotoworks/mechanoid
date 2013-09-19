@@ -21,6 +21,7 @@ import android.database.sqlite.SQLiteDatabase;
  *
  */
 public abstract class SQLiteMigration {
-
+    public abstract void onBeforeUp(SQLiteDatabase db);
 	public abstract void up(SQLiteDatabase db);
+	public abstract void onAfterUp(SQLiteDatabase db);
 }

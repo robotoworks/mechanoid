@@ -33,6 +33,12 @@ import org.eclipse.xtext.scoping.Scopes
 
 import static extension com.robotoworks.mechanoid.db.util.ModelUtil.*
 import com.robotoworks.mechanoid.db.sqliteModel.Function
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement
+import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement
+import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement
+import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -128,6 +134,26 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 		return Scopes::scopeFor(stmt.findColumnDefs(context.table), IScope::NULLSCOPE)
 	}
 	
+    def IScope scope_AlterTableAddColumnStatement_table(AlterTableAddColumnStatement context, EReference reference) {
+        return context.scopeForTableDefinitionsBeforeStatement(false)
+    }
+    
+    def IScope scope_AlterTableRenameStatement_table(AlterTableRenameStatement context, EReference reference) {
+        return context.scopeForTableDefinitionsBeforeStatement(false)
+    }
+    
+    def IScope scope_DropTableStatement_table(DropTableStatement context, EReference reference) {
+        return context.scopeForTableDefinitionsBeforeStatement(false)
+    }
+    
+    def IScope scope_DropViewStatement_view(DropViewStatement context, EReference reference) {
+        return context.scopeForViewDefinitionsBeforeStatement(false)
+    }
+    
+    def IScope scope_CreateIndexStatement_table(CreateIndexStatement context, EReference reference) {
+        return context.scopeForTableDefinitionsBeforeStatement(false)
+    }
+	
 	def IScope scope_UpdateColumnExpression_columnName(UpdateColumnExpression context, EReference reference) {
 		var updateStmt = context.getAncestorOfType(typeof(UpdateStatement))
 		var containingStmt = context.getAncestorOfType(typeof(DDLStatement))
@@ -151,6 +177,25 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
 	def scopeForTableDefinitionsBeforeStatement(DDLStatement stmt, boolean inclusive) {
 		var refs = stmt.findPreviousStatementsOfType(typeof(TableDefinition), inclusive)
+		
+		val map = new HashMap<String, EObject>()
+		
+		for(ref : refs.reverse){
+			// Cannot complete if the name is null
+			if(ref.name == null) {
+				return IScope::NULLSCOPE;
+			}
+			
+			if(!map.containsKey(ref.name)) {
+				map.put(ref.name, ref)
+			}
+		}
+
+		return Scopes::scopeFor(map.values, [NameHelper::getName((it as TableDefinition))], IScope::NULLSCOPE)
+	}
+	
+	def scopeForViewDefinitionsBeforeStatement(DDLStatement stmt, boolean inclusive) {
+		var refs = stmt.findPreviousStatementsOfType(typeof(CreateViewStatement), inclusive)
 		
 		val map = new HashMap<String, EObject>()
 		

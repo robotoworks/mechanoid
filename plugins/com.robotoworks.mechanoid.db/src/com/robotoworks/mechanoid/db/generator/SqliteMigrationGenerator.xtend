@@ -21,9 +21,15 @@ class SqliteMigrationGenerator {
 			
 			public class Default«model.database.name.pascalize»MigrationV«version» extends SQLiteMigration {
 				@Override
+				public void onBeforeUp(SQLiteDatabase db) {}
+				
+				@Override
 				public void up(SQLiteDatabase db) {
 					«migration.statements.generateStatements»
 				}
+				
+				@Override
+				public void onAfterUp(SQLiteDatabase db) {}
 			}
 			'''
 }

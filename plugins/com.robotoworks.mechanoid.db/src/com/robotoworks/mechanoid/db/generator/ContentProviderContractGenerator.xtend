@@ -62,7 +62,7 @@ class ContentProviderContractGenerator {
 				
 			    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 			
-				«FOR tbl : snapshot.tables»
+				«FOR tbl : snapshot.tables.sortBy[x|x.name]»
 				interface «tbl.name.pascalize»Columns {
 					«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
 					String «col.name.underscore.toUpperCase» = "«col.name»";
@@ -70,14 +70,14 @@ class ContentProviderContractGenerator {
 				}
 				
 				«ENDFOR»
-				«FOR vw :  snapshot.views»
+				«FOR vw :  snapshot.views.sortBy[x|x.name]»
 				interface «vw.name.pascalize»Columns {
 					«FOR col : vw.getViewResultColumns.filter([!name.equals("_id")])»
 					«generateInterfaceMemberForResultColumn(col)»
 					«ENDFOR»
 				}
 				«ENDFOR»
-				«FOR tbl : model.configInitTables»
+				«FOR tbl : model.configInitTables.sortBy[x|x.name]»
 				interface «tbl.name.pascalize»Columns {
 					«FOR col : tbl.columnDefs.filter([!name.equals("_id")])»
 					String «col.name.underscore.toUpperCase» = "«col.name»";
@@ -85,7 +85,7 @@ class ContentProviderContractGenerator {
 				}
 				
 				«ENDFOR»
-				«FOR vw :  model.configInitViews»
+				«FOR vw :  model.configInitViews.sortBy[x|x.name]»
 				interface «vw.name.pascalize»Columns {
 					«FOR col : vw.getViewResultColumns.filter([!name.equals("_id")])»
 					«generateInterfaceMemberForResultColumn(col)»
@@ -94,19 +94,19 @@ class ContentProviderContractGenerator {
 				
 				«ENDFOR»
 						
-				«FOR tbl : snapshot.tables»
+				«FOR tbl : snapshot.tables.sortBy[x|x.name]»
 				«generateContractItem(model, snapshot, tbl)»
 				«ENDFOR»
 			
-				«FOR vw : snapshot.views»
+				«FOR vw : snapshot.views.sortBy[x|x.name]»
 				«generateContractItem(model, snapshot, vw)»
 				«ENDFOR»
 				
-				«FOR tbl : model.configInitTables»
+				«FOR tbl : model.configInitTables.sortBy[x|x.name]»
 				«generateContractItem(model, snapshot, tbl)»
 				«ENDFOR»
 			
-				«FOR vw : model.configInitViews»
+				«FOR vw : model.configInitViews.sortBy[x|x.name]»
 				«generateContractItem(model, snapshot, vw)»
 				«ENDFOR»
 				
@@ -115,16 +115,16 @@ class ContentProviderContractGenerator {
 				static {
 					Map<Uri, Set<Uri>> map = new HashMap<Uri, Set<Uri>>();
 					
-					«FOR tbl : snapshot.tables»
+					«FOR tbl : snapshot.tables.sortBy[x|x.name]»
 					map.put(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize».VIEW_URIS);
 					«ENDFOR»
-					«FOR vw : snapshot.views»
+					«FOR vw : snapshot.views.sortBy[x|x.name]»
 					map.put(«vw.name.pascalize».CONTENT_URI, «vw.name.pascalize».VIEW_URIS);
 					«ENDFOR»
-					«FOR tbl : model.configInitTables»
+					«FOR tbl : model.configInitTables.sortBy[x|x.name]»
 					map.put(«tbl.name.pascalize».CONTENT_URI, «tbl.name.pascalize».VIEW_URIS);
 					«ENDFOR»
-					«FOR vw : model.configInitViews»
+					«FOR vw : model.configInitViews.sortBy[x|x.name]»
 					map.put(«vw.name.pascalize».CONTENT_URI, «vw.name.pascalize».VIEW_URIS);
 					«ENDFOR»
 					
@@ -139,10 +139,10 @@ class ContentProviderContractGenerator {
 				 * <p>Delete all rows from all tables</p>
 				 */						
 				public static void deleteAll() {
-					«FOR tbl : snapshot.tables»
+					«FOR tbl : snapshot.tables.sortBy[x|x.name]»
 					«tbl.name.pascalize».delete();
 					«ENDFOR»
-					«FOR tbl : model.configInitTables»
+					«FOR tbl : model.configInitTables.sortBy[x|x.name]»
 					«tbl.name.pascalize».delete();
 					«ENDFOR»
 				}
@@ -290,10 +290,10 @@ class ContentProviderContractGenerator {
 			static {
 				HashSet<Uri> viewUris =  new HashSet<Uri>();
 
-				«FOR ref : snapshot.getAllViewsReferencingTable(stmt)»
+				«FOR ref : snapshot.getAllViewsReferencingTable(stmt).sortBy[x|x.name]»
 				viewUris.add(«ref.name.pascalize».CONTENT_URI);
 				«ENDFOR»
-				«FOR ref : model.getAllViewsInConfigInitReferencingTable(stmt)»
+				«FOR ref : model.getAllViewsInConfigInitReferencingTable(stmt).sortBy[x|x.name]»
 				viewUris.add(«ref.name.pascalize».CONTENT_URI);
 				«ENDFOR»
 				
