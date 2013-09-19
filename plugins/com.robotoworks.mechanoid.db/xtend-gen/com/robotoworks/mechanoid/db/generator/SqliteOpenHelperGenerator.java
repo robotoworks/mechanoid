@@ -229,6 +229,11 @@ public class SqliteOpenHelperGenerator {
     CharSequence _generateTriggerStatements = this._sqliteDatabaseStatementGenerator.generateTriggerStatements(_triggers);
     _builder.append(_generateTriggerStatements, "		");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("applyMigrations(db, 1, VERSION, false);");
+    _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();

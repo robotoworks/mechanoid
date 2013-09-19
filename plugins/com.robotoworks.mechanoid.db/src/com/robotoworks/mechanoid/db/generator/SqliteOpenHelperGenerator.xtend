@@ -60,6 +60,8 @@ class SqliteOpenHelperGenerator {
 						«snapshot.tables.generateTableStatements»
 						«snapshot.views.generateViewStatements»
 						«snapshot.triggers.generateTriggerStatements»
+						
+						applyMigrations(db, 1, VERSION, false);
 					}
 					
 					«IF model.database.init != null»

@@ -1,35 +1,21 @@
 package com.robotoworks.mechanoid.db.validation;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
 
 import com.google.inject.Inject;
-import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
-import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.InitBlock;
-import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.Model;
-import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectList;
-import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
-import com.robotoworks.mechanoid.db.util.ModelUtil;
 import com.robotoworks.mechanoid.validation.MechanoidIssueCodes;
 
 public class SqliteModelJavaValidator extends AbstractSqliteModelJavaValidator {
