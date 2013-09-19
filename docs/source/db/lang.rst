@@ -371,24 +371,23 @@ the previous statement.
           protected SQLiteMigration createRecipesDBMigrationV2() {
               return new DefaultRecipesDBMigrationV2(){
                   @Override
-                  public void up(SQLiteDatabase db) {
-                       
+                  public void onBeforeUp(SQLiteDatabase db) {
                       // TODO Do something before the migration
-                       
-                      super.up(db);
-                       
-                      // TODO Do something after the migration
-                       
+                  }
+                  
+                  @Override
+                  public void onAfterUp(SQLiteDatabase db) {
+                      // TODO Do something before the migration
                   }
               };
           }
       }
       
    Above we can return our own implementation a specific migration and add code 
-   before and after the ``super.up(db)`` call, its important that we subclass 
+   before and after the by overriding the ``onBeforeUp(SQLiteDatabase)`` and
+   ``onAfterUp(SQLiteDatabase) methods respectively, its important that we subclass 
    the right migration, in this case its ``DefaultRecipesDBMigrationV2``, where 
-   the format for migration classes is 
-   ``Default{database_name}MigrationV{version_number}``.
+   the format for migration classes is ``Default{database_name}MigrationV{version_number}``.
    
    .. warning::
       By overriding migrations in this way it is entirely possible to also

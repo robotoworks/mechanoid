@@ -5,13 +5,19 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import com.robotoworks.mechanoid.db.naming.NameHelper;
 import com.robotoworks.mechanoid.db.scoping.SqliteModelScopeProvider;
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.DeleteStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
+import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.InsertStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.NewColumn;
 import com.robotoworks.mechanoid.db.sqliteModel.OldColumn;
@@ -142,6 +148,26 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
   }
   
+  public IScope scope_AlterTableAddColumnStatement_table(final AlterTableAddColumnStatement context, final EReference reference) {
+    return this.scopeForTableDefinitionsBeforeStatement(context, false);
+  }
+  
+  public IScope scope_AlterTableRenameStatement_table(final AlterTableRenameStatement context, final EReference reference) {
+    return this.scopeForTableDefinitionsBeforeStatement(context, false);
+  }
+  
+  public IScope scope_DropTableStatement_table(final DropTableStatement context, final EReference reference) {
+    return this.scopeForTableDefinitionsBeforeStatement(context, false);
+  }
+  
+  public IScope scope_DropViewStatement_view(final DropViewStatement context, final EReference reference) {
+    return this.scopeForViewDefinitionsBeforeStatement(context, false);
+  }
+  
+  public IScope scope_CreateIndexStatement_table(final CreateIndexStatement context, final EReference reference) {
+    return this.scopeForTableDefinitionsBeforeStatement(context, false);
+  }
+  
   public IScope scope_UpdateColumnExpression_columnName(final UpdateColumnExpression context, final EReference reference) {
     UpdateStatement updateStmt = ModelUtil.<UpdateStatement>getAncestorOfType(context, UpdateStatement.class);
     DDLStatement containingStmt = ModelUtil.<DDLStatement>getAncestorOfType(context, DDLStatement.class);
@@ -177,6 +203,37 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     final HashMap<String,EObject> map = _hashMap;
     List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
     for (final TableDefinition ref : _reverse) {
+      {
+        String _name = ref.getName();
+        boolean _equals = Objects.equal(_name, null);
+        if (_equals) {
+          return IScope.NULLSCOPE;
+        }
+        String _name_1 = ref.getName();
+        boolean _containsKey = map.containsKey(_name_1);
+        boolean _not = (!_containsKey);
+        if (_not) {
+          String _name_2 = ref.getName();
+          map.put(_name_2, ref);
+        }
+      }
+    }
+    Collection<EObject> _values = map.values();
+    final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
+        public QualifiedName apply(final EObject it) {
+          QualifiedName _name = NameHelper.getName(((TableDefinition) it));
+          return _name;
+        }
+      };
+    return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
+  }
+  
+  public IScope scopeForViewDefinitionsBeforeStatement(final DDLStatement stmt, final boolean inclusive) {
+    ArrayList<CreateViewStatement> refs = ModelUtil.<CreateViewStatement>findPreviousStatementsOfType(stmt, CreateViewStatement.class, inclusive);
+    HashMap<String,EObject> _hashMap = new HashMap<String,EObject>();
+    final HashMap<String,EObject> map = _hashMap;
+    List<CreateViewStatement> _reverse = ListExtensions.<CreateViewStatement>reverse(refs);
+    for (final CreateViewStatement ref : _reverse) {
       {
         String _name = ref.getName();
         boolean _equals = Objects.equal(_name, null);
