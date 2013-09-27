@@ -1,6 +1,7 @@
 package com.robotoworks.mechanoid.db.generator;
 
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
@@ -67,6 +68,18 @@ public class SqliteDatabaseStatementGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       for(final CreateTriggerStatement stmt : statements) {
+        CharSequence _generateStatement = this.generateStatement(stmt);
+        _builder.append(_generateStatement, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence generateIndexStatements(final Collection<CreateIndexStatement> statements) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final CreateIndexStatement stmt : statements) {
         CharSequence _generateStatement = this.generateStatement(stmt);
         _builder.append(_generateStatement, "");
         _builder.newLineIfNotEmpty();

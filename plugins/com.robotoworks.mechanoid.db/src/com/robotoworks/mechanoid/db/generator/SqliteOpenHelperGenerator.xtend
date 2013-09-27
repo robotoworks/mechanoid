@@ -60,6 +60,7 @@ class SqliteOpenHelperGenerator {
 						«snapshot.tables.generateTableStatements»
 						«snapshot.views.generateViewStatements»
 						«snapshot.triggers.generateTriggerStatements»
+						«snapshot.indexes.generateIndexStatements»
 						
 						applyMigrations(db, 1, VERSION, false);
 					}

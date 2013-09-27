@@ -18,11 +18,13 @@ import com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSource;
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
+import com.robotoworks.mechanoid.db.sqliteModel.DropIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement;
@@ -42,6 +44,7 @@ public class SqliteDatabaseSnapshot {
 		private LinkedHashMap<String, CreateTableStatement> mTables = new LinkedHashMap<String, CreateTableStatement>();
 		private LinkedHashMap<String, CreateViewStatement> mViews = new LinkedHashMap<String, CreateViewStatement>();
 		private LinkedHashMap<String, CreateTriggerStatement> mTriggers = new LinkedHashMap<String, CreateTriggerStatement>();
+		private LinkedHashMap<String, CreateIndexStatement> mIndexes = new LinkedHashMap<String, CreateIndexStatement>();
 		private Model mSnapshotModel;
 	
 		private Model mSourceModel;
@@ -89,15 +92,28 @@ public class SqliteDatabaseSnapshot {
 						
 						mTriggers.put(createTriggerStmt.getName(), createTriggerStmt);
 						
-					} else if (statement instanceof DropTableStatement) {
+					}
+					else if (statement instanceof CreateIndexStatement) {
+                        CreateIndexStatement createIndexStmt = (CreateIndexStatement) statement;
+                        
+                        mIndexes.put(createIndexStmt.getName(), createIndexStmt);
+                        
+                    }
+					else if (statement instanceof DropTableStatement) {
 						DropTableStatement dropTableStmt = (DropTableStatement) statement;
 						mTables.remove(dropTableStmt.getTable().getName());
-					} else if (statement instanceof DropViewStatement) {
+					} 
+					else if (statement instanceof DropViewStatement) {
 						DropViewStatement dropViewStmt = (DropViewStatement) statement;
 						mViews.remove(dropViewStmt.getView().getName());
-					} else if (statement instanceof DropTriggerStatement) {
+					} 
+					else if (statement instanceof DropTriggerStatement) {
 						DropTriggerStatement dropTriggerStmt = (DropTriggerStatement) statement;
 						mTriggers.remove(dropTriggerStmt.getTrigger().getName());					
+					} 
+					else if(statement instanceof DropIndexStatement) {
+					    DropIndexStatement dropIndexStmt = (DropIndexStatement) statement;
+					    mIndexes.remove(dropIndexStmt.getIndex().getName());					
 					}
 				}
 			}
@@ -167,22 +183,25 @@ public class SqliteDatabaseSnapshot {
 					
 			buildSnapshotModel();
 			
-			return new SqliteDatabaseSnapshot(mTables, mViews, mTriggers);
+			return new SqliteDatabaseSnapshot(mTables, mViews, mTriggers, mIndexes);
 		}
 	}
 	
 	private Collection<CreateTableStatement> mTables;
 	private Collection<CreateViewStatement> mViews;
 	private Collection<CreateTriggerStatement> mTriggers;
+	private Collection<CreateIndexStatement> mIndexes;
 	
 	public SqliteDatabaseSnapshot(
 			LinkedHashMap<String, CreateTableStatement> tables,
 			LinkedHashMap<String, CreateViewStatement> views,
-			LinkedHashMap<String, CreateTriggerStatement> triggers) {
+			LinkedHashMap<String, CreateTriggerStatement> triggers,
+			LinkedHashMap<String, CreateIndexStatement> indexes) {
 		
 		mTables = tables.values();
 		mViews = views.values();
 		mTriggers = triggers.values();
+		mIndexes = indexes.values();
 	}
 
 	public Collection<CreateTableStatement> getTables() {
@@ -195,6 +214,10 @@ public class SqliteDatabaseSnapshot {
 	
 	public Collection<CreateTriggerStatement> getTriggers() {
 		return mTriggers;
+	}
+	
+	public Collection<CreateIndexStatement> getIndexes() {
+	    return mIndexes;
 	}
 	
     public boolean containsDefinition(final String name) {

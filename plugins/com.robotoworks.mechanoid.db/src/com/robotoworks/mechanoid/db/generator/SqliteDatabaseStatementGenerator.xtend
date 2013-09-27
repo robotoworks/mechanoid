@@ -8,6 +8,7 @@ import org.eclipse.xtext.serializer.ISerializer
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement
+import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
 
 class SqliteDatabaseStatementGenerator {
 	@Inject extension ISerializer
@@ -38,6 +39,12 @@ class SqliteDatabaseStatementGenerator {
 	'''
 	
 	def generateTriggerStatements(Collection<CreateTriggerStatement> statements) '''
+		«FOR stmt : statements»
+		«generateStatement(stmt)»
+		«ENDFOR»
+	'''
+	
+	def generateIndexStatements(Collection<CreateIndexStatement> statements) '''
 		«FOR stmt : statements»
 		«generateStatement(stmt)»
 		«ENDFOR»
