@@ -8,6 +8,9 @@ import com.robotoworks.mechanoid.db.SQLiteMigration;
 
 public class DefaultRecipesDBMigrationV3 extends SQLiteMigration {
 	@Override
+	public void onBeforeUp(SQLiteDatabase db) {}
+	
+	@Override
 	public void up(SQLiteDatabase db) {
 		db.execSQL(
 			"create table ingredients ( " +
@@ -39,4 +42,7 @@ public class DefaultRecipesDBMigrationV3 extends SQLiteMigration {
 			"order by sort_key asc "
 		);	
 	}
+	
+	@Override
+	public void onAfterUp(SQLiteDatabase db) {}
 }

@@ -89,7 +89,10 @@ public abstract class AbstractRecipesDBOpenHelper extends MechanoidSQLiteOpenHel
 			"from ingredients " +
 			"order by sort_key asc "
 		);	
+		
+		applyMigrations(db, 1, VERSION, false);
 	}
+	
 
 	@Override
 	protected SQLiteMigration createMigration(int version) {

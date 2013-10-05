@@ -20,9 +20,9 @@ class SqliteOpenHelperGenerator {
 				import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 				import com.robotoworks.mechanoid.db.SQLiteMigration;
 				
-				«IF model.database.migrations.size > 1»
-				«var version = 1»
-				«FOR migration : model.database.migrations.drop(1)»
+				«IF model.database.migrations.size > 0»
+				«var version = 0»
+				«FOR migration : model.database.migrations»
 				import «model.packageName».migrations.Default«model.database.name.pascalize»MigrationV«version=version+1»;
 				«ENDFOR»
 				«ENDIF»
@@ -57,12 +57,7 @@ class SqliteOpenHelperGenerator {
 
 					@Override
 					public void onCreate(SQLiteDatabase db) {
-						«snapshot.tables.generateTableStatements»
-						«snapshot.views.generateViewStatements»
-						«snapshot.triggers.generateTriggerStatements»
-						«snapshot.indexes.generateIndexStatements»
-						
-						applyMigrations(db, 1, VERSION, false);
+						applyMigrations(db, 0, VERSION);
 					}
 					
 					«IF model.database.init != null»
@@ -76,12 +71,12 @@ class SqliteOpenHelperGenerator {
 				
 					@Override
 					protected SQLiteMigration createMigration(int version) {
-						«IF model.database.migrations.size > 1»
-						«var version = 1»
+						«IF model.database.migrations.size > 0»
+						«var version = -1»
 						switch(version) {
-							«FOR migration : model.database.migrations.drop(1)»
+							«FOR migration : model.database.migrations»
 							case «version=version+1»:
-								return create«model.database.name.pascalize»MigrationV«version»();
+								return create«model.database.name.pascalize»MigrationV«version + 1»();
 							«ENDFOR»
 							default:
 								throw new IllegalStateException("No migration for version " + version);
@@ -91,9 +86,9 @@ class SqliteOpenHelperGenerator {
 						«ENDIF»
 					}
 					
-					«IF model.database.migrations.size > 1»
-					«var version = 1»
-					«FOR migration : model.database.migrations.drop(1)»
+					«IF model.database.migrations.size > 0»
+					«var version = 0»
+					«FOR migration : model.database.migrations»
 					protected SQLiteMigration create«model.database.name.pascalize»MigrationV«version=version+1»() {
 						return new Default«model.database.name.pascalize»MigrationV«version»();
 					}
