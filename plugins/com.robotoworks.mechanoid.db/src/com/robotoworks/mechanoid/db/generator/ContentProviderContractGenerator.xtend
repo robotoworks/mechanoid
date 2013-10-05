@@ -227,7 +227,7 @@ class ContentProviderContractGenerator {
 		 */
 		public static class «stmt.name.pascalize» implements «stmt.name.pascalize»Columns«IF stmt.hasAndroidPrimaryKey», BaseColumns«ENDIF» {
 		    public static final Uri CONTENT_URI = 
-					BASE_CONTENT_URI.buildUpon().appendPath("«stmt.name.toLowerCase»").build();
+					BASE_CONTENT_URI.buildUpon().appendPath("«stmt.name»").build();
 		
 			/**
 			 * <p>The content type for a cursor that contains many «stmt.name.pascalize» rows.</p>
