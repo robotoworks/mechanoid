@@ -826,8 +826,7 @@ public class ContentProviderContractGenerator {
     _builder.append("\t\t\t");
     _builder.append("BASE_CONTENT_URI.buildUpon().appendPath(\"");
     String _name_3 = stmt.getName();
-    String _lowerCase = _name_3.toLowerCase();
-    _builder.append(_lowerCase, "			");
+    _builder.append(_name_3, "			");
     _builder.append("\").build();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -851,8 +850,8 @@ public class ContentProviderContractGenerator {
     _builder.append("\"vnd.android.cursor.dir/vnd.");
     DatabaseBlock _database = model.getDatabase();
     String _name_5 = _database.getName();
-    String _lowerCase_1 = _name_5.toLowerCase();
-    _builder.append(_lowerCase_1, "            ");
+    String _lowerCase = _name_5.toLowerCase();
+    _builder.append(_lowerCase, "            ");
     _builder.append(".");
     String _name_6 = stmt.getName();
     _builder.append(_name_6, "            ");
@@ -885,8 +884,8 @@ public class ContentProviderContractGenerator {
         _builder.append("\"vnd.android.cursor.item/vnd.");
         DatabaseBlock _database_1 = model.getDatabase();
         String _name_8 = _database_1.getName();
-        String _lowerCase_2 = _name_8.toLowerCase();
-        _builder.append(_lowerCase_2, "		");
+        String _lowerCase_1 = _name_8.toLowerCase();
+        _builder.append(_lowerCase_1, "		");
         _builder.append(".");
         String _name_9 = stmt.getName();
         _builder.append(_name_9, "		");
@@ -912,12 +911,12 @@ public class ContentProviderContractGenerator {
     _builder.append(".");
     DatabaseBlock _database_2 = model.getDatabase();
     String _name_11 = _database_2.getName();
-    String _lowerCase_3 = _name_11.toLowerCase();
-    _builder.append(_lowerCase_3, "	 ");
+    String _lowerCase_2 = _name_11.toLowerCase();
+    _builder.append(_lowerCase_2, "	 ");
     _builder.append("/");
     String _name_12 = stmt.getName();
-    String _lowerCase_4 = _name_12.toLowerCase();
-    _builder.append(_lowerCase_4, "	 ");
+    String _lowerCase_3 = _name_12.toLowerCase();
+    _builder.append(_lowerCase_3, "	 ");
     _builder.append("/123.</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t ");
