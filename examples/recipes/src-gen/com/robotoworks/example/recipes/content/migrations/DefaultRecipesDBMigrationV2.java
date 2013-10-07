@@ -8,6 +8,9 @@ import com.robotoworks.mechanoid.db.SQLiteMigration;
 
 public class DefaultRecipesDBMigrationV2 extends SQLiteMigration {
 	@Override
+	public void onBeforeUp(SQLiteDatabase db) {}
+	
+	@Override
 	public void up(SQLiteDatabase db) {
 		db.execSQL(
 			"alter table recipes add column author_id integer "
@@ -31,4 +34,7 @@ public class DefaultRecipesDBMigrationV2 extends SQLiteMigration {
 			"on r.author_id = a._id "
 		);	
 	}
+	
+	@Override
+	public void onAfterUp(SQLiteDatabase db) {}
 }

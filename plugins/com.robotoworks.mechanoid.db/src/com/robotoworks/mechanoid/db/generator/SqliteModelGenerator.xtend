@@ -77,8 +77,7 @@ class SqliteModelGenerator implements IGenerator {
 		];
 		
 		model.database.migrations.forEach[
-			item,index|
-			if(index> 0) generateMigration(resource, fsa, item, index + 1)
+			item,index|generateMigration(resource, fsa, item, index + 1)
 		];		
 	}
 	

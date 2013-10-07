@@ -21,6 +21,11 @@ class EntityGenerator {
 	
 	def generateType(ComplexTypeDeclaration type, Model module) '''
 	public class «type.name» {
+	    
+        «FOR member:type.literal.members»
+        public static final String KEY_«member.name.toUpperCase» = "«member.name»";
+        «ENDFOR»
+
 		«FOR member:type.literal.members»
 		«generateField(member)»
 		«ENDFOR»

@@ -20,6 +20,8 @@ public abstract class AbstractGithubDBContentProvider extends MechanoidContentPr
 	protected static final int ISSUES_ID = 1;
 
 	
+
+	
 	public static final int NUM_URI_MATCHERS = 2;
 
 	@Override
@@ -27,11 +29,8 @@ public abstract class AbstractGithubDBContentProvider extends MechanoidContentPr
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = GithubDBContract.CONTENT_AUTHORITY;
 
-		// Sources
 		matcher.addURI(authority, "issues", ISSUES);
 		matcher.addURI(authority, "issues/#", ISSUES_ID);
-
-		// Views
 
 		// User Actions
         return matcher;

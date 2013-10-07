@@ -1,6 +1,11 @@
 package com.robotoworks.example.ghissues.net;
 
 public class Label {
+    
+        public static final String KEY_URL = "url";
+        public static final String KEY_NAME = "name";
+        public static final String KEY_COLOR = "color";
+
 	private String url;
 	private String name;
 	private String color;

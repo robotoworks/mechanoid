@@ -4,9 +4,7 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot;
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseStatementGenerator;
-import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
-import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DatabaseBlock;
@@ -19,7 +17,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class SqliteOpenHelperGenerator {
@@ -56,15 +53,14 @@ public class SqliteOpenHelperGenerator {
       DatabaseBlock _database = model.getDatabase();
       EList<MigrationBlock> _migrations = _database.getMigrations();
       int _size = _migrations.size();
-      boolean _greaterThan = (_size > 1);
+      boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
-        int version = 1;
+        int version = 0;
         _builder.newLineIfNotEmpty();
         {
           DatabaseBlock _database_1 = model.getDatabase();
           EList<MigrationBlock> _migrations_1 = _database_1.getMigrations();
-          Iterable<MigrationBlock> _drop = IterableExtensions.<MigrationBlock>drop(_migrations_1, 1);
-          for(final MigrationBlock migration : _drop) {
+          for(final MigrationBlock migration : _migrations_1) {
             _builder.append("import ");
             String _packageName_1 = model.getPackageName();
             _builder.append(_packageName_1, "");
@@ -216,29 +212,7 @@ public class SqliteOpenHelperGenerator {
     _builder.append("public void onCreate(SQLiteDatabase db) {");
     _builder.newLine();
     _builder.append("\t\t");
-    Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
-    CharSequence _generateTableStatements = this._sqliteDatabaseStatementGenerator.generateTableStatements(_tables_1);
-    _builder.append(_generateTableStatements, "		");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    Collection<CreateViewStatement> _views_1 = snapshot.getViews();
-    CharSequence _generateViewStatements = this._sqliteDatabaseStatementGenerator.generateViewStatements(_views_1);
-    _builder.append(_generateViewStatements, "		");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    Collection<CreateTriggerStatement> _triggers = snapshot.getTriggers();
-    CharSequence _generateTriggerStatements = this._sqliteDatabaseStatementGenerator.generateTriggerStatements(_triggers);
-    _builder.append(_generateTriggerStatements, "		");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    Collection<CreateIndexStatement> _indexes = snapshot.getIndexes();
-    CharSequence _generateIndexStatements = this._sqliteDatabaseStatementGenerator.generateIndexStatements(_indexes);
-    _builder.append(_generateIndexStatements, "		");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("applyMigrations(db, 1, VERSION, false);");
+    _builder.append("applyMigrations(db, 0, VERSION);");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -287,10 +261,10 @@ public class SqliteOpenHelperGenerator {
       DatabaseBlock _database_10 = model.getDatabase();
       EList<MigrationBlock> _migrations_3 = _database_10.getMigrations();
       int _size_2 = _migrations_3.size();
-      boolean _greaterThan_1 = (_size_2 > 1);
+      boolean _greaterThan_1 = (_size_2 > 0);
       if (_greaterThan_1) {
         _builder.append("\t\t");
-        int version_1 = 1;
+        int version_1 = (-1);
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("switch(version) {");
@@ -298,8 +272,7 @@ public class SqliteOpenHelperGenerator {
         {
           DatabaseBlock _database_11 = model.getDatabase();
           EList<MigrationBlock> _migrations_4 = _database_11.getMigrations();
-          Iterable<MigrationBlock> _drop_1 = IterableExtensions.<MigrationBlock>drop(_migrations_4, 1);
-          for(final MigrationBlock migration_1 : _drop_1) {
+          for(final MigrationBlock migration_1 : _migrations_4) {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("case ");
@@ -317,7 +290,8 @@ public class SqliteOpenHelperGenerator {
             String _pascalize_4 = Strings.pascalize(_name_13);
             _builder.append(_pascalize_4, "				");
             _builder.append("MigrationV");
-            _builder.append(version_1, "				");
+            int _plus_2 = (version_1 + 1);
+            _builder.append(_plus_2, "				");
             _builder.append("();");
             _builder.newLineIfNotEmpty();
           }
@@ -348,16 +322,15 @@ public class SqliteOpenHelperGenerator {
       DatabaseBlock _database_13 = model.getDatabase();
       EList<MigrationBlock> _migrations_5 = _database_13.getMigrations();
       int _size_3 = _migrations_5.size();
-      boolean _greaterThan_2 = (_size_3 > 1);
+      boolean _greaterThan_2 = (_size_3 > 0);
       if (_greaterThan_2) {
         _builder.append("\t");
-        int version_2 = 1;
+        int version_2 = 0;
         _builder.newLineIfNotEmpty();
         {
           DatabaseBlock _database_14 = model.getDatabase();
           EList<MigrationBlock> _migrations_6 = _database_14.getMigrations();
-          Iterable<MigrationBlock> _drop_2 = IterableExtensions.<MigrationBlock>drop(_migrations_6, 1);
-          for(final MigrationBlock migration_2 : _drop_2) {
+          for(final MigrationBlock migration_2 : _migrations_6) {
             _builder.append("\t");
             _builder.append("protected SQLiteMigration create");
             DatabaseBlock _database_15 = model.getDatabase();
@@ -365,8 +338,8 @@ public class SqliteOpenHelperGenerator {
             String _pascalize_5 = Strings.pascalize(_name_14);
             _builder.append(_pascalize_5, "	");
             _builder.append("MigrationV");
-            int _plus_2 = (version_2 + 1);
-            int _version_2 = version_2 = _plus_2;
+            int _plus_3 = (version_2 + 1);
+            int _version_2 = version_2 = _plus_3;
             _builder.append(_version_2, "	");
             _builder.append("() {");
             _builder.newLineIfNotEmpty();
