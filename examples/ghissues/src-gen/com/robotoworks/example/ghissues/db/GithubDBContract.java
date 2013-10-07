@@ -48,7 +48,6 @@ public class GithubDBContract  {
 		String BODY = "body";
 	}
 	
-
 			
 	/**
 	 * <p>Column definitions and helper methods to work with the Issues.</p>
@@ -136,6 +135,8 @@ public class GithubDBContract  {
 			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
 	}
+
+	
 
 	
 	static Map<Uri, Set<Uri>> REFERENCING_VIEWS;

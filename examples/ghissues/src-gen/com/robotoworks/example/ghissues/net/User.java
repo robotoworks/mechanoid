@@ -1,6 +1,23 @@
 package com.robotoworks.example.ghissues.net;
 
 public class User {
+    
+        public static final String KEY_LOGIN = "login";
+        public static final String KEY_ID = "id";
+        public static final String KEY_AVATAR_URL = "avatar_url";
+        public static final String KEY_GRAVATAR_ID = "gravatar_id";
+        public static final String KEY_URL = "url";
+        public static final String KEY_HTML_URL = "html_url";
+        public static final String KEY_FOLLOWERS_URL = "followers_url";
+        public static final String KEY_FOLLOWING_URL = "following_url";
+        public static final String KEY_GISTS_URL = "gists_url";
+        public static final String KEY_STARRED_URL = "starred_url";
+        public static final String KEY_SUBSCRIPTIONS_URL = "subscriptions_url";
+        public static final String KEY_ORGANIZATIONS_URL = "organizations_url";
+        public static final String KEY_REPOS_URL = "repos_url";
+        public static final String KEY_EVENTS_URL = "events_url";
+        public static final String KEY_RECEIVED_EVENTS_URL = "received_events_url";
+
 	private String login;
 	private long id;
 	private String avatarUrl;

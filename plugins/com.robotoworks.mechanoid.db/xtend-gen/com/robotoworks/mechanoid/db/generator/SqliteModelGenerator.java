@@ -132,11 +132,8 @@ public class SqliteModelGenerator implements IGenerator {
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
     final Procedure2<MigrationBlock,Integer> _function_4 = new Procedure2<MigrationBlock,Integer>() {
         public void apply(final MigrationBlock item, final Integer index) {
-          boolean _greaterThan = ((index).intValue() > 0);
-          if (_greaterThan) {
-            int _plus = ((index).intValue() + 1);
-            SqliteModelGenerator.this.generateMigration(resource, fsa, item, _plus);
-          }
+          int _plus = ((index).intValue() + 1);
+          SqliteModelGenerator.this.generateMigration(resource, fsa, item, _plus);
         }
       };
     IterableExtensions.<MigrationBlock>forEach(_migrations, _function_4);

@@ -30,6 +30,8 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
 	protected static final int RECIPES_AND_INGREDIENTS = 8;
 	protected static final int RECIPES_AND_INGREDIENTS_ID = 9;
 	
+
+	
 	public static final int NUM_URI_MATCHERS = 10;
 
 	@Override
@@ -37,15 +39,12 @@ public abstract class AbstractRecipesDBContentProvider extends MechanoidContentP
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = RecipesDBContract.CONTENT_AUTHORITY;
 
-		// Sources
 		matcher.addURI(authority, "recipes", RECIPES);
 		matcher.addURI(authority, "recipes/#", RECIPES_ID);
 		matcher.addURI(authority, "authors", AUTHORS);
 		matcher.addURI(authority, "authors/#", AUTHORS_ID);
 		matcher.addURI(authority, "ingredients", INGREDIENTS);
 		matcher.addURI(authority, "ingredients/#", INGREDIENTS_ID);
-
-		// Views
 		matcher.addURI(authority, "recipes_with_authors", RECIPES_WITH_AUTHORS);
 		matcher.addURI(authority, "recipes_with_authors/#", RECIPES_WITH_AUTHORS_ID);
 		matcher.addURI(authority, "recipes_and_ingredients", RECIPES_AND_INGREDIENTS);

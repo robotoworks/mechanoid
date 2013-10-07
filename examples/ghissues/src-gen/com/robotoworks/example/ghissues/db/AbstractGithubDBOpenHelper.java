@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.SQLiteMigration;
 
+import com.robotoworks.example.ghissues.db.migrations.DefaultGithubDBMigrationV1;
 
 public abstract class AbstractGithubDBOpenHelper extends MechanoidSQLiteOpenHelper {
 	private static final String DATABASE_NAME = "GithubDB.db";
@@ -28,22 +29,21 @@ public abstract class AbstractGithubDBOpenHelper extends MechanoidSQLiteOpenHelp
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(
-			"create table issues ( " +
-			"_id integer primary key autoincrement, " +
-			"owner text, " +
-			"repo text, " +
-			"ghid integer, " +
-			"number integer, " +
-			"title text, " +
-			"body text , unique ( ghid ) on conflict replace " +
-			") "
-		);	
+		applyMigrations(db, 0, VERSION);
 	}
+	
 
 	@Override
 	protected SQLiteMigration createMigration(int version) {
-		throw new IllegalStateException("No migrations for any version");
+		switch(version) {
+			case 0:
+				return createGithubDBMigrationV1();
+			default:
+				throw new IllegalStateException("No migration for version " + version);
+		}
 	}
 	
+	protected SQLiteMigration createGithubDBMigrationV1() {
+		return new DefaultGithubDBMigrationV1();
+	}
 }

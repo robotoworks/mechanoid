@@ -44,18 +44,14 @@ public abstract class MechanoidSQLiteOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		applyMigrations(db, oldVersion, newVersion, true);
+		applyMigrations(db, oldVersion, newVersion);
 	}
 
-	protected void applyMigrations(SQLiteDatabase db, int from, int to, boolean doUp) {
-		for(int i = (from + 1); i <= to; i++) {
+	protected void applyMigrations(SQLiteDatabase db, int from, int to) {
+		for(int i = from; i < to; i++) {
 			SQLiteMigration migration = createMigration(i);
 			migration.onBeforeUp(db);
-			
-			if(doUp) {
-				migration.up(db);
-			}
-			
+			migration.up(db);
 			migration.onAfterUp(db);
 		}
 	}
