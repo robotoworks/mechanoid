@@ -45,12 +45,31 @@ public class EntityGenerator {
     _builder.append(_name, "");
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
+    _builder.append("    ");
+    _builder.newLine();
     {
       ComplexTypeLiteral _literal = type.getLiteral();
       EList<Member> _members = _literal.getMembers();
       for(final Member member : _members) {
+        _builder.append("        ");
+        _builder.append("public static final String KEY_");
+        String _name_1 = member.getName();
+        String _upperCase = _name_1.toUpperCase();
+        _builder.append(_upperCase, "        ");
+        _builder.append(" = \"");
+        String _name_2 = member.getName();
+        _builder.append(_name_2, "        ");
+        _builder.append("\";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    {
+      ComplexTypeLiteral _literal_1 = type.getLiteral();
+      EList<Member> _members_1 = _literal_1.getMembers();
+      for(final Member member_1 : _members_1) {
         _builder.append("\t");
-        CharSequence _generateField = this.generateField(member);
+        CharSequence _generateField = this.generateField(member_1);
         _builder.append(_generateField, "	");
         _builder.newLineIfNotEmpty();
       }
@@ -58,11 +77,11 @@ public class EntityGenerator {
     _builder.append("\t");
     _builder.newLine();
     {
-      ComplexTypeLiteral _literal_1 = type.getLiteral();
-      EList<Member> _members_1 = _literal_1.getMembers();
-      for(final Member member_1 : _members_1) {
+      ComplexTypeLiteral _literal_2 = type.getLiteral();
+      EList<Member> _members_2 = _literal_2.getMembers();
+      for(final Member member_2 : _members_2) {
         _builder.append("\t");
-        CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member_1);
+        CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member_2);
         _builder.append(_generateGetterAndSetter, "	");
         _builder.newLineIfNotEmpty();
       }

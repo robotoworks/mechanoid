@@ -2,6 +2,24 @@ package com.robotoworks.example.ghissues.net;
 
 import java.util.List;
 public class Issue {
+    
+        public static final String KEY_URL = "url";
+        public static final String KEY_LABELS_URL = "labels_url";
+        public static final String KEY_COMMENTS_URL = "comments_url";
+        public static final String KEY_EVENTS_URL = "events_url";
+        public static final String KEY_HTML_URL = "html_url";
+        public static final String KEY_ID = "id";
+        public static final String KEY_NUMBER = "number";
+        public static final String KEY_TITLE = "title";
+        public static final String KEY_USER = "user";
+        public static final String KEY_LABELS = "labels";
+        public static final String KEY_STATE = "state";
+        public static final String KEY_COMMENTS = "comments";
+        public static final String KEY_CREATED_AT = "created_at";
+        public static final String KEY_UPDATED_AT = "updated_at";
+        public static final String KEY_CLOSED_AT = "closed_at";
+        public static final String KEY_BODY = "body";
+
 	private String url;
 	private String labelsUrl;
 	private String commentsUrl;
