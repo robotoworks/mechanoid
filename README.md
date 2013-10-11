@@ -39,6 +39,9 @@ Please see the getting started guide for complete details: http://robotoworks.co
 License
 =======
 
+Mechanoid Runtime Library
+-------------------------
+
     Copyright 2013 Ian Warwick
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,3 +55,14 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+Eclipse Plugin Components
+-------------------------
+
+    Copyright (c) 2005-2010 Azigo, Inc.  
+    
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+       
+       http://www.eclipse.org/legal/epl-v10.html
