@@ -833,6 +833,15 @@ public interface SqliteModelFactory extends EFactory
   DefaultConstraint createDefaultConstraint();
 
   /**
+   * Returns a new object of class '<em>Check Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Check Constraint</em>'.
+   * @generated
+   */
+  CheckConstraint createCheckConstraint();
+
+  /**
    * Returns a new object of class '<em>Literal Default Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

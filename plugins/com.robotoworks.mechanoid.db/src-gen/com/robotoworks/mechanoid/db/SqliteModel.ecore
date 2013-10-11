@@ -459,6 +459,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//DefaultValue"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckConstraint" eSuperTypes="#//ColumnConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralDefaultValue" eSuperTypes="#//DefaultValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="literal" eType="#//LiteralValue"
         containment="true"/>

@@ -3104,16 +3104,25 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDefaultKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Assignment cDefaultValueAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
 		private final RuleCall cDefaultValueDefaultValueParserRuleCall_3_2_0 = (RuleCall)cDefaultValueAssignment_3_2.eContents().get(0);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cCheckConstraintAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cCheckKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cExpressionAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cExpressionSqlExpressionParserRuleCall_4_3_0 = (RuleCall)cExpressionAssignment_4_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		
 		//ColumnConstraint:
 		//	{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
 		//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {UniqueConstraint} "unique"
-		//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue;
+		//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue | {CheckConstraint} "check"
+		//	"(" expression=SqlExpression ")";
 		public ParserRule getRule() { return rule; }
 
 		//{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
 		//{NotNullConstraint} "not null" conflictClause=ConflictClause? | {UniqueConstraint} "unique"
-		//conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue
+		//conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue | {CheckConstraint} "check"
+		//"(" expression=SqlExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"?
@@ -3190,6 +3199,27 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//DefaultValue
 		public RuleCall getDefaultValueDefaultValueParserRuleCall_3_2_0() { return cDefaultValueDefaultValueParserRuleCall_3_2_0; }
+
+		//{CheckConstraint} "check" "(" expression=SqlExpression ")"
+		public Group getGroup_4() { return cGroup_4; }
+
+		//{CheckConstraint}
+		public Action getCheckConstraintAction_4_0() { return cCheckConstraintAction_4_0; }
+
+		//"check"
+		public Keyword getCheckKeyword_4_1() { return cCheckKeyword_4_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_4_2() { return cLeftParenthesisKeyword_4_2; }
+
+		//expression=SqlExpression
+		public Assignment getExpressionAssignment_4_3() { return cExpressionAssignment_4_3; }
+
+		//SqlExpression
+		public RuleCall getExpressionSqlExpressionParserRuleCall_4_3_0() { return cExpressionSqlExpressionParserRuleCall_4_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
 	}
 
 	public class TableConstraintElements extends AbstractParserRuleElementFinder {
@@ -4875,7 +4905,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ColumnConstraint:
 	//	{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
 	//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {UniqueConstraint} "unique"
-	//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue;
+	//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue | {CheckConstraint} "check"
+	//	"(" expression=SqlExpression ")";
 	public ColumnConstraintElements getColumnConstraintAccess() {
 		return (pColumnConstraint != null) ? pColumnConstraint : (pColumnConstraint = new ColumnConstraintElements());
 	}

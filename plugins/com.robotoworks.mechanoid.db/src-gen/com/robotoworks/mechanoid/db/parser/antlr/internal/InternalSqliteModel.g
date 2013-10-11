@@ -5072,7 +5072,44 @@ ruleColumnConstraint returns [EObject current=null]
 	    }
 
 )
-)))
+))
+    |((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getColumnConstraintAccess().getCheckConstraintAction_4_0(),
+            $current);
+    }
+)	otherlv_15='check' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getColumnConstraintAccess().getCheckKeyword_4_1());
+    }
+	otherlv_16='(' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getColumnConstraintAccess().getLeftParenthesisKeyword_4_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getColumnConstraintAccess().getExpressionSqlExpressionParserRuleCall_4_3_0()); 
+	    }
+		lv_expression_17_0=ruleSqlExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getColumnConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_17_0, 
+        		"SqlExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_18=')' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getColumnConstraintAccess().getRightParenthesisKeyword_4_4());
+    }
+))
 ;
 
 
