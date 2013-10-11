@@ -767,6 +767,14 @@ public class SqliteModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SqliteModelPackage.CHECK_CONSTRAINT:
+      {
+        CheckConstraint checkConstraint = (CheckConstraint)theEObject;
+        T result = caseCheckConstraint(checkConstraint);
+        if (result == null) result = caseColumnConstraint(checkConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SqliteModelPackage.LITERAL_DEFAULT_VALUE:
       {
         LiteralDefaultValue literalDefaultValue = (LiteralDefaultValue)theEObject;
@@ -2223,6 +2231,22 @@ public class SqliteModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDefaultConstraint(DefaultConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Check Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Check Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckConstraint(CheckConstraint object)
   {
     return null;
   }

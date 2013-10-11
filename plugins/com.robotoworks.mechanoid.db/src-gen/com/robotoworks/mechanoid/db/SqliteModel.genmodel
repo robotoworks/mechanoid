@@ -377,6 +377,9 @@
     <genClasses ecoreClass="SqliteModel.ecore#//DefaultConstraint">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//DefaultConstraint/defaultValue"/>
     </genClasses>
+    <genClasses ecoreClass="SqliteModel.ecore#//CheckConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//CheckConstraint/expression"/>
+    </genClasses>
     <genClasses ecoreClass="SqliteModel.ecore#//LiteralDefaultValue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SqliteModel.ecore#//LiteralDefaultValue/literal"/>
     </genClasses>

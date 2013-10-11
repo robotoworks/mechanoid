@@ -525,6 +525,11 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
         return createDefaultConstraintAdapter();
       }
       @Override
+      public Adapter caseCheckConstraint(CheckConstraint object)
+      {
+        return createCheckConstraintAdapter();
+      }
+      @Override
       public Adapter caseLiteralDefaultValue(LiteralDefaultValue object)
       {
         return createLiteralDefaultValueAdapter();
@@ -1902,6 +1907,21 @@ public class SqliteModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDefaultConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint <em>Check Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint
+   * @generated
+   */
+  public Adapter createCheckConstraintAdapter()
   {
     return null;
   }

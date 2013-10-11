@@ -363,6 +363,14 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             return Scopes.scopeFor(_allReferenceableColumns, IScope.NULLSCOPE);
           }
         }
+        if (!_matched) {
+          if (container instanceof CreateTableStatement) {
+            final CreateTableStatement _createTableStatement = (CreateTableStatement)container;
+            _matched=true;
+            EList<ColumnSource> _columnDefs = _createTableStatement.getColumnDefs();
+            return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
+          }
+        }
         EObject _eContainer_1 = temp.eContainer();
         temp = _eContainer_1;
       }

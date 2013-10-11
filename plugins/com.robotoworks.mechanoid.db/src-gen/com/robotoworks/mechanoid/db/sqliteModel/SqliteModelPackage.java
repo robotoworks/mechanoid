@@ -3433,6 +3433,34 @@ public interface SqliteModelPackage extends EPackage
   int DEFAULT_CONSTRAINT_FEATURE_COUNT = COLUMN_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CheckConstraintImpl <em>Check Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.robotoworks.mechanoid.db.sqliteModel.impl.CheckConstraintImpl
+   * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getCheckConstraint()
+   * @generated
+   */
+  int CHECK_CONSTRAINT = 90;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECK_CONSTRAINT__EXPRESSION = COLUMN_CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Check Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECK_CONSTRAINT_FEATURE_COUNT = COLUMN_CONSTRAINT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.LiteralDefaultValueImpl <em>Literal Default Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3440,7 +3468,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getLiteralDefaultValue()
    * @generated
    */
-  int LITERAL_DEFAULT_VALUE = 90;
+  int LITERAL_DEFAULT_VALUE = 91;
 
   /**
    * The feature id for the '<em><b>Literal</b></em>' containment reference.
@@ -3468,7 +3496,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getExpressionDefaultValue()
    * @generated
    */
-  int EXPRESSION_DEFAULT_VALUE = 91;
+  int EXPRESSION_DEFAULT_VALUE = 92;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -3496,7 +3524,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getCompoundOperator()
    * @generated
    */
-  int COMPOUND_OPERATOR = 92;
+  int COMPOUND_OPERATOR = 93;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.SqliteDataType <em>Sqlite Data Type</em>}' enum.
@@ -3506,7 +3534,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getSqliteDataType()
    * @generated
    */
-  int SQLITE_DATA_TYPE = 93;
+  int SQLITE_DATA_TYPE = 94;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnType <em>Column Type</em>}' enum.
@@ -3516,7 +3544,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getColumnType()
    * @generated
    */
-  int COLUMN_TYPE = 94;
+  int COLUMN_TYPE = 95;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.db.sqliteModel.ConflictResolution <em>Conflict Resolution</em>}' enum.
@@ -3526,7 +3554,7 @@ public interface SqliteModelPackage extends EPackage
    * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getConflictResolution()
    * @generated
    */
-  int CONFLICT_RESOLUTION = 95;
+  int CONFLICT_RESOLUTION = 96;
 
 
   /**
@@ -6322,6 +6350,27 @@ public interface SqliteModelPackage extends EPackage
   EReference getDefaultConstraint_DefaultValue();
 
   /**
+   * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint <em>Check Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Check Constraint</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint
+   * @generated
+   */
+  EClass getCheckConstraint();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint#getExpression()
+   * @see #getCheckConstraint()
+   * @generated
+   */
+  EReference getCheckConstraint_Expression();
+
+  /**
    * Returns the meta object for class '{@link com.robotoworks.mechanoid.db.sqliteModel.LiteralDefaultValue <em>Literal Default Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8701,6 +8750,24 @@ public interface SqliteModelPackage extends EPackage
      * @generated
      */
     EReference DEFAULT_CONSTRAINT__DEFAULT_VALUE = eINSTANCE.getDefaultConstraint_DefaultValue();
+
+    /**
+     * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CheckConstraintImpl <em>Check Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.robotoworks.mechanoid.db.sqliteModel.impl.CheckConstraintImpl
+     * @see com.robotoworks.mechanoid.db.sqliteModel.impl.SqliteModelPackageImpl#getCheckConstraint()
+     * @generated
+     */
+    EClass CHECK_CONSTRAINT = eINSTANCE.getCheckConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CHECK_CONSTRAINT__EXPRESSION = eINSTANCE.getCheckConstraint_Expression();
 
     /**
      * The meta object literal for the '{@link com.robotoworks.mechanoid.db.sqliteModel.impl.LiteralDefaultValueImpl <em>Literal Default Value</em>}' class.

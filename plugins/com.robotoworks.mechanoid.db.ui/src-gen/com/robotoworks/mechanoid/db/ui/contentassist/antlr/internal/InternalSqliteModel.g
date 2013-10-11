@@ -2843,6 +2843,12 @@ rule__ColumnConstraint__Alternatives
 { after(grammarAccess.getColumnConstraintAccess().getGroup_3()); }
 )
 
+    |(
+{ before(grammarAccess.getColumnConstraintAccess().getGroup_4()); }
+(rule__ColumnConstraint__Group_4__0)
+{ after(grammarAccess.getColumnConstraintAccess().getGroup_4()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -14445,6 +14451,168 @@ finally {
 
 
 
+rule__ColumnConstraint__Group_4__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ColumnConstraint__Group_4__0__Impl
+	rule__ColumnConstraint__Group_4__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__Group_4__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getCheckConstraintAction_4_0()); }
+(
+
+)
+{ after(grammarAccess.getColumnConstraintAccess().getCheckConstraintAction_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ColumnConstraint__Group_4__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ColumnConstraint__Group_4__1__Impl
+	rule__ColumnConstraint__Group_4__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__Group_4__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getCheckKeyword_4_1()); }
+
+	'check' 
+
+{ after(grammarAccess.getColumnConstraintAccess().getCheckKeyword_4_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ColumnConstraint__Group_4__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ColumnConstraint__Group_4__2__Impl
+	rule__ColumnConstraint__Group_4__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__Group_4__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getLeftParenthesisKeyword_4_2()); }
+
+	'(' 
+
+{ after(grammarAccess.getColumnConstraintAccess().getLeftParenthesisKeyword_4_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ColumnConstraint__Group_4__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ColumnConstraint__Group_4__3__Impl
+	rule__ColumnConstraint__Group_4__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__Group_4__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getExpressionAssignment_4_3()); }
+(rule__ColumnConstraint__ExpressionAssignment_4_3)
+{ after(grammarAccess.getColumnConstraintAccess().getExpressionAssignment_4_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ColumnConstraint__Group_4__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ColumnConstraint__Group_4__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__Group_4__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getRightParenthesisKeyword_4_4()); }
+
+	')' 
+
+{ after(grammarAccess.getColumnConstraintAccess().getRightParenthesisKeyword_4_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 rule__UniqueTableConstraint__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -20185,6 +20353,21 @@ rule__ColumnConstraint__DefaultValueAssignment_3_2
 (
 { before(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_3_2_0()); }
 	ruleDefaultValue{ after(grammarAccess.getColumnConstraintAccess().getDefaultValueDefaultValueParserRuleCall_3_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnConstraint__ExpressionAssignment_4_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getColumnConstraintAccess().getExpressionSqlExpressionParserRuleCall_4_3_0()); }
+	ruleSqlExpression{ after(grammarAccess.getColumnConstraintAccess().getExpressionSqlExpressionParserRuleCall_4_3_0()); }
 )
 
 ;

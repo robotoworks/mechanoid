@@ -64,7 +64,7 @@ public class SQuery {
 	public static final class Literal {
 		protected final String value;
 		
-		protected Literal(String value) {
+		public Literal(String value) {
 			this.value = value;
 		}
 	}

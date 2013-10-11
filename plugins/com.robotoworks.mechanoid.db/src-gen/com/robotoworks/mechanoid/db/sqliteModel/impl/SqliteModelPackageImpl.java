@@ -8,6 +8,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.Case;
 import com.robotoworks.mechanoid.db.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.CastExpression;
+import com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
@@ -746,6 +747,13 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * @generated
    */
   private EClass defaultConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass checkConstraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3477,6 +3485,26 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCheckConstraint()
+  {
+    return checkConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCheckConstraint_Expression()
+  {
+    return (EReference)checkConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLiteralDefaultValue()
   {
     return literalDefaultValueEClass;
@@ -3934,6 +3962,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     defaultConstraintEClass = createEClass(DEFAULT_CONSTRAINT);
     createEReference(defaultConstraintEClass, DEFAULT_CONSTRAINT__DEFAULT_VALUE);
 
+    checkConstraintEClass = createEClass(CHECK_CONSTRAINT);
+    createEReference(checkConstraintEClass, CHECK_CONSTRAINT__EXPRESSION);
+
     literalDefaultValueEClass = createEClass(LITERAL_DEFAULT_VALUE);
     createEReference(literalDefaultValueEClass, LITERAL_DEFAULT_VALUE__LITERAL);
 
@@ -4036,6 +4067,7 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
     notNullConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     uniqueConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     defaultConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
+    checkConstraintEClass.getESuperTypes().add(this.getColumnConstraint());
     literalDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
     expressionDefaultValueEClass.getESuperTypes().add(this.getDefaultValue());
 
@@ -4391,6 +4423,9 @@ public class SqliteModelPackageImpl extends EPackageImpl implements SqliteModelP
 
     initEClass(defaultConstraintEClass, DefaultConstraint.class, "DefaultConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDefaultConstraint_DefaultValue(), this.getDefaultValue(), null, "defaultValue", null, 0, 1, DefaultConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(checkConstraintEClass, CheckConstraint.class, "CheckConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCheckConstraint_Expression(), this.getExpression(), null, "expression", null, 0, 1, CheckConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalDefaultValueEClass, LiteralDefaultValue.class, "LiteralDefaultValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLiteralDefaultValue_Literal(), this.getLiteralValue(), null, "literal", null, 0, 1, LiteralDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
