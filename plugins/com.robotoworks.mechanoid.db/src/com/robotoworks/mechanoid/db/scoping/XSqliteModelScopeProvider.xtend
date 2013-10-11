@@ -271,6 +271,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 					
 					return Scopes::scopeFor(core.allReferenceableColumns, IScope::NULLSCOPE)
 				}
+				CreateTableStatement: {
+				    return Scopes::scopeFor(container.columnDefs, IScope::NULLSCOPE)
+				}
 			}
 			
 			temp = temp.eContainer

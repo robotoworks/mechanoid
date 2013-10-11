@@ -155,6 +155,7 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
       case SqliteModelPackage.NOT_NULL_CONSTRAINT: return createNotNullConstraint();
       case SqliteModelPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
       case SqliteModelPackage.DEFAULT_CONSTRAINT: return createDefaultConstraint();
+      case SqliteModelPackage.CHECK_CONSTRAINT: return createCheckConstraint();
       case SqliteModelPackage.LITERAL_DEFAULT_VALUE: return createLiteralDefaultValue();
       case SqliteModelPackage.EXPRESSION_DEFAULT_VALUE: return createExpressionDefaultValue();
       default:
@@ -1196,6 +1197,17 @@ public class SqliteModelFactoryImpl extends EFactoryImpl implements SqliteModelF
   {
     DefaultConstraintImpl defaultConstraint = new DefaultConstraintImpl();
     return defaultConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CheckConstraint createCheckConstraint()
+  {
+    CheckConstraintImpl checkConstraint = new CheckConstraintImpl();
+    return checkConstraint;
   }
 
   /**

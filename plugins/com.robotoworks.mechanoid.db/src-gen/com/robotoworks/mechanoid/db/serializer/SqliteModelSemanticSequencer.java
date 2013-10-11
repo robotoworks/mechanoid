@@ -9,6 +9,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.Case;
 import com.robotoworks.mechanoid.db.sqliteModel.CaseExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.CastExpression;
+import com.robotoworks.mechanoid.db.sqliteModel.CheckConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.CheckTableConstraint;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnDef;
 import com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef;
@@ -176,6 +177,12 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 				   context == grammarAccess.getPrimaryExpressionRule() ||
 				   context == grammarAccess.getSqlExpressionRule()) {
 					sequence_PrimaryExpression(context, (CastExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case SqliteModelPackage.CHECK_CONSTRAINT:
+				if(context == grammarAccess.getColumnConstraintRule()) {
+					sequence_ColumnConstraint(context, (CheckConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -950,6 +957,22 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 */
 	protected void sequence_CheckTableConstraint(EObject context, CheckTableConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     expression=SqlExpression
+	 */
+	protected void sequence_ColumnConstraint(EObject context, CheckConstraint semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SqliteModelPackage.Literals.CHECK_CONSTRAINT__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SqliteModelPackage.Literals.CHECK_CONSTRAINT__EXPRESSION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getColumnConstraintAccess().getExpressionSqlExpressionParserRuleCall_4_3_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
