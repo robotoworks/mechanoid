@@ -34,6 +34,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.AlterTableRenameStatement
 import com.robotoworks.mechanoid.db.sqliteModel.Model
 import java.util.Collection
 import com.robotoworks.mechanoid.db.sqliteModel.InitBlock
+import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceSelectStatement
 
 class ModelUtil {
 	def static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(DDLStatement stmt, Class<T> statementType, boolean inclusive) {

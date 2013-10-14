@@ -30,6 +30,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.SelectList;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectSource;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSource;
+import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceSelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression;
@@ -80,6 +81,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         TableDefinition _tableReference = tableSource.getTableReference();
         ArrayList<EObject> _findColumnDefs = ModelUtil.findColumnDefs(_ancestorOfType, _tableReference);
         return Scopes.scopeFor(_findColumnDefs);
+      } else {
+        SelectSource _source_3 = context.getSource();
+        if ((_source_3 instanceof SingleSourceSelectStatement)) {
+          SelectSource _source_4 = context.getSource();
+          SingleSourceSelectStatement selectStmtSource = ((SingleSourceSelectStatement) _source_4);
+          SelectStatement _selectStatement = selectStmtSource.getSelectStatement();
+          SelectCoreExpression _core = _selectStatement.getCore();
+          ArrayList<EObject> _allReferenceableColumns = ModelUtil.getAllReferenceableColumns(_core);
+          return Scopes.scopeFor(_allReferenceableColumns);
+        }
       }
     }
     return IScope.NULLSCOPE;
