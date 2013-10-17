@@ -38,6 +38,9 @@ public abstract class ActiveRecord {
 	}
 	
 	public void setId(long id) {
+		if(mId != id) {
+			makeDirty(true);
+		}
 		mId = id;
 	}
 

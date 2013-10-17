@@ -28,7 +28,7 @@ InitBlock:
 ConfigurationStatement:
 	{ActionStatement} 'action' name=ID uri=ContentUri |
 	{Function} 'function' name=ID '(' (args+=FunctionArg (',' args+=FunctionArg)*)? ')' '{'
-		body=SelectStatement
+		(statements+=DMLStatement ';')*
 	'}' 
 ;
 

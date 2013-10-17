@@ -45,7 +45,6 @@ public class MovieDBContract  {
 		String YEAR = "year";
 	}
 	
-
 			
 	/**
 	 * <p>Column definitions and helper methods to work with the Movies.</p>
@@ -121,6 +120,8 @@ public class MovieDBContract  {
 			VIEW_URIS = Collections.unmodifiableSet(viewUris);
 		}
 	}
+
+	
 
 	
 	static Map<Uri, Set<Uri>> REFERENCING_VIEWS;

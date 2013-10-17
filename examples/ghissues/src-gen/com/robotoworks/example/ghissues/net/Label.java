@@ -1,5 +1,9 @@
 package com.robotoworks.example.ghissues.net;
 
+import android.content.ContentValues;
+import com.robotoworks.mechanoid.db.ContentValuesUtil;
+import java.util.Map;
+
 public class Label {
     
         public static final String KEY_URL = "url";
@@ -27,5 +31,19 @@ public class Label {
 	}
 	public void setColor(String value){
 		this.color = value;
+	}
+	
+	public ContentValues toContentValues() {
+	    return toContentValues(null);
+	}
+	
+	public ContentValues toContentValues(Map<String, String> map) {
+	    ContentValues values = new ContentValues();
+	    
+            ContentValuesUtil.putMapped(KEY_URL, map, values, url);
+            ContentValuesUtil.putMapped(KEY_NAME, map, values, name);
+            ContentValuesUtil.putMapped(KEY_COLOR, map, values, color);
+
+        return values;
 	}
 }

@@ -1,5 +1,9 @@
 package com.robotoworks.example.ghissues.net;
 
+import android.content.ContentValues;
+import com.robotoworks.mechanoid.db.ContentValuesUtil;
+import java.util.Map;
+
 import java.util.List;
 public class Issue {
     
@@ -132,5 +136,32 @@ public class Issue {
 	}
 	public void setBody(String value){
 		this.body = value;
+	}
+	
+	public ContentValues toContentValues() {
+	    return toContentValues(null);
+	}
+	
+	public ContentValues toContentValues(Map<String, String> map) {
+	    ContentValues values = new ContentValues();
+	    
+            ContentValuesUtil.putMapped(KEY_URL, map, values, url);
+            ContentValuesUtil.putMapped(KEY_LABELS_URL, map, values, labelsUrl);
+            ContentValuesUtil.putMapped(KEY_COMMENTS_URL, map, values, commentsUrl);
+            ContentValuesUtil.putMapped(KEY_EVENTS_URL, map, values, eventsUrl);
+            ContentValuesUtil.putMapped(KEY_HTML_URL, map, values, htmlUrl);
+            ContentValuesUtil.putMapped(KEY_ID, map, values, id);
+            ContentValuesUtil.putMapped(KEY_NUMBER, map, values, number);
+            ContentValuesUtil.putMapped(KEY_TITLE, map, values, title);
+            ContentValuesUtil.putMapped(KEY_USER, map, values, user);
+            ContentValuesUtil.putMapped(KEY_LABELS, map, values, labels);
+            ContentValuesUtil.putMapped(KEY_STATE, map, values, state);
+            ContentValuesUtil.putMapped(KEY_COMMENTS, map, values, comments);
+            ContentValuesUtil.putMapped(KEY_CREATED_AT, map, values, createdAt);
+            ContentValuesUtil.putMapped(KEY_UPDATED_AT, map, values, updatedAt);
+            ContentValuesUtil.putMapped(KEY_CLOSED_AT, map, values, closedAt);
+            ContentValuesUtil.putMapped(KEY_BODY, map, values, body);
+
+        return values;
 	}
 }

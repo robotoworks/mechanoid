@@ -20,6 +20,8 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
 	protected static final int MOVIES_ID = 1;
 
 	
+
+	
 	public static final int NUM_URI_MATCHERS = 2;
 
 	@Override
@@ -27,11 +29,8 @@ public abstract class AbstractMovieDBContentProvider extends MechanoidContentPro
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = MovieDBContract.CONTENT_AUTHORITY;
 
-		// Sources
 		matcher.addURI(authority, "movies", MOVIES);
 		matcher.addURI(authority, "movies/#", MOVIES_ID);
-
-		// Views
 
 		// User Actions
         return matcher;

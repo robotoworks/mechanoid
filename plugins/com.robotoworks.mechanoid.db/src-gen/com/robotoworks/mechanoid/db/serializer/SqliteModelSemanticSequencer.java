@@ -1058,7 +1058,7 @@ public class SqliteModelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (args+=FunctionArg args+=FunctionArg*)? body=SelectStatement)
+	 *     (name=ID (args+=FunctionArg args+=FunctionArg*)? statements+=DMLStatement*)
 	 */
 	protected void sequence_ConfigurationStatement(EObject context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
