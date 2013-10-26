@@ -24,8 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ServiceInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ServiceInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -42,11 +42,13 @@ public class OperationServiceBridge {
 	public static final int MSG_OPERATION_ABORTED = 4;
 	
 	private int mRequestIdCounter = 1;
+	private boolean mPaused;
 	
 	private Hashtable<String, OperationServiceConfiguration> mConfigurations = new Hashtable<String, OperationServiceConfiguration>();
 	
 	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
-			
+	private SparseArray<Intent> mPausedRequests = new SparseArray<Intent>();
+	
 	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
 
 	private OperationLog mLog = new OperationLog(60);
@@ -104,6 +106,7 @@ public class OperationServiceBridge {
 		}
 	});
 	
+	
 	public OperationServiceBridge() {
 		initConfigurations();
 	}
@@ -143,10 +146,6 @@ public class OperationServiceBridge {
 		return mRequestIdCounter++;
 	}
 		
-	private void addPendingRequest(int requestId, Intent intent) {
-		mPendingRequests.put(requestId, intent);
-	}
-	
 	/**
 	 * Find a pending request with the given action
 	 * @param action The action
@@ -159,6 +158,15 @@ public class OperationServiceBridge {
 			if(request.getAction().equals(action)) {
 				return request;
 			}
+		}
+		
+		if(mPaused) {
+			for (int i = 0; i < mPausedRequests.size(); i++) {
+				Intent request = mPausedRequests.valueAt(i);
+				if(request.getAction().equals(action)) {
+					return request;
+				}
+			}			
 		}
 		
 		return null;
@@ -179,12 +187,32 @@ public class OperationServiceBridge {
 			}
 		}
 		
+		if(mPaused) {
+			for (int i = 0; i < mPausedRequests.size(); i++) {
+				Intent request = mPausedRequests.valueAt(i);
+				if(request.getAction().equals(action) && intentContainsExtras(request, extras)) {
+					return request;
+				}
+			}
+		}
+		
 		return null;
 	}
 	
 	private Intent removePendingRequestById(int requestId) {
 		Intent intent = mPendingRequests.get(requestId);
-		mPendingRequests.delete(requestId);
+		if(intent != null) {
+			mPendingRequests.delete(requestId);
+		} else {
+			if(mPaused) {
+				Intent pausedIntent = mPausedRequests.get(requestId);
+				
+				if(pausedIntent != null) {
+					mPausedRequests.delete(requestId);
+					intent = pausedIntent;
+				}
+			}
+		}
 		return intent;
 	}
 	
@@ -196,6 +224,10 @@ public class OperationServiceBridge {
 	 */
 	public boolean isOperationPending(int id) {
 		if(id <= 0) return false;
+		
+		if(mPaused && (mPendingRequests.get(id) != null)) {
+			return true;
+		}
 		
 		return (mPendingRequests.get(id) != null);
 	}
@@ -219,6 +251,14 @@ public class OperationServiceBridge {
 			intent.putExtra(OperationService.EXTRA_ABORT_REASON, reason);	
 			
 			context.startService(intent);
+		}
+		
+		if(mPaused) {
+			Intent intent = mPausedRequests.get(id);
+			
+			if(intent != null) {
+				onOperationAborted(id, reason, new Bundle());
+			}
 		}
 	}
 	
@@ -247,11 +287,41 @@ public class OperationServiceBridge {
 		clonedIntent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
 		clonedIntent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
 		
-		addPendingRequest(id, clonedIntent);
-		
-		Mechanoid.startService(clonedIntent);
+		if(mPaused) {
+			mPausedRequests.put(id, clonedIntent);
+		} else {
+			mPendingRequests.put(id, clonedIntent);
+			Mechanoid.startService(clonedIntent);
+		}
 		
 		return id;
+	}
+	
+	/**
+	 * <p>Pause processing of operations, useful for testing scenarios
+	 * to guarantee processing time</p>
+	 * <p>Operations issued after a pause will not be processed until {@link #unpause()}</p>
+	 * 
+	 * @param pause true to pause, false to unpause
+	 */
+	public void pause(boolean pause) {
+		if(mPaused && !pause) {
+			
+			// set this early to avoid any funny stuff
+			mPaused = false;
+			
+			for (int i = 0; i < mPausedRequests.size(); i++) {
+				Intent request = mPausedRequests.valueAt(i);
+				
+				mPendingRequests.put(mPausedRequests.keyAt(i), request);
+				
+				Mechanoid.startService(request);
+			}
+			
+			mPausedRequests.clear();
+		}
+		
+		mPaused = pause;
 	}
 	
 	/**

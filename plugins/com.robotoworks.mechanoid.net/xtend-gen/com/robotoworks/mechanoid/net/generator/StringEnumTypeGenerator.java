@@ -30,17 +30,17 @@ public class StringEnumTypeGenerator {
     EnumTypeLiteral _literal = type.getLiteral();
     EList<EnumMember> _members = _literal.getMembers();
     final Function1<EnumMember,String> _function = new Function1<EnumMember,String>() {
-        public String apply(final EnumMember member) {
-          String _name = member.getName();
-          String _underscore = Strings.underscore(_name);
-          String _upperCase = _underscore.toUpperCase();
-          String _plus = (_upperCase + "(\"");
-          String _name_1 = member.getName();
-          String _plus_1 = (_plus + _name_1);
-          String _plus_2 = (_plus_1 + "\")");
-          return _plus_2;
-        }
-      };
+      public String apply(final EnumMember member) {
+        String _name = member.getName();
+        String _underscore = Strings.underscore(_name);
+        String _upperCase = _underscore.toUpperCase();
+        String _plus = (_upperCase + "(\"");
+        String _name_1 = member.getName();
+        String _plus_1 = (_plus + _name_1);
+        String _plus_2 = (_plus_1 + "\")");
+        return _plus_2;
+      }
+    };
     String _join = IterableExtensions.<EnumMember>join(_members, ",\n", _function);
     _builder.append(_join, "	");
     _builder.append(";");

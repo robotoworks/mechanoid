@@ -131,10 +131,7 @@ public abstract class OperationProcessor {
 		// queue this one up
 		requestQueue.offer(intent);
 		
-		// make sure we are running ops if the worker is ready
-		if(mWorkerReady && mCurrentOperation == null) {
-			executePendingOperations();
-		}
+		executePendingOperations();
 	}
 
 	private void abortOperation(int abortRequestId, int abortReason) {
@@ -171,6 +168,15 @@ public abstract class OperationProcessor {
 	}
 	
 	private void executePendingOperations() {
+		if(!mWorkerReady) {
+			Log.d(mLogTag, "[Waiting on Worker]");
+			return;
+		}
+		
+		if(mCurrentOperation != null) {
+			return;
+		}
+		
 		if(mEnableLogging) {
 			Log.d(mLogTag, "[Executing Pending]");
 		}

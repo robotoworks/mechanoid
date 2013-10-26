@@ -74,10 +74,10 @@ public class NetModelGenerator implements IGenerator {
     final Model model = ((Model) _head);
     EList<Declaration> _declarations = model.getDeclarations();
     final Procedure1<Declaration> _function = new Procedure1<Declaration>() {
-        public void apply(final Declaration it) {
-          NetModelGenerator.this.generate(it, model, fsa);
-        }
-      };
+      public void apply(final Declaration it) {
+        NetModelGenerator.this.generate(it, model, fsa);
+      }
+    };
     IterableExtensions.<Declaration>forEach(_declarations, _function);
   }
   
@@ -117,25 +117,25 @@ public class NetModelGenerator implements IGenerator {
     EList<ClientBlock> _blocks = client.getBlocks();
     Iterable<HttpMethod> _filter = Iterables.<HttpMethod>filter(_blocks, HttpMethod.class);
     final Procedure1<HttpMethod> _function = new Procedure1<HttpMethod>() {
-        public void apply(final HttpMethod method) {
-          String _packageName = model.getPackageName();
-          String _name = method.getName();
-          String _pascalize = Strings.pascalize(_name);
-          String _concat = _pascalize.concat("Request");
-          String _resolveFileName = Strings.resolveFileName(_packageName, _concat);
-          RequestGenerator _get = NetModelGenerator.this.mRequestGenerator.get();
-          CharSequence _generate = _get.generate(method, model, client);
-          fsa.generateFile(_resolveFileName, _generate);
-          String _packageName_1 = model.getPackageName();
-          String _name_1 = method.getName();
-          String _pascalize_1 = Strings.pascalize(_name_1);
-          String _concat_1 = _pascalize_1.concat("Result");
-          String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_1);
-          ResultGenerator _get_1 = NetModelGenerator.this.mResultGenerator.get();
-          CharSequence _generate_1 = _get_1.generate(method, model, client);
-          fsa.generateFile(_resolveFileName_1, _generate_1);
-        }
-      };
+      public void apply(final HttpMethod method) {
+        String _packageName = model.getPackageName();
+        String _name = method.getName();
+        String _pascalize = Strings.pascalize(_name);
+        String _concat = _pascalize.concat("Request");
+        String _resolveFileName = Strings.resolveFileName(_packageName, _concat);
+        RequestGenerator _get = NetModelGenerator.this.mRequestGenerator.get();
+        CharSequence _generate = _get.generate(method, model, client);
+        fsa.generateFile(_resolveFileName, _generate);
+        String _packageName_1 = model.getPackageName();
+        String _name_1 = method.getName();
+        String _pascalize_1 = Strings.pascalize(_name_1);
+        String _concat_1 = _pascalize_1.concat("Result");
+        String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_1);
+        ResultGenerator _get_1 = NetModelGenerator.this.mResultGenerator.get();
+        CharSequence _generate_1 = _get_1.generate(method, model, client);
+        fsa.generateFile(_resolveFileName_1, _generate_1);
+      }
+    };
     IterableExtensions.<HttpMethod>forEach(_filter, _function);
   }
   

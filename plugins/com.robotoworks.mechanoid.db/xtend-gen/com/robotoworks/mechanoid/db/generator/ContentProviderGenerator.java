@@ -68,11 +68,11 @@ public class ContentProviderGenerator {
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
       final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
-          public Boolean apply(final CreateTableStatement it) {
-            boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(it);
-            return Boolean.valueOf(_hasAndroidPrimaryKey);
-          }
-        };
+        public Boolean apply(final CreateTableStatement it) {
+          boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(it);
+          return Boolean.valueOf(_hasAndroidPrimaryKey);
+        }
+      };
       Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables, _function);
       for(final CreateTableStatement tbl : _filter) {
         _builder.append("import ");
@@ -250,10 +250,10 @@ public class ContentProviderGenerator {
           ConfigBlock _config_1 = _database_3.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
-              }
-            };
+            public Boolean apply(final ConfigurationStatement it) {
+              return Boolean.valueOf((it instanceof ActionStatement));
+            }
+          };
           Iterable<ConfigurationStatement> _filter_1 = IterableExtensions.<ConfigurationStatement>filter(_statements, _function_1);
           for(final ConfigurationStatement a : _filter_1) {
             _builder.append("\t");
@@ -445,10 +445,10 @@ public class ContentProviderGenerator {
           ConfigBlock _config_3 = _database_6.getConfig();
           EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
-              }
-            };
+            public Boolean apply(final ConfigurationStatement it) {
+              return Boolean.valueOf((it instanceof ActionStatement));
+            }
+          };
           Iterable<ConfigurationStatement> _filter_2 = IterableExtensions.<ConfigurationStatement>filter(_statements_1, _function_2);
           for(final ConfigurationStatement a_1 : _filter_2) {
             _builder.append("\t\t");
@@ -680,10 +680,10 @@ public class ContentProviderGenerator {
           ConfigBlock _config_5 = _database_16.getConfig();
           EList<ConfigurationStatement> _statements_2 = _config_5.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
-              }
-            };
+            public Boolean apply(final ConfigurationStatement it) {
+              return Boolean.valueOf((it instanceof ActionStatement));
+            }
+          };
           Iterable<ConfigurationStatement> _filter_3 = IterableExtensions.<ConfigurationStatement>filter(_statements_2, _function_3);
           for(final ConfigurationStatement a_2 : _filter_3) {
             _builder.append("\t\t");
@@ -941,10 +941,10 @@ public class ContentProviderGenerator {
           ConfigBlock _config_7 = _database_20.getConfig();
           EList<ConfigurationStatement> _statements_3 = _config_7.getStatements();
           final Function1<ConfigurationStatement,Boolean> _function_4 = new Function1<ConfigurationStatement,Boolean>() {
-              public Boolean apply(final ConfigurationStatement it) {
-                return Boolean.valueOf((it instanceof ActionStatement));
-              }
-            };
+            public Boolean apply(final ConfigurationStatement it) {
+              return Boolean.valueOf((it instanceof ActionStatement));
+            }
+          };
           Iterable<ConfigurationStatement> _filter_4 = IterableExtensions.<ConfigurationStatement>filter(_statements_3, _function_4);
           for(final ConfigurationStatement a_3 : _filter_4) {
             _builder.append("\t\t\t");
