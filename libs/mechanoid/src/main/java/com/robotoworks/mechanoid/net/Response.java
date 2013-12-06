@@ -106,7 +106,7 @@ public class Response<T> {
 	 * on the response code to ensure its of a certain code before continuing</p>
 	 */
 	public void checkResponseCode(int responseCode) throws UnexpectedHttpStatusException {
-		if(mResponseCode != HTTP_OK) {
+		if(mResponseCode != responseCode) {
 			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
 		}
 	}
