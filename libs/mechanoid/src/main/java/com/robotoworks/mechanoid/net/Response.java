@@ -166,7 +166,7 @@ public class Response<T> {
 		// error stream is available only if there was a connection with the 
 		// server, the server returned an error and also returned some usefull 
 		// data. Example being status 404 with page to search for content.
-		stream = mConn.getErrorStream();
+		InputStream stream = mConn.getErrorStream();
 		if (stream != null)
 			return stream;
 		return mConn.getInputStream();
