@@ -278,12 +278,29 @@ class ModelUtil {
 				return ColumnType::TEXT
 			}
 			Function: {
+				// function return types taken from http://www.sqlite.org/lang_corefunc.html and http://www.sqlite.org/lang_aggfunc.html
 				if(expr.name.equalsIgnoreCase("count") ||
 					expr.name.equalsIgnoreCase("length") ||
-					expr.name.equalsIgnoreCase("random")
+					expr.name.equalsIgnoreCase("random") ||
+					expr.name.equalsIgnoreCase("last_insert_rowid") ||
+					expr.name.equalsIgnoreCase("changes") ||
+					expr.name.equalsIgnoreCase("total_changes")
 				) {
 					return ColumnType::INTEGER
+				} else if (expr.name.equalsIgnoreCase("abs") ||
+					expr.name.equalsIgnoreCase("avg") ||
+					expr.name.equalsIgnoreCase("round") ||
+					expr.name.equalsIgnoreCase("sum") ||
+					expr.name.equalsIgnoreCase("total") ||
+					expr.name.equalsIgnoreCase("likelihood")
+				) {
+					return ColumnType::REAL
+				} else if (expr.name.equalsIgnoreCase("randomblob") ||
+					expr.name.equalsIgnoreCase("zeroblob")
+				) {
+					return ColumnType::BLOB
 				}
+
 				
 				return ColumnType::TEXT
 			}
