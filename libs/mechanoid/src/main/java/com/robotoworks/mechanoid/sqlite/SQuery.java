@@ -216,10 +216,10 @@ public class SQuery {
 
 		List<String> args = query.getArgs();
 		
+		ensureOp();
+		mBuilder.append("(").append(query).append(")");
 		
 		if(args.size() > 0) {
-			ensureOp();
-			mBuilder.append("(").append(query).append(")");
 			mArgs.addAll(args);
 		}
 		
