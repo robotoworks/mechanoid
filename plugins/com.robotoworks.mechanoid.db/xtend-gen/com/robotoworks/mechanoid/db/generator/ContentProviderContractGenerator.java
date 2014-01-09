@@ -161,11 +161,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy = IterableExtensions.<CreateTableStatement, String>sortBy(_tables, _function);
       for(final CreateTableStatement tbl : _sortBy) {
         _builder.append("\t");
@@ -178,13 +178,13 @@ public class ContentProviderContractGenerator {
         {
           EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
           final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-              public Boolean apply(final ColumnSource it) {
-                String _name = it.getName();
-                boolean _equals = _name.equals("_id");
-                boolean _not = (!_equals);
-                return Boolean.valueOf(_not);
-              }
-            };
+            public Boolean apply(final ColumnSource it) {
+              String _name = it.getName();
+              boolean _equals = _name.equals("_id");
+              boolean _not = (!_equals);
+              return Boolean.valueOf(_not);
+            }
+          };
           Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function_1);
           for(final ColumnSource col : _filter) {
             _builder.append("\t");
@@ -211,11 +211,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _views = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_2 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_1 = IterableExtensions.<CreateViewStatement, String>sortBy(_views, _function_2);
       for(final CreateViewStatement vw : _sortBy_1) {
         _builder.append("\t");
@@ -228,13 +228,13 @@ public class ContentProviderContractGenerator {
         {
           ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(vw);
           final Function1<ColumnSource,Boolean> _function_3 = new Function1<ColumnSource,Boolean>() {
-              public Boolean apply(final ColumnSource it) {
-                String _name = it.getName();
-                boolean _equals = _name.equals("_id");
-                boolean _not = (!_equals);
-                return Boolean.valueOf(_not);
-              }
-            };
+            public Boolean apply(final ColumnSource it) {
+              String _name = it.getName();
+              boolean _equals = _name.equals("_id");
+              boolean _not = (!_equals);
+              return Boolean.valueOf(_not);
+            }
+          };
           Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function_3);
           for(final ColumnSource col_1 : _filter_1) {
             _builder.append("\t");
@@ -252,11 +252,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_4 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_2 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables, _function_4);
       for(final CreateTableStatement tbl_1 : _sortBy_2) {
         _builder.append("\t");
@@ -269,13 +269,13 @@ public class ContentProviderContractGenerator {
         {
           EList<ColumnSource> _columnDefs_1 = tbl_1.getColumnDefs();
           final Function1<ColumnSource,Boolean> _function_5 = new Function1<ColumnSource,Boolean>() {
-              public Boolean apply(final ColumnSource it) {
-                String _name = it.getName();
-                boolean _equals = _name.equals("_id");
-                boolean _not = (!_equals);
-                return Boolean.valueOf(_not);
-              }
-            };
+            public Boolean apply(final ColumnSource it) {
+              String _name = it.getName();
+              boolean _equals = _name.equals("_id");
+              boolean _not = (!_equals);
+              return Boolean.valueOf(_not);
+            }
+          };
           Iterable<ColumnSource> _filter_2 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_5);
           for(final ColumnSource col_2 : _filter_2) {
             _builder.append("\t");
@@ -302,11 +302,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_6 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_3 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews, _function_6);
       for(final CreateViewStatement vw_1 : _sortBy_3) {
         _builder.append("\t");
@@ -319,13 +319,13 @@ public class ContentProviderContractGenerator {
         {
           ArrayList<ColumnSource> _viewResultColumns_1 = ModelUtil.getViewResultColumns(vw_1);
           final Function1<ColumnSource,Boolean> _function_7 = new Function1<ColumnSource,Boolean>() {
-              public Boolean apply(final ColumnSource it) {
-                String _name = it.getName();
-                boolean _equals = _name.equals("_id");
-                boolean _not = (!_equals);
-                return Boolean.valueOf(_not);
-              }
-            };
+            public Boolean apply(final ColumnSource it) {
+              String _name = it.getName();
+              boolean _equals = _name.equals("_id");
+              boolean _not = (!_equals);
+              return Boolean.valueOf(_not);
+            }
+          };
           Iterable<ColumnSource> _filter_3 = IterableExtensions.<ColumnSource>filter(_viewResultColumns_1, _function_7);
           for(final ColumnSource col_3 : _filter_3) {
             _builder.append("\t");
@@ -347,11 +347,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_8 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_4 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_1, _function_8);
       for(final CreateTableStatement tbl_2 : _sortBy_4) {
         _builder.append("\t");
@@ -364,11 +364,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_9 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_5 = IterableExtensions.<CreateViewStatement, String>sortBy(_views_1, _function_9);
       for(final CreateViewStatement vw_2 : _sortBy_5) {
         _builder.append("\t");
@@ -382,11 +382,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _configInitTables_1 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_10 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_6 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_1, _function_10);
       for(final CreateTableStatement tbl_3 : _sortBy_6) {
         _builder.append("\t");
@@ -399,11 +399,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _configInitViews_1 = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_11 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_7 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews_1, _function_11);
       for(final CreateViewStatement vw_3 : _sortBy_7) {
         _builder.append("\t");
@@ -430,11 +430,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_12 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_8 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_2, _function_12);
       for(final CreateTableStatement tbl_4 : _sortBy_8) {
         _builder.append("\t\t");
@@ -453,11 +453,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _views_2 = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_13 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_9 = IterableExtensions.<CreateViewStatement, String>sortBy(_views_2, _function_13);
       for(final CreateViewStatement vw_4 : _sortBy_9) {
         _builder.append("\t\t");
@@ -476,11 +476,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _configInitTables_2 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_14 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_10 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_2, _function_14);
       for(final CreateTableStatement tbl_5 : _sortBy_10) {
         _builder.append("\t\t");
@@ -499,11 +499,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateViewStatement> _configInitViews_2 = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_15 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_11 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews_2, _function_15);
       for(final CreateViewStatement vw_5 : _sortBy_11) {
         _builder.append("\t\t");
@@ -560,11 +560,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_16 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_12 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_3, _function_16);
       for(final CreateTableStatement tbl_6 : _sortBy_12) {
         _builder.append("\t\t");
@@ -578,11 +578,11 @@ public class ContentProviderContractGenerator {
     {
       Collection<CreateTableStatement> _configInitTables_3 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_17 = new Function1<CreateTableStatement,String>() {
-          public String apply(final CreateTableStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateTableStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateTableStatement> _sortBy_13 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_3, _function_17);
       for(final CreateTableStatement tbl_7 : _sortBy_13) {
         _builder.append("\t\t");
@@ -614,14 +614,14 @@ public class ContentProviderContractGenerator {
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
           Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
           final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
-              public Boolean apply(final ActionStatement it) {
-                ContentUri _uri = it.getUri();
-                String _type = _uri.getType();
-                boolean _containsDefinition = snapshot.containsDefinition(_type);
-                boolean _not = (!_containsDefinition);
-                return Boolean.valueOf(_not);
-              }
-            };
+            public Boolean apply(final ActionStatement it) {
+              ContentUri _uri = it.getUri();
+              String _type = _uri.getType();
+              boolean _containsDefinition = snapshot.containsDefinition(_type);
+              boolean _not = (!_containsDefinition);
+              return Boolean.valueOf(_not);
+            }
+          };
           Iterable<ActionStatement> _filter_1 = IterableExtensions.<ActionStatement>filter(_filter, _function);
           for(final ActionStatement action : _filter_1) {
             _builder.append("public static class ");
@@ -750,13 +750,13 @@ public class ContentProviderContractGenerator {
     EList<ConfigurationStatement> _statements = _config_1.getStatements();
     Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
     final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
-        public Boolean apply(final ActionStatement action) {
-          ContentUri _uri = action.getUri();
-          String _type = _uri.getType();
-          boolean _equals = _type.equals(defName);
-          return Boolean.valueOf(_equals);
-        }
-      };
+      public Boolean apply(final ActionStatement action) {
+        ContentUri _uri = action.getUri();
+        String _type = _uri.getType();
+        boolean _equals = _type.equals(defName);
+        return Boolean.valueOf(_equals);
+      }
+    };
     return IterableExtensions.<ActionStatement>filter(_filter, _function);
   }
   
@@ -764,19 +764,19 @@ public class ContentProviderContractGenerator {
     EList<ContentUriSegment> _segments = uri.getSegments();
     Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
     final Function1<ContentUriParamSegment,String> _function = new Function1<ContentUriParamSegment,String>() {
-        public String apply(final ContentUriParamSegment seg) {
-          boolean _isNum = seg.isNum();
-          if (_isNum) {
-            String _name = seg.getName();
-            String _camelize = Strings.camelize(_name);
-            return ("long " + _camelize);
-          } else {
-            String _name_1 = seg.getName();
-            String _camelize_1 = Strings.camelize(_name_1);
-            return ("String " + _camelize_1);
-          }
+      public String apply(final ContentUriParamSegment seg) {
+        boolean _isNum = seg.isNum();
+        if (_isNum) {
+          String _name = seg.getName();
+          String _camelize = Strings.camelize(_name);
+          return ("long " + _camelize);
+        } else {
+          String _name_1 = seg.getName();
+          String _camelize_1 = Strings.camelize(_name_1);
+          return ("String " + _camelize_1);
         }
-      };
+      }
+    };
     String _join = IterableExtensions.<ContentUriParamSegment>join(_filter, ", ", _function);
     return _join;
   }
@@ -1069,11 +1069,11 @@ public class ContentProviderContractGenerator {
     {
       HashSet<CreateViewStatement> _allViewsReferencingTable = ModelUtil.getAllViewsReferencingTable(snapshot, stmt);
       final Function1<CreateViewStatement,String> _function = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy = IterableExtensions.<CreateViewStatement, String>sortBy(_allViewsReferencingTable, _function);
       for(final CreateViewStatement ref : _sortBy) {
         _builder.append("\t\t");
@@ -1088,11 +1088,11 @@ public class ContentProviderContractGenerator {
     {
       HashSet<CreateViewStatement> _allViewsInConfigInitReferencingTable = ModelUtil.getAllViewsInConfigInitReferencingTable(model, stmt);
       final Function1<CreateViewStatement,String> _function_1 = new Function1<CreateViewStatement,String>() {
-          public String apply(final CreateViewStatement x) {
-            String _name = x.getName();
-            return _name;
-          }
-        };
+        public String apply(final CreateViewStatement x) {
+          String _name = x.getName();
+          return _name;
+        }
+      };
       List<CreateViewStatement> _sortBy_1 = IterableExtensions.<CreateViewStatement, String>sortBy(_allViewsInConfigInitReferencingTable, _function_1);
       for(final CreateViewStatement ref_1 : _sortBy_1) {
         _builder.append("\t\t");
@@ -1122,13 +1122,13 @@ public class ContentProviderContractGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -1171,13 +1171,13 @@ public class ContentProviderContractGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);
@@ -1240,13 +1240,13 @@ public class ContentProviderContractGenerator {
     {
       EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       boolean _hasElements = false;
       for(final ColumnSource item : _filter) {

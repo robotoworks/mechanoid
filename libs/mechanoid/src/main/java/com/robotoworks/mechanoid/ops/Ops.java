@@ -42,4 +42,15 @@ public class Ops {
 	public static void abort(int id, int reason) {
 		mBridge.abort(id, reason);
 	}
+	
+	/**
+	 * <p>Pause processing of operations, useful for testing scenarios
+	 * to guarantee processing time</p>
+	 * <p>Operations issued after a pause will not be processed until {@link #unpause()}</p>
+	 * 
+	 * @param pause true to pause, false to resume
+	 */
+	public static void pause(boolean pause) {
+		mBridge.pause(pause);
+	}
 }

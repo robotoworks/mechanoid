@@ -448,28 +448,28 @@ public class ResultGenerator {
         ComplexTypeLiteral _literal = _superType_2.getLiteral();
         EList<Member> _members = _literal.getMembers();
         final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
-            public Boolean apply(final Member superMember) {
-              BlockType _type = null;
-              if (responseBlock!=null) {
-                _type=responseBlock.getType();
-              }
-              if ((_type instanceof ComplexTypeLiteral)) {
-                BlockType _type_1 = responseBlock.getType();
-                EList<Member> _members = ((ComplexTypeLiteral) _type_1).getMembers();
-                final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
-                    public Boolean apply(final Member member) {
-                      String _name = superMember.getName();
-                      String _name_1 = member.getName();
-                      boolean _equals = _name.equals(_name_1);
-                      return Boolean.valueOf(_equals);
-                    }
-                  };
-                Member _findFirst = IterableExtensions.<Member>findFirst(_members, _function);
-                return Boolean.valueOf(Objects.equal(_findFirst, null));
-              }
-              return Boolean.valueOf(true);
+          public Boolean apply(final Member superMember) {
+            BlockType _type = null;
+            if (responseBlock!=null) {
+              _type=responseBlock.getType();
             }
-          };
+            if ((_type instanceof ComplexTypeLiteral)) {
+              BlockType _type_1 = responseBlock.getType();
+              EList<Member> _members = ((ComplexTypeLiteral) _type_1).getMembers();
+              final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
+                public Boolean apply(final Member member) {
+                  String _name = superMember.getName();
+                  String _name_1 = member.getName();
+                  boolean _equals = _name.equals(_name_1);
+                  return Boolean.valueOf(_equals);
+                }
+              };
+              Member _findFirst = IterableExtensions.<Member>findFirst(_members, _function);
+              return Boolean.valueOf(Objects.equal(_findFirst, null));
+            }
+            return Boolean.valueOf(true);
+          }
+        };
         Iterable<Member> _filter = IterableExtensions.<Member>filter(_members, _function);
         CharSequence _generateBaseAccessors = this.generateBaseAccessors(_filter);
         _builder.append(_generateBaseAccessors, "	");
@@ -626,7 +626,7 @@ public class ResultGenerator {
   }
   
   public EList<Member> mergeMembers(final ComplexTypeLiteral a, final ComplexTypeLiteral b) {
-    HashMap<String,Member> _hashMap = new HashMap<String,Member>();
+    HashMap<String,Member> _hashMap = new HashMap<String, Member>();
     HashMap<String,Member> members = _hashMap;
     boolean _notEquals = (!Objects.equal(a, null));
     if (_notEquals) {

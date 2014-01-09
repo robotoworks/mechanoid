@@ -54,7 +54,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'replace' | 'insert'
+	 *     'insert' | 'replace'
 	 */
 	protected void emit_InsertStatement_InsertKeyword_0_0_0_or_ReplaceKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -70,7 +70,7 @@ public class SqliteModelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'offset' | ','
+	 *     ',' | 'offset'
 	 */
 	protected void emit_SelectStatement_CommaKeyword_2_2_0_1_or_OffsetKeyword_2_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -5,6 +5,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.validation.Check;
 
 import com.google.inject.Inject;
+import com.robotoworks.mechanoid.MechanoidPlugin;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Model;
@@ -21,7 +22,7 @@ public class SharedPreferencesModelJavaValidator extends AbstractSharedPreferenc
 	
 	@Check
 	public void checkMechanoidLibOnClasspath(Model m) {
-		JvmType type = typeReferences.findDeclaredType("com.robotoworks.mechanoid.Mechanoid", m);
+		JvmType type = typeReferences.findDeclaredType(MechanoidPlugin.MECHANOID_LIB_CLASS, m);
 
 		if(type == null) {
 			error("mechanoid.jar is required in your /libs folder or on the classpath", SharedPreferencesModelPackage.Literals.MODEL__PACKAGE_NAME, MechanoidIssueCodes.MISSING_MECHANOID_LIBS);

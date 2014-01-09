@@ -1358,20 +1358,20 @@ public class RequestGenerator {
   public String pathToStringFormatArgs(final String path) {
     String[] _split = path.split("/|\\.");
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
-        public Boolean apply(final String seg) {
-          boolean _startsWith = seg.startsWith(":");
-          return Boolean.valueOf(_startsWith);
-        }
-      };
+      public Boolean apply(final String seg) {
+        boolean _startsWith = seg.startsWith(":");
+        return Boolean.valueOf(_startsWith);
+      }
+    };
     Iterable<String> _filter = IterableExtensions.<String>filter(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
     final Function1<String,String> _function_1 = new Function1<String,String>() {
-        public String apply(final String arg) {
-          String _substring = arg.substring(1);
-          String _camelize = Strings.camelize(_substring);
-          String _plus = (_camelize + "Segment");
-          return _plus;
-        }
-      };
+      public String apply(final String arg) {
+        String _substring = arg.substring(1);
+        String _camelize = Strings.camelize(_substring);
+        String _plus = (_camelize + "Segment");
+        return _plus;
+      }
+    };
     String _join = IterableExtensions.<String>join(_filter, ", ", _function_1);
     String _plus = (", " + _join);
     return _plus;

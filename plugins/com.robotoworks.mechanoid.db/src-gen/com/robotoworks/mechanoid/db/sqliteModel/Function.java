@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getArgs <em>Args</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getBody <em>Body</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getStatements <em>Statements</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Function#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getArguments <em>Arguments</em>}</li>
  * </ul>
@@ -42,30 +42,20 @@ public interface Function extends ConfigurationStatement, Expression
   EList<FunctionArg> getArgs();
 
   /**
-   * Returns the value of the '<em><b>Body</b></em>' containment reference.
+   * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
+   * The list contents are of type {@link com.robotoworks.mechanoid.db.sqliteModel.DMLStatement}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Body</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Statements</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Body</em>' containment reference.
-   * @see #setBody(SelectStatement)
-   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getFunction_Body()
+   * @return the value of the '<em>Statements</em>' containment reference list.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getFunction_Statements()
    * @model containment="true"
    * @generated
    */
-  SelectStatement getBody();
-
-  /**
-   * Sets the value of the '{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getBody <em>Body</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Body</em>' containment reference.
-   * @see #getBody()
-   * @generated
-   */
-  void setBody(SelectStatement value);
+  EList<DMLStatement> getStatements();
 
   /**
    * Returns the value of the '<em><b>All</b></em>' attribute.

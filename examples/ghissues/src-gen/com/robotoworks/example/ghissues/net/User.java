@@ -1,5 +1,9 @@
 package com.robotoworks.example.ghissues.net;
 
+import android.content.ContentValues;
+import com.robotoworks.mechanoid.db.ContentValuesUtil;
+import java.util.Map;
+
 public class User {
     
         public static final String KEY_LOGIN = "login";
@@ -123,5 +127,31 @@ public class User {
 	}
 	public void setReceivedEventsUrl(String value){
 		this.receivedEventsUrl = value;
+	}
+	
+	public ContentValues toContentValues() {
+	    return toContentValues(null);
+	}
+	
+	public ContentValues toContentValues(Map<String, String> map) {
+	    ContentValues values = new ContentValues();
+	    
+            ContentValuesUtil.putMapped(KEY_LOGIN, map, values, login);
+            ContentValuesUtil.putMapped(KEY_ID, map, values, id);
+            ContentValuesUtil.putMapped(KEY_AVATAR_URL, map, values, avatarUrl);
+            ContentValuesUtil.putMapped(KEY_GRAVATAR_ID, map, values, gravatarId);
+            ContentValuesUtil.putMapped(KEY_URL, map, values, url);
+            ContentValuesUtil.putMapped(KEY_HTML_URL, map, values, htmlUrl);
+            ContentValuesUtil.putMapped(KEY_FOLLOWERS_URL, map, values, followersUrl);
+            ContentValuesUtil.putMapped(KEY_FOLLOWING_URL, map, values, followingUrl);
+            ContentValuesUtil.putMapped(KEY_GISTS_URL, map, values, gistsUrl);
+            ContentValuesUtil.putMapped(KEY_STARRED_URL, map, values, starredUrl);
+            ContentValuesUtil.putMapped(KEY_SUBSCRIPTIONS_URL, map, values, subscriptionsUrl);
+            ContentValuesUtil.putMapped(KEY_ORGANIZATIONS_URL, map, values, organizationsUrl);
+            ContentValuesUtil.putMapped(KEY_REPOS_URL, map, values, reposUrl);
+            ContentValuesUtil.putMapped(KEY_EVENTS_URL, map, values, eventsUrl);
+            ContentValuesUtil.putMapped(KEY_RECEIVED_EVENTS_URL, map, values, receivedEventsUrl);
+
+        return values;
 	}
 }

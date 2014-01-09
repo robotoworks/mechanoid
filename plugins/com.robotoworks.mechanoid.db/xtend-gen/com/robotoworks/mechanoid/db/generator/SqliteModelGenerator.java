@@ -102,40 +102,40 @@ public class SqliteModelGenerator implements IGenerator {
       MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub_1);
     Collection<CreateTableStatement> _tables = snapshot.getTables();
     final Procedure1<CreateTableStatement> _function = new Procedure1<CreateTableStatement>() {
-        public void apply(final CreateTableStatement statement) {
-          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
-        }
-      };
+      public void apply(final CreateTableStatement statement) {
+        SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
+      }
+    };
     IterableExtensions.<CreateTableStatement>forEach(_tables, _function);
     Collection<CreateViewStatement> _views = snapshot.getViews();
     final Procedure1<CreateViewStatement> _function_1 = new Procedure1<CreateViewStatement>() {
-        public void apply(final CreateViewStatement statement) {
-          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
-        }
-      };
+      public void apply(final CreateViewStatement statement) {
+        SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
+      }
+    };
     IterableExtensions.<CreateViewStatement>forEach(_views, _function_1);
     Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
     final Procedure1<CreateTableStatement> _function_2 = new Procedure1<CreateTableStatement>() {
-        public void apply(final CreateTableStatement statement) {
-          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
-        }
-      };
+      public void apply(final CreateTableStatement statement) {
+        SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateTableStatement) statement));
+      }
+    };
     IterableExtensions.<CreateTableStatement>forEach(_configInitTables, _function_2);
     Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
     final Procedure1<CreateViewStatement> _function_3 = new Procedure1<CreateViewStatement>() {
-        public void apply(final CreateViewStatement statement) {
-          SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
-        }
-      };
+      public void apply(final CreateViewStatement statement) {
+        SqliteModelGenerator.this.generateActiveRecordEntity(resource, fsa, ((CreateViewStatement) statement));
+      }
+    };
     IterableExtensions.<CreateViewStatement>forEach(_configInitViews, _function_3);
     DatabaseBlock _database_5 = model.getDatabase();
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
     final Procedure2<MigrationBlock,Integer> _function_4 = new Procedure2<MigrationBlock,Integer>() {
-        public void apply(final MigrationBlock item, final Integer index) {
-          int _plus = ((index).intValue() + 1);
-          SqliteModelGenerator.this.generateMigration(resource, fsa, item, _plus);
-        }
-      };
+      public void apply(final MigrationBlock item, final Integer index) {
+        int _plus = ((index).intValue() + 1);
+        SqliteModelGenerator.this.generateMigration(resource, fsa, item, _plus);
+      }
+    };
     IterableExtensions.<MigrationBlock>forEach(_migrations, _function_4);
   }
   

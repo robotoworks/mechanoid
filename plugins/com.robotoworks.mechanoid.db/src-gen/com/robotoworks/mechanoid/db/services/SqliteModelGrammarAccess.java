@@ -215,17 +215,19 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cArgsFunctionArgParserRuleCall_1_4_1_1_0 = (RuleCall)cArgsAssignment_1_4_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_5 = (Keyword)cGroup_1.eContents().get(5);
 		private final Keyword cLeftCurlyBracketKeyword_1_6 = (Keyword)cGroup_1.eContents().get(6);
-		private final Assignment cBodyAssignment_1_7 = (Assignment)cGroup_1.eContents().get(7);
-		private final RuleCall cBodySelectStatementParserRuleCall_1_7_0 = (RuleCall)cBodyAssignment_1_7.eContents().get(0);
+		private final Group cGroup_1_7 = (Group)cGroup_1.eContents().get(7);
+		private final Assignment cStatementsAssignment_1_7_0 = (Assignment)cGroup_1_7.eContents().get(0);
+		private final RuleCall cStatementsDMLStatementParserRuleCall_1_7_0_0 = (RuleCall)cStatementsAssignment_1_7_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_1_7_1 = (Keyword)cGroup_1_7.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_1_8 = (Keyword)cGroup_1.eContents().get(8);
 		
 		//ConfigurationStatement:
 		//	{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
-		//	args+=FunctionArg)*)? ")" "{" body=SelectStatement "}";
+		//	args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
-		//args+=FunctionArg)*)? ")" "{" body=SelectStatement "}"
+		//args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{ActionStatement} "action" name=ID uri=ContentUri
@@ -249,7 +251,8 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ContentUri
 		public RuleCall getUriContentUriParserRuleCall_0_3_0() { return cUriContentUriParserRuleCall_0_3_0; }
 
-		//{Function} "function" name=ID "(" (args+=FunctionArg ("," args+=FunctionArg)*)? ")" "{" body=SelectStatement "}"
+		//{Function} "function" name=ID "(" (args+=FunctionArg ("," args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")*
+		//"}"
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{Function}
@@ -294,11 +297,17 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_1_6() { return cLeftCurlyBracketKeyword_1_6; }
 
-		//body=SelectStatement
-		public Assignment getBodyAssignment_1_7() { return cBodyAssignment_1_7; }
+		//(statements+=DMLStatement ";")*
+		public Group getGroup_1_7() { return cGroup_1_7; }
 
-		//SelectStatement
-		public RuleCall getBodySelectStatementParserRuleCall_1_7_0() { return cBodySelectStatementParserRuleCall_1_7_0; }
+		//statements+=DMLStatement
+		public Assignment getStatementsAssignment_1_7_0() { return cStatementsAssignment_1_7_0; }
+
+		//DMLStatement
+		public RuleCall getStatementsDMLStatementParserRuleCall_1_7_0_0() { return cStatementsDMLStatementParserRuleCall_1_7_0_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_1_7_1() { return cSemicolonKeyword_1_7_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_1_8() { return cRightCurlyBracketKeyword_1_8; }
@@ -4386,7 +4395,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ConfigurationStatement:
 	//	{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
-	//	args+=FunctionArg)*)? ")" "{" body=SelectStatement "}";
+	//	args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}";
 	public ConfigurationStatementElements getConfigurationStatementAccess() {
 		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
 	}

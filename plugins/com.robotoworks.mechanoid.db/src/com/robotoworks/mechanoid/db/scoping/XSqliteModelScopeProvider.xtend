@@ -39,6 +39,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.DropTableStatement
 import com.robotoworks.mechanoid.db.sqliteModel.DropViewStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
+import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceSelectStatement
 
 public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 	
@@ -66,7 +67,10 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
 				var tableSource = context.source as SingleSourceTable
 				
 				return Scopes::scopeFor(findColumnDefs(tableSource.getAncestorOfType(typeof(DDLStatement)), tableSource.tableReference))
-			}			
+			} else if(context.source instanceof SingleSourceSelectStatement) {
+			    var selectStmtSource = context.source as SingleSourceSelectStatement
+			    return Scopes::scopeFor(selectStmtSource.selectStatement.core.allReferenceableColumns)
+			}		
 		}
 		
 		return IScope::NULLSCOPE

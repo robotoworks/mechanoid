@@ -2,10 +2,10 @@
  */
 package com.robotoworks.mechanoid.db.sqliteModel.impl;
 
+import com.robotoworks.mechanoid.db.sqliteModel.DMLStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.Expression;
 import com.robotoworks.mechanoid.db.sqliteModel.Function;
 import com.robotoworks.mechanoid.db.sqliteModel.FunctionArg;
-import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 
 import java.util.Collection;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getStatements <em>Statements</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.FunctionImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
@@ -52,14 +52,14 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
   protected EList<FunctionArg> args;
 
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
+   * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBody()
+   * @see #getStatements()
    * @generated
    * @ordered
    */
-  protected SelectStatement body;
+  protected EList<DMLStatement> statements;
 
   /**
    * The default value of the '{@link #isAll() <em>All</em>}' attribute.
@@ -131,47 +131,13 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
    * <!-- end-user-doc -->
    * @generated
    */
-  public SelectStatement getBody()
+  public EList<DMLStatement> getStatements()
   {
-    return body;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetBody(SelectStatement newBody, NotificationChain msgs)
-  {
-    SelectStatement oldBody = body;
-    body = newBody;
-    if (eNotificationRequired())
+    if (statements == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__BODY, oldBody, newBody);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      statements = new EObjectContainmentEList<DMLStatement>(DMLStatement.class, this, SqliteModelPackage.FUNCTION__STATEMENTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setBody(SelectStatement newBody)
-  {
-    if (newBody != body)
-    {
-      NotificationChain msgs = null;
-      if (body != null)
-        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.FUNCTION__BODY, null, msgs);
-      if (newBody != null)
-        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SqliteModelPackage.FUNCTION__BODY, null, msgs);
-      msgs = basicSetBody(newBody, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SqliteModelPackage.FUNCTION__BODY, newBody, newBody));
+    return statements;
   }
 
   /**
@@ -223,8 +189,8 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
     {
       case SqliteModelPackage.FUNCTION__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-      case SqliteModelPackage.FUNCTION__BODY:
-        return basicSetBody(null, msgs);
+      case SqliteModelPackage.FUNCTION__STATEMENTS:
+        return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
         return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
     }
@@ -243,8 +209,8 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
     {
       case SqliteModelPackage.FUNCTION__ARGS:
         return getArgs();
-      case SqliteModelPackage.FUNCTION__BODY:
-        return getBody();
+      case SqliteModelPackage.FUNCTION__STATEMENTS:
+        return getStatements();
       case SqliteModelPackage.FUNCTION__ALL:
         return isAll();
       case SqliteModelPackage.FUNCTION__ARGUMENTS:
@@ -268,8 +234,9 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
         getArgs().clear();
         getArgs().addAll((Collection<? extends FunctionArg>)newValue);
         return;
-      case SqliteModelPackage.FUNCTION__BODY:
-        setBody((SelectStatement)newValue);
+      case SqliteModelPackage.FUNCTION__STATEMENTS:
+        getStatements().clear();
+        getStatements().addAll((Collection<? extends DMLStatement>)newValue);
         return;
       case SqliteModelPackage.FUNCTION__ALL:
         setAll((Boolean)newValue);
@@ -295,8 +262,8 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
       case SqliteModelPackage.FUNCTION__ARGS:
         getArgs().clear();
         return;
-      case SqliteModelPackage.FUNCTION__BODY:
-        setBody((SelectStatement)null);
+      case SqliteModelPackage.FUNCTION__STATEMENTS:
+        getStatements().clear();
         return;
       case SqliteModelPackage.FUNCTION__ALL:
         setAll(ALL_EDEFAULT);
@@ -320,8 +287,8 @@ public class FunctionImpl extends ConfigurationStatementImpl implements Function
     {
       case SqliteModelPackage.FUNCTION__ARGS:
         return args != null && !args.isEmpty();
-      case SqliteModelPackage.FUNCTION__BODY:
-        return body != null;
+      case SqliteModelPackage.FUNCTION__STATEMENTS:
+        return statements != null && !statements.isEmpty();
       case SqliteModelPackage.FUNCTION__ALL:
         return all != ALL_EDEFAULT;
       case SqliteModelPackage.FUNCTION__ARGUMENTS:

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.SQLiteMigration;
 
+import com.robotoworks.example.movies.db.migrations.DefaultMovieDBMigrationV1;
 
 public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelper {
 	private static final String DATABASE_NAME = "MovieDB.db";
@@ -28,19 +29,21 @@ public abstract class AbstractMovieDBOpenHelper extends MechanoidSQLiteOpenHelpe
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(
-			"create table movies ( " +
-			"_id integer primary key autoincrement, " +
-			"title text, " +
-			"description text, " +
-			"year integer , unique ( title , year ) on conflict replace " +
-			") "
-		);	
+		applyMigrations(db, 0, VERSION);
 	}
+	
 
 	@Override
 	protected SQLiteMigration createMigration(int version) {
-		throw new IllegalStateException("No migrations for any version");
+		switch(version) {
+			case 0:
+				return createMovieDBMigrationV1();
+			default:
+				throw new IllegalStateException("No migration for version " + version);
+		}
 	}
 	
+	protected SQLiteMigration createMovieDBMigrationV1() {
+		return new DefaultMovieDBMigrationV1();
+	}
 }

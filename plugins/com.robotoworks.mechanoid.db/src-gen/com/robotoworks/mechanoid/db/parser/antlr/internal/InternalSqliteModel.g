@@ -489,27 +489,31 @@ ruleConfigurationStatement returns [EObject current=null]
     {
     	newLeafNode(otherlv_12, grammarAccess.getConfigurationStatementAccess().getLeftCurlyBracketKeyword_1_6());
     }
-(
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getConfigurationStatementAccess().getBodySelectStatementParserRuleCall_1_7_0()); 
+	        newCompositeNode(grammarAccess.getConfigurationStatementAccess().getStatementsDMLStatementParserRuleCall_1_7_0_0()); 
 	    }
-		lv_body_13_0=ruleSelectStatement		{
+		lv_statements_13_0=ruleDMLStatement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getConfigurationStatementRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"body",
-        		lv_body_13_0, 
-        		"SelectStatement");
+       			"statements",
+        		lv_statements_13_0, 
+        		"DMLStatement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_14='}' 
+)	otherlv_14=';' 
     {
-    	newLeafNode(otherlv_14, grammarAccess.getConfigurationStatementAccess().getRightCurlyBracketKeyword_1_8());
+    	newLeafNode(otherlv_14, grammarAccess.getConfigurationStatementAccess().getSemicolonKeyword_1_7_1());
+    }
+)*	otherlv_15='}' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getConfigurationStatementAccess().getRightCurlyBracketKeyword_1_8());
     }
 ))
 ;

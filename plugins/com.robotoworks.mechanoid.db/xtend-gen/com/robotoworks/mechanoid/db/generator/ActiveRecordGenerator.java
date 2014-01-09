@@ -526,13 +526,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -598,13 +598,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);
@@ -668,13 +668,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource col : _filter) {
         _builder.append("m");
@@ -694,13 +694,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource col : _filter) {
         _builder.append("m");
@@ -719,13 +719,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource col : _filter) {
         _builder.append("if(m");
@@ -758,13 +758,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource col : _filter) {
         _builder.append("if(m");
@@ -796,13 +796,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -849,13 +849,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs_1 = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
       boolean _hasElements = false;
       for(final ColumnSource col_1 : _filter_1) {
@@ -884,13 +884,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);
@@ -935,13 +935,13 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     {
       final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(cols, _function_1);
       boolean _hasElements = false;
       for(final ColumnSource col_1 : _filter_1) {
@@ -971,13 +971,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -1032,13 +1032,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs_2 = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_2, _function_1);
       for(final ColumnSource col_1 : _filter_1) {
         _builder.append("m");
@@ -1064,13 +1064,13 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);
@@ -1122,13 +1122,13 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     {
       final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(cols, _function_1);
       for(final ColumnSource col_1 : _filter_1) {
         _builder.append("m");
@@ -1257,13 +1257,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -1294,13 +1294,13 @@ public class ActiveRecordGenerator {
     {
       ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(stmt);
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);
@@ -1332,13 +1332,13 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
       for(final ColumnSource item : _filter) {
         ColumnDef col = ((ColumnDef) item);
@@ -1408,13 +1408,13 @@ public class ActiveRecordGenerator {
     {
       ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(stmt);
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
-          public Boolean apply(final ColumnSource it) {
-            String _name = it.getName();
-            boolean _equals = _name.equals("_id");
-            boolean _not = (!_equals);
-            return Boolean.valueOf(_not);
-          }
-        };
+        public Boolean apply(final ColumnSource it) {
+          String _name = it.getName();
+          boolean _equals = _name.equals("_id");
+          boolean _not = (!_equals);
+          return Boolean.valueOf(_not);
+        }
+      };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function);
       for(final ColumnSource item : _filter) {
         ResultColumn col = ((ResultColumn) item);

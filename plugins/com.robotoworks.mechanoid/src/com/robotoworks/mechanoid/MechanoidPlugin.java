@@ -6,6 +6,8 @@ import org.osgi.framework.BundleContext;
 public class MechanoidPlugin implements BundleActivator {
 
 	private static BundleContext context;
+	
+	public static final String MECHANOID_LIB_CLASS = "com.robotoworks.mechanoid.internal.Version";
 
 	static BundleContext getContext() {
 		return context;

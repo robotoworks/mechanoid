@@ -1863,13 +1863,13 @@ public interface SqliteModelPackage extends EPackage
   int FUNCTION__ARGS = CONFIGURATION_STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION__BODY = CONFIGURATION_STATEMENT_FEATURE_COUNT + 1;
+  int FUNCTION__STATEMENTS = CONFIGURATION_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>All</b></em>' attribute.
@@ -5059,15 +5059,15 @@ public interface SqliteModelPackage extends EPackage
   EReference getFunction_Args();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.db.sqliteModel.Function#getStatements <em>Statements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Body</em>'.
-   * @see com.robotoworks.mechanoid.db.sqliteModel.Function#getBody()
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see com.robotoworks.mechanoid.db.sqliteModel.Function#getStatements()
    * @see #getFunction()
    * @generated
    */
-  EReference getFunction_Body();
+  EReference getFunction_Statements();
 
   /**
    * Returns the meta object for the attribute '{@link com.robotoworks.mechanoid.db.sqliteModel.Function#isAll <em>All</em>}'.
@@ -7704,12 +7704,12 @@ public interface SqliteModelPackage extends EPackage
     EReference FUNCTION__ARGS = eINSTANCE.getFunction_Args();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION__BODY = eINSTANCE.getFunction_Body();
+    EReference FUNCTION__STATEMENTS = eINSTANCE.getFunction_Statements();
 
     /**
      * The meta object literal for the '<em><b>All</b></em>' attribute feature.

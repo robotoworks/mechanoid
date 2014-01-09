@@ -7,11 +7,14 @@ import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.DDLStatement;
 import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.SaveOptions.Builder;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 
 @SuppressWarnings("all")
 public class SqliteDatabaseStatementGenerator {
@@ -20,6 +23,13 @@ public class SqliteDatabaseStatementGenerator {
   private ISerializer _iSerializer;
   
   private SaveOptions saveOptions;
+  
+  private final Pattern stripCommentsExpr = new Function0<Pattern>() {
+    public Pattern apply() {
+      Pattern _compile = Pattern.compile("\\/\\/[^\\r\\n]+|\\/\\*.*?\\*\\/", Pattern.DOTALL);
+      return _compile;
+    }
+  }.apply();
   
   public SqliteDatabaseStatementGenerator() {
     Builder _newBuilder = SaveOptions.newBuilder();
@@ -94,7 +104,8 @@ public class SqliteDatabaseStatementGenerator {
     _builder.newLine();
     {
       String _serialize = this._iSerializer.serialize(stmt, this.saveOptions);
-      String _trim = _serialize.trim();
+      String _stripComments = this.stripComments(_serialize);
+      String _trim = _stripComments.trim();
       String[] _split = _trim.split("\\r?\\n");
       boolean _hasElements = false;
       for(final String line : _split) {
@@ -115,5 +126,11 @@ public class SqliteDatabaseStatementGenerator {
     _builder.append(");\t");
     _builder.newLine();
     return _builder;
+  }
+  
+  public String stripComments(final String s) {
+    Matcher _matcher = this.stripCommentsExpr.matcher(s);
+    String _replaceAll = _matcher.replaceAll("");
+    return _replaceAll;
   }
 }

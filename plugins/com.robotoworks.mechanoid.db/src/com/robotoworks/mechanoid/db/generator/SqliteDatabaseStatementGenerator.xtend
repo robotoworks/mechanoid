@@ -9,10 +9,13 @@ import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement
 import com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement
+import java.util.regex.Pattern
 
 class SqliteDatabaseStatementGenerator {
 	@Inject extension ISerializer
 	SaveOptions saveOptions
+	
+	val stripCommentsExpr = Pattern::compile("\\/\\/[^\\r\\n]+|\\/\\*.*?\\*\\/", Pattern::DOTALL);
 	
 	new () {
 		saveOptions = SaveOptions::newBuilder()
@@ -52,9 +55,13 @@ class SqliteDatabaseStatementGenerator {
 	
 	def generateStatement(DDLStatement stmt) '''
 		db.execSQL(
-			«FOR line : stmt.serialize(saveOptions).trim.split("\\r?\\n") SEPARATOR " +"»
+			«FOR line : stmt.serialize(saveOptions).stripComments.trim.split("\\r?\\n") SEPARATOR " +"»
 			"«line.trim.replaceAll('\\\"', '\\\\\"')» "
 			«ENDFOR»
 		);	
 	'''
+	
+	def stripComments(String s) {
+	    stripCommentsExpr.matcher(s).replaceAll("")
+	}
 }

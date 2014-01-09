@@ -51,10 +51,10 @@ public class OpServiceModelGenerator implements IGenerator {
     ServiceBlock _service = model.getService();
     EList<Operation> _ops = _service.getOps();
     final Procedure1<Operation> _function = new Procedure1<Operation>() {
-        public void apply(final Operation item) {
-          OpServiceModelGenerator.this.generateOps(resource, fsa, item);
-        }
-      };
+      public void apply(final Operation item) {
+        OpServiceModelGenerator.this.generateOps(resource, fsa, item);
+      }
+    };
     IterableExtensions.<Operation>forEach(_ops, _function);
   }
   

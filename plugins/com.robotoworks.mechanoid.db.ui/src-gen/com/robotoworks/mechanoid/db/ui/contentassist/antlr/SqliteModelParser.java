@@ -83,6 +83,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConfigurationStatementAccess().getGroup_1(), "rule__ConfigurationStatement__Group_1__0");
 					put(grammarAccess.getConfigurationStatementAccess().getGroup_1_4(), "rule__ConfigurationStatement__Group_1_4__0");
 					put(grammarAccess.getConfigurationStatementAccess().getGroup_1_4_1(), "rule__ConfigurationStatement__Group_1_4_1__0");
+					put(grammarAccess.getConfigurationStatementAccess().getGroup_1_7(), "rule__ConfigurationStatement__Group_1_7__0");
 					put(grammarAccess.getFunctionArgAccess().getGroup(), "rule__FunctionArg__Group__0");
 					put(grammarAccess.getContentUriAccess().getGroup(), "rule__ContentUri__Group__0");
 					put(grammarAccess.getContentUriAccess().getGroup_2(), "rule__ContentUri__Group_2__0");
@@ -228,7 +229,7 @@ public class SqliteModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConfigurationStatementAccess().getNameAssignment_1_2(), "rule__ConfigurationStatement__NameAssignment_1_2");
 					put(grammarAccess.getConfigurationStatementAccess().getArgsAssignment_1_4_0(), "rule__ConfigurationStatement__ArgsAssignment_1_4_0");
 					put(grammarAccess.getConfigurationStatementAccess().getArgsAssignment_1_4_1_1(), "rule__ConfigurationStatement__ArgsAssignment_1_4_1_1");
-					put(grammarAccess.getConfigurationStatementAccess().getBodyAssignment_1_7(), "rule__ConfigurationStatement__BodyAssignment_1_7");
+					put(grammarAccess.getConfigurationStatementAccess().getStatementsAssignment_1_7_0(), "rule__ConfigurationStatement__StatementsAssignment_1_7_0");
 					put(grammarAccess.getFunctionArgAccess().getTypeAssignment_0(), "rule__FunctionArg__TypeAssignment_0");
 					put(grammarAccess.getFunctionArgAccess().getNameAssignment_1(), "rule__FunctionArg__NameAssignment_1");
 					put(grammarAccess.getContentUriAccess().getTypeAssignment_1(), "rule__ContentUri__TypeAssignment_1");
