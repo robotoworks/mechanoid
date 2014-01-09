@@ -9,6 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.generator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: com.robotoworks.mechanoid.generator;uses:="org.eclipse.xtext.generator",
+Export-Package: com.robotoworks.mechanoid,
+ com.robotoworks.mechanoid.generator;uses:="org.eclipse.xtext.generator",
  com.robotoworks.mechanoid.text,
  com.robotoworks.mechanoid.validation
