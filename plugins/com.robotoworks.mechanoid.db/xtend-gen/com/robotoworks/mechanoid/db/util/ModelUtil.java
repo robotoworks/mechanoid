@@ -403,24 +403,108 @@ public class ModelUtil {
         _matched=true;
         boolean _or = false;
         boolean _or_1 = false;
+        boolean _or_2 = false;
+        boolean _or_3 = false;
+        boolean _or_4 = false;
         String _name = _function.getName();
         boolean _equalsIgnoreCase = _name.equalsIgnoreCase("count");
         if (_equalsIgnoreCase) {
-          _or_1 = true;
+          _or_4 = true;
         } else {
           String _name_1 = _function.getName();
           boolean _equalsIgnoreCase_1 = _name_1.equalsIgnoreCase("length");
-          _or_1 = (_equalsIgnoreCase || _equalsIgnoreCase_1);
+          _or_4 = (_equalsIgnoreCase || _equalsIgnoreCase_1);
+        }
+        if (_or_4) {
+          _or_3 = true;
+        } else {
+          String _name_2 = _function.getName();
+          boolean _equalsIgnoreCase_2 = _name_2.equalsIgnoreCase("random");
+          _or_3 = (_or_4 || _equalsIgnoreCase_2);
+        }
+        if (_or_3) {
+          _or_2 = true;
+        } else {
+          String _name_3 = _function.getName();
+          boolean _equalsIgnoreCase_3 = _name_3.equalsIgnoreCase("last_insert_rowid");
+          _or_2 = (_or_3 || _equalsIgnoreCase_3);
+        }
+        if (_or_2) {
+          _or_1 = true;
+        } else {
+          String _name_4 = _function.getName();
+          boolean _equalsIgnoreCase_4 = _name_4.equalsIgnoreCase("changes");
+          _or_1 = (_or_2 || _equalsIgnoreCase_4);
         }
         if (_or_1) {
           _or = true;
         } else {
-          String _name_2 = _function.getName();
-          boolean _equalsIgnoreCase_2 = _name_2.equalsIgnoreCase("random");
-          _or = (_or_1 || _equalsIgnoreCase_2);
+          String _name_5 = _function.getName();
+          boolean _equalsIgnoreCase_5 = _name_5.equalsIgnoreCase("total_changes");
+          _or = (_or_1 || _equalsIgnoreCase_5);
         }
         if (_or) {
           return ColumnType.INTEGER;
+        } else {
+          boolean _or_5 = false;
+          boolean _or_6 = false;
+          boolean _or_7 = false;
+          boolean _or_8 = false;
+          boolean _or_9 = false;
+          String _name_6 = _function.getName();
+          boolean _equalsIgnoreCase_6 = _name_6.equalsIgnoreCase("abs");
+          if (_equalsIgnoreCase_6) {
+            _or_9 = true;
+          } else {
+            String _name_7 = _function.getName();
+            boolean _equalsIgnoreCase_7 = _name_7.equalsIgnoreCase("avg");
+            _or_9 = (_equalsIgnoreCase_6 || _equalsIgnoreCase_7);
+          }
+          if (_or_9) {
+            _or_8 = true;
+          } else {
+            String _name_8 = _function.getName();
+            boolean _equalsIgnoreCase_8 = _name_8.equalsIgnoreCase("round");
+            _or_8 = (_or_9 || _equalsIgnoreCase_8);
+          }
+          if (_or_8) {
+            _or_7 = true;
+          } else {
+            String _name_9 = _function.getName();
+            boolean _equalsIgnoreCase_9 = _name_9.equalsIgnoreCase("sum");
+            _or_7 = (_or_8 || _equalsIgnoreCase_9);
+          }
+          if (_or_7) {
+            _or_6 = true;
+          } else {
+            String _name_10 = _function.getName();
+            boolean _equalsIgnoreCase_10 = _name_10.equalsIgnoreCase("total");
+            _or_6 = (_or_7 || _equalsIgnoreCase_10);
+          }
+          if (_or_6) {
+            _or_5 = true;
+          } else {
+            String _name_11 = _function.getName();
+            boolean _equalsIgnoreCase_11 = _name_11.equalsIgnoreCase("likelihood");
+            _or_5 = (_or_6 || _equalsIgnoreCase_11);
+          }
+          if (_or_5) {
+            return ColumnType.REAL;
+          } else {
+            boolean _or_10 = false;
+            String _name_12 = _function.getName();
+            boolean _equalsIgnoreCase_12 = _name_12.equalsIgnoreCase("randomblob");
+            if (_equalsIgnoreCase_12) {
+              _or_10 = true;
+            } else {
+              String _name_13 = _function.getName();
+              boolean _equalsIgnoreCase_13 = _name_13.equalsIgnoreCase("zeroblob");
+              _or_10 = (_equalsIgnoreCase_12 || _equalsIgnoreCase_13);
+            }
+            if (_or_10) {
+              return ColumnType.BLOB;
+            }
+          }
         }
         return ColumnType.TEXT;
       }
