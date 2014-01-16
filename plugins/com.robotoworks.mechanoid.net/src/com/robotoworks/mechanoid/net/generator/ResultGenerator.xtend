@@ -294,7 +294,7 @@ class ResultGenerator {
 		«imports.addImport("java.util.ArrayList")»
 		«generateDeserializationStatementHeader(true)»
 				this.«type.innerSignature.camelize.pluralize» = new ArrayList<«type.innerSignature»>();
-				provider.get(«type.innerSignature».class).read(reader, this.«type.innerSignature.camelize.pluralize»);
+				provider.get(«type.innerSignature».class).readList(reader, this.«type.innerSignature.camelize.pluralize»);
 		«generateDeserializationStatementFooter(true)»
 	'''
 	

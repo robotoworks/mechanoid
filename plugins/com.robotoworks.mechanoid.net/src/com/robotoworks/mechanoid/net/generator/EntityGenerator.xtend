@@ -1,13 +1,13 @@
 package com.robotoworks.mechanoid.net.generator
 
-import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
-import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
-import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.netModel.GenericListType
-import com.robotoworks.mechanoid.net.netModel.TypedMember
-import com.robotoworks.mechanoid.net.netModel.SkipMember
 import com.google.inject.Inject
-import com.robotoworks.mechanoid.net.netModel.IntrinsicType
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
+import com.robotoworks.mechanoid.net.netModel.GenericListType
+import com.robotoworks.mechanoid.net.netModel.Model
+import com.robotoworks.mechanoid.net.netModel.SkipMember
+import com.robotoworks.mechanoid.net.netModel.TypedMember
+
+import static extension com.robotoworks.mechanoid.net.generator.ModelExtensions.*
 
 class EntityGenerator {
 	@Inject ImportHelper imports

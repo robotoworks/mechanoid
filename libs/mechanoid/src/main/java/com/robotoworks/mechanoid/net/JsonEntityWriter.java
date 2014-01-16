@@ -53,5 +53,5 @@ public abstract class JsonEntityWriter<T> {
 	 * @param writer The writer to write the entities to
 	 * @param entities The entities to write to the writer
 	 */
-	public abstract void write(JsonWriter writer, List<T> entities) throws IOException;
+	public abstract void writeList(JsonWriter writer, List<T> entities) throws IOException;
 }

@@ -516,7 +516,7 @@ public class JsonReaderStatementGenerator {
     _builder.append(".get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "");
-    _builder.append(".class).read(");
+    _builder.append(".class).readList(");
     String _readerIdentifier = this.getReaderIdentifier();
     _builder.append(_readerIdentifier, "");
     _builder.append(", entityMember);");

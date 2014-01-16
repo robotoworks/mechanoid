@@ -1212,7 +1212,7 @@ public class RequestGenerator {
     _builder.append("provider.get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append(".class).write(writer, ");
+    _builder.append(".class).List(writer, ");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     String _camelize = Strings.camelize(_innerSignature_1);
     String _pluralize = Strings.pluralize(_camelize);

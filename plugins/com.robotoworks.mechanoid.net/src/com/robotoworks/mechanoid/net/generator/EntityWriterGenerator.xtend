@@ -43,7 +43,7 @@ class EntityWriterGenerator {
 				«jsonWriterGenerator.genWriteComplexType(decl)»
 			}
 			
-			public void write(JsonWriter writer, List<«decl.name»> entities) throws IOException {
+			public void writeList(JsonWriter writer, List<«decl.name»> entities) throws IOException {
 				writer.beginArray();
 				
 				for(«decl.name» item:entities) {

@@ -798,7 +798,7 @@ public class ResultGenerator {
     _builder.append("provider.get(");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_2, "		");
-    _builder.append(".class).read(reader, this.");
+    _builder.append(".class).readList(reader, this.");
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = Strings.camelize(_innerSignature_3);
     String _pluralize_1 = Strings.pluralize(_camelize_1);

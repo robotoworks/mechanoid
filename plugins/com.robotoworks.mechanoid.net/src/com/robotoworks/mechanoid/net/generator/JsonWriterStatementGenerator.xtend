@@ -97,7 +97,7 @@ class JsonWriterStatementGenerator {
 		«imports.addImport("java.util.List")»
 		if(«member.toGetMethodName.memberize(subjectIdentifier)»() != null) {
 			«writerIdentifier».name("«member.name»");
-			«providerIdentifier».get(«type.innerSignature».class).write(«writerIdentifier», «member.toGetMethodName.memberize(subjectIdentifier)»());
+			«providerIdentifier».get(«type.innerSignature».class).writeList(«writerIdentifier», «member.toGetMethodName.memberize(subjectIdentifier)»());
 		}
 	'''
 	

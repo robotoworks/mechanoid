@@ -301,7 +301,7 @@ public class JsonWriterStatementGenerator {
     _builder.append(".get(");
     String _innerSignature = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature, "	");
-    _builder.append(".class).write(");
+    _builder.append(".class).writeList(");
     String _writerIdentifier_1 = this.getWriterIdentifier();
     _builder.append(_writerIdentifier_1, "	");
     _builder.append(", ");

@@ -42,7 +42,7 @@ class EntityReaderGenerator {
 				«jsonReaderGenerator.genReadComplexType(decl)»
 			}
 			
-			public void read(JsonReader reader, List<«decl.name»> entities) throws IOException {
+			public void readList(JsonReader reader, List<«decl.name»> entities) throws IOException {
 				reader.beginArray();
 				
 				while(reader.hasNext()) {

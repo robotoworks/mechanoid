@@ -99,7 +99,7 @@ public class EntityReaderGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public void read(JsonReader reader, List<");
+    _builder.append("public void readList(JsonReader reader, List<");
     String _name_4 = decl.getName();
     _builder.append(_name_4, "	");
     _builder.append("> entities) throws IOException {");

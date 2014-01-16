@@ -99,7 +99,7 @@ public class EntityWriterGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public void write(JsonWriter writer, List<");
+    _builder.append("public void writeList(JsonWriter writer, List<");
     String _name_4 = decl.getName();
     _builder.append(_name_4, "	");
     _builder.append("> entities) throws IOException {");
