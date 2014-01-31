@@ -26,6 +26,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
+import android.text.TextUtils;
 
 import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -417,8 +418,8 @@ public class SQuery {
 		return mBuilder.toString();
 	}
 
-	public Cursor query(SQLiteDatabase db, String table, String[] projection, String orderBy) {
-		return db.query(table, projection, mBuilder.toString(), getArgsArray(), null, null, orderBy);
+	public Cursor query(SQLiteDatabase db, String table, String[] projection, String orderBy, String groupBy) {
+		return db.query(table, projection, mBuilder.toString(), getArgsArray(), groupBy, null, orderBy);
 	}
 		
 	public int firstInt(SQLiteDatabase db, String table, String column) {
@@ -429,7 +430,7 @@ public class SQuery {
 		Cursor cursor = null;
 		int value = 0;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getInt(0);
@@ -450,7 +451,7 @@ public class SQuery {
 		Cursor cursor = null;
 		long value = 0;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getLong(0);
@@ -471,7 +472,7 @@ public class SQuery {
 		Cursor cursor = null;
 		double value = 0;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getDouble(0);
@@ -492,7 +493,7 @@ public class SQuery {
 		Cursor cursor = null;
 		float value = 0;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getFloat(0);
@@ -513,7 +514,7 @@ public class SQuery {
 		Cursor cursor = null;
 		short value = 0;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getShort(0);
@@ -534,7 +535,7 @@ public class SQuery {
 		Cursor cursor = null;
 		byte[] value = null;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getBlob(0);
@@ -563,7 +564,7 @@ public class SQuery {
 		Cursor cursor = null;
 		String value = null;
 		try {
-			cursor = query(db, table, new String[] { column }, orderBy);
+			cursor = query(db, table, new String[] { column }, orderBy, null);
 			
 			if(cursor.moveToFirst()) {
 				value = cursor.getString(0);
@@ -590,6 +591,20 @@ public class SQuery {
 	 * @param sortOrder The order by clause
 	 * @return The results as active records
 	 */
+	public <T extends ActiveRecord> List<T> select(Uri uri) {
+		MechanoidContentProvider provider = getContentProvider(uri);
+
+		List<T> records = provider.selectRecords(uri, this, null);
+
+		return records;
+	}
+
+	/**
+	 * <p>Select records using this query</p>
+	 * @param uri The ContentProvider Uri to query for
+	 * @param sortOrder The order by clause
+	 * @return The results as active records
+	 */
 	public <T extends ActiveRecord> List<T> select(Uri uri, String sortOrder) {
 		MechanoidContentProvider provider = getContentProvider(uri);
 		
@@ -601,23 +616,43 @@ public class SQuery {
 	/**
 	 * <p>Select records using this query</p>
 	 * @param uri The ContentProvider Uri to query for
+	 * @param groupBy The columns or expression to group by
 	 * @return The results as active records
 	 */	
-	public <T extends ActiveRecord> List<T> select(Uri uri) {
+	public <T extends ActiveRecord> List<T> select(Uri uri, String sortOrder, String... groupBy) {
+		uri = appendGroupByToUri(uri, groupBy);
 		MechanoidContentProvider provider = getContentProvider(uri);
 		
-		List<T> records = provider.selectRecords(uri, this, null);
+		List<T> records = provider.selectRecords(uri, this, sortOrder);
 		
 		return records;
 	}
 	
+	private Uri appendGroupByToUri(Uri uri, String... groupBy) {
+		if(groupBy == null || groupBy.length == 0)
+			return uri;
+		StringBuilder builder = new StringBuilder();
+
+		for(int i = 0; i < groupBy.length; i++) {
+			if(TextUtils.isEmpty(groupBy[i])) {
+				continue;
+			}
+			builder.append(groupBy[i]);
+			if(i < groupBy.length - 1) {
+				builder.append(", ");
+			}
+		}
+		return uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_GROUP_BY, builder.toString()).build();
+	}
+
 	/**
 	 * Select records based on this query
 	 * @param uri The ContentProvider Uri to query for
 	 * @param keyColumnName The column that will be used as the key for the resulting map
 	 * @return A map of results using the value of keyColumnName as the map key
 	 */
-	public <T extends ActiveRecord> Map<String, T> selectMap(Uri uri, String keyColumnName) {
+	public <T extends ActiveRecord> Map<String, T> selectMap(Uri uri, String keyColumnName, String... groupBy) {
+		uri = appendGroupByToUri(uri, groupBy);
 		MechanoidContentProvider provider = getContentProvider(uri);
 		
 		Map<String, T> records = provider.selectRecordMap(uri, this, keyColumnName);
@@ -680,6 +715,14 @@ public class SQuery {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public Cursor select(Uri uri, String[] projection, String sortOrder, String... groupBy) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+
+		uri = appendGroupByToUri(uri, groupBy);
+
+		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
 	public Cursor select(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
@@ -688,12 +731,30 @@ public class SQuery {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public Cursor select(Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+		ContentResolver resolver = Mechanoid.getContentResolver();
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
+
+		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
 	public Cursor select(Uri uri, String[] projection) {
-		return select(uri, projection, null);
+		return select(uri, projection, (String) null);
+	}
+
+	public Cursor select(Uri uri, String[] projection, String... groupBy) {
+		return select(uri, projection, null, groupBy);
 	}
 	
+
 	public Cursor select(Uri uri, String[] projection, boolean enableNotifications) {
 		return select(uri, projection, null, enableNotifications);
+	}
+
+	public Cursor select(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
+		return select(uri, projection, null, enableNotifications, groupBy);
 	}
 	
 	@TargetApi(11)
@@ -706,6 +767,17 @@ public class SQuery {
 	}
 	
 	@TargetApi(11)
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder, String... groupBy) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
+
+		uri = appendGroupByToUri(uri, groupBy);
+
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
+	@TargetApi(11)
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
 		if(Build.VERSION.SDK_INT < 11) {
 			return null;
@@ -716,6 +788,18 @@ public class SQuery {
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	@TargetApi(11)
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+		if(Build.VERSION.SDK_INT < 11) {
+			return null;
+		}
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
+
+		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
 	@TargetApi(11)	
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection) {
 		if(Build.VERSION.SDK_INT < 11) {
@@ -726,12 +810,13 @@ public class SQuery {
 	}
 	
 	@TargetApi(11)
-	public android.content.CursorLoader createLoader(Uri uri, String[] projection, boolean enableNotifications) {
+	public android.content.CursorLoader createLoader(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
 		if(Build.VERSION.SDK_INT < 11) {
 			return null;
 		}
 		
 		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
 		
 		return new android.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
@@ -740,6 +825,11 @@ public class SQuery {
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, String... groupBy) {
+		uri = appendGroupByToUri(uri, groupBy);
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
 	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
 		
 		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
@@ -747,6 +837,13 @@ public class SQuery {
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
 	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection) {
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
@@ -758,6 +855,14 @@ public class SQuery {
 		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
 	}
 	
+	public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
+
+		return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+	}
+
 	public int firstInt(Uri uri, String column) {
 		return firstInt(uri, column, null);
 	}

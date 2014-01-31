@@ -39,6 +39,8 @@ import android.net.Uri;
 public abstract class MechanoidContentProvider extends ContentProvider {
 	
 	public static final String PARAM_NOTIFY = "mechdb_notify";
+
+	public static final String PARAM_GROUP_BY = "mechdb_group_by";
 	
     private MechanoidSQLiteOpenHelper mOpenHelper;
 
