@@ -25,6 +25,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.text.TextUtils;
 
 import com.robotoworks.mechanoid.util.Closeables;
 
@@ -130,6 +131,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	@Override
 	public Cursor query(MechanoidContentProvider provider, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
+		String groupBy = uri.getQueryParameter(MechanoidContentProvider.PARAM_GROUP_BY);
 		
 		if(mForUrisWithId) {
 			long id = ContentUris.parseId(uri);
@@ -137,9 +139,9 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 			return SQuery.newQuery()
 				.expr(BaseColumns._ID, SQuery.Op.EQ, id)
 				.append(selection, selectionArgs)
-				.query(db, mSource, projection, sortOrder);
+				.query(db, mSource, projection, sortOrder, TextUtils.isEmpty(groupBy) ? null : groupBy);
 		} else {
-			return db.query(mSource, projection, selection, selectionArgs, null, null, sortOrder);
+			return db.query(mSource, projection, selection, selectionArgs, TextUtils.isEmpty(groupBy) ? null : groupBy, null, sortOrder);
 		}
 	}
 	
@@ -175,6 +177,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 			return null;
 		}
 		
+		String groupBy = uri.getQueryParameter(MechanoidContentProvider.PARAM_GROUP_BY);
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
 		Cursor c = null;
@@ -182,7 +185,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 		ArrayList<T> items = new ArrayList<T>();
 		
 		try {
-			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), null, null, sortOrder);
+			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), TextUtils.isEmpty(groupBy) ? null : groupBy, null, sortOrder);
 		    
 		    while(c.moveToNext()) {
 		        items.add((T)mRecordFactory.create(c));
@@ -202,7 +205,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 		if(mRecordFactory == null) {
 			return null;
 		}
-		
+		String groupBy = uri.getQueryParameter(MechanoidContentProvider.PARAM_GROUP_BY);
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		
 		Cursor c = null;
@@ -210,7 +213,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 		HashMap<String, T> items = new HashMap<String, T>();
 		
 		try {
-			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), null, null, null);
+			c = db.query(mSource, mRecordFactory.getProjection(), sQuery.toString(), sQuery.getArgsArray(), TextUtils.isEmpty(groupBy) ? null : groupBy, null, null);
 		    int keyColumnIndex = c.getColumnIndexOrThrow(keyColumnName);
 		    
 		    while(c.moveToNext()) {
