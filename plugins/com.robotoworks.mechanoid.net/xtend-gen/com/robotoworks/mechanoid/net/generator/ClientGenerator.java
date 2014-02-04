@@ -73,7 +73,7 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.append("private static final String LOG_TAG = \"");
     String _name_1 = client.getName();
-    _builder.append(_name_1, "	");
+    _builder.append(_name_1, "\t");
     _builder.append("\";");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -85,7 +85,7 @@ public class ClientGenerator {
         _builder.append("\t");
         _builder.append("protected static final String DEFAULT_BASE_URL = \"");
         String _baseUrl_1 = client.getBaseUrl();
-        _builder.append(_baseUrl_1, "	");
+        _builder.append(_baseUrl_1, "\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -106,12 +106,12 @@ public class ClientGenerator {
             SimpleMember _member = param.getMember();
             IntrinsicType _type = _member.getType();
             String _signature = ModelExtensions.signature(_type);
-            _builder.append(_signature, "	");
+            _builder.append(_signature, "\t");
             _builder.append(" ");
             SimpleMember _member_1 = param.getMember();
             String _name_2 = _member_1.getName();
             String _camelize = Strings.camelize(_name_2);
-            _builder.append(_camelize, "	");
+            _builder.append(_camelize, "\t");
             _builder.append("Param");
             {
               Literal _defaultValue = param.getDefaultValue();
@@ -120,7 +120,7 @@ public class ClientGenerator {
                 _builder.append(" = ");
                 Literal _defaultValue_1 = param.getDefaultValue();
                 String _convertToJavaLiteral = ModelExtensions.convertToJavaLiteral(_defaultValue_1);
-                _builder.append(_convertToJavaLiteral, "	");
+                _builder.append(_convertToJavaLiteral, "\t");
               }
             }
             _builder.append(";");
@@ -130,7 +130,7 @@ public class ClientGenerator {
             SimpleMember _member_2 = param.getMember();
             String _name_3 = _member_2.getName();
             String _camelize_1 = Strings.camelize(_name_3);
-            _builder.append(_camelize_1, "	");
+            _builder.append(_camelize_1, "\t");
             _builder.append("ParamSet");
             {
               Literal _defaultValue_2 = param.getDefaultValue();
@@ -158,12 +158,12 @@ public class ClientGenerator {
             SimpleMember _member_3 = param_1.getMember();
             String _name_4 = _member_3.getName();
             String _pascalize = Strings.pascalize(_name_4);
-            _builder.append(_pascalize, "	");
+            _builder.append(_pascalize, "\t");
             _builder.append("Param(");
             SimpleMember _member_4 = param_1.getMember();
             IntrinsicType _type_1 = _member_4.getType();
             String _signature_1 = ModelExtensions.signature(_type_1);
-            _builder.append(_signature_1, "	");
+            _builder.append(_signature_1, "\t");
             _builder.append(" value) {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -172,7 +172,7 @@ public class ClientGenerator {
             SimpleMember _member_5 = param_1.getMember();
             String _name_5 = _member_5.getName();
             String _camelize_2 = Strings.camelize(_name_5);
-            _builder.append(_camelize_2, "		");
+            _builder.append(_camelize_2, "\t\t");
             _builder.append("Param = value;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -181,7 +181,7 @@ public class ClientGenerator {
             SimpleMember _member_6 = param_1.getMember();
             String _name_6 = _member_6.getName();
             String _camelize_3 = Strings.camelize(_name_6);
-            _builder.append(_camelize_3, "		");
+            _builder.append(_camelize_3, "\t\t");
             _builder.append("ParamSet = true;");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -216,7 +216,7 @@ public class ClientGenerator {
     _builder.append("\t\t");
     _builder.append("return new Default");
     String _name_7 = client.getName();
-    _builder.append(_name_7, "		");
+    _builder.append(_name_7, "\t\t");
     _builder.append("WriterProvider();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -233,7 +233,7 @@ public class ClientGenerator {
     _builder.append("\t\t");
     _builder.append("return new Default");
     String _name_8 = client.getName();
-    _builder.append(_name_8, "		");
+    _builder.append(_name_8, "\t\t");
     _builder.append("ReaderProvider();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -244,7 +244,7 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.append("public Abstract");
     String _name_9 = client.getName();
-    _builder.append(_name_9, "	");
+    _builder.append(_name_9, "\t");
     _builder.append("(String baseUrl, boolean debug){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -264,10 +264,10 @@ public class ClientGenerator {
             _builder.append("\t\t");
             _builder.append("setHeader(\"");
             String _name_10 = header.getName();
-            _builder.append(_name_10, "		");
+            _builder.append(_name_10, "\t\t");
             _builder.append("\",\"");
             String _value = header.getValue();
-            _builder.append(_value, "		");
+            _builder.append(_value, "\t\t");
             _builder.append("\");");
             _builder.newLineIfNotEmpty();
           }
@@ -281,7 +281,7 @@ public class ClientGenerator {
     _builder.newLine();
     _builder.append("\t");
     CharSequence _generateClientMethods = this.generateClientMethods(client, module);
-    _builder.append(_generateClientMethods, "	");
+    _builder.append(_generateClientMethods, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -333,11 +333,11 @@ public class ClientGenerator {
             _builder.append("return ");
             String _name_2 = method.getName();
             String _camelize_1 = Strings.camelize(_name_2);
-            _builder.append(_camelize_1, "  	");
+            _builder.append(_camelize_1, "  \t");
             _builder.append("(new ");
             String _name_3 = method.getName();
             String _pascalize_1 = Strings.pascalize(_name_3);
-            _builder.append(_pascalize_1, "  	");
+            _builder.append(_pascalize_1, "  \t");
             _builder.append("Request());");
             _builder.newLineIfNotEmpty();
             _builder.append("}");
@@ -376,12 +376,12 @@ public class ClientGenerator {
                 SimpleMember _member = param.getMember();
                 String _name_7 = _member.getName();
                 String _camelize_3 = Strings.camelize(_name_7);
-                _builder.append(_camelize_3, "	");
+                _builder.append(_camelize_3, "\t");
                 _builder.append("ParamSet && !request.is");
                 SimpleMember _member_1 = param.getMember();
                 String _name_8 = _member_1.getName();
                 String _pascalize_4 = Strings.pascalize(_name_8);
-                _builder.append(_pascalize_4, "	");
+                _builder.append(_pascalize_4, "\t");
                 _builder.append("ParamSet()){");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
@@ -390,12 +390,12 @@ public class ClientGenerator {
                 SimpleMember _member_2 = param.getMember();
                 String _name_9 = _member_2.getName();
                 String _pascalize_5 = Strings.pascalize(_name_9);
-                _builder.append(_pascalize_5, "		");
+                _builder.append(_pascalize_5, "\t\t");
                 _builder.append("Param(this.");
                 SimpleMember _member_3 = param.getMember();
                 String _name_10 = _member_3.getName();
                 String _camelize_4 = Strings.camelize(_name_10);
-                _builder.append(_camelize_4, "		");
+                _builder.append(_camelize_4, "\t\t");
                 _builder.append("Param);");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
@@ -413,25 +413,25 @@ public class ClientGenerator {
         _builder.append("Parser<");
         String _name_11 = method.getName();
         String _pascalize_6 = Strings.pascalize(_name_11);
-        _builder.append(_pascalize_6, "	");
+        _builder.append(_pascalize_6, "\t");
         _builder.append("Result> parser = new Parser<");
         String _name_12 = method.getName();
         String _pascalize_7 = Strings.pascalize(_name_12);
-        _builder.append(_pascalize_7, "	");
+        _builder.append(_pascalize_7, "\t");
         _builder.append("Result>() {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("public ");
         String _name_13 = method.getName();
         String _pascalize_8 = Strings.pascalize(_name_13);
-        _builder.append(_pascalize_8, "		");
+        _builder.append(_pascalize_8, "\t\t");
         _builder.append("Result parse(InputStream inStream) throws IOException {");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t\t");
         _builder.append("return new ");
         String _name_14 = method.getName();
         String _pascalize_9 = Strings.pascalize(_name_14);
-        _builder.append(_pascalize_9, "			");
+        _builder.append(_pascalize_9, "\t\t\t");
         _builder.append("Result(getReaderProvider(), inStream);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
@@ -444,7 +444,7 @@ public class ClientGenerator {
         _builder.newLine();
         _builder.append("\t");
         CharSequence _generateServiceMethod = this.generateServiceMethod(method);
-        _builder.append(_generateServiceMethod, "	");
+        _builder.append(_generateServiceMethod, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
         _builder.newLine();
@@ -561,7 +561,7 @@ public class ClientGenerator {
         _builder.append("\t");
         _builder.append("public ");
         String _name_2 = client.getName();
-        _builder.append(_name_2, "	");
+        _builder.append(_name_2, "\t");
         _builder.append("(){");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -575,7 +575,7 @@ public class ClientGenerator {
         _builder.append("\t");
         _builder.append("public ");
         String _name_3 = client.getName();
-        _builder.append(_name_3, "	");
+        _builder.append(_name_3, "\t");
         _builder.append("(boolean debug){");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -592,7 +592,7 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_4 = client.getName();
-    _builder.append(_name_4, "	");
+    _builder.append(_name_4, "\t");
     _builder.append("(String baseUrl){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -606,7 +606,7 @@ public class ClientGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_5 = client.getName();
-    _builder.append(_name_5, "	");
+    _builder.append(_name_5, "\t");
     _builder.append("(String baseUrl, boolean debug){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");

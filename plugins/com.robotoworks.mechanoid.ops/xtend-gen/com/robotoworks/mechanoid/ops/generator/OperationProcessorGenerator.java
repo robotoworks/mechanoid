@@ -50,7 +50,7 @@ public class OperationProcessorGenerator {
     _builder.append("return ");
     String _name_1 = svc.getName();
     String _formatServiceName = Extensions.formatServiceName(_name_1);
-    _builder.append(_formatServiceName, "		");
+    _builder.append(_formatServiceName, "\t\t");
     _builder.append(".CONFIG");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
@@ -71,7 +71,7 @@ public class OperationProcessorGenerator {
     _builder.append("public Abstract");
     String _name_2 = svc.getName();
     String _pascalize_1 = Strings.pascalize(_name_2);
-    _builder.append(_pascalize_1, "	");
+    _builder.append(_pascalize_1, "\t");
     _builder.append("Processor(OperationService service, boolean enableLogging) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -120,7 +120,7 @@ public class OperationProcessorGenerator {
     _builder.append("public ");
     String _name_2 = svc.getName();
     String _pascalize_2 = Strings.pascalize(_name_2);
-    _builder.append(_pascalize_2, "	");
+    _builder.append(_pascalize_2, "\t");
     _builder.append("Processor(OperationService service) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");

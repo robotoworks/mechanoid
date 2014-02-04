@@ -61,19 +61,19 @@ public class OperationGenerator {
     String _name_1 = op.getName();
     String _underscore = Strings.underscore(_name_1);
     String _upperCase = _underscore.toUpperCase();
-    _builder.append(_upperCase, "	");
+    _builder.append(_upperCase, "\t");
     _builder.append(" = \"");
     String _packageName_1 = model.getPackageName();
-    _builder.append(_packageName_1, "	");
+    _builder.append(_packageName_1, "\t");
     _builder.append(".");
     String _name_2 = svc.getName();
     String _formatServiceName = Extensions.formatServiceName(_name_2);
-    _builder.append(_formatServiceName, "	");
+    _builder.append(_formatServiceName, "\t");
     _builder.append(".actions.");
     String _name_3 = op.getName();
     String _underscore_1 = Strings.underscore(_name_3);
     String _upperCase_1 = _underscore_1.toUpperCase();
-    _builder.append(_upperCase_1, "	");
+    _builder.append(_upperCase_1, "\t");
     _builder.append("\";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -85,19 +85,19 @@ public class OperationGenerator {
         String _name_4 = arg.getName();
         String _underscore_2 = Strings.underscore(_name_4);
         String _upperCase_2 = _underscore_2.toUpperCase();
-        _builder.append(_upperCase_2, "	");
+        _builder.append(_upperCase_2, "\t");
         _builder.append(" = \"");
         String _packageName_2 = model.getPackageName();
-        _builder.append(_packageName_2, "	");
+        _builder.append(_packageName_2, "\t");
         _builder.append(".");
         String _name_5 = svc.getName();
         String _formatServiceName_1 = Extensions.formatServiceName(_name_5);
-        _builder.append(_formatServiceName_1, "	");
+        _builder.append(_formatServiceName_1, "\t");
         _builder.append(".extras.");
         String _name_6 = arg.getName();
         String _underscore_3 = Strings.underscore(_name_6);
         String _upperCase_3 = _underscore_3.toUpperCase();
-        _builder.append(_upperCase_3, "	");
+        _builder.append(_upperCase_3, "\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }
@@ -113,11 +113,11 @@ public class OperationGenerator {
         _builder.append("public ");
         OpArgType _type = arg_1.getType();
         String _typeLiteral = Extensions.toTypeLiteral(_type);
-        _builder.append(_typeLiteral, "		");
+        _builder.append(_typeLiteral, "\t\t");
         _builder.append(" ");
         String _name_7 = arg_1.getName();
         String _camelize = Strings.camelize(_name_7);
-        _builder.append(_camelize, "		");
+        _builder.append(_camelize, "\t\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
       }
@@ -140,7 +140,7 @@ public class OperationGenerator {
     _builder.append("return new ");
     String _name_8 = op.getName();
     String _pascalize_1 = Strings.pascalize(_name_8);
-    _builder.append(_pascalize_1, "			");
+    _builder.append(_pascalize_1, "\t\t\t");
     _builder.append("Operation();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -162,12 +162,12 @@ public class OperationGenerator {
         _builder.append("Intent existingRequest = bridge.findPendingRequestByActionWithExtras(Abstract");
         String _name_9 = op.getName();
         String _pascalize_2 = Strings.pascalize(_name_9);
-        _builder.append(_pascalize_2, "			");
+        _builder.append(_pascalize_2, "\t\t\t");
         _builder.append("Operation.ACTION_");
         String _name_10 = op.getName();
         String _underscore_4 = Strings.underscore(_name_10);
         String _upperCase_4 = _underscore_4.toUpperCase();
-        _builder.append(_upperCase_4, "			");
+        _builder.append(_upperCase_4, "\t\t\t");
         _builder.append(", intent.getExtras());");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t\t");
@@ -197,19 +197,19 @@ public class OperationGenerator {
               _builder.append("matcher.");
               OpArgType _type_1 = uarg.getType();
               String _bundlePutMethodName = Extensions.toBundlePutMethodName(_type_1);
-              _builder.append(_bundlePutMethodName, "			");
+              _builder.append(_bundlePutMethodName, "\t\t\t");
               _builder.append("(");
               _builder.newLineIfNotEmpty();
               _builder.append("\t\t\t");
               _builder.append("\t");
               String _name_11 = op.getName();
               String _pascalize_3 = Strings.pascalize(_name_11);
-              _builder.append(_pascalize_3, "				");
+              _builder.append(_pascalize_3, "\t\t\t\t");
               _builder.append("Operation.EXTRA_");
               String _name_12 = uarg.getName();
               String _underscore_5 = Strings.underscore(_name_12);
               String _upperCase_5 = _underscore_5.toUpperCase();
-              _builder.append(_upperCase_5, "				");
+              _builder.append(_upperCase_5, "\t\t\t\t");
               _builder.append(", ");
               _builder.newLineIfNotEmpty();
               _builder.append("\t\t\t");
@@ -217,16 +217,16 @@ public class OperationGenerator {
               _builder.append("intentExtras.");
               OpArgType _type_2 = uarg.getType();
               String _bundleGetMethodName = Extensions.toBundleGetMethodName(_type_2);
-              _builder.append(_bundleGetMethodName, "				");
+              _builder.append(_bundleGetMethodName, "\t\t\t\t");
               _builder.append("(");
               String _name_13 = op.getName();
               String _pascalize_4 = Strings.pascalize(_name_13);
-              _builder.append(_pascalize_4, "				");
+              _builder.append(_pascalize_4, "\t\t\t\t");
               _builder.append("Operation.EXTRA_");
               String _name_14 = uarg.getName();
               String _underscore_6 = Strings.underscore(_name_14);
               String _upperCase_6 = _underscore_6.toUpperCase();
-              _builder.append(_upperCase_6, "				");
+              _builder.append(_upperCase_6, "\t\t\t\t");
               _builder.append("));");
               _builder.newLineIfNotEmpty();
             }
@@ -237,12 +237,12 @@ public class OperationGenerator {
           _builder.append("Intent existingRequest = bridge.findPendingRequestByActionWithExtras(Abstract");
           String _name_15 = op.getName();
           String _pascalize_5 = Strings.pascalize(_name_15);
-          _builder.append(_pascalize_5, "			");
+          _builder.append(_pascalize_5, "\t\t\t");
           _builder.append("Operation.ACTION_");
           String _name_16 = op.getName();
           String _underscore_7 = Strings.underscore(_name_16);
           String _upperCase_7 = _underscore_7.toUpperCase();
-          _builder.append(_upperCase_7, "			");
+          _builder.append(_upperCase_7, "\t\t\t");
           _builder.append(", matcher);");
           _builder.newLineIfNotEmpty();
           _builder.newLine();
@@ -273,15 +273,15 @@ public class OperationGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(", ", "	");
+          _builder.appendImmediate(", ", "\t");
         }
         OpArgType _type_3 = arg_2.getType();
         String _typeLiteral_1 = Extensions.toTypeLiteral(_type_3);
-        _builder.append(_typeLiteral_1, "	");
+        _builder.append(_typeLiteral_1, "\t");
         _builder.append(" ");
         String _name_17 = arg_2.getName();
         String _camelize_1 = Strings.camelize(_name_17);
-        _builder.append(_camelize_1, "	");
+        _builder.append(_camelize_1, "\t");
       }
     }
     _builder.append(") {");
@@ -291,14 +291,14 @@ public class OperationGenerator {
     String _name_18 = op.getName();
     String _underscore_8 = Strings.underscore(_name_18);
     String _upperCase_8 = _underscore_8.toUpperCase();
-    _builder.append(_upperCase_8, "		");
+    _builder.append(_upperCase_8, "\t\t");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("intent.setClass(Mechanoid.getApplicationContext(), ");
     String _name_19 = svc.getName();
     String _formatServiceName_2 = Extensions.formatServiceName(_name_19);
-    _builder.append(_formatServiceName_2, "		");
+    _builder.append(_formatServiceName_2, "\t\t");
     _builder.append(".class);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -313,16 +313,16 @@ public class OperationGenerator {
         _builder.append("extras.");
         OpArgType _type_4 = arg_3.getType();
         String _bundlePutMethodName_1 = Extensions.toBundlePutMethodName(_type_4);
-        _builder.append(_bundlePutMethodName_1, "		");
+        _builder.append(_bundlePutMethodName_1, "\t\t");
         _builder.append("(EXTRA_");
         String _name_20 = arg_3.getName();
         String _underscore_9 = Strings.underscore(_name_20);
         String _upperCase_9 = _underscore_9.toUpperCase();
-        _builder.append(_upperCase_9, "		");
+        _builder.append(_upperCase_9, "\t\t");
         _builder.append(", ");
         String _name_21 = arg_3.getName();
         String _camelize_2 = Strings.camelize(_name_21);
-        _builder.append(_camelize_2, "		");
+        _builder.append(_camelize_2, "\t\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
       }
@@ -369,16 +369,16 @@ public class OperationGenerator {
             _builder.append("args.");
             String _name_22 = arg_4.getName();
             String _camelize_3 = Strings.camelize(_name_22);
-            _builder.append(_camelize_3, "		");
+            _builder.append(_camelize_3, "\t\t");
             _builder.append(" = extras.");
             OpArgType _type_5 = arg_4.getType();
             String _bundleGetMethodName_1 = Extensions.toBundleGetMethodName(_type_5);
-            _builder.append(_bundleGetMethodName_1, "		");
+            _builder.append(_bundleGetMethodName_1, "\t\t");
             _builder.append("(EXTRA_");
             String _name_23 = arg_4.getName();
             String _underscore_10 = Strings.underscore(_name_23);
             String _upperCase_10 = _underscore_10.toUpperCase();
-            _builder.append(_upperCase_10, "		");
+            _builder.append(_upperCase_10, "\t\t");
             _builder.append(");");
             _builder.newLineIfNotEmpty();
           }

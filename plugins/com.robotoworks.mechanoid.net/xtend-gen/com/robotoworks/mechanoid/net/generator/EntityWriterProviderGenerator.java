@@ -56,7 +56,7 @@ public class EntityWriterProviderGenerator {
     _builder.append("\t");
     _builder.append("public Default");
     String _name_1 = client.getName();
-    _builder.append(_name_1, "	");
+    _builder.append(_name_1, "\t");
     _builder.append("WriterProvider(){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -94,10 +94,10 @@ public class EntityWriterProviderGenerator {
         _builder.append("\t\t");
         _builder.append("map.put(");
         String _name_2 = entity.getName();
-        _builder.append(_name_2, "		");
+        _builder.append(_name_2, "\t\t");
         _builder.append(".class, new ");
         String _name_3 = entity.getName();
-        _builder.append(_name_3, "		");
+        _builder.append(_name_3, "\t\t");
         _builder.append("Writer(this));");
         _builder.newLineIfNotEmpty();
       }

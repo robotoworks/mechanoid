@@ -72,7 +72,7 @@ public class EntityReaderGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_2 = decl.getName();
-    _builder.append(_name_2, "	");
+    _builder.append(_name_2, "\t");
     _builder.append("Reader(JsonEntityReaderProvider provider) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -86,12 +86,12 @@ public class EntityReaderGenerator {
     _builder.append("\t");
     _builder.append("public void read(JsonReader reader, ");
     String _name_3 = decl.getName();
-    _builder.append(_name_3, "	");
+    _builder.append(_name_3, "\t");
     _builder.append(" entity) throws IOException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     CharSequence _genReadComplexType = this.jsonReaderGenerator.genReadComplexType(decl);
-    _builder.append(_genReadComplexType, "		");
+    _builder.append(_genReadComplexType, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -101,7 +101,7 @@ public class EntityReaderGenerator {
     _builder.append("\t");
     _builder.append("public void readList(JsonReader reader, List<");
     String _name_4 = decl.getName();
-    _builder.append(_name_4, "	");
+    _builder.append(_name_4, "\t");
     _builder.append("> entities) throws IOException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -114,10 +114,10 @@ public class EntityReaderGenerator {
     _builder.newLine();
     _builder.append("\t\t\t");
     String _name_5 = decl.getName();
-    _builder.append(_name_5, "			");
+    _builder.append(_name_5, "\t\t\t");
     _builder.append(" item = new ");
     String _name_6 = decl.getName();
-    _builder.append(_name_6, "			");
+    _builder.append(_name_6, "\t\t\t");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");

@@ -98,11 +98,11 @@ public class ActiveRecordGenerator {
     _builder.append("private static ActiveRecordFactory<");
     String _name_5 = stmt.getName();
     String _pascalize_5 = Strings.pascalize(_name_5);
-    _builder.append(_pascalize_5, "	");
+    _builder.append(_pascalize_5, "\t");
     _builder.append("Record> sFactory = new ActiveRecordFactory<");
     String _name_6 = stmt.getName();
     String _pascalize_6 = Strings.pascalize(_name_6);
-    _builder.append(_pascalize_6, "	");
+    _builder.append(_pascalize_6, "\t");
     _builder.append("Record>() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -112,7 +112,7 @@ public class ActiveRecordGenerator {
     _builder.append("public ");
     String _name_7 = stmt.getName();
     String _pascalize_7 = Strings.pascalize(_name_7);
-    _builder.append(_pascalize_7, "		");
+    _builder.append(_pascalize_7, "\t\t");
     _builder.append("Record create(Cursor c) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
@@ -144,7 +144,7 @@ public class ActiveRecordGenerator {
     _builder.append("public static ActiveRecordFactory<");
     String _name_8 = stmt.getName();
     String _pascalize_8 = Strings.pascalize(_name_8);
-    _builder.append(_pascalize_8, "	");
+    _builder.append(_pascalize_8, "\t");
     _builder.append("Record> getFactory() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -165,7 +165,7 @@ public class ActiveRecordGenerator {
     _builder.append("= new Parcelable.Creator<");
     String _name_10 = stmt.getName();
     String _pascalize_10 = Strings.pascalize(_name_10);
-    _builder.append(_pascalize_10, "    	");
+    _builder.append(_pascalize_10, "    \t");
     _builder.append("Record>() {");
     _builder.newLineIfNotEmpty();
     _builder.append("        ");
@@ -213,7 +213,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("    \t");
     CharSequence _generateProjectionArrayMembers = this.generateProjectionArrayMembers(stmt);
-    _builder.append(_generateProjectionArrayMembers, "    	");
+    _builder.append(_generateProjectionArrayMembers, "    \t");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("};");
@@ -225,7 +225,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("    \t");
     CharSequence _generateProjectionIndicesMembers = this.generateProjectionIndicesMembers(stmt);
-    _builder.append(_generateProjectionIndicesMembers, "    	");
+    _builder.append(_generateProjectionIndicesMembers, "    \t");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("}");
@@ -269,7 +269,7 @@ public class ActiveRecordGenerator {
     _builder.append("super(");
     String _name_16 = stmt.getName();
     String _pascalize_16 = Strings.pascalize(_name_16);
-    _builder.append(_pascalize_16, "    	");
+    _builder.append(_pascalize_16, "    \t");
     _builder.append(".CONTENT_URI);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -281,14 +281,14 @@ public class ActiveRecordGenerator {
     _builder.append("private ");
     String _name_17 = stmt.getName();
     String _pascalize_17 = Strings.pascalize(_name_17);
-    _builder.append(_pascalize_17, "	");
+    _builder.append(_pascalize_17, "\t");
     _builder.append("Record(Parcel in) {");
     _builder.newLineIfNotEmpty();
     _builder.append("    \t");
     _builder.append("super(");
     String _name_18 = stmt.getName();
     String _pascalize_18 = Strings.pascalize(_name_18);
-    _builder.append(_pascalize_18, "    	");
+    _builder.append(_pascalize_18, "    \t");
     _builder.append(".CONTENT_URI);");
     _builder.newLineIfNotEmpty();
     _builder.append("    \t");
@@ -300,7 +300,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _generateParcelDeserializationStatements = this.generateParcelDeserializationStatements(stmt);
-    _builder.append(_generateParcelDeserializationStatements, "		");
+    _builder.append(_generateParcelDeserializationStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -332,7 +332,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _generateParcelSerializationStatements = this.generateParcelSerializationStatements(stmt);
-    _builder.append(_generateParcelSerializationStatements, "		");
+    _builder.append(_generateParcelSerializationStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -349,13 +349,13 @@ public class ActiveRecordGenerator {
     _builder.append("Builder builder = ");
     String _name_19 = stmt.getName();
     String _pascalize_19 = Strings.pascalize(_name_19);
-    _builder.append(_pascalize_19, "		");
+    _builder.append(_pascalize_19, "\t\t");
     _builder.append(".newBuilder();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _generateBuilderStatements = this.generateBuilderStatements(stmt);
-    _builder.append(_generateBuilderStatements, "		");
+    _builder.append(_generateBuilderStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -375,7 +375,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _generateMakeDirtyStatements = this.generateMakeDirtyStatements(stmt);
-    _builder.append(_generateMakeDirtyStatements, "		");
+    _builder.append(_generateMakeDirtyStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -392,7 +392,7 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     _builder.append("\t\t");
     CharSequence _generateSetFromCursorStatements = this.generateSetFromCursorStatements(stmt);
-    _builder.append(_generateSetFromCursorStatements, "		");
+    _builder.append(_generateSetFromCursorStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -403,17 +403,17 @@ public class ActiveRecordGenerator {
     _builder.append("public static ");
     String _name_20 = stmt.getName();
     String _pascalize_20 = Strings.pascalize(_name_20);
-    _builder.append(_pascalize_20, "	");
+    _builder.append(_pascalize_20, "\t");
     _builder.append("Record fromCursor(Cursor c) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
     String _name_21 = stmt.getName();
     String _pascalize_21 = Strings.pascalize(_name_21);
-    _builder.append(_pascalize_21, "	    ");
+    _builder.append(_pascalize_21, "\t    ");
     _builder.append("Record item = new ");
     String _name_22 = stmt.getName();
     String _pascalize_22 = Strings.pascalize(_name_22);
-    _builder.append(_pascalize_22, "	    ");
+    _builder.append(_pascalize_22, "\t    ");
     _builder.append("Record();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
@@ -440,14 +440,14 @@ public class ActiveRecordGenerator {
     _builder.append("public static ");
     String _name_23 = stmt.getName();
     String _pascalize_23 = Strings.pascalize(_name_23);
-    _builder.append(_pascalize_23, "	");
+    _builder.append(_pascalize_23, "\t");
     _builder.append("Record fromBundle(Bundle bundle, String key) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("bundle.setClassLoader(");
     String _name_24 = stmt.getName();
     String _pascalize_24 = Strings.pascalize(_name_24);
-    _builder.append(_pascalize_24, "		");
+    _builder.append(_pascalize_24, "\t\t");
     _builder.append("Record.class.getClassLoader());");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -462,7 +462,7 @@ public class ActiveRecordGenerator {
     _builder.append("public static ");
     String _name_25 = stmt.getName();
     String _pascalize_25 = Strings.pascalize(_name_25);
-    _builder.append(_pascalize_25, "	");
+    _builder.append(_pascalize_25, "\t");
     _builder.append("Record get(long id) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t    ");
@@ -482,7 +482,7 @@ public class ActiveRecordGenerator {
     _builder.append("c = resolver.query(");
     String _name_26 = stmt.getName();
     String _pascalize_26 = Strings.pascalize(_name_26);
-    _builder.append(_pascalize_26, "	        ");
+    _builder.append(_pascalize_26, "\t        ");
     _builder.append(".CONTENT_URI.buildUpon()");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
@@ -738,11 +738,11 @@ public class ActiveRecordGenerator {
         _builder.append("builder.set");
         String _name_1 = col.getName();
         String _pascalize_1 = Strings.pascalize(_name_1);
-        _builder.append(_pascalize_1, "	");
+        _builder.append(_pascalize_1, "\t");
         _builder.append("(m");
         String _name_2 = col.getName();
         String _pascalize_2 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_2, "	");
+        _builder.append(_pascalize_2, "\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -777,11 +777,11 @@ public class ActiveRecordGenerator {
         _builder.append("builder.set");
         String _name_1 = col.getName();
         String _pascalize_1 = Strings.pascalize(_name_1);
-        _builder.append(_pascalize_1, "	");
+        _builder.append(_pascalize_1, "\t");
         _builder.append("(m");
         String _name_2 = col.getName();
         String _pascalize_2 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_2, "	");
+        _builder.append(_pascalize_2, "\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -862,13 +862,13 @@ public class ActiveRecordGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(",", "	");
+          _builder.appendImmediate(",", "\t");
         }
         _builder.append("\t");
         _builder.append("m");
         String _name_3 = col_1.getName();
         String _pascalize_4 = Strings.pascalize(_name_3);
-        _builder.append(_pascalize_4, "	");
+        _builder.append(_pascalize_4, "\t");
         _builder.append("Dirty");
         _builder.newLineIfNotEmpty();
       }
@@ -948,13 +948,13 @@ public class ActiveRecordGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(",", "	");
+          _builder.appendImmediate(",", "\t");
         }
         _builder.append("\t");
         _builder.append("m");
         String _name_3 = col_1.getName();
         String _pascalize_4 = Strings.pascalize(_name_3);
-        _builder.append(_pascalize_4, "	");
+        _builder.append(_pascalize_4, "\t");
         _builder.append("Dirty");
         _builder.newLineIfNotEmpty();
       }
@@ -1046,8 +1046,7 @@ public class ActiveRecordGenerator {
         String _pascalize_4 = Strings.pascalize(_name_3);
         _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
-        int _plus = (counter + 1);
-        int _counter = counter = _plus;
+        int _counter = counter = (counter + 1);
         _builder.append(_counter, "");
         _builder.append("];");
         _builder.newLineIfNotEmpty();
@@ -1136,8 +1135,7 @@ public class ActiveRecordGenerator {
         String _pascalize_4 = Strings.pascalize(_name_3);
         _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
-        int _plus = (counter + 1);
-        int _counter = counter = _plus;
+        int _counter = counter = (counter + 1);
         _builder.append(_counter, "");
         _builder.append("];");
         _builder.newLineIfNotEmpty();
@@ -1219,8 +1217,7 @@ public class ActiveRecordGenerator {
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "");
         _builder.append(" = ");
-        int _plus = (counter + 1);
-        int _counter = counter = _plus;
+        int _counter = counter = (counter + 1);
         _builder.append(_counter, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -1242,8 +1239,7 @@ public class ActiveRecordGenerator {
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "");
         _builder.append(" = ");
-        int _plus = (counter + 1);
-        int _counter = counter = _plus;
+        int _counter = counter = (counter + 1);
         _builder.append(_counter, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -1361,18 +1357,18 @@ public class ActiveRecordGenerator {
         _builder.append("m");
         String _name_2 = col.getName();
         String _pascalize_1 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_1, "	");
+        _builder.append(_pascalize_1, "\t");
         _builder.append(" = ");
         String _name_3 = col.getName();
         String _camelize_1 = Strings.camelize(_name_3);
-        _builder.append(_camelize_1, "	");
+        _builder.append(_camelize_1, "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("m");
         String _name_4 = col.getName();
         String _pascalize_2 = Strings.pascalize(_name_4);
-        _builder.append(_pascalize_2, "	");
+        _builder.append(_pascalize_2, "\t");
         _builder.append("Dirty = true;");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -1392,7 +1388,7 @@ public class ActiveRecordGenerator {
         _builder.append("return m");
         String _name_6 = col.getName();
         String _pascalize_4 = Strings.pascalize(_name_6);
-        _builder.append(_pascalize_4, "	");
+        _builder.append(_pascalize_4, "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -1438,18 +1434,18 @@ public class ActiveRecordGenerator {
         _builder.append("m");
         String _name_2 = col.getName();
         String _pascalize_1 = Strings.pascalize(_name_2);
-        _builder.append(_pascalize_1, "	");
+        _builder.append(_pascalize_1, "\t");
         _builder.append(" = ");
         String _name_3 = col.getName();
         String _camelize_1 = Strings.camelize(_name_3);
-        _builder.append(_camelize_1, "	");
+        _builder.append(_camelize_1, "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("m");
         String _name_4 = col.getName();
         String _pascalize_2 = Strings.pascalize(_name_4);
-        _builder.append(_pascalize_2, "	");
+        _builder.append(_pascalize_2, "\t");
         _builder.append("Dirty = true;");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -1468,7 +1464,7 @@ public class ActiveRecordGenerator {
         _builder.append("return m");
         String _name_6 = col.getName();
         String _pascalize_4 = Strings.pascalize(_name_6);
-        _builder.append(_pascalize_4, "	");
+        _builder.append(_pascalize_4, "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("}");

@@ -9,7 +9,6 @@ import com.robotoworks.mechanoid.db.generator.ActiveRecordGenerator;
 import com.robotoworks.mechanoid.db.generator.ContentProviderContractGenerator;
 import com.robotoworks.mechanoid.db.generator.ContentProviderGenerator;
 import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot;
-import com.robotoworks.mechanoid.db.generator.SqliteDatabaseSnapshot.Builder;
 import com.robotoworks.mechanoid.db.generator.SqliteMigrationGenerator;
 import com.robotoworks.mechanoid.db.generator.SqliteOpenHelperGenerator;
 import com.robotoworks.mechanoid.db.sqliteModel.CreateTableStatement;
@@ -39,7 +38,7 @@ public class SqliteModelGenerator implements IGenerator {
   private ContentProviderContractGenerator mContentProviderContractGenerator;
   
   @Inject
-  private Provider<Builder> mDbSnapshotBuilderProvider;
+  private Provider<SqliteDatabaseSnapshot.Builder> mDbSnapshotBuilderProvider;
   
   @Inject
   private ContentProviderGenerator mContentProviderGenerator;
@@ -54,7 +53,7 @@ public class SqliteModelGenerator implements IGenerator {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     Model model = ((Model) _head);
-    Builder _get = this.mDbSnapshotBuilderProvider.get();
+    SqliteDatabaseSnapshot.Builder _get = this.mDbSnapshotBuilderProvider.get();
     final SqliteDatabaseSnapshot snapshot = _get.build(model);
     String _packageName = model.getPackageName();
     DatabaseBlock _database = model.getDatabase();
@@ -132,8 +131,7 @@ public class SqliteModelGenerator implements IGenerator {
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
     final Procedure2<MigrationBlock,Integer> _function_4 = new Procedure2<MigrationBlock,Integer>() {
       public void apply(final MigrationBlock item, final Integer index) {
-        int _plus = ((index).intValue() + 1);
-        SqliteModelGenerator.this.generateMigration(resource, fsa, item, _plus);
+        SqliteModelGenerator.this.generateMigration(resource, fsa, item, ((index).intValue() + 1));
       }
     };
     IterableExtensions.<MigrationBlock>forEach(_migrations, _function_4);

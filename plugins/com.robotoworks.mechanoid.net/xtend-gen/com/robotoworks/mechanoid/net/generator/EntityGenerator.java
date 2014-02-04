@@ -71,7 +71,7 @@ public class EntityGenerator {
       for(final Member member_1 : _members_1) {
         _builder.append("\t");
         CharSequence _generateField = this.generateField(member_1);
-        _builder.append(_generateField, "	");
+        _builder.append(_generateField, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -83,7 +83,7 @@ public class EntityGenerator {
       for(final Member member_2 : _members_2) {
         _builder.append("\t");
         CharSequence _generateGetterAndSetter = this.generateGetterAndSetter(member_2);
-        _builder.append(_generateGetterAndSetter, "	");
+        _builder.append(_generateGetterAndSetter, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -208,7 +208,7 @@ public class EntityGenerator {
     _builder.append("\t");
     _builder.append("return ");
     String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "	");
+    _builder.append(_identifier, "\t");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -225,7 +225,7 @@ public class EntityGenerator {
     _builder.append("\t");
     _builder.append("this.");
     String _identifier_1 = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier_1, "	");
+    _builder.append(_identifier_1, "\t");
     _builder.append(" = value;");
     _builder.newLineIfNotEmpty();
     _builder.append("}");

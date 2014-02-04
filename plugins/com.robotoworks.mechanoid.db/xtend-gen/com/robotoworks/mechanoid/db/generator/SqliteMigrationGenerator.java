@@ -64,7 +64,7 @@ public class SqliteMigrationGenerator {
     _builder.append("\t\t");
     EList<DDLStatement> _statements = migration.getStatements();
     CharSequence _generateStatements = this._sqliteDatabaseStatementGenerator.generateStatements(_statements);
-    _builder.append(_generateStatements, "		");
+    _builder.append(_generateStatements, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");

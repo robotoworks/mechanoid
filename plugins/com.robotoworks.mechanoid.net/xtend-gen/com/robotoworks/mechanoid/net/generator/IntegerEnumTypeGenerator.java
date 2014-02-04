@@ -23,7 +23,7 @@ public class IntegerEnumTypeGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _generateEnumMembers = ModelExtensions.generateEnumMembers(type);
-    _builder.append(_generateEnumMembers, "	");
+    _builder.append(_generateEnumMembers, "\t");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -46,7 +46,7 @@ public class IntegerEnumTypeGenerator {
     _builder.newLine();
     _builder.append("\t");
     String _name_1 = type.getName();
-    _builder.append(_name_1, "	");
+    _builder.append(_name_1, "\t");
     _builder.append("(int value){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -60,7 +60,7 @@ public class IntegerEnumTypeGenerator {
     _builder.append("\t");
     _builder.append("public static ");
     String _name_2 = type.getName();
-    _builder.append(_name_2, "	");
+    _builder.append(_name_2, "\t");
     _builder.append(" fromValue(int value) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -68,10 +68,10 @@ public class IntegerEnumTypeGenerator {
     _builder.append("\t\t");
     _builder.append("for (");
     String _name_3 = type.getName();
-    _builder.append(_name_3, "		");
+    _builder.append(_name_3, "\t\t");
     _builder.append(" member : ");
     String _name_4 = type.getName();
-    _builder.append(_name_4, "		");
+    _builder.append(_name_4, "\t\t");
     _builder.append(".values()) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");

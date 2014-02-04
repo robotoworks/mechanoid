@@ -55,7 +55,7 @@ public class ServiceGenerator {
     _builder.append("public static final OperationServiceConfiguration CONFIG = new ");
     String _name_2 = svc.getName();
     String _formatServiceName_1 = Extensions.formatServiceName(_name_2);
-    _builder.append(_formatServiceName_1, "	");
+    _builder.append(_formatServiceName_1, "\t");
     _builder.append("Configuration();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -70,7 +70,7 @@ public class ServiceGenerator {
     _builder.append("return new ");
     String _name_3 = svc.getName();
     String _pascalize_1 = Strings.pascalize(_name_3);
-    _builder.append(_pascalize_1, "		");
+    _builder.append(_pascalize_1, "\t\t");
     _builder.append("Processor(this);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -82,7 +82,7 @@ public class ServiceGenerator {
     _builder.append("public Abstract");
     String _name_4 = svc.getName();
     String _formatServiceName_2 = Extensions.formatServiceName(_name_4);
-    _builder.append(_formatServiceName_2, "	");
+    _builder.append(_formatServiceName_2, "\t");
     _builder.append("(boolean enableLogging) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -138,7 +138,7 @@ public class ServiceGenerator {
     _builder.append("public ");
     String _name_3 = svc.getName();
     String _formatServiceName_3 = Extensions.formatServiceName(_name_3);
-    _builder.append(_formatServiceName_3, "	");
+    _builder.append(_formatServiceName_3, "\t");
     _builder.append("() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");

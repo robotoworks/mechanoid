@@ -247,7 +247,7 @@ public class ResultGenerator {
         String _innerSignature_1 = ModelExtensions.innerSignature(type);
         String _camelize = Strings.camelize(_innerSignature_1);
         String _pluralize_1 = Strings.pluralize(_camelize);
-        _builder.append(_pluralize_1, "	");
+        _builder.append(_pluralize_1, "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
@@ -273,7 +273,7 @@ public class ResultGenerator {
     String _signature_2 = ModelExtensions.signature(type);
     String _camelize = Strings.camelize(_signature_2);
     String _escapeReserved = ModelExtensions.escapeReserved(_camelize);
-    _builder.append(_escapeReserved, "	");
+    _builder.append(_escapeReserved, "\t");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -295,7 +295,7 @@ public class ResultGenerator {
     _builder.append("\t");
     _builder.append("return this.");
     String _identifier = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier, "	");
+    _builder.append(_identifier, "\t");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -312,7 +312,7 @@ public class ResultGenerator {
     _builder.append("\t");
     _builder.append("this.");
     String _identifier_1 = ModelExtensions.toIdentifier(member);
-    _builder.append(_identifier_1, "	");
+    _builder.append(_identifier_1, "\t");
     _builder.append(" = value;");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -372,7 +372,7 @@ public class ResultGenerator {
     _builder.append("\t");
     _builder.append("return base.");
     String _getMethodName_1 = ModelExtensions.toGetMethodName(member);
-    _builder.append(_getMethodName_1, "	");
+    _builder.append(_getMethodName_1, "\t");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -389,7 +389,7 @@ public class ResultGenerator {
     _builder.append("\t");
     _builder.append("base.");
     String _setMethodName_1 = ModelExtensions.toSetMethodName(member);
-    _builder.append(_setMethodName_1, "	");
+    _builder.append(_setMethodName_1, "\t");
     _builder.append("(value);");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
@@ -417,13 +417,13 @@ public class ResultGenerator {
         _builder.append("\t");
         BlockType _type_1 = responseBlock.getType();
         CharSequence _generateFieldForType = this.generateFieldForType(_type_1);
-        _builder.append(_generateFieldForType, "	");
+        _builder.append(_generateFieldForType, "\t");
         _builder.append("\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         BlockType _type_2 = responseBlock.getType();
         CharSequence _generateGetterForType = this.generateGetterForType(_type_2);
-        _builder.append(_generateGetterForType, "	");
+        _builder.append(_generateGetterForType, "\t");
         _builder.append("\t");
         _builder.newLineIfNotEmpty();
       }
@@ -440,7 +440,7 @@ public class ResultGenerator {
         ComplexTypeDeclaration _superType_1 = responseBlock.getSuperType();
         String _name_1 = _superType_1.getName();
         String _pascalize_1 = Strings.pascalize(_name_1);
-        _builder.append(_pascalize_1, "	");
+        _builder.append(_pascalize_1, "\t");
         _builder.append(" base;");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -472,7 +472,7 @@ public class ResultGenerator {
         };
         Iterable<Member> _filter = IterableExtensions.<Member>filter(_members, _function);
         CharSequence _generateBaseAccessors = this.generateBaseAccessors(_filter);
-        _builder.append(_generateBaseAccessors, "	");
+        _builder.append(_generateBaseAccessors, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -482,7 +482,7 @@ public class ResultGenerator {
     _builder.append("public ");
     String _name_2 = method.getName();
     String _pascalize_2 = Strings.pascalize(_name_2);
-    _builder.append(_pascalize_2, "	");
+    _builder.append(_pascalize_2, "\t");
     _builder.append("Result(JsonEntityReaderProvider provider, InputStream inStream) throws IOException {");
     _builder.newLineIfNotEmpty();
     {
@@ -501,7 +501,7 @@ public class ResultGenerator {
           if (_or) {
             _builder.append("\t");
             CharSequence _generateDeserializationStatementHeader = this.generateDeserializationStatementHeader(true);
-            _builder.append(_generateDeserializationStatementHeader, "	");
+            _builder.append(_generateDeserializationStatementHeader, "\t");
             _builder.newLineIfNotEmpty();
             {
               ComplexTypeDeclaration _superType_4 = responseBlock.getSuperType();
@@ -513,7 +513,7 @@ public class ResultGenerator {
                 ComplexTypeDeclaration _superType_5 = responseBlock.getSuperType();
                 String _name_3 = _superType_5.getName();
                 String _pascalize_3 = Strings.pascalize(_name_3);
-                _builder.append(_pascalize_3, "		");
+                _builder.append(_pascalize_3, "\t\t");
                 _builder.append("();");
                 _builder.newLineIfNotEmpty();
               }
@@ -525,7 +525,7 @@ public class ResultGenerator {
                 _builder.append("\t");
                 String _name_4 = method.getName();
                 String _pascalize_4 = Strings.pascalize(_name_4);
-                _builder.append(_pascalize_4, "		");
+                _builder.append(_pascalize_4, "\t\t");
                 _builder.append("Result subject = this;");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
@@ -541,19 +541,19 @@ public class ResultGenerator {
                 }
                 EList<Member> _mergeMembers = this.mergeMembers(((ComplexTypeLiteral) _type_5), _literal_1);
                 CharSequence _genReadComplexTypeLiteralForMembers = this.jsonReaderGenerator.genReadComplexTypeLiteralForMembers(_mergeMembers);
-                _builder.append(_genReadComplexTypeLiteralForMembers, "		");
+                _builder.append(_genReadComplexTypeLiteralForMembers, "\t\t");
                 _builder.newLineIfNotEmpty();
               }
             }
             _builder.append("\t");
             CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
-            _builder.append(_generateDeserializationStatementFooter, "	");
+            _builder.append(_generateDeserializationStatementFooter, "\t");
             _builder.newLineIfNotEmpty();
           } else {
             _builder.append("\t");
             BlockType _type_6 = responseBlock.getType();
             CharSequence _generateDeserializationStatementForType = this.generateDeserializationStatementForType(responseBlock, ((Type) _type_6));
-            _builder.append(_generateDeserializationStatementForType, "	");
+            _builder.append(_generateDeserializationStatementForType, "\t");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -669,7 +669,7 @@ public class ResultGenerator {
     _builder.append("\t\t");
     _builder.append("this.value = ");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(type);
-    _builder.append(_boxedTypeSignature, "		");
+    _builder.append(_boxedTypeSignature, "\t\t");
     _builder.append(".valueOf(source);");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(false);
@@ -693,20 +693,20 @@ public class ResultGenerator {
     _builder.append("this.");
     String _signature = ModelExtensions.signature(type);
     String _camelize = Strings.camelize(_signature);
-    _builder.append(_camelize, "		");
+    _builder.append(_camelize, "\t\t");
     _builder.append(" = new ");
     String _signature_1 = ModelExtensions.signature(type);
-    _builder.append(_signature_1, "		");
+    _builder.append(_signature_1, "\t\t");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("provider.get(");
     String _signature_2 = ModelExtensions.signature(type);
-    _builder.append(_signature_2, "		");
+    _builder.append(_signature_2, "\t\t");
     _builder.append(".class).read(reader, this.");
     String _signature_3 = ModelExtensions.signature(type);
     String _camelize_1 = Strings.camelize(_signature_3);
-    _builder.append(_camelize_1, "		");
+    _builder.append(_camelize_1, "\t\t");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
@@ -729,10 +729,10 @@ public class ResultGenerator {
     _builder.append("this.");
     String _signature = ModelExtensions.signature(type);
     String _camelize = Strings.camelize(_signature);
-    _builder.append(_camelize, "		");
+    _builder.append(_camelize, "\t\t");
     _builder.append(" = ");
     String _signature_1 = ModelExtensions.signature(type);
-    _builder.append(_signature_1, "		");
+    _builder.append(_signature_1, "\t\t");
     _builder.append(".fromValue(source);");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(false);
@@ -759,7 +759,7 @@ public class ResultGenerator {
     _builder.append("\t\t");
     _builder.append("this.values = JsonUtil.read");
     String _boxedTypeSignature = ModelExtensions.getBoxedTypeSignature(genericType);
-    _builder.append(_boxedTypeSignature, "		");
+    _builder.append(_boxedTypeSignature, "\t\t");
     _builder.append("List(reader);");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
@@ -788,21 +788,21 @@ public class ResultGenerator {
     String _innerSignature = ModelExtensions.innerSignature(type);
     String _camelize = Strings.camelize(_innerSignature);
     String _pluralize = Strings.pluralize(_camelize);
-    _builder.append(_pluralize, "		");
+    _builder.append(_pluralize, "\t\t");
     _builder.append(" = new ArrayList<");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_1, "		");
+    _builder.append(_innerSignature_1, "\t\t");
     _builder.append(">();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("provider.get(");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_2, "		");
+    _builder.append(_innerSignature_2, "\t\t");
     _builder.append(".class).readList(reader, this.");
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = Strings.camelize(_innerSignature_3);
     String _pluralize_1 = Strings.pluralize(_camelize_1);
-    _builder.append(_pluralize_1, "		");
+    _builder.append(_pluralize_1, "\t\t");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     CharSequence _generateDeserializationStatementFooter = this.generateDeserializationStatementFooter(true);
@@ -827,10 +827,10 @@ public class ResultGenerator {
     String _innerSignature = ModelExtensions.innerSignature(type);
     String _camelize = Strings.camelize(_innerSignature);
     String _pluralize = Strings.pluralize(_camelize);
-    _builder.append(_pluralize, "		");
+    _builder.append(_pluralize, "\t\t");
     _builder.append(" = new Array");
     String _signature = ModelExtensions.signature(type);
-    _builder.append(_signature, "		");
+    _builder.append(_signature, "\t\t");
     _builder.append("();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -850,13 +850,13 @@ public class ResultGenerator {
     _builder.newLine();
     _builder.append("\t\t\t\t");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_1, "				");
+    _builder.append(_innerSignature_1, "\t\t\t\t");
     _builder.append(" element = ");
     String _innerSignature_2 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_2, "				");
+    _builder.append(_innerSignature_2, "\t\t\t\t");
     _builder.append(".fromValue(reader.");
     String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(declaration);
-    _builder.append(_resolveJsonReaderMethodName, "				");
+    _builder.append(_resolveJsonReaderMethodName, "\t\t\t\t");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t");
@@ -864,7 +864,7 @@ public class ResultGenerator {
     String _innerSignature_3 = ModelExtensions.innerSignature(type);
     String _camelize_1 = Strings.camelize(_innerSignature_3);
     String _pluralize_1 = Strings.pluralize(_camelize_1);
-    _builder.append(_pluralize_1, "				");
+    _builder.append(_pluralize_1, "\t\t\t\t");
     _builder.append(".add(element);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");
