@@ -1,36 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>mechanoid-project</artifactId>
-    <groupId>com.robotoworks.mechanoid</groupId>
-    <relativePath>../../pom.xml</relativePath>
-    <version>0.1.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>mechanoid</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <build>
-      <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-        </plugin>
-      </plugins>
-  </build>
-  <dependencies>
-    <dependency>
-		<groupId>com.google.android</groupId>
-		<artifactId>android</artifactId>
-		<version>4.1.1.4</version>
-		<scope>compile</scope>
-	</dependency>
-	<dependency>
-		<groupId>com.google.android</groupId>
-		<artifactId>support-v4</artifactId>
-		<version>r7</version>
-		<scope>compile</scope>
-	</dependency>
-  </dependencies>
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>mechanoid-project</artifactId>
+		<groupId>com.robotoworks.mechanoid</groupId>
+		<relativePath>../../pom.xml</relativePath>
+		<version>0.2.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>mechanoid</artifactId>
+	<version>0.2.2-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<docletArtifact>
+						<groupId>com.google.doclava</groupId>
+						<artifactId>doclava</artifactId>
+						<version>1.0.5</version>
+					</docletArtifact>
+					<doclet>com.google.doclava.Doclava</doclet>
+					<!-- | bootclasspath required by Sun's JVM -->
+					<bootclasspath>${sun.boot.class.path}</bootclasspath>
+					<additionalparam>
+						-quiet
+						-federate Android http://developer.android.com/reference
+						-federationxml Android
+						http://doclava.googlecode.com/svn/static/api/android-10.xml
+						-hdf project.name "Mechanoid Library"
+						-title "Mechanoid Library Documentation"
+						-d ${project.build.directory}/apidocs
+					</additionalparam>
+					<useStandardDocletOptions>false</useStandardDocletOptions>
+					<!-- | Apple's JVM sometimes requires more memory -->
+					<additionalJOption>-J-Xmx1024m</additionalJOption>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>4.1.1.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>r7</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.5.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.5.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>

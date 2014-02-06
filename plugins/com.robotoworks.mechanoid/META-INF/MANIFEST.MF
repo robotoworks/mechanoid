@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.robotoworks.mechanoid
+Bundle-SymbolicName: com.robotoworks.mechanoid
+Bundle-Version: 0.2.2.qualifier
+Bundle-Activator: com.robotoworks.mechanoid.MechanoidPlugin
+Bundle-Vendor: Robotoworks Limited
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.xtext.generator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.robotoworks.mechanoid,
+ com.robotoworks.mechanoid.generator;uses:="org.eclipse.xtext.generator",
+ com.robotoworks.mechanoid.text,
+ com.robotoworks.mechanoid.validation

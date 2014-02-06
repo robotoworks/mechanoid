@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.UserTypeDeclarationImpl#getKeyword <em>Keyword</em>}</li>
- *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.UserTypeDeclarationImpl#isGen <em>Gen</em>}</li>
+ *   <li>{@link com.robotoworks.mechanoid.net.netModel.impl.UserTypeDeclarationImpl#isNogen <em>Nogen</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,24 +48,24 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
   protected String keyword = KEYWORD_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isGen() <em>Gen</em>}' attribute.
+   * The default value of the '{@link #isNogen() <em>Nogen</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isGen()
+   * @see #isNogen()
    * @generated
    * @ordered
    */
-  protected static final boolean GEN_EDEFAULT = false;
+  protected static final boolean NOGEN_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isGen() <em>Gen</em>}' attribute.
+   * The cached value of the '{@link #isNogen() <em>Nogen</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isGen()
+   * @see #isNogen()
    * @generated
    * @ordered
    */
-  protected boolean gen = GEN_EDEFAULT;
+  protected boolean nogen = NOGEN_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +116,9 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isGen()
+  public boolean isNogen()
   {
-    return gen;
+    return nogen;
   }
 
   /**
@@ -126,12 +126,12 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setGen(boolean newGen)
+  public void setNogen(boolean newNogen)
   {
-    boolean oldGen = gen;
-    gen = newGen;
+    boolean oldNogen = nogen;
+    nogen = newNogen;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.USER_TYPE_DECLARATION__GEN, oldGen, gen));
+      eNotify(new ENotificationImpl(this, Notification.SET, NetModelPackage.USER_TYPE_DECLARATION__NOGEN, oldNogen, nogen));
   }
 
   /**
@@ -146,8 +146,8 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
     {
       case NetModelPackage.USER_TYPE_DECLARATION__KEYWORD:
         return getKeyword();
-      case NetModelPackage.USER_TYPE_DECLARATION__GEN:
-        return isGen();
+      case NetModelPackage.USER_TYPE_DECLARATION__NOGEN:
+        return isNogen();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,8 +165,8 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
       case NetModelPackage.USER_TYPE_DECLARATION__KEYWORD:
         setKeyword((String)newValue);
         return;
-      case NetModelPackage.USER_TYPE_DECLARATION__GEN:
-        setGen((Boolean)newValue);
+      case NetModelPackage.USER_TYPE_DECLARATION__NOGEN:
+        setNogen((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,8 +185,8 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
       case NetModelPackage.USER_TYPE_DECLARATION__KEYWORD:
         setKeyword(KEYWORD_EDEFAULT);
         return;
-      case NetModelPackage.USER_TYPE_DECLARATION__GEN:
-        setGen(GEN_EDEFAULT);
+      case NetModelPackage.USER_TYPE_DECLARATION__NOGEN:
+        setNogen(NOGEN_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -204,8 +204,8 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
     {
       case NetModelPackage.USER_TYPE_DECLARATION__KEYWORD:
         return KEYWORD_EDEFAULT == null ? keyword != null : !KEYWORD_EDEFAULT.equals(keyword);
-      case NetModelPackage.USER_TYPE_DECLARATION__GEN:
-        return gen != GEN_EDEFAULT;
+      case NetModelPackage.USER_TYPE_DECLARATION__NOGEN:
+        return nogen != NOGEN_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -223,8 +223,8 @@ public class UserTypeDeclarationImpl extends DeclarationImpl implements UserType
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (keyword: ");
     result.append(keyword);
-    result.append(", gen: ");
-    result.append(gen);
+    result.append(", nogen: ");
+    result.append(nogen);
     result.append(')');
     return result.toString();
   }

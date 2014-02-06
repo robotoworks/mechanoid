@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Robotoworks Mechanoid Standalone
+Bundle-SymbolicName: com.robotoworks.mechanoid.standalone
+Bundle-Version: 0.2.2.qualifier
+Bundle-Vendor: Robotoworks Limited
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.robotoworks.mechanoid.db,
+ com.robotoworks.mechanoid.net,
+ com.robotoworks.mechanoid.ops,
+ com.robotoworks.mechanoid.sharedprefs,
+ org.eclipse.core.resources
+Import-Package: com.robotoworks.mechanoid.validation

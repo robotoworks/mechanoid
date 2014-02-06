@@ -6,13 +6,11 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.BigDecimalExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.common.collect.Lists;
-import com.robotoworks.mechanoid.common.internal.util.Inflector;
 import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
@@ -38,6 +36,7 @@ import com.robotoworks.mechanoid.net.netModel.StringType;
 import com.robotoworks.mechanoid.net.netModel.Type;
 import com.robotoworks.mechanoid.net.netModel.TypedMember;
 import com.robotoworks.mechanoid.net.netModel.UserType;
+import com.robotoworks.mechanoid.text.Strings;
 
 public class ModelExtensions {
 	private static final Set<String> reservedWords = new HashSet<String>();
@@ -96,11 +95,7 @@ public class ModelExtensions {
 		reservedWords.add("super");
 		reservedWords.add("while");
 	}
-	
-	public static String resolveFileName(String packageName, String name) {
-		return packageName.replace(".", "/") + "/" + pascalize(name) + ".java";
-	}
-	
+
 	public static String getBoxedTypeSignature(IntrinsicType type) {
 		if(type instanceof StringType) {
 			return "String";
@@ -152,11 +147,11 @@ public class ModelExtensions {
 	}
 	
 	public static String toJSONPropertyGetMethod(IntrinsicType type){
-		return "get" + pascalize(type.getId());
+		return "get" + Strings.pascalize(type.getId());
 	}
 	
 	public static String toJSONOptPropertyGetMethod(IntrinsicType type){
-		return "opt" + pascalize(type.getId());
+		return "opt" + Strings.pascalize(type.getId());
 	}
 	
 	public static boolean hasBody(HttpMethod method){
@@ -217,7 +212,7 @@ public class ModelExtensions {
 				int idx = members.get(0).getValue();
 				
 				for(int i=0; i < members.size(); i++){
-					builder.append(underscore(members.get(i).getName()).toUpperCase());
+					builder.append(Strings.underscore(members.get(i).getName()).toUpperCase());
 					builder.append("(").append(idx++).append(")");
 					if(i < members.size() - 1){
 						builder.append(", \n");
@@ -228,7 +223,7 @@ public class ModelExtensions {
 			}
 			else if(set.size() == members.size()){
 				for(int i=0; i < members.size(); i++){
-					builder.append(underscore(members.get(i).getName()).toUpperCase());
+					builder.append(Strings.underscore(members.get(i).getName()).toUpperCase());
 					builder.append("(").append(members.get(i).getValue()).append(")");
 					if(i < members.size() - 1){
 						builder.append(", \n");
@@ -238,7 +233,7 @@ public class ModelExtensions {
 				return builder.toString();
 			} else {
 				for(int i=0; i < members.size(); i++){
-					builder.append(underscore(members.get(i).getName()).toUpperCase());
+					builder.append(Strings.underscore(members.get(i).getName()).toUpperCase());
 					builder.append("(").append(i).append(")");
 					if(i < members.size() - 1){
 						builder.append(", \n");
@@ -249,7 +244,7 @@ public class ModelExtensions {
 			}
 		} else {
 			for(int i=0; i < members.size(); i++){
-				builder.append(underscore(members.get(i).getName()).toUpperCase());
+				builder.append(Strings.underscore(members.get(i).getName()).toUpperCase());
 				builder.append("(").append(i).append(")");
 				if(i < members.size() - 1){
 					builder.append(", \n");
@@ -274,26 +269,6 @@ public class ModelExtensions {
 		} else {
 			return "nextString";
 		}
-	}
-	
-	public static String pascalize(String value){
-		return Inflector.getInstance().camelize(value, false);
-	}
-	
-	public static String camelize(String value){
-		return Inflector.getInstance().camelize(value, true);
-	}
-	
-	public static String pluralize(String value){
-		return Inflector.getInstance().pluralize(value);
-	}
-	
-	public static String underscore(String value){
-		// already underscored
-		if(value.matches("[A-Z_]+")){
-			return value;
-		}
-		return Inflector.getInstance().underscore(value);
 	}
 	
 	/**
@@ -385,9 +360,9 @@ public class ModelExtensions {
 		name = spacesToUnderscores(name);
 		
 		if(prefix != null){
-			return prefix + pascalize(name);
+			return prefix + Strings.pascalize(name);
 		} else {
-			return escapeReserved(camelize(name));				
+			return escapeReserved(Strings.camelize(name));				
 		}
 	}
 
@@ -412,9 +387,9 @@ public class ModelExtensions {
 	
 	public static String toReference(String name, boolean getter, String prefix){
 		if(getter){
-			return prefix == null ? "get" + pascalize(name) : prefix + ".get" + pascalize(name) + "()";
+			return prefix == null ? "get" + Strings.pascalize(name) : prefix + ".get" + Strings.pascalize(name) + "()";
 		} else {
-			return prefix == null ? camelize(name) : prefix + "." + camelize(name);
+			return prefix == null ? Strings.camelize(name) : prefix + "." + Strings.camelize(name);
 		}
 	}
 	
@@ -456,7 +431,7 @@ public class ModelExtensions {
 	
 	public static String convertToJavaLiteral(Literal literal) { 
 		if(literal instanceof StringLiteral) {
-			return "\"" + Strings.convertToJavaString(((StringLiteral) literal).getLiteral()) + "\"";
+			return "\"" + org.eclipse.xtext.util.Strings.convertToJavaString(((StringLiteral) literal).getLiteral()) + "\"";
 			
 		} else if(literal instanceof BooleanLiteral) {
 			return ((BooleanLiteral)literal).getLiteral().getLiteral();

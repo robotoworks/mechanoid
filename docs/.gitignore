@@ -1,0 +1,5 @@
+bin
+target
+build
+.DS_Store
+*.pyc

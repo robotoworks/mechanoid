@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'not'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'", "'PendingIntent'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "','", "')'", "'not'", "'unique'", "'.'", "'boolean'", "'String'", "'int'", "'float'", "'double'", "'long'", "'Parcelable'"
     };
     public static final int RULE_ID=4;
     public static final int T__28=28;
@@ -1142,7 +1142,7 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOpArgType"
-    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:489:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) ;
+    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:489:1: ruleOpArgType returns [Enumerator current=null] : ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'double' ) | (enumLiteral_5= 'long' ) | (enumLiteral_6= 'Parcelable' ) ) ;
     public final Enumerator ruleOpArgType() throws RecognitionException {
         Enumerator current = null;
 
@@ -1156,10 +1156,10 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:491:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) ) )
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:491:28: ( ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'double' ) | (enumLiteral_5= 'long' ) | (enumLiteral_6= 'Parcelable' ) ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'double' ) | (enumLiteral_5= 'long' ) | (enumLiteral_6= 'Parcelable' ) )
             {
-            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'long' ) | (enumLiteral_5= 'Parcelable' ) | (enumLiteral_6= 'PendingIntent' ) )
+            // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:492:1: ( (enumLiteral_0= 'boolean' ) | (enumLiteral_1= 'String' ) | (enumLiteral_2= 'int' ) | (enumLiteral_3= 'float' ) | (enumLiteral_4= 'double' ) | (enumLiteral_5= 'long' ) | (enumLiteral_6= 'Parcelable' ) )
             int alt8=7;
             switch ( input.LA(1) ) {
             case 22:
@@ -1274,15 +1274,15 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'long' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'double' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'long' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:8: enumLiteral_4= 'long'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:6: (enumLiteral_4= 'double' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:516:8: enumLiteral_4= 'double'
                     {
                     enumLiteral_4=(Token)match(input,26,FOLLOW_26_in_ruleOpArgType1105); 
 
-                            current = grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-                            newLeafNode(enumLiteral_4, grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); 
+                            current = grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_4, grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); 
                         
 
                     }
@@ -1291,15 +1291,15 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'long' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'Parcelable' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:8: enumLiteral_5= 'Parcelable'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:6: (enumLiteral_5= 'long' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:522:8: enumLiteral_5= 'long'
                     {
                     enumLiteral_5=(Token)match(input,27,FOLLOW_27_in_ruleOpArgType1122); 
 
-                            current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-                            newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
+                            current = grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); 
                         
 
                     }
@@ -1308,15 +1308,15 @@ public class InternalOpServiceModelParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'Parcelable' )
                     {
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'PendingIntent' )
-                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:8: enumLiteral_6= 'PendingIntent'
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:6: (enumLiteral_6= 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops/src-gen/com/robotoworks/mechanoid/ops/parser/antlr/internal/InternalOpServiceModel.g:528:8: enumLiteral_6= 'Parcelable'
                     {
                     enumLiteral_6=(Token)match(input,28,FOLLOW_28_in_ruleOpArgType1139); 
 
-                            current = grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-                            newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
+                            current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); 
                         
 
                     }

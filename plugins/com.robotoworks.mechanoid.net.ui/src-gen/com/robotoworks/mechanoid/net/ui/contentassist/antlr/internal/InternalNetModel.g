@@ -3769,9 +3769,9 @@ rule__ComplexTypeDeclaration__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getComplexTypeDeclarationAccess().getGenAssignment_1()); }
-(rule__ComplexTypeDeclaration__GenAssignment_1)?
-{ after(grammarAccess.getComplexTypeDeclarationAccess().getGenAssignment_1()); }
+{ before(grammarAccess.getComplexTypeDeclarationAccess().getNogenAssignment_1()); }
+(rule__ComplexTypeDeclaration__NogenAssignment_1)?
+{ after(grammarAccess.getComplexTypeDeclarationAccess().getNogenAssignment_1()); }
 )
 
 ;
@@ -3892,9 +3892,9 @@ rule__EnumTypeDeclaration__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getEnumTypeDeclarationAccess().getGenAssignment_1()); }
-(rule__EnumTypeDeclaration__GenAssignment_1)?
-{ after(grammarAccess.getEnumTypeDeclarationAccess().getGenAssignment_1()); }
+{ before(grammarAccess.getEnumTypeDeclarationAccess().getNogenAssignment_1()); }
+(rule__EnumTypeDeclaration__NogenAssignment_1)?
+{ after(grammarAccess.getEnumTypeDeclarationAccess().getNogenAssignment_1()); }
 )
 
 ;
@@ -5305,22 +5305,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ComplexTypeDeclaration__GenAssignment_1
+rule__ComplexTypeDeclaration__NogenAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 (
-{ before(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 
-	'generate' 
+	'nogen' 
 
-{ after(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ after(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 )
 
-{ after(grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ after(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 )
 
 ;
@@ -5381,22 +5381,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EnumTypeDeclaration__GenAssignment_1
+rule__EnumTypeDeclaration__NogenAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 (
-{ before(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 
-	'generate' 
+	'nogen' 
 
-{ after(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ after(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 )
 
-{ after(grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0()); }
+{ after(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); }
 )
 
 ;

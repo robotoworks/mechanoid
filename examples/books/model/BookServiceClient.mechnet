@@ -1,0 +1,46 @@
+package com.robotoworks.example.books.net
+
+entity Book {
+	id:long,
+	title:String,
+	description:String
+}
+
+client BookServiceClient "http://books.example.com" {
+	params api_token:String
+	
+	get getBooks /books {
+		params offset:int, limit:int=100
+		response Book[]
+	}
+	
+	get getBook /books/id:long {
+		response Book
+	}
+	
+	put updateBook /books {
+		body Book
+		response {
+			success:boolean,
+			status_message:String
+		}
+
+	}
+	
+	post createBook /books {
+		body Book
+		response {
+			success:boolean,
+			status_message:String,
+			book_id:int
+		}
+
+	}
+	
+	delete deleteBook /books/id:long {
+		response {
+			success:boolean,
+			status_message:String
+		}
+	}
+}

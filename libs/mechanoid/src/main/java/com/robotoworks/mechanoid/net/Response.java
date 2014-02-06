@@ -1,3 +1,17 @@
+/*
+ * Copyright 2013 Robotoworks Limited
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.robotoworks.mechanoid.net;
 
 import java.io.ByteArrayInputStream;
@@ -9,6 +23,13 @@ import java.util.Map;
 
 import com.robotoworks.mechanoid.util.Streams;
 
+/**
+ * <p>A Mechanoid Net response that captures the HTTP response code and headers of a HTTP response.</p>
+ * <p>The response defers parsing from the stream until {@link #parse()} is called, this allows examination
+ * of the response code before reading the stream in case of an unexpected response code.</p>
+ * 
+ * @param <T> A result representing that which will be parsed when {@link #parse()} is called.
+ */
 public class Response<T> {
 	public static final int HTTP_INVALID = -1;
     public static final int HTTP_ACCEPTED = 202;
@@ -85,7 +106,7 @@ public class Response<T> {
 	 * on the response code to ensure its of a certain code before continuing</p>
 	 */
 	public void checkResponseCode(int responseCode) throws UnexpectedHttpStatusException {
-		if(mResponseCode != HTTP_OK) {
+		if(mResponseCode != responseCode) {
 			throw new UnexpectedHttpStatusException(mResponseCode, HTTP_OK);
 		}
 	}
@@ -142,11 +163,13 @@ public class Response<T> {
 	}
 
 	private InputStream getInputStream() throws IOException {
-		if(mResponseCode == 200) {
-			return mConn.getInputStream();
-		} else {
-			return mConn.getErrorStream();
-		}
+		// error stream is available only if there was a connection with the 
+		// server, the server returned an error and also returned some usefull 
+		// data. Example being status 404 with page to search for content.
+		InputStream stream = mConn.getErrorStream();
+		if (stream != null)
+			return stream;
+		return mConn.getInputStream();
 	}
 	
 	/**

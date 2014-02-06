@@ -1,2 +1,4 @@
 bin
 target
+.launch
+.DS_Store

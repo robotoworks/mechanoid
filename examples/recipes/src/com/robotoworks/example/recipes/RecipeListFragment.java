@@ -1,7 +1,7 @@
 package com.robotoworks.example.recipes;
 
-import com.robotoworks.examples.recipes.content.RecipesDBContract.Recipes;
-import com.robotoworks.mechanoid.sqlite.SQuery;
+import com.robotoworks.example.recipes.content.RecipesDBContract.Recipes;
+import com.robotoworks.mechanoid.db.SQuery;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -34,8 +34,8 @@ public class RecipeListFragment extends ListFragment {
                         Recipes.DESCRIPTION
                     }, 
                     new int[] {
-                        R.id.recipe_title,
-                        R.id.recipe_description
+                        R.id.title,
+                        R.id.description
                     }, 0);
         }
     }

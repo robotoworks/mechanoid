@@ -31,7 +31,7 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
   {
     try
     {
-      SharedPreferencesModelFactory theSharedPreferencesModelFactory = (SharedPreferencesModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.robotoworks.com/mechanoid/sharedprefs/SharedPreferencesModel"); 
+      SharedPreferencesModelFactory theSharedPreferencesModelFactory = (SharedPreferencesModelFactory)EPackage.Registry.INSTANCE.getEFactory(SharedPreferencesModelPackage.eNS_URI);
       if (theSharedPreferencesModelFactory != null)
       {
         return theSharedPreferencesModelFactory;
@@ -68,6 +68,10 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
       case SharedPreferencesModelPackage.MODEL: return createModel();
       case SharedPreferencesModelPackage.PREFERENCES_BLOCK: return createPreferencesBlock();
       case SharedPreferencesModelPackage.PREFERENCE: return createPreference();
+      case SharedPreferencesModelPackage.LITERAL: return createLiteral();
+      case SharedPreferencesModelPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
+      case SharedPreferencesModelPackage.STRING_LITERAL: return createStringLiteral();
+      case SharedPreferencesModelPackage.NUMERIC_LITERAL: return createNumericLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -85,6 +89,8 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
     {
       case SharedPreferencesModelPackage.PREFERENCE_TYPE:
         return createPreferenceTypeFromString(eDataType, initialValue);
+      case SharedPreferencesModelPackage.BOOLEAN_VALUE:
+        return createBooleanValueFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -102,6 +108,8 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
     {
       case SharedPreferencesModelPackage.PREFERENCE_TYPE:
         return convertPreferenceTypeToString(eDataType, instanceValue);
+      case SharedPreferencesModelPackage.BOOLEAN_VALUE:
+        return convertBooleanValueToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -145,6 +153,50 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
    * <!-- end-user-doc -->
    * @generated
    */
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NumericLiteral createNumericLiteral()
+  {
+    NumericLiteralImpl numericLiteral = new NumericLiteralImpl();
+    return numericLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PreferenceType createPreferenceTypeFromString(EDataType eDataType, String initialValue)
   {
     PreferenceType result = PreferenceType.get(initialValue);
@@ -158,6 +210,28 @@ public class SharedPreferencesModelFactoryImpl extends EFactoryImpl implements S
    * @generated
    */
   public String convertPreferenceTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanValue createBooleanValueFromString(EDataType eDataType, String initialValue)
+  {
+    BooleanValue result = BooleanValue.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBooleanValueToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

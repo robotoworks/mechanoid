@@ -1,6 +1,13 @@
 package com.robotoworks.mechanoid.sharedprefs.generator;
 
+import org.eclipse.xtext.util.Strings;
+
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.BooleanLiteral;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Literal;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.NumericLiteral;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.Preference;
 import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.PreferenceType;
+import com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.StringLiteral;
 
 public class Extensions {
 	public static String toTypeLiteral(PreferenceType type) {
@@ -17,6 +24,26 @@ public class Extensions {
 			return "String";
 		}
 		return "";
+	}
+
+	public static String toDefaultValue(Preference pref) {
+		Literal lit = pref.getDefaultValue();
+		if(lit != null) {
+			if(lit instanceof StringLiteral) {
+				return "\"" + Strings.convertToJavaString(((StringLiteral)lit).getLiteral()) + "\"";
+			} else if(lit instanceof BooleanLiteral) {
+				return ((BooleanLiteral)lit).getLiteral().toString();
+			} else if(lit instanceof NumericLiteral) {
+				float v = ((NumericLiteral)lit).getLiteral().floatValue();
+				if((v - Math.floor(v))  > 0) {
+				    return String.valueOf(v) + "f";
+				} else {
+				    return String.valueOf((int)v);
+				}
+			}
+		} 
+		
+		return getDefaultValue(pref.getType());
 	}
 
 	public static String getDefaultValue(PreferenceType type) {

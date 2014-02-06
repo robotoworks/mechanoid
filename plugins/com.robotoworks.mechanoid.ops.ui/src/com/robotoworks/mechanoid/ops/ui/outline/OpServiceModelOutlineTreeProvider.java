@@ -5,10 +5,14 @@ package com.robotoworks.mechanoid.ops.ui.outline;
 
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
+import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
+
 /**
  * customization of the default outline structure
  * 
  */
 public class OpServiceModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
-	
+	protected boolean _isLeaf(Operation modelElement) {
+	    return true;
+	}
 }

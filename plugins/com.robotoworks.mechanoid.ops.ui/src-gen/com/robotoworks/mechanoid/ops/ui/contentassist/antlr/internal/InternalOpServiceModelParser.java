@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOpServiceModelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'boolean'", "'String'", "'int'", "'float'", "'long'", "'Parcelable'", "'PendingIntent'", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "')'", "','", "'not'", "'unique'", "'.'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'boolean'", "'String'", "'int'", "'float'", "'double'", "'long'", "'Parcelable'", "'package'", "'service'", "'{'", "'}'", "'operation'", "'('", "')'", "','", "'not'", "'unique'", "'.'"
     };
     public static final int RULE_ID=4;
     public static final int T__28=28;
@@ -689,13 +689,13 @@ public class InternalOpServiceModelParser extends AbstractInternalContentAssistP
 
 
     // $ANTLR start "rule__OpArgType__Alternatives"
-    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:269:1: rule__OpArgType__Alternatives : ( ( ( 'boolean' ) ) | ( ( 'String' ) ) | ( ( 'int' ) ) | ( ( 'float' ) ) | ( ( 'long' ) ) | ( ( 'Parcelable' ) ) | ( ( 'PendingIntent' ) ) );
+    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:269:1: rule__OpArgType__Alternatives : ( ( ( 'boolean' ) ) | ( ( 'String' ) ) | ( ( 'int' ) ) | ( ( 'float' ) ) | ( ( 'double' ) ) | ( ( 'long' ) ) | ( ( 'Parcelable' ) ) );
     public final void rule__OpArgType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:273:1: ( ( ( 'boolean' ) ) | ( ( 'String' ) ) | ( ( 'int' ) ) | ( ( 'float' ) ) | ( ( 'long' ) ) | ( ( 'Parcelable' ) ) | ( ( 'PendingIntent' ) ) )
+            // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:273:1: ( ( ( 'boolean' ) ) | ( ( 'String' ) ) | ( ( 'int' ) ) | ( ( 'float' ) ) | ( ( 'double' ) ) | ( ( 'long' ) ) | ( ( 'Parcelable' ) ) )
             int alt2=7;
             switch ( input.LA(1) ) {
             case 11:
@@ -826,20 +826,20 @@ public class InternalOpServiceModelParser extends AbstractInternalContentAssistP
                     }
                     break;
                 case 5 :
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:302:6: ( ( 'long' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:302:6: ( ( 'double' ) )
                     {
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:302:6: ( ( 'long' ) )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:303:1: ( 'long' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:302:6: ( ( 'double' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:303:1: ( 'double' )
                     {
-                     before(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); 
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:304:1: ( 'long' )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:304:3: 'long'
+                     before(grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); 
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:304:1: ( 'double' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:304:3: 'double'
                     {
                     match(input,15,FOLLOW_15_in_rule__OpArgType__Alternatives602); 
 
                     }
 
-                     after(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); 
+                     after(grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); 
 
                     }
 
@@ -847,20 +847,20 @@ public class InternalOpServiceModelParser extends AbstractInternalContentAssistP
                     }
                     break;
                 case 6 :
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:309:6: ( ( 'Parcelable' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:309:6: ( ( 'long' ) )
                     {
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:309:6: ( ( 'Parcelable' ) )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:310:1: ( 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:309:6: ( ( 'long' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:310:1: ( 'long' )
                     {
-                     before(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:311:1: ( 'Parcelable' )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:311:3: 'Parcelable'
+                     before(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); 
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:311:1: ( 'long' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:311:3: 'long'
                     {
                     match(input,16,FOLLOW_16_in_rule__OpArgType__Alternatives623); 
 
                     }
 
-                     after(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
+                     after(grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); 
 
                     }
 
@@ -868,20 +868,20 @@ public class InternalOpServiceModelParser extends AbstractInternalContentAssistP
                     }
                     break;
                 case 7 :
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:316:6: ( ( 'PendingIntent' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:316:6: ( ( 'Parcelable' ) )
                     {
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:316:6: ( ( 'PendingIntent' ) )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:317:1: ( 'PendingIntent' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:316:6: ( ( 'Parcelable' ) )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:317:1: ( 'Parcelable' )
                     {
-                     before(grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:318:1: ( 'PendingIntent' )
-                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:318:3: 'PendingIntent'
+                     before(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); 
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:318:1: ( 'Parcelable' )
+                    // ../com.robotoworks.mechanoid.ops.ui/src-gen/com/robotoworks/mechanoid/ops/ui/contentassist/antlr/internal/InternalOpServiceModel.g:318:3: 'Parcelable'
                     {
                     match(input,17,FOLLOW_17_in_rule__OpArgType__Alternatives644); 
 
                     }
 
-                     after(grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
+                     after(grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); 
 
                     }
 

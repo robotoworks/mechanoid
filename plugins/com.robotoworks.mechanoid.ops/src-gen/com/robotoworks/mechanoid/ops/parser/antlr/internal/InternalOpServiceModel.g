@@ -513,22 +513,22 @@ ruleOpArgType returns [Enumerator current=null]
         newLeafNode(enumLiteral_3, grammarAccess.getOpArgTypeAccess().getFloatEnumLiteralDeclaration_3()); 
     }
 )
-    |(	enumLiteral_4='long' 
+    |(	enumLiteral_4='double' 
 	{
-        $current = grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_4, grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_4()); 
+        $current = grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getOpArgTypeAccess().getDoubleEnumLiteralDeclaration_4()); 
     }
 )
-    |(	enumLiteral_5='Parcelable' 
+    |(	enumLiteral_5='long' 
 	{
-        $current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_5()); 
+        $current = grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_5, grammarAccess.getOpArgTypeAccess().getLongEnumLiteralDeclaration_5()); 
     }
 )
-    |(	enumLiteral_6='PendingIntent' 
+    |(	enumLiteral_6='Parcelable' 
 	{
-        $current = grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getPendingIntentEnumLiteralDeclaration_6()); 
+        $current = grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_6, grammarAccess.getOpArgTypeAccess().getParcelableEnumLiteralDeclaration_6()); 
     }
 ));
 

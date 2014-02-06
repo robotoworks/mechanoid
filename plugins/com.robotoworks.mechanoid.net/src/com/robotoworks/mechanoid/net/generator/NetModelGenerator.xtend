@@ -3,18 +3,103 @@
  */
 package com.robotoworks.mechanoid.net.generator
 
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
 import com.google.inject.Inject
+import com.robotoworks.mechanoid.net.netModel.Client
+import com.robotoworks.mechanoid.net.netModel.HttpMethod
 import com.robotoworks.mechanoid.net.netModel.Model
-import com.robotoworks.mechanoid.net.generator.strategy.CodeGenerationStrategyFactory
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+
+import static extension com.robotoworks.mechanoid.text.Strings.*
+import com.robotoworks.mechanoid.net.netModel.ComplexTypeDeclaration
+import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration
+import com.google.inject.Provider
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider
 
 class NetModelGenerator implements IGenerator {
-	@Inject CodeGenerationStrategyFactory codeGenerationStrategyFactory
-	@Inject CodeGenerationContext codeGenContext
+	@Inject Provider<ClientGenerator> mClientGenerator
+	@Inject Provider<RequestGenerator> mRequestGenerator
+	@Inject Provider<ResultGenerator> mResultGenerator	
+	@Inject Provider<EntityReaderGenerator> mEntityReaderGenerator
+	@Inject Provider<EntityWriterGenerator> mEntityWriterGenerator
+	@Inject Provider<EntityGenerator> mEntityGenerator
+	@Inject Provider<IntegerEnumTypeGenerator> mIntEnumGenerator
+	@Inject Provider<StringEnumTypeGenerator> mStringEnumGenerator
+	@Inject Provider<EntityReaderProviderGenerator> mEntityReaderProviderGenerator
+	@Inject Provider<EntityWriterProviderGenerator> mEntityWriterProviderGenerator
+	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		var strategy = codeGenerationStrategyFactory.create(codeGenContext, null);
-		strategy.generate(fsa, resource.contents.head as Model);
+		
+		val model = resource.contents.head as Model;
+		
+		model.declarations.forEach[generate(model, fsa)]
+	}
+	
+	def dispatch generate(Client client, Model model, IFileSystemAccess fsa) {
+		fsa.generateFile(
+			model.packageName.resolveFileName("Abstract" + client.name), 
+			mClientGenerator.get.generate(client, model)
+		)
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName(client.name), 
+			MechanoidOutputConfigurationProvider::DEFAULT_STUB_OUTPUT,
+			mClientGenerator.get.generateStub(client, model)
+		);
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName("Default" + client.name.pascalize.concat("ReaderProvider")), 
+			mEntityReaderProviderGenerator.get.generate(client, model)
+		)
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName("Default" + client.name.pascalize.concat("WriterProvider")), 
+			mEntityWriterProviderGenerator.get.generate(client, model)
+		)
+		
+		client.blocks.filter(typeof(HttpMethod)).forEach[method|
+			fsa.generateFile(
+				model.packageName.resolveFileName(method.name.pascalize.concat("Request")), 
+				mRequestGenerator.get.generate(method, model, client)
+			)
+			fsa.generateFile(
+				model.packageName.resolveFileName(method.name.pascalize.concat("Result")), 
+				mResultGenerator.get.generate(method, model, client)
+			)
+		]		
+	}
+	
+	def dispatch generate(ComplexTypeDeclaration entity, Model model, IFileSystemAccess fsa) {
+		fsa.generateFile(
+			model.packageName.resolveFileName(entity.name.pascalize.concat("Reader")), 
+			mEntityReaderGenerator.get.generate(entity, model)
+		)		
+		
+		fsa.generateFile(
+			model.packageName.resolveFileName(entity.name.pascalize.concat("Writer")), 
+			mEntityWriterGenerator.get.generate(entity, model)
+		)	
+ 
+		fsa.generateFile(
+			model.packageName.resolveFileName(entity.name.pascalize), 
+			mEntityGenerator.get.generate(entity, model)
+		)		
+	}
+	
+	def dispatch generate(EnumTypeDeclaration type, Model model, IFileSystemAccess fsa) {
+		if(!type.nogen) {
+			if(type.superType != null) {
+				fsa.generateFile(
+					model.packageName.resolveFileName(type.name.pascalize), 
+					mIntEnumGenerator.get.generate(type, model)
+				)					
+			} else {
+				fsa.generateFile(
+					model.packageName.resolveFileName(type.name.pascalize), 
+					mStringEnumGenerator.get.generate(type, model)
+				)					
+			}
+		}
 	}
 }

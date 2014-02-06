@@ -6,7 +6,7 @@ package com.robotoworks.mechanoid.net;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 
 import com.google.inject.Binder;
-import com.robotoworks.mechanoid.common.xtext.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.

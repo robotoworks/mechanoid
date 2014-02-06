@@ -4,7 +4,7 @@
     editorDirectory="/com.robotoworks.mechanoid.ops.editor/src" modelPluginID="com.robotoworks.mechanoid.ops"
     forceOverwrite="true" modelName="OpServiceModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.ops.edit"
-    editorPluginID="com.robotoworks.mechanoid.ops.editor" runtimeVersion="2.8">
+    editorPluginID="com.robotoworks.mechanoid.ops.editor" runtimeVersion="2.9">
   <genPackages prefix="OpServiceModel" basePackage="com.robotoworks.mechanoid.ops"
       disposableProviderFactory="true" ecorePackage="OpServiceModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="OpServiceModel.ecore#//OpArgType">
@@ -12,9 +12,9 @@
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/String"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Integer"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Double"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Long"/>
       <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/Parcelable"/>
-      <genEnumLiterals ecoreEnumLiteral="OpServiceModel.ecore#//OpArgType/PendingIntent"/>
     </genEnums>
     <genClasses ecoreClass="OpServiceModel.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OpServiceModel.ecore#//Model/packageName"/>

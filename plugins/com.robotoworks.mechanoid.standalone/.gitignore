@@ -1,0 +1,4 @@
+bin
+target
+.launch
+dependency-reduced-pom.xml

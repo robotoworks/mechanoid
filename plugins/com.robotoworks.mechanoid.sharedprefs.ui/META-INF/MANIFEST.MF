@@ -2,24 +2,29 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid.sharedprefs.ui
 Bundle-Vendor: Robotoworks Limited
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.2.2.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.sharedprefs.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.robotoworks.mechanoid.sharedprefs;visibility:=reexport,
  org.eclipse.xtext.ui,
- org.eclipse.ui.editors;bundle-version="3.5.0",
- org.eclipse.ui.ide;bundle-version="3.5.0",
  org.eclipse.xtext.ui.shared,
- org.eclipse.ui,
  org.eclipse.xtext.builder,
- org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- com.robotoworks.mechanoid.common
-Import-Package: org.apache.log4j
+ org.eclipse.ui.editors,
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.eclipse.jdt;bundle-version="3.8.0",
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ com.robotoworks.mechanoid.ui
+Import-Package: com.robotoworks.mechanoid.ui.builder,
+ com.robotoworks.mechanoid.ui.quickfix,
+ com.robotoworks.mechanoid.ui.wizard,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.robotoworks.mechanoid.sharedprefs.ui.contentassist,
  com.robotoworks.mechanoid.sharedprefs.ui.contentassist.antlr,
- com.robotoworks.mechanoid.sharedprefs.ui.internal
+ com.robotoworks.mechanoid.sharedprefs.ui.internal,
+ com.robotoworks.mechanoid.sharedprefs.ui.quickfix
 Bundle-Activator: com.robotoworks.mechanoid.sharedprefs.ui.internal.SharedPreferencesModelActivator

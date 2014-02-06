@@ -2,25 +2,23 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid.net
 Bundle-Vendor: My Company
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.2.2.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.net; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
- org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
- org.eclipse.emf.codegen.ecore;resolution:=optional,
- org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4",
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
  org.antlr.runtime,
- org.eclipse.xtext.common.types,
- org.eclipse.jdt.core;bundle-version="3.8.2"
-Import-Package: com.robotoworks.mechanoid.common.internal.util,
- com.robotoworks.mechanoid.common.util,
- com.robotoworks.mechanoid.common.xtext.generator,
+ org.eclipse.xtext.common.types
+Import-Package: com.robotoworks.mechanoid,
+ com.robotoworks.mechanoid.generator,
+ com.robotoworks.mechanoid.text,
+ com.robotoworks.mechanoid.validation,
  org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

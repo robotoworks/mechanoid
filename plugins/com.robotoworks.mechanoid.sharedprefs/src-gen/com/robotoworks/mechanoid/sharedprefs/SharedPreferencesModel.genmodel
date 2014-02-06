@@ -5,7 +5,7 @@
     modelPluginID="com.robotoworks.mechanoid.sharedprefs" forceOverwrite="true" modelName="SharedPreferencesModel"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.sharedprefs.edit"
-    editorPluginID="com.robotoworks.mechanoid.sharedprefs.editor" runtimeVersion="2.8">
+    editorPluginID="com.robotoworks.mechanoid.sharedprefs.editor" runtimeVersion="2.9">
   <genPackages prefix="SharedPreferencesModel" basePackage="com.robotoworks.mechanoid.sharedprefs"
       disposableProviderFactory="true" ecorePackage="SharedPreferencesModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SharedPreferencesModel.ecore#//PreferenceType">
@@ -14,6 +14,10 @@
       <genEnumLiterals ecoreEnumLiteral="SharedPreferencesModel.ecore#//PreferenceType/Boolean"/>
       <genEnumLiterals ecoreEnumLiteral="SharedPreferencesModel.ecore#//PreferenceType/Float"/>
       <genEnumLiterals ecoreEnumLiteral="SharedPreferencesModel.ecore#//PreferenceType/Long"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SharedPreferencesModel.ecore#//BooleanValue">
+      <genEnumLiterals ecoreEnumLiteral="SharedPreferencesModel.ecore#//BooleanValue/true"/>
+      <genEnumLiterals ecoreEnumLiteral="SharedPreferencesModel.ecore#//BooleanValue/false"/>
     </genEnums>
     <genClasses ecoreClass="SharedPreferencesModel.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//Model/packageName"/>
@@ -26,6 +30,17 @@
     <genClasses ecoreClass="SharedPreferencesModel.ecore#//Preference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//Preference/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//Preference/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SharedPreferencesModel.ecore#//Preference/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="SharedPreferencesModel.ecore#//Literal"/>
+    <genClasses ecoreClass="SharedPreferencesModel.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//BooleanLiteral/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="SharedPreferencesModel.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//StringLiteral/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="SharedPreferencesModel.ecore#//NumericLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SharedPreferencesModel.ecore#//NumericLiteral/literal"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

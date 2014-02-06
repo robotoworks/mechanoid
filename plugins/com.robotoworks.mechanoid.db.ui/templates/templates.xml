@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template id="TABLE" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.CreateTableStatement" deleted="false" description="Create a table" enabled="true" name="Table">create table ${name} (
+	${cursor}
+);</template>
+<template id="VIEW" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.CreateViewStatement" deleted="false" description="Create a view" enabled="true" name="View">create view ${name} as 
+    ${cursor}
+</template>
+<template id="PKID" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Add a PK column" enabled="true" name="Primary Key">${name} integer primary key primary key${cursor}</template>
+<template id="COL_TEXT" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Add a text column" enabled="true" name="Text Column">${name} text${cursor}</template>
+<template id="COL_BOOLEAN" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Add a boolean column" enabled="true" name="Boolean Column">${name} boolean${cursor}</template>
+<template id="COL_REAL" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Add a real column" enabled="true" name="Real Column">${name} real${cursor}</template>
+<template id="COL_BLOB" autoinsert="true" context="com.robotoworks.mechanoid.db.SqliteModel.ColumnDef" deleted="false" description="Add a blob column" enabled="true" name="Blob Column">${name} blob${cursor}</template>
+</templates>

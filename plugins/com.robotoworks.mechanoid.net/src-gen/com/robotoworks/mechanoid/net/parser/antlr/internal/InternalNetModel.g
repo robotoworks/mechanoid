@@ -1603,16 +1603,16 @@ ruleComplexTypeDeclaration returns [EObject current=null]
 )
 )(
 (
-		lv_gen_1_0=	'generate' 
+		lv_nogen_1_0=	'nogen' 
     {
-        newLeafNode(lv_gen_1_0, grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0());
+        newLeafNode(lv_nogen_1_0, grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getComplexTypeDeclarationRule());
 	        }
-       		setWithLastConsumed($current, "gen", true, "generate");
+       		setWithLastConsumed($current, "nogen", true, "nogen");
 	    }
 
 )
@@ -1690,16 +1690,16 @@ ruleEnumTypeDeclaration returns [EObject current=null]
 )
 )(
 (
-		lv_gen_1_0=	'generate' 
+		lv_nogen_1_0=	'nogen' 
     {
-        newLeafNode(lv_gen_1_0, grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0());
+        newLeafNode(lv_nogen_1_0, grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getEnumTypeDeclarationRule());
 	        }
-       		setWithLastConsumed($current, "gen", true, "generate");
+       		setWithLastConsumed($current, "nogen", true, "nogen");
 	    }
 
 )

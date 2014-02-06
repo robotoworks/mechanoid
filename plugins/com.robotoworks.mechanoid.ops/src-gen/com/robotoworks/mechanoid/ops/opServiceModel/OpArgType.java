@@ -60,6 +60,16 @@ public enum OpArgType implements Enumerator
   FLOAT(3, "Float", "float"),
 
   /**
+   * The '<em><b>Double</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #DOUBLE_VALUE
+   * @generated
+   * @ordered
+   */
+  DOUBLE(4, "Double", "double"),
+
+  /**
    * The '<em><b>Long</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,7 +77,7 @@ public enum OpArgType implements Enumerator
    * @generated
    * @ordered
    */
-  LONG(4, "Long", "long"),
+  LONG(5, "Long", "long"),
 
   /**
    * The '<em><b>Parcelable</b></em>' literal object.
@@ -77,17 +87,7 @@ public enum OpArgType implements Enumerator
    * @generated
    * @ordered
    */
-  PARCELABLE(5, "Parcelable", "Parcelable"),
-
-  /**
-   * The '<em><b>Pending Intent</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #PENDING_INTENT_VALUE
-   * @generated
-   * @ordered
-   */
-  PENDING_INTENT(6, "PendingIntent", "PendingIntent");
+  PARCELABLE(6, "Parcelable", "Parcelable");
 
   /**
    * The '<em><b>Boolean</b></em>' literal value.
@@ -150,6 +150,21 @@ public enum OpArgType implements Enumerator
   public static final int FLOAT_VALUE = 3;
 
   /**
+   * The '<em><b>Double</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Double</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #DOUBLE
+   * @model name="Double" literal="double"
+   * @generated
+   * @ordered
+   */
+  public static final int DOUBLE_VALUE = 4;
+
+  /**
    * The '<em><b>Long</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
@@ -162,7 +177,7 @@ public enum OpArgType implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int LONG_VALUE = 4;
+  public static final int LONG_VALUE = 5;
 
   /**
    * The '<em><b>Parcelable</b></em>' literal value.
@@ -177,22 +192,7 @@ public enum OpArgType implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int PARCELABLE_VALUE = 5;
-
-  /**
-   * The '<em><b>Pending Intent</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>Pending Intent</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @see #PENDING_INTENT
-   * @model name="PendingIntent"
-   * @generated
-   * @ordered
-   */
-  public static final int PENDING_INTENT_VALUE = 6;
+  public static final int PARCELABLE_VALUE = 6;
 
   /**
    * An array of all the '<em><b>Op Arg Type</b></em>' enumerators.
@@ -207,9 +207,9 @@ public enum OpArgType implements Enumerator
       STRING,
       INTEGER,
       FLOAT,
+      DOUBLE,
       LONG,
       PARCELABLE,
-      PENDING_INTENT,
     };
 
   /**
@@ -272,9 +272,9 @@ public enum OpArgType implements Enumerator
       case STRING_VALUE: return STRING;
       case INTEGER_VALUE: return INTEGER;
       case FLOAT_VALUE: return FLOAT;
+      case DOUBLE_VALUE: return DOUBLE;
       case LONG_VALUE: return LONG;
       case PARCELABLE_VALUE: return PARCELABLE;
-      case PENDING_INTENT_VALUE: return PENDING_INTENT;
     }
     return null;
   }

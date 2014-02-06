@@ -5,12 +5,13 @@ package com.robotoworks.mechanoid.net.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
 import com.google.inject.Binder;
-import com.robotoworks.mechanoid.common.MechanoidBuilderParticipant;
 import com.robotoworks.mechanoid.net.ui.editor.syntaxcoloring.MechNetSemanticHighlightingCalculator;
+import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
+import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -29,5 +30,10 @@ public class NetModelUiModule extends com.robotoworks.mechanoid.net.ui.AbstractN
 	@Override
 	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
 		return MechanoidBuilderParticipant.class;
+	}
+	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+	    return MechanoidXtextAddingEditorCallback.class;
 	}
 }

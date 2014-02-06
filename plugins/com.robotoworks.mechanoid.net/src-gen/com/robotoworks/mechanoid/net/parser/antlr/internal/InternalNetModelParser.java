@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalNetModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'client'", "'{'", "'}'", "'headers'", "','", "':'", "'/'", "'-'", "'params'", "'='", "'body'", "'response'", "'extends'", "'[]'", "'entity'", "'generate'", "'enum'", "'String'", "'boolean'", "'int'", "'long'", "'double'", "'.'", "'get'", "'put'", "'post'", "'delete'", "'true'", "'false'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'client'", "'{'", "'}'", "'headers'", "','", "':'", "'/'", "'-'", "'params'", "'='", "'body'", "'response'", "'extends'", "'[]'", "'entity'", "'nogen'", "'enum'", "'String'", "'boolean'", "'int'", "'long'", "'double'", "'.'", "'get'", "'put'", "'post'", "'delete'", "'true'", "'false'"
     };
     public static final int RULE_ID=4;
     public static final int T__40=40;
@@ -4153,12 +4153,12 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComplexTypeDeclaration"
-    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1585:1: ruleComplexTypeDeclaration returns [EObject current=null] : ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? ) ;
+    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1585:1: ruleComplexTypeDeclaration returns [EObject current=null] : ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? ) ;
     public final EObject ruleComplexTypeDeclaration() throws RecognitionException {
         EObject current = null;
 
         Token lv_keyword_0_0=null;
-        Token lv_gen_1_0=null;
+        Token lv_nogen_1_0=null;
         Token lv_name_2_0=null;
         EObject lv_literal_3_0 = null;
 
@@ -4166,11 +4166,11 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1588:28: ( ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? ) )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:1: ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1588:28: ( ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:1: ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? )
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:1: ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:2: ( (lv_keyword_0_0= 'entity' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:1: ( ( (lv_keyword_0_0= 'entity' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )? )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:2: ( (lv_keyword_0_0= 'entity' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) ( (lv_literal_3_0= ruleComplexTypeLiteral ) )?
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1589:2: ( (lv_keyword_0_0= 'entity' ) )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1590:1: (lv_keyword_0_0= 'entity' )
@@ -4194,7 +4194,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1604:2: ( (lv_gen_1_0= 'generate' ) )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1604:2: ( (lv_nogen_1_0= 'nogen' ) )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -4203,20 +4203,20 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt27) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1605:1: (lv_gen_1_0= 'generate' )
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1605:1: (lv_nogen_1_0= 'nogen' )
                     {
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1605:1: (lv_gen_1_0= 'generate' )
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1606:3: lv_gen_1_0= 'generate'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1605:1: (lv_nogen_1_0= 'nogen' )
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1606:3: lv_nogen_1_0= 'nogen'
                     {
-                    lv_gen_1_0=(Token)match(input,28,FOLLOW_28_in_ruleComplexTypeDeclaration3578); 
+                    lv_nogen_1_0=(Token)match(input,28,FOLLOW_28_in_ruleComplexTypeDeclaration3578); 
 
-                            newLeafNode(lv_gen_1_0, grammarAccess.getComplexTypeDeclarationAccess().getGenGenerateKeyword_1_0());
+                            newLeafNode(lv_nogen_1_0, grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0());
                         
 
                     	        if (current==null) {
                     	            current = createModelElement(grammarAccess.getComplexTypeDeclarationRule());
                     	        }
-                           		setWithLastConsumed(current, "gen", true, "generate");
+                           		setWithLastConsumed(current, "nogen", true, "nogen");
                     	    
 
                     }
@@ -4352,12 +4352,12 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumTypeDeclaration"
-    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1672:1: ruleEnumTypeDeclaration returns [EObject current=null] : ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? ) ;
+    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1672:1: ruleEnumTypeDeclaration returns [EObject current=null] : ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? ) ;
     public final EObject ruleEnumTypeDeclaration() throws RecognitionException {
         EObject current = null;
 
         Token lv_keyword_0_0=null;
-        Token lv_gen_1_0=null;
+        Token lv_nogen_1_0=null;
         Token lv_name_2_0=null;
         Token otherlv_3=null;
         EObject lv_superType_4_0 = null;
@@ -4368,11 +4368,11 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1675:28: ( ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? ) )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:1: ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1675:28: ( ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:1: ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? )
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:1: ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:2: ( (lv_keyword_0_0= 'enum' ) ) ( (lv_gen_1_0= 'generate' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:1: ( ( (lv_keyword_0_0= 'enum' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )? )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:2: ( (lv_keyword_0_0= 'enum' ) ) ( (lv_nogen_1_0= 'nogen' ) )? ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (lv_superType_4_0= ruleIntegerType ) ) )? ( (lv_literal_5_0= ruleEnumTypeLiteral ) )?
             {
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1676:2: ( (lv_keyword_0_0= 'enum' ) )
             // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1677:1: (lv_keyword_0_0= 'enum' )
@@ -4396,7 +4396,7 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1691:2: ( (lv_gen_1_0= 'generate' ) )?
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1691:2: ( (lv_nogen_1_0= 'nogen' ) )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -4405,20 +4405,20 @@ public class InternalNetModelParser extends AbstractInternalAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1692:1: (lv_gen_1_0= 'generate' )
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1692:1: (lv_nogen_1_0= 'nogen' )
                     {
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1692:1: (lv_gen_1_0= 'generate' )
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1693:3: lv_gen_1_0= 'generate'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1692:1: (lv_nogen_1_0= 'nogen' )
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:1693:3: lv_nogen_1_0= 'nogen'
                     {
-                    lv_gen_1_0=(Token)match(input,28,FOLLOW_28_in_ruleEnumTypeDeclaration3756); 
+                    lv_nogen_1_0=(Token)match(input,28,FOLLOW_28_in_ruleEnumTypeDeclaration3756); 
 
-                            newLeafNode(lv_gen_1_0, grammarAccess.getEnumTypeDeclarationAccess().getGenGenerateKeyword_1_0());
+                            newLeafNode(lv_nogen_1_0, grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0());
                         
 
                     	        if (current==null) {
                     	            current = createModelElement(grammarAccess.getEnumTypeDeclarationRule());
                     	        }
-                           		setWithLastConsumed(current, "gen", true, "generate");
+                           		setWithLastConsumed(current, "nogen", true, "nogen");
                     	    
 
                     }

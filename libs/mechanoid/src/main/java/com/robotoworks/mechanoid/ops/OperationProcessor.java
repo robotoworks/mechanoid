@@ -1,12 +1,17 @@
-/*******************************************************************************
- * Copyright (c) 2012, Robotoworks Limited
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/*
+ * Copyright 2013 Robotoworks Limited
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  * 
- *******************************************************************************/
-
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.robotoworks.mechanoid.ops;
 
 import java.util.LinkedList;
@@ -37,6 +42,8 @@ public abstract class OperationProcessor {
 	
 	protected final String mLogTag;
 	protected final boolean mEnableLogging;
+	
+	private OperationContext mContext;
 		
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -99,6 +106,9 @@ public abstract class OperationProcessor {
 		this.mService = service;
 		mLogTag = this.getClass().getSimpleName();
 		mEnableLogging = enableLogging;
+		
+		mContext = new OperationContext();
+		
 		mWorker = new Worker(handler);
 		mWorker.start();
 	}
@@ -121,10 +131,7 @@ public abstract class OperationProcessor {
 		// queue this one up
 		requestQueue.offer(intent);
 		
-		// make sure we are running ops if the worker is ready
-		if(mWorkerReady && mCurrentOperation == null) {
-			executePendingOperations();
-		}
+		executePendingOperations();
 	}
 
 	private void abortOperation(int abortRequestId, int abortReason) {
@@ -134,11 +141,11 @@ public abstract class OperationProcessor {
 		
 		// Try to abort if its the current operation
 		if(mCurrentOperation != null) {
-			int currentRequestId = Operation.getOperationRequestId(mCurrentRequest);
+			int currentRequestId = OperationServiceBridge.getOperationRequestId(mCurrentRequest);
 			
 			if(currentRequestId == abortRequestId) {
-				Message m = mCurrentOperation.handler.obtainMessage(Operation.MSG_ABORT, abortReason, 0);
-				mCurrentOperation.handler.sendMessage(m);
+				Message m = mContext.handler.obtainMessage(OperationContext.MSG_ABORT, abortReason, 0);
+				mContext.handler.sendMessage(m);
 				return;
 			}			
 		}
@@ -152,7 +159,7 @@ public abstract class OperationProcessor {
 		for(int i=0; i < requestQueue.size(); i++) {
 			Intent queuedRequest = requestQueue.get(i);
 			
-			if(Operation.getOperationRequestId(queuedRequest) == abortRequestId) {
+			if(OperationServiceBridge.getOperationRequestId(queuedRequest) == abortRequestId) {
 				queuedRequest.putExtra(OperationService.EXTRA_IS_ABORTED, true);
 				queuedRequest.putExtra(OperationService.EXTRA_ABORT_REASON, abortReason);
 				break;
@@ -161,6 +168,15 @@ public abstract class OperationProcessor {
 	}
 	
 	private void executePendingOperations() {
+		if(!mWorkerReady) {
+			Log.d(mLogTag, "[Waiting on Worker]");
+			return;
+		}
+		
+		if(mCurrentOperation != null) {
+			return;
+		}
+		
 		if(mEnableLogging) {
 			Log.d(mLogTag, "[Executing Pending]");
 		}
@@ -182,8 +198,8 @@ public abstract class OperationProcessor {
 		Intent request = null;
 		
 		while((request = requestQueue.poll()) != null) {
-			Bundle result = Operation.createErrorResult(new OperationServiceStoppedException());
-			mService.onOperationComplete(request, result);
+			OperationResult result = OperationResult.error(new OperationServiceStoppedException());
+			mService.onOperationComplete(request, result.toBundle());
 		}
 		
 		mWorker.quit();
@@ -211,12 +227,12 @@ public abstract class OperationProcessor {
 			throw new RuntimeException(request.getAction() + " Not Implemented");
 		}
 
-		mCurrentOperation.setContext(mService.getApplicationContext());
-		mCurrentOperation.setIntent(request);
-		mCurrentOperation.setOperationProcessor(this);
-				
+		mContext.reset();
+		mContext.setApplicationContext(mService.getApplicationContext());
+		mContext.setIntent(request);
+		mContext.setOperationProcessor(this);
 		
-		mWorker.post(new OperationRunnable(handler, mCurrentOperation));
+		mWorker.post(new OperationRunnable(handler, mContext, mCurrentOperation, mEnableLogging, mLogTag));
 	}
 
 	protected abstract Operation createOperation(String action);
@@ -225,11 +241,16 @@ public abstract class OperationProcessor {
 		
 		private Operation mOperation;
 		private Handler mCallbackHandler;
+		private boolean mEnableLogging;
+		private String mLogTag;
+		private OperationContext mOperationContext;
 
-		public OperationRunnable(Handler callbackHandler, Operation operation) {
+		public OperationRunnable(Handler callbackHandler, OperationContext operationContext, Operation operation, boolean enableLogging, String logTag) {
 			mCallbackHandler = callbackHandler;
 			mOperation = operation;
-			
+			mEnableLogging = enableLogging;
+			mOperationContext = operationContext;
+			mLogTag = logTag;
 		}
 		
 		@Override
@@ -240,16 +261,28 @@ public abstract class OperationProcessor {
 			Bundle result = null;
 
 			try {
-				result = mOperation.execute();
+				OperationResult opResult = mOperation.execute(mOperationContext);
+				
+				if(opResult == null) {
+					throw new NullPointerException("OperationResult should not be null");
+				}
+				
+				result = opResult.toBundle();
+				
 			} catch(Exception x) {
-				result = Operation.createErrorResult(x);
+				
+				result = OperationResult.error(x).toBundle();
+				
+				if(mEnableLogging) {
+					Log.e(mLogTag, String.format("[Operation Error] %s", Log.getStackTraceString(x)));
+				}
 			}
 			
 			Message m = null;
 			
-			if(mOperation.isAborted()) {
+			if(mOperationContext.isAborted()) {
 				m = mCallbackHandler.obtainMessage(MSG_OPERATION_ABORTED);
-				m.arg1 = mOperation.getAbortReason();
+				m.arg1 = mOperationContext.getAbortReason();
 			} else {			
 				m = mCallbackHandler.obtainMessage(MSG_OPERATION_COMPLETE);
 			}

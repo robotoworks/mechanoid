@@ -1,0 +1,14 @@
+package com.robotoworks.example.movies.db
+
+database MovieDB {
+
+	migration {
+		create table movies (
+			_id integer primary key autoincrement,
+			title text,
+			description text,
+			year integer,
+			unique (title, year) on conflict replace
+		);
+	}
+}

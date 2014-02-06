@@ -5,5 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="button_recipes_simple">Recipes Simple</string>
-
+    <string name="button_recipes_with_author">Recipes With Author</string>
+    <string name="button_recipes_and_ingredients">Recipes And Ingredients</string>
+	<string name="author_name_format">by %s</string>
 </resources>

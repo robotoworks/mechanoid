@@ -1,11 +1,17 @@
-/*******************************************************************************
- * Copyright (c) 2012, Robotoworks Limited
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/*
+ * Copyright 2013 Robotoworks Limited
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  * 
- *******************************************************************************/
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.robotoworks.mechanoid.ops;
 
 import android.app.Service;
@@ -19,6 +25,18 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
 
+/*
+ * Intent intent = GetApplicationVersionOperation.create();
+ * int id = Ops.execute(intent);
+ * 
+ * Ops.registerListener(mListener);
+ * 
+ * Ops.unregisterListener(mListener);
+ * 
+ * OperationManager manager = OperationManager.create(getFragmentManager(), mCallbacks);
+ * 
+ * Ops.execute(manager, OP_GET_VERSION, true, intent);
+ */
 public abstract class OperationService extends Service {
 	protected static final String ACTION_ABORT = "com.robotoworks.mechanoid.op.actions.ABORT";
 	
@@ -134,13 +152,15 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_STARTING;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.setData(data);
 		try {	
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 
@@ -152,13 +172,15 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_COMPLETE;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.setData(data);
 		try {	
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -172,14 +194,16 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_ABORTED;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.arg2 = reason;
 		m.setData(data);
 		try {	
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 		
 		sendStopMessage(request);
@@ -194,14 +218,16 @@ public abstract class OperationService extends Service {
 		Messenger messenger = request.getParcelableExtra(EXTRA_BRIDGE_MESSENGER);
 		Message m = new Message();
 		m.what = OperationServiceBridge.MSG_OPERATION_PROGRESS;
-		m.arg1 = Operation.getOperationRequestId(request);
+		m.arg1 = OperationServiceBridge.getOperationRequestId(request);
 		m.arg2 = progress;
 		m.setData(data);
 		try {	
 			messenger.send(m);
 		}
 	    catch (RemoteException e) {
-			throw new RuntimeException(e);
+			if(mEnableLogging) {
+				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+			}
 		}
 	}
 }

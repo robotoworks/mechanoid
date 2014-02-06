@@ -31,7 +31,7 @@ public class NetModelFactoryImpl extends EFactoryImpl implements NetModelFactory
   {
     try
     {
-      NetModelFactory theNetModelFactory = (NetModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.robotoworks.com/mechanoid/net/NetModel"); 
+      NetModelFactory theNetModelFactory = (NetModelFactory)EPackage.Registry.INSTANCE.getEFactory(NetModelPackage.eNS_URI);
       if (theNetModelFactory != null)
       {
         return theNetModelFactory;
