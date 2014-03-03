@@ -129,7 +129,7 @@ public class OperationServiceBridge {
 				
 				Class<?> clz = ReflectUtil.loadClassSilently(Ops.class.getClassLoader(), serviceName);
 
-				if(Service.class.isAssignableFrom(clz)) {
+				if(clz != null && Service.class.isAssignableFrom(clz)) {
 					Field field = ReflectUtil.getFieldSilently(clz, "CONFIG");
 					if(field != null) {
 						OperationServiceConfiguration factory = (OperationServiceConfiguration) ReflectUtil.getFieldValueSilently(field);
