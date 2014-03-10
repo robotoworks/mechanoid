@@ -53,7 +53,7 @@ public class OperationRegistryGenerator {
     _builder.append("public Abstract");
     String _name_1 = svc.getName();
     String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
-    _builder.append(_formatServiceName_1, "	");
+    _builder.append(_formatServiceName_1, "\t");
     _builder.append("OperationConfigurationRegistry() {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -81,16 +81,16 @@ public class OperationRegistryGenerator {
         _builder.append("registerOperationConfiguration(");
         String _name_2 = op.getName();
         String _pascalize = Strings.pascalize(_name_2);
-        _builder.append(_pascalize, "		");
+        _builder.append(_pascalize, "\t\t");
         _builder.append("Operation.ACTION_");
         String _name_3 = op.getName();
         String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
-        _builder.append(_upperCase, "		");
+        _builder.append(_upperCase, "\t\t");
         _builder.append(", new ");
         String _name_4 = op.getName();
         String _pascalize_1 = Strings.pascalize(_name_4);
-        _builder.append(_pascalize_1, "		");
+        _builder.append(_pascalize_1, "\t\t");
         _builder.append("Operation.Configuration());");
         _builder.newLineIfNotEmpty();
       }

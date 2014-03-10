@@ -106,7 +106,7 @@ public class JsonReaderStatementGenerator {
     _builder.append("\t");
     _builder.append("String name = ");
     String _readerIdentifier_2 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(_readerIdentifier_2, "\t");
     _builder.append(".nextName();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -114,12 +114,12 @@ public class JsonReaderStatementGenerator {
     _builder.append("\t");
     _builder.append("if(");
     String _readerIdentifier_3 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(_readerIdentifier_3, "\t");
     _builder.append(".peek() == JsonToken.NULL) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     String _readerIdentifier_4 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(_readerIdentifier_4, "\t\t");
     _builder.append(".skipValue();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -137,23 +137,21 @@ public class JsonReaderStatementGenerator {
       EList<Member> _members = literal.getMembers();
       for(final Member member : _members) {
         _builder.append("\t");
-        int _plus = (COUNTER + 1);
-        int _COUNTER = COUNTER = _plus;
+        int _COUNTER = COUNTER = (COUNTER + 1);
         CharSequence _genBlock = this.genBlock(member, _COUNTER);
-        _builder.append(_genBlock, "	");
+        _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
     {
-      boolean _greaterThan = (COUNTER > 0);
-      if (_greaterThan) {
+      if ((COUNTER > 0)) {
         _builder.append("\t");
         _builder.append("else {");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
         String _readerIdentifier_5 = this.getReaderIdentifier();
-        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(_readerIdentifier_5, "\t\t");
         _builder.append(".skipValue();");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -189,19 +187,19 @@ public class JsonReaderStatementGenerator {
     _builder.append("\t");
     _builder.append("String name = ");
     String _readerIdentifier_2 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(_readerIdentifier_2, "\t");
     _builder.append(".nextName();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
     _builder.append("if(");
     String _readerIdentifier_3 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(_readerIdentifier_3, "\t");
     _builder.append(".peek() == JsonToken.NULL) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     String _readerIdentifier_4 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(_readerIdentifier_4, "\t\t");
     _builder.append(".skipValue();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -218,23 +216,21 @@ public class JsonReaderStatementGenerator {
     {
       for(final Member member : members) {
         _builder.append("\t");
-        int _plus = (COUNTER + 1);
-        int _COUNTER = COUNTER = _plus;
+        int _COUNTER = COUNTER = (COUNTER + 1);
         CharSequence _genBlock = this.genBlock(member, _COUNTER);
-        _builder.append(_genBlock, "	");
+        _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
     {
-      boolean _greaterThan = (COUNTER > 0);
-      if (_greaterThan) {
+      if ((COUNTER > 0)) {
         _builder.append("\t");
         _builder.append("else {");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
         String _readerIdentifier_5 = this.getReaderIdentifier();
-        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(_readerIdentifier_5, "\t\t");
         _builder.append(".skipValue();");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -255,8 +251,7 @@ public class JsonReaderStatementGenerator {
   public CharSequence genBlock(final Member member, final int blockNumber) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _greaterThan = (blockNumber > 1);
-      if (_greaterThan) {
+      if ((blockNumber > 1)) {
         _builder.append("else ");
       }
     }
@@ -267,7 +262,7 @@ public class JsonReaderStatementGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     CharSequence _genStatement = this.genStatement(member);
-    _builder.append(_genStatement, "	");
+    _builder.append(_genStatement, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -298,19 +293,19 @@ public class JsonReaderStatementGenerator {
     _builder.append("\t");
     _builder.append("name = ");
     String _readerIdentifier_2 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(_readerIdentifier_2, "\t");
     _builder.append(".nextName();");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("\t");
     _builder.append("if(");
     String _readerIdentifier_3 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_3, "	");
+    _builder.append(_readerIdentifier_3, "\t");
     _builder.append(".peek() == JsonToken.NULL) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     String _readerIdentifier_4 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_4, "		");
+    _builder.append(_readerIdentifier_4, "\t\t");
     _builder.append(".skipValue();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -329,23 +324,21 @@ public class JsonReaderStatementGenerator {
       EList<Member> _members = _literal.getMembers();
       for(final Member member : _members) {
         _builder.append("\t");
-        int _plus = (COUNTER + 1);
-        int _COUNTER = COUNTER = _plus;
+        int _COUNTER = COUNTER = (COUNTER + 1);
         Object _genBlock = this.genBlock(member, _COUNTER);
-        _builder.append(_genBlock, "	");
+        _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
     {
-      boolean _greaterThan = (COUNTER > 0);
-      if (_greaterThan) {
+      if ((COUNTER > 0)) {
         _builder.append("\t");
         _builder.append("else {");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
         String _readerIdentifier_5 = this.getReaderIdentifier();
-        _builder.append(_readerIdentifier_5, "		");
+        _builder.append(_readerIdentifier_5, "\t\t");
         _builder.append(".skipValue();");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -516,7 +509,7 @@ public class JsonReaderStatementGenerator {
     _builder.append(".get(");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
     _builder.append(_innerSignature_1, "");
-    _builder.append(".class).read(");
+    _builder.append(".class).readList(");
     String _readerIdentifier = this.getReaderIdentifier();
     _builder.append(_readerIdentifier, "");
     _builder.append(", entityMember);");
@@ -561,16 +554,16 @@ public class JsonReaderStatementGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _innerSignature = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature, "	");
+    _builder.append(_innerSignature, "\t");
     _builder.append(" element = ");
     String _innerSignature_1 = ModelExtensions.innerSignature(type);
-    _builder.append(_innerSignature_1, "	");
+    _builder.append(_innerSignature_1, "\t");
     _builder.append(".fromValue(");
     String _readerIdentifier_2 = this.getReaderIdentifier();
-    _builder.append(_readerIdentifier_2, "	");
+    _builder.append(_readerIdentifier_2, "\t");
     _builder.append(".");
     String _resolveJsonReaderMethodName = ModelExtensions.resolveJsonReaderMethodName(decl);
-    _builder.append(_resolveJsonReaderMethodName, "	");
+    _builder.append(_resolveJsonReaderMethodName, "\t");
     _builder.append("());");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");

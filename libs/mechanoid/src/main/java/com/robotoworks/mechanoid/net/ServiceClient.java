@@ -111,9 +111,20 @@ public abstract class ServiceClient {
 	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> get(
 			REQUEST request, Parser<RESULT> resultParser)
 			throws ServiceException {
+		
 
 		try {
 			URL url = createUrl(request);
+			
+			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+			if(mockedResponse != null) {
+				
+				if (isDebug()) {
+					Log.d(getLogTag(), METHOD_GET + " Mocked Response");
+				}
+				
+				return mockedResponse;
+			}
 
 			if (isDebug()) {
 				Log.d(getLogTag(), METHOD_GET + " " + url.toString());
@@ -136,7 +147,7 @@ public abstract class ServiceClient {
 
 			conn.connect();
 
-			Response<RESULT> response = new Response<RESULT>(conn, resultParser);
+			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
 			if (isDebug()) {
 				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
@@ -155,7 +166,17 @@ public abstract class ServiceClient {
 			throws ServiceException {
 		try {
 			URL url = createUrl(request);
-
+			
+			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+			if(mockedResponse != null) {
+				
+				if (isDebug()) {
+					Log.d(getLogTag(), METHOD_DELETE + " Mocked Response");
+				}
+				
+				return mockedResponse;
+			}
+			
 			if (isDebug()) {
 				Log.d(getLogTag(), METHOD_DELETE + " " + url.toString());
 			}
@@ -175,7 +196,7 @@ public abstract class ServiceClient {
 
 			conn.connect();
 
-			Response<RESULT> response = new Response<RESULT>(conn, resultParser);
+			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
 			if (isDebug()) {
 				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
@@ -199,6 +220,16 @@ public abstract class ServiceClient {
 		try {
 			URL url = createUrl(request);
 
+			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+			if(mockedResponse != null) {
+				
+				if (isDebug()) {
+					Log.d(getLogTag(), method + " Mocked Response");
+				}
+				
+				return mockedResponse;
+			}
+			
 			if (isDebug()) {
 				Log.d(getLogTag(), method + " " + url.toString());
 			}
@@ -234,7 +265,7 @@ public abstract class ServiceClient {
 				entityEnclosedRequest.writeBody(mWriterProvider, conn.getOutputStream());
 			}
 			
-			Response<RESULT> response = new Response<RESULT>(conn, resultParser);
+			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
 			if (isDebug()) {
 				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
@@ -311,5 +342,9 @@ public abstract class ServiceClient {
 			REQUEST request) throws MalformedURLException {
 		URL url = new URL(request.createUrl(getBaseUrl()));
 		return url;
+	}
+	
+	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> createMockedResponse(URL url, REQUEST request, Parser<RESULT> resultParser) {
+		return null;
 	}
 }

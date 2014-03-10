@@ -24,7 +24,7 @@ public class GetMoviesResult extends ServiceResult {
 			if(inStream != null) {
 				reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.movies = new ArrayList<Movie>();
-			provider.get(Movie.class).read(reader, this.movies);
+			provider.get(Movie.class).readList(reader, this.movies);
 		}
 	} finally {
 		Closeables.closeSilently(reader);

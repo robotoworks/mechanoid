@@ -38,7 +38,7 @@ public class IssueWriter extends JsonEntityWriter<Issue> {
 		}
 		if(entity.getLabels() != null) {
 			writer.name("labels");
-			getProvider().get(Label.class).write(writer, entity.getLabels());
+			getProvider().get(Label.class).writeList(writer, entity.getLabels());
 		}
 		if(entity.getState() != null) {
 			writer.name("state");
@@ -58,7 +58,7 @@ public class IssueWriter extends JsonEntityWriter<Issue> {
 		writer.endObject();
 	}
 	
-	public void write(JsonWriter writer, List<Issue> entities) throws IOException {
+	public void writeList(JsonWriter writer, List<Issue> entities) throws IOException {
 		writer.beginArray();
 		
 		for(Issue item:entities) {

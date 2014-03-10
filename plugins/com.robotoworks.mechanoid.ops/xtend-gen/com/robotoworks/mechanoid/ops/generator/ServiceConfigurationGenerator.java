@@ -40,7 +40,7 @@ public class ServiceConfigurationGenerator {
     _builder.append("private OperationConfigurationRegistry mOperationConfigurationRegistry = new ");
     String _name_1 = svc.getName();
     String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
-    _builder.append(_formatServiceName_1, "	");
+    _builder.append(_formatServiceName_1, "\t");
     _builder.append("OperationConfigurationRegistry();");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");

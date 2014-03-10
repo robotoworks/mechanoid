@@ -41,7 +41,7 @@ public class MovieReader extends JsonEntityReader<Movie> {
 		reader.endObject();
 	}
 	
-	public void read(JsonReader reader, List<Movie> entities) throws IOException {
+	public void readList(JsonReader reader, List<Movie> entities) throws IOException {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {

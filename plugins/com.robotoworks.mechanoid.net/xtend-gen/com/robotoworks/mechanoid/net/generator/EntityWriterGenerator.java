@@ -72,7 +72,7 @@ public class EntityWriterGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_2 = decl.getName();
-    _builder.append(_name_2, "	");
+    _builder.append(_name_2, "\t");
     _builder.append("Writer(JsonEntityWriterProvider provider) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -86,12 +86,12 @@ public class EntityWriterGenerator {
     _builder.append("\t");
     _builder.append("public void write(JsonWriter writer, ");
     String _name_3 = decl.getName();
-    _builder.append(_name_3, "	");
+    _builder.append(_name_3, "\t");
     _builder.append(" entity) throws IOException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     CharSequence _genWriteComplexType = this.jsonWriterGenerator.genWriteComplexType(decl);
-    _builder.append(_genWriteComplexType, "		");
+    _builder.append(_genWriteComplexType, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -99,9 +99,9 @@ public class EntityWriterGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public void write(JsonWriter writer, List<");
+    _builder.append("public void writeList(JsonWriter writer, List<");
     String _name_4 = decl.getName();
-    _builder.append(_name_4, "	");
+    _builder.append(_name_4, "\t");
     _builder.append("> entities) throws IOException {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -112,7 +112,7 @@ public class EntityWriterGenerator {
     _builder.append("\t\t");
     _builder.append("for(");
     String _name_5 = decl.getName();
-    _builder.append(_name_5, "		");
+    _builder.append(_name_5, "\t\t");
     _builder.append(" item:entities) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t");

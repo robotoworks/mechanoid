@@ -50,7 +50,7 @@ public class UserWriter extends JsonEntityWriter<User> {
 		writer.endObject();
 	}
 	
-	public void write(JsonWriter writer, List<User> entities) throws IOException {
+	public void writeList(JsonWriter writer, List<User> entities) throws IOException {
 		writer.beginArray();
 		
 		for(User item:entities) {

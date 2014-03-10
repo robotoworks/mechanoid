@@ -27,7 +27,7 @@ public abstract class ServiceRequest {
 	
 	private int mReadTimeout = -1;
 	private int mConnectTimeout = -1;
-	
+
 	public void setHeader(String field, String value) {
 		mHeaders.put(field, value);
 	}
@@ -57,4 +57,5 @@ public abstract class ServiceRequest {
 	}
 	
 	public abstract String createUrl(String baseUrl);
+	
 }

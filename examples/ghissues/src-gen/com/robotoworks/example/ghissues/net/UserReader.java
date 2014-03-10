@@ -77,7 +77,7 @@ public class UserReader extends JsonEntityReader<User> {
 		reader.endObject();
 	}
 	
-	public void read(JsonReader reader, List<User> entities) throws IOException {
+	public void readList(JsonReader reader, List<User> entities) throws IOException {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {

@@ -55,5 +55,5 @@ public abstract class JsonEntityReader<T> {
 	 * @param reader The reader to read from
 	 * @param entities The entities to write to
 	 */
-	public abstract void read(JsonReader reader, List<T> entities) throws IOException;
+	public abstract void readList(JsonReader reader, List<T> entities) throws IOException;
 }

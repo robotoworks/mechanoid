@@ -70,8 +70,7 @@ public class SqliteOpenHelperGenerator {
             String _pascalize = Strings.pascalize(_name);
             _builder.append(_pascalize, "");
             _builder.append("MigrationV");
-            int _plus = (version + 1);
-            int _version = version = _plus;
+            int _version = version = (version + 1);
             _builder.append(_version, "");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
@@ -91,7 +90,7 @@ public class SqliteOpenHelperGenerator {
     _builder.append("private static final String DATABASE_NAME = \"");
     DatabaseBlock _database_4 = model.getDatabase();
     String _name_2 = _database_4.getName();
-    _builder.append(_name_2, "	");
+    _builder.append(_name_2, "\t");
     _builder.append(".db\";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -100,7 +99,7 @@ public class SqliteOpenHelperGenerator {
     DatabaseBlock _database_5 = model.getDatabase();
     EList<MigrationBlock> _migrations_2 = _database_5.getMigrations();
     int _size_1 = _migrations_2.size();
-    _builder.append(_size_1, "	");
+    _builder.append(_size_1, "\t");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
@@ -115,10 +114,10 @@ public class SqliteOpenHelperGenerator {
         String _name_3 = table.getName();
         String _underscore = Strings.underscore(_name_3);
         String _upperCase = _underscore.toUpperCase();
-        _builder.append(_upperCase, "		");
+        _builder.append(_upperCase, "\t\t");
         _builder.append(" = \"");
         String _name_4 = table.getName();
-        _builder.append(_name_4, "		");
+        _builder.append(_name_4, "\t\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }
@@ -131,10 +130,10 @@ public class SqliteOpenHelperGenerator {
         String _name_5 = view.getName();
         String _underscore_1 = Strings.underscore(_name_5);
         String _upperCase_1 = _underscore_1.toUpperCase();
-        _builder.append(_upperCase_1, "		");
+        _builder.append(_upperCase_1, "\t\t");
         _builder.append(" = \"");
         String _name_6 = view.getName();
-        _builder.append(_name_6, "		");
+        _builder.append(_name_6, "\t\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }
@@ -147,10 +146,10 @@ public class SqliteOpenHelperGenerator {
         String _name_7 = table_1.getName();
         String _underscore_2 = Strings.underscore(_name_7);
         String _upperCase_2 = _underscore_2.toUpperCase();
-        _builder.append(_upperCase_2, "		");
+        _builder.append(_upperCase_2, "\t\t");
         _builder.append(" = \"");
         String _name_8 = table_1.getName();
-        _builder.append(_name_8, "		");
+        _builder.append(_name_8, "\t\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }
@@ -163,10 +162,10 @@ public class SqliteOpenHelperGenerator {
         String _name_9 = view_1.getName();
         String _underscore_3 = Strings.underscore(_name_9);
         String _upperCase_3 = _underscore_3.toUpperCase();
-        _builder.append(_upperCase_3, "		");
+        _builder.append(_upperCase_3, "\t\t");
         _builder.append(" = \"");
         String _name_10 = view_1.getName();
-        _builder.append(_name_10, "		");
+        _builder.append(_name_10, "\t\t");
         _builder.append("\";");
         _builder.newLineIfNotEmpty();
       }
@@ -180,7 +179,7 @@ public class SqliteOpenHelperGenerator {
     DatabaseBlock _database_6 = model.getDatabase();
     String _name_11 = _database_6.getName();
     String _pascalize_2 = Strings.pascalize(_name_11);
-    _builder.append(_pascalize_2, "	");
+    _builder.append(_pascalize_2, "\t");
     _builder.append("OpenHelper(Context context) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -195,7 +194,7 @@ public class SqliteOpenHelperGenerator {
     DatabaseBlock _database_7 = model.getDatabase();
     String _name_12 = _database_7.getName();
     String _pascalize_3 = Strings.pascalize(_name_12);
-    _builder.append(_pascalize_3, "	");
+    _builder.append(_pascalize_3, "\t");
     _builder.append("OpenHelper(Context context, String name) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -243,7 +242,7 @@ public class SqliteOpenHelperGenerator {
         InitBlock _init_1 = _database_9.getInit();
         EList<DDLStatement> _statements = _init_1.getStatements();
         CharSequence _generateStatements = this._sqliteDatabaseStatementGenerator.generateStatements(_statements);
-        _builder.append(_generateStatements, "		");
+        _builder.append(_generateStatements, "\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("}");
@@ -276,9 +275,8 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("case ");
-            int _plus_1 = (version_1 + 1);
-            int _version_1 = version_1 = _plus_1;
-            _builder.append(_version_1, "			");
+            int _version_1 = version_1 = (version_1 + 1);
+            _builder.append(_version_1, "\t\t\t");
             _builder.append(":");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -288,10 +286,9 @@ public class SqliteOpenHelperGenerator {
             DatabaseBlock _database_12 = model.getDatabase();
             String _name_13 = _database_12.getName();
             String _pascalize_4 = Strings.pascalize(_name_13);
-            _builder.append(_pascalize_4, "				");
+            _builder.append(_pascalize_4, "\t\t\t\t");
             _builder.append("MigrationV");
-            int _plus_2 = (version_1 + 1);
-            _builder.append(_plus_2, "				");
+            _builder.append((version_1 + 1), "\t\t\t\t");
             _builder.append("();");
             _builder.newLineIfNotEmpty();
           }
@@ -336,11 +333,10 @@ public class SqliteOpenHelperGenerator {
             DatabaseBlock _database_15 = model.getDatabase();
             String _name_14 = _database_15.getName();
             String _pascalize_5 = Strings.pascalize(_name_14);
-            _builder.append(_pascalize_5, "	");
+            _builder.append(_pascalize_5, "\t");
             _builder.append("MigrationV");
-            int _plus_3 = (version_2 + 1);
-            int _version_2 = version_2 = _plus_3;
-            _builder.append(_version_2, "	");
+            int _version_2 = version_2 = (version_2 + 1);
+            _builder.append(_version_2, "\t");
             _builder.append("() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -349,9 +345,9 @@ public class SqliteOpenHelperGenerator {
             DatabaseBlock _database_16 = model.getDatabase();
             String _name_15 = _database_16.getName();
             String _pascalize_6 = Strings.pascalize(_name_15);
-            _builder.append(_pascalize_6, "		");
+            _builder.append(_pascalize_6, "\t\t");
             _builder.append("MigrationV");
-            _builder.append(version_2, "		");
+            _builder.append(version_2, "\t\t");
             _builder.append("();");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -413,7 +409,7 @@ public class SqliteOpenHelperGenerator {
     DatabaseBlock _database_3 = model.getDatabase();
     String _name_3 = _database_3.getName();
     String _pascalize_3 = Strings.pascalize(_name_3);
-    _builder.append(_pascalize_3, "	");
+    _builder.append(_pascalize_3, "\t");
     _builder.append("OpenHelper(Context context) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");

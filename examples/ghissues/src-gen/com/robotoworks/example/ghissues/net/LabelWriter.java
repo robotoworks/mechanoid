@@ -26,7 +26,7 @@ public class LabelWriter extends JsonEntityWriter<Label> {
 		writer.endObject();
 	}
 	
-	public void write(JsonWriter writer, List<Label> entities) throws IOException {
+	public void writeList(JsonWriter writer, List<Label> entities) throws IOException {
 		writer.beginArray();
 		
 		for(Label item:entities) {

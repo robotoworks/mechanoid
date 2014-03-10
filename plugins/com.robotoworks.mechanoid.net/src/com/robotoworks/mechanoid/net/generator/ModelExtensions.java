@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.serializer.ISerializer;
-import org.eclipse.xtext.xbase.lib.BigDecimalExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -15,14 +14,12 @@ import com.robotoworks.mechanoid.net.netModel.BodyBlock;
 import com.robotoworks.mechanoid.net.netModel.BooleanLiteral;
 import com.robotoworks.mechanoid.net.netModel.BooleanType;
 import com.robotoworks.mechanoid.net.netModel.Client;
-import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.DoubleType;
 import com.robotoworks.mechanoid.net.netModel.EnumMember;
 import com.robotoworks.mechanoid.net.netModel.EnumTypeDeclaration;
 import com.robotoworks.mechanoid.net.netModel.GenericListType;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
-import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Literal;

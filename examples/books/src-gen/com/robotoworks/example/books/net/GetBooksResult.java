@@ -24,7 +24,7 @@ public class GetBooksResult extends ServiceResult {
 			if(inStream != null) {
 				reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.books = new ArrayList<Book>();
-			provider.get(Book.class).read(reader, this.books);
+			provider.get(Book.class).readList(reader, this.books);
 		}
 	} finally {
 		Closeables.closeSilently(reader);

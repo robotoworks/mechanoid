@@ -41,7 +41,7 @@ public class LabelReader extends JsonEntityReader<Label> {
 		reader.endObject();
 	}
 	
-	public void read(JsonReader reader, List<Label> entities) throws IOException {
+	public void readList(JsonReader reader, List<Label> entities) throws IOException {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {

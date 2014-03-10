@@ -24,7 +24,7 @@ public class GetIssuesForRepositoryResult extends ServiceResult {
 			if(inStream != null) {
 				reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
 			this.issues = new ArrayList<Issue>();
-			provider.get(Issue.class).read(reader, this.issues);
+			provider.get(Issue.class).readList(reader, this.issues);
 		}
 	} finally {
 		Closeables.closeSilently(reader);

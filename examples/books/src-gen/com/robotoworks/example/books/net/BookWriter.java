@@ -26,7 +26,7 @@ public class BookWriter extends JsonEntityWriter<Book> {
 		writer.endObject();
 	}
 	
-	public void write(JsonWriter writer, List<Book> entities) throws IOException {
+	public void writeList(JsonWriter writer, List<Book> entities) throws IOException {
 		writer.beginArray();
 		
 		for(Book item:entities) {

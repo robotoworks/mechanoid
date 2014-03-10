@@ -56,7 +56,7 @@ public class IssueReader extends JsonEntityReader<Issue> {
 			}
 			else if(name.equals("labels")) {
 				List<Label> entityMember = new ArrayList<Label>();
-				getProvider().get(Label.class).read(reader, entityMember);
+				getProvider().get(Label.class).readList(reader, entityMember);
 				entity.setLabels(entityMember);
 			}
 			else if(name.equals("state")) {
@@ -86,7 +86,7 @@ public class IssueReader extends JsonEntityReader<Issue> {
 		reader.endObject();
 	}
 	
-	public void read(JsonReader reader, List<Issue> entities) throws IOException {
+	public void readList(JsonReader reader, List<Issue> entities) throws IOException {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {

@@ -41,7 +41,7 @@ public class BookReader extends JsonEntityReader<Book> {
 		reader.endObject();
 	}
 	
-	public void read(JsonReader reader, List<Book> entities) throws IOException {
+	public void readList(JsonReader reader, List<Book> entities) throws IOException {
 		reader.beginArray();
 		
 		while(reader.hasNext()) {

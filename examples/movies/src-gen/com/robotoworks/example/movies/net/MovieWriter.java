@@ -26,7 +26,7 @@ public class MovieWriter extends JsonEntityWriter<Movie> {
 		writer.endObject();
 	}
 	
-	public void write(JsonWriter writer, List<Movie> entities) throws IOException {
+	public void writeList(JsonWriter writer, List<Movie> entities) throws IOException {
 		writer.beginArray();
 		
 		for(Movie item:entities) {

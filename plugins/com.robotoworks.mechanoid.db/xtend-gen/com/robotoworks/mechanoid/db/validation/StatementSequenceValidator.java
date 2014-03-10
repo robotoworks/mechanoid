@@ -16,7 +16,7 @@ import com.robotoworks.mechanoid.db.sqliteModel.MigrationBlock;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectCoreExpression;
 import com.robotoworks.mechanoid.db.sqliteModel.SelectStatement;
 import com.robotoworks.mechanoid.db.sqliteModel.SingleSourceTable;
-import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage.Literals;
+import com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage;
 import com.robotoworks.mechanoid.db.sqliteModel.TableDefinition;
 import com.robotoworks.mechanoid.db.util.ModelUtil;
 import com.robotoworks.mechanoid.db.validation.StatementSequenceValidatorResult;
@@ -129,7 +129,7 @@ public class StatementSequenceValidator {
     if (_nameExists) {
       result.valid = false;
       result.message = "Name conflict, use another name";
-      result.feature = Literals.TABLE_DEFINITION__NAME;
+      result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME;
     }
   }
   
@@ -141,14 +141,14 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such table";
-      result.feature = Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE;
+      result.feature = SqliteModelPackage.Literals.ALTER_TABLE_RENAME_STATEMENT__TABLE;
     } else {
       String _name_1 = stmt.getName();
       boolean _nameExists = this.nameExists(_name_1);
       if (_nameExists) {
         result.valid = false;
         result.message = "Name conflict, use another name";
-        result.feature = Literals.TABLE_DEFINITION__NAME;
+        result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME;
       }
     }
   }
@@ -161,7 +161,7 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such table";
-      result.feature = Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__TABLE;
+      result.feature = SqliteModelPackage.Literals.ALTER_TABLE_ADD_COLUMN_STATEMENT__TABLE;
     }
   }
   
@@ -173,7 +173,7 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such table";
-      result.feature = Literals.DROP_TABLE_STATEMENT__TABLE;
+      result.feature = SqliteModelPackage.Literals.DROP_TABLE_STATEMENT__TABLE;
     }
   }
   
@@ -183,7 +183,7 @@ public class StatementSequenceValidator {
     if (_nameExists) {
       result.valid = false;
       result.message = "Name conflict, use another name";
-      result.feature = Literals.TABLE_DEFINITION__NAME;
+      result.feature = SqliteModelPackage.Literals.TABLE_DEFINITION__NAME;
     } else {
       SelectStatement _selectStatement = stmt.getSelectStatement();
       SelectCoreExpression _core = _selectStatement.getCore();
@@ -204,7 +204,7 @@ public class StatementSequenceValidator {
           result.source = table;
           result.valid = false;
           result.message = "No such reference";
-          result.feature = Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE;
+          result.feature = SqliteModelPackage.Literals.SINGLE_SOURCE_TABLE__TABLE_REFERENCE;
           return;
         }
       }
@@ -219,7 +219,7 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such view";
-      result.feature = Literals.DROP_VIEW_STATEMENT__VIEW;
+      result.feature = SqliteModelPackage.Literals.DROP_VIEW_STATEMENT__VIEW;
     }
   }
   
@@ -229,7 +229,7 @@ public class StatementSequenceValidator {
     if (_nameExists) {
       result.valid = false;
       result.message = "Name conflict, use another name";
-      result.feature = Literals.CREATE_TRIGGER_STATEMENT__NAME;
+      result.feature = SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__NAME;
     } else {
       TableDefinition _table = stmt.getTable();
       String _name_1 = _table.getName();
@@ -238,7 +238,7 @@ public class StatementSequenceValidator {
       if (_not) {
         result.valid = false;
         result.message = "No such table";
-        result.feature = Literals.CREATE_TRIGGER_STATEMENT__TABLE;
+        result.feature = SqliteModelPackage.Literals.CREATE_TRIGGER_STATEMENT__TABLE;
       }
     }
   }
@@ -251,7 +251,7 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such trigger";
-      result.feature = Literals.DROP_TRIGGER_STATEMENT__TRIGGER;
+      result.feature = SqliteModelPackage.Literals.DROP_TRIGGER_STATEMENT__TRIGGER;
     }
   }
   
@@ -261,7 +261,7 @@ public class StatementSequenceValidator {
     if (_nameExists) {
       result.valid = false;
       result.message = "Name conflict, use another name";
-      result.feature = Literals.CREATE_INDEX_STATEMENT__NAME;
+      result.feature = SqliteModelPackage.Literals.CREATE_INDEX_STATEMENT__NAME;
     } else {
       TableDefinition _table = stmt.getTable();
       String _name_1 = _table.getName();
@@ -270,7 +270,7 @@ public class StatementSequenceValidator {
       if (_not) {
         result.valid = false;
         result.message = "No such table";
-        result.feature = Literals.CREATE_INDEX_STATEMENT__TABLE;
+        result.feature = SqliteModelPackage.Literals.CREATE_INDEX_STATEMENT__TABLE;
       }
     }
   }
@@ -283,7 +283,7 @@ public class StatementSequenceValidator {
     if (_not) {
       result.valid = false;
       result.message = "No such index";
-      result.feature = Literals.DROP_INDEX_STATEMENT__INDEX;
+      result.feature = SqliteModelPackage.Literals.DROP_INDEX_STATEMENT__INDEX;
     }
   }
   

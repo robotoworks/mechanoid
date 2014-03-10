@@ -304,69 +304,62 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   public IScope buildScopeForColumnSourceRef_column(final ColumnSourceRef context, final EObject parent) {
     EObject temp = parent;
     EObject _eContainer = temp.eContainer();
-    boolean _not = (!(_eContainer instanceof DatabaseBlock));
-    boolean _while = _not;
+    boolean _while = (!(_eContainer instanceof DatabaseBlock));
     while (_while) {
       {
         EObject container = temp.eContainer();
         boolean _matched = false;
         if (!_matched) {
           if (container instanceof SelectExpression) {
-            final SelectExpression _selectExpression = (SelectExpression)container;
             _matched=true;
             SelectList _ancestorOfType = ModelUtil.<SelectList>getAncestorOfType(context, SelectList.class);
             boolean includeAliases = Objects.equal(_ancestorOfType, null);
-            final ArrayList<EObject> items = ModelUtil.getAllReferenceableColumns(_selectExpression, includeAliases);
-            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, _selectExpression);
+            final ArrayList<EObject> items = ModelUtil.getAllReferenceableColumns(((SelectExpression)container), includeAliases);
+            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, container);
             return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
           }
         }
         if (!_matched) {
           if (container instanceof ResultColumn) {
-            final ResultColumn _resultColumn = (ResultColumn)container;
             _matched=true;
-            EObject _eContainer_1 = _resultColumn.eContainer();
+            EObject _eContainer_1 = ((ResultColumn)container).eContainer();
             EObject _eContainer_2 = _eContainer_1.eContainer();
             final ArrayList<EObject> items = ModelUtil.getAllReferenceableColumns(((SelectExpression) _eContainer_2), false);
-            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, _resultColumn);
+            IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, container);
             return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
           }
         }
         if (!_matched) {
           if (container instanceof UpdateStatement) {
-            final UpdateStatement _updateStatement = (UpdateStatement)container;
             _matched=true;
-            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_updateStatement, DDLStatement.class);
-            TableDefinition _table = _updateStatement.getTable();
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(container, DDLStatement.class);
+            TableDefinition _table = ((UpdateStatement)container).getTable();
             ArrayList<EObject> _findColumnDefs = ModelUtil.findColumnDefs(ddl, _table);
             return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {
           if (container instanceof InsertStatement) {
-            final InsertStatement _insertStatement = (InsertStatement)container;
             _matched=true;
-            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_insertStatement, DDLStatement.class);
-            TableDefinition _table = _insertStatement.getTable();
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(container, DDLStatement.class);
+            TableDefinition _table = ((InsertStatement)container).getTable();
             ArrayList<EObject> _findColumnDefs = ModelUtil.findColumnDefs(ddl, _table);
             return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {
           if (container instanceof DeleteStatement) {
-            final DeleteStatement _deleteStatement = (DeleteStatement)container;
             _matched=true;
-            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(_deleteStatement, DDLStatement.class);
-            TableDefinition _table = _deleteStatement.getTable();
+            DDLStatement ddl = ModelUtil.<DDLStatement>getAncestorOfType(container, DDLStatement.class);
+            TableDefinition _table = ((DeleteStatement)container).getTable();
             ArrayList<EObject> _findColumnDefs = ModelUtil.findColumnDefs(ddl, _table);
             return Scopes.scopeFor(_findColumnDefs, IScope.NULLSCOPE);
           }
         }
         if (!_matched) {
           if (container instanceof OrderingTermList) {
-            final OrderingTermList _orderingTermList = (OrderingTermList)container;
             _matched=true;
-            EObject _eContainer_1 = _orderingTermList.eContainer();
+            EObject _eContainer_1 = ((OrderingTermList)container).eContainer();
             SelectStatement selectStatement = ((SelectStatement) _eContainer_1);
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
@@ -376,9 +369,8 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         }
         if (!_matched) {
           if (container instanceof CreateTableStatement) {
-            final CreateTableStatement _createTableStatement = (CreateTableStatement)container;
             _matched=true;
-            EList<ColumnSource> _columnDefs = _createTableStatement.getColumnDefs();
+            EList<ColumnSource> _columnDefs = ((CreateTableStatement)container).getColumnDefs();
             return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
           }
         }
@@ -386,8 +378,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         temp = _eContainer_1;
       }
       EObject _eContainer_1 = temp.eContainer();
-      boolean _not_1 = (!(_eContainer_1 instanceof DatabaseBlock));
-      _while = _not_1;
+      _while = (!(_eContainer_1 instanceof DatabaseBlock));
     }
     return IScope.NULLSCOPE;
   }
@@ -395,18 +386,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   public IScope buildScopeForColumnSourceRef_source(final ColumnSourceRef context, final EObject parent) {
     EObject temp = parent;
     EObject _eContainer = temp.eContainer();
-    boolean _not = (!(_eContainer instanceof DatabaseBlock));
-    boolean _while = _not;
+    boolean _while = (!(_eContainer instanceof DatabaseBlock));
     while (_while) {
       {
         EObject container = temp.eContainer();
         boolean _matched = false;
         if (!_matched) {
           if (container instanceof SelectExpression) {
-            final SelectExpression _selectExpression = (SelectExpression)container;
             _matched=true;
             final ArrayList<EObject> items = Lists.<EObject>newArrayList();
-            ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(_selectExpression);
+            ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(((SelectExpression)container));
             items.addAll(_findAllSingleSources);
             final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
               public QualifiedName apply(final EObject it) {
@@ -414,15 +403,14 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
                 return _name;
               }
             };
-            IScope _buildScopeForColumnSourceRef_source = this.buildScopeForColumnSourceRef_source(context, _selectExpression);
+            IScope _buildScopeForColumnSourceRef_source = this.buildScopeForColumnSourceRef_source(context, container);
             return Scopes.<EObject>scopeFor(items, _function, _buildScopeForColumnSourceRef_source);
           }
         }
         if (!_matched) {
           if (container instanceof OrderingTermList) {
-            final OrderingTermList _orderingTermList = (OrderingTermList)container;
             _matched=true;
-            EObject _eContainer_1 = _orderingTermList.eContainer();
+            EObject _eContainer_1 = ((OrderingTermList)container).eContainer();
             SelectStatement selectStatement = ((SelectStatement) _eContainer_1);
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
@@ -440,8 +428,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         temp = _eContainer_1;
       }
       EObject _eContainer_1 = temp.eContainer();
-      boolean _not_1 = (!(_eContainer_1 instanceof DatabaseBlock));
-      _while = _not_1;
+      _while = (!(_eContainer_1 instanceof DatabaseBlock));
     }
     return IScope.NULLSCOPE;
   }

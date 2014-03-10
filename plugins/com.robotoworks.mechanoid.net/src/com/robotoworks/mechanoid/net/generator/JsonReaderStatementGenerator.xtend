@@ -168,7 +168,7 @@ class JsonReaderStatementGenerator {
 		«imports.addImport("java.util.List")»
 		«imports.addImport("java.util.ArrayList")»
 		«type.signature» entityMember = new ArrayList<«type.innerSignature»>();
-		«providerIdentifier».get(«type.innerSignature».class).read(«readerIdentifier», entityMember);
+		«providerIdentifier».get(«type.innerSignature».class).readList(«readerIdentifier», entityMember);
 		«member.toSetMethodName.memberize(subjectIdentifier)»(entityMember);
 	'''
 	

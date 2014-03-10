@@ -11,10 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.resource.SaveOptions;
-import org.eclipse.xtext.resource.SaveOptions.Builder;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 
 @SuppressWarnings("all")
 public class SqliteDatabaseStatementGenerator {
@@ -24,16 +22,11 @@ public class SqliteDatabaseStatementGenerator {
   
   private SaveOptions saveOptions;
   
-  private final Pattern stripCommentsExpr = new Function0<Pattern>() {
-    public Pattern apply() {
-      Pattern _compile = Pattern.compile("\\/\\/[^\\r\\n]+|\\/\\*.*?\\*\\/", Pattern.DOTALL);
-      return _compile;
-    }
-  }.apply();
+  private final Pattern stripCommentsExpr = Pattern.compile("\\/\\/[^\\r\\n]+|\\/\\*.*?\\*\\/", Pattern.DOTALL);
   
   public SqliteDatabaseStatementGenerator() {
-    Builder _newBuilder = SaveOptions.newBuilder();
-    Builder _noValidation = _newBuilder.noValidation();
+    SaveOptions.Builder _newBuilder = SaveOptions.newBuilder();
+    SaveOptions.Builder _noValidation = _newBuilder.noValidation();
     SaveOptions _options = _noValidation.getOptions();
     this.saveOptions = _options;
   }
@@ -112,13 +105,13 @@ public class SqliteDatabaseStatementGenerator {
         if (!_hasElements) {
           _hasElements = true;
         } else {
-          _builder.appendImmediate(" +", "	");
+          _builder.appendImmediate(" +", "\t");
         }
         _builder.append("\t");
         _builder.append("\"");
         String _trim_1 = line.trim();
         String _replaceAll = _trim_1.replaceAll("\\\"", "\\\\\"");
-        _builder.append(_replaceAll, "	");
+        _builder.append(_replaceAll, "\t");
         _builder.append(" \"");
         _builder.newLineIfNotEmpty();
       }
