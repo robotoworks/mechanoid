@@ -579,6 +579,8 @@ public class ResultGenerator {
         _builder.newLineIfNotEmpty();
         this.imports.addImport("java.io.InputStreamReader");
         _builder.newLineIfNotEmpty();
+        this.imports.addImport("java.io.BufferedReader");
+        _builder.newLineIfNotEmpty();
         this.imports.addImport("java.nio.charset.Charset");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -595,7 +597,7 @@ public class ResultGenerator {
     {
       if (withReader) {
         _builder.append("\t\t\t");
-        _builder.append("reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));");
+        _builder.append("reader = new JsonReader(new BufferedReader(new InputStreamReader(inStream, Charset.defaultCharset())));");
         _builder.newLine();
       }
     }

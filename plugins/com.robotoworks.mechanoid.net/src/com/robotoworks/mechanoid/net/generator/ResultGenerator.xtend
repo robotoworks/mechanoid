@@ -199,13 +199,14 @@ class ResultGenerator {
 		«IF withReader»
 		«imports.addImport("com.robotoworks.mechanoid.internal.util.JsonReader")»
 		«imports.addImport("java.io.InputStreamReader")»
+		«imports.addImport("java.io.BufferedReader")»
 		«imports.addImport("java.nio.charset.Charset")»
 			JsonReader reader = null;
 			«ENDIF»
 			try {
 				if(inStream != null) {
 					«IF withReader»
-					reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
+					reader = new JsonReader(new BufferedReader(new InputStreamReader(inStream, Charset.defaultCharset())));
 					«ENDIF»
 	'''
 	
