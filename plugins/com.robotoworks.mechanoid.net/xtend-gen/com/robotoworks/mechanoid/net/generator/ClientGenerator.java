@@ -311,9 +311,9 @@ public class ClientGenerator {
               EList<SimpleMemberAssignment> _params = _path_1.getParams();
               int _size = _params.size();
               boolean _equals_1 = (_size == 0);
-              _or = (_equals || _equals_1);
+              _or = _equals_1;
             }
-            _and = (_not && _or);
+            _and = _or;
           }
           if (_and) {
             _builder.append("public Response<");
@@ -457,34 +457,22 @@ public class ClientGenerator {
   public CharSequence generateServiceMethod(final HttpMethod method) {
     CharSequence _switchResult = null;
     HttpMethodType _type = method.getType();
-    final HttpMethodType _switchValue = _type;
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_switchValue,HttpMethodType.GET)) {
-        _matched=true;
-        CharSequence _generateServiceGetMethod = this.generateServiceGetMethod(method);
-        _switchResult = _generateServiceGetMethod;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,HttpMethodType.PUT)) {
-        _matched=true;
-        CharSequence _generateServicePutMethod = this.generateServicePutMethod(method);
-        _switchResult = _generateServicePutMethod;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,HttpMethodType.POST)) {
-        _matched=true;
-        CharSequence _generateServicePostMethod = this.generateServicePostMethod(method);
-        _switchResult = _generateServicePostMethod;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,HttpMethodType.DELETE)) {
-        _matched=true;
-        CharSequence _generateServiceDeleteMethod = this.generateServiceDeleteMethod(method);
-        _switchResult = _generateServiceDeleteMethod;
+    if (_type != null) {
+      switch (_type) {
+        case GET:
+          _switchResult = this.generateServiceGetMethod(method);
+          break;
+        case PUT:
+          _switchResult = this.generateServicePutMethod(method);
+          break;
+        case POST:
+          _switchResult = this.generateServicePostMethod(method);
+          break;
+        case DELETE:
+          _switchResult = this.generateServiceDeleteMethod(method);
+          break;
+        default:
+          break;
       }
     }
     return _switchResult;

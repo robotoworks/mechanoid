@@ -22,8 +22,7 @@ public class EntityReaderGenerator {
       this.jsonReaderGenerator.setReaderIdentifier("reader");
       this.jsonReaderGenerator.setSubjectIdentifier("entity");
       this.jsonReaderGenerator.setProviderIdentifier("getProvider()");
-      CharSequence _doGenerate = this.doGenerate(decl, model);
-      _xblockexpression = (_doGenerate);
+      _xblockexpression = this.doGenerate(decl, model);
     }
     return _xblockexpression;
   }

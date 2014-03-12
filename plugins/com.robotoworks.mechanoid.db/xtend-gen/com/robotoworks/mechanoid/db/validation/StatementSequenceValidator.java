@@ -25,45 +25,23 @@ import java.util.Arrays;
 import java.util.HashSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 
 @SuppressWarnings("all")
 public class StatementSequenceValidator {
-  private final HashSet<String> tables = new Function0<HashSet<String>>() {
-    public HashSet<String> apply() {
-      HashSet<String> _hashSet = new HashSet<String>();
-      return _hashSet;
-    }
-  }.apply();
+  private final HashSet<String> tables = new HashSet<String>();
   
-  private final HashSet<String> views = new Function0<HashSet<String>>() {
-    public HashSet<String> apply() {
-      HashSet<String> _hashSet = new HashSet<String>();
-      return _hashSet;
-    }
-  }.apply();
+  private final HashSet<String> views = new HashSet<String>();
   
-  private final HashSet<String> triggers = new Function0<HashSet<String>>() {
-    public HashSet<String> apply() {
-      HashSet<String> _hashSet = new HashSet<String>();
-      return _hashSet;
-    }
-  }.apply();
+  private final HashSet<String> triggers = new HashSet<String>();
   
-  private final HashSet<String> indexes = new Function0<HashSet<String>>() {
-    public HashSet<String> apply() {
-      HashSet<String> _hashSet = new HashSet<String>();
-      return _hashSet;
-    }
-  }.apply();
+  private final HashSet<String> indexes = new HashSet<String>();
   
   public StatementSequenceValidatorResult validate(final DatabaseBlock db) {
     this.tables.clear();
     this.views.clear();
     this.triggers.clear();
     this.indexes.clear();
-    StatementSequenceValidatorResult _statementSequenceValidatorResult = new StatementSequenceValidatorResult();
-    StatementSequenceValidatorResult result = _statementSequenceValidatorResult;
+    StatementSequenceValidatorResult result = new StatementSequenceValidatorResult();
     result.valid = true;
     EList<MigrationBlock> _migrations = db.getMigrations();
     for (final MigrationBlock migration : _migrations) {
@@ -94,19 +72,19 @@ public class StatementSequenceValidator {
       _or_2 = true;
     } else {
       boolean _contains_1 = this.views.contains(name);
-      _or_2 = (_contains || _contains_1);
+      _or_2 = _contains_1;
     }
     if (_or_2) {
       _or_1 = true;
     } else {
       boolean _contains_2 = this.triggers.contains(name);
-      _or_1 = (_or_2 || _contains_2);
+      _or_1 = _contains_2;
     }
     if (_or_1) {
       _or = true;
     } else {
       boolean _contains_3 = this.indexes.contains(name);
-      _or = (_or_1 || _contains_3);
+      _or = _contains_3;
     }
     return _or;
   }
@@ -118,7 +96,7 @@ public class StatementSequenceValidator {
       _or = true;
     } else {
       boolean _contains_1 = this.views.contains(name);
-      _or = (_contains || _contains_1);
+      _or = _contains_1;
     }
     return _or;
   }

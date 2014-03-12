@@ -123,7 +123,6 @@ public class SqliteDatabaseStatementGenerator {
   
   public String stripComments(final String s) {
     Matcher _matcher = this.stripCommentsExpr.matcher(s);
-    String _replaceAll = _matcher.replaceAll("");
-    return _replaceAll;
+    return _matcher.replaceAll("");
   }
 }

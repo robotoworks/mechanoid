@@ -84,8 +84,7 @@ public class JsonReaderStatementGenerator {
   
   public CharSequence genReadComplexType(final ComplexTypeDeclaration decl) {
     ComplexTypeLiteral _literal = decl.getLiteral();
-    CharSequence _genReadComplexTypeLiteral = this.genReadComplexTypeLiteral(_literal);
-    return _genReadComplexTypeLiteral;
+    return this.genReadComplexTypeLiteral(_literal);
   }
   
   public CharSequence genReadComplexTypeLiteral(final ComplexTypeLiteral literal) {
@@ -271,8 +270,7 @@ public class JsonReaderStatementGenerator {
   
   protected CharSequence _genStatement(final TypedMember member) {
     Type _type = member.getType();
-    CharSequence _genStatementForType = this.genStatementForType(member, _type);
-    return _genStatementForType;
+    return this.genStatementForType(member, _type);
   }
   
   protected CharSequence _genStatement(final SkipMember skipMember) {
@@ -393,8 +391,7 @@ public class JsonReaderStatementGenerator {
   
   protected CharSequence _genStatementForType(final TypedMember member, final UserType type) {
     UserTypeDeclaration _declaration = type.getDeclaration();
-    CharSequence _genStatementForType = this.genStatementForType(member, type, _declaration);
-    return _genStatementForType;
+    return this.genStatementForType(member, type, _declaration);
   }
   
   protected CharSequence _genStatementForType(final TypedMember member, final UserType type, final ComplexTypeDeclaration decl) {
@@ -451,8 +448,7 @@ public class JsonReaderStatementGenerator {
   
   protected CharSequence _genStatementForType(final TypedMember member, final GenericListType type) {
     Type _elementType = type.getElementType();
-    CharSequence _genStatementForGenericListType = this.genStatementForGenericListType(member, type, _elementType);
-    return _genStatementForGenericListType;
+    return this.genStatementForGenericListType(member, type, _elementType);
   }
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final IntrinsicType itemType) {
@@ -485,8 +481,7 @@ public class JsonReaderStatementGenerator {
   
   protected CharSequence _genStatementForGenericListType(final TypedMember member, final GenericListType type, final UserType itemType) {
     UserTypeDeclaration _declaration = itemType.getDeclaration();
-    CharSequence _genStatementForUserTypeGenericList = this.genStatementForUserTypeGenericList(member, type, itemType, _declaration);
-    return _genStatementForUserTypeGenericList;
+    return this.genStatementForUserTypeGenericList(member, type, itemType, _declaration);
   }
   
   protected CharSequence _genStatementForUserTypeGenericList(final TypedMember member, final GenericListType type, final UserType itemType, final ComplexTypeDeclaration decl) {

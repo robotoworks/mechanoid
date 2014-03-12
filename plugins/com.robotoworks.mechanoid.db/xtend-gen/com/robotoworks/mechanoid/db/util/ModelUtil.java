@@ -50,8 +50,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 @SuppressWarnings("all")
 public class ModelUtil {
   public static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(final DDLStatement stmt, final Class<T> statementType, final boolean inclusive) {
-    ArrayList<T> _arrayList = new ArrayList<T>();
-    ArrayList<T> list = _arrayList;
+    ArrayList<T> list = new ArrayList<T>();
     DatabaseBlock db = ModelUtil.<DatabaseBlock>getAncestorOfType(stmt, DatabaseBlock.class);
     EList<MigrationBlock> _migrations = db.getMigrations();
     for (final MigrationBlock migration : _migrations) {
@@ -105,8 +104,7 @@ public class ModelUtil {
   }
   
   public static <T extends DDLStatement> ArrayList<T> findPreviousStatementsOfType(final DatabaseBlock db, final DDLStatement stmt, final Class<T> statementType, final boolean inclusive) {
-    ArrayList<T> _arrayList = new ArrayList<T>();
-    ArrayList<T> list = _arrayList;
+    ArrayList<T> list = new ArrayList<T>();
     EList<MigrationBlock> _migrations = db.getMigrations();
     for (final MigrationBlock migration : _migrations) {
       EList<DDLStatement> _statements = migration.getStatements();
@@ -159,8 +157,7 @@ public class ModelUtil {
   }
   
   public static <T extends DDLStatement> ArrayList<T> findStatementsOfTypeBetween(final Class<T> statementType, final DDLStatement from, final DDLStatement to) {
-    ArrayList<T> _arrayList = new ArrayList<T>();
-    ArrayList<T> list = _arrayList;
+    ArrayList<T> list = new ArrayList<T>();
     boolean between = false;
     DatabaseBlock db = ModelUtil.<DatabaseBlock>getAncestorOfType(from, DatabaseBlock.class);
     EList<MigrationBlock> _migrations = db.getMigrations();
@@ -245,7 +242,7 @@ public class ModelUtil {
         if (!_notEquals_1) {
           _and = false;
         } else {
-          _and = (_notEquals_1 && (previousContainer instanceof MigrationBlock));
+          _and = (previousContainer instanceof MigrationBlock);
         }
         if (_and) {
           migration = ((MigrationBlock) previousContainer);
@@ -303,58 +300,36 @@ public class ModelUtil {
   }
   
   public static ColumnType toColumnType(final SqliteDataType dt) {
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(dt,SqliteDataType.BLOB)) {
-        _matched=true;
-        return ColumnType.BLOB;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(dt,SqliteDataType.INTEGER)) {
-        _matched=true;
-        return ColumnType.INTEGER;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(dt,SqliteDataType.REAL)) {
-        _matched=true;
-        return ColumnType.REAL;
+    if (dt != null) {
+      switch (dt) {
+        case BLOB:
+          return ColumnType.BLOB;
+        case INTEGER:
+          return ColumnType.INTEGER;
+        case REAL:
+          return ColumnType.REAL;
+        default:
+          break;
       }
     }
     return ColumnType.TEXT;
   }
   
   public static String toJavaTypeName(final ColumnType type) {
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(type,ColumnType.TEXT)) {
-        _matched=true;
-        return "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type,ColumnType.INTEGER)) {
-        _matched=true;
-        return "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type,ColumnType.REAL)) {
-        _matched=true;
-        return "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type,ColumnType.BLOB)) {
-        _matched=true;
-        return "byte[]";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(type,ColumnType.BOOLEAN)) {
-        _matched=true;
-        return "boolean";
+    if (type != null) {
+      switch (type) {
+        case TEXT:
+          return "String";
+        case INTEGER:
+          return "long";
+        case REAL:
+          return "double";
+        case BLOB:
+          return "byte[]";
+        case BOOLEAN:
+          return "boolean";
+        default:
+          break;
       }
     }
     return "!!ERROR!!";
@@ -405,35 +380,35 @@ public class ModelUtil {
         } else {
           String _name_1 = ((Function)expr).getName();
           boolean _equalsIgnoreCase_1 = _name_1.equalsIgnoreCase("length");
-          _or_4 = (_equalsIgnoreCase || _equalsIgnoreCase_1);
+          _or_4 = _equalsIgnoreCase_1;
         }
         if (_or_4) {
           _or_3 = true;
         } else {
           String _name_2 = ((Function)expr).getName();
           boolean _equalsIgnoreCase_2 = _name_2.equalsIgnoreCase("random");
-          _or_3 = (_or_4 || _equalsIgnoreCase_2);
+          _or_3 = _equalsIgnoreCase_2;
         }
         if (_or_3) {
           _or_2 = true;
         } else {
           String _name_3 = ((Function)expr).getName();
           boolean _equalsIgnoreCase_3 = _name_3.equalsIgnoreCase("last_insert_rowid");
-          _or_2 = (_or_3 || _equalsIgnoreCase_3);
+          _or_2 = _equalsIgnoreCase_3;
         }
         if (_or_2) {
           _or_1 = true;
         } else {
           String _name_4 = ((Function)expr).getName();
           boolean _equalsIgnoreCase_4 = _name_4.equalsIgnoreCase("changes");
-          _or_1 = (_or_2 || _equalsIgnoreCase_4);
+          _or_1 = _equalsIgnoreCase_4;
         }
         if (_or_1) {
           _or = true;
         } else {
           String _name_5 = ((Function)expr).getName();
           boolean _equalsIgnoreCase_5 = _name_5.equalsIgnoreCase("total_changes");
-          _or = (_or_1 || _equalsIgnoreCase_5);
+          _or = _equalsIgnoreCase_5;
         }
         if (_or) {
           return ColumnType.INTEGER;
@@ -450,35 +425,35 @@ public class ModelUtil {
           } else {
             String _name_7 = ((Function)expr).getName();
             boolean _equalsIgnoreCase_7 = _name_7.equalsIgnoreCase("avg");
-            _or_9 = (_equalsIgnoreCase_6 || _equalsIgnoreCase_7);
+            _or_9 = _equalsIgnoreCase_7;
           }
           if (_or_9) {
             _or_8 = true;
           } else {
             String _name_8 = ((Function)expr).getName();
             boolean _equalsIgnoreCase_8 = _name_8.equalsIgnoreCase("round");
-            _or_8 = (_or_9 || _equalsIgnoreCase_8);
+            _or_8 = _equalsIgnoreCase_8;
           }
           if (_or_8) {
             _or_7 = true;
           } else {
             String _name_9 = ((Function)expr).getName();
             boolean _equalsIgnoreCase_9 = _name_9.equalsIgnoreCase("sum");
-            _or_7 = (_or_8 || _equalsIgnoreCase_9);
+            _or_7 = _equalsIgnoreCase_9;
           }
           if (_or_7) {
             _or_6 = true;
           } else {
             String _name_10 = ((Function)expr).getName();
             boolean _equalsIgnoreCase_10 = _name_10.equalsIgnoreCase("total");
-            _or_6 = (_or_7 || _equalsIgnoreCase_10);
+            _or_6 = _equalsIgnoreCase_10;
           }
           if (_or_6) {
             _or_5 = true;
           } else {
             String _name_11 = ((Function)expr).getName();
             boolean _equalsIgnoreCase_11 = _name_11.equalsIgnoreCase("likelihood");
-            _or_5 = (_or_6 || _equalsIgnoreCase_11);
+            _or_5 = _equalsIgnoreCase_11;
           }
           if (_or_5) {
             return ColumnType.REAL;
@@ -491,7 +466,7 @@ public class ModelUtil {
             } else {
               String _name_13 = ((Function)expr).getName();
               boolean _equalsIgnoreCase_13 = _name_13.equalsIgnoreCase("zeroblob");
-              _or_10 = (_equalsIgnoreCase_12 || _equalsIgnoreCase_13);
+              _or_10 = _equalsIgnoreCase_13;
             }
             if (_or_10) {
               return ColumnType.BLOB;
@@ -505,8 +480,7 @@ public class ModelUtil {
   }
   
   public static ArrayList<ColumnSource> getViewResultColumns(final CreateViewStatement stmt) {
-    ArrayList<ColumnSource> _arrayList = new ArrayList<ColumnSource>();
-    ArrayList<ColumnSource> result = _arrayList;
+    ArrayList<ColumnSource> result = new ArrayList<ColumnSource>();
     SelectStatement _selectStatement = stmt.getSelectStatement();
     SelectCoreExpression coreExpr = _selectStatement.getCore();
     if ((coreExpr instanceof SelectCore)) {
@@ -527,7 +501,7 @@ public class ModelUtil {
               String _name_1 = it.getName();
               boolean _equals = _name_1.equals("");
               boolean _not = (!_equals);
-              _and = (_notEquals && _not);
+              _and = _not;
             }
             return Boolean.valueOf(_and);
           }
@@ -551,7 +525,7 @@ public class ModelUtil {
               String _name_1 = it.getName();
               boolean _equals = _name_1.equals("");
               boolean _not = (!_equals);
-              _and = (_notEquals && _not);
+              _and = _not;
             }
             return Boolean.valueOf(_and);
           }
@@ -564,8 +538,7 @@ public class ModelUtil {
   }
   
   public static HashSet<CreateViewStatement> getAllViewsReferencingTable(final SqliteDatabaseSnapshot snapshot, final TableDefinition tableDef) {
-    HashSet<CreateViewStatement> _hashSet = new HashSet<CreateViewStatement>();
-    HashSet<CreateViewStatement> matches = _hashSet;
+    HashSet<CreateViewStatement> matches = new HashSet<CreateViewStatement>();
     Collection<CreateViewStatement> _views = snapshot.getViews();
     for (final CreateViewStatement view : _views) {
       boolean _isDefinitionReferencedByView = ModelUtil.isDefinitionReferencedByView(tableDef, view);
@@ -577,8 +550,7 @@ public class ModelUtil {
   }
   
   public static HashSet<CreateViewStatement> getAllViewsInConfigInitReferencingTable(final Model model, final TableDefinition tableDef) {
-    HashSet<CreateViewStatement> _hashSet = new HashSet<CreateViewStatement>();
-    HashSet<CreateViewStatement> matches = _hashSet;
+    HashSet<CreateViewStatement> matches = new HashSet<CreateViewStatement>();
     Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
     for (final CreateViewStatement view : _configInitViews) {
       boolean _isDefinitionReferencedByView = ModelUtil.isDefinitionReferencedByView(tableDef, view);
@@ -620,8 +592,7 @@ public class ModelUtil {
     final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
       public Boolean apply(final ColumnSource it) {
         String _name = it.getName();
-        boolean _equals = _name.equals("_id");
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals("_id"));
       }
     };
     return IterableExtensions.<ColumnSource>exists(_columnDefs, _function);
@@ -640,7 +611,7 @@ public class ModelUtil {
         } else {
           String _name_1 = it.getName();
           boolean _equals = _name_1.equals("_id");
-          _and = (_not && _equals);
+          _and = _equals;
         }
         return Boolean.valueOf(_and);
       }
@@ -652,8 +623,7 @@ public class ModelUtil {
    * Find column definitions from caller going back to the definition
    */
   public static ArrayList<EObject> findColumnDefs(final DDLStatement caller, final TableDefinition definition) {
-    ArrayList<EObject> _arrayList = new ArrayList<EObject>();
-    final ArrayList<EObject> columns = _arrayList;
+    final ArrayList<EObject> columns = new ArrayList<EObject>();
     LinkedList<TableDefinition> tableHistory = ModelUtil.getHistory(definition);
     TableDefinition last = tableHistory.peekLast();
     if ((last instanceof CreateViewStatement)) {
@@ -674,8 +644,7 @@ public class ModelUtil {
         final Function1<AlterTableAddColumnStatement,Boolean> _function = new Function1<AlterTableAddColumnStatement,Boolean>() {
           public Boolean apply(final AlterTableAddColumnStatement it) {
             TableDefinition _table = it.getTable();
-            boolean _equals = Objects.equal(_table, stmt);
-            return Boolean.valueOf(_equals);
+            return Boolean.valueOf(Objects.equal(_table, stmt));
           }
         };
         Iterable<AlterTableAddColumnStatement> _filter = IterableExtensions.<AlterTableAddColumnStatement>filter(_findStatementsOfTypeBetween, _function);
@@ -695,8 +664,7 @@ public class ModelUtil {
   }
   
   public static LinkedList<TableDefinition> getHistory(final TableDefinition ref) {
-    LinkedList<TableDefinition> _linkedList = new LinkedList<TableDefinition>();
-    LinkedList<TableDefinition> refs = _linkedList;
+    LinkedList<TableDefinition> refs = new LinkedList<TableDefinition>();
     TableDefinition current = ref;
     boolean _while = (current instanceof AlterTableRenameStatement);
     while (_while) {
@@ -737,7 +705,7 @@ public class ModelUtil {
     if (!_notEquals) {
       _and = false;
     } else {
-      _and = (_notEquals && includeAliases);
+      _and = includeAliases;
     }
     if (_and) {
       SelectList _selectList_1 = expr.getSelectList();
@@ -745,8 +713,7 @@ public class ModelUtil {
       final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
-          boolean _notEquals = (!Objects.equal(_name, null));
-          return Boolean.valueOf(_notEquals);
+          return Boolean.valueOf((!Objects.equal(_name, null)));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_resultColumns, _function);

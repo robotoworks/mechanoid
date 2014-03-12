@@ -7,6 +7,7 @@ import com.robotoworks.mechanoid.net.ServiceResult;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.util.Closeables;
 import java.util.ArrayList;
+import java.io.BufferedReader;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.util.List;
 import java.io.InputStreamReader;
@@ -22,7 +23,7 @@ public class GetIssuesForRepositoryResult extends ServiceResult {
 		JsonReader reader = null;
 		try {
 			if(inStream != null) {
-				reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
+				reader = new JsonReader(new BufferedReader(new InputStreamReader(inStream, Charset.defaultCharset())));
 			this.issues = new ArrayList<Issue>();
 			provider.get(Issue.class).readList(reader, this.issues);
 		}

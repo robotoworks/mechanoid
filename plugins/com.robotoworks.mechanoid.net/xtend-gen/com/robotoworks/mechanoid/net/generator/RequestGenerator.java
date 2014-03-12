@@ -56,8 +56,7 @@ public class RequestGenerator {
     {
       this.jsonWriterGenerator.setImports(this.imports);
       this.jsonWriterGenerator.setWriterIdentifier("writer");
-      CharSequence _doGenerate = this.doGenerate(method, module, client);
-      _xblockexpression = (_doGenerate);
+      _xblockexpression = this.doGenerate(method, module, client);
     }
     return _xblockexpression;
   }
@@ -1120,8 +1119,7 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForType(final HttpMethod method, final BodyBlock body, final UserType type) {
     UserTypeDeclaration _declaration = type.getDeclaration();
-    CharSequence _generateSerializationStatementForUserType = this.generateSerializationStatementForUserType(body, type, _declaration);
-    return _generateSerializationStatementForUserType;
+    return this.generateSerializationStatementForUserType(body, type, _declaration);
   }
   
   protected CharSequence _generateSerializationStatementForUserType(final BodyBlock body, final UserType type, final ComplexTypeDeclaration declaration) {
@@ -1170,8 +1168,7 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForType(final HttpMethod method, final BodyBlock body, final GenericListType type) {
     Type _elementType = type.getElementType();
-    CharSequence _generateSerializationStatementForGenericListType = this.generateSerializationStatementForGenericListType(body, type, _elementType);
-    return _generateSerializationStatementForGenericListType;
+    return this.generateSerializationStatementForGenericListType(body, type, _elementType);
   }
   
   protected CharSequence _generateSerializationStatementForGenericListType(final BodyBlock body, final GenericListType type, final IntrinsicType elementType) {
@@ -1197,8 +1194,7 @@ public class RequestGenerator {
   
   protected CharSequence _generateSerializationStatementForGenericListType(final BodyBlock body, final GenericListType type, final UserType elementType) {
     UserTypeDeclaration _declaration = elementType.getDeclaration();
-    CharSequence _generateSerializationStatementForUserTypeGenericList = this.generateSerializationStatementForUserTypeGenericList(body, type, elementType, _declaration);
-    return _generateSerializationStatementForUserTypeGenericList;
+    return this.generateSerializationStatementForUserTypeGenericList(body, type, elementType, _declaration);
   }
   
   protected CharSequence _generateSerializationStatementForUserTypeGenericList(final BodyBlock body, final GenericListType type, final UserType elementType, final ComplexTypeDeclaration declaration) {
@@ -1270,8 +1266,7 @@ public class RequestGenerator {
    * into constructor arguments
    */
   public String generateRequestConstructorArgs(final Path path, final BodyBlock body) {
-    ArrayList<String> _arrayList = new ArrayList<String>();
-    ArrayList<String> args = _arrayList;
+    ArrayList<String> args = new ArrayList<String>();
     EList<SimpleMemberAssignment> _params = null;
     if (path!=null) {
       _params=path.getParams();
@@ -1359,8 +1354,7 @@ public class RequestGenerator {
     String[] _split = path.split("/|\\.");
     final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
       public Boolean apply(final String seg) {
-        boolean _startsWith = seg.startsWith(":");
-        return Boolean.valueOf(_startsWith);
+        return Boolean.valueOf(seg.startsWith(":"));
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
@@ -1368,13 +1362,11 @@ public class RequestGenerator {
       public String apply(final String arg) {
         String _substring = arg.substring(1);
         String _camelize = Strings.camelize(_substring);
-        String _plus = (_camelize + "Segment");
-        return _plus;
+        return (_camelize + "Segment");
       }
     };
     String _join = IterableExtensions.<String>join(_filter, ", ", _function_1);
-    String _plus = (", " + _join);
-    return _plus;
+    return (", " + _join);
   }
   
   public boolean hasArgs(final String path) {
@@ -1384,7 +1376,7 @@ public class RequestGenerator {
       _and = false;
     } else {
       boolean _contains = path.contains(":");
-      _and = (_notEquals && _contains);
+      _and = _contains;
     }
     return _and;
   }
