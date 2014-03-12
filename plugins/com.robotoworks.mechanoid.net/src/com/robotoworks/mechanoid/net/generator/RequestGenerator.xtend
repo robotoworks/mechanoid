@@ -378,7 +378,7 @@ class RequestGenerator {
 	) '''
 		«imports.addImport("java.util.List")»
 		«generateSerializationStatementHeader(true)»
-			provider.get(«type.innerSignature».class).List(writer, «type.innerSignature.camelize.pluralize»);
+			provider.get(«type.innerSignature».class).writeList(writer, «type.innerSignature.camelize.pluralize»);
 		«generateSerializationStatementFooter(true)»
 	'''
 
