@@ -14,4 +14,8 @@ database GithubDB {
 			unique (ghid) on conflict replace
 		);
 	}
+	
+	migration {
+	    alter table issues add column created integer;
+	}
 }
