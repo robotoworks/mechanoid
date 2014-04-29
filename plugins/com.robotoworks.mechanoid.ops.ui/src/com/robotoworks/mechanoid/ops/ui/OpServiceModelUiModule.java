@@ -7,8 +7,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 
+import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
+import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -27,4 +29,8 @@ public class OpServiceModelUiModule extends com.robotoworks.mechanoid.ops.ui.Abs
     public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
         return MechanoidXtextAddingEditorCallback.class;
     }	
+    
+    @org.eclipse.xtext.service.SingletonBinding(eager=true) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+        return MechanoidLibClasspathUiValidationHelper.class;
+    }
 }

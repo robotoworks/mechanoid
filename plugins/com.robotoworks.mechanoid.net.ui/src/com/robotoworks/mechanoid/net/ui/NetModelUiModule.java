@@ -10,8 +10,10 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.net.ui.editor.syntaxcoloring.MechNetSemanticHighlightingCalculator;
+import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
 import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
+import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -36,4 +38,8 @@ public class NetModelUiModule extends com.robotoworks.mechanoid.net.ui.AbstractN
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
 	    return MechanoidXtextAddingEditorCallback.class;
 	}
+	
+    @org.eclipse.xtext.service.SingletonBinding(eager=true) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+        return MechanoidLibClasspathUiValidationHelper.class;
+    }
 }
