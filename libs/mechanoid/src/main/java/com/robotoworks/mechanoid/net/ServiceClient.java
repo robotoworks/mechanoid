@@ -12,339 +12,398 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.robotoworks.mechanoid.net;
+
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedHashMap;
 
-import android.util.Log;
-
 /**
- * <p>Base for all generated Mechanoid Net service clients.</p>
- *
+ * <p>
+ * Base for all generated Mechanoid Net service clients.
+ * </p>
  */
 public abstract class ServiceClient {
-	private static final String DEFAULT_LOG_TAG = ServiceClient.class.getSimpleName();
+    private static final String DEFAULT_LOG_TAG = ServiceClient.class.getSimpleName();
 
-	protected static final String METHOD_GET = "GET";
-	protected static final String METHOD_PUT = "PUT";
-	protected static final String METHOD_POST = "POST";
-	protected static final String METHOD_DELETE = "DELETE";
+    protected static final String METHOD_GET = "GET";
+    protected static final String METHOD_PUT = "PUT";
+    protected static final String METHOD_POST = "POST";
+    protected static final String METHOD_DELETE = "DELETE";
 
-	private LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
-	private String mBaseUrl;
-	private boolean mDebug;
+    private final LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
+    private final String mBaseUrl;
+    private final boolean mDebug;
 
-	private JsonEntityReaderProvider mReaderProvider;
-	private JsonEntityWriterProvider mWriterProvider;
+    private final JsonEntityReaderProvider mReaderProvider;
+    private final JsonEntityWriterProvider mWriterProvider;
 
-	private int mConnectTimeout = 20000;
-	private int mReadTimeout = 20000;
+    private final int mConnectTimeout = 20000;
+    private final int mReadTimeout = 20000;
 
-	protected String getBaseUrl() {
-		return mBaseUrl;
-	}
+    protected String getBaseUrl() {
+        return mBaseUrl;
+    }
 
-	protected boolean isDebug() {
-		return mDebug;
-	}
-	
-	protected LinkedHashMap<String, String> getHeaders() {
-		return mHeaders;
-	}
+    protected boolean isDebug() {
+        return mDebug;
+    }
 
-	protected String getLogTag() {
-		return DEFAULT_LOG_TAG;
-	}
-	
-	/**
-	 * <p>The reader provider for this client, if you want to override the returned
-	 * reader provider, consider using {@link #createReaderProvider()} instead.</p>
-	 * @return
-	 */
-	public JsonEntityReaderProvider getReaderProvider() {
-		return mReaderProvider;
-	}
+    protected LinkedHashMap<String, String> getHeaders() {
+        return mHeaders;
+    }
 
-	/**
-	 * <p>The writer provider for this client, if you want to override the returned
-	 * writer provider, consider using {@link #createWriterProvider()} instead.</p>
-	 * @return
-	 */
-	public JsonEntityWriterProvider getWriterProvider() {
-		return mWriterProvider;
-	}
+    protected String getLogTag() {
+        return DEFAULT_LOG_TAG;
+    }
 
-	/**
-	 * <p>Add a request header to all requests performed by this client</p>
-	 * 
-	 * @param field
-	 * @param value
-	 */
-	public void setHeader(String field, String value) {
-		getHeaders().put(field, value);
-	}
-	
-	public ServiceClient(String baseUrl, boolean debug){
-		mBaseUrl = baseUrl;
-		mDebug = debug;
-		
-		mReaderProvider = createReaderProvider();
-		mWriterProvider = createWriterProvider();
-	}
+    /**
+     * <p>
+     * The reader provider for this client, if you want to override the returned reader provider, consider using
+     * {@link #createReaderProvider()} instead.
+     * </p>
+     * 
+     * @return
+     */
+    public JsonEntityReaderProvider getReaderProvider() {
+        return mReaderProvider;
+    }
 
-	/**
-	 * <p>For advanced use only, override this to provide your own writer provider</p>
-	 * @return
-	 */
-	protected abstract JsonEntityWriterProvider createWriterProvider();
-	/**
-	 * <p>For advanced use only, override this to provide your own reader provider</p>
-	 * @return
-	 */
-	protected abstract JsonEntityReaderProvider createReaderProvider();
+    /**
+     * <p>
+     * The writer provider for this client, if you want to override the returned writer provider, consider using
+     * {@link #createWriterProvider()} instead.
+     * </p>
+     * 
+     * @return
+     */
+    public JsonEntityWriterProvider getWriterProvider() {
+        return mWriterProvider;
+    }
 
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> get(
-			REQUEST request, Parser<RESULT> resultParser)
-			throws ServiceException {
-		
+    /**
+     * <p>
+     * Add a request header to all requests performed by this client
+     * </p>
+     * 
+     * @param field
+     * @param value
+     */
+    public void setHeader(String field, String value) {
+        getHeaders().put(field, value);
+    }
 
-		try {
-			URL url = createUrl(request);
-			
-			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
-			if(mockedResponse != null) {
-				
-				if (isDebug()) {
-					Log.d(getLogTag(), METHOD_GET + " Mocked Response");
-				}
-				
-				return mockedResponse;
-			}
+    public ServiceClient(String baseUrl, boolean debug) {
+        mBaseUrl = baseUrl;
+        mDebug = debug;
 
-			if (isDebug()) {
-				Log.d(getLogTag(), METHOD_GET + " " + url.toString());
-			}
+        mReaderProvider = createReaderProvider();
+        mWriterProvider = createWriterProvider();
+    }
 
-			HttpURLConnection conn = openConnection(url);
-			
-			applyRequestTimeouts(request, conn);
-			
-			conn.setRequestMethod(METHOD_GET);
+    /**
+     * <p>
+     * For advanced use only, override this to provide your own writer provider
+     * </p>
+     * 
+     * @return
+     */
+    protected abstract JsonEntityWriterProvider createWriterProvider();
 
-			conn.setRequestProperty("Accept", "application/json, text/json");
+    /**
+     * <p>
+     * For advanced use only, override this to provide your own reader provider
+     * </p>
+     * 
+     * @return
+     */
+    protected abstract JsonEntityReaderProvider createReaderProvider();
 
-			applyRequestProperties(request, conn);
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> get(
+            REQUEST request, Parser<RESULT> resultParser)
+            throws ServiceException {
 
-			if (isDebug()) {
-				NetLogHelper.logProperties(getLogTag(),
-						conn.getRequestProperties());
-			}
+        try {
+            URL url = createUrl(request);
 
-			conn.connect();
+            Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+            if (mockedResponse != null) {
 
-			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
+                if (isDebug()) {
+                    Log.d(getLogTag(), METHOD_GET + " Mocked Response");
+                }
 
-			if (isDebug()) {
-				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+                return mockedResponse;
+            }
 
-				Log.d(getLogTag(), response.readAsText());
-			}
+            if (isDebug()) {
+                Log.d(getLogTag(), METHOD_GET + " " + url.toString());
+            }
 
-			return response;
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
-	}
+            HttpURLConnection conn = openConnection(url);
 
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> delete(
-			REQUEST request, Parser<RESULT> resultParser)
-			throws ServiceException {
-		try {
-			URL url = createUrl(request);
-			
-			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
-			if(mockedResponse != null) {
-				
-				if (isDebug()) {
-					Log.d(getLogTag(), METHOD_DELETE + " Mocked Response");
-				}
-				
-				return mockedResponse;
-			}
-			
-			if (isDebug()) {
-				Log.d(getLogTag(), METHOD_DELETE + " " + url.toString());
-			}
+            applyRequestTimeouts(request, conn);
 
-			HttpURLConnection conn = openConnection(url);
-			
-			applyRequestTimeouts(request, conn);
-			
-			conn.setRequestMethod(METHOD_DELETE);
+            conn.setRequestMethod(METHOD_GET);
 
-			applyRequestProperties(request, conn);
+            conn.setRequestProperty("Accept", "application/json, text/json");
 
-			if (isDebug()) {
-				NetLogHelper.logProperties(getLogTag(),
-						conn.getRequestProperties());
-			}
+            applyRequestProperties(request, conn);
 
-			conn.connect();
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(), conn.getRequestProperties());
+            }
 
-			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
+            conn.connect();
 
-			if (isDebug()) {
-				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+            Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
-				Log.d(getLogTag(), response.readAsText());
-			}
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
 
-			return response;
+                Log.d(getLogTag(), response.readAsText());
+            }
 
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
-	}
-	
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
-		postUnlessPut(REQUEST request, Parser<RESULT> resultParser, boolean doPut)
-			throws ServiceException {
+            return response;
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
 
-		String method = doPut ? METHOD_PUT : METHOD_POST;
-		
-		try {
-			URL url = createUrl(request);
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> delete(
+            REQUEST request, Parser<RESULT> resultParser)
+            throws ServiceException {
+        try {
+            URL url = createUrl(request);
 
-			Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
-			if(mockedResponse != null) {
-				
-				if (isDebug()) {
-					Log.d(getLogTag(), method + " Mocked Response");
-				}
-				
-				return mockedResponse;
-			}
-			
-			if (isDebug()) {
-				Log.d(getLogTag(), method + " " + url.toString());
-			}
+            Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+            if (mockedResponse != null) {
 
-			HttpURLConnection conn = openConnection(url);
-			
-			applyRequestTimeouts(request, conn);
-			
-			conn.setDoOutput(true);
-			conn.setRequestMethod(method);
+                if (isDebug()) {
+                    Log.d(getLogTag(), METHOD_DELETE + " Mocked Response");
+                }
 
-			conn.setRequestProperty("Content-Type", "application/json, text/json");
+                return mockedResponse;
+            }
 
-			applyRequestProperties(request, conn);
+            if (isDebug()) {
+                Log.d(getLogTag(), METHOD_DELETE + " " + url.toString());
+            }
 
-			if (isDebug()) {
-				NetLogHelper
-						.logProperties(getLogTag(), conn.getRequestProperties());
-			}
+            HttpURLConnection conn = openConnection(url);
 
-			conn.connect();
+            applyRequestTimeouts(request, conn);
 
-			if(request instanceof EntityEnclosedServiceRequest) {
-				EntityEnclosedServiceRequest entityEnclosedRequest = (EntityEnclosedServiceRequest) request;
-				
-				if (isDebug()) {
-					ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
-					entityEnclosedRequest.writeBody(mWriterProvider, debugOutStream);
-	
-					Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
-				}
-	
-				entityEnclosedRequest.writeBody(mWriterProvider, conn.getOutputStream());
-			}
-			
-			Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
+            conn.setRequestMethod(METHOD_DELETE);
 
-			if (isDebug()) {
-				NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+            applyRequestProperties(request, conn);
 
-				Log.d(getLogTag(), response.readAsText());
-			}
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(),
+                        conn.getRequestProperties());
+            }
 
-			return response;
+            conn.connect();
 
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
-	}
+            Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
-	protected HttpURLConnection openConnection(URL url) throws IOException {
-		return (HttpURLConnection) url.openConnection();
-	}
-	
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
-		post(REQUEST request, Parser<RESULT> resultParser)
-			throws ServiceException {
-		return postUnlessPut(request, resultParser, false);
-	}
-	
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> 
-		put(REQUEST request, Parser<RESULT> resultParser)
-			throws ServiceException {
-		return postUnlessPut(request, resultParser, true);
-	}
-	
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
 
-	protected <REQUEST extends ServiceRequest> void applyRequestTimeouts(
-			REQUEST request, HttpURLConnection conn) {
-		if(request.getReadTimeout() > -1) {
-			conn.setReadTimeout(request.getReadTimeout());
-		} else {
-			conn.setReadTimeout(mReadTimeout);
-		}
-		
-		if(request.getConnectTimeout() > -1) {
-			conn.setConnectTimeout(request.getConnectTimeout());
-		} else {
-			conn.setConnectTimeout(mConnectTimeout);
-		}
-	}
-	
-	/**
-	 * <p>Sets request properties using this clients headers and then
-	 * headers from the given request such that request properties from the
-	 * given request will override those set from this client.</p>
-	 * 
-	 * @param request The request to add headers from
-	 * @param conn The connection to add headers to
-	 */
-	protected <REQUEST extends ServiceRequest> void applyRequestProperties(
-			REQUEST request, HttpURLConnection conn) {
-		for (String key : getHeaders().keySet()) {
-			conn.setRequestProperty(key, getHeaders().get(key));
-		}
+                Log.d(getLogTag(), response.readAsText());
+            }
 
-		for (String key : request.getHeaderKeys()) {
-			conn.setRequestProperty(key, request.getHeaderValue(key));
-		}
-	}
+            return response;
 
-	/**
-	 * <p>Creates a url from the given request</p>
-	 * 
-	 * @param request
-	 * @return
-	 * @throws MalformedURLException
-	 */
-	protected <REQUEST extends ServiceRequest> URL createUrl(
-			REQUEST request) throws MalformedURLException {
-		URL url = new URL(request.createUrl(getBaseUrl()));
-		return url;
-	}
-	
-	protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> createMockedResponse(URL url, REQUEST request, Parser<RESULT> resultParser) {
-		return null;
-	}
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
+            postUnlessPut(REQUEST request, Parser<RESULT> resultParser, boolean doPut)
+                    throws ServiceException {
+
+        String method = doPut ? METHOD_PUT : METHOD_POST;
+
+        try {
+            boolean xWwwFormUrlencoded = getHeaders().get("Content-Type") != null
+                    && getHeaders().get("Content-Type").startsWith("application/x-www-form-urlencoded");
+            URL url = createUrl(request, xWwwFormUrlencoded);
+
+            Response<RESULT> mockedResponse = createMockedResponse(url, request, resultParser);
+            if (mockedResponse != null) {
+
+                if (isDebug()) {
+                    Log.d(getLogTag(), method + " Mocked Response");
+                }
+
+                return mockedResponse;
+            }
+
+            if (isDebug()) {
+                Log.d(getLogTag(), method + " " + url.toString());
+            }
+
+            HttpURLConnection conn = openConnection(url);
+
+            applyRequestTimeouts(request, conn);
+
+            conn.setDoOutput(true);
+            conn.setRequestMethod(method);
+
+            if (!xWwwFormUrlencoded) {
+                conn.setRequestProperty("Content-Type", "application/json, text/json");
+            }
+
+            applyRequestProperties(request, conn);
+
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(), conn.getRequestProperties());
+            }
+
+            conn.connect();
+
+            if (request instanceof EntityEnclosedServiceRequest) {
+                EntityEnclosedServiceRequest entityEnclosedRequest = (EntityEnclosedServiceRequest) request;
+
+                if (isDebug()) {
+                    ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
+                    entityEnclosedRequest.writeBody(mWriterProvider, debugOutStream);
+
+                    Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
+                }
+                entityEnclosedRequest.writeBody(mWriterProvider, conn.getOutputStream());
+            }
+
+            // for x-www-form-urlencoded params send with OutputStream
+            if (xWwwFormUrlencoded) {
+                String payload = getParamPayload(request);
+                if (isDebug()) {
+                    Log.d(getLogTag(), "x-www-form-urlencoded params:" + payload);
+                }
+                // send the POST out
+                PrintWriter out = new PrintWriter(conn.getOutputStream());
+                out.print(payload);
+                out.close();
+            }
+
+            Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
+
+            if (isDebug()) {
+                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+                Log.d(getLogTag(), response.readAsText());
+            }
+
+            return response;
+
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    protected HttpURLConnection openConnection(URL url) throws IOException {
+        return (HttpURLConnection) url.openConnection();
+    }
+
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
+            post(REQUEST request, Parser<RESULT> resultParser)
+                    throws ServiceException {
+        return postUnlessPut(request, resultParser, false);
+    }
+
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
+            put(REQUEST request, Parser<RESULT> resultParser)
+                    throws ServiceException {
+        return postUnlessPut(request, resultParser, true);
+    }
+
+    protected <REQUEST extends ServiceRequest> void applyRequestTimeouts(
+            REQUEST request, HttpURLConnection conn) {
+        if (request.getReadTimeout() > -1) {
+            conn.setReadTimeout(request.getReadTimeout());
+        } else {
+            conn.setReadTimeout(mReadTimeout);
+        }
+
+        if (request.getConnectTimeout() > -1) {
+            conn.setConnectTimeout(request.getConnectTimeout());
+        } else {
+            conn.setConnectTimeout(mConnectTimeout);
+        }
+    }
+
+    /**
+     * <p>
+     * Sets request properties using this clients headers and then headers from the given request such that request properties
+     * from the given request will override those set from this client.
+     * </p>
+     * 
+     * @param request The request to add headers from
+     * @param conn The connection to add headers to
+     */
+    protected <REQUEST extends ServiceRequest> void applyRequestProperties(
+            REQUEST request, HttpURLConnection conn) {
+        for (String key : getHeaders().keySet()) {
+            conn.setRequestProperty(key, getHeaders().get(key));
+        }
+
+        for (String key : request.getHeaderKeys()) {
+            conn.setRequestProperty(key, request.getHeaderValue(key));
+        }
+    }
+
+    /**
+     * <p>
+     * get param payload from request, necessary in case of xWwwFormUrlencoded
+     * </p>
+     * 
+     * @param request
+     * @return
+     * @throws MalformedURLException
+     */
+    protected <REQUEST extends ServiceRequest> String getParamPayload(REQUEST request)
+            throws MalformedURLException {
+        String urlStr = request.createUrl(getBaseUrl());
+        if (urlStr.indexOf("?") > 0) {
+            urlStr = urlStr.substring(urlStr.indexOf("?") + 1);
+        }
+        return urlStr;
+    }
+
+    /**
+     * <p>
+     * Creates a url from the given request, in case of xWwwFormUrlencoded without params
+     * </p>
+     * 
+     * @param request
+     * @return
+     * @throws MalformedURLException
+     */
+    protected <REQUEST extends ServiceRequest> URL createUrl(REQUEST request, boolean xWwwFormUrlencoded)
+            throws MalformedURLException {
+        String urlStr = request.createUrl(getBaseUrl());
+        if (xWwwFormUrlencoded && urlStr.indexOf("?") > 0) {
+            urlStr = urlStr.substring(0, urlStr.indexOf("?"));
+        }
+        URL url = new URL(urlStr);
+        return url;
+    }
+
+    protected <REQUEST extends ServiceRequest> URL createUrl(REQUEST request)
+            throws MalformedURLException {
+        return createUrl(request, false);
+    }
+
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT> createMockedResponse(URL url,
+            REQUEST request, Parser<RESULT> resultParser) {
+        return null;
+    }
 }
