@@ -76,6 +76,13 @@ public class OperationExecutor {
 	}
 	
 	/**
+	 * Reset this operation
+	 */
+	public void reset() {
+		mOpInfo = null;
+	}
+	
+	/**
 	 * Whether the operation is complete. An operation is considered
 	 * complete when the completion callback has been successfully invoked.
 	 * 

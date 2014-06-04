@@ -9,11 +9,12 @@ import com.robotoworks.mechanoid.db.MechanoidSQLiteOpenHelper;
 import com.robotoworks.mechanoid.db.SQLiteMigration;
 
 import com.robotoworks.example.ghissues.db.migrations.DefaultGithubDBMigrationV1;
+import com.robotoworks.example.ghissues.db.migrations.DefaultGithubDBMigrationV2;
 
 public abstract class AbstractGithubDBOpenHelper extends MechanoidSQLiteOpenHelper {
 	private static final String DATABASE_NAME = "GithubDB.db";
 
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 
 	public interface Sources {
 		String ISSUES = "issues";
@@ -38,6 +39,8 @@ public abstract class AbstractGithubDBOpenHelper extends MechanoidSQLiteOpenHelp
 		switch(version) {
 			case 0:
 				return createGithubDBMigrationV1();
+			case 1:
+				return createGithubDBMigrationV2();
 			default:
 				throw new IllegalStateException("No migration for version " + version);
 		}
@@ -45,5 +48,8 @@ public abstract class AbstractGithubDBOpenHelper extends MechanoidSQLiteOpenHelp
 	
 	protected SQLiteMigration createGithubDBMigrationV1() {
 		return new DefaultGithubDBMigrationV1();
+	}
+	protected SQLiteMigration createGithubDBMigrationV2() {
+		return new DefaultGithubDBMigrationV2();
 	}
 }

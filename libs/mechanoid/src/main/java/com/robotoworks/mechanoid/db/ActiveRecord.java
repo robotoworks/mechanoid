@@ -19,6 +19,7 @@ import com.robotoworks.mechanoid.util.Closeables;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
@@ -52,6 +53,10 @@ public abstract class ActiveRecord {
 	
     protected abstract AbstractValuesBuilder createBuilder();
     
+	public ContentValues toValues() {
+		return createBuilder().getValues();
+	}
+	
     public abstract void makeDirty(boolean b);
 
     protected abstract void setPropertiesFromCursor(Cursor c);
