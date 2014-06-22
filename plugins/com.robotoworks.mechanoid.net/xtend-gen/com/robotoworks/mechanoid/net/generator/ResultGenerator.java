@@ -45,8 +45,7 @@ public class ResultGenerator {
       this.jsonReaderGenerator.setImports(this.imports);
       this.jsonReaderGenerator.setReaderIdentifier("reader");
       this.jsonReaderGenerator.setSubjectIdentifier("subject");
-      CharSequence _doGenerate = this.doGenerate(method, model, client);
-      _xblockexpression = (_doGenerate);
+      _xblockexpression = this.doGenerate(method, model, client);
     }
     return _xblockexpression;
   }
@@ -460,8 +459,7 @@ public class ResultGenerator {
                 public Boolean apply(final Member member) {
                   String _name = superMember.getName();
                   String _name_1 = member.getName();
-                  boolean _equals = _name.equals(_name_1);
-                  return Boolean.valueOf(_equals);
+                  return Boolean.valueOf(_name.equals(_name_1));
                 }
               };
               Member _findFirst = IterableExtensions.<Member>findFirst(_members, _function);
@@ -496,7 +494,7 @@ public class ResultGenerator {
           } else {
             ComplexTypeDeclaration _superType_3 = responseBlock.getSuperType();
             boolean _notEquals_3 = (!Objects.equal(_superType_3, null));
-            _or = ((_type_3 instanceof ComplexTypeLiteral) || _notEquals_3);
+            _or = _notEquals_3;
           }
           if (_or) {
             _builder.append("\t");
@@ -628,8 +626,7 @@ public class ResultGenerator {
   }
   
   public EList<Member> mergeMembers(final ComplexTypeLiteral a, final ComplexTypeLiteral b) {
-    HashMap<String,Member> _hashMap = new HashMap<String, Member>();
-    HashMap<String,Member> members = _hashMap;
+    HashMap<String,Member> members = new HashMap<String, Member>();
     boolean _notEquals = (!Objects.equal(a, null));
     if (_notEquals) {
       EList<Member> _members = a.getMembers();
@@ -652,8 +649,7 @@ public class ResultGenerator {
       }
     }
     Collection<Member> _values = members.values();
-    BasicEList<Member> _basicEList = new BasicEList<Member>(_values);
-    return _basicEList;
+    return new BasicEList<Member>(_values);
   }
   
   protected CharSequence _generateDeserializationStatementForType(final ResponseBlock response, final IntrinsicType type) {
@@ -682,8 +678,7 @@ public class ResultGenerator {
   
   protected CharSequence _generateDeserializationStatementForType(final ResponseBlock response, final UserType type) {
     UserTypeDeclaration _declaration = type.getDeclaration();
-    CharSequence _generateDeserializationStatementForUserType = this.generateDeserializationStatementForUserType(response, type, _declaration);
-    return _generateDeserializationStatementForUserType;
+    return this.generateDeserializationStatementForUserType(response, type, _declaration);
   }
   
   protected CharSequence _generateDeserializationStatementForUserType(final ResponseBlock response, final UserType type, final ComplexTypeDeclaration declaration) {
@@ -745,8 +740,7 @@ public class ResultGenerator {
   
   protected CharSequence _generateDeserializationStatementForType(final ResponseBlock response, final GenericListType type) {
     Type _elementType = type.getElementType();
-    CharSequence _generateDeserializationStatementForGenericListType = this.generateDeserializationStatementForGenericListType(response, type, _elementType);
-    return _generateDeserializationStatementForGenericListType;
+    return this.generateDeserializationStatementForGenericListType(response, type, _elementType);
   }
   
   protected CharSequence _generateDeserializationStatementForGenericListType(final ResponseBlock response, final GenericListType type, final IntrinsicType genericType) {
@@ -772,8 +766,7 @@ public class ResultGenerator {
   
   protected CharSequence _generateDeserializationStatementForGenericListType(final ResponseBlock response, final GenericListType type, final UserType genericType) {
     UserTypeDeclaration _declaration = genericType.getDeclaration();
-    CharSequence _generateDeserializationStatementForUserTypeGenericList = this.generateDeserializationStatementForUserTypeGenericList(response, type, genericType, _declaration);
-    return _generateDeserializationStatementForUserTypeGenericList;
+    return this.generateDeserializationStatementForUserTypeGenericList(response, type, genericType, _declaration);
   }
   
   protected CharSequence _generateDeserializationStatementForUserTypeGenericList(final ResponseBlock response, final GenericListType type, final UserType genericType, final ComplexTypeDeclaration declaration) {

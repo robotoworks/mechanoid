@@ -69,8 +69,7 @@ public class ContentProviderGenerator {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
       final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
         public Boolean apply(final CreateTableStatement it) {
-          boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(it);
-          return Boolean.valueOf(_hasAndroidPrimaryKey);
+          return Boolean.valueOf(ModelUtil.hasAndroidPrimaryKey(it));
         }
       };
       Iterable<CreateTableStatement> _filter = IterableExtensions.<CreateTableStatement>filter(_tables, _function);
@@ -1318,8 +1317,7 @@ public class ContentProviderGenerator {
   }
   
   public String asString(final ContentUri uri) {
-    StringBuilder _stringBuilder = new StringBuilder();
-    StringBuilder builder = _stringBuilder;
+    StringBuilder builder = new StringBuilder();
     String _type = uri.getType();
     builder.append(_type);
     EList<ContentUriSegment> _segments = uri.getSegments();

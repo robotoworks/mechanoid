@@ -37,8 +37,7 @@ public class StringEnumTypeGenerator {
         String _plus = (_upperCase + "(\"");
         String _name_1 = member.getName();
         String _plus_1 = (_plus + _name_1);
-        String _plus_2 = (_plus_1 + "\")");
-        return _plus_2;
+        return (_plus_1 + "\")");
       }
     };
     String _join = IterableExtensions.<EnumMember>join(_members, ",\n", _function);

@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.robotoworks.mechanoid.net.ServiceResult;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.util.Closeables;
+import java.io.BufferedReader;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -20,7 +21,7 @@ public class GetBookResult extends ServiceResult {
 		JsonReader reader = null;
 		try {
 			if(inStream != null) {
-				reader = new JsonReader(new InputStreamReader(inStream, Charset.defaultCharset()));
+				reader = new JsonReader(new BufferedReader(new InputStreamReader(inStream, Charset.defaultCharset())));
 			this.book = new Book();
 			provider.get(Book.class).read(reader, this.book);
 		}

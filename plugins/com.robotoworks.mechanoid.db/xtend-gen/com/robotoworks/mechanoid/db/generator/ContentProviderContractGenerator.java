@@ -162,8 +162,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy = IterableExtensions.<CreateTableStatement, String>sortBy(_tables, _function);
@@ -181,8 +180,7 @@ public class ContentProviderContractGenerator {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
-              boolean _not = (!_equals);
-              return Boolean.valueOf(_not);
+              return Boolean.valueOf((!_equals));
             }
           };
           Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function_1);
@@ -212,8 +210,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _views = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_2 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_1 = IterableExtensions.<CreateViewStatement, String>sortBy(_views, _function_2);
@@ -231,8 +228,7 @@ public class ContentProviderContractGenerator {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
-              boolean _not = (!_equals);
-              return Boolean.valueOf(_not);
+              return Boolean.valueOf((!_equals));
             }
           };
           Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function_3);
@@ -253,8 +249,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_4 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_2 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables, _function_4);
@@ -272,8 +267,7 @@ public class ContentProviderContractGenerator {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
-              boolean _not = (!_equals);
-              return Boolean.valueOf(_not);
+              return Boolean.valueOf((!_equals));
             }
           };
           Iterable<ColumnSource> _filter_2 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_5);
@@ -303,8 +297,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_6 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_3 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews, _function_6);
@@ -322,8 +315,7 @@ public class ContentProviderContractGenerator {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
-              boolean _not = (!_equals);
-              return Boolean.valueOf(_not);
+              return Boolean.valueOf((!_equals));
             }
           };
           Iterable<ColumnSource> _filter_3 = IterableExtensions.<ColumnSource>filter(_viewResultColumns_1, _function_7);
@@ -348,8 +340,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_8 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_4 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_1, _function_8);
@@ -365,8 +356,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_9 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_5 = IterableExtensions.<CreateViewStatement, String>sortBy(_views_1, _function_9);
@@ -383,8 +373,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _configInitTables_1 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_10 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_6 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_1, _function_10);
@@ -400,8 +389,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _configInitViews_1 = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_11 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_7 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews_1, _function_11);
@@ -431,8 +419,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_12 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_8 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_2, _function_12);
@@ -454,8 +441,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _views_2 = snapshot.getViews();
       final Function1<CreateViewStatement,String> _function_13 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_9 = IterableExtensions.<CreateViewStatement, String>sortBy(_views_2, _function_13);
@@ -477,8 +463,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _configInitTables_2 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_14 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_10 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_2, _function_14);
@@ -500,8 +485,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateViewStatement> _configInitViews_2 = ModelUtil.getConfigInitViews(model);
       final Function1<CreateViewStatement,String> _function_15 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_11 = IterableExtensions.<CreateViewStatement, String>sortBy(_configInitViews_2, _function_15);
@@ -561,8 +545,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
       final Function1<CreateTableStatement,String> _function_16 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_12 = IterableExtensions.<CreateTableStatement, String>sortBy(_tables_3, _function_16);
@@ -579,8 +562,7 @@ public class ContentProviderContractGenerator {
       Collection<CreateTableStatement> _configInitTables_3 = ModelUtil.getConfigInitTables(model);
       final Function1<CreateTableStatement,String> _function_17 = new Function1<CreateTableStatement,String>() {
         public String apply(final CreateTableStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateTableStatement> _sortBy_13 = IterableExtensions.<CreateTableStatement, String>sortBy(_configInitTables_3, _function_17);
@@ -618,8 +600,7 @@ public class ContentProviderContractGenerator {
               ContentUri _uri = it.getUri();
               String _type = _uri.getType();
               boolean _containsDefinition = snapshot.containsDefinition(_type);
-              boolean _not = (!_containsDefinition);
-              return Boolean.valueOf(_not);
+              return Boolean.valueOf((!_containsDefinition));
             }
           };
           Iterable<ActionStatement> _filter_1 = IterableExtensions.<ActionStatement>filter(_filter, _function);
@@ -742,8 +723,7 @@ public class ContentProviderContractGenerator {
     ConfigBlock _config = _database.getConfig();
     boolean _equals = Objects.equal(_config, null);
     if (_equals) {
-      ArrayList<ActionStatement> _arrayList = new ArrayList<ActionStatement>();
-      return _arrayList;
+      return new ArrayList<ActionStatement>();
     }
     DatabaseBlock _database_1 = model.getDatabase();
     ConfigBlock _config_1 = _database_1.getConfig();
@@ -753,8 +733,7 @@ public class ContentProviderContractGenerator {
       public Boolean apply(final ActionStatement action) {
         ContentUri _uri = action.getUri();
         String _type = _uri.getType();
-        boolean _equals = _type.equals(defName);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_type.equals(defName));
       }
     };
     return IterableExtensions.<ActionStatement>filter(_filter, _function);
@@ -777,16 +756,14 @@ public class ContentProviderContractGenerator {
         }
       }
     };
-    String _join = IterableExtensions.<ContentUriParamSegment>join(_filter, ", ", _function);
-    return _join;
+    return IterableExtensions.<ContentUriParamSegment>join(_filter, ", ", _function);
   }
   
   public boolean hasMethodArgs(final ContentUri uri) {
     EList<ContentUriSegment> _segments = uri.getSegments();
     Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
     int _size = IterableExtensions.size(_filter);
-    boolean _greaterThan = (_size > 0);
-    return _greaterThan;
+    return (_size > 0);
   }
   
   public CharSequence generateContractItem(final Model model, final SqliteDatabaseSnapshot snapshot, final TableDefinition stmt) {
@@ -1070,8 +1047,7 @@ public class ContentProviderContractGenerator {
       HashSet<CreateViewStatement> _allViewsReferencingTable = ModelUtil.getAllViewsReferencingTable(snapshot, stmt);
       final Function1<CreateViewStatement,String> _function = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy = IterableExtensions.<CreateViewStatement, String>sortBy(_allViewsReferencingTable, _function);
@@ -1089,8 +1065,7 @@ public class ContentProviderContractGenerator {
       HashSet<CreateViewStatement> _allViewsInConfigInitReferencingTable = ModelUtil.getAllViewsInConfigInitReferencingTable(model, stmt);
       final Function1<CreateViewStatement,String> _function_1 = new Function1<CreateViewStatement,String>() {
         public String apply(final CreateViewStatement x) {
-          String _name = x.getName();
-          return _name;
+          return x.getName();
         }
       };
       List<CreateViewStatement> _sortBy_1 = IterableExtensions.<CreateViewStatement, String>sortBy(_allViewsInConfigInitReferencingTable, _function_1);
@@ -1125,8 +1100,7 @@ public class ContentProviderContractGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -1174,8 +1148,7 @@ public class ContentProviderContractGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -1216,23 +1189,19 @@ public class ContentProviderContractGenerator {
   }
   
   protected String _getName(final CreateTableStatement stmt) {
-    String _name = stmt.getName();
-    return _name;
+    return stmt.getName();
   }
   
   protected String _getName(final CreateViewStatement stmt) {
-    String _name = stmt.getName();
-    return _name;
+    return stmt.getName();
   }
   
   protected boolean _hasAndroidPrimaryKey(final CreateTableStatement stmt) {
-    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(stmt);
-    return _hasAndroidPrimaryKey;
+    return ModelUtil.hasAndroidPrimaryKey(stmt);
   }
   
   protected boolean _hasAndroidPrimaryKey(final CreateViewStatement stmt) {
-    boolean _hasAndroidPrimaryKey = ModelUtil.hasAndroidPrimaryKey(stmt);
-    return _hasAndroidPrimaryKey;
+    return ModelUtil.hasAndroidPrimaryKey(stmt);
   }
   
   public CharSequence createMethodArgsFromColumns(final CreateTableStatement tbl) {
@@ -1243,8 +1212,7 @@ public class ContentProviderContractGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -1281,7 +1249,7 @@ public class ContentProviderContractGenerator {
         String _name_1 = expr.getName();
         boolean _equals = _name_1.equals("");
         boolean _not = (!_equals);
-        _and_1 = (_notEquals && _not);
+        _and_1 = _not;
       }
       if (!_and_1) {
         _and = false;
@@ -1289,7 +1257,7 @@ public class ContentProviderContractGenerator {
         String _name_2 = expr.getName();
         boolean _equals_1 = _name_2.equals("_id");
         boolean _not_1 = (!_equals_1);
-        _and = (_and_1 && _not_1);
+        _and = _not_1;
       }
       if (_and) {
         _builder.append("String ");

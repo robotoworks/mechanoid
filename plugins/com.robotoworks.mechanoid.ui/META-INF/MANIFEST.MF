@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext.builder;bundle-version="2.4.2",
  org.eclipse.xtext.ui,
  org.apache.log4j,
- com.google.inject;visibility:=reexport
+ com.google.inject;visibility:=reexport,
+ org.eclipse.jdt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.io;version="10.0.1",

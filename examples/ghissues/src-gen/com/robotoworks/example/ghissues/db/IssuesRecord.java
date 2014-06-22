@@ -53,7 +53,8 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
     	Issues.GHID,
     	Issues.NUMBER,
     	Issues.TITLE,
-    	Issues.BODY
+    	Issues.BODY,
+    	Issues.CREATED
     };
     
     public interface Indices {
@@ -64,6 +65,7 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
     	int NUMBER = 4;
     	int TITLE = 5;
     	int BODY = 6;
+    	int CREATED = 7;
     }
     
     private String mOwner;
@@ -78,6 +80,8 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
     private boolean mTitleDirty;
     private String mBody;
     private boolean mBodyDirty;
+    private long mCreated;
+    private boolean mCreatedDirty;
     
     @Override
     protected String[] _getProjection() {
@@ -138,6 +142,15 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
     	return mBody;
     }
     
+    public void setCreated(long created) {
+    	mCreated = created;
+    	mCreatedDirty = true;
+    }
+    
+    public long getCreated() {
+    	return mCreated;
+    }
+    
     
     public IssuesRecord() {
     	super(Issues.CONTENT_URI);
@@ -154,8 +167,9 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		mNumber = in.readLong();
 		mTitle = in.readString();
 		mBody = in.readString();
+		mCreated = in.readLong();
 		
-		boolean[] dirtyFlags = new boolean[6];
+		boolean[] dirtyFlags = new boolean[7];
 		in.readBooleanArray(dirtyFlags);
 		mOwnerDirty = dirtyFlags[0];
 		mRepoDirty = dirtyFlags[1];
@@ -163,6 +177,7 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		mNumberDirty = dirtyFlags[3];
 		mTitleDirty = dirtyFlags[4];
 		mBodyDirty = dirtyFlags[5];
+		mCreatedDirty = dirtyFlags[6];
 	}
 	
 	@Override
@@ -179,13 +194,15 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		dest.writeLong(mNumber);
 		dest.writeString(mTitle);
 		dest.writeString(mBody);
+		dest.writeLong(mCreated);
 		dest.writeBooleanArray(new boolean[] {
 			mOwnerDirty,
 			mRepoDirty,
 			mGhidDirty,
 			mNumberDirty,
 			mTitleDirty,
-			mBodyDirty
+			mBodyDirty,
+			mCreatedDirty
 		});
 	}
 	
@@ -211,6 +228,9 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		if(mBodyDirty) {
 			builder.setBody(mBody);
 		}
+		if(mCreatedDirty) {
+			builder.setCreated(mCreated);
+		}
 		
 		return builder;
 	}
@@ -223,6 +243,7 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		mNumberDirty = dirty;
 		mTitleDirty = dirty;
 		mBodyDirty = dirty;
+		mCreatedDirty = dirty;
 	}
 
 	@Override
@@ -234,6 +255,7 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		setNumber(c.getLong(Indices.NUMBER));
 		setTitle(c.getString(Indices.TITLE));
 		setBody(c.getString(Indices.BODY));
+		setCreated(c.getLong(Indices.CREATED));
 	}
 	
 	public static IssuesRecord fromCursor(Cursor c) {

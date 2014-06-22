@@ -210,8 +210,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   
   public IScope scopeForTableDefinitionsBeforeStatement(final DDLStatement stmt, final boolean inclusive) {
     ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(stmt, TableDefinition.class, inclusive);
-    HashMap<String,EObject> _hashMap = new HashMap<String, EObject>();
-    final HashMap<String,EObject> map = _hashMap;
+    final HashMap<String,EObject> map = new HashMap<String, EObject>();
     List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
     for (final TableDefinition ref : _reverse) {
       {
@@ -232,8 +231,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     Collection<EObject> _values = map.values();
     final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
       public QualifiedName apply(final EObject it) {
-        QualifiedName _name = NameHelper.getName(((TableDefinition) it));
-        return _name;
+        return NameHelper.getName(((TableDefinition) it));
       }
     };
     return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
@@ -241,8 +239,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   
   public IScope scopeForViewDefinitionsBeforeStatement(final DDLStatement stmt, final boolean inclusive) {
     ArrayList<CreateViewStatement> refs = ModelUtil.<CreateViewStatement>findPreviousStatementsOfType(stmt, CreateViewStatement.class, inclusive);
-    HashMap<String,EObject> _hashMap = new HashMap<String, EObject>();
-    final HashMap<String,EObject> map = _hashMap;
+    final HashMap<String,EObject> map = new HashMap<String, EObject>();
     List<CreateViewStatement> _reverse = ListExtensions.<CreateViewStatement>reverse(refs);
     for (final CreateViewStatement ref : _reverse) {
       {
@@ -263,8 +260,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     Collection<EObject> _values = map.values();
     final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
       public QualifiedName apply(final EObject it) {
-        QualifiedName _name = NameHelper.getName(((TableDefinition) it));
-        return _name;
+        return NameHelper.getName(((TableDefinition) it));
       }
     };
     return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
@@ -272,8 +268,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   
   public IScope scopeForTableDefinitionsBeforeStatement(final DatabaseBlock db, final DDLStatement stmt, final boolean inclusive) {
     ArrayList<TableDefinition> refs = ModelUtil.<TableDefinition>findPreviousStatementsOfType(db, stmt, TableDefinition.class, inclusive);
-    HashMap<String,EObject> _hashMap = new HashMap<String, EObject>();
-    final HashMap<String,EObject> map = _hashMap;
+    final HashMap<String,EObject> map = new HashMap<String, EObject>();
     List<TableDefinition> _reverse = ListExtensions.<TableDefinition>reverse(refs);
     for (final TableDefinition ref : _reverse) {
       {
@@ -294,8 +289,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     Collection<EObject> _values = map.values();
     final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
       public QualifiedName apply(final EObject it) {
-        QualifiedName _name = NameHelper.getName(((TableDefinition) it));
-        return _name;
+        return NameHelper.getName(((TableDefinition) it));
       }
     };
     return Scopes.<EObject>scopeFor(_values, _function, IScope.NULLSCOPE);
@@ -399,8 +393,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             items.addAll(_findAllSingleSources);
             final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
               public QualifiedName apply(final EObject it) {
-                QualifiedName _name = NameHelper.getName(((SelectSource) it));
-                return _name;
+                return NameHelper.getName(((SelectSource) it));
               }
             };
             IScope _buildScopeForColumnSourceRef_source = this.buildScopeForColumnSourceRef_source(context, container);
@@ -417,8 +410,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(core);
             final Function<EObject,QualifiedName> _function = new Function<EObject,QualifiedName>() {
               public QualifiedName apply(final EObject it) {
-                QualifiedName _name = NameHelper.getName(((SelectSource) it));
-                return _name;
+                return NameHelper.getName(((SelectSource) it));
               }
             };
             return Scopes.<EObject>scopeFor(_allReferenceableSingleSources, _function, IScope.NULLSCOPE);

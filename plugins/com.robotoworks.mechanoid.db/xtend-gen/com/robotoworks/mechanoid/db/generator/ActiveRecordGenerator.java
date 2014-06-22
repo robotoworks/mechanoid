@@ -529,8 +529,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -601,8 +600,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -671,8 +669,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -697,8 +694,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -722,8 +718,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -761,8 +756,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -799,8 +793,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -852,8 +845,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_1, _function_1);
@@ -887,8 +879,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -938,8 +929,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(cols, _function_1);
@@ -974,8 +964,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -1035,8 +1024,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(_columnDefs_2, _function_1);
@@ -1066,8 +1054,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(cols, _function);
@@ -1124,8 +1111,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter_1 = IterableExtensions.<ColumnSource>filter(cols, _function_1);
@@ -1145,13 +1131,11 @@ public class ActiveRecordGenerator {
   }
   
   protected String _getName(final CreateTableStatement statement) {
-    String _name = statement.getName();
-    return _name;
+    return statement.getName();
   }
   
   protected String _getName(final CreateViewStatement statement) {
-    String _name = statement.getName();
-    return _name;
+    return statement.getName();
   }
   
   protected CharSequence _generateProjectionArrayMembers(final CreateTableStatement stmt) {
@@ -1256,8 +1240,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -1293,8 +1276,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function);
@@ -1331,8 +1313,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_columnDefs, _function);
@@ -1407,8 +1388,7 @@ public class ActiveRecordGenerator {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
-          boolean _not = (!_equals);
-          return Boolean.valueOf(_not);
+          return Boolean.valueOf((!_equals));
         }
       };
       Iterable<ColumnSource> _filter = IterableExtensions.<ColumnSource>filter(_viewResultColumns, _function);

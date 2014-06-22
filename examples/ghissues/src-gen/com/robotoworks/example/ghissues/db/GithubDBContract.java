@@ -46,6 +46,7 @@ public class GithubDBContract  {
 		String NUMBER = "number";
 		String TITLE = "title";
 		String BODY = "body";
+		String CREATED = "created";
 	}
 	
 			
@@ -122,6 +123,10 @@ public class GithubDBContract  {
 			}
 			public Builder setBody(String value) {
 				mValues.put(Issues.BODY, value);
+				return this;
+			}
+			public Builder setCreated(long value) {
+				mValues.put(Issues.CREATED, value);
 				return this;
 			}
 		}
