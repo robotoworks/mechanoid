@@ -173,11 +173,21 @@ public class OperationExecutor {
     		Log.d(TAG, String.format("[Saving State] key: %s", mUserStateKey));
     	}
     	
-        Bundle state = new Bundle();
+    	Bundle state = getStateBundle(outState);
+    	
         state.putParcelable(mUserStateKey, mOpInfo);
         
         outState.putBundle(STATE_KEY, state);       
     }
+
+	private Bundle getStateBundle(Bundle outState) {
+		Bundle state = outState.getBundle(STATE_KEY); 
+    	
+    	if(state == null) {
+    		state = new Bundle();
+    	}
+		return state;
+	}
 	
     private OperationServiceListener mServiceListener = new OperationServiceListener() {
 
