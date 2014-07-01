@@ -29,7 +29,7 @@ public class SqliteModelUiModule extends com.robotoworks.mechanoid.db.ui.Abstrac
 		super.configure(binder);
 		
 		binder.bind(ISemanticHighlightingCalculator.class).to(MechDbSemanticHighlightingCalculator.class);
-		
+		binder.bind(MechanoidLibClasspathUiValidationHelper.class);
 //		binder.bind(String.class)
 //		.annotatedWith(com.google.inject.name.Names.named(
 //		(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)))
@@ -47,7 +47,7 @@ public class SqliteModelUiModule extends com.robotoworks.mechanoid.db.ui.Abstrac
         return MechanoidXtextAddingEditorCallback.class;
     }
     
-    @org.eclipse.xtext.service.SingletonBinding(eager=true) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+    @org.eclipse.xtext.service.SingletonBinding(eager=false) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
         return MechanoidLibClasspathUiValidationHelper.class;
     }
 }
