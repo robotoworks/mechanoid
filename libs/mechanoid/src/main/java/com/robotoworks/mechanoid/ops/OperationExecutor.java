@@ -95,12 +95,12 @@ public class OperationExecutor {
 	/**
 	 * <p>Useful if you want to know if the operation completed and is ok.</p>
 	 * 
-	 * <p>Equivalent to <code>isComplete() && getResult().isOk()</code></p>
+	 * <p>Equivalent to <code>isComplete() && getResult() != null && getResult().isOk()</code></p>
 	 * 
 	 * @return true if the operation completed ok
 	 */
 	public boolean isOk() {
-		return isComplete() && getResult().isOk();
+		return isComplete() && getResult() != null && getResult().isOk();
 	}
 	
 	/**

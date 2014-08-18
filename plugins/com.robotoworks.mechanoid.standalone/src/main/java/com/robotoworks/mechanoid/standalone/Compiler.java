@@ -97,7 +97,7 @@ public class Compiler {
 
 	protected void loadResources(ArrayList<String> resourcePaths) {
 		for(String path : resourcePaths) {
-			mResourceSet.getResource(URI.createURI(path), true);
+			mResourceSet.getResource(URI.createFileURI(path), true);
 		}
 	}
 
