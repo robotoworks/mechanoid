@@ -129,7 +129,7 @@ public class SqliteModelGenerator implements IGenerator {
     IterableExtensions.<CreateViewStatement>forEach(_configInitViews, _function_3);
     DatabaseBlock _database_5 = model.getDatabase();
     EList<MigrationBlock> _migrations = _database_5.getMigrations();
-    final Procedure2<MigrationBlock,Integer> _function_4 = new Procedure2<MigrationBlock,Integer>() {
+    final Procedure2<MigrationBlock, Integer> _function_4 = new Procedure2<MigrationBlock, Integer>() {
       public void apply(final MigrationBlock item, final Integer index) {
         SqliteModelGenerator.this.generateMigration(resource, fsa, item, ((index).intValue() + 1));
       }

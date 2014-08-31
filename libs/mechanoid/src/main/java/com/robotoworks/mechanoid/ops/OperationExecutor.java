@@ -144,7 +144,7 @@ public class OperationExecutor {
 			return null;
 		}
 		
-		return mOpInfo.mIntent;
+		return mOpInfo.getIntent(0);
 	}
 	
     private void restoreState(Bundle savedInstanceState) {
@@ -251,7 +251,7 @@ public class OperationExecutor {
         if (result == null) {
         	Log.d(TAG, String.format("[Operation Retry] the log did not contain request id: %s, key: %s, retrying...", mOpInfo.mId, mUserStateKey));
         	
-        	executeOperation(mOpInfo.mIntent);
+        	executeOperations(mOpInfo.mIntents);
         	
         	return;
         }
@@ -265,7 +265,7 @@ public class OperationExecutor {
         int mId = 0;
         boolean mCallbackInvoked = false;
         OperationResult mResult = null;
-		public Intent mIntent;
+		public Intent[] mIntents;
         
         public static final Parcelable.Creator<OpInfo> CREATOR
         = new Parcelable.Creator<OpInfo>() {
@@ -282,11 +282,18 @@ public class OperationExecutor {
             
         }
         
-        OpInfo(Parcel in) {
+        public Intent getIntent(int index) {
+        	if(mIntents == null || mIntents.length == 0) {
+        		return null;
+        	}
+			return mIntents[index];
+		}
+
+		OpInfo(Parcel in) {
             mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
             mResult = in.readParcelable(OperationResult.class.getClassLoader());
-            mIntent = in.readParcelable(Intent.class.getClassLoader());
+            mIntents = (Intent[]) in.readParcelableArray(Intent.class.getClassLoader());
         }
 
         @Override
@@ -299,8 +306,12 @@ public class OperationExecutor {
             dest.writeInt(mId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
             dest.writeParcelable(mResult, 0);
-            dest.writeParcelable(mIntent, 0);
+            dest.writeParcelableArray(mIntents, 0);
         }
+
+		public void setIntents(Intent... intents) {
+			mIntents = intents;
+		}
     }
     
     protected boolean invokeOnOperationPending() {
@@ -350,6 +361,7 @@ public class OperationExecutor {
      * @param force true to force the operation intent to execute, this will abandon any previous operation
      * intent
      */
+    @Deprecated
     public void execute(Intent operationIntent, int mode) {
         
         if (operationIntent == null) {
@@ -367,6 +379,47 @@ public class OperationExecutor {
         } else if(mode == MODE_ON_ERROR) {
         	if(mOpInfo == null || isError()) {
         		executeOperation(operationIntent);
+        	}
+        }
+        
+        completeOperation();
+    }
+ 
+    /**
+     * <p>Execute operation(s)</p>
+     * 
+     * <p>When the operation completes, {@link OperationExecutorCallbacks#onOperationComplete(OperationExecutor, OperationResult, boolean)}
+     * will be invoked.</p>
+     * <p><b>execute</b> can be invoked many times for the same operation intent, however it will only run the operation once if
+     * the <b>force</b> flag is set to false,
+     * subsequent calls will be ignored unless the <b>force</b> argument is set to true. In all cases the 
+     * {@link OperationExecutorCallbacks#onOperationComplete(OperationExecutor, OperationResult, boolean)} will
+     * be invoked for each call but subsequent calls for the same operation will have the <b>fromCache</b> argument set to true.</p>
+     * 
+     * <p>Setting the force flag to true, will force the operation to run, if an operation is currently running then it will continue to run but 
+     * its result will be ignored and no callbacks will be received.</p>
+     *
+     * @param mode true to force the operation intent to execute, this will abandon any previous operation
+     * @param operationIntent An intent representing the operation to execute
+     * intent
+     */
+    public void execute(int mode, Intent... intents) {
+        
+        if (intents == null) {
+        	Log.d(TAG, String.format("[Operation Null] operationintent argument was null, key: %s", mUserStateKey));
+        	return;
+        }
+        
+        if (mode == MODE_ALWAYS) {
+        	mOpInfo = null;
+        	executeOperations(intents);
+        } else if(mode == MODE_ONCE) {
+        	if(mOpInfo == null) {
+        		executeOperations(intents);
+        	}
+        } else if(mode == MODE_ON_ERROR) {
+        	if(mOpInfo == null || isError()) {
+        		executeOperations(intents);
         	}
         }
         
@@ -391,10 +444,23 @@ public class OperationExecutor {
 		}
 		
 		mOpInfo = new OpInfo();
-		mOpInfo.mIntent = operationIntent;
+		mOpInfo.setIntents(operationIntent);
 
 		invokeOnOperationPending();
 		
 		mOpInfo.mId = Ops.execute(operationIntent);
+	}
+	
+	protected void executeOperations(Intent... operations) {
+		if(mEnableLogging) {
+			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
+		}
+		
+		mOpInfo = new OpInfo();
+		mOpInfo.setIntents(operations);
+		
+		invokeOnOperationPending();
+		
+		mOpInfo.mId = Ops.executeBatch(operations);
 	}
 }

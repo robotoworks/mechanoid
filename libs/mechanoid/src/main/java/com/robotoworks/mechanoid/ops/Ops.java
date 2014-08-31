@@ -23,6 +23,15 @@ public class Ops {
 		return mBridge.execute(intent);
 	}
 	
+	/**
+	 * <p>Execute an operation described by the given intent</p>
+	 * @param intent
+	 * @return
+	 */
+	public static int executeBatch(Intent... intents) {
+		return mBridge.executeBatch(intents);
+	}
+	
 	public static void bindListener(OperationServiceListener listener){
 		mBridge.bindListener(listener);
 	}

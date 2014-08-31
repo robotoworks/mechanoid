@@ -67,7 +67,7 @@ public class ContentProviderGenerator {
     _builder.newLineIfNotEmpty();
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
-      final Function1<CreateTableStatement,Boolean> _function = new Function1<CreateTableStatement,Boolean>() {
+      final Function1<CreateTableStatement, Boolean> _function = new Function1<CreateTableStatement, Boolean>() {
         public Boolean apply(final CreateTableStatement it) {
           return Boolean.valueOf(ModelUtil.hasAndroidPrimaryKey(it));
         }
@@ -240,7 +240,7 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_3 = model.getDatabase();
           ConfigBlock _config_1 = _database_3.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_1 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement, Boolean> _function_1 = new Function1<ConfigurationStatement, Boolean>() {
             public Boolean apply(final ConfigurationStatement it) {
               return Boolean.valueOf((it instanceof ActionStatement));
             }
@@ -433,7 +433,7 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_6 = model.getDatabase();
           ConfigBlock _config_3 = _database_6.getConfig();
           EList<ConfigurationStatement> _statements_1 = _config_3.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_2 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement, Boolean> _function_2 = new Function1<ConfigurationStatement, Boolean>() {
             public Boolean apply(final ConfigurationStatement it) {
               return Boolean.valueOf((it instanceof ActionStatement));
             }
@@ -668,7 +668,7 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_16 = model.getDatabase();
           ConfigBlock _config_5 = _database_16.getConfig();
           EList<ConfigurationStatement> _statements_2 = _config_5.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_3 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement, Boolean> _function_3 = new Function1<ConfigurationStatement, Boolean>() {
             public Boolean apply(final ConfigurationStatement it) {
               return Boolean.valueOf((it instanceof ActionStatement));
             }
@@ -929,7 +929,7 @@ public class ContentProviderGenerator {
           DatabaseBlock _database_20 = model.getDatabase();
           ConfigBlock _config_7 = _database_20.getConfig();
           EList<ConfigurationStatement> _statements_3 = _config_7.getStatements();
-          final Function1<ConfigurationStatement,Boolean> _function_4 = new Function1<ConfigurationStatement,Boolean>() {
+          final Function1<ConfigurationStatement, Boolean> _function_4 = new Function1<ConfigurationStatement, Boolean>() {
             public Boolean apply(final ConfigurationStatement it) {
               return Boolean.valueOf((it instanceof ActionStatement));
             }

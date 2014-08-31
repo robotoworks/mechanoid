@@ -6,6 +6,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class OperationResult implements Parcelable {
+	
+	public static final String EXTRA_BATCH_RESULTS = "OperationResult.BATCH_RESULTS";
+
+	
 	/**
 	 * Represents a code indicating the operation completely successfully a result Bundle.
 	 */
@@ -76,6 +80,13 @@ public class OperationResult implements Parcelable {
 	 */
 	public boolean isOk() {
 		return mResultCode == RESULT_OK;
+	}
+	
+	public boolean isBatch() {
+		if(mResultData == null) {
+			return false;
+		};
+		return mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS) != null;
 	}
 	
 	public void setRequest(Intent request) {
