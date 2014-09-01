@@ -246,6 +246,12 @@ public abstract class OperationProcessor {
 
 	private List<Operation> createOperationsFromBatch(Intent request) {
 		ArrayList<Operation> operations = new ArrayList<Operation>();
+		ArrayList<Intent> requests = request.getParcelableArrayListExtra(OperationService.EXTRA_BATCH);
+		
+		for(Intent innerRequest : requests) {
+			operations.add(createOperation(innerRequest.getAction()));
+		}
+		
 		return operations;
 	}
 

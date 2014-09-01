@@ -1,5 +1,7 @@
 package com.robotoworks.mechanoid.ops;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -79,7 +81,20 @@ public class OperationResult implements Parcelable {
 	 * @return true if the result code is {@link #RESULT_OK}, false otherwise
 	 */
 	public boolean isOk() {
-		return mResultCode == RESULT_OK;
+		if(isBatch()) {
+			ArrayList<Bundle> results = mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
+			for(Bundle result : results) {
+				OperationResult r = OperationResult.fromBundle(result);
+				if(!r.isOk()) {
+					return false;
+				}
+			}
+
+			return true;
+			
+		} else {
+			return mResultCode == RESULT_OK;
+		}
 	}
 	
 	public boolean isBatch() {
@@ -181,5 +196,13 @@ public class OperationResult implements Parcelable {
 	public static OperationResult fromBundle(Bundle bundle) {
 		bundle.setClassLoader(OperationResult.class.getClassLoader());
 		return bundle.getParcelable(OperationResult.class.getName());
+	}
+	
+	public ArrayList<OperationResult> getBatchResults() {
+		if(mResultData == null) {
+			return null;
+		};
+		
+		return mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
 	}
  }

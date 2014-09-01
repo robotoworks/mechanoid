@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -306,7 +307,8 @@ public class OperationServiceBridge {
 		ArrayList<Intent> intentList = new ArrayList<Intent>();
 		
 		Intent batchIntent = new Intent(OperationService.ACTION_BATCH);
-		batchIntent.setClass(Mechanoid.getApplicationContext(), intents[0].getClass());
+		ComponentName c = intents[0].getComponent();
+		batchIntent.setClassName(c.getPackageName(), c.getClassName());
 		batchIntent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
 		
 		int id = createRequestId();
