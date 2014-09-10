@@ -240,6 +240,8 @@ public abstract class OperationProcessor {
 		mContext.setApplicationContext(mService.getApplicationContext());
 		mContext.setIntent(request);
 		mContext.setOperationProcessor(this);
+		mContext.setEnableLogging(mEnableLogging);
+		mContext.setLogTag(mLogTag);
 		
 		mWorker.post(new OperationRunnable(handler, mContext, mCurrentOperation, mEnableLogging, mLogTag));
 	}

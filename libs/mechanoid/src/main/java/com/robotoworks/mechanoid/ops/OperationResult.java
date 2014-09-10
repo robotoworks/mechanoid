@@ -29,6 +29,12 @@ public class OperationResult implements Parcelable {
 	private Bundle mResultData = null;
 	
 	private Intent mRequest = null;
+
+	private boolean mIsBatch;
+
+	private ArrayList<OperationResult> mBatchResults;
+
+	private boolean mBatchResultsOk = true;
 	
 	/**
 	 * <p>Associate an error to this result, it is a good idea
@@ -75,6 +81,21 @@ public class OperationResult implements Parcelable {
 	 */
 	public void setData(Bundle resultData) {
 		mResultData = resultData;
+		mBatchResults = new ArrayList<OperationResult>();
+		mBatchResultsOk = true;
+		mIsBatch = false;
+		ArrayList<Bundle> results = mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
+
+		if(results != null && results.size() > 0) {
+			mIsBatch = true;
+			for(Bundle result : results) {
+				OperationResult r = OperationResult.fromBundle(result);
+				mBatchResults.add(r);
+				if(!r.isOk()) {
+					mBatchResultsOk = false;
+				}
+			}
+		}
 	}
 	
 	/**
@@ -82,16 +103,7 @@ public class OperationResult implements Parcelable {
 	 */
 	public boolean isOk() {
 		if(isBatch()) {
-			ArrayList<Bundle> results = mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
-			for(Bundle result : results) {
-				OperationResult r = OperationResult.fromBundle(result);
-				if(!r.isOk()) {
-					return false;
-				}
-			}
-
-			return true;
-			
+			return mBatchResultsOk;
 		} else {
 			return mResultCode == RESULT_OK;
 		}
@@ -101,7 +113,7 @@ public class OperationResult implements Parcelable {
 		if(mResultData == null) {
 			return false;
 		};
-		return mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS) != null;
+		return mIsBatch;
 	}
 	
 	public void setRequest(Intent request) {
@@ -132,6 +144,7 @@ public class OperationResult implements Parcelable {
 		mError = (Throwable) in.readSerializable();
 		mResultData = in.readBundle();
 		mRequest = in.readParcelable(null);
+		mIsBatch = in.readInt() > 0 ? true : false;
 	}
 
 	@Override
@@ -145,6 +158,7 @@ public class OperationResult implements Parcelable {
 		dest.writeSerializable(mError);
 		dest.writeBundle(mResultData);
 		dest.writeParcelable(mRequest, 0);
+		dest.writeInt(mIsBatch ? 1 : 0);
 	}
 	
 	/**
@@ -199,10 +213,6 @@ public class OperationResult implements Parcelable {
 	}
 	
 	public ArrayList<OperationResult> getBatchResults() {
-		if(mResultData == null) {
-			return null;
-		};
-		
-		return mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
+		return mBatchResults;
 	}
  }

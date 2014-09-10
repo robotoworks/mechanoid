@@ -278,8 +278,8 @@ public class OperationExecutor {
             }
         };
 
-        OpInfo() {
-            
+        OpInfo(Intent[] intents) {
+            mIntents = intents;
         }
         
         public Intent getIntent(int index) {
@@ -292,8 +292,7 @@ public class OperationExecutor {
 		OpInfo(Parcel in) {
             mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
-            mResult = in.readParcelable(OperationResult.class.getClassLoader());
-            mIntents = (Intent[]) in.readParcelableArray(Intent.class.getClassLoader());
+            in.readTypedArray(mIntents, Intent.CREATOR);
         }
 
         @Override
@@ -306,12 +305,8 @@ public class OperationExecutor {
             dest.writeInt(mId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
             dest.writeParcelable(mResult, 0);
-            dest.writeParcelableArray(mIntents, 0);
+            dest.writeTypedArray(mIntents, 0);
         }
-
-		public void setIntents(Intent... intents) {
-			mIntents = intents;
-		}
     }
     
     protected boolean invokeOnOperationPending() {
@@ -443,8 +438,7 @@ public class OperationExecutor {
 			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
 		}
 		
-		mOpInfo = new OpInfo();
-		mOpInfo.setIntents(operationIntent);
+		mOpInfo = new OpInfo(new Intent[]{ operationIntent });
 
 		invokeOnOperationPending();
 		
@@ -456,8 +450,7 @@ public class OperationExecutor {
 			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
 		}
 		
-		mOpInfo = new OpInfo();
-		mOpInfo.setIntents(operations);
+		mOpInfo = new OpInfo(operations);
 		
 		invokeOnOperationPending();
 		

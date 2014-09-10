@@ -17,13 +17,20 @@ public class BatchOperation extends Operation {
 
 	@Override
 	public OperationResult execute(OperationContext context) {
+		
 		Intent intent = context.getIntent();
+
 		ArrayList<Bundle> results = new ArrayList<Bundle>();
 		
 		List<Intent> intents = intent.getParcelableArrayListExtra(OperationService.EXTRA_BATCH);
 		
 		for(int i = 0; i < mBatchOperations.size(); i++) {
 			Intent batchIntent = intents.get(i);
+
+			if(context.getEnableLogging()) {
+				Log.d(context.getLogTag(), String.format("[Batch Operation] intent:%s", batchIntent));
+			}
+			
 			Operation operation = mBatchOperations.get(i);
 			context.setIntent(batchIntent);
 			

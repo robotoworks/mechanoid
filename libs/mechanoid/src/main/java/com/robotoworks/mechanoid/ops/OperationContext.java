@@ -15,6 +15,8 @@ public class OperationContext {
 	private Intent mIntent;
 	private boolean mIsAborted;
 	private int mAbortReason;
+	private boolean mEnableLogging;
+	private String mLogTag;
 	
 	Handler handler = new Handler() {
 
@@ -25,6 +27,7 @@ public class OperationContext {
 			}
 		}
 	};
+
 	
 
 	public void reset() {
@@ -94,5 +97,21 @@ public class OperationContext {
 	
 	public void postProgress(int progress) {
 		postProgress(progress, null);
+	}
+
+	public void setEnableLogging(boolean enableLogging) {
+		mEnableLogging = enableLogging;
+	}
+	
+	public boolean getEnableLogging() {
+		return mEnableLogging;
+	}
+	
+	public String getLogTag() {
+		return mLogTag;
+	}
+	
+	public void setLogTag(String logTag) {
+		mLogTag = logTag;
 	}
 }
