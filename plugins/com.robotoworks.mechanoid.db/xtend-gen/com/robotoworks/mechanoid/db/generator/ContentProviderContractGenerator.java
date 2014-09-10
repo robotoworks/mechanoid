@@ -160,7 +160,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables = snapshot.getTables();
-      final Function1<CreateTableStatement,String> _function = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -176,7 +176,7 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         {
           EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
-          final Function1<ColumnSource,Boolean> _function_1 = new Function1<ColumnSource,Boolean>() {
+          final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
@@ -208,7 +208,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateViewStatement> _views = snapshot.getViews();
-      final Function1<CreateViewStatement,String> _function_2 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_2 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -224,7 +224,7 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         {
           ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(vw);
-          final Function1<ColumnSource,Boolean> _function_3 = new Function1<ColumnSource,Boolean>() {
+          final Function1<ColumnSource, Boolean> _function_3 = new Function1<ColumnSource, Boolean>() {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
@@ -247,7 +247,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateTableStatement> _configInitTables = ModelUtil.getConfigInitTables(model);
-      final Function1<CreateTableStatement,String> _function_4 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_4 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -263,7 +263,7 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         {
           EList<ColumnSource> _columnDefs_1 = tbl_1.getColumnDefs();
-          final Function1<ColumnSource,Boolean> _function_5 = new Function1<ColumnSource,Boolean>() {
+          final Function1<ColumnSource, Boolean> _function_5 = new Function1<ColumnSource, Boolean>() {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
@@ -295,7 +295,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateViewStatement> _configInitViews = ModelUtil.getConfigInitViews(model);
-      final Function1<CreateViewStatement,String> _function_6 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_6 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -311,7 +311,7 @@ public class ContentProviderContractGenerator {
         _builder.newLineIfNotEmpty();
         {
           ArrayList<ColumnSource> _viewResultColumns_1 = ModelUtil.getViewResultColumns(vw_1);
-          final Function1<ColumnSource,Boolean> _function_7 = new Function1<ColumnSource,Boolean>() {
+          final Function1<ColumnSource, Boolean> _function_7 = new Function1<ColumnSource, Boolean>() {
             public Boolean apply(final ColumnSource it) {
               String _name = it.getName();
               boolean _equals = _name.equals("_id");
@@ -338,7 +338,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_1 = snapshot.getTables();
-      final Function1<CreateTableStatement,String> _function_8 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_8 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -354,7 +354,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateViewStatement> _views_1 = snapshot.getViews();
-      final Function1<CreateViewStatement,String> _function_9 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_9 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -371,7 +371,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _configInitTables_1 = ModelUtil.getConfigInitTables(model);
-      final Function1<CreateTableStatement,String> _function_10 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_10 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -387,7 +387,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateViewStatement> _configInitViews_1 = ModelUtil.getConfigInitViews(model);
-      final Function1<CreateViewStatement,String> _function_11 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_11 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -417,7 +417,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_2 = snapshot.getTables();
-      final Function1<CreateTableStatement,String> _function_12 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_12 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -439,7 +439,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateViewStatement> _views_2 = snapshot.getViews();
-      final Function1<CreateViewStatement,String> _function_13 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_13 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -461,7 +461,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateTableStatement> _configInitTables_2 = ModelUtil.getConfigInitTables(model);
-      final Function1<CreateTableStatement,String> _function_14 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_14 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -483,7 +483,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateViewStatement> _configInitViews_2 = ModelUtil.getConfigInitViews(model);
-      final Function1<CreateViewStatement,String> _function_15 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_15 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -543,7 +543,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       Collection<CreateTableStatement> _tables_3 = snapshot.getTables();
-      final Function1<CreateTableStatement,String> _function_16 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_16 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -560,7 +560,7 @@ public class ContentProviderContractGenerator {
     }
     {
       Collection<CreateTableStatement> _configInitTables_3 = ModelUtil.getConfigInitTables(model);
-      final Function1<CreateTableStatement,String> _function_17 = new Function1<CreateTableStatement,String>() {
+      final Function1<CreateTableStatement, String> _function_17 = new Function1<CreateTableStatement, String>() {
         public String apply(final CreateTableStatement x) {
           return x.getName();
         }
@@ -595,7 +595,7 @@ public class ContentProviderContractGenerator {
           ConfigBlock _config_1 = _database_1.getConfig();
           EList<ConfigurationStatement> _statements = _config_1.getStatements();
           Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
-          final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
+          final Function1<ActionStatement, Boolean> _function = new Function1<ActionStatement, Boolean>() {
             public Boolean apply(final ActionStatement it) {
               ContentUri _uri = it.getUri();
               String _type = _uri.getType();
@@ -729,7 +729,7 @@ public class ContentProviderContractGenerator {
     ConfigBlock _config_1 = _database_1.getConfig();
     EList<ConfigurationStatement> _statements = _config_1.getStatements();
     Iterable<ActionStatement> _filter = Iterables.<ActionStatement>filter(_statements, ActionStatement.class);
-    final Function1<ActionStatement,Boolean> _function = new Function1<ActionStatement,Boolean>() {
+    final Function1<ActionStatement, Boolean> _function = new Function1<ActionStatement, Boolean>() {
       public Boolean apply(final ActionStatement action) {
         ContentUri _uri = action.getUri();
         String _type = _uri.getType();
@@ -742,7 +742,7 @@ public class ContentProviderContractGenerator {
   public String toMethodArgs(final ContentUri uri) {
     EList<ContentUriSegment> _segments = uri.getSegments();
     Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
-    final Function1<ContentUriParamSegment,String> _function = new Function1<ContentUriParamSegment,String>() {
+    final Function1<ContentUriParamSegment, String> _function = new Function1<ContentUriParamSegment, String>() {
       public String apply(final ContentUriParamSegment seg) {
         boolean _isNum = seg.isNum();
         if (_isNum) {
@@ -1045,7 +1045,7 @@ public class ContentProviderContractGenerator {
     _builder.newLine();
     {
       HashSet<CreateViewStatement> _allViewsReferencingTable = ModelUtil.getAllViewsReferencingTable(snapshot, stmt);
-      final Function1<CreateViewStatement,String> _function = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -1063,7 +1063,7 @@ public class ContentProviderContractGenerator {
     }
     {
       HashSet<CreateViewStatement> _allViewsInConfigInitReferencingTable = ModelUtil.getAllViewsInConfigInitReferencingTable(model, stmt);
-      final Function1<CreateViewStatement,String> _function_1 = new Function1<CreateViewStatement,String>() {
+      final Function1<CreateViewStatement, String> _function_1 = new Function1<CreateViewStatement, String>() {
         public String apply(final CreateViewStatement x) {
           return x.getName();
         }
@@ -1096,7 +1096,7 @@ public class ContentProviderContractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
-      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+      final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1144,7 +1144,7 @@ public class ContentProviderContractGenerator {
     ArrayList<ColumnSource> cols = ModelUtil.getViewResultColumns(stmt);
     _builder.newLineIfNotEmpty();
     {
-      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+      final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1208,7 +1208,7 @@ public class ContentProviderContractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<ColumnSource> _columnDefs = tbl.getColumnDefs();
-      final Function1<ColumnSource,Boolean> _function = new Function1<ColumnSource,Boolean>() {
+      final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");

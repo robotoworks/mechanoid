@@ -1,11 +1,17 @@
 package com.robotoworks.mechanoid.ops;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class OperationResult implements Parcelable {
+	
+	public static final String EXTRA_BATCH_RESULTS = "OperationResult.BATCH_RESULTS";
+
+	
 	/**
 	 * Represents a code indicating the operation completely successfully a result Bundle.
 	 */
@@ -23,6 +29,12 @@ public class OperationResult implements Parcelable {
 	private Bundle mResultData = null;
 	
 	private Intent mRequest = null;
+
+	private boolean mIsBatch;
+
+	private ArrayList<OperationResult> mBatchResults;
+
+	private boolean mBatchResultsOk = true;
 	
 	/**
 	 * <p>Associate an error to this result, it is a good idea
@@ -69,13 +81,39 @@ public class OperationResult implements Parcelable {
 	 */
 	public void setData(Bundle resultData) {
 		mResultData = resultData;
+		mBatchResults = new ArrayList<OperationResult>();
+		mBatchResultsOk = true;
+		mIsBatch = false;
+		ArrayList<Bundle> results = mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);
+
+		if(results != null && results.size() > 0) {
+			mIsBatch = true;
+			for(Bundle result : results) {
+				OperationResult r = OperationResult.fromBundle(result);
+				mBatchResults.add(r);
+				if(!r.isOk()) {
+					mBatchResultsOk = false;
+				}
+			}
+		}
 	}
 	
 	/**
 	 * @return true if the result code is {@link #RESULT_OK}, false otherwise
 	 */
 	public boolean isOk() {
-		return mResultCode == RESULT_OK;
+		if(isBatch()) {
+			return mBatchResultsOk;
+		} else {
+			return mResultCode == RESULT_OK;
+		}
+	}
+	
+	public boolean isBatch() {
+		if(mResultData == null) {
+			return false;
+		};
+		return mIsBatch;
 	}
 	
 	public void setRequest(Intent request) {
@@ -106,6 +144,7 @@ public class OperationResult implements Parcelable {
 		mError = (Throwable) in.readSerializable();
 		mResultData = in.readBundle();
 		mRequest = in.readParcelable(null);
+		mIsBatch = in.readInt() > 0 ? true : false;
 	}
 
 	@Override
@@ -119,6 +158,7 @@ public class OperationResult implements Parcelable {
 		dest.writeSerializable(mError);
 		dest.writeBundle(mResultData);
 		dest.writeParcelable(mRequest, 0);
+		dest.writeInt(mIsBatch ? 1 : 0);
 	}
 	
 	/**
@@ -170,5 +210,9 @@ public class OperationResult implements Parcelable {
 	public static OperationResult fromBundle(Bundle bundle) {
 		bundle.setClassLoader(OperationResult.class.getClassLoader());
 		return bundle.getParcelable(OperationResult.class.getName());
+	}
+	
+	public ArrayList<OperationResult> getBatchResults() {
+		return mBatchResults;
 	}
  }

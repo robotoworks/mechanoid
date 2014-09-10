@@ -39,6 +39,7 @@ import android.util.Log;
  */
 public abstract class OperationService extends Service {
 	protected static final String ACTION_ABORT = "com.robotoworks.mechanoid.op.actions.ABORT";
+	public static final String ACTION_BATCH = "com.robotoworks.mechanoid.op.actions.BATCH";
 	
 	public static final String EXTRA_START_ID = "com.robotoworks.mechanoid.op.extras.START_ID";
 	
@@ -46,8 +47,11 @@ public abstract class OperationService extends Service {
 	public static final String EXTRA_ABORT_REASON = "com.robotoworks.mechanoid.op.extras.ABORT_REASON";
 	public static final String EXTRA_BRIDGE_MESSENGER = "com.robotoworks.mechanoid.op.extras.BRIDGE_MESSENGER";
 	public static final String EXTRA_IS_ABORTED = "com.robotoworks.mechanoid.op.extras.IS_ABORTED";
+	public static final String EXTRA_BATCH = "com.robotoworks.mechanoid.op.extras.BATCH";
 
 	private static final int MSG_STOP = 1;
+
+
 
 	protected final String mLogTag;
 	protected final boolean mEnableLogging;

@@ -15,11 +15,13 @@
 package com.robotoworks.mechanoid.ops;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.WeakHashMap;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -292,6 +294,38 @@ public class OperationServiceBridge {
 		} else {
 			mPendingRequests.put(id, clonedIntent);
 			Mechanoid.startService(clonedIntent);
+		}
+		
+		return id;
+	}
+
+	public int executeBatch(Intent... intents) {
+		if(intents.length == 0) {
+			return -1;
+		}
+		
+		ArrayList<Intent> intentList = new ArrayList<Intent>();
+		
+		Intent batchIntent = new Intent(OperationService.ACTION_BATCH);
+		ComponentName c = intents[0].getComponent();
+		batchIntent.setClassName(c.getPackageName(), c.getClassName());
+		batchIntent.putExtra(OperationService.EXTRA_BRIDGE_MESSENGER, messenger);
+		
+		int id = createRequestId();
+
+		for(Intent intent : intents) {
+			Intent clonedIntent = (Intent) intent.clone();
+			intentList.add(clonedIntent);
+		}
+
+		batchIntent.putExtra(OperationService.EXTRA_REQUEST_ID, id);
+		batchIntent.putExtra(OperationService.EXTRA_BATCH, intentList);
+		
+		if(mPaused) {
+			mPausedRequests.put(id, batchIntent);
+		} else {
+			mPendingRequests.put(id, batchIntent);
+			Mechanoid.startService(batchIntent);
 		}
 		
 		return id;

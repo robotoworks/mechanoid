@@ -14,7 +14,9 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -119,7 +121,9 @@ public abstract class OperationProcessor {
 			Log.d(mLogTag, String.format("[Execute (Queue)] intent:%s", intent));
 		}
 		
-		if(intent.getAction().equals(OperationService.ACTION_ABORT)) {
+		String action = intent.getAction();
+		
+		if(action.equals(OperationService.ACTION_ABORT)) {
 			int abortRequestId = intent.getIntExtra(OperationService.EXTRA_REQUEST_ID, 0);
 			int abortReason = intent.getIntExtra(OperationService.EXTRA_ABORT_REASON, 0);
 			
@@ -221,7 +225,12 @@ public abstract class OperationProcessor {
 		}
 		
 		mCurrentRequest = request;
-		mCurrentOperation = createOperation(request.getAction());
+		
+		if(request.getAction().equals(OperationService.ACTION_BATCH)) {
+			mCurrentOperation = new BatchOperation(createOperationsFromBatch(request));			
+		} else {
+			mCurrentOperation = createOperation(request.getAction());			
+		}
 		
 		if(mCurrentOperation == null) {
 			throw new RuntimeException(request.getAction() + " Not Implemented");
@@ -231,8 +240,21 @@ public abstract class OperationProcessor {
 		mContext.setApplicationContext(mService.getApplicationContext());
 		mContext.setIntent(request);
 		mContext.setOperationProcessor(this);
+		mContext.setEnableLogging(mEnableLogging);
+		mContext.setLogTag(mLogTag);
 		
 		mWorker.post(new OperationRunnable(handler, mContext, mCurrentOperation, mEnableLogging, mLogTag));
+	}
+
+	private List<Operation> createOperationsFromBatch(Intent request) {
+		ArrayList<Operation> operations = new ArrayList<Operation>();
+		ArrayList<Intent> requests = request.getParcelableArrayListExtra(OperationService.EXTRA_BATCH);
+		
+		for(Intent innerRequest : requests) {
+			operations.add(createOperation(innerRequest.getAction()));
+		}
+		
+		return operations;
 	}
 
 	protected abstract Operation createOperation(String action);

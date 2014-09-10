@@ -6,7 +6,7 @@ import com.robotoworks.mechanoid.net.ServiceRequest;
 
 public class GetMoviesRequest extends ServiceRequest {
 	
-	private static final String PATH = "/v1/movies";
+	private static final String PATH = "/v1";
 	
 	public GetMoviesRequest(){
 	}

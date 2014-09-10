@@ -446,7 +446,7 @@ public class ResultGenerator {
         ComplexTypeDeclaration _superType_2 = responseBlock.getSuperType();
         ComplexTypeLiteral _literal = _superType_2.getLiteral();
         EList<Member> _members = _literal.getMembers();
-        final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
+        final Function1<Member, Boolean> _function = new Function1<Member, Boolean>() {
           public Boolean apply(final Member superMember) {
             BlockType _type = null;
             if (responseBlock!=null) {
@@ -455,7 +455,7 @@ public class ResultGenerator {
             if ((_type instanceof ComplexTypeLiteral)) {
               BlockType _type_1 = responseBlock.getType();
               EList<Member> _members = ((ComplexTypeLiteral) _type_1).getMembers();
-              final Function1<Member,Boolean> _function = new Function1<Member,Boolean>() {
+              final Function1<Member, Boolean> _function = new Function1<Member, Boolean>() {
                 public Boolean apply(final Member member) {
                   String _name = superMember.getName();
                   String _name_1 = member.getName();
@@ -626,7 +626,7 @@ public class ResultGenerator {
   }
   
   public EList<Member> mergeMembers(final ComplexTypeLiteral a, final ComplexTypeLiteral b) {
-    HashMap<String,Member> members = new HashMap<String, Member>();
+    HashMap<String, Member> members = new HashMap<String, Member>();
     boolean _notEquals = (!Objects.equal(a, null));
     if (_notEquals) {
       EList<Member> _members = a.getMembers();
