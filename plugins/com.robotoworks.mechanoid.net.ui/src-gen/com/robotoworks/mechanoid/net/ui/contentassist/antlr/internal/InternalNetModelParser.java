@@ -3442,13 +3442,13 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Path__Alternatives_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1246:1: rule__Path__Alternatives_2 : ( ( ruleArbitraryPathSegment ) | ( ( rule__Path__ParamsAssignment_2_1 ) ) );
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1246:1: rule__Path__Alternatives_2 : ( ( ( rule__Path__ArbAssignment_2_0 ) ) | ( ( rule__Path__ParamsAssignment_2_1 ) ) );
     public final void rule__Path__Alternatives_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1250:1: ( ( ruleArbitraryPathSegment ) | ( ( rule__Path__ParamsAssignment_2_1 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1250:1: ( ( ( rule__Path__ArbAssignment_2_0 ) ) | ( ( rule__Path__ParamsAssignment_2_1 ) ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -3479,18 +3479,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             }
             switch (alt4) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1251:1: ( ruleArbitraryPathSegment )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1251:1: ( ( rule__Path__ArbAssignment_2_0 ) )
                     {
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1251:1: ( ruleArbitraryPathSegment )
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1252:1: ruleArbitraryPathSegment
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1251:1: ( ( rule__Path__ArbAssignment_2_0 ) )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1252:1: ( rule__Path__ArbAssignment_2_0 )
                     {
-                     before(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_2_0()); 
-                    pushFollow(FOLLOW_ruleArbitraryPathSegment_in_rule__Path__Alternatives_22620);
-                    ruleArbitraryPathSegment();
+                     before(grammarAccess.getPathAccess().getArbAssignment_2_0()); 
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1253:1: ( rule__Path__ArbAssignment_2_0 )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1253:2: rule__Path__ArbAssignment_2_0
+                    {
+                    pushFollow(FOLLOW_rule__Path__ArbAssignment_2_0_in_rule__Path__Alternatives_22620);
+                    rule__Path__ArbAssignment_2_0();
 
                     state._fsp--;
 
-                     after(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_2_0()); 
+
+                    }
+
+                     after(grammarAccess.getPathAccess().getArbAssignment_2_0()); 
 
                     }
 
@@ -3507,7 +3513,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1259:1: ( rule__Path__ParamsAssignment_2_1 )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1259:2: rule__Path__ParamsAssignment_2_1
                     {
-                    pushFollow(FOLLOW_rule__Path__ParamsAssignment_2_1_in_rule__Path__Alternatives_22637);
+                    pushFollow(FOLLOW_rule__Path__ParamsAssignment_2_1_in_rule__Path__Alternatives_22638);
                     rule__Path__ParamsAssignment_2_1();
 
                     state._fsp--;
@@ -3540,13 +3546,13 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Path__Alternatives_3_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1268:1: rule__Path__Alternatives_3_1 : ( ( ruleArbitraryPathSegment ) | ( ( rule__Path__ParamsAssignment_3_1_1 ) ) );
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1268:1: rule__Path__Alternatives_3_1 : ( ( ( rule__Path__ArbAssignment_3_1_0 ) ) | ( ( rule__Path__ParamsAssignment_3_1_1 ) ) );
     public final void rule__Path__Alternatives_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1272:1: ( ( ruleArbitraryPathSegment ) | ( ( rule__Path__ParamsAssignment_3_1_1 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1272:1: ( ( ( rule__Path__ArbAssignment_3_1_0 ) ) | ( ( rule__Path__ParamsAssignment_3_1_1 ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -3577,18 +3583,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             }
             switch (alt5) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1273:1: ( ruleArbitraryPathSegment )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1273:1: ( ( rule__Path__ArbAssignment_3_1_0 ) )
                     {
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1273:1: ( ruleArbitraryPathSegment )
-                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1274:1: ruleArbitraryPathSegment
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1273:1: ( ( rule__Path__ArbAssignment_3_1_0 ) )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1274:1: ( rule__Path__ArbAssignment_3_1_0 )
                     {
-                     before(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_3_1_0()); 
-                    pushFollow(FOLLOW_ruleArbitraryPathSegment_in_rule__Path__Alternatives_3_12670);
-                    ruleArbitraryPathSegment();
+                     before(grammarAccess.getPathAccess().getArbAssignment_3_1_0()); 
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1275:1: ( rule__Path__ArbAssignment_3_1_0 )
+                    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1275:2: rule__Path__ArbAssignment_3_1_0
+                    {
+                    pushFollow(FOLLOW_rule__Path__ArbAssignment_3_1_0_in_rule__Path__Alternatives_3_12671);
+                    rule__Path__ArbAssignment_3_1_0();
 
                     state._fsp--;
 
-                     after(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_3_1_0()); 
+
+                    }
+
+                     after(grammarAccess.getPathAccess().getArbAssignment_3_1_0()); 
 
                     }
 
@@ -3605,7 +3617,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1281:1: ( rule__Path__ParamsAssignment_3_1_1 )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1281:2: rule__Path__ParamsAssignment_3_1_1
                     {
-                    pushFollow(FOLLOW_rule__Path__ParamsAssignment_3_1_1_in_rule__Path__Alternatives_3_12687);
+                    pushFollow(FOLLOW_rule__Path__ParamsAssignment_3_1_1_in_rule__Path__Alternatives_3_12689);
                     rule__Path__ParamsAssignment_3_1_1();
 
                     state._fsp--;
@@ -3682,7 +3694,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1297:1: ( rule__Literal__Group_0__0 )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1297:2: rule__Literal__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__Literal__Group_0__0_in_rule__Literal__Alternatives2720);
+                    pushFollow(FOLLOW_rule__Literal__Group_0__0_in_rule__Literal__Alternatives2722);
                     rule__Literal__Group_0__0();
 
                     state._fsp--;
@@ -3707,7 +3719,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1303:1: ( rule__Literal__Group_1__0 )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1303:2: rule__Literal__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__Literal__Group_1__0_in_rule__Literal__Alternatives2738);
+                    pushFollow(FOLLOW_rule__Literal__Group_1__0_in_rule__Literal__Alternatives2740);
                     rule__Literal__Group_1__0();
 
                     state._fsp--;
@@ -3732,7 +3744,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1309:1: ( rule__Literal__Group_2__0 )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1309:2: rule__Literal__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__Literal__Group_2__0_in_rule__Literal__Alternatives2756);
+                    pushFollow(FOLLOW_rule__Literal__Group_2__0_in_rule__Literal__Alternatives2758);
                     rule__Literal__Group_2__0();
 
                     state._fsp--;
@@ -3795,7 +3807,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1324:1: ruleType
                     {
                      before(grammarAccess.getBlockTypeAccess().getTypeParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleType_in_rule__BlockType__Alternatives2789);
+                    pushFollow(FOLLOW_ruleType_in_rule__BlockType__Alternatives2791);
                     ruleType();
 
                     state._fsp--;
@@ -3814,7 +3826,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1330:1: ruleComplexTypeLiteral
                     {
                      before(grammarAccess.getBlockTypeAccess().getComplexTypeLiteralParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__BlockType__Alternatives2806);
+                    pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__BlockType__Alternatives2808);
                     ruleComplexTypeLiteral();
 
                     state._fsp--;
@@ -3900,7 +3912,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1346:1: ruleTypedMember
                     {
                      before(grammarAccess.getMemberAccess().getTypedMemberParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleTypedMember_in_rule__Member__Alternatives2838);
+                    pushFollow(FOLLOW_ruleTypedMember_in_rule__Member__Alternatives2840);
                     ruleTypedMember();
 
                     state._fsp--;
@@ -3919,7 +3931,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1352:1: ruleSkipMember
                     {
                      before(grammarAccess.getMemberAccess().getSkipMemberParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleSkipMember_in_rule__Member__Alternatives2855);
+                    pushFollow(FOLLOW_ruleSkipMember_in_rule__Member__Alternatives2857);
                     ruleSkipMember();
 
                     state._fsp--;
@@ -3979,7 +3991,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1368:1: RULE_ID
                     {
                      before(grammarAccess.getTypedMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TypedMember__NameAlternatives_0_02887); 
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TypedMember__NameAlternatives_0_02889); 
                      after(grammarAccess.getTypedMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 
                     }
@@ -3994,7 +4006,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1374:1: RULE_STRING
                     {
                      before(grammarAccess.getTypedMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TypedMember__NameAlternatives_0_02904); 
+                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TypedMember__NameAlternatives_0_02906); 
                      after(grammarAccess.getTypedMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
 
                     }
@@ -4050,7 +4062,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1390:1: RULE_ID
                     {
                      before(grammarAccess.getSkipMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SkipMember__NameAlternatives_0_02936); 
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SkipMember__NameAlternatives_0_02938); 
                      after(grammarAccess.getSkipMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 
                     }
@@ -4065,7 +4077,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1396:1: RULE_STRING
                     {
                      before(grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__SkipMember__NameAlternatives_0_02953); 
+                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__SkipMember__NameAlternatives_0_02955); 
                      after(grammarAccess.getSkipMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
 
                     }
@@ -4121,7 +4133,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1412:1: RULE_ID
                     {
                      before(grammarAccess.getSimpleMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SimpleMember__NameAlternatives_0_02985); 
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SimpleMember__NameAlternatives_0_02987); 
                      after(grammarAccess.getSimpleMemberAccess().getNameIDTerminalRuleCall_0_0_0()); 
 
                     }
@@ -4136,7 +4148,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1418:1: RULE_STRING
                     {
                      before(grammarAccess.getSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__SimpleMember__NameAlternatives_0_03002); 
+                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__SimpleMember__NameAlternatives_0_03004); 
                      after(grammarAccess.getSimpleMemberAccess().getNameSTRINGTerminalRuleCall_0_0_1()); 
 
                     }
@@ -4179,7 +4191,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1434:1: ruleUserType
                     {
                      before(grammarAccess.getTypeAccess().getUserTypeParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleUserType_in_rule__Type__Alternatives3034);
+                    pushFollow(FOLLOW_ruleUserType_in_rule__Type__Alternatives3036);
                     ruleUserType();
 
                     state._fsp--;
@@ -4198,7 +4210,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1440:1: ruleIntrinsicType
                     {
                      before(grammarAccess.getTypeAccess().getIntrinsicTypeParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleIntrinsicType_in_rule__Type__Alternatives3051);
+                    pushFollow(FOLLOW_ruleIntrinsicType_in_rule__Type__Alternatives3053);
                     ruleIntrinsicType();
 
                     state._fsp--;
@@ -4217,7 +4229,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1446:1: ruleGenericListType
                     {
                      before(grammarAccess.getTypeAccess().getGenericListTypeParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleGenericListType_in_rule__Type__Alternatives3068);
+                    pushFollow(FOLLOW_ruleGenericListType_in_rule__Type__Alternatives3070);
                     ruleGenericListType();
 
                     state._fsp--;
@@ -4277,7 +4289,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1462:1: ruleUserType
                     {
                      before(grammarAccess.getGenericListTypeAccess().getElementTypeUserTypeParserRuleCall_0_0_0()); 
-                    pushFollow(FOLLOW_ruleUserType_in_rule__GenericListType__ElementTypeAlternatives_0_03100);
+                    pushFollow(FOLLOW_ruleUserType_in_rule__GenericListType__ElementTypeAlternatives_0_03102);
                     ruleUserType();
 
                     state._fsp--;
@@ -4296,7 +4308,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1468:1: ruleIntrinsicType
                     {
                      before(grammarAccess.getGenericListTypeAccess().getElementTypeIntrinsicTypeParserRuleCall_0_0_1()); 
-                    pushFollow(FOLLOW_ruleIntrinsicType_in_rule__GenericListType__ElementTypeAlternatives_0_03117);
+                    pushFollow(FOLLOW_ruleIntrinsicType_in_rule__GenericListType__ElementTypeAlternatives_0_03119);
                     ruleIntrinsicType();
 
                     state._fsp--;
@@ -4356,7 +4368,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1484:1: ruleComplexTypeDeclaration
                     {
                      before(grammarAccess.getUserTypeDeclarationAccess().getComplexTypeDeclarationParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3149);
+                    pushFollow(FOLLOW_ruleComplexTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3151);
                     ruleComplexTypeDeclaration();
 
                     state._fsp--;
@@ -4375,7 +4387,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1490:1: ruleEnumTypeDeclaration
                     {
                      before(grammarAccess.getUserTypeDeclarationAccess().getEnumTypeDeclarationParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3166);
+                    pushFollow(FOLLOW_ruleEnumTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3168);
                     ruleEnumTypeDeclaration();
 
                     state._fsp--;
@@ -4446,7 +4458,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1506:1: ruleStringType
                     {
                      before(grammarAccess.getIntrinsicTypeAccess().getStringTypeParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleStringType_in_rule__IntrinsicType__Alternatives3198);
+                    pushFollow(FOLLOW_ruleStringType_in_rule__IntrinsicType__Alternatives3200);
                     ruleStringType();
 
                     state._fsp--;
@@ -4465,7 +4477,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1512:1: ruleBooleanType
                     {
                      before(grammarAccess.getIntrinsicTypeAccess().getBooleanTypeParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleBooleanType_in_rule__IntrinsicType__Alternatives3215);
+                    pushFollow(FOLLOW_ruleBooleanType_in_rule__IntrinsicType__Alternatives3217);
                     ruleBooleanType();
 
                     state._fsp--;
@@ -4484,7 +4496,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1518:1: ruleNumericType
                     {
                      before(grammarAccess.getIntrinsicTypeAccess().getNumericTypeParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleNumericType_in_rule__IntrinsicType__Alternatives3232);
+                    pushFollow(FOLLOW_ruleNumericType_in_rule__IntrinsicType__Alternatives3234);
                     ruleNumericType();
 
                     state._fsp--;
@@ -4553,7 +4565,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1534:1: ruleIntegerType
                     {
                      before(grammarAccess.getNumericTypeAccess().getIntegerTypeParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleIntegerType_in_rule__NumericType__Alternatives3264);
+                    pushFollow(FOLLOW_ruleIntegerType_in_rule__NumericType__Alternatives3266);
                     ruleIntegerType();
 
                     state._fsp--;
@@ -4572,7 +4584,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1540:1: ruleLongType
                     {
                      before(grammarAccess.getNumericTypeAccess().getLongTypeParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleLongType_in_rule__NumericType__Alternatives3281);
+                    pushFollow(FOLLOW_ruleLongType_in_rule__NumericType__Alternatives3283);
                     ruleLongType();
 
                     state._fsp--;
@@ -4591,7 +4603,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1546:1: ruleDoubleType
                     {
                      before(grammarAccess.getNumericTypeAccess().getDoubleTypeParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleDoubleType_in_rule__NumericType__Alternatives3298);
+                    pushFollow(FOLLOW_ruleDoubleType_in_rule__NumericType__Alternatives3300);
                     ruleDoubleType();
 
                     state._fsp--;
@@ -4668,7 +4680,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1563:1: ( 'get' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1563:3: 'get'
                     {
-                    match(input,12,FOLLOW_12_in_rule__HttpMethodType__Alternatives3331); 
+                    match(input,12,FOLLOW_12_in_rule__HttpMethodType__Alternatives3333); 
 
                     }
 
@@ -4689,7 +4701,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1570:1: ( 'put' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1570:3: 'put'
                     {
-                    match(input,13,FOLLOW_13_in_rule__HttpMethodType__Alternatives3352); 
+                    match(input,13,FOLLOW_13_in_rule__HttpMethodType__Alternatives3354); 
 
                     }
 
@@ -4710,7 +4722,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1577:1: ( 'post' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1577:3: 'post'
                     {
-                    match(input,14,FOLLOW_14_in_rule__HttpMethodType__Alternatives3373); 
+                    match(input,14,FOLLOW_14_in_rule__HttpMethodType__Alternatives3375); 
 
                     }
 
@@ -4731,7 +4743,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1584:1: ( 'delete' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1584:3: 'delete'
                     {
-                    match(input,15,FOLLOW_15_in_rule__HttpMethodType__Alternatives3394); 
+                    match(input,15,FOLLOW_15_in_rule__HttpMethodType__Alternatives3396); 
 
                     }
 
@@ -4793,7 +4805,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1601:1: ( 'true' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1601:3: 'true'
                     {
-                    match(input,16,FOLLOW_16_in_rule__BooleanValue__Alternatives3430); 
+                    match(input,16,FOLLOW_16_in_rule__BooleanValue__Alternatives3432); 
 
                     }
 
@@ -4814,7 +4826,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1608:1: ( 'false' )
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1608:3: 'false'
                     {
-                    match(input,17,FOLLOW_17_in_rule__BooleanValue__Alternatives3451); 
+                    match(input,17,FOLLOW_17_in_rule__BooleanValue__Alternatives3453); 
 
                     }
 
@@ -4852,12 +4864,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1624:1: ( rule__Model__Group__0__Impl rule__Model__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1625:2: rule__Model__Group__0__Impl rule__Model__Group__1
             {
-            pushFollow(FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__03484);
+            pushFollow(FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__03486);
             rule__Model__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Model__Group__1_in_rule__Model__Group__03487);
+            pushFollow(FOLLOW_rule__Model__Group__1_in_rule__Model__Group__03489);
             rule__Model__Group__1();
 
             state._fsp--;
@@ -4894,7 +4906,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1638:1: 'package'
             {
              before(grammarAccess.getModelAccess().getPackageKeyword_0()); 
-            match(input,18,FOLLOW_18_in_rule__Model__Group__0__Impl3515); 
+            match(input,18,FOLLOW_18_in_rule__Model__Group__0__Impl3517); 
              after(grammarAccess.getModelAccess().getPackageKeyword_0()); 
 
             }
@@ -4927,12 +4939,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1655:1: ( rule__Model__Group__1__Impl rule__Model__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1656:2: rule__Model__Group__1__Impl rule__Model__Group__2
             {
-            pushFollow(FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__13546);
+            pushFollow(FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__13548);
             rule__Model__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Model__Group__2_in_rule__Model__Group__13549);
+            pushFollow(FOLLOW_rule__Model__Group__2_in_rule__Model__Group__13551);
             rule__Model__Group__2();
 
             state._fsp--;
@@ -4972,7 +4984,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1670:1: ( rule__Model__PackageNameAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1670:2: rule__Model__PackageNameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Model__PackageNameAssignment_1_in_rule__Model__Group__1__Impl3576);
+            pushFollow(FOLLOW_rule__Model__PackageNameAssignment_1_in_rule__Model__Group__1__Impl3578);
             rule__Model__PackageNameAssignment_1();
 
             state._fsp--;
@@ -5012,7 +5024,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1684:1: ( rule__Model__Group__2__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1685:2: rule__Model__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__23606);
+            pushFollow(FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__23608);
             rule__Model__Group__2__Impl();
 
             state._fsp--;
@@ -5064,7 +5076,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1698:2: rule__Model__DeclarationsAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__Model__DeclarationsAssignment_2_in_rule__Model__Group__2__Impl3633);
+            	    pushFollow(FOLLOW_rule__Model__DeclarationsAssignment_2_in_rule__Model__Group__2__Impl3635);
             	    rule__Model__DeclarationsAssignment_2();
 
             	    state._fsp--;
@@ -5110,12 +5122,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1718:1: ( rule__Client__Group__0__Impl rule__Client__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1719:2: rule__Client__Group__0__Impl rule__Client__Group__1
             {
-            pushFollow(FOLLOW_rule__Client__Group__0__Impl_in_rule__Client__Group__03670);
+            pushFollow(FOLLOW_rule__Client__Group__0__Impl_in_rule__Client__Group__03672);
             rule__Client__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Client__Group__1_in_rule__Client__Group__03673);
+            pushFollow(FOLLOW_rule__Client__Group__1_in_rule__Client__Group__03675);
             rule__Client__Group__1();
 
             state._fsp--;
@@ -5152,7 +5164,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1732:1: 'client'
             {
              before(grammarAccess.getClientAccess().getClientKeyword_0()); 
-            match(input,19,FOLLOW_19_in_rule__Client__Group__0__Impl3701); 
+            match(input,19,FOLLOW_19_in_rule__Client__Group__0__Impl3703); 
              after(grammarAccess.getClientAccess().getClientKeyword_0()); 
 
             }
@@ -5185,12 +5197,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1749:1: ( rule__Client__Group__1__Impl rule__Client__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1750:2: rule__Client__Group__1__Impl rule__Client__Group__2
             {
-            pushFollow(FOLLOW_rule__Client__Group__1__Impl_in_rule__Client__Group__13732);
+            pushFollow(FOLLOW_rule__Client__Group__1__Impl_in_rule__Client__Group__13734);
             rule__Client__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Client__Group__2_in_rule__Client__Group__13735);
+            pushFollow(FOLLOW_rule__Client__Group__2_in_rule__Client__Group__13737);
             rule__Client__Group__2();
 
             state._fsp--;
@@ -5230,7 +5242,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1764:1: ( rule__Client__NameAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1764:2: rule__Client__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Client__NameAssignment_1_in_rule__Client__Group__1__Impl3762);
+            pushFollow(FOLLOW_rule__Client__NameAssignment_1_in_rule__Client__Group__1__Impl3764);
             rule__Client__NameAssignment_1();
 
             state._fsp--;
@@ -5270,12 +5282,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1778:1: ( rule__Client__Group__2__Impl rule__Client__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1779:2: rule__Client__Group__2__Impl rule__Client__Group__3
             {
-            pushFollow(FOLLOW_rule__Client__Group__2__Impl_in_rule__Client__Group__23792);
+            pushFollow(FOLLOW_rule__Client__Group__2__Impl_in_rule__Client__Group__23794);
             rule__Client__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Client__Group__3_in_rule__Client__Group__23795);
+            pushFollow(FOLLOW_rule__Client__Group__3_in_rule__Client__Group__23797);
             rule__Client__Group__3();
 
             state._fsp--;
@@ -5323,7 +5335,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1793:2: rule__Client__BaseUrlAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__Client__BaseUrlAssignment_2_in_rule__Client__Group__2__Impl3822);
+                    pushFollow(FOLLOW_rule__Client__BaseUrlAssignment_2_in_rule__Client__Group__2__Impl3824);
                     rule__Client__BaseUrlAssignment_2();
 
                     state._fsp--;
@@ -5366,12 +5378,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1807:1: ( rule__Client__Group__3__Impl rule__Client__Group__4 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1808:2: rule__Client__Group__3__Impl rule__Client__Group__4
             {
-            pushFollow(FOLLOW_rule__Client__Group__3__Impl_in_rule__Client__Group__33853);
+            pushFollow(FOLLOW_rule__Client__Group__3__Impl_in_rule__Client__Group__33855);
             rule__Client__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Client__Group__4_in_rule__Client__Group__33856);
+            pushFollow(FOLLOW_rule__Client__Group__4_in_rule__Client__Group__33858);
             rule__Client__Group__4();
 
             state._fsp--;
@@ -5408,7 +5420,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1821:1: '{'
             {
              before(grammarAccess.getClientAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,20,FOLLOW_20_in_rule__Client__Group__3__Impl3884); 
+            match(input,20,FOLLOW_20_in_rule__Client__Group__3__Impl3886); 
              after(grammarAccess.getClientAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -5441,12 +5453,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1838:1: ( rule__Client__Group__4__Impl rule__Client__Group__5 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1839:2: rule__Client__Group__4__Impl rule__Client__Group__5
             {
-            pushFollow(FOLLOW_rule__Client__Group__4__Impl_in_rule__Client__Group__43915);
+            pushFollow(FOLLOW_rule__Client__Group__4__Impl_in_rule__Client__Group__43917);
             rule__Client__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Client__Group__5_in_rule__Client__Group__43918);
+            pushFollow(FOLLOW_rule__Client__Group__5_in_rule__Client__Group__43920);
             rule__Client__Group__5();
 
             state._fsp--;
@@ -5498,7 +5510,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1853:2: rule__Client__BlocksAssignment_4
             	    {
-            	    pushFollow(FOLLOW_rule__Client__BlocksAssignment_4_in_rule__Client__Group__4__Impl3945);
+            	    pushFollow(FOLLOW_rule__Client__BlocksAssignment_4_in_rule__Client__Group__4__Impl3947);
             	    rule__Client__BlocksAssignment_4();
 
             	    state._fsp--;
@@ -5544,7 +5556,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1867:1: ( rule__Client__Group__5__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1868:2: rule__Client__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__Client__Group__5__Impl_in_rule__Client__Group__53976);
+            pushFollow(FOLLOW_rule__Client__Group__5__Impl_in_rule__Client__Group__53978);
             rule__Client__Group__5__Impl();
 
             state._fsp--;
@@ -5581,7 +5593,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1880:1: '}'
             {
              before(grammarAccess.getClientAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,21,FOLLOW_21_in_rule__Client__Group__5__Impl4004); 
+            match(input,21,FOLLOW_21_in_rule__Client__Group__5__Impl4006); 
              after(grammarAccess.getClientAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -5614,12 +5626,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1909:1: ( rule__HeaderBlock__Group__0__Impl rule__HeaderBlock__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1910:2: rule__HeaderBlock__Group__0__Impl rule__HeaderBlock__Group__1
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__Group__0__Impl_in_rule__HeaderBlock__Group__04047);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group__0__Impl_in_rule__HeaderBlock__Group__04049);
             rule__HeaderBlock__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HeaderBlock__Group__1_in_rule__HeaderBlock__Group__04050);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group__1_in_rule__HeaderBlock__Group__04052);
             rule__HeaderBlock__Group__1();
 
             state._fsp--;
@@ -5656,7 +5668,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1923:1: 'headers'
             {
              before(grammarAccess.getHeaderBlockAccess().getHeadersKeyword_0()); 
-            match(input,22,FOLLOW_22_in_rule__HeaderBlock__Group__0__Impl4078); 
+            match(input,22,FOLLOW_22_in_rule__HeaderBlock__Group__0__Impl4080); 
              after(grammarAccess.getHeaderBlockAccess().getHeadersKeyword_0()); 
 
             }
@@ -5689,12 +5701,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1940:1: ( rule__HeaderBlock__Group__1__Impl rule__HeaderBlock__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1941:2: rule__HeaderBlock__Group__1__Impl rule__HeaderBlock__Group__2
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__Group__1__Impl_in_rule__HeaderBlock__Group__14109);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group__1__Impl_in_rule__HeaderBlock__Group__14111);
             rule__HeaderBlock__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HeaderBlock__Group__2_in_rule__HeaderBlock__Group__14112);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group__2_in_rule__HeaderBlock__Group__14114);
             rule__HeaderBlock__Group__2();
 
             state._fsp--;
@@ -5734,7 +5746,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1955:1: ( rule__HeaderBlock__HeadersAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1955:2: rule__HeaderBlock__HeadersAssignment_1
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__HeadersAssignment_1_in_rule__HeaderBlock__Group__1__Impl4139);
+            pushFollow(FOLLOW_rule__HeaderBlock__HeadersAssignment_1_in_rule__HeaderBlock__Group__1__Impl4141);
             rule__HeaderBlock__HeadersAssignment_1();
 
             state._fsp--;
@@ -5774,7 +5786,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1969:1: ( rule__HeaderBlock__Group__2__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1970:2: rule__HeaderBlock__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__Group__2__Impl_in_rule__HeaderBlock__Group__24169);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group__2__Impl_in_rule__HeaderBlock__Group__24171);
             rule__HeaderBlock__Group__2__Impl();
 
             state._fsp--;
@@ -5826,7 +5838,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:1983:2: rule__HeaderBlock__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__HeaderBlock__Group_2__0_in_rule__HeaderBlock__Group__2__Impl4196);
+            	    pushFollow(FOLLOW_rule__HeaderBlock__Group_2__0_in_rule__HeaderBlock__Group__2__Impl4198);
             	    rule__HeaderBlock__Group_2__0();
 
             	    state._fsp--;
@@ -5872,12 +5884,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2003:1: ( rule__HeaderBlock__Group_2__0__Impl rule__HeaderBlock__Group_2__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2004:2: rule__HeaderBlock__Group_2__0__Impl rule__HeaderBlock__Group_2__1
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__0__Impl_in_rule__HeaderBlock__Group_2__04233);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__0__Impl_in_rule__HeaderBlock__Group_2__04235);
             rule__HeaderBlock__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__1_in_rule__HeaderBlock__Group_2__04236);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__1_in_rule__HeaderBlock__Group_2__04238);
             rule__HeaderBlock__Group_2__1();
 
             state._fsp--;
@@ -5914,7 +5926,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2017:1: ','
             {
              before(grammarAccess.getHeaderBlockAccess().getCommaKeyword_2_0()); 
-            match(input,23,FOLLOW_23_in_rule__HeaderBlock__Group_2__0__Impl4264); 
+            match(input,23,FOLLOW_23_in_rule__HeaderBlock__Group_2__0__Impl4266); 
              after(grammarAccess.getHeaderBlockAccess().getCommaKeyword_2_0()); 
 
             }
@@ -5947,7 +5959,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2034:1: ( rule__HeaderBlock__Group_2__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2035:2: rule__HeaderBlock__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__1__Impl_in_rule__HeaderBlock__Group_2__14295);
+            pushFollow(FOLLOW_rule__HeaderBlock__Group_2__1__Impl_in_rule__HeaderBlock__Group_2__14297);
             rule__HeaderBlock__Group_2__1__Impl();
 
             state._fsp--;
@@ -5987,7 +5999,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2048:1: ( rule__HeaderBlock__HeadersAssignment_2_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2048:2: rule__HeaderBlock__HeadersAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__HeaderBlock__HeadersAssignment_2_1_in_rule__HeaderBlock__Group_2__1__Impl4322);
+            pushFollow(FOLLOW_rule__HeaderBlock__HeadersAssignment_2_1_in_rule__HeaderBlock__Group_2__1__Impl4324);
             rule__HeaderBlock__HeadersAssignment_2_1();
 
             state._fsp--;
@@ -6027,12 +6039,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2066:1: ( rule__Header__Group__0__Impl rule__Header__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2067:2: rule__Header__Group__0__Impl rule__Header__Group__1
             {
-            pushFollow(FOLLOW_rule__Header__Group__0__Impl_in_rule__Header__Group__04356);
+            pushFollow(FOLLOW_rule__Header__Group__0__Impl_in_rule__Header__Group__04358);
             rule__Header__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Header__Group__1_in_rule__Header__Group__04359);
+            pushFollow(FOLLOW_rule__Header__Group__1_in_rule__Header__Group__04361);
             rule__Header__Group__1();
 
             state._fsp--;
@@ -6072,7 +6084,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2081:1: ( rule__Header__NameAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2081:2: rule__Header__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Header__NameAssignment_0_in_rule__Header__Group__0__Impl4386);
+            pushFollow(FOLLOW_rule__Header__NameAssignment_0_in_rule__Header__Group__0__Impl4388);
             rule__Header__NameAssignment_0();
 
             state._fsp--;
@@ -6112,12 +6124,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2095:1: ( rule__Header__Group__1__Impl rule__Header__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2096:2: rule__Header__Group__1__Impl rule__Header__Group__2
             {
-            pushFollow(FOLLOW_rule__Header__Group__1__Impl_in_rule__Header__Group__14416);
+            pushFollow(FOLLOW_rule__Header__Group__1__Impl_in_rule__Header__Group__14418);
             rule__Header__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Header__Group__2_in_rule__Header__Group__14419);
+            pushFollow(FOLLOW_rule__Header__Group__2_in_rule__Header__Group__14421);
             rule__Header__Group__2();
 
             state._fsp--;
@@ -6154,7 +6166,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2109:1: ':'
             {
              before(grammarAccess.getHeaderAccess().getColonKeyword_1()); 
-            match(input,24,FOLLOW_24_in_rule__Header__Group__1__Impl4447); 
+            match(input,24,FOLLOW_24_in_rule__Header__Group__1__Impl4449); 
              after(grammarAccess.getHeaderAccess().getColonKeyword_1()); 
 
             }
@@ -6187,7 +6199,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2126:1: ( rule__Header__Group__2__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2127:2: rule__Header__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Header__Group__2__Impl_in_rule__Header__Group__24478);
+            pushFollow(FOLLOW_rule__Header__Group__2__Impl_in_rule__Header__Group__24480);
             rule__Header__Group__2__Impl();
 
             state._fsp--;
@@ -6227,7 +6239,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2140:1: ( rule__Header__ValueAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2140:2: rule__Header__ValueAssignment_2
             {
-            pushFollow(FOLLOW_rule__Header__ValueAssignment_2_in_rule__Header__Group__2__Impl4505);
+            pushFollow(FOLLOW_rule__Header__ValueAssignment_2_in_rule__Header__Group__2__Impl4507);
             rule__Header__ValueAssignment_2();
 
             state._fsp--;
@@ -6267,12 +6279,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2160:1: ( rule__HttpMethod__Group__0__Impl rule__HttpMethod__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2161:2: rule__HttpMethod__Group__0__Impl rule__HttpMethod__Group__1
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__0__Impl_in_rule__HttpMethod__Group__04541);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__0__Impl_in_rule__HttpMethod__Group__04543);
             rule__HttpMethod__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HttpMethod__Group__1_in_rule__HttpMethod__Group__04544);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__1_in_rule__HttpMethod__Group__04546);
             rule__HttpMethod__Group__1();
 
             state._fsp--;
@@ -6312,7 +6324,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2175:1: ( rule__HttpMethod__TypeAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2175:2: rule__HttpMethod__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__HttpMethod__TypeAssignment_0_in_rule__HttpMethod__Group__0__Impl4571);
+            pushFollow(FOLLOW_rule__HttpMethod__TypeAssignment_0_in_rule__HttpMethod__Group__0__Impl4573);
             rule__HttpMethod__TypeAssignment_0();
 
             state._fsp--;
@@ -6352,12 +6364,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2189:1: ( rule__HttpMethod__Group__1__Impl rule__HttpMethod__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2190:2: rule__HttpMethod__Group__1__Impl rule__HttpMethod__Group__2
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__1__Impl_in_rule__HttpMethod__Group__14601);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__1__Impl_in_rule__HttpMethod__Group__14603);
             rule__HttpMethod__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HttpMethod__Group__2_in_rule__HttpMethod__Group__14604);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__2_in_rule__HttpMethod__Group__14606);
             rule__HttpMethod__Group__2();
 
             state._fsp--;
@@ -6397,7 +6409,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2204:1: ( rule__HttpMethod__NameAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2204:2: rule__HttpMethod__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__HttpMethod__NameAssignment_1_in_rule__HttpMethod__Group__1__Impl4631);
+            pushFollow(FOLLOW_rule__HttpMethod__NameAssignment_1_in_rule__HttpMethod__Group__1__Impl4633);
             rule__HttpMethod__NameAssignment_1();
 
             state._fsp--;
@@ -6437,12 +6449,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2218:1: ( rule__HttpMethod__Group__2__Impl rule__HttpMethod__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2219:2: rule__HttpMethod__Group__2__Impl rule__HttpMethod__Group__3
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__2__Impl_in_rule__HttpMethod__Group__24661);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__2__Impl_in_rule__HttpMethod__Group__24663);
             rule__HttpMethod__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HttpMethod__Group__3_in_rule__HttpMethod__Group__24664);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__3_in_rule__HttpMethod__Group__24666);
             rule__HttpMethod__Group__3();
 
             state._fsp--;
@@ -6490,7 +6502,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2233:2: rule__HttpMethod__PathAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__HttpMethod__PathAssignment_2_in_rule__HttpMethod__Group__2__Impl4691);
+                    pushFollow(FOLLOW_rule__HttpMethod__PathAssignment_2_in_rule__HttpMethod__Group__2__Impl4693);
                     rule__HttpMethod__PathAssignment_2();
 
                     state._fsp--;
@@ -6533,12 +6545,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2247:1: ( rule__HttpMethod__Group__3__Impl rule__HttpMethod__Group__4 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2248:2: rule__HttpMethod__Group__3__Impl rule__HttpMethod__Group__4
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__3__Impl_in_rule__HttpMethod__Group__34722);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__3__Impl_in_rule__HttpMethod__Group__34724);
             rule__HttpMethod__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HttpMethod__Group__4_in_rule__HttpMethod__Group__34725);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__4_in_rule__HttpMethod__Group__34727);
             rule__HttpMethod__Group__4();
 
             state._fsp--;
@@ -6575,7 +6587,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2261:1: '{'
             {
              before(grammarAccess.getHttpMethodAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,20,FOLLOW_20_in_rule__HttpMethod__Group__3__Impl4753); 
+            match(input,20,FOLLOW_20_in_rule__HttpMethod__Group__3__Impl4755); 
              after(grammarAccess.getHttpMethodAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -6608,12 +6620,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2278:1: ( rule__HttpMethod__Group__4__Impl rule__HttpMethod__Group__5 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2279:2: rule__HttpMethod__Group__4__Impl rule__HttpMethod__Group__5
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__4__Impl_in_rule__HttpMethod__Group__44784);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__4__Impl_in_rule__HttpMethod__Group__44786);
             rule__HttpMethod__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__HttpMethod__Group__5_in_rule__HttpMethod__Group__44787);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__5_in_rule__HttpMethod__Group__44789);
             rule__HttpMethod__Group__5();
 
             state._fsp--;
@@ -6665,7 +6677,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2293:2: rule__HttpMethod__BlocksAssignment_4
             	    {
-            	    pushFollow(FOLLOW_rule__HttpMethod__BlocksAssignment_4_in_rule__HttpMethod__Group__4__Impl4814);
+            	    pushFollow(FOLLOW_rule__HttpMethod__BlocksAssignment_4_in_rule__HttpMethod__Group__4__Impl4816);
             	    rule__HttpMethod__BlocksAssignment_4();
 
             	    state._fsp--;
@@ -6711,7 +6723,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2307:1: ( rule__HttpMethod__Group__5__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2308:2: rule__HttpMethod__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__HttpMethod__Group__5__Impl_in_rule__HttpMethod__Group__54845);
+            pushFollow(FOLLOW_rule__HttpMethod__Group__5__Impl_in_rule__HttpMethod__Group__54847);
             rule__HttpMethod__Group__5__Impl();
 
             state._fsp--;
@@ -6748,7 +6760,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2320:1: '}'
             {
              before(grammarAccess.getHttpMethodAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,21,FOLLOW_21_in_rule__HttpMethod__Group__5__Impl4873); 
+            match(input,21,FOLLOW_21_in_rule__HttpMethod__Group__5__Impl4875); 
              after(grammarAccess.getHttpMethodAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -6781,12 +6793,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2349:1: ( rule__Path__Group__0__Impl rule__Path__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2350:2: rule__Path__Group__0__Impl rule__Path__Group__1
             {
-            pushFollow(FOLLOW_rule__Path__Group__0__Impl_in_rule__Path__Group__04916);
+            pushFollow(FOLLOW_rule__Path__Group__0__Impl_in_rule__Path__Group__04918);
             rule__Path__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Path__Group__1_in_rule__Path__Group__04919);
+            pushFollow(FOLLOW_rule__Path__Group__1_in_rule__Path__Group__04921);
             rule__Path__Group__1();
 
             state._fsp--;
@@ -6856,12 +6868,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2380:1: ( rule__Path__Group__1__Impl rule__Path__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2381:2: rule__Path__Group__1__Impl rule__Path__Group__2
             {
-            pushFollow(FOLLOW_rule__Path__Group__1__Impl_in_rule__Path__Group__14977);
+            pushFollow(FOLLOW_rule__Path__Group__1__Impl_in_rule__Path__Group__14979);
             rule__Path__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Path__Group__2_in_rule__Path__Group__14980);
+            pushFollow(FOLLOW_rule__Path__Group__2_in_rule__Path__Group__14982);
             rule__Path__Group__2();
 
             state._fsp--;
@@ -6898,7 +6910,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2394:1: '/'
             {
              before(grammarAccess.getPathAccess().getSolidusKeyword_1()); 
-            match(input,25,FOLLOW_25_in_rule__Path__Group__1__Impl5008); 
+            match(input,25,FOLLOW_25_in_rule__Path__Group__1__Impl5010); 
              after(grammarAccess.getPathAccess().getSolidusKeyword_1()); 
 
             }
@@ -6931,12 +6943,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2411:1: ( rule__Path__Group__2__Impl rule__Path__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2412:2: rule__Path__Group__2__Impl rule__Path__Group__3
             {
-            pushFollow(FOLLOW_rule__Path__Group__2__Impl_in_rule__Path__Group__25039);
+            pushFollow(FOLLOW_rule__Path__Group__2__Impl_in_rule__Path__Group__25041);
             rule__Path__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Path__Group__3_in_rule__Path__Group__25042);
+            pushFollow(FOLLOW_rule__Path__Group__3_in_rule__Path__Group__25044);
             rule__Path__Group__3();
 
             state._fsp--;
@@ -6976,7 +6988,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2426:1: ( rule__Path__Alternatives_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2426:2: rule__Path__Alternatives_2
             {
-            pushFollow(FOLLOW_rule__Path__Alternatives_2_in_rule__Path__Group__2__Impl5069);
+            pushFollow(FOLLOW_rule__Path__Alternatives_2_in_rule__Path__Group__2__Impl5071);
             rule__Path__Alternatives_2();
 
             state._fsp--;
@@ -7016,7 +7028,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2440:1: ( rule__Path__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2441:2: rule__Path__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__Path__Group__3__Impl_in_rule__Path__Group__35099);
+            pushFollow(FOLLOW_rule__Path__Group__3__Impl_in_rule__Path__Group__35101);
             rule__Path__Group__3__Impl();
 
             state._fsp--;
@@ -7068,7 +7080,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2454:2: rule__Path__Group_3__0
             	    {
-            	    pushFollow(FOLLOW_rule__Path__Group_3__0_in_rule__Path__Group__3__Impl5126);
+            	    pushFollow(FOLLOW_rule__Path__Group_3__0_in_rule__Path__Group__3__Impl5128);
             	    rule__Path__Group_3__0();
 
             	    state._fsp--;
@@ -7114,12 +7126,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2476:1: ( rule__Path__Group_3__0__Impl rule__Path__Group_3__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2477:2: rule__Path__Group_3__0__Impl rule__Path__Group_3__1
             {
-            pushFollow(FOLLOW_rule__Path__Group_3__0__Impl_in_rule__Path__Group_3__05165);
+            pushFollow(FOLLOW_rule__Path__Group_3__0__Impl_in_rule__Path__Group_3__05167);
             rule__Path__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Path__Group_3__1_in_rule__Path__Group_3__05168);
+            pushFollow(FOLLOW_rule__Path__Group_3__1_in_rule__Path__Group_3__05170);
             rule__Path__Group_3__1();
 
             state._fsp--;
@@ -7156,7 +7168,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2490:1: '/'
             {
              before(grammarAccess.getPathAccess().getSolidusKeyword_3_0()); 
-            match(input,25,FOLLOW_25_in_rule__Path__Group_3__0__Impl5196); 
+            match(input,25,FOLLOW_25_in_rule__Path__Group_3__0__Impl5198); 
              after(grammarAccess.getPathAccess().getSolidusKeyword_3_0()); 
 
             }
@@ -7189,7 +7201,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2507:1: ( rule__Path__Group_3__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2508:2: rule__Path__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__Path__Group_3__1__Impl_in_rule__Path__Group_3__15227);
+            pushFollow(FOLLOW_rule__Path__Group_3__1__Impl_in_rule__Path__Group_3__15229);
             rule__Path__Group_3__1__Impl();
 
             state._fsp--;
@@ -7229,7 +7241,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2521:1: ( rule__Path__Alternatives_3_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2521:2: rule__Path__Alternatives_3_1
             {
-            pushFollow(FOLLOW_rule__Path__Alternatives_3_1_in_rule__Path__Group_3__1__Impl5254);
+            pushFollow(FOLLOW_rule__Path__Alternatives_3_1_in_rule__Path__Group_3__1__Impl5256);
             rule__Path__Alternatives_3_1();
 
             state._fsp--;
@@ -7269,12 +7281,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2539:1: ( rule__ArbitraryPathSegment__Group__0__Impl rule__ArbitraryPathSegment__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2540:2: rule__ArbitraryPathSegment__Group__0__Impl rule__ArbitraryPathSegment__Group__1
             {
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__0__Impl_in_rule__ArbitraryPathSegment__Group__05288);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__0__Impl_in_rule__ArbitraryPathSegment__Group__05290);
             rule__ArbitraryPathSegment__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__1_in_rule__ArbitraryPathSegment__Group__05291);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__1_in_rule__ArbitraryPathSegment__Group__05293);
             rule__ArbitraryPathSegment__Group__1();
 
             state._fsp--;
@@ -7311,7 +7323,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2553:1: ruleQualifiedName
             {
              before(grammarAccess.getArbitraryPathSegmentAccess().getQualifiedNameParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group__0__Impl5318);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group__0__Impl5320);
             ruleQualifiedName();
 
             state._fsp--;
@@ -7348,7 +7360,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2568:1: ( rule__ArbitraryPathSegment__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2569:2: rule__ArbitraryPathSegment__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__1__Impl_in_rule__ArbitraryPathSegment__Group__15347);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group__1__Impl_in_rule__ArbitraryPathSegment__Group__15349);
             rule__ArbitraryPathSegment__Group__1__Impl();
 
             state._fsp--;
@@ -7400,7 +7412,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2582:2: rule__ArbitraryPathSegment__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__0_in_rule__ArbitraryPathSegment__Group__1__Impl5374);
+            	    pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__0_in_rule__ArbitraryPathSegment__Group__1__Impl5376);
             	    rule__ArbitraryPathSegment__Group_1__0();
 
             	    state._fsp--;
@@ -7446,12 +7458,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2600:1: ( rule__ArbitraryPathSegment__Group_1__0__Impl rule__ArbitraryPathSegment__Group_1__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2601:2: rule__ArbitraryPathSegment__Group_1__0__Impl rule__ArbitraryPathSegment__Group_1__1
             {
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__0__Impl_in_rule__ArbitraryPathSegment__Group_1__05409);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__0__Impl_in_rule__ArbitraryPathSegment__Group_1__05411);
             rule__ArbitraryPathSegment__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__1_in_rule__ArbitraryPathSegment__Group_1__05412);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__1_in_rule__ArbitraryPathSegment__Group_1__05414);
             rule__ArbitraryPathSegment__Group_1__1();
 
             state._fsp--;
@@ -7488,7 +7500,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2614:1: '-'
             {
              before(grammarAccess.getArbitraryPathSegmentAccess().getHyphenMinusKeyword_1_0()); 
-            match(input,26,FOLLOW_26_in_rule__ArbitraryPathSegment__Group_1__0__Impl5440); 
+            match(input,26,FOLLOW_26_in_rule__ArbitraryPathSegment__Group_1__0__Impl5442); 
              after(grammarAccess.getArbitraryPathSegmentAccess().getHyphenMinusKeyword_1_0()); 
 
             }
@@ -7521,7 +7533,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2631:1: ( rule__ArbitraryPathSegment__Group_1__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2632:2: rule__ArbitraryPathSegment__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__1__Impl_in_rule__ArbitraryPathSegment__Group_1__15471);
+            pushFollow(FOLLOW_rule__ArbitraryPathSegment__Group_1__1__Impl_in_rule__ArbitraryPathSegment__Group_1__15473);
             rule__ArbitraryPathSegment__Group_1__1__Impl();
 
             state._fsp--;
@@ -7558,7 +7570,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2644:1: ruleQualifiedName
             {
              before(grammarAccess.getArbitraryPathSegmentAccess().getQualifiedNameParserRuleCall_1_1()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group_1__1__Impl5498);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group_1__1__Impl5500);
             ruleQualifiedName();
 
             state._fsp--;
@@ -7595,12 +7607,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2663:1: ( rule__ParamsBlock__Group__0__Impl rule__ParamsBlock__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2664:2: rule__ParamsBlock__Group__0__Impl rule__ParamsBlock__Group__1
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__0__Impl_in_rule__ParamsBlock__Group__05531);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__0__Impl_in_rule__ParamsBlock__Group__05533);
             rule__ParamsBlock__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__1_in_rule__ParamsBlock__Group__05534);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__1_in_rule__ParamsBlock__Group__05536);
             rule__ParamsBlock__Group__1();
 
             state._fsp--;
@@ -7670,12 +7682,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2694:1: ( rule__ParamsBlock__Group__1__Impl rule__ParamsBlock__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2695:2: rule__ParamsBlock__Group__1__Impl rule__ParamsBlock__Group__2
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__1__Impl_in_rule__ParamsBlock__Group__15592);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__1__Impl_in_rule__ParamsBlock__Group__15594);
             rule__ParamsBlock__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__2_in_rule__ParamsBlock__Group__15595);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__2_in_rule__ParamsBlock__Group__15597);
             rule__ParamsBlock__Group__2();
 
             state._fsp--;
@@ -7712,7 +7724,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2708:1: 'params'
             {
              before(grammarAccess.getParamsBlockAccess().getParamsKeyword_1()); 
-            match(input,27,FOLLOW_27_in_rule__ParamsBlock__Group__1__Impl5623); 
+            match(input,27,FOLLOW_27_in_rule__ParamsBlock__Group__1__Impl5625); 
              after(grammarAccess.getParamsBlockAccess().getParamsKeyword_1()); 
 
             }
@@ -7745,12 +7757,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2725:1: ( rule__ParamsBlock__Group__2__Impl rule__ParamsBlock__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2726:2: rule__ParamsBlock__Group__2__Impl rule__ParamsBlock__Group__3
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__2__Impl_in_rule__ParamsBlock__Group__25654);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__2__Impl_in_rule__ParamsBlock__Group__25656);
             rule__ParamsBlock__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__3_in_rule__ParamsBlock__Group__25657);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__3_in_rule__ParamsBlock__Group__25659);
             rule__ParamsBlock__Group__3();
 
             state._fsp--;
@@ -7790,7 +7802,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2740:1: ( rule__ParamsBlock__ParamsAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2740:2: rule__ParamsBlock__ParamsAssignment_2
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__ParamsAssignment_2_in_rule__ParamsBlock__Group__2__Impl5684);
+            pushFollow(FOLLOW_rule__ParamsBlock__ParamsAssignment_2_in_rule__ParamsBlock__Group__2__Impl5686);
             rule__ParamsBlock__ParamsAssignment_2();
 
             state._fsp--;
@@ -7830,7 +7842,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2754:1: ( rule__ParamsBlock__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2755:2: rule__ParamsBlock__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group__3__Impl_in_rule__ParamsBlock__Group__35714);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group__3__Impl_in_rule__ParamsBlock__Group__35716);
             rule__ParamsBlock__Group__3__Impl();
 
             state._fsp--;
@@ -7882,7 +7894,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2768:2: rule__ParamsBlock__Group_3__0
             	    {
-            	    pushFollow(FOLLOW_rule__ParamsBlock__Group_3__0_in_rule__ParamsBlock__Group__3__Impl5741);
+            	    pushFollow(FOLLOW_rule__ParamsBlock__Group_3__0_in_rule__ParamsBlock__Group__3__Impl5743);
             	    rule__ParamsBlock__Group_3__0();
 
             	    state._fsp--;
@@ -7928,12 +7940,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2790:1: ( rule__ParamsBlock__Group_3__0__Impl rule__ParamsBlock__Group_3__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2791:2: rule__ParamsBlock__Group_3__0__Impl rule__ParamsBlock__Group_3__1
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__0__Impl_in_rule__ParamsBlock__Group_3__05780);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__0__Impl_in_rule__ParamsBlock__Group_3__05782);
             rule__ParamsBlock__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__1_in_rule__ParamsBlock__Group_3__05783);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__1_in_rule__ParamsBlock__Group_3__05785);
             rule__ParamsBlock__Group_3__1();
 
             state._fsp--;
@@ -7970,7 +7982,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2804:1: ','
             {
              before(grammarAccess.getParamsBlockAccess().getCommaKeyword_3_0()); 
-            match(input,23,FOLLOW_23_in_rule__ParamsBlock__Group_3__0__Impl5811); 
+            match(input,23,FOLLOW_23_in_rule__ParamsBlock__Group_3__0__Impl5813); 
              after(grammarAccess.getParamsBlockAccess().getCommaKeyword_3_0()); 
 
             }
@@ -8003,7 +8015,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2821:1: ( rule__ParamsBlock__Group_3__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2822:2: rule__ParamsBlock__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__1__Impl_in_rule__ParamsBlock__Group_3__15842);
+            pushFollow(FOLLOW_rule__ParamsBlock__Group_3__1__Impl_in_rule__ParamsBlock__Group_3__15844);
             rule__ParamsBlock__Group_3__1__Impl();
 
             state._fsp--;
@@ -8043,7 +8055,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2835:1: ( rule__ParamsBlock__ParamsAssignment_3_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2835:2: rule__ParamsBlock__ParamsAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__ParamsBlock__ParamsAssignment_3_1_in_rule__ParamsBlock__Group_3__1__Impl5869);
+            pushFollow(FOLLOW_rule__ParamsBlock__ParamsAssignment_3_1_in_rule__ParamsBlock__Group_3__1__Impl5871);
             rule__ParamsBlock__ParamsAssignment_3_1();
 
             state._fsp--;
@@ -8083,12 +8095,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2853:1: ( rule__SimpleMemberAssignment__Group__0__Impl rule__SimpleMemberAssignment__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2854:2: rule__SimpleMemberAssignment__Group__0__Impl rule__SimpleMemberAssignment__Group__1
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__0__Impl_in_rule__SimpleMemberAssignment__Group__05903);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__0__Impl_in_rule__SimpleMemberAssignment__Group__05905);
             rule__SimpleMemberAssignment__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__1_in_rule__SimpleMemberAssignment__Group__05906);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__1_in_rule__SimpleMemberAssignment__Group__05908);
             rule__SimpleMemberAssignment__Group__1();
 
             state._fsp--;
@@ -8128,7 +8140,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2868:1: ( rule__SimpleMemberAssignment__MemberAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2868:2: rule__SimpleMemberAssignment__MemberAssignment_0
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__MemberAssignment_0_in_rule__SimpleMemberAssignment__Group__0__Impl5933);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__MemberAssignment_0_in_rule__SimpleMemberAssignment__Group__0__Impl5935);
             rule__SimpleMemberAssignment__MemberAssignment_0();
 
             state._fsp--;
@@ -8168,7 +8180,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2882:1: ( rule__SimpleMemberAssignment__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2883:2: rule__SimpleMemberAssignment__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__1__Impl_in_rule__SimpleMemberAssignment__Group__15963);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group__1__Impl_in_rule__SimpleMemberAssignment__Group__15965);
             rule__SimpleMemberAssignment__Group__1__Impl();
 
             state._fsp--;
@@ -8216,7 +8228,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2896:2: rule__SimpleMemberAssignment__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__0_in_rule__SimpleMemberAssignment__Group__1__Impl5990);
+                    pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__0_in_rule__SimpleMemberAssignment__Group__1__Impl5992);
                     rule__SimpleMemberAssignment__Group_1__0();
 
                     state._fsp--;
@@ -8259,12 +8271,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2914:1: ( rule__SimpleMemberAssignment__Group_1__0__Impl rule__SimpleMemberAssignment__Group_1__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2915:2: rule__SimpleMemberAssignment__Group_1__0__Impl rule__SimpleMemberAssignment__Group_1__1
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__0__Impl_in_rule__SimpleMemberAssignment__Group_1__06025);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__0__Impl_in_rule__SimpleMemberAssignment__Group_1__06027);
             rule__SimpleMemberAssignment__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__1_in_rule__SimpleMemberAssignment__Group_1__06028);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__1_in_rule__SimpleMemberAssignment__Group_1__06030);
             rule__SimpleMemberAssignment__Group_1__1();
 
             state._fsp--;
@@ -8301,7 +8313,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2928:1: '='
             {
              before(grammarAccess.getSimpleMemberAssignmentAccess().getEqualsSignKeyword_1_0()); 
-            match(input,28,FOLLOW_28_in_rule__SimpleMemberAssignment__Group_1__0__Impl6056); 
+            match(input,28,FOLLOW_28_in_rule__SimpleMemberAssignment__Group_1__0__Impl6058); 
              after(grammarAccess.getSimpleMemberAssignmentAccess().getEqualsSignKeyword_1_0()); 
 
             }
@@ -8334,7 +8346,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2945:1: ( rule__SimpleMemberAssignment__Group_1__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2946:2: rule__SimpleMemberAssignment__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__1__Impl_in_rule__SimpleMemberAssignment__Group_1__16087);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__Group_1__1__Impl_in_rule__SimpleMemberAssignment__Group_1__16089);
             rule__SimpleMemberAssignment__Group_1__1__Impl();
 
             state._fsp--;
@@ -8374,7 +8386,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2959:1: ( rule__SimpleMemberAssignment__DefaultValueAssignment_1_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2959:2: rule__SimpleMemberAssignment__DefaultValueAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__SimpleMemberAssignment__DefaultValueAssignment_1_1_in_rule__SimpleMemberAssignment__Group_1__1__Impl6114);
+            pushFollow(FOLLOW_rule__SimpleMemberAssignment__DefaultValueAssignment_1_1_in_rule__SimpleMemberAssignment__Group_1__1__Impl6116);
             rule__SimpleMemberAssignment__DefaultValueAssignment_1_1();
 
             state._fsp--;
@@ -8414,12 +8426,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2977:1: ( rule__Literal__Group_0__0__Impl rule__Literal__Group_0__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:2978:2: rule__Literal__Group_0__0__Impl rule__Literal__Group_0__1
             {
-            pushFollow(FOLLOW_rule__Literal__Group_0__0__Impl_in_rule__Literal__Group_0__06148);
+            pushFollow(FOLLOW_rule__Literal__Group_0__0__Impl_in_rule__Literal__Group_0__06150);
             rule__Literal__Group_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Literal__Group_0__1_in_rule__Literal__Group_0__06151);
+            pushFollow(FOLLOW_rule__Literal__Group_0__1_in_rule__Literal__Group_0__06153);
             rule__Literal__Group_0__1();
 
             state._fsp--;
@@ -8489,7 +8501,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3008:1: ( rule__Literal__Group_0__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3009:2: rule__Literal__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__Literal__Group_0__1__Impl_in_rule__Literal__Group_0__16209);
+            pushFollow(FOLLOW_rule__Literal__Group_0__1__Impl_in_rule__Literal__Group_0__16211);
             rule__Literal__Group_0__1__Impl();
 
             state._fsp--;
@@ -8529,7 +8541,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3022:1: ( rule__Literal__LiteralAssignment_0_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3022:2: rule__Literal__LiteralAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_0_1_in_rule__Literal__Group_0__1__Impl6236);
+            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_0_1_in_rule__Literal__Group_0__1__Impl6238);
             rule__Literal__LiteralAssignment_0_1();
 
             state._fsp--;
@@ -8569,12 +8581,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3040:1: ( rule__Literal__Group_1__0__Impl rule__Literal__Group_1__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3041:2: rule__Literal__Group_1__0__Impl rule__Literal__Group_1__1
             {
-            pushFollow(FOLLOW_rule__Literal__Group_1__0__Impl_in_rule__Literal__Group_1__06270);
+            pushFollow(FOLLOW_rule__Literal__Group_1__0__Impl_in_rule__Literal__Group_1__06272);
             rule__Literal__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Literal__Group_1__1_in_rule__Literal__Group_1__06273);
+            pushFollow(FOLLOW_rule__Literal__Group_1__1_in_rule__Literal__Group_1__06275);
             rule__Literal__Group_1__1();
 
             state._fsp--;
@@ -8644,7 +8656,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3071:1: ( rule__Literal__Group_1__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3072:2: rule__Literal__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__Literal__Group_1__1__Impl_in_rule__Literal__Group_1__16331);
+            pushFollow(FOLLOW_rule__Literal__Group_1__1__Impl_in_rule__Literal__Group_1__16333);
             rule__Literal__Group_1__1__Impl();
 
             state._fsp--;
@@ -8684,7 +8696,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3085:1: ( rule__Literal__LiteralAssignment_1_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3085:2: rule__Literal__LiteralAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_1_1_in_rule__Literal__Group_1__1__Impl6358);
+            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_1_1_in_rule__Literal__Group_1__1__Impl6360);
             rule__Literal__LiteralAssignment_1_1();
 
             state._fsp--;
@@ -8724,12 +8736,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3103:1: ( rule__Literal__Group_2__0__Impl rule__Literal__Group_2__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3104:2: rule__Literal__Group_2__0__Impl rule__Literal__Group_2__1
             {
-            pushFollow(FOLLOW_rule__Literal__Group_2__0__Impl_in_rule__Literal__Group_2__06392);
+            pushFollow(FOLLOW_rule__Literal__Group_2__0__Impl_in_rule__Literal__Group_2__06394);
             rule__Literal__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Literal__Group_2__1_in_rule__Literal__Group_2__06395);
+            pushFollow(FOLLOW_rule__Literal__Group_2__1_in_rule__Literal__Group_2__06397);
             rule__Literal__Group_2__1();
 
             state._fsp--;
@@ -8799,7 +8811,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3134:1: ( rule__Literal__Group_2__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3135:2: rule__Literal__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__Literal__Group_2__1__Impl_in_rule__Literal__Group_2__16453);
+            pushFollow(FOLLOW_rule__Literal__Group_2__1__Impl_in_rule__Literal__Group_2__16455);
             rule__Literal__Group_2__1__Impl();
 
             state._fsp--;
@@ -8839,7 +8851,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3148:1: ( rule__Literal__LiteralAssignment_2_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3148:2: rule__Literal__LiteralAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_2_1_in_rule__Literal__Group_2__1__Impl6480);
+            pushFollow(FOLLOW_rule__Literal__LiteralAssignment_2_1_in_rule__Literal__Group_2__1__Impl6482);
             rule__Literal__LiteralAssignment_2_1();
 
             state._fsp--;
@@ -8879,12 +8891,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3166:1: ( rule__BodyBlock__Group__0__Impl rule__BodyBlock__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3167:2: rule__BodyBlock__Group__0__Impl rule__BodyBlock__Group__1
             {
-            pushFollow(FOLLOW_rule__BodyBlock__Group__0__Impl_in_rule__BodyBlock__Group__06514);
+            pushFollow(FOLLOW_rule__BodyBlock__Group__0__Impl_in_rule__BodyBlock__Group__06516);
             rule__BodyBlock__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__BodyBlock__Group__1_in_rule__BodyBlock__Group__06517);
+            pushFollow(FOLLOW_rule__BodyBlock__Group__1_in_rule__BodyBlock__Group__06519);
             rule__BodyBlock__Group__1();
 
             state._fsp--;
@@ -8921,7 +8933,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3180:1: 'body'
             {
              before(grammarAccess.getBodyBlockAccess().getBodyKeyword_0()); 
-            match(input,29,FOLLOW_29_in_rule__BodyBlock__Group__0__Impl6545); 
+            match(input,29,FOLLOW_29_in_rule__BodyBlock__Group__0__Impl6547); 
              after(grammarAccess.getBodyBlockAccess().getBodyKeyword_0()); 
 
             }
@@ -8954,7 +8966,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3197:1: ( rule__BodyBlock__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3198:2: rule__BodyBlock__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__BodyBlock__Group__1__Impl_in_rule__BodyBlock__Group__16576);
+            pushFollow(FOLLOW_rule__BodyBlock__Group__1__Impl_in_rule__BodyBlock__Group__16578);
             rule__BodyBlock__Group__1__Impl();
 
             state._fsp--;
@@ -8994,7 +9006,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3211:1: ( rule__BodyBlock__TypeAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3211:2: rule__BodyBlock__TypeAssignment_1
             {
-            pushFollow(FOLLOW_rule__BodyBlock__TypeAssignment_1_in_rule__BodyBlock__Group__1__Impl6603);
+            pushFollow(FOLLOW_rule__BodyBlock__TypeAssignment_1_in_rule__BodyBlock__Group__1__Impl6605);
             rule__BodyBlock__TypeAssignment_1();
 
             state._fsp--;
@@ -9034,12 +9046,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3229:1: ( rule__ResponseBlock__Group__0__Impl rule__ResponseBlock__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3230:2: rule__ResponseBlock__Group__0__Impl rule__ResponseBlock__Group__1
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__0__Impl_in_rule__ResponseBlock__Group__06637);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__0__Impl_in_rule__ResponseBlock__Group__06639);
             rule__ResponseBlock__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__1_in_rule__ResponseBlock__Group__06640);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__1_in_rule__ResponseBlock__Group__06642);
             rule__ResponseBlock__Group__1();
 
             state._fsp--;
@@ -9109,12 +9121,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3260:1: ( rule__ResponseBlock__Group__1__Impl rule__ResponseBlock__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3261:2: rule__ResponseBlock__Group__1__Impl rule__ResponseBlock__Group__2
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__1__Impl_in_rule__ResponseBlock__Group__16698);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__1__Impl_in_rule__ResponseBlock__Group__16700);
             rule__ResponseBlock__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__2_in_rule__ResponseBlock__Group__16701);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__2_in_rule__ResponseBlock__Group__16703);
             rule__ResponseBlock__Group__2();
 
             state._fsp--;
@@ -9151,7 +9163,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3274:1: 'response'
             {
              before(grammarAccess.getResponseBlockAccess().getResponseKeyword_1()); 
-            match(input,30,FOLLOW_30_in_rule__ResponseBlock__Group__1__Impl6729); 
+            match(input,30,FOLLOW_30_in_rule__ResponseBlock__Group__1__Impl6731); 
              after(grammarAccess.getResponseBlockAccess().getResponseKeyword_1()); 
 
             }
@@ -9184,12 +9196,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3291:1: ( rule__ResponseBlock__Group__2__Impl rule__ResponseBlock__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3292:2: rule__ResponseBlock__Group__2__Impl rule__ResponseBlock__Group__3
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__2__Impl_in_rule__ResponseBlock__Group__26760);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__2__Impl_in_rule__ResponseBlock__Group__26762);
             rule__ResponseBlock__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__3_in_rule__ResponseBlock__Group__26763);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__3_in_rule__ResponseBlock__Group__26765);
             rule__ResponseBlock__Group__3();
 
             state._fsp--;
@@ -9237,7 +9249,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3306:2: rule__ResponseBlock__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__ResponseBlock__Group_2__0_in_rule__ResponseBlock__Group__2__Impl6790);
+                    pushFollow(FOLLOW_rule__ResponseBlock__Group_2__0_in_rule__ResponseBlock__Group__2__Impl6792);
                     rule__ResponseBlock__Group_2__0();
 
                     state._fsp--;
@@ -9280,7 +9292,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3320:1: ( rule__ResponseBlock__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3321:2: rule__ResponseBlock__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group__3__Impl_in_rule__ResponseBlock__Group__36821);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group__3__Impl_in_rule__ResponseBlock__Group__36823);
             rule__ResponseBlock__Group__3__Impl();
 
             state._fsp--;
@@ -9328,7 +9340,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3334:2: rule__ResponseBlock__TypeAssignment_3
                     {
-                    pushFollow(FOLLOW_rule__ResponseBlock__TypeAssignment_3_in_rule__ResponseBlock__Group__3__Impl6848);
+                    pushFollow(FOLLOW_rule__ResponseBlock__TypeAssignment_3_in_rule__ResponseBlock__Group__3__Impl6850);
                     rule__ResponseBlock__TypeAssignment_3();
 
                     state._fsp--;
@@ -9371,12 +9383,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3356:1: ( rule__ResponseBlock__Group_2__0__Impl rule__ResponseBlock__Group_2__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3357:2: rule__ResponseBlock__Group_2__0__Impl rule__ResponseBlock__Group_2__1
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__0__Impl_in_rule__ResponseBlock__Group_2__06887);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__0__Impl_in_rule__ResponseBlock__Group_2__06889);
             rule__ResponseBlock__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__1_in_rule__ResponseBlock__Group_2__06890);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__1_in_rule__ResponseBlock__Group_2__06892);
             rule__ResponseBlock__Group_2__1();
 
             state._fsp--;
@@ -9413,7 +9425,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3370:1: 'extends'
             {
              before(grammarAccess.getResponseBlockAccess().getExtendsKeyword_2_0()); 
-            match(input,31,FOLLOW_31_in_rule__ResponseBlock__Group_2__0__Impl6918); 
+            match(input,31,FOLLOW_31_in_rule__ResponseBlock__Group_2__0__Impl6920); 
              after(grammarAccess.getResponseBlockAccess().getExtendsKeyword_2_0()); 
 
             }
@@ -9446,7 +9458,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3387:1: ( rule__ResponseBlock__Group_2__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3388:2: rule__ResponseBlock__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__1__Impl_in_rule__ResponseBlock__Group_2__16949);
+            pushFollow(FOLLOW_rule__ResponseBlock__Group_2__1__Impl_in_rule__ResponseBlock__Group_2__16951);
             rule__ResponseBlock__Group_2__1__Impl();
 
             state._fsp--;
@@ -9486,7 +9498,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3401:1: ( rule__ResponseBlock__SuperTypeAssignment_2_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3401:2: rule__ResponseBlock__SuperTypeAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__ResponseBlock__SuperTypeAssignment_2_1_in_rule__ResponseBlock__Group_2__1__Impl6976);
+            pushFollow(FOLLOW_rule__ResponseBlock__SuperTypeAssignment_2_1_in_rule__ResponseBlock__Group_2__1__Impl6978);
             rule__ResponseBlock__SuperTypeAssignment_2_1();
 
             state._fsp--;
@@ -9526,12 +9538,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3419:1: ( rule__TypedMember__Group__0__Impl rule__TypedMember__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3420:2: rule__TypedMember__Group__0__Impl rule__TypedMember__Group__1
             {
-            pushFollow(FOLLOW_rule__TypedMember__Group__0__Impl_in_rule__TypedMember__Group__07010);
+            pushFollow(FOLLOW_rule__TypedMember__Group__0__Impl_in_rule__TypedMember__Group__07012);
             rule__TypedMember__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__TypedMember__Group__1_in_rule__TypedMember__Group__07013);
+            pushFollow(FOLLOW_rule__TypedMember__Group__1_in_rule__TypedMember__Group__07015);
             rule__TypedMember__Group__1();
 
             state._fsp--;
@@ -9571,7 +9583,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3434:1: ( rule__TypedMember__NameAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3434:2: rule__TypedMember__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__TypedMember__NameAssignment_0_in_rule__TypedMember__Group__0__Impl7040);
+            pushFollow(FOLLOW_rule__TypedMember__NameAssignment_0_in_rule__TypedMember__Group__0__Impl7042);
             rule__TypedMember__NameAssignment_0();
 
             state._fsp--;
@@ -9611,12 +9623,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3448:1: ( rule__TypedMember__Group__1__Impl rule__TypedMember__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3449:2: rule__TypedMember__Group__1__Impl rule__TypedMember__Group__2
             {
-            pushFollow(FOLLOW_rule__TypedMember__Group__1__Impl_in_rule__TypedMember__Group__17070);
+            pushFollow(FOLLOW_rule__TypedMember__Group__1__Impl_in_rule__TypedMember__Group__17072);
             rule__TypedMember__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__TypedMember__Group__2_in_rule__TypedMember__Group__17073);
+            pushFollow(FOLLOW_rule__TypedMember__Group__2_in_rule__TypedMember__Group__17075);
             rule__TypedMember__Group__2();
 
             state._fsp--;
@@ -9653,7 +9665,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3462:1: ':'
             {
              before(grammarAccess.getTypedMemberAccess().getColonKeyword_1()); 
-            match(input,24,FOLLOW_24_in_rule__TypedMember__Group__1__Impl7101); 
+            match(input,24,FOLLOW_24_in_rule__TypedMember__Group__1__Impl7103); 
              after(grammarAccess.getTypedMemberAccess().getColonKeyword_1()); 
 
             }
@@ -9686,7 +9698,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3479:1: ( rule__TypedMember__Group__2__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3480:2: rule__TypedMember__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__TypedMember__Group__2__Impl_in_rule__TypedMember__Group__27132);
+            pushFollow(FOLLOW_rule__TypedMember__Group__2__Impl_in_rule__TypedMember__Group__27134);
             rule__TypedMember__Group__2__Impl();
 
             state._fsp--;
@@ -9726,7 +9738,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3493:1: ( rule__TypedMember__TypeAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3493:2: rule__TypedMember__TypeAssignment_2
             {
-            pushFollow(FOLLOW_rule__TypedMember__TypeAssignment_2_in_rule__TypedMember__Group__2__Impl7159);
+            pushFollow(FOLLOW_rule__TypedMember__TypeAssignment_2_in_rule__TypedMember__Group__2__Impl7161);
             rule__TypedMember__TypeAssignment_2();
 
             state._fsp--;
@@ -9766,12 +9778,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3513:1: ( rule__SkipMember__Group__0__Impl rule__SkipMember__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3514:2: rule__SkipMember__Group__0__Impl rule__SkipMember__Group__1
             {
-            pushFollow(FOLLOW_rule__SkipMember__Group__0__Impl_in_rule__SkipMember__Group__07195);
+            pushFollow(FOLLOW_rule__SkipMember__Group__0__Impl_in_rule__SkipMember__Group__07197);
             rule__SkipMember__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SkipMember__Group__1_in_rule__SkipMember__Group__07198);
+            pushFollow(FOLLOW_rule__SkipMember__Group__1_in_rule__SkipMember__Group__07200);
             rule__SkipMember__Group__1();
 
             state._fsp--;
@@ -9811,7 +9823,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3528:1: ( rule__SkipMember__NameAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3528:2: rule__SkipMember__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__SkipMember__NameAssignment_0_in_rule__SkipMember__Group__0__Impl7225);
+            pushFollow(FOLLOW_rule__SkipMember__NameAssignment_0_in_rule__SkipMember__Group__0__Impl7227);
             rule__SkipMember__NameAssignment_0();
 
             state._fsp--;
@@ -9851,7 +9863,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3542:1: ( rule__SkipMember__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3543:2: rule__SkipMember__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__SkipMember__Group__1__Impl_in_rule__SkipMember__Group__17255);
+            pushFollow(FOLLOW_rule__SkipMember__Group__1__Impl_in_rule__SkipMember__Group__17257);
             rule__SkipMember__Group__1__Impl();
 
             state._fsp--;
@@ -9891,7 +9903,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3556:1: ( rule__SkipMember__LiteralAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3556:2: rule__SkipMember__LiteralAssignment_1
             {
-            pushFollow(FOLLOW_rule__SkipMember__LiteralAssignment_1_in_rule__SkipMember__Group__1__Impl7282);
+            pushFollow(FOLLOW_rule__SkipMember__LiteralAssignment_1_in_rule__SkipMember__Group__1__Impl7284);
             rule__SkipMember__LiteralAssignment_1();
 
             state._fsp--;
@@ -9931,12 +9943,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3574:1: ( rule__SimpleMember__Group__0__Impl rule__SimpleMember__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3575:2: rule__SimpleMember__Group__0__Impl rule__SimpleMember__Group__1
             {
-            pushFollow(FOLLOW_rule__SimpleMember__Group__0__Impl_in_rule__SimpleMember__Group__07316);
+            pushFollow(FOLLOW_rule__SimpleMember__Group__0__Impl_in_rule__SimpleMember__Group__07318);
             rule__SimpleMember__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SimpleMember__Group__1_in_rule__SimpleMember__Group__07319);
+            pushFollow(FOLLOW_rule__SimpleMember__Group__1_in_rule__SimpleMember__Group__07321);
             rule__SimpleMember__Group__1();
 
             state._fsp--;
@@ -9976,7 +9988,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3589:1: ( rule__SimpleMember__NameAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3589:2: rule__SimpleMember__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__SimpleMember__NameAssignment_0_in_rule__SimpleMember__Group__0__Impl7346);
+            pushFollow(FOLLOW_rule__SimpleMember__NameAssignment_0_in_rule__SimpleMember__Group__0__Impl7348);
             rule__SimpleMember__NameAssignment_0();
 
             state._fsp--;
@@ -10016,12 +10028,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3603:1: ( rule__SimpleMember__Group__1__Impl rule__SimpleMember__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3604:2: rule__SimpleMember__Group__1__Impl rule__SimpleMember__Group__2
             {
-            pushFollow(FOLLOW_rule__SimpleMember__Group__1__Impl_in_rule__SimpleMember__Group__17376);
+            pushFollow(FOLLOW_rule__SimpleMember__Group__1__Impl_in_rule__SimpleMember__Group__17378);
             rule__SimpleMember__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SimpleMember__Group__2_in_rule__SimpleMember__Group__17379);
+            pushFollow(FOLLOW_rule__SimpleMember__Group__2_in_rule__SimpleMember__Group__17381);
             rule__SimpleMember__Group__2();
 
             state._fsp--;
@@ -10058,7 +10070,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3617:1: ':'
             {
              before(grammarAccess.getSimpleMemberAccess().getColonKeyword_1()); 
-            match(input,24,FOLLOW_24_in_rule__SimpleMember__Group__1__Impl7407); 
+            match(input,24,FOLLOW_24_in_rule__SimpleMember__Group__1__Impl7409); 
              after(grammarAccess.getSimpleMemberAccess().getColonKeyword_1()); 
 
             }
@@ -10091,7 +10103,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3634:1: ( rule__SimpleMember__Group__2__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3635:2: rule__SimpleMember__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__SimpleMember__Group__2__Impl_in_rule__SimpleMember__Group__27438);
+            pushFollow(FOLLOW_rule__SimpleMember__Group__2__Impl_in_rule__SimpleMember__Group__27440);
             rule__SimpleMember__Group__2__Impl();
 
             state._fsp--;
@@ -10131,7 +10143,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3648:1: ( rule__SimpleMember__TypeAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3648:2: rule__SimpleMember__TypeAssignment_2
             {
-            pushFollow(FOLLOW_rule__SimpleMember__TypeAssignment_2_in_rule__SimpleMember__Group__2__Impl7465);
+            pushFollow(FOLLOW_rule__SimpleMember__TypeAssignment_2_in_rule__SimpleMember__Group__2__Impl7467);
             rule__SimpleMember__TypeAssignment_2();
 
             state._fsp--;
@@ -10171,12 +10183,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3668:1: ( rule__GenericListType__Group__0__Impl rule__GenericListType__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3669:2: rule__GenericListType__Group__0__Impl rule__GenericListType__Group__1
             {
-            pushFollow(FOLLOW_rule__GenericListType__Group__0__Impl_in_rule__GenericListType__Group__07501);
+            pushFollow(FOLLOW_rule__GenericListType__Group__0__Impl_in_rule__GenericListType__Group__07503);
             rule__GenericListType__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__GenericListType__Group__1_in_rule__GenericListType__Group__07504);
+            pushFollow(FOLLOW_rule__GenericListType__Group__1_in_rule__GenericListType__Group__07506);
             rule__GenericListType__Group__1();
 
             state._fsp--;
@@ -10216,7 +10228,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3683:1: ( rule__GenericListType__ElementTypeAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3683:2: rule__GenericListType__ElementTypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__GenericListType__ElementTypeAssignment_0_in_rule__GenericListType__Group__0__Impl7531);
+            pushFollow(FOLLOW_rule__GenericListType__ElementTypeAssignment_0_in_rule__GenericListType__Group__0__Impl7533);
             rule__GenericListType__ElementTypeAssignment_0();
 
             state._fsp--;
@@ -10256,7 +10268,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3697:1: ( rule__GenericListType__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3698:2: rule__GenericListType__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__GenericListType__Group__1__Impl_in_rule__GenericListType__Group__17561);
+            pushFollow(FOLLOW_rule__GenericListType__Group__1__Impl_in_rule__GenericListType__Group__17563);
             rule__GenericListType__Group__1__Impl();
 
             state._fsp--;
@@ -10296,7 +10308,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3711:1: ( rule__GenericListType__IdAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3711:2: rule__GenericListType__IdAssignment_1
             {
-            pushFollow(FOLLOW_rule__GenericListType__IdAssignment_1_in_rule__GenericListType__Group__1__Impl7588);
+            pushFollow(FOLLOW_rule__GenericListType__IdAssignment_1_in_rule__GenericListType__Group__1__Impl7590);
             rule__GenericListType__IdAssignment_1();
 
             state._fsp--;
@@ -10336,12 +10348,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3729:1: ( rule__ComplexTypeDeclaration__Group__0__Impl rule__ComplexTypeDeclaration__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3730:2: rule__ComplexTypeDeclaration__Group__0__Impl rule__ComplexTypeDeclaration__Group__1
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__0__Impl_in_rule__ComplexTypeDeclaration__Group__07622);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__0__Impl_in_rule__ComplexTypeDeclaration__Group__07624);
             rule__ComplexTypeDeclaration__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__1_in_rule__ComplexTypeDeclaration__Group__07625);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__1_in_rule__ComplexTypeDeclaration__Group__07627);
             rule__ComplexTypeDeclaration__Group__1();
 
             state._fsp--;
@@ -10381,7 +10393,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3744:1: ( rule__ComplexTypeDeclaration__KeywordAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3744:2: rule__ComplexTypeDeclaration__KeywordAssignment_0
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__KeywordAssignment_0_in_rule__ComplexTypeDeclaration__Group__0__Impl7652);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__KeywordAssignment_0_in_rule__ComplexTypeDeclaration__Group__0__Impl7654);
             rule__ComplexTypeDeclaration__KeywordAssignment_0();
 
             state._fsp--;
@@ -10421,12 +10433,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3758:1: ( rule__ComplexTypeDeclaration__Group__1__Impl rule__ComplexTypeDeclaration__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3759:2: rule__ComplexTypeDeclaration__Group__1__Impl rule__ComplexTypeDeclaration__Group__2
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__1__Impl_in_rule__ComplexTypeDeclaration__Group__17682);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__1__Impl_in_rule__ComplexTypeDeclaration__Group__17684);
             rule__ComplexTypeDeclaration__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__2_in_rule__ComplexTypeDeclaration__Group__17685);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__2_in_rule__ComplexTypeDeclaration__Group__17687);
             rule__ComplexTypeDeclaration__Group__2();
 
             state._fsp--;
@@ -10474,7 +10486,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3773:2: rule__ComplexTypeDeclaration__NogenAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712);
+                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7714);
                     rule__ComplexTypeDeclaration__NogenAssignment_1();
 
                     state._fsp--;
@@ -10517,12 +10529,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3787:1: ( rule__ComplexTypeDeclaration__Group__2__Impl rule__ComplexTypeDeclaration__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3788:2: rule__ComplexTypeDeclaration__Group__2__Impl rule__ComplexTypeDeclaration__Group__3
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__2__Impl_in_rule__ComplexTypeDeclaration__Group__27743);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__2__Impl_in_rule__ComplexTypeDeclaration__Group__27745);
             rule__ComplexTypeDeclaration__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__3_in_rule__ComplexTypeDeclaration__Group__27746);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__3_in_rule__ComplexTypeDeclaration__Group__27748);
             rule__ComplexTypeDeclaration__Group__3();
 
             state._fsp--;
@@ -10562,7 +10574,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3802:1: ( rule__ComplexTypeDeclaration__NameAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3802:2: rule__ComplexTypeDeclaration__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__NameAssignment_2_in_rule__ComplexTypeDeclaration__Group__2__Impl7773);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__NameAssignment_2_in_rule__ComplexTypeDeclaration__Group__2__Impl7775);
             rule__ComplexTypeDeclaration__NameAssignment_2();
 
             state._fsp--;
@@ -10602,7 +10614,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3816:1: ( rule__ComplexTypeDeclaration__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3817:2: rule__ComplexTypeDeclaration__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__3__Impl_in_rule__ComplexTypeDeclaration__Group__37803);
+            pushFollow(FOLLOW_rule__ComplexTypeDeclaration__Group__3__Impl_in_rule__ComplexTypeDeclaration__Group__37805);
             rule__ComplexTypeDeclaration__Group__3__Impl();
 
             state._fsp--;
@@ -10650,7 +10662,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3830:2: rule__ComplexTypeDeclaration__LiteralAssignment_3
                     {
-                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__LiteralAssignment_3_in_rule__ComplexTypeDeclaration__Group__3__Impl7830);
+                    pushFollow(FOLLOW_rule__ComplexTypeDeclaration__LiteralAssignment_3_in_rule__ComplexTypeDeclaration__Group__3__Impl7832);
                     rule__ComplexTypeDeclaration__LiteralAssignment_3();
 
                     state._fsp--;
@@ -10693,12 +10705,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3852:1: ( rule__EnumTypeDeclaration__Group__0__Impl rule__EnumTypeDeclaration__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3853:2: rule__EnumTypeDeclaration__Group__0__Impl rule__EnumTypeDeclaration__Group__1
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__0__Impl_in_rule__EnumTypeDeclaration__Group__07869);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__0__Impl_in_rule__EnumTypeDeclaration__Group__07871);
             rule__EnumTypeDeclaration__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__1_in_rule__EnumTypeDeclaration__Group__07872);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__1_in_rule__EnumTypeDeclaration__Group__07874);
             rule__EnumTypeDeclaration__Group__1();
 
             state._fsp--;
@@ -10738,7 +10750,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3867:1: ( rule__EnumTypeDeclaration__KeywordAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3867:2: rule__EnumTypeDeclaration__KeywordAssignment_0
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__KeywordAssignment_0_in_rule__EnumTypeDeclaration__Group__0__Impl7899);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__KeywordAssignment_0_in_rule__EnumTypeDeclaration__Group__0__Impl7901);
             rule__EnumTypeDeclaration__KeywordAssignment_0();
 
             state._fsp--;
@@ -10778,12 +10790,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3881:1: ( rule__EnumTypeDeclaration__Group__1__Impl rule__EnumTypeDeclaration__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3882:2: rule__EnumTypeDeclaration__Group__1__Impl rule__EnumTypeDeclaration__Group__2
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__1__Impl_in_rule__EnumTypeDeclaration__Group__17929);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__1__Impl_in_rule__EnumTypeDeclaration__Group__17931);
             rule__EnumTypeDeclaration__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__2_in_rule__EnumTypeDeclaration__Group__17932);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__2_in_rule__EnumTypeDeclaration__Group__17934);
             rule__EnumTypeDeclaration__Group__2();
 
             state._fsp--;
@@ -10831,7 +10843,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3896:2: rule__EnumTypeDeclaration__NogenAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959);
+                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7961);
                     rule__EnumTypeDeclaration__NogenAssignment_1();
 
                     state._fsp--;
@@ -10874,12 +10886,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3910:1: ( rule__EnumTypeDeclaration__Group__2__Impl rule__EnumTypeDeclaration__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3911:2: rule__EnumTypeDeclaration__Group__2__Impl rule__EnumTypeDeclaration__Group__3
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__2__Impl_in_rule__EnumTypeDeclaration__Group__27990);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__2__Impl_in_rule__EnumTypeDeclaration__Group__27992);
             rule__EnumTypeDeclaration__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__3_in_rule__EnumTypeDeclaration__Group__27993);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__3_in_rule__EnumTypeDeclaration__Group__27995);
             rule__EnumTypeDeclaration__Group__3();
 
             state._fsp--;
@@ -10919,7 +10931,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3925:1: ( rule__EnumTypeDeclaration__NameAssignment_2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3925:2: rule__EnumTypeDeclaration__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__NameAssignment_2_in_rule__EnumTypeDeclaration__Group__2__Impl8020);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__NameAssignment_2_in_rule__EnumTypeDeclaration__Group__2__Impl8022);
             rule__EnumTypeDeclaration__NameAssignment_2();
 
             state._fsp--;
@@ -10959,12 +10971,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3939:1: ( rule__EnumTypeDeclaration__Group__3__Impl rule__EnumTypeDeclaration__Group__4 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3940:2: rule__EnumTypeDeclaration__Group__3__Impl rule__EnumTypeDeclaration__Group__4
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__3__Impl_in_rule__EnumTypeDeclaration__Group__38050);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__3__Impl_in_rule__EnumTypeDeclaration__Group__38052);
             rule__EnumTypeDeclaration__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__4_in_rule__EnumTypeDeclaration__Group__38053);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__4_in_rule__EnumTypeDeclaration__Group__38055);
             rule__EnumTypeDeclaration__Group__4();
 
             state._fsp--;
@@ -11012,7 +11024,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3954:2: rule__EnumTypeDeclaration__Group_3__0
                     {
-                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__0_in_rule__EnumTypeDeclaration__Group__3__Impl8080);
+                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__0_in_rule__EnumTypeDeclaration__Group__3__Impl8082);
                     rule__EnumTypeDeclaration__Group_3__0();
 
                     state._fsp--;
@@ -11055,7 +11067,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3968:1: ( rule__EnumTypeDeclaration__Group__4__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3969:2: rule__EnumTypeDeclaration__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__4__Impl_in_rule__EnumTypeDeclaration__Group__48111);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group__4__Impl_in_rule__EnumTypeDeclaration__Group__48113);
             rule__EnumTypeDeclaration__Group__4__Impl();
 
             state._fsp--;
@@ -11103,7 +11115,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:3982:2: rule__EnumTypeDeclaration__LiteralAssignment_4
                     {
-                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__LiteralAssignment_4_in_rule__EnumTypeDeclaration__Group__4__Impl8138);
+                    pushFollow(FOLLOW_rule__EnumTypeDeclaration__LiteralAssignment_4_in_rule__EnumTypeDeclaration__Group__4__Impl8140);
                     rule__EnumTypeDeclaration__LiteralAssignment_4();
 
                     state._fsp--;
@@ -11146,12 +11158,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4006:1: ( rule__EnumTypeDeclaration__Group_3__0__Impl rule__EnumTypeDeclaration__Group_3__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4007:2: rule__EnumTypeDeclaration__Group_3__0__Impl rule__EnumTypeDeclaration__Group_3__1
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__0__Impl_in_rule__EnumTypeDeclaration__Group_3__08179);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__0__Impl_in_rule__EnumTypeDeclaration__Group_3__08181);
             rule__EnumTypeDeclaration__Group_3__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__1_in_rule__EnumTypeDeclaration__Group_3__08182);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__1_in_rule__EnumTypeDeclaration__Group_3__08184);
             rule__EnumTypeDeclaration__Group_3__1();
 
             state._fsp--;
@@ -11188,7 +11200,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4020:1: 'extends'
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getExtendsKeyword_3_0()); 
-            match(input,31,FOLLOW_31_in_rule__EnumTypeDeclaration__Group_3__0__Impl8210); 
+            match(input,31,FOLLOW_31_in_rule__EnumTypeDeclaration__Group_3__0__Impl8212); 
              after(grammarAccess.getEnumTypeDeclarationAccess().getExtendsKeyword_3_0()); 
 
             }
@@ -11221,7 +11233,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4037:1: ( rule__EnumTypeDeclaration__Group_3__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4038:2: rule__EnumTypeDeclaration__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__1__Impl_in_rule__EnumTypeDeclaration__Group_3__18241);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__Group_3__1__Impl_in_rule__EnumTypeDeclaration__Group_3__18243);
             rule__EnumTypeDeclaration__Group_3__1__Impl();
 
             state._fsp--;
@@ -11261,7 +11273,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4051:1: ( rule__EnumTypeDeclaration__SuperTypeAssignment_3_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4051:2: rule__EnumTypeDeclaration__SuperTypeAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__EnumTypeDeclaration__SuperTypeAssignment_3_1_in_rule__EnumTypeDeclaration__Group_3__1__Impl8268);
+            pushFollow(FOLLOW_rule__EnumTypeDeclaration__SuperTypeAssignment_3_1_in_rule__EnumTypeDeclaration__Group_3__1__Impl8270);
             rule__EnumTypeDeclaration__SuperTypeAssignment_3_1();
 
             state._fsp--;
@@ -11301,12 +11313,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4069:1: ( rule__EnumTypeLiteral__Group__0__Impl rule__EnumTypeLiteral__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4070:2: rule__EnumTypeLiteral__Group__0__Impl rule__EnumTypeLiteral__Group__1
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__0__Impl_in_rule__EnumTypeLiteral__Group__08302);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__0__Impl_in_rule__EnumTypeLiteral__Group__08304);
             rule__EnumTypeLiteral__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__1_in_rule__EnumTypeLiteral__Group__08305);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__1_in_rule__EnumTypeLiteral__Group__08307);
             rule__EnumTypeLiteral__Group__1();
 
             state._fsp--;
@@ -11343,7 +11355,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4083:1: '{'
             {
              before(grammarAccess.getEnumTypeLiteralAccess().getLeftCurlyBracketKeyword_0()); 
-            match(input,20,FOLLOW_20_in_rule__EnumTypeLiteral__Group__0__Impl8333); 
+            match(input,20,FOLLOW_20_in_rule__EnumTypeLiteral__Group__0__Impl8335); 
              after(grammarAccess.getEnumTypeLiteralAccess().getLeftCurlyBracketKeyword_0()); 
 
             }
@@ -11376,12 +11388,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4100:1: ( rule__EnumTypeLiteral__Group__1__Impl rule__EnumTypeLiteral__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4101:2: rule__EnumTypeLiteral__Group__1__Impl rule__EnumTypeLiteral__Group__2
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__1__Impl_in_rule__EnumTypeLiteral__Group__18364);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__1__Impl_in_rule__EnumTypeLiteral__Group__18366);
             rule__EnumTypeLiteral__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__2_in_rule__EnumTypeLiteral__Group__18367);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__2_in_rule__EnumTypeLiteral__Group__18369);
             rule__EnumTypeLiteral__Group__2();
 
             state._fsp--;
@@ -11421,7 +11433,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4115:1: ( rule__EnumTypeLiteral__MembersAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4115:2: rule__EnumTypeLiteral__MembersAssignment_1
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__MembersAssignment_1_in_rule__EnumTypeLiteral__Group__1__Impl8394);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__MembersAssignment_1_in_rule__EnumTypeLiteral__Group__1__Impl8396);
             rule__EnumTypeLiteral__MembersAssignment_1();
 
             state._fsp--;
@@ -11461,12 +11473,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4129:1: ( rule__EnumTypeLiteral__Group__2__Impl rule__EnumTypeLiteral__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4130:2: rule__EnumTypeLiteral__Group__2__Impl rule__EnumTypeLiteral__Group__3
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__2__Impl_in_rule__EnumTypeLiteral__Group__28424);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__2__Impl_in_rule__EnumTypeLiteral__Group__28426);
             rule__EnumTypeLiteral__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__3_in_rule__EnumTypeLiteral__Group__28427);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__3_in_rule__EnumTypeLiteral__Group__28429);
             rule__EnumTypeLiteral__Group__3();
 
             state._fsp--;
@@ -11518,7 +11530,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4144:2: rule__EnumTypeLiteral__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__0_in_rule__EnumTypeLiteral__Group__2__Impl8454);
+            	    pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__0_in_rule__EnumTypeLiteral__Group__2__Impl8456);
             	    rule__EnumTypeLiteral__Group_2__0();
 
             	    state._fsp--;
@@ -11564,7 +11576,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4158:1: ( rule__EnumTypeLiteral__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4159:2: rule__EnumTypeLiteral__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__3__Impl_in_rule__EnumTypeLiteral__Group__38485);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group__3__Impl_in_rule__EnumTypeLiteral__Group__38487);
             rule__EnumTypeLiteral__Group__3__Impl();
 
             state._fsp--;
@@ -11601,7 +11613,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4171:1: '}'
             {
              before(grammarAccess.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3()); 
-            match(input,21,FOLLOW_21_in_rule__EnumTypeLiteral__Group__3__Impl8513); 
+            match(input,21,FOLLOW_21_in_rule__EnumTypeLiteral__Group__3__Impl8515); 
              after(grammarAccess.getEnumTypeLiteralAccess().getRightCurlyBracketKeyword_3()); 
 
             }
@@ -11634,12 +11646,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4196:1: ( rule__EnumTypeLiteral__Group_2__0__Impl rule__EnumTypeLiteral__Group_2__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4197:2: rule__EnumTypeLiteral__Group_2__0__Impl rule__EnumTypeLiteral__Group_2__1
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__0__Impl_in_rule__EnumTypeLiteral__Group_2__08552);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__0__Impl_in_rule__EnumTypeLiteral__Group_2__08554);
             rule__EnumTypeLiteral__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__1_in_rule__EnumTypeLiteral__Group_2__08555);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__1_in_rule__EnumTypeLiteral__Group_2__08557);
             rule__EnumTypeLiteral__Group_2__1();
 
             state._fsp--;
@@ -11676,7 +11688,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4210:1: ','
             {
              before(grammarAccess.getEnumTypeLiteralAccess().getCommaKeyword_2_0()); 
-            match(input,23,FOLLOW_23_in_rule__EnumTypeLiteral__Group_2__0__Impl8583); 
+            match(input,23,FOLLOW_23_in_rule__EnumTypeLiteral__Group_2__0__Impl8585); 
              after(grammarAccess.getEnumTypeLiteralAccess().getCommaKeyword_2_0()); 
 
             }
@@ -11709,7 +11721,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4227:1: ( rule__EnumTypeLiteral__Group_2__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4228:2: rule__EnumTypeLiteral__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__1__Impl_in_rule__EnumTypeLiteral__Group_2__18614);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__Group_2__1__Impl_in_rule__EnumTypeLiteral__Group_2__18616);
             rule__EnumTypeLiteral__Group_2__1__Impl();
 
             state._fsp--;
@@ -11749,7 +11761,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4241:1: ( rule__EnumTypeLiteral__MembersAssignment_2_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4241:2: rule__EnumTypeLiteral__MembersAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__EnumTypeLiteral__MembersAssignment_2_1_in_rule__EnumTypeLiteral__Group_2__1__Impl8641);
+            pushFollow(FOLLOW_rule__EnumTypeLiteral__MembersAssignment_2_1_in_rule__EnumTypeLiteral__Group_2__1__Impl8643);
             rule__EnumTypeLiteral__MembersAssignment_2_1();
 
             state._fsp--;
@@ -11789,12 +11801,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4259:1: ( rule__EnumMember__Group__0__Impl rule__EnumMember__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4260:2: rule__EnumMember__Group__0__Impl rule__EnumMember__Group__1
             {
-            pushFollow(FOLLOW_rule__EnumMember__Group__0__Impl_in_rule__EnumMember__Group__08675);
+            pushFollow(FOLLOW_rule__EnumMember__Group__0__Impl_in_rule__EnumMember__Group__08677);
             rule__EnumMember__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumMember__Group__1_in_rule__EnumMember__Group__08678);
+            pushFollow(FOLLOW_rule__EnumMember__Group__1_in_rule__EnumMember__Group__08680);
             rule__EnumMember__Group__1();
 
             state._fsp--;
@@ -11834,7 +11846,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4274:1: ( rule__EnumMember__NameAssignment_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4274:2: rule__EnumMember__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__EnumMember__NameAssignment_0_in_rule__EnumMember__Group__0__Impl8705);
+            pushFollow(FOLLOW_rule__EnumMember__NameAssignment_0_in_rule__EnumMember__Group__0__Impl8707);
             rule__EnumMember__NameAssignment_0();
 
             state._fsp--;
@@ -11874,7 +11886,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4288:1: ( rule__EnumMember__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4289:2: rule__EnumMember__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__EnumMember__Group__1__Impl_in_rule__EnumMember__Group__18735);
+            pushFollow(FOLLOW_rule__EnumMember__Group__1__Impl_in_rule__EnumMember__Group__18737);
             rule__EnumMember__Group__1__Impl();
 
             state._fsp--;
@@ -11922,7 +11934,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4302:2: rule__EnumMember__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__EnumMember__Group_1__0_in_rule__EnumMember__Group__1__Impl8762);
+                    pushFollow(FOLLOW_rule__EnumMember__Group_1__0_in_rule__EnumMember__Group__1__Impl8764);
                     rule__EnumMember__Group_1__0();
 
                     state._fsp--;
@@ -11965,12 +11977,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4320:1: ( rule__EnumMember__Group_1__0__Impl rule__EnumMember__Group_1__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4321:2: rule__EnumMember__Group_1__0__Impl rule__EnumMember__Group_1__1
             {
-            pushFollow(FOLLOW_rule__EnumMember__Group_1__0__Impl_in_rule__EnumMember__Group_1__08797);
+            pushFollow(FOLLOW_rule__EnumMember__Group_1__0__Impl_in_rule__EnumMember__Group_1__08799);
             rule__EnumMember__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__EnumMember__Group_1__1_in_rule__EnumMember__Group_1__08800);
+            pushFollow(FOLLOW_rule__EnumMember__Group_1__1_in_rule__EnumMember__Group_1__08802);
             rule__EnumMember__Group_1__1();
 
             state._fsp--;
@@ -12010,7 +12022,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4335:1: ( rule__EnumMember__AssignmentAssignment_1_0 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4335:2: rule__EnumMember__AssignmentAssignment_1_0
             {
-            pushFollow(FOLLOW_rule__EnumMember__AssignmentAssignment_1_0_in_rule__EnumMember__Group_1__0__Impl8827);
+            pushFollow(FOLLOW_rule__EnumMember__AssignmentAssignment_1_0_in_rule__EnumMember__Group_1__0__Impl8829);
             rule__EnumMember__AssignmentAssignment_1_0();
 
             state._fsp--;
@@ -12050,7 +12062,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4349:1: ( rule__EnumMember__Group_1__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4350:2: rule__EnumMember__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__EnumMember__Group_1__1__Impl_in_rule__EnumMember__Group_1__18857);
+            pushFollow(FOLLOW_rule__EnumMember__Group_1__1__Impl_in_rule__EnumMember__Group_1__18859);
             rule__EnumMember__Group_1__1__Impl();
 
             state._fsp--;
@@ -12090,7 +12102,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4363:1: ( rule__EnumMember__ValueAssignment_1_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4363:2: rule__EnumMember__ValueAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__EnumMember__ValueAssignment_1_1_in_rule__EnumMember__Group_1__1__Impl8884);
+            pushFollow(FOLLOW_rule__EnumMember__ValueAssignment_1_1_in_rule__EnumMember__Group_1__1__Impl8886);
             rule__EnumMember__ValueAssignment_1_1();
 
             state._fsp--;
@@ -12130,12 +12142,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4381:1: ( rule__ComplexTypeLiteral__Group__0__Impl rule__ComplexTypeLiteral__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4382:2: rule__ComplexTypeLiteral__Group__0__Impl rule__ComplexTypeLiteral__Group__1
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__0__Impl_in_rule__ComplexTypeLiteral__Group__08918);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__0__Impl_in_rule__ComplexTypeLiteral__Group__08920);
             rule__ComplexTypeLiteral__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__1_in_rule__ComplexTypeLiteral__Group__08921);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__1_in_rule__ComplexTypeLiteral__Group__08923);
             rule__ComplexTypeLiteral__Group__1();
 
             state._fsp--;
@@ -12172,7 +12184,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4395:1: '{'
             {
              before(grammarAccess.getComplexTypeLiteralAccess().getLeftCurlyBracketKeyword_0()); 
-            match(input,20,FOLLOW_20_in_rule__ComplexTypeLiteral__Group__0__Impl8949); 
+            match(input,20,FOLLOW_20_in_rule__ComplexTypeLiteral__Group__0__Impl8951); 
              after(grammarAccess.getComplexTypeLiteralAccess().getLeftCurlyBracketKeyword_0()); 
 
             }
@@ -12205,12 +12217,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4412:1: ( rule__ComplexTypeLiteral__Group__1__Impl rule__ComplexTypeLiteral__Group__2 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4413:2: rule__ComplexTypeLiteral__Group__1__Impl rule__ComplexTypeLiteral__Group__2
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__1__Impl_in_rule__ComplexTypeLiteral__Group__18980);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__1__Impl_in_rule__ComplexTypeLiteral__Group__18982);
             rule__ComplexTypeLiteral__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__2_in_rule__ComplexTypeLiteral__Group__18983);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__2_in_rule__ComplexTypeLiteral__Group__18985);
             rule__ComplexTypeLiteral__Group__2();
 
             state._fsp--;
@@ -12250,7 +12262,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4427:1: ( rule__ComplexTypeLiteral__MembersAssignment_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4427:2: rule__ComplexTypeLiteral__MembersAssignment_1
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_1_in_rule__ComplexTypeLiteral__Group__1__Impl9010);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_1_in_rule__ComplexTypeLiteral__Group__1__Impl9012);
             rule__ComplexTypeLiteral__MembersAssignment_1();
 
             state._fsp--;
@@ -12290,12 +12302,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4441:1: ( rule__ComplexTypeLiteral__Group__2__Impl rule__ComplexTypeLiteral__Group__3 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4442:2: rule__ComplexTypeLiteral__Group__2__Impl rule__ComplexTypeLiteral__Group__3
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__2__Impl_in_rule__ComplexTypeLiteral__Group__29040);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__2__Impl_in_rule__ComplexTypeLiteral__Group__29042);
             rule__ComplexTypeLiteral__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__3_in_rule__ComplexTypeLiteral__Group__29043);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__3_in_rule__ComplexTypeLiteral__Group__29045);
             rule__ComplexTypeLiteral__Group__3();
 
             state._fsp--;
@@ -12347,7 +12359,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4456:2: rule__ComplexTypeLiteral__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__0_in_rule__ComplexTypeLiteral__Group__2__Impl9070);
+            	    pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__0_in_rule__ComplexTypeLiteral__Group__2__Impl9072);
             	    rule__ComplexTypeLiteral__Group_2__0();
 
             	    state._fsp--;
@@ -12393,7 +12405,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4470:1: ( rule__ComplexTypeLiteral__Group__3__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4471:2: rule__ComplexTypeLiteral__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__3__Impl_in_rule__ComplexTypeLiteral__Group__39101);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group__3__Impl_in_rule__ComplexTypeLiteral__Group__39103);
             rule__ComplexTypeLiteral__Group__3__Impl();
 
             state._fsp--;
@@ -12430,7 +12442,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4483:1: '}'
             {
              before(grammarAccess.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3()); 
-            match(input,21,FOLLOW_21_in_rule__ComplexTypeLiteral__Group__3__Impl9129); 
+            match(input,21,FOLLOW_21_in_rule__ComplexTypeLiteral__Group__3__Impl9131); 
              after(grammarAccess.getComplexTypeLiteralAccess().getRightCurlyBracketKeyword_3()); 
 
             }
@@ -12463,12 +12475,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4508:1: ( rule__ComplexTypeLiteral__Group_2__0__Impl rule__ComplexTypeLiteral__Group_2__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4509:2: rule__ComplexTypeLiteral__Group_2__0__Impl rule__ComplexTypeLiteral__Group_2__1
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__0__Impl_in_rule__ComplexTypeLiteral__Group_2__09168);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__0__Impl_in_rule__ComplexTypeLiteral__Group_2__09170);
             rule__ComplexTypeLiteral__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__1_in_rule__ComplexTypeLiteral__Group_2__09171);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__1_in_rule__ComplexTypeLiteral__Group_2__09173);
             rule__ComplexTypeLiteral__Group_2__1();
 
             state._fsp--;
@@ -12505,7 +12517,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4522:1: ','
             {
              before(grammarAccess.getComplexTypeLiteralAccess().getCommaKeyword_2_0()); 
-            match(input,23,FOLLOW_23_in_rule__ComplexTypeLiteral__Group_2__0__Impl9199); 
+            match(input,23,FOLLOW_23_in_rule__ComplexTypeLiteral__Group_2__0__Impl9201); 
              after(grammarAccess.getComplexTypeLiteralAccess().getCommaKeyword_2_0()); 
 
             }
@@ -12538,7 +12550,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4539:1: ( rule__ComplexTypeLiteral__Group_2__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4540:2: rule__ComplexTypeLiteral__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__1__Impl_in_rule__ComplexTypeLiteral__Group_2__19230);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__Group_2__1__Impl_in_rule__ComplexTypeLiteral__Group_2__19232);
             rule__ComplexTypeLiteral__Group_2__1__Impl();
 
             state._fsp--;
@@ -12578,7 +12590,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4553:1: ( rule__ComplexTypeLiteral__MembersAssignment_2_1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4553:2: rule__ComplexTypeLiteral__MembersAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_2_1_in_rule__ComplexTypeLiteral__Group_2__1__Impl9257);
+            pushFollow(FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_2_1_in_rule__ComplexTypeLiteral__Group_2__1__Impl9259);
             rule__ComplexTypeLiteral__MembersAssignment_2_1();
 
             state._fsp--;
@@ -12618,12 +12630,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4571:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4572:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__09291);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__09293);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__09294);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__09296);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -12660,7 +12672,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4585:1: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl9321); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl9323); 
              after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
 
             }
@@ -12693,7 +12705,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4600:1: ( rule__QualifiedName__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4601:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__19350);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__19352);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -12745,7 +12757,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             	case 1 :
             	    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4614:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl9377);
+            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl9379);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -12791,12 +12803,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4632:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4633:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__09412);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__09414);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__09415);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__09417);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -12833,7 +12845,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4646:1: '.'
             {
              before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
-            match(input,32,FOLLOW_32_in_rule__QualifiedName__Group_1__0__Impl9443); 
+            match(input,32,FOLLOW_32_in_rule__QualifiedName__Group_1__0__Impl9445); 
              after(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
 
             }
@@ -12866,7 +12878,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4663:1: ( rule__QualifiedName__Group_1__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4664:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__19474);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__19476);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -12903,7 +12915,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4676:1: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl9501); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl9503); 
              after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
 
             }
@@ -12936,12 +12948,12 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4695:1: ( rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1 )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4696:2: rule__SignedNumber__Group__0__Impl rule__SignedNumber__Group__1
             {
-            pushFollow(FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__09534);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__09536);
             rule__SignedNumber__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__09537);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__09539);
             rule__SignedNumber__Group__1();
 
             state._fsp--;
@@ -12989,7 +13001,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
                 case 1 :
                     // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4711:2: '-'
                     {
-                    match(input,26,FOLLOW_26_in_rule__SignedNumber__Group__0__Impl9566); 
+                    match(input,26,FOLLOW_26_in_rule__SignedNumber__Group__0__Impl9568); 
 
                     }
                     break;
@@ -13028,7 +13040,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4726:1: ( rule__SignedNumber__Group__1__Impl )
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4727:2: rule__SignedNumber__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__19599);
+            pushFollow(FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__19601);
             rule__SignedNumber__Group__1__Impl();
 
             state._fsp--;
@@ -13065,7 +13077,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4739:1: RULE_NUMBER
             {
              before(grammarAccess.getSignedNumberAccess().getNUMBERTerminalRuleCall_1()); 
-            match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl9626); 
+            match(input,RULE_NUMBER,FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl9628); 
              after(grammarAccess.getSignedNumberAccess().getNUMBERTerminalRuleCall_1()); 
 
             }
@@ -13102,7 +13114,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4761:1: ruleQualifiedName
             {
              before(grammarAccess.getModelAccess().getPackageNameQualifiedNameParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Model__PackageNameAssignment_19664);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Model__PackageNameAssignment_19666);
             ruleQualifiedName();
 
             state._fsp--;
@@ -13143,7 +13155,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4776:1: ruleDeclaration
             {
              before(grammarAccess.getModelAccess().getDeclarationsDeclarationParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleDeclaration_in_rule__Model__DeclarationsAssignment_29695);
+            pushFollow(FOLLOW_ruleDeclaration_in_rule__Model__DeclarationsAssignment_29697);
             ruleDeclaration();
 
             state._fsp--;
@@ -13184,7 +13196,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4791:1: RULE_ID
             {
              before(grammarAccess.getClientAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Client__NameAssignment_19726); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Client__NameAssignment_19728); 
              after(grammarAccess.getClientAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -13221,7 +13233,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4806:1: RULE_STRING
             {
              before(grammarAccess.getClientAccess().getBaseUrlSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Client__BaseUrlAssignment_29757); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Client__BaseUrlAssignment_29759); 
              after(grammarAccess.getClientAccess().getBaseUrlSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -13258,7 +13270,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4821:1: ruleClientBlock
             {
              before(grammarAccess.getClientAccess().getBlocksClientBlockParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleClientBlock_in_rule__Client__BlocksAssignment_49788);
+            pushFollow(FOLLOW_ruleClientBlock_in_rule__Client__BlocksAssignment_49790);
             ruleClientBlock();
 
             state._fsp--;
@@ -13299,7 +13311,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4836:1: ruleHeader
             {
              before(grammarAccess.getHeaderBlockAccess().getHeadersHeaderParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_19819);
+            pushFollow(FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_19821);
             ruleHeader();
 
             state._fsp--;
@@ -13340,7 +13352,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4851:1: ruleHeader
             {
              before(grammarAccess.getHeaderBlockAccess().getHeadersHeaderParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_2_19850);
+            pushFollow(FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_2_19852);
             ruleHeader();
 
             state._fsp--;
@@ -13381,7 +13393,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4866:1: RULE_STRING
             {
              before(grammarAccess.getHeaderAccess().getNameSTRINGTerminalRuleCall_0_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Header__NameAssignment_09881); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Header__NameAssignment_09883); 
              after(grammarAccess.getHeaderAccess().getNameSTRINGTerminalRuleCall_0_0()); 
 
             }
@@ -13418,7 +13430,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4881:1: RULE_STRING
             {
              before(grammarAccess.getHeaderAccess().getValueSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Header__ValueAssignment_29912); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Header__ValueAssignment_29914); 
              after(grammarAccess.getHeaderAccess().getValueSTRINGTerminalRuleCall_2_0()); 
 
             }
@@ -13455,7 +13467,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4896:1: ruleHttpMethodType
             {
              before(grammarAccess.getHttpMethodAccess().getTypeHttpMethodTypeEnumRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleHttpMethodType_in_rule__HttpMethod__TypeAssignment_09943);
+            pushFollow(FOLLOW_ruleHttpMethodType_in_rule__HttpMethod__TypeAssignment_09945);
             ruleHttpMethodType();
 
             state._fsp--;
@@ -13496,7 +13508,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4911:1: RULE_ID
             {
              before(grammarAccess.getHttpMethodAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__HttpMethod__NameAssignment_19974); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__HttpMethod__NameAssignment_19976); 
              after(grammarAccess.getHttpMethodAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -13533,7 +13545,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4926:1: rulePath
             {
              before(grammarAccess.getHttpMethodAccess().getPathPathParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_rulePath_in_rule__HttpMethod__PathAssignment_210005);
+            pushFollow(FOLLOW_rulePath_in_rule__HttpMethod__PathAssignment_210007);
             rulePath();
 
             state._fsp--;
@@ -13574,7 +13586,7 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
             // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4941:1: ruleHttpMethodBlock
             {
              before(grammarAccess.getHttpMethodAccess().getBlocksHttpMethodBlockParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleHttpMethodBlock_in_rule__HttpMethod__BlocksAssignment_410036);
+            pushFollow(FOLLOW_ruleHttpMethodBlock_in_rule__HttpMethod__BlocksAssignment_410038);
             ruleHttpMethodBlock();
 
             state._fsp--;
@@ -13601,21 +13613,62 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__HttpMethod__BlocksAssignment_4"
 
 
+    // $ANTLR start "rule__Path__ArbAssignment_2_0"
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4950:1: rule__Path__ArbAssignment_2_0 : ( ruleArbitraryPathSegment ) ;
+    public final void rule__Path__ArbAssignment_2_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4954:1: ( ( ruleArbitraryPathSegment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4955:1: ( ruleArbitraryPathSegment )
+            {
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4955:1: ( ruleArbitraryPathSegment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4956:1: ruleArbitraryPathSegment
+            {
+             before(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_2_0_0()); 
+            pushFollow(FOLLOW_ruleArbitraryPathSegment_in_rule__Path__ArbAssignment_2_010069);
+            ruleArbitraryPathSegment();
+
+            state._fsp--;
+
+             after(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_2_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Path__ArbAssignment_2_0"
+
+
     // $ANTLR start "rule__Path__ParamsAssignment_2_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4950:1: rule__Path__ParamsAssignment_2_1 : ( ruleSimpleMemberAssignment ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4965:1: rule__Path__ParamsAssignment_2_1 : ( ruleSimpleMemberAssignment ) ;
     public final void rule__Path__ParamsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4954:1: ( ( ruleSimpleMemberAssignment ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4955:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4969:1: ( ( ruleSimpleMemberAssignment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4970:1: ( ruleSimpleMemberAssignment )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4955:1: ( ruleSimpleMemberAssignment )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4956:1: ruleSimpleMemberAssignment
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4970:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4971:1: ruleSimpleMemberAssignment
             {
              before(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_2_110067);
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_2_110100);
             ruleSimpleMemberAssignment();
 
             state._fsp--;
@@ -13642,21 +13695,62 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Path__ParamsAssignment_2_1"
 
 
+    // $ANTLR start "rule__Path__ArbAssignment_3_1_0"
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4980:1: rule__Path__ArbAssignment_3_1_0 : ( ruleArbitraryPathSegment ) ;
+    public final void rule__Path__ArbAssignment_3_1_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4984:1: ( ( ruleArbitraryPathSegment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4985:1: ( ruleArbitraryPathSegment )
+            {
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4985:1: ( ruleArbitraryPathSegment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4986:1: ruleArbitraryPathSegment
+            {
+             before(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_3_1_0_0()); 
+            pushFollow(FOLLOW_ruleArbitraryPathSegment_in_rule__Path__ArbAssignment_3_1_010131);
+            ruleArbitraryPathSegment();
+
+            state._fsp--;
+
+             after(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_3_1_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Path__ArbAssignment_3_1_0"
+
+
     // $ANTLR start "rule__Path__ParamsAssignment_3_1_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4965:1: rule__Path__ParamsAssignment_3_1_1 : ( ruleSimpleMemberAssignment ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4995:1: rule__Path__ParamsAssignment_3_1_1 : ( ruleSimpleMemberAssignment ) ;
     public final void rule__Path__ParamsAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4969:1: ( ( ruleSimpleMemberAssignment ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4970:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4999:1: ( ( ruleSimpleMemberAssignment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5000:1: ( ruleSimpleMemberAssignment )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4970:1: ( ruleSimpleMemberAssignment )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4971:1: ruleSimpleMemberAssignment
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5000:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5001:1: ruleSimpleMemberAssignment
             {
              before(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0()); 
-            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_3_1_110098);
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_3_1_110162);
             ruleSimpleMemberAssignment();
 
             state._fsp--;
@@ -13684,20 +13778,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ParamsBlock__ParamsAssignment_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4980:1: rule__ParamsBlock__ParamsAssignment_2 : ( ruleSimpleMemberAssignment ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5010:1: rule__ParamsBlock__ParamsAssignment_2 : ( ruleSimpleMemberAssignment ) ;
     public final void rule__ParamsBlock__ParamsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4984:1: ( ( ruleSimpleMemberAssignment ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4985:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5014:1: ( ( ruleSimpleMemberAssignment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5015:1: ( ruleSimpleMemberAssignment )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4985:1: ( ruleSimpleMemberAssignment )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4986:1: ruleSimpleMemberAssignment
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5015:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5016:1: ruleSimpleMemberAssignment
             {
              before(grammarAccess.getParamsBlockAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_210129);
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_210193);
             ruleSimpleMemberAssignment();
 
             state._fsp--;
@@ -13725,20 +13819,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ParamsBlock__ParamsAssignment_3_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4995:1: rule__ParamsBlock__ParamsAssignment_3_1 : ( ruleSimpleMemberAssignment ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5025:1: rule__ParamsBlock__ParamsAssignment_3_1 : ( ruleSimpleMemberAssignment ) ;
     public final void rule__ParamsBlock__ParamsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:4999:1: ( ( ruleSimpleMemberAssignment ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5000:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5029:1: ( ( ruleSimpleMemberAssignment ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5030:1: ( ruleSimpleMemberAssignment )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5000:1: ( ruleSimpleMemberAssignment )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5001:1: ruleSimpleMemberAssignment
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5030:1: ( ruleSimpleMemberAssignment )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5031:1: ruleSimpleMemberAssignment
             {
              before(grammarAccess.getParamsBlockAccess().getParamsSimpleMemberAssignmentParserRuleCall_3_1_0()); 
-            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_3_110160);
+            pushFollow(FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_3_110224);
             ruleSimpleMemberAssignment();
 
             state._fsp--;
@@ -13766,20 +13860,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SimpleMemberAssignment__MemberAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5010:1: rule__SimpleMemberAssignment__MemberAssignment_0 : ( ruleSimpleMember ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5040:1: rule__SimpleMemberAssignment__MemberAssignment_0 : ( ruleSimpleMember ) ;
     public final void rule__SimpleMemberAssignment__MemberAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5014:1: ( ( ruleSimpleMember ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5015:1: ( ruleSimpleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5044:1: ( ( ruleSimpleMember ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5045:1: ( ruleSimpleMember )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5015:1: ( ruleSimpleMember )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5016:1: ruleSimpleMember
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5045:1: ( ruleSimpleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5046:1: ruleSimpleMember
             {
              before(grammarAccess.getSimpleMemberAssignmentAccess().getMemberSimpleMemberParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleSimpleMember_in_rule__SimpleMemberAssignment__MemberAssignment_010191);
+            pushFollow(FOLLOW_ruleSimpleMember_in_rule__SimpleMemberAssignment__MemberAssignment_010255);
             ruleSimpleMember();
 
             state._fsp--;
@@ -13807,20 +13901,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SimpleMemberAssignment__DefaultValueAssignment_1_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5025:1: rule__SimpleMemberAssignment__DefaultValueAssignment_1_1 : ( ruleLiteral ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5055:1: rule__SimpleMemberAssignment__DefaultValueAssignment_1_1 : ( ruleLiteral ) ;
     public final void rule__SimpleMemberAssignment__DefaultValueAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5029:1: ( ( ruleLiteral ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5030:1: ( ruleLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5059:1: ( ( ruleLiteral ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5060:1: ( ruleLiteral )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5030:1: ( ruleLiteral )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5031:1: ruleLiteral
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5060:1: ( ruleLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5061:1: ruleLiteral
             {
              before(grammarAccess.getSimpleMemberAssignmentAccess().getDefaultValueLiteralParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleLiteral_in_rule__SimpleMemberAssignment__DefaultValueAssignment_1_110222);
+            pushFollow(FOLLOW_ruleLiteral_in_rule__SimpleMemberAssignment__DefaultValueAssignment_1_110286);
             ruleLiteral();
 
             state._fsp--;
@@ -13848,20 +13942,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Literal__LiteralAssignment_0_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5040:1: rule__Literal__LiteralAssignment_0_1 : ( ruleBooleanValue ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5070:1: rule__Literal__LiteralAssignment_0_1 : ( ruleBooleanValue ) ;
     public final void rule__Literal__LiteralAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5044:1: ( ( ruleBooleanValue ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5045:1: ( ruleBooleanValue )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5074:1: ( ( ruleBooleanValue ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5075:1: ( ruleBooleanValue )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5045:1: ( ruleBooleanValue )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5046:1: ruleBooleanValue
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5075:1: ( ruleBooleanValue )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5076:1: ruleBooleanValue
             {
              before(grammarAccess.getLiteralAccess().getLiteralBooleanValueEnumRuleCall_0_1_0()); 
-            pushFollow(FOLLOW_ruleBooleanValue_in_rule__Literal__LiteralAssignment_0_110253);
+            pushFollow(FOLLOW_ruleBooleanValue_in_rule__Literal__LiteralAssignment_0_110317);
             ruleBooleanValue();
 
             state._fsp--;
@@ -13889,20 +13983,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Literal__LiteralAssignment_1_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5055:1: rule__Literal__LiteralAssignment_1_1 : ( RULE_STRING ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5085:1: rule__Literal__LiteralAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__Literal__LiteralAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5059:1: ( ( RULE_STRING ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5060:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5089:1: ( ( RULE_STRING ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5090:1: ( RULE_STRING )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5060:1: ( RULE_STRING )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5061:1: RULE_STRING
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5090:1: ( RULE_STRING )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5091:1: RULE_STRING
             {
              before(grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Literal__LiteralAssignment_1_110284); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Literal__LiteralAssignment_1_110348); 
              after(grammarAccess.getLiteralAccess().getLiteralSTRINGTerminalRuleCall_1_1_0()); 
 
             }
@@ -13926,20 +14020,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Literal__LiteralAssignment_2_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5070:1: rule__Literal__LiteralAssignment_2_1 : ( ruleSignedNumber ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5100:1: rule__Literal__LiteralAssignment_2_1 : ( ruleSignedNumber ) ;
     public final void rule__Literal__LiteralAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5074:1: ( ( ruleSignedNumber ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5075:1: ( ruleSignedNumber )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5104:1: ( ( ruleSignedNumber ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5105:1: ( ruleSignedNumber )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5075:1: ( ruleSignedNumber )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5076:1: ruleSignedNumber
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5105:1: ( ruleSignedNumber )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5106:1: ruleSignedNumber
             {
              before(grammarAccess.getLiteralAccess().getLiteralSignedNumberParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleSignedNumber_in_rule__Literal__LiteralAssignment_2_110315);
+            pushFollow(FOLLOW_ruleSignedNumber_in_rule__Literal__LiteralAssignment_2_110379);
             ruleSignedNumber();
 
             state._fsp--;
@@ -13967,20 +14061,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__BodyBlock__TypeAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5085:1: rule__BodyBlock__TypeAssignment_1 : ( ruleBlockType ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5115:1: rule__BodyBlock__TypeAssignment_1 : ( ruleBlockType ) ;
     public final void rule__BodyBlock__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5089:1: ( ( ruleBlockType ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5090:1: ( ruleBlockType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5119:1: ( ( ruleBlockType ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5120:1: ( ruleBlockType )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5090:1: ( ruleBlockType )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5091:1: ruleBlockType
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5120:1: ( ruleBlockType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5121:1: ruleBlockType
             {
              before(grammarAccess.getBodyBlockAccess().getTypeBlockTypeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleBlockType_in_rule__BodyBlock__TypeAssignment_110346);
+            pushFollow(FOLLOW_ruleBlockType_in_rule__BodyBlock__TypeAssignment_110410);
             ruleBlockType();
 
             state._fsp--;
@@ -14008,24 +14102,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ResponseBlock__SuperTypeAssignment_2_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5100:1: rule__ResponseBlock__SuperTypeAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5130:1: rule__ResponseBlock__SuperTypeAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__ResponseBlock__SuperTypeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5104:1: ( ( ( RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5105:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5134:1: ( ( ( RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5135:1: ( ( RULE_ID ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5105:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5106:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5135:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5136:1: ( RULE_ID )
             {
              before(grammarAccess.getResponseBlockAccess().getSuperTypeComplexTypeDeclarationCrossReference_2_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5107:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5108:1: RULE_ID
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5137:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5138:1: RULE_ID
             {
              before(grammarAccess.getResponseBlockAccess().getSuperTypeComplexTypeDeclarationIDTerminalRuleCall_2_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResponseBlock__SuperTypeAssignment_2_110381); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ResponseBlock__SuperTypeAssignment_2_110445); 
              after(grammarAccess.getResponseBlockAccess().getSuperTypeComplexTypeDeclarationIDTerminalRuleCall_2_1_0_1()); 
 
             }
@@ -14053,20 +14147,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ResponseBlock__TypeAssignment_3"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5119:1: rule__ResponseBlock__TypeAssignment_3 : ( ruleBlockType ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5149:1: rule__ResponseBlock__TypeAssignment_3 : ( ruleBlockType ) ;
     public final void rule__ResponseBlock__TypeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5123:1: ( ( ruleBlockType ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5124:1: ( ruleBlockType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5153:1: ( ( ruleBlockType ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5154:1: ( ruleBlockType )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5124:1: ( ruleBlockType )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5125:1: ruleBlockType
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5154:1: ( ruleBlockType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5155:1: ruleBlockType
             {
              before(grammarAccess.getResponseBlockAccess().getTypeBlockTypeParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleBlockType_in_rule__ResponseBlock__TypeAssignment_310416);
+            pushFollow(FOLLOW_ruleBlockType_in_rule__ResponseBlock__TypeAssignment_310480);
             ruleBlockType();
 
             state._fsp--;
@@ -14094,23 +14188,23 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__TypedMember__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5134:1: rule__TypedMember__NameAssignment_0 : ( ( rule__TypedMember__NameAlternatives_0_0 ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5164:1: rule__TypedMember__NameAssignment_0 : ( ( rule__TypedMember__NameAlternatives_0_0 ) ) ;
     public final void rule__TypedMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5138:1: ( ( ( rule__TypedMember__NameAlternatives_0_0 ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5139:1: ( ( rule__TypedMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5168:1: ( ( ( rule__TypedMember__NameAlternatives_0_0 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5169:1: ( ( rule__TypedMember__NameAlternatives_0_0 ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5139:1: ( ( rule__TypedMember__NameAlternatives_0_0 ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5140:1: ( rule__TypedMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5169:1: ( ( rule__TypedMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5170:1: ( rule__TypedMember__NameAlternatives_0_0 )
             {
              before(grammarAccess.getTypedMemberAccess().getNameAlternatives_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5141:1: ( rule__TypedMember__NameAlternatives_0_0 )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5141:2: rule__TypedMember__NameAlternatives_0_0
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5171:1: ( rule__TypedMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5171:2: rule__TypedMember__NameAlternatives_0_0
             {
-            pushFollow(FOLLOW_rule__TypedMember__NameAlternatives_0_0_in_rule__TypedMember__NameAssignment_010447);
+            pushFollow(FOLLOW_rule__TypedMember__NameAlternatives_0_0_in_rule__TypedMember__NameAssignment_010511);
             rule__TypedMember__NameAlternatives_0_0();
 
             state._fsp--;
@@ -14141,20 +14235,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__TypedMember__TypeAssignment_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5150:1: rule__TypedMember__TypeAssignment_2 : ( ruleType ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5180:1: rule__TypedMember__TypeAssignment_2 : ( ruleType ) ;
     public final void rule__TypedMember__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5154:1: ( ( ruleType ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5155:1: ( ruleType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5184:1: ( ( ruleType ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5185:1: ( ruleType )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5155:1: ( ruleType )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5156:1: ruleType
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5185:1: ( ruleType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5186:1: ruleType
             {
              before(grammarAccess.getTypedMemberAccess().getTypeTypeParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleType_in_rule__TypedMember__TypeAssignment_210480);
+            pushFollow(FOLLOW_ruleType_in_rule__TypedMember__TypeAssignment_210544);
             ruleType();
 
             state._fsp--;
@@ -14182,23 +14276,23 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SkipMember__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5165:1: rule__SkipMember__NameAssignment_0 : ( ( rule__SkipMember__NameAlternatives_0_0 ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5195:1: rule__SkipMember__NameAssignment_0 : ( ( rule__SkipMember__NameAlternatives_0_0 ) ) ;
     public final void rule__SkipMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5169:1: ( ( ( rule__SkipMember__NameAlternatives_0_0 ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5170:1: ( ( rule__SkipMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5199:1: ( ( ( rule__SkipMember__NameAlternatives_0_0 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5200:1: ( ( rule__SkipMember__NameAlternatives_0_0 ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5170:1: ( ( rule__SkipMember__NameAlternatives_0_0 ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5171:1: ( rule__SkipMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5200:1: ( ( rule__SkipMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5201:1: ( rule__SkipMember__NameAlternatives_0_0 )
             {
              before(grammarAccess.getSkipMemberAccess().getNameAlternatives_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5172:1: ( rule__SkipMember__NameAlternatives_0_0 )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5172:2: rule__SkipMember__NameAlternatives_0_0
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5202:1: ( rule__SkipMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5202:2: rule__SkipMember__NameAlternatives_0_0
             {
-            pushFollow(FOLLOW_rule__SkipMember__NameAlternatives_0_0_in_rule__SkipMember__NameAssignment_010511);
+            pushFollow(FOLLOW_rule__SkipMember__NameAlternatives_0_0_in_rule__SkipMember__NameAssignment_010575);
             rule__SkipMember__NameAlternatives_0_0();
 
             state._fsp--;
@@ -14229,20 +14323,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SkipMember__LiteralAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5181:1: rule__SkipMember__LiteralAssignment_1 : ( ruleComplexTypeLiteral ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5211:1: rule__SkipMember__LiteralAssignment_1 : ( ruleComplexTypeLiteral ) ;
     public final void rule__SkipMember__LiteralAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5185:1: ( ( ruleComplexTypeLiteral ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5186:1: ( ruleComplexTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5215:1: ( ( ruleComplexTypeLiteral ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5216:1: ( ruleComplexTypeLiteral )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5186:1: ( ruleComplexTypeLiteral )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5187:1: ruleComplexTypeLiteral
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5216:1: ( ruleComplexTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5217:1: ruleComplexTypeLiteral
             {
              before(grammarAccess.getSkipMemberAccess().getLiteralComplexTypeLiteralParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__SkipMember__LiteralAssignment_110544);
+            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__SkipMember__LiteralAssignment_110608);
             ruleComplexTypeLiteral();
 
             state._fsp--;
@@ -14270,23 +14364,23 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SimpleMember__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5196:1: rule__SimpleMember__NameAssignment_0 : ( ( rule__SimpleMember__NameAlternatives_0_0 ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5226:1: rule__SimpleMember__NameAssignment_0 : ( ( rule__SimpleMember__NameAlternatives_0_0 ) ) ;
     public final void rule__SimpleMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5200:1: ( ( ( rule__SimpleMember__NameAlternatives_0_0 ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5201:1: ( ( rule__SimpleMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5230:1: ( ( ( rule__SimpleMember__NameAlternatives_0_0 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5231:1: ( ( rule__SimpleMember__NameAlternatives_0_0 ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5201:1: ( ( rule__SimpleMember__NameAlternatives_0_0 ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5202:1: ( rule__SimpleMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5231:1: ( ( rule__SimpleMember__NameAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5232:1: ( rule__SimpleMember__NameAlternatives_0_0 )
             {
              before(grammarAccess.getSimpleMemberAccess().getNameAlternatives_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5203:1: ( rule__SimpleMember__NameAlternatives_0_0 )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5203:2: rule__SimpleMember__NameAlternatives_0_0
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5233:1: ( rule__SimpleMember__NameAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5233:2: rule__SimpleMember__NameAlternatives_0_0
             {
-            pushFollow(FOLLOW_rule__SimpleMember__NameAlternatives_0_0_in_rule__SimpleMember__NameAssignment_010575);
+            pushFollow(FOLLOW_rule__SimpleMember__NameAlternatives_0_0_in_rule__SimpleMember__NameAssignment_010639);
             rule__SimpleMember__NameAlternatives_0_0();
 
             state._fsp--;
@@ -14317,20 +14411,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__SimpleMember__TypeAssignment_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5212:1: rule__SimpleMember__TypeAssignment_2 : ( ruleIntrinsicType ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5242:1: rule__SimpleMember__TypeAssignment_2 : ( ruleIntrinsicType ) ;
     public final void rule__SimpleMember__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5216:1: ( ( ruleIntrinsicType ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5217:1: ( ruleIntrinsicType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5246:1: ( ( ruleIntrinsicType ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5247:1: ( ruleIntrinsicType )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5217:1: ( ruleIntrinsicType )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5218:1: ruleIntrinsicType
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5247:1: ( ruleIntrinsicType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5248:1: ruleIntrinsicType
             {
              before(grammarAccess.getSimpleMemberAccess().getTypeIntrinsicTypeParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleIntrinsicType_in_rule__SimpleMember__TypeAssignment_210608);
+            pushFollow(FOLLOW_ruleIntrinsicType_in_rule__SimpleMember__TypeAssignment_210672);
             ruleIntrinsicType();
 
             state._fsp--;
@@ -14358,23 +14452,23 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GenericListType__ElementTypeAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5227:1: rule__GenericListType__ElementTypeAssignment_0 : ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5257:1: rule__GenericListType__ElementTypeAssignment_0 : ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) ) ;
     public final void rule__GenericListType__ElementTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5231:1: ( ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5232:1: ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5261:1: ( ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5262:1: ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5232:1: ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5233:1: ( rule__GenericListType__ElementTypeAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5262:1: ( ( rule__GenericListType__ElementTypeAlternatives_0_0 ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5263:1: ( rule__GenericListType__ElementTypeAlternatives_0_0 )
             {
              before(grammarAccess.getGenericListTypeAccess().getElementTypeAlternatives_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5234:1: ( rule__GenericListType__ElementTypeAlternatives_0_0 )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5234:2: rule__GenericListType__ElementTypeAlternatives_0_0
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5264:1: ( rule__GenericListType__ElementTypeAlternatives_0_0 )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5264:2: rule__GenericListType__ElementTypeAlternatives_0_0
             {
-            pushFollow(FOLLOW_rule__GenericListType__ElementTypeAlternatives_0_0_in_rule__GenericListType__ElementTypeAssignment_010639);
+            pushFollow(FOLLOW_rule__GenericListType__ElementTypeAlternatives_0_0_in_rule__GenericListType__ElementTypeAssignment_010703);
             rule__GenericListType__ElementTypeAlternatives_0_0();
 
             state._fsp--;
@@ -14405,24 +14499,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__GenericListType__IdAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5243:1: rule__GenericListType__IdAssignment_1 : ( ( '[]' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5273:1: rule__GenericListType__IdAssignment_1 : ( ( '[]' ) ) ;
     public final void rule__GenericListType__IdAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5247:1: ( ( ( '[]' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5248:1: ( ( '[]' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5277:1: ( ( ( '[]' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5278:1: ( ( '[]' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5248:1: ( ( '[]' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5249:1: ( '[]' )
-            {
-             before(grammarAccess.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5250:1: ( '[]' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5251:1: '[]'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5278:1: ( ( '[]' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5279:1: ( '[]' )
             {
              before(grammarAccess.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0()); 
-            match(input,33,FOLLOW_33_in_rule__GenericListType__IdAssignment_110677); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5280:1: ( '[]' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5281:1: '[]'
+            {
+             before(grammarAccess.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0()); 
+            match(input,33,FOLLOW_33_in_rule__GenericListType__IdAssignment_110741); 
              after(grammarAccess.getGenericListTypeAccess().getIdLeftSquareBracketRightSquareBracketKeyword_1_0()); 
 
             }
@@ -14450,24 +14544,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__UserType__DeclarationAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5266:1: rule__UserType__DeclarationAssignment : ( ( RULE_ID ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5296:1: rule__UserType__DeclarationAssignment : ( ( RULE_ID ) ) ;
     public final void rule__UserType__DeclarationAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5270:1: ( ( ( RULE_ID ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5271:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5300:1: ( ( ( RULE_ID ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5301:1: ( ( RULE_ID ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5271:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5272:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5301:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5302:1: ( RULE_ID )
             {
              before(grammarAccess.getUserTypeAccess().getDeclarationUserTypeDeclarationCrossReference_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5273:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5274:1: RULE_ID
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5303:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5304:1: RULE_ID
             {
              before(grammarAccess.getUserTypeAccess().getDeclarationUserTypeDeclarationIDTerminalRuleCall_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UserType__DeclarationAssignment10720); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__UserType__DeclarationAssignment10784); 
              after(grammarAccess.getUserTypeAccess().getDeclarationUserTypeDeclarationIDTerminalRuleCall_0_1()); 
 
             }
@@ -14495,24 +14589,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__KeywordAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5285:1: rule__ComplexTypeDeclaration__KeywordAssignment_0 : ( ( 'entity' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5315:1: rule__ComplexTypeDeclaration__KeywordAssignment_0 : ( ( 'entity' ) ) ;
     public final void rule__ComplexTypeDeclaration__KeywordAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5289:1: ( ( ( 'entity' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5290:1: ( ( 'entity' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5319:1: ( ( ( 'entity' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5320:1: ( ( 'entity' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5290:1: ( ( 'entity' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5291:1: ( 'entity' )
-            {
-             before(grammarAccess.getComplexTypeDeclarationAccess().getKeywordEntityKeyword_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5292:1: ( 'entity' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5293:1: 'entity'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5320:1: ( ( 'entity' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5321:1: ( 'entity' )
             {
              before(grammarAccess.getComplexTypeDeclarationAccess().getKeywordEntityKeyword_0_0()); 
-            match(input,34,FOLLOW_34_in_rule__ComplexTypeDeclaration__KeywordAssignment_010760); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5322:1: ( 'entity' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5323:1: 'entity'
+            {
+             before(grammarAccess.getComplexTypeDeclarationAccess().getKeywordEntityKeyword_0_0()); 
+            match(input,34,FOLLOW_34_in_rule__ComplexTypeDeclaration__KeywordAssignment_010824); 
              after(grammarAccess.getComplexTypeDeclarationAccess().getKeywordEntityKeyword_0_0()); 
 
             }
@@ -14540,24 +14634,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__NogenAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5308:1: rule__ComplexTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5338:1: rule__ComplexTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
     public final void rule__ComplexTypeDeclaration__NogenAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5312:1: ( ( ( 'nogen' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5342:1: ( ( ( 'nogen' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5343:1: ( ( 'nogen' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5313:1: ( ( 'nogen' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5314:1: ( 'nogen' )
-            {
-             before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5315:1: ( 'nogen' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5316:1: 'nogen'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5343:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5344:1: ( 'nogen' )
             {
              before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
-            match(input,35,FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110804); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5345:1: ( 'nogen' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5346:1: 'nogen'
+            {
+             before(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            match(input,35,FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110868); 
              after(grammarAccess.getComplexTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
@@ -14585,20 +14679,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__NameAssignment_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5331:1: rule__ComplexTypeDeclaration__NameAssignment_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5361:1: rule__ComplexTypeDeclaration__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__ComplexTypeDeclaration__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5335:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5336:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5365:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5366:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5336:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5337:1: RULE_ID
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5366:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5367:1: RULE_ID
             {
              before(grammarAccess.getComplexTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ComplexTypeDeclaration__NameAssignment_210843); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ComplexTypeDeclaration__NameAssignment_210907); 
              after(grammarAccess.getComplexTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -14622,20 +14716,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeDeclaration__LiteralAssignment_3"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5346:1: rule__ComplexTypeDeclaration__LiteralAssignment_3 : ( ruleComplexTypeLiteral ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5376:1: rule__ComplexTypeDeclaration__LiteralAssignment_3 : ( ruleComplexTypeLiteral ) ;
     public final void rule__ComplexTypeDeclaration__LiteralAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5350:1: ( ( ruleComplexTypeLiteral ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5351:1: ( ruleComplexTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5380:1: ( ( ruleComplexTypeLiteral ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5381:1: ( ruleComplexTypeLiteral )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5351:1: ( ruleComplexTypeLiteral )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5352:1: ruleComplexTypeLiteral
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5381:1: ( ruleComplexTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5382:1: ruleComplexTypeLiteral
             {
              before(grammarAccess.getComplexTypeDeclarationAccess().getLiteralComplexTypeLiteralParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__ComplexTypeDeclaration__LiteralAssignment_310874);
+            pushFollow(FOLLOW_ruleComplexTypeLiteral_in_rule__ComplexTypeDeclaration__LiteralAssignment_310938);
             ruleComplexTypeLiteral();
 
             state._fsp--;
@@ -14663,24 +14757,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__KeywordAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5361:1: rule__EnumTypeDeclaration__KeywordAssignment_0 : ( ( 'enum' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5391:1: rule__EnumTypeDeclaration__KeywordAssignment_0 : ( ( 'enum' ) ) ;
     public final void rule__EnumTypeDeclaration__KeywordAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5365:1: ( ( ( 'enum' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5366:1: ( ( 'enum' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5395:1: ( ( ( 'enum' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5396:1: ( ( 'enum' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5366:1: ( ( 'enum' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5367:1: ( 'enum' )
-            {
-             before(grammarAccess.getEnumTypeDeclarationAccess().getKeywordEnumKeyword_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5368:1: ( 'enum' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5369:1: 'enum'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5396:1: ( ( 'enum' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5397:1: ( 'enum' )
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getKeywordEnumKeyword_0_0()); 
-            match(input,36,FOLLOW_36_in_rule__EnumTypeDeclaration__KeywordAssignment_010910); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5398:1: ( 'enum' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5399:1: 'enum'
+            {
+             before(grammarAccess.getEnumTypeDeclarationAccess().getKeywordEnumKeyword_0_0()); 
+            match(input,36,FOLLOW_36_in_rule__EnumTypeDeclaration__KeywordAssignment_010974); 
              after(grammarAccess.getEnumTypeDeclarationAccess().getKeywordEnumKeyword_0_0()); 
 
             }
@@ -14708,24 +14802,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__NogenAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5384:1: rule__EnumTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5414:1: rule__EnumTypeDeclaration__NogenAssignment_1 : ( ( 'nogen' ) ) ;
     public final void rule__EnumTypeDeclaration__NogenAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5388:1: ( ( ( 'nogen' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5418:1: ( ( ( 'nogen' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5419:1: ( ( 'nogen' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5389:1: ( ( 'nogen' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5390:1: ( 'nogen' )
-            {
-             before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5391:1: ( 'nogen' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5392:1: 'nogen'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5419:1: ( ( 'nogen' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5420:1: ( 'nogen' )
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
-            match(input,35,FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_110954); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5421:1: ( 'nogen' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5422:1: 'nogen'
+            {
+             before(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
+            match(input,35,FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_111018); 
              after(grammarAccess.getEnumTypeDeclarationAccess().getNogenNogenKeyword_1_0()); 
 
             }
@@ -14753,20 +14847,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__NameAssignment_2"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5407:1: rule__EnumTypeDeclaration__NameAssignment_2 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5437:1: rule__EnumTypeDeclaration__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__EnumTypeDeclaration__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5411:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5412:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5441:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5442:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5412:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5413:1: RULE_ID
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5442:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5443:1: RULE_ID
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumTypeDeclaration__NameAssignment_210993); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumTypeDeclaration__NameAssignment_211057); 
              after(grammarAccess.getEnumTypeDeclarationAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -14790,20 +14884,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__SuperTypeAssignment_3_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5422:1: rule__EnumTypeDeclaration__SuperTypeAssignment_3_1 : ( ruleIntegerType ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5452:1: rule__EnumTypeDeclaration__SuperTypeAssignment_3_1 : ( ruleIntegerType ) ;
     public final void rule__EnumTypeDeclaration__SuperTypeAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5426:1: ( ( ruleIntegerType ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5427:1: ( ruleIntegerType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5456:1: ( ( ruleIntegerType ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5457:1: ( ruleIntegerType )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5427:1: ( ruleIntegerType )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5428:1: ruleIntegerType
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5457:1: ( ruleIntegerType )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5458:1: ruleIntegerType
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getSuperTypeIntegerTypeParserRuleCall_3_1_0()); 
-            pushFollow(FOLLOW_ruleIntegerType_in_rule__EnumTypeDeclaration__SuperTypeAssignment_3_111024);
+            pushFollow(FOLLOW_ruleIntegerType_in_rule__EnumTypeDeclaration__SuperTypeAssignment_3_111088);
             ruleIntegerType();
 
             state._fsp--;
@@ -14831,20 +14925,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeDeclaration__LiteralAssignment_4"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5437:1: rule__EnumTypeDeclaration__LiteralAssignment_4 : ( ruleEnumTypeLiteral ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5467:1: rule__EnumTypeDeclaration__LiteralAssignment_4 : ( ruleEnumTypeLiteral ) ;
     public final void rule__EnumTypeDeclaration__LiteralAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5441:1: ( ( ruleEnumTypeLiteral ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5442:1: ( ruleEnumTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5471:1: ( ( ruleEnumTypeLiteral ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5472:1: ( ruleEnumTypeLiteral )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5442:1: ( ruleEnumTypeLiteral )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5443:1: ruleEnumTypeLiteral
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5472:1: ( ruleEnumTypeLiteral )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5473:1: ruleEnumTypeLiteral
             {
              before(grammarAccess.getEnumTypeDeclarationAccess().getLiteralEnumTypeLiteralParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleEnumTypeLiteral_in_rule__EnumTypeDeclaration__LiteralAssignment_411055);
+            pushFollow(FOLLOW_ruleEnumTypeLiteral_in_rule__EnumTypeDeclaration__LiteralAssignment_411119);
             ruleEnumTypeLiteral();
 
             state._fsp--;
@@ -14872,20 +14966,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeLiteral__MembersAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5452:1: rule__EnumTypeLiteral__MembersAssignment_1 : ( ruleEnumMember ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5482:1: rule__EnumTypeLiteral__MembersAssignment_1 : ( ruleEnumMember ) ;
     public final void rule__EnumTypeLiteral__MembersAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5456:1: ( ( ruleEnumMember ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5457:1: ( ruleEnumMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5486:1: ( ( ruleEnumMember ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5487:1: ( ruleEnumMember )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5457:1: ( ruleEnumMember )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5458:1: ruleEnumMember
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5487:1: ( ruleEnumMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5488:1: ruleEnumMember
             {
              before(grammarAccess.getEnumTypeLiteralAccess().getMembersEnumMemberParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_111086);
+            pushFollow(FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_111150);
             ruleEnumMember();
 
             state._fsp--;
@@ -14913,20 +15007,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumTypeLiteral__MembersAssignment_2_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5467:1: rule__EnumTypeLiteral__MembersAssignment_2_1 : ( ruleEnumMember ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5497:1: rule__EnumTypeLiteral__MembersAssignment_2_1 : ( ruleEnumMember ) ;
     public final void rule__EnumTypeLiteral__MembersAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5471:1: ( ( ruleEnumMember ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5472:1: ( ruleEnumMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5501:1: ( ( ruleEnumMember ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5502:1: ( ruleEnumMember )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5472:1: ( ruleEnumMember )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5473:1: ruleEnumMember
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5502:1: ( ruleEnumMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5503:1: ruleEnumMember
             {
              before(grammarAccess.getEnumTypeLiteralAccess().getMembersEnumMemberParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_2_111117);
+            pushFollow(FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_2_111181);
             ruleEnumMember();
 
             state._fsp--;
@@ -14954,20 +15048,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumMember__NameAssignment_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5482:1: rule__EnumMember__NameAssignment_0 : ( RULE_ID ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5512:1: rule__EnumMember__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__EnumMember__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5486:1: ( ( RULE_ID ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5487:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5516:1: ( ( RULE_ID ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5517:1: ( RULE_ID )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5487:1: ( RULE_ID )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5488:1: RULE_ID
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5517:1: ( RULE_ID )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5518:1: RULE_ID
             {
              before(grammarAccess.getEnumMemberAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumMember__NameAssignment_011148); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumMember__NameAssignment_011212); 
              after(grammarAccess.getEnumMemberAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -14991,24 +15085,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumMember__AssignmentAssignment_1_0"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5497:1: rule__EnumMember__AssignmentAssignment_1_0 : ( ( '=' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5527:1: rule__EnumMember__AssignmentAssignment_1_0 : ( ( '=' ) ) ;
     public final void rule__EnumMember__AssignmentAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5501:1: ( ( ( '=' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5502:1: ( ( '=' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5531:1: ( ( ( '=' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5532:1: ( ( '=' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5502:1: ( ( '=' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5503:1: ( '=' )
-            {
-             before(grammarAccess.getEnumMemberAccess().getAssignmentEqualsSignKeyword_1_0_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5504:1: ( '=' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5505:1: '='
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5532:1: ( ( '=' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5533:1: ( '=' )
             {
              before(grammarAccess.getEnumMemberAccess().getAssignmentEqualsSignKeyword_1_0_0()); 
-            match(input,28,FOLLOW_28_in_rule__EnumMember__AssignmentAssignment_1_011184); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5534:1: ( '=' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5535:1: '='
+            {
+             before(grammarAccess.getEnumMemberAccess().getAssignmentEqualsSignKeyword_1_0_0()); 
+            match(input,28,FOLLOW_28_in_rule__EnumMember__AssignmentAssignment_1_011248); 
              after(grammarAccess.getEnumMemberAccess().getAssignmentEqualsSignKeyword_1_0_0()); 
 
             }
@@ -15036,20 +15130,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumMember__ValueAssignment_1_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5520:1: rule__EnumMember__ValueAssignment_1_1 : ( RULE_INT ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5550:1: rule__EnumMember__ValueAssignment_1_1 : ( RULE_INT ) ;
     public final void rule__EnumMember__ValueAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5524:1: ( ( RULE_INT ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5525:1: ( RULE_INT )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5554:1: ( ( RULE_INT ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5555:1: ( RULE_INT )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5525:1: ( RULE_INT )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5526:1: RULE_INT
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5555:1: ( RULE_INT )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5556:1: RULE_INT
             {
              before(grammarAccess.getEnumMemberAccess().getValueINTTerminalRuleCall_1_1_0()); 
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumMember__ValueAssignment_1_111223); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumMember__ValueAssignment_1_111287); 
              after(grammarAccess.getEnumMemberAccess().getValueINTTerminalRuleCall_1_1_0()); 
 
             }
@@ -15073,20 +15167,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeLiteral__MembersAssignment_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5535:1: rule__ComplexTypeLiteral__MembersAssignment_1 : ( ruleMember ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5565:1: rule__ComplexTypeLiteral__MembersAssignment_1 : ( ruleMember ) ;
     public final void rule__ComplexTypeLiteral__MembersAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5539:1: ( ( ruleMember ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5540:1: ( ruleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5569:1: ( ( ruleMember ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5570:1: ( ruleMember )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5540:1: ( ruleMember )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5541:1: ruleMember
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5570:1: ( ruleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5571:1: ruleMember
             {
              before(grammarAccess.getComplexTypeLiteralAccess().getMembersMemberParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_111254);
+            pushFollow(FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_111318);
             ruleMember();
 
             state._fsp--;
@@ -15114,20 +15208,20 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ComplexTypeLiteral__MembersAssignment_2_1"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5550:1: rule__ComplexTypeLiteral__MembersAssignment_2_1 : ( ruleMember ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5580:1: rule__ComplexTypeLiteral__MembersAssignment_2_1 : ( ruleMember ) ;
     public final void rule__ComplexTypeLiteral__MembersAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5554:1: ( ( ruleMember ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5555:1: ( ruleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5584:1: ( ( ruleMember ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5585:1: ( ruleMember )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5555:1: ( ruleMember )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5556:1: ruleMember
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5585:1: ( ruleMember )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5586:1: ruleMember
             {
              before(grammarAccess.getComplexTypeLiteralAccess().getMembersMemberParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_2_111285);
+            pushFollow(FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_2_111349);
             ruleMember();
 
             state._fsp--;
@@ -15155,24 +15249,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StringType__IdAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5565:1: rule__StringType__IdAssignment : ( ( 'String' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5595:1: rule__StringType__IdAssignment : ( ( 'String' ) ) ;
     public final void rule__StringType__IdAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5569:1: ( ( ( 'String' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5570:1: ( ( 'String' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5599:1: ( ( ( 'String' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5600:1: ( ( 'String' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5570:1: ( ( 'String' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5571:1: ( 'String' )
-            {
-             before(grammarAccess.getStringTypeAccess().getIdStringKeyword_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5572:1: ( 'String' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5573:1: 'String'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5600:1: ( ( 'String' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5601:1: ( 'String' )
             {
              before(grammarAccess.getStringTypeAccess().getIdStringKeyword_0()); 
-            match(input,37,FOLLOW_37_in_rule__StringType__IdAssignment11321); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5602:1: ( 'String' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5603:1: 'String'
+            {
+             before(grammarAccess.getStringTypeAccess().getIdStringKeyword_0()); 
+            match(input,37,FOLLOW_37_in_rule__StringType__IdAssignment11385); 
              after(grammarAccess.getStringTypeAccess().getIdStringKeyword_0()); 
 
             }
@@ -15200,24 +15294,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__BooleanType__IdAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5588:1: rule__BooleanType__IdAssignment : ( ( 'boolean' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5618:1: rule__BooleanType__IdAssignment : ( ( 'boolean' ) ) ;
     public final void rule__BooleanType__IdAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5592:1: ( ( ( 'boolean' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5593:1: ( ( 'boolean' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5622:1: ( ( ( 'boolean' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5623:1: ( ( 'boolean' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5593:1: ( ( 'boolean' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5594:1: ( 'boolean' )
-            {
-             before(grammarAccess.getBooleanTypeAccess().getIdBooleanKeyword_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5595:1: ( 'boolean' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5596:1: 'boolean'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5623:1: ( ( 'boolean' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5624:1: ( 'boolean' )
             {
              before(grammarAccess.getBooleanTypeAccess().getIdBooleanKeyword_0()); 
-            match(input,38,FOLLOW_38_in_rule__BooleanType__IdAssignment11365); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5625:1: ( 'boolean' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5626:1: 'boolean'
+            {
+             before(grammarAccess.getBooleanTypeAccess().getIdBooleanKeyword_0()); 
+            match(input,38,FOLLOW_38_in_rule__BooleanType__IdAssignment11429); 
              after(grammarAccess.getBooleanTypeAccess().getIdBooleanKeyword_0()); 
 
             }
@@ -15245,24 +15339,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__IntegerType__IdAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5611:1: rule__IntegerType__IdAssignment : ( ( 'int' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5641:1: rule__IntegerType__IdAssignment : ( ( 'int' ) ) ;
     public final void rule__IntegerType__IdAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5615:1: ( ( ( 'int' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5616:1: ( ( 'int' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5645:1: ( ( ( 'int' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5646:1: ( ( 'int' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5616:1: ( ( 'int' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5617:1: ( 'int' )
-            {
-             before(grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5618:1: ( 'int' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5619:1: 'int'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5646:1: ( ( 'int' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5647:1: ( 'int' )
             {
              before(grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0()); 
-            match(input,39,FOLLOW_39_in_rule__IntegerType__IdAssignment11409); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5648:1: ( 'int' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5649:1: 'int'
+            {
+             before(grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0()); 
+            match(input,39,FOLLOW_39_in_rule__IntegerType__IdAssignment11473); 
              after(grammarAccess.getIntegerTypeAccess().getIdIntKeyword_0()); 
 
             }
@@ -15290,24 +15384,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__LongType__IdAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5634:1: rule__LongType__IdAssignment : ( ( 'long' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5664:1: rule__LongType__IdAssignment : ( ( 'long' ) ) ;
     public final void rule__LongType__IdAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5638:1: ( ( ( 'long' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5639:1: ( ( 'long' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5668:1: ( ( ( 'long' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5669:1: ( ( 'long' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5639:1: ( ( 'long' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5640:1: ( 'long' )
-            {
-             before(grammarAccess.getLongTypeAccess().getIdLongKeyword_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5641:1: ( 'long' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5642:1: 'long'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5669:1: ( ( 'long' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5670:1: ( 'long' )
             {
              before(grammarAccess.getLongTypeAccess().getIdLongKeyword_0()); 
-            match(input,40,FOLLOW_40_in_rule__LongType__IdAssignment11453); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5671:1: ( 'long' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5672:1: 'long'
+            {
+             before(grammarAccess.getLongTypeAccess().getIdLongKeyword_0()); 
+            match(input,40,FOLLOW_40_in_rule__LongType__IdAssignment11517); 
              after(grammarAccess.getLongTypeAccess().getIdLongKeyword_0()); 
 
             }
@@ -15335,24 +15429,24 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__DoubleType__IdAssignment"
-    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5657:1: rule__DoubleType__IdAssignment : ( ( 'double' ) ) ;
+    // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5687:1: rule__DoubleType__IdAssignment : ( ( 'double' ) ) ;
     public final void rule__DoubleType__IdAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5661:1: ( ( ( 'double' ) ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5662:1: ( ( 'double' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5691:1: ( ( ( 'double' ) ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5692:1: ( ( 'double' ) )
             {
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5662:1: ( ( 'double' ) )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5663:1: ( 'double' )
-            {
-             before(grammarAccess.getDoubleTypeAccess().getIdDoubleKeyword_0()); 
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5664:1: ( 'double' )
-            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5665:1: 'double'
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5692:1: ( ( 'double' ) )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5693:1: ( 'double' )
             {
              before(grammarAccess.getDoubleTypeAccess().getIdDoubleKeyword_0()); 
-            match(input,41,FOLLOW_41_in_rule__DoubleType__IdAssignment11497); 
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5694:1: ( 'double' )
+            // ../com.robotoworks.mechanoid.net.ui/src-gen/com/robotoworks/mechanoid/net/ui/contentassist/antlr/internal/InternalNetModel.g:5695:1: 'double'
+            {
+             before(grammarAccess.getDoubleTypeAccess().getIdDoubleKeyword_0()); 
+            match(input,41,FOLLOW_41_in_rule__DoubleType__IdAssignment11561); 
              after(grammarAccess.getDoubleTypeAccess().getIdDoubleKeyword_0()); 
 
             }
@@ -15567,354 +15661,356 @@ public class InternalNetModelParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleParamsBlock_in_rule__HttpMethodBlock__Alternatives2554 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBodyBlock_in_rule__HttpMethodBlock__Alternatives2571 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleResponseBlock_in_rule__HttpMethodBlock__Alternatives2588 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArbitraryPathSegment_in_rule__Path__Alternatives_22620 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__ParamsAssignment_2_1_in_rule__Path__Alternatives_22637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArbitraryPathSegment_in_rule__Path__Alternatives_3_12670 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__ParamsAssignment_3_1_1_in_rule__Path__Alternatives_3_12687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_0__0_in_rule__Literal__Alternatives2720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_1__0_in_rule__Literal__Alternatives2738 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_2__0_in_rule__Literal__Alternatives2756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__BlockType__Alternatives2789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__BlockType__Alternatives2806 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypedMember_in_rule__Member__Alternatives2838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSkipMember_in_rule__Member__Alternatives2855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__TypedMember__NameAlternatives_0_02887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__TypedMember__NameAlternatives_0_02904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SkipMember__NameAlternatives_0_02936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__SkipMember__NameAlternatives_0_02953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SimpleMember__NameAlternatives_0_02985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__SimpleMember__NameAlternatives_0_03002 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserType_in_rule__Type__Alternatives3034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__Type__Alternatives3051 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenericListType_in_rule__Type__Alternatives3068 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUserType_in_rule__GenericListType__ElementTypeAlternatives_0_03100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__GenericListType__ElementTypeAlternatives_0_03117 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3149 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringType_in_rule__IntrinsicType__Alternatives3198 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_rule__IntrinsicType__Alternatives3215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumericType_in_rule__IntrinsicType__Alternatives3232 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerType_in_rule__NumericType__Alternatives3264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongType_in_rule__NumericType__Alternatives3281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleType_in_rule__NumericType__Alternatives3298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__HttpMethodType__Alternatives3331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__HttpMethodType__Alternatives3352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__HttpMethodType__Alternatives3373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__HttpMethodType__Alternatives3394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__BooleanValue__Alternatives3430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__BooleanValue__Alternatives3451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__03484 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__03487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Model__Group__0__Impl3515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__13546 = new BitSet(new long[]{0x0000001400080000L});
-    public static final BitSet FOLLOW_rule__Model__Group__2_in_rule__Model__Group__13549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__PackageNameAssignment_1_in_rule__Model__Group__1__Impl3576 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__23606 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__DeclarationsAssignment_2_in_rule__Model__Group__2__Impl3633 = new BitSet(new long[]{0x0000001400080002L});
-    public static final BitSet FOLLOW_rule__Client__Group__0__Impl_in_rule__Client__Group__03670 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Client__Group__1_in_rule__Client__Group__03673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__Client__Group__0__Impl3701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__Group__1__Impl_in_rule__Client__Group__13732 = new BitSet(new long[]{0x0000000000100020L});
-    public static final BitSet FOLLOW_rule__Client__Group__2_in_rule__Client__Group__13735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__NameAssignment_1_in_rule__Client__Group__1__Impl3762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__Group__2__Impl_in_rule__Client__Group__23792 = new BitSet(new long[]{0x0000000000100020L});
-    public static final BitSet FOLLOW_rule__Client__Group__3_in_rule__Client__Group__23795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__BaseUrlAssignment_2_in_rule__Client__Group__2__Impl3822 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__Group__3__Impl_in_rule__Client__Group__33853 = new BitSet(new long[]{0x000000000860F000L});
-    public static final BitSet FOLLOW_rule__Client__Group__4_in_rule__Client__Group__33856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__Client__Group__3__Impl3884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__Group__4__Impl_in_rule__Client__Group__43915 = new BitSet(new long[]{0x000000000860F000L});
-    public static final BitSet FOLLOW_rule__Client__Group__5_in_rule__Client__Group__43918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Client__BlocksAssignment_4_in_rule__Client__Group__4__Impl3945 = new BitSet(new long[]{0x000000000840F002L});
-    public static final BitSet FOLLOW_rule__Client__Group__5__Impl_in_rule__Client__Group__53976 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__Client__Group__5__Impl4004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group__0__Impl_in_rule__HeaderBlock__Group__04047 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group__1_in_rule__HeaderBlock__Group__04050 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__HeaderBlock__Group__0__Impl4078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group__1__Impl_in_rule__HeaderBlock__Group__14109 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group__2_in_rule__HeaderBlock__Group__14112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__HeadersAssignment_1_in_rule__HeaderBlock__Group__1__Impl4139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group__2__Impl_in_rule__HeaderBlock__Group__24169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__0_in_rule__HeaderBlock__Group__2__Impl4196 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__0__Impl_in_rule__HeaderBlock__Group_2__04233 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__1_in_rule__HeaderBlock__Group_2__04236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__HeaderBlock__Group_2__0__Impl4264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__1__Impl_in_rule__HeaderBlock__Group_2__14295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HeaderBlock__HeadersAssignment_2_1_in_rule__HeaderBlock__Group_2__1__Impl4322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Header__Group__0__Impl_in_rule__Header__Group__04356 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__Header__Group__1_in_rule__Header__Group__04359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Header__NameAssignment_0_in_rule__Header__Group__0__Impl4386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Header__Group__1__Impl_in_rule__Header__Group__14416 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Header__Group__2_in_rule__Header__Group__14419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__Header__Group__1__Impl4447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Header__Group__2__Impl_in_rule__Header__Group__24478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Header__ValueAssignment_2_in_rule__Header__Group__2__Impl4505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__0__Impl_in_rule__HttpMethod__Group__04541 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__1_in_rule__HttpMethod__Group__04544 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__TypeAssignment_0_in_rule__HttpMethod__Group__0__Impl4571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__1__Impl_in_rule__HttpMethod__Group__14601 = new BitSet(new long[]{0x0000000002100000L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__2_in_rule__HttpMethod__Group__14604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__NameAssignment_1_in_rule__HttpMethod__Group__1__Impl4631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__2__Impl_in_rule__HttpMethod__Group__24661 = new BitSet(new long[]{0x0000000002100000L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__3_in_rule__HttpMethod__Group__24664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__PathAssignment_2_in_rule__HttpMethod__Group__2__Impl4691 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__3__Impl_in_rule__HttpMethod__Group__34722 = new BitSet(new long[]{0x0000000068600000L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__4_in_rule__HttpMethod__Group__34725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__HttpMethod__Group__3__Impl4753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__4__Impl_in_rule__HttpMethod__Group__44784 = new BitSet(new long[]{0x0000000068600000L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__5_in_rule__HttpMethod__Group__44787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__BlocksAssignment_4_in_rule__HttpMethod__Group__4__Impl4814 = new BitSet(new long[]{0x0000000068400002L});
-    public static final BitSet FOLLOW_rule__HttpMethod__Group__5__Impl_in_rule__HttpMethod__Group__54845 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__HttpMethod__Group__5__Impl4873 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group__0__Impl_in_rule__Path__Group__04916 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_rule__Path__Group__1_in_rule__Path__Group__04919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group__1__Impl_in_rule__Path__Group__14977 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__Path__Group__2_in_rule__Path__Group__14980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__Path__Group__1__Impl5008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group__2__Impl_in_rule__Path__Group__25039 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_rule__Path__Group__3_in_rule__Path__Group__25042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Alternatives_2_in_rule__Path__Group__2__Impl5069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group__3__Impl_in_rule__Path__Group__35099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group_3__0_in_rule__Path__Group__3__Impl5126 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_rule__Path__Group_3__0__Impl_in_rule__Path__Group_3__05165 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__Path__Group_3__1_in_rule__Path__Group_3__05168 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__Path__Group_3__0__Impl5196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Group_3__1__Impl_in_rule__Path__Group_3__15227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Path__Alternatives_3_1_in_rule__Path__Group_3__1__Impl5254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__0__Impl_in_rule__ArbitraryPathSegment__Group__05288 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__1_in_rule__ArbitraryPathSegment__Group__05291 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group__0__Impl5318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__1__Impl_in_rule__ArbitraryPathSegment__Group__15347 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__0_in_rule__ArbitraryPathSegment__Group__1__Impl5374 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__0__Impl_in_rule__ArbitraryPathSegment__Group_1__05409 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__1_in_rule__ArbitraryPathSegment__Group_1__05412 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__ArbitraryPathSegment__Group_1__0__Impl5440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__1__Impl_in_rule__ArbitraryPathSegment__Group_1__15471 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group_1__1__Impl5498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__0__Impl_in_rule__ParamsBlock__Group__05531 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__1_in_rule__ParamsBlock__Group__05534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__1__Impl_in_rule__ParamsBlock__Group__15592 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__2_in_rule__ParamsBlock__Group__15595 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__ParamsBlock__Group__1__Impl5623 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__2__Impl_in_rule__ParamsBlock__Group__25654 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__3_in_rule__ParamsBlock__Group__25657 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__ParamsAssignment_2_in_rule__ParamsBlock__Group__2__Impl5684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group__3__Impl_in_rule__ParamsBlock__Group__35714 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__0_in_rule__ParamsBlock__Group__3__Impl5741 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__0__Impl_in_rule__ParamsBlock__Group_3__05780 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__1_in_rule__ParamsBlock__Group_3__05783 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__ParamsBlock__Group_3__0__Impl5811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__1__Impl_in_rule__ParamsBlock__Group_3__15842 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ParamsBlock__ParamsAssignment_3_1_in_rule__ParamsBlock__Group_3__1__Impl5869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__0__Impl_in_rule__SimpleMemberAssignment__Group__05903 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__1_in_rule__SimpleMemberAssignment__Group__05906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__MemberAssignment_0_in_rule__SimpleMemberAssignment__Group__0__Impl5933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__1__Impl_in_rule__SimpleMemberAssignment__Group__15963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__0_in_rule__SimpleMemberAssignment__Group__1__Impl5990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__0__Impl_in_rule__SimpleMemberAssignment__Group_1__06025 = new BitSet(new long[]{0x0000000004030060L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__1_in_rule__SimpleMemberAssignment__Group_1__06028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__SimpleMemberAssignment__Group_1__0__Impl6056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__1__Impl_in_rule__SimpleMemberAssignment__Group_1__16087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__DefaultValueAssignment_1_1_in_rule__SimpleMemberAssignment__Group_1__1__Impl6114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_0__0__Impl_in_rule__Literal__Group_0__06148 = new BitSet(new long[]{0x0000000000030000L});
-    public static final BitSet FOLLOW_rule__Literal__Group_0__1_in_rule__Literal__Group_0__06151 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_0__1__Impl_in_rule__Literal__Group_0__16209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_0_1_in_rule__Literal__Group_0__1__Impl6236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_1__0__Impl_in_rule__Literal__Group_1__06270 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Literal__Group_1__1_in_rule__Literal__Group_1__06273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_1__1__Impl_in_rule__Literal__Group_1__16331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_1_1_in_rule__Literal__Group_1__1__Impl6358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_2__0__Impl_in_rule__Literal__Group_2__06392 = new BitSet(new long[]{0x0000000004030060L});
-    public static final BitSet FOLLOW_rule__Literal__Group_2__1_in_rule__Literal__Group_2__06395 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Group_2__1__Impl_in_rule__Literal__Group_2__16453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_2_1_in_rule__Literal__Group_2__1__Impl6480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BodyBlock__Group__0__Impl_in_rule__BodyBlock__Group__06514 = new BitSet(new long[]{0x000003E000100010L});
-    public static final BitSet FOLLOW_rule__BodyBlock__Group__1_in_rule__BodyBlock__Group__06517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rule__BodyBlock__Group__0__Impl6545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BodyBlock__Group__1__Impl_in_rule__BodyBlock__Group__16576 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BodyBlock__TypeAssignment_1_in_rule__BodyBlock__Group__1__Impl6603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__0__Impl_in_rule__ResponseBlock__Group__06637 = new BitSet(new long[]{0x0000000068400000L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__1_in_rule__ResponseBlock__Group__06640 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__1__Impl_in_rule__ResponseBlock__Group__16698 = new BitSet(new long[]{0x000003E080100010L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__2_in_rule__ResponseBlock__Group__16701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__ResponseBlock__Group__1__Impl6729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__2__Impl_in_rule__ResponseBlock__Group__26760 = new BitSet(new long[]{0x000003E080100010L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__3_in_rule__ResponseBlock__Group__26763 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__0_in_rule__ResponseBlock__Group__2__Impl6790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group__3__Impl_in_rule__ResponseBlock__Group__36821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__TypeAssignment_3_in_rule__ResponseBlock__Group__3__Impl6848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__0__Impl_in_rule__ResponseBlock__Group_2__06887 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__1_in_rule__ResponseBlock__Group_2__06890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__ResponseBlock__Group_2__0__Impl6918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__1__Impl_in_rule__ResponseBlock__Group_2__16949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ResponseBlock__SuperTypeAssignment_2_1_in_rule__ResponseBlock__Group_2__1__Impl6976 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__Group__0__Impl_in_rule__TypedMember__Group__07010 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__TypedMember__Group__1_in_rule__TypedMember__Group__07013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__NameAssignment_0_in_rule__TypedMember__Group__0__Impl7040 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__Group__1__Impl_in_rule__TypedMember__Group__17070 = new BitSet(new long[]{0x000003E000000010L});
-    public static final BitSet FOLLOW_rule__TypedMember__Group__2_in_rule__TypedMember__Group__17073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__TypedMember__Group__1__Impl7101 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__Group__2__Impl_in_rule__TypedMember__Group__27132 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__TypeAssignment_2_in_rule__TypedMember__Group__2__Impl7159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SkipMember__Group__0__Impl_in_rule__SkipMember__Group__07195 = new BitSet(new long[]{0x000003E000100010L});
-    public static final BitSet FOLLOW_rule__SkipMember__Group__1_in_rule__SkipMember__Group__07198 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SkipMember__NameAssignment_0_in_rule__SkipMember__Group__0__Impl7225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SkipMember__Group__1__Impl_in_rule__SkipMember__Group__17255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SkipMember__LiteralAssignment_1_in_rule__SkipMember__Group__1__Impl7282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__Group__0__Impl_in_rule__SimpleMember__Group__07316 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__SimpleMember__Group__1_in_rule__SimpleMember__Group__07319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__NameAssignment_0_in_rule__SimpleMember__Group__0__Impl7346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__Group__1__Impl_in_rule__SimpleMember__Group__17376 = new BitSet(new long[]{0x000003E000000000L});
-    public static final BitSet FOLLOW_rule__SimpleMember__Group__2_in_rule__SimpleMember__Group__17379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__SimpleMember__Group__1__Impl7407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__Group__2__Impl_in_rule__SimpleMember__Group__27438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__TypeAssignment_2_in_rule__SimpleMember__Group__2__Impl7465 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GenericListType__Group__0__Impl_in_rule__GenericListType__Group__07501 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_rule__GenericListType__Group__1_in_rule__GenericListType__Group__07504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GenericListType__ElementTypeAssignment_0_in_rule__GenericListType__Group__0__Impl7531 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GenericListType__Group__1__Impl_in_rule__GenericListType__Group__17561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GenericListType__IdAssignment_1_in_rule__GenericListType__Group__1__Impl7588 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__0__Impl_in_rule__ComplexTypeDeclaration__Group__07622 = new BitSet(new long[]{0x0000000800000010L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__1_in_rule__ComplexTypeDeclaration__Group__07625 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__KeywordAssignment_0_in_rule__ComplexTypeDeclaration__Group__0__Impl7652 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__1__Impl_in_rule__ComplexTypeDeclaration__Group__17682 = new BitSet(new long[]{0x0000000800000010L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2_in_rule__ComplexTypeDeclaration__Group__17685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7712 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2__Impl_in_rule__ComplexTypeDeclaration__Group__27743 = new BitSet(new long[]{0x000003E000100010L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__3_in_rule__ComplexTypeDeclaration__Group__27746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NameAssignment_2_in_rule__ComplexTypeDeclaration__Group__2__Impl7773 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__3__Impl_in_rule__ComplexTypeDeclaration__Group__37803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__LiteralAssignment_3_in_rule__ComplexTypeDeclaration__Group__3__Impl7830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__0__Impl_in_rule__EnumTypeDeclaration__Group__07869 = new BitSet(new long[]{0x0000000800000010L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__1_in_rule__EnumTypeDeclaration__Group__07872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__KeywordAssignment_0_in_rule__EnumTypeDeclaration__Group__0__Impl7899 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__1__Impl_in_rule__EnumTypeDeclaration__Group__17929 = new BitSet(new long[]{0x0000000800000010L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2_in_rule__EnumTypeDeclaration__Group__17932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2__Impl_in_rule__EnumTypeDeclaration__Group__27990 = new BitSet(new long[]{0x0000000080100000L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__3_in_rule__EnumTypeDeclaration__Group__27993 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NameAssignment_2_in_rule__EnumTypeDeclaration__Group__2__Impl8020 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__3__Impl_in_rule__EnumTypeDeclaration__Group__38050 = new BitSet(new long[]{0x0000000080100000L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__4_in_rule__EnumTypeDeclaration__Group__38053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__0_in_rule__EnumTypeDeclaration__Group__3__Impl8080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__4__Impl_in_rule__EnumTypeDeclaration__Group__48111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__LiteralAssignment_4_in_rule__EnumTypeDeclaration__Group__4__Impl8138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__0__Impl_in_rule__EnumTypeDeclaration__Group_3__08179 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__1_in_rule__EnumTypeDeclaration__Group_3__08182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__EnumTypeDeclaration__Group_3__0__Impl8210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__1__Impl_in_rule__EnumTypeDeclaration__Group_3__18241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__SuperTypeAssignment_3_1_in_rule__EnumTypeDeclaration__Group_3__1__Impl8268 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__0__Impl_in_rule__EnumTypeLiteral__Group__08302 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__1_in_rule__EnumTypeLiteral__Group__08305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__EnumTypeLiteral__Group__0__Impl8333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__1__Impl_in_rule__EnumTypeLiteral__Group__18364 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__2_in_rule__EnumTypeLiteral__Group__18367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__MembersAssignment_1_in_rule__EnumTypeLiteral__Group__1__Impl8394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__2__Impl_in_rule__EnumTypeLiteral__Group__28424 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__3_in_rule__EnumTypeLiteral__Group__28427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__0_in_rule__EnumTypeLiteral__Group__2__Impl8454 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__3__Impl_in_rule__EnumTypeLiteral__Group__38485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__EnumTypeLiteral__Group__3__Impl8513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__0__Impl_in_rule__EnumTypeLiteral__Group_2__08552 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__1_in_rule__EnumTypeLiteral__Group_2__08555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__EnumTypeLiteral__Group_2__0__Impl8583 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__1__Impl_in_rule__EnumTypeLiteral__Group_2__18614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumTypeLiteral__MembersAssignment_2_1_in_rule__EnumTypeLiteral__Group_2__1__Impl8641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group__0__Impl_in_rule__EnumMember__Group__08675 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group__1_in_rule__EnumMember__Group__08678 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__NameAssignment_0_in_rule__EnumMember__Group__0__Impl8705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group__1__Impl_in_rule__EnumMember__Group__18735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group_1__0_in_rule__EnumMember__Group__1__Impl8762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group_1__0__Impl_in_rule__EnumMember__Group_1__08797 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group_1__1_in_rule__EnumMember__Group_1__08800 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__AssignmentAssignment_1_0_in_rule__EnumMember__Group_1__0__Impl8827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__Group_1__1__Impl_in_rule__EnumMember__Group_1__18857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumMember__ValueAssignment_1_1_in_rule__EnumMember__Group_1__1__Impl8884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__0__Impl_in_rule__ComplexTypeLiteral__Group__08918 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__1_in_rule__ComplexTypeLiteral__Group__08921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__ComplexTypeLiteral__Group__0__Impl8949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__1__Impl_in_rule__ComplexTypeLiteral__Group__18980 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__2_in_rule__ComplexTypeLiteral__Group__18983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_1_in_rule__ComplexTypeLiteral__Group__1__Impl9010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__2__Impl_in_rule__ComplexTypeLiteral__Group__29040 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__3_in_rule__ComplexTypeLiteral__Group__29043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__0_in_rule__ComplexTypeLiteral__Group__2__Impl9070 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__3__Impl_in_rule__ComplexTypeLiteral__Group__39101 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__ComplexTypeLiteral__Group__3__Impl9129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__0__Impl_in_rule__ComplexTypeLiteral__Group_2__09168 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__1_in_rule__ComplexTypeLiteral__Group_2__09171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__ComplexTypeLiteral__Group_2__0__Impl9199 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__1__Impl_in_rule__ComplexTypeLiteral__Group_2__19230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_2_1_in_rule__ComplexTypeLiteral__Group_2__1__Impl9257 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__09291 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__09294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl9321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__19350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl9377 = new BitSet(new long[]{0x0000000100000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__09412 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__09415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rule__QualifiedName__Group_1__0__Impl9443 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__19474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl9501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__09534 = new BitSet(new long[]{0x0000000004030060L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__09537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__SignedNumber__Group__0__Impl9566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__19599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl9626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Model__PackageNameAssignment_19664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDeclaration_in_rule__Model__DeclarationsAssignment_29695 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Client__NameAssignment_19726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Client__BaseUrlAssignment_29757 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClientBlock_in_rule__Client__BlocksAssignment_49788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_19819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_2_19850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Header__NameAssignment_09881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Header__ValueAssignment_29912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHttpMethodType_in_rule__HttpMethod__TypeAssignment_09943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__HttpMethod__NameAssignment_19974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePath_in_rule__HttpMethod__PathAssignment_210005 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHttpMethodBlock_in_rule__HttpMethod__BlocksAssignment_410036 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_2_110067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_3_1_110098 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_210129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_3_110160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleMember_in_rule__SimpleMemberAssignment__MemberAssignment_010191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_rule__SimpleMemberAssignment__DefaultValueAssignment_1_110222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanValue_in_rule__Literal__LiteralAssignment_0_110253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Literal__LiteralAssignment_1_110284 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSignedNumber_in_rule__Literal__LiteralAssignment_2_110315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBlockType_in_rule__BodyBlock__TypeAssignment_110346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ResponseBlock__SuperTypeAssignment_2_110381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBlockType_in_rule__ResponseBlock__TypeAssignment_310416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypedMember__NameAlternatives_0_0_in_rule__TypedMember__NameAssignment_010447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__TypedMember__TypeAssignment_210480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SkipMember__NameAlternatives_0_0_in_rule__SkipMember__NameAssignment_010511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__SkipMember__LiteralAssignment_110544 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleMember__NameAlternatives_0_0_in_rule__SimpleMember__NameAssignment_010575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__SimpleMember__TypeAssignment_210608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GenericListType__ElementTypeAlternatives_0_0_in_rule__GenericListType__ElementTypeAssignment_010639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_rule__GenericListType__IdAssignment_110677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__UserType__DeclarationAssignment10720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__ComplexTypeDeclaration__KeywordAssignment_010760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ComplexTypeDeclaration__NameAssignment_210843 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__ComplexTypeDeclaration__LiteralAssignment_310874 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_rule__EnumTypeDeclaration__KeywordAssignment_010910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_110954 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumTypeDeclaration__NameAssignment_210993 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerType_in_rule__EnumTypeDeclaration__SuperTypeAssignment_3_111024 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_rule__EnumTypeDeclaration__LiteralAssignment_411055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_111086 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_2_111117 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumMember__NameAssignment_011148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__EnumMember__AssignmentAssignment_1_011184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumMember__ValueAssignment_1_111223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_111254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_2_111285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__StringType__IdAssignment11321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__BooleanType__IdAssignment11365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_rule__IntegerType__IdAssignment11409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rule__LongType__IdAssignment11453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_rule__DoubleType__IdAssignment11497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__ArbAssignment_2_0_in_rule__Path__Alternatives_22620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__ParamsAssignment_2_1_in_rule__Path__Alternatives_22638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__ArbAssignment_3_1_0_in_rule__Path__Alternatives_3_12671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__ParamsAssignment_3_1_1_in_rule__Path__Alternatives_3_12689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_0__0_in_rule__Literal__Alternatives2722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_1__0_in_rule__Literal__Alternatives2740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_2__0_in_rule__Literal__Alternatives2758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__BlockType__Alternatives2791 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__BlockType__Alternatives2808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedMember_in_rule__Member__Alternatives2840 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSkipMember_in_rule__Member__Alternatives2857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__TypedMember__NameAlternatives_0_02889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__TypedMember__NameAlternatives_0_02906 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SkipMember__NameAlternatives_0_02938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__SkipMember__NameAlternatives_0_02955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SimpleMember__NameAlternatives_0_02987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__SimpleMember__NameAlternatives_0_03004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserType_in_rule__Type__Alternatives3036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__Type__Alternatives3053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGenericListType_in_rule__Type__Alternatives3070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUserType_in_rule__GenericListType__ElementTypeAlternatives_0_03102 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__GenericListType__ElementTypeAlternatives_0_03119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3151 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumTypeDeclaration_in_rule__UserTypeDeclaration__Alternatives3168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringType_in_rule__IntrinsicType__Alternatives3200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_rule__IntrinsicType__Alternatives3217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumericType_in_rule__IntrinsicType__Alternatives3234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerType_in_rule__NumericType__Alternatives3266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongType_in_rule__NumericType__Alternatives3283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleType_in_rule__NumericType__Alternatives3300 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__HttpMethodType__Alternatives3333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__HttpMethodType__Alternatives3354 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__HttpMethodType__Alternatives3375 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__HttpMethodType__Alternatives3396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__BooleanValue__Alternatives3432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__BooleanValue__Alternatives3453 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__03486 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__03489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Model__Group__0__Impl3517 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__13548 = new BitSet(new long[]{0x0000001400080000L});
+    public static final BitSet FOLLOW_rule__Model__Group__2_in_rule__Model__Group__13551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__PackageNameAssignment_1_in_rule__Model__Group__1__Impl3578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__23608 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__DeclarationsAssignment_2_in_rule__Model__Group__2__Impl3635 = new BitSet(new long[]{0x0000001400080002L});
+    public static final BitSet FOLLOW_rule__Client__Group__0__Impl_in_rule__Client__Group__03672 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Client__Group__1_in_rule__Client__Group__03675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Client__Group__0__Impl3703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__Group__1__Impl_in_rule__Client__Group__13734 = new BitSet(new long[]{0x0000000000100020L});
+    public static final BitSet FOLLOW_rule__Client__Group__2_in_rule__Client__Group__13737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__NameAssignment_1_in_rule__Client__Group__1__Impl3764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__Group__2__Impl_in_rule__Client__Group__23794 = new BitSet(new long[]{0x0000000000100020L});
+    public static final BitSet FOLLOW_rule__Client__Group__3_in_rule__Client__Group__23797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__BaseUrlAssignment_2_in_rule__Client__Group__2__Impl3824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__Group__3__Impl_in_rule__Client__Group__33855 = new BitSet(new long[]{0x000000000860F000L});
+    public static final BitSet FOLLOW_rule__Client__Group__4_in_rule__Client__Group__33858 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__Client__Group__3__Impl3886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__Group__4__Impl_in_rule__Client__Group__43917 = new BitSet(new long[]{0x000000000860F000L});
+    public static final BitSet FOLLOW_rule__Client__Group__5_in_rule__Client__Group__43920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Client__BlocksAssignment_4_in_rule__Client__Group__4__Impl3947 = new BitSet(new long[]{0x000000000840F002L});
+    public static final BitSet FOLLOW_rule__Client__Group__5__Impl_in_rule__Client__Group__53978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__Client__Group__5__Impl4006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group__0__Impl_in_rule__HeaderBlock__Group__04049 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group__1_in_rule__HeaderBlock__Group__04052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__HeaderBlock__Group__0__Impl4080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group__1__Impl_in_rule__HeaderBlock__Group__14111 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group__2_in_rule__HeaderBlock__Group__14114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__HeadersAssignment_1_in_rule__HeaderBlock__Group__1__Impl4141 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group__2__Impl_in_rule__HeaderBlock__Group__24171 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__0_in_rule__HeaderBlock__Group__2__Impl4198 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__0__Impl_in_rule__HeaderBlock__Group_2__04235 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__1_in_rule__HeaderBlock__Group_2__04238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__HeaderBlock__Group_2__0__Impl4266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__Group_2__1__Impl_in_rule__HeaderBlock__Group_2__14297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HeaderBlock__HeadersAssignment_2_1_in_rule__HeaderBlock__Group_2__1__Impl4324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Header__Group__0__Impl_in_rule__Header__Group__04358 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__Header__Group__1_in_rule__Header__Group__04361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Header__NameAssignment_0_in_rule__Header__Group__0__Impl4388 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Header__Group__1__Impl_in_rule__Header__Group__14418 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Header__Group__2_in_rule__Header__Group__14421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__Header__Group__1__Impl4449 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Header__Group__2__Impl_in_rule__Header__Group__24480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Header__ValueAssignment_2_in_rule__Header__Group__2__Impl4507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__0__Impl_in_rule__HttpMethod__Group__04543 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__1_in_rule__HttpMethod__Group__04546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__TypeAssignment_0_in_rule__HttpMethod__Group__0__Impl4573 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__1__Impl_in_rule__HttpMethod__Group__14603 = new BitSet(new long[]{0x0000000002100000L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__2_in_rule__HttpMethod__Group__14606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__NameAssignment_1_in_rule__HttpMethod__Group__1__Impl4633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__2__Impl_in_rule__HttpMethod__Group__24663 = new BitSet(new long[]{0x0000000002100000L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__3_in_rule__HttpMethod__Group__24666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__PathAssignment_2_in_rule__HttpMethod__Group__2__Impl4693 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__3__Impl_in_rule__HttpMethod__Group__34724 = new BitSet(new long[]{0x0000000068600000L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__4_in_rule__HttpMethod__Group__34727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__HttpMethod__Group__3__Impl4755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__4__Impl_in_rule__HttpMethod__Group__44786 = new BitSet(new long[]{0x0000000068600000L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__5_in_rule__HttpMethod__Group__44789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__BlocksAssignment_4_in_rule__HttpMethod__Group__4__Impl4816 = new BitSet(new long[]{0x0000000068400002L});
+    public static final BitSet FOLLOW_rule__HttpMethod__Group__5__Impl_in_rule__HttpMethod__Group__54847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__HttpMethod__Group__5__Impl4875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group__0__Impl_in_rule__Path__Group__04918 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__Path__Group__1_in_rule__Path__Group__04921 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group__1__Impl_in_rule__Path__Group__14979 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__Path__Group__2_in_rule__Path__Group__14982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__Path__Group__1__Impl5010 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group__2__Impl_in_rule__Path__Group__25041 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__Path__Group__3_in_rule__Path__Group__25044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Alternatives_2_in_rule__Path__Group__2__Impl5071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group__3__Impl_in_rule__Path__Group__35101 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group_3__0_in_rule__Path__Group__3__Impl5128 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_rule__Path__Group_3__0__Impl_in_rule__Path__Group_3__05167 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__Path__Group_3__1_in_rule__Path__Group_3__05170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__Path__Group_3__0__Impl5198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Group_3__1__Impl_in_rule__Path__Group_3__15229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Path__Alternatives_3_1_in_rule__Path__Group_3__1__Impl5256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__0__Impl_in_rule__ArbitraryPathSegment__Group__05290 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__1_in_rule__ArbitraryPathSegment__Group__05293 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group__0__Impl5320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group__1__Impl_in_rule__ArbitraryPathSegment__Group__15349 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__0_in_rule__ArbitraryPathSegment__Group__1__Impl5376 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__0__Impl_in_rule__ArbitraryPathSegment__Group_1__05411 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__1_in_rule__ArbitraryPathSegment__Group_1__05414 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__ArbitraryPathSegment__Group_1__0__Impl5442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ArbitraryPathSegment__Group_1__1__Impl_in_rule__ArbitraryPathSegment__Group_1__15473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ArbitraryPathSegment__Group_1__1__Impl5500 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__0__Impl_in_rule__ParamsBlock__Group__05533 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__1_in_rule__ParamsBlock__Group__05536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__1__Impl_in_rule__ParamsBlock__Group__15594 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__2_in_rule__ParamsBlock__Group__15597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__ParamsBlock__Group__1__Impl5625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__2__Impl_in_rule__ParamsBlock__Group__25656 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__3_in_rule__ParamsBlock__Group__25659 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__ParamsAssignment_2_in_rule__ParamsBlock__Group__2__Impl5686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group__3__Impl_in_rule__ParamsBlock__Group__35716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__0_in_rule__ParamsBlock__Group__3__Impl5743 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__0__Impl_in_rule__ParamsBlock__Group_3__05782 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__1_in_rule__ParamsBlock__Group_3__05785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__ParamsBlock__Group_3__0__Impl5813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__Group_3__1__Impl_in_rule__ParamsBlock__Group_3__15844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ParamsBlock__ParamsAssignment_3_1_in_rule__ParamsBlock__Group_3__1__Impl5871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__0__Impl_in_rule__SimpleMemberAssignment__Group__05905 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__1_in_rule__SimpleMemberAssignment__Group__05908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__MemberAssignment_0_in_rule__SimpleMemberAssignment__Group__0__Impl5935 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group__1__Impl_in_rule__SimpleMemberAssignment__Group__15965 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__0_in_rule__SimpleMemberAssignment__Group__1__Impl5992 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__0__Impl_in_rule__SimpleMemberAssignment__Group_1__06027 = new BitSet(new long[]{0x0000000004030060L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__1_in_rule__SimpleMemberAssignment__Group_1__06030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__SimpleMemberAssignment__Group_1__0__Impl6058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__Group_1__1__Impl_in_rule__SimpleMemberAssignment__Group_1__16089 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMemberAssignment__DefaultValueAssignment_1_1_in_rule__SimpleMemberAssignment__Group_1__1__Impl6116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_0__0__Impl_in_rule__Literal__Group_0__06150 = new BitSet(new long[]{0x0000000000030000L});
+    public static final BitSet FOLLOW_rule__Literal__Group_0__1_in_rule__Literal__Group_0__06153 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_0__1__Impl_in_rule__Literal__Group_0__16211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_0_1_in_rule__Literal__Group_0__1__Impl6238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_1__0__Impl_in_rule__Literal__Group_1__06272 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Literal__Group_1__1_in_rule__Literal__Group_1__06275 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_1__1__Impl_in_rule__Literal__Group_1__16333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_1_1_in_rule__Literal__Group_1__1__Impl6360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_2__0__Impl_in_rule__Literal__Group_2__06394 = new BitSet(new long[]{0x0000000004030060L});
+    public static final BitSet FOLLOW_rule__Literal__Group_2__1_in_rule__Literal__Group_2__06397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__Group_2__1__Impl_in_rule__Literal__Group_2__16455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Literal__LiteralAssignment_2_1_in_rule__Literal__Group_2__1__Impl6482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BodyBlock__Group__0__Impl_in_rule__BodyBlock__Group__06516 = new BitSet(new long[]{0x000003E000100010L});
+    public static final BitSet FOLLOW_rule__BodyBlock__Group__1_in_rule__BodyBlock__Group__06519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__BodyBlock__Group__0__Impl6547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BodyBlock__Group__1__Impl_in_rule__BodyBlock__Group__16578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BodyBlock__TypeAssignment_1_in_rule__BodyBlock__Group__1__Impl6605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__0__Impl_in_rule__ResponseBlock__Group__06639 = new BitSet(new long[]{0x0000000068400000L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__1_in_rule__ResponseBlock__Group__06642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__1__Impl_in_rule__ResponseBlock__Group__16700 = new BitSet(new long[]{0x000003E080100010L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__2_in_rule__ResponseBlock__Group__16703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rule__ResponseBlock__Group__1__Impl6731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__2__Impl_in_rule__ResponseBlock__Group__26762 = new BitSet(new long[]{0x000003E080100010L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__3_in_rule__ResponseBlock__Group__26765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__0_in_rule__ResponseBlock__Group__2__Impl6792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group__3__Impl_in_rule__ResponseBlock__Group__36823 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__TypeAssignment_3_in_rule__ResponseBlock__Group__3__Impl6850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__0__Impl_in_rule__ResponseBlock__Group_2__06889 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__1_in_rule__ResponseBlock__Group_2__06892 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__ResponseBlock__Group_2__0__Impl6920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__Group_2__1__Impl_in_rule__ResponseBlock__Group_2__16951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ResponseBlock__SuperTypeAssignment_2_1_in_rule__ResponseBlock__Group_2__1__Impl6978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__Group__0__Impl_in_rule__TypedMember__Group__07012 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__TypedMember__Group__1_in_rule__TypedMember__Group__07015 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__NameAssignment_0_in_rule__TypedMember__Group__0__Impl7042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__Group__1__Impl_in_rule__TypedMember__Group__17072 = new BitSet(new long[]{0x000003E000000010L});
+    public static final BitSet FOLLOW_rule__TypedMember__Group__2_in_rule__TypedMember__Group__17075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__TypedMember__Group__1__Impl7103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__Group__2__Impl_in_rule__TypedMember__Group__27134 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__TypeAssignment_2_in_rule__TypedMember__Group__2__Impl7161 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SkipMember__Group__0__Impl_in_rule__SkipMember__Group__07197 = new BitSet(new long[]{0x000003E000100010L});
+    public static final BitSet FOLLOW_rule__SkipMember__Group__1_in_rule__SkipMember__Group__07200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SkipMember__NameAssignment_0_in_rule__SkipMember__Group__0__Impl7227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SkipMember__Group__1__Impl_in_rule__SkipMember__Group__17257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SkipMember__LiteralAssignment_1_in_rule__SkipMember__Group__1__Impl7284 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__Group__0__Impl_in_rule__SimpleMember__Group__07318 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__SimpleMember__Group__1_in_rule__SimpleMember__Group__07321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__NameAssignment_0_in_rule__SimpleMember__Group__0__Impl7348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__Group__1__Impl_in_rule__SimpleMember__Group__17378 = new BitSet(new long[]{0x000003E000000000L});
+    public static final BitSet FOLLOW_rule__SimpleMember__Group__2_in_rule__SimpleMember__Group__17381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__SimpleMember__Group__1__Impl7409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__Group__2__Impl_in_rule__SimpleMember__Group__27440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__TypeAssignment_2_in_rule__SimpleMember__Group__2__Impl7467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GenericListType__Group__0__Impl_in_rule__GenericListType__Group__07503 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_rule__GenericListType__Group__1_in_rule__GenericListType__Group__07506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GenericListType__ElementTypeAssignment_0_in_rule__GenericListType__Group__0__Impl7533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GenericListType__Group__1__Impl_in_rule__GenericListType__Group__17563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GenericListType__IdAssignment_1_in_rule__GenericListType__Group__1__Impl7590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__0__Impl_in_rule__ComplexTypeDeclaration__Group__07624 = new BitSet(new long[]{0x0000000800000010L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__1_in_rule__ComplexTypeDeclaration__Group__07627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__KeywordAssignment_0_in_rule__ComplexTypeDeclaration__Group__0__Impl7654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__1__Impl_in_rule__ComplexTypeDeclaration__Group__17684 = new BitSet(new long[]{0x0000000800000010L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2_in_rule__ComplexTypeDeclaration__Group__17687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NogenAssignment_1_in_rule__ComplexTypeDeclaration__Group__1__Impl7714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__2__Impl_in_rule__ComplexTypeDeclaration__Group__27745 = new BitSet(new long[]{0x000003E000100010L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__3_in_rule__ComplexTypeDeclaration__Group__27748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__NameAssignment_2_in_rule__ComplexTypeDeclaration__Group__2__Impl7775 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__Group__3__Impl_in_rule__ComplexTypeDeclaration__Group__37805 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeDeclaration__LiteralAssignment_3_in_rule__ComplexTypeDeclaration__Group__3__Impl7832 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__0__Impl_in_rule__EnumTypeDeclaration__Group__07871 = new BitSet(new long[]{0x0000000800000010L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__1_in_rule__EnumTypeDeclaration__Group__07874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__KeywordAssignment_0_in_rule__EnumTypeDeclaration__Group__0__Impl7901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__1__Impl_in_rule__EnumTypeDeclaration__Group__17931 = new BitSet(new long[]{0x0000000800000010L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2_in_rule__EnumTypeDeclaration__Group__17934 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NogenAssignment_1_in_rule__EnumTypeDeclaration__Group__1__Impl7961 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__2__Impl_in_rule__EnumTypeDeclaration__Group__27992 = new BitSet(new long[]{0x0000000080100000L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__3_in_rule__EnumTypeDeclaration__Group__27995 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__NameAssignment_2_in_rule__EnumTypeDeclaration__Group__2__Impl8022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__3__Impl_in_rule__EnumTypeDeclaration__Group__38052 = new BitSet(new long[]{0x0000000080100000L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__4_in_rule__EnumTypeDeclaration__Group__38055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__0_in_rule__EnumTypeDeclaration__Group__3__Impl8082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group__4__Impl_in_rule__EnumTypeDeclaration__Group__48113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__LiteralAssignment_4_in_rule__EnumTypeDeclaration__Group__4__Impl8140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__0__Impl_in_rule__EnumTypeDeclaration__Group_3__08181 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__1_in_rule__EnumTypeDeclaration__Group_3__08184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__EnumTypeDeclaration__Group_3__0__Impl8212 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__Group_3__1__Impl_in_rule__EnumTypeDeclaration__Group_3__18243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeDeclaration__SuperTypeAssignment_3_1_in_rule__EnumTypeDeclaration__Group_3__1__Impl8270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__0__Impl_in_rule__EnumTypeLiteral__Group__08304 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__1_in_rule__EnumTypeLiteral__Group__08307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__EnumTypeLiteral__Group__0__Impl8335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__1__Impl_in_rule__EnumTypeLiteral__Group__18366 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__2_in_rule__EnumTypeLiteral__Group__18369 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__MembersAssignment_1_in_rule__EnumTypeLiteral__Group__1__Impl8396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__2__Impl_in_rule__EnumTypeLiteral__Group__28426 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__3_in_rule__EnumTypeLiteral__Group__28429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__0_in_rule__EnumTypeLiteral__Group__2__Impl8456 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group__3__Impl_in_rule__EnumTypeLiteral__Group__38487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__EnumTypeLiteral__Group__3__Impl8515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__0__Impl_in_rule__EnumTypeLiteral__Group_2__08554 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__1_in_rule__EnumTypeLiteral__Group_2__08557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__EnumTypeLiteral__Group_2__0__Impl8585 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__Group_2__1__Impl_in_rule__EnumTypeLiteral__Group_2__18616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumTypeLiteral__MembersAssignment_2_1_in_rule__EnumTypeLiteral__Group_2__1__Impl8643 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group__0__Impl_in_rule__EnumMember__Group__08677 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group__1_in_rule__EnumMember__Group__08680 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__NameAssignment_0_in_rule__EnumMember__Group__0__Impl8707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group__1__Impl_in_rule__EnumMember__Group__18737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group_1__0_in_rule__EnumMember__Group__1__Impl8764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group_1__0__Impl_in_rule__EnumMember__Group_1__08799 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group_1__1_in_rule__EnumMember__Group_1__08802 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__AssignmentAssignment_1_0_in_rule__EnumMember__Group_1__0__Impl8829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__Group_1__1__Impl_in_rule__EnumMember__Group_1__18859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumMember__ValueAssignment_1_1_in_rule__EnumMember__Group_1__1__Impl8886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__0__Impl_in_rule__ComplexTypeLiteral__Group__08920 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__1_in_rule__ComplexTypeLiteral__Group__08923 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__ComplexTypeLiteral__Group__0__Impl8951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__1__Impl_in_rule__ComplexTypeLiteral__Group__18982 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__2_in_rule__ComplexTypeLiteral__Group__18985 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_1_in_rule__ComplexTypeLiteral__Group__1__Impl9012 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__2__Impl_in_rule__ComplexTypeLiteral__Group__29042 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__3_in_rule__ComplexTypeLiteral__Group__29045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__0_in_rule__ComplexTypeLiteral__Group__2__Impl9072 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group__3__Impl_in_rule__ComplexTypeLiteral__Group__39103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__ComplexTypeLiteral__Group__3__Impl9131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__0__Impl_in_rule__ComplexTypeLiteral__Group_2__09170 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__1_in_rule__ComplexTypeLiteral__Group_2__09173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__ComplexTypeLiteral__Group_2__0__Impl9201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__Group_2__1__Impl_in_rule__ComplexTypeLiteral__Group_2__19232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ComplexTypeLiteral__MembersAssignment_2_1_in_rule__ComplexTypeLiteral__Group_2__1__Impl9259 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__09293 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__09296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl9323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__19352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl9379 = new BitSet(new long[]{0x0000000100000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__09414 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__09417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rule__QualifiedName__Group_1__0__Impl9445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__19476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl9503 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__0__Impl_in_rule__SignedNumber__Group__09536 = new BitSet(new long[]{0x0000000004030060L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__1_in_rule__SignedNumber__Group__09539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__SignedNumber__Group__0__Impl9568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SignedNumber__Group__1__Impl_in_rule__SignedNumber__Group__19601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_NUMBER_in_rule__SignedNumber__Group__1__Impl9628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Model__PackageNameAssignment_19666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDeclaration_in_rule__Model__DeclarationsAssignment_29697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Client__NameAssignment_19728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Client__BaseUrlAssignment_29759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleClientBlock_in_rule__Client__BlocksAssignment_49790 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_19821 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHeader_in_rule__HeaderBlock__HeadersAssignment_2_19852 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Header__NameAssignment_09883 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Header__ValueAssignment_29914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHttpMethodType_in_rule__HttpMethod__TypeAssignment_09945 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__HttpMethod__NameAssignment_19976 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePath_in_rule__HttpMethod__PathAssignment_210007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHttpMethodBlock_in_rule__HttpMethod__BlocksAssignment_410038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArbitraryPathSegment_in_rule__Path__ArbAssignment_2_010069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_2_110100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArbitraryPathSegment_in_rule__Path__ArbAssignment_3_1_010131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__Path__ParamsAssignment_3_1_110162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_210193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMemberAssignment_in_rule__ParamsBlock__ParamsAssignment_3_110224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleMember_in_rule__SimpleMemberAssignment__MemberAssignment_010255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_rule__SimpleMemberAssignment__DefaultValueAssignment_1_110286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanValue_in_rule__Literal__LiteralAssignment_0_110317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Literal__LiteralAssignment_1_110348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSignedNumber_in_rule__Literal__LiteralAssignment_2_110379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBlockType_in_rule__BodyBlock__TypeAssignment_110410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ResponseBlock__SuperTypeAssignment_2_110445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBlockType_in_rule__ResponseBlock__TypeAssignment_310480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypedMember__NameAlternatives_0_0_in_rule__TypedMember__NameAssignment_010511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__TypedMember__TypeAssignment_210544 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SkipMember__NameAlternatives_0_0_in_rule__SkipMember__NameAssignment_010575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__SkipMember__LiteralAssignment_110608 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleMember__NameAlternatives_0_0_in_rule__SimpleMember__NameAssignment_010639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntrinsicType_in_rule__SimpleMember__TypeAssignment_210672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__GenericListType__ElementTypeAlternatives_0_0_in_rule__GenericListType__ElementTypeAssignment_010703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_rule__GenericListType__IdAssignment_110741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__UserType__DeclarationAssignment10784 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_rule__ComplexTypeDeclaration__KeywordAssignment_010824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__ComplexTypeDeclaration__NogenAssignment_110868 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ComplexTypeDeclaration__NameAssignment_210907 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleComplexTypeLiteral_in_rule__ComplexTypeDeclaration__LiteralAssignment_310938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_rule__EnumTypeDeclaration__KeywordAssignment_010974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__EnumTypeDeclaration__NogenAssignment_111018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumTypeDeclaration__NameAssignment_211057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerType_in_rule__EnumTypeDeclaration__SuperTypeAssignment_3_111088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumTypeLiteral_in_rule__EnumTypeDeclaration__LiteralAssignment_411119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_111150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumMember_in_rule__EnumTypeLiteral__MembersAssignment_2_111181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumMember__NameAssignment_011212 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__EnumMember__AssignmentAssignment_1_011248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumMember__ValueAssignment_1_111287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_111318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMember_in_rule__ComplexTypeLiteral__MembersAssignment_2_111349 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_rule__StringType__IdAssignment11385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__BooleanType__IdAssignment11429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_rule__IntegerType__IdAssignment11473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_rule__LongType__IdAssignment11517 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_rule__DoubleType__IdAssignment11561 = new BitSet(new long[]{0x0000000000000002L});
 
 }

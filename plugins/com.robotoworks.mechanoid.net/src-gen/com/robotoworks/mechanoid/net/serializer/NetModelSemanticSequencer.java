@@ -509,7 +509,7 @@ public class NetModelSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (params+=SimpleMemberAssignment? params+=SimpleMemberAssignment*)
+	 *     ((arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment) (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment)*)
 	 */
 	protected void sequence_Path(EObject context, Path semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

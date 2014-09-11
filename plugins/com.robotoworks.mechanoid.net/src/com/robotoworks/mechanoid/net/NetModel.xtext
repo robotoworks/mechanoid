@@ -46,7 +46,7 @@ enum HttpMethodType:
 
 Path:
 	{Path}
-	'/' (ArbitraryPathSegment|params+=SimpleMemberAssignment) ('/' (ArbitraryPathSegment|params+=SimpleMemberAssignment))*
+	'/' (arb+=ArbitraryPathSegment|params+=SimpleMemberAssignment) ('/' (arb+=ArbitraryPathSegment|params+=SimpleMemberAssignment))*
 ;
 
 ArbitraryPathSegment:

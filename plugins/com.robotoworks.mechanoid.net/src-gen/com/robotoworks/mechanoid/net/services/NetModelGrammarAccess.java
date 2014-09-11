@@ -300,22 +300,24 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cPathAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final RuleCall cArbitraryPathSegmentParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final Assignment cArbAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cArbArbitraryPathSegmentParserRuleCall_2_0_0 = (RuleCall)cArbAssignment_2_0.eContents().get(0);
 		private final Assignment cParamsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_2_1_0 = (RuleCall)cParamsAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
-		private final RuleCall cArbitraryPathSegmentParserRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
+		private final Assignment cArbAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cArbArbitraryPathSegmentParserRuleCall_3_1_0_0 = (RuleCall)cArbAssignment_3_1_0.eContents().get(0);
 		private final Assignment cParamsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
 		private final RuleCall cParamsSimpleMemberAssignmentParserRuleCall_3_1_1_0 = (RuleCall)cParamsAssignment_3_1_1.eContents().get(0);
 		
 		//Path:
-		//	{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+		//	{Path} "/" (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (arb+=ArbitraryPathSegment |
 		//	params+=SimpleMemberAssignment))*;
 		public ParserRule getRule() { return rule; }
 
-		//{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+		//{Path} "/" (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (arb+=ArbitraryPathSegment |
 		//params+=SimpleMemberAssignment))*
 		public Group getGroup() { return cGroup; }
 
@@ -325,11 +327,14 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"/"
 		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
 
-		//ArbitraryPathSegment | params+=SimpleMemberAssignment
+		//arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
+		//arb+=ArbitraryPathSegment
+		public Assignment getArbAssignment_2_0() { return cArbAssignment_2_0; }
+
 		//ArbitraryPathSegment
-		public RuleCall getArbitraryPathSegmentParserRuleCall_2_0() { return cArbitraryPathSegmentParserRuleCall_2_0; }
+		public RuleCall getArbArbitraryPathSegmentParserRuleCall_2_0_0() { return cArbArbitraryPathSegmentParserRuleCall_2_0_0; }
 
 		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_2_1() { return cParamsAssignment_2_1; }
@@ -337,17 +342,20 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		//SimpleMemberAssignment
 		public RuleCall getParamsSimpleMemberAssignmentParserRuleCall_2_1_0() { return cParamsSimpleMemberAssignmentParserRuleCall_2_1_0; }
 
-		//("/" (ArbitraryPathSegment | params+=SimpleMemberAssignment))*
+		//("/" (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment))*
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"/"
 		public Keyword getSolidusKeyword_3_0() { return cSolidusKeyword_3_0; }
 
-		//ArbitraryPathSegment | params+=SimpleMemberAssignment
+		//arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment
 		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
 
+		//arb+=ArbitraryPathSegment
+		public Assignment getArbAssignment_3_1_0() { return cArbAssignment_3_1_0; }
+
 		//ArbitraryPathSegment
-		public RuleCall getArbitraryPathSegmentParserRuleCall_3_1_0() { return cArbitraryPathSegmentParserRuleCall_3_1_0; }
+		public RuleCall getArbArbitraryPathSegmentParserRuleCall_3_1_0_0() { return cArbArbitraryPathSegmentParserRuleCall_3_1_0_0; }
 
 		//params+=SimpleMemberAssignment
 		public Assignment getParamsAssignment_3_1_1() { return cParamsAssignment_3_1_1; }
@@ -1505,7 +1513,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Path:
-	//	{Path} "/" (ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (ArbitraryPathSegment |
+	//	{Path} "/" (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (arb+=ArbitraryPathSegment |
 	//	params+=SimpleMemberAssignment))*;
 	public PathElements getPathAccess() {
 		return (pPath != null) ? pPath : (pPath = new PathElements());

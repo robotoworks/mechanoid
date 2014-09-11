@@ -104,7 +104,9 @@ public class NetModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getHttpMethodAccess().getNameAssignment_1(), "rule__HttpMethod__NameAssignment_1");
 					put(grammarAccess.getHttpMethodAccess().getPathAssignment_2(), "rule__HttpMethod__PathAssignment_2");
 					put(grammarAccess.getHttpMethodAccess().getBlocksAssignment_4(), "rule__HttpMethod__BlocksAssignment_4");
+					put(grammarAccess.getPathAccess().getArbAssignment_2_0(), "rule__Path__ArbAssignment_2_0");
 					put(grammarAccess.getPathAccess().getParamsAssignment_2_1(), "rule__Path__ParamsAssignment_2_1");
+					put(grammarAccess.getPathAccess().getArbAssignment_3_1_0(), "rule__Path__ArbAssignment_3_1_0");
 					put(grammarAccess.getPathAccess().getParamsAssignment_3_1_1(), "rule__Path__ParamsAssignment_3_1_1");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_2(), "rule__ParamsBlock__ParamsAssignment_2");
 					put(grammarAccess.getParamsBlockAccess().getParamsAssignment_3_1(), "rule__ParamsBlock__ParamsAssignment_3_1");
