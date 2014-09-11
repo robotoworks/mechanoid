@@ -1249,9 +1249,9 @@ rule__Path__Alternatives_2
     }
 :
 (
-{ before(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_2_0()); }
-	ruleArbitraryPathSegment
-{ after(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_2_0()); }
+{ before(grammarAccess.getPathAccess().getArbAssignment_2_0()); }
+(rule__Path__ArbAssignment_2_0)
+{ after(grammarAccess.getPathAccess().getArbAssignment_2_0()); }
 )
 
     |(
@@ -1271,9 +1271,9 @@ rule__Path__Alternatives_3_1
     }
 :
 (
-{ before(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_3_1_0()); }
-	ruleArbitraryPathSegment
-{ after(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_3_1_0()); }
+{ before(grammarAccess.getPathAccess().getArbAssignment_3_1_0()); }
+(rule__Path__ArbAssignment_3_1_0)
+{ after(grammarAccess.getPathAccess().getArbAssignment_3_1_0()); }
 )
 
     |(
@@ -4947,6 +4947,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Path__ArbAssignment_2_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_2_0_0()); }
+	ruleArbitraryPathSegment{ after(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_2_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Path__ParamsAssignment_2_1
     @init {
 		int stackSize = keepStackSize();
@@ -4955,6 +4970,21 @@ rule__Path__ParamsAssignment_2_1
 (
 { before(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_1_0()); }
 	ruleSimpleMemberAssignment{ after(grammarAccess.getPathAccess().getParamsSimpleMemberAssignmentParserRuleCall_2_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Path__ArbAssignment_3_1_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_3_1_0_0()); }
+	ruleArbitraryPathSegment{ after(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_3_1_0_0()); }
 )
 
 ;

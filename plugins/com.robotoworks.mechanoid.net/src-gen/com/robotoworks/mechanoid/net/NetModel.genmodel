@@ -4,7 +4,7 @@
     editorDirectory="/com.robotoworks.mechanoid.net.editor/src" modelPluginID="com.robotoworks.mechanoid.net"
     forceOverwrite="true" modelName="NetModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.net.edit"
-    editorPluginID="com.robotoworks.mechanoid.net.editor" runtimeVersion="2.9">
+    editorPluginID="com.robotoworks.mechanoid.net.editor" runtimeVersion="2.10">
   <genPackages prefix="NetModel" basePackage="com.robotoworks.mechanoid.net" disposableProviderFactory="true"
       ecorePackage="NetModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="NetModel.ecore#//HttpMethodType">
@@ -44,6 +44,7 @@
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//HttpMethodBlock"/>
     <genClasses ecoreClass="NetModel.ecore#//Path">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute NetModel.ecore#//Path/arb"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference NetModel.ecore#//Path/params"/>
     </genClasses>
     <genClasses ecoreClass="NetModel.ecore#//ParamsBlock">

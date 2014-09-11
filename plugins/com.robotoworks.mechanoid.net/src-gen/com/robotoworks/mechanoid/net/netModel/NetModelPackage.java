@@ -337,13 +337,22 @@ public interface NetModelPackage extends EPackage
   int PATH = 8;
 
   /**
+   * The feature id for the '<em><b>Arb</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PATH__ARB = 0;
+
+  /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PATH__PARAMS = 0;
+  int PATH__PARAMS = 1;
 
   /**
    * The number of structural features of the '<em>Path</em>' class.
@@ -352,7 +361,7 @@ public interface NetModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PATH_FEATURE_COUNT = 1;
+  int PATH_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.robotoworks.mechanoid.net.netModel.impl.ParamsBlockImpl <em>Params Block</em>}' class.
@@ -1536,6 +1545,17 @@ public interface NetModelPackage extends EPackage
   EClass getPath();
 
   /**
+   * Returns the meta object for the attribute list '{@link com.robotoworks.mechanoid.net.netModel.Path#getArb <em>Arb</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Arb</em>'.
+   * @see com.robotoworks.mechanoid.net.netModel.Path#getArb()
+   * @see #getPath()
+   * @generated
+   */
+  EAttribute getPath_Arb();
+
+  /**
    * Returns the meta object for the containment reference list '{@link com.robotoworks.mechanoid.net.netModel.Path#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2372,6 +2392,14 @@ public interface NetModelPackage extends EPackage
      * @generated
      */
     EClass PATH = eINSTANCE.getPath();
+
+    /**
+     * The meta object literal for the '<em><b>Arb</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PATH__ARB = eINSTANCE.getPath_Arb();
 
     /**
      * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.

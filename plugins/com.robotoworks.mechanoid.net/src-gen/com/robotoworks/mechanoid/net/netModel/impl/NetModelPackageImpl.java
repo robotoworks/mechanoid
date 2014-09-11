@@ -619,9 +619,19 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPath_Arb()
+  {
+    return (EAttribute)pathEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPath_Params()
   {
-    return (EReference)pathEClass.getEStructuralFeatures().get(0);
+    return (EReference)pathEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1273,6 +1283,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     httpMethodBlockEClass = createEClass(HTTP_METHOD_BLOCK);
 
     pathEClass = createEClass(PATH);
+    createEAttribute(pathEClass, PATH__ARB);
     createEReference(pathEClass, PATH__PARAMS);
 
     paramsBlockEClass = createEClass(PARAMS_BLOCK);
@@ -1453,6 +1464,7 @@ public class NetModelPackageImpl extends EPackageImpl implements NetModelPackage
     initEClass(httpMethodBlockEClass, HttpMethodBlock.class, "HttpMethodBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPath_Arb(), ecorePackage.getEString(), "arb", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPath_Params(), this.getSimpleMemberAssignment(), null, "params", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramsBlockEClass, ParamsBlock.class, "ParamsBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

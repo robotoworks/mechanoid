@@ -613,15 +613,25 @@ rulePath returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getPathAccess().getSolidusKeyword_1());
     }
+((
 (
-    { 
-        newCompositeNode(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_2_0()); 
-    }
-ruleArbitraryPathSegment
-    { 
-        afterParserOrEnumRuleCall();
-    }
+		{ 
+	        newCompositeNode(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_2_0_0()); 
+	    }
+		lv_arb_2_0=ruleArbitraryPathSegment		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPathRule());
+	        }
+       		add(
+       			$current, 
+       			"arb",
+        		lv_arb_2_0, 
+        		"ArbitraryPathSegment");
+	        afterParserOrEnumRuleCall();
+	    }
 
+)
+)
     |(
 (
 		{ 
@@ -644,15 +654,25 @@ ruleArbitraryPathSegment
     {
     	newLeafNode(otherlv_4, grammarAccess.getPathAccess().getSolidusKeyword_3_0());
     }
+((
 (
-    { 
-        newCompositeNode(grammarAccess.getPathAccess().getArbitraryPathSegmentParserRuleCall_3_1_0()); 
-    }
-ruleArbitraryPathSegment
-    { 
-        afterParserOrEnumRuleCall();
-    }
+		{ 
+	        newCompositeNode(grammarAccess.getPathAccess().getArbArbitraryPathSegmentParserRuleCall_3_1_0_0()); 
+	    }
+		lv_arb_5_0=ruleArbitraryPathSegment		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPathRule());
+	        }
+       		add(
+       			$current, 
+       			"arb",
+        		lv_arb_5_0, 
+        		"ArbitraryPathSegment");
+	        afterParserOrEnumRuleCall();
+	    }
 
+)
+)
     |(
 (
 		{ 
