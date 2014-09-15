@@ -292,6 +292,7 @@ public class OperationExecutor {
 		OpInfo(Parcel in) {
             mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
+            in.readParcelable(OperationResult.class.getClassLoader());
             in.readTypedArray(mIntents, Intent.CREATOR);
         }
 
