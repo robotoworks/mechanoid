@@ -107,8 +107,7 @@ public class ContentProviderGenerator {
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "\t");
         _builder.append(" = ");
-        int _counter = counter = (counter + 1);
-        _builder.append(_counter, "\t");
+        _builder.append(counter = (counter + 1), "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
@@ -121,8 +120,7 @@ public class ContentProviderGenerator {
             String _upperCase_1 = _underscore_1.toUpperCase();
             _builder.append(_upperCase_1, "\t");
             _builder.append("_ID = ");
-            int _counter_1 = counter = (counter + 1);
-            _builder.append(_counter_1, "\t");
+            _builder.append(counter = (counter + 1), "\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
@@ -140,8 +138,7 @@ public class ContentProviderGenerator {
         String _upperCase_2 = _underscore_2.toUpperCase();
         _builder.append(_upperCase_2, "\t");
         _builder.append(" = ");
-        int _counter_2 = counter = (counter + 1);
-        _builder.append(_counter_2, "\t");
+        _builder.append(counter = (counter + 1), "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
@@ -154,8 +151,7 @@ public class ContentProviderGenerator {
             String _upperCase_3 = _underscore_3.toUpperCase();
             _builder.append(_upperCase_3, "\t");
             _builder.append("_ID = ");
-            int _counter_3 = counter = (counter + 1);
-            _builder.append(_counter_3, "\t");
+            _builder.append(counter = (counter + 1), "\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
@@ -174,8 +170,7 @@ public class ContentProviderGenerator {
         String _upperCase_4 = _underscore_4.toUpperCase();
         _builder.append(_upperCase_4, "\t");
         _builder.append(" = ");
-        int _counter_4 = counter = (counter + 1);
-        _builder.append(_counter_4, "\t");
+        _builder.append(counter = (counter + 1), "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
@@ -188,8 +183,7 @@ public class ContentProviderGenerator {
             String _upperCase_5 = _underscore_5.toUpperCase();
             _builder.append(_upperCase_5, "\t");
             _builder.append("_ID = ");
-            int _counter_5 = counter = (counter + 1);
-            _builder.append(_counter_5, "\t");
+            _builder.append(counter = (counter + 1), "\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
@@ -207,8 +201,7 @@ public class ContentProviderGenerator {
         String _upperCase_6 = _underscore_6.toUpperCase();
         _builder.append(_upperCase_6, "\t");
         _builder.append(" = ");
-        int _counter_6 = counter = (counter + 1);
-        _builder.append(_counter_6, "\t");
+        _builder.append(counter = (counter + 1), "\t");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
         {
@@ -221,8 +214,7 @@ public class ContentProviderGenerator {
             String _upperCase_7 = _underscore_7.toUpperCase();
             _builder.append(_upperCase_7, "\t");
             _builder.append("_ID = ");
-            int _counter_7 = counter = (counter + 1);
-            _builder.append(_counter_7, "\t");
+            _builder.append(counter = (counter + 1), "\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
@@ -260,8 +252,7 @@ public class ContentProviderGenerator {
             String _upperCase_9 = _underscore_9.toUpperCase();
             _builder.append(_upperCase_9, "\t");
             _builder.append(" = ");
-            int _counter_8 = counter = (counter + 1);
-            _builder.append(_counter_8, "\t");
+            _builder.append(counter = (counter + 1), "\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }

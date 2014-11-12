@@ -70,8 +70,7 @@ public class SqliteOpenHelperGenerator {
             String _pascalize = Strings.pascalize(_name);
             _builder.append(_pascalize, "");
             _builder.append("MigrationV");
-            int _version = version = (version + 1);
-            _builder.append(_version, "");
+            _builder.append(version = (version + 1), "");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
           }
@@ -275,8 +274,7 @@ public class SqliteOpenHelperGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("case ");
-            int _version_1 = version_1 = (version_1 + 1);
-            _builder.append(_version_1, "\t\t\t");
+            _builder.append(version_1 = (version_1 + 1), "\t\t\t");
             _builder.append(":");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -335,8 +333,7 @@ public class SqliteOpenHelperGenerator {
             String _pascalize_5 = Strings.pascalize(_name_14);
             _builder.append(_pascalize_5, "\t");
             _builder.append("MigrationV");
-            int _version_2 = version_2 = (version_2 + 1);
-            _builder.append(_version_2, "\t");
+            _builder.append(version_2 = (version_2 + 1), "\t");
             _builder.append("() {");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");

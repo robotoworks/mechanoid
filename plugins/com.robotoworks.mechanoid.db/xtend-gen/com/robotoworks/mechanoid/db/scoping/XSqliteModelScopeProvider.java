@@ -297,9 +297,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
   
   public IScope buildScopeForColumnSourceRef_column(final ColumnSourceRef context, final EObject parent) {
     EObject temp = parent;
-    EObject _eContainer = temp.eContainer();
-    boolean _while = (!(_eContainer instanceof DatabaseBlock));
-    while (_while) {
+    while ((!(temp.eContainer() instanceof DatabaseBlock))) {
       {
         EObject container = temp.eContainer();
         boolean _matched = false;
@@ -316,9 +314,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         if (!_matched) {
           if (container instanceof ResultColumn) {
             _matched=true;
-            EObject _eContainer_1 = ((ResultColumn)container).eContainer();
-            EObject _eContainer_2 = _eContainer_1.eContainer();
-            final ArrayList<EObject> items = ModelUtil.getAllReferenceableColumns(((SelectExpression) _eContainer_2), false);
+            EObject _eContainer = ((ResultColumn)container).eContainer();
+            EObject _eContainer_1 = _eContainer.eContainer();
+            final ArrayList<EObject> items = ModelUtil.getAllReferenceableColumns(((SelectExpression) _eContainer_1), false);
             IScope _buildScopeForColumnSourceRef_column = this.buildScopeForColumnSourceRef_column(context, container);
             return Scopes.scopeFor(items, _buildScopeForColumnSourceRef_column);
           }
@@ -353,8 +351,8 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         if (!_matched) {
           if (container instanceof OrderingTermList) {
             _matched=true;
-            EObject _eContainer_1 = ((OrderingTermList)container).eContainer();
-            SelectStatement selectStatement = ((SelectStatement) _eContainer_1);
+            EObject _eContainer = ((OrderingTermList)container).eContainer();
+            SelectStatement selectStatement = ((SelectStatement) _eContainer);
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
             ArrayList<EObject> _allReferenceableColumns = ModelUtil.getAllReferenceableColumns(core);
@@ -368,20 +366,16 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             return Scopes.scopeFor(_columnDefs, IScope.NULLSCOPE);
           }
         }
-        EObject _eContainer_1 = temp.eContainer();
-        temp = _eContainer_1;
+        EObject _eContainer = temp.eContainer();
+        temp = _eContainer;
       }
-      EObject _eContainer_1 = temp.eContainer();
-      _while = (!(_eContainer_1 instanceof DatabaseBlock));
     }
     return IScope.NULLSCOPE;
   }
   
   public IScope buildScopeForColumnSourceRef_source(final ColumnSourceRef context, final EObject parent) {
     EObject temp = parent;
-    EObject _eContainer = temp.eContainer();
-    boolean _while = (!(_eContainer instanceof DatabaseBlock));
-    while (_while) {
+    while ((!(temp.eContainer() instanceof DatabaseBlock))) {
       {
         EObject container = temp.eContainer();
         boolean _matched = false;
@@ -403,8 +397,8 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
         if (!_matched) {
           if (container instanceof OrderingTermList) {
             _matched=true;
-            EObject _eContainer_1 = ((OrderingTermList)container).eContainer();
-            SelectStatement selectStatement = ((SelectStatement) _eContainer_1);
+            EObject _eContainer = ((OrderingTermList)container).eContainer();
+            SelectStatement selectStatement = ((SelectStatement) _eContainer);
             SelectCoreExpression _core = selectStatement.getCore();
             SelectCore core = ((SelectCore) _core);
             ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(core);
@@ -416,11 +410,9 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             return Scopes.<EObject>scopeFor(_allReferenceableSingleSources, _function, IScope.NULLSCOPE);
           }
         }
-        EObject _eContainer_1 = temp.eContainer();
-        temp = _eContainer_1;
+        EObject _eContainer = temp.eContainer();
+        temp = _eContainer;
       }
-      EObject _eContainer_1 = temp.eContainer();
-      _while = (!(_eContainer_1 instanceof DatabaseBlock));
     }
     return IScope.NULLSCOPE;
   }

@@ -188,22 +188,16 @@ public class ModelUtil {
   
   public static <T extends EObject> T getAncestorOfType(final EObject obj, final Class<T> ancestorType) {
     EObject temp = ((EObject) obj);
-    EObject _eContainer = temp.eContainer();
-    boolean _notEquals = (!Objects.equal(_eContainer, null));
-    boolean _while = _notEquals;
-    while (_while) {
+    while ((!Objects.equal(temp.eContainer(), null))) {
       {
-        EObject _eContainer_1 = temp.eContainer();
-        temp = _eContainer_1;
+        EObject _eContainer = temp.eContainer();
+        temp = _eContainer;
         Class<? extends EObject> _class = temp.getClass();
         boolean _isAssignableFrom = ancestorType.isAssignableFrom(_class);
         if (_isAssignableFrom) {
           return ((T) temp);
         }
       }
-      EObject _eContainer_1 = temp.eContainer();
-      boolean _notEquals_1 = (!Objects.equal(_eContainer_1, null));
-      _while = _notEquals_1;
     }
     return null;
   }
@@ -215,31 +209,24 @@ public class ModelUtil {
   public static void forEachPreviousStatement(final DDLStatement stmt, final Function1<DDLStatement, Boolean> delegate) {
     EObject current = ((EObject) stmt);
     MigrationBlock migration = null;
-    boolean _dowhile = false;
     do {
       {
-        EObject _previousSibling = EcoreUtil2.getPreviousSibling(current);
-        boolean _notEquals = (!Objects.equal(_previousSibling, null));
-        boolean _while = _notEquals;
-        while (_while) {
+        while ((!Objects.equal(EcoreUtil2.getPreviousSibling(current), null))) {
           {
-            EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(current);
-            current = _previousSibling_1;
+            EObject _previousSibling = EcoreUtil2.getPreviousSibling(current);
+            current = _previousSibling;
             Boolean _apply = delegate.apply(((DDLStatement) current));
             boolean _not = (!(_apply).booleanValue());
             if (_not) {
               return;
             }
           }
-          EObject _previousSibling_1 = EcoreUtil2.getPreviousSibling(current);
-          boolean _notEquals_1 = (!Objects.equal(_previousSibling_1, null));
-          _while = _notEquals_1;
         }
         EObject _eContainer = current.eContainer();
         EObject previousContainer = EcoreUtil2.getPreviousSibling(_eContainer);
         boolean _and = false;
-        boolean _notEquals_1 = (!Objects.equal(previousContainer, null));
-        if (!_notEquals_1) {
+        boolean _notEquals = (!Objects.equal(previousContainer, null));
+        if (!_notEquals) {
           _and = false;
         } else {
           _and = (previousContainer instanceof MigrationBlock);
@@ -262,9 +249,7 @@ public class ModelUtil {
           migration = null;
         }
       }
-      boolean _notEquals = (!Objects.equal(migration, null));
-      _dowhile = _notEquals;
-    } while(_dowhile);
+    } while((!Objects.equal(migration, null)));
   }
   
   public static ArrayList<EObject> getAllReferenceableSingleSources(final SelectCoreExpression expr) {
@@ -634,10 +619,7 @@ public class ModelUtil {
     }
     EList<ColumnSource> _columnDefs = ((CreateTableStatement) last).getColumnDefs();
     columns.addAll(_columnDefs);
-    boolean _isEmpty = tableHistory.isEmpty();
-    boolean _not = (!_isEmpty);
-    boolean _while = _not;
-    while (_while) {
+    while ((!tableHistory.isEmpty())) {
       {
         final TableDefinition stmt = tableHistory.removeLast();
         ArrayList<AlterTableAddColumnStatement> _findStatementsOfTypeBetween = ModelUtil.<AlterTableAddColumnStatement>findStatementsOfTypeBetween(AlterTableAddColumnStatement.class, stmt, caller);
@@ -656,9 +638,6 @@ public class ModelUtil {
         };
         IterableExtensions.<AlterTableAddColumnStatement>forEach(_filter, _function_1);
       }
-      boolean _isEmpty_1 = tableHistory.isEmpty();
-      boolean _not_1 = (!_isEmpty_1);
-      _while = _not_1;
     }
     return columns;
   }
@@ -666,14 +645,12 @@ public class ModelUtil {
   public static LinkedList<TableDefinition> getHistory(final TableDefinition ref) {
     LinkedList<TableDefinition> refs = new LinkedList<TableDefinition>();
     TableDefinition current = ref;
-    boolean _while = (current instanceof AlterTableRenameStatement);
-    while (_while) {
+    while ((current instanceof AlterTableRenameStatement)) {
       {
         refs.add(current);
         TableDefinition _table = ((AlterTableRenameStatement) current).getTable();
         current = _table;
       }
-      _while = (current instanceof AlterTableRenameStatement);
     }
     refs.add(current);
     return refs;

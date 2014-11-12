@@ -1034,8 +1034,7 @@ public class ActiveRecordGenerator {
         String _pascalize_4 = Strings.pascalize(_name_3);
         _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
-        int _counter = counter = (counter + 1);
-        _builder.append(_counter, "");
+        _builder.append(counter = (counter + 1), "");
         _builder.append("];");
         _builder.newLineIfNotEmpty();
       }
@@ -1121,8 +1120,7 @@ public class ActiveRecordGenerator {
         String _pascalize_4 = Strings.pascalize(_name_3);
         _builder.append(_pascalize_4, "");
         _builder.append("Dirty = dirtyFlags[");
-        int _counter = counter = (counter + 1);
-        _builder.append(_counter, "");
+        _builder.append(counter = (counter + 1), "");
         _builder.append("];");
         _builder.newLineIfNotEmpty();
       }
@@ -1201,8 +1199,7 @@ public class ActiveRecordGenerator {
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "");
         _builder.append(" = ");
-        int _counter = counter = (counter + 1);
-        _builder.append(_counter, "");
+        _builder.append(counter = (counter + 1), "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
       }
@@ -1223,8 +1220,7 @@ public class ActiveRecordGenerator {
         String _upperCase = _underscore.toUpperCase();
         _builder.append(_upperCase, "");
         _builder.append(" = ");
-        int _counter = counter = (counter + 1);
-        _builder.append(_counter, "");
+        _builder.append(counter = (counter + 1), "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
       }

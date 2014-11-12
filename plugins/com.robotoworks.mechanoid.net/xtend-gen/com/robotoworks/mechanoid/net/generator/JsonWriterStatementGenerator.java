@@ -15,49 +15,23 @@ import com.robotoworks.mechanoid.net.netModel.UserType;
 import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
 public class JsonWriterStatementGenerator {
+  @Property
   private ImportHelper _imports;
   
-  public ImportHelper getImports() {
-    return this._imports;
-  }
-  
-  public void setImports(final ImportHelper imports) {
-    this._imports = imports;
-  }
-  
+  @Property
   private String _writerIdentifier = "target";
   
-  public String getWriterIdentifier() {
-    return this._writerIdentifier;
-  }
-  
-  public void setWriterIdentifier(final String writerIdentifier) {
-    this._writerIdentifier = writerIdentifier;
-  }
-  
+  @Property
   private String _subjectIdentifier = "subject";
   
-  public String getSubjectIdentifier() {
-    return this._subjectIdentifier;
-  }
-  
-  public void setSubjectIdentifier(final String subjectIdentifier) {
-    this._subjectIdentifier = subjectIdentifier;
-  }
-  
+  @Property
   private String _providerIdentifier = "provider";
-  
-  public String getProviderIdentifier() {
-    return this._providerIdentifier;
-  }
-  
-  public void setProviderIdentifier(final String providerIdentifier) {
-    this._providerIdentifier = providerIdentifier;
-  }
   
   public CharSequence genWriteComplexType(final ComplexTypeDeclaration decl) {
     ComplexTypeLiteral _literal = decl.getLiteral();
@@ -433,5 +407,41 @@ public class JsonWriterStatementGenerator {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(member, type, itemType, decl).toString());
     }
+  }
+  
+  @Pure
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
+  }
+  
+  @Pure
+  public String getWriterIdentifier() {
+    return this._writerIdentifier;
+  }
+  
+  public void setWriterIdentifier(final String writerIdentifier) {
+    this._writerIdentifier = writerIdentifier;
+  }
+  
+  @Pure
+  public String getSubjectIdentifier() {
+    return this._subjectIdentifier;
+  }
+  
+  public void setSubjectIdentifier(final String subjectIdentifier) {
+    this._subjectIdentifier = subjectIdentifier;
+  }
+  
+  @Pure
+  public String getProviderIdentifier() {
+    return this._providerIdentifier;
+  }
+  
+  public void setProviderIdentifier(final String providerIdentifier) {
+    this._providerIdentifier = providerIdentifier;
   }
 }

@@ -17,70 +17,30 @@ import com.robotoworks.mechanoid.net.netModel.UserTypeDeclaration;
 import com.robotoworks.mechanoid.text.Strings;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
 public class JsonReaderStatementGenerator {
+  @Property
   private ImportHelper _imports;
-  
-  public ImportHelper getImports() {
-    return this._imports;
-  }
-  
-  public void setImports(final ImportHelper imports) {
-    this._imports = imports;
-  }
   
   /**
    * The identifier of the JSONReader instance
    */
+  @Property
   private String _readerIdentifier = "source";
   
   /**
-   * The identifier of the JSONReader instance
-   */
-  public String getReaderIdentifier() {
-    return this._readerIdentifier;
-  }
-  
-  /**
-   * The identifier of the JSONReader instance
-   */
-  public void setReaderIdentifier(final String readerIdentifier) {
-    this._readerIdentifier = readerIdentifier;
-  }
-  
-  /**
    * The identifier of the reader subject (the entity the reader is
    * setting data to)
    */
+  @Property
   private String _subjectIdentifier = "entity";
   
-  /**
-   * The identifier of the reader subject (the entity the reader is
-   * setting data to)
-   */
-  public String getSubjectIdentifier() {
-    return this._subjectIdentifier;
-  }
-  
-  /**
-   * The identifier of the reader subject (the entity the reader is
-   * setting data to)
-   */
-  public void setSubjectIdentifier(final String subjectIdentifier) {
-    this._subjectIdentifier = subjectIdentifier;
-  }
-  
+  @Property
   private String _providerIdentifier = "provider";
-  
-  public String getProviderIdentifier() {
-    return this._providerIdentifier;
-  }
-  
-  public void setProviderIdentifier(final String providerIdentifier) {
-    this._providerIdentifier = providerIdentifier;
-  }
   
   public CharSequence genReadComplexType(final ComplexTypeDeclaration decl) {
     ComplexTypeLiteral _literal = decl.getLiteral();
@@ -136,8 +96,7 @@ public class JsonReaderStatementGenerator {
       EList<Member> _members = literal.getMembers();
       for(final Member member : _members) {
         _builder.append("\t");
-        int _COUNTER = COUNTER = (COUNTER + 1);
-        CharSequence _genBlock = this.genBlock(member, _COUNTER);
+        CharSequence _genBlock = this.genBlock(member, COUNTER = (COUNTER + 1));
         _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
@@ -215,8 +174,7 @@ public class JsonReaderStatementGenerator {
     {
       for(final Member member : members) {
         _builder.append("\t");
-        int _COUNTER = COUNTER = (COUNTER + 1);
-        CharSequence _genBlock = this.genBlock(member, _COUNTER);
+        CharSequence _genBlock = this.genBlock(member, COUNTER = (COUNTER + 1));
         _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
@@ -322,8 +280,7 @@ public class JsonReaderStatementGenerator {
       EList<Member> _members = _literal.getMembers();
       for(final Member member : _members) {
         _builder.append("\t");
-        int _COUNTER = COUNTER = (COUNTER + 1);
-        Object _genBlock = this.genBlock(member, _COUNTER);
+        Object _genBlock = this.genBlock(member, COUNTER = (COUNTER + 1));
         _builder.append(_genBlock, "\t");
         _builder.newLineIfNotEmpty();
       }
@@ -636,5 +593,41 @@ public class JsonReaderStatementGenerator {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(member, type, itemType, decl).toString());
     }
+  }
+  
+  @Pure
+  public ImportHelper getImports() {
+    return this._imports;
+  }
+  
+  public void setImports(final ImportHelper imports) {
+    this._imports = imports;
+  }
+  
+  @Pure
+  public String getReaderIdentifier() {
+    return this._readerIdentifier;
+  }
+  
+  public void setReaderIdentifier(final String readerIdentifier) {
+    this._readerIdentifier = readerIdentifier;
+  }
+  
+  @Pure
+  public String getSubjectIdentifier() {
+    return this._subjectIdentifier;
+  }
+  
+  public void setSubjectIdentifier(final String subjectIdentifier) {
+    this._subjectIdentifier = subjectIdentifier;
+  }
+  
+  @Pure
+  public String getProviderIdentifier() {
+    return this._providerIdentifier;
+  }
+  
+  public void setProviderIdentifier(final String providerIdentifier) {
+    this._providerIdentifier = providerIdentifier;
   }
 }

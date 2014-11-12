@@ -421,7 +421,9 @@ public class OperationServiceBridge {
 	}
 
 	private void notifyOperationStarting(int id, Intent intent, Bundle data) {
-		for(OperationServiceListener listener : mListeners) {
+		// Copy to avoid CME
+		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
+		for(OperationServiceListener listener : listeners) {
 			if(listener != null) {
 				listener.onOperationStarting(id, intent, data);
 			}
@@ -429,7 +431,9 @@ public class OperationServiceBridge {
 	}
 
 	private void notifyOperationComplete(int id, OperationResult result) {
-		for(OperationServiceListener listener : mListeners) {
+		// Copy to avoid CME
+		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
+		for(OperationServiceListener listener : listeners) {
 			if(listener != null) {
 				listener.onOperationComplete(id, result);
 			}
@@ -437,7 +441,9 @@ public class OperationServiceBridge {
 	}
 
 	private void notifyOperationProgress(int id, Intent intent, int progress, Bundle data) {
-		for(OperationServiceListener listener : mListeners) {
+		// Copy to avoid CME
+		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
+		for(OperationServiceListener listener : listeners) {
 			if(listener != null) {
 				listener.onOperationProgress(id, intent, progress, data);
 			}
@@ -445,7 +451,9 @@ public class OperationServiceBridge {
 	}
 	
 	private void notifyOperationAborted(int id, Intent intent, int reason, Bundle data) {
-		for(OperationServiceListener listener : mListeners) {
+		// Copy to avoid CME
+		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
+		for(OperationServiceListener listener : listeners) {
 			if(listener != null) {
 				listener.onOperationAborted(id, intent, reason, data);
 			}
