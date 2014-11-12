@@ -199,7 +199,7 @@ public class OperationExecutor {
             
             mOpInfo.mResult = result;
             
-            if(invokeOnOperationComplete(result)) {
+            if(invokeOnOperationComplete(mOpInfo)) {
             	mOpInfo.mCallbackInvoked = true;
             	if(mEnableLogging) {
             		Log.d(TAG, String.format("[Operation Complete] key: %s", mUserStateKey));
@@ -266,6 +266,7 @@ public class OperationExecutor {
         boolean mCallbackInvoked = false;
         OperationResult mResult = null;
 		public Intent[] mIntents;
+		boolean mIsBatch = false;
         
         public static final Parcelable.Creator<OpInfo> CREATOR
         = new Parcelable.Creator<OpInfo>() {
@@ -280,6 +281,7 @@ public class OperationExecutor {
 
         OpInfo(Intent[] intents) {
             mIntents = intents;
+            mIsBatch = intents.length > 1;
         }
         
         public Intent getIntent(int index) {
@@ -292,7 +294,10 @@ public class OperationExecutor {
 		OpInfo(Parcel in) {
             mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
-            in.readParcelable(OperationResult.class.getClassLoader());
+            mResult = in.readParcelable(OperationResult.class.getClassLoader());
+            mIsBatch = in.readInt() > 0;
+            int numInBatch = in.readInt();
+            mIntents = new Intent[numInBatch];
             in.readTypedArray(mIntents, Intent.CREATOR);
         }
 
@@ -306,6 +311,8 @@ public class OperationExecutor {
             dest.writeInt(mId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
             dest.writeParcelable(mResult, 0);
+            dest.writeInt(mIsBatch ? 1 : 0);
+            dest.writeInt(mIntents.length);
             dest.writeTypedArray(mIntents, 0);
         }
     }
@@ -325,7 +332,7 @@ public class OperationExecutor {
     	return true;
     }
     
-    protected boolean invokeOnOperationComplete(OperationResult result) {
+    protected boolean invokeOnOperationComplete(OpInfo info) {
     	if(mCallbacksRef == null) {
     		return false;
     	}
@@ -335,6 +342,8 @@ public class OperationExecutor {
     	if(callbacks == null) {
     		return false;
     	}
+    	
+    	OperationResult result = info.mIsBatch ? info.mResult : info.mResult.getBatchResults().get(0);
     	
     	return callbacks.onOperationComplete(mUserStateKey, result);
     }
@@ -367,14 +376,14 @@ public class OperationExecutor {
         
         if (mode == MODE_ALWAYS) {
         	mOpInfo = null;
-        	executeOperation(operationIntent);
+        	executeOperations(operationIntent);
         } else if(mode == MODE_ONCE) {
         	if(mOpInfo == null) {
-        		executeOperation(operationIntent);
+        		executeOperations(operationIntent);
         	}
         } else if(mode == MODE_ON_ERROR) {
         	if(mOpInfo == null || isError()) {
-        		executeOperation(operationIntent);
+        		executeOperations(operationIntent);
         	}
         }
         
@@ -424,7 +433,7 @@ public class OperationExecutor {
     
     private void completeOperation() {
         if(mOpInfo.mResult != null && !mOpInfo.mCallbackInvoked) {
-        	if(invokeOnOperationComplete(mOpInfo.mResult)) {
+        	if(invokeOnOperationComplete(mOpInfo)) {
         		if(mEnableLogging) {
         			Log.d(TAG, String.format("[Operation Complete] request id: %s, key: %s", mOpInfo.mId, mUserStateKey));
         		}
@@ -434,18 +443,6 @@ public class OperationExecutor {
         }
     }
 
-	protected void executeOperation(Intent operationIntent) {
-		if(mEnableLogging) {
-			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
-		}
-		
-		mOpInfo = new OpInfo(new Intent[]{ operationIntent });
-
-		invokeOnOperationPending();
-		
-		mOpInfo.mId = Ops.execute(operationIntent);
-	}
-	
 	protected void executeOperations(Intent... operations) {
 		if(mEnableLogging) {
 			Log.d(TAG, String.format("[Execute Operation] key: %s", mUserStateKey));
