@@ -32,7 +32,7 @@ public class OperationResult implements Parcelable {
 
 	private boolean mIsBatch;
 
-	private ArrayList<OperationResult> mBatchResults;
+	private ArrayList<OperationResult> mBatchResults = new ArrayList<OperationResult>();
 
 	private boolean mBatchResultsOk = true;
 	
@@ -81,7 +81,6 @@ public class OperationResult implements Parcelable {
 	 */
 	public void setData(Bundle resultData) {
 		mResultData = resultData;
-		mBatchResults = new ArrayList<OperationResult>();
 		mBatchResultsOk = true;
 		mIsBatch = false;
 		ArrayList<Bundle> results = mResultData.getParcelableArrayList(EXTRA_BATCH_RESULTS);

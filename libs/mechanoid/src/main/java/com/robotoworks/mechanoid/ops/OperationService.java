@@ -18,6 +18,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
+import android.os.DeadObjectException;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -181,9 +182,9 @@ public abstract class OperationService extends Service {
 		try {	
 			messenger.send(m);
 		}
-	    catch (RemoteException e) {
+	    catch (Exception e) {
 			if(mEnableLogging) {
-				Log.e(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
+				Log.w(mLogTag, String.format("[Operation Exception] %s", Log.getStackTraceString(e)));
 			}
 		}
 		

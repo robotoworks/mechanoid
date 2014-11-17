@@ -193,7 +193,7 @@ public class OperationExecutor {
 
 		@Override
 		public void onOperationComplete(int id, OperationResult result) {
-            if(mOpInfo == null || mOpInfo.mId != id) {
+            if(mOpInfo == null || mOpInfo.mId != id || result == null) {
             	return;
             }
             
@@ -337,6 +337,10 @@ public class OperationExecutor {
     		return false;
     	}
     	
+    	if(info == null) {
+    		return false;
+    	}
+    	
     	OperationExecutorCallbacks callbacks = mCallbacksRef.get();
     	
     	if(callbacks == null) {
@@ -405,7 +409,7 @@ public class OperationExecutor {
      * its result will be ignored and no callbacks will be received.</p>
      *
      * @param mode true to force the operation intent to execute, this will abandon any previous operation
-     * @param operationIntent An intent representing the operation to execute
+     * @param intents Intent(s) representing operation(s) to execute
      * intent
      */
     public void execute(int mode, Intent... intents) {
