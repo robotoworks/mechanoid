@@ -114,4 +114,23 @@ public class OperationContext {
 	public void setLogTag(String logTag) {
 		mLogTag = logTag;
 	}
+	
+	/**
+	 * Run another operation from this context
+	 * 
+	 * @param intent describes the operation to execute
+	 * @return an operation result
+	 */
+	public OperationResult executeOperation(Intent intent) {
+		OperationContext context = new OperationContext();
+		context.setApplicationContext(mApplicationContext);
+		context.setIntent(intent);
+		context.setEnableLogging(mEnableLogging);
+		context.setLogTag(mLogTag);
+		context.setOperationProcessor(mProcessor);
+		
+		Operation operation = mProcessor.createOperation(intent.getAction());
+		
+		return operation.execute(context);	
+	}
 }
