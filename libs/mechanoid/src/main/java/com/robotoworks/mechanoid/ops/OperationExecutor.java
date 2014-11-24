@@ -333,31 +333,36 @@ public class OperationExecutor {
     }
     
     protected boolean invokeOnOperationComplete(OpInfo info) {
-    	if(mCallbacksRef == null) {
-    		return false;
+    	try {
+	    	if(mCallbacksRef == null) {
+	    		return false;
+	    	}
+	    	
+	    	if(info == null) {
+	    		return false;
+	    	}
+	    	
+	    	OperationExecutorCallbacks callbacks = mCallbacksRef.get();
+	    	
+	    	if(callbacks == null) {
+	    		return false;
+	    	}
+	    	
+	    	OperationResult result = info.mResult;
+	    	
+	    	if(result == null) {
+	    		return false;
+	    	}
+	    	
+	    	if(!info.mIsBatch && result.getBatchResults().size() > 0) {
+	    		result = info.mResult.getBatchResults().get(0);
+	    	}
+	    	
+	    	return callbacks.onOperationComplete(mUserStateKey, result);
+	    	
+    	} catch(Exception x) {
+    		throw new RuntimeException(this.getKey() + " unhandled exception", x);
     	}
-    	
-    	if(info == null) {
-    		return false;
-    	}
-    	
-    	OperationExecutorCallbacks callbacks = mCallbacksRef.get();
-    	
-    	if(callbacks == null) {
-    		return false;
-    	}
-    	
-    	OperationResult result = info.mResult;
-    	
-    	if(result == null) {
-    		return false;
-    	}
-    	
-    	if(!info.mIsBatch && result.getBatchResults().size() > 0) {
-    		result = info.mResult.getBatchResults().get(0);
-    	}
-    	
-    	return callbacks.onOperationComplete(mUserStateKey, result);
     }
     
     /**
