@@ -347,7 +347,15 @@ public class OperationExecutor {
     		return false;
     	}
     	
-    	OperationResult result = info.mIsBatch ? info.mResult : info.mResult.getBatchResults().get(0);
+    	OperationResult result = info.mResult;
+    	
+    	if(result == null) {
+    		return false;
+    	}
+    	
+    	if(!info.mIsBatch && result.getBatchResults().size() > 0) {
+    		result = info.mResult.getBatchResults().get(0);
+    	}
     	
     	return callbacks.onOperationComplete(mUserStateKey, result);
     }
