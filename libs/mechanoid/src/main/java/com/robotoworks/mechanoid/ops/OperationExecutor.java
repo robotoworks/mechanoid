@@ -193,7 +193,7 @@ public class OperationExecutor {
 
 		@Override
 		public void onOperationComplete(int id, OperationResult result) {
-            if(mOpInfo == null || mOpInfo.mId != id) {
+            if(mOpInfo == null || mOpInfo.mId != id || result == null) {
             	return;
             }
             
@@ -266,7 +266,6 @@ public class OperationExecutor {
         boolean mCallbackInvoked = false;
         OperationResult mResult = null;
 		public Intent[] mIntents;
-		boolean mIsBatch = false;
         
         public static final Parcelable.Creator<OpInfo> CREATOR
         = new Parcelable.Creator<OpInfo>() {
@@ -281,7 +280,6 @@ public class OperationExecutor {
 
         OpInfo(Intent[] intents) {
             mIntents = intents;
-            mIsBatch = intents.length > 1;
         }
         
         public Intent getIntent(int index) {
@@ -295,7 +293,6 @@ public class OperationExecutor {
             mId = in.readInt();
             mCallbackInvoked = in.readInt() > 0;
             mResult = in.readParcelable(OperationResult.class.getClassLoader());
-            mIsBatch = in.readInt() > 0;
             int numInBatch = in.readInt();
             mIntents = new Intent[numInBatch];
             in.readTypedArray(mIntents, Intent.CREATOR);
@@ -311,7 +308,6 @@ public class OperationExecutor {
             dest.writeInt(mId);
             dest.writeInt(mCallbackInvoked ? 1 : 0);
             dest.writeParcelable(mResult, 0);
-            dest.writeInt(mIsBatch ? 1 : 0);
             dest.writeInt(mIntents.length);
             dest.writeTypedArray(mIntents, 0);
         }
@@ -333,19 +329,23 @@ public class OperationExecutor {
     }
     
     protected boolean invokeOnOperationComplete(OpInfo info) {
-    	if(mCallbacksRef == null) {
-    		return false;
+    	try {
+    		if(info == null || mCallbacksRef == null) {
+    			return false;
+    		}
+
+    		OperationResult result = info.mResult;
+	    	OperationExecutorCallbacks callbacks = mCallbacksRef.get();
+	    	
+	    	if(result == null || callbacks == null) {
+	    		return false;
+	    	}
+	    	
+	    	return callbacks.onOperationComplete(mUserStateKey, result);
+	    	
+    	} catch(Exception x) {
+    		throw new RuntimeException(this.getKey() + " unhandled exception", x);
     	}
-    	
-    	OperationExecutorCallbacks callbacks = mCallbacksRef.get();
-    	
-    	if(callbacks == null) {
-    		return false;
-    	}
-    	
-    	OperationResult result = info.mIsBatch ? info.mResult : info.mResult.getBatchResults().get(0);
-    	
-    	return callbacks.onOperationComplete(mUserStateKey, result);
     }
     
     /**
@@ -405,7 +405,7 @@ public class OperationExecutor {
      * its result will be ignored and no callbacks will be received.</p>
      *
      * @param mode true to force the operation intent to execute, this will abandon any previous operation
-     * @param operationIntent An intent representing the operation to execute
+     * @param intents Intent(s) representing operation(s) to execute
      * intent
      */
     public void execute(int mode, Intent... intents) {
@@ -451,7 +451,10 @@ public class OperationExecutor {
 		mOpInfo = new OpInfo(operations);
 		
 		invokeOnOperationPending();
-		
-		mOpInfo.mId = Ops.executeBatch(operations);
+		if(operations.length == 1) {
+			mOpInfo.mId = Ops.execute(operations[0]);			
+		} else {
+			mOpInfo.mId = Ops.executeBatch(operations);
+		}
 	}
 }

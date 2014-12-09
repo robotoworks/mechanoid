@@ -16,9 +16,25 @@ package com.robotoworks.mechanoid.ops;
 
 import com.robotoworks.mechanoid.internal.util.LruCache;
 
-public class OperationLog extends LruCache<Integer, OperationResult> {
+public class OperationLog {
     
+	private OperationLogInternal mLog;
+
+	private class OperationLogInternal extends LruCache<Integer, OperationResult> {
+		public OperationLogInternal(int maxSize) {
+			super(maxSize);
+		}
+	}
+
     public OperationLog(int size) {
-        super(size);
+        mLog = new OperationLogInternal(size);
     }
+
+	public OperationResult get(int id) {
+		return mLog.get(id);
+	}
+
+	public void put(int id, OperationResult result) {
+		mLog.put(id, result);
+	}
 }

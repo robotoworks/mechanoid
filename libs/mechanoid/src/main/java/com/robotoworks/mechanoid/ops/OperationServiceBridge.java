@@ -420,7 +420,7 @@ public class OperationServiceBridge {
 		}
 	}
 
-	private void notifyOperationStarting(int id, Intent intent, Bundle data) {
+	protected void notifyOperationStarting(int id, Intent intent, Bundle data) {
 		// Copy to avoid CME
 		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
 		for(OperationServiceListener listener : listeners) {
@@ -430,7 +430,7 @@ public class OperationServiceBridge {
 		}
 	}
 
-	private void notifyOperationComplete(int id, OperationResult result) {
+	protected void notifyOperationComplete(int id, OperationResult result) {
 		// Copy to avoid CME
 		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
 		for(OperationServiceListener listener : listeners) {
@@ -440,7 +440,7 @@ public class OperationServiceBridge {
 		}
 	}
 
-	private void notifyOperationProgress(int id, Intent intent, int progress, Bundle data) {
+	protected void notifyOperationProgress(int id, Intent intent, int progress, Bundle data) {
 		// Copy to avoid CME
 		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
 		for(OperationServiceListener listener : listeners) {
@@ -450,7 +450,7 @@ public class OperationServiceBridge {
 		}
 	}
 	
-	private void notifyOperationAborted(int id, Intent intent, int reason, Bundle data) {
+	protected void notifyOperationAborted(int id, Intent intent, int reason, Bundle data) {
 		// Copy to avoid CME
 		OperationServiceListener[] listeners = mListeners.toArray(new OperationServiceListener[]{});
 		for(OperationServiceListener listener : listeners) {
