@@ -171,6 +171,21 @@ public class OperationResult implements Parcelable {
 		result.setError(error);
 		return result;	
 	}
+	
+	/**
+	 * <p>Create an error result, the result code
+	 * will be set to {@link #RESULT_ERROR}.</p>
+	 * @param error The error that occurred during the operation
+	 * @param data The bundle that should be used as the result bundle, this gives an opportunity
+	 * to add arbitrary data to the result, must not be null
+	 * @return A result that represents an error result of an operation
+	 */
+	public static OperationResult error(Throwable error, Bundle data) {
+		OperationResult result = new OperationResult(RESULT_ERROR);
+		result.setError(error);
+		result.setData(data);
+		return result;	
+	}
 
 	/**
 	 * <p>Create an operation result Bundle as an OK result, which should indicate
@@ -184,17 +199,17 @@ public class OperationResult implements Parcelable {
 	/**
 	 * <p>Create an operation result Bundle as an OK result, which should indicate
 	 * that the operation was a success, the result code will be set to {@link #RESULT_OK}.</p>
-	 * @param bundle The bundle that should be used as the result bundle, this gives an opportunity
+	 * @param data The bundle that should be used as the result bundle, this gives an opportunity
 	 * to add arbitrary data to the result, must not be null
 	 * @return A result that represents an operation result that completed successfully
 	 */
-	public static OperationResult ok(Bundle bundle) {
-		if(bundle == null) {
+	public static OperationResult ok(Bundle data) {
+		if(data == null) {
 			throw new RuntimeException("bundle cannot be null");
 		}
 		
 		OperationResult result = new OperationResult(RESULT_OK);
-		result.setData(bundle);
+		result.setData(data);
 		
 		return result;
 	}
