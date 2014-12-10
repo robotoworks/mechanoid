@@ -24,8 +24,8 @@ public abstract class Operation {
 	/**
 	 * <p>Execute this operations code</p>
 	 * 
-	 * @param context Context of this operation
-	 * @return
+	 * @param context Context of this operation, do not cache this.
+	 * @return A result
 	 */
 	public abstract OperationResult execute(OperationContext context);
 }

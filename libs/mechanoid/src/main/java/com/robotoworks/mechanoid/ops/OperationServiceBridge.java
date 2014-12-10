@@ -38,6 +38,9 @@ import com.robotoworks.mechanoid.Mechanoid;
 import com.robotoworks.mechanoid.ReflectUtil;
 
 public class OperationServiceBridge {	
+	
+	private static int DEFAULT_LOG_SIZE = 10;
+	
 	public static final int MSG_OPERATION_STARTING = 1;
 	public static final int MSG_OPERATION_COMPLETE = 2;
 	public static final int MSG_OPERATION_PROGRESS = 3;
@@ -53,7 +56,7 @@ public class OperationServiceBridge {
 	
 	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
 
-	private OperationLog mLog = new OperationLog(60);
+	private OperationLog mLog;
 	
 	public OperationLog getLog() {
 		return mLog;
@@ -111,6 +114,12 @@ public class OperationServiceBridge {
 	
 	public OperationServiceBridge() {
 		initConfigurations();
+		mLog = new OperationLog(DEFAULT_LOG_SIZE);
+	}
+	
+	public OperationServiceBridge(int logSize) {
+		initConfigurations();
+		mLog = new OperationLog(logSize);
 	}
 
 	protected void initConfigurations() {

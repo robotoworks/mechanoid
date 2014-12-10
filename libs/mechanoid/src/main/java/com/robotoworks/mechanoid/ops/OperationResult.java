@@ -36,6 +36,30 @@ public class OperationResult implements Parcelable {
 
 	private boolean mBatchResultsOk = true;
 	
+	private Object mObject;
+	
+	/**
+	 * Better to call release object
+	 * and get the result of that which
+	 * will save you memory from the log
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> T getObject() {
+		return (T)mObject;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T releaseObject() {
+		Object obj = mObject;
+		mObject = null;
+		return (T)obj;
+	}
+
+	public void setObject(Object obj) {
+		mObject = obj;
+	}
+	
 	/**
 	 * <p>Associate an error to this result, it is a good idea
 	 * to also set the result code to {@link #RESULT_ERROR}</p>

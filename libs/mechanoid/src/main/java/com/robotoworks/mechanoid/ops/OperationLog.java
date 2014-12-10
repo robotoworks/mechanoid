@@ -37,4 +37,8 @@ public class OperationLog {
 	public void put(int id, OperationResult result) {
 		mLog.put(id, result);
 	}
+	
+	public OperationResult remove(int id) {
+		return mLog.remove(id);
+	}
 }
