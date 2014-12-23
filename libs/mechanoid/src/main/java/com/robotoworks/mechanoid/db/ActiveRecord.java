@@ -185,4 +185,22 @@ public abstract class ActiveRecord {
 	    }
 	}
 
+	public void reload(SQuery query){
+		if(mId == 0) {
+			return;
+		}
+	    
+	    Cursor c = null;
+	    
+	    try {
+	    	c = query.selectFirst(mContentUri, _getProjection());
+	        
+	        if(c.moveToFirst()) {
+	        	setPropertiesFromCursor(c);
+	        	makeDirty(false);
+	        }
+	    } finally {
+	        Closeables.closeSilently(c);
+	    }
+	}
 }

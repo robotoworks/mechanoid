@@ -6,12 +6,12 @@ import java.io.IOException;
 import com.robotoworks.mechanoid.net.ServiceResult;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.util.Closeables;
-import java.io.BufferedReader;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
 import com.robotoworks.mechanoid.net.JsonReaderUtil;
-import java.io.InputStreamReader;
+import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.nio.charset.Charset;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class UpdateBookResult extends ServiceResult {
 	private boolean success;

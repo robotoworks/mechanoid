@@ -757,6 +757,24 @@ public class SQuery {
 		return select(uri, projection, null, enableNotifications, groupBy);
 	}
 	
+	public Cursor selectFirst(Uri uri, String[] projection) {
+		Uri uriWithLimit = uri.buildUpon()
+			.appendQueryParameter(MechanoidContentProvider.PARAM_LIMIT, "1")
+			.appendQueryParameter(MechanoidContentProvider.PARAM_OFFSET, "0")
+			.build();
+		
+		return select(uriWithLimit, projection, (String) null);
+	}
+	
+	public Cursor selectFirst(Uri uri, String[] projection, int limit, int offset) {
+		Uri uriWithLimit = uri.buildUpon()
+			.appendQueryParameter(MechanoidContentProvider.PARAM_LIMIT, String.valueOf(limit))
+			.appendQueryParameter(MechanoidContentProvider.PARAM_OFFSET, String.valueOf(offset))
+			.build();
+		
+		return select(uriWithLimit, projection, (String) null);
+	}
+	
 	@TargetApi(11)
 	public android.content.CursorLoader createLoader(Uri uri, String[] projection, String sortOrder) {
 		if(Build.VERSION.SDK_INT < 11) {
