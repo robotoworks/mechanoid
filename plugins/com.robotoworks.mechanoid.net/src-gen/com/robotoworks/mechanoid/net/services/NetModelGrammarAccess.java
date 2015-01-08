@@ -1341,58 +1341,100 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
 	}
 	
-	private ModelElements pModel;
-	private DeclarationElements pDeclaration;
-	private ClientElements pClient;
-	private ClientBlockElements pClientBlock;
-	private HeaderBlockElements pHeaderBlock;
-	private HeaderElements pHeader;
-	private HttpMethodElements pHttpMethod;
-	private HttpMethodBlockElements pHttpMethodBlock;
-	private HttpMethodTypeElements unknownRuleHttpMethodType;
-	private PathElements pPath;
-	private ArbitraryPathSegmentElements pArbitraryPathSegment;
-	private ParamsBlockElements pParamsBlock;
-	private SimpleMemberAssignmentElements pSimpleMemberAssignment;
-	private LiteralElements pLiteral;
-	private BodyBlockElements pBodyBlock;
-	private ResponseBlockElements pResponseBlock;
-	private BlockTypeElements pBlockType;
-	private MemberElements pMember;
-	private TypedMemberElements pTypedMember;
-	private SkipMemberElements pSkipMember;
-	private SimpleMemberElements pSimpleMember;
-	private TypeElements pType;
-	private GenericListTypeElements pGenericListType;
-	private UserTypeElements pUserType;
-	private UserTypeDeclarationElements pUserTypeDeclaration;
-	private ComplexTypeDeclarationElements pComplexTypeDeclaration;
-	private EnumTypeDeclarationElements pEnumTypeDeclaration;
-	private EnumTypeLiteralElements pEnumTypeLiteral;
-	private EnumMemberElements pEnumMember;
-	private ComplexTypeLiteralElements pComplexTypeLiteral;
-	private IntrinsicTypeElements pIntrinsicType;
-	private StringTypeElements pStringType;
-	private BooleanTypeElements pBooleanType;
-	private NumericTypeElements pNumericType;
-	private IntegerTypeElements pIntegerType;
-	private LongTypeElements pLongType;
-	private DoubleTypeElements pDoubleType;
-	private QualifiedNameElements pQualifiedName;
-	private BooleanValueElements unknownRuleBooleanValue;
-	private SignedNumberElements pSignedNumber;
-	private TerminalRule tNUMBER;
-	private TerminalRule tINT;
+	private final ModelElements pModel;
+	private final DeclarationElements pDeclaration;
+	private final ClientElements pClient;
+	private final ClientBlockElements pClientBlock;
+	private final HeaderBlockElements pHeaderBlock;
+	private final HeaderElements pHeader;
+	private final HttpMethodElements pHttpMethod;
+	private final HttpMethodBlockElements pHttpMethodBlock;
+	private final HttpMethodTypeElements unknownRuleHttpMethodType;
+	private final PathElements pPath;
+	private final ArbitraryPathSegmentElements pArbitraryPathSegment;
+	private final ParamsBlockElements pParamsBlock;
+	private final SimpleMemberAssignmentElements pSimpleMemberAssignment;
+	private final LiteralElements pLiteral;
+	private final BodyBlockElements pBodyBlock;
+	private final ResponseBlockElements pResponseBlock;
+	private final BlockTypeElements pBlockType;
+	private final MemberElements pMember;
+	private final TypedMemberElements pTypedMember;
+	private final SkipMemberElements pSkipMember;
+	private final SimpleMemberElements pSimpleMember;
+	private final TypeElements pType;
+	private final GenericListTypeElements pGenericListType;
+	private final UserTypeElements pUserType;
+	private final UserTypeDeclarationElements pUserTypeDeclaration;
+	private final ComplexTypeDeclarationElements pComplexTypeDeclaration;
+	private final EnumTypeDeclarationElements pEnumTypeDeclaration;
+	private final EnumTypeLiteralElements pEnumTypeLiteral;
+	private final EnumMemberElements pEnumMember;
+	private final ComplexTypeLiteralElements pComplexTypeLiteral;
+	private final IntrinsicTypeElements pIntrinsicType;
+	private final StringTypeElements pStringType;
+	private final BooleanTypeElements pBooleanType;
+	private final NumericTypeElements pNumericType;
+	private final IntegerTypeElements pIntegerType;
+	private final LongTypeElements pLongType;
+	private final DoubleTypeElements pDoubleType;
+	private final QualifiedNameElements pQualifiedName;
+	private final BooleanValueElements unknownRuleBooleanValue;
+	private final SignedNumberElements pSignedNumber;
+	private final TerminalRule tNUMBER;
+	private final TerminalRule tINT;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public NetModelGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pDeclaration = new DeclarationElements();
+		this.pClient = new ClientElements();
+		this.pClientBlock = new ClientBlockElements();
+		this.pHeaderBlock = new HeaderBlockElements();
+		this.pHeader = new HeaderElements();
+		this.pHttpMethod = new HttpMethodElements();
+		this.pHttpMethodBlock = new HttpMethodBlockElements();
+		this.unknownRuleHttpMethodType = new HttpMethodTypeElements();
+		this.pPath = new PathElements();
+		this.pArbitraryPathSegment = new ArbitraryPathSegmentElements();
+		this.pParamsBlock = new ParamsBlockElements();
+		this.pSimpleMemberAssignment = new SimpleMemberAssignmentElements();
+		this.pLiteral = new LiteralElements();
+		this.pBodyBlock = new BodyBlockElements();
+		this.pResponseBlock = new ResponseBlockElements();
+		this.pBlockType = new BlockTypeElements();
+		this.pMember = new MemberElements();
+		this.pTypedMember = new TypedMemberElements();
+		this.pSkipMember = new SkipMemberElements();
+		this.pSimpleMember = new SimpleMemberElements();
+		this.pType = new TypeElements();
+		this.pGenericListType = new GenericListTypeElements();
+		this.pUserType = new UserTypeElements();
+		this.pUserTypeDeclaration = new UserTypeDeclarationElements();
+		this.pComplexTypeDeclaration = new ComplexTypeDeclarationElements();
+		this.pEnumTypeDeclaration = new EnumTypeDeclarationElements();
+		this.pEnumTypeLiteral = new EnumTypeLiteralElements();
+		this.pEnumMember = new EnumMemberElements();
+		this.pComplexTypeLiteral = new ComplexTypeLiteralElements();
+		this.pIntrinsicType = new IntrinsicTypeElements();
+		this.pStringType = new StringTypeElements();
+		this.pBooleanType = new BooleanTypeElements();
+		this.pNumericType = new NumericTypeElements();
+		this.pIntegerType = new IntegerTypeElements();
+		this.pLongType = new LongTypeElements();
+		this.pDoubleType = new DoubleTypeElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.unknownRuleBooleanValue = new BooleanValueElements();
+		this.pSignedNumber = new SignedNumberElements();
+		this.tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER");
+		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1425,7 +1467,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	"package" packageName=QualifiedName declarations+=Declaration*;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -1435,7 +1477,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Declaration:
 	//	UserTypeDeclaration | Client;
 	public DeclarationElements getDeclarationAccess() {
-		return (pDeclaration != null) ? pDeclaration : (pDeclaration = new DeclarationElements());
+		return pDeclaration;
 	}
 	
 	public ParserRule getDeclarationRule() {
@@ -1445,7 +1487,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Client:
 	//	"client" name=ID baseUrl=STRING? "{" blocks+=ClientBlock* "}";
 	public ClientElements getClientAccess() {
-		return (pClient != null) ? pClient : (pClient = new ClientElements());
+		return pClient;
 	}
 	
 	public ParserRule getClientRule() {
@@ -1455,7 +1497,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ClientBlock:
 	//	HeaderBlock | ParamsBlock | HttpMethod;
 	public ClientBlockElements getClientBlockAccess() {
-		return (pClientBlock != null) ? pClientBlock : (pClientBlock = new ClientBlockElements());
+		return pClientBlock;
 	}
 	
 	public ParserRule getClientBlockRule() {
@@ -1465,7 +1507,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//HeaderBlock:
 	//	"headers" headers+=Header ("," headers+=Header)*;
 	public HeaderBlockElements getHeaderBlockAccess() {
-		return (pHeaderBlock != null) ? pHeaderBlock : (pHeaderBlock = new HeaderBlockElements());
+		return pHeaderBlock;
 	}
 	
 	public ParserRule getHeaderBlockRule() {
@@ -1475,7 +1517,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Header:
 	//	name=STRING ":" value=STRING;
 	public HeaderElements getHeaderAccess() {
-		return (pHeader != null) ? pHeader : (pHeader = new HeaderElements());
+		return pHeader;
 	}
 	
 	public ParserRule getHeaderRule() {
@@ -1485,7 +1527,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//HttpMethod:
 	//	type=HttpMethodType name=ID path=Path? "{" blocks+=HttpMethodBlock* "}";
 	public HttpMethodElements getHttpMethodAccess() {
-		return (pHttpMethod != null) ? pHttpMethod : (pHttpMethod = new HttpMethodElements());
+		return pHttpMethod;
 	}
 	
 	public ParserRule getHttpMethodRule() {
@@ -1495,7 +1537,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//HttpMethodBlock:
 	//	HeaderBlock | ParamsBlock | BodyBlock | ResponseBlock;
 	public HttpMethodBlockElements getHttpMethodBlockAccess() {
-		return (pHttpMethodBlock != null) ? pHttpMethodBlock : (pHttpMethodBlock = new HttpMethodBlockElements());
+		return pHttpMethodBlock;
 	}
 	
 	public ParserRule getHttpMethodBlockRule() {
@@ -1505,7 +1547,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum HttpMethodType:
 	//	get | put | post | delete;
 	public HttpMethodTypeElements getHttpMethodTypeAccess() {
-		return (unknownRuleHttpMethodType != null) ? unknownRuleHttpMethodType : (unknownRuleHttpMethodType = new HttpMethodTypeElements());
+		return unknownRuleHttpMethodType;
 	}
 	
 	public EnumRule getHttpMethodTypeRule() {
@@ -1516,7 +1558,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	{Path} "/" (arb+=ArbitraryPathSegment | params+=SimpleMemberAssignment) ("/" (arb+=ArbitraryPathSegment |
 	//	params+=SimpleMemberAssignment))*;
 	public PathElements getPathAccess() {
-		return (pPath != null) ? pPath : (pPath = new PathElements());
+		return pPath;
 	}
 	
 	public ParserRule getPathRule() {
@@ -1526,7 +1568,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ArbitraryPathSegment:
 	//	QualifiedName ("-" QualifiedName)*;
 	public ArbitraryPathSegmentElements getArbitraryPathSegmentAccess() {
-		return (pArbitraryPathSegment != null) ? pArbitraryPathSegment : (pArbitraryPathSegment = new ArbitraryPathSegmentElements());
+		return pArbitraryPathSegment;
 	}
 	
 	public ParserRule getArbitraryPathSegmentRule() {
@@ -1536,7 +1578,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ParamsBlock:
 	//	{ParamsBlock} "params" params+=SimpleMemberAssignment ("," params+=SimpleMemberAssignment)*;
 	public ParamsBlockElements getParamsBlockAccess() {
-		return (pParamsBlock != null) ? pParamsBlock : (pParamsBlock = new ParamsBlockElements());
+		return pParamsBlock;
 	}
 	
 	public ParserRule getParamsBlockRule() {
@@ -1546,7 +1588,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SimpleMemberAssignment:
 	//	member=SimpleMember ("=" defaultValue=Literal)?;
 	public SimpleMemberAssignmentElements getSimpleMemberAssignmentAccess() {
-		return (pSimpleMemberAssignment != null) ? pSimpleMemberAssignment : (pSimpleMemberAssignment = new SimpleMemberAssignmentElements());
+		return pSimpleMemberAssignment;
 	}
 	
 	public ParserRule getSimpleMemberAssignmentRule() {
@@ -1556,7 +1598,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Literal:
 	//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
 	public LiteralElements getLiteralAccess() {
-		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+		return pLiteral;
 	}
 	
 	public ParserRule getLiteralRule() {
@@ -1566,7 +1608,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//BodyBlock:
 	//	"body" type=BlockType;
 	public BodyBlockElements getBodyBlockAccess() {
-		return (pBodyBlock != null) ? pBodyBlock : (pBodyBlock = new BodyBlockElements());
+		return pBodyBlock;
 	}
 	
 	public ParserRule getBodyBlockRule() {
@@ -1576,7 +1618,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ResponseBlock:
 	//	{ResponseBlock} "response" ("extends" superType=[ComplexTypeDeclaration])? type=BlockType?;
 	public ResponseBlockElements getResponseBlockAccess() {
-		return (pResponseBlock != null) ? pResponseBlock : (pResponseBlock = new ResponseBlockElements());
+		return pResponseBlock;
 	}
 	
 	public ParserRule getResponseBlockRule() {
@@ -1586,7 +1628,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//BlockType:
 	//	Type | ComplexTypeLiteral;
 	public BlockTypeElements getBlockTypeAccess() {
-		return (pBlockType != null) ? pBlockType : (pBlockType = new BlockTypeElements());
+		return pBlockType;
 	}
 	
 	public ParserRule getBlockTypeRule() {
@@ -1596,7 +1638,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Member:
 	//	TypedMember / *('=' defaultValue=Value)?  * / | SkipMember;
 	public MemberElements getMemberAccess() {
-		return (pMember != null) ? pMember : (pMember = new MemberElements());
+		return pMember;
 	}
 	
 	public ParserRule getMemberRule() {
@@ -1606,7 +1648,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//TypedMember:
 	//	name=(ID | STRING) ":" type=Type;
 	public TypedMemberElements getTypedMemberAccess() {
-		return (pTypedMember != null) ? pTypedMember : (pTypedMember = new TypedMemberElements());
+		return pTypedMember;
 	}
 	
 	public ParserRule getTypedMemberRule() {
@@ -1616,7 +1658,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SkipMember:
 	//	name=(ID | STRING) literal=ComplexTypeLiteral;
 	public SkipMemberElements getSkipMemberAccess() {
-		return (pSkipMember != null) ? pSkipMember : (pSkipMember = new SkipMemberElements());
+		return pSkipMember;
 	}
 	
 	public ParserRule getSkipMemberRule() {
@@ -1626,7 +1668,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SimpleMember:
 	//	name=(ID | STRING) ":" type=IntrinsicType;
 	public SimpleMemberElements getSimpleMemberAccess() {
-		return (pSimpleMember != null) ? pSimpleMember : (pSimpleMember = new SimpleMemberElements());
+		return pSimpleMember;
 	}
 	
 	public ParserRule getSimpleMemberRule() {
@@ -1636,7 +1678,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Type:
 	//	UserType | IntrinsicType | GenericListType;
 	public TypeElements getTypeAccess() {
-		return (pType != null) ? pType : (pType = new TypeElements());
+		return pType;
 	}
 	
 	public ParserRule getTypeRule() {
@@ -1646,7 +1688,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//GenericListType:
 	//	elementType=(UserType | IntrinsicType) id="[]";
 	public GenericListTypeElements getGenericListTypeAccess() {
-		return (pGenericListType != null) ? pGenericListType : (pGenericListType = new GenericListTypeElements());
+		return pGenericListType;
 	}
 	
 	public ParserRule getGenericListTypeRule() {
@@ -1656,7 +1698,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//UserType:
 	//	declaration=[UserTypeDeclaration];
 	public UserTypeElements getUserTypeAccess() {
-		return (pUserType != null) ? pUserType : (pUserType = new UserTypeElements());
+		return pUserType;
 	}
 	
 	public ParserRule getUserTypeRule() {
@@ -1666,7 +1708,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//UserTypeDeclaration:
 	//	ComplexTypeDeclaration | EnumTypeDeclaration;
 	public UserTypeDeclarationElements getUserTypeDeclarationAccess() {
-		return (pUserTypeDeclaration != null) ? pUserTypeDeclaration : (pUserTypeDeclaration = new UserTypeDeclarationElements());
+		return pUserTypeDeclaration;
 	}
 	
 	public ParserRule getUserTypeDeclarationRule() {
@@ -1676,7 +1718,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ComplexTypeDeclaration:
 	//	keyword="entity" nogen?="nogen"? name=ID literal=ComplexTypeLiteral?;
 	public ComplexTypeDeclarationElements getComplexTypeDeclarationAccess() {
-		return (pComplexTypeDeclaration != null) ? pComplexTypeDeclaration : (pComplexTypeDeclaration = new ComplexTypeDeclarationElements());
+		return pComplexTypeDeclaration;
 	}
 	
 	public ParserRule getComplexTypeDeclarationRule() {
@@ -1686,7 +1728,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumTypeDeclaration:
 	//	keyword="enum" nogen?="nogen"? name=ID ("extends" superType=IntegerType)? literal=EnumTypeLiteral?;
 	public EnumTypeDeclarationElements getEnumTypeDeclarationAccess() {
-		return (pEnumTypeDeclaration != null) ? pEnumTypeDeclaration : (pEnumTypeDeclaration = new EnumTypeDeclarationElements());
+		return pEnumTypeDeclaration;
 	}
 	
 	public ParserRule getEnumTypeDeclarationRule() {
@@ -1696,7 +1738,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumTypeLiteral:
 	//	"{" members+=EnumMember ("," members+=EnumMember)* "}";
 	public EnumTypeLiteralElements getEnumTypeLiteralAccess() {
-		return (pEnumTypeLiteral != null) ? pEnumTypeLiteral : (pEnumTypeLiteral = new EnumTypeLiteralElements());
+		return pEnumTypeLiteral;
 	}
 	
 	public ParserRule getEnumTypeLiteralRule() {
@@ -1706,7 +1748,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumMember:
 	//	name=ID (assignment?="=" value=INT)?;
 	public EnumMemberElements getEnumMemberAccess() {
-		return (pEnumMember != null) ? pEnumMember : (pEnumMember = new EnumMemberElements());
+		return pEnumMember;
 	}
 	
 	public ParserRule getEnumMemberRule() {
@@ -1716,7 +1758,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ComplexTypeLiteral:
 	//	"{" members+=Member ("," members+=Member)* "}";
 	public ComplexTypeLiteralElements getComplexTypeLiteralAccess() {
-		return (pComplexTypeLiteral != null) ? pComplexTypeLiteral : (pComplexTypeLiteral = new ComplexTypeLiteralElements());
+		return pComplexTypeLiteral;
 	}
 	
 	public ParserRule getComplexTypeLiteralRule() {
@@ -1726,7 +1768,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//IntrinsicType:
 	//	StringType | BooleanType | NumericType;
 	public IntrinsicTypeElements getIntrinsicTypeAccess() {
-		return (pIntrinsicType != null) ? pIntrinsicType : (pIntrinsicType = new IntrinsicTypeElements());
+		return pIntrinsicType;
 	}
 	
 	public ParserRule getIntrinsicTypeRule() {
@@ -1736,7 +1778,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//StringType:
 	//	id="String";
 	public StringTypeElements getStringTypeAccess() {
-		return (pStringType != null) ? pStringType : (pStringType = new StringTypeElements());
+		return pStringType;
 	}
 	
 	public ParserRule getStringTypeRule() {
@@ -1746,7 +1788,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//BooleanType:
 	//	id="boolean";
 	public BooleanTypeElements getBooleanTypeAccess() {
-		return (pBooleanType != null) ? pBooleanType : (pBooleanType = new BooleanTypeElements());
+		return pBooleanType;
 	}
 	
 	public ParserRule getBooleanTypeRule() {
@@ -1756,7 +1798,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//NumericType:
 	//	IntegerType | LongType | DoubleType;
 	public NumericTypeElements getNumericTypeAccess() {
-		return (pNumericType != null) ? pNumericType : (pNumericType = new NumericTypeElements());
+		return pNumericType;
 	}
 	
 	public ParserRule getNumericTypeRule() {
@@ -1766,7 +1808,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//IntegerType:
 	//	id="int";
 	public IntegerTypeElements getIntegerTypeAccess() {
-		return (pIntegerType != null) ? pIntegerType : (pIntegerType = new IntegerTypeElements());
+		return pIntegerType;
 	}
 	
 	public ParserRule getIntegerTypeRule() {
@@ -1776,7 +1818,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//LongType:
 	//	id="long";
 	public LongTypeElements getLongTypeAccess() {
-		return (pLongType != null) ? pLongType : (pLongType = new LongTypeElements());
+		return pLongType;
 	}
 	
 	public ParserRule getLongTypeRule() {
@@ -1786,7 +1828,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DoubleType:
 	//	id="double";
 	public DoubleTypeElements getDoubleTypeAccess() {
-		return (pDoubleType != null) ? pDoubleType : (pDoubleType = new DoubleTypeElements());
+		return pDoubleType;
 	}
 	
 	public ParserRule getDoubleTypeRule() {
@@ -1796,7 +1838,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -1806,7 +1848,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum BooleanValue:
 	//	true | false;
 	public BooleanValueElements getBooleanValueAccess() {
-		return (unknownRuleBooleanValue != null) ? unknownRuleBooleanValue : (unknownRuleBooleanValue = new BooleanValueElements());
+		return unknownRuleBooleanValue;
 	}
 	
 	public EnumRule getBooleanValueRule() {
@@ -1816,7 +1858,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SignedNumber returns ecore::EBigDecimal:
 	//	"-"? NUMBER;
 	public SignedNumberElements getSignedNumberAccess() {
-		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
+		return pSignedNumber;
 	}
 	
 	public ParserRule getSignedNumberRule() {
@@ -1826,13 +1868,13 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal NUMBER returns ecore::EBigDecimal:
 	//	"0".."9"* ("." "0".."9"+)?;
 	public TerminalRule getNUMBERRule() {
-		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+		return tNUMBER;
 	} 
 
 	//terminal INT returns ecore::EInt:
 	//	"$$$don\'t use this anymore$$$";
 	public TerminalRule getINTRule() {
-		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+		return tINT;
 	} 
 
 	//terminal ID:
@@ -1842,8 +1884,8 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

@@ -363,23 +363,30 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getParcelableParcelableKeyword_6_0() { return cParcelableParcelableKeyword_6_0; }
 	}
 	
-	private ModelElements pModel;
-	private ServiceBlockElements pServiceBlock;
-	private OperationElements pOperation;
-	private OperationArgElements pOperationArg;
-	private UniqueClauseElements pUniqueClause;
-	private OpArgTypeElements unknownRuleOpArgType;
-	private QualifiedNameElements pQualifiedName;
+	private final ModelElements pModel;
+	private final ServiceBlockElements pServiceBlock;
+	private final OperationElements pOperation;
+	private final OperationArgElements pOperationArg;
+	private final UniqueClauseElements pUniqueClause;
+	private final OpArgTypeElements unknownRuleOpArgType;
+	private final QualifiedNameElements pQualifiedName;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public OpServiceModelGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pServiceBlock = new ServiceBlockElements();
+		this.pOperation = new OperationElements();
+		this.pOperationArg = new OperationArgElements();
+		this.pUniqueClause = new UniqueClauseElements();
+		this.unknownRuleOpArgType = new OpArgTypeElements();
+		this.pQualifiedName = new QualifiedNameElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -412,7 +419,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	"package" packageName=QualifiedName service=ServiceBlock;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -422,7 +429,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ServiceBlock:
 	//	"service" name=ID "{" ops+=Operation* "}";
 	public ServiceBlockElements getServiceBlockAccess() {
-		return (pServiceBlock != null) ? pServiceBlock : (pServiceBlock = new ServiceBlockElements());
+		return pServiceBlock;
 	}
 	
 	public ParserRule getServiceBlockRule() {
@@ -432,7 +439,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Operation:
 	//	"operation" name=ID "(" (args+=OperationArg ("," args+=OperationArg)*)? ")" uniqueClause=UniqueClause?;
 	public OperationElements getOperationAccess() {
-		return (pOperation != null) ? pOperation : (pOperation = new OperationElements());
+		return pOperation;
 	}
 	
 	public ParserRule getOperationRule() {
@@ -442,7 +449,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//OperationArg:
 	//	type=OpArgType name=ID;
 	public OperationArgElements getOperationArgAccess() {
-		return (pOperationArg != null) ? pOperationArg : (pOperationArg = new OperationArgElements());
+		return pOperationArg;
 	}
 	
 	public ParserRule getOperationArgRule() {
@@ -452,7 +459,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//UniqueClause:
 	//	{NotUnique} "not" "unique" | {UniqueDeclaration} "unique" "(" args+=[OperationArg] ("," args+=[OperationArg])* ")";
 	public UniqueClauseElements getUniqueClauseAccess() {
-		return (pUniqueClause != null) ? pUniqueClause : (pUniqueClause = new UniqueClauseElements());
+		return pUniqueClause;
 	}
 	
 	public ParserRule getUniqueClauseRule() {
@@ -462,7 +469,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum OpArgType:
 	//	Boolean="boolean" | String | Integer="int" | Float="float" | Double="double" | Long="long" | Parcelable;
 	public OpArgTypeElements getOpArgTypeAccess() {
-		return (unknownRuleOpArgType != null) ? unknownRuleOpArgType : (unknownRuleOpArgType = new OpArgTypeElements());
+		return unknownRuleOpArgType;
 	}
 	
 	public EnumRule getOpArgTypeRule() {
@@ -472,7 +479,7 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -492,8 +499,8 @@ public class OpServiceModelGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

@@ -32,36 +32,36 @@ class ContentProviderGenerator {
 			
 				«var counter=-1»
 				«FOR tbl : snapshot.tables»
-				protected static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
+				public static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF tbl.hasAndroidPrimaryKey»
-				protected static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				public static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»
 				«ENDFOR»
 
 				«FOR vw : snapshot.views»
-				protected static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
+				public static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF vw.hasAndroidPrimaryKey»
-				protected static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				public static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»				
 				«ENDFOR»
 				
 				«FOR tbl : model.configInitTables»
-				protected static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
+				public static final int «tbl.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF tbl.hasAndroidPrimaryKey»
-				protected static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				public static final int «tbl.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»
 				«ENDFOR»
 
 				«FOR vw : model.configInitViews»
-				protected static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
+				public static final int «vw.name.underscore.toUpperCase» = «counter=counter+1»;
 				«IF vw.hasAndroidPrimaryKey»
-				protected static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
+				public static final int «vw.name.underscore.toUpperCase»_ID = «counter=counter+1»;
 				«ENDIF»				
 				«ENDFOR»
 				
 				«IF model.database.config !=null»
 				«FOR a : model.database.config.statements.filter([it instanceof ActionStatement])»
-				protected static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
+				public static final int «(a as ActionStatement).uri.type.underscore.toUpperCase»_«(a as ActionStatement).name.underscore.toUpperCase» = «counter=counter+1»;
 				«ENDFOR»
 				«ENDIF»			
 				public static final int NUM_URI_MATCHERS = «counter + 1»;

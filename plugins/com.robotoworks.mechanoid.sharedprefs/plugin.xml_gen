@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.robotoworks.com/mechanoid/sharedprefs/SharedPreferencesModel" 
        class = "com.robotoworks.mechanoid.sharedprefs.sharedPreferencesModel.SharedPreferencesModelPackage"
-       genModel = "com/robotoworks/mechanoid/sharedprefs/SharedPreferencesModel.genmodel" /> 
+       genModel = "model/generated/SharedPreferencesModel.genmodel" /> 
 	
   </extension>
 

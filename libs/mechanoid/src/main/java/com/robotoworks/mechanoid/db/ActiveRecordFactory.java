@@ -15,9 +15,11 @@
 package com.robotoworks.mechanoid.db;
 
 import android.database.Cursor;
+import android.net.Uri;
 
 
 public abstract class ActiveRecordFactory<T extends ActiveRecord> {
 	public abstract T create(Cursor c);
 	public abstract String[] getProjection();
+	public abstract Uri getContentUri();
 }

@@ -1358,8 +1358,8 @@ public class RequestGenerator {
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
-    final Function1<String, String> _function_1 = new Function1<String, String>() {
-      public String apply(final String arg) {
+    final Function1<String, CharSequence> _function_1 = new Function1<String, CharSequence>() {
+      public CharSequence apply(final String arg) {
         String _substring = arg.substring(1);
         String _camelize = Strings.camelize(_substring);
         return (_camelize + "Segment");

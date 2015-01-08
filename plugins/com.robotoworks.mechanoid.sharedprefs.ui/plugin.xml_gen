@@ -250,7 +250,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="com.robotoworks.mechanoid.sharedprefs.ui.SharedPreferencesModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="com.robotoworks.mechanoid.sharedprefs.ui.SharedPreferencesModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="mechprefs"
+            >
       </participant>
    </extension>
    <extension
