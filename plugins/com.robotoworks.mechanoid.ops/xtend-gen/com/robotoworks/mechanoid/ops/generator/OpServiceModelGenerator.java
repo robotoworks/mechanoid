@@ -5,6 +5,7 @@ package com.robotoworks.mechanoid.ops.generator;
 
 import com.google.inject.Inject;
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
+import com.robotoworks.mechanoid.ops.generator.Extensions;
 import com.robotoworks.mechanoid.ops.generator.OperationGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationProcessorGenerator;
 import com.robotoworks.mechanoid.ops.generator.OperationRegistryGenerator;
@@ -80,8 +81,27 @@ public class OpServiceModelGenerator implements IGenerator {
   }
   
   public void generateOperationRegistry(final Resource resource, final IFileSystemAccess fsa) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method generateStub is undefined for the type OpServiceModelGenerator");
+    EList<EObject> _contents = resource.getContents();
+    EObject _head = IterableExtensions.<EObject>head(_contents);
+    Model model = ((Model) _head);
+    String _packageName = model.getPackageName();
+    ServiceBlock _service = model.getService();
+    String _name = _service.getName();
+    String _formatServiceName = Extensions.formatServiceName(_name);
+    String _concat = "Abstract".concat(_formatServiceName);
+    String _concat_1 = _concat.concat("OperationConfigurationRegistry");
+    String _resolveFileName = Strings.resolveFileName(_packageName, _concat_1);
+    CharSequence _generate = this.mOperationRegistryGenerator.generate(model);
+    fsa.generateFile(_resolveFileName, _generate);
+    String _packageName_1 = model.getPackageName();
+    ServiceBlock _service_1 = model.getService();
+    String _name_1 = _service_1.getName();
+    String _formatServiceName_1 = Extensions.formatServiceName(_name_1);
+    String _concat_2 = _formatServiceName_1.concat("OperationConfigurationRegistry");
+    String _resolveFileName_1 = Strings.resolveFileName(_packageName_1, _concat_2);
+    CharSequence _generateStub = this.mOperationRegistryGenerator.generateStub(model);
+    fsa.generateFile(_resolveFileName_1, 
+      MechanoidOutputConfigurationProvider.DEFAULT_STUB_OUTPUT, _generateStub);
   }
   
   public void generateServiceConfiguration(final Resource resource, final IFileSystemAccess fsa) {
