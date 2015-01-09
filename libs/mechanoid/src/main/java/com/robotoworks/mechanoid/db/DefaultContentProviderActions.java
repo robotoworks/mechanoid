@@ -161,7 +161,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 			limitClause = limitClause + " OFFSET " + offset;
 		}
 		
-		String clause = sortOrder == null ? limitClause : sortOrder + limitClause;
+		String clause = sortOrder == null ? " 1" + limitClause : sortOrder + limitClause;
 		
 		return clause;
 	}

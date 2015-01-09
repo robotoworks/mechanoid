@@ -14,11 +14,13 @@
  */
 package com.robotoworks.mechanoid.db;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import android.annotation.TargetApi;
+import android.content.AsyncQueryHandler;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -715,6 +717,10 @@ public class SQuery {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder) {
+		return mAsync.startQuery(callback, uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
 	public Cursor select(Uri uri, String[] projection, String sortOrder, String... groupBy) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 
@@ -723,12 +729,24 @@ public class SQuery {
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder, String... groupBy) {
+		uri = appendGroupByToUri(uri, groupBy);
+		return mAsync.startQuery(callback, uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+	
 	public Cursor select(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
 		ContentResolver resolver = Mechanoid.getContentResolver();
 		
 		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
 		
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
+	}
+
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		
+		return mAsync.startQuery(callback, uri, projection, toString(), getArgsArray(), sortOrder);
 	}
 	
 	public Cursor select(Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
@@ -739,22 +757,44 @@ public class SQuery {
 
 		return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
 	}
+	
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+
+		uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
+		uri = appendGroupByToUri(uri, groupBy);
+		return mAsync.startQuery(callback, uri, projection, toString(), getArgsArray(), sortOrder);
+	}
 
 	public Cursor select(Uri uri, String[] projection) {
 		return select(uri, projection, (String) null);
+	}
+	
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection) {
+		return selectAsync(callback, uri, projection, (String) null);
 	}
 
 	public Cursor select(Uri uri, String[] projection, String... groupBy) {
 		return select(uri, projection, null, groupBy);
 	}
 	
-
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String... groupBy) {
+		return selectAsync(callback, uri, projection, null, groupBy);
+	}
+	
 	public Cursor select(Uri uri, String[] projection, boolean enableNotifications) {
 		return select(uri, projection, null, enableNotifications);
 	}
 
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, boolean enableNotifications) {
+		return selectAsync(callback, uri, projection, null, enableNotifications);
+	}
+	
 	public Cursor select(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
 		return select(uri, projection, null, enableNotifications, groupBy);
+	}
+	
+	public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
+		return selectAsync(callback, uri, projection, null, enableNotifications, groupBy);
 	}
 	
 	public Cursor selectFirst(Uri uri, String[] projection) {
@@ -766,13 +806,31 @@ public class SQuery {
 		return select(uriWithLimit, projection, (String) null);
 	}
 	
-	public Cursor selectFirst(Uri uri, String[] projection, int limit, int offset) {
+	public AsyncQuery selectFirstAsync(AsyncQueryCallback callback, Uri uri, String[] projection) {
+		Uri uriWithLimit = uri.buildUpon()
+			.appendQueryParameter(MechanoidContentProvider.PARAM_LIMIT, "1")
+			.appendQueryParameter(MechanoidContentProvider.PARAM_OFFSET, "0")
+			.build();
+		
+		return selectAsync(callback, uriWithLimit, projection, (String) null);
+	}
+	
+	public Cursor selectWithLimit(Uri uri, String[] projection, int limit, int offset) {
 		Uri uriWithLimit = uri.buildUpon()
 			.appendQueryParameter(MechanoidContentProvider.PARAM_LIMIT, String.valueOf(limit))
 			.appendQueryParameter(MechanoidContentProvider.PARAM_OFFSET, String.valueOf(offset))
 			.build();
 		
 		return select(uriWithLimit, projection, (String) null);
+	}
+	
+	public AsyncQuery selectWithLimitAsync(AsyncQueryCallback callback, Uri uri, String[] projection, int limit, int offset) {
+		Uri uriWithLimit = uri.buildUpon()
+			.appendQueryParameter(MechanoidContentProvider.PARAM_LIMIT, String.valueOf(limit))
+			.appendQueryParameter(MechanoidContentProvider.PARAM_OFFSET, String.valueOf(offset))
+			.build();
+		
+		return selectAsync(callback, uriWithLimit, projection, (String) null);
 	}
 	
 	@TargetApi(11)
@@ -1479,4 +1537,56 @@ public class SQuery {
     public boolean exists(Uri uri) {
     	return count(uri) > 0;
     }
+    
+    private static Async mAsync;
+    
+    public static class Async extends AsyncQueryHandler {
+
+    	int mTokens = 0;
+    	
+    	protected synchronized int createToken() {
+    		mTokens++;
+    		return mTokens;
+    	}
+        public Async(ContentResolver cr) {
+            super(cr);
+        }
+        
+        public AsyncQuery startQuery(AsyncQueryCallback callback, Uri uri,
+        		String[] projection, String selection, String[] selectionArgs,
+        		String orderBy) {
+        	
+        	AsyncQuery query = new AsyncQuery(this, createToken(), callback);
+        	
+        	WeakReference<AsyncQuery> queryRef = new WeakReference<AsyncQuery>(query);
+
+        	startQuery(query.token, queryRef, uri, projection, selection, selectionArgs,
+        			orderBy);
+        	
+        	return query;
+        }
+
+        @Override
+        protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+            super.onQueryComplete(token, cookie, cursor);
+
+            WeakReference<AsyncQuery> queryRef = (WeakReference<AsyncQuery>) cookie;
+
+            AsyncQuery asyncQuery = queryRef.get();
+            
+            if(asyncQuery != null) {
+            	asyncQuery.callback.onQueryComplete(cursor);
+            }
+        }
+    }
+    
+    public interface AsyncQueryCallback {
+    	void onQueryComplete(Cursor cursor);
+    }
+
+	public static synchronized void init(ContentResolver resolver) {
+		if(mAsync != null) {
+			mAsync = new Async(resolver);
+		}
+	}
 }
