@@ -250,7 +250,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="com.robotoworks.mechanoid.db.ui.SqliteModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="com.robotoworks.mechanoid.db.ui.SqliteModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="mechdb"
+            >
       </participant>
    </extension>
    <extension

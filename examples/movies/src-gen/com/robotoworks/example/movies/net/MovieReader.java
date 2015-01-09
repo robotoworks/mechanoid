@@ -4,8 +4,8 @@ import com.robotoworks.mechanoid.net.JsonEntityReader;
 import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;
 import java.io.IOException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.util.List;
+import com.robotoworks.mechanoid.internal.util.JsonToken;
 
 public class MovieReader extends JsonEntityReader<Movie> {			
 	

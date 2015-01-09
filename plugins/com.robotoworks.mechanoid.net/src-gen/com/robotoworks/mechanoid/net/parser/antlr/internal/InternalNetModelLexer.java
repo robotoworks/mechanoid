@@ -884,10 +884,10 @@ public class InternalNetModelLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -905,10 +905,10 @@ public class InternalNetModelLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -924,23 +924,15 @@ public class InternalNetModelLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -965,10 +957,10 @@ public class InternalNetModelLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -984,23 +976,15 @@ public class InternalNetModelLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.robotoworks.mechanoid.net/src-gen/com/robotoworks/mechanoid/net/parser/antlr/internal/InternalNetModel.g:2412:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1544,60 +1528,19 @@ public class InternalNetModelLexer extends Lexer {
 
     protected DFA14 dfa14 = new DFA14(this);
     static final String DFA14_eotS =
-        "\1\31\2\44\2\uffff\1\44\2\uffff\1\55\2\uffff\3\44\1\40\5\44\1\73"+
-        "\3\44\2\uffff\2\40\1\uffff\2\40\2\uffff\3\44\1\uffff\1\44\2\uffff"+
-        "\1\44\7\uffff\4\44\1\uffff\6\44\1\uffff\3\44\3\uffff\2\44\1\131"+
-        "\13\44\1\145\3\44\1\151\4\44\1\uffff\1\156\2\44\1\161\4\44\1\166"+
-        "\2\44\1\uffff\1\171\2\44\1\uffff\1\174\3\44\1\uffff\2\44\1\uffff"+
-        "\4\44\1\uffff\1\u0086\1\44\1\uffff\2\44\1\uffff\1\u008a\1\44\1\u008c"+
-        "\1\u008d\4\44\1\u0092\1\uffff\1\u0093\1\u0094\1\u0095\1\uffff\1"+
-        "\u0096\2\uffff\1\u0097\1\u0098\1\44\1\u009a\7\uffff\1\u009b\2\uffff";
+        "\1\31\2\44\2\uffff\1\44\2\uffff\1\55\2\uffff\3\44\1\40\5\44\1\73\3\44\2\uffff\2\40\1\uffff\2\40\2\uffff\3\44\1\uffff\1\44\2\uffff\1\44\7\uffff\4\44\1\uffff\6\44\1\uffff\3\44\3\uffff\2\44\1\131\13\44\1\145\3\44\1\151\4\44\1\uffff\1\156\2\44\1\161\4\44\1\166\2\44\1\uffff\1\171\2\44\1\uffff\1\174\3\44\1\uffff\2\44\1\uffff\4\44\1\uffff\1\u0086\1\44\1\uffff\2\44\1\uffff\1\u008a\1\44\1\u008c\1\u008d\4\44\1\u0092\1\uffff\1\u0093\1\u0094\1\u0095\1\uffff\1\u0096\2\uffff\1\u0097\1\u0098\1\44\1\u009a\7\uffff\1\u009b\2\uffff";
     static final String DFA14_eofS =
         "\u009c\uffff";
     static final String DFA14_minS =
-        "\1\0\1\141\1\154\2\uffff\1\145\2\uffff\1\52\2\uffff\1\157\1\145"+
-        "\1\156\1\135\1\157\1\164\1\156\1\157\1\145\1\60\1\145\1\162\1\141"+
-        "\2\uffff\1\44\1\101\1\uffff\2\0\2\uffff\1\143\1\164\1\163\1\uffff"+
-        "\1\151\2\uffff\1\141\7\uffff\1\144\1\163\2\164\1\uffff\1\147\1\162"+
-        "\1\164\1\156\1\165\1\154\1\uffff\1\164\1\165\1\154\3\uffff\1\153"+
-        "\1\141\1\60\1\164\1\145\1\144\1\171\1\154\1\160\1\145\1\151\1\155"+
-        "\1\145\1\151\1\60\1\147\1\142\1\145\1\60\1\145\1\163\1\141\1\155"+
-        "\1\uffff\1\60\1\156\1\145\1\60\1\145\1\157\1\156\1\164\1\60\2\156"+
-        "\1\uffff\1\60\1\154\1\164\1\uffff\1\60\1\145\1\147\1\163\1\uffff"+
-        "\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1\uffff\1\60\1\147"+
-        "\1\uffff\2\145\1\uffff\1\60\1\145\2\60\1\163\1\156\2\163\1\60\1"+
-        "\uffff\3\60\1\uffff\1\60\2\uffff\2\60\1\145\1\60\7\uffff\1\60\2"+
-        "\uffff";
+        "\1\0\1\141\1\154\2\uffff\1\145\2\uffff\1\52\2\uffff\1\157\1\145\1\156\1\135\1\157\1\164\1\156\1\157\1\145\1\60\1\145\1\162\1\141\2\uffff\1\44\1\101\1\uffff\2\0\2\uffff\1\143\1\164\1\163\1\uffff\1\151\2\uffff\1\141\7\uffff\1\144\1\163\2\164\1\uffff\1\147\1\162\1\164\1\156\1\165\1\154\1\uffff\1\164\1\165\1\154\3\uffff\1\153\1\141\1\60\1\164\1\145\1\144\1\171\1\154\1\160\1\145\1\151\1\155\1\145\1\151\1\60\1\147\1\142\1\145\1\60\1\145\1\163\1\141\1\155\1\uffff\1\60\1\156\1\145\1\60\1\145\1\157\1\156\1\164\1\60\2\156\1\uffff\1\60\1\154\1\164\1\uffff\1\60\1\145\1\147\1\163\1\uffff\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1\uffff\1\60\1\147\1\uffff\2\145\1\uffff\1\60\1\145\2\60\1\163\1\156\2\163\1\60\1\uffff\3\60\1\uffff\1\60\2\uffff\2\60\1\145\1\60\7\uffff\1\60\2\uffff";
     static final String DFA14_maxS =
-        "\1\uffff\1\165\1\154\2\uffff\1\145\2\uffff\1\57\2\uffff\1\157\1"+
-        "\145\1\170\1\135\1\157\1\164\1\156\2\157\1\71\1\145\1\162\1\141"+
-        "\2\uffff\1\44\1\172\1\uffff\2\uffff\2\uffff\1\162\1\164\1\163\1"+
-        "\uffff\1\151\2\uffff\1\141\7\uffff\1\157\1\163\1\164\1\165\1\uffff"+
-        "\1\147\1\162\1\164\1\156\1\165\1\154\1\uffff\1\164\1\165\1\154\3"+
-        "\uffff\1\153\1\141\1\172\1\164\1\145\1\144\1\171\1\154\1\160\1\145"+
-        "\1\151\1\155\1\145\1\151\1\172\1\147\1\142\1\145\1\172\1\145\1\163"+
-        "\1\141\1\155\1\uffff\1\172\1\156\1\145\1\172\1\145\1\157\1\156\1"+
-        "\164\1\172\2\156\1\uffff\1\172\1\154\1\164\1\uffff\1\172\1\145\1"+
-        "\147\1\163\1\uffff\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1"+
-        "\uffff\1\172\1\147\1\uffff\2\145\1\uffff\1\172\1\145\2\172\1\163"+
-        "\1\156\2\163\1\172\1\uffff\3\172\1\uffff\1\172\2\uffff\2\172\1\145"+
-        "\1\172\7\uffff\1\172\2\uffff";
+        "\1\uffff\1\165\1\154\2\uffff\1\145\2\uffff\1\57\2\uffff\1\157\1\145\1\170\1\135\1\157\1\164\1\156\2\157\1\71\1\145\1\162\1\141\2\uffff\1\44\1\172\1\uffff\2\uffff\2\uffff\1\162\1\164\1\163\1\uffff\1\151\2\uffff\1\141\7\uffff\1\157\1\163\1\164\1\165\1\uffff\1\147\1\162\1\164\1\156\1\165\1\154\1\uffff\1\164\1\165\1\154\3\uffff\1\153\1\141\1\172\1\164\1\145\1\144\1\171\1\154\1\160\1\145\1\151\1\155\1\145\1\151\1\172\1\147\1\142\1\145\1\172\1\145\1\163\1\141\1\155\1\uffff\1\172\1\156\1\145\1\172\1\145\1\157\1\156\1\164\1\172\2\156\1\uffff\1\172\1\154\1\164\1\uffff\1\172\1\145\1\147\1\163\1\uffff\1\164\1\162\1\uffff\1\141\1\156\1\144\1\171\1\uffff\1\172\1\147\1\uffff\2\145\1\uffff\1\172\1\145\2\172\1\163\1\156\2\163\1\172\1\uffff\3\172\1\uffff\1\172\2\uffff\2\172\1\145\1\172\7\uffff\1\172\2\uffff";
     static final String DFA14_acceptS =
-        "\3\uffff\1\3\1\4\1\uffff\1\6\1\7\1\uffff\1\11\1\13\15\uffff\2\37"+
-        "\2\uffff\1\41\2\uffff\1\45\1\46\3\uffff\1\41\1\uffff\1\3\1\4\1\uffff"+
-        "\1\6\1\7\1\43\1\44\1\10\1\11\1\13\4\uffff\1\17\6\uffff\1\30\3\uffff"+
-        "\1\40\1\42\1\45\27\uffff\1\32\13\uffff\1\25\3\uffff\1\31\4\uffff"+
-        "\1\33\2\uffff\1\14\4\uffff\1\22\2\uffff\1\26\2\uffff\1\35\11\uffff"+
-        "\1\21\3\uffff\1\36\1\uffff\1\12\1\2\4\uffff\1\20\1\23\1\27\1\34"+
-        "\1\1\1\5\1\24\1\uffff\1\16\1\15";
+        "\3\uffff\1\3\1\4\1\uffff\1\6\1\7\1\uffff\1\11\1\13\15\uffff\2\37\2\uffff\1\41\2\uffff\1\45\1\46\3\uffff\1\41\1\uffff\1\3\1\4\1\uffff\1\6\1\7\1\43\1\44\1\10\1\11\1\13\4\uffff\1\17\6\uffff\1\30\3\uffff\1\40\1\42\1\45\27\uffff\1\32\13\uffff\1\25\3\uffff\1\31\4\uffff\1\33\2\uffff\1\14\4\uffff\1\22\2\uffff\1\26\2\uffff\1\35\11\uffff\1\21\3\uffff\1\36\1\uffff\1\12\1\2\4\uffff\1\20\1\23\1\27\1\34\1\1\1\5\1\24\1\uffff\1\16\1\15";
     static final String DFA14_specialS =
         "\1\1\34\uffff\1\0\1\2\175\uffff}>";
     static final String[] DFA14_transitionS = {
-            "\11\40\2\37\2\40\1\37\22\40\1\37\1\40\1\35\1\40\1\32\2\40\1"+
-            "\36\4\40\1\6\1\11\1\24\1\10\12\30\1\7\2\40\1\12\3\40\22\34\1"+
-            "\20\7\34\1\16\2\40\1\33\1\34\1\40\1\34\1\13\1\2\1\23\1\15\1"+
-            "\27\1\25\1\5\1\21\2\34\1\22\1\34\1\17\1\34\1\1\1\34\1\14\1\34"+
-            "\1\26\6\34\1\3\1\40\1\4\uff82\40",
+            "\11\40\2\37\2\40\1\37\22\40\1\37\1\40\1\35\1\40\1\32\2\40\1\36\4\40\1\6\1\11\1\24\1\10\12\30\1\7\2\40\1\12\3\40\22\34\1\20\7\34\1\16\2\40\1\33\1\34\1\40\1\34\1\13\1\2\1\23\1\15\1\27\1\25\1\5\1\21\2\34\1\22\1\34\1\17\1\34\1\1\1\34\1\14\1\34\1\26\6\34\1\3\1\40\1\4\uff82\40",
             "\1\41\15\uffff\1\43\5\uffff\1\42",
             "\1\45",
             "",

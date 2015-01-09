@@ -29,8 +29,8 @@ public class StringEnumTypeGenerator {
     _builder.append("\t");
     EnumTypeLiteral _literal = type.getLiteral();
     EList<EnumMember> _members = _literal.getMembers();
-    final Function1<EnumMember, String> _function = new Function1<EnumMember, String>() {
-      public String apply(final EnumMember member) {
+    final Function1<EnumMember, CharSequence> _function = new Function1<EnumMember, CharSequence>() {
+      public CharSequence apply(final EnumMember member) {
         String _name = member.getName();
         String _underscore = Strings.underscore(_name);
         String _upperCase = _underscore.toUpperCase();

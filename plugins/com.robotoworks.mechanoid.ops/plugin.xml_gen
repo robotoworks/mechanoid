@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.robotoworks.com/mechanoid/ops/OpServiceModel" 
        class = "com.robotoworks.mechanoid.ops.opServiceModel.OpServiceModelPackage"
-       genModel = "com/robotoworks/mechanoid/ops/OpServiceModel.genmodel" /> 
+       genModel = "model/generated/OpServiceModel.genmodel" /> 
 	
   </extension>
 

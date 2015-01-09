@@ -155,10 +155,9 @@ public class OperationRegistryGenerator {
     _builder.append(_formatServiceName_1, "");
     _builder.append("OperationConfigurationRegistry {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
+    _builder.append("    ");
     _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
+    _builder.append("}           ");
     _builder.newLine();
     return _builder;
   }

@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.robotoworks.com/mechanoid/db/SqliteModel" 
        class = "com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage"
-       genModel = "com/robotoworks/mechanoid/db/SqliteModel.genmodel" /> 
+       genModel = "model/generated/SqliteModel.genmodel" /> 
 	
   </extension>
 

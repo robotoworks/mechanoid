@@ -327,26 +327,36 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
 	}
 	
-	private ModelElements pModel;
-	private PreferencesBlockElements pPreferencesBlock;
-	private PreferenceElements pPreference;
-	private LiteralElements pLiteral;
-	private PreferenceTypeElements unknownRulePreferenceType;
-	private BooleanValueElements unknownRuleBooleanValue;
-	private SignedNumberElements pSignedNumber;
-	private TerminalRule tNUMBER;
-	private TerminalRule tINT;
-	private FQNElements pFQN;
+	private final ModelElements pModel;
+	private final PreferencesBlockElements pPreferencesBlock;
+	private final PreferenceElements pPreference;
+	private final LiteralElements pLiteral;
+	private final PreferenceTypeElements unknownRulePreferenceType;
+	private final BooleanValueElements unknownRuleBooleanValue;
+	private final SignedNumberElements pSignedNumber;
+	private final TerminalRule tNUMBER;
+	private final TerminalRule tINT;
+	private final FQNElements pFQN;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public SharedPreferencesModelGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pPreferencesBlock = new PreferencesBlockElements();
+		this.pPreference = new PreferenceElements();
+		this.pLiteral = new LiteralElements();
+		this.unknownRulePreferenceType = new PreferenceTypeElements();
+		this.unknownRuleBooleanValue = new BooleanValueElements();
+		this.pSignedNumber = new SignedNumberElements();
+		this.tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER");
+		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT");
+		this.pFQN = new FQNElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -379,7 +389,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//Model:
 	//	"package" packageName=FQN preferencesBlock=PreferencesBlock;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -389,7 +399,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//PreferencesBlock:
 	//	"preferences" name=ID "{" prefs+=Preference* "}";
 	public PreferencesBlockElements getPreferencesBlockAccess() {
-		return (pPreferencesBlock != null) ? pPreferencesBlock : (pPreferencesBlock = new PreferencesBlockElements());
+		return pPreferencesBlock;
 	}
 	
 	public ParserRule getPreferencesBlockRule() {
@@ -399,7 +409,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//Preference:
 	//	name=ID ":" type=PreferenceType ("=" defaultValue=Literal)?;
 	public PreferenceElements getPreferenceAccess() {
-		return (pPreference != null) ? pPreference : (pPreference = new PreferenceElements());
+		return pPreference;
 	}
 	
 	public ParserRule getPreferenceRule() {
@@ -409,7 +419,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//Literal:
 	//	{BooleanLiteral} literal=BooleanValue | {StringLiteral} literal=STRING | {NumericLiteral} literal=SignedNumber;
 	public LiteralElements getLiteralAccess() {
-		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+		return pLiteral;
 	}
 	
 	public ParserRule getLiteralRule() {
@@ -419,7 +429,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//enum PreferenceType:
 	//	String | Integer="int" | Boolean="boolean" | Float="float" | Long="long";
 	public PreferenceTypeElements getPreferenceTypeAccess() {
-		return (unknownRulePreferenceType != null) ? unknownRulePreferenceType : (unknownRulePreferenceType = new PreferenceTypeElements());
+		return unknownRulePreferenceType;
 	}
 	
 	public EnumRule getPreferenceTypeRule() {
@@ -429,7 +439,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//enum BooleanValue:
 	//	true | false;
 	public BooleanValueElements getBooleanValueAccess() {
-		return (unknownRuleBooleanValue != null) ? unknownRuleBooleanValue : (unknownRuleBooleanValue = new BooleanValueElements());
+		return unknownRuleBooleanValue;
 	}
 	
 	public EnumRule getBooleanValueRule() {
@@ -439,7 +449,7 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//SignedNumber returns ecore::EBigDecimal:
 	//	"-"? NUMBER;
 	public SignedNumberElements getSignedNumberAccess() {
-		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
+		return pSignedNumber;
 	}
 	
 	public ParserRule getSignedNumberRule() {
@@ -449,19 +459,19 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	//terminal NUMBER returns ecore::EBigDecimal:
 	//	"0".."9"* ("." "0".."9"+)?;
 	public TerminalRule getNUMBERRule() {
-		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+		return tNUMBER;
 	} 
 
 	//terminal INT returns ecore::EInt:
 	//	"$$$don\'t use this anymore$$$";
 	public TerminalRule getINTRule() {
-		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+		return tINT;
 	} 
 
 	//FQN:
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
-		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
+		return pFQN;
 	}
 	
 	public ParserRule getFQNRule() {
@@ -475,8 +485,8 @@ public class SharedPreferencesModelGrammarAccess extends AbstractGrammarElementF
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

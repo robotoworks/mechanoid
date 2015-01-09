@@ -556,10 +556,10 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -577,10 +577,10 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -596,23 +596,15 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -637,10 +629,10 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -656,23 +648,15 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.robotoworks.mechanoid.sharedprefs/src-gen/com/robotoworks/mechanoid/sharedprefs/parser/antlr/internal/InternalSharedPreferencesModel.g:514:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1111,40 +1095,19 @@ public class InternalSharedPreferencesModelLexer extends Lexer {
 
     protected DFA14 dfa14 = new DFA14(this);
     static final String DFA14_eotS =
-        "\1\17\1\32\5\uffff\1\40\6\32\2\uffff\2\27\1\uffff\3\27\2\uffff\2"+
-        "\32\7\uffff\7\32\5\uffff\3\32\1\71\10\32\1\uffff\3\32\1\105\1\106"+
-        "\4\32\1\113\1\114\2\uffff\2\32\1\117\1\32\2\uffff\1\121\1\32\1\uffff"+
-        "\1\123\1\uffff\1\32\1\uffff\2\32\1\127\1\uffff";
+        "\1\17\1\32\5\uffff\1\40\6\32\2\uffff\2\27\1\uffff\3\27\2\uffff\2\32\7\uffff\7\32\5\uffff\3\32\1\71\10\32\1\uffff\3\32\1\105\1\106\4\32\1\113\1\114\2\uffff\2\32\1\117\1\32\2\uffff\1\121\1\32\1\uffff\1\123\1\uffff\1\32\1\uffff\2\32\1\127\1\uffff";
     static final String DFA14_eofS =
         "\130\uffff";
     static final String DFA14_minS =
-        "\1\0\1\141\5\uffff\1\60\1\164\1\156\1\157\1\141\1\157\1\162\2\uffff"+
-        "\1\44\1\101\1\uffff\2\0\1\52\2\uffff\1\143\1\145\7\uffff\1\162\1"+
-        "\164\2\157\1\154\1\156\1\165\5\uffff\1\153\1\146\1\151\1\60\1\154"+
-        "\1\141\1\163\1\147\1\145\1\141\1\145\1\156\1\uffff\1\145\1\164\1"+
-        "\145\2\60\1\147\1\162\1\147\1\141\2\60\2\uffff\2\145\1\60\1\156"+
-        "\2\uffff\1\60\1\156\1\uffff\1\60\1\uffff\1\143\1\uffff\1\145\1\163"+
-        "\1\60\1\uffff";
+        "\1\0\1\141\5\uffff\1\60\1\164\1\156\1\157\1\141\1\157\1\162\2\uffff\1\44\1\101\1\uffff\2\0\1\52\2\uffff\1\143\1\145\7\uffff\1\162\1\164\2\157\1\154\1\156\1\165\5\uffff\1\153\1\146\1\151\1\60\1\154\1\141\1\163\1\147\1\145\1\141\1\145\1\156\1\uffff\1\145\1\164\1\145\2\60\1\147\1\162\1\147\1\141\2\60\2\uffff\2\145\1\60\1\156\2\uffff\1\60\1\156\1\uffff\1\60\1\uffff\1\143\1\uffff\1\145\1\163\1\60\1\uffff";
     static final String DFA14_maxS =
-        "\1\uffff\1\162\5\uffff\1\71\1\164\1\156\1\157\1\154\1\157\1\162"+
-        "\2\uffff\1\44\1\172\1\uffff\2\uffff\1\57\2\uffff\1\143\1\145\7\uffff"+
-        "\1\162\1\164\2\157\1\154\1\156\1\165\5\uffff\1\153\1\146\1\151\1"+
-        "\172\1\154\1\141\1\163\1\147\1\145\1\141\1\145\1\156\1\uffff\1\145"+
-        "\1\164\1\145\2\172\1\147\1\162\1\147\1\141\2\172\2\uffff\2\145\1"+
-        "\172\1\156\2\uffff\1\172\1\156\1\uffff\1\172\1\uffff\1\143\1\uffff"+
-        "\1\145\1\163\1\172\1\uffff";
+        "\1\uffff\1\162\5\uffff\1\71\1\164\1\156\1\157\1\154\1\157\1\162\2\uffff\1\44\1\172\1\uffff\2\uffff\1\57\2\uffff\1\143\1\145\7\uffff\1\162\1\164\2\157\1\154\1\156\1\165\5\uffff\1\153\1\146\1\151\1\172\1\154\1\141\1\163\1\147\1\145\1\141\1\145\1\156\1\uffff\1\145\1\164\1\145\2\172\1\147\1\162\1\147\1\141\2\172\2\uffff\2\145\1\172\1\156\2\uffff\1\172\1\156\1\uffff\1\172\1\uffff\1\143\1\uffff\1\145\1\163\1\172\1\uffff";
     static final String DFA14_acceptS =
-        "\2\uffff\1\3\1\4\1\5\1\6\1\7\7\uffff\2\20\2\uffff\1\22\3\uffff\1"+
-        "\26\1\27\2\uffff\1\22\1\3\1\4\1\5\1\6\1\7\1\10\7\uffff\1\21\1\23"+
-        "\1\24\1\25\1\26\14\uffff\1\12\13\uffff\1\15\1\16\4\uffff\1\14\1"+
-        "\17\2\uffff\1\11\1\uffff\1\1\1\uffff\1\13\3\uffff\1\2";
+        "\2\uffff\1\3\1\4\1\5\1\6\1\7\7\uffff\2\20\2\uffff\1\22\3\uffff\1\26\1\27\2\uffff\1\22\1\3\1\4\1\5\1\6\1\7\1\10\7\uffff\1\21\1\23\1\24\1\25\1\26\14\uffff\1\12\13\uffff\1\15\1\16\4\uffff\1\14\1\17\2\uffff\1\11\1\uffff\1\1\1\uffff\1\13\3\uffff\1\2";
     static final String DFA14_specialS =
         "\1\0\22\uffff\1\1\1\2\103\uffff}>";
     static final String[] DFA14_transitionS = {
-            "\11\27\2\26\2\27\1\26\22\27\1\26\1\27\1\23\1\27\1\20\2\27\1"+
-            "\24\5\27\1\6\1\7\1\25\12\16\1\4\2\27\1\5\3\27\22\22\1\10\7\22"+
-            "\3\27\1\21\1\22\1\27\1\22\1\12\3\22\1\13\2\22\1\11\2\22\1\14"+
-            "\3\22\1\1\3\22\1\15\6\22\1\2\1\27\1\3\uff82\27",
+            "\11\27\2\26\2\27\1\26\22\27\1\26\1\27\1\23\1\27\1\20\2\27\1\24\5\27\1\6\1\7\1\25\12\16\1\4\2\27\1\5\3\27\22\22\1\10\7\22\3\27\1\21\1\22\1\27\1\22\1\12\3\22\1\13\2\22\1\11\2\22\1\14\3\22\1\1\3\22\1\15\6\22\1\2\1\27\1\3\uff82\27",
             "\1\30\20\uffff\1\31",
             "",
             "",

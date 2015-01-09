@@ -4237,89 +4237,162 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getReplaceReplaceKeyword_4_0() { return cReplaceReplaceKeyword_4_0; }
 	}
 	
-	private ModelElements pModel;
-	private DatabaseBlockElements pDatabaseBlock;
-	private ConfigBlockElements pConfigBlock;
-	private InitBlockElements pInitBlock;
-	private ConfigurationStatementElements pConfigurationStatement;
-	private FunctionArgElements pFunctionArg;
-	private ContentUriElements pContentUri;
-	private ContentUriSegmentElements pContentUriSegment;
-	private MigrationBlockElements pMigrationBlock;
-	private SqlExpressionElements pSqlExpression;
-	private ExprConcatElements pExprConcat;
-	private ExprMultElements pExprMult;
-	private ExprAddElements pExprAdd;
-	private ExprBitElements pExprBit;
-	private ExprRelateElements pExprRelate;
-	private ExprEqualElements pExprEqual;
-	private ExprAndElements pExprAnd;
-	private ExprOrElements pExprOr;
-	private NullCheckExpressionElements pNullCheckExpression;
-	private NullExpressionElements pNullExpression;
-	private PrimaryExpressionElements pPrimaryExpression;
-	private CaseElements pCase;
-	private SelectStatementElements pSelectStatement;
-	private OrderingTermListElements pOrderingTermList;
-	private SelectCoreElements pSelectCore;
-	private SelectExpressionElements pSelectExpression;
-	private SelectListElements pSelectList;
-	private WhereExpressionsElements pWhereExpressions;
-	private GroupByExpressionsElements pGroupByExpressions;
-	private HavingExpressionsElements pHavingExpressions;
-	private CompoundOperatorElements unknownRuleCompoundOperator;
-	private OrderingTermElements pOrderingTerm;
-	private JoinSourceElements pJoinSource;
-	private SingleSourceElements pSingleSource;
-	private SingleSourceTableElements pSingleSourceTable;
-	private SingleSourceSelectStatementElements pSingleSourceSelectStatement;
-	private SingleSourceJoinElements pSingleSourceJoin;
-	private JoinStatementElements pJoinStatement;
-	private ResultColumnElements pResultColumn;
-	private LiteralValueElements pLiteralValue;
-	private SqliteDataTypeElements unknownRuleSqliteDataType;
-	private DDLStatementElements pDDLStatement;
-	private CreateTableStatementElements pCreateTableStatement;
-	private CreateViewStatementElements pCreateViewStatement;
-	private CreateTriggerStatementElements pCreateTriggerStatement;
-	private AlterTableRenameStatementElements pAlterTableRenameStatement;
-	private AlterTableAddColumnStatementElements pAlterTableAddColumnStatement;
-	private DropTableStatementElements pDropTableStatement;
-	private DropTriggerStatementElements pDropTriggerStatement;
-	private DropViewStatementElements pDropViewStatement;
-	private CreateIndexStatementElements pCreateIndexStatement;
-	private DropIndexStatementElements pDropIndexStatement;
-	private ColumnDefElements pColumnDef;
-	private ColumnConstraintElements pColumnConstraint;
-	private TableConstraintElements pTableConstraint;
-	private UniqueTableConstraintElements pUniqueTableConstraint;
-	private PrimaryConstraintElements pPrimaryConstraint;
-	private CheckTableConstraintElements pCheckTableConstraint;
-	private IndexedColumnElements pIndexedColumn;
-	private DefaultValueElements pDefaultValue;
-	private ConflictClauseElements pConflictClause;
-	private ColumnTypeElements unknownRuleColumnType;
-	private ConflictResolutionElements unknownRuleConflictResolution;
-	private DMLStatementElements pDMLStatement;
-	private DeleteStatementElements pDeleteStatement;
-	private InsertStatementElements pInsertStatement;
-	private UpdateStatementElements pUpdateStatement;
-	private UpdateColumnExpressionElements pUpdateColumnExpression;
-	private SignedNumberElements pSignedNumber;
-	private QualifiedNameElements pQualifiedName;
-	private TerminalRule tNUMBER;
-	private TerminalRule tINT;
-	private TerminalRule tSTRING;
+	private final ModelElements pModel;
+	private final DatabaseBlockElements pDatabaseBlock;
+	private final ConfigBlockElements pConfigBlock;
+	private final InitBlockElements pInitBlock;
+	private final ConfigurationStatementElements pConfigurationStatement;
+	private final FunctionArgElements pFunctionArg;
+	private final ContentUriElements pContentUri;
+	private final ContentUriSegmentElements pContentUriSegment;
+	private final MigrationBlockElements pMigrationBlock;
+	private final SqlExpressionElements pSqlExpression;
+	private final ExprConcatElements pExprConcat;
+	private final ExprMultElements pExprMult;
+	private final ExprAddElements pExprAdd;
+	private final ExprBitElements pExprBit;
+	private final ExprRelateElements pExprRelate;
+	private final ExprEqualElements pExprEqual;
+	private final ExprAndElements pExprAnd;
+	private final ExprOrElements pExprOr;
+	private final NullCheckExpressionElements pNullCheckExpression;
+	private final NullExpressionElements pNullExpression;
+	private final PrimaryExpressionElements pPrimaryExpression;
+	private final CaseElements pCase;
+	private final SelectStatementElements pSelectStatement;
+	private final OrderingTermListElements pOrderingTermList;
+	private final SelectCoreElements pSelectCore;
+	private final SelectExpressionElements pSelectExpression;
+	private final SelectListElements pSelectList;
+	private final WhereExpressionsElements pWhereExpressions;
+	private final GroupByExpressionsElements pGroupByExpressions;
+	private final HavingExpressionsElements pHavingExpressions;
+	private final CompoundOperatorElements unknownRuleCompoundOperator;
+	private final OrderingTermElements pOrderingTerm;
+	private final JoinSourceElements pJoinSource;
+	private final SingleSourceElements pSingleSource;
+	private final SingleSourceTableElements pSingleSourceTable;
+	private final SingleSourceSelectStatementElements pSingleSourceSelectStatement;
+	private final SingleSourceJoinElements pSingleSourceJoin;
+	private final JoinStatementElements pJoinStatement;
+	private final ResultColumnElements pResultColumn;
+	private final LiteralValueElements pLiteralValue;
+	private final SqliteDataTypeElements unknownRuleSqliteDataType;
+	private final DDLStatementElements pDDLStatement;
+	private final CreateTableStatementElements pCreateTableStatement;
+	private final CreateViewStatementElements pCreateViewStatement;
+	private final CreateTriggerStatementElements pCreateTriggerStatement;
+	private final AlterTableRenameStatementElements pAlterTableRenameStatement;
+	private final AlterTableAddColumnStatementElements pAlterTableAddColumnStatement;
+	private final DropTableStatementElements pDropTableStatement;
+	private final DropTriggerStatementElements pDropTriggerStatement;
+	private final DropViewStatementElements pDropViewStatement;
+	private final CreateIndexStatementElements pCreateIndexStatement;
+	private final DropIndexStatementElements pDropIndexStatement;
+	private final ColumnDefElements pColumnDef;
+	private final ColumnConstraintElements pColumnConstraint;
+	private final TableConstraintElements pTableConstraint;
+	private final UniqueTableConstraintElements pUniqueTableConstraint;
+	private final PrimaryConstraintElements pPrimaryConstraint;
+	private final CheckTableConstraintElements pCheckTableConstraint;
+	private final IndexedColumnElements pIndexedColumn;
+	private final DefaultValueElements pDefaultValue;
+	private final ConflictClauseElements pConflictClause;
+	private final ColumnTypeElements unknownRuleColumnType;
+	private final ConflictResolutionElements unknownRuleConflictResolution;
+	private final DMLStatementElements pDMLStatement;
+	private final DeleteStatementElements pDeleteStatement;
+	private final InsertStatementElements pInsertStatement;
+	private final UpdateStatementElements pUpdateStatement;
+	private final UpdateColumnExpressionElements pUpdateColumnExpression;
+	private final SignedNumberElements pSignedNumber;
+	private final QualifiedNameElements pQualifiedName;
+	private final TerminalRule tNUMBER;
+	private final TerminalRule tINT;
+	private final TerminalRule tSTRING;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public SqliteModelGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pDatabaseBlock = new DatabaseBlockElements();
+		this.pConfigBlock = new ConfigBlockElements();
+		this.pInitBlock = new InitBlockElements();
+		this.pConfigurationStatement = new ConfigurationStatementElements();
+		this.pFunctionArg = new FunctionArgElements();
+		this.pContentUri = new ContentUriElements();
+		this.pContentUriSegment = new ContentUriSegmentElements();
+		this.pMigrationBlock = new MigrationBlockElements();
+		this.pSqlExpression = new SqlExpressionElements();
+		this.pExprConcat = new ExprConcatElements();
+		this.pExprMult = new ExprMultElements();
+		this.pExprAdd = new ExprAddElements();
+		this.pExprBit = new ExprBitElements();
+		this.pExprRelate = new ExprRelateElements();
+		this.pExprEqual = new ExprEqualElements();
+		this.pExprAnd = new ExprAndElements();
+		this.pExprOr = new ExprOrElements();
+		this.pNullCheckExpression = new NullCheckExpressionElements();
+		this.pNullExpression = new NullExpressionElements();
+		this.pPrimaryExpression = new PrimaryExpressionElements();
+		this.pCase = new CaseElements();
+		this.pSelectStatement = new SelectStatementElements();
+		this.pOrderingTermList = new OrderingTermListElements();
+		this.pSelectCore = new SelectCoreElements();
+		this.pSelectExpression = new SelectExpressionElements();
+		this.pSelectList = new SelectListElements();
+		this.pWhereExpressions = new WhereExpressionsElements();
+		this.pGroupByExpressions = new GroupByExpressionsElements();
+		this.pHavingExpressions = new HavingExpressionsElements();
+		this.unknownRuleCompoundOperator = new CompoundOperatorElements();
+		this.pOrderingTerm = new OrderingTermElements();
+		this.pJoinSource = new JoinSourceElements();
+		this.pSingleSource = new SingleSourceElements();
+		this.pSingleSourceTable = new SingleSourceTableElements();
+		this.pSingleSourceSelectStatement = new SingleSourceSelectStatementElements();
+		this.pSingleSourceJoin = new SingleSourceJoinElements();
+		this.pJoinStatement = new JoinStatementElements();
+		this.pResultColumn = new ResultColumnElements();
+		this.pLiteralValue = new LiteralValueElements();
+		this.unknownRuleSqliteDataType = new SqliteDataTypeElements();
+		this.pDDLStatement = new DDLStatementElements();
+		this.pCreateTableStatement = new CreateTableStatementElements();
+		this.pCreateViewStatement = new CreateViewStatementElements();
+		this.pCreateTriggerStatement = new CreateTriggerStatementElements();
+		this.pAlterTableRenameStatement = new AlterTableRenameStatementElements();
+		this.pAlterTableAddColumnStatement = new AlterTableAddColumnStatementElements();
+		this.pDropTableStatement = new DropTableStatementElements();
+		this.pDropTriggerStatement = new DropTriggerStatementElements();
+		this.pDropViewStatement = new DropViewStatementElements();
+		this.pCreateIndexStatement = new CreateIndexStatementElements();
+		this.pDropIndexStatement = new DropIndexStatementElements();
+		this.pColumnDef = new ColumnDefElements();
+		this.pColumnConstraint = new ColumnConstraintElements();
+		this.pTableConstraint = new TableConstraintElements();
+		this.pUniqueTableConstraint = new UniqueTableConstraintElements();
+		this.pPrimaryConstraint = new PrimaryConstraintElements();
+		this.pCheckTableConstraint = new CheckTableConstraintElements();
+		this.pIndexedColumn = new IndexedColumnElements();
+		this.pDefaultValue = new DefaultValueElements();
+		this.pConflictClause = new ConflictClauseElements();
+		this.unknownRuleColumnType = new ColumnTypeElements();
+		this.unknownRuleConflictResolution = new ConflictResolutionElements();
+		this.pDMLStatement = new DMLStatementElements();
+		this.pDeleteStatement = new DeleteStatementElements();
+		this.pInsertStatement = new InsertStatementElements();
+		this.pUpdateStatement = new UpdateStatementElements();
+		this.pUpdateColumnExpression = new UpdateColumnExpressionElements();
+		this.pSignedNumber = new SignedNumberElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER");
+		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -4356,7 +4429,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// *********************************************************************** / Model:
 	//	"package" packageName=QualifiedName database=DatabaseBlock;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -4366,7 +4439,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DatabaseBlock:
 	//	"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}";
 	public DatabaseBlockElements getDatabaseBlockAccess() {
-		return (pDatabaseBlock != null) ? pDatabaseBlock : (pDatabaseBlock = new DatabaseBlockElements());
+		return pDatabaseBlock;
 	}
 	
 	public ParserRule getDatabaseBlockRule() {
@@ -4376,7 +4449,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ConfigBlock:
 	//	{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}";
 	public ConfigBlockElements getConfigBlockAccess() {
-		return (pConfigBlock != null) ? pConfigBlock : (pConfigBlock = new ConfigBlockElements());
+		return pConfigBlock;
 	}
 	
 	public ParserRule getConfigBlockRule() {
@@ -4386,7 +4459,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//InitBlock:
 	//	{InitBlock} "init" "{" (statements+=DDLStatement ";")* "}";
 	public InitBlockElements getInitBlockAccess() {
-		return (pInitBlock != null) ? pInitBlock : (pInitBlock = new InitBlockElements());
+		return pInitBlock;
 	}
 	
 	public ParserRule getInitBlockRule() {
@@ -4397,7 +4470,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
 	//	args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}";
 	public ConfigurationStatementElements getConfigurationStatementAccess() {
-		return (pConfigurationStatement != null) ? pConfigurationStatement : (pConfigurationStatement = new ConfigurationStatementElements());
+		return pConfigurationStatement;
 	}
 	
 	public ParserRule getConfigurationStatementRule() {
@@ -4407,7 +4480,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//FunctionArg:
 	//	type=ColumnType name=ID;
 	public FunctionArgElements getFunctionArgAccess() {
-		return (pFunctionArg != null) ? pFunctionArg : (pFunctionArg = new FunctionArgElements());
+		return pFunctionArg;
 	}
 	
 	public ParserRule getFunctionArgRule() {
@@ -4417,7 +4490,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ContentUri:
 	//	"/" type=ID ("/" segments+=ContentUriSegment)*;
 	public ContentUriElements getContentUriAccess() {
-		return (pContentUri != null) ? pContentUri : (pContentUri = new ContentUriElements());
+		return pContentUri;
 	}
 	
 	public ParserRule getContentUriRule() {
@@ -4427,7 +4500,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ContentUriSegment:
 	//	name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}";
 	public ContentUriSegmentElements getContentUriSegmentAccess() {
-		return (pContentUriSegment != null) ? pContentUriSegment : (pContentUriSegment = new ContentUriSegmentElements());
+		return pContentUriSegment;
 	}
 	
 	public ParserRule getContentUriSegmentRule() {
@@ -4437,7 +4510,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//MigrationBlock:
 	//	{MigrationBlock} "migration" "{" (statements+=DDLStatement ";")* "}";
 	public MigrationBlockElements getMigrationBlockAccess() {
-		return (pMigrationBlock != null) ? pMigrationBlock : (pMigrationBlock = new MigrationBlockElements());
+		return pMigrationBlock;
 	}
 	
 	public ParserRule getMigrationBlockRule() {
@@ -4451,7 +4524,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// *********************************************************************** / SqlExpression returns Expression:
 	//	ExprConcat;
 	public SqlExpressionElements getSqlExpressionAccess() {
-		return (pSqlExpression != null) ? pSqlExpression : (pSqlExpression = new SqlExpressionElements());
+		return pSqlExpression;
 	}
 	
 	public ParserRule getSqlExpressionRule() {
@@ -4461,7 +4534,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprConcat returns Expression:
 	//	ExprMult ({ExprConcat.left=current} op="||" right=ExprMult)*;
 	public ExprConcatElements getExprConcatAccess() {
-		return (pExprConcat != null) ? pExprConcat : (pExprConcat = new ExprConcatElements());
+		return pExprConcat;
 	}
 	
 	public ParserRule getExprConcatRule() {
@@ -4471,7 +4544,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprMult returns Expression:
 	//	ExprAdd ({ExprMult.left=current} op=("*" | "/" | "%") right=ExprAdd)*;
 	public ExprMultElements getExprMultAccess() {
-		return (pExprMult != null) ? pExprMult : (pExprMult = new ExprMultElements());
+		return pExprMult;
 	}
 	
 	public ParserRule getExprMultRule() {
@@ -4481,7 +4554,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprAdd returns Expression:
 	//	ExprBit ({ExprAdd.left=current} op=("+" | "-") right=ExprBit)*;
 	public ExprAddElements getExprAddAccess() {
-		return (pExprAdd != null) ? pExprAdd : (pExprAdd = new ExprAddElements());
+		return pExprAdd;
 	}
 	
 	public ParserRule getExprAddRule() {
@@ -4491,7 +4564,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprBit returns Expression:
 	//	ExprRelate ({ExprBit.left=current} op=("<<" | ">>" | "&" | "|") right=ExprRelate)*;
 	public ExprBitElements getExprBitAccess() {
-		return (pExprBit != null) ? pExprBit : (pExprBit = new ExprBitElements());
+		return pExprBit;
 	}
 	
 	public ParserRule getExprBitRule() {
@@ -4501,7 +4574,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprRelate returns Expression:
 	//	ExprEqual ({ExprRelate.left=current} op=("<" | "<=" | ">" | ">=") right=ExprEqual)*;
 	public ExprRelateElements getExprRelateAccess() {
-		return (pExprRelate != null) ? pExprRelate : (pExprRelate = new ExprRelateElements());
+		return pExprRelate;
 	}
 	
 	public ParserRule getExprRelateRule() {
@@ -4512,7 +4585,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
 	//	"match" | "regexp") right=ExprAnd)*;
 	public ExprEqualElements getExprEqualAccess() {
-		return (pExprEqual != null) ? pExprEqual : (pExprEqual = new ExprEqualElements());
+		return pExprEqual;
 	}
 	
 	public ParserRule getExprEqualRule() {
@@ -4522,7 +4595,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprAnd returns Expression:
 	//	ExprOr ({ExprAnd.left=current} op="and" right=ExprOr)*;
 	public ExprAndElements getExprAndAccess() {
-		return (pExprAnd != null) ? pExprAnd : (pExprAnd = new ExprAndElements());
+		return pExprAnd;
 	}
 	
 	public ParserRule getExprAndRule() {
@@ -4532,7 +4605,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ExprOr returns Expression:
 	//	NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*;
 	public ExprOrElements getExprOrAccess() {
-		return (pExprOr != null) ? pExprOr : (pExprOr = new ExprOrElements());
+		return pExprOr;
 	}
 	
 	public ParserRule getExprOrRule() {
@@ -4542,7 +4615,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//NullCheckExpression returns Expression:
 	//	PrimaryExpression ({NullCheckExpression.left=current} right=NullExpression)?;
 	public NullCheckExpressionElements getNullCheckExpressionAccess() {
-		return (pNullCheckExpression != null) ? pNullCheckExpression : (pNullCheckExpression = new NullCheckExpressionElements());
+		return pNullCheckExpression;
 	}
 	
 	public ParserRule getNullCheckExpressionRule() {
@@ -4552,7 +4625,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//NullExpression returns Expression:
 	//	{IsNull} "is null" | {NotNull} ("not null" | "notnull");
 	public NullExpressionElements getNullExpressionAccess() {
-		return (pNullExpression != null) ? pNullExpression : (pNullExpression = new NullExpressionElements());
+		return pNullExpression;
 	}
 	
 	public ParserRule getNullExpressionRule() {
@@ -4568,7 +4641,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	(all?="*" | arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
 	//	expression=SqlExpression "as" type=SqliteDataType ")" | {FunctionArgument} "$" arg=[FunctionArg];
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
-		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
+		return pPrimaryExpression;
 	}
 	
 	public ParserRule getPrimaryExpressionRule() {
@@ -4578,7 +4651,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//Case:
 	//	"when" whenExpression=SqlExpression "then" thenExpression=SqlExpression;
 	public CaseElements getCaseAccess() {
-		return (pCase != null) ? pCase : (pCase = new CaseElements());
+		return pCase;
 	}
 	
 	public ParserRule getCaseRule() {
@@ -4589,7 +4662,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
 	//	limitOffset=SqlExpression)?)?;
 	public SelectStatementElements getSelectStatementAccess() {
-		return (pSelectStatement != null) ? pSelectStatement : (pSelectStatement = new SelectStatementElements());
+		return pSelectStatement;
 	}
 	
 	public ParserRule getSelectStatementRule() {
@@ -4599,7 +4672,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//OrderingTermList:
 	//	orderingTerms+=OrderingTerm ("," orderingTerms+=OrderingTerm)*;
 	public OrderingTermListElements getOrderingTermListAccess() {
-		return (pOrderingTermList != null) ? pOrderingTermList : (pOrderingTermList = new OrderingTermListElements());
+		return pOrderingTermList;
 	}
 	
 	public ParserRule getOrderingTermListRule() {
@@ -4609,7 +4682,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SelectCore returns SelectCoreExpression:
 	//	SelectExpression ({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*;
 	public SelectCoreElements getSelectCoreAccess() {
-		return (pSelectCore != null) ? pSelectCore : (pSelectCore = new SelectCoreElements());
+		return pSelectCore;
 	}
 	
 	public ParserRule getSelectCoreRule() {
@@ -4621,7 +4694,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	source=JoinSource)? ("where" where=WhereExpressions)? ("group by" groupBy=GroupByExpressions)? ("having"
 	//	having=HavingExpressions)?;
 	public SelectExpressionElements getSelectExpressionAccess() {
-		return (pSelectExpression != null) ? pSelectExpression : (pSelectExpression = new SelectExpressionElements());
+		return pSelectExpression;
 	}
 	
 	public ParserRule getSelectExpressionRule() {
@@ -4631,7 +4704,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SelectList:
 	//	resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)*;
 	public SelectListElements getSelectListAccess() {
-		return (pSelectList != null) ? pSelectList : (pSelectList = new SelectListElements());
+		return pSelectList;
 	}
 	
 	public ParserRule getSelectListRule() {
@@ -4641,7 +4714,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//WhereExpressions:
 	//	expression=SqlExpression;
 	public WhereExpressionsElements getWhereExpressionsAccess() {
-		return (pWhereExpressions != null) ? pWhereExpressions : (pWhereExpressions = new WhereExpressionsElements());
+		return pWhereExpressions;
 	}
 	
 	public ParserRule getWhereExpressionsRule() {
@@ -4651,7 +4724,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//GroupByExpressions:
 	//	groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*;
 	public GroupByExpressionsElements getGroupByExpressionsAccess() {
-		return (pGroupByExpressions != null) ? pGroupByExpressions : (pGroupByExpressions = new GroupByExpressionsElements());
+		return pGroupByExpressions;
 	}
 	
 	public ParserRule getGroupByExpressionsRule() {
@@ -4661,7 +4734,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//HavingExpressions:
 	//	expression=SqlExpression;
 	public HavingExpressionsElements getHavingExpressionsAccess() {
-		return (pHavingExpressions != null) ? pHavingExpressions : (pHavingExpressions = new HavingExpressionsElements());
+		return pHavingExpressions;
 	}
 	
 	public ParserRule getHavingExpressionsRule() {
@@ -4671,7 +4744,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum CompoundOperator:
 	//	unionall="union all" | union | intersect | except;
 	public CompoundOperatorElements getCompoundOperatorAccess() {
-		return (unknownRuleCompoundOperator != null) ? unknownRuleCompoundOperator : (unknownRuleCompoundOperator = new CompoundOperatorElements());
+		return unknownRuleCompoundOperator;
 	}
 	
 	public EnumRule getCompoundOperatorRule() {
@@ -4681,7 +4754,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//OrderingTerm:
 	//	expression=SqlExpression (asc?="asc" | desc?="desc")?;
 	public OrderingTermElements getOrderingTermAccess() {
-		return (pOrderingTerm != null) ? pOrderingTerm : (pOrderingTerm = new OrderingTermElements());
+		return pOrderingTerm;
 	}
 	
 	public ParserRule getOrderingTermRule() {
@@ -4691,7 +4764,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//JoinSource:
 	//	source=SingleSource joinStatements+=JoinStatement*;
 	public JoinSourceElements getJoinSourceAccess() {
-		return (pJoinSource != null) ? pJoinSource : (pJoinSource = new JoinSourceElements());
+		return pJoinSource;
 	}
 	
 	public ParserRule getJoinSourceRule() {
@@ -4701,7 +4774,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SingleSource:
 	//	SingleSourceTable | SingleSourceSelectStatement | SingleSourceJoin;
 	public SingleSourceElements getSingleSourceAccess() {
-		return (pSingleSource != null) ? pSingleSource : (pSingleSource = new SingleSourceElements());
+		return pSingleSource;
 	}
 	
 	public ParserRule getSingleSourceRule() {
@@ -4711,7 +4784,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SingleSourceTable returns SelectSource:
 	//	{SingleSourceTable} tableReference=[TableDefinition] ("as" name=ID)?;
 	public SingleSourceTableElements getSingleSourceTableAccess() {
-		return (pSingleSourceTable != null) ? pSingleSourceTable : (pSingleSourceTable = new SingleSourceTableElements());
+		return pSingleSourceTable;
 	}
 	
 	public ParserRule getSingleSourceTableRule() {
@@ -4721,7 +4794,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SingleSourceSelectStatement returns SelectSource:
 	//	{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" ("as" name=ID)?;
 	public SingleSourceSelectStatementElements getSingleSourceSelectStatementAccess() {
-		return (pSingleSourceSelectStatement != null) ? pSingleSourceSelectStatement : (pSingleSourceSelectStatement = new SingleSourceSelectStatementElements());
+		return pSingleSourceSelectStatement;
 	}
 	
 	public ParserRule getSingleSourceSelectStatementRule() {
@@ -4731,7 +4804,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//SingleSourceJoin:
 	//	"(" joinSource=JoinSource ")";
 	public SingleSourceJoinElements getSingleSourceJoinAccess() {
-		return (pSingleSourceJoin != null) ? pSingleSourceJoin : (pSingleSourceJoin = new SingleSourceJoinElements());
+		return pSingleSourceJoin;
 	}
 	
 	public ParserRule getSingleSourceJoinRule() {
@@ -4742,7 +4815,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
 	//	singleSource=SingleSource "on" expression=SqlExpression;
 	public JoinStatementElements getJoinStatementAccess() {
-		return (pJoinStatement != null) ? pJoinStatement : (pJoinStatement = new JoinStatementElements());
+		return pJoinStatement;
 	}
 	
 	public ParserRule getJoinStatementRule() {
@@ -4752,7 +4825,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ResultColumn returns ColumnSource:
 	//	{ResultColumn} expression=SqlExpression ("as" name=ID)?;
 	public ResultColumnElements getResultColumnAccess() {
-		return (pResultColumn != null) ? pResultColumn : (pResultColumn = new ResultColumnElements());
+		return pResultColumn;
 	}
 	
 	public ParserRule getResultColumnRule() {
@@ -4764,7 +4837,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
 	//	literal="current_timestamp";
 	public LiteralValueElements getLiteralValueAccess() {
-		return (pLiteralValue != null) ? pLiteralValue : (pLiteralValue = new LiteralValueElements());
+		return pLiteralValue;
 	}
 	
 	public ParserRule getLiteralValueRule() {
@@ -4774,7 +4847,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum SqliteDataType:
 	//	text | integer | real | blob | none | numeric;
 	public SqliteDataTypeElements getSqliteDataTypeAccess() {
-		return (unknownRuleSqliteDataType != null) ? unknownRuleSqliteDataType : (unknownRuleSqliteDataType = new SqliteDataTypeElements());
+		return unknownRuleSqliteDataType;
 	}
 	
 	public EnumRule getSqliteDataTypeRule() {
@@ -4789,7 +4862,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement
 	//	| AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement;
 	public DDLStatementElements getDDLStatementAccess() {
-		return (pDDLStatement != null) ? pDDLStatement : (pDDLStatement = new DDLStatementElements());
+		return pDDLStatement;
 	}
 	
 	public ParserRule getDDLStatementRule() {
@@ -4800,7 +4873,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	{CreateTableStatement} "create" temporary?="temp"? "table" name=ID "(" columnDefs+=ColumnDef (","
 	//	columnDefs+=ColumnDef)* ("," constraints+=TableConstraint)* ")";
 	public CreateTableStatementElements getCreateTableStatementAccess() {
-		return (pCreateTableStatement != null) ? pCreateTableStatement : (pCreateTableStatement = new CreateTableStatementElements());
+		return pCreateTableStatement;
 	}
 	
 	public ParserRule getCreateTableStatementRule() {
@@ -4810,7 +4883,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//CreateViewStatement returns TableDefinition:
 	//	{CreateViewStatement} "create" temporary?="temp"? "view" name=ID "as" selectStatement=SelectStatement;
 	public CreateViewStatementElements getCreateViewStatementAccess() {
-		return (pCreateViewStatement != null) ? pCreateViewStatement : (pCreateViewStatement = new CreateViewStatementElements());
+		return pCreateViewStatement;
 	}
 	
 	public ParserRule getCreateViewStatementRule() {
@@ -4823,7 +4896,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	table=[TableDefinition] forEachRow="for each row"? ("when" whenExpression=SqlExpression)? "begin"
 	//	(statements+=DMLStatement ";" (statements+=DMLStatement ";")*)? "end";
 	public CreateTriggerStatementElements getCreateTriggerStatementAccess() {
-		return (pCreateTriggerStatement != null) ? pCreateTriggerStatement : (pCreateTriggerStatement = new CreateTriggerStatementElements());
+		return pCreateTriggerStatement;
 	}
 	
 	public ParserRule getCreateTriggerStatementRule() {
@@ -4833,7 +4906,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//AlterTableRenameStatement returns TableDefinition:
 	//	{AlterTableRenameStatement} "alter" "table" table=[TableDefinition] "rename to" name=ID;
 	public AlterTableRenameStatementElements getAlterTableRenameStatementAccess() {
-		return (pAlterTableRenameStatement != null) ? pAlterTableRenameStatement : (pAlterTableRenameStatement = new AlterTableRenameStatementElements());
+		return pAlterTableRenameStatement;
 	}
 	
 	public ParserRule getAlterTableRenameStatementRule() {
@@ -4843,7 +4916,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//AlterTableAddColumnStatement:
 	//	"alter" "table" table=[TableDefinition] "add column" columnDef=ColumnDef;
 	public AlterTableAddColumnStatementElements getAlterTableAddColumnStatementAccess() {
-		return (pAlterTableAddColumnStatement != null) ? pAlterTableAddColumnStatement : (pAlterTableAddColumnStatement = new AlterTableAddColumnStatementElements());
+		return pAlterTableAddColumnStatement;
 	}
 	
 	public ParserRule getAlterTableAddColumnStatementRule() {
@@ -4853,7 +4926,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DropTableStatement:
 	//	"drop" "table" ifExists?="if exists"? table=[TableDefinition];
 	public DropTableStatementElements getDropTableStatementAccess() {
-		return (pDropTableStatement != null) ? pDropTableStatement : (pDropTableStatement = new DropTableStatementElements());
+		return pDropTableStatement;
 	}
 	
 	public ParserRule getDropTableStatementRule() {
@@ -4863,7 +4936,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DropTriggerStatement:
 	//	"drop" "trigger" ifExists?="if exists"? trigger=[CreateTriggerStatement];
 	public DropTriggerStatementElements getDropTriggerStatementAccess() {
-		return (pDropTriggerStatement != null) ? pDropTriggerStatement : (pDropTriggerStatement = new DropTriggerStatementElements());
+		return pDropTriggerStatement;
 	}
 	
 	public ParserRule getDropTriggerStatementRule() {
@@ -4873,7 +4946,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DropViewStatement:
 	//	"drop" "view" ifExists?="if exists"? view=[CreateViewStatement];
 	public DropViewStatementElements getDropViewStatementAccess() {
-		return (pDropViewStatement != null) ? pDropViewStatement : (pDropViewStatement = new DropViewStatementElements());
+		return pDropViewStatement;
 	}
 	
 	public ParserRule getDropViewStatementRule() {
@@ -4884,7 +4957,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
 	//	columns+=IndexedColumn)* ")";
 	public CreateIndexStatementElements getCreateIndexStatementAccess() {
-		return (pCreateIndexStatement != null) ? pCreateIndexStatement : (pCreateIndexStatement = new CreateIndexStatementElements());
+		return pCreateIndexStatement;
 	}
 	
 	public ParserRule getCreateIndexStatementRule() {
@@ -4894,7 +4967,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DropIndexStatement:
 	//	"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement];
 	public DropIndexStatementElements getDropIndexStatementAccess() {
-		return (pDropIndexStatement != null) ? pDropIndexStatement : (pDropIndexStatement = new DropIndexStatementElements());
+		return pDropIndexStatement;
 	}
 	
 	public ParserRule getDropIndexStatementRule() {
@@ -4904,7 +4977,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ColumnDef returns ColumnSource:
 	//	{ColumnDef} name=ID type=ColumnType constraints+=ColumnConstraint*;
 	public ColumnDefElements getColumnDefAccess() {
-		return (pColumnDef != null) ? pColumnDef : (pColumnDef = new ColumnDefElements());
+		return pColumnDef;
 	}
 	
 	public ParserRule getColumnDefRule() {
@@ -4917,7 +4990,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue | {CheckConstraint} "check"
 	//	"(" expression=SqlExpression ")";
 	public ColumnConstraintElements getColumnConstraintAccess() {
-		return (pColumnConstraint != null) ? pColumnConstraint : (pColumnConstraint = new ColumnConstraintElements());
+		return pColumnConstraint;
 	}
 	
 	public ParserRule getColumnConstraintRule() {
@@ -4927,7 +5000,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//TableConstraint:
 	//	UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint;
 	public TableConstraintElements getTableConstraintAccess() {
-		return (pTableConstraint != null) ? pTableConstraint : (pTableConstraint = new TableConstraintElements());
+		return pTableConstraint;
 	}
 	
 	public ParserRule getTableConstraintRule() {
@@ -4938,7 +5011,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	("constraint" name=ID)? "unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 	//	conflictClause=ConflictClause;
 	public UniqueTableConstraintElements getUniqueTableConstraintAccess() {
-		return (pUniqueTableConstraint != null) ? pUniqueTableConstraint : (pUniqueTableConstraint = new UniqueTableConstraintElements());
+		return pUniqueTableConstraint;
 	}
 	
 	public ParserRule getUniqueTableConstraintRule() {
@@ -4949,7 +5022,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	("constraint" name=ID)? "primary key" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 	//	conflictClause=ConflictClause;
 	public PrimaryConstraintElements getPrimaryConstraintAccess() {
-		return (pPrimaryConstraint != null) ? pPrimaryConstraint : (pPrimaryConstraint = new PrimaryConstraintElements());
+		return pPrimaryConstraint;
 	}
 	
 	public ParserRule getPrimaryConstraintRule() {
@@ -4959,7 +5032,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//CheckTableConstraint:
 	//	("constraint" name=ID)? "check" "(" expression=SqlExpression ")";
 	public CheckTableConstraintElements getCheckTableConstraintAccess() {
-		return (pCheckTableConstraint != null) ? pCheckTableConstraint : (pCheckTableConstraint = new CheckTableConstraintElements());
+		return pCheckTableConstraint;
 	}
 	
 	public ParserRule getCheckTableConstraintRule() {
@@ -4969,7 +5042,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//IndexedColumn:
 	//	columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?;
 	public IndexedColumnElements getIndexedColumnAccess() {
-		return (pIndexedColumn != null) ? pIndexedColumn : (pIndexedColumn = new IndexedColumnElements());
+		return pIndexedColumn;
 	}
 	
 	public ParserRule getIndexedColumnRule() {
@@ -4979,7 +5052,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DefaultValue:
 	//	{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=SqlExpression ")";
 	public DefaultValueElements getDefaultValueAccess() {
-		return (pDefaultValue != null) ? pDefaultValue : (pDefaultValue = new DefaultValueElements());
+		return pDefaultValue;
 	}
 	
 	public ParserRule getDefaultValueRule() {
@@ -4989,7 +5062,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//ConflictClause:
 	//	"on" "conflict" resolution=ConflictResolution;
 	public ConflictClauseElements getConflictClauseAccess() {
-		return (pConflictClause != null) ? pConflictClause : (pConflictClause = new ConflictClauseElements());
+		return pConflictClause;
 	}
 	
 	public ParserRule getConflictClauseRule() {
@@ -4999,7 +5072,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum ColumnType:
 	//	text | integer | real | blob | boolean;
 	public ColumnTypeElements getColumnTypeAccess() {
-		return (unknownRuleColumnType != null) ? unknownRuleColumnType : (unknownRuleColumnType = new ColumnTypeElements());
+		return unknownRuleColumnType;
 	}
 	
 	public EnumRule getColumnTypeRule() {
@@ -5009,7 +5082,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//enum ConflictResolution:
 	//	rollback | abort | fail | ignore | replace;
 	public ConflictResolutionElements getConflictResolutionAccess() {
-		return (unknownRuleConflictResolution != null) ? unknownRuleConflictResolution : (unknownRuleConflictResolution = new ConflictResolutionElements());
+		return unknownRuleConflictResolution;
 	}
 	
 	public EnumRule getConflictResolutionRule() {
@@ -5023,7 +5096,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// *********************************************************************** / DMLStatement:
 	//	SelectStatement | InsertStatement | UpdateStatement | DeleteStatement;
 	public DMLStatementElements getDMLStatementAccess() {
-		return (pDMLStatement != null) ? pDMLStatement : (pDMLStatement = new DMLStatementElements());
+		return pDMLStatement;
 	}
 	
 	public ParserRule getDMLStatementRule() {
@@ -5033,7 +5106,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//DeleteStatement:
 	//	"delete" "from" table=[TableDefinition] ("where" expression=SqlExpression)?;
 	public DeleteStatementElements getDeleteStatementAccess() {
-		return (pDeleteStatement != null) ? pDeleteStatement : (pDeleteStatement = new DeleteStatementElements());
+		return pDeleteStatement;
 	}
 	
 	public ParserRule getDeleteStatementRule() {
@@ -5045,7 +5118,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	columnNames+=[ColumnDef] ("," columnNames+=[ColumnDef])* ")")? (("values" "(" expressions+=SqlExpression (","
 	//	expressions+=SqlExpression)* ")" | selectStatement=SelectStatement) | "default" "values");
 	public InsertStatementElements getInsertStatementAccess() {
-		return (pInsertStatement != null) ? pInsertStatement : (pInsertStatement = new InsertStatementElements());
+		return pInsertStatement;
 	}
 	
 	public ParserRule getInsertStatementRule() {
@@ -5057,7 +5130,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
 	//	whereExpression=SqlExpression)?;
 	public UpdateStatementElements getUpdateStatementAccess() {
-		return (pUpdateStatement != null) ? pUpdateStatement : (pUpdateStatement = new UpdateStatementElements());
+		return pUpdateStatement;
 	}
 	
 	public ParserRule getUpdateStatementRule() {
@@ -5067,7 +5140,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//UpdateColumnExpression:
 	//	columnName=[ColumnDef] "=" expression=SqlExpression;
 	public UpdateColumnExpressionElements getUpdateColumnExpressionAccess() {
-		return (pUpdateColumnExpression != null) ? pUpdateColumnExpression : (pUpdateColumnExpression = new UpdateColumnExpressionElements());
+		return pUpdateColumnExpression;
 	}
 	
 	public ParserRule getUpdateColumnExpressionRule() {
@@ -5081,7 +5154,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	// *********************************************************************** / SignedNumber returns ecore::EBigDecimal:
 	//	"-"? NUMBER;
 	public SignedNumberElements getSignedNumberAccess() {
-		return (pSignedNumber != null) ? pSignedNumber : (pSignedNumber = new SignedNumberElements());
+		return pSignedNumber;
 	}
 	
 	public ParserRule getSignedNumberRule() {
@@ -5091,7 +5164,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -5101,20 +5174,20 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal NUMBER returns ecore::EBigDecimal:
 	//	"0".."9"* ("." "0".."9"+)?;
 	public TerminalRule getNUMBERRule() {
-		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+		return tNUMBER;
 	} 
 
 	//terminal INT returns ecore::EInt:
 	//	"$$$don\'t use this anymore$$$";
 	public TerminalRule getINTRule() {
-		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+		return tINT;
 	} 
 
 	//terminal STRING:
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
-		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
+		return tSTRING;
 	} 
 
 	//terminal ID:

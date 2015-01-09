@@ -4,7 +4,7 @@
     editorDirectory="/com.robotoworks.mechanoid.db.editor/src" modelPluginID="com.robotoworks.mechanoid.db"
     forceOverwrite="true" modelName="SqliteModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.db.edit"
-    editorPluginID="com.robotoworks.mechanoid.db.editor" runtimeVersion="2.9">
+    editorPluginID="com.robotoworks.mechanoid.db.editor" runtimeVersion="2.10">
   <genPackages prefix="SqliteModel" basePackage="com.robotoworks.mechanoid.db" disposableProviderFactory="true"
       ecorePackage="SqliteModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SqliteModel.ecore#//CompoundOperator">

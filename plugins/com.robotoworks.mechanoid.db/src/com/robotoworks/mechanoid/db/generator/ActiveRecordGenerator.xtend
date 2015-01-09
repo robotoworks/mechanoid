@@ -23,7 +23,7 @@ class ActiveRecordGenerator {
 			import android.os.Bundle;
 			import android.os.Parcel;
 			import android.os.Parcelable;
-			
+			import android.net.Uri;
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize»;
 			import «model.packageName».«model.database.name.pascalize»Contract.«stmt.name.pascalize».Builder;
 			import com.robotoworks.mechanoid.util.Closeables;
@@ -44,9 +44,14 @@ class ActiveRecordGenerator {
 					public String[] getProjection() {
 						return PROJECTION;
 					}
-				};
-				
-				public static ActiveRecordFactory<«stmt.name.pascalize»Record> getFactory() {
+
+			        @Override
+                    public Uri getContentUri() {
+                        return «stmt.name.pascalize».CONTENT_URI;
+                    }
+                };
+
+    			public static ActiveRecordFactory<«stmt.name.pascalize»Record> getFactory() {
 					return sFactory;
 				}
 

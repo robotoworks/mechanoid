@@ -250,7 +250,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="com.robotoworks.mechanoid.ops.ui.OpServiceModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="com.robotoworks.mechanoid.ops.ui.OpServiceModelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="mechops"
+            >
       </participant>
    </extension>
    <extension

@@ -4,9 +4,9 @@ import com.robotoworks.mechanoid.net.JsonEntityReader;
 import com.robotoworks.mechanoid.net.JsonEntityReaderProvider;
 import java.io.IOException;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import java.util.ArrayList;
-import com.robotoworks.mechanoid.internal.util.JsonToken;
 import java.util.List;
+import com.robotoworks.mechanoid.internal.util.JsonToken;
+import java.util.ArrayList;
 
 public class IssueReader extends JsonEntityReader<Issue> {			
 	

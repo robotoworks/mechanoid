@@ -742,8 +742,8 @@ public class ContentProviderContractGenerator {
   public String toMethodArgs(final ContentUri uri) {
     EList<ContentUriSegment> _segments = uri.getSegments();
     Iterable<ContentUriParamSegment> _filter = Iterables.<ContentUriParamSegment>filter(_segments, ContentUriParamSegment.class);
-    final Function1<ContentUriParamSegment, String> _function = new Function1<ContentUriParamSegment, String>() {
-      public String apply(final ContentUriParamSegment seg) {
+    final Function1<ContentUriParamSegment, CharSequence> _function = new Function1<ContentUriParamSegment, CharSequence>() {
+      public CharSequence apply(final ContentUriParamSegment seg) {
         boolean _isNum = seg.isNum();
         if (_isNum) {
           String _name = seg.getName();

@@ -132,6 +132,10 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	public Cursor query(MechanoidContentProvider provider, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder){
 		final SQLiteDatabase db = provider.getOpenHelper().getWritableDatabase();
 		String groupBy = uri.getQueryParameter(MechanoidContentProvider.PARAM_GROUP_BY);
+		String limit = uri.getQueryParameter(MechanoidContentProvider.PARAM_LIMIT);
+		String offset = uri.getQueryParameter(MechanoidContentProvider.PARAM_OFFSET);
+		
+		String sortAndLimitClause = buildSortAndClause(sortOrder, limit, offset);
 		
 		if(mForUrisWithId) {
 			long id = ContentUris.parseId(uri);
@@ -141,10 +145,27 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 				.append(selection, selectionArgs)
 				.query(db, mSource, projection, sortOrder, TextUtils.isEmpty(groupBy) ? null : groupBy);
 		} else {
-			return db.query(mSource, projection, selection, selectionArgs, TextUtils.isEmpty(groupBy) ? null : groupBy, null, sortOrder);
+			return db.query(mSource, projection, selection, selectionArgs, TextUtils.isEmpty(groupBy) ? null : groupBy, null, sortAndLimitClause);
 		}
 	}
 	
+	private String buildSortAndClause(String sortOrder, String limit, String offset) {
+		
+		String limitClause = "";
+		
+		if(!TextUtils.isEmpty(limit)) {
+			limitClause = " LIMIT " + limit;
+		}
+			
+		if(!TextUtils.isEmpty(offset)) {
+			limitClause = limitClause + " OFFSET " + offset;
+		}
+		
+		String clause = sortOrder == null ? " 1" + limitClause : sortOrder + limitClause;
+		
+		return clause;
+	}
+
 	@Override
     public int bulkInsert(MechanoidContentProvider provider, Uri uri, ContentValues[] values) {
 

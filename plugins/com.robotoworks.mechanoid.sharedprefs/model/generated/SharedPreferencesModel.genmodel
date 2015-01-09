@@ -5,7 +5,7 @@
     modelPluginID="com.robotoworks.mechanoid.sharedprefs" forceOverwrite="true" modelName="SharedPreferencesModel"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.robotoworks.mechanoid.sharedprefs.edit"
-    editorPluginID="com.robotoworks.mechanoid.sharedprefs.editor" runtimeVersion="2.9">
+    editorPluginID="com.robotoworks.mechanoid.sharedprefs.editor" runtimeVersion="2.10">
   <genPackages prefix="SharedPreferencesModel" basePackage="com.robotoworks.mechanoid.sharedprefs"
       disposableProviderFactory="true" ecorePackage="SharedPreferencesModel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SharedPreferencesModel.ecore#//PreferenceType">

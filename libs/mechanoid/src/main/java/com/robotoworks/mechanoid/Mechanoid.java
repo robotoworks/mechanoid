@@ -14,6 +14,8 @@
  */
 package com.robotoworks.mechanoid;
 
+import com.robotoworks.mechanoid.db.SQuery;
+import com.robotoworks.mechanoid.db.SQuery.Async;
 import com.robotoworks.mechanoid.ops.OpsInitializer;
 
 import android.content.ComponentName;
@@ -63,6 +65,8 @@ public class Mechanoid {
 	public static void init(Context context) {
 		if(sInstance == null) {
 			sInstance = new Mechanoid(context);
+			
+			SQuery.init(getContentResolver());
 			
 			OpsInitializer.init();
 		}

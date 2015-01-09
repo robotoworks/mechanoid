@@ -6,10 +6,10 @@ import java.io.IOException;
 import com.robotoworks.mechanoid.net.ServiceResult;
 import java.io.InputStream;
 import com.robotoworks.mechanoid.util.Closeables;
-import java.io.BufferedReader;
 import com.robotoworks.mechanoid.internal.util.JsonReader;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class GetBookResult extends ServiceResult {
 	private Book book;
