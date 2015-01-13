@@ -1575,7 +1575,7 @@ public class SQuery {
             AsyncQuery asyncQuery = queryRef.get();
             
             if(asyncQuery != null) {
-            	asyncQuery.callback.onQueryComplete(cursor);
+            	asyncQuery.completeQuery(cursor);
             }
         }
     }
@@ -1585,7 +1585,7 @@ public class SQuery {
     }
 
 	public static synchronized void init(ContentResolver resolver) {
-		if(mAsync != null) {
+		if(mAsync == null) {
 			mAsync = new Async(resolver);
 		}
 	}
