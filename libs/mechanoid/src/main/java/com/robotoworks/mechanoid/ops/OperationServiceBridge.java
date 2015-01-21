@@ -51,7 +51,7 @@ public class OperationServiceBridge {
 	
 	private Hashtable<String, OperationServiceConfiguration> mConfigurations = new Hashtable<String, OperationServiceConfiguration>();
 	
-	private SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
+	private static SparseArray<Intent> mPendingRequests = new SparseArray<Intent>();
 	private SparseArray<Intent> mPausedRequests = new SparseArray<Intent>();
 	
 	private Set<OperationServiceListener> mListeners = com.robotoworks.mechanoid.internal.util.Collections.newSetFromMap(new WeakHashMap<OperationServiceListener, Boolean>());
@@ -486,5 +486,9 @@ public class OperationServiceBridge {
 		}
 		
 		return true;
+	}
+
+	public static SparseArray<Intent> getPendingRequests() {
+	    return mPendingRequests;
 	}
 }
