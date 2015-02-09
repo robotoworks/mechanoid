@@ -163,8 +163,9 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 		
 		if(limitClause != null) {
 			return (sortOrder == null ? " 1" + limitClause : sortOrder + limitClause);
+		} else {
+			return sortOrder;
 		}
-		return null;
 	}
 
 	@Override

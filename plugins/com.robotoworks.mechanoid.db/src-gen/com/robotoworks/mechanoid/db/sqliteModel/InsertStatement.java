@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getConflictResolution <em>Conflict Resolution</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getTable <em>Table</em>}</li>
@@ -18,7 +19,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.InsertStatement#getSelectStatement <em>Select Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getInsertStatement()
  * @model

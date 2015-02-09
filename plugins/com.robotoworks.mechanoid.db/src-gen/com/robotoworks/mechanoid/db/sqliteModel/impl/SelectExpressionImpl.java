@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectExpressionImpl#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectExpressionImpl#isAll <em>All</em>}</li>
@@ -34,7 +35,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectExpressionImpl#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectExpressionImpl#getHaving <em>Having</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

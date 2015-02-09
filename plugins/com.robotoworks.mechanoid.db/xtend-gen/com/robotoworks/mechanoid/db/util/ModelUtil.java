@@ -476,6 +476,7 @@ public class ModelUtil {
       if (_notEquals) {
         EList<ColumnSource> _resultColumns = selectList.getResultColumns();
         final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
+          @Override
           public Boolean apply(final ColumnSource it) {
             boolean _and = false;
             String _name = it.getName();
@@ -500,6 +501,7 @@ public class ModelUtil {
       if (_notEquals_1) {
         EList<ColumnSource> _resultColumns_1 = selectList_1.getResultColumns();
         final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
+          @Override
           public Boolean apply(final ColumnSource it) {
             boolean _and = false;
             String _name = it.getName();
@@ -549,6 +551,7 @@ public class ModelUtil {
   public static boolean isDefinitionReferencedByView(final TableDefinition tableDef, final CreateViewStatement view) {
     TreeIterator<EObject> _eAllContents = view.eAllContents();
     final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
+      @Override
       public Boolean apply(final EObject obj) {
         if ((obj instanceof SingleSourceTable)) {
           SingleSourceTable sourceTable = ((SingleSourceTable) obj);
@@ -575,6 +578,7 @@ public class ModelUtil {
   public static boolean hasAndroidPrimaryKey(final CreateTableStatement stmt) {
     EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
     final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
+      @Override
       public Boolean apply(final ColumnSource it) {
         String _name = it.getName();
         return Boolean.valueOf(_name.equals("_id"));
@@ -586,6 +590,7 @@ public class ModelUtil {
   public static boolean hasAndroidPrimaryKey(final CreateViewStatement stmt) {
     ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(stmt);
     final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
+      @Override
       public Boolean apply(final ColumnSource it) {
         boolean _and = false;
         String _name = it.getName();
@@ -624,6 +629,7 @@ public class ModelUtil {
         final TableDefinition stmt = tableHistory.removeLast();
         ArrayList<AlterTableAddColumnStatement> _findStatementsOfTypeBetween = ModelUtil.<AlterTableAddColumnStatement>findStatementsOfTypeBetween(AlterTableAddColumnStatement.class, stmt, caller);
         final Function1<AlterTableAddColumnStatement, Boolean> _function = new Function1<AlterTableAddColumnStatement, Boolean>() {
+          @Override
           public Boolean apply(final AlterTableAddColumnStatement it) {
             TableDefinition _table = it.getTable();
             return Boolean.valueOf(Objects.equal(_table, stmt));
@@ -631,6 +637,7 @@ public class ModelUtil {
         };
         Iterable<AlterTableAddColumnStatement> _filter = IterableExtensions.<AlterTableAddColumnStatement>filter(_findStatementsOfTypeBetween, _function);
         final Procedure1<AlterTableAddColumnStatement> _function_1 = new Procedure1<AlterTableAddColumnStatement>() {
+          @Override
           public void apply(final AlterTableAddColumnStatement it) {
             ColumnSource _columnDef = it.getColumnDef();
             columns.add(_columnDef);
@@ -688,6 +695,7 @@ public class ModelUtil {
       SelectList _selectList_1 = expr.getSelectList();
       EList<ColumnSource> _resultColumns = _selectList_1.getResultColumns();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
+        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           return Boolean.valueOf((!Objects.equal(_name, null)));
@@ -698,6 +706,7 @@ public class ModelUtil {
     }
     ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(expr);
     final Function1<SingleSource, Boolean> _function_1 = new Function1<SingleSource, Boolean>() {
+      @Override
       public Boolean apply(final SingleSource item) {
         if ((item instanceof SingleSourceTable)) {
           String _name = ((SingleSourceTable) item).getName();
@@ -708,6 +717,7 @@ public class ModelUtil {
     };
     Iterable<SingleSource> _filter_1 = IterableExtensions.<SingleSource>filter(_findAllSingleSources, _function_1);
     final Procedure1<SingleSource> _function_2 = new Procedure1<SingleSource>() {
+      @Override
       public void apply(final SingleSource item) {
         SingleSourceTable source = ((SingleSourceTable) item);
         DDLStatement _ancestorOfType = ModelUtil.<DDLStatement>getAncestorOfType(item, DDLStatement.class);

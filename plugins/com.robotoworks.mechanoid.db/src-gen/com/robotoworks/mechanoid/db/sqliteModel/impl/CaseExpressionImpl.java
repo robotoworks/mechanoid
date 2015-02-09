@@ -28,12 +28,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CaseExpressionImpl#getCaseExpression <em>Case Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CaseExpressionImpl#getCases <em>Cases</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CaseExpressionImpl#getElseExpression <em>Else Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

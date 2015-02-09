@@ -28,13 +28,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateIndexStatementImpl#isUnique <em>Unique</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateIndexStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateIndexStatementImpl#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateIndexStatementImpl#getColumns <em>Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

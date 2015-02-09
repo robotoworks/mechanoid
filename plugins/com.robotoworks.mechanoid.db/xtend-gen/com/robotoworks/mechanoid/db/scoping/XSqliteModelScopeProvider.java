@@ -230,6 +230,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     }
     Collection<EObject> _values = map.values();
     final Function<EObject, QualifiedName> _function = new Function<EObject, QualifiedName>() {
+      @Override
       public QualifiedName apply(final EObject it) {
         return NameHelper.getName(((TableDefinition) it));
       }
@@ -259,6 +260,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     }
     Collection<EObject> _values = map.values();
     final Function<EObject, QualifiedName> _function = new Function<EObject, QualifiedName>() {
+      @Override
       public QualifiedName apply(final EObject it) {
         return NameHelper.getName(((TableDefinition) it));
       }
@@ -288,6 +290,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
     }
     Collection<EObject> _values = map.values();
     final Function<EObject, QualifiedName> _function = new Function<EObject, QualifiedName>() {
+      @Override
       public QualifiedName apply(final EObject it) {
         return NameHelper.getName(((TableDefinition) it));
       }
@@ -386,6 +389,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             ArrayList<SingleSource> _findAllSingleSources = ModelUtil.findAllSingleSources(((SelectExpression)container));
             items.addAll(_findAllSingleSources);
             final Function<EObject, QualifiedName> _function = new Function<EObject, QualifiedName>() {
+              @Override
               public QualifiedName apply(final EObject it) {
                 return NameHelper.getName(((SelectSource) it));
               }
@@ -403,6 +407,7 @@ public class XSqliteModelScopeProvider extends SqliteModelScopeProvider {
             SelectCore core = ((SelectCore) _core);
             ArrayList<EObject> _allReferenceableSingleSources = ModelUtil.getAllReferenceableSingleSources(core);
             final Function<EObject, QualifiedName> _function = new Function<EObject, QualifiedName>() {
+              @Override
               public QualifiedName apply(final EObject it) {
                 return NameHelper.getName(((SelectSource) it));
               }

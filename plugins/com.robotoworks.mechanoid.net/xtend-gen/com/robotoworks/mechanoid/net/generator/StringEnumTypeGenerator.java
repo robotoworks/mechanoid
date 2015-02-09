@@ -30,6 +30,7 @@ public class StringEnumTypeGenerator {
     EnumTypeLiteral _literal = type.getLiteral();
     EList<EnumMember> _members = _literal.getMembers();
     final Function1<EnumMember, CharSequence> _function = new Function1<EnumMember, CharSequence>() {
+      @Override
       public CharSequence apply(final EnumMember member) {
         String _name = member.getName();
         String _underscore = Strings.underscore(_name);

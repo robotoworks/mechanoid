@@ -132,8 +132,7 @@ Workflow {
                 // provides a compare view
                 fragment = compare.CompareFragment {
                      fileExtensions = file.extensions
-                }
-    
+                } 
             }
         }
 }

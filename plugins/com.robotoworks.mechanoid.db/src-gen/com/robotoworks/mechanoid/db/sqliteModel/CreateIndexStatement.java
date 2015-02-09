@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement#isUnique <em>Unique</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateIndexStatement#getColumns <em>Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCreateIndexStatement()
  * @model

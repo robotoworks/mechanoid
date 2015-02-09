@@ -16,8 +16,8 @@ import com.robotoworks.example.ghissues.db.IssuesRecord;
 
 public abstract class AbstractGithubDBContentProvider extends MechanoidContentProvider {
 
-	protected static final int ISSUES = 0;
-	protected static final int ISSUES_ID = 1;
+	public static final int ISSUES = 0;
+	public static final int ISSUES_ID = 1;
 
 	
 

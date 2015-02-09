@@ -68,12 +68,14 @@ public class NetModelGenerator implements IGenerator {
   @Inject
   private Provider<EntityWriterProviderGenerator> mEntityWriterProviderGenerator;
   
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Model model = ((Model) _head);
     EList<Declaration> _declarations = model.getDeclarations();
     final Procedure1<Declaration> _function = new Procedure1<Declaration>() {
+      @Override
       public void apply(final Declaration it) {
         NetModelGenerator.this.generate(it, model, fsa);
       }
@@ -117,6 +119,7 @@ public class NetModelGenerator implements IGenerator {
     EList<ClientBlock> _blocks = client.getBlocks();
     Iterable<HttpMethod> _filter = Iterables.<HttpMethod>filter(_blocks, HttpMethod.class);
     final Procedure1<HttpMethod> _function = new Procedure1<HttpMethod>() {
+      @Override
       public void apply(final HttpMethod method) {
         String _packageName = model.getPackageName();
         String _name = method.getName();

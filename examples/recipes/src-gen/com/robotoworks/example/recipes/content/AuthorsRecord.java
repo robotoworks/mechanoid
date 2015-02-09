@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.net.Uri;
 import com.robotoworks.example.recipes.content.RecipesDBContract.Authors;
 import com.robotoworks.example.recipes.content.RecipesDBContract.Authors.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -29,9 +29,14 @@ public class AuthorsRecord extends ActiveRecord implements Parcelable {
 		public String[] getProjection() {
 			return PROJECTION;
 		}
-	};
-	
-	public static ActiveRecordFactory<AuthorsRecord> getFactory() {
+
+        @Override
+                    public Uri getContentUri() {
+                        return Authors.CONTENT_URI;
+                    }
+                };
+
+    			public static ActiveRecordFactory<AuthorsRecord> getFactory() {
 		return sFactory;
 	}
 

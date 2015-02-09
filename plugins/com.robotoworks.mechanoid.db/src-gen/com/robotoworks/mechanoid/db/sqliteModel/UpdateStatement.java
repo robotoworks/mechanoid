@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement#getConflictResolution <em>Conflict Resolution</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement#getUpdateColumnExpressions <em>Update Column Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateStatement#getWhereExpression <em>Where Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getUpdateStatement()
  * @model

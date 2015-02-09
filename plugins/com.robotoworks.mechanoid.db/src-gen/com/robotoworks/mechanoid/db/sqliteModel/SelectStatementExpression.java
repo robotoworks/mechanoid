@@ -10,12 +10,12 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatementExpression#isNot <em>Not</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatementExpression#isExists <em>Exists</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatementExpression#getSelect <em>Select</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getSelectStatementExpression()
  * @model
