@@ -14,6 +14,8 @@
  */
 package com.robotoworks.mechanoid.net;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +23,22 @@ import android.util.Log;
 
 public class NetLogHelper {
 	private NetLogHelper(){}
-	public static void logProperties(String tag, Map<String, List<String>> properties) {
-		for(String key : properties.keySet()) {
-			Log.d(tag, key + " " + properties.get(key).toString());
-		}
-	}
+
+    public static void logProperties(Method methodI, String tag, Map<String, List<String>> properties) {
+        for(String key : properties.keySet()) {
+            if (methodI != null) {
+                try {
+                    methodI.invoke(null, tag, key + " " + properties.get(key).toString());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Log.d(tag, key + " " + properties.get(key).toString());
+            }
+        }
+    }
 }

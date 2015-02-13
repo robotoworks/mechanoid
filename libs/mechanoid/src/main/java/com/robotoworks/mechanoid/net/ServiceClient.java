@@ -20,6 +20,8 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -47,6 +49,8 @@ public abstract class ServiceClient {
 
     private final int mConnectTimeout = 20000;
     private final int mReadTimeout = 20000;
+
+    private Method logMethodI;
 
     protected String getBaseUrl() {
         return mBaseUrl;
@@ -107,6 +111,19 @@ public abstract class ServiceClient {
         mReaderProvider = createReaderProvider();
         mWriterProvider = createWriterProvider();
     }
+    
+    /**
+     * give us the ability to use an own logger
+     * @param clazz
+     */
+    public void setLoggerClass(Class<?> clazz) {
+        try {
+            logMethodI = clazz.getMethod("i", String.class, String.class);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
     /**
      * <p>
@@ -137,14 +154,14 @@ public abstract class ServiceClient {
             if (mockedResponse != null) {
 
                 if (isDebug()) {
-                    Log.d(getLogTag(), METHOD_GET + " Mocked Response");
+                    log(getLogTag(), METHOD_GET + " Mocked Response");
                 }
 
                 return mockedResponse;
             }
 
             if (isDebug()) {
-                Log.d(getLogTag(), METHOD_GET + " " + url.toString());
+                log(getLogTag(), METHOD_GET + " " + url.toString());
             }
 
             HttpURLConnection conn = openConnection(url);
@@ -158,7 +175,7 @@ public abstract class ServiceClient {
             applyRequestProperties(request, conn);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(), conn.getRequestProperties());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), conn.getRequestProperties());
             }
 
             conn.connect();
@@ -166,14 +183,34 @@ public abstract class ServiceClient {
             Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), response.getHeaders());
 
-                Log.d(getLogTag(), response.readAsText());
+                log(getLogTag(), response.readAsText());
             }
 
             return response;
         } catch (Exception e) {
             throw new ServiceException(e);
+        }
+    }
+
+    /**
+     * give us the ability to use an own logger
+     * @param clazz
+     */
+    private void log(String logTag, String content) {
+        if (logMethodI != null) {
+            try {
+                logMethodI.invoke(null, logTag, content);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d(logTag, content);
         }
     }
 
@@ -187,14 +224,14 @@ public abstract class ServiceClient {
             if (mockedResponse != null) {
 
                 if (isDebug()) {
-                    Log.d(getLogTag(), METHOD_DELETE + " Mocked Response");
+                    log(getLogTag(), METHOD_DELETE + " Mocked Response");
                 }
 
                 return mockedResponse;
             }
 
             if (isDebug()) {
-                Log.d(getLogTag(), METHOD_DELETE + " " + url.toString());
+                log(getLogTag(), METHOD_DELETE + " " + url.toString());
             }
 
             HttpURLConnection conn = openConnection(url);
@@ -206,8 +243,7 @@ public abstract class ServiceClient {
             applyRequestProperties(request, conn);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(),
-                        conn.getRequestProperties());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), conn.getRequestProperties());
             }
 
             conn.connect();
@@ -215,9 +251,9 @@ public abstract class ServiceClient {
             Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), response.getHeaders());
 
-                Log.d(getLogTag(), response.readAsText());
+                log(getLogTag(), response.readAsText());
             }
 
             return response;
@@ -242,14 +278,14 @@ public abstract class ServiceClient {
             if (mockedResponse != null) {
 
                 if (isDebug()) {
-                    Log.d(getLogTag(), method + " Mocked Response");
+                    log(getLogTag(), method + " Mocked Response");
                 }
 
                 return mockedResponse;
             }
 
             if (isDebug()) {
-                Log.d(getLogTag(), method + " " + url.toString());
+                log(getLogTag(), method + " " + url.toString());
             }
 
             HttpURLConnection conn = openConnection(url);
@@ -266,7 +302,7 @@ public abstract class ServiceClient {
             applyRequestProperties(request, conn);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(), conn.getRequestProperties());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), conn.getRequestProperties());
             }
 
             conn.connect();
@@ -278,7 +314,7 @@ public abstract class ServiceClient {
                     ByteArrayOutputStream debugOutStream = new ByteArrayOutputStream();
                     entityEnclosedRequest.writeBody(mWriterProvider, debugOutStream);
 
-                    Log.d(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
+                    log(getLogTag(), new String(debugOutStream.toByteArray(), "UTF-8"));
                 }
                 entityEnclosedRequest.writeBody(mWriterProvider, conn.getOutputStream());
             }
@@ -287,7 +323,7 @@ public abstract class ServiceClient {
             if (xWwwFormUrlencoded) {
                 String payload = getParamPayload(request);
                 if (isDebug()) {
-                    Log.d(getLogTag(), "x-www-form-urlencoded params:" + payload);
+                    log(getLogTag(), "x-www-form-urlencoded params:" + payload);
                 }
                 // send the POST out
                 PrintWriter out = new PrintWriter(conn.getOutputStream());
@@ -298,8 +334,8 @@ public abstract class ServiceClient {
             Response<RESULT> response = new HttpUrlConnectionResponse<RESULT>(conn, resultParser);
 
             if (isDebug()) {
-                NetLogHelper.logProperties(getLogTag(), response.getHeaders());
-                Log.d(getLogTag(), response.readAsText());
+                NetLogHelper.logProperties(logMethodI, getLogTag(), response.getHeaders());
+                log(getLogTag(), response.readAsText());
             }
 
             return response;
