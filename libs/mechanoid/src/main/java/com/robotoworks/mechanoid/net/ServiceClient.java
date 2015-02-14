@@ -119,6 +119,9 @@ public abstract class ServiceClient {
     public void setLoggerClass(Class<?> clazz) {
         try {
             logMethodI = clazz.getMethod("i", String.class, String.class);
+            if (logMethodI==null) {
+                Log.w(getLogTag(),"logger has no method 'i'");  
+            }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
