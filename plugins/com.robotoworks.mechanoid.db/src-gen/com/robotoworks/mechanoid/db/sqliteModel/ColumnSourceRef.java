@@ -10,12 +10,12 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef#getSource <em>Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnSourceRef#getColumn <em>Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getColumnSourceRef()
  * @model

@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getColumnName <em>Column Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.UpdateColumnExpression#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getUpdateColumnExpression()
  * @model

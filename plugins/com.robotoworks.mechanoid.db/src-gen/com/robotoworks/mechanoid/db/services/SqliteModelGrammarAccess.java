@@ -33,7 +33,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// *                                                                     *
 		// *********************************************************************** / Model:
 		//	"package" packageName=QualifiedName database=DatabaseBlock;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"package" packageName=QualifiedName database=DatabaseBlock
 		public Group getGroup() { return cGroup; }
@@ -71,7 +71,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DatabaseBlock:
 		//	"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"database" name=ID "{" config=ConfigBlock? init=InitBlock? migrations+=MigrationBlock* "}"
 		public Group getGroup() { return cGroup; }
@@ -122,7 +122,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ConfigBlock:
 		//	{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{ConfigBlock} "config" "{" statements+=ConfigurationStatement* "}"
 		public Group getGroup() { return cGroup; }
@@ -160,7 +160,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//InitBlock:
 		//	{InitBlock} "init" "{" (statements+=DDLStatement ";")* "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{InitBlock} "init" "{" (statements+=DDLStatement ";")* "}"
 		public Group getGroup() { return cGroup; }
@@ -224,7 +224,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ConfigurationStatement:
 		//	{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
 		//	args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{ActionStatement} "action" name=ID uri=ContentUri | {Function} "function" name=ID "(" (args+=FunctionArg (","
 		//args+=FunctionArg)*)? ")" "{" (statements+=DMLStatement ";")* "}"
@@ -323,7 +323,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//FunctionArg:
 		//	type=ColumnType name=ID;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//type=ColumnType name=ID
 		public Group getGroup() { return cGroup; }
@@ -354,7 +354,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ContentUri:
 		//	"/" type=ID ("/" segments+=ContentUriSegment)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"/" type=ID ("/" segments+=ContentUriSegment)*
 		public Group getGroup() { return cGroup; }
@@ -401,7 +401,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ContentUriSegment:
 		//	name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//name=ID | {ContentUriParamSegment} "{" name=ID ":" (num?="#" | text?="*") "}"
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -463,7 +463,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//MigrationBlock:
 		//	{MigrationBlock} "migration" "{" (statements+=DDLStatement ";")* "}";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{MigrationBlock} "migration" "{" (statements+=DDLStatement ";")* "}"
 		public Group getGroup() { return cGroup; }
@@ -503,7 +503,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// *                                                                     *
 		// *********************************************************************** / SqlExpression returns Expression:
 		//	ExprConcat;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprConcat
 		public RuleCall getExprConcatParserRuleCall() { return cExprConcatParserRuleCall; }
@@ -522,7 +522,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprConcat returns Expression:
 		//	ExprMult ({ExprConcat.left=current} op="||" right=ExprMult)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprMult ({ExprConcat.left=current} op="||" right=ExprMult)*
 		public Group getGroup() { return cGroup; }
@@ -565,7 +565,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprMult returns Expression:
 		//	ExprAdd ({ExprMult.left=current} op=("*" | "/" | "%") right=ExprAdd)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprAdd ({ExprMult.left=current} op=("*" | "/" | "%") right=ExprAdd)*
 		public Group getGroup() { return cGroup; }
@@ -616,7 +616,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprAdd returns Expression:
 		//	ExprBit ({ExprAdd.left=current} op=("+" | "-") right=ExprBit)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprBit ({ExprAdd.left=current} op=("+" | "-") right=ExprBit)*
 		public Group getGroup() { return cGroup; }
@@ -666,7 +666,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprBit returns Expression:
 		//	ExprRelate ({ExprBit.left=current} op=("<<" | ">>" | "&" | "|") right=ExprRelate)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprRelate ({ExprBit.left=current} op=("<<" | ">>" | "&" | "|") right=ExprRelate)*
 		public Group getGroup() { return cGroup; }
@@ -722,7 +722,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprRelate returns Expression:
 		//	ExprEqual ({ExprRelate.left=current} op=("<" | "<=" | ">" | ">=") right=ExprEqual)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprEqual ({ExprRelate.left=current} op=("<" | "<=" | ">" | ">=") right=ExprEqual)*
 		public Group getGroup() { return cGroup; }
@@ -787,7 +787,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ExprEqual returns Expression:
 		//	ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
 		//	"match" | "regexp") right=ExprAnd)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprAnd ({ExprEqual.left=current} op=("=" | "==" | "!=" | "<>" | "is" | "is not" | "in" | "not in" | "like" | "glob" |
 		//"match" | "regexp") right=ExprAnd)*
@@ -865,7 +865,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprAnd returns Expression:
 		//	ExprOr ({ExprAnd.left=current} op="and" right=ExprOr)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ExprOr ({ExprAnd.left=current} op="and" right=ExprOr)*
 		public Group getGroup() { return cGroup; }
@@ -905,7 +905,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ExprOr returns Expression:
 		//	NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//NullCheckExpression ({ExprOr.left=current} op="or" right=NullCheckExpression)*
 		public Group getGroup() { return cGroup; }
@@ -943,7 +943,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//NullCheckExpression returns Expression:
 		//	PrimaryExpression ({NullCheckExpression.left=current} right=NullExpression)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//PrimaryExpression ({NullCheckExpression.left=current} right=NullExpression)?
 		public Group getGroup() { return cGroup; }
@@ -978,7 +978,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//NullExpression returns Expression:
 		//	{IsNull} "is null" | {NotNull} ("not null" | "notnull");
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{IsNull} "is null" | {NotNull} ("not null" | "notnull")
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1118,7 +1118,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	caseExpression=SqlExpression? cases+=Case+ ("else" elseExpression=SqlExpression)? "end" | {Function} name=ID "("
 		//	(all?="*" | arguments+=SqlExpression ("," arguments+=SqlExpression)*) ")" | {CastExpression} "cast" "("
 		//	expression=SqlExpression "as" type=SqliteDataType ")" | {FunctionArgument} "$" arg=[FunctionArg];
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{NewColumn} "new." column=[ColumnSource] | {OldColumn} "old." column=[ColumnSource] | {ColumnSourceRef} (=>
 		//source=[SelectSource] "." | source=[SelectSource] "." (all?="*" | column=[ColumnSource]) | column=[ColumnSource]) |
@@ -1437,7 +1437,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Case:
 		//	"when" whenExpression=SqlExpression "then" thenExpression=SqlExpression;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"when" whenExpression=SqlExpression "then" thenExpression=SqlExpression
 		public Group getGroup() { return cGroup; }
@@ -1484,7 +1484,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//SelectStatement:
 		//	core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
 		//	limitOffset=SqlExpression)?)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//core=SelectCore ("order by" orderby=OrderingTermList)? ("limit" limit=SqlExpression (("offset" | ",")
 		//limitOffset=SqlExpression)?)?
@@ -1551,7 +1551,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OrderingTermList:
 		//	orderingTerms+=OrderingTerm ("," orderingTerms+=OrderingTerm)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//orderingTerms+=OrderingTerm ("," orderingTerms+=OrderingTerm)*
 		public Group getGroup() { return cGroup; }
@@ -1588,7 +1588,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SelectCore returns SelectCoreExpression:
 		//	SelectExpression ({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//SelectExpression ({SelectCore.left=current} op=CompoundOperator right=SelectExpression)*
 		public Group getGroup() { return cGroup; }
@@ -1651,7 +1651,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	{SelectExpression} "select" (distinct?="distinct" | all?="all")? (allColumns?="*" | selectList=SelectList) ("from"
 		//	source=JoinSource)? ("where" where=WhereExpressions)? ("group by" groupBy=GroupByExpressions)? ("having"
 		//	having=HavingExpressions)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{SelectExpression} "select" (distinct?="distinct" | all?="all")? (allColumns?="*" | selectList=SelectList) ("from"
 		//source=JoinSource)? ("where" where=WhereExpressions)? ("group by" groupBy=GroupByExpressions)? ("having"
@@ -1755,7 +1755,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SelectList:
 		//	resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//resultColumns+=ResultColumn ("," resultColumns+=ResultColumn)*
 		public Group getGroup() { return cGroup; }
@@ -1786,7 +1786,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//WhereExpressions:
 		//	expression=SqlExpression;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//expression=SqlExpression
 		public Assignment getExpressionAssignment() { return cExpressionAssignment; }
@@ -1807,7 +1807,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GroupByExpressions:
 		//	groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//groupByExpressions+=SqlExpression ("," groupByExpressions+=SqlExpression)*
 		public Group getGroup() { return cGroup; }
@@ -1838,7 +1838,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//HavingExpressions:
 		//	expression=SqlExpression;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//expression=SqlExpression
 		public Assignment getExpressionAssignment() { return cExpressionAssignment; }
@@ -1860,7 +1860,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OrderingTerm:
 		//	expression=SqlExpression (asc?="asc" | desc?="desc")?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//expression=SqlExpression (asc?="asc" | desc?="desc")?
 		public Group getGroup() { return cGroup; }
@@ -1897,7 +1897,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//JoinSource:
 		//	source=SingleSource joinStatements+=JoinStatement*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//source=SingleSource joinStatements+=JoinStatement*
 		public Group getGroup() { return cGroup; }
@@ -1924,7 +1924,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SingleSource:
 		//	SingleSourceTable | SingleSourceSelectStatement | SingleSourceJoin;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//SingleSourceTable | SingleSourceSelectStatement | SingleSourceJoin
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1953,7 +1953,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SingleSourceTable returns SelectSource:
 		//	{SingleSourceTable} tableReference=[TableDefinition] ("as" name=ID)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{SingleSourceTable} tableReference=[TableDefinition] ("as" name=ID)?
 		public Group getGroup() { return cGroup; }
@@ -1998,7 +1998,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SingleSourceSelectStatement returns SelectSource:
 		//	{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" ("as" name=ID)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{SingleSourceSelectStatement} "(" selectStatement=SelectStatement ")" ("as" name=ID)?
 		public Group getGroup() { return cGroup; }
@@ -2041,7 +2041,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SingleSourceJoin:
 		//	"(" joinSource=JoinSource ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"(" joinSource=JoinSource ")"
 		public Group getGroup() { return cGroup; }
@@ -2085,7 +2085,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//JoinStatement:
 		//	{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
 		//	singleSource=SingleSource "on" expression=SqlExpression;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{JoinStatement} natural?="natural"? (left?="left" outer?="outer"? | inner?="inner" | cross?="cross")? "join"
 		//singleSource=SingleSource "on" expression=SqlExpression
@@ -2162,7 +2162,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ResultColumn returns ColumnSource:
 		//	{ResultColumn} expression=SqlExpression ("as" name=ID)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{ResultColumn} expression=SqlExpression ("as" name=ID)?
 		public Group getGroup() { return cGroup; }
@@ -2221,7 +2221,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
 		//	{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
 		//	literal="current_timestamp";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{NumericLiteral} number=SignedNumber | {StringLiteral} literal=STRING | {NullLiteral} literal="null" |
 		//{CurrentTimeLiteral} literal="current_time" | {CurrentDateLiteral} literal="current_date" | {CurrentTimeStampLiteral}
@@ -2322,7 +2322,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// *********************************************************************** / DDLStatement:
 		//	CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement
 		//	| AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//CreateTableStatement | CreateViewStatement | CreateTriggerStatement | CreateIndexStatement | AlterTableRenameStatement |
 		//AlterTableAddColumnStatement | DropTableStatement | DropTriggerStatement | DropViewStatement | DropIndexStatement
@@ -2385,7 +2385,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//CreateTableStatement returns TableDefinition:
 		//	{CreateTableStatement} "create" temporary?="temp"? "table" name=ID "(" columnDefs+=ColumnDef (","
 		//	columnDefs+=ColumnDef)* ("," constraints+=TableConstraint)* ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{CreateTableStatement} "create" temporary?="temp"? "table" name=ID "(" columnDefs+=ColumnDef (","
 		//columnDefs+=ColumnDef)* ("," constraints+=TableConstraint)* ")"
@@ -2465,7 +2465,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//CreateViewStatement returns TableDefinition:
 		//	{CreateViewStatement} "create" temporary?="temp"? "view" name=ID "as" selectStatement=SelectStatement;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{CreateViewStatement} "create" temporary?="temp"? "view" name=ID "as" selectStatement=SelectStatement
 		public Group getGroup() { return cGroup; }
@@ -2557,7 +2557,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	eventType="insert" | eventType="update" ("of" updateColumnNames+=ID ("," updateColumnNames+=ID)*)?) "on"
 		//	table=[TableDefinition] forEachRow="for each row"? ("when" whenExpression=SqlExpression)? "begin"
 		//	(statements+=DMLStatement ";" (statements+=DMLStatement ";")*)? "end";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"create" temporary?="temp"? "trigger" name=ID when=("before" | "after" | "instead of")? (eventType="delete" |
 		//eventType="insert" | eventType="update" ("of" updateColumnNames+=ID ("," updateColumnNames+=ID)*)?) "on"
@@ -2722,7 +2722,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AlterTableRenameStatement returns TableDefinition:
 		//	{AlterTableRenameStatement} "alter" "table" table=[TableDefinition] "rename to" name=ID;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{AlterTableRenameStatement} "alter" "table" table=[TableDefinition] "rename to" name=ID
 		public Group getGroup() { return cGroup; }
@@ -2769,7 +2769,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AlterTableAddColumnStatement:
 		//	"alter" "table" table=[TableDefinition] "add column" columnDef=ColumnDef;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"alter" "table" table=[TableDefinition] "add column" columnDef=ColumnDef
 		public Group getGroup() { return cGroup; }
@@ -2812,7 +2812,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DropTableStatement:
 		//	"drop" "table" ifExists?="if exists"? table=[TableDefinition];
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"drop" "table" ifExists?="if exists"? table=[TableDefinition]
 		public Group getGroup() { return cGroup; }
@@ -2852,7 +2852,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DropTriggerStatement:
 		//	"drop" "trigger" ifExists?="if exists"? trigger=[CreateTriggerStatement];
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"drop" "trigger" ifExists?="if exists"? trigger=[CreateTriggerStatement]
 		public Group getGroup() { return cGroup; }
@@ -2892,7 +2892,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DropViewStatement:
 		//	"drop" "view" ifExists?="if exists"? view=[CreateViewStatement];
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"drop" "view" ifExists?="if exists"? view=[CreateViewStatement]
 		public Group getGroup() { return cGroup; }
@@ -2944,7 +2944,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//CreateIndexStatement:
 		//	"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
 		//	columns+=IndexedColumn)* ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"create" unique?="unique"? "index" name=ID "on" table=[TableDefinition] "(" columns+=IndexedColumn (","
 		//columns+=IndexedColumn)* ")"
@@ -3018,7 +3018,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DropIndexStatement:
 		//	"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement];
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"drop" "index" ifExists?="if exists"? index=[CreateIndexStatement]
 		public Group getGroup() { return cGroup; }
@@ -3058,7 +3058,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ColumnDef returns ColumnSource:
 		//	{ColumnDef} name=ID type=ColumnType constraints+=ColumnConstraint*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{ColumnDef} name=ID type=ColumnType constraints+=ColumnConstraint*
 		public Group getGroup() { return cGroup; }
@@ -3126,7 +3126,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	{NotNullConstraint} "not null" conflictClause=ConflictClause? | {UniqueConstraint} "unique"
 		//	conflictClause=ConflictClause? | {DefaultConstraint} "default" defaultValue=DefaultValue | {CheckConstraint} "check"
 		//	"(" expression=SqlExpression ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{PrimaryKeyColumnConstraint} "primary key" (asc?="asc" | desc?="desc")? autoincrement?="autoincrement"? |
 		//{NotNullConstraint} "not null" conflictClause=ConflictClause? | {UniqueConstraint} "unique"
@@ -3240,7 +3240,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//TableConstraint:
 		//	UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//UniqueTableConstraint | PrimaryConstraint | CheckTableConstraint
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -3277,7 +3277,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//UniqueTableConstraint:
 		//	("constraint" name=ID)? "unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//	conflictClause=ConflictClause;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//("constraint" name=ID)? "unique" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//conflictClause=ConflictClause
@@ -3351,7 +3351,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//PrimaryConstraint:
 		//	("constraint" name=ID)? "primary key" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//	conflictClause=ConflictClause;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//("constraint" name=ID)? "primary key" "(" columns+=IndexedColumn ("," columns+=IndexedColumn)* ")"
 		//conflictClause=ConflictClause
@@ -3418,7 +3418,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//CheckTableConstraint:
 		//	("constraint" name=ID)? "check" "(" expression=SqlExpression ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//("constraint" name=ID)? "check" "(" expression=SqlExpression ")"
 		public Group getGroup() { return cGroup; }
@@ -3469,7 +3469,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//IndexedColumn:
 		//	columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//columnReference=[ColumnDef] ("collate" collationName=ID)? (asc?="asc" | desc?="desc")?
 		public Group getGroup() { return cGroup; }
@@ -3527,7 +3527,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DefaultValue:
 		//	{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=SqlExpression ")";
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//{LiteralDefaultValue} literal=LiteralValue | {ExpressionDefaultValue} "(" expression=SqlExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -3573,7 +3573,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ConflictClause:
 		//	"on" "conflict" resolution=ConflictResolution;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"on" "conflict" resolution=ConflictResolution
 		public Group getGroup() { return cGroup; }
@@ -3605,7 +3605,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// *                                                                     *
 		// *********************************************************************** / DMLStatement:
 		//	SelectStatement | InsertStatement | UpdateStatement | DeleteStatement;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//SelectStatement | InsertStatement | UpdateStatement | DeleteStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -3638,7 +3638,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//DeleteStatement:
 		//	"delete" "from" table=[TableDefinition] ("where" expression=SqlExpression)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"delete" "from" table=[TableDefinition] ("where" expression=SqlExpression)?
 		public Group getGroup() { return cGroup; }
@@ -3719,7 +3719,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	("insert" ("or" conflictResolution=ConflictResolution)? | "replace") "into" table=[TableDefinition] ("("
 		//	columnNames+=[ColumnDef] ("," columnNames+=[ColumnDef])* ")")? (("values" "(" expressions+=SqlExpression (","
 		//	expressions+=SqlExpression)* ")" | selectStatement=SelectStatement) | "default" "values");
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//("insert" ("or" conflictResolution=ConflictResolution)? | "replace") "into" table=[TableDefinition] ("("
 		//columnNames+=[ColumnDef] ("," columnNames+=[ColumnDef])* ")")? (("values" "(" expressions+=SqlExpression (","
@@ -3875,7 +3875,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	"update" ("or" conflictResolution=ConflictResolution)? table=[TableDefinition] "set"
 		//	updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
 		//	whereExpression=SqlExpression)?;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"update" ("or" conflictResolution=ConflictResolution)? table=[TableDefinition] "set"
 		//updateColumnExpressions+=UpdateColumnExpression ("," updateColumnExpressions+=UpdateColumnExpression)* ("where"
@@ -3952,7 +3952,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//UpdateColumnExpression:
 		//	columnName=[ColumnDef] "=" expression=SqlExpression;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//columnName=[ColumnDef] "=" expression=SqlExpression
 		public Group getGroup() { return cGroup; }
@@ -3988,7 +3988,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		// *                                                                     *
 		// *********************************************************************** / SignedNumber returns ecore::EBigDecimal:
 		//	"-"? NUMBER;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//"-"? NUMBER
 		public Group getGroup() { return cGroup; }
@@ -4010,7 +4010,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//QualifiedName:
 		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//ID ("." ID)*
 		public Group getGroup() { return cGroup; }
@@ -4411,7 +4411,7 @@ public class SqliteModelGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}

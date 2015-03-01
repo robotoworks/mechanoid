@@ -10,12 +10,12 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ExprOr#getLeft <em>Left</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ExprOr#getOp <em>Op</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ExprOr#getRight <em>Right</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getExprOr()
  * @model

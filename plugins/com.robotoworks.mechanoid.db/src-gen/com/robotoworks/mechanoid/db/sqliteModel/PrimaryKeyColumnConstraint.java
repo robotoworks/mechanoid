@@ -10,12 +10,12 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.PrimaryKeyColumnConstraint#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.PrimaryKeyColumnConstraint#isDesc <em>Desc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.PrimaryKeyColumnConstraint#isAutoincrement <em>Autoincrement</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getPrimaryKeyColumnConstraint()
  * @model

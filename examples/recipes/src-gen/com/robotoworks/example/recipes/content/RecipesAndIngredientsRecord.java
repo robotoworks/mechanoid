@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.net.Uri;
 import com.robotoworks.example.recipes.content.RecipesDBContract.RecipesAndIngredients;
 import com.robotoworks.example.recipes.content.RecipesDBContract.RecipesAndIngredients.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -29,9 +29,14 @@ public class RecipesAndIngredientsRecord extends ActiveRecord implements Parcela
 		public String[] getProjection() {
 			return PROJECTION;
 		}
-	};
-	
-	public static ActiveRecordFactory<RecipesAndIngredientsRecord> getFactory() {
+
+        @Override
+                    public Uri getContentUri() {
+                        return RecipesAndIngredients.CONTENT_URI;
+                    }
+                };
+
+    			public static ActiveRecordFactory<RecipesAndIngredientsRecord> getFactory() {
 		return sFactory;
 	}
 

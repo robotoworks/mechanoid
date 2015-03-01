@@ -16,8 +16,8 @@ import com.robotoworks.example.movies.db.MoviesRecord;
 
 public abstract class AbstractMovieDBContentProvider extends MechanoidContentProvider {
 
-	protected static final int MOVIES = 0;
-	protected static final int MOVIES_ID = 1;
+	public static final int MOVIES = 0;
+	public static final int MOVIES_ID = 1;
 
 	
 

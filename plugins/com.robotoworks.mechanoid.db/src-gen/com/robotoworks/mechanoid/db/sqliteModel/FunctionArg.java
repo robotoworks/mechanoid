@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.FunctionArg#getType <em>Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.FunctionArg#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getFunctionArg()
  * @model

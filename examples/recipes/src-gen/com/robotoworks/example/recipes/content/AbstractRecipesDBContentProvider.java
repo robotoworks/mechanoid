@@ -18,17 +18,17 @@ import com.robotoworks.example.recipes.content.IngredientsRecord;
 
 public abstract class AbstractRecipesDBContentProvider extends MechanoidContentProvider {
 
-	protected static final int RECIPES = 0;
-	protected static final int RECIPES_ID = 1;
-	protected static final int AUTHORS = 2;
-	protected static final int AUTHORS_ID = 3;
-	protected static final int INGREDIENTS = 4;
-	protected static final int INGREDIENTS_ID = 5;
+	public static final int RECIPES = 0;
+	public static final int RECIPES_ID = 1;
+	public static final int AUTHORS = 2;
+	public static final int AUTHORS_ID = 3;
+	public static final int INGREDIENTS = 4;
+	public static final int INGREDIENTS_ID = 5;
 
-	protected static final int RECIPES_WITH_AUTHORS = 6;
-	protected static final int RECIPES_WITH_AUTHORS_ID = 7;
-	protected static final int RECIPES_AND_INGREDIENTS = 8;
-	protected static final int RECIPES_AND_INGREDIENTS_ID = 9;
+	public static final int RECIPES_WITH_AUTHORS = 6;
+	public static final int RECIPES_WITH_AUTHORS_ID = 7;
+	public static final int RECIPES_AND_INGREDIENTS = 8;
+	public static final int RECIPES_AND_INGREDIENTS_ID = 9;
 	
 
 	

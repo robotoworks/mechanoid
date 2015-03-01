@@ -151,7 +151,7 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 	
 	private String buildSortAndClause(String sortOrder, String limit, String offset) {
 		
-		String limitClause = "";
+		String limitClause = null;
 		
 		if(!TextUtils.isEmpty(limit)) {
 			limitClause = " LIMIT " + limit;
@@ -161,9 +161,11 @@ public class DefaultContentProviderActions extends ContentProviderActions {
 			limitClause = limitClause + " OFFSET " + offset;
 		}
 		
-		String clause = sortOrder == null ? " 1" + limitClause : sortOrder + limitClause;
-		
-		return clause;
+		if(limitClause != null) {
+			return (sortOrder == null ? " 1" + limitClause : sortOrder + limitClause);
+		} else {
+			return sortOrder;
+		}
 	}
 
 	@Override

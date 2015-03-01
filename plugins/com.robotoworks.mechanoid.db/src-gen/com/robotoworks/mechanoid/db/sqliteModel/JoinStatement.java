@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.JoinStatement#isNatural <em>Natural</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.JoinStatement#isLeft <em>Left</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.JoinStatement#getSingleSource <em>Single Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.JoinStatement#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getJoinStatement()
  * @model

@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.OrderingTermImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.OrderingTermImpl#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.OrderingTermImpl#isDesc <em>Desc</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

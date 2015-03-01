@@ -10,13 +10,13 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getCore <em>Core</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getOrderby <em>Orderby</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimit <em>Limit</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectStatement#getLimitOffset <em>Limit Offset</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getSelectStatement()
  * @model

@@ -10,11 +10,11 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.AlterTableAddColumnStatement#getColumnDef <em>Column Def</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getAlterTableAddColumnStatement()
  * @model

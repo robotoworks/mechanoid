@@ -9,6 +9,7 @@ import com.google.inject.Injector;
 
 public class SqliteModelUiInjectorProvider implements IInjectorProvider {
 	
+	@Override
 	public Injector getInjector() {
 		return com.robotoworks.mechanoid.db.ui.internal.SqliteModelActivator.getInstance().getInjector("com.robotoworks.mechanoid.db.SqliteModel");
 	}

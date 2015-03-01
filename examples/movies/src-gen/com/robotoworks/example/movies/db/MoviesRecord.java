@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.net.Uri;
 import com.robotoworks.example.movies.db.MovieDBContract.Movies;
 import com.robotoworks.example.movies.db.MovieDBContract.Movies.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -29,9 +29,14 @@ public class MoviesRecord extends ActiveRecord implements Parcelable {
 		public String[] getProjection() {
 			return PROJECTION;
 		}
-	};
-	
-	public static ActiveRecordFactory<MoviesRecord> getFactory() {
+
+        @Override
+                    public Uri getContentUri() {
+                        return Movies.CONTENT_URI;
+                    }
+                };
+
+    			public static ActiveRecordFactory<MoviesRecord> getFactory() {
 		return sFactory;
 	}
 

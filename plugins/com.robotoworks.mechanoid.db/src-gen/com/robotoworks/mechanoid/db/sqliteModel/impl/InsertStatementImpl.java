@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.InsertStatementImpl#getConflictResolution <em>Conflict Resolution</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.InsertStatementImpl#getTable <em>Table</em>}</li>
@@ -39,7 +40,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.InsertStatementImpl#getExpressions <em>Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.InsertStatementImpl#getSelectStatement <em>Select Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

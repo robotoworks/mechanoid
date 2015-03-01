@@ -40,6 +40,7 @@ public class OpServiceModelGenerator implements IGenerator {
   @Inject
   private OperationRegistryGenerator mOperationRegistryGenerator;
   
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
@@ -51,6 +52,7 @@ public class OpServiceModelGenerator implements IGenerator {
     ServiceBlock _service = model.getService();
     EList<Operation> _ops = _service.getOps();
     final Procedure1<Operation> _function = new Procedure1<Operation>() {
+      @Override
       public void apply(final Operation item) {
         OpServiceModelGenerator.this.generateOps(resource, fsa, item);
       }

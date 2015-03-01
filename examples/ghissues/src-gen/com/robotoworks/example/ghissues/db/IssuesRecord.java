@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import android.net.Uri;
 import com.robotoworks.example.ghissues.db.GithubDBContract.Issues;
 import com.robotoworks.example.ghissues.db.GithubDBContract.Issues.Builder;
 import com.robotoworks.mechanoid.util.Closeables;
@@ -29,9 +29,14 @@ public class IssuesRecord extends ActiveRecord implements Parcelable {
 		public String[] getProjection() {
 			return PROJECTION;
 		}
-	};
-	
-	public static ActiveRecordFactory<IssuesRecord> getFactory() {
+
+        @Override
+                    public Uri getContentUri() {
+                        return Issues.CONTENT_URI;
+                    }
+                };
+
+    			public static ActiveRecordFactory<IssuesRecord> getFactory() {
 		return sFactory;
 	}
 
