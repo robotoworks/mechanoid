@@ -543,7 +543,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -615,7 +614,6 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -685,7 +683,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -711,7 +708,6 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -736,7 +732,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -775,7 +770,6 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -813,7 +807,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -866,7 +859,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs_1 = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -901,7 +893,6 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -952,7 +943,6 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     {
       final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -988,7 +978,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1049,7 +1038,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs_2 = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1079,7 +1067,6 @@ public class ActiveRecordGenerator {
     _builder.newLineIfNotEmpty();
     {
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1137,7 +1124,6 @@ public class ActiveRecordGenerator {
     _builder.newLine();
     {
       final Function1<ColumnSource, Boolean> _function_1 = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1264,7 +1250,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1301,7 +1286,6 @@ public class ActiveRecordGenerator {
     {
       ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(stmt);
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1339,7 +1323,6 @@ public class ActiveRecordGenerator {
     {
       EList<ColumnSource> _columnDefs = stmt.getColumnDefs();
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");
@@ -1415,7 +1398,6 @@ public class ActiveRecordGenerator {
     {
       ArrayList<ColumnSource> _viewResultColumns = ModelUtil.getViewResultColumns(stmt);
       final Function1<ColumnSource, Boolean> _function = new Function1<ColumnSource, Boolean>() {
-        @Override
         public Boolean apply(final ColumnSource it) {
           String _name = it.getName();
           boolean _equals = _name.equals("_id");

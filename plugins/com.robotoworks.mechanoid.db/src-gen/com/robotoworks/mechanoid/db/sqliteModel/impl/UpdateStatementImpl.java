@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UpdateStatementImpl#getConflictResolution <em>Conflict Resolution</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UpdateStatementImpl#getTable <em>Table</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UpdateStatementImpl#getUpdateColumnExpressions <em>Update Column Expressions</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.UpdateStatementImpl#getWhereExpression <em>Where Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

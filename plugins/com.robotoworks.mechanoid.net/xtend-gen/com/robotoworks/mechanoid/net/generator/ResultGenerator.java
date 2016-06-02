@@ -447,7 +447,6 @@ public class ResultGenerator {
         ComplexTypeLiteral _literal = _superType_2.getLiteral();
         EList<Member> _members = _literal.getMembers();
         final Function1<Member, Boolean> _function = new Function1<Member, Boolean>() {
-          @Override
           public Boolean apply(final Member superMember) {
             BlockType _type = null;
             if (responseBlock!=null) {
@@ -457,7 +456,6 @@ public class ResultGenerator {
               BlockType _type_1 = responseBlock.getType();
               EList<Member> _members = ((ComplexTypeLiteral) _type_1).getMembers();
               final Function1<Member, Boolean> _function = new Function1<Member, Boolean>() {
-                @Override
                 public Boolean apply(final Member member) {
                   String _name = superMember.getName();
                   String _name_1 = member.getName();

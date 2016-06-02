@@ -28,13 +28,13 @@ import com.robotoworks.mechanoid.net.netModel.IntegerType;
 import com.robotoworks.mechanoid.net.netModel.Model;
 import com.robotoworks.mechanoid.text.Strings;
 import java.util.Arrays;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class NetModelGenerator implements IGenerator {
@@ -68,19 +68,17 @@ public class NetModelGenerator implements IGenerator {
   @Inject
   private Provider<EntityWriterProviderGenerator> mEntityWriterProviderGenerator;
   
-  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Model model = ((Model) _head);
     EList<Declaration> _declarations = model.getDeclarations();
-    final Procedure1<Declaration> _function = new Procedure1<Declaration>() {
-      @Override
-      public void apply(final Declaration it) {
+    final Consumer<Declaration> _function = new Consumer<Declaration>() {
+      public void accept(final Declaration it) {
         NetModelGenerator.this.generate(it, model, fsa);
       }
     };
-    IterableExtensions.<Declaration>forEach(_declarations, _function);
+    _declarations.forEach(_function);
   }
   
   protected void _generate(final Client client, final Model model, final IFileSystemAccess fsa) {
@@ -118,9 +116,8 @@ public class NetModelGenerator implements IGenerator {
     fsa.generateFile(_resolveFileName_3, _generate_2);
     EList<ClientBlock> _blocks = client.getBlocks();
     Iterable<HttpMethod> _filter = Iterables.<HttpMethod>filter(_blocks, HttpMethod.class);
-    final Procedure1<HttpMethod> _function = new Procedure1<HttpMethod>() {
-      @Override
-      public void apply(final HttpMethod method) {
+    final Consumer<HttpMethod> _function = new Consumer<HttpMethod>() {
+      public void accept(final HttpMethod method) {
         String _packageName = model.getPackageName();
         String _name = method.getName();
         String _pascalize = Strings.pascalize(_name);
@@ -139,7 +136,7 @@ public class NetModelGenerator implements IGenerator {
         fsa.generateFile(_resolveFileName_1, _generate_1);
       }
     };
-    IterableExtensions.<HttpMethod>forEach(_filter, _function);
+    _filter.forEach(_function);
   }
   
   protected void _generate(final ComplexTypeDeclaration entity, final Model model, final IFileSystemAccess fsa) {

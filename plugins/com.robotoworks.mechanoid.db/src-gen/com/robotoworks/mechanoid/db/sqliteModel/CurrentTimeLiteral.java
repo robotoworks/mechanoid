@@ -10,10 +10,10 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CurrentTimeLiteral#getLiteral <em>Literal</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCurrentTimeLiteral()
  * @model

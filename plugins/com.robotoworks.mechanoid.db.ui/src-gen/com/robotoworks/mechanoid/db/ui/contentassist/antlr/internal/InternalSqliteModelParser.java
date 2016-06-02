@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
-import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
-import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.DFA;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.DFA;
 import com.robotoworks.mechanoid.db.services.SqliteModelGrammarAccess;
 
 
@@ -25,144 +25,144 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NUMBER", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'/'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'not in'", "'like'", "'glob'", "'match'", "'regexp'", "'not null'", "'notnull'", "'offset'", "','", "'before'", "'after'", "'instead of'", "'replace'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'", "'package'", "'database'", "'{'", "'}'", "'config'", "'init'", "';'", "'action'", "'function'", "'('", "')'", "':'", "'migration'", "'is null'", "'new.'", "'old.'", "'.'", "'case'", "'end'", "'else'", "'cast'", "'as'", "'$'", "'when'", "'then'", "'order by'", "'limit'", "'select'", "'from'", "'where'", "'group by'", "'having'", "'join'", "'on'", "'create'", "'table'", "'view'", "'trigger'", "'begin'", "'of'", "'alter'", "'rename to'", "'add column'", "'drop'", "'index'", "'primary key'", "'unique'", "'default'", "'check'", "'constraint'", "'collate'", "'conflict'", "'delete'", "'into'", "'insert'", "'or'", "'values'", "'update'", "'set'", "'#'", "'||'", "'and'", "'not'", "'exists'", "'distinct'", "'all'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'null'", "'current_time'", "'current_date'", "'current_timestamp'", "'temp'", "'for each row'", "'if exists'", "'autoincrement'"
     };
-    public static final int RULE_ID=5;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int T__93=93;
-    public static final int T__19=19;
-    public static final int T__94=94;
-    public static final int T__91=91;
-    public static final int T__92=92;
-    public static final int T__16=16;
-    public static final int T__15=15;
-    public static final int T__90=90;
-    public static final int T__18=18;
-    public static final int T__17=17;
-    public static final int T__12=12;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int T__99=99;
-    public static final int T__98=98;
-    public static final int T__97=97;
-    public static final int T__96=96;
-    public static final int T__95=95;
-    public static final int T__139=139;
-    public static final int T__138=138;
-    public static final int T__137=137;
-    public static final int T__136=136;
-    public static final int T__80=80;
-    public static final int T__81=81;
-    public static final int T__82=82;
-    public static final int T__83=83;
-    public static final int T__85=85;
-    public static final int T__84=84;
-    public static final int T__87=87;
+    public static final int T__50=50;
     public static final int T__140=140;
-    public static final int T__86=86;
-    public static final int T__89=89;
-    public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=8;
-    public static final int T__126=126;
-    public static final int T__125=125;
-    public static final int T__128=128;
-    public static final int RULE_STRING=6;
-    public static final int T__127=127;
-    public static final int T__71=71;
-    public static final int T__129=129;
-    public static final int T__72=72;
-    public static final int T__70=70;
-    public static final int T__76=76;
-    public static final int T__75=75;
-    public static final int T__130=130;
-    public static final int T__74=74;
-    public static final int T__131=131;
-    public static final int T__73=73;
-    public static final int T__132=132;
-    public static final int T__133=133;
-    public static final int T__79=79;
-    public static final int T__134=134;
-    public static final int T__78=78;
-    public static final int T__135=135;
-    public static final int T__77=77;
-    public static final int T__68=68;
-    public static final int T__69=69;
-    public static final int T__66=66;
-    public static final int T__67=67;
-    public static final int T__64=64;
-    public static final int T__65=65;
-    public static final int T__62=62;
-    public static final int T__63=63;
-    public static final int T__118=118;
-    public static final int T__119=119;
-    public static final int T__116=116;
-    public static final int T__117=117;
-    public static final int T__114=114;
-    public static final int T__115=115;
-    public static final int T__124=124;
-    public static final int T__123=123;
-    public static final int T__122=122;
-    public static final int T__121=121;
-    public static final int T__120=120;
-    public static final int T__61=61;
-    public static final int T__60=60;
+    public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
     public static final int T__58=58;
     public static final int T__51=51;
+    public static final int T__137=137;
     public static final int T__52=52;
+    public static final int T__136=136;
     public static final int T__53=53;
+    public static final int T__139=139;
     public static final int T__54=54;
-    public static final int RULE_NUMBER=4;
-    public static final int T__107=107;
-    public static final int T__108=108;
-    public static final int T__109=109;
-    public static final int T__103=103;
-    public static final int T__59=59;
-    public static final int T__104=104;
-    public static final int T__105=105;
-    public static final int T__106=106;
-    public static final int T__111=111;
-    public static final int T__110=110;
+    public static final int T__138=138;
+    public static final int T__133=133;
+    public static final int T__132=132;
+    public static final int T__60=60;
+    public static final int T__135=135;
+    public static final int T__61=61;
+    public static final int T__134=134;
+    public static final int RULE_ID=5;
+    public static final int T__131=131;
+    public static final int T__130=130;
     public static final int RULE_INT=7;
-    public static final int T__113=113;
-    public static final int T__112=112;
-    public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__102=102;
-    public static final int T__101=101;
-    public static final int T__100=100;
-    public static final int RULE_SL_COMMENT=9;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__66=66;
+    public static final int RULE_ML_COMMENT=8;
+    public static final int T__67=67;
+    public static final int T__129=129;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__126=126;
+    public static final int T__63=63;
+    public static final int T__125=125;
+    public static final int T__64=64;
+    public static final int T__128=128;
+    public static final int T__65=65;
+    public static final int T__127=127;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__91=91;
+    public static final int T__100=100;
+    public static final int T__92=92;
+    public static final int T__93=93;
+    public static final int T__102=102;
+    public static final int T__94=94;
+    public static final int T__101=101;
+    public static final int T__90=90;
+    public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__99=99;
+    public static final int T__12=12;
+    public static final int T__13=13;
+    public static final int T__14=14;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int T__122=122;
+    public static final int T__70=70;
+    public static final int T__121=121;
+    public static final int T__71=71;
+    public static final int T__124=124;
+    public static final int T__72=72;
+    public static final int T__123=123;
+    public static final int T__120=120;
+    public static final int RULE_STRING=6;
+    public static final int RULE_SL_COMMENT=9;
+    public static final int T__77=77;
+    public static final int T__119=119;
+    public static final int T__78=78;
+    public static final int T__118=118;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int T__115=115;
+    public static final int EOF=-1;
+    public static final int T__74=74;
+    public static final int T__114=114;
+    public static final int T__75=75;
+    public static final int T__117=117;
+    public static final int T__76=76;
+    public static final int T__116=116;
+    public static final int T__80=80;
+    public static final int T__111=111;
+    public static final int T__81=81;
+    public static final int T__110=110;
+    public static final int T__82=82;
+    public static final int T__113=113;
+    public static final int T__83=83;
+    public static final int T__112=112;
     public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int RULE_NUMBER=4;
+    public static final int T__88=88;
+    public static final int T__108=108;
+    public static final int T__89=89;
+    public static final int T__107=107;
+    public static final int T__109=109;
+    public static final int T__84=84;
+    public static final int T__104=104;
+    public static final int T__85=85;
+    public static final int T__103=103;
+    public static final int T__86=86;
+    public static final int T__106=106;
+    public static final int T__87=87;
+    public static final int T__105=105;
 
     // delegates
     // delegators
@@ -7599,6 +7599,68 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
                 if ( (LA12_1==76) ) {
                     switch ( input.LA(3) ) {
+                    case EOF:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                    case 19:
+                    case 20:
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 24:
+                    case 25:
+                    case 26:
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 30:
+                    case 31:
+                    case 32:
+                    case 33:
+                    case 34:
+                    case 35:
+                    case 36:
+                    case 37:
+                    case 38:
+                    case 39:
+                    case 40:
+                    case 45:
+                    case 46:
+                    case 47:
+                    case 48:
+                    case 66:
+                    case 70:
+                    case 73:
+                    case 78:
+                    case 79:
+                    case 81:
+                    case 83:
+                    case 84:
+                    case 85:
+                    case 86:
+                    case 88:
+                    case 89:
+                    case 90:
+                    case 91:
+                    case 92:
+                    case 98:
+                    case 115:
+                    case 120:
+                    case 121:
+                    case 126:
+                    case 127:
+                    case 128:
+                    case 129:
+                    case 131:
+                    case 132:
+                        {
+                        alt12=1;
+                        }
+                        break;
                     case 12:
                         {
                         switch ( input.LA(4) ) {
@@ -7719,7 +7781,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                         default:
                             if (state.backtracking>0) {state.failed=true; return ;}
                             NoViableAltException nvae =
-                                new NoViableAltException("", 12, 4, input);
+                                new NoViableAltException("", 12, 5, input);
 
                             throw nvae;
                         }
@@ -7729,68 +7791,6 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
                     case RULE_ID:
                         {
                         alt12=2;
-                        }
-                        break;
-                    case EOF:
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16:
-                    case 17:
-                    case 18:
-                    case 19:
-                    case 20:
-                    case 21:
-                    case 22:
-                    case 23:
-                    case 24:
-                    case 25:
-                    case 26:
-                    case 27:
-                    case 28:
-                    case 29:
-                    case 30:
-                    case 31:
-                    case 32:
-                    case 33:
-                    case 34:
-                    case 35:
-                    case 36:
-                    case 37:
-                    case 38:
-                    case 39:
-                    case 40:
-                    case 45:
-                    case 46:
-                    case 47:
-                    case 48:
-                    case 66:
-                    case 70:
-                    case 73:
-                    case 78:
-                    case 79:
-                    case 81:
-                    case 83:
-                    case 84:
-                    case 85:
-                    case 86:
-                    case 88:
-                    case 89:
-                    case 90:
-                    case 91:
-                    case 92:
-                    case 98:
-                    case 115:
-                    case 120:
-                    case 121:
-                    case 126:
-                    case 127:
-                    case 128:
-                    case 129:
-                    case 131:
-                    case 132:
-                        {
-                        alt12=1;
                         }
                         break;
                     default:
@@ -8522,11 +8522,11 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             else if ( (LA19_0==69) ) {
                 int LA19_2 = input.LA(2);
 
-                if ( (LA19_2==RULE_ID||LA19_2==69) ) {
-                    alt19=3;
-                }
-                else if ( (LA19_2==87) ) {
+                if ( (LA19_2==87) ) {
                     alt19=2;
+                }
+                else if ( (LA19_2==RULE_ID||LA19_2==69) ) {
+                    alt19=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -9835,14 +9835,14 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
                 if ( (LA27_1==RULE_ID) ) {
                     switch ( input.LA(3) ) {
-                    case 108:
-                        {
-                        alt27=3;
-                        }
-                        break;
                     case 105:
                         {
                         alt27=2;
+                        }
+                        break;
+                    case 108:
+                        {
+                        alt27=3;
                         }
                         break;
                     case 106:
@@ -59523,11 +59523,11 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
 
     // Delegated rules
 
-    public final boolean synpred35_InternalSqliteModel() {
+    public final boolean synpred36_InternalSqliteModel() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred35_InternalSqliteModel_fragment(); // can never throw exception
+            synpred36_InternalSqliteModel_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -59537,11 +59537,11 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
         state.failed=false;
         return success;
     }
-    public final boolean synpred36_InternalSqliteModel() {
+    public final boolean synpred35_InternalSqliteModel() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred36_InternalSqliteModel_fragment(); // can never throw exception
+            synpred35_InternalSqliteModel_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -59558,20 +59558,20 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     static final String DFA11_eotS =
         "\15\uffff";
     static final String DFA11_eofS =
-        "\3\uffff\1\12\11\uffff";
+        "\3\uffff\1\13\11\uffff";
     static final String DFA11_minS =
         "\1\4\2\uffff\1\14\1\uffff\1\4\7\uffff";
     static final String DFA11_maxS =
         "\1\u0088\2\uffff\1\u0084\1\uffff\1\u0088\7\uffff";
     static final String DFA11_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\11\1\12\1\3\1\10\1\5";
+        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\11\1\12\1\10\1\3\1\5";
     static final String DFA11_specialS =
         "\15\uffff}>";
     static final String[] DFA11_transitionS = {
             "\1\4\1\3\1\4\11\uffff\1\4\64\uffff\1\5\4\uffff\1\1\1\2\1\uffff\1\7\2\uffff\1\10\1\uffff\1\11\47\uffff\2\6\11\uffff\4\4",
             "",
             "",
-            "\35\12\4\uffff\4\12\21\uffff\1\12\2\uffff\1\13\1\12\2\uffff\1\12\2\uffff\1\12\1\uffff\2\12\1\uffff\1\12\1\uffff\4\12\1\uffff\5\12\5\uffff\1\12\20\uffff\1\12\4\uffff\2\12\4\uffff\4\12\1\uffff\2\12",
+            "\35\13\4\uffff\4\13\21\uffff\1\13\2\uffff\1\12\1\13\2\uffff\1\13\2\uffff\1\13\1\uffff\2\13\1\uffff\1\13\1\uffff\4\13\1\uffff\5\13\5\uffff\1\13\20\uffff\1\13\4\uffff\2\13\4\uffff\4\13\1\uffff\2\13",
             "",
             "\3\14\11\uffff\1\14\64\uffff\1\14\4\uffff\2\14\1\uffff\1\14\2\uffff\1\14\1\uffff\1\14\4\uffff\1\6\42\uffff\2\14\11\uffff\4\14",
             "",
@@ -59625,16 +59625,16 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
     static final String DFA22_maxS =
         "\1\147\1\u0089\1\137\1\150\1\uffff\1\141\3\uffff\1\5\4\uffff\1\146\2\uffff";
     static final String DFA22_acceptS =
-        "\4\uffff\1\4\1\uffff\1\3\1\1\1\2\1\uffff\1\12\1\11\1\7\1\10\1\uffff\1\5\1\6";
+        "\4\uffff\1\4\1\uffff\1\3\1\2\1\1\1\uffff\1\12\1\11\1\10\1\7\1\uffff\1\6\1\5";
     static final String DFA22_specialS =
         "\21\uffff}>";
     static final String[] DFA22_transitionS = {
             "\1\1\5\uffff\1\2\2\uffff\1\3",
-            "\1\7\1\10\1\6\6\uffff\1\4\1\uffff\1\4\36\uffff\1\5",
+            "\1\10\1\7\1\6\6\uffff\1\4\1\uffff\1\4\36\uffff\1\5",
             "\1\11",
-            "\1\14\1\13\1\15\6\uffff\1\12",
+            "\1\15\1\13\1\14\6\uffff\1\12",
             "",
-            "\1\7\1\10\1\6",
+            "\1\10\1\7\1\6",
             "",
             "",
             "",
@@ -59643,7 +59643,7 @@ public class InternalSqliteModelParser extends AbstractInternalContentAssistPars
             "",
             "",
             "",
-            "\1\17\1\20",
+            "\1\20\1\17",
             "",
             ""
     };

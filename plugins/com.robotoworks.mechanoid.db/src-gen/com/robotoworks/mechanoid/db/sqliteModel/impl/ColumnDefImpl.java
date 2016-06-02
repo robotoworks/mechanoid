@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ColumnDefImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ColumnDefImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

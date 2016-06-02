@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ModelImpl#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ModelImpl#getDatabase <em>Database</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getName <em>Name</em>}</li>
@@ -42,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getWhenExpression <em>When Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.CreateTriggerStatementImpl#getStatements <em>Statements</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

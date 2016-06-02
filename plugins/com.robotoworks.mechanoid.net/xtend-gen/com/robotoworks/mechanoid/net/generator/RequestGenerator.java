@@ -1353,14 +1353,12 @@ public class RequestGenerator {
   public String pathToStringFormatArgs(final String path) {
     String[] _split = path.split("/|\\.");
     final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
       public Boolean apply(final String seg) {
         return Boolean.valueOf(seg.startsWith(":"));
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(((Iterable<String>)Conversions.doWrapArray(_split)), _function);
     final Function1<String, CharSequence> _function_1 = new Function1<String, CharSequence>() {
-      @Override
       public CharSequence apply(final String arg) {
         String _substring = arg.substring(1);
         String _camelize = Strings.camelize(_substring);

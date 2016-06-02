@@ -11,7 +11,6 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getName <em>Name</em>}</li>
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getWhenExpression <em>When Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateTriggerStatement#getStatements <em>Statements</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCreateTriggerStatement()
  * @model

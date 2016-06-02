@@ -22,13 +22,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getCore <em>Core</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getOrderby <em>Orderby</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getLimit <em>Limit</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementImpl#getLimitOffset <em>Limit Offset</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

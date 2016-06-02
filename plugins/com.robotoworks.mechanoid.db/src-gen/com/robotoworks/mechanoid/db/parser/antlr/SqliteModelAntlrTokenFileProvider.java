@@ -8,7 +8,6 @@ import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class SqliteModelAntlrTokenFileProvider implements IAntlrTokenFileProvider {
 	
-	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
     	return classLoader.getResourceAsStream("com/robotoworks/mechanoid/db/parser/antlr/internal/InternalSqliteModel.tokens");

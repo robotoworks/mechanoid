@@ -11,10 +11,10 @@ import java.math.BigDecimal;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.NumericLiteral#getNumber <em>Number</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getNumericLiteral()
  * @model

@@ -10,11 +10,11 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement#isTemporary <em>Temporary</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CreateViewStatement#getSelectStatement <em>Select Statement</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCreateViewStatement()
  * @model
