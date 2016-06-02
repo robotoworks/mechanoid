@@ -127,6 +127,8 @@ class ClientGenerator {
 				generateServicePostMethod(method)
 			case HttpMethodType::DELETE:
 				generateServiceDeleteMethod(method)
+			case HttpMethodType::PATCH:
+				generateServicePatchMethod(method)
 				
 		}
 	}
@@ -154,6 +156,10 @@ class ClientGenerator {
 	'''
 	def generateServiceDeleteMethod(HttpMethod method) '''
 		return delete(request, parser);
+	'''
+	
+	def generateServicePatchMethod(HttpMethod method) '''
+		return patch(request, parser);
 	'''
 
 	def generateStub(Client client, Model module) '''

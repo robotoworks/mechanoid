@@ -2,7 +2,7 @@ typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHig
 
 SyntaxHighlighter.brushes.MechNet = function()
 {
-	var keywords = 'package client post put get delete params ' +
+	var keywords = 'package client post put get delete patch params ' +
 				   'body response extends skip entity generate enum ' +
 				   'String boolean Date int long float double headers';
 

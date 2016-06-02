@@ -10,7 +10,6 @@ import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
-import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.Model;
@@ -455,27 +454,8 @@ public class ClientGenerator {
   }
   
   public CharSequence generateServiceMethod(final HttpMethod method) {
-    CharSequence _switchResult = null;
-    HttpMethodType _type = method.getType();
-    if (_type != null) {
-      switch (_type) {
-        case GET:
-          _switchResult = this.generateServiceGetMethod(method);
-          break;
-        case PUT:
-          _switchResult = this.generateServicePutMethod(method);
-          break;
-        case POST:
-          _switchResult = this.generateServicePostMethod(method);
-          break;
-        case DELETE:
-          _switchResult = this.generateServiceDeleteMethod(method);
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method PATCH is undefined for the type ClientGenerator");
   }
   
   public CharSequence generateServiceGetMethod(final HttpMethod method) {
@@ -522,6 +502,13 @@ public class ClientGenerator {
   public CharSequence generateServiceDeleteMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("return delete(request, parser);");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateServicePatchMethod(final HttpMethod method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("return patch(request, parser);");
     _builder.newLine();
     return _builder;
   }

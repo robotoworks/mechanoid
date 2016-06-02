@@ -50,7 +50,7 @@ class MechNetLexer(RegexLexer):
             (r'//.*?\n', Comment.Single),
             (r'/\*.*?\*/', Comment.Multiline),
             (r'(package|client|headers|params|body|response|extends|entity|generate|'
-             r'enum|String|boolean|int|long|double|get|put|post|delete)\b', 
+             r'enum|String|boolean|int|long|double|get|put|post|delete|patch)\b', 
              Keyword),
             (r'"(\\\\|\\"|[^"])*"', String),
             (r"'(\\\\|\\'|[^'])*'", String),
