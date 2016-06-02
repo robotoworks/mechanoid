@@ -10,6 +10,7 @@ import com.robotoworks.mechanoid.net.netModel.ClientBlock;
 import com.robotoworks.mechanoid.net.netModel.Header;
 import com.robotoworks.mechanoid.net.netModel.HeaderBlock;
 import com.robotoworks.mechanoid.net.netModel.HttpMethod;
+import com.robotoworks.mechanoid.net.netModel.HttpMethodType;
 import com.robotoworks.mechanoid.net.netModel.IntrinsicType;
 import com.robotoworks.mechanoid.net.netModel.Literal;
 import com.robotoworks.mechanoid.net.netModel.Model;
@@ -454,8 +455,30 @@ public class ClientGenerator {
   }
   
   public CharSequence generateServiceMethod(final HttpMethod method) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method PATCH is undefined for the type ClientGenerator");
+    CharSequence _switchResult = null;
+    HttpMethodType _type = method.getType();
+    if (_type != null) {
+      switch (_type) {
+        case GET:
+          _switchResult = this.generateServiceGetMethod(method);
+          break;
+        case PUT:
+          _switchResult = this.generateServicePutMethod(method);
+          break;
+        case POST:
+          _switchResult = this.generateServicePostMethod(method);
+          break;
+        case DELETE:
+          _switchResult = this.generateServiceDeleteMethod(method);
+          break;
+        case PATCH:
+          _switchResult = this.generateServicePatchMethod(method);
+          break;
+        default:
+          break;
+      }
+    }
+    return _switchResult;
   }
   
   public CharSequence generateServiceGetMethod(final HttpMethod method) {

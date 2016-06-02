@@ -37,6 +37,7 @@
     <eLiterals name="put" value="1" literal="put"/>
     <eLiterals name="post" value="2" literal="post"/>
     <eLiterals name="delete" value="3" literal="delete"/>
+    <eLiterals name="patch" value="4" literal="patch"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Path">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arb" unique="false" upperBound="-1"
