@@ -25,144 +25,144 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_NUMBER", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'database'", "'{'", "'}'", "'config'", "'init'", "';'", "'action'", "'function'", "'('", "','", "')'", "'/'", "':'", "'#'", "'*'", "'migration'", "'||'", "'%'", "'+'", "'-'", "'<<'", "'>>'", "'&'", "'|'", "'<'", "'<='", "'>'", "'>='", "'='", "'=='", "'!='", "'<>'", "'is'", "'is not'", "'in'", "'not in'", "'like'", "'glob'", "'match'", "'regexp'", "'and'", "'or'", "'is null'", "'not null'", "'notnull'", "'new.'", "'old.'", "'.'", "'not'", "'exists'", "'case'", "'else'", "'end'", "'cast'", "'as'", "'$'", "'when'", "'then'", "'order by'", "'limit'", "'offset'", "'select'", "'distinct'", "'all'", "'from'", "'where'", "'group by'", "'having'", "'asc'", "'desc'", "'natural'", "'left'", "'outer'", "'inner'", "'cross'", "'join'", "'on'", "'null'", "'current_time'", "'current_date'", "'current_timestamp'", "'create'", "'temp'", "'table'", "'view'", "'trigger'", "'before'", "'after'", "'instead of'", "'delete'", "'insert'", "'update'", "'of'", "'for each row'", "'begin'", "'alter'", "'rename to'", "'add column'", "'drop'", "'if exists'", "'unique'", "'index'", "'primary key'", "'autoincrement'", "'default'", "'check'", "'constraint'", "'collate'", "'conflict'", "'replace'", "'into'", "'values'", "'set'", "'union all'", "'union'", "'intersect'", "'except'", "'text'", "'integer'", "'real'", "'blob'", "'none'", "'numeric'", "'boolean'", "'rollback'", "'abort'", "'fail'", "'ignore'"
     };
-    public static final int RULE_ID=4;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int T__93=93;
-    public static final int T__19=19;
-    public static final int T__94=94;
-    public static final int T__91=91;
-    public static final int T__92=92;
-    public static final int T__16=16;
-    public static final int T__15=15;
-    public static final int T__90=90;
-    public static final int T__18=18;
-    public static final int T__17=17;
-    public static final int T__12=12;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int T__99=99;
-    public static final int T__98=98;
-    public static final int T__97=97;
-    public static final int T__96=96;
-    public static final int T__95=95;
-    public static final int T__139=139;
-    public static final int T__138=138;
-    public static final int T__137=137;
-    public static final int T__136=136;
-    public static final int T__80=80;
-    public static final int T__81=81;
-    public static final int T__82=82;
-    public static final int T__83=83;
-    public static final int T__85=85;
-    public static final int T__84=84;
-    public static final int T__87=87;
+    public static final int T__50=50;
     public static final int T__140=140;
-    public static final int T__86=86;
-    public static final int T__89=89;
-    public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=8;
-    public static final int T__126=126;
-    public static final int T__125=125;
-    public static final int T__128=128;
-    public static final int RULE_STRING=5;
-    public static final int T__127=127;
-    public static final int T__71=71;
-    public static final int T__129=129;
-    public static final int T__72=72;
-    public static final int T__70=70;
-    public static final int T__76=76;
-    public static final int T__75=75;
-    public static final int T__130=130;
-    public static final int T__74=74;
-    public static final int T__131=131;
-    public static final int T__73=73;
-    public static final int T__132=132;
-    public static final int T__133=133;
-    public static final int T__79=79;
-    public static final int T__134=134;
-    public static final int T__78=78;
-    public static final int T__135=135;
-    public static final int T__77=77;
-    public static final int T__68=68;
-    public static final int T__69=69;
-    public static final int T__66=66;
-    public static final int T__67=67;
-    public static final int T__64=64;
-    public static final int T__65=65;
-    public static final int T__62=62;
-    public static final int T__63=63;
-    public static final int T__118=118;
-    public static final int T__119=119;
-    public static final int T__116=116;
-    public static final int T__117=117;
-    public static final int T__114=114;
-    public static final int T__115=115;
-    public static final int T__124=124;
-    public static final int T__123=123;
-    public static final int T__122=122;
-    public static final int T__121=121;
-    public static final int T__120=120;
-    public static final int T__61=61;
-    public static final int T__60=60;
+    public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
     public static final int T__58=58;
     public static final int T__51=51;
+    public static final int T__137=137;
     public static final int T__52=52;
+    public static final int T__136=136;
     public static final int T__53=53;
+    public static final int T__139=139;
     public static final int T__54=54;
-    public static final int RULE_NUMBER=6;
-    public static final int T__107=107;
-    public static final int T__108=108;
-    public static final int T__109=109;
-    public static final int T__103=103;
-    public static final int T__59=59;
-    public static final int T__104=104;
-    public static final int T__105=105;
-    public static final int T__106=106;
-    public static final int T__111=111;
-    public static final int T__110=110;
+    public static final int T__138=138;
+    public static final int T__133=133;
+    public static final int T__132=132;
+    public static final int T__60=60;
+    public static final int T__135=135;
+    public static final int T__61=61;
+    public static final int T__134=134;
+    public static final int RULE_ID=4;
+    public static final int T__131=131;
+    public static final int T__130=130;
     public static final int RULE_INT=7;
-    public static final int T__113=113;
-    public static final int T__112=112;
-    public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__102=102;
-    public static final int T__101=101;
-    public static final int T__100=100;
-    public static final int RULE_SL_COMMENT=9;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__66=66;
+    public static final int RULE_ML_COMMENT=8;
+    public static final int T__67=67;
+    public static final int T__129=129;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__126=126;
+    public static final int T__63=63;
+    public static final int T__125=125;
+    public static final int T__64=64;
+    public static final int T__128=128;
+    public static final int T__65=65;
+    public static final int T__127=127;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__91=91;
+    public static final int T__100=100;
+    public static final int T__92=92;
+    public static final int T__93=93;
+    public static final int T__102=102;
+    public static final int T__94=94;
+    public static final int T__101=101;
+    public static final int T__90=90;
+    public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__99=99;
+    public static final int T__12=12;
+    public static final int T__13=13;
+    public static final int T__14=14;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int T__122=122;
+    public static final int T__70=70;
+    public static final int T__121=121;
+    public static final int T__71=71;
+    public static final int T__124=124;
+    public static final int T__72=72;
+    public static final int T__123=123;
+    public static final int T__120=120;
+    public static final int RULE_STRING=5;
+    public static final int RULE_SL_COMMENT=9;
+    public static final int T__77=77;
+    public static final int T__119=119;
+    public static final int T__78=78;
+    public static final int T__118=118;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int T__115=115;
+    public static final int EOF=-1;
+    public static final int T__74=74;
+    public static final int T__114=114;
+    public static final int T__75=75;
+    public static final int T__117=117;
+    public static final int T__76=76;
+    public static final int T__116=116;
+    public static final int T__80=80;
+    public static final int T__111=111;
+    public static final int T__81=81;
+    public static final int T__110=110;
+    public static final int T__82=82;
+    public static final int T__113=113;
+    public static final int T__83=83;
+    public static final int T__112=112;
     public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int RULE_NUMBER=6;
+    public static final int T__88=88;
+    public static final int T__108=108;
+    public static final int T__89=89;
+    public static final int T__107=107;
+    public static final int T__109=109;
+    public static final int T__84=84;
+    public static final int T__104=104;
+    public static final int T__85=85;
+    public static final int T__103=103;
+    public static final int T__86=86;
+    public static final int T__106=106;
+    public static final int T__87=87;
+    public static final int T__105=105;
 
     // delegates
     // delegators
@@ -8697,11 +8697,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             else if ( (LA56_0==21) ) {
                 int LA56_2 = input.LA(2);
 
-                if ( (LA56_2==RULE_ID||LA56_2==21) ) {
-                    alt56=3;
-                }
-                else if ( (LA56_2==74) ) {
+                if ( (LA56_2==74) ) {
                     alt56=2;
+                }
+                else if ( (LA56_2==RULE_ID||LA56_2==21) ) {
+                    alt56=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -14128,11 +14128,6 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
 
                 if ( (LA91_1==RULE_ID) ) {
                     switch ( input.LA(3) ) {
-                    case 118:
-                        {
-                        alt91=3;
-                        }
-                        break;
                     case 113:
                         {
                         alt91=1;
@@ -14141,6 +14136,11 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                     case 115:
                         {
                         alt91=2;
+                        }
+                        break;
+                    case 118:
+                        {
+                        alt91=3;
                         }
                         break;
                     default:
@@ -18081,20 +18081,20 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     static final String DFA39_eotS =
         "\15\uffff";
     static final String DFA39_eofS =
-        "\3\uffff\1\13\11\uffff";
+        "\3\uffff\1\12\11\uffff";
     static final String DFA39_minS =
         "\1\4\2\uffff\1\22\1\uffff\1\4\7\uffff";
     static final String DFA39_maxS =
         "\1\135\2\uffff\1\u0081\1\uffff\1\135\7\uffff";
     static final String DFA39_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\11\1\12\1\10\1\3\1\5";
+        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\11\1\12\1\3\1\10\1\5";
     static final String DFA39_specialS =
         "\15\uffff}>";
     static final String[] DFA39_transitionS = {
             "\1\3\2\4\16\uffff\1\5\12\uffff\1\4\31\uffff\1\1\1\2\1\uffff\2\6\1\7\2\uffff\1\10\1\uffff\1\11\25\uffff\4\4",
             "",
             "",
-            "\1\13\2\uffff\1\12\3\13\2\uffff\1\13\1\uffff\35\13\2\uffff\1\13\3\uffff\2\13\1\uffff\1\13\1\uffff\5\13\3\uffff\10\13\1\uffff\3\13\22\uffff\1\13\22\uffff\4\13",
+            "\1\12\2\uffff\1\13\3\12\2\uffff\1\12\1\uffff\35\12\2\uffff\1\12\3\uffff\2\12\1\uffff\1\12\1\uffff\5\12\3\uffff\10\12\1\uffff\3\12\22\uffff\1\12\22\uffff\4\12",
             "",
             "\3\14\16\uffff\1\14\12\uffff\1\14\31\uffff\2\14\1\uffff\3\14\2\uffff\1\14\1\uffff\1\14\5\uffff\1\6\17\uffff\4\14",
             "",
@@ -18142,48 +18142,21 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     static final String DFA31_eotS =
         "\121\uffff";
     static final String DFA31_eofS =
-        "\1\uffff\1\2\1\uffff\1\43\33\uffff\1\77\61\uffff";
+        "\1\uffff\1\3\1\44\1\uffff\1\5\114\uffff";
     static final String DFA31_minS =
-        "\1\4\1\22\1\uffff\1\4\33\uffff\1\4\40\uffff\1\4\17\uffff\1\0";
+        "\1\4\1\22\1\4\1\uffff\1\4\76\uffff\1\4\14\uffff\1\0";
     static final String DFA31_maxS =
-        "\1\4\1\u0081\1\uffff\1\u0081\33\uffff\1\u0081\40\uffff\1\135\17\uffff\1\0";
+        "\1\4\2\u0081\1\uffff\1\u0081\76\uffff\1\135\14\uffff\1\0";
     static final String DFA31_acceptS =
-        "\2\uffff\1\3\1\uffff\33\1\1\uffff\37\1\1\2\1\uffff\17\1\1\uffff";
+        "\3\uffff\1\3\1\uffff\1\2\75\1\1\uffff\14\1\1\uffff";
     static final String DFA31_specialS =
-        "\3\uffff\1\2\33\uffff\1\0\60\uffff\1\1}>";
+        "\2\uffff\1\0\1\uffff\1\2\113\uffff\1\1}>";
     static final String[] DFA31_transitionS = {
             "\1\1",
-            "\1\2\3\uffff\3\2\2\uffff\1\2\1\uffff\35\2\2\uffff\1\3\3\uffff\2\2\1\uffff\1\2\1\uffff\5\2\3\uffff\10\2\1\uffff\3\2\22\uffff\1\2\22\uffff\4\2",
+            "\1\3\3\uffff\3\3\2\uffff\1\3\1\uffff\35\3\2\uffff\1\2\3\uffff\2\3\1\uffff\1\3\1\uffff\5\3\3\uffff\10\3\1\uffff\3\3\22\uffff\1\3\22\uffff\4\3",
+            "\1\5\15\uffff\1\55\3\uffff\1\50\1\45\1\41\2\uffff\1\4\1\uffff\1\43\1\42\1\37\1\40\1\33\1\34\1\35\1\36\1\27\1\30\1\31\1\32\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\12\1\11\1\6\1\7\1\10\6\uffff\1\53\1\47\1\uffff\1\51\1\uffff\1\46\1\52\1\64\1\65\1\54\3\uffff\1\76\1\70\1\56\1\57\1\66\1\67\1\71\1\72\1\uffff\1\73\1\74\1\75\22\uffff\1\77\22\uffff\1\60\1\61\1\62\1\63",
             "",
-            "\1\77\15\uffff\1\54\3\uffff\1\47\1\44\1\40\2\uffff\1\37\1\uffff\1\42\1\41\1\35\1\36\1\31\1\32\1\33\1\34\1\25\1\26\1\27\1\30\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\10\1\7\1\4\1\5\1\6\6\uffff\1\52\1\46\1\uffff\1\50\1\uffff\1\45\1\51\1\63\1\64\1\53\3\uffff\1\75\1\67\1\55\1\56\1\65\1\66\1\70\1\71\1\uffff\1\72\1\73\1\74\22\uffff\1\76\22\uffff\1\57\1\60\1\61\1\62",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\103\1\105\1\104\13\uffff\1\77\2\uffff\1\112\3\77\2\uffff\1\77\1\uffff\3\77\1\100\31\77\1\101\1\102\1\uffff\1\113\1\114\1\115\2\77\1\116\1\77\1\117\5\77\3\uffff\10\77\1\uffff\3\77\1\uffff\1\106\1\107\1\110\1\111\15\uffff\1\77\22\uffff\4\77",
+            "\1\102\1\105\1\104\13\uffff\1\5\2\uffff\1\112\3\5\2\uffff\1\5\1\uffff\3\5\1\103\31\5\1\100\1\101\1\uffff\1\113\1\114\1\115\2\5\1\116\1\5\1\117\5\5\3\uffff\10\5\1\uffff\3\5\1\uffff\1\106\1\107\1\110\1\111\15\uffff\1\5\22\uffff\4\5",
             "",
             "",
             "",
@@ -18216,10 +18189,37 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\2\77\1\120\16\uffff\1\77\12\uffff\1\77\31\uffff\2\77\1\uffff\3\77\2\uffff\1\77\1\uffff\1\77\25\uffff\4\77",
             "",
             "",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\2\5\1\120\16\uffff\1\5\12\uffff\1\5\31\uffff\2\5\1\uffff\3\5\2\uffff\1\5\1\uffff\1\5\25\uffff\4\5",
             "",
             "",
             "",
@@ -18272,48 +18272,134 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA31_31 = input.LA(1);
+                        int LA31_2 = input.LA(1);
 
                          
-                        int index31_31 = input.index();
+                        int index31_2 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA31_31==EOF||LA31_31==18||(LA31_31>=22 && LA31_31<=24)||LA31_31==27||(LA31_31>=29 && LA31_31<=31)||(LA31_31>=33 && LA31_31<=57)||(LA31_31>=64 && LA31_31<=65)||LA31_31==67||(LA31_31>=69 && LA31_31<=73)||(LA31_31>=77 && LA31_31<=84)||(LA31_31>=86 && LA31_31<=88)||LA31_31==107||(LA31_31>=126 && LA31_31<=129)) ) {s = 63;}
+                        if ( (LA31_2==27) ) {s = 4;}
 
-                        else if ( (LA31_31==32) ) {s = 64;}
+                        else if ( (LA31_2==RULE_ID) ) {s = 5;}
 
-                        else if ( (LA31_31==58) && (synpred1_InternalSqliteModel())) {s = 65;}
+                        else if ( (LA31_2==55) && (synpred1_InternalSqliteModel())) {s = 6;}
 
-                        else if ( (LA31_31==59) && (synpred1_InternalSqliteModel())) {s = 66;}
+                        else if ( (LA31_2==56) && (synpred1_InternalSqliteModel())) {s = 7;}
 
-                        else if ( (LA31_31==RULE_ID) && (synpred1_InternalSqliteModel())) {s = 67;}
+                        else if ( (LA31_2==57) && (synpred1_InternalSqliteModel())) {s = 8;}
 
-                        else if ( (LA31_31==RULE_NUMBER) && (synpred1_InternalSqliteModel())) {s = 68;}
+                        else if ( (LA31_2==54) && (synpred1_InternalSqliteModel())) {s = 9;}
 
-                        else if ( (LA31_31==RULE_STRING) && (synpred1_InternalSqliteModel())) {s = 69;}
+                        else if ( (LA31_2==53) && (synpred1_InternalSqliteModel())) {s = 10;}
 
-                        else if ( (LA31_31==90) && (synpred1_InternalSqliteModel())) {s = 70;}
+                        else if ( (LA31_2==41) && (synpred1_InternalSqliteModel())) {s = 11;}
 
-                        else if ( (LA31_31==91) && (synpred1_InternalSqliteModel())) {s = 71;}
+                        else if ( (LA31_2==42) && (synpred1_InternalSqliteModel())) {s = 12;}
 
-                        else if ( (LA31_31==92) && (synpred1_InternalSqliteModel())) {s = 72;}
+                        else if ( (LA31_2==43) && (synpred1_InternalSqliteModel())) {s = 13;}
 
-                        else if ( (LA31_31==93) && (synpred1_InternalSqliteModel())) {s = 73;}
+                        else if ( (LA31_2==44) && (synpred1_InternalSqliteModel())) {s = 14;}
 
-                        else if ( (LA31_31==21) && (synpred1_InternalSqliteModel())) {s = 74;}
+                        else if ( (LA31_2==45) && (synpred1_InternalSqliteModel())) {s = 15;}
 
-                        else if ( (LA31_31==61) && (synpred1_InternalSqliteModel())) {s = 75;}
+                        else if ( (LA31_2==46) && (synpred1_InternalSqliteModel())) {s = 16;}
 
-                        else if ( (LA31_31==62) && (synpred1_InternalSqliteModel())) {s = 76;}
+                        else if ( (LA31_2==47) && (synpred1_InternalSqliteModel())) {s = 17;}
 
-                        else if ( (LA31_31==63) && (synpred1_InternalSqliteModel())) {s = 77;}
+                        else if ( (LA31_2==48) && (synpred1_InternalSqliteModel())) {s = 18;}
 
-                        else if ( (LA31_31==66) && (synpred1_InternalSqliteModel())) {s = 78;}
+                        else if ( (LA31_2==49) && (synpred1_InternalSqliteModel())) {s = 19;}
 
-                        else if ( (LA31_31==68) && (synpred1_InternalSqliteModel())) {s = 79;}
+                        else if ( (LA31_2==50) && (synpred1_InternalSqliteModel())) {s = 20;}
+
+                        else if ( (LA31_2==51) && (synpred1_InternalSqliteModel())) {s = 21;}
+
+                        else if ( (LA31_2==52) && (synpred1_InternalSqliteModel())) {s = 22;}
+
+                        else if ( (LA31_2==37) && (synpred1_InternalSqliteModel())) {s = 23;}
+
+                        else if ( (LA31_2==38) && (synpred1_InternalSqliteModel())) {s = 24;}
+
+                        else if ( (LA31_2==39) && (synpred1_InternalSqliteModel())) {s = 25;}
+
+                        else if ( (LA31_2==40) && (synpred1_InternalSqliteModel())) {s = 26;}
+
+                        else if ( (LA31_2==33) && (synpred1_InternalSqliteModel())) {s = 27;}
+
+                        else if ( (LA31_2==34) && (synpred1_InternalSqliteModel())) {s = 28;}
+
+                        else if ( (LA31_2==35) && (synpred1_InternalSqliteModel())) {s = 29;}
+
+                        else if ( (LA31_2==36) && (synpred1_InternalSqliteModel())) {s = 30;}
+
+                        else if ( (LA31_2==31) && (synpred1_InternalSqliteModel())) {s = 31;}
+
+                        else if ( (LA31_2==32) && (synpred1_InternalSqliteModel())) {s = 32;}
+
+                        else if ( (LA31_2==24) && (synpred1_InternalSqliteModel())) {s = 33;}
+
+                        else if ( (LA31_2==30) && (synpred1_InternalSqliteModel())) {s = 34;}
+
+                        else if ( (LA31_2==29) && (synpred1_InternalSqliteModel())) {s = 35;}
+
+                        else if ( (LA31_2==EOF) && (synpred1_InternalSqliteModel())) {s = 36;}
+
+                        else if ( (LA31_2==23) && (synpred1_InternalSqliteModel())) {s = 37;}
+
+                        else if ( (LA31_2==69) && (synpred1_InternalSqliteModel())) {s = 38;}
+
+                        else if ( (LA31_2==65) && (synpred1_InternalSqliteModel())) {s = 39;}
+
+                        else if ( (LA31_2==22) && (synpred1_InternalSqliteModel())) {s = 40;}
+
+                        else if ( (LA31_2==67) && (synpred1_InternalSqliteModel())) {s = 41;}
+
+                        else if ( (LA31_2==70) && (synpred1_InternalSqliteModel())) {s = 42;}
+
+                        else if ( (LA31_2==64) && (synpred1_InternalSqliteModel())) {s = 43;}
+
+                        else if ( (LA31_2==73) && (synpred1_InternalSqliteModel())) {s = 44;}
+
+                        else if ( (LA31_2==18) && (synpred1_InternalSqliteModel())) {s = 45;}
+
+                        else if ( (LA31_2==79) && (synpred1_InternalSqliteModel())) {s = 46;}
+
+                        else if ( (LA31_2==80) && (synpred1_InternalSqliteModel())) {s = 47;}
+
+                        else if ( (LA31_2==126) && (synpred1_InternalSqliteModel())) {s = 48;}
+
+                        else if ( (LA31_2==127) && (synpred1_InternalSqliteModel())) {s = 49;}
+
+                        else if ( (LA31_2==128) && (synpred1_InternalSqliteModel())) {s = 50;}
+
+                        else if ( (LA31_2==129) && (synpred1_InternalSqliteModel())) {s = 51;}
+
+                        else if ( (LA31_2==71) && (synpred1_InternalSqliteModel())) {s = 52;}
+
+                        else if ( (LA31_2==72) && (synpred1_InternalSqliteModel())) {s = 53;}
+
+                        else if ( (LA31_2==81) && (synpred1_InternalSqliteModel())) {s = 54;}
+
+                        else if ( (LA31_2==82) && (synpred1_InternalSqliteModel())) {s = 55;}
+
+                        else if ( (LA31_2==78) && (synpred1_InternalSqliteModel())) {s = 56;}
+
+                        else if ( (LA31_2==83) && (synpred1_InternalSqliteModel())) {s = 57;}
+
+                        else if ( (LA31_2==84) && (synpred1_InternalSqliteModel())) {s = 58;}
+
+                        else if ( (LA31_2==86) && (synpred1_InternalSqliteModel())) {s = 59;}
+
+                        else if ( (LA31_2==87) && (synpred1_InternalSqliteModel())) {s = 60;}
+
+                        else if ( (LA31_2==88) && (synpred1_InternalSqliteModel())) {s = 61;}
+
+                        else if ( (LA31_2==77) && (synpred1_InternalSqliteModel())) {s = 62;}
+
+                        else if ( (LA31_2==107) && (synpred1_InternalSqliteModel())) {s = 63;}
 
                          
-                        input.seek(index31_31);
+                        input.seek(index31_2);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
@@ -18325,141 +18411,55 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
                         s = -1;
                         if ( (synpred1_InternalSqliteModel()) ) {s = 79;}
 
-                        else if ( (true) ) {s = 63;}
+                        else if ( (true) ) {s = 5;}
 
                          
                         input.seek(index31_80);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA31_3 = input.LA(1);
+                        int LA31_4 = input.LA(1);
 
                          
-                        int index31_3 = input.index();
+                        int index31_4 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA31_3==55) && (synpred1_InternalSqliteModel())) {s = 4;}
+                        if ( (LA31_4==58) && (synpred1_InternalSqliteModel())) {s = 64;}
 
-                        else if ( (LA31_3==56) && (synpred1_InternalSqliteModel())) {s = 5;}
+                        else if ( (LA31_4==59) && (synpred1_InternalSqliteModel())) {s = 65;}
 
-                        else if ( (LA31_3==57) && (synpred1_InternalSqliteModel())) {s = 6;}
+                        else if ( (LA31_4==RULE_ID) && (synpred1_InternalSqliteModel())) {s = 66;}
 
-                        else if ( (LA31_3==54) && (synpred1_InternalSqliteModel())) {s = 7;}
+                        else if ( (LA31_4==32) ) {s = 67;}
 
-                        else if ( (LA31_3==53) && (synpred1_InternalSqliteModel())) {s = 8;}
+                        else if ( (LA31_4==RULE_NUMBER) && (synpred1_InternalSqliteModel())) {s = 68;}
 
-                        else if ( (LA31_3==41) && (synpred1_InternalSqliteModel())) {s = 9;}
+                        else if ( (LA31_4==RULE_STRING) && (synpred1_InternalSqliteModel())) {s = 69;}
 
-                        else if ( (LA31_3==42) && (synpred1_InternalSqliteModel())) {s = 10;}
+                        else if ( (LA31_4==90) && (synpred1_InternalSqliteModel())) {s = 70;}
 
-                        else if ( (LA31_3==43) && (synpred1_InternalSqliteModel())) {s = 11;}
+                        else if ( (LA31_4==91) && (synpred1_InternalSqliteModel())) {s = 71;}
 
-                        else if ( (LA31_3==44) && (synpred1_InternalSqliteModel())) {s = 12;}
+                        else if ( (LA31_4==92) && (synpred1_InternalSqliteModel())) {s = 72;}
 
-                        else if ( (LA31_3==45) && (synpred1_InternalSqliteModel())) {s = 13;}
+                        else if ( (LA31_4==93) && (synpred1_InternalSqliteModel())) {s = 73;}
 
-                        else if ( (LA31_3==46) && (synpred1_InternalSqliteModel())) {s = 14;}
+                        else if ( (LA31_4==21) && (synpred1_InternalSqliteModel())) {s = 74;}
 
-                        else if ( (LA31_3==47) && (synpred1_InternalSqliteModel())) {s = 15;}
+                        else if ( (LA31_4==61) && (synpred1_InternalSqliteModel())) {s = 75;}
 
-                        else if ( (LA31_3==48) && (synpred1_InternalSqliteModel())) {s = 16;}
+                        else if ( (LA31_4==62) && (synpred1_InternalSqliteModel())) {s = 76;}
 
-                        else if ( (LA31_3==49) && (synpred1_InternalSqliteModel())) {s = 17;}
+                        else if ( (LA31_4==63) && (synpred1_InternalSqliteModel())) {s = 77;}
 
-                        else if ( (LA31_3==50) && (synpred1_InternalSqliteModel())) {s = 18;}
+                        else if ( (LA31_4==66) && (synpred1_InternalSqliteModel())) {s = 78;}
 
-                        else if ( (LA31_3==51) && (synpred1_InternalSqliteModel())) {s = 19;}
+                        else if ( (LA31_4==68) && (synpred1_InternalSqliteModel())) {s = 79;}
 
-                        else if ( (LA31_3==52) && (synpred1_InternalSqliteModel())) {s = 20;}
-
-                        else if ( (LA31_3==37) && (synpred1_InternalSqliteModel())) {s = 21;}
-
-                        else if ( (LA31_3==38) && (synpred1_InternalSqliteModel())) {s = 22;}
-
-                        else if ( (LA31_3==39) && (synpred1_InternalSqliteModel())) {s = 23;}
-
-                        else if ( (LA31_3==40) && (synpred1_InternalSqliteModel())) {s = 24;}
-
-                        else if ( (LA31_3==33) && (synpred1_InternalSqliteModel())) {s = 25;}
-
-                        else if ( (LA31_3==34) && (synpred1_InternalSqliteModel())) {s = 26;}
-
-                        else if ( (LA31_3==35) && (synpred1_InternalSqliteModel())) {s = 27;}
-
-                        else if ( (LA31_3==36) && (synpred1_InternalSqliteModel())) {s = 28;}
-
-                        else if ( (LA31_3==31) && (synpred1_InternalSqliteModel())) {s = 29;}
-
-                        else if ( (LA31_3==32) && (synpred1_InternalSqliteModel())) {s = 30;}
-
-                        else if ( (LA31_3==27) ) {s = 31;}
-
-                        else if ( (LA31_3==24) && (synpred1_InternalSqliteModel())) {s = 32;}
-
-                        else if ( (LA31_3==30) && (synpred1_InternalSqliteModel())) {s = 33;}
-
-                        else if ( (LA31_3==29) && (synpred1_InternalSqliteModel())) {s = 34;}
-
-                        else if ( (LA31_3==EOF) && (synpred1_InternalSqliteModel())) {s = 35;}
-
-                        else if ( (LA31_3==23) && (synpred1_InternalSqliteModel())) {s = 36;}
-
-                        else if ( (LA31_3==69) && (synpred1_InternalSqliteModel())) {s = 37;}
-
-                        else if ( (LA31_3==65) && (synpred1_InternalSqliteModel())) {s = 38;}
-
-                        else if ( (LA31_3==22) && (synpred1_InternalSqliteModel())) {s = 39;}
-
-                        else if ( (LA31_3==67) && (synpred1_InternalSqliteModel())) {s = 40;}
-
-                        else if ( (LA31_3==70) && (synpred1_InternalSqliteModel())) {s = 41;}
-
-                        else if ( (LA31_3==64) && (synpred1_InternalSqliteModel())) {s = 42;}
-
-                        else if ( (LA31_3==73) && (synpred1_InternalSqliteModel())) {s = 43;}
-
-                        else if ( (LA31_3==18) && (synpred1_InternalSqliteModel())) {s = 44;}
-
-                        else if ( (LA31_3==79) && (synpred1_InternalSqliteModel())) {s = 45;}
-
-                        else if ( (LA31_3==80) && (synpred1_InternalSqliteModel())) {s = 46;}
-
-                        else if ( (LA31_3==126) && (synpred1_InternalSqliteModel())) {s = 47;}
-
-                        else if ( (LA31_3==127) && (synpred1_InternalSqliteModel())) {s = 48;}
-
-                        else if ( (LA31_3==128) && (synpred1_InternalSqliteModel())) {s = 49;}
-
-                        else if ( (LA31_3==129) && (synpred1_InternalSqliteModel())) {s = 50;}
-
-                        else if ( (LA31_3==71) && (synpred1_InternalSqliteModel())) {s = 51;}
-
-                        else if ( (LA31_3==72) && (synpred1_InternalSqliteModel())) {s = 52;}
-
-                        else if ( (LA31_3==81) && (synpred1_InternalSqliteModel())) {s = 53;}
-
-                        else if ( (LA31_3==82) && (synpred1_InternalSqliteModel())) {s = 54;}
-
-                        else if ( (LA31_3==78) && (synpred1_InternalSqliteModel())) {s = 55;}
-
-                        else if ( (LA31_3==83) && (synpred1_InternalSqliteModel())) {s = 56;}
-
-                        else if ( (LA31_3==84) && (synpred1_InternalSqliteModel())) {s = 57;}
-
-                        else if ( (LA31_3==86) && (synpred1_InternalSqliteModel())) {s = 58;}
-
-                        else if ( (LA31_3==87) && (synpred1_InternalSqliteModel())) {s = 59;}
-
-                        else if ( (LA31_3==88) && (synpred1_InternalSqliteModel())) {s = 60;}
-
-                        else if ( (LA31_3==77) && (synpred1_InternalSqliteModel())) {s = 61;}
-
-                        else if ( (LA31_3==107) && (synpred1_InternalSqliteModel())) {s = 62;}
-
-                        else if ( (LA31_3==RULE_ID) ) {s = 63;}
+                        else if ( (LA31_4==EOF||LA31_4==18||(LA31_4>=22 && LA31_4<=24)||LA31_4==27||(LA31_4>=29 && LA31_4<=31)||(LA31_4>=33 && LA31_4<=57)||(LA31_4>=64 && LA31_4<=65)||LA31_4==67||(LA31_4>=69 && LA31_4<=73)||(LA31_4>=77 && LA31_4<=84)||(LA31_4>=86 && LA31_4<=88)||LA31_4==107||(LA31_4>=126 && LA31_4<=129)) ) {s = 5;}
 
                          
-                        input.seek(index31_3);
+                        input.seek(index31_4);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -18479,15 +18479,15 @@ public class InternalSqliteModelParser extends AbstractInternalAntlrParser {
     static final String DFA64_maxS =
         "\1\157\1\162\1\140\1\162\1\142\4\uffff\1\4\4\uffff\1\156\2\uffff";
     static final String DFA64_acceptS =
-        "\5\uffff\1\2\1\3\1\4\1\1\1\uffff\1\12\1\10\1\11\1\7\1\uffff\1\6\1\5";
+        "\5\uffff\1\1\1\2\1\4\1\3\1\uffff\1\11\1\12\1\10\1\7\1\uffff\1\6\1\5";
     static final String DFA64_specialS =
         "\21\uffff}>";
     static final String[] DFA64_transitionS = {
             "\1\1\15\uffff\1\2\2\uffff\1\3",
-            "\1\4\1\10\1\5\1\6\16\uffff\2\7",
+            "\1\4\1\5\1\6\1\10\16\uffff\2\7",
             "\1\11",
-            "\1\15\1\14\1\13\17\uffff\1\12",
-            "\1\10\1\5\1\6",
+            "\1\15\1\12\1\14\17\uffff\1\13",
+            "\1\5\1\6\1\10",
             "",
             "",
             "",

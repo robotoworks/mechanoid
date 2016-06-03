@@ -37,7 +37,9 @@ public abstract class ServiceClient {
     protected static final String METHOD_PUT = "PUT";
     protected static final String METHOD_POST = "POST";
     protected static final String METHOD_DELETE = "DELETE";
+    protected static final String METHOD_PATCH = "PATCH";
 
+    
     private final LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
     private final String mBaseUrl;
     private final boolean mDebug;
@@ -228,10 +230,8 @@ public abstract class ServiceClient {
     }
 
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
-            postUnlessPut(REQUEST request, Parser<RESULT> resultParser, boolean doPut)
-                    throws ServiceException {
-
-        String method = doPut ? METHOD_PUT : METHOD_POST;
+    		genericMethod(REQUEST request, Parser<RESULT> resultParser, String method)
+            throws ServiceException {
 
         try {
             boolean xWwwFormUrlencoded = getHeaders().get("Content-Type") != null
@@ -316,13 +316,20 @@ public abstract class ServiceClient {
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
             post(REQUEST request, Parser<RESULT> resultParser)
                     throws ServiceException {
-        return postUnlessPut(request, resultParser, false);
+        return genericMethod(request, resultParser, METHOD_POST);
     }
 
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
             put(REQUEST request, Parser<RESULT> resultParser)
                     throws ServiceException {
-        return postUnlessPut(request, resultParser, true);
+        return genericMethod(request, resultParser, METHOD_PUT);
+    }
+    
+    protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
+    		patch(REQUEST request, Parser<RESULT> resultParser)
+            throws ServiceException {
+    	return genericMethod(request, resultParser, METHOD_PATCH);
+
     }
 
     protected <REQUEST extends ServiceRequest> void applyRequestTimeouts(

@@ -1586,6 +1586,13 @@ rule__HttpMethodType__Alternatives
 { after(grammarAccess.getHttpMethodTypeAccess().getDeleteEnumLiteralDeclaration_3()); }
 )
 
+    |(
+{ before(grammarAccess.getHttpMethodTypeAccess().getPatchEnumLiteralDeclaration_4()); }
+(	'patch' 
+)
+{ after(grammarAccess.getHttpMethodTypeAccess().getPatchEnumLiteralDeclaration_4()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);

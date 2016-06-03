@@ -1,0 +1,13 @@
+/ClientGenerator.java
+/EntityGenerator.java
+/EntityReaderGenerator.java
+/EntityReaderProviderGenerator.java
+/EntityWriterGenerator.java
+/EntityWriterProviderGenerator.java
+/IntegerEnumTypeGenerator.java
+/JsonReaderStatementGenerator.java
+/JsonWriterStatementGenerator.java
+/NetModelGenerator.java
+/RequestGenerator.java
+/ResultGenerator.java
+/StringEnumTypeGenerator.java

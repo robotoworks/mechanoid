@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.PrimaryConstraint#getColumns <em>Columns</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.PrimaryConstraint#getConflictClause <em>Conflict Clause</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getPrimaryConstraint()
  * @model

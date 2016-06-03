@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.JoinStatementImpl#isNatural <em>Natural</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.JoinStatementImpl#isLeft <em>Left</em>}</li>
@@ -32,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.JoinStatementImpl#getSingleSource <em>Single Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.JoinStatementImpl#getExpression <em>Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

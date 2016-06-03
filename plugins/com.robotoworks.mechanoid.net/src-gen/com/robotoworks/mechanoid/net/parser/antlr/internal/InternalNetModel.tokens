@@ -14,7 +14,7 @@
 'entity'=27
 'enum'=29
 'extends'=25
-'false'=41
+'false'=42
 'get'=36
 'headers'=16
 'int'=32
@@ -22,10 +22,11 @@
 'nogen'=28
 'package'=12
 'params'=21
+'patch'=40
 'post'=38
 'put'=37
 'response'=24
-'true'=40
+'true'=41
 '{'=14
 '}'=15
 RULE_ANY_OTHER=11
@@ -66,3 +67,4 @@ T__38=38
 T__39=39
 T__40=40
 T__41=41
+T__42=42

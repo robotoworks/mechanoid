@@ -15,13 +15,13 @@ import com.robotoworks.mechanoid.ops.opServiceModel.Model;
 import com.robotoworks.mechanoid.ops.opServiceModel.Operation;
 import com.robotoworks.mechanoid.ops.opServiceModel.ServiceBlock;
 import com.robotoworks.mechanoid.text.Strings;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class OpServiceModelGenerator implements IGenerator {
@@ -40,7 +40,6 @@ public class OpServiceModelGenerator implements IGenerator {
   @Inject
   private OperationRegistryGenerator mOperationRegistryGenerator;
   
-  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
@@ -51,13 +50,12 @@ public class OpServiceModelGenerator implements IGenerator {
     this.generateOperationRegistry(resource, fsa);
     ServiceBlock _service = model.getService();
     EList<Operation> _ops = _service.getOps();
-    final Procedure1<Operation> _function = new Procedure1<Operation>() {
-      @Override
-      public void apply(final Operation item) {
+    final Consumer<Operation> _function = new Consumer<Operation>() {
+      public void accept(final Operation item) {
         OpServiceModelGenerator.this.generateOps(resource, fsa, item);
       }
     };
-    IterableExtensions.<Operation>forEach(_ops, _function);
+    _ops.forEach(_function);
   }
   
   public void generateOps(final Resource resource, final IFileSystemAccess fsa, final Operation op) {

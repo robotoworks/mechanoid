@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getConfig <em>Config</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getInit <em>Init</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.DatabaseBlockImpl#getMigrations <em>Migrations</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

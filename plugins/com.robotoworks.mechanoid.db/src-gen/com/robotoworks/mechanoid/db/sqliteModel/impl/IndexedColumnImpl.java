@@ -20,13 +20,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#getColumnReference <em>Column Reference</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#getCollationName <em>Collation Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.IndexedColumnImpl#isDesc <em>Desc</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

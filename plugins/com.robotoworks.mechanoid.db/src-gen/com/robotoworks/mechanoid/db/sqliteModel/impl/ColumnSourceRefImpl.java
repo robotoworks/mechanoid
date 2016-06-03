@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ColumnSourceRefImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ColumnSourceRefImpl#isAll <em>All</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.ColumnSourceRefImpl#getColumn <em>Column</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

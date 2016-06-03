@@ -10,11 +10,11 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement#isIfExists <em>If Exists</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.DropTriggerStatement#getTrigger <em>Trigger</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getDropTriggerStatement()
  * @model

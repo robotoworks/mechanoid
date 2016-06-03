@@ -57,7 +57,17 @@ public enum HttpMethodType implements Enumerator
    * @generated
    * @ordered
    */
-  DELETE(3, "delete", "delete");
+  DELETE(3, "delete", "delete"),
+
+  /**
+   * The '<em><b>Patch</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #PATCH_VALUE
+   * @generated
+   * @ordered
+   */
+  PATCH(4, "patch", "patch");
 
   /**
    * The '<em><b>Get</b></em>' literal value.
@@ -120,6 +130,21 @@ public enum HttpMethodType implements Enumerator
   public static final int DELETE_VALUE = 3;
 
   /**
+   * The '<em><b>Patch</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Patch</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #PATCH
+   * @model name="patch"
+   * @generated
+   * @ordered
+   */
+  public static final int PATCH_VALUE = 4;
+
+  /**
    * An array of all the '<em><b>Http Method Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +157,7 @@ public enum HttpMethodType implements Enumerator
       PUT,
       POST,
       DELETE,
+      PATCH,
     };
 
   /**
@@ -194,6 +220,7 @@ public enum HttpMethodType implements Enumerator
       case PUT_VALUE: return PUT;
       case POST_VALUE: return POST;
       case DELETE_VALUE: return DELETE;
+      case PATCH_VALUE: return PATCH;
     }
     return null;
   }

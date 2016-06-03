@@ -1280,12 +1280,14 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPostPostKeyword_2_0 = (Keyword)cPostEnumLiteralDeclaration_2.eContents().get(0);
 		private final EnumLiteralDeclaration cDeleteEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cDeleteDeleteKeyword_3_0 = (Keyword)cDeleteEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cPatchEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cPatchPatchKeyword_4_0 = (Keyword)cPatchEnumLiteralDeclaration_4.eContents().get(0);
 		
 		//enum HttpMethodType:
-		//	get | put | post | delete;
+		//	get | put | post | delete | patch;
 		public EnumRule getRule() { return rule; }
 
-		//get | put | post | delete
+		//get | put | post | delete | patch
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//get
@@ -1311,6 +1313,12 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"delete"
 		public Keyword getDeleteDeleteKeyword_3_0() { return cDeleteDeleteKeyword_3_0; }
+
+		//patch
+		public EnumLiteralDeclaration getPatchEnumLiteralDeclaration_4() { return cPatchEnumLiteralDeclaration_4; }
+
+		//"patch"
+		public Keyword getPatchPatchKeyword_4_0() { return cPatchPatchKeyword_4_0; }
 	}
 
 	public class BooleanValueElements extends AbstractEnumRuleElementFinder {
@@ -1545,7 +1553,7 @@ public class NetModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum HttpMethodType:
-	//	get | put | post | delete;
+	//	get | put | post | delete | patch;
 	public HttpMethodTypeElements getHttpMethodTypeAccess() {
 		return unknownRuleHttpMethodType;
 	}

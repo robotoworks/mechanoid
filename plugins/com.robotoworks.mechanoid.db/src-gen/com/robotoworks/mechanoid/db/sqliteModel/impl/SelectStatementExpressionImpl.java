@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementExpressionImpl#isNot <em>Not</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementExpressionImpl#isExists <em>Exists</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.impl.SelectStatementExpressionImpl#getSelect <em>Select</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

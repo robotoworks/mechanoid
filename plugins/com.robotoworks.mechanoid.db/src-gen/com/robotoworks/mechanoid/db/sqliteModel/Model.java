@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Model#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.Model#getDatabase <em>Database</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getModel()
  * @model

@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnDef#getType <em>Type</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.ColumnDef#getConstraints <em>Constraints</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getColumnDef()
  * @model

@@ -10,7 +10,6 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectExpression#isDistinct <em>Distinct</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectExpression#isAll <em>All</em>}</li>
@@ -21,6 +20,7 @@ package com.robotoworks.mechanoid.db.sqliteModel;
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectExpression#getGroupBy <em>Group By</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.SelectExpression#getHaving <em>Having</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getSelectExpression()
  * @model

@@ -471,6 +471,9 @@ public class ClientGenerator {
         case DELETE:
           _switchResult = this.generateServiceDeleteMethod(method);
           break;
+        case PATCH:
+          _switchResult = this.generateServicePatchMethod(method);
+          break;
         default:
           break;
       }
@@ -522,6 +525,13 @@ public class ClientGenerator {
   public CharSequence generateServiceDeleteMethod(final HttpMethod method) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("return delete(request, parser);");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence generateServicePatchMethod(final HttpMethod method) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("return patch(request, parser);");
     _builder.newLine();
     return _builder;
   }

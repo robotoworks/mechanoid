@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CaseExpression#getCaseExpression <em>Case Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CaseExpression#getCases <em>Cases</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.CaseExpression#getElseExpression <em>Else Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getCaseExpression()
  * @model

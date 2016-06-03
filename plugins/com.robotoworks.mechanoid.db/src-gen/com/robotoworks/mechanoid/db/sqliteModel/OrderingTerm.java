@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.OrderingTerm#getExpression <em>Expression</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.OrderingTerm#isAsc <em>Asc</em>}</li>
  *   <li>{@link com.robotoworks.mechanoid.db.sqliteModel.OrderingTerm#isDesc <em>Desc</em>}</li>
  * </ul>
+ * </p>
  *
  * @see com.robotoworks.mechanoid.db.sqliteModel.SqliteModelPackage#getOrderingTerm()
  * @model

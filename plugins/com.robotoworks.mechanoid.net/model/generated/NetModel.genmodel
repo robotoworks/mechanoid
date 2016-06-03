@@ -12,6 +12,7 @@
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/put"/>
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/post"/>
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/delete"/>
+      <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//HttpMethodType/patch"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="NetModel.ecore#//BooleanValue">
       <genEnumLiterals ecoreEnumLiteral="NetModel.ecore#//BooleanValue/true"/>

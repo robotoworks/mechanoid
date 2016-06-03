@@ -41,7 +41,7 @@ HttpMethodBlock:
 ;
 
 enum HttpMethodType:
-	get | put | post | delete
+	get | put | post | delete | patch
 ;
 
 Path:
