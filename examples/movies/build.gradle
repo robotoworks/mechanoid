@@ -10,7 +10,7 @@ static def getGitCommitCount() {
     return process.text.toInteger()
 }
 
-def version = '0.2.4'
+def version = '0.2.5'
 
 android {
 

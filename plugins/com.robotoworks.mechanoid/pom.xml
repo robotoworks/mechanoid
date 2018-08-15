@@ -5,13 +5,13 @@
     <artifactId>mechanoid-project</artifactId>
     <groupId>com.robotoworks.mechanoid</groupId>
     <relativePath>../../pom.xml</relativePath>
-    <version>0.2.4-SNAPSHOT</version>
+    <version>0.2.5-SNAPSHOT</version>
   </parent>
   <artifactId>com.robotoworks.mechanoid</artifactId>
-  <version>0.2.4-SNAPSHOT</version>
+  <version>0.2.5-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
   <properties>
-      <mechanoid-version>0.2.4-SNAPSHOT</mechanoid-version>
+      <mechanoid-version>0.2.5-SNAPSHOT</mechanoid-version>
   </properties>
   <dependencies>
       <dependency>

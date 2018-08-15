@@ -5,9 +5,9 @@
     <artifactId>mechanoid-project</artifactId>
     <groupId>com.robotoworks.mechanoid</groupId>
     <relativePath>../../pom.xml</relativePath>
-    <version>0.2.4-SNAPSHOT</version>
+    <version>0.2.5-SNAPSHOT</version>
   </parent>
   <artifactId>com.robotoworks.mechanoid.sharedprefs</artifactId>
-  <version>0.2.4-SNAPSHOT</version>
+  <version>0.2.5-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
