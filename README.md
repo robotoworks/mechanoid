@@ -1,40 +1,54 @@
-Mechanoid
+[![GitHub license](https://img.shields.io/badge/license-Apache%20Version%202.0-blue.svg)](https://github.com/sbrukhanda/fragmentviewpager/blob/master/LICENSE.txt)
+[![Build Status](https://travis-ci.org/hannesa2/mechanoid.svg?branch=master)](https://travis-ci.org/hannesa2/mechanoid)
+[![](https://jitpack.io/v/hannesa2/mechanoid.svg)](https://jitpack.io/#hannesa2/mechanoid)
+
+
+Mechanoid with Gradle  support
 =============
 
 Mechanoid is an Eclipse Plugin sporting a set of code generators for Android™ driven by Simple DSL's (Domain Specific Languages) with full Eclipse Editor Support for the rapid development of Android applications.
 
+But since Android uses as IDE Intellij (Android Studio) the code generation doesn't work any more. But some old project still uses this generated 
+code and have to fix some issues. Unfortunatelly the original maintainer seams to be not interesed any more. 
+
+This is the motivation for this fork  
+
+
 Mechanoid DB
 ------------
-Use the Sqlite language itself to generate Android content providers and the ActiveRecord pattern with rich editor support.
-
-More: http://robotoworks.com/mechanoid/doc/db/index.html
+Here Room from Google is a modern replacemnt and there is [secure Room](https://github.com/commonsguy/cwac-saferoom) as well 
 
 Mechanoid Net
 -------------
-Generate REST over JSON service clients with this simple language to describe JSON Objects and REST methods.
-
-More: http://robotoworks.com/mechanoid/doc/net/index.html
+Retrofit with Rx is a good replacement
 
 Mechanoid Ops
 -------------
-A Framework to create and run decoupled background operations as described in Virgil Dobjanschi's Google IO REST 2010 presentation.
-
-More: http://robotoworks.com/mechanoid/doc/ops/index.html
+This is the part why I maintain this repo because I've no good replacement found. Any suggestion is welcome
 
 Mechanoid Prefs
 ---------------
-A simple DSL to generate thin wrappers for strongly typed access to shared preferences.
-
-More: http://robotoworks.com/mechanoid/doc/prefs/index.html
+Here I use secure [DBPReferences](https://github.com/hannesa2/DbPreferences) as replacement
 
 Installation
 ============
+Repository available on https://jitpack.io
 
-Mechanoid can be installed like other Eclipse Plugins. In Eclipse go to Help > Install New Software and add the following update site URL.
+```Gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+```Gradle
+dependencies {
+    implementation 'com.github.hannesa2:mechanoid:2.4'
+}
 
-Latest Snapshot: http://www.robotoworks.com/mechanoid/updates/snapshot
+```
 
-Please see the getting started guide for complete details: http://robotoworks.com/mechanoid/doc/start.html
 
 License
 =======
