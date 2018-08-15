@@ -55,7 +55,7 @@ public class Ops {
 	/**
 	 * <p>Pause processing of operations, useful for testing scenarios
 	 * to guarantee processing time</p>
-	 * <p>Operations issued after a pause will not be processed until {@link #unpause()}</p>
+	 * <p>Operations issued after a pause will not be processed until pause(false)</p>
 	 * 
 	 * @param pause true to pause, false to resume
 	 */

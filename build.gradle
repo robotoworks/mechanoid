@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+    }
+}
+
+plugins {
+    // ./gradlew dependencyUpdates -Drevision=release
+    id 'com.github.ben-manes.versions' version '0.20.0'
+}
+
+ext {
+    defaultCompileSdkVersion = 28
+    defaultMinSdkVersion = 16
+    defaultTargetSdkVersion = 28
+    defaultBuildToolsVersion = '28.0.1'
+    defaultSupportLibVersion = "27.1.1"
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+
+    // show detailed warnings in gradle output
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

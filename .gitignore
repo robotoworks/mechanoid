@@ -8,3 +8,8 @@ org.eclipse.xtend.*
 *._trace
 *.smap
 .launch
+local.properties
+*.iml
+*.idea
+build
+.gradle

@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    implementation "com.android.support:support-v4:${defaultSupportLibVersion}"
+}
+
+android {
+    compileSdkVersion defaultCompileSdkVersion
+    buildToolsVersion defaultBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion defaultMinSdkVersion
+        targetSdkVersion defaultTargetSdkVersion
+//        consumerProguardFiles 'proguard-mechanoid.txt'
+    }
+
+    buildTypes {
+        debug {
+        }
+        release {
+        }
+    }
+
+    lintOptions { abortOnError false }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
