@@ -3,26 +3,26 @@
  */
 package com.robotoworks.mechanoid.sharedprefs;
 
-import org.eclipse.xtext.conversion.IValueConverterService;
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
 import com.robotoworks.mechanoid.sharedprefs.conversion.ValueConverters;
+
+import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class SharedPreferencesModelRuntimeModule extends com.robotoworks.mechanoid.sharedprefs.AbstractSharedPreferencesModelRuntimeModule {
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		
-		binder.bind(IOutputConfigurationProvider.class).to(MechanoidOutputConfigurationProvider.class);
-	}
-	
-	@Override
-	public Class<? extends IValueConverterService> bindIValueConverterService() {
-		return ValueConverters.class;
-	}
+    @Override
+    public void configure(Binder binder) {
+        super.configure(binder);
+
+        binder.bind(IOutputConfigurationProvider.class).to(MechanoidOutputConfigurationProvider.class);
+    }
+
+    @Override
+    public Class<? extends IValueConverterService> bindIValueConverterService() {
+        return ValueConverters.class;
+    }
 }

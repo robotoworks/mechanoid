@@ -3,8 +3,6 @@
  */
 package com.robotoworks.example.movies.ops;
 
-import java.util.List;
-
 import android.util.Log;
 
 import com.robotoworks.example.movies.MoviesApplication;
@@ -16,43 +14,45 @@ import com.robotoworks.mechanoid.net.Response;
 import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 
+import java.util.List;
+
 public class GetMoviesOperation extends AbstractGetMoviesOperation {
-	private static final String TAG = GetMoviesOperation.class.getSimpleName();
+    private static final String TAG = GetMoviesOperation.class.getSimpleName();
 
-	private void saveMovies(List<Movie> movies) {
-		Movies.delete();
-		
-		for(Movie movie : movies) {
-			Movies.newBuilder()
-				.setTitle(movie.getTitle())
-				.setDescription(movie.getDescription())
-				.setYear(movie.getYear())
-				.insert(false);
-		}
-	}
+    private void saveMovies(List<Movie> movies) {
+        Movies.delete();
+
+        for (Movie movie : movies) {
+            Movies.newBuilder()
+                    .setTitle(movie.getTitle())
+                    .setDescription(movie.getDescription())
+                    .setYear(movie.getYear())
+                    .insert(false);
+        }
+    }
 
 
-	@Override
-	protected OperationResult onExecute(OperationContext context, Args args) {
-		
-		MoviesApiClient client = MoviesApplication.getMoviesApiClient();
-		
-		try {
-			Response<GetMoviesResult> response = client.getMovies();
-			
-			// Throws UnexpectedHttpStatusException if not 200 OK 
-			response.checkResponseCodeOk();
-			
-			GetMoviesResult result = response.parse();
-			
-			saveMovies(result.getMovies());
-			
-			return OperationResult.ok();
-			
-		} catch (Exception e) {
-			Log.e(TAG, Log.getStackTraceString(e));
-			
-			return OperationResult.error(e);
-		}
-	}
+    @Override
+    protected OperationResult onExecute(OperationContext context, Args args) {
+
+        MoviesApiClient client = MoviesApplication.getMoviesApiClient();
+
+        try {
+            Response<GetMoviesResult> response = client.getMovies();
+
+            // Throws UnexpectedHttpStatusException if not 200 OK
+            response.checkResponseCodeOk();
+
+            GetMoviesResult result = response.parse();
+
+            saveMovies(result.getMovies());
+
+            return OperationResult.ok();
+
+        } catch (Exception e) {
+            Log.e(TAG, Log.getStackTraceString(e));
+
+            return OperationResult.error(e);
+        }
+    }
 }

@@ -10,6 +10,7 @@ org.eclipse.xtend.*
 .launch
 local.properties
 *.iml
-*.idea
 build
 .gradle
+
+.idea

@@ -22,36 +22,31 @@ public class IssuesFragment extends ListFragment {
     private static final String OP_GET_ISSUES = "OP_GET_ISSUES";
 
     private static final int LOADER_ISSUES = 1;
-
-    private OperationExecutor mGetIssuesOpExecutor;
-
-    private IssueListAdapter mAdapter;
-
     private static final String[] ISSUES_PROJECTION = {
             Issues._ID,
             Issues.NUMBER,
             Issues.TITLE,
             Issues.BODY
     };
+    private OperationExecutor mGetIssuesOpExecutor;
+    private IssueListAdapter mAdapter;
+    private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-        mAdapter = new IssueListAdapter(getActivity());
-
-        setListAdapter(mAdapter);
-
-        mGetIssuesOpExecutor = new OperationExecutor(OP_GET_ISSUES, savedInstanceState, mOpExecutorCallbacks);
-
-        if (mGetIssuesOpExecutor.isOk()) {
-            getLoaderManager().restartLoader(LOADER_ISSUES, null, mLoaderCallbacks);
-        } else {
-            mGetIssuesOpExecutor.execute(GetIssuesForRepositoryOperation.newIntent("robotoworks", "mechanoid"), OperationExecutor.MODE_ON_ERROR);
+        @Override
+        public void onLoaderReset(Loader<Cursor> loader) {
+            mAdapter.swapCursor(null);
         }
-    }
 
+        @Override
+        public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+            mAdapter.swapCursor(cursor);
+        }
+
+        @Override
+        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+            return SQuery.newQuery().createSupportLoader(Issues.CONTENT_URI, ISSUES_PROJECTION);
+        }
+    };
     private OperationExecutorCallbacks mOpExecutorCallbacks = new OperationExecutorCallbacks() {
 
         @Override
@@ -83,23 +78,23 @@ public class IssuesFragment extends ListFragment {
         }
     };
 
-    private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        @Override
-        public void onLoaderReset(Loader<Cursor> loader) {
-            mAdapter.swapCursor(null);
-        }
 
-        @Override
-        public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-            mAdapter.swapCursor(cursor);
-        }
+        mAdapter = new IssueListAdapter(getActivity());
 
-        @Override
-        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-            return SQuery.newQuery().createSupportLoader(Issues.CONTENT_URI, ISSUES_PROJECTION);
+        setListAdapter(mAdapter);
+
+        mGetIssuesOpExecutor = new OperationExecutor(OP_GET_ISSUES, savedInstanceState, mOpExecutorCallbacks);
+
+        if (mGetIssuesOpExecutor.isOk()) {
+            getLoaderManager().restartLoader(LOADER_ISSUES, null, mLoaderCallbacks);
+        } else {
+            mGetIssuesOpExecutor.execute(GetIssuesForRepositoryOperation.newIntent("robotoworks", "mechanoid"), OperationExecutor.MODE_ON_ERROR);
         }
-    };
+    }
 
     public static class IssueListAdapter extends SimpleCursorAdapter {
 

@@ -3,43 +3,44 @@
  */
 package com.robotoworks.mechanoid.net.ui;
 
+import com.google.inject.Binder;
+import com.robotoworks.mechanoid.net.ui.editor.syntaxcoloring.MechNetSemanticHighlightingCalculator;
+import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
+import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
+import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
+import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
+
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
-import com.google.inject.Binder;
-import com.robotoworks.mechanoid.net.ui.editor.syntaxcoloring.MechNetSemanticHighlightingCalculator;
-import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
-import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
-import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
-import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
-
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class NetModelUiModule extends com.robotoworks.mechanoid.net.ui.AbstractNetModelUiModule {
-	public NetModelUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-	
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		binder.bind(ISemanticHighlightingCalculator.class).to(MechNetSemanticHighlightingCalculator.class);
-	}
-	
-	@Override
-	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return MechanoidBuilderParticipant.class;
-	}
-	
-	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-	    return MechanoidXtextAddingEditorCallback.class;
-	}
-	
-    @org.eclipse.xtext.service.SingletonBinding(eager=true) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+    public NetModelUiModule(AbstractUIPlugin plugin) {
+        super(plugin);
+    }
+
+    @Override
+    public void configure(Binder binder) {
+        super.configure(binder);
+        binder.bind(ISemanticHighlightingCalculator.class).to(MechNetSemanticHighlightingCalculator.class);
+    }
+
+    @Override
+    public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+        return MechanoidBuilderParticipant.class;
+    }
+
+    @Override
+    public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+        return MechanoidXtextAddingEditorCallback.class;
+    }
+
+    @org.eclipse.xtext.service.SingletonBinding(eager = true)
+    public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
         return MechanoidLibClasspathUiValidationHelper.class;
     }
 }

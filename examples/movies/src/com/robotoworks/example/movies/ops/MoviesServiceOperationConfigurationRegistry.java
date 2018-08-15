@@ -4,6 +4,6 @@
 package com.robotoworks.example.movies.ops;
 
 public class MoviesServiceOperationConfigurationRegistry extends AbstractMoviesServiceOperationConfigurationRegistry {
-	
+
 }
 

@@ -3,27 +3,26 @@
  */
 package com.robotoworks.mechanoid.db.ui;
 
+import com.google.inject.Injector;
+import com.robotoworks.mechanoid.db.ui.internal.SqliteModelActivator;
+
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
 import org.osgi.framework.Bundle;
 
-import com.google.inject.Injector;
-
-import com.robotoworks.mechanoid.db.ui.internal.SqliteModelActivator;
-
 /**
  * This class was generated. Customizations should only happen in a newly
- * introduced subclass. 
+ * introduced subclass.
  */
 public class SqliteModelExecutableExtensionFactory extends AbstractGuiceAwareExecutableExtensionFactory {
 
-	@Override
-	protected Bundle getBundle() {
-		return SqliteModelActivator.getInstance().getBundle();
-	}
-	
-	@Override
-	protected Injector getInjector() {
-		return SqliteModelActivator.getInstance().getInjector(SqliteModelActivator.COM_ROBOTOWORKS_MECHANOID_DB_SQLITEMODEL);
-	}
-	
+    @Override
+    protected Bundle getBundle() {
+        return SqliteModelActivator.getInstance().getBundle();
+    }
+
+    @Override
+    protected Injector getInjector() {
+        return SqliteModelActivator.getInstance().getInjector(SqliteModelActivator.COM_ROBOTOWORKS_MECHANOID_DB_SQLITEMODEL);
+    }
+
 }

@@ -3,34 +3,35 @@
  */
 package com.robotoworks.mechanoid.sharedprefs.ui;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.builder.IXtextBuilderParticipant;
-import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
-
 import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
 import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class SharedPreferencesModelUiModule extends com.robotoworks.mechanoid.sharedprefs.ui.AbstractSharedPreferencesModelUiModule {
-	public SharedPreferencesModelUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-	
-	@Override
-	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return MechanoidBuilderParticipant.class;
-	}
-	
+    public SharedPreferencesModelUiModule(AbstractUIPlugin plugin) {
+        super(plugin);
+    }
+
+    @Override
+    public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+        return MechanoidBuilderParticipant.class;
+    }
+
     @Override
     public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
         return MechanoidXtextAddingEditorCallback.class;
     }
-    
-    @org.eclipse.xtext.service.SingletonBinding(eager=true) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+
+    @org.eclipse.xtext.service.SingletonBinding(eager = true)
+    public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
         return MechanoidLibClasspathUiValidationHelper.class;
     }
 }

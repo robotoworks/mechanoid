@@ -4,11 +4,10 @@
 package com.robotoworks.example.recipes.content;
 
 import android.content.Context;
-import com.robotoworks.example.recipes.content.AbstractRecipesDBOpenHelper;
 
 
 public class RecipesDBOpenHelper extends AbstractRecipesDBOpenHelper {
-	public RecipesDBOpenHelper(Context context) {
-		super(context);
-	}
+    public RecipesDBOpenHelper(Context context) {
+        super(context);
+    }
 }

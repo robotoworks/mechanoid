@@ -4,7 +4,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
     private static final String BUNDLE_NAME = "com.robotoworks.mechanoid.ui.messages"; //$NON-NLS-1$
-    
+
     public static String BrowseableValueTextField_Button_Browse;
 
     public static String ContainerBrowserField_ContainerSelectionDialog_Message;
@@ -29,7 +29,7 @@ public class Messages extends NLS {
     public static String NewMechanoidElementPage_Widget_Label_Name;
     public static String NewMechanoidElementPage_Widget_Label_Package;
     public static String NewMechanoidElementWizard_Dialog_CreateResourceError_Title;
-    
+
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

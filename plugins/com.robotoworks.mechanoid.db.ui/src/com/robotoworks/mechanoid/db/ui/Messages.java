@@ -8,6 +8,7 @@ public class Messages extends NLS {
     public static String NewMechanoidDBFileWizard_Progress_Message;
     public static String NewMechanoidDBFileWizard_Title;
     public static String NewMechanoidDBFileWizard_Widget_Label_Message_Name;
+
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

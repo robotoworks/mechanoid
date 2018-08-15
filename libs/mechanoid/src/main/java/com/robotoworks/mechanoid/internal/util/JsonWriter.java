@@ -12,9 +12,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * CHANGES:
- * 
+ *
  * Changed package
  */
 
@@ -31,24 +31,24 @@ import java.util.List;
  * encoded value to a stream, one token at a time. The stream includes both
  * literal values (strings, numbers, booleans and nulls) as well as the begin
  * and end delimiters of objects and arrays.
- *
+ * <p>
  * <h3>Encoding JSON</h3>
  * To encode your data as JSON, create a new {@code JsonWriter}. Each JSON
  * document must contain one top-level array or object. Call methods on the
  * writer as you walk the structure's contents, nesting arrays and objects as
  * necessary:
  * <ul>
- *   <li>To write <strong>arrays</strong>, first call {@link #beginArray()}.
- *       Write each of the array's elements with the appropriate {@link #value}
- *       methods or by nesting other arrays and objects. Finally close the array
- *       using {@link #endArray()}.
- *   <li>To write <strong>objects</strong>, first call {@link #beginObject()}.
- *       Write each of the object's properties by alternating calls to
- *       {@link #name} with the property's value. Write property values with the
- *       appropriate {@link #value} method or by nesting other objects or arrays.
- *       Finally close the object using {@link #endObject()}.
+ * <li>To write <strong>arrays</strong>, first call {@link #beginArray()}.
+ * Write each of the array's elements with the appropriate {@link #value}
+ * methods or by nesting other arrays and objects. Finally close the array
+ * using {@link #endArray()}.
+ * <li>To write <strong>objects</strong>, first call {@link #beginObject()}.
+ * Write each of the object's properties by alternating calls to
+ * {@link #name} with the property's value. Write property values with the
+ * appropriate {@link #value} method or by nesting other objects or arrays.
+ * Finally close the object using {@link #endObject()}.
  * </ul>
- *
+ * <p>
  * <h3>Example</h3>
  * Suppose we'd like to encode a stream of messages such as the following: <pre> {@code
  * [
@@ -78,7 +78,7 @@ import java.util.List;
  *     writeMessagesArray(writer, messages);
  *     writer.close();
  *   }
- *
+ * <p>
  *   public void writeMessagesArray(JsonWriter writer, List<Message> messages) throws IOException {
  *     writer.beginArray();
  *     for (Message message : messages) {
@@ -86,7 +86,7 @@ import java.util.List;
  *     }
  *     writer.endArray();
  *   }
- *
+ * <p>
  *   public void writeMessage(JsonWriter writer, Message message) throws IOException {
  *     writer.beginObject();
  *     writer.name("id").value(message.getId());
@@ -101,14 +101,14 @@ import java.util.List;
  *     writeUser(writer, message.getUser());
  *     writer.endObject();
  *   }
- *
+ * <p>
  *   public void writeUser(JsonWriter writer, User user) throws IOException {
  *     writer.beginObject();
  *     writer.name("name").value(user.getName());
  *     writer.name("followers_count").value(user.getFollowersCount());
  *     writer.endObject();
  *   }
- *
+ * <p>
  *   public void writeDoublesArray(JsonWriter writer, List<Double> doubles) throws IOException {
  *     writer.beginArray();
  *     for (Double value : doubles) {
@@ -116,33 +116,33 @@ import java.util.List;
  *     }
  *     writer.endArray();
  *   }}</pre>
- *
+ * <p>
  * <p>Each {@code JsonWriter} may be used to write a single JSON stream.
  * Instances of this class are not thread safe. Calls that would result in a
  * malformed JSON string will fail with an {@link IllegalStateException}.
  */
 public final class JsonWriter implements Closeable {
 
-    /** The output data, containing at most one top-level array or object. */
+    /**
+     * The output data, containing at most one top-level array or object.
+     */
     private final Writer out;
 
     private final List<JsonScope> stack = new ArrayList<JsonScope>();
-    {
-        stack.add(JsonScope.EMPTY_DOCUMENT);
-    }
-
     /**
      * A string containing a full set of spaces for a single level of
      * indentation, or null for no pretty printing.
      */
     private String indent;
-
     /**
      * The name/value separator; either ":" or ": ".
      */
     private String separator = ":";
-
     private boolean lenient;
+
+    {
+        stack.add(JsonScope.EMPTY_DOCUMENT);
+    }
 
     /**
      * Creates a new instance that writes a JSON-encoded stream to {@code out}.
@@ -175,26 +175,26 @@ public final class JsonWriter implements Closeable {
     }
 
     /**
+     * Returns true if this writer has relaxed syntax rules.
+     */
+    public boolean isLenient() {
+        return lenient;
+    }
+
+    /**
      * Configure this writer to relax its syntax rules. By default, this writer
      * only emits well-formed JSON as specified by <a
      * href="http://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>. Setting the writer
      * to lenient permits the following:
      * <ul>
-     *   <li>Top-level values of any type. With strict writing, the top-level
-     *       value must be an object or an array.
-     *   <li>Numbers may be {@link Double#isNaN() NaNs} or {@link
-     *       Double#isInfinite() infinities}.
+     * <li>Top-level values of any type. With strict writing, the top-level
+     * value must be an object or an array.
+     * <li>Numbers may be {@link Double#isNaN() NaNs} or {@link
+     * Double#isInfinite() infinities}.
      * </ul>
      */
     public void setLenient(boolean lenient) {
         this.lenient = lenient;
-    }
-
-    /**
-     * Returns true if this writer has relaxed syntax rules.
-     */
-    public boolean isLenient() {
-        return lenient;
     }
 
     /**
@@ -335,7 +335,7 @@ public final class JsonWriter implements Closeable {
      * Encodes {@code value}.
      *
      * @param value a finite value. May not be {@link Double#isNaN() NaNs} or
-     *     {@link Double#isInfinite() infinities} unless this writer is lenient.
+     *              {@link Double#isInfinite() infinities} unless this writer is lenient.
      * @return this writer.
      */
     public JsonWriter value(double value) throws IOException {
@@ -362,7 +362,7 @@ public final class JsonWriter implements Closeable {
      * Encodes {@code value}.
      *
      * @param value a finite value. May not be {@link Double#isNaN() NaNs} or
-     *     {@link Double#isInfinite() infinities} unless this writer is lenient.
+     *              {@link Double#isInfinite() infinities} unless this writer is lenient.
      * @return this writer.
      */
     public JsonWriter value(Number value) throws IOException {
@@ -494,7 +494,7 @@ public final class JsonWriter implements Closeable {
      * closing bracket or another element.
      *
      * @param root true if the value is a new array or object, the two values
-     *     permitted as top-level elements.
+     *             permitted as top-level elements.
      */
     private void beforeValue(boolean root) throws IOException {
         switch (peek()) {

@@ -3,9 +3,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,15 +33,12 @@ import java.util.LinkedHashMap;
  * </p>
  */
 public abstract class ServiceClient {
-    private static final String DEFAULT_LOG_TAG = ServiceClient.class.getSimpleName();
-
     protected static final String METHOD_GET = "GET";
     protected static final String METHOD_PUT = "PUT";
     protected static final String METHOD_POST = "POST";
     protected static final String METHOD_DELETE = "DELETE";
     protected static final String METHOD_PATCH = "PATCH";
-
-    
+    private static final String DEFAULT_LOG_TAG = ServiceClient.class.getSimpleName();
     private final LinkedHashMap<String, String> mHeaders = new LinkedHashMap<String, String>();
     private final String mBaseUrl;
     private final boolean mDebug;
@@ -53,6 +50,14 @@ public abstract class ServiceClient {
     private final int mReadTimeout = 20000;
 
     private Method logMethodI;
+
+    public ServiceClient(String baseUrl, boolean debug) {
+        mBaseUrl = baseUrl;
+        mDebug = debug;
+
+        mReaderProvider = createReaderProvider();
+        mWriterProvider = createWriterProvider();
+    }
 
     protected String getBaseUrl() {
         return mBaseUrl;
@@ -75,7 +80,7 @@ public abstract class ServiceClient {
      * The reader provider for this client, if you want to override the returned reader provider, consider using
      * {@link #createReaderProvider()} instead.
      * </p>
-     * 
+     *
      * @return
      */
     public JsonEntityReaderProvider getReaderProvider() {
@@ -87,7 +92,7 @@ public abstract class ServiceClient {
      * The writer provider for this client, if you want to override the returned writer provider, consider using
      * {@link #createWriterProvider()} instead.
      * </p>
-     * 
+     *
      * @return
      */
     public JsonEntityWriterProvider getWriterProvider() {
@@ -98,7 +103,7 @@ public abstract class ServiceClient {
      * <p>
      * Add a request header to all requests performed by this client
      * </p>
-     * 
+     *
      * @param field
      * @param value
      */
@@ -106,35 +111,28 @@ public abstract class ServiceClient {
         getHeaders().put(field, value);
     }
 
-    public ServiceClient(String baseUrl, boolean debug) {
-        mBaseUrl = baseUrl;
-        mDebug = debug;
-
-        mReaderProvider = createReaderProvider();
-        mWriterProvider = createWriterProvider();
-    }
-    
     /**
      * give us the ability to use an own logger
+     *
      * @param clazz
      */
     public void setLoggerClass(Class<?> clazz) {
         try {
             logMethodI = clazz.getMethod("i", String.class, String.class);
-            if (logMethodI==null) {
-                Log.w(getLogTag(),"logger has no method 'i'");  
+            if (logMethodI == null) {
+                Log.w(getLogTag(), "logger has no method 'i'");
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
-    
+
 
     /**
      * <p>
      * For advanced use only, override this to provide your own writer provider
      * </p>
-     * 
+     *
      * @return
      */
     protected abstract JsonEntityWriterProvider createWriterProvider();
@@ -143,7 +141,7 @@ public abstract class ServiceClient {
      * <p>
      * For advanced use only, override this to provide your own reader provider
      * </p>
-     * 
+     *
      * @return
      */
     protected abstract JsonEntityReaderProvider createReaderProvider();
@@ -201,6 +199,7 @@ public abstract class ServiceClient {
 
     /**
      * give us the ability to use an own logger
+     *
      * @param clazz
      */
     private void log(String logTag, String content) {
@@ -269,7 +268,7 @@ public abstract class ServiceClient {
     }
 
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
-    		genericMethod(REQUEST request, Parser<RESULT> resultParser, String method)
+    genericMethod(REQUEST request, Parser<RESULT> resultParser, String method)
             throws ServiceException {
 
         try {
@@ -353,21 +352,21 @@ public abstract class ServiceClient {
     }
 
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
-            post(REQUEST request, Parser<RESULT> resultParser)
-                    throws ServiceException {
+    post(REQUEST request, Parser<RESULT> resultParser)
+            throws ServiceException {
         return genericMethod(request, resultParser, METHOD_POST);
     }
 
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
-            put(REQUEST request, Parser<RESULT> resultParser)
-                    throws ServiceException {
+    put(REQUEST request, Parser<RESULT> resultParser)
+            throws ServiceException {
         return genericMethod(request, resultParser, METHOD_PUT);
     }
-    
+
     protected <REQUEST extends ServiceRequest, RESULT extends ServiceResult> Response<RESULT>
-    		patch(REQUEST request, Parser<RESULT> resultParser)
+    patch(REQUEST request, Parser<RESULT> resultParser)
             throws ServiceException {
-    	return genericMethod(request, resultParser, METHOD_PATCH);
+        return genericMethod(request, resultParser, METHOD_PATCH);
 
     }
 
@@ -391,9 +390,9 @@ public abstract class ServiceClient {
      * Sets request properties using this clients headers and then headers from the given request such that request properties
      * from the given request will override those set from this client.
      * </p>
-     * 
+     *
      * @param request The request to add headers from
-     * @param conn The connection to add headers to
+     * @param conn    The connection to add headers to
      */
     protected <REQUEST extends ServiceRequest> void applyRequestProperties(
             REQUEST request, HttpURLConnection conn) {
@@ -410,7 +409,7 @@ public abstract class ServiceClient {
      * <p>
      * get param payload from request, necessary in case of xWwwFormUrlencoded
      * </p>
-     * 
+     *
      * @param request
      * @return
      * @throws MalformedURLException
@@ -428,7 +427,7 @@ public abstract class ServiceClient {
      * <p>
      * Creates a url from the given request, in case of xWwwFormUrlencoded without params
      * </p>
-     * 
+     *
      * @param request
      * @return
      * @throws MalformedURLException

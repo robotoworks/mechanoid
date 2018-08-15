@@ -16,7 +16,7 @@ public class PackageProposal implements IContentProposal, Comparable<PackageProp
         mLabel = mContent;
         mDescription = null;
     }
-    
+
     @Override
     public String getContent() {
         return mContent;
@@ -50,30 +50,40 @@ public class PackageProposal implements IContentProposal, Comparable<PackageProp
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         PackageProposal other = (PackageProposal) obj;
         if (mContent == null) {
-            if (other.mContent != null)
+            if (other.mContent != null) {
                 return false;
-        } else if (!mContent.equals(other.mContent))
+            }
+        } else if (!mContent.equals(other.mContent)) {
             return false;
-        if (mCursorPosition != other.mCursorPosition)
+        }
+        if (mCursorPosition != other.mCursorPosition) {
             return false;
+        }
         if (mDescription == null) {
-            if (other.mDescription != null)
+            if (other.mDescription != null) {
                 return false;
-        } else if (!mDescription.equals(other.mDescription))
+            }
+        } else if (!mDescription.equals(other.mDescription)) {
             return false;
+        }
         if (mLabel == null) {
-            if (other.mLabel != null)
+            if (other.mLabel != null) {
                 return false;
-        } else if (!mLabel.equals(other.mLabel))
+            }
+        } else if (!mLabel.equals(other.mLabel)) {
             return false;
+        }
         return true;
     }
 

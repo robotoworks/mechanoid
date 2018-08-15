@@ -6,7 +6,7 @@ package com.robotoworks.example.ghissues.ops;
 import com.robotoworks.mechanoid.ops.OperationService;
 
 public class GithubProcessor extends AbstractGithubProcessor {
-	public GithubProcessor(OperationService service) {
-		super(service, false);
-	}
+    public GithubProcessor(OperationService service) {
+        super(service, false);
+    }
 }

@@ -3,19 +3,19 @@
  */
 package com.robotoworks.mechanoid.net;
 
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
+
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class NetModelRuntimeModule extends com.robotoworks.mechanoid.net.AbstractNetModelRuntimeModule {
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		
-		binder.bind(IOutputConfigurationProvider.class).to(MechanoidOutputConfigurationProvider.class);
-	}
+    @Override
+    public void configure(Binder binder) {
+        super.configure(binder);
+
+        binder.bind(IOutputConfigurationProvider.class).to(MechanoidOutputConfigurationProvider.class);
+    }
 }

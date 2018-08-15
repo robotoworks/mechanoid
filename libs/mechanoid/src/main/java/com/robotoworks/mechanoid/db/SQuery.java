@@ -55,111 +55,18 @@ import java.util.Map;
 @SuppressWarnings("JavadocReference")
 public class SQuery {
     /**
-     * Used to represent Sqlite literal types used in expressions.
-     *
-     * @see SQuery#NULL
-     * @see SQuery#CURRENT_TIME
-     * @see SQuery#CURRENT_DATE
-     * @see SQuery#CURRENT_TIMESTAMP
-     */
-    public static final class Literal {
-        protected final String value;
-
-        Literal(String value) {
-            this.value = value;
-        }
-    }
-
-    /**
-     * <p>Comparison operator constants used in SQuery expressions.</p>
-     * <p>
-     * <h2>Example</h2>
-     * <pre><code>BooksRecord record = SQuery.newQuery()
-     *     .expr(Books.TITLE, Op.EQ, "Musashi")
-     *     .selectFirst(Books.CONTENT_URI);
-     * </code></pre>
-     *
-     * @see SQuery#expr(String, String, boolean)
-     * @see SQuery#expr(String, String, double)
-     * @see SQuery#expr(String, String, float)
-     * @see SQuery#expr(String, String, int)
-     * @see SQuery#expr(String, String, long)
-     * @see SQuery#expr(String, String, String)
-     * @see SQuery#expr(String, String, Literal)
-     */
-    public interface Op {
-        /**
-         * The equals (=) operator
-         */
-        String EQ = " = ";
-        /**
-         * The not equal (!=) operator
-         */
-        String NEQ = " != ";
-        /**
-         * The greater than (>) operator
-         */
-        String GT = " > ";
-        /**
-         * The less than (<) operator
-         */
-        String LT = " < ";
-        /**
-         * The greater than or equal (>=) operator
-         */
-        String GTEQ = " >= ";
-        /**
-         * The less than or equal (<=) operator
-         */
-        String LTEQ = " <= ";
-        /**
-         * The LIKE operator
-         */
-        String LIKE = " LIKE ";
-        /**
-         * The IS operator
-         */
-        String IS = " IS ";
-        /**
-         * The IS NOT operator
-         */
-        String ISNOT = " IS NOT ";
-        /**
-         * The REGEXP operator
-         */
-        String REGEXP = " REGEXP ";
-    }
-
-    /**
      * The AND operator
      */
     private static final String AND = " AND ";
-
     /**
      * The OR operator
      */
     private static final String OR = " OR ";
-
-
+    private static Async mAsync;
     private StringBuilder mBuilder;
     private List<String> mArgs = new ArrayList<>();
     private String mNextOp = null;
-
     private MechanoidContentProvider mProvider;
-
-    /**
-     * @return A list of expression arguments added so far
-     */
-    public List<String> getArgs() {
-        return mArgs;
-    }
-
-    /**
-     * @return An array of expression arguments added so far
-     */
-    public String[] getArgsArray() {
-        return mArgs.toArray(new String[mArgs.size()]);
-    }
 
     private SQuery() {
         mBuilder = new StringBuilder();
@@ -183,6 +90,26 @@ public class SQuery {
      */
     public static SQuery newQuery(MechanoidContentProvider provider) {
         return new SQuery(provider);
+    }
+
+    public static synchronized void init(ContentResolver resolver) {
+        if (mAsync == null) {
+            mAsync = new Async(resolver);
+        }
+    }
+
+    /**
+     * @return A list of expression arguments added so far
+     */
+    public List<String> getArgs() {
+        return mArgs;
+    }
+
+    /**
+     * @return An array of expression arguments added so far
+     */
+    public String[] getArgsArray() {
+        return mArgs.toArray(new String[mArgs.size()]);
     }
 
     /**
@@ -610,8 +537,9 @@ public class SQuery {
     }
 
     private Uri appendGroupByToUri(Uri uri, String... groupBy) {
-        if (groupBy == null || groupBy.length == 0)
+        if (groupBy == null || groupBy.length == 0) {
             return uri;
+        }
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < groupBy.length; i++) {
@@ -737,7 +665,8 @@ public class SQuery {
         return resolver.query(uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+    public AsyncQuery selectAsync(AsyncQueryCallback callback, Uri uri, String[] projection, String sortOrder, boolean enableNotifications,
+            String... groupBy) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
         uri = appendGroupByToUri(uri, groupBy);
@@ -828,7 +757,8 @@ public class SQuery {
         return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications, String... groupBy) {
+    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications,
+            String... groupBy) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
         uri = appendGroupByToUri(uri, groupBy);
@@ -1453,24 +1383,102 @@ public class SQuery {
         return count(uri) > 0;
     }
 
-    private static Async mAsync;
+    /**
+     * <p>Comparison operator constants used in SQuery expressions.</p>
+     * <p>
+     * <h2>Example</h2>
+     * <pre><code>BooksRecord record = SQuery.newQuery()
+     *     .expr(Books.TITLE, Op.EQ, "Musashi")
+     *     .selectFirst(Books.CONTENT_URI);
+     * </code></pre>
+     *
+     * @see SQuery#expr(String, String, boolean)
+     * @see SQuery#expr(String, String, double)
+     * @see SQuery#expr(String, String, float)
+     * @see SQuery#expr(String, String, int)
+     * @see SQuery#expr(String, String, long)
+     * @see SQuery#expr(String, String, String)
+     * @see SQuery#expr(String, String, Literal)
+     */
+    public interface Op {
+        /**
+         * The equals (=) operator
+         */
+        String EQ = " = ";
+        /**
+         * The not equal (!=) operator
+         */
+        String NEQ = " != ";
+        /**
+         * The greater than (>) operator
+         */
+        String GT = " > ";
+        /**
+         * The less than (<) operator
+         */
+        String LT = " < ";
+        /**
+         * The greater than or equal (>=) operator
+         */
+        String GTEQ = " >= ";
+        /**
+         * The less than or equal (<=) operator
+         */
+        String LTEQ = " <= ";
+        /**
+         * The LIKE operator
+         */
+        String LIKE = " LIKE ";
+        /**
+         * The IS operator
+         */
+        String IS = " IS ";
+        /**
+         * The IS NOT operator
+         */
+        String ISNOT = " IS NOT ";
+        /**
+         * The REGEXP operator
+         */
+        String REGEXP = " REGEXP ";
+    }
+
+    public interface AsyncQueryCallback {
+        void onQueryComplete(Cursor cursor);
+    }
+
+    /**
+     * Used to represent Sqlite literal types used in expressions.
+     *
+     * @see SQuery#NULL
+     * @see SQuery#CURRENT_TIME
+     * @see SQuery#CURRENT_DATE
+     * @see SQuery#CURRENT_TIMESTAMP
+     */
+    public static final class Literal {
+        protected final String value;
+
+        Literal(String value) {
+            this.value = value;
+        }
+    }
 
     public static class Async extends AsyncQueryHandler {
 
         int mTokens = 0;
+
+        public Async(ContentResolver cr) {
+            super(cr);
+        }
 
         protected synchronized int createToken() {
             mTokens++;
             return mTokens;
         }
 
-        public Async(ContentResolver cr) {
-            super(cr);
-        }
-
         public AsyncQuery startQuery(AsyncQueryCallback callback, Uri uri,
-                                     String[] projection, String selection, String[] selectionArgs,
-                                     String orderBy) {
+                String[] projection, String selection, String[] selectionArgs,
+                String orderBy) {
 
             AsyncQuery query = new AsyncQuery(this, createToken(), callback);
 
@@ -1493,16 +1501,6 @@ public class SQuery {
             if (asyncQuery != null) {
                 asyncQuery.completeQuery(cursor);
             }
-        }
-    }
-
-    public interface AsyncQueryCallback {
-        void onQueryComplete(Cursor cursor);
-    }
-
-    public static synchronized void init(ContentResolver resolver) {
-        if (mAsync == null) {
-            mAsync = new Async(resolver);
         }
     }
 }

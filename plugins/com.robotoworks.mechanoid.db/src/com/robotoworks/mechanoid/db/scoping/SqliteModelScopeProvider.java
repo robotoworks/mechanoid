@@ -10,18 +10,17 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 /**
  * This class contains custom scoping description.
- * 
+ * <p>
  * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
- * on how and when to use it 
- *
+ * on how and when to use it
  */
 public class SqliteModelScopeProvider extends AbstractDeclarativeScopeProvider {
-@Override
-public IScope getScope(EObject context, EReference reference) {
-	IScope scope = super.getScope(context, reference);
-	
-	return scope;
-}
+    @Override
+    public IScope getScope(EObject context, EReference reference) {
+        IScope scope = super.getScope(context, reference);
+
+        return scope;
+    }
 
 
 }

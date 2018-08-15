@@ -6,7 +6,7 @@ package com.robotoworks.example.movies.ops;
 import com.robotoworks.mechanoid.ops.OperationService;
 
 public class MoviesProcessor extends AbstractMoviesProcessor {
-	public MoviesProcessor(OperationService service) {
-		super(service, true);
-	}
+    public MoviesProcessor(OperationService service) {
+        super(service, true);
+    }
 }

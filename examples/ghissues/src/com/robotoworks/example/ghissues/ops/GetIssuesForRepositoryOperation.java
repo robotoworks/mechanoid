@@ -3,8 +3,6 @@
  */
 package com.robotoworks.example.ghissues.ops;
 
-import java.util.List;
-
 import android.content.ContentValues;
 import android.util.Log;
 
@@ -20,45 +18,47 @@ import com.robotoworks.mechanoid.net.ServiceException;
 import com.robotoworks.mechanoid.ops.OperationContext;
 import com.robotoworks.mechanoid.ops.OperationResult;
 
+import java.util.List;
+
 public class GetIssuesForRepositoryOperation extends AbstractGetIssuesForRepositoryOperation {
-	
-	private static final String TAG = GetIssuesForRepositoryOperation.class.getSimpleName();
-	
-	@Override
-	protected OperationResult onExecute(OperationContext context, final Args args) {
 
-		GithubClient client = new GithubClient(BuildConfig.DEBUG);
+    private static final String TAG = GetIssuesForRepositoryOperation.class.getSimpleName();
 
-		try {
-			GetIssuesForRepositoryRequest request = new GetIssuesForRepositoryRequest(args.owner,args.repo);
+    @Override
+    protected OperationResult onExecute(OperationContext context, final Args args) {
 
-			Response<GetIssuesForRepositoryResult> response = client.getIssuesForRepository(request);
-			
-			response.checkResponseCodeOk();
-			
-			GetIssuesForRepositoryResult result = response.parse();
-			
-			List<Issue> issues = result.getIssues();
-			
-			new BulkInsertHelper<Issue>() {
-				@Override
-				protected ContentValues createValues(Issue item) {
-					return Issues.newBuilder()
-							.setGhid(item.getId())
-							.setNumber(item.getNumber())
-							.setOwner(args.owner)
-							.setRepo(args.repo)
-							.setTitle(item.getTitle())
-							.setBody(item.getBody())
-							.getValues();
-				}
-			}.insert(Issues.CONTENT_URI, issues);
-			
-			return OperationResult.ok();
-			
-		} catch (ServiceException e) {
-			Log.e(TAG, Log.getStackTraceString(e));
-			return OperationResult.error(e);
-		}
-	}
+        GithubClient client = new GithubClient(BuildConfig.DEBUG);
+
+        try {
+            GetIssuesForRepositoryRequest request = new GetIssuesForRepositoryRequest(args.owner, args.repo);
+
+            Response<GetIssuesForRepositoryResult> response = client.getIssuesForRepository(request);
+
+            response.checkResponseCodeOk();
+
+            GetIssuesForRepositoryResult result = response.parse();
+
+            List<Issue> issues = result.getIssues();
+
+            new BulkInsertHelper<Issue>() {
+                @Override
+                protected ContentValues createValues(Issue item) {
+                    return Issues.newBuilder()
+                            .setGhid(item.getId())
+                            .setNumber(item.getNumber())
+                            .setOwner(args.owner)
+                            .setRepo(args.repo)
+                            .setTitle(item.getTitle())
+                            .setBody(item.getBody())
+                            .getValues();
+                }
+            }.insert(Issues.CONTENT_URI, issues);
+
+            return OperationResult.ok();
+
+        } catch (ServiceException e) {
+            Log.e(TAG, Log.getStackTraceString(e));
+            return OperationResult.error(e);
+        }
+    }
 }

@@ -1,32 +1,32 @@
 package com.robotoworks.example.movies;
 
+import android.app.Application;
+
 import com.robotoworks.example.movies.net.MoviesApiClient;
 import com.robotoworks.mechanoid.Mechanoid;
 
-import android.app.Application;
-
 public class MoviesApplication extends Application {
-	
-	protected MoviesApiClient mMoviesApiClient;
 
-	public static MoviesApplication get() {
-		return (MoviesApplication) Mechanoid.getApplicationContext();
-	}
+    protected MoviesApiClient mMoviesApiClient;
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		
-		Mechanoid.init(this);
-		
-		createMoviesApiClient();
-	}
+    public static MoviesApplication get() {
+        return (MoviesApplication) Mechanoid.getApplicationContext();
+    }
 
-	protected void createMoviesApiClient() {
-		mMoviesApiClient = new MoviesApiClient(BuildConfig.DEBUG);
-	}
-	
-	public static MoviesApiClient getMoviesApiClient() {
-		return get().mMoviesApiClient;
-	}	
+    public static MoviesApiClient getMoviesApiClient() {
+        return get().mMoviesApiClient;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Mechanoid.init(this);
+
+        createMoviesApiClient();
+    }
+
+    protected void createMoviesApiClient() {
+        mMoviesApiClient = new MoviesApiClient(BuildConfig.DEBUG);
+    }
 }

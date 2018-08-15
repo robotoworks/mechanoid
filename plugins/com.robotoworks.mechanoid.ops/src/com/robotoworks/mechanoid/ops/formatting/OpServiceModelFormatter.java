@@ -3,30 +3,30 @@
  */
 package com.robotoworks.mechanoid.ops.formatting;
 
+import com.robotoworks.mechanoid.ops.services.OpServiceModelGrammarAccess;
+
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 
-import com.robotoworks.mechanoid.ops.services.OpServiceModelGrammarAccess;
-
 /**
  * This class contains custom formatting description.
- * 
+ * <p>
  * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#formatting
- * on how and when to use it 
- * 
+ * on how and when to use it
+ * <p>
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
  */
 public class OpServiceModelFormatter extends AbstractDeclarativeFormatter {
-	
-	@Override
-	protected void configureFormatting(FormattingConfig c) {
-	    OpServiceModelGrammarAccess g = (OpServiceModelGrammarAccess) getGrammarAccess();
-	    
-	    c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
-		c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
-		c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
-		
-		c.setLinewrap(2).after(g.getModelAccess().getPackageNameAssignment_1());
-		c.setLinewrap().after(g.getServiceBlockAccess().getLeftCurlyBracketKeyword_2());
-	}
+
+    @Override
+    protected void configureFormatting(FormattingConfig c) {
+        OpServiceModelGrammarAccess g = (OpServiceModelGrammarAccess) getGrammarAccess();
+
+        c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
+        c.setLinewrap(0, 1, 2).before(g.getML_COMMENTRule());
+        c.setLinewrap(0, 1, 1).after(g.getML_COMMENTRule());
+
+        c.setLinewrap(2).after(g.getModelAccess().getPackageNameAssignment_1());
+        c.setLinewrap().after(g.getServiceBlockAccess().getLeftCurlyBracketKeyword_2());
+    }
 }

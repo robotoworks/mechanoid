@@ -23,11 +23,15 @@ import android.util.Log;
 @Deprecated
 public class OperationManager extends OperationManagerBase {
 
-	private static final String TAG = "OperationManager";
+    private static final String TAG = "OperationManager";
 
-	public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks, boolean enableLogging) {
+    private OperationManager(OperationManagerCallbacks callbacks, boolean enableLogging) {
+        super(callbacks, enableLogging);
+    }
 
-		String tag = "Tags." + callbacks.getClass().getName();
+    public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks, boolean enableLogging) {
+
+        String tag = "Tags." + callbacks.getClass().getName();
 
         OperationManager operationManager;
 
@@ -35,11 +39,11 @@ public class OperationManager extends OperationManagerBase {
 
         PersistenceFragment frag = (PersistenceFragment) fm.findFragmentByTag(tag);
 
-        if(frag == null) {
+        if (frag == null) {
 
-        	if(enableLogging) {
-        		Log.d(TAG, String.format("[Create Fragment] tag:%s", tag));
-        	}
+            if (enableLogging) {
+                Log.d(TAG, String.format("[Create Fragment] tag:%s", tag));
+            }
 
             frag = new PersistenceFragment();
             operationManager = new OperationManager(callbacks, enableLogging);
@@ -47,55 +51,51 @@ public class OperationManager extends OperationManagerBase {
             fm.beginTransaction().add(frag, tag).commit();
         } else {
 
-        	if(enableLogging) {
-        		Log.d(TAG, String.format("[Recover Fragment] tag:%s", tag));
-        	}
+            if (enableLogging) {
+                Log.d(TAG, String.format("[Recover Fragment] tag:%s", tag));
+            }
 
-        	operationManager = (OperationManager) frag.getOperationManager();
+            operationManager = (OperationManager) frag.getOperationManager();
 
-        	if(operationManager == null) {
-            	if(enableLogging) {
-            		Log.d(TAG, String.format("[Create Manager] tag:%s", tag));
-            	}
+            if (operationManager == null) {
+                if (enableLogging) {
+                    Log.d(TAG, String.format("[Create Manager] tag:%s", tag));
+                }
 
-        		operationManager = new OperationManager(callbacks, enableLogging);
-        		frag.setOperationManager(operationManager);
-        	} else {
-            	if(enableLogging) {
-            		Log.d(TAG, String.format("[Recover Manager] tag:%s", tag));
-            	}
+                operationManager = new OperationManager(callbacks, enableLogging);
+                frag.setOperationManager(operationManager);
+            } else {
+                if (enableLogging) {
+                    Log.d(TAG, String.format("[Recover Manager] tag:%s", tag));
+                }
 
-        		operationManager.mCallbacks = callbacks;
-        	}
+                operationManager.mCallbacks = callbacks;
+            }
         }
 
-		return operationManager;
-	}
+        return operationManager;
+    }
 
-	public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks) {
-		return create(activity, callbacks, false);
-	}
-
-    private OperationManager(OperationManagerCallbacks callbacks, boolean enableLogging) {
-        super(callbacks, enableLogging);
+    public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks) {
+        return create(activity, callbacks, false);
     }
 
     public static class PersistenceFragment extends Fragment {
         private OperationManagerBase mOperationManager;
-		private Bundle mSavedState;
-
-        public void setOperationManager(OperationManagerBase operationManager) {
-        	mOperationManager = operationManager;
-
-        	if(mSavedState != null) {
-        		mOperationManager.restoreState(mSavedState);
-        		mOperationManager.start();
-        	}
-		}
+        private Bundle mSavedState;
 
         public OperationManagerBase getOperationManager() {
-        	return mOperationManager;
-		}
+            return mOperationManager;
+        }
+
+        public void setOperationManager(OperationManagerBase operationManager) {
+            mOperationManager = operationManager;
+
+            if (mSavedState != null) {
+                mOperationManager.restoreState(mSavedState);
+                mOperationManager.start();
+            }
+        }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
@@ -103,55 +103,55 @@ public class OperationManager extends OperationManagerBase {
 
             OperationManagerBase operationManager = getOperationManager();
 
-            if(operationManager == null) {
-            	mSavedState = savedInstanceState;
+            if (operationManager == null) {
+                mSavedState = savedInstanceState;
             } else {
-            	operationManager.restoreState(savedInstanceState);
+                operationManager.restoreState(savedInstanceState);
             }
         }
 
-		@Override
+        @Override
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
 
             OperationManagerBase operationManager = getOperationManager();
 
-            if(operationManager != null) {
-            	operationManager.saveState(outState);
+            if (operationManager != null) {
+                operationManager.saveState(outState);
             } else {
-            	removeSelf();
+                removeSelf();
             }
         }
 
 
-		@Override
-		public void onStart() {
-			super.onStart();
+        @Override
+        public void onStart() {
+            super.onStart();
 
             OperationManagerBase operationManager = getOperationManager();
 
-            if(operationManager != null) {
-            	operationManager.start();
+            if (operationManager != null) {
+                operationManager.start();
             } else {
-            	removeSelf();
+                removeSelf();
             }
-		}
+        }
 
-		@Override
-		public void onStop() {
-			super.onStop();
+        @Override
+        public void onStop() {
+            super.onStop();
 
             OperationManagerBase operationManager = getOperationManager();
 
-            if(operationManager != null) {
-            	operationManager.stop();
+            if (operationManager != null) {
+                operationManager.stop();
             } else {
-            	removeSelf();
+                removeSelf();
             }
-		}
+        }
 
-		private void removeSelf() {
-			getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
-		}
+        private void removeSelf() {
+            getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+        }
     }
 }

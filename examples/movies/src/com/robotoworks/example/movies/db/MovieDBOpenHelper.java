@@ -4,11 +4,10 @@
 package com.robotoworks.example.movies.db;
 
 import android.content.Context;
-import com.robotoworks.example.movies.db.AbstractMovieDBOpenHelper;
 
 
 public class MovieDBOpenHelper extends AbstractMovieDBOpenHelper {
-	public MovieDBOpenHelper(Context context) {
-		super(context);
-	}
+    public MovieDBOpenHelper(Context context) {
+        super(context);
+    }
 }

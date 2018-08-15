@@ -3,10 +3,8 @@
  */
 package com.robotoworks.example.movies.ops;
 
-import com.robotoworks.example.movies.ops.AbstractMoviesService;
-
 public class MoviesService extends AbstractMoviesService {
-	public MoviesService() {
-		super(true);
-	}
+    public MoviesService() {
+        super(true);
+    }
 }

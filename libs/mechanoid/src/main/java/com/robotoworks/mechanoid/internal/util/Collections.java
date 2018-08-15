@@ -13,7 +13,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
- *  
+ *
  *  CHANGES:
  *  Copied from http://www.java2s.com/Open-Source/Android/android-core/platform-libcore/java/util/Collections.java.htm
  *	Changed package
@@ -35,89 +35,89 @@ public class Collections {
         }
         throw new IllegalArgumentException();
     }
-    
-	private static class SetFromMap<E> extends AbstractSet<E> implements Serializable {
-		private static final long serialVersionUID = 2454657854757543876L;
 
-		// must named as it, to pass serialization compatibility test.
-		private Map<E, Boolean> m;
+    private static class SetFromMap<E> extends AbstractSet<E> implements Serializable {
+        private static final long serialVersionUID = 2454657854757543876L;
 
-		private transient Set<E> backingSet;
+        // must named as it, to pass serialization compatibility test.
+        private Map<E, Boolean> m;
 
-		SetFromMap(final Map<E, Boolean> map) {
-			super();
-			m = map;
-			backingSet = map.keySet();
-		}
+        private transient Set<E> backingSet;
 
-		@Override
-		public boolean equals(Object object) {
-			return backingSet.equals(object);
-		}
+        SetFromMap(final Map<E, Boolean> map) {
+            super();
+            m = map;
+            backingSet = map.keySet();
+        }
 
-		@Override
-		public int hashCode() {
-			return backingSet.hashCode();
-		}
+        @Override
+        public boolean equals(Object object) {
+            return backingSet.equals(object);
+        }
 
-		@Override
-		public boolean add(E object) {
-			return m.put(object, Boolean.TRUE) == null;
-		}
+        @Override
+        public int hashCode() {
+            return backingSet.hashCode();
+        }
 
-		@Override
-		public void clear() {
-			m.clear();
-		}
+        @Override
+        public boolean add(E object) {
+            return m.put(object, Boolean.TRUE) == null;
+        }
 
-		@Override
-		public String toString() {
-			return backingSet.toString();
-		}
+        @Override
+        public void clear() {
+            m.clear();
+        }
 
-		@Override
-		public boolean contains(Object object) {
-			return backingSet.contains(object);
-		}
+        @Override
+        public String toString() {
+            return backingSet.toString();
+        }
 
-		@Override
-		public boolean containsAll(Collection<?> collection) {
-			return backingSet.containsAll(collection);
-		}
+        @Override
+        public boolean contains(Object object) {
+            return backingSet.contains(object);
+        }
 
-		@Override
-		public boolean isEmpty() {
-			return m.isEmpty();
-		}
+        @Override
+        public boolean containsAll(Collection<?> collection) {
+            return backingSet.containsAll(collection);
+        }
 
-		@Override
-		public boolean remove(Object object) {
-			return m.remove(object) != null;
-		}
+        @Override
+        public boolean isEmpty() {
+            return m.isEmpty();
+        }
 
-		@Override
-		public boolean retainAll(Collection<?> collection) {
-			return backingSet.retainAll(collection);
-		}
+        @Override
+        public boolean remove(Object object) {
+            return m.remove(object) != null;
+        }
 
-		@Override
-		public Object[] toArray() {
-			return backingSet.toArray();
-		}
+        @Override
+        public boolean retainAll(Collection<?> collection) {
+            return backingSet.retainAll(collection);
+        }
 
-		@Override
-		public <T> T[] toArray(T[] contents) {
-			return backingSet.toArray(contents);
-		}
+        @Override
+        public Object[] toArray() {
+            return backingSet.toArray();
+        }
 
-		@Override
-		public Iterator<E> iterator() {
-			return backingSet.iterator();
-		}
+        @Override
+        public <T> T[] toArray(T[] contents) {
+            return backingSet.toArray(contents);
+        }
 
-		@Override
-		public int size() {
-			return m.size();
-		}
-	}
+        @Override
+        public Iterator<E> iterator() {
+            return backingSet.iterator();
+        }
+
+        @Override
+        public int size() {
+            return m.size();
+        }
+    }
 }

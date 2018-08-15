@@ -3,10 +3,8 @@
  */
 package com.robotoworks.example.ghissues.ops;
 
-import com.robotoworks.example.ghissues.ops.AbstractGithubService;
-
 public class GithubService extends AbstractGithubService {
-	public GithubService() {
-		super(false);
-	}
+    public GithubService() {
+        super(false);
+    }
 }

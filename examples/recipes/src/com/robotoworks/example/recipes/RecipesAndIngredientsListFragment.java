@@ -16,20 +16,35 @@ import com.robotoworks.mechanoid.db.SQuery;
 
 public class RecipesAndIngredientsListFragment extends ListFragment {
 
-    private RecipesCursorAdapter mAdapter;
-    
-    private static final String[] PROJECTION = { 
-            RecipesAndIngredients._ID, 
+    private static final String[] PROJECTION = {
+            RecipesAndIngredients._ID,
             RecipesAndIngredients.ROW_TYPE,
             RecipesAndIngredients.TITLE,
             RecipesAndIngredients.DESCRIPTION,
             RecipesAndIngredients.INGREDIENT_QUANTITY,
             RecipesAndIngredients.SORT_KEY
     };
-    
-    private interface ColumnIndices {
-    	int ROW_TYPE = 1;
-    };
+    private RecipesCursorAdapter mAdapter;
+    LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks =
+            new LoaderManager.LoaderCallbacks<Cursor>() {
+                @Override
+                public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+                    return SQuery.newQuery().createSupportLoader(
+                            RecipesAndIngredients.CONTENT_URI, PROJECTION);
+                }
+
+                @Override
+                public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+                    mAdapter.swapCursor(cursor);
+                }
+
+                @Override
+                public void onLoaderReset(Loader<Cursor> loader) {
+                    mAdapter.swapCursor(null);
+                }
+            };
+
+    ;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -37,77 +52,62 @@ public class RecipesAndIngredientsListFragment extends ListFragment {
 
         mAdapter = new RecipesCursorAdapter(getActivity());
         setListAdapter(mAdapter);
-        
+
         getLoaderManager().initLoader(0, null, mLoaderCallbacks);
     }
-    
+
+    private interface ColumnIndices {
+        int ROW_TYPE = 1;
+    }
+
     class RecipesCursorAdapter extends SimpleCursorAdapter {
-    	private static final int VIEWTYPE_COUNT = 2;
-    	private static final int VIEWTYPE_RECIPE = 0;
-    	private static final int VIEWTYPE_INGREDIENT = 1;
-    	
-		private LayoutInflater mInflater;
-    	
+        private static final int VIEWTYPE_COUNT = 2;
+        private static final int VIEWTYPE_RECIPE = 0;
+        private static final int VIEWTYPE_INGREDIENT = 1;
+
+        private LayoutInflater mInflater;
+
         public RecipesCursorAdapter(Context context) {
-            super(context, 
+            super(context,
                     R.layout.item_recipe, null,
-                    new String[] {
-            			RecipesAndIngredients.TITLE,
-            			RecipesAndIngredients.DESCRIPTION,
-            			RecipesAndIngredients.INGREDIENT_QUANTITY
-                    }, 
-                    new int[] {
-                        R.id.title,
-                        R.id.description,
-                        R.id.quantity
+                    new String[]{
+                            RecipesAndIngredients.TITLE,
+                            RecipesAndIngredients.DESCRIPTION,
+                            RecipesAndIngredients.INGREDIENT_QUANTITY
+                    },
+                    new int[]{
+                            R.id.title,
+                            R.id.description,
+                            R.id.quantity
                     }, 0);
-            
+
             mInflater = (LayoutInflater) LayoutInflater.from(getActivity());
         }
-        
+
         @Override
         public int getViewTypeCount() {
-        	return VIEWTYPE_COUNT;
+            return VIEWTYPE_COUNT;
         }
-        
+
         @Override
         public int getItemViewType(int position) {
-        	Cursor cursor = (Cursor) getItem(position);
-        	
-        	return cursor.getInt(ColumnIndices.ROW_TYPE);
+            Cursor cursor = (Cursor) getItem(position);
+
+            return cursor.getInt(ColumnIndices.ROW_TYPE);
         }
-        
+
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
             int viewType = getItemViewType(cursor.getPosition());
-            
-            switch(viewType) {
-            case VIEWTYPE_RECIPE:
-                return mInflater.inflate(R.layout.item_recipe, parent, false);
-            case VIEWTYPE_INGREDIENT:
-                return mInflater.inflate(R.layout.item_ingredient, parent, false);
-            default:
-                throw new IllegalStateException("Unexpected view type!");
+
+            switch (viewType) {
+                case VIEWTYPE_RECIPE:
+                    return mInflater.inflate(R.layout.item_recipe, parent, false);
+                case VIEWTYPE_INGREDIENT:
+                    return mInflater.inflate(R.layout.item_ingredient, parent, false);
+                default:
+                    throw new IllegalStateException("Unexpected view type!");
             }
         }
     }
-    
-    LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = 
-            new LoaderManager.LoaderCallbacks<Cursor>() {
-        @Override
-        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-            return SQuery.newQuery().createSupportLoader(
-                    RecipesAndIngredients.CONTENT_URI, PROJECTION);
-        }
-    
-        @Override
-        public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-            mAdapter.swapCursor(cursor);
-        }
-    
-        @Override
-        public void onLoaderReset(Loader<Cursor> loader) {
-            mAdapter.swapCursor(null);
-        }
-    };
 }

@@ -23,54 +23,62 @@ public class PackageBrowserField extends BrowseableValueTextField {
     private ContentProposalAdapter mPackageProposalAdapter;
     private PackageProposalProvider mProposalProvider;
     private Image mPackageImage;
-    
-    public void setJavaProject(IJavaProject project) {
-        mProposalProvider.setProposalsFromProject(project);
-    }
-    
+    private DisposeListener mDisposeListener = new DisposeListener() {
+        @Override
+        public void widgetDisposed(DisposeEvent e) {
+            if (mPackageImage != null) {
+                mPackageImage.dispose();
+            }
+        }
+    };
+
     public PackageBrowserField(Composite parent, String labelText) {
         super(parent, labelText);
-        
+
         attachProposalProvider();
-        
+
         parent.addDisposeListener(mDisposeListener);
-        
+
         mPackageImage = JavaPluginImages.DESC_OBJS_PACKAGE.createImage();
-        
+
         getBrowseButton().setVisible(false);
+    }
+
+    public void setJavaProject(IJavaProject project) {
+        mProposalProvider.setProposalsFromProject(project);
     }
 
     private void attachProposalProvider() {
         try {
             mProposalProvider = new PackageProposalProvider();
-            
+
             mPackageProposalAdapter = new ContentProposalAdapter(
-                getTextField(), 
-                new TextContentAdapter(), 
-                mProposalProvider, 
-                KeyStroke.getInstance("Ctrl+Space"), 
-                new char[] {'.'});
-            
+                    getTextField(),
+                    new TextContentAdapter(),
+                    mProposalProvider,
+                    KeyStroke.getInstance("Ctrl+Space"),
+                    new char[]{'.'});
+
             mPackageProposalAdapter.setLabelProvider(new LabelProvider() {
                 @Override
                 public Image getImage(Object element) {
                     return mPackageImage;
                 }
-                
+
                 @Override
                 public String getText(Object element) {
                     PackageProposal p = (PackageProposal) element;
                     return p.getContent();
                 }
             });
-            
+
             mPackageProposalAdapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     protected void onBrowseButtonPressed() {
         Shell shell = PlatformUI.getWorkbench().getModalDialogShellProvider().getShell();
@@ -80,18 +88,9 @@ public class PackageBrowserField extends BrowseableValueTextField {
         dialog.setInput("hi");
         dialog.setLabelProvider(new WorkbenchLabelProvider());
         dialog.setBlockOnOpen(true);
-        
-        if(dialog.open() == Window.OK) {
+
+        if (dialog.open() == Window.OK) {
             // TODO
         }
     }
-    
-    private DisposeListener mDisposeListener = new DisposeListener() {
-        @Override
-        public void widgetDisposed(DisposeEvent e) {
-            if(mPackageImage != null) {
-                mPackageImage.dispose();
-            }
-        }
-    };
 }

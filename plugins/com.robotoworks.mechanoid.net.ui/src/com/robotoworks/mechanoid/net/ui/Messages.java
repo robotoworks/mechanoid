@@ -10,6 +10,7 @@ public class Messages extends NLS {
     public static String NewMechanoidNetServiceClientPage_Widget_Label_Message_Name;
     public static String NewMechanoidNetServiceClientPage_Widget_Label_Message_Url;
     public static String NewMechanoidNetServiceClientPage_Widget_Label_Url;
+
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -3,19 +3,16 @@
  */
 package com.robotoworks.mechanoid.db;
 
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.parsetree.reconstr.ICommentAssociater;
-import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
-import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.db.naming.SqliteQualifiedNameProvider;
 import com.robotoworks.mechanoid.db.scoping.XSqliteModelScopeProvider;
-import com.robotoworks.mechanoid.db.serializer.SqliteModelSemanticSequencer;
 import com.robotoworks.mechanoid.db.serializer.SqliteSerializer;
 import com.robotoworks.mechanoid.generator.MechanoidOutputConfigurationProvider;
+
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -43,7 +40,7 @@ public class SqliteModelRuntimeModule extends com.robotoworks.mechanoid.db.Abstr
     public Class<? extends org.eclipse.xtext.serializer.ISerializer> bindISerializer() {
         return SqliteSerializer.class;
     }
-    
+
     @Override
     public Class<? extends ISemanticSequencer> bindISemanticSequencer() {
         return ExtendedSqliteModelSemanticSequencer.class;

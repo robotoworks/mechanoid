@@ -4,11 +4,6 @@
 package com.robotoworks.mechanoid.db.ui;
 
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.builder.IXtextBuilderParticipant;
-import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-
 import com.google.inject.Binder;
 import com.robotoworks.mechanoid.db.ui.editor.syntaxcoloring.MechDbSemanticHighlightingCalculator;
 import com.robotoworks.mechanoid.ui.MechanoidLibClasspathUiValidationHelper;
@@ -16,38 +11,44 @@ import com.robotoworks.mechanoid.ui.builder.MechanoidBuilderParticipant;
 import com.robotoworks.mechanoid.ui.builder.MechanoidXtextAddingEditorCallback;
 import com.robotoworks.mechanoid.validation.MechanoidLibClasspathValidationHelper;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class SqliteModelUiModule extends com.robotoworks.mechanoid.db.ui.AbstractSqliteModelUiModule {
-	public SqliteModelUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-	
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		
-		binder.bind(ISemanticHighlightingCalculator.class).to(MechDbSemanticHighlightingCalculator.class);
-		binder.bind(MechanoidLibClasspathUiValidationHelper.class);
-//		binder.bind(String.class)
-//		.annotatedWith(com.google.inject.name.Names.named(
-//		(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)))
-//		.toInstance(".");
+    public SqliteModelUiModule(AbstractUIPlugin plugin) {
+        super(plugin);
+    }
 
-	}
-	
-	@Override
-	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return MechanoidBuilderParticipant.class;
-	}
-	
+    @Override
+    public void configure(Binder binder) {
+        super.configure(binder);
+
+        binder.bind(ISemanticHighlightingCalculator.class).to(MechDbSemanticHighlightingCalculator.class);
+        binder.bind(MechanoidLibClasspathUiValidationHelper.class);
+        //		binder.bind(String.class)
+        //		.annotatedWith(com.google.inject.name.Names.named(
+        //		(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)))
+        //		.toInstance(".");
+
+    }
+
+    @Override
+    public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+        return MechanoidBuilderParticipant.class;
+    }
+
     @Override
     public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
         return MechanoidXtextAddingEditorCallback.class;
     }
-    
-    @org.eclipse.xtext.service.SingletonBinding(eager=false) public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
+
+    @org.eclipse.xtext.service.SingletonBinding(eager = false)
+    public Class<? extends MechanoidLibClasspathValidationHelper> bindMechanoidLibClasspathValidationHelper() {
         return MechanoidLibClasspathUiValidationHelper.class;
     }
 }
