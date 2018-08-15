@@ -1,7 +1,47 @@
-language: java
+language: android
+
+#branches:
+#  only:
+#    - master
+#    - /^v\d+\.\d+\.\d+$/
+
+sudo: true
+
 jdk:
-  - oraclejdk7
-  - openjdk7
+  - oraclejdk8
 
-script: mvn install
+env:
+  global:
+    # Where to run androidTests
+    - EMULATOR_API=22 # 24 has some issues, probably some overlayed window
+    - EMULATOR_ABI=armeabi-v7a
+    - EMULATOR_TAG=default
+    - PATH=$ANDROID_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH
 
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-28.0.1
+    - android-28
+    - doc-27
+
+install:
+  - echo $ANDROID_HOME # We assume this is correctly set when setting path
+  - sdkmanager --list || true # Look at the packages
+  - echo yes | sdkmanager "tools" # Ensure tools is updated
+
+script:
+  - set -o pipefail
+  - cp debug.keystore ~/.android/debug.keystore
+  - ./gradlew clean build
+  - set +o pipefail
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Android Sqlite Generator DSL UI
 Bundle-Vendor: Robotoworks Limited
-Bundle-Version: 0.2.3.qualifier
+Bundle-Version: 0.2.4.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.db.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.robotoworks.mechanoid.db;visibility:=reexport,

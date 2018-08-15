@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+static def getLatestGitHash() {
+    def process = "git rev-parse --short HEAD".execute()
+    return process.text.toString().trim()
+}
+
+static def getGitCommitCount() {
+    def process = "git rev-list HEAD --count".execute()
+    return process.text.toInteger()
+}
+
+def version = '0.2.4'
+
+android {
+
+    compileSdkVersion defaultCompileSdkVersion
+    buildToolsVersion defaultBuildToolsVersion
+
+    defaultConfig {
+        versionCode getGitCommitCount()
+        minSdkVersion defaultMinSdkVersion
+        versionName version + "." + getGitCommitCount() + "-" + getLatestGitHash()
+        targetSdkVersion defaultTargetSdkVersion
+    }
+
+    signingConfigs {
+        debug {
+            storePassword "android"
+            keyPassword "android"
+            keyAlias "androiddebugkey"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            signingConfig signingConfigs.debug // use debug as well
+            debuggable false
+            minifyEnabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src', 'src-gen']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            jni.srcDirs = [] //disable automatic ndk-build
+        }
+    }
+
+}
+
+dependencies {
+    implementation project(':libs:mechanoid')
+    implementation "com.android.support:support-v4:${defaultSupportLibVersion}"
+}

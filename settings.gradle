@@ -1,0 +1,5 @@
+include ':libs:mechanoid'
+include ':examples:ghissues'
+include ':examples:movies'
+include ':examples:prefs'
+include ':examples:recipes'
