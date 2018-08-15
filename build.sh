@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORKING_DIR=$PWD
-MECH_VERSION=0.2.3
+MECH_VERSION=0.2.4
 TARGET=target
 SITE_PATH=$WORKING_DIR/target/ide/eclipse
 DOC_PATH=$WORKING_DIR/target/doc

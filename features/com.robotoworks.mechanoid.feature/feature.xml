@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feature id="com.robotoworks.mechanoid.feature" label="Robotoworks Mechanoid" provider-name="Robotoworks Limited" version="0.2.3.qualifier">
+<feature id="com.robotoworks.mechanoid.feature" label="Robotoworks Mechanoid" provider-name="Robotoworks Limited" version="0.2.4.qualifier">
 
    <description url="http://www.robotoworks.com/mechanoid-plugin">
       A set of DSL&apos;s that aid in the rapid development of Android applications
