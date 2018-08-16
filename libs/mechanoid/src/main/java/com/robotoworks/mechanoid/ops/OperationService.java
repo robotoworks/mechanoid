@@ -14,15 +14,21 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 /*
@@ -89,6 +95,20 @@ public abstract class OperationService extends Service {
         }
 
         if (intent != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                String CHANNEL_ID = "operation_channel";
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "", NotificationManager.IMPORTANCE_DEFAULT);
+
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("")
+                        .setContentText("").build();
+
+                startForeground(1, notification);
+            }
+
+
             intent.putExtra(EXTRA_START_ID, startId);
             handleIntent(intent);
         }
