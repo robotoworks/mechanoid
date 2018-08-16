@@ -20,6 +20,7 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,7 +30,10 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+import info.hannes.mechanoid.R;
 
 /*
  * Intent intent = GetApplicationVersionOperation.create();
@@ -95,19 +99,39 @@ public abstract class OperationService extends Service {
         }
 
         if (intent != null) {
+            String NOTIFICATION_CHANNEL_ID = "operation_channel";
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "operation", NotificationManager.IMPORTANCE_DEFAULT);
+//
+//                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+//
+//                Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+//                        .setContentTitle("abc")
+//                        .setContentText("def").build();
+//
+//                startForeground(1, notification);
+//            }
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                String CHANNEL_ID = "operation_channel";
-                NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+                NotificationChannel mChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "operation", NotificationManager.IMPORTANCE_LOW);
+                mChannel.setDescription("description");
+                mChannel.enableLights(true);
+                mChannel.setLightColor(Color.RED);
+                mNotificationManager.createNotificationChannel(mChannel);
 
-                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                        .setContentTitle("")
-                        .setContentText("").build();
+                Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                        .setSmallIcon(android.R.drawable.stat_sys_download)
+                        .setContentTitle("abc")
+                        .setContentText("def").build();
+//                        .setColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
+//                int progress = 0;
+//                notification.setProgress(MAX_PROGRESS, progress, false);
                 startForeground(1, notification);
             }
-
 
             intent.putExtra(EXTRA_START_ID, startId);
             handleIntent(intent);
