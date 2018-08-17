@@ -30,10 +30,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-
-import info.hannes.mechanoid.R;
 
 /*
  * Intent intent = GetApplicationVersionOperation.create();
@@ -101,35 +98,22 @@ public abstract class OperationService extends Service {
         if (intent != null) {
             String NOTIFICATION_CHANNEL_ID = "operation_channel";
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "operation", NotificationManager.IMPORTANCE_DEFAULT);
-//
-//                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
-//
-//                Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-//                        .setContentTitle("abc")
-//                        .setContentText("def").build();
-//
-//                startForeground(1, notification);
-//            }
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-                NotificationChannel mChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "operation", NotificationManager.IMPORTANCE_LOW);
-                mChannel.setDescription("description");
+                NotificationChannel mChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "OpChannel", NotificationManager.IMPORTANCE_LOW);
+                mChannel.setDescription(getClass().getSimpleName());
                 mChannel.enableLights(true);
                 mChannel.setLightColor(Color.RED);
                 mNotificationManager.createNotificationChannel(mChannel);
 
                 Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-                        .setSmallIcon(android.R.drawable.stat_sys_download)
-                        .setContentTitle("abc")
-                        .setContentText("def").build();
-//                        .setColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                        .setSmallIcon(android.R.drawable.ic_popup_sync)
+                        .setContentTitle(getClass().getSimpleName().replace("Service", ""))
+                        .setContentText(actionToString(intent.getAction()))
+                        .build();
+                //  .setColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
-//                int progress = 0;
-//                notification.setProgress(MAX_PROGRESS, progress, false);
                 startForeground(1, notification);
             }
 
@@ -138,6 +122,10 @@ public abstract class OperationService extends Service {
         }
 
         return START_STICKY;
+    }
+
+    private CharSequence actionToString(String action) {
+        return action.substring(action.lastIndexOf(".") + 1).toLowerCase().replaceAll("_", " ").replace("op ", "");
     }
 
     private void handleIntent(Intent intent) {
