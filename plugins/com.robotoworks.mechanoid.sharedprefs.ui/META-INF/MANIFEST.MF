@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.robotoworks.mechanoid.sharedprefs.ui
 Bundle-Vendor: Robotoworks Limited
-Bundle-Version: 0.2.5.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-SymbolicName: com.robotoworks.mechanoid.sharedprefs.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.robotoworks.mechanoid.sharedprefs;visibility:=reexport,
