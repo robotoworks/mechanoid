@@ -14,10 +14,10 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 @Deprecated
@@ -29,13 +29,13 @@ public class OperationManager extends OperationManagerBase {
         super(callbacks, enableLogging);
     }
 
-    public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks, boolean enableLogging) {
+    public static OperationManager create(AppCompatActivity activity, OperationManagerCallbacks callbacks, boolean enableLogging) {
 
         String tag = "Tags." + callbacks.getClass().getName();
 
         OperationManager operationManager;
 
-        FragmentManager fm = activity.getFragmentManager();
+        FragmentManager fm = activity.getSupportFragmentManager();
 
         PersistenceFragment frag = (PersistenceFragment) fm.findFragmentByTag(tag);
 
@@ -76,7 +76,7 @@ public class OperationManager extends OperationManagerBase {
         return operationManager;
     }
 
-    public static OperationManager create(Activity activity, OperationManagerCallbacks callbacks) {
+    public static OperationManager create(AppCompatActivity activity, OperationManagerCallbacks callbacks) {
         return create(activity, callbacks, false);
     }
 

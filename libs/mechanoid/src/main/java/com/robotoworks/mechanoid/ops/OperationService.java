@@ -14,15 +14,22 @@
  */
 package com.robotoworks.mechanoid.ops;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 /*
@@ -89,11 +96,36 @@ public abstract class OperationService extends Service {
         }
 
         if (intent != null) {
+            String NOTIFICATION_CHANNEL_ID = "operation_channel";
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                NotificationChannel mChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "OpChannel", NotificationManager.IMPORTANCE_LOW);
+                mChannel.setDescription(getClass().getSimpleName());
+                mChannel.enableLights(true);
+                mChannel.setLightColor(Color.RED);
+                mNotificationManager.createNotificationChannel(mChannel);
+
+                Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                        .setSmallIcon(android.R.drawable.ic_popup_sync)
+                        .setContentTitle(getClass().getSimpleName().replace("Service", ""))
+                        .setContentText(actionToString(intent.getAction()))
+                        .build();
+                //  .setColor(ContextCompat.getColor(this, R.color.colorPrimary));
+
+                startForeground(1, notification);
+            }
+
             intent.putExtra(EXTRA_START_ID, startId);
             handleIntent(intent);
         }
 
         return START_STICKY;
+    }
+
+    private CharSequence actionToString(String action) {
+        return action.substring(action.lastIndexOf(".") + 1).toLowerCase().replaceAll("_", " ").replace("op ", "");
     }
 
     private void handleIntent(Intent intent) {

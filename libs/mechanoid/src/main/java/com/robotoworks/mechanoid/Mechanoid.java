@@ -14,10 +14,11 @@
  */
 package com.robotoworks.mechanoid;
 
-import android.content.ComponentName;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.robotoworks.mechanoid.db.SQuery;
 import com.robotoworks.mechanoid.ops.OpsInitializer;
@@ -28,8 +29,9 @@ import com.robotoworks.mechanoid.ops.OpsInitializer;
  */
 public class Mechanoid {
 
+    @SuppressLint("StaticFieldLeak")
     private static Mechanoid sInstance;
-    Context mApplicationContext;
+    private Context mApplicationContext;
 
     private Mechanoid(Context context) {
         mApplicationContext = context.getApplicationContext();
@@ -43,8 +45,12 @@ public class Mechanoid {
         return get().mApplicationContext.getContentResolver();
     }
 
-    public static ComponentName startService(Intent intent) {
-        return get().mApplicationContext.startService(intent);
+    public static void startService(Intent intent) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            get().mApplicationContext.startForegroundService(intent);
+        } else {
+            get().mApplicationContext.startService(intent);
+        }
     }
 
     public static Mechanoid get() {
@@ -58,7 +64,6 @@ public class Mechanoid {
      * <p>Initialize Mechanoid, this should be the very first thing called in onCreate of an
      * Android application implementation.</p>
      *
-     * @param context
      */
     public static void init(Context context) {
         if (sInstance == null) {
