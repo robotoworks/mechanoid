@@ -3,6 +3,7 @@ package com.robotoworks.example.movies.ui;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -33,8 +34,7 @@ public class MovieListFragment extends ListFragment {
     private OperationExecutor mGetMoviesOperationExecutor;
 
     private MoviesAdapter mAdapter;
-    LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks
-            = new LoaderManager.LoaderCallbacks<Cursor>() {
+    LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -47,14 +47,14 @@ public class MovieListFragment extends ListFragment {
         }
 
         @Override
-        public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
             mAdapter.swapCursor(cursor);
 
             setListShown(true);
         }
 
         @Override
-        public void onLoaderReset(Loader<Cursor> loader) {
+        public void onLoaderReset(@NonNull Loader<Cursor> loader) {
             mAdapter.swapCursor(null);
         }
     };
@@ -109,7 +109,7 @@ public class MovieListFragment extends ListFragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         mGetMoviesOperationExecutor.saveState(outState);
@@ -117,7 +117,7 @@ public class MovieListFragment extends ListFragment {
 
     class MoviesAdapter extends SimpleCursorAdapter {
 
-        public MoviesAdapter(Context context) {
+        MoviesAdapter(Context context) {
             super(context, R.layout.item_movies, null,
                     new String[]{
                             Movies.TITLE,

@@ -1,10 +1,10 @@
 package com.robotoworks.example.prefs;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,8 +13,7 @@ public class MainActivity extends Activity {
 
         UserPreferences prefs = UserPreferences.getInstance();
 
-        prefs
-                .edit()
+        prefs.edit()
                 .putName("Joe Bloggs")
                 .putAge(25)
                 .commit();
