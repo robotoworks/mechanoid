@@ -16,7 +16,7 @@ This is the motivation for this fork
 
 Mechanoid DB
 ------------
-Here Room from Google is a modern replacemnt and there is [secure Room](https://github.com/commonsguy/cwac-saferoom) as well 
+Here Room from Google is a modern replacement and there is [secure Room](https://github.com/commonsguy/cwac-saferoom) as well 
 
 Mechanoid Net
 -------------
@@ -44,7 +44,7 @@ allprojects {
 ```
 ```Gradle
 dependencies {
-    implementation 'com.github.hannesa2:mechanoid:2.4'
+    implementation 'com.github.hannesa2:mechanoid:3.0'
 }
 
 ```
