@@ -311,8 +311,7 @@ public class OperationExecutor {
      * its result will be ignored and no callbacks will be received.</p>
      *
      * @param operationIntent An intent representing the operation to execute
-     * @param force           true to force the operation intent to execute, this will abandon any previous operation
-     *                        intent
+     * @param mode            true to force the operation intent to execute, this will abandon any previous operation intent
      */
     @Deprecated
     public void execute(Intent operationIntent, int mode) {

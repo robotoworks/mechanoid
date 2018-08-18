@@ -43,5 +43,6 @@ android {
 
 dependencies {
     implementation "com.android.support:support-v4:${defaultSupportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${defaultSupportLibVersion}"
 }
 
