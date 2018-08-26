@@ -20,7 +20,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-@Deprecated
 public class OperationManager extends OperationManagerBase {
 
     private static final String TAG = "OperationManager";

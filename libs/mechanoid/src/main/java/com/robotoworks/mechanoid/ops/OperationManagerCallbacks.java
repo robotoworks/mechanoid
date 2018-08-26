@@ -14,8 +14,6 @@
  */
 package com.robotoworks.mechanoid.ops;
 
-
-@Deprecated
 public interface OperationManagerCallbacks {
     /**
      * <p>Called when an operation is pending completion, will be invoked when
@@ -24,7 +22,7 @@ public interface OperationManagerCallbacks {
      *
      * @param code A user-defined code for this operation
      */
-    public void onOperationPending(int code);
+    void onOperationPending(int code);
 
     /**
      * <p>A callback that will be invoked by{@link OperationManager} or {@link SupportOperationManager}
@@ -38,5 +36,5 @@ public interface OperationManagerCallbacks {
      * @param result    The result of the completed operation
      * @param fromCache Whether the operation result was from cache
      */
-    public abstract void onOperationComplete(int code, OperationResult result, boolean fromCache);
+    void onOperationComplete(int code, OperationResult result, boolean fromCache);
 }

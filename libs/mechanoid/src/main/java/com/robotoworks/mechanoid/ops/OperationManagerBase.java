@@ -24,7 +24,6 @@ import android.util.SparseArray;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@Deprecated
 public abstract class OperationManagerBase {
 
     private static final String TAG = "OperationManager";

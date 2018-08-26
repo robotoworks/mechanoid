@@ -20,7 +20,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
-@Deprecated
 public class SupportOperationManager extends OperationManagerBase {
 
     private static final String TAG = "OperationManager";
@@ -33,7 +32,7 @@ public class SupportOperationManager extends OperationManagerBase {
 
         String tag = "Tags." + callbacks.getClass().getName();
 
-        SupportOperationManager operationManager = null;
+        SupportOperationManager operationManager;
 
         FragmentManager fm = activity.getSupportFragmentManager();
 
