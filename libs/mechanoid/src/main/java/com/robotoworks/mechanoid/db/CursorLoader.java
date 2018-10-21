@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
-public class CursorLoader extends android.support.v4.content.CursorLoader {
+public class CursorLoader extends androidx.loader.content.CursorLoader {
 
     private CursorProcessor mCursorProcessor;
 

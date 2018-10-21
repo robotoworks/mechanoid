@@ -3,9 +3,9 @@ package com.robotoworks.example.ghissues.ui;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
+import androidx.fragment.app.ListFragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
@@ -28,7 +28,6 @@ public class IssuesFragment extends ListFragment {
             Issues.TITLE,
             Issues.BODY
     };
-    private OperationExecutor mGetIssuesOpExecutor;
     private IssueListAdapter mAdapter;
     private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
 
@@ -87,7 +86,7 @@ public class IssuesFragment extends ListFragment {
 
         setListAdapter(mAdapter);
 
-        mGetIssuesOpExecutor = new OperationExecutor(OP_GET_ISSUES, savedInstanceState, mOpExecutorCallbacks);
+        OperationExecutor mGetIssuesOpExecutor = new OperationExecutor(OP_GET_ISSUES, savedInstanceState, mOpExecutorCallbacks);
 
         if (mGetIssuesOpExecutor.isOk()) {
             getLoaderManager().restartLoader(LOADER_ISSUES, null, mLoaderCallbacks);
@@ -110,7 +109,7 @@ public class IssuesFragment extends ListFragment {
                 R.id.issue_body
         };
 
-        public IssueListAdapter(Context context) {
+        IssueListAdapter(Context context) {
             super(context, R.layout.item_issue, null, FROM, TO, 0);
         }
     }

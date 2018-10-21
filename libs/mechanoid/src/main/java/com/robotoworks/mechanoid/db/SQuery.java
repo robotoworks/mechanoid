@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import androidx.loader.content.CursorLoader;
+
 /**
  * <p>Construct content provider/database queries using a fluent API.</p>
  * <p>
@@ -741,47 +743,47 @@ public class SQuery {
         return selectAsync(callback, uriWithLimit, projection, (String) null);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder) {
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder) {
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, String... groupBy) {
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, String... groupBy) {
         uri = appendGroupByToUri(uri, groupBy);
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
 
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications,
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, String sortOrder, boolean enableNotifications,
             String... groupBy) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
         uri = appendGroupByToUri(uri, groupBy);
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), sortOrder);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection) {
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+    public CursorLoader createSupportLoader(Uri uri, String[] projection) {
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications) {
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
 
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
     }
 
-    public android.support.v4.content.CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
+    public CursorLoader createSupportLoader(Uri uri, String[] projection, boolean enableNotifications, String... groupBy) {
 
         uri = uri.buildUpon().appendQueryParameter(MechanoidContentProvider.PARAM_NOTIFY, String.valueOf(enableNotifications)).build();
         uri = appendGroupByToUri(uri, groupBy);
 
-        return new android.support.v4.content.CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
+        return new CursorLoader(Mechanoid.getApplicationContext(), uri, projection, toString(), getArgsArray(), null);
     }
 
     public int firstInt(Uri uri, String column) {
