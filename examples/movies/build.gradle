@@ -67,5 +67,5 @@ android {
 
 dependencies {
     implementation project(':libs:mechanoid')
-    implementation "com.android.support:support-v4:${defaultSupportLibVersion}"
+    implementation "androidx.legacy:legacy-support-v4:$defaultAndoidXVersion"
 }
