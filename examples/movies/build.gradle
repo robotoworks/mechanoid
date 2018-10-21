@@ -15,7 +15,6 @@ def version = '3.0.0'
 android {
 
     compileSdkVersion defaultCompileSdkVersion
-    buildToolsVersion defaultBuildToolsVersion
 
     defaultConfig {
         versionCode getGitCommitCount()
