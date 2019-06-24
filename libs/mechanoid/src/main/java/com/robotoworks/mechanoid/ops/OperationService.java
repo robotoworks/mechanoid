@@ -67,8 +67,6 @@ public abstract class OperationService extends Service {
                 stop(msg.arg1);
             }
         }
-
-        ;
     };
 
     public OperationService(boolean enableLogging) {
@@ -105,7 +103,9 @@ public abstract class OperationService extends Service {
                 mChannel.setDescription(getClass().getSimpleName());
                 mChannel.enableLights(true);
                 mChannel.setLightColor(Color.RED);
-                mNotificationManager.createNotificationChannel(mChannel);
+                if (mNotificationManager != null) {
+                    mNotificationManager.createNotificationChannel(mChannel);
+                }
 
                 Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(android.R.drawable.ic_popup_sync)
