@@ -23,25 +23,12 @@ android {
         targetSdkVersion defaultTargetSdkVersion
     }
 
-    signingConfigs {
-        debug {
-            storePassword "android"
-            keyPassword "android"
-            keyAlias "androiddebugkey"
-        }
-    }
-
     lintOptions {
         abortOnError false
     }
 
     buildTypes {
-        debug {
-            debuggable true
-        }
         release {
-            signingConfig signingConfigs.debug // use debug as well
-            debuggable false
             minifyEnabled true
         }
     }
