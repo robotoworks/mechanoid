@@ -3,5 +3,5 @@ jdk:
   - oraclejdk7
   - openjdk7
 
-script: mvn install
+script: mvn -T 1C install
 
