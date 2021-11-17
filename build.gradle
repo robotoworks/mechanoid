@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -10,16 +10,16 @@ buildscript {
 }
 
 ext {
-    defaultCompileSdkVersion = 29
+    defaultCompileSdkVersion = 31
     defaultMinSdkVersion = 16
-    defaultTargetSdkVersion = 29
+    defaultTargetSdkVersion = 31
     defaultAndoidXVersion = "1.0.0"
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 
