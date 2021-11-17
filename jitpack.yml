@@ -1,0 +1,4 @@
+jdk:
+ - openjdk11
+install:
+ - ./gradlew :libs:mechanoid:build :libs:mechanoid:publishToMavenLocal -x :libs:mechanoid:test
