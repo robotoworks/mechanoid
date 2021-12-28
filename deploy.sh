@@ -3,7 +3,6 @@
 source ../deploy-mechanoid-settings.sh
 
 REMOTE_SNAPSHOT_PATH=$REMOTE_PATH/mechanoid/updates/snapshot
-REMOTE_DOC_PATH=$REMOTE_PATH/mechanoid/doc
 
 clear
 

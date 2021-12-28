@@ -33,8 +33,6 @@ end
 
 updatePomVersion("pom.xml", newVersion, false)
 
-updateDocsVersion("docs/source/conf.py", newVersion)
-
 updateShellScriptMechVersion("build.sh", newVersion)
 
 BEGIN {
