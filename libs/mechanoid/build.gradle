@@ -13,7 +13,7 @@ static def getGitCommitCount() {
     return process.text.toInteger()
 }
 
-def version = '3.0.0'
+def version = '3.0.1'
 
 android {
     compileSdkVersion defaultCompileSdkVersion
@@ -26,11 +26,6 @@ android {
         targetSdkVersion defaultTargetSdkVersion
 
         consumerProguardFiles 'proguard-mechanoid.txt'
-    }
-
-    buildTypes {
-        release {
-        }
     }
 
     lintOptions { abortOnError false }

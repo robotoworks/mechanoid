@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORKING_DIR=$PWD
-MECH_VERSION=3.0.0
+MECH_VERSION=3.0.1
 TARGET=target
 SITE_PATH=$WORKING_DIR/target/ide/eclipse
 LIB_PATH=$WORKING_DIR/target/lib
