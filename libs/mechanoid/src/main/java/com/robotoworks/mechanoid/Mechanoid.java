@@ -31,7 +31,7 @@ public class Mechanoid {
 
     @SuppressLint("StaticFieldLeak")
     private static Mechanoid sInstance;
-    private Context mApplicationContext;
+    private final Context mApplicationContext;
 
     private Mechanoid(Context context) {
         mApplicationContext = context.getApplicationContext();
